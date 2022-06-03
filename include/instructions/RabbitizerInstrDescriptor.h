@@ -41,6 +41,6 @@ typedef struct RabbitizerInstrDescriptor {
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
-RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_MAX];
+extern RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[];
 
 #endif
