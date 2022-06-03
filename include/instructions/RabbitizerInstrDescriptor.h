@@ -40,6 +40,7 @@ typedef struct RabbitizerInstrDescriptor {
     // bool isRsp;
 } RabbitizerInstrDescriptor;
 
-RabbitizerInstrDescriptor rabbitizer_InstructionDescriptors[RABBITIZER_INSTR_ID_MAX];
+// TODO: less redundant name
+RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_MAX];
 
 #endif
