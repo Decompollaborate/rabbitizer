@@ -228,28 +228,34 @@ const OperandCallback instrOpercandCallbacks[] = {
 };
 
 
-void RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
     const char *opcodeName;
     size_t opcodeNameLength;
+    size_t len;
 
     opcodeName = RabbitizerInstr_GetOpcodeName(self);
     opcodeNameLength = strlen(opcodeName);
 
     memcpy(dst, opcodeName, opcodeNameLength);
-
     dst += opcodeNameLength;
+    totalSize += opcodeNameLength;
 
     if (self->descriptor->operands[0] == RABBITIZER_REGISTER_TYPE_INVALID) {
         // There are no operands
         *dst = '\0';
-        return;
+        return totalSize;
     }
 
     // TODO: ljust
     // result = opcode.ljust(InstructionConfig.OPCODE_LJUST + self.extraLjustWidthOpcode, ' ') + " "
+    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ self->extraLjustWidthOpcode - totalSize, ' ');
+    dst += len;
+    totalSize += len;
 
     *dst = ' ';
     dst++;
+    totalSize++;
 
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
         RabbitizerRegisterType operand;
@@ -259,8 +265,10 @@ void RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *d
         if (i != 0) {
             *dst = ',';
             dst++;
+            totalSize++;
             *dst = ' ';
             dst++;
+            totalSize++;
         }
 
         operand = self->descriptor->operands[i];
@@ -272,9 +280,11 @@ void RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *d
 
         writtenBytes = callback(self, dst, immOverride, immOverrideLength);
         dst += writtenBytes;
+        totalSize += writtenBytes;
     }
 
     *dst = '\0';
+    return totalSize;
 }
 
 bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {

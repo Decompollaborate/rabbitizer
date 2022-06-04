@@ -60,6 +60,6 @@ uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self);
 
 bool RabbitizerInstr_IsNop(const RabbitizerInstr *self);
 
-void RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr* self, char *dst, const char *immOverride, size_t immOverrideLength);
+size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength);
 
 #endif

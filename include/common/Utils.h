@@ -4,6 +4,7 @@
 #ifndef RABBITIZER_UTILS_H
 #define RABBITIZER_UTILS_H
 
+#include <stddef.h>
 #include <stdint.h>
 
 
@@ -11,6 +12,6 @@
 
 
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits);
-
+size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar);
 
 #endif

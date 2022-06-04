@@ -12,7 +12,9 @@ int main() {
 
     RabbitizerInstr_Init(&instr, word);
 
-    RabbitizerInstr_ProcessUniqueId_Normal(&instr);
+    RabbitizerInstr_ProcessUniqueId(&instr);
+
+    instr.extraLjustWidthOpcode += 10;
 
     RabbitizerInstr_DisassembleInstruction(&instr, buffer, NULL, 0);
 

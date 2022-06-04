@@ -4,6 +4,7 @@
 #include "common/Utils.h"
 
 #include <stdbool.h>
+#include <string.h>
 
 
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits) {
@@ -14,4 +15,14 @@ int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits) {
     }
 
     return number;
+}
+
+size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar) {
+    if (count <= 0) {
+        return 0;
+    }
+
+    memset(dst, fillchar, count);
+
+    return count;
 }
