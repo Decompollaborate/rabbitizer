@@ -65,8 +65,14 @@ bool RabbitizerInstr_IsNop(const RabbitizerInstr *self);
 
 uint32_t RabbitizerInstr_GetBranchOffset(const RabbitizerInstr *self);
 
+
+size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, size_t immOverrideLength);
 size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength);
+
+size_t RabbitizerInstr_GetSizeForBufferDataDisasm(const RabbitizerInstr *self);
 size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst);
+
+size_t RabbitizerInstr_GetSizeForBuffer(const RabbitizerInstr *self, size_t immOverrideLength);
 size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength);
 
 #endif

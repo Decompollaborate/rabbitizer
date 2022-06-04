@@ -228,6 +228,36 @@ const OperandCallback instrOpercandCallbacks[] = {
 };
 
 
+size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    size_t opcodeNameLength;
+
+    opcodeNameLength = strlen(RabbitizerInstr_GetOpcodeName(self));
+
+    totalSize += opcodeNameLength;
+
+    if (self->descriptor->operands[0] == RABBITIZER_REGISTER_TYPE_INVALID) {
+        // There are no operands
+        return totalSize;
+    }
+
+    totalSize += self->extraLjustWidthOpcode;
+    totalSize++;
+
+    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
+        if (i != 0) {
+            totalSize += 2;
+        }
+
+        // A bit arbitrary, but no operand should be longer than 25 characters
+        totalSize += 25;
+        totalSize += immOverrideLength;
+    }
+
+    return totalSize;
+}
+
+
 size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *opcodeName;
@@ -284,6 +314,17 @@ size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char 
     }
 
     *dst = '\0';
+    return totalSize;
+}
+
+
+size_t RabbitizerInstr_GetSizeForBufferDataDisasm(const RabbitizerInstr *self) {
+    size_t totalSize = 0;
+
+    totalSize += strlen(".word");
+    totalSize += /*InstructionConfig.OPCODE_LJUST +*/ self->extraLjustWidthOpcode;
+    totalSize += 11;
+
     return totalSize;
 }
 
@@ -359,6 +400,25 @@ bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
     return false;
 }
 
+
+
+size_t RabbitizerInstr_GetSizeForBuffer(const RabbitizerInstr *self, size_t immOverrideLength) {
+    if (!RabbitizerInstr_IsImplemented(self) || RabbitizerInstr_MustDisasmAsData(self)) {
+        size_t totalSize = 0;
+
+        totalSize += RabbitizerInstr_GetSizeForBufferDataDisasm(self);
+
+        /* if (InstructionConfig.UNKNOWN_INSTR_COMMENT) */ {
+            totalSize += 40;
+            totalSize += 3;
+            totalSize += RabbitizerInstr_GetSizeForBufferInstrDisasm(self, immOverrideLength);
+        }
+
+        return totalSize;
+    }
+
+    return RabbitizerInstr_GetSizeForBufferInstrDisasm(self,immOverrideLength);
+}
 
 
 size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {

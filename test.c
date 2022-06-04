@@ -3,12 +3,13 @@
 
 #include "instructions/RabbitizerInstr.h"
 
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int main() {
     uint32_t word = 0x8D4A7E18;
     RabbitizerInstr instr;
-    char buffer[0x1000]; // huge buffer for testing purposes
+    char *buffer;
 
     RabbitizerInstr_Init(&instr, word);
 
@@ -16,9 +17,13 @@ int main() {
 
     instr.extraLjustWidthOpcode += 10;
 
+    buffer = malloc(RabbitizerInstr_GetSizeForBuffer(&instr, 0) + 1);
+
     RabbitizerInstr_Disassemble(&instr, buffer, NULL, 0);
 
     printf("%08X: %s\n", word, buffer);
+
+    free(buffer);
 
     RabbitizerInstr_Destroy(&instr);
 
