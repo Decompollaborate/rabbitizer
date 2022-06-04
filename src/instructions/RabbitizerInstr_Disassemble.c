@@ -352,7 +352,7 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst,
 
 bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
     if (/*InstructionConfig.SN64_DIV_FIX*/ false) {
-        if (self->uniqueId.cpuId == RABBITIZER_INSTR_CPU_ID_break) {
+        if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_break) {
             return true;
         }
     }

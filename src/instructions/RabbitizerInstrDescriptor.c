@@ -5,6 +5,7 @@
 
 #include "instructions/RabbitizerInstr.h"
 
+
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
     [RABBITIZER_INSTR_##prefix##_##name] = { __VA_ARGS__ }
 
@@ -14,6 +15,7 @@
 
 const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     #include "instructions/RabbitizerInstrId_cpu.inc"
+    #include "instructions/RabbitizerInstrId_rsp.inc"
 };
 
 #undef RABBITIZER_DEF_INSTR_ID

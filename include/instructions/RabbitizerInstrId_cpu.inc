@@ -297,7 +297,3 @@
 
     // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(CPU_ID, negu,        .operands={RABBITIZER_REGISTER_TYPE_rd, RABBITIZER_REGISTER_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),
-
-
-
-    // TODO: add RSP instructions

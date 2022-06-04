@@ -14,8 +14,8 @@ void RabbitizerInstr_Init(RabbitizerInstr *self, uint32_t word) {
     self->sa = (word >>  6) & 0x1F;
     self->function = (word >> 0) & 0x3F;
 
-    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_INVALID;
-    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
+    self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 
     self->vram = 0;
     self->_handwrittenCategory = false;
@@ -78,10 +78,10 @@ uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self) {
 
 
 bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self) {
-    if (self->uniqueId.cpuId == RABBITIZER_INSTR_CPU_ID_INVALID) {
+    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_INVALID) {
         return false;
     }
-    if (self->uniqueId.rspId == RABBITIZER_INSTR_RSP_ID_INVALID) {
+    if (self->uniqueId == RABBITIZER_INSTR_RSP_ID_INVALID) {
         return false;
     }
     return true;
