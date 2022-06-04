@@ -422,6 +422,8 @@ size_t RabbitizerInstr_GetSizeForBuffer(const RabbitizerInstr *self, size_t immO
 
 
 size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    assert(dst != NULL);
+
     if (!RabbitizerInstr_IsImplemented(self) || RabbitizerInstr_MustDisasmAsData(self)) {
         size_t totalSize = 0;
         size_t tempSize;
