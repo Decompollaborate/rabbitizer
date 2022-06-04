@@ -436,3 +436,60 @@ void RabbitizerInstr_ProcessUniqueId_Special(RabbitizerInstr *self) {
         }
     }
 }
+
+
+void RabbitizerInstr_ProcessUniqueId_Regimm(RabbitizerInstr *self) {
+    switch (self->opcode) {
+        case 0b00000:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bltz;
+            break;
+        case 0b00001:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bgez;
+            break;
+        case 0b00010:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bltzl;
+            break;
+        case 0b00011:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bgezl;
+            break;
+
+        case 0b01000:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tgei;
+            break;
+        case 0b01001:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tgeiu;
+            break;
+        case 0b01010:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tlti;
+            break;
+        case 0b01011:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tltiu;
+            break;
+
+        case 0b10000:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bltzal;
+            break;
+        case 0b10001:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bgezal;
+            break;
+        case 0b10010:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bltzall;
+            break;
+        case 0b10011:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bgezall;
+            break;
+
+        case 0b01100:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_teqi;
+            break;
+        case 0b01110:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tnei;
+            break;
+
+        default:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_INVALID;
+            break;
+    }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
+}

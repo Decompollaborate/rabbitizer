@@ -35,6 +35,7 @@ void RabbitizerInstr_Destroy(RabbitizerInstr* self);
 
 void RabbitizerInstr_ProcessUniqueId_Normal(RabbitizerInstr *self);
 void RabbitizerInstr_ProcessUniqueId_Special(RabbitizerInstr *self);
+void RabbitizerInstr_ProcessUniqueId_Regimm(RabbitizerInstr *self);
 
 const char *RabbitizerInstr_GetOpcodeName(const RabbitizerInstr *self);
 
