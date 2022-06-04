@@ -16,7 +16,7 @@ int main() {
 
     instr.extraLjustWidthOpcode += 10;
 
-    RabbitizerInstr_DisassembleInstruction(&instr, buffer, NULL, 0);
+    RabbitizerInstr_Disassemble(&instr, buffer, NULL, 0);
 
     printf("%08X: %s\n", word, buffer);
 

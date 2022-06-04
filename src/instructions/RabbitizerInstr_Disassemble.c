@@ -287,6 +287,30 @@ size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char 
     return totalSize;
 }
 
+
+size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst) {
+    size_t totalSize = 0;
+    size_t tempSize;
+    size_t len;
+
+    tempSize = strlen(".word");
+    memcpy(dst, ".word", tempSize);
+    dst += tempSize;
+    totalSize += tempSize;
+
+    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ self->extraLjustWidthOpcode - totalSize, ' ');
+    dst += len;
+    totalSize += len;
+
+    len = sprintf(dst, " 0x%08X", RabbitizerInstr_GetAsHex(self));
+    assert(len > 0);
+    dst += len;
+    totalSize += len;
+
+    return totalSize;
+}
+
+
 bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
     if (/*InstructionConfig.SN64_DIV_FIX*/ false) {
         if (self->uniqueId.cpuId == RABBITIZER_INSTR_CPU_ID_break) {
@@ -332,6 +356,42 @@ bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
             }
         }
     }
-
     return false;
+}
+
+
+
+size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    if (!RabbitizerInstr_IsImplemented(self) || RabbitizerInstr_MustDisasmAsData(self)) {
+        size_t totalSize = 0;
+        size_t tempSize;
+
+        tempSize = RabbitizerInstr_DisassembleAsData(self, dst);
+        dst += tempSize;
+        totalSize += tempSize;
+
+        /* if (InstructionConfig.UNKNOWN_INSTR_COMMENT) */ {
+            tempSize = RabbitizerUtils_CharFill(dst, 40-totalSize, ' ');
+            dst += tempSize;
+            totalSize += tempSize;
+
+            *dst = ' ';
+            dst++;
+            totalSize++;
+            *dst = '#';
+            dst++;
+            totalSize++;
+            *dst = ' ';
+            dst++;
+            totalSize++;
+
+            tempSize = RabbitizerInstr_DisassembleInstruction(self, dst, immOverride, immOverrideLength);
+            dst += tempSize;
+            totalSize += tempSize;
+        }
+
+        return totalSize;
+    }
+
+    return RabbitizerInstr_DisassembleInstruction(self, dst, immOverride, immOverrideLength);
 }

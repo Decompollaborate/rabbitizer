@@ -3,6 +3,9 @@
 
 #include "instructions/RabbitizerInstrDescriptor.h"
 
+#include "instructions/RabbitizerInstr.h"
+
+
 const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_CPU_ID_INVALID]   = {.operands={RABBITIZER_REGISTER_TYPE_rs, RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN},
 
@@ -304,3 +307,45 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
 
     // TODO: add RSP instructions
 };
+
+
+bool RabbitizerInstrDescriptor_IsJType(const RabbitizerInstrDescriptor *self) {
+    return self->instrType == RABBITIZER_INSTR_TYPE_J;
+}
+bool RabbitizerInstrDescriptor_IsIType(const RabbitizerInstrDescriptor *self) {
+    return self->instrType == RABBITIZER_INSTR_TYPE_I;
+}
+bool RabbitizerInstrDescriptor_IsRType(const RabbitizerInstrDescriptor *self) {
+    return self->instrType == RABBITIZER_INSTR_TYPE_R;
+}
+
+bool RabbitizerInstrDescriptor_IsBranch(const RabbitizerInstrDescriptor *self) {
+    return self->isBranch;
+}
+bool RabbitizerInstrDescriptor_IsBranchLikely(const RabbitizerInstrDescriptor *self) {
+    return self->isBranchLikely;
+}
+bool RabbitizerInstrDescriptor_IsJump(const RabbitizerInstrDescriptor *self) {
+    return self->isJump;
+}
+bool RabbitizerInstrDescriptor_IsTrap(const RabbitizerInstrDescriptor *self) {
+    return self->isTrap;
+}
+
+bool RabbitizerInstrDescriptor_IsFloat(const RabbitizerInstrDescriptor *self) {
+    return self->isFloat;
+}
+bool RabbitizerInstrDescriptor_IsDouble(const RabbitizerInstrDescriptor *self) {
+    return self->isDouble;
+}
+
+bool RabbitizerInstrDescriptor_IsUnsigned(const RabbitizerInstrDescriptor *self) {
+    return self->isUnsigned;
+}
+
+bool RabbitizerInstrDescriptor_ModifiesRt(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesRt;
+}
+bool RabbitizerInstrDescriptor_ModifiesRd(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesRd;
+}

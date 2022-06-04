@@ -3,6 +3,8 @@
 
 #include "instructions/RabbitizerInstr.h"
 
+#include "common/Utils.h"
+
 
 void RabbitizerInstr_Init(RabbitizerInstr *self, uint32_t word) {
     self->opcode = (word >> 26) & 0x3F;
@@ -52,6 +54,10 @@ uint8_t RabbitizerInstr_GetCond(const RabbitizerInstr *self) {
     return self->function & 0xF;
 }
 
+uint32_t RabbitizerInstr_GetAsHex(const RabbitizerInstr *self) {
+    return (self->opcode << 26) | (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
+}
+
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self) {
     return (self->rd << 11) | (self->sa << 6) | (self->function);
 }
@@ -71,6 +77,17 @@ uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self) {
     return vram;
 }
 
+
+bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self) {
+    if (self->uniqueId.cpuId == RABBITIZER_INSTR_CPU_ID_INVALID) {
+        return false;
+    }
+    if (self->uniqueId.rspId == RABBITIZER_INSTR_RSP_ID_INVALID) {
+        return false;
+    }
+    return true;
+}
+
 bool RabbitizerInstr_IsNop(const RabbitizerInstr *self) {
     return self->opcode == 0 &&
     self->rs == 0 &&
@@ -78,4 +95,11 @@ bool RabbitizerInstr_IsNop(const RabbitizerInstr *self) {
     self->rd == 0 &&
     self->sa == 0 &&
     self->function == 0;
+}
+
+
+uint32_t RabbitizerInstr_GetBranchOffset(const RabbitizerInstr *self) {
+    uint32_t diff = RabbitizerUtils_From2Complement(RabbitizerInstr_GetImmediate(self), 16);
+
+    return diff*4 + 4;
 }

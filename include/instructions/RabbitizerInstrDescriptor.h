@@ -43,4 +43,22 @@ typedef struct RabbitizerInstrDescriptor {
 // TODO: less redundant name
 extern const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[];
 
+
+bool RabbitizerInstrDescriptor_IsJType(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_IsIType(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_IsRType(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_IsBranch(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_IsBranchLikely(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_IsJump(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_IsTrap(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_IsFloat(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_IsDouble(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_IsUnsigned(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_ModifiesRt(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_ModifiesRd(const RabbitizerInstrDescriptor *self);
+
 #endif
