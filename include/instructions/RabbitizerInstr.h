@@ -36,12 +36,19 @@ void RabbitizerInstr_Destroy(RabbitizerInstr* self);
 void RabbitizerInstr_ProcessUniqueId_Normal(RabbitizerInstr *self);
 void RabbitizerInstr_ProcessUniqueId_Special(RabbitizerInstr *self);
 void RabbitizerInstr_ProcessUniqueId_Regimm(RabbitizerInstr *self);
+void RabbitizerInstr_ProcessUniqueId_Coprocessor0(RabbitizerInstr *self);
 
 const char *RabbitizerInstr_GetOpcodeName(const RabbitizerInstr *self);
 
 uint8_t RabbitizerInstr_GetFs(const RabbitizerInstr* self);
 uint8_t RabbitizerInstr_GetFt(const RabbitizerInstr* self);
 uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr* self);
+
+uint8_t RabbitizerInstr_GetFmt(const RabbitizerInstr *self);
+
+uint8_t RabbitizerInstr_GetNd(const RabbitizerInstr *self);
+uint8_t RabbitizerInstr_GetTf(const RabbitizerInstr *self);
+uint8_t RabbitizerInstr_GetFc(const RabbitizerInstr *self);
 
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self);
 uint32_t RabbitizerInstr_GetInstrIndex(const RabbitizerInstr *self);

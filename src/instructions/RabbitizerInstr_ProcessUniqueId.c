@@ -493,3 +493,73 @@ void RabbitizerInstr_ProcessUniqueId_Regimm(RabbitizerInstr *self) {
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
 }
+
+
+void RabbitizerInstr_ProcessUniqueId_Coprocessor0(RabbitizerInstr *self) {
+    self->_handwrittenCategory = true;
+
+    switch (RabbitizerInstr_GetFmt(self)) {
+        case 0b00000:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mfc0;
+            break;
+        case 0b00001:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_dmfc0;
+            break;
+        case 0b00010:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cfc0;
+            break;
+        // 0b00_011: "",
+        case 0b00100:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mtc0;
+            break;
+        case 0b00101:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_dmtc0;
+            break;
+        case 0b00110:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_ctc0;
+            break;
+        // 0b00_111: "",
+
+        case 0b01000:
+            if (RabbitizerInstr_GetTf(self)) {
+                if (RabbitizerInstr_GetNd(self)) {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc0tl;
+                } else {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc0t;
+                }
+            } else {
+                if (RabbitizerInstr_GetNd(self)) {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc0fl;
+                } else {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc0f;
+                }
+            }
+            break;
+
+        default:
+            switch (self->function) {
+                case 0b000001:
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tlbr;
+                    break;
+                case 0b000010:
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tlbwi;
+                    break;
+                case 0b000110:
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tlbwr;
+                    break;
+                case 0b001000:
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_tlbp;
+                    break;
+                case 0b011000:
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_eret;
+                    break;
+
+                default:
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_INVALID;
+                    break;
+            }
+            break;
+    }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
+}

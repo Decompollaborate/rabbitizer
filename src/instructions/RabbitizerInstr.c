@@ -35,6 +35,19 @@ uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr *self) {
     return self->sa;
 }
 
+uint8_t RabbitizerInstr_GetFmt(const RabbitizerInstr *self) {
+    return self->rs;
+}
+
+uint8_t RabbitizerInstr_GetNd(const RabbitizerInstr *self) {
+    return self->rt & 0x1;
+}
+uint8_t RabbitizerInstr_GetTf(const RabbitizerInstr *self) {
+    return (self->rt >> 1) & 0x1;
+}
+uint8_t RabbitizerInstr_GetFc(const RabbitizerInstr *self) {
+    return (self->function >> 4) & 0x3;
+}
 
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self) {
     return (self->rd << 11) | (self->sa << 6) | (self->function);
