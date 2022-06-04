@@ -48,6 +48,9 @@ uint8_t RabbitizerInstr_GetTf(const RabbitizerInstr *self) {
 uint8_t RabbitizerInstr_GetFc(const RabbitizerInstr *self) {
     return (self->function >> 4) & 0x3;
 }
+uint8_t RabbitizerInstr_GetCond(const RabbitizerInstr *self) {
+    return self->function & 0xF;
+}
 
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self) {
     return (self->rd << 11) | (self->sa << 6) | (self->function);

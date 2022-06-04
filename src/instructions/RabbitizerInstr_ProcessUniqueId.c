@@ -563,3 +563,363 @@ void RabbitizerInstr_ProcessUniqueId_Coprocessor0(RabbitizerInstr *self) {
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
 }
+
+
+void RabbitizerInstr_ProcessUniqueId_Coprocessor1(RabbitizerInstr *self) {
+    uint8_t fmt = RabbitizerInstr_GetFmt(self);
+    uint8_t fc;
+
+    self->_handwrittenCategory = true;
+    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_INVALID;
+
+    switch (fmt) {
+        case 0b00000:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mfc1;
+            break;
+        case 0b00001:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_dmfc1;
+            break;
+        case 0b00010:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cfc1;
+            break;
+
+        case 0b00100:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mtc1;
+            break;
+        case 0b00101:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_dmtc1;
+            break;
+        case 0b00110:
+            self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_ctc1;
+            break;
+
+        case 0b01000: // fmt = BC
+            if (RabbitizerInstr_GetTf(self)) {
+                if (RabbitizerInstr_GetNd(self)) {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc1tl;
+                } else {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc1t;
+                }
+            } else {
+                if (RabbitizerInstr_GetNd(self)) {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc1fl;
+                } else {
+                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_bc1f;
+                }
+            }
+            break;
+
+        default:
+            fmt = fmt & 0x07;
+            switch (self->function) {
+                case 0b000000:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_add_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_add_d;
+                    }
+                    break;
+                case 0b000001:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_sub_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_sub_d;
+                    }
+                    break;
+                case 0b000010:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mul_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mul_d;
+                    }
+                    break;
+                case 0b000011:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_div_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_div_d;
+                    }
+                    break;
+
+                case 0b000100:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_sqrt_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_sqrt_d;
+                    }
+                    break;
+                case 0b000101:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_abs_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_abs_d;
+                    }
+                    break;
+                case 0b000110:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mov_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_mov_d;
+                    }
+                    break;
+                case 0b000111:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_neg_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_neg_d;
+                    }
+                    break;
+
+                case 0b001000:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_round_l_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_round_l_d;
+                    }
+                    break;
+                case 0b001001:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_trunc_l_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_trunc_l_d;
+                    }
+                    break;
+                case 0b001010:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_ceil_l_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_ceil_l_d;
+                    }
+                    break;
+                case 0b001011:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_floor_l_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_floor_l_d;
+                    }
+                    break;
+
+                case 0b001100:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_round_w_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_round_w_d;
+                    }
+                    break;
+                case 0b001101:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_trunc_w_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_trunc_w_d;
+                    }
+                    break;
+                case 0b001110:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_ceil_w_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_ceil_w_d;
+                    }
+                    break;
+                case 0b001111:
+                    if (fmt == 0) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_floor_w_s;
+                    } else if (fmt == 1) {
+                        self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_floor_w_d;
+                    }
+                    break;
+
+                default:
+                    fc = RabbitizerInstr_GetFc(self);
+                    if (fc == 0b11) {
+                        // Compare conditions codes
+                        switch (RabbitizerInstr_GetCond(self)) {
+                            case 0b0000:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_f_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_f_d;
+                                }
+                                break;
+                            case 0b0001:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_un_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_un_d;
+                                }
+                                break;
+                            case 0b0010:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_eq_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_eq_d;
+                                }
+                                break;
+                            case 0b0011:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ueq_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ueq_d;
+                                }
+                                break;
+                            case 0b0100:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_olt_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_olt_d;
+                                }
+                                break;
+                            case 0b0101:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ult_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ult_d;
+                                }
+                                break;
+                            case 0b0110:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ole_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ole_d;
+                                }
+                                break;
+                            case 0b0111:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ule_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ule_d;
+                                }
+                                break;
+
+                            case 0b1000:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_sf_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_sf_d;
+                                }
+                                break;
+                            case 0b1001:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ngle_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ngle_d;
+                                }
+                                break;
+                            case 0b1010:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_seq_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_seq_d;
+                                }
+                                break;
+                            case 0b1011:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ngl_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ngl_d;
+                                }
+                                break;
+                            case 0b1100:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_lt_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_lt_d;
+                                }
+                                break;
+                            case 0b1101:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_nge_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_nge_d;
+                                }
+                                break;
+                            case 0b1110:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_le_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_le_d;
+                                }
+                                break;
+                            case 0b1111:
+                                if (fmt == 0) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ngt_s;
+                                } else if (fmt == 1) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_c_ngt_d;
+                                }
+                                break;
+                        }
+
+                    } else if (fc == 0b10) {
+                        // Convert codes
+                        switch (self->function & 0x07) {
+                            case 0b000:
+                                if (fmt == 0b001) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_s_d;
+                                } else if (fmt == 0b100) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_s_w;
+                                } else if (fmt == 0b101) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_s_l;
+                                }
+                                break;
+                            case 0b001:
+                                if (fmt == 0b000) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_d_s;
+                                } else if (fmt == 0b100) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_d_w;
+                                } else if (fmt == 0b101) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_d_l;
+                                }
+                                break;
+                            case 0b100:
+                                if (fmt == 0b000) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_w_s;
+                                } else if (fmt == 0b001) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_w_d;
+                                }
+                                break;
+                            case 0b101:
+                                if (fmt == 0b000) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_l_s;
+                                } else if (fmt == 0b001) {
+                                    self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_cvt_l_d;
+                                }
+                                break;
+                        }
+                    }
+                    break;
+            }
+    }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
+}
+
+
+void RabbitizerInstr_ProcessUniqueId_Coprocessor2(RabbitizerInstr *self) {
+    self->_handwrittenCategory = true;
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
+}
+
+
+
+void RabbitizerInstr_ProcessUniqueId(RabbitizerInstr *self) {
+    switch (self->opcode) {
+        default:
+            RabbitizerInstr_ProcessUniqueId_Normal(self);
+            break;
+        case 0x00:
+            RabbitizerInstr_ProcessUniqueId_Special(self);
+            break;
+        case 0x01:
+            RabbitizerInstr_ProcessUniqueId_Regimm(self);
+            break;
+        case 0x10:
+            RabbitizerInstr_ProcessUniqueId_Coprocessor0(self);
+            break;
+        case 0x11:
+            RabbitizerInstr_ProcessUniqueId_Coprocessor1(self);
+            break;
+        case 0x12:
+            RabbitizerInstr_ProcessUniqueId_Coprocessor2(self);
+            break;
+    }
+}
