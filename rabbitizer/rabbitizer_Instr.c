@@ -50,8 +50,9 @@ Instr_init(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
     static char *kwlist[] = {"word", NULL};
     uint32_t word;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I", kwlist, &word))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I", kwlist, &word)) {
         return -1;
+    }
 
     RabbitizerInstr_Init(&self->instr, word);
     RabbitizerInstr_ProcessUniqueId(&self->instr);
@@ -60,8 +61,6 @@ Instr_init(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
 }
 
 static PyMemberDef Instr_members[] = {
-    {"extraLjustWidthOpcode", T_INT, offsetof(PyRabbitizerInstr, instr.extraLjustWidthOpcode), 0,
-     "extraLjustWidthOpcode description"},
     {"vram", T_UINT, offsetof(PyRabbitizerInstr, instr.vram), 0,
      "vram description"},
     {NULL}  /* Sentinel */
@@ -145,14 +144,15 @@ Instr_name(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored))
 static PyObject *
 Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
 {
-    static char *kwlist[] = {"immOverride", NULL};
+    static char *kwlist[] = {"immOverride", "extraLJust", NULL};
     const char *immOverride = NULL;
     size_t immOverrideLength = 0;
+    int extraLJust;
     size_t bufferSize;
     char *buffer;
     PyObject *ret;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|z", kwlist, &immOverride)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|zi", kwlist, &immOverride, &extraLJust)) {
         return NULL;
     }
 
@@ -160,19 +160,17 @@ Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
         immOverrideLength = strlen(immOverride);
     }
 
-    bufferSize = RabbitizerInstr_GetSizeForBuffer(&self->instr, immOverrideLength);
+    bufferSize = RabbitizerInstr_GetSizeForBuffer(&self->instr, immOverrideLength, extraLJust);
 
     buffer = malloc(bufferSize+1);
     if (buffer == NULL) {
         return NULL;
     }
 
-    RabbitizerInstr_Disassemble(&self->instr, buffer, immOverride, immOverrideLength);
+    RabbitizerInstr_Disassemble(&self->instr, buffer, immOverride, immOverrideLength, extraLJust);
 
     ret = PyUnicode_FromString(buffer);
-
     free(buffer);
-
     return ret;
 }
 

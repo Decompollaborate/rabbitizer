@@ -228,7 +228,7 @@ const OperandCallback instrOpercandCallbacks[] = {
 };
 
 
-size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, size_t immOverrideLength) {
+size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, size_t immOverrideLength, int extraLJust) {
     size_t totalSize = 0;
     size_t opcodeNameLength;
 
@@ -241,7 +241,7 @@ size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, 
         return totalSize;
     }
 
-    totalSize += self->extraLjustWidthOpcode;
+    totalSize += extraLJust;
     totalSize++;
 
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
@@ -258,7 +258,7 @@ size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, 
 }
 
 
-size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) {
     size_t totalSize = 0;
     const char *opcodeName;
     size_t opcodeNameLength;
@@ -277,9 +277,7 @@ size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char 
         return totalSize;
     }
 
-    // TODO: ljust
-    // result = opcode.ljust(InstructionConfig.OPCODE_LJUST + self.extraLjustWidthOpcode, ' ') + " "
-    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ self->extraLjustWidthOpcode - totalSize, ' ');
+    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ extraLJust - totalSize, ' ');
     dst += len;
     totalSize += len;
 
@@ -318,18 +316,18 @@ size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char 
 }
 
 
-size_t RabbitizerInstr_GetSizeForBufferDataDisasm(const RabbitizerInstr *self) {
+size_t RabbitizerInstr_GetSizeForBufferDataDisasm(const RabbitizerInstr *self, int extraLJust) {
     size_t totalSize = 0;
 
     totalSize += strlen(".word");
-    totalSize += /*InstructionConfig.OPCODE_LJUST +*/ self->extraLjustWidthOpcode;
+    totalSize += /*InstructionConfig.OPCODE_LJUST +*/ extraLJust;
     totalSize += 11;
 
     return totalSize;
 }
 
 
-size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst) {
+size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst, int extraLJust) {
     size_t totalSize = 0;
     size_t tempSize;
     size_t len;
@@ -339,7 +337,7 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst)
     dst += tempSize;
     totalSize += tempSize;
 
-    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ self->extraLjustWidthOpcode - totalSize, ' ');
+    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ extraLJust - totalSize, ' ');
     dst += len;
     totalSize += len;
 
@@ -402,33 +400,33 @@ bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
 
 
 
-size_t RabbitizerInstr_GetSizeForBuffer(const RabbitizerInstr *self, size_t immOverrideLength) {
+size_t RabbitizerInstr_GetSizeForBuffer(const RabbitizerInstr *self, size_t immOverrideLength, int extraLJust) {
     if (!RabbitizerInstr_IsImplemented(self) || RabbitizerInstr_MustDisasmAsData(self)) {
         size_t totalSize = 0;
 
-        totalSize += RabbitizerInstr_GetSizeForBufferDataDisasm(self);
+        totalSize += RabbitizerInstr_GetSizeForBufferDataDisasm(self, extraLJust);
 
         /* if (InstructionConfig.UNKNOWN_INSTR_COMMENT) */ {
             totalSize += 40;
             totalSize += 3;
-            totalSize += RabbitizerInstr_GetSizeForBufferInstrDisasm(self, immOverrideLength);
+            totalSize += RabbitizerInstr_GetSizeForBufferInstrDisasm(self, immOverrideLength, extraLJust);
         }
 
         return totalSize;
     }
 
-    return RabbitizerInstr_GetSizeForBufferInstrDisasm(self,immOverrideLength);
+    return RabbitizerInstr_GetSizeForBufferInstrDisasm(self,immOverrideLength, extraLJust);
 }
 
 
-size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) {
     assert(dst != NULL);
 
     if (!RabbitizerInstr_IsImplemented(self) || RabbitizerInstr_MustDisasmAsData(self)) {
         size_t totalSize = 0;
         size_t tempSize;
 
-        tempSize = RabbitizerInstr_DisassembleAsData(self, dst);
+        tempSize = RabbitizerInstr_DisassembleAsData(self, dst, extraLJust);
         dst += tempSize;
         totalSize += tempSize;
 
@@ -447,7 +445,7 @@ size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const
             dst++;
             totalSize++;
 
-            tempSize = RabbitizerInstr_DisassembleInstruction(self, dst, immOverride, immOverrideLength);
+            tempSize = RabbitizerInstr_DisassembleInstruction(self, dst, immOverride, immOverrideLength, extraLJust);
             dst += tempSize;
             totalSize += tempSize;
         }
@@ -455,5 +453,5 @@ size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const
         return totalSize;
     }
 
-    return RabbitizerInstr_DisassembleInstruction(self, dst, immOverride, immOverrideLength);
+    return RabbitizerInstr_DisassembleInstruction(self, dst, immOverride, immOverrideLength, extraLJust);
 }

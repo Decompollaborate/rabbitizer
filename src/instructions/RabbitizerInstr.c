@@ -17,7 +17,6 @@ void RabbitizerInstr_Init(RabbitizerInstr *self, uint32_t word) {
     self->uniqueId.cpuId = RABBITIZER_INSTR_CPU_ID_INVALID;
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId.cpuId];
 
-    self->extraLjustWidthOpcode = 0;
     self->vram = 0;
     self->_handwrittenCategory = false;
     self->inHandwrittenFunction = false;

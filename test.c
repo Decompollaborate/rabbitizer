@@ -3,28 +3,29 @@
 
 #include "instructions/RabbitizerInstr.h"
 
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+
 
 int main() {
     uint32_t word = 0x8D4A7E18;
     RabbitizerInstr instr;
     char *buffer;
+    int extraLJust = 10;
 
     RabbitizerInstr_Init(&instr, word);
 
     RabbitizerInstr_ProcessUniqueId(&instr);
 
-    instr.extraLjustWidthOpcode += 10;
+    buffer = malloc(RabbitizerInstr_GetSizeForBuffer(&instr, 0, extraLJust) + 1);
+    assert(buffer != NULL);
 
-    buffer = malloc(RabbitizerInstr_GetSizeForBuffer(&instr, 0) + 1);
-
-    RabbitizerInstr_Disassemble(&instr, buffer, NULL, 0);
+    RabbitizerInstr_Disassemble(&instr, buffer, NULL, 0, extraLJust);
 
     printf("%08X: %s\n", word, buffer);
 
     free(buffer);
-
     RabbitizerInstr_Destroy(&instr);
 
     return 0;
