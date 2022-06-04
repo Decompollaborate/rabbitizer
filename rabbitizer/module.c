@@ -141,16 +141,31 @@ Instr_name(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored))
 
 
 static PyObject *
-Instr_Disassemble(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored))
+Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
 {
+    static char *kwlist[] = {"immOverride", NULL};
+    const char *immOverride = NULL;
+    size_t immOverrideLength = 0;
     size_t bufferSize;
     char *buffer;
     PyObject *ret;
 
-    bufferSize = RabbitizerInstr_GetSizeForBuffer(&self->instr, 0);
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|z", kwlist, &immOverride)) {
+        return NULL;
+    }
+
+    if (immOverride != NULL) {
+        immOverrideLength = strlen(immOverride);
+    }
+
+    bufferSize = RabbitizerInstr_GetSizeForBuffer(&self->instr, immOverrideLength);
 
     buffer = malloc(bufferSize+1);
-    RabbitizerInstr_Disassemble(&self->instr, buffer, NULL, 0);
+    if (buffer == NULL) {
+        return NULL;
+    }
+
+    RabbitizerInstr_Disassemble(&self->instr, buffer, immOverride, immOverrideLength);
 
     ret = PyUnicode_FromString(buffer);
 
@@ -165,7 +180,7 @@ static PyMethodDef Instr_methods[] = {
      "Return the name, combining the first and last name"
     },
 #endif
-    {"disassemble", (PyCFunction) Instr_Disassemble, METH_NOARGS, "description"},
+    {"disassemble", (PyCFunction) Instr_Disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
     {NULL}  /* Sentinel */
 };
 
