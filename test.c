@@ -6,7 +6,7 @@
 #include "stdio.h"
 
 int main() {
-    uint32_t word = 0x0C0224A9;
+    uint32_t word = 0x8D4A7E18;
     RabbitizerInstr instr;
     char buffer[0x1000]; // huge buffer for testing purposes
 

@@ -21,16 +21,29 @@ void RabbitizerInstr_Init(RabbitizerInstr *self, uint32_t word) {
     self->inHandwrittenFunction = false;
 }
 
-void RabbitizerInstr_Destroy(RabbitizerInstr* self) {
+void RabbitizerInstr_Destroy(RabbitizerInstr *self) {
 }
 
 
+uint8_t RabbitizerInstr_GetFs(const RabbitizerInstr *self) {
+    return self->rd;
+}
+uint8_t RabbitizerInstr_GetFt(const RabbitizerInstr *self) {
+    return self->rt;
+}
+uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr *self) {
+    return self->sa;
+}
 
-uint32_t RabbitizerInstr_GetInstrIndex(RabbitizerInstr *self) {
+
+uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self) {
+    return (self->rd << 11) | (self->sa << 6) | (self->function);
+}
+uint32_t RabbitizerInstr_GetInstrIndex(const RabbitizerInstr *self) {
     return (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
 }
 
-uint32_t RabbitizerInstr_GetInstrIndexAsVram(RabbitizerInstr *self) {
+uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self) {
     uint32_t vram = RabbitizerInstr_GetInstrIndex(self) << 2;
 
     if (self->vram == 0) {
