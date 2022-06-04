@@ -5,4 +5,7 @@
 #include <Python.h>
 #include "structmember.h"
 
-extern PyTypeObject rabbitizer_Instr_Type;
+
+extern PyTypeObject rabbitizer_type_Instr;
+
+PyObject *rabbitizer_submodule_instr_id_Init(void);
