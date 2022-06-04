@@ -1,8 +1,10 @@
-#define PY_SSIZE_T_CLEAN
-#include <Python.h>
-#include "structmember.h"
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#include "rabbitizer_module.h"
 
 #include "instructions/RabbitizerInstr.h"
+
 
 typedef struct PyRabbitizerInstr {
     PyObject_HEAD
@@ -184,7 +186,7 @@ static PyMethodDef Instr_methods[] = {
     {NULL}  /* Sentinel */
 };
 
-static PyTypeObject InstrType = {
+PyTypeObject rabbitizer_Instr_Type = {
     PyVarObject_HEAD_INIT(NULL, 0)
     .tp_name = "rabbitizer.Instr",
     .tp_doc = PyDoc_STR("Instruction"),
@@ -198,31 +200,3 @@ static PyTypeObject InstrType = {
     .tp_methods = Instr_methods,
     .tp_getset = Instr_getsetters,
 };
-
-static PyModuleDef rabbitizer_module = {
-    PyModuleDef_HEAD_INIT,
-    .m_name = "rabbitizer",
-    .m_doc = "",
-    .m_size = -1,
-};
-
-PyMODINIT_FUNC
-PyInit_rabbitizer(void)
-{
-    PyObject *m;
-    if (PyType_Ready(&InstrType) < 0)
-        return NULL;
-
-    m = PyModule_Create(&rabbitizer_module);
-    if (m == NULL)
-        return NULL;
-
-    Py_INCREF(&InstrType);
-    if (PyModule_AddObject(m, "Instr", (PyObject *) &InstrType) < 0) {
-        Py_DECREF(&InstrType);
-        Py_DECREF(m);
-        return NULL;
-    }
-
-    return m;
-}

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-License-Identifier: MIT
+
 from setuptools import setup, find_packages, Extension
 
 
@@ -10,7 +13,7 @@ setup(
             # the qualified name of the extension module to build
             'rabbitizer',
             # the files to compile into our module relative to ``setup.py``
-            ['rabbitizer/module.c', 
+            ["rabbitizer/rabbitizer_module.c", "rabbitizer/rabbitizer_Instr.c",
             "src/instructions/RabbitizerInstr_Disassemble.c", "src/instructions/RabbitizerInstr_ProcessUniqueId.c", "src/instructions/RabbitizerInstr.c", 
             "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c",
             "src/common/Utils.c"],
