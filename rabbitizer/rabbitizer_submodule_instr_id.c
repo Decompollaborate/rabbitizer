@@ -12,7 +12,36 @@
 #include "instructions/RabbitizerInstrId.h"
 
 
-static PyModuleDef rabbitizer_instr_id_submodule = {
+static PyModuleDef rabbitizer_submodule_instr_id__cpu = {
+    PyModuleDef_HEAD_INIT,
+    .m_name = "rabbitizer.instr_id.cpu",
+    .m_doc = "",
+    .m_size = -1,
+};
+
+PyObject *rabbitizer_submodule_instr_id__cpu_Init(void) {
+    PyObject *submodule;
+    RabbitizerInstrId instrId;
+
+    submodule = PyModule_Create(&rabbitizer_submodule_instr_id__cpu);
+    if (submodule == NULL) {
+        return NULL;
+    }
+
+    for (instrId = RABBITIZER_INSTR_CPU_ID_INVALID; instrId < RABBITIZER_INSTR_CPU_ID_MAX; instrId++) {
+        if (PyModule_AddIntConstant(submodule, RabbitizerInstrId_Names[instrId], instrId) < 0) {
+            Py_DECREF(submodule);
+            return NULL;
+        }
+    }
+
+    return submodule;
+}
+
+// TODO: RSP
+
+
+static PyModuleDef rabbitizer_submodule_instr_id = {
     PyModuleDef_HEAD_INIT,
     .m_name = "rabbitizer.instr_id",
     .m_doc = "",
@@ -21,12 +50,21 @@ static PyModuleDef rabbitizer_instr_id_submodule = {
 
 PyObject *rabbitizer_submodule_instr_id_Init(void) {
     PyObject *submodule;
-    submodule = PyModule_Create(&rabbitizer_instr_id_submodule);
+    PyObject *cpuSubmodule;
+
+    submodule = PyModule_Create(&rabbitizer_submodule_instr_id);
     if (submodule == NULL) {
         return NULL;
     }
 
-    if (PyModule_AddIntConstant(submodule, "RABBITIZER_INSTR_CPU_ID_nop", RABBITIZER_INSTR_CPU_ID_nop) < 0) {
+    cpuSubmodule = rabbitizer_submodule_instr_id__cpu_Init();
+    if (cpuSubmodule == NULL) {
+        Py_DECREF(submodule);
+        return NULL;
+    }
+
+    if (PyModule_AddObject(submodule, "cpu", (PyObject *) cpuSubmodule) < 0) {
+        Py_DECREF(cpuSubmodule);
         Py_DECREF(submodule);
         return NULL;
     }
