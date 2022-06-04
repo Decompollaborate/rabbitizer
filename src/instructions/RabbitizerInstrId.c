@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
 #include "instructions/RabbitizerInstrId.h"
 
 #define RABBITIZER_DEF_STR_ARRAY(prefix, x) \
