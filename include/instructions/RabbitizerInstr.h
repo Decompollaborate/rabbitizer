@@ -34,6 +34,7 @@ void RabbitizerInstr_Init(RabbitizerInstr *self, uint32_t word);
 void RabbitizerInstr_Destroy(RabbitizerInstr* self);
 
 void RabbitizerInstr_ProcessUniqueId_Normal(RabbitizerInstr *self);
+void RabbitizerInstr_ProcessUniqueId_Special(RabbitizerInstr *self);
 
 const char *RabbitizerInstr_GetOpcodeName(const RabbitizerInstr *self);
 
@@ -44,6 +45,8 @@ uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr* self);
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self);
 uint32_t RabbitizerInstr_GetInstrIndex(const RabbitizerInstr *self);
 uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self);
+
+bool RabbitizerInstr_IsNop(const RabbitizerInstr *self);
 
 void RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr* self, char *dst, const char *immOverride, size_t immOverrideLength);
 

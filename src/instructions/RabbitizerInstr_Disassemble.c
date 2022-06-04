@@ -276,3 +276,52 @@ void RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *d
 
     *dst = '\0';
 }
+
+bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
+    if (/*InstructionConfig.SN64_DIV_FIX*/ false) {
+        if (self->uniqueId.cpuId == RABBITIZER_INSTR_CPU_ID_break) {
+            return true;
+        }
+    }
+
+    if (self->descriptor->instrType == RABBITIZER_INSTR_TYPE_R) {
+        bool hasCode = false;
+
+        for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
+            RabbitizerRegisterType operand = self->descriptor->operands[i];
+
+            if (operand == RABBITIZER_REGISTER_TYPE_code) {
+                hasCode = true;
+            }
+        }
+
+        if (!hasCode) {
+            for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
+                RabbitizerRegisterType operand = self->descriptor->operands[i];
+
+                if (operand != RABBITIZER_REGISTER_TYPE_rs) {
+                    if (self->rs != 0) {
+                        return true;
+                    }
+                }
+                if (operand != RABBITIZER_REGISTER_TYPE_rt) {
+                    if (self->rt != 0) {
+                        return true;
+                    }
+                }
+                if (operand != RABBITIZER_REGISTER_TYPE_rd) {
+                    if (self->rd != 0) {
+                        return true;
+                    }
+                }
+                if (operand != RABBITIZER_REGISTER_TYPE_sa) {
+                    if (self->sa != 0) {
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+
+    return false;
+}

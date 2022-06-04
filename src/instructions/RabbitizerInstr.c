@@ -54,3 +54,12 @@ uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self) {
     }
     return vram;
 }
+
+bool RabbitizerInstr_IsNop(const RabbitizerInstr *self) {
+    return self->opcode == 0 &&
+    self->rs == 0 &&
+    self->rt == 0 &&
+    self->rd == 0 &&
+    self->sa == 0 &&
+    self->function == 0;
+}
