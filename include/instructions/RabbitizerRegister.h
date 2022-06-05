@@ -8,390 +8,68 @@
 #include <stdint.h>
 
 
+#define RABBITIZER_DEF_REG(prefix, name, numeric) \
+    RABBITIZER_REG_##prefix##_##name
+
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
+    RABBITIZER_REG_##prefix##_##name
+
+
 typedef enum RabbitizerRegister_GprO32 {
-    /*  0 */ RABBITIZER_REG_GPR_O32_zero,
-    /*  1 */ RABBITIZER_REG_GPR_O32_at,
-    /*  2 */ RABBITIZER_REG_GPR_O32_v0,
-    /*  3 */ RABBITIZER_REG_GPR_O32_v1,
-    /*  4 */ RABBITIZER_REG_GPR_O32_a0,
-    /*  5 */ RABBITIZER_REG_GPR_O32_a1,
-    /*  6 */ RABBITIZER_REG_GPR_O32_a2,
-    /*  7 */ RABBITIZER_REG_GPR_O32_a3,
-    /*  8 */ RABBITIZER_REG_GPR_O32_t0,
-    /*  9 */ RABBITIZER_REG_GPR_O32_t1,
-    /* 10 */ RABBITIZER_REG_GPR_O32_t2,
-    /* 11 */ RABBITIZER_REG_GPR_O32_t3,
-    /* 12 */ RABBITIZER_REG_GPR_O32_t4,
-    /* 13 */ RABBITIZER_REG_GPR_O32_t5,
-    /* 14 */ RABBITIZER_REG_GPR_O32_t6,
-    /* 15 */ RABBITIZER_REG_GPR_O32_t7,
-    /* 16 */ RABBITIZER_REG_GPR_O32_s0,
-    /* 17 */ RABBITIZER_REG_GPR_O32_s1,
-    /* 18 */ RABBITIZER_REG_GPR_O32_s2,
-    /* 19 */ RABBITIZER_REG_GPR_O32_s3,
-    /* 20 */ RABBITIZER_REG_GPR_O32_s4,
-    /* 21 */ RABBITIZER_REG_GPR_O32_s5,
-    /* 22 */ RABBITIZER_REG_GPR_O32_s6,
-    /* 23 */ RABBITIZER_REG_GPR_O32_s7,
-    /* 24 */ RABBITIZER_REG_GPR_O32_t8,
-    /* 25 */ RABBITIZER_REG_GPR_O32_t9,
-    /* 26 */ RABBITIZER_REG_GPR_O32_k0,
-    /* 27 */ RABBITIZER_REG_GPR_O32_k1,
-    /* 28 */ RABBITIZER_REG_GPR_O32_gp,
-    /* 29 */ RABBITIZER_REG_GPR_O32_sp,
-    /* 30 */ RABBITIZER_REG_GPR_O32_fp,
-    /* 31 */ RABBITIZER_REG_GPR_O32_ra,
+    #include "instructions/registers/RabbitizerRegister_GprO32.inc"
 } RabbitizerRegister_GprO32;
 
 typedef enum RabbitizerRegister_GprN32 {
-    /*  0 */ RABBITIZER_REG_GPR_N32_zero,
-    /*  1 */ RABBITIZER_REG_GPR_N32_at,
-    /*  2 */ RABBITIZER_REG_GPR_N32_v0,
-    /*  3 */ RABBITIZER_REG_GPR_N32_v1,
-    /*  4 */ RABBITIZER_REG_GPR_N32_a0,
-    /*  5 */ RABBITIZER_REG_GPR_N32_a1,
-    /*  6 */ RABBITIZER_REG_GPR_N32_a2,
-    /*  7 */ RABBITIZER_REG_GPR_N32_a3,
-    /*  8 */ RABBITIZER_REG_GPR_N32_a4,
-    /*  9 */ RABBITIZER_REG_GPR_N32_a5,
-    /* 10 */ RABBITIZER_REG_GPR_N32_a6,
-    /* 11 */ RABBITIZER_REG_GPR_N32_a7,
-    /* 12 */ RABBITIZER_REG_GPR_N32_t0,
-    /* 13 */ RABBITIZER_REG_GPR_N32_t1,
-    /* 14 */ RABBITIZER_REG_GPR_N32_t2,
-    /* 15 */ RABBITIZER_REG_GPR_N32_t3,
-    /* 16 */ RABBITIZER_REG_GPR_N32_s0,
-    /* 17 */ RABBITIZER_REG_GPR_N32_s1,
-    /* 18 */ RABBITIZER_REG_GPR_N32_s2,
-    /* 19 */ RABBITIZER_REG_GPR_N32_s3,
-    /* 20 */ RABBITIZER_REG_GPR_N32_s4,
-    /* 21 */ RABBITIZER_REG_GPR_N32_s5,
-    /* 22 */ RABBITIZER_REG_GPR_N32_s6,
-    /* 23 */ RABBITIZER_REG_GPR_N32_s7,
-    /* 24 */ RABBITIZER_REG_GPR_N32_t8,
-    /* 25 */ RABBITIZER_REG_GPR_N32_t9,
-    /* 26 */ RABBITIZER_REG_GPR_N32_k0,
-    /* 27 */ RABBITIZER_REG_GPR_N32_k1,
-    /* 28 */ RABBITIZER_REG_GPR_N32_gp,
-    /* 29 */ RABBITIZER_REG_GPR_N32_sp,
-    /* 30 */ RABBITIZER_REG_GPR_N32_fp,
-    /* 31 */ RABBITIZER_REG_GPR_N32_ra,
+    #include "instructions/registers/RabbitizerRegister_GprN32.inc"
 } RabbitizerRegister_GprN32;
 
 typedef enum RabbitizerRegister_Cop0 {
-    /*  0 */ RABBITIZER_REG_COP0_Index,
-    /*  1 */ RABBITIZER_REG_COP0_Random,
-    /*  2 */ RABBITIZER_REG_COP0_EntryLo0,
-    /*  3 */ RABBITIZER_REG_COP0_EntryLo1,
-    /*  4 */ RABBITIZER_REG_COP0_Context,
-    /*  5 */ RABBITIZER_REG_COP0_PageMask,
-    /*  6 */ RABBITIZER_REG_COP0_Wired,
-    /*  7 */ RABBITIZER_REG_COP0_Reserved07,
-    /*  8 */ RABBITIZER_REG_COP0_BadVaddr,
-    /*  9 */ RABBITIZER_REG_COP0_Count,
-    /* 10 */ RABBITIZER_REG_COP0_EntryHi,
-    /* 11 */ RABBITIZER_REG_COP0_Compare,
-    /* 12 */ RABBITIZER_REG_COP0_Status,
-    /* 13 */ RABBITIZER_REG_COP0_Cause,
-    /* 14 */ RABBITIZER_REG_COP0_EPC,
-    /* 15 */ RABBITIZER_REG_COP0_PRevID,
-    /* 16 */ RABBITIZER_REG_COP0_Config,
-    /* 17 */ RABBITIZER_REG_COP0_LLAddr,
-    /* 18 */ RABBITIZER_REG_COP0_WatchLo,
-    /* 19 */ RABBITIZER_REG_COP0_WatchHi,
-    /* 20 */ RABBITIZER_REG_COP0_XContext,
-    /* 21 */ RABBITIZER_REG_COP0_Reserved21,
-    /* 22 */ RABBITIZER_REG_COP0_Reserved22,
-    /* 23 */ RABBITIZER_REG_COP0_Reserved23,
-    /* 24 */ RABBITIZER_REG_COP0_Reserved24,
-    /* 25 */ RABBITIZER_REG_COP0_Reserved25,
-    /* 26 */ RABBITIZER_REG_COP0_PErr,
-    /* 27 */ RABBITIZER_REG_COP0_CacheErr,
-    /* 28 */ RABBITIZER_REG_COP0_TagLo,
-    /* 29 */ RABBITIZER_REG_COP0_TagHi,
-    /* 30 */ RABBITIZER_REG_COP0_ErrorEPC,
-    /* 31 */ RABBITIZER_REG_COP0_Reserved31,
+    #include "instructions/registers/RabbitizerRegister_Cop0.inc"
 } RabbitizerRegister_Cop0;
 
 // Float registers
-// TODO: do we really need an enum for numeric cop1 registers?
-#if 0
-typedef enum RabbitizerRegister_Cop1Numeric {
-    /*  0 */ RABBITIZER_REG_COP1_NUMERIC_f0,
-    /*  1 */ RABBITIZER_REG_COP1_NUMERIC_f1,
-    /*  2 */ RABBITIZER_REG_COP1_NUMERIC_f2,
-    /*  3 */ RABBITIZER_REG_COP1_NUMERIC_f3,
-    /*  4 */ RABBITIZER_REG_COP1_NUMERIC_f4,
-    /*  5 */ RABBITIZER_REG_COP1_NUMERIC_f5,
-    /*  6 */ RABBITIZER_REG_COP1_NUMERIC_f6,
-    /*  7 */ RABBITIZER_REG_COP1_NUMERIC_f7,
-    /*  8 */ RABBITIZER_REG_COP1_NUMERIC_f8,
-    /*  9 */ RABBITIZER_REG_COP1_NUMERIC_f9,
-    /* 10 */ RABBITIZER_REG_COP1_NUMERIC_f10,
-    /* 11 */ RABBITIZER_REG_COP1_NUMERIC_f11,
-    /* 12 */ RABBITIZER_REG_COP1_NUMERIC_f12,
-    /* 13 */ RABBITIZER_REG_COP1_NUMERIC_f13,
-    /* 14 */ RABBITIZER_REG_COP1_NUMERIC_f14,
-    /* 15 */ RABBITIZER_REG_COP1_NUMERIC_f15,
-    /* 16 */ RABBITIZER_REG_COP1_NUMERIC_f16,
-    /* 17 */ RABBITIZER_REG_COP1_NUMERIC_f17,
-    /* 18 */ RABBITIZER_REG_COP1_NUMERIC_f18,
-    /* 19 */ RABBITIZER_REG_COP1_NUMERIC_f19,
-    /* 20 */ RABBITIZER_REG_COP1_NUMERIC_f20,
-    /* 21 */ RABBITIZER_REG_COP1_NUMERIC_f21,
-    /* 22 */ RABBITIZER_REG_COP1_NUMERIC_f22,
-    /* 23 */ RABBITIZER_REG_COP1_NUMERIC_f23,
-    /* 24 */ RABBITIZER_REG_COP1_NUMERIC_f24,
-    /* 25 */ RABBITIZER_REG_COP1_NUMERIC_f25,
-    /* 26 */ RABBITIZER_REG_COP1_NUMERIC_f26,
-    /* 27 */ RABBITIZER_REG_COP1_NUMERIC_f27,
-    /* 28 */ RABBITIZER_REG_COP1_NUMERIC_f28,
-    /* 29 */ RABBITIZER_REG_COP1_NUMERIC_f29,
-    /* 30 */ RABBITIZER_REG_COP1_NUMERIC_f30,
-    /* 31 */ RABBITIZER_REG_COP1_NUMERIC_FpcCsr,
-} RabbitizerRegister_Cop1Numeric;
-#endif
-
 typedef enum RabbitizerRegister_Cop1O32 {
-    /*  0 */ RABBITIZER_REG_COP1_O32_fv0,
-    /*  1 */ RABBITIZER_REG_COP1_O32_fv0f,
-    /*  2 */ RABBITIZER_REG_COP1_O32_fv1,
-    /*  3 */ RABBITIZER_REG_COP1_O32_fv1f,
-    /*  4 */ RABBITIZER_REG_COP1_O32_ft0,
-    /*  5 */ RABBITIZER_REG_COP1_O32_ft0f,
-    /*  6 */ RABBITIZER_REG_COP1_O32_ft1,
-    /*  7 */ RABBITIZER_REG_COP1_O32_ft1f,
-    /*  8 */ RABBITIZER_REG_COP1_O32_ft2,
-    /*  9 */ RABBITIZER_REG_COP1_O32_ft2f,
-    /* 10 */ RABBITIZER_REG_COP1_O32_ft3,
-    /* 11 */ RABBITIZER_REG_COP1_O32_ft3f,
-    /* 12 */ RABBITIZER_REG_COP1_O32_fa0,
-    /* 13 */ RABBITIZER_REG_COP1_O32_fa0f,
-    /* 14 */ RABBITIZER_REG_COP1_O32_fa1,
-    /* 15 */ RABBITIZER_REG_COP1_O32_fa1f,
-    /* 16 */ RABBITIZER_REG_COP1_O32_ft4,
-    /* 17 */ RABBITIZER_REG_COP1_O32_ft4f,
-    /* 18 */ RABBITIZER_REG_COP1_O32_ft5,
-    /* 19 */ RABBITIZER_REG_COP1_O32_ft5f,
-    /* 20 */ RABBITIZER_REG_COP1_O32_fs0,
-    /* 21 */ RABBITIZER_REG_COP1_O32_fs0f,
-    /* 22 */ RABBITIZER_REG_COP1_O32_fs1,
-    /* 23 */ RABBITIZER_REG_COP1_O32_fs1f,
-    /* 24 */ RABBITIZER_REG_COP1_O32_fs2,
-    /* 25 */ RABBITIZER_REG_COP1_O32_fs2f,
-    /* 26 */ RABBITIZER_REG_COP1_O32_fs3,
-    /* 27 */ RABBITIZER_REG_COP1_O32_fs3f,
-    /* 28 */ RABBITIZER_REG_COP1_O32_fs4,
-    /* 29 */ RABBITIZER_REG_COP1_O32_fs4f,
-    /* 30 */ RABBITIZER_REG_COP1_O32_fs5,
-    /* 31 */ RABBITIZER_REG_COP1_O32_fs5f,
+    #include "instructions/registers/RabbitizerRegister_Cop1O32.inc"
 } RabbitizerRegister_Cop1O32;
 
 typedef enum RabbitizerRegister_Cop1N32 {
-    /*  0 */ RABBITIZER_REG_COP1_N32_fv0,
-    /*  1 */ RABBITIZER_REG_COP1_N32_ft14,
-    /*  2 */ RABBITIZER_REG_COP1_N32_fv1,
-    /*  3 */ RABBITIZER_REG_COP1_N32_ft15,
-    /*  4 */ RABBITIZER_REG_COP1_N32_ft0,
-    /*  5 */ RABBITIZER_REG_COP1_N32_ft1,
-    /*  6 */ RABBITIZER_REG_COP1_N32_ft2,
-    /*  7 */ RABBITIZER_REG_COP1_N32_ft3,
-    /*  8 */ RABBITIZER_REG_COP1_N32_ft4,
-    /*  9 */ RABBITIZER_REG_COP1_N32_ft5,
-    /* 10 */ RABBITIZER_REG_COP1_N32_ft6,
-    /* 11 */ RABBITIZER_REG_COP1_N32_ft7,
-    /* 12 */ RABBITIZER_REG_COP1_N32_fa0,
-    /* 13 */ RABBITIZER_REG_COP1_N32_fa1,
-    /* 14 */ RABBITIZER_REG_COP1_N32_fa2,
-    /* 15 */ RABBITIZER_REG_COP1_N32_fa3,
-    /* 16 */ RABBITIZER_REG_COP1_N32_fa4,
-    /* 17 */ RABBITIZER_REG_COP1_N32_fa5,
-    /* 18 */ RABBITIZER_REG_COP1_N32_fa6,
-    /* 19 */ RABBITIZER_REG_COP1_N32_fa7,
-    /* 20 */ RABBITIZER_REG_COP1_N32_fs0,
-    /* 21 */ RABBITIZER_REG_COP1_N32_ft8,
-    /* 22 */ RABBITIZER_REG_COP1_N32_fs1,
-    /* 23 */ RABBITIZER_REG_COP1_N32_ft9,
-    /* 24 */ RABBITIZER_REG_COP1_N32_fs2,
-    /* 25 */ RABBITIZER_REG_COP1_N32_ft10,
-    /* 26 */ RABBITIZER_REG_COP1_N32_fs3,
-    /* 27 */ RABBITIZER_REG_COP1_N32_ft11,
-    /* 28 */ RABBITIZER_REG_COP1_N32_fs4,
-    /* 29 */ RABBITIZER_REG_COP1_N32_ft12,
-    /* 30 */ RABBITIZER_REG_COP1_N32_fs5,
-    /* 31 */ RABBITIZER_REG_COP1_N32_ft13,
+    #include "instructions/registers/RabbitizerRegister_Cop1N32.inc"
 } RabbitizerRegister_Cop1N32;
 
 typedef enum RabbitizerRegister_Cop1N64 {
-    /*  0 */ RABBITIZER_REG_COP1_N64_fv0,
-    /*  1 */ RABBITIZER_REG_COP1_N64_ft12,
-    /*  2 */ RABBITIZER_REG_COP1_N64_fv1,
-    /*  3 */ RABBITIZER_REG_COP1_N64_ft13,
-    /*  4 */ RABBITIZER_REG_COP1_N64_ft0,
-    /*  5 */ RABBITIZER_REG_COP1_N64_ft1,
-    /*  6 */ RABBITIZER_REG_COP1_N64_ft2,
-    /*  7 */ RABBITIZER_REG_COP1_N64_ft3,
-    /*  8 */ RABBITIZER_REG_COP1_N64_ft4,
-    /*  9 */ RABBITIZER_REG_COP1_N64_ft5,
-    /* 10 */ RABBITIZER_REG_COP1_N64_ft6,
-    /* 11 */ RABBITIZER_REG_COP1_N64_ft7,
-    /* 12 */ RABBITIZER_REG_COP1_N64_fa0,
-    /* 13 */ RABBITIZER_REG_COP1_N64_fa1,
-    /* 14 */ RABBITIZER_REG_COP1_N64_fa2,
-    /* 15 */ RABBITIZER_REG_COP1_N64_fa3,
-    /* 16 */ RABBITIZER_REG_COP1_N64_fa4,
-    /* 17 */ RABBITIZER_REG_COP1_N64_fa5,
-    /* 18 */ RABBITIZER_REG_COP1_N64_fa6,
-    /* 19 */ RABBITIZER_REG_COP1_N64_fa7,
-    /* 20 */ RABBITIZER_REG_COP1_N64_ft8,
-    /* 21 */ RABBITIZER_REG_COP1_N64_ft9,
-    /* 22 */ RABBITIZER_REG_COP1_N64_ft10,
-    /* 23 */ RABBITIZER_REG_COP1_N64_ft11,
-    /* 24 */ RABBITIZER_REG_COP1_N64_fs0,
-    /* 25 */ RABBITIZER_REG_COP1_N64_fs1,
-    /* 26 */ RABBITIZER_REG_COP1_N64_fs2,
-    /* 27 */ RABBITIZER_REG_COP1_N64_fs3,
-    /* 28 */ RABBITIZER_REG_COP1_N64_fs4,
-    /* 29 */ RABBITIZER_REG_COP1_N64_fs5,
-    /* 30 */ RABBITIZER_REG_COP1_N64_fs6,
-    /* 31 */ RABBITIZER_REG_COP1_N64_fs7,
+    #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
 } RabbitizerRegister_Cop1N64;
 
 typedef enum RabbitizerRegister_Cop2 {
-    /*  0 */ RABBITIZER_REG_COP2_0,
-    /*  1 */ RABBITIZER_REG_COP2_1,
-    /*  2 */ RABBITIZER_REG_COP2_2,
-    /*  3 */ RABBITIZER_REG_COP2_3,
-    /*  4 */ RABBITIZER_REG_COP2_4,
-    /*  5 */ RABBITIZER_REG_COP2_5,
-    /*  6 */ RABBITIZER_REG_COP2_6,
-    /*  7 */ RABBITIZER_REG_COP2_7,
-    /*  8 */ RABBITIZER_REG_COP2_8,
-    /*  9 */ RABBITIZER_REG_COP2_9,
-    /* 10 */ RABBITIZER_REG_COP2_10,
-    /* 11 */ RABBITIZER_REG_COP2_11,
-    /* 12 */ RABBITIZER_REG_COP2_12,
-    /* 13 */ RABBITIZER_REG_COP2_13,
-    /* 14 */ RABBITIZER_REG_COP2_14,
-    /* 15 */ RABBITIZER_REG_COP2_15,
-    /* 16 */ RABBITIZER_REG_COP2_16,
-    /* 17 */ RABBITIZER_REG_COP2_17,
-    /* 18 */ RABBITIZER_REG_COP2_18,
-    /* 19 */ RABBITIZER_REG_COP2_19,
-    /* 20 */ RABBITIZER_REG_COP2_20,
-    /* 21 */ RABBITIZER_REG_COP2_21,
-    /* 22 */ RABBITIZER_REG_COP2_22,
-    /* 23 */ RABBITIZER_REG_COP2_23,
-    /* 24 */ RABBITIZER_REG_COP2_24,
-    /* 25 */ RABBITIZER_REG_COP2_25,
-    /* 26 */ RABBITIZER_REG_COP2_26,
-    /* 27 */ RABBITIZER_REG_COP2_27,
-    /* 28 */ RABBITIZER_REG_COP2_28,
-    /* 29 */ RABBITIZER_REG_COP2_29,
-    /* 30 */ RABBITIZER_REG_COP2_30,
-    /* 31 */ RABBITIZER_REG_COP2_31,
+    #include "instructions/registers/RabbitizerRegister_Cop2.inc"
 } RabbitizerRegister_Cop2;
 
 typedef enum RabbitizerRegister_RspGpr {
-    /*  0 */ RABBITIZER_REG_RSP_GPR_zero,
-    /*  1 */ RABBITIZER_REG_RSP_GPR_1,
-    /*  2 */ RABBITIZER_REG_RSP_GPR_2,
-    /*  3 */ RABBITIZER_REG_RSP_GPR_3,
-    /*  4 */ RABBITIZER_REG_RSP_GPR_4,
-    /*  5 */ RABBITIZER_REG_RSP_GPR_5,
-    /*  6 */ RABBITIZER_REG_RSP_GPR_6,
-    /*  7 */ RABBITIZER_REG_RSP_GPR_7,
-    /*  8 */ RABBITIZER_REG_RSP_GPR_8,
-    /*  9 */ RABBITIZER_REG_RSP_GPR_9,
-    /* 10 */ RABBITIZER_REG_RSP_GPR_10,
-    /* 11 */ RABBITIZER_REG_RSP_GPR_11,
-    /* 12 */ RABBITIZER_REG_RSP_GPR_12,
-    /* 13 */ RABBITIZER_REG_RSP_GPR_13,
-    /* 14 */ RABBITIZER_REG_RSP_GPR_14,
-    /* 15 */ RABBITIZER_REG_RSP_GPR_15,
-    /* 16 */ RABBITIZER_REG_RSP_GPR_16,
-    /* 17 */ RABBITIZER_REG_RSP_GPR_17,
-    /* 18 */ RABBITIZER_REG_RSP_GPR_18,
-    /* 19 */ RABBITIZER_REG_RSP_GPR_19,
-    /* 20 */ RABBITIZER_REG_RSP_GPR_20,
-    /* 21 */ RABBITIZER_REG_RSP_GPR_21,
-    /* 22 */ RABBITIZER_REG_RSP_GPR_22,
-    /* 23 */ RABBITIZER_REG_RSP_GPR_23,
-    /* 24 */ RABBITIZER_REG_RSP_GPR_24,
-    /* 25 */ RABBITIZER_REG_RSP_GPR_25,
-    /* 26 */ RABBITIZER_REG_RSP_GPR_26,
-    /* 27 */ RABBITIZER_REG_RSP_GPR_27,
-    /* 28 */ RABBITIZER_REG_RSP_GPR_28,
-    /* 29 */ RABBITIZER_REG_RSP_GPR_29,
-    /* 30 */ RABBITIZER_REG_RSP_GPR_30,
-    /* 31 */ RABBITIZER_REG_RSP_GPR_31,
+    #include "instructions/registers/RabbitizerRegister_RspGpr.inc"
 } RabbitizerRegister_RspGpr;
 
 typedef enum RabbitizerRegister_RspCop0 {
-    /*  0 */ RABBITIZER_REG_RSP_COP0_SP_MEM_ADDR,
-    /*  1 */ RABBITIZER_REG_RSP_COP0_SP_DRAM_ADDR,
-    /*  2 */ RABBITIZER_REG_RSP_COP0_SP_RD_LEN,
-    /*  3 */ RABBITIZER_REG_RSP_COP0_SP_WR_LEN,
-    /*  4 */ RABBITIZER_REG_RSP_COP0_SP_STATUS,
-    /*  5 */ RABBITIZER_REG_RSP_COP0_SP_DMA_FULL,
-    /*  6 */ RABBITIZER_REG_RSP_COP0_SP_DMA_BUSY,
-    /*  7 */ RABBITIZER_REG_RSP_COP0_SP_SEMAPHORE,
-    /*  8 */ RABBITIZER_REG_RSP_COP0_DPC_START,
-    /*  9 */ RABBITIZER_REG_RSP_COP0_DPC_END,
-    /* 10 */ RABBITIZER_REG_RSP_COP0_DPC_CURRENT,
-    /* 11 */ RABBITIZER_REG_RSP_COP0_DPC_STATUS,
-    /* 12 */ RABBITIZER_REG_RSP_COP0_DPC_CLOCK,
-    /* 13 */ RABBITIZER_REG_RSP_COP0_DPC_BUFBUSY,
-    /* 14 */ RABBITIZER_REG_RSP_COP0_DPC_PIPEBUSY,
-    /* 15 */ RABBITIZER_REG_RSP_COP0_DPC_TMEM,
+    #include "instructions/registers/RabbitizerRegister_RspCop0.inc"
 } RabbitizerRegister_RspCop0;
 
 typedef enum RabbitizerRegister_RspVector {
-    /*  0 */ RABBITIZER_REG_RSP_VECTOR_v0,
-    /*  1 */ RABBITIZER_REG_RSP_VECTOR_v1,
-    /*  2 */ RABBITIZER_REG_RSP_VECTOR_v2,
-    /*  3 */ RABBITIZER_REG_RSP_VECTOR_v3,
-    /*  4 */ RABBITIZER_REG_RSP_VECTOR_v4,
-    /*  5 */ RABBITIZER_REG_RSP_VECTOR_v5,
-    /*  6 */ RABBITIZER_REG_RSP_VECTOR_v6,
-    /*  7 */ RABBITIZER_REG_RSP_VECTOR_v7,
-    /*  8 */ RABBITIZER_REG_RSP_VECTOR_v8,
-    /*  9 */ RABBITIZER_REG_RSP_VECTOR_v9,
-    /* 10 */ RABBITIZER_REG_RSP_VECTOR_v10,
-    /* 11 */ RABBITIZER_REG_RSP_VECTOR_v11,
-    /* 12 */ RABBITIZER_REG_RSP_VECTOR_v12,
-    /* 13 */ RABBITIZER_REG_RSP_VECTOR_v13,
-    /* 14 */ RABBITIZER_REG_RSP_VECTOR_v14,
-    /* 15 */ RABBITIZER_REG_RSP_VECTOR_v15,
-    /* 16 */ RABBITIZER_REG_RSP_VECTOR_v16,
-    /* 17 */ RABBITIZER_REG_RSP_VECTOR_v17,
-    /* 18 */ RABBITIZER_REG_RSP_VECTOR_v18,
-    /* 19 */ RABBITIZER_REG_RSP_VECTOR_v19,
-    /* 20 */ RABBITIZER_REG_RSP_VECTOR_v20,
-    /* 21 */ RABBITIZER_REG_RSP_VECTOR_v21,
-    /* 22 */ RABBITIZER_REG_RSP_VECTOR_v22,
-    /* 23 */ RABBITIZER_REG_RSP_VECTOR_v23,
-    /* 24 */ RABBITIZER_REG_RSP_VECTOR_v24,
-    /* 25 */ RABBITIZER_REG_RSP_VECTOR_v25,
-    /* 26 */ RABBITIZER_REG_RSP_VECTOR_v26,
-    /* 27 */ RABBITIZER_REG_RSP_VECTOR_v27,
-    /* 28 */ RABBITIZER_REG_RSP_VECTOR_v28,
-    /* 29 */ RABBITIZER_REG_RSP_VECTOR_v29,
-    /* 30 */ RABBITIZER_REG_RSP_VECTOR_v30,
-    /* 31 */ RABBITIZER_REG_RSP_VECTOR_v31,
+    #include "instructions/registers/RabbitizerRegister_RspVector.inc"
 } RabbitizerRegister_RspVector;
 
-extern const char *RabbitizerRegister_GprO32_Names[];
-extern const char *RabbitizerRegister_GprN32_Names[];
-extern const char *RabbitizerRegister_Cop0_Names[];
-extern const char *RabbitizerRegister_Cop0_Names[];
-extern const char *RabbitizerRegister_Cop1O32_Names[];
-extern const char *RabbitizerRegister_Cop1N32_Names[];
-extern const char *RabbitizerRegister_Cop1N64_Names[];
-extern const char *RabbitizerRegister_Cop2_Names[];
-extern const char *RabbitizerRegister_RspGpr_Names[];
-extern const char *RabbitizerRegister_RspCop0_Names[];
-extern const char *RabbitizerRegister_RspVector_Names[];
+#undef RABBITIZER_DEF_REG
+#undef RABBITIZER_DEF_REG_NODOLLAR
+
+extern const char *RabbitizerRegister_GprO32_Names[][2];
+extern const char *RabbitizerRegister_GprN32_Names[][2];
+extern const char *RabbitizerRegister_Cop0_Names[][2];
+extern const char *RabbitizerRegister_Cop0_Names[][2];
+extern const char *RabbitizerRegister_Cop1O32_Names[][2];
+extern const char *RabbitizerRegister_Cop1N32_Names[][2];
+extern const char *RabbitizerRegister_Cop1N64_Names[][2];
+extern const char *RabbitizerRegister_Cop2_Names[][2];
+extern const char *RabbitizerRegister_RspGpr_Names[][2];
+extern const char *RabbitizerRegister_RspCop0_Names[][2];
+extern const char *RabbitizerRegister_RspVector_Names[][2];
 
 
 const char *RabbitizerRegister_GetNameGpr(uint8_t regValue);

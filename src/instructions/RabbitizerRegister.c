@@ -6,381 +6,120 @@
 #include <assert.h>
 
 #include "common/Utils.h"
+#include "common/RabbitizerConfig.h"
 
 
-#define RABBITIZER_DEF_REG(prefix, x) \
-    [RABBITIZER_REG_##prefix##_##x] = "$" #x
+#define RABBITIZER_DEF_REG(prefix, name, numeric) \
+    [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, "$" #name }
 
-#define RABBITIZER_DEF_REG_NODOLLAR(prefix, x) \
-    [RABBITIZER_REG_##prefix##_##x] = #x
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
+    [RABBITIZER_REG_##prefix##_##name] = { #numeric, #name }
 
+// numeric, named
 
-const char *RabbitizerRegister_GprO32_Names[] = {
-    RABBITIZER_DEF_REG(GPR_O32, zero),
-    RABBITIZER_DEF_REG(GPR_O32, at),
-    RABBITIZER_DEF_REG(GPR_O32, v0),
-    RABBITIZER_DEF_REG(GPR_O32, v1),
-    RABBITIZER_DEF_REG(GPR_O32, a0),
-    RABBITIZER_DEF_REG(GPR_O32, a1),
-    RABBITIZER_DEF_REG(GPR_O32, a2),
-    RABBITIZER_DEF_REG(GPR_O32, a3),
-    RABBITIZER_DEF_REG(GPR_O32, t0),
-    RABBITIZER_DEF_REG(GPR_O32, t1),
-    RABBITIZER_DEF_REG(GPR_O32, t2),
-    RABBITIZER_DEF_REG(GPR_O32, t3),
-    RABBITIZER_DEF_REG(GPR_O32, t4),
-    RABBITIZER_DEF_REG(GPR_O32, t5),
-    RABBITIZER_DEF_REG(GPR_O32, t6),
-    RABBITIZER_DEF_REG(GPR_O32, t7),
-    RABBITIZER_DEF_REG(GPR_O32, s0),
-    RABBITIZER_DEF_REG(GPR_O32, s1),
-    RABBITIZER_DEF_REG(GPR_O32, s2),
-    RABBITIZER_DEF_REG(GPR_O32, s3),
-    RABBITIZER_DEF_REG(GPR_O32, s4),
-    RABBITIZER_DEF_REG(GPR_O32, s5),
-    RABBITIZER_DEF_REG(GPR_O32, s6),
-    RABBITIZER_DEF_REG(GPR_O32, s7),
-    RABBITIZER_DEF_REG(GPR_O32, t8),
-    RABBITIZER_DEF_REG(GPR_O32, t9),
-    RABBITIZER_DEF_REG(GPR_O32, k0),
-    RABBITIZER_DEF_REG(GPR_O32, k1),
-    RABBITIZER_DEF_REG(GPR_O32, gp),
-    RABBITIZER_DEF_REG(GPR_O32, sp),
-    RABBITIZER_DEF_REG(GPR_O32, fp),
-    RABBITIZER_DEF_REG(GPR_O32, ra),
+const char *RabbitizerRegister_GprO32_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_GprO32.inc"
 };
 
-const char *RabbitizerRegister_GprN32_Names[] = {
-    RABBITIZER_DEF_REG(GPR_N32, zero),
-    RABBITIZER_DEF_REG(GPR_N32, at),
-    RABBITIZER_DEF_REG(GPR_N32, v0),
-    RABBITIZER_DEF_REG(GPR_N32, v1),
-    RABBITIZER_DEF_REG(GPR_N32, a0),
-    RABBITIZER_DEF_REG(GPR_N32, a1),
-    RABBITIZER_DEF_REG(GPR_N32, a2),
-    RABBITIZER_DEF_REG(GPR_N32, a3),
-    RABBITIZER_DEF_REG(GPR_N32, a4),
-    RABBITIZER_DEF_REG(GPR_N32, a5),
-    RABBITIZER_DEF_REG(GPR_N32, a6),
-    RABBITIZER_DEF_REG(GPR_N32, a7),
-    RABBITIZER_DEF_REG(GPR_N32, t0),
-    RABBITIZER_DEF_REG(GPR_N32, t1),
-    RABBITIZER_DEF_REG(GPR_N32, t2),
-    RABBITIZER_DEF_REG(GPR_N32, t3),
-    RABBITIZER_DEF_REG(GPR_N32, s0),
-    RABBITIZER_DEF_REG(GPR_N32, s1),
-    RABBITIZER_DEF_REG(GPR_N32, s2),
-    RABBITIZER_DEF_REG(GPR_N32, s3),
-    RABBITIZER_DEF_REG(GPR_N32, s4),
-    RABBITIZER_DEF_REG(GPR_N32, s5),
-    RABBITIZER_DEF_REG(GPR_N32, s6),
-    RABBITIZER_DEF_REG(GPR_N32, s7),
-    RABBITIZER_DEF_REG(GPR_N32, t8),
-    RABBITIZER_DEF_REG(GPR_N32, t9),
-    RABBITIZER_DEF_REG(GPR_N32, k0),
-    RABBITIZER_DEF_REG(GPR_N32, k1),
-    RABBITIZER_DEF_REG(GPR_N32, gp),
-    RABBITIZER_DEF_REG(GPR_N32, sp),
-    RABBITIZER_DEF_REG(GPR_N32, fp),
-    RABBITIZER_DEF_REG(GPR_N32, ra),
+const char *RabbitizerRegister_GprN32_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_GprN32.inc"
 };
 
-const char *RabbitizerRegister_Cop0_Names[] = {
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Index),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Random),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, EntryLo0),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, EntryLo1),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Context),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, PageMask),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Wired),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Reserved07),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, BadVaddr),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Count),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, EntryHi),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Compare),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Status),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Cause),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, EPC),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, PRevID),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Config),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, LLAddr),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, WatchLo),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, WatchHi),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, XContext),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Reserved21),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Reserved22),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Reserved23),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Reserved24),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Reserved25),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, PErr),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, CacheErr),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, TagLo),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, TagHi),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, ErrorEPC),
-    RABBITIZER_DEF_REG_NODOLLAR(COP0, Reserved31),
+const char *RabbitizerRegister_Cop0_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_Cop0.inc"
 };
 
-const char *RabbitizerRegister_Cop1O32_Names[] = {
-    RABBITIZER_DEF_REG(COP1_O32, fv0),
-    RABBITIZER_DEF_REG(COP1_O32, fv0f),
-    RABBITIZER_DEF_REG(COP1_O32, fv1),
-    RABBITIZER_DEF_REG(COP1_O32, fv1f),
-    RABBITIZER_DEF_REG(COP1_O32, ft0),
-    RABBITIZER_DEF_REG(COP1_O32, ft0f),
-    RABBITIZER_DEF_REG(COP1_O32, ft1),
-    RABBITIZER_DEF_REG(COP1_O32, ft1f),
-    RABBITIZER_DEF_REG(COP1_O32, ft2),
-    RABBITIZER_DEF_REG(COP1_O32, ft2f),
-    RABBITIZER_DEF_REG(COP1_O32, ft3),
-    RABBITIZER_DEF_REG(COP1_O32, ft3f),
-    RABBITIZER_DEF_REG(COP1_O32, fa0),
-    RABBITIZER_DEF_REG(COP1_O32, fa0f),
-    RABBITIZER_DEF_REG(COP1_O32, fa1),
-    RABBITIZER_DEF_REG(COP1_O32, fa1f),
-    RABBITIZER_DEF_REG(COP1_O32, ft4),
-    RABBITIZER_DEF_REG(COP1_O32, ft4f),
-    RABBITIZER_DEF_REG(COP1_O32, ft5),
-    RABBITIZER_DEF_REG(COP1_O32, ft5f),
-    RABBITIZER_DEF_REG(COP1_O32, fs0),
-    RABBITIZER_DEF_REG(COP1_O32, fs0f),
-    RABBITIZER_DEF_REG(COP1_O32, fs1),
-    RABBITIZER_DEF_REG(COP1_O32, fs1f),
-    RABBITIZER_DEF_REG(COP1_O32, fs2),
-    RABBITIZER_DEF_REG(COP1_O32, fs2f),
-    RABBITIZER_DEF_REG(COP1_O32, fs3),
-    RABBITIZER_DEF_REG(COP1_O32, fs3f),
-    RABBITIZER_DEF_REG(COP1_O32, fs4),
-    RABBITIZER_DEF_REG(COP1_O32, fs4f),
-    RABBITIZER_DEF_REG(COP1_O32, fs5),
-    RABBITIZER_DEF_REG(COP1_O32, fs5f),
+const char *RabbitizerRegister_Cop1O32_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_Cop1O32.inc"
 };
 
-const char *RabbitizerRegister_Cop1N32_Names[] = {
-    RABBITIZER_DEF_REG(COP1_N32, fv0),
-    RABBITIZER_DEF_REG(COP1_N32, ft14),
-    RABBITIZER_DEF_REG(COP1_N32, fv1),
-    RABBITIZER_DEF_REG(COP1_N32, ft15),
-    RABBITIZER_DEF_REG(COP1_N32, ft0),
-    RABBITIZER_DEF_REG(COP1_N32, ft1),
-    RABBITIZER_DEF_REG(COP1_N32, ft2),
-    RABBITIZER_DEF_REG(COP1_N32, ft3),
-    RABBITIZER_DEF_REG(COP1_N32, ft4),
-    RABBITIZER_DEF_REG(COP1_N32, ft5),
-    RABBITIZER_DEF_REG(COP1_N32, ft6),
-    RABBITIZER_DEF_REG(COP1_N32, ft7),
-    RABBITIZER_DEF_REG(COP1_N32, fa0),
-    RABBITIZER_DEF_REG(COP1_N32, fa1),
-    RABBITIZER_DEF_REG(COP1_N32, fa2),
-    RABBITIZER_DEF_REG(COP1_N32, fa3),
-    RABBITIZER_DEF_REG(COP1_N32, fa4),
-    RABBITIZER_DEF_REG(COP1_N32, fa5),
-    RABBITIZER_DEF_REG(COP1_N32, fa6),
-    RABBITIZER_DEF_REG(COP1_N32, fa7),
-    RABBITIZER_DEF_REG(COP1_N32, fs0),
-    RABBITIZER_DEF_REG(COP1_N32, ft8),
-    RABBITIZER_DEF_REG(COP1_N32, fs1),
-    RABBITIZER_DEF_REG(COP1_N32, ft9),
-    RABBITIZER_DEF_REG(COP1_N32, fs2),
-    RABBITIZER_DEF_REG(COP1_N32, ft10),
-    RABBITIZER_DEF_REG(COP1_N32, fs3),
-    RABBITIZER_DEF_REG(COP1_N32, ft11),
-    RABBITIZER_DEF_REG(COP1_N32, fs4),
-    RABBITIZER_DEF_REG(COP1_N32, ft12),
-    RABBITIZER_DEF_REG(COP1_N32, fs5),
-    RABBITIZER_DEF_REG(COP1_N32, ft13),
+const char *RabbitizerRegister_Cop1N32_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_Cop1N32.inc"
 };
 
-const char *RabbitizerRegister_Cop1N64_Names[] = {
-    RABBITIZER_DEF_REG(COP1_N64, fv0),
-    RABBITIZER_DEF_REG(COP1_N64, ft12),
-    RABBITIZER_DEF_REG(COP1_N64, fv1),
-    RABBITIZER_DEF_REG(COP1_N64, ft13),
-    RABBITIZER_DEF_REG(COP1_N64, ft0),
-    RABBITIZER_DEF_REG(COP1_N64, ft1),
-    RABBITIZER_DEF_REG(COP1_N64, ft2),
-    RABBITIZER_DEF_REG(COP1_N64, ft3),
-    RABBITIZER_DEF_REG(COP1_N64, ft4),
-    RABBITIZER_DEF_REG(COP1_N64, ft5),
-    RABBITIZER_DEF_REG(COP1_N64, ft6),
-    RABBITIZER_DEF_REG(COP1_N64, ft7),
-    RABBITIZER_DEF_REG(COP1_N64, fa0),
-    RABBITIZER_DEF_REG(COP1_N64, fa1),
-    RABBITIZER_DEF_REG(COP1_N64, fa2),
-    RABBITIZER_DEF_REG(COP1_N64, fa3),
-    RABBITIZER_DEF_REG(COP1_N64, fa4),
-    RABBITIZER_DEF_REG(COP1_N64, fa5),
-    RABBITIZER_DEF_REG(COP1_N64, fa6),
-    RABBITIZER_DEF_REG(COP1_N64, fa7),
-    RABBITIZER_DEF_REG(COP1_N64, ft8),
-    RABBITIZER_DEF_REG(COP1_N64, ft9),
-    RABBITIZER_DEF_REG(COP1_N64, ft10),
-    RABBITIZER_DEF_REG(COP1_N64, ft11),
-    RABBITIZER_DEF_REG(COP1_N64, fs0),
-    RABBITIZER_DEF_REG(COP1_N64, fs1),
-    RABBITIZER_DEF_REG(COP1_N64, fs2),
-    RABBITIZER_DEF_REG(COP1_N64, fs3),
-    RABBITIZER_DEF_REG(COP1_N64, fs4),
-    RABBITIZER_DEF_REG(COP1_N64, fs5),
-    RABBITIZER_DEF_REG(COP1_N64, fs6),
-    RABBITIZER_DEF_REG(COP1_N64, fs7),
+const char *RabbitizerRegister_Cop1N64_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
 };
 
-const char *RabbitizerRegister_Cop2_Names[] = {
-    RABBITIZER_DEF_REG(COP2, 0),
-    RABBITIZER_DEF_REG(COP2, 1),
-    RABBITIZER_DEF_REG(COP2, 2),
-    RABBITIZER_DEF_REG(COP2, 3),
-    RABBITIZER_DEF_REG(COP2, 4),
-    RABBITIZER_DEF_REG(COP2, 5),
-    RABBITIZER_DEF_REG(COP2, 6),
-    RABBITIZER_DEF_REG(COP2, 7),
-    RABBITIZER_DEF_REG(COP2, 8),
-    RABBITIZER_DEF_REG(COP2, 9),
-    RABBITIZER_DEF_REG(COP2, 10),
-    RABBITIZER_DEF_REG(COP2, 11),
-    RABBITIZER_DEF_REG(COP2, 12),
-    RABBITIZER_DEF_REG(COP2, 13),
-    RABBITIZER_DEF_REG(COP2, 14),
-    RABBITIZER_DEF_REG(COP2, 15),
-    RABBITIZER_DEF_REG(COP2, 16),
-    RABBITIZER_DEF_REG(COP2, 17),
-    RABBITIZER_DEF_REG(COP2, 18),
-    RABBITIZER_DEF_REG(COP2, 19),
-    RABBITIZER_DEF_REG(COP2, 20),
-    RABBITIZER_DEF_REG(COP2, 21),
-    RABBITIZER_DEF_REG(COP2, 22),
-    RABBITIZER_DEF_REG(COP2, 23),
-    RABBITIZER_DEF_REG(COP2, 24),
-    RABBITIZER_DEF_REG(COP2, 25),
-    RABBITIZER_DEF_REG(COP2, 26),
-    RABBITIZER_DEF_REG(COP2, 27),
-    RABBITIZER_DEF_REG(COP2, 28),
-    RABBITIZER_DEF_REG(COP2, 29),
-    RABBITIZER_DEF_REG(COP2, 30),
-    RABBITIZER_DEF_REG(COP2, 31),
+const char *RabbitizerRegister_Cop2_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_Cop2.inc"
 };
 
-const char *RabbitizerRegister_RspGpr_Names[] = {
-    RABBITIZER_DEF_REG(RSP_GPR, zero),
-    RABBITIZER_DEF_REG(RSP_GPR, 1),
-    RABBITIZER_DEF_REG(RSP_GPR, 2),
-    RABBITIZER_DEF_REG(RSP_GPR, 3),
-    RABBITIZER_DEF_REG(RSP_GPR, 4),
-    RABBITIZER_DEF_REG(RSP_GPR, 5),
-    RABBITIZER_DEF_REG(RSP_GPR, 6),
-    RABBITIZER_DEF_REG(RSP_GPR, 7),
-    RABBITIZER_DEF_REG(RSP_GPR, 8),
-    RABBITIZER_DEF_REG(RSP_GPR, 9),
-    RABBITIZER_DEF_REG(RSP_GPR, 10),
-    RABBITIZER_DEF_REG(RSP_GPR, 11),
-    RABBITIZER_DEF_REG(RSP_GPR, 12),
-    RABBITIZER_DEF_REG(RSP_GPR, 13),
-    RABBITIZER_DEF_REG(RSP_GPR, 14),
-    RABBITIZER_DEF_REG(RSP_GPR, 15),
-    RABBITIZER_DEF_REG(RSP_GPR, 16),
-    RABBITIZER_DEF_REG(RSP_GPR, 17),
-    RABBITIZER_DEF_REG(RSP_GPR, 18),
-    RABBITIZER_DEF_REG(RSP_GPR, 19),
-    RABBITIZER_DEF_REG(RSP_GPR, 20),
-    RABBITIZER_DEF_REG(RSP_GPR, 21),
-    RABBITIZER_DEF_REG(RSP_GPR, 22),
-    RABBITIZER_DEF_REG(RSP_GPR, 23),
-    RABBITIZER_DEF_REG(RSP_GPR, 24),
-    RABBITIZER_DEF_REG(RSP_GPR, 25),
-    RABBITIZER_DEF_REG(RSP_GPR, 26),
-    RABBITIZER_DEF_REG(RSP_GPR, 27),
-    RABBITIZER_DEF_REG(RSP_GPR, 28),
-    RABBITIZER_DEF_REG(RSP_GPR, 29),
-    RABBITIZER_DEF_REG(RSP_GPR, 30),
-    RABBITIZER_DEF_REG(RSP_GPR, 31),
+const char *RabbitizerRegister_RspGpr_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_RspGpr.inc"
 };
 
-const char *RabbitizerRegister_RspCop0_Names[] = {
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_MEM_ADDR),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_DRAM_ADDR),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_RD_LEN),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_WR_LEN),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_STATUS),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_DMA_FULL),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_DMA_BUSY),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_SEMAPHORE),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_START),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_END),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_CURRENT),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_STATUS),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_CLOCK),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_BUFBUSY),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_PIPEBUSY),
-    RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, DPC_TMEM),
+const char *RabbitizerRegister_RspCop0_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_RspCop0.inc"
 };
 
-const char *RabbitizerRegister_RspVector_Names[] = {
-    RABBITIZER_DEF_REG(RSP_VECTOR, v0),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v1),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v2),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v3),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v4),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v5),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v6),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v7),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v8),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v9),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v10),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v11),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v12),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v13),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v14),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v15),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v16),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v17),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v18),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v19),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v20),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v21),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v22),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v23),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v24),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v25),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v26),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v27),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v28),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v29),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v30),
-    RABBITIZER_DEF_REG(RSP_VECTOR, v31),
+const char *RabbitizerRegister_RspVector_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_RspVector.inc"
 };
 
 
 const char *RabbitizerRegister_GetNameGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_GprO32_Names));
-    return RabbitizerRegister_GprO32_Names[regValue];
+
+    switch (RabbitizerConfig_Cfg.regNames.gprAbiNames) {
+        case RABBITIZER_ABI_NUMERIC:
+            return RabbitizerRegister_GprO32_Names[regValue][0];
+
+        default:
+        case RABBITIZER_ABI_O32:
+            return RabbitizerRegister_GprO32_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+
+        case RABBITIZER_ABI_N32:
+        case RABBITIZER_ABI_N64:
+            return RabbitizerRegister_GprN32_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+    }
 }
 
 const char *RabbitizerRegister_GetNameCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop0_Names));
-    return RabbitizerRegister_Cop0_Names[regValue];
+
+    return RabbitizerRegister_Cop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300Cop0NamedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_GetNameCop1(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop1O32_Names));
-    return RabbitizerRegister_Cop1O32_Names[regValue];
+
+    switch (RabbitizerConfig_Cfg.regNames.fprAbiNames) {
+        default:
+        case RABBITIZER_ABI_NUMERIC:
+            return RabbitizerRegister_Cop1O32_Names[regValue][0];
+
+        case RABBITIZER_ABI_O32:
+            return RabbitizerRegister_Cop1O32_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+
+        case RABBITIZER_ABI_N32:
+            return RabbitizerRegister_Cop1N32_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+
+        case RABBITIZER_ABI_N64:
+            return RabbitizerRegister_Cop1N64_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+    }
 }
 
 const char *RabbitizerRegister_GetNameCop2(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop2_Names));
-    return RabbitizerRegister_Cop2_Names[regValue];
+
+    return RabbitizerRegister_Cop2_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_GetNameRspGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspGpr_Names));
-    return RabbitizerRegister_RspGpr_Names[regValue];
+
+    return RabbitizerRegister_RspGpr_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_GetNameRspCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspCop0_Names));
-    return RabbitizerRegister_RspCop0_Names[regValue];
+
+    return RabbitizerRegister_RspCop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300RspCop0NamedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_GetNameRspVector(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspVector_Names));
-    return RabbitizerRegister_RspVector_Names[regValue];
+
+    return RabbitizerRegister_RspVector_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }

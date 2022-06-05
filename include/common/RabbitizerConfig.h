@@ -24,7 +24,7 @@ typedef struct RabbitizerConfig_RegisterNames {
     RabbitizerAbi fprAbiNames; // The ABI names to be used for floating point registers when disassembling the floating point (coprocessor 1) instructions
     bool userFpcCsr; // Use FpcCsr as register $31 for the FP control/status register
     bool vr4300Cop0NamedRegisters; // Use named registers for VR4300's coprocessor 0 registers
-    bool vr4300RspNamedRegisters; // Use named registers for VR4300's RSP's coprocessor 0 registers
+    bool vr4300RspCop0NamedRegisters; // Use named registers for VR4300's RSP's coprocessor 0 registers
 } RabbitizerConfig_RegisterNames;
 
 typedef struct RabbitizerConfig_PseudoInstr {

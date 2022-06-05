@@ -27,7 +27,7 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
         .fprAbiNames = RABBITIZER_ABI_NUMERIC,
         .userFpcCsr = true,
         .vr4300Cop0NamedRegisters = true,
-        .vr4300RspNamedRegisters = true,
+        .vr4300RspCop0NamedRegisters = true,
     },
     .pseudos = {
         .enablePseudos = true,
