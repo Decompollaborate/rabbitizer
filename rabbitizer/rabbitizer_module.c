@@ -66,7 +66,7 @@ static int rabbitizer_module_attributes_Initialize(PyObject *module) {
     for (size_t i = 0; i < ARRAY_COUNT(rabbitizer_module_attributes); i++) {
         switch (rabbitizer_module_attributes[i].cat) {
             case MODULE_ATTRIBUTE_CAT_TYPE:
-                rabbitizer_module_attributes[i].instance = rabbitizer_module_attributes[i].type;
+                rabbitizer_module_attributes[i].instance = (PyObject*) rabbitizer_module_attributes[i].type;
                 Py_INCREF(rabbitizer_module_attributes[i].instance);
                 break;
 

@@ -33,7 +33,7 @@
 
 #define DEF_MEMBER_GET_SET_BOOL(category, name) \
     DEF_MEMBER_GET_BOOL(category, name) \
-    DEF_MEMBER_SET_BOOL(category, name) \
+    DEF_MEMBER_SET_BOOL(category, name)
 
 
 #define DEF_MEMBER_GET_INT(category, name) \
@@ -66,7 +66,7 @@
 
 #define DEF_MEMBER_GET_SET_INT(category, name, rangeCheck, minVal, maxVal) \
     DEF_MEMBER_GET_INT(category, name) \
-    DEF_MEMBER_SET_INT(category, name, rangeCheck, minVal, maxVal) \
+    DEF_MEMBER_SET_INT(category, name, rangeCheck, minVal, maxVal)
 
 
 #define MEMBER_GET(category, name, docs, closure)      { #category "_" #name, (getter) rabbitizer_global_config_get_##category##_##name, (setter) NULL,                                             PyDoc_STR(docs), closure }

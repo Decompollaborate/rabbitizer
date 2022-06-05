@@ -19,6 +19,9 @@ size_t RabbitizerRegisterType_processRs(const RabbitizerInstr *self, char *dst, 
     const char *reg;
     size_t regLen;
 
+    (void)immOverride;
+    (void)immOverrideLength;
+
     reg = RabbitizerRegister_getNameGpr(self->rs);
     regLen = strlen(reg);
 
@@ -29,6 +32,9 @@ size_t RabbitizerRegisterType_processRs(const RabbitizerInstr *self, char *dst, 
 size_t RabbitizerRegisterType_processRt(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     const char *reg;
     size_t regLen;
+
+    (void)immOverride;
+    (void)immOverrideLength;
 
     reg = RabbitizerRegister_getNameGpr(self->rt);
     regLen = strlen(reg);
@@ -41,6 +47,9 @@ size_t RabbitizerRegisterType_processRd(const RabbitizerInstr *self, char *dst, 
     const char *reg;
     size_t regLen;
 
+    (void)immOverride;
+    (void)immOverrideLength;
+
     reg = RabbitizerRegister_getNameGpr(self->rd);
     regLen = strlen(reg);
 
@@ -51,6 +60,9 @@ size_t RabbitizerRegisterType_processRd(const RabbitizerInstr *self, char *dst, 
 size_t RabbitizerRegisterType_processCop0d(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     const char *reg;
     size_t regLen;
+
+    (void)immOverride;
+    (void)immOverrideLength;
 
     reg = RabbitizerRegister_getNameCop0(self->rd);
     regLen = strlen(reg);
@@ -63,6 +75,9 @@ size_t RabbitizerRegisterType_processFs(const RabbitizerInstr *self, char *dst, 
     const char *reg;
     size_t regLen;
 
+    (void)immOverride;
+    (void)immOverrideLength;
+
     reg = RabbitizerRegister_getNameCop1(RabbitizerInstr_getFs(self));
     regLen = strlen(reg);
 
@@ -73,6 +88,9 @@ size_t RabbitizerRegisterType_processFs(const RabbitizerInstr *self, char *dst, 
 size_t RabbitizerRegisterType_processFt(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     const char *reg;
     size_t regLen;
+
+    (void)immOverride;
+    (void)immOverrideLength;
 
     reg = RabbitizerRegister_getNameCop1(RabbitizerInstr_getFt(self));
     regLen = strlen(reg);
@@ -85,6 +103,9 @@ size_t RabbitizerRegisterType_processFd(const RabbitizerInstr *self, char *dst, 
     const char *reg;
     size_t regLen;
 
+    (void)immOverride;
+    (void)immOverrideLength;
+
     reg = RabbitizerRegister_getNameCop1(RabbitizerInstr_getFd(self));
     regLen = strlen(reg);
 
@@ -95,6 +116,9 @@ size_t RabbitizerRegisterType_processFd(const RabbitizerInstr *self, char *dst, 
 size_t RabbitizerRegisterType_processCop1Cs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     const char *reg;
     size_t regLen;
+
+    (void)immOverride;
+    (void)immOverrideLength;
 
     reg = RabbitizerRegister_getNameCop1Control(RabbitizerInstr_getFs(self));
     regLen = strlen(reg);
@@ -107,6 +131,9 @@ size_t RabbitizerRegisterType_processCop2t(const RabbitizerInstr *self, char *ds
     const char *reg;
     size_t regLen;
 
+    (void)immOverride;
+    (void)immOverrideLength;
+
     reg = RabbitizerRegister_getNameCop2(self->rt);
     regLen = strlen(reg);
 
@@ -117,6 +144,9 @@ size_t RabbitizerRegisterType_processCop2t(const RabbitizerInstr *self, char *ds
 size_t RabbitizerRegisterType_processSa(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     int len;
 
+    (void)immOverride;
+    (void)immOverrideLength;
+
     len = sprintf(dst, "%i", self->sa);
     assert(len > 0);
     return len;
@@ -124,6 +154,9 @@ size_t RabbitizerRegisterType_processSa(const RabbitizerInstr *self, char *dst, 
 
 size_t RabbitizerRegisterType_processOp(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     int len;
+
+    (void)immOverride;
+    (void)immOverrideLength;
 
     len = sprintf(dst, "0x%02X", self->rt);
     assert(len > 0);
@@ -135,6 +168,9 @@ size_t RabbitizerRegisterType_processCode(const RabbitizerInstr *self, char *dst
     int len;
     int code = (self->rs << 5) | (self->rt);
     int lower = (self->rd << 5) | (self->sa);
+
+    (void)immOverride;
+    (void)immOverrideLength;
 
     len = sprintf(dst, "%i", code);
     assert(len > 0);
@@ -331,6 +367,8 @@ size_t RabbitizerInstr_disassembleInstruction(const RabbitizerInstr *self, char 
 
 size_t RabbitizerInstr_getSizeForBufferDataDisasm(const RabbitizerInstr *self, int extraLJust) {
     size_t totalSize = 0;
+
+    (void)self;
 
     totalSize += strlen(".word");
     totalSize += RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust;

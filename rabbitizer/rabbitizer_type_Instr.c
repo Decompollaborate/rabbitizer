@@ -205,7 +205,7 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
 
-    {"disassemble", (PyCFunction) Instr_disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
+    {"disassemble", (PyCFunction) (void*) Instr_disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
 
     {NULL}  /* Sentinel */
 };

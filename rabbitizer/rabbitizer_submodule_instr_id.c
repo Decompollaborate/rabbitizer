@@ -12,6 +12,7 @@
 #include "instructions/RabbitizerInstrId.h"
 
 static PyObject *instr_id__cpu_get_value(PyObject *self, void *closure) {
+    (void)self;
     return Py_BuildValue("i", (RabbitizerInstrId)closure);
 }
 

@@ -19,9 +19,15 @@ setup(
             "src/common/Utils.c", "src/common/RabbitizerConfig.c"],
             include_dirs=["include"],
             extra_compile_args = [
+                "-std=c11",
                 "-Wimplicit-function-declaration",
                 "-Werror=implicit-function-declaration",
-                # "-Werror"
+                "-Werror=incompatible-pointer-types",
+                "-Wall",
+                "-Wextra",
+                # "-Wpedantic", # variadic macros warning :s
+                "-Wshadow",
+                # "-Werror",
             ],
         ),
     ],
