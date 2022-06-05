@@ -8,7 +8,7 @@
 #include "instructions/RabbitizerRegister.h"
 
 
-void RabbitizerInstr_Init(RabbitizerInstr *self, uint32_t word) {
+void RabbitizerInstr_init(RabbitizerInstr *self, uint32_t word) {
     self->opcode = (word >> 26) & 0x3F;
     self->rs = (word >> 21) & 0x1F;
     self->rt = (word >> 16) & 0x1F;
@@ -24,19 +24,20 @@ void RabbitizerInstr_Init(RabbitizerInstr *self, uint32_t word) {
     self->inHandwrittenFunction = false;
 }
 
-void RabbitizerInstr_Destroy(RabbitizerInstr *self) {
+void RabbitizerInstr_destroy(RabbitizerInstr *self) {
+    (void)self;
 }
 
 
 /* Register getters */
 
-uint8_t RabbitizerInstr_GetFs(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getFs(const RabbitizerInstr *self) {
     return self->rd;
 }
-uint8_t RabbitizerInstr_GetFt(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getFt(const RabbitizerInstr *self) {
     return self->rt;
 }
-uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getFd(const RabbitizerInstr *self) {
     return self->sa;
 }
 
@@ -45,20 +46,20 @@ uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr *self) {
 
 /* Coprocessor stuffs */
 
-uint8_t RabbitizerInstr_GetFmt(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getFmt(const RabbitizerInstr *self) {
     return self->rs;
 }
 
-uint8_t RabbitizerInstr_GetTf(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getTf(const RabbitizerInstr *self) {
     return self->rt & 0x1;
 }
-uint8_t RabbitizerInstr_GetNd(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getNd(const RabbitizerInstr *self) {
     return (self->rt >> 1) & 0x1;
 }
-uint8_t RabbitizerInstr_GetFc(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getFc(const RabbitizerInstr *self) {
     return (self->function >> 4) & 0x3;
 }
-uint8_t RabbitizerInstr_GetCond(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstr_getCond(const RabbitizerInstr *self) {
     return self->function & 0xF;
 }
 
@@ -67,20 +68,20 @@ uint8_t RabbitizerInstr_GetCond(const RabbitizerInstr *self) {
 
 /* General getters */
 
-uint32_t RabbitizerInstr_GetRaw(const RabbitizerInstr *self) {
+uint32_t RabbitizerInstr_getRaw(const RabbitizerInstr *self) {
     return (self->opcode << 26) | (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
 }
 
-uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self) {
+uint32_t RabbitizerInstr_getImmediate(const RabbitizerInstr *self) {
     return (self->rd << 11) | (self->sa << 6) | (self->function);
 }
 
-uint32_t RabbitizerInstr_GetInstrIndex(const RabbitizerInstr *self) {
+uint32_t RabbitizerInstr_getInstrIndex(const RabbitizerInstr *self) {
     return (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
 }
 
-uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self) {
-    uint32_t vram = RabbitizerInstr_GetInstrIndex(self) << 2;
+uint32_t RabbitizerInstr_getInstrIndexAsVram(const RabbitizerInstr *self) {
+    uint32_t vram = RabbitizerInstr_getInstrIndex(self) << 2;
 
     if (self->vram == 0) {
         vram |= 0x80000000;
@@ -91,8 +92,8 @@ uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self) {
     return vram;
 }
 
-int32_t RabbitizerInstr_GetBranchOffset(const RabbitizerInstr *self) {
-    int32_t diff = RabbitizerUtils_From2Complement(RabbitizerInstr_GetImmediate(self), 16);
+int32_t RabbitizerInstr_getBranchOffset(const RabbitizerInstr *self) {
+    int32_t diff = RabbitizerUtils_From2Complement(RabbitizerInstr_getImmediate(self), 16);
 
     return diff*4 + 4;
 }

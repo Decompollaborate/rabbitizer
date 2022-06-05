@@ -12,9 +12,7 @@ static PyModuleDef rabbitizer_module = {
     .m_size = -1,
 };
 
-PyMODINIT_FUNC
-PyInit_rabbitizer(void)
-{
+PyMODINIT_FUNC PyInit_rabbitizer(void) {
     PyObject *m;
     if (PyType_Ready(&rabbitizer_type_Instr) < 0) {
         return NULL;

@@ -38,7 +38,7 @@ const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[] = {
 };
 
 
-const char *RabbitizerInstrId_GetOpcodeName(RabbitizerInstrId uniqueId) {
+const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId) {
     assert(uniqueId >= RABBITIZER_INSTR_CPU_ID_INVALID && uniqueId < RABBITIZER_INSTR_ID_MAX);
     assert(uniqueId != RABBITIZER_INSTR_CPU_ID_MAX);
     assert(uniqueId != RABBITIZER_INSTR_RSP_ID_MAX);

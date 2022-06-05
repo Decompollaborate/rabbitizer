@@ -30,6 +30,6 @@ extern const char *RabbitizerInstrId_Names[];
 extern const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[];
 
 
-const char *RabbitizerInstrId_GetOpcodeName(RabbitizerInstrId uniqueId);
+const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId);
 
 #endif

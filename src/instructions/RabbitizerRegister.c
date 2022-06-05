@@ -62,7 +62,7 @@ const char *RabbitizerRegister_RspVector_Names[][2] = {
 };
 
 
-const char *RabbitizerRegister_GetNameGpr(uint8_t regValue) {
+const char *RabbitizerRegister_getNameGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_GprO32_Names));
 
     switch (RabbitizerConfig_Cfg.regNames.gprAbiNames) {
@@ -79,13 +79,13 @@ const char *RabbitizerRegister_GetNameGpr(uint8_t regValue) {
     }
 }
 
-const char *RabbitizerRegister_GetNameCop0(uint8_t regValue) {
+const char *RabbitizerRegister_getNameCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop0_Names));
 
     return RabbitizerRegister_Cop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300Cop0NamedRegisters ? 1 : 0];
 }
 
-const char *RabbitizerRegister_GetNameCop1(uint8_t regValue) {
+const char *RabbitizerRegister_getNameCop1(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop1O32_Names));
 
     switch (RabbitizerConfig_Cfg.regNames.fprAbiNames) {
@@ -104,31 +104,31 @@ const char *RabbitizerRegister_GetNameCop1(uint8_t regValue) {
     }
 }
 
-const char *RabbitizerRegister_GetNameCop1Control(uint8_t regValue) {
+const char *RabbitizerRegister_getNameCop1Control(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop1Control_Names));
 
     return RabbitizerRegister_Cop1Control_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.userFpcCsr ? 1 : 0];
 }
 
-const char *RabbitizerRegister_GetNameCop2(uint8_t regValue) {
+const char *RabbitizerRegister_getNameCop2(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop2_Names));
 
     return RabbitizerRegister_Cop2_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
-const char *RabbitizerRegister_GetNameRspGpr(uint8_t regValue) {
+const char *RabbitizerRegister_getNameRspGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspGpr_Names));
 
     return RabbitizerRegister_RspGpr_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
-const char *RabbitizerRegister_GetNameRspCop0(uint8_t regValue) {
+const char *RabbitizerRegister_getNameRspCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspCop0_Names));
 
     return RabbitizerRegister_RspCop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300RspCop0NamedRegisters ? 1 : 0];
 }
 
-const char *RabbitizerRegister_GetNameRspVector(uint8_t regValue) {
+const char *RabbitizerRegister_getNameRspVector(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspVector_Names));
 
     return RabbitizerRegister_RspVector_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];

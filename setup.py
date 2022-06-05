@@ -17,7 +17,12 @@ setup(
             "src/instructions/RabbitizerInstr/RabbitizerInstr_Disassemble.c", "src/instructions/RabbitizerInstr/RabbitizerInstr_ProcessUniqueId.c", "src/instructions/RabbitizerInstr/RabbitizerInstr.c", "src/instructions/RabbitizerInstr/RabbitizerInstr_Examination.c",
             "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c",
             "src/common/Utils.c", "src/common/RabbitizerConfig.c"],
-            include_dirs=['include']
+            include_dirs=["include"],
+            extra_compile_args = [
+                "-Wimplicit-function-declaration",
+                "-Werror=implicit-function-declaration",
+                # "-Werror"
+            ],
         ),
     ],
 )

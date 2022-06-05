@@ -14,19 +14,19 @@ int main() {
     char *buffer;
     int extraLJust = 10;
 
-    RabbitizerInstr_Init(&instr, word);
+    RabbitizerInstr_init(&instr, word);
 
-    RabbitizerInstr_ProcessUniqueId(&instr);
+    RabbitizerInstr_processUniqueId(&instr);
 
-    buffer = malloc(RabbitizerInstr_GetSizeForBuffer(&instr, 0, extraLJust) + 1);
+    buffer = malloc(RabbitizerInstr_getSizeForBuffer(&instr, 0, extraLJust) + 1);
     assert(buffer != NULL);
 
-    RabbitizerInstr_Disassemble(&instr, buffer, NULL, 0, extraLJust);
+    RabbitizerInstr_disassemble(&instr, buffer, NULL, 0, extraLJust);
 
     printf("%08X: %s\n", word, buffer);
 
     free(buffer);
-    RabbitizerInstr_Destroy(&instr);
+    RabbitizerInstr_destroy(&instr);
 
     return 0;
 }

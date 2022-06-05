@@ -9,7 +9,7 @@
 
 /* Instruction examination */
 
-bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self) {
+bool RabbitizerInstr_isImplemented(const RabbitizerInstr *self) {
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_INVALID) {
         return false;
     }
@@ -19,12 +19,12 @@ bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self) {
     return true;
 }
 
-bool RabbitizerInstr_IsLikelyHandwritten(const RabbitizerInstr *self) {
+bool RabbitizerInstr_isLikelyHandwritten(const RabbitizerInstr *self) {
     if (self->_handwrittenCategory) {
         return true;
     }
 
-    if (RabbitizerInstrDescriptor_IsIType(self->descriptor) && !RabbitizerInstrDescriptor_IsFloat(self->descriptor)) {
+    if (RabbitizerInstrDescriptor_isIType(self->descriptor) && !RabbitizerInstrDescriptor_isFloat(self->descriptor)) {
         if (self->rs == RABBITIZER_REG_GPR_O32_k0 || self->rs == RABBITIZER_REG_GPR_O32_k1) {
             return true;
         }
@@ -42,7 +42,7 @@ bool RabbitizerInstr_IsLikelyHandwritten(const RabbitizerInstr *self) {
     return false;
 }
 
-bool RabbitizerInstr_IsNop(const RabbitizerInstr *self) {
+bool RabbitizerInstr_isNop(const RabbitizerInstr *self) {
     return self->opcode == 0 &&
     self->rs == 0 &&
     self->rt == 0 &&
@@ -51,7 +51,7 @@ bool RabbitizerInstr_IsNop(const RabbitizerInstr *self) {
     self->function == 0;
 }
 
-bool RabbitizerInstr_IsUnconditionalBranch(const RabbitizerInstr *self) {
+bool RabbitizerInstr_isUnconditionalBranch(const RabbitizerInstr *self) {
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_b) {
         return true;
     }
@@ -64,7 +64,7 @@ bool RabbitizerInstr_IsUnconditionalBranch(const RabbitizerInstr *self) {
     return false;
 }
 
-bool RabbitizerInstr_IsJrRa(const RabbitizerInstr *self) {
+bool RabbitizerInstr_isJrRa(const RabbitizerInstr *self) {
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_jr) {
         // TODO: abi stuffs
         return self->rs == RABBITIZER_REG_GPR_O32_ra;
@@ -72,7 +72,7 @@ bool RabbitizerInstr_IsJrRa(const RabbitizerInstr *self) {
     return false;
 }
 
-bool RabbitizerInstr_IsJrNotRa(const RabbitizerInstr *self) {
+bool RabbitizerInstr_isJrNotRa(const RabbitizerInstr *self) {
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_jr) {
         // TODO: abi stuffs
         return self->rs != RABBITIZER_REG_GPR_O32_ra;
@@ -81,11 +81,11 @@ bool RabbitizerInstr_IsJrNotRa(const RabbitizerInstr *self) {
 }
 
 
-const char *RabbitizerInstr_MaprInstrToType(const RabbitizerInstr *self) {
-    if (RabbitizerInstrDescriptor_IsDouble(self->descriptor)) {
+const char *RabbitizerInstr_mapInstrToType(const RabbitizerInstr *self) {
+    if (RabbitizerInstrDescriptor_isDouble(self->descriptor)) {
         return "f64";
     }
-    if (RabbitizerInstrDescriptor_IsFloat(self->descriptor)) {
+    if (RabbitizerInstrDescriptor_isFloat(self->descriptor)) {
         return "f32";
     }
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lwu) {

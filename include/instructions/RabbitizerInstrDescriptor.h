@@ -44,21 +44,21 @@ typedef struct RabbitizerInstrDescriptor {
 extern const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[];
 
 
-bool RabbitizerInstrDescriptor_IsJType(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_IsIType(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_IsRType(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isJType(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isIType(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self);
 
-bool RabbitizerInstrDescriptor_IsBranch(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_IsBranchLikely(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_IsJump(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_IsTrap(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isJump(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isTrap(const RabbitizerInstrDescriptor *self);
 
-bool RabbitizerInstrDescriptor_IsFloat(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_IsDouble(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isFloat(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isDouble(const RabbitizerInstrDescriptor *self);
 
-bool RabbitizerInstrDescriptor_IsUnsigned(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isUnsigned(const RabbitizerInstrDescriptor *self);
 
-bool RabbitizerInstrDescriptor_ModifiesRt(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_ModifiesRd(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self);
 
 #endif

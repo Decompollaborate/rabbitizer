@@ -76,13 +76,13 @@ extern const char *RabbitizerRegister_RspCop0_Names[][2];
 extern const char *RabbitizerRegister_RspVector_Names[][2];
 
 
-const char *RabbitizerRegister_GetNameGpr(uint8_t regValue);
-const char *RabbitizerRegister_GetNameCop0(uint8_t regValue);
-const char *RabbitizerRegister_GetNameCop1(uint8_t regValue);
-const char *RabbitizerRegister_GetNameCop1Control(uint8_t regValue);
-const char *RabbitizerRegister_GetNameCop2(uint8_t regValue);
-const char *RabbitizerRegister_GetNameRspGpr(uint8_t regValue);
-const char *RabbitizerRegister_GetNameRspCop0(uint8_t regValue);
-const char *RabbitizerRegister_GetNameRspVector(uint8_t regValue);
+const char *RabbitizerRegister_getNameGpr(uint8_t regValue);
+const char *RabbitizerRegister_getNameCop0(uint8_t regValue);
+const char *RabbitizerRegister_getNameCop1(uint8_t regValue);
+const char *RabbitizerRegister_getNameCop1Control(uint8_t regValue);
+const char *RabbitizerRegister_getNameCop2(uint8_t regValue);
+const char *RabbitizerRegister_getNameRspGpr(uint8_t regValue);
+const char *RabbitizerRegister_getNameRspCop0(uint8_t regValue);
+const char *RabbitizerRegister_getNameRspVector(uint8_t regValue);
 
 #endif

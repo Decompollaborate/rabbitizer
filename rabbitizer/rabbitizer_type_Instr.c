@@ -12,7 +12,7 @@ typedef struct PyRabbitizerInstr {
 } PyRabbitizerInstr;
 
 static void Instr_dealloc(PyRabbitizerInstr *self) {
-    RabbitizerInstr_Destroy(&self->instr);
+    RabbitizerInstr_destroy(&self->instr);
     Py_TYPE(self)->tp_free((PyObject *) self);
 }
 
@@ -24,22 +24,22 @@ static int Instr_init(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds) {
         return -1;
     }
 
-    RabbitizerInstr_Init(&self->instr, word);
-    RabbitizerInstr_ProcessUniqueId(&self->instr);
+    RabbitizerInstr_init(&self->instr, word);
+    RabbitizerInstr_processUniqueId(&self->instr);
 
     return 0;
 }
 
 static PyMemberDef Instr_members[] = {
     {"vram", T_UINT, offsetof(PyRabbitizerInstr, instr.vram), 0, "vram description"},
-    {"inHandwrittenFunction", T_BOOL, offsetof(PyRabbitizerInstr, instr.inHandwrittenFunction), 0, "vram description"},
+    {"inHandwrittenFunction", T_BOOL, offsetof(PyRabbitizerInstr, instr.inHandwrittenFunction), 0, "inHandwrittenFunction description"},
     {NULL}  /* Sentinel */
 };
 
 
 #define DEF_MEMBER_GET_UINT(name) \
     static PyObject *Instr_member_get_##name(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) { \
-        return PyLong_FromUnsignedLong((&self->instr)->name); \
+        return PyLong_FromUnsignedLong(self->instr.name); \
     }
 
 DEF_MEMBER_GET_UINT(opcode)
@@ -52,21 +52,25 @@ DEF_MEMBER_GET_UINT(uniqueId)
 
 
 static PyObject *Instr_instr(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) { \
-    return PyLong_FromUnsignedLong(RabbitizerInstr_GetRaw(&self->instr)); \
+    return PyLong_FromUnsignedLong(RabbitizerInstr_getRaw(&self->instr)); \
 }
 static PyObject *Instr_immediate(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) { \
-    return PyLong_FromUnsignedLong(RabbitizerInstr_GetImmediate(&self->instr)); \
+    return PyLong_FromUnsignedLong(RabbitizerInstr_getImmediate(&self->instr)); \
 }
+
+#define MEMBER_GET(name, docs, closure)  { #name, (getter) Instr_member_get_##name, (setter) NULL, PyDoc_STR(docs), closure }
+#define MEMBER_SET(name, docs, closure)  { #name, (getter) NULL, (setter) Instr_member_set_##name, PyDoc_STR(docs), closure }
+#define MEMBER_GET_SET(name, docs, closure)  { #name, (getter) Instr_member_get_##name, (setter) Instr_member_set_##name, PyDoc_STR(docs), closure }
 
 
 static PyGetSetDef Instr_getsetters[] = {
-    { "opcode", (getter) Instr_member_get_opcode, (setter) NULL, "", NULL },
-    { "rs", (getter) Instr_member_get_rs, (setter) NULL, "", NULL },
-    { "rt", (getter) Instr_member_get_rt, (setter) NULL, "", NULL },
-    { "rd", (getter) Instr_member_get_rd, (setter) NULL, "", NULL },
-    { "sa", (getter) Instr_member_get_sa, (setter) NULL, "", NULL },
-    { "function", (getter) Instr_member_get_function, (setter) NULL, "", NULL },
-    { "uniqueId", (getter) Instr_member_get_uniqueId, (setter) NULL, "", NULL },
+    MEMBER_GET(opcode, "", NULL),
+    MEMBER_GET(rs, "", NULL),
+    MEMBER_GET(rt, "", NULL),
+    MEMBER_GET(rd, "", NULL),
+    MEMBER_GET(sa, "", NULL),
+    MEMBER_GET(function, "", NULL),
+    MEMBER_GET(uniqueId, "", NULL),
     { "instr", (getter) Instr_instr, (setter) NULL, "", NULL }, // todo: deprecate
     { "immediate", (getter) Instr_immediate, (setter) NULL, "", NULL }, // todo: deprecate
     {NULL}  /* Sentinel */
@@ -83,10 +87,10 @@ static PyGetSetDef Instr_getsetters[] = {
         return PyLong_FromLong(RabbitizerInstr_##name(&self->instr)); \
     }
 
-DEF_METHOD_GET_UINT(GetRaw)
-DEF_METHOD_GET_UINT(GetImmediate)
-DEF_METHOD_GET_UINT(GetInstrIndexAsVram)
-DEF_METHOD_GET_INT(GetBranchOffset)
+DEF_METHOD_GET_UINT(getRaw)
+DEF_METHOD_GET_UINT(getImmediate)
+DEF_METHOD_GET_UINT(getInstrIndexAsVram)
+DEF_METHOD_GET_INT(getBranchOffset)
 
 
 #define DEF_METHOD_BOOL(name) \
@@ -97,12 +101,12 @@ DEF_METHOD_GET_INT(GetBranchOffset)
         Py_RETURN_FALSE; \
     }
 
-DEF_METHOD_BOOL(IsImplemented)
-DEF_METHOD_BOOL(IsLikelyHandwritten)
-DEF_METHOD_BOOL(IsNop)
-DEF_METHOD_BOOL(IsUnconditionalBranch)
-DEF_METHOD_BOOL(IsJrRa)
-DEF_METHOD_BOOL(IsJrNotRa)
+DEF_METHOD_BOOL(isImplemented)
+DEF_METHOD_BOOL(isLikelyHandwritten)
+DEF_METHOD_BOOL(isNop)
+DEF_METHOD_BOOL(isUnconditionalBranch)
+DEF_METHOD_BOOL(isJrRa)
+DEF_METHOD_BOOL(isJrNotRa)
 
 
 #define DEF_DESCRIPTOR_METHOD_BOOL(name) \
@@ -113,21 +117,21 @@ DEF_METHOD_BOOL(IsJrNotRa)
         Py_RETURN_FALSE; \
     }
 
-DEF_DESCRIPTOR_METHOD_BOOL(IsJType)
-DEF_DESCRIPTOR_METHOD_BOOL(IsIType)
-DEF_DESCRIPTOR_METHOD_BOOL(IsRType)
-DEF_DESCRIPTOR_METHOD_BOOL(IsBranch)
-DEF_DESCRIPTOR_METHOD_BOOL(IsBranchLikely)
-DEF_DESCRIPTOR_METHOD_BOOL(IsJump)
-DEF_DESCRIPTOR_METHOD_BOOL(IsTrap)
-DEF_DESCRIPTOR_METHOD_BOOL(IsFloat)
-DEF_DESCRIPTOR_METHOD_BOOL(IsDouble)
-DEF_DESCRIPTOR_METHOD_BOOL(IsUnsigned)
-DEF_DESCRIPTOR_METHOD_BOOL(ModifiesRt)
-DEF_DESCRIPTOR_METHOD_BOOL(ModifiesRd)
+DEF_DESCRIPTOR_METHOD_BOOL(isJType)
+DEF_DESCRIPTOR_METHOD_BOOL(isIType)
+DEF_DESCRIPTOR_METHOD_BOOL(isRType)
+DEF_DESCRIPTOR_METHOD_BOOL(isBranch)
+DEF_DESCRIPTOR_METHOD_BOOL(isBranchLikely)
+DEF_DESCRIPTOR_METHOD_BOOL(isJump)
+DEF_DESCRIPTOR_METHOD_BOOL(isTrap)
+DEF_DESCRIPTOR_METHOD_BOOL(isFloat)
+DEF_DESCRIPTOR_METHOD_BOOL(isDouble)
+DEF_DESCRIPTOR_METHOD_BOOL(isUnsigned)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesRt)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesRd)
 
 
-static PyObject *Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds) {
+static PyObject *Instr_disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = {"immOverride", "extraLJust", NULL};
     const char *immOverride = NULL;
     size_t immOverrideLength = 0;
@@ -144,22 +148,22 @@ static PyObject *Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyOb
         immOverrideLength = strlen(immOverride);
     }
 
-    bufferSize = RabbitizerInstr_GetSizeForBuffer(&self->instr, immOverrideLength, extraLJust);
+    bufferSize = RabbitizerInstr_getSizeForBuffer(&self->instr, immOverrideLength, extraLJust);
 
     buffer = malloc(bufferSize+1);
     if (buffer == NULL) {
         return NULL;
     }
 
-    RabbitizerInstr_Disassemble(&self->instr, buffer, immOverride, immOverrideLength, extraLJust);
+    RabbitizerInstr_disassemble(&self->instr, buffer, immOverride, immOverrideLength, extraLJust);
 
     ret = PyUnicode_FromString(buffer);
     free(buffer);
     return ret;
 }
 
-static PyObject *Instr_MapInstrToType(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) {
-    const char *type = RabbitizerInstr_MaprInstrToType(&self->instr);
+static PyObject *Instr_mapInstrToType(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) {
+    const char *type = RabbitizerInstr_mapInstrToType(&self->instr);
 
     if (type != NULL) {
         return PyUnicode_FromString(type);
@@ -168,36 +172,41 @@ static PyObject *Instr_MapInstrToType(PyRabbitizerInstr *self, PyObject *Py_UNUS
     Py_RETURN_NONE;
 }
 
+
+#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)Instr_##name, METH_NOARGS, PyDoc_STR(docs) }
+
+
 static PyMethodDef Instr_methods[] = {
-    {"getRaw", (PyCFunction)Instr_GetRaw, METH_NOARGS, ""},
-    {"getImmediate", (PyCFunction)Instr_GetImmediate, METH_NOARGS, ""},
-    {"getInstrIndexAsVram", (PyCFunction)Instr_GetInstrIndexAsVram, METH_NOARGS, ""},
-    {"getBranchOffset", (PyCFunction)Instr_GetBranchOffset, METH_NOARGS, ""},
+    METHOD_NO_ARGS(getRaw, ""),
+    METHOD_NO_ARGS(getImmediate, ""),
+    METHOD_NO_ARGS(getInstrIndexAsVram, ""),
+    METHOD_NO_ARGS(getBranchOffset, ""),
 
-    {"isImplemented", (PyCFunction)Instr_IsImplemented, METH_NOARGS, ""},
-    {"isLikelyHandwritten", (PyCFunction)Instr_IsLikelyHandwritten, METH_NOARGS, ""},
-    {"isNop", (PyCFunction)Instr_IsNop, METH_NOARGS, ""},
-    {"isUnconditionalBranch", (PyCFunction)Instr_IsUnconditionalBranch, METH_NOARGS, ""},
-    {"isJrRa", (PyCFunction)Instr_IsJrRa, METH_NOARGS, ""},
-    {"isJrNotRa", (PyCFunction)Instr_IsJrNotRa, METH_NOARGS, ""},
+    METHOD_NO_ARGS(isImplemented, ""),
+    METHOD_NO_ARGS(isLikelyHandwritten, ""),
+    METHOD_NO_ARGS(isNop, ""),
+    METHOD_NO_ARGS(isUnconditionalBranch, ""),
+    METHOD_NO_ARGS(isJrRa, ""),
+    METHOD_NO_ARGS(isJrNotRa, ""),
+    METHOD_NO_ARGS(mapInstrToType, ""),
 
-    {"isJType", (PyCFunction)Instr_IsJType, METH_NOARGS, ""},
-    {"isIType", (PyCFunction)Instr_IsIType, METH_NOARGS, ""},
-    {"isRType", (PyCFunction)Instr_IsRType, METH_NOARGS, ""},
-    {"isBranch", (PyCFunction)Instr_IsBranch, METH_NOARGS, ""},
-    {"isBranchLikely", (PyCFunction)Instr_IsBranchLikely, METH_NOARGS, ""},
-    {"isJump", (PyCFunction)Instr_IsJump, METH_NOARGS, ""},
-    {"isTrap", (PyCFunction)Instr_IsTrap, METH_NOARGS, ""},
-    {"isFloat", (PyCFunction)Instr_IsFloat, METH_NOARGS, ""},
-    {"isFloatInstruction", (PyCFunction)Instr_IsFloat, METH_NOARGS, ""}, // TODO: deprecate
-    {"isDouble", (PyCFunction)Instr_IsDouble, METH_NOARGS, ""},
-    {"isDoubleInstruction", (PyCFunction)Instr_IsDouble, METH_NOARGS, ""}, // TODO: deprecate
-    {"isUnsigned", (PyCFunction)Instr_IsUnsigned, METH_NOARGS, ""},
-    {"modifiesRt", (PyCFunction)Instr_ModifiesRt, METH_NOARGS, ""},
-    {"modifiesRd", (PyCFunction)Instr_ModifiesRd, METH_NOARGS, ""},
+    METHOD_NO_ARGS(isJType, ""),
+    METHOD_NO_ARGS(isIType, ""),
+    METHOD_NO_ARGS(isRType, ""),
+    METHOD_NO_ARGS(isBranch, ""),
+    METHOD_NO_ARGS(isBranchLikely, ""),
+    METHOD_NO_ARGS(isJump, ""),
+    METHOD_NO_ARGS(isTrap, ""),
+    METHOD_NO_ARGS(isFloat, ""),
+    {"isFloatInstruction", (PyCFunction)Instr_isFloat, METH_NOARGS, ""}, // TODO: deprecate
+    METHOD_NO_ARGS(isDouble, ""),
+    {"isDoubleInstruction", (PyCFunction)Instr_isDouble, METH_NOARGS, ""}, // TODO: deprecate
+    METHOD_NO_ARGS(isUnsigned, ""),
+    METHOD_NO_ARGS(modifiesRt, ""),
+    METHOD_NO_ARGS(modifiesRd, ""),
 
-    {"disassemble", (PyCFunction) Instr_Disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
-    {"mapInstrToType", (PyCFunction) Instr_MapInstrToType, METH_NOARGS, "description"},
+    {"disassemble", (PyCFunction) Instr_disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
+
     {NULL}  /* Sentinel */
 };
 

@@ -22,43 +22,43 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
 
 
-bool RabbitizerInstrDescriptor_IsJType(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isJType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_J;
 }
-bool RabbitizerInstrDescriptor_IsIType(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isIType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_I;
 }
-bool RabbitizerInstrDescriptor_IsRType(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_R;
 }
 
-bool RabbitizerInstrDescriptor_IsBranch(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self) {
     return self->isBranch;
 }
-bool RabbitizerInstrDescriptor_IsBranchLikely(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *self) {
     return self->isBranchLikely;
 }
-bool RabbitizerInstrDescriptor_IsJump(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isJump(const RabbitizerInstrDescriptor *self) {
     return self->isJump;
 }
-bool RabbitizerInstrDescriptor_IsTrap(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isTrap(const RabbitizerInstrDescriptor *self) {
     return self->isTrap;
 }
 
-bool RabbitizerInstrDescriptor_IsFloat(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isFloat(const RabbitizerInstrDescriptor *self) {
     return self->isFloat;
 }
-bool RabbitizerInstrDescriptor_IsDouble(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isDouble(const RabbitizerInstrDescriptor *self) {
     return self->isDouble;
 }
 
-bool RabbitizerInstrDescriptor_IsUnsigned(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_isUnsigned(const RabbitizerInstrDescriptor *self) {
     return self->isUnsigned;
 }
 
-bool RabbitizerInstrDescriptor_ModifiesRt(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self) {
     return self->modifiesRt;
 }
-bool RabbitizerInstrDescriptor_ModifiesRd(const RabbitizerInstrDescriptor *self) {
+bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self) {
     return self->modifiesRd;
 }
