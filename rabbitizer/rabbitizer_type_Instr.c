@@ -210,7 +210,7 @@ static PyMethodDef Instr_methods[] = {
     {NULL}  /* Sentinel */
 };
 
-PyTypeObject rabbitizer_type_Instr = {
+PyTypeObject rabbitizer_type_Instr_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)
     .tp_name = "rabbitizer.Instr",
     .tp_doc = PyDoc_STR("Instruction"),
