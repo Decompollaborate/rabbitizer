@@ -40,6 +40,10 @@ typedef enum RabbitizerRegister_Cop1N64 {
     #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
 } RabbitizerRegister_Cop1N64;
 
+typedef enum RabbitizerRegister_Cop1Control {
+    #include "instructions/registers/RabbitizerRegister_Cop1Control.inc"
+} RabbitizerRegister_Cop1Control;
+
 typedef enum RabbitizerRegister_Cop2 {
     #include "instructions/registers/RabbitizerRegister_Cop2.inc"
 } RabbitizerRegister_Cop2;
@@ -75,6 +79,7 @@ extern const char *RabbitizerRegister_RspVector_Names[][2];
 const char *RabbitizerRegister_GetNameGpr(uint8_t regValue);
 const char *RabbitizerRegister_GetNameCop0(uint8_t regValue);
 const char *RabbitizerRegister_GetNameCop1(uint8_t regValue);
+const char *RabbitizerRegister_GetNameCop1Control(uint8_t regValue);
 const char *RabbitizerRegister_GetNameCop2(uint8_t regValue);
 const char *RabbitizerRegister_GetNameRspGpr(uint8_t regValue);
 const char *RabbitizerRegister_GetNameRspCop0(uint8_t regValue);

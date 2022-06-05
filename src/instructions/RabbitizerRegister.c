@@ -13,7 +13,7 @@
     [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, "$" #name }
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
-    [RABBITIZER_REG_##prefix##_##name] = { #numeric, #name }
+    [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, #name }
 
 // numeric, named
 
@@ -39,6 +39,10 @@ const char *RabbitizerRegister_Cop1N32_Names[][2] = {
 
 const char *RabbitizerRegister_Cop1N64_Names[][2] = {
     #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
+};
+
+const char *RabbitizerRegister_Cop1Control_Names[][2] = {
+    #include "instructions/registers/RabbitizerRegister_Cop1Control.inc"
 };
 
 const char *RabbitizerRegister_Cop2_Names[][2] = {
@@ -98,6 +102,12 @@ const char *RabbitizerRegister_GetNameCop1(uint8_t regValue) {
         case RABBITIZER_ABI_N64:
             return RabbitizerRegister_Cop1N64_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
     }
+}
+
+const char *RabbitizerRegister_GetNameCop1Control(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop1Control_Names));
+
+    return RabbitizerRegister_Cop1Control_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.userFpcCsr ? 1 : 0];
 }
 
 const char *RabbitizerRegister_GetNameCop2(uint8_t regValue) {

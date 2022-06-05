@@ -92,6 +92,17 @@ size_t RabbitizerRegisterType_ProcessFd(const RabbitizerInstr *self, char *dst, 
     return regLen;
 }
 
+size_t RabbitizerRegisterType_ProcessCop1Cs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    const char *reg;
+    size_t regLen;
+
+    reg = RabbitizerRegister_GetNameCop1Control(RabbitizerInstr_GetFs(self));
+    regLen = strlen(reg);
+
+    memcpy(dst, reg, regLen);
+    return regLen;
+}
+
 size_t RabbitizerRegisterType_ProcessCop2t(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     const char *reg;
     size_t regLen;
@@ -212,19 +223,20 @@ size_t RabbitizerRegisterType_ProcessImmediateBase(const RabbitizerInstr *self, 
 }
 
 const OperandCallback instrOpercandCallbacks[] = {
-    [RABBITIZER_REGISTER_TYPE_rs] = RabbitizerRegisterType_ProcessRs,
-    [RABBITIZER_REGISTER_TYPE_rt] = RabbitizerRegisterType_ProcessRt,
-    [RABBITIZER_REGISTER_TYPE_rd] = RabbitizerRegisterType_ProcessRd,
-    [RABBITIZER_REGISTER_TYPE_cop0d] = RabbitizerRegisterType_ProcessCop0d,
-    [RABBITIZER_REGISTER_TYPE_fs] = RabbitizerRegisterType_ProcessFs,
-    [RABBITIZER_REGISTER_TYPE_ft] = RabbitizerRegisterType_ProcessFt,
-    [RABBITIZER_REGISTER_TYPE_fd] = RabbitizerRegisterType_ProcessFd,
-    [RABBITIZER_REGISTER_TYPE_cop2t] = RabbitizerRegisterType_ProcessCop2t,
-    [RABBITIZER_REGISTER_TYPE_sa] = RabbitizerRegisterType_ProcessSa,
-    [RABBITIZER_REGISTER_TYPE_op] = RabbitizerRegisterType_ProcessOp,
-    [RABBITIZER_REGISTER_TYPE_code] = RabbitizerRegisterType_ProcessCode,
-    [RABBITIZER_REGISTER_TYPE_LABEL] = RabbitizerRegisterType_ProcessLabel,
-    [RABBITIZER_REGISTER_TYPE_IMM] = RabbitizerRegisterType_ProcessImmediate,
+    [RABBITIZER_REGISTER_TYPE_rs]       = RabbitizerRegisterType_ProcessRs,
+    [RABBITIZER_REGISTER_TYPE_rt]       = RabbitizerRegisterType_ProcessRt,
+    [RABBITIZER_REGISTER_TYPE_rd]       = RabbitizerRegisterType_ProcessRd,
+    [RABBITIZER_REGISTER_TYPE_cop0d]    = RabbitizerRegisterType_ProcessCop0d,
+    [RABBITIZER_REGISTER_TYPE_fs]       = RabbitizerRegisterType_ProcessFs,
+    [RABBITIZER_REGISTER_TYPE_ft]       = RabbitizerRegisterType_ProcessFt,
+    [RABBITIZER_REGISTER_TYPE_fd]       = RabbitizerRegisterType_ProcessFd,
+    [RABBITIZER_REGISTER_TYPE_cop1cs]   = RabbitizerRegisterType_ProcessCop1Cs,
+    [RABBITIZER_REGISTER_TYPE_cop2t]    = RabbitizerRegisterType_ProcessCop2t,
+    [RABBITIZER_REGISTER_TYPE_sa]       = RabbitizerRegisterType_ProcessSa,
+    [RABBITIZER_REGISTER_TYPE_op]       = RabbitizerRegisterType_ProcessOp,
+    [RABBITIZER_REGISTER_TYPE_code]     = RabbitizerRegisterType_ProcessCode,
+    [RABBITIZER_REGISTER_TYPE_LABEL]    = RabbitizerRegisterType_ProcessLabel,
+    [RABBITIZER_REGISTER_TYPE_IMM]      = RabbitizerRegisterType_ProcessImmediate,
     [RABBITIZER_REGISTER_TYPE_IMM_base] = RabbitizerRegisterType_ProcessImmediateBase,
 };
 

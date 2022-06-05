@@ -187,10 +187,12 @@
     // OP rt, fs
     RABBITIZER_DEF_INSTR_ID(CPU_ID, mfc1,        .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .modifiesRt=true),      // Move Word From Floating-Point
     RABBITIZER_DEF_INSTR_ID(CPU_ID, dmfc1,       .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .modifiesRt=true),     // Doubleword Move From Floating-Point
-    RABBITIZER_DEF_INSTR_ID(CPU_ID, cfc1,        .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .modifiesRt=true),      // Move Control Word from Floating-Point
     RABBITIZER_DEF_INSTR_ID(CPU_ID, mtc1,        .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true),      // Move Word to Floating-Point
     RABBITIZER_DEF_INSTR_ID(CPU_ID, dmtc1,       .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true),     // Doubleword Move To Floating-Point
-    RABBITIZER_DEF_INSTR_ID(CPU_ID, ctc1,        .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true),      // Move Control Word to Floating-Point
+
+    // OP rt, cop1cs
+    RABBITIZER_DEF_INSTR_ID(CPU_ID, cfc1,        .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_cop1cs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .modifiesRt=true),      // Move Control Word from Floating-Point
+    RABBITIZER_DEF_INSTR_ID(CPU_ID, ctc1,        .operands={RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_cop1cs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true),      // Move Control Word to Floating-Point
 
     // OP IMM
     RABBITIZER_DEF_INSTR_ID(CPU_ID, bc1f,        .operands={RABBITIZER_REGISTER_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true),
