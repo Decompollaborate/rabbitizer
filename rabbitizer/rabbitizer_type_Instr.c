@@ -159,6 +159,12 @@ static PyObject *Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyOb
 }
 
 static PyObject *Instr_MapInstrToType(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) {
+    const char *type = RabbitizerInstr_MaprInstrToType(&self->instr);
+
+    if (type != NULL) {
+        return PyUnicode_FromString(type);
+    }
+
     Py_RETURN_NONE;
 }
 
@@ -191,7 +197,7 @@ static PyMethodDef Instr_methods[] = {
     {"modifiesRd", (PyCFunction)Instr_ModifiesRd, METH_NOARGS, ""},
 
     {"disassemble", (PyCFunction) Instr_Disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
-    {"mapInstrToType", (PyCFunction) Instr_MapInstrToType, METH_VARARGS | METH_KEYWORDS, "description"},
+    {"mapInstrToType", (PyCFunction) Instr_MapInstrToType, METH_NOARGS, "description"},
     {NULL}  /* Sentinel */
 };
 

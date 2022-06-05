@@ -68,6 +68,8 @@ bool RabbitizerInstr_IsUnconditionalBranch(const RabbitizerInstr *self);
 bool RabbitizerInstr_IsJrRa(const RabbitizerInstr *self);
 bool RabbitizerInstr_IsJrNotRa(const RabbitizerInstr *self);
 
+const char *RabbitizerInstr_MaprInstrToType(const RabbitizerInstr *self);
+
 
 size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, size_t immOverrideLength, int extraLJust);
 size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);

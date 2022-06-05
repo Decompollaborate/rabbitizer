@@ -28,6 +28,8 @@ void RabbitizerInstr_Destroy(RabbitizerInstr *self) {
 }
 
 
+/* Register getters */
+
 uint8_t RabbitizerInstr_GetFs(const RabbitizerInstr *self) {
     return self->rd;
 }
@@ -37,6 +39,11 @@ uint8_t RabbitizerInstr_GetFt(const RabbitizerInstr *self) {
 uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr *self) {
     return self->sa;
 }
+
+/* Register getters */
+
+
+/* Coprocessor stuffs */
 
 uint8_t RabbitizerInstr_GetFmt(const RabbitizerInstr *self) {
     return self->rs;
@@ -55,6 +62,11 @@ uint8_t RabbitizerInstr_GetCond(const RabbitizerInstr *self) {
     return self->function & 0xF;
 }
 
+/* Coprocessor stuffs */
+
+
+/* General getters */
+
 uint32_t RabbitizerInstr_GetRaw(const RabbitizerInstr *self) {
     return (self->opcode << 26) | (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
 }
@@ -62,6 +74,7 @@ uint32_t RabbitizerInstr_GetRaw(const RabbitizerInstr *self) {
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self) {
     return (self->rd << 11) | (self->sa << 6) | (self->function);
 }
+
 uint32_t RabbitizerInstr_GetInstrIndex(const RabbitizerInstr *self) {
     return (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
 }
@@ -84,6 +97,10 @@ int32_t RabbitizerInstr_GetBranchOffset(const RabbitizerInstr *self) {
     return diff*4 + 4;
 }
 
+/* General getters */
+
+
+/* Instruction examination */
 
 bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self) {
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_INVALID) {
@@ -154,4 +171,35 @@ bool RabbitizerInstr_IsJrNotRa(const RabbitizerInstr *self) {
         return self->rs != RABBITIZER_REG_GPR_O32_ra;
     }
     return false;
+}
+
+/* Instruction examination */
+
+
+const char *RabbitizerInstr_MaprInstrToType(const RabbitizerInstr *self) {
+    if (RabbitizerInstrDescriptor_IsDouble(self->descriptor)) {
+        return "f64";
+    }
+    if (RabbitizerInstrDescriptor_IsFloat(self->descriptor)) {
+        return "f32";
+    }
+    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lwu) {
+        return "u32";
+    }
+    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lh || self->uniqueId == RABBITIZER_INSTR_CPU_ID_sh) {
+        return "s16";
+    }
+    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lhu) {
+        return "u16";
+    }
+    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lb || self->uniqueId == RABBITIZER_INSTR_CPU_ID_sb) {
+        return "s8";
+    }
+    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lbu) {
+        return "u8";
+    }
+    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_ld || self->uniqueId == RABBITIZER_INSTR_CPU_ID_sd) {
+        return "s64";
+    }
+    return NULL;
 }
