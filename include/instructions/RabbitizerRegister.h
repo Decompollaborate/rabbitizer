@@ -257,6 +257,41 @@ typedef enum RabbitizerRegister_Cop1N64 {
     /* 31 */ RABBITIZER_REG_COP1_N64_fs7,
 } RabbitizerRegister_Cop1N64;
 
+typedef enum RabbitizerRegister_Cop2 {
+    /*  0 */ RABBITIZER_REG_COP2_0,
+    /*  1 */ RABBITIZER_REG_COP2_1,
+    /*  2 */ RABBITIZER_REG_COP2_2,
+    /*  3 */ RABBITIZER_REG_COP2_3,
+    /*  4 */ RABBITIZER_REG_COP2_4,
+    /*  5 */ RABBITIZER_REG_COP2_5,
+    /*  6 */ RABBITIZER_REG_COP2_6,
+    /*  7 */ RABBITIZER_REG_COP2_7,
+    /*  8 */ RABBITIZER_REG_COP2_8,
+    /*  9 */ RABBITIZER_REG_COP2_9,
+    /* 10 */ RABBITIZER_REG_COP2_10,
+    /* 11 */ RABBITIZER_REG_COP2_11,
+    /* 12 */ RABBITIZER_REG_COP2_12,
+    /* 13 */ RABBITIZER_REG_COP2_13,
+    /* 14 */ RABBITIZER_REG_COP2_14,
+    /* 15 */ RABBITIZER_REG_COP2_15,
+    /* 16 */ RABBITIZER_REG_COP2_16,
+    /* 17 */ RABBITIZER_REG_COP2_17,
+    /* 18 */ RABBITIZER_REG_COP2_18,
+    /* 19 */ RABBITIZER_REG_COP2_19,
+    /* 20 */ RABBITIZER_REG_COP2_20,
+    /* 21 */ RABBITIZER_REG_COP2_21,
+    /* 22 */ RABBITIZER_REG_COP2_22,
+    /* 23 */ RABBITIZER_REG_COP2_23,
+    /* 24 */ RABBITIZER_REG_COP2_24,
+    /* 25 */ RABBITIZER_REG_COP2_25,
+    /* 26 */ RABBITIZER_REG_COP2_26,
+    /* 27 */ RABBITIZER_REG_COP2_27,
+    /* 28 */ RABBITIZER_REG_COP2_28,
+    /* 29 */ RABBITIZER_REG_COP2_29,
+    /* 30 */ RABBITIZER_REG_COP2_30,
+    /* 31 */ RABBITIZER_REG_COP2_31,
+} RabbitizerRegister_Cop2;
+
 typedef enum RabbitizerRegister_RspGpr {
     /*  0 */ RABBITIZER_REG_RSP_GPR_zero,
     /*  1 */ RABBITIZER_REG_RSP_GPR_1,
@@ -353,6 +388,7 @@ extern const char *RabbitizerRegister_Cop0_Names[];
 extern const char *RabbitizerRegister_Cop1O32_Names[];
 extern const char *RabbitizerRegister_Cop1N32_Names[];
 extern const char *RabbitizerRegister_Cop1N64_Names[];
+extern const char *RabbitizerRegister_Cop2_Names[];
 extern const char *RabbitizerRegister_RspGpr_Names[];
 extern const char *RabbitizerRegister_RspCop0_Names[];
 extern const char *RabbitizerRegister_RspVector_Names[];

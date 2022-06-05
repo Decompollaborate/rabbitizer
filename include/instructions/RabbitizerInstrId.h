@@ -25,5 +25,6 @@ typedef enum RabbitizerInstrId {
 
 
 extern const char *RabbitizerInstrId_Names[];
+extern const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[];
 
 #endif

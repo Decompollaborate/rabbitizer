@@ -225,6 +225,41 @@ const char *RabbitizerRegister_Cop1N64_Names[] = {
     RABBITIZER_DEF_REG(COP1_N64, fs7),
 };
 
+const char *RabbitizerRegister_Cop2_Names[] = {
+    RABBITIZER_DEF_REG(COP2, 0),
+    RABBITIZER_DEF_REG(COP2, 1),
+    RABBITIZER_DEF_REG(COP2, 2),
+    RABBITIZER_DEF_REG(COP2, 3),
+    RABBITIZER_DEF_REG(COP2, 4),
+    RABBITIZER_DEF_REG(COP2, 5),
+    RABBITIZER_DEF_REG(COP2, 6),
+    RABBITIZER_DEF_REG(COP2, 7),
+    RABBITIZER_DEF_REG(COP2, 8),
+    RABBITIZER_DEF_REG(COP2, 9),
+    RABBITIZER_DEF_REG(COP2, 10),
+    RABBITIZER_DEF_REG(COP2, 11),
+    RABBITIZER_DEF_REG(COP2, 12),
+    RABBITIZER_DEF_REG(COP2, 13),
+    RABBITIZER_DEF_REG(COP2, 14),
+    RABBITIZER_DEF_REG(COP2, 15),
+    RABBITIZER_DEF_REG(COP2, 16),
+    RABBITIZER_DEF_REG(COP2, 17),
+    RABBITIZER_DEF_REG(COP2, 18),
+    RABBITIZER_DEF_REG(COP2, 19),
+    RABBITIZER_DEF_REG(COP2, 20),
+    RABBITIZER_DEF_REG(COP2, 21),
+    RABBITIZER_DEF_REG(COP2, 22),
+    RABBITIZER_DEF_REG(COP2, 23),
+    RABBITIZER_DEF_REG(COP2, 24),
+    RABBITIZER_DEF_REG(COP2, 25),
+    RABBITIZER_DEF_REG(COP2, 26),
+    RABBITIZER_DEF_REG(COP2, 27),
+    RABBITIZER_DEF_REG(COP2, 28),
+    RABBITIZER_DEF_REG(COP2, 29),
+    RABBITIZER_DEF_REG(COP2, 30),
+    RABBITIZER_DEF_REG(COP2, 31),
+};
+
 const char *RabbitizerRegister_RspGpr_Names[] = {
     RABBITIZER_DEF_REG(RSP_GPR, zero),
     RABBITIZER_DEF_REG(RSP_GPR, 1),
@@ -331,7 +366,8 @@ const char *RabbitizerRegister_GetNameCop1(uint8_t regValue) {
 }
 
 const char *RabbitizerRegister_GetNameCop2(uint8_t regValue) {
-    assert(!"TODO!");
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop2_Names));
+    return RabbitizerRegister_Cop2_Names[regValue];
 }
 
 const char *RabbitizerRegister_GetNameRspGpr(uint8_t regValue) {

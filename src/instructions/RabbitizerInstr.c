@@ -108,6 +108,12 @@ bool RabbitizerInstr_IsLikelyHandwritten(const RabbitizerInstr *self) {
         }
     }
 
+    for (size_t i = 0; RabbitizerInstrId_NotEmitedByCompilers[i] != 0; i++) {
+        if (self->uniqueId == RabbitizerInstrId_NotEmitedByCompilers[i]) {
+            return true;
+        }
+    }
+
     return false;
 }
 
@@ -129,7 +135,7 @@ bool RabbitizerInstr_IsUnconditionalBranch(const RabbitizerInstr *self) {
         return true;
     }
 
-    if (/* InstructionConfig.TREAT_J_AS_UNCONDITIONAL_BRANCH && */ self->uniqueId == RABBITIZER_INSTR_CPU_ID_j) {
+    if (/* InstructionConfig.TREAT_J_AS_UNCONDITIONAL_BRANCH && */ false && self->uniqueId == RABBITIZER_INSTR_CPU_ID_j) {
         return true;
     }
 

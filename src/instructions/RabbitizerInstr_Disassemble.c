@@ -351,7 +351,6 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst,
 
 
 bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
-    return false;
     if (/*InstructionConfig.SN64_DIV_FIX*/ false) {
         if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_break) {
             return true;
@@ -397,7 +396,7 @@ bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
                 }
             }
             if (!hasRd) {
-                if (self->rd != 0) {
+                if (self->rd != 0 && self->uniqueId != RABBITIZER_INSTR_CPU_ID_jalr) {
                     return true;
                 }
             }
