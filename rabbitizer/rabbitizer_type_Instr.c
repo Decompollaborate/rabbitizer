@@ -8,45 +8,15 @@
 
 typedef struct PyRabbitizerInstr {
     PyObject_HEAD
-    //PyObject *first; /* first name */
-    //PyObject *last;  /* last name */
-    //int number;
     RabbitizerInstr instr;
 } PyRabbitizerInstr;
 
-static void
-Instr_dealloc(PyRabbitizerInstr *self)
-{
+static void Instr_dealloc(PyRabbitizerInstr *self) {
     RabbitizerInstr_Destroy(&self->instr);
     Py_TYPE(self)->tp_free((PyObject *) self);
 }
 
-#if 0
-static PyObject *
-Instr_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
-{
-    PyRabbitizerInstr *self;
-    self = (PyRabbitizerInstr *) type->tp_alloc(type, 0);
-    if (self != NULL) {
-        self->first = PyUnicode_FromString("");
-        if (self->first == NULL) {
-            Py_DECREF(self);
-            return NULL;
-        }
-        self->last = PyUnicode_FromString("");
-        if (self->last == NULL) {
-            Py_DECREF(self);
-            return NULL;
-        }
-        self->number = 0;
-    }
-    return (PyObject *) self;
-}
-#endif
-
-static int
-Instr_init(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
-{
+static int Instr_init(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = {"word", NULL};
     uint32_t word;
 
@@ -61,93 +31,25 @@ Instr_init(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
 }
 
 static PyMemberDef Instr_members[] = {
-    {"vram", T_UINT, offsetof(PyRabbitizerInstr, instr.vram), 0,
-     "vram description"},
+    {"vram", T_UINT, offsetof(PyRabbitizerInstr, instr.vram), 0, "vram description"},
     {NULL}  /* Sentinel */
 };
 
-#if 0
-static PyObject *
-Instr_getfirst(PyRabbitizerInstr *self, void *closure)
-{
-    Py_INCREF(self->first);
-    return self->first;
+static PyObject *Instr_get_uniqueId(PyRabbitizerInstr *self, void *closure) {
+    return Py_BuildValue("i", self->instr.uniqueId);
 }
-
-static int
-Instr_setfirst(PyRabbitizerInstr *self, PyObject *value, void *closure)
-{
-    PyObject *tmp;
-    if (value == NULL) {
-        PyErr_SetString(PyExc_TypeError, "Cannot delete the first attribute");
-        return -1;
-    }
-    if (!PyUnicode_Check(value)) {
-        PyErr_SetString(PyExc_TypeError,
-                        "The first attribute value must be a string");
-        return -1;
-    }
-    tmp = self->first;
-    Py_INCREF(value);
-    self->first = value;
-    Py_DECREF(tmp);
-    return 0;
-}
-
-static PyObject *
-Instr_getlast(PyRabbitizerInstr *self, void *closure)
-{
-    Py_INCREF(self->last);
-    return self->last;
-}
-
-static int
-Instr_setlast(PyRabbitizerInstr *self, PyObject *value, void *closure)
-{
-    PyObject *tmp;
-    if (value == NULL) {
-        PyErr_SetString(PyExc_TypeError, "Cannot delete the last attribute");
-        return -1;
-    }
-    if (!PyUnicode_Check(value)) {
-        PyErr_SetString(PyExc_TypeError,
-                        "The last attribute value must be a string");
-        return -1;
-    }
-    tmp = self->last;
-    Py_INCREF(value);
-    self->last = value;
-    Py_DECREF(tmp);
-    return 0;
-}
-#endif
 
 static PyGetSetDef Instr_getsetters[] = {
-#if 0
-    {"first", (getter) Instr_getfirst, (setter) Instr_setfirst,
-     "first name", NULL},
-    {"last", (getter) Instr_getlast, (setter) Instr_setlast,
-     "last name", NULL},
-#endif
+    {"uniqueId", (getter) Instr_get_uniqueId, (setter) NULL, "", NULL},
     {NULL}  /* Sentinel */
 };
 
-#if 0
-static PyObject *
-Instr_name(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored))
-{
-    return PyUnicode_FromFormat("%S %S", self->first, self->last);
-}
-#endif
 
-
-static PyObject *
-Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
-{
+static PyObject *Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = {"immOverride", "extraLJust", NULL};
     const char *immOverride = NULL;
     size_t immOverrideLength = 0;
-    int extraLJust;
+    int extraLJust = 0;
     size_t bufferSize;
     char *buffer;
     PyObject *ret;
@@ -175,11 +77,6 @@ Instr_Disassemble(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds)
 }
 
 static PyMethodDef Instr_methods[] = {
-#if 0
-    {"name", (PyCFunction) Instr_name, METH_NOARGS,
-     "Return the name, combining the first and last name"
-    },
-#endif
     {"disassemble", (PyCFunction) Instr_Disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
     {NULL}  /* Sentinel */
 };
