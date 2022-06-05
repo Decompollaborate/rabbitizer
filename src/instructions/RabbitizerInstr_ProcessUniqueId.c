@@ -3,6 +3,8 @@
 
 #include "instructions/RabbitizerInstr.h"
 
+#include "common/RabbitizerConfig.h"
+
 
 void RabbitizerInstr_ProcessUniqueId_Normal(RabbitizerInstr *self) {
     switch (self->opcode) {
@@ -185,20 +187,20 @@ void RabbitizerInstr_ProcessUniqueId_Normal(RabbitizerInstr *self) {
             break;
     }
 
-    /*if (InstructionConfig.PSEUDO_INSTRUCTIONS) */ {
+    if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
         if (self->rt == 0) {
             if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_beq) {
                 if (self->rs == 0) {
-                    /* if (InstructionConfig.PSEUDO_B) */ {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoB) {
                         self->uniqueId = RABBITIZER_INSTR_CPU_ID_b;
                     }
                 } else {
-                    /*if (InstructionConfig.PSEUDO_BEQZ) */ {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoBeqz) {
                         self->uniqueId = RABBITIZER_INSTR_CPU_ID_beqz;
                     }
                 }
             } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_bne) {
-                /* if InstructionConfig.PSEUDO_BNEZ */ {
+                if (RabbitizerConfig_Cfg.pseudos.pseudoBnez) {
                     self->uniqueId = RABBITIZER_INSTR_CPU_ID_bnez;
                 }
             }
@@ -399,20 +401,20 @@ void RabbitizerInstr_ProcessUniqueId_Special(RabbitizerInstr *self) {
     if (RabbitizerInstr_IsNop(self)) {
         // NOP is special enough
         self->uniqueId = RABBITIZER_INSTR_CPU_ID_nop;
-    } else /*if (InstructionConfig.PSEUDO_INSTRUCTIONS)*/ {
+    } else if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
         if (self->rt == 0) {
             if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_or) {
-                /*if (InstructionConfig.PSEUDO_MOVE)*/ {
+                if (RabbitizerConfig_Cfg.pseudos.pseudoMove) {
                     self->uniqueId = RABBITIZER_INSTR_CPU_ID_move;
                 }
             } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_nor) {
-                /*if (InstructionConfig.PSEUDO_NOT)*/ {
+                if (RabbitizerConfig_Cfg.pseudos.pseudoNot) {
                     self->uniqueId = RABBITIZER_INSTR_CPU_ID_not;
                 }
             }
         } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_subu) {
             if (self->rs == 0) {
-                /*if (InstructionConfig.PSEUDO_NEGU)*/ {
+                if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {
                     self->uniqueId = RABBITIZER_INSTR_CPU_ID_negu;
                 }
             }
@@ -427,11 +429,11 @@ void RabbitizerInstr_ProcessUniqueId_Special(RabbitizerInstr *self) {
             self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_CPU_ID_jalr_rd];
         }
     } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_div) {
-        if (/*InstructionConfig.SN64_DIV_FIX */ false && !self->inHandwrittenFunction) {
+        if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
             self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_CPU_ID_sn64_div];
         }
     } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_divu) {
-        if (/*InstructionConfig.SN64_DIV_FIX */ false && !self->inHandwrittenFunction) {
+        if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
             self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_CPU_ID_sn64_divu];
         }
     }

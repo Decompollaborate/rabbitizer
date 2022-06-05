@@ -7,7 +7,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <common/Utils.h>
+#include "common/Utils.h"
+#include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
 
@@ -277,7 +278,7 @@ size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char 
         return totalSize;
     }
 
-    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ extraLJust - totalSize, ' ');
+    len = RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' ');
     dst += len;
     totalSize += len;
 
@@ -320,7 +321,7 @@ size_t RabbitizerInstr_GetSizeForBufferDataDisasm(const RabbitizerInstr *self, i
     size_t totalSize = 0;
 
     totalSize += strlen(".word");
-    totalSize += /*InstructionConfig.OPCODE_LJUST +*/ extraLJust;
+    totalSize += RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust;
     totalSize += 11;
 
     return totalSize;
@@ -337,7 +338,7 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst,
     dst += tempSize;
     totalSize += tempSize;
 
-    len = RabbitizerUtils_CharFill(dst, /*InstructionConfig.OPCODE_LJUST +*/ extraLJust - totalSize, ' ');
+    len = RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' ');
     dst += len;
     totalSize += len;
 
@@ -351,7 +352,7 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst,
 
 
 bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
-    if (/*InstructionConfig.SN64_DIV_FIX*/ false) {
+    if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix) {
         if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_break) {
             return true;
         }
@@ -418,7 +419,7 @@ size_t RabbitizerInstr_GetSizeForBuffer(const RabbitizerInstr *self, size_t immO
 
         totalSize += RabbitizerInstr_GetSizeForBufferDataDisasm(self, extraLJust);
 
-        /* if (InstructionConfig.UNKNOWN_INSTR_COMMENT) */ {
+        if (RabbitizerConfig_Cfg.misc.unknownInstrComment) {
             totalSize += 40;
             totalSize += 3;
             totalSize += RabbitizerInstr_GetSizeForBufferInstrDisasm(self, immOverrideLength, extraLJust);
@@ -442,7 +443,7 @@ size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const
         dst += tempSize;
         totalSize += tempSize;
 
-        /* if (InstructionConfig.UNKNOWN_INSTR_COMMENT) */ {
+        if (RabbitizerConfig_Cfg.misc.unknownInstrComment) {
             tempSize = RabbitizerUtils_CharFill(dst, 40-totalSize, ' ');
             dst += tempSize;
             totalSize += tempSize;

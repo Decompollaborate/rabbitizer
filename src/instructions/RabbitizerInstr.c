@@ -4,6 +4,7 @@
 #include "instructions/RabbitizerInstr.h"
 
 #include "common/Utils.h"
+#include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
 
@@ -130,15 +131,12 @@ bool RabbitizerInstr_IsUnconditionalBranch(const RabbitizerInstr *self) {
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_b) {
         return true;
     }
-
     if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_beq && self->rt == 0 && self->rs == 0) {
         return true;
     }
-
-    if (/* InstructionConfig.TREAT_J_AS_UNCONDITIONAL_BRANCH && */ false && self->uniqueId == RABBITIZER_INSTR_CPU_ID_j) {
+    if (RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch && self->uniqueId == RABBITIZER_INSTR_CPU_ID_j) {
         return true;
     }
-
     return false;
 }
 

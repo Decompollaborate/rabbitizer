@@ -16,7 +16,7 @@ setup(
             ["rabbitizer/rabbitizer_module.c", "rabbitizer/rabbitizer_type_Instr.c", "rabbitizer/rabbitizer_submodule_instr_id.c",
             "src/instructions/RabbitizerInstr_Disassemble.c", "src/instructions/RabbitizerInstr_ProcessUniqueId.c", "src/instructions/RabbitizerInstr.c", 
             "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c",
-            "src/common/Utils.c"],
+            "src/common/Utils.c", "src/common/RabbitizerConfig.c"],
             include_dirs=['include']
         ),
     ],
