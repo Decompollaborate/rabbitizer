@@ -23,7 +23,7 @@ static PyObject *instr_id__cpu_get_value(PyObject *self, void *closure) {
 
 
 static PyGetSetDef instr_id__cpu_getsetters[] = {
-    #include "instructions/RabbitizerInstrId_cpu.inc"
+    #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
     {NULL}  /* Sentinel */
 };
 

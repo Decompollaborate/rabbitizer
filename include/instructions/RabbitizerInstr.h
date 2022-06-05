@@ -40,11 +40,17 @@ void RabbitizerInstr_ProcessUniqueId_Coprocessor1(RabbitizerInstr *self);
 void RabbitizerInstr_ProcessUniqueId_Coprocessor2(RabbitizerInstr *self);
 void RabbitizerInstr_ProcessUniqueId(RabbitizerInstr *self);
 
-const char *RabbitizerInstr_GetOpcodeName(const RabbitizerInstr *self);
+
+/* Register getters */
 
 uint8_t RabbitizerInstr_GetFs(const RabbitizerInstr* self);
 uint8_t RabbitizerInstr_GetFt(const RabbitizerInstr* self);
 uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr* self);
+
+/* Register getters */
+
+
+/* Coprocessor stuffs */
 
 uint8_t RabbitizerInstr_GetFmt(const RabbitizerInstr *self);
 
@@ -53,6 +59,11 @@ uint8_t RabbitizerInstr_GetNd(const RabbitizerInstr *self);
 uint8_t RabbitizerInstr_GetFc(const RabbitizerInstr *self);
 uint8_t RabbitizerInstr_GetCond(const RabbitizerInstr *self);
 
+/* Coprocessor stuffs */
+
+
+/* General getters */
+
 uint32_t RabbitizerInstr_GetRaw(const RabbitizerInstr *self);
 
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self);
@@ -60,6 +71,11 @@ uint32_t RabbitizerInstr_GetInstrIndex(const RabbitizerInstr *self);
 uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self);
 
 int32_t RabbitizerInstr_GetBranchOffset(const RabbitizerInstr *self);
+
+/* General getters */
+
+
+/* Instruction examination */
 
 bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self);
 bool RabbitizerInstr_IsLikelyHandwritten(const RabbitizerInstr *self);
@@ -70,6 +86,10 @@ bool RabbitizerInstr_IsJrNotRa(const RabbitizerInstr *self);
 
 const char *RabbitizerInstr_MaprInstrToType(const RabbitizerInstr *self);
 
+/* Instruction examination */
+
+
+/* Disassembly */
 
 size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, size_t immOverrideLength, int extraLJust);
 size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);
@@ -79,5 +99,7 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst,
 
 size_t RabbitizerInstr_GetSizeForBuffer(const RabbitizerInstr *self, size_t immOverrideLength, int extraLJust);
 size_t RabbitizerInstr_Disassemble(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);
+
+/* Disassembly */
 
 #endif

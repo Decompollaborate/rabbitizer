@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
     RABBITIZER_DEF_INSTR_ID(CPU_ID, INVALID, .operands={RABBITIZER_REGISTER_TYPE_rs, RABBITIZER_REGISTER_TYPE_rt, RABBITIZER_REGISTER_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),
 
     // OP rs

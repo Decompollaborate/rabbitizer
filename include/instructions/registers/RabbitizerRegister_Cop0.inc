@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
     RABBITIZER_DEF_REG_NODOLLAR(COP0, Index,       0),
     RABBITIZER_DEF_REG_NODOLLAR(COP0, Random,      1),
     RABBITIZER_DEF_REG_NODOLLAR(COP0, EntryLo0,    2),

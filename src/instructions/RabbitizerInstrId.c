@@ -3,7 +3,9 @@
 
 #include "instructions/RabbitizerInstrId.h"
 
-#include "instructions/RabbitizerInstr.h"
+#include <assert.h>
+
+//#include "instructions/RabbitizerInstr.h"
 
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
@@ -14,12 +16,13 @@
 
 
 const char *RabbitizerInstrId_Names[] = {
-    #include "instructions/RabbitizerInstrId_cpu.inc"
-    #include "instructions/RabbitizerInstrId_rsp.inc"
+    #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
+    #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
 };
 
 #undef RABBITIZER_DEF_INSTR_ID
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+
 
 const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[] = {
     RABBITIZER_INSTR_CPU_ID_add,
@@ -34,6 +37,11 @@ const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[] = {
     0,
 };
 
-const char *RabbitizerInstr_GetOpcodeName(const RabbitizerInstr *self) {
-    return RabbitizerInstrId_Names[self->uniqueId];
+
+const char *RabbitizerInstrId_GetOpcodeName(RabbitizerInstrId uniqueId) {
+    assert(uniqueId >= RABBITIZER_INSTR_CPU_ID_INVALID && uniqueId < RABBITIZER_INSTR_ID_MAX);
+    assert(uniqueId != RABBITIZER_INSTR_CPU_ID_MAX);
+    assert(uniqueId != RABBITIZER_INSTR_RSP_ID_MAX);
+
+    return RabbitizerInstrId_Names[uniqueId];
 }

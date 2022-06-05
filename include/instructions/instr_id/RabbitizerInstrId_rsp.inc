@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
     // RSP instructions
     RABBITIZER_DEF_INSTR_ID(RSP_ID, INVALID, ),
 

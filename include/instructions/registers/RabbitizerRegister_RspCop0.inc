@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
     RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_MEM_ADDR,   0),
     RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_DRAM_ADDR,  1),
     RABBITIZER_DEF_REG_NODOLLAR(RSP_COP0, SP_RD_LEN,     2),

@@ -14,8 +14,8 @@
 
 
 const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
-    #include "instructions/RabbitizerInstrId_cpu.inc"
-    #include "instructions/RabbitizerInstrId_rsp.inc"
+    #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
+    #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
 };
 
 #undef RABBITIZER_DEF_INSTR_ID

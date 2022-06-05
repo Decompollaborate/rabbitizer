@@ -245,7 +245,7 @@ size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, 
     size_t totalSize = 0;
     size_t opcodeNameLength;
 
-    opcodeNameLength = strlen(RabbitizerInstr_GetOpcodeName(self));
+    opcodeNameLength = strlen(RabbitizerInstrId_GetOpcodeName(self->uniqueId));
 
     totalSize += opcodeNameLength;
 
@@ -277,7 +277,7 @@ size_t RabbitizerInstr_DisassembleInstruction(const RabbitizerInstr *self, char 
     size_t opcodeNameLength;
     size_t len;
 
-    opcodeName = RabbitizerInstr_GetOpcodeName(self);
+    opcodeName = RabbitizerInstrId_GetOpcodeName(self->uniqueId);
     opcodeNameLength = strlen(opcodeName);
 
     memcpy(dst, opcodeName, opcodeNameLength);

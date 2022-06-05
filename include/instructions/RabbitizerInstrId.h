@@ -13,11 +13,13 @@
     RABBITIZER_INSTR_##prefix##_##name
 
 typedef enum RabbitizerInstrId {
-    #include "instructions/RabbitizerInstrId_cpu.inc"
+    #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
     RABBITIZER_DEF_INSTR_ID(CPU_ID, MAX),
 
-    #include "instructions/RabbitizerInstrId_rsp.inc"
+    #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
     RABBITIZER_DEF_INSTR_ID(RSP_ID, MAX),
+
+    RABBITIZER_DEF_INSTR_ID(ID, MAX) = RABBITIZER_DEF_INSTR_ID(RSP_ID, MAX),
 } RabbitizerInstrId;
 
 #undef RABBITIZER_DEF_INSTR_ID
@@ -26,5 +28,8 @@ typedef enum RabbitizerInstrId {
 
 extern const char *RabbitizerInstrId_Names[];
 extern const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[];
+
+
+const char *RabbitizerInstrId_GetOpcodeName(RabbitizerInstrId uniqueId);
 
 #endif

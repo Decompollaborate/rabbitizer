@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
     RABBITIZER_DEF_REG(COP1_CONTROL,      0,  0),
     RABBITIZER_DEF_REG(COP1_CONTROL,      1,  1),
     RABBITIZER_DEF_REG(COP1_CONTROL,      2,  2),

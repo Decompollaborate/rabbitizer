@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
     RABBITIZER_DEF_REG(RSP_VECTOR, v0,   0),
     RABBITIZER_DEF_REG(RSP_VECTOR, v1,   1),
     RABBITIZER_DEF_REG(RSP_VECTOR, v2,   2),

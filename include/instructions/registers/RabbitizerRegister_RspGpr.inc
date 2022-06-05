@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
     RABBITIZER_DEF_REG(RSP_GPR, zero,  0),
     RABBITIZER_DEF_REG(RSP_GPR,    1,  1),
     RABBITIZER_DEF_REG(RSP_GPR,    2,  2),
