@@ -29,12 +29,12 @@ typedef struct ModuleAttribute {
 
 #define MODULE_ATTRIBUTE_TYPE(name)   { {.type   = &rabbitizer_type_##name##_TypeObject},   MODULE_ATTRIBUTE_CAT_TYPE,   #name, false, NULL }
 #define MODULE_ATTRIBUTE_INIT(name)   { {.init   = rabbitizer_submodule_##name##_Init},     MODULE_ATTRIBUTE_CAT_INIT,   #name, false, NULL }
-#define MODULE_ATTRIBUTE_GLBOAL(name) { {.global = &rabbitizer_global_##name##_TypeObject}, MODULE_ATTRIBUTE_CAT_GLOBAL, #name, false, NULL }
+#define MODULE_ATTRIBUTE_GLOBAL(name) { {.global = &rabbitizer_global_##name##_TypeObject}, MODULE_ATTRIBUTE_CAT_GLOBAL, #name, false, NULL }
 
 static ModuleAttributes rabbitizer_module_attributes[] = {
+    MODULE_ATTRIBUTE_GLOBAL(config),
+    MODULE_ATTRIBUTE_GLOBAL(instr_id),
     MODULE_ATTRIBUTE_TYPE(Instr),
-    MODULE_ATTRIBUTE_INIT(instr_id),
-    MODULE_ATTRIBUTE_GLBOAL(config),
 };
 
 static int rabbitizer_module_attributes_Ready(void) {
