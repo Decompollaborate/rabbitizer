@@ -403,7 +403,7 @@ size_t RabbitizerInstr_disassembleAsData(const RabbitizerInstr *self, char *dst,
 
 bool RabbitizerInstr_mustDisasmAsData(const RabbitizerInstr *self) {
     if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix) {
-        if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_break) {
+        if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_break) {
             return true;
         }
     }
@@ -447,7 +447,7 @@ bool RabbitizerInstr_mustDisasmAsData(const RabbitizerInstr *self) {
                 }
             }
             if (!hasRd) {
-                if (self->rd != 0 && self->uniqueId != RABBITIZER_INSTR_CPU_ID_jalr) {
+                if (self->rd != 0 && self->uniqueId != RABBITIZER_INSTR_ID_cpu_jalr) {
                     return true;
                 }
             }

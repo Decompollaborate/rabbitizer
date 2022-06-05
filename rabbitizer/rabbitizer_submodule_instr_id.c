@@ -17,10 +17,10 @@ static PyObject *instr_id__cpu_get_value(PyObject *self, void *closure) {
 }
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
-    {#name, (getter) instr_id__cpu_get_value, (setter) NULL, "", (void*)RABBITIZER_INSTR_##prefix##_##name}
+    {#name, (getter) instr_id__cpu_get_value, (setter) NULL, "", (void*)RABBITIZER_INSTR_ID_##prefix##_##name}
 
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...) \
-    {#name, (getter) instr_id__cpu_get_value, (setter) NULL, "", (void*)RABBITIZER_INSTR_##prefix##_##name}
+    {#name, (getter) instr_id__cpu_get_value, (setter) NULL, "", (void*)RABBITIZER_INSTR_ID_##prefix##_##name}
 
 
 static PyGetSetDef instr_id__cpu_getsetters[] = {

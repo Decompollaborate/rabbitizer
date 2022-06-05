@@ -9,10 +9,10 @@
 
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
-    [RABBITIZER_INSTR_##prefix##_##name] = #name
+    [RABBITIZER_INSTR_ID_##prefix##_##name] = #name
 
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...) \
-    [RABBITIZER_INSTR_##prefix##_##name] = #altname
+    [RABBITIZER_INSTR_ID_##prefix##_##name] = #altname
 
 
 const char *RabbitizerInstrId_Names[] = {
@@ -25,23 +25,23 @@ const char *RabbitizerInstrId_Names[] = {
 
 
 const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[] = {
-    RABBITIZER_INSTR_CPU_ID_add,
-    RABBITIZER_INSTR_CPU_ID_addi,
-    RABBITIZER_INSTR_CPU_ID_mtc0,
-    RABBITIZER_INSTR_CPU_ID_mfc0,
-    RABBITIZER_INSTR_CPU_ID_eret,
-    RABBITIZER_INSTR_CPU_ID_tlbp,
-    RABBITIZER_INSTR_CPU_ID_tlbr,
-    RABBITIZER_INSTR_CPU_ID_tlbwi,
-    RABBITIZER_INSTR_CPU_ID_cache,
+    RABBITIZER_INSTR_ID_cpu_add,
+    RABBITIZER_INSTR_ID_cpu_addi,
+    RABBITIZER_INSTR_ID_cpu_mtc0,
+    RABBITIZER_INSTR_ID_cpu_mfc0,
+    RABBITIZER_INSTR_ID_cpu_eret,
+    RABBITIZER_INSTR_ID_cpu_tlbp,
+    RABBITIZER_INSTR_ID_cpu_tlbr,
+    RABBITIZER_INSTR_ID_cpu_tlbwi,
+    RABBITIZER_INSTR_ID_cpu_cache,
     0,
 };
 
 
 const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId) {
-    assert(uniqueId >= RABBITIZER_INSTR_CPU_ID_INVALID && uniqueId < RABBITIZER_INSTR_ID_MAX);
-    assert(uniqueId != RABBITIZER_INSTR_CPU_ID_MAX);
-    assert(uniqueId != RABBITIZER_INSTR_RSP_ID_MAX);
+    assert(uniqueId >= RABBITIZER_INSTR_ID_cpu_INVALID && uniqueId < RABBITIZER_INSTR_ID_ALL_MAX);
+    assert(uniqueId != RABBITIZER_INSTR_ID_cpu_MAX);
+    assert(uniqueId != RABBITIZER_INSTR_ID_rsp_MAX);
 
     return RabbitizerInstrId_Names[uniqueId];
 }

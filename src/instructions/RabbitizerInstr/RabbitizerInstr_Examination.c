@@ -10,10 +10,10 @@
 /* Instruction examination */
 
 bool RabbitizerInstr_isImplemented(const RabbitizerInstr *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_INVALID) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_INVALID) {
         return false;
     }
-    if (self->uniqueId == RABBITIZER_INSTR_RSP_ID_INVALID) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_INVALID) {
         return false;
     }
     return true;
@@ -52,20 +52,20 @@ bool RabbitizerInstr_isNop(const RabbitizerInstr *self) {
 }
 
 bool RabbitizerInstr_isUnconditionalBranch(const RabbitizerInstr *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_b) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_b) {
         return true;
     }
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_beq && self->rt == 0 && self->rs == 0) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_beq && self->rt == 0 && self->rs == 0) {
         return true;
     }
-    if (RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch && self->uniqueId == RABBITIZER_INSTR_CPU_ID_j) {
+    if (RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch && self->uniqueId == RABBITIZER_INSTR_ID_cpu_j) {
         return true;
     }
     return false;
 }
 
 bool RabbitizerInstr_isJrRa(const RabbitizerInstr *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_jr) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jr) {
         // TODO: abi stuffs
         return self->rs == RABBITIZER_REG_GPR_O32_ra;
     }
@@ -73,7 +73,7 @@ bool RabbitizerInstr_isJrRa(const RabbitizerInstr *self) {
 }
 
 bool RabbitizerInstr_isJrNotRa(const RabbitizerInstr *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_jr) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jr) {
         // TODO: abi stuffs
         return self->rs != RABBITIZER_REG_GPR_O32_ra;
     }
@@ -88,22 +88,22 @@ const char *RabbitizerInstr_mapInstrToType(const RabbitizerInstr *self) {
     if (RabbitizerInstrDescriptor_isFloat(self->descriptor)) {
         return "f32";
     }
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lwu) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_lwu) {
         return "u32";
     }
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lh || self->uniqueId == RABBITIZER_INSTR_CPU_ID_sh) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_lh || self->uniqueId == RABBITIZER_INSTR_ID_cpu_sh) {
         return "s16";
     }
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lhu) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_lhu) {
         return "u16";
     }
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lb || self->uniqueId == RABBITIZER_INSTR_CPU_ID_sb) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_lb || self->uniqueId == RABBITIZER_INSTR_ID_cpu_sb) {
         return "s8";
     }
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_lbu) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_lbu) {
         return "u8";
     }
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_ld || self->uniqueId == RABBITIZER_INSTR_CPU_ID_sd) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_ld || self->uniqueId == RABBITIZER_INSTR_ID_cpu_sd) {
         return "s64";
     }
     return NULL;

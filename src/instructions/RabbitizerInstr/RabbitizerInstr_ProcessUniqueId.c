@@ -11,47 +11,47 @@ void RabbitizerInstr_processUniqueId_Normal(RabbitizerInstr *self) {
         // 0b000000: "SPECIAL",
         // 0b000001: "REGIMM",
         case 0b000010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_j;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_j;
             break;
         case 0b000011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_jal;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_jal;
             break;
         case 0b000100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_beq;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_beq;
             break;
         case 0b000101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bne;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bne;
             break;
         case 0b000110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_blez;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_blez;
             break;
         case 0b000111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bgtz;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgtz;
             break;
 
         case 0b001000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_addi;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_addi;
             break;
         case 0b001001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_addiu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_addiu;
             break;
         case 0b001010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_slti;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_slti;
             break;
         case 0b001011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sltiu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sltiu;
             break;
         case 0b001100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_andi;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_andi;
             break;
         case 0b001101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ori;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ori;
             break;
         case 0b001110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_xori;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_xori;
             break;
         case 0b001111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lui;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lui;
             break;
 
         // 0b010000: "COP0", // Coprocessor OPeration z
@@ -59,149 +59,149 @@ void RabbitizerInstr_processUniqueId_Normal(RabbitizerInstr *self) {
         // 0b010010: "COP2", // Coprocessor OPeration z
         // 0b010011: "COP3", // Coprocessor OPeration z
         case 0b010100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_beql;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_beql;
             break;
         case 0b010101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bnel;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bnel;
             break;
         case 0b010110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_blezl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_blezl;
             break;
         case 0b010111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bgtzl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgtzl;
 
             break;
         case 0b011000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_daddi;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_daddi;
             break;
         case 0b011001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_daddiu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_daddiu;
             break;
         case 0b011010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ldl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldl;
             break;
         case 0b011011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ldr;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldr;
             break;
 
         case 0b100000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lb;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lb;
             break;
         case 0b100001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lh;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lh;
             break;
         case 0b100010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lwl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwl;
             break;
         case 0b100011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lw;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lw;
             break;
         case 0b100100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lbu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lbu;
             break;
         case 0b100101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lhu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lhu;
             break;
         case 0b100110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lwr;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwr;
             break;
         case 0b100111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lwu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwu;
             break;
 
         case 0b101000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sb;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sb;
             break;
         case 0b101001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sh;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sh;
             break;
         case 0b101010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_swl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swl;
             break;
         case 0b101011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sw;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sw;
             break;
         case 0b101100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sdl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdl;
             break;
         case 0b101101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sdr;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdr;
             break;
         case 0b101110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_swr;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swr;
             break;
         case 0b101111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_cache;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_cache;
             break;
 
         case 0b110000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ll;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ll;
             break;
         case 0b110001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lwc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwc1;
             break;
         case 0b110010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lwc2;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwc2;
             break;
         case 0b110011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_pref;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_pref;
             break;
         case 0b110100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_lld;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lld;
             break;
         case 0b110101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ldc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldc1;
             break;
         case 0b110110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ldc2;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldc2;
             break;
         case 0b110111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ld;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ld;
             break;
 
         case 0b111000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sc;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sc;
             break;
         case 0b111001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_swc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swc1;
             break;
         case 0b111010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_swc2;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swc2;
         // 0b111011: "",
             break;
         case 0b111100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_scd;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_scd;
             break;
         case 0b111101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sdc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdc1;
             break;
         case 0b111110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sdc2;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdc2;
             break;
         case 0b111111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sd;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sd;
             break;
 
         default:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
             break;
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
         if (self->rt == 0) {
-            if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_beq) {
+            if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_beq) {
                 if (self->rs == 0) {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoB) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_b;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_b;
                     }
                 } else {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoBeqz) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_beqz;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_beqz;
                     }
                 }
-            } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_bne) {
+            } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_bne) {
                 if (RabbitizerConfig_Cfg.pseudos.pseudoBnez) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bnez;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bnez;
                 }
             }
         }
@@ -214,208 +214,208 @@ void RabbitizerInstr_processUniqueId_Normal(RabbitizerInstr *self) {
 void RabbitizerInstr_processUniqueId_Special(RabbitizerInstr *self) {
     switch (self->function) {
         case 0b000000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sll;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sll;
             break;
         // 0b000_001: "MOVCI", // TODO
         case 0b000010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_srl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_srl;
             break;
         case 0b000011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sra;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sra;
             break;
         case 0b000100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sllv;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sllv;
             break;
         // 0b000_101: "",
         case 0b000110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_srlv;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_srlv;
             break;
         case 0b000111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_srav;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_srav;
             break;
 
         case 0b001000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_jr;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_jr;
             break;
         case 0b001001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_jalr;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_jalr;
             break;
         case 0b001010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_movz;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_movz;
             break;
         case 0b001011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_movn;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_movn;
             break;
         case 0b001100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_syscall;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_syscall;
             break;
         case 0b001101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_break;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_break;
             break;
         // 0b001_110: "",
         case 0b001111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sync;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sync;
             break;
 
         case 0b010000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mfhi;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mfhi;
             break;
         case 0b010001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mthi;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mthi;
             break;
         case 0b010010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mflo;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mflo;
             break;
         case 0b010011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mtlo;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mtlo;
             break;
         case 0b010100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsllv;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsllv;
             break;
         // 0b010_101: "",
         case 0b010110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsrlv;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsrlv;
             break;
         case 0b010111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsrav;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsrav;
             break;
 
         case 0b011000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mult;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mult;
             break;
         case 0b011001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_multu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_multu;
             break;
         case 0b011010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_div;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_div;
             break;
         case 0b011011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_divu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_divu;
             break;
         case 0b011100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dmult;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dmult;
             break;
         case 0b011101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dmultu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dmultu;
             break;
         case 0b011110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ddiv;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ddiv;
             break;
         case 0b011111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ddivu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ddivu;
             break;
 
         case 0b100000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_add;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_add;
             break;
         case 0b100001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_addu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_addu;
             break;
         case 0b100010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sub;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sub;
             break;
         case 0b100011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_subu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_subu;
             break;
         case 0b100100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_and;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_and;
             break;
         case 0b100101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_or;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_or;
             break;
         case 0b100110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_xor;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_xor;
             break;
         case 0b100111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_nor;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_nor;
             break;
 
         // 0b101_000: "",
         // 0b101_001: "",
         case 0b101010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_slt;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_slt;
             break;
         case 0b101011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_sltu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sltu;
             break;
         case 0b101100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dadd;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dadd;
             break;
         case 0b101101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_daddu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_daddu;
             break;
         case 0b101110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsub;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsub;
             break;
         case 0b101111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsubu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsubu;
             break;
 
         case 0b110000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tge;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tge;
             break;
         case 0b110001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tgeu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tgeu;
             break;
         case 0b110010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tlt;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tlt;
             break;
         case 0b110011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tltu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tltu;
             break;
         case 0b110100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_teq;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_teq;
             break;
         // 0b110_101: "",
         case 0b110110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tne;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tne;
             break;
         // 0b110_111: "",
 
         case 0b111000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsll;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsll;
             break;
         // 0b111_001: "",
         case 0b111010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsrl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsrl;
             break;
         case 0b111011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsra;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsra;
             break;
         case 0b111100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsll32;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsll32;
             break;
         // 0b111_101: "",
         case 0b111110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsrl32;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsrl32;
             break;
         case 0b111111:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dsra32;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsra32;
             break;
 
         default:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
             break;
     }
 
     if (RabbitizerInstr_isNop(self)) {
         // NOP is special enough
-        self->uniqueId = RABBITIZER_INSTR_CPU_ID_nop;
+        self->uniqueId = RABBITIZER_INSTR_ID_cpu_nop;
     } else if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
         if (self->rt == 0) {
-            if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_or) {
+            if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_or) {
                 if (RabbitizerConfig_Cfg.pseudos.pseudoMove) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_move;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_move;
                 }
-            } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_nor) {
+            } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_nor) {
                 if (RabbitizerConfig_Cfg.pseudos.pseudoNot) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_not;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_not;
                 }
             }
-        } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_subu) {
+        } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_subu) {
             if (self->rs == 0) {
                 if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_negu;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_negu;
                 }
             }
         }
@@ -423,18 +423,18 @@ void RabbitizerInstr_processUniqueId_Special(RabbitizerInstr *self) {
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 
-    if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_jalr) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jalr) {
         // $ra
         if (self->rd != 31) {
-            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_CPU_ID_jalr_rd];
+            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
         }
-    } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_div) {
+    } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_div) {
         if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
-            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_CPU_ID_sn64_div];
+            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_div];
         }
-    } else if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_divu) {
+    } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_divu) {
         if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
-            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_CPU_ID_sn64_divu];
+            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_divu];
         }
     }
 }
@@ -443,53 +443,53 @@ void RabbitizerInstr_processUniqueId_Special(RabbitizerInstr *self) {
 void RabbitizerInstr_processUniqueId_Regimm(RabbitizerInstr *self) {
     switch (self->rt) {
         case 0b00000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bltz;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bltz;
             break;
         case 0b00001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bgez;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgez;
             break;
         case 0b00010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bltzl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bltzl;
             break;
         case 0b00011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bgezl;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgezl;
             break;
 
         case 0b01000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tgei;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tgei;
             break;
         case 0b01001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tgeiu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tgeiu;
             break;
         case 0b01010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tlti;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tlti;
             break;
         case 0b01011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tltiu;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tltiu;
             break;
 
         case 0b10000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bltzal;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bltzal;
             break;
         case 0b10001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bgezal;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgezal;
             break;
         case 0b10010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bltzall;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bltzall;
             break;
         case 0b10011:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_bgezall;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgezall;
             break;
 
         case 0b01100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_teqi;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_teqi;
             break;
         case 0b01110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_tnei;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_tnei;
             break;
 
         default:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
             break;
     }
 
@@ -502,38 +502,38 @@ void RabbitizerInstr_processUniqueId_Coprocessor0(RabbitizerInstr *self) {
 
     switch (RabbitizerInstr_getFmt(self)) {
         case 0b00000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mfc0;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mfc0;
             break;
         case 0b00001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dmfc0;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dmfc0;
             break;
         case 0b00010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_cfc0;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_cfc0;
             break;
         // 0b00_011: "",
         case 0b00100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mtc0;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mtc0;
             break;
         case 0b00101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dmtc0;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dmtc0;
             break;
         case 0b00110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ctc0;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ctc0;
             break;
         // 0b00_111: "",
 
         case 0b01000:
             if (RabbitizerInstr_getTf(self)) {
                 if (RabbitizerInstr_getNd(self)) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc0tl;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0tl;
                 } else {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc0t;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0t;
                 }
             } else {
                 if (RabbitizerInstr_getNd(self)) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc0fl;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0fl;
                 } else {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc0f;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0f;
                 }
             }
             break;
@@ -541,23 +541,23 @@ void RabbitizerInstr_processUniqueId_Coprocessor0(RabbitizerInstr *self) {
         default:
             switch (self->function) {
                 case 0b000001:
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_tlbr;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_tlbr;
                     break;
                 case 0b000010:
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_tlbwi;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_tlbwi;
                     break;
                 case 0b000110:
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_tlbwr;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_tlbwr;
                     break;
                 case 0b001000:
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_tlbp;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_tlbp;
                     break;
                 case 0b011000:
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_eret;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_eret;
                     break;
 
                 default:
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
                     break;
             }
             break;
@@ -571,41 +571,41 @@ void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
     uint8_t fmt = RabbitizerInstr_getFmt(self);
     uint8_t fc;
 
-    self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
+    self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
 
     switch (fmt) {
         case 0b00000:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mfc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mfc1;
             break;
         case 0b00001:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dmfc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dmfc1;
             break;
         case 0b00010:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_cfc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_cfc1;
             break;
 
         case 0b00100:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_mtc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_mtc1;
             break;
         case 0b00101:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_dmtc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_dmtc1;
             break;
         case 0b00110:
-            self->uniqueId = RABBITIZER_INSTR_CPU_ID_ctc1;
+            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ctc1;
             break;
 
         case 0b01000: // fmt = BC
             if (RabbitizerInstr_getTf(self)) {
                 if (RabbitizerInstr_getNd(self)) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc1tl;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1tl;
                 } else {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc1t;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1t;
                 }
             } else {
                 if (RabbitizerInstr_getNd(self)) {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc1fl;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1fl;
                 } else {
-                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_bc1f;
+                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1f;
                 }
             }
             break;
@@ -615,117 +615,117 @@ void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
             switch (self->function) {
                 case 0b000000:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_add_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_add_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_add_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_add_d;
                     }
                     break;
                 case 0b000001:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_sub_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_sub_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_sub_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_sub_d;
                     }
                     break;
                 case 0b000010:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_mul_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_mul_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_mul_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_mul_d;
                     }
                     break;
                 case 0b000011:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_div_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_div_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_div_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_div_d;
                     }
                     break;
 
                 case 0b000100:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_sqrt_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_sqrt_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_sqrt_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_sqrt_d;
                     }
                     break;
                 case 0b000101:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_abs_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_abs_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_abs_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_abs_d;
                     }
                     break;
                 case 0b000110:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_mov_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_mov_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_mov_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_mov_d;
                     }
                     break;
                 case 0b000111:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_neg_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_neg_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_neg_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_neg_d;
                     }
                     break;
 
                 case 0b001000:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_round_l_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_round_l_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_round_l_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_round_l_d;
                     }
                     break;
                 case 0b001001:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_trunc_l_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_trunc_l_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_trunc_l_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_trunc_l_d;
                     }
                     break;
                 case 0b001010:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_ceil_l_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_ceil_l_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_ceil_l_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_ceil_l_d;
                     }
                     break;
                 case 0b001011:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_floor_l_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_floor_l_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_floor_l_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_floor_l_d;
                     }
                     break;
 
                 case 0b001100:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_round_w_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_round_w_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_round_w_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_round_w_d;
                     }
                     break;
                 case 0b001101:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_trunc_w_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_trunc_w_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_trunc_w_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_trunc_w_d;
                     }
                     break;
                 case 0b001110:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_ceil_w_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_ceil_w_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_ceil_w_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_ceil_w_d;
                     }
                     break;
                 case 0b001111:
                     if (fmt == 0) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_floor_w_s;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_floor_w_s;
                     } else if (fmt == 1) {
-                        self->uniqueId = RABBITIZER_INSTR_CPU_ID_floor_w_d;
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_floor_w_d;
                     }
                     break;
 
@@ -736,115 +736,115 @@ void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
                         switch (RabbitizerInstr_getCond(self)) {
                             case 0b0000:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_f_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_f_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_f_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_f_d;
                                 }
                                 break;
                             case 0b0001:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_un_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_un_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_un_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_un_d;
                                 }
                                 break;
                             case 0b0010:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_eq_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_eq_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_eq_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_eq_d;
                                 }
                                 break;
                             case 0b0011:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ueq_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ueq_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ueq_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ueq_d;
                                 }
                                 break;
                             case 0b0100:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_olt_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_olt_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_olt_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_olt_d;
                                 }
                                 break;
                             case 0b0101:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ult_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ult_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ult_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ult_d;
                                 }
                                 break;
                             case 0b0110:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ole_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ole_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ole_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ole_d;
                                 }
                                 break;
                             case 0b0111:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ule_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ule_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ule_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ule_d;
                                 }
                                 break;
 
                             case 0b1000:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_sf_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_sf_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_sf_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_sf_d;
                                 }
                                 break;
                             case 0b1001:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ngle_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ngle_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ngle_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ngle_d;
                                 }
                                 break;
                             case 0b1010:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_seq_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_seq_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_seq_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_seq_d;
                                 }
                                 break;
                             case 0b1011:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ngl_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ngl_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ngl_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ngl_d;
                                 }
                                 break;
                             case 0b1100:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_lt_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_lt_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_lt_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_lt_d;
                                 }
                                 break;
                             case 0b1101:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_nge_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_nge_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_nge_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_nge_d;
                                 }
                                 break;
                             case 0b1110:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_le_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_le_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_le_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_le_d;
                                 }
                                 break;
                             case 0b1111:
                                 if (fmt == 0) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ngt_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ngt_s;
                                 } else if (fmt == 1) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_c_ngt_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_ngt_d;
                                 }
                                 break;
                         }
@@ -854,34 +854,34 @@ void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
                         switch (self->function & 0x07) {
                             case 0b000:
                                 if (fmt == 0b001) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_s_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_s_d;
                                 } else if (fmt == 0b100) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_s_w;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_s_w;
                                 } else if (fmt == 0b101) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_s_l;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_s_l;
                                 }
                                 break;
                             case 0b001:
                                 if (fmt == 0b000) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_d_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_d_s;
                                 } else if (fmt == 0b100) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_d_w;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_d_w;
                                 } else if (fmt == 0b101) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_d_l;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_d_l;
                                 }
                                 break;
                             case 0b100:
                                 if (fmt == 0b000) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_w_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_w_s;
                                 } else if (fmt == 0b001) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_w_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_w_d;
                                 }
                                 break;
                             case 0b101:
                                 if (fmt == 0b000) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_l_s;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_l_s;
                                 } else if (fmt == 0b001) {
-                                    self->uniqueId = RABBITIZER_INSTR_CPU_ID_cvt_l_d;
+                                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_l_d;
                                 }
                                 break;
                         }

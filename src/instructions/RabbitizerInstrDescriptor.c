@@ -7,10 +7,10 @@
 
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
-    [RABBITIZER_INSTR_##prefix##_##name] = { __VA_ARGS__ }
+    [RABBITIZER_INSTR_ID_##prefix##_##name] = { __VA_ARGS__ }
 
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...) \
-    [RABBITIZER_INSTR_##prefix##_##name] = { __VA_ARGS__ }
+    [RABBITIZER_INSTR_ID_##prefix##_##name] = { __VA_ARGS__ }
 
 
 const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {

@@ -16,7 +16,7 @@ void RabbitizerInstr_init(RabbitizerInstr *self, uint32_t word) {
     self->sa = (word >>  6) & 0x1F;
     self->function = (word >> 0) & 0x3F;
 
-    self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
+    self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 
     self->vram = 0;
