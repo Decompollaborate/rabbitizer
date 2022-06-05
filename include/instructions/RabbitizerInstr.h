@@ -48,21 +48,25 @@ uint8_t RabbitizerInstr_GetFd(const RabbitizerInstr* self);
 
 uint8_t RabbitizerInstr_GetFmt(const RabbitizerInstr *self);
 
-uint8_t RabbitizerInstr_GetNd(const RabbitizerInstr *self);
 uint8_t RabbitizerInstr_GetTf(const RabbitizerInstr *self);
+uint8_t RabbitizerInstr_GetNd(const RabbitizerInstr *self);
 uint8_t RabbitizerInstr_GetFc(const RabbitizerInstr *self);
 uint8_t RabbitizerInstr_GetCond(const RabbitizerInstr *self);
 
-uint32_t RabbitizerInstr_GetAsHex(const RabbitizerInstr *self);
+uint32_t RabbitizerInstr_GetRaw(const RabbitizerInstr *self);
 
 uint32_t RabbitizerInstr_GetImmediate(const RabbitizerInstr *self);
 uint32_t RabbitizerInstr_GetInstrIndex(const RabbitizerInstr *self);
 uint32_t RabbitizerInstr_GetInstrIndexAsVram(const RabbitizerInstr *self);
 
-bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self);
-bool RabbitizerInstr_IsNop(const RabbitizerInstr *self);
+int32_t RabbitizerInstr_GetBranchOffset(const RabbitizerInstr *self);
 
-uint32_t RabbitizerInstr_GetBranchOffset(const RabbitizerInstr *self);
+bool RabbitizerInstr_IsImplemented(const RabbitizerInstr *self);
+bool RabbitizerInstr_IsLikelyHandwritten(const RabbitizerInstr *self);
+bool RabbitizerInstr_IsNop(const RabbitizerInstr *self);
+bool RabbitizerInstr_IsUnconditionalBranch(const RabbitizerInstr *self);
+bool RabbitizerInstr_IsJrRa(const RabbitizerInstr *self);
+bool RabbitizerInstr_IsJrNotRa(const RabbitizerInstr *self);
 
 
 size_t RabbitizerInstr_GetSizeForBufferInstrDisasm(const RabbitizerInstr *self, size_t immOverrideLength, int extraLJust);

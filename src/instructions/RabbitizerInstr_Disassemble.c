@@ -341,7 +341,7 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst,
     dst += len;
     totalSize += len;
 
-    len = sprintf(dst, " 0x%08X", RabbitizerInstr_GetAsHex(self));
+    len = sprintf(dst, " 0x%08X", RabbitizerInstr_GetRaw(self));
     assert(len > 0);
     dst += len;
     totalSize += len;
@@ -351,6 +351,7 @@ size_t RabbitizerInstr_DisassembleAsData(const RabbitizerInstr *self, char *dst,
 
 
 bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
+    return false;
     if (/*InstructionConfig.SN64_DIV_FIX*/ false) {
         if (self->uniqueId == RABBITIZER_INSTR_CPU_ID_break) {
             return true;
@@ -359,6 +360,10 @@ bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
 
     if (self->descriptor->instrType == RABBITIZER_INSTR_TYPE_R) {
         bool hasCode = false;
+        bool hasRs = false;
+        bool hasRt = false;
+        bool hasRd = false;
+        bool hasSa = false;
 
         for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
             RabbitizerRegisterType operand = self->descriptor->operands[i];
@@ -366,31 +371,39 @@ bool RabbitizerInstr_MustDisasmAsData(const RabbitizerInstr *self) {
             if (operand == RABBITIZER_REGISTER_TYPE_code) {
                 hasCode = true;
             }
+            if (operand == RABBITIZER_REGISTER_TYPE_rs) {
+                hasRs = true;
+            }
+            if (operand == RABBITIZER_REGISTER_TYPE_rt) {
+                hasRt = true;
+            }
+            if (operand == RABBITIZER_REGISTER_TYPE_rd) {
+                hasRd = true;
+            }
+            if (operand == RABBITIZER_REGISTER_TYPE_sa) {
+                hasSa = true;
+            }
         }
 
         if (!hasCode) {
-            for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
-                RabbitizerRegisterType operand = self->descriptor->operands[i];
-
-                if (operand != RABBITIZER_REGISTER_TYPE_rs) {
-                    if (self->rs != 0) {
-                        return true;
-                    }
+            if (!hasRs) {
+                if (self->rs != 0) {
+                    return true;
                 }
-                if (operand != RABBITIZER_REGISTER_TYPE_rt) {
-                    if (self->rt != 0) {
-                        return true;
-                    }
+            }
+            if (!hasRt) {
+                if (self->rt != 0) {
+                    return true;
                 }
-                if (operand != RABBITIZER_REGISTER_TYPE_rd) {
-                    if (self->rd != 0) {
-                        return true;
-                    }
+            }
+            if (!hasRd) {
+                if (self->rd != 0) {
+                    return true;
                 }
-                if (operand != RABBITIZER_REGISTER_TYPE_sa) {
-                    if (self->sa != 0) {
-                        return true;
-                    }
+            }
+            if (!hasSa) {
+                if (self->sa != 0) {
+                    return true;
                 }
             }
         }

@@ -439,7 +439,7 @@ void RabbitizerInstr_ProcessUniqueId_Special(RabbitizerInstr *self) {
 
 
 void RabbitizerInstr_ProcessUniqueId_Regimm(RabbitizerInstr *self) {
-    switch (self->opcode) {
+    switch (self->rt) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_CPU_ID_bltz;
             break;
@@ -569,7 +569,6 @@ void RabbitizerInstr_ProcessUniqueId_Coprocessor1(RabbitizerInstr *self) {
     uint8_t fmt = RabbitizerInstr_GetFmt(self);
     uint8_t fc;
 
-    self->_handwrittenCategory = true;
     self->uniqueId = RABBITIZER_INSTR_CPU_ID_INVALID;
 
     switch (fmt) {
