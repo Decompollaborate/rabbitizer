@@ -152,6 +152,7 @@ static PyObject *Instr_disassemble(PyRabbitizerInstr *self, PyObject *args, PyOb
 
     buffer = malloc(bufferSize+1);
     if (buffer == NULL) {
+        // TODO: signal an exception?
         return NULL;
     }
 
