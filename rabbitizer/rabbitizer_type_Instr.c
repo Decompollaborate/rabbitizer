@@ -251,6 +251,52 @@ static PyMethodDef Instr_methods[] = {
     {NULL}  /* Sentinel */
 };
 
+
+static PyObject *Instr_repr(PyObject *selfx) {
+    PyRabbitizerInstr *self = (PyRabbitizerInstr *)selfx;
+    PyObject *ret;
+    size_t disasmBufferSize;
+    char *bufferStart;
+    char *buffer;
+    size_t typeNameLength;
+    size_t extraSize = 3 + 8 + 4; // "(0x" + 32bits hex + ") # "
+    int len;
+
+    // self->ob_base.ob_type->tp_name is the type name (rabbitizer.Instr)
+    typeNameLength = strlen(self->ob_base.ob_type->tp_name);
+
+    disasmBufferSize = RabbitizerInstr_getSizeForBuffer(&self->instr, 0, 0);
+
+    buffer = bufferStart = malloc(disasmBufferSize+1 + typeNameLength + extraSize);
+    if (buffer == NULL) {
+        // TODO: signal an exception?
+        return NULL;
+    }
+
+    memcpy(buffer, self->ob_base.ob_type->tp_name, typeNameLength);
+    buffer += typeNameLength;
+
+    len = sprintf(buffer, "(0x%08X) # ", RabbitizerInstr_getRaw(&self->instr));
+    if (len != 15) {
+        // bad stuff
+        // TODO: exception?
+    }
+    assert(len == 15);
+    buffer += len;
+
+    RabbitizerInstr_disassemble(&self->instr, buffer, NULL, 0, 0);
+
+    ret = PyUnicode_FromString(bufferStart);
+    free(bufferStart);
+    return ret;
+}
+
+static PyObject *Instr_str(PyObject *selfx) {
+    PyRabbitizerInstr *self = (PyRabbitizerInstr *)selfx;
+
+    return Instr_disassemble(self, Py_BuildValue("()"), Py_BuildValue("{}"));
+}
+
 PyTypeObject rabbitizer_type_Instr_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)
     .tp_name = "rabbitizer.Instr",
@@ -261,6 +307,8 @@ PyTypeObject rabbitizer_type_Instr_TypeObject = {
     .tp_new = PyType_GenericNew,
     .tp_init = (initproc) Instr_init,
     .tp_dealloc = (destructor) Instr_dealloc,
+    .tp_repr = Instr_repr,
+    .tp_str = Instr_str,
     .tp_members = Instr_members,
     .tp_methods = Instr_methods,
     .tp_getset = Instr_getsetters,

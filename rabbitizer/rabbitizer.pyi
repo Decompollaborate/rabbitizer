@@ -59,6 +59,9 @@ class Instr:
 
     def disassemble(self, immOverride: str|None=None, extraLJust: int=0) -> str: ...
 
+    def __repr__(self) -> str: ...
+    def __str__(self) -> str: ...
+
 
 class RabbitizerConfig:
     regNames_namedRegisters: bool = True
