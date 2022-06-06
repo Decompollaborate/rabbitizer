@@ -79,6 +79,9 @@ int32_t RabbitizerInstr_getBranchOffset(const RabbitizerInstr *self);
 /* General getters */
 
 
+void RabbitizerInstr_blankOut(RabbitizerInstr *self);
+
+
 /* Instruction examination */
 
 bool RabbitizerInstr_isImplemented(const RabbitizerInstr *self);
@@ -89,6 +92,9 @@ bool RabbitizerInstr_isJrRa(const RabbitizerInstr *self);
 bool RabbitizerInstr_isJrNotRa(const RabbitizerInstr *self);
 
 const char *RabbitizerInstr_mapInstrToType(const RabbitizerInstr *self);
+
+bool RabbitizerInstr_sameOpcode(const RabbitizerInstr *self, const RabbitizerInstr *other);
+bool RabbitizerInstr_sameOpcodeButDifferentArguments(const RabbitizerInstr *self, const RabbitizerInstr *other);
 
 /* Instruction examination */
 

@@ -11,6 +11,9 @@ typedef struct PyRabbitizerInstr {
     RabbitizerInstr instr;
 } PyRabbitizerInstr;
 
+extern PyTypeObject rabbitizer_type_Instr_TypeObject;
+
+
 static void Instr_dealloc(PyRabbitizerInstr *self) {
     RabbitizerInstr_destroy(&self->instr);
     Py_TYPE(self)->tp_free((PyObject *) self);
@@ -93,6 +96,12 @@ DEF_METHOD_GET_UINT(getInstrIndexAsVram)
 DEF_METHOD_GET_INT(getBranchOffset)
 
 
+static PyObject *Instr_blankOut(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) {
+    RabbitizerInstr_blankOut(&self->instr);
+    Py_RETURN_NONE;
+}
+
+
 #define DEF_METHOD_BOOL(name) \
     static PyObject *Instr_##name(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) { \
         if (RabbitizerInstr_##name(&self->instr)) { \
@@ -108,6 +117,42 @@ DEF_METHOD_BOOL(isUnconditionalBranch)
 DEF_METHOD_BOOL(isJrRa)
 DEF_METHOD_BOOL(isJrNotRa)
 
+static PyObject *Instr_mapInstrToType(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) {
+    const char *type = RabbitizerInstr_mapInstrToType(&self->instr);
+
+    if (type != NULL) {
+        return PyUnicode_FromString(type);
+    }
+    Py_RETURN_NONE;
+}
+
+static PyObject *Instr_sameOpcode(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = {"other", NULL};
+    PyRabbitizerInstr *other;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instr_TypeObject, &other)) {
+        return NULL;
+    }
+
+    if (RabbitizerInstr_sameOpcode(&self->instr, &other->instr)) {
+        Py_RETURN_TRUE;
+    }
+    Py_RETURN_FALSE;
+}
+
+static PyObject *Instr_sameOpcodeButDifferentArguments(PyRabbitizerInstr *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = {"other", NULL};
+    PyRabbitizerInstr *other;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instr_TypeObject, &other)) {
+        return NULL;
+    }
+
+    if (RabbitizerInstr_sameOpcodeButDifferentArguments(&self->instr, &other->instr)) {
+        Py_RETURN_TRUE;
+    }
+    Py_RETURN_FALSE;
+}
 
 #define DEF_DESCRIPTOR_METHOD_BOOL(name) \
     static PyObject *Instr_##name(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) { \
@@ -163,16 +208,6 @@ static PyObject *Instr_disassemble(PyRabbitizerInstr *self, PyObject *args, PyOb
     return ret;
 }
 
-static PyObject *Instr_mapInstrToType(PyRabbitizerInstr *self, PyObject *Py_UNUSED(ignored)) {
-    const char *type = RabbitizerInstr_mapInstrToType(&self->instr);
-
-    if (type != NULL) {
-        return PyUnicode_FromString(type);
-    }
-
-    Py_RETURN_NONE;
-}
-
 
 #define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)Instr_##name, METH_NOARGS, PyDoc_STR(docs) }
 
@@ -183,6 +218,8 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(getInstrIndexAsVram, ""),
     METHOD_NO_ARGS(getBranchOffset, ""),
 
+    METHOD_NO_ARGS(blankOut, ""),
+
     METHOD_NO_ARGS(isImplemented, ""),
     METHOD_NO_ARGS(isLikelyHandwritten, ""),
     METHOD_NO_ARGS(isNop, ""),
@@ -190,6 +227,9 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(isJrRa, ""),
     METHOD_NO_ARGS(isJrNotRa, ""),
     METHOD_NO_ARGS(mapInstrToType, ""),
+
+    {"sameOpcode", (PyCFunction) (void*) Instr_sameOpcode, METH_VARARGS | METH_KEYWORDS, "description"},
+    {"sameOpcodeButDifferentArguments", (PyCFunction) (void*) Instr_sameOpcodeButDifferentArguments, METH_VARARGS | METH_KEYWORDS, "description"},
 
     METHOD_NO_ARGS(isJType, ""),
     METHOD_NO_ARGS(isIType, ""),

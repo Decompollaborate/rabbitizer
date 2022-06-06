@@ -3,6 +3,8 @@
 
 #include "instructions/RabbitizerInstr.h"
 
+#include <assert.h>
+
 #include "common/Utils.h"
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
@@ -99,3 +101,61 @@ int32_t RabbitizerInstr_getBranchOffset(const RabbitizerInstr *self) {
 }
 
 /* General getters */
+
+
+void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
+    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
+        switch (self->descriptor->operands[i]) {
+            case RABBITIZER_REGISTER_TYPE_rs:
+                self->rs = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_rt:
+            case RABBITIZER_REGISTER_TYPE_ft:
+            case RABBITIZER_REGISTER_TYPE_cop2t:
+            case RABBITIZER_REGISTER_TYPE_op:
+                self->rt = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_rd:
+            case RABBITIZER_REGISTER_TYPE_cop0d:
+            case RABBITIZER_REGISTER_TYPE_fs:
+            case RABBITIZER_REGISTER_TYPE_cop1cs:
+                self->rd = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_sa:
+            case RABBITIZER_REGISTER_TYPE_fd:
+                self->sa = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_LABEL:
+                // rs rt rd sa function
+                self->function = 0;
+                FALLTHROUGH;
+            case RABBITIZER_REGISTER_TYPE_code:
+                // rs rt rd sa
+                self->rs = 0;
+                self->rt = 0;
+                self->rd = 0;
+                self->sa = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_IMM_base:
+                // rs rd sa function
+                self->rs = 0;
+                FALLTHROUGH;
+            case RABBITIZER_REGISTER_TYPE_IMM:
+                // rd sa function
+                self->rd = 0;
+                self->sa = 0;
+                self->function = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_INVALID:
+            case RABBITIZER_REGISTER_TYPE_MAX:
+                assert(self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_MAX);
+                break;
+        }
+    }
+}

@@ -7,8 +7,6 @@
 #include "instructions/RabbitizerRegister.h"
 
 
-/* Instruction examination */
-
 bool RabbitizerInstr_isImplemented(const RabbitizerInstr *self) {
     if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_INVALID) {
         return false;
@@ -80,7 +78,6 @@ bool RabbitizerInstr_isJrNotRa(const RabbitizerInstr *self) {
     return false;
 }
 
-
 const char *RabbitizerInstr_mapInstrToType(const RabbitizerInstr *self) {
     if (RabbitizerInstrDescriptor_isDouble(self->descriptor)) {
         return "f64";
@@ -109,4 +106,16 @@ const char *RabbitizerInstr_mapInstrToType(const RabbitizerInstr *self) {
     return NULL;
 }
 
-/* Instruction examination */
+bool RabbitizerInstr_sameOpcode(const RabbitizerInstr *self, const RabbitizerInstr *other) {
+    if (!RabbitizerInstr_isImplemented(self) || !RabbitizerInstr_isImplemented(other)) {
+        return false;
+    }
+    return self->uniqueId == other->uniqueId;
+}
+
+bool RabbitizerInstr_sameOpcodeButDifferentArguments(const RabbitizerInstr *self, const RabbitizerInstr *other) {
+    if (!RabbitizerInstr_sameOpcode(self, other)) {
+        return false;
+    }
+    return RabbitizerInstr_getRaw(self) != RabbitizerInstr_getRaw(other);
+}

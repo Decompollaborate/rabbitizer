@@ -17,10 +17,10 @@ static PyObject *rabbitizer_global_instr_id_get_closure_id(PyObject *self, Rabbi
 }
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
-    { #prefix "_" #name, (getter) rabbitizer_global_instr_id_get_closure_id, (setter) NULL, "", (void*)RABBITIZER_INSTR_ID_##prefix##_##name }
+    { #prefix "_" #name, (getter) (void*) rabbitizer_global_instr_id_get_closure_id, (setter) NULL, "", (void*)RABBITIZER_INSTR_ID_##prefix##_##name }
 
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...) \
-    { #prefix "_" #name, (getter) rabbitizer_global_instr_id_get_closure_id, (setter) NULL, "", (void*)RABBITIZER_INSTR_ID_##prefix##_##name }
+    { #prefix "_" #name, (getter) (void*) rabbitizer_global_instr_id_get_closure_id, (setter) NULL, "", (void*)RABBITIZER_INSTR_ID_##prefix##_##name }
 
 
 static PyGetSetDef rabbitizer_global_instr_id_GetSets[] = {
