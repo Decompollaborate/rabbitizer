@@ -63,7 +63,7 @@ class Instr:
     def __str__(self) -> str: ...
 
 
-class RabbitizerConfig:
+class _RabbitizerConfig:
     regNames_namedRegisters: bool = True
     regNames_gprAbiNames: int
     regNames_fprAbiNames: int
@@ -85,10 +85,10 @@ class RabbitizerConfig:
     misc_opcodeLJust: int = 11
     misc_unknownInstrComment: bool = True
 
-config: RabbitizerConfig
+config: _RabbitizerConfig
 
 
-class InstrId:
+class _InstrId:
     cpu_INVALID: int
     cpu_abs_d: int
     cpu_abs_s: int
@@ -321,4 +321,4 @@ class InstrId:
     cpu_xor: int
     cpu_xori: int
 
-instr_id: InstrId
+instr_id: _InstrId
