@@ -69,8 +69,8 @@ void RabbitizerInstr_processUniqueId_Normal(RabbitizerInstr *self) {
             break;
         case 0b010111:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgtzl;
-
             break;
+
         case 0b011000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_daddi;
             break;

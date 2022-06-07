@@ -22,6 +22,8 @@ typedef enum RabbitizerRegisterType {
     RABBITIZER_REGISTER_TYPE_LABEL,
     RABBITIZER_REGISTER_TYPE_IMM,
     RABBITIZER_REGISTER_TYPE_IMM_base,
+    RABBITIZER_REGISTER_TYPE_vt_element, // rsp
+    RABBITIZER_REGISTER_TYPE_offset_vs, // rsp
     RABBITIZER_REGISTER_TYPE_MAX,
 } RabbitizerRegisterType;
 

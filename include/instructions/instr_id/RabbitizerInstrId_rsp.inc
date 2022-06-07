@@ -58,37 +58,27 @@
     RABBITIZER_DEF_INSTR_ID(rsp, cfc2, ),
     RABBITIZER_DEF_INSTR_ID(rsp, ctc2, ),
 
-    RABBITIZER_DEF_INSTR_ID(rsp, sbv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, ssv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, slv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, sdv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, sqv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, srv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, spv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, suv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, swv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, shv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, sfv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, stv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, lbv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, lsv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, llv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, ldv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, lqv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, lrv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, lpv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, luv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, lhv, ),
-
-    RABBITIZER_DEF_INSTR_ID(rsp, lfv, ),
-    RABBITIZER_DEF_INSTR_ID(rsp, ltv, ),
+    // OP vt[element] offset(vs)
+    RABBITIZER_DEF_INSTR_ID(rsp, sbv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, ssv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, slv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, sdv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, sqv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, srv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, spv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, suv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, swv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, shv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, sfv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, stv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, lbv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, lsv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, llv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, ldv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, lqv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, lrv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, lpv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, luv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, lhv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, lfv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),
+    RABBITIZER_DEF_INSTR_ID(rsp, ltv, .operands={RABBITIZER_REGISTER_TYPE_vt_element, RABBITIZER_REGISTER_TYPE_offset_vs}),

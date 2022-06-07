@@ -24,6 +24,7 @@ void RabbitizerInstr_init(RabbitizerInstr *self, uint32_t word) {
     self->vram = 0;
     self->_handwrittenCategory = false;
     self->inHandwrittenFunction = false;
+    self->category = RABBITIZER_INSTRCAT_CPU;
 }
 
 void RabbitizerInstr_destroy(RabbitizerInstr *self) {
@@ -75,7 +76,8 @@ uint32_t RabbitizerInstr_getRaw(const RabbitizerInstr *self) {
 }
 
 uint32_t RabbitizerInstr_getImmediate(const RabbitizerInstr *self) {
-    return (self->rd << 11) | (self->sa << 6) | (self->function);
+    //return (self->rd << 11) | (self->sa << 6) | (self->function);
+    return RAB_INSTR_GET_IMMEDIATE(self);
 }
 
 uint32_t RabbitizerInstr_getInstrIndex(const RabbitizerInstr *self) {
@@ -150,6 +152,17 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
                 self->rd = 0;
                 self->sa = 0;
                 self->function = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_vt_element:
+                self->rt = 0;
+                self->sa &= ~0x1E;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_offset_vs:
+                self->function = 0;
+                self->sa &= ~0x1;
+                self->rs = 0;
                 break;
 
             case RABBITIZER_REGISTER_TYPE_INVALID:

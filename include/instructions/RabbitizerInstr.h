@@ -12,6 +12,15 @@
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrDescriptor.h"
 
+
+typedef enum RabbitizerInstrCategory {
+    RABBITIZER_INSTRCAT_CPU,
+    RABBITIZER_INSTRCAT_RSP,
+    // RABBITIZER_INSTRCAT_PS2,
+    RABBITIZER_INSTRCAT_MAX,
+} RabbitizerInstrCategory;
+
+// TODO: consider renaming to RabbitizerInstruction
 typedef struct RabbitizerInstr {
     uint8_t opcode;
     uint8_t rs;
@@ -26,7 +35,10 @@ typedef struct RabbitizerInstr {
     uint32_t vram;
     bool _handwrittenCategory;
     bool inHandwrittenFunction;
+    RabbitizerInstrCategory category;
 } RabbitizerInstr;
+
+#define RAB_INSTR_GET_IMMEDIATE(self) (((self)->rd << 11) | ((self)->sa << 6) | ((self)->function))
 
 
 void RabbitizerInstr_init(RabbitizerInstr *self, uint32_t word);
@@ -87,9 +99,13 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self);
 bool RabbitizerInstr_isImplemented(const RabbitizerInstr *self);
 bool RabbitizerInstr_isLikelyHandwritten(const RabbitizerInstr *self);
 bool RabbitizerInstr_isNop(const RabbitizerInstr *self);
+bool RabbitizerInstr_isLui(const RabbitizerInstr *self);
+bool RabbitizerInstr_isOri(const RabbitizerInstr *self);
+bool RabbitizerInstr_isLo(const RabbitizerInstr *self);
 bool RabbitizerInstr_isUnconditionalBranch(const RabbitizerInstr *self);
 bool RabbitizerInstr_isJrRa(const RabbitizerInstr *self);
 bool RabbitizerInstr_isJrNotRa(const RabbitizerInstr *self);
+bool RabbitizerInstr_isAndLink(const RabbitizerInstr *self);
 
 const char *RabbitizerInstr_mapInstrToType(const RabbitizerInstr *self);
 

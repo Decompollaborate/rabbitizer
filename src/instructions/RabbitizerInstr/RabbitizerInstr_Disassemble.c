@@ -2,6 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstr.h"
+#include "instructions/RabbitizerInstrRsp.h"
 
 #include <assert.h>
 #include <string.h>
@@ -258,22 +259,90 @@ size_t RabbitizerRegisterType_processImmediateBase(const RabbitizerInstr *self, 
     return totalSize;
 }
 
+size_t RabbitizerRegisterType_processVtElement(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg;
+    size_t regLen;
+    int len;
+    uint8_t element;
+
+    (void)immOverride;
+    (void)immOverrideLength;
+
+    reg = RabbitizerRegister_getNameRspVector(self->rt);
+
+    regLen = strlen(reg);
+    memcpy(dst, reg, regLen);
+    dst += regLen;
+    totalSize += regLen;
+
+    *dst = '[';
+    dst++;
+    totalSize++;
+
+    element = RabbitizerInstrRsp_processVectorElement(self, RAB_INSTR_RSP_GET_ELEMENT_LOW(self));
+    len = sprintf(dst, "%i", element);
+    assert(len > 0);
+    dst += len;
+    totalSize += len;
+
+    *dst = ']';
+    dst++;
+    totalSize++;
+
+    return totalSize;
+}
+
+size_t RabbitizerRegisterType_processOffsetVs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg;
+    size_t regLen;
+    int len;
+
+    (void)immOverride;
+    (void)immOverrideLength;
+
+    len = sprintf(dst, "0x%X", RabbitizerInstrRsp_GetOffsetVector(self));
+    assert(len > 0);
+    dst += len;
+    totalSize += len;
+
+    *dst = '(';
+    dst++;
+    totalSize++;
+
+    reg = RabbitizerRegister_getNameRspGpr(self->rs);
+
+    regLen = strlen(reg);
+    memcpy(dst, reg, regLen);
+    dst += regLen;
+    totalSize += regLen;
+
+    *dst = ')';
+    dst++;
+    totalSize++;
+
+    return totalSize;
+}
+
 const OperandCallback instrOpercandCallbacks[] = {
-    [RABBITIZER_REGISTER_TYPE_rs]       = RabbitizerRegisterType_processRs,
-    [RABBITIZER_REGISTER_TYPE_rt]       = RabbitizerRegisterType_processRt,
-    [RABBITIZER_REGISTER_TYPE_rd]       = RabbitizerRegisterType_processRd,
-    [RABBITIZER_REGISTER_TYPE_cop0d]    = RabbitizerRegisterType_processCop0d,
-    [RABBITIZER_REGISTER_TYPE_fs]       = RabbitizerRegisterType_processFs,
-    [RABBITIZER_REGISTER_TYPE_ft]       = RabbitizerRegisterType_processFt,
-    [RABBITIZER_REGISTER_TYPE_fd]       = RabbitizerRegisterType_processFd,
-    [RABBITIZER_REGISTER_TYPE_cop1cs]   = RabbitizerRegisterType_processCop1Cs,
-    [RABBITIZER_REGISTER_TYPE_cop2t]    = RabbitizerRegisterType_processCop2t,
-    [RABBITIZER_REGISTER_TYPE_sa]       = RabbitizerRegisterType_processSa,
-    [RABBITIZER_REGISTER_TYPE_op]       = RabbitizerRegisterType_processOp,
-    [RABBITIZER_REGISTER_TYPE_code]     = RabbitizerRegisterType_processCode,
-    [RABBITIZER_REGISTER_TYPE_LABEL]    = RabbitizerRegisterType_processLabel,
-    [RABBITIZER_REGISTER_TYPE_IMM]      = RabbitizerRegisterType_processImmediate,
-    [RABBITIZER_REGISTER_TYPE_IMM_base] = RabbitizerRegisterType_processImmediateBase,
+    [RABBITIZER_REGISTER_TYPE_rs]           = RabbitizerRegisterType_processRs,
+    [RABBITIZER_REGISTER_TYPE_rt]           = RabbitizerRegisterType_processRt,
+    [RABBITIZER_REGISTER_TYPE_rd]           = RabbitizerRegisterType_processRd,
+    [RABBITIZER_REGISTER_TYPE_cop0d]        = RabbitizerRegisterType_processCop0d,
+    [RABBITIZER_REGISTER_TYPE_fs]           = RabbitizerRegisterType_processFs,
+    [RABBITIZER_REGISTER_TYPE_ft]           = RabbitizerRegisterType_processFt,
+    [RABBITIZER_REGISTER_TYPE_fd]           = RabbitizerRegisterType_processFd,
+    [RABBITIZER_REGISTER_TYPE_cop1cs]       = RabbitizerRegisterType_processCop1Cs,
+    [RABBITIZER_REGISTER_TYPE_cop2t]        = RabbitizerRegisterType_processCop2t,
+    [RABBITIZER_REGISTER_TYPE_sa]           = RabbitizerRegisterType_processSa,
+    [RABBITIZER_REGISTER_TYPE_op]           = RabbitizerRegisterType_processOp,
+    [RABBITIZER_REGISTER_TYPE_code]         = RabbitizerRegisterType_processCode,
+    [RABBITIZER_REGISTER_TYPE_LABEL]        = RabbitizerRegisterType_processLabel,
+    [RABBITIZER_REGISTER_TYPE_IMM]          = RabbitizerRegisterType_processImmediate,
+    [RABBITIZER_REGISTER_TYPE_IMM_base]     = RabbitizerRegisterType_processImmediateBase,
+    [RABBITIZER_REGISTER_TYPE_vt_element]   = RabbitizerRegisterType_processVtElement,
+    [RABBITIZER_REGISTER_TYPE_offset_vs]    = RabbitizerRegisterType_processOffsetVs,
 };
 
 
