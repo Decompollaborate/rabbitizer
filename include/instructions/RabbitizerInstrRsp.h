@@ -17,6 +17,9 @@ void RabbitizerInstrRsp_destroy(RabbitizerInstr *self);
 
 
 void RabbitizerInstrRsp_processUniqueId_Normal(RabbitizerInstr *self);
+void RabbitizerInstrRsp_processUniqueId_Special(RabbitizerInstr *self);
+void RabbitizerInstrRsp_processUniqueId_Regimm(RabbitizerInstr *self);
+
 void RabbitizerInstrRsp_processUniqueId(RabbitizerInstr *self);
 
 
