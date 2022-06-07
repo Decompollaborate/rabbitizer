@@ -161,9 +161,24 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
                 self->function = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_RSP_vt_element:
+            case RABBITIZER_REGISTER_TYPE_RSP_vt_elementhigh:
+                self->rt = 0;
+                self->rs &= ~0xF;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_RSP_vt_elementlow:
                 self->rt = 0;
                 self->sa &= ~0x1E;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_RSP_vd_vs:
+                self->rd = 0;
+                self->rs = 0;
+                break;
+
+            case RABBITIZER_REGISTER_TYPE_RSP_vd_index:
+                self->rd = 0;
+                self->sa &= ~0x1;
                 break;
 
             case RABBITIZER_REGISTER_TYPE_RSP_offset_rs:

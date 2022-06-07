@@ -5,6 +5,8 @@
 #define RABBITIZER_REGISTER_TYPE_H
 #pragma once
 
+
+// TODO: rename to OperandType
 typedef enum RabbitizerRegisterType {
     RABBITIZER_REGISTER_TYPE_INVALID,
     RABBITIZER_REGISTER_TYPE_rs,
@@ -31,7 +33,10 @@ typedef enum RabbitizerRegisterType {
     RABBITIZER_REGISTER_TYPE_RSP_vs,
     RABBITIZER_REGISTER_TYPE_RSP_vt,
     RABBITIZER_REGISTER_TYPE_RSP_vd,
-    RABBITIZER_REGISTER_TYPE_RSP_vt_element,
+    RABBITIZER_REGISTER_TYPE_RSP_vt_elementhigh,
+    RABBITIZER_REGISTER_TYPE_RSP_vt_elementlow,
+    RABBITIZER_REGISTER_TYPE_RSP_vd_vs,
+    RABBITIZER_REGISTER_TYPE_RSP_vd_index,
     RABBITIZER_REGISTER_TYPE_RSP_offset_rs,
     // rsp
 

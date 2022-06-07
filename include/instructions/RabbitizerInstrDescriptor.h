@@ -37,7 +37,6 @@ typedef struct RabbitizerInstrDescriptor {
     bool modifiesRd;
 
     int mipsVersion;
-    // bool isRsp;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name

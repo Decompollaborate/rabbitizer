@@ -230,7 +230,7 @@ size_t RabbitizerRegisterTypeRsp_processCop0d(const RabbitizerInstr *self, char 
 
 size_t RabbitizerRegisterTypeRsp_processVs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameRspVector(self->rs);
+    const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_VS(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
@@ -238,7 +238,7 @@ size_t RabbitizerRegisterTypeRsp_processVs(const RabbitizerInstr *self, char *ds
 
 size_t RabbitizerRegisterTypeRsp_processVt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameRspVector(self->rt);
+    const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_VT(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
@@ -246,13 +246,28 @@ size_t RabbitizerRegisterTypeRsp_processVt(const RabbitizerInstr *self, char *ds
 
 size_t RabbitizerRegisterTypeRsp_processVd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameRspGpr(self->rd);
+    const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_VD(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVtElement(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerRegisterTypeRsp_processVtElementhigh(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t element;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
+
+    element = RabbitizerInstrRsp_processVectorElement(self, RAB_INSTR_RSP_GET_ELEMENT_HIGH(self));
+    if (element != 0) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", element);
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
+    }
+    return totalSize;
+}
+
+size_t RabbitizerRegisterTypeRsp_processVtElementlow(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t element;
 
@@ -264,7 +279,28 @@ size_t RabbitizerRegisterTypeRsp_processVtElement(const RabbitizerInstr *self, c
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", element);
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
+    return totalSize;
+}
 
+size_t RabbitizerRegisterTypeRsp_processVdVs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", RAB_INSTR_RSP_GET_VS(self));
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
+    return totalSize;
+}
+
+size_t RabbitizerRegisterTypeRsp_processVdIndex(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", (self->sa >> 1));
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
     return totalSize;
 }
 
@@ -274,41 +310,41 @@ size_t RabbitizerRegisterTypeRsp_processOffsetVs(const RabbitizerInstr *self, ch
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", RabbitizerInstrRsp_GetOffsetVector(self));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
-
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processRs(self, dst, immOverride, immOverrideLength));
-
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
-
     return totalSize;
 }
 
 const OperandCallback instrOpercandCallbacks[] = {
-    [RABBITIZER_REGISTER_TYPE_rs]               = RabbitizerRegisterType_processRs,
-    [RABBITIZER_REGISTER_TYPE_rt]               = RabbitizerRegisterType_processRt,
-    [RABBITIZER_REGISTER_TYPE_rd]               = RabbitizerRegisterType_processRd,
-    [RABBITIZER_REGISTER_TYPE_cop0d]            = RabbitizerRegisterType_processCop0d,
-    [RABBITIZER_REGISTER_TYPE_fs]               = RabbitizerRegisterType_processFs,
-    [RABBITIZER_REGISTER_TYPE_ft]               = RabbitizerRegisterType_processFt,
-    [RABBITIZER_REGISTER_TYPE_fd]               = RabbitizerRegisterType_processFd,
-    [RABBITIZER_REGISTER_TYPE_cop1cs]           = RabbitizerRegisterType_processCop1Cs,
-    [RABBITIZER_REGISTER_TYPE_cop2t]            = RabbitizerRegisterType_processCop2t,
-    [RABBITIZER_REGISTER_TYPE_sa]               = RabbitizerRegisterType_processSa,
-    [RABBITIZER_REGISTER_TYPE_op]               = RabbitizerRegisterType_processOp,
-    [RABBITIZER_REGISTER_TYPE_code]             = RabbitizerRegisterType_processCode,
-    [RABBITIZER_REGISTER_TYPE_LABEL]            = RabbitizerRegisterType_processLabel,
-    [RABBITIZER_REGISTER_TYPE_IMM]              = RabbitizerRegisterType_processImmediate,
-    [RABBITIZER_REGISTER_TYPE_IMM_base]         = RabbitizerRegisterType_processImmediateBase,
+    [RABBITIZER_REGISTER_TYPE_rs]                   = RabbitizerRegisterType_processRs,
+    [RABBITIZER_REGISTER_TYPE_rt]                   = RabbitizerRegisterType_processRt,
+    [RABBITIZER_REGISTER_TYPE_rd]                   = RabbitizerRegisterType_processRd,
+    [RABBITIZER_REGISTER_TYPE_cop0d]                = RabbitizerRegisterType_processCop0d,
+    [RABBITIZER_REGISTER_TYPE_fs]                   = RabbitizerRegisterType_processFs,
+    [RABBITIZER_REGISTER_TYPE_ft]                   = RabbitizerRegisterType_processFt,
+    [RABBITIZER_REGISTER_TYPE_fd]                   = RabbitizerRegisterType_processFd,
+    [RABBITIZER_REGISTER_TYPE_cop1cs]               = RabbitizerRegisterType_processCop1Cs,
+    [RABBITIZER_REGISTER_TYPE_cop2t]                = RabbitizerRegisterType_processCop2t,
+    [RABBITIZER_REGISTER_TYPE_sa]                   = RabbitizerRegisterType_processSa,
+    [RABBITIZER_REGISTER_TYPE_op]                   = RabbitizerRegisterType_processOp,
+    [RABBITIZER_REGISTER_TYPE_code]                 = RabbitizerRegisterType_processCode,
+    [RABBITIZER_REGISTER_TYPE_LABEL]                = RabbitizerRegisterType_processLabel,
+    [RABBITIZER_REGISTER_TYPE_IMM]                  = RabbitizerRegisterType_processImmediate,
+    [RABBITIZER_REGISTER_TYPE_IMM_base]             = RabbitizerRegisterType_processImmediateBase,
 
     // rsp
-    [RABBITIZER_REGISTER_TYPE_RSP_rs]           = RabbitizerRegisterTypeRsp_processRs,
-    [RABBITIZER_REGISTER_TYPE_RSP_rt]           = RabbitizerRegisterTypeRsp_processRt,
-    [RABBITIZER_REGISTER_TYPE_RSP_rd]           = RabbitizerRegisterTypeRsp_processRd,
-    [RABBITIZER_REGISTER_TYPE_RSP_cop0d]        = RabbitizerRegisterTypeRsp_processCop0d,
-    [RABBITIZER_REGISTER_TYPE_RSP_vs]           = RabbitizerRegisterTypeRsp_processVs,
-    [RABBITIZER_REGISTER_TYPE_RSP_vt]           = RabbitizerRegisterTypeRsp_processVt,
-    [RABBITIZER_REGISTER_TYPE_RSP_vd]           = RabbitizerRegisterTypeRsp_processVd,
-    [RABBITIZER_REGISTER_TYPE_RSP_vt_element]   = RabbitizerRegisterTypeRsp_processVtElement,
-    [RABBITIZER_REGISTER_TYPE_RSP_offset_rs]    = RabbitizerRegisterTypeRsp_processOffsetVs,
+    [RABBITIZER_REGISTER_TYPE_RSP_rs]               = RabbitizerRegisterTypeRsp_processRs,
+    [RABBITIZER_REGISTER_TYPE_RSP_rt]               = RabbitizerRegisterTypeRsp_processRt,
+    [RABBITIZER_REGISTER_TYPE_RSP_rd]               = RabbitizerRegisterTypeRsp_processRd,
+    [RABBITIZER_REGISTER_TYPE_RSP_cop0d]            = RabbitizerRegisterTypeRsp_processCop0d,
+    [RABBITIZER_REGISTER_TYPE_RSP_vs]               = RabbitizerRegisterTypeRsp_processVs,
+    [RABBITIZER_REGISTER_TYPE_RSP_vt]               = RabbitizerRegisterTypeRsp_processVt,
+    [RABBITIZER_REGISTER_TYPE_RSP_vd]               = RabbitizerRegisterTypeRsp_processVd,
+    [RABBITIZER_REGISTER_TYPE_RSP_vt_elementhigh]   = RabbitizerRegisterTypeRsp_processVtElementhigh,
+    [RABBITIZER_REGISTER_TYPE_RSP_vt_elementlow]    = RabbitizerRegisterTypeRsp_processVtElementlow,
+    [RABBITIZER_REGISTER_TYPE_RSP_vd_vs]            = RabbitizerRegisterTypeRsp_processVdVs,
+    [RABBITIZER_REGISTER_TYPE_RSP_vd_index]         = RabbitizerRegisterTypeRsp_processVdIndex,
+    [RABBITIZER_REGISTER_TYPE_RSP_offset_rs]        = RabbitizerRegisterTypeRsp_processOffsetVs,
 };
 
 

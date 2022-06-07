@@ -8,6 +8,11 @@
 #include "RabbitizerInstr.h"
 
 
+#define RAB_INSTR_RSP_GET_VS(self) ((self)->rd)
+#define RAB_INSTR_RSP_GET_VT(self) ((self)->rt)
+#define RAB_INSTR_RSP_GET_VD(self) ((self)->sa)
+
+#define RAB_INSTR_RSP_GET_ELEMENT_HIGH(self) ((((self)->rs)) & 0xF)
 #define RAB_INSTR_RSP_GET_ELEMENT_LOW(self) ((((self)->sa) >> 1) & 0xF)
 #define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self) (RAB_INSTR_GET_IMMEDIATE(self) & 0x7F)
 
