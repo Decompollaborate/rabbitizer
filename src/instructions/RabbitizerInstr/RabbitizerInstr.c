@@ -109,6 +109,8 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
         switch (self->descriptor->operands[i]) {
             case RABBITIZER_REGISTER_TYPE_rs:
+            case RABBITIZER_REGISTER_TYPE_RSP_rs:
+            case RABBITIZER_REGISTER_TYPE_RSP_vs:
                 self->rs = 0;
                 break;
 
@@ -116,6 +118,8 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
             case RABBITIZER_REGISTER_TYPE_ft:
             case RABBITIZER_REGISTER_TYPE_cop2t:
             case RABBITIZER_REGISTER_TYPE_op:
+            case RABBITIZER_REGISTER_TYPE_RSP_rt:
+            case RABBITIZER_REGISTER_TYPE_RSP_vt:
                 self->rt = 0;
                 break;
 
@@ -123,6 +127,9 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
             case RABBITIZER_REGISTER_TYPE_cop0d:
             case RABBITIZER_REGISTER_TYPE_fs:
             case RABBITIZER_REGISTER_TYPE_cop1cs:
+            case RABBITIZER_REGISTER_TYPE_RSP_rd:
+            case RABBITIZER_REGISTER_TYPE_RSP_vd:
+            case RABBITIZER_REGISTER_TYPE_RSP_cop0d:
                 self->rd = 0;
                 break;
 
@@ -154,12 +161,12 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
                 self->function = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_vt_element:
+            case RABBITIZER_REGISTER_TYPE_RSP_vt_element:
                 self->rt = 0;
                 self->sa &= ~0x1E;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_offset_vs:
+            case RABBITIZER_REGISTER_TYPE_RSP_offset_rs:
                 self->function = 0;
                 self->sa &= ~0x1;
                 self->rs = 0;

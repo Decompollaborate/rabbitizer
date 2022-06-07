@@ -26,6 +26,7 @@ setup(
                 "-Werror=switch",
                 "-Werror=implicit-fallthrough",
                 "-Werror=unused-function",
+                "-Werror=unused-parameter",
                 "-Werror=shadow",
                 # "-Werror",
                 "-g",

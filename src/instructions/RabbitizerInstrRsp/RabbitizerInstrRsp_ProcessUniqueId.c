@@ -552,7 +552,7 @@ void RabbitizerInstrRsp_processUniqueId_Regimm(RabbitizerInstr *self) {
 }
 
 
-void RabbitizerInstr_processUniqueId_Coprocessor0(RabbitizerInstr *self) {
+void RabbitizerInstrRsp_processUniqueId_Coprocessor0(RabbitizerInstr *self) {
     switch (RabbitizerInstr_getFmt(self)) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_mfc0;
