@@ -14,12 +14,12 @@
 
 typedef enum RabbitizerInstrId {
     #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
-    RABBITIZER_DEF_INSTR_ID(cpu, MAX),
+    RABBITIZER_DEF_INSTR_ID(cpu, MAX, ),
 
     #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
-    RABBITIZER_DEF_INSTR_ID(rsp, MAX),
+    RABBITIZER_DEF_INSTR_ID(rsp, MAX, ),
 
-    RABBITIZER_DEF_INSTR_ID(ALL, MAX) = RABBITIZER_DEF_INSTR_ID(rsp, MAX),
+    RABBITIZER_DEF_INSTR_ID(ALL, MAX, ) = RABBITIZER_DEF_INSTR_ID(rsp, MAX, ),
 } RabbitizerInstrId;
 
 #undef RABBITIZER_DEF_INSTR_ID

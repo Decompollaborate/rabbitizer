@@ -228,8 +228,8 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(isJrNotRa, ""),
     METHOD_NO_ARGS(mapInstrToType, ""),
 
-    {"sameOpcode", (PyCFunction) (void*) Instr_sameOpcode, METH_VARARGS | METH_KEYWORDS, "description"},
-    {"sameOpcodeButDifferentArguments", (PyCFunction) (void*) Instr_sameOpcodeButDifferentArguments, METH_VARARGS | METH_KEYWORDS, "description"},
+    {"sameOpcode", (PyCFunction) Instr_sameOpcode, METH_VARARGS | METH_KEYWORDS, "description"},
+    {"sameOpcodeButDifferentArguments", (PyCFunction)Instr_sameOpcodeButDifferentArguments, METH_VARARGS | METH_KEYWORDS, "description"},
 
     METHOD_NO_ARGS(isJType, ""),
     METHOD_NO_ARGS(isIType, ""),
@@ -246,7 +246,7 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
 
-    {"disassemble", (PyCFunction) (void*) Instr_disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
+    {"disassemble", (PyCFunction)Instr_disassemble, METH_VARARGS | METH_KEYWORDS, "description"},
 
     {NULL}  /* Sentinel */
 };

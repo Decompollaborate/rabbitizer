@@ -18,7 +18,8 @@ setup(
                 "-std=c11",
                 "-Wall",
                 "-Wextra",
-                # "-Wpedantic", # variadic macros warning :s
+                # "-Wpedantic", # binary constants :s
+                "-Wno-cast-function-type",
                 "-Werror=implicit-function-declaration",
                 "-Werror=implicit-function-declaration",
                 "-Werror=incompatible-pointer-types",
