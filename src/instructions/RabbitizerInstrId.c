@@ -24,20 +24,6 @@ const char *RabbitizerInstrId_Names[] = {
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
 
 
-const RabbitizerInstrId RabbitizerInstrId_NotEmitedByCompilers[] = {
-    RABBITIZER_INSTR_ID_cpu_add,
-    RABBITIZER_INSTR_ID_cpu_addi,
-    RABBITIZER_INSTR_ID_cpu_mtc0,
-    RABBITIZER_INSTR_ID_cpu_mfc0,
-    RABBITIZER_INSTR_ID_cpu_eret,
-    RABBITIZER_INSTR_ID_cpu_tlbp,
-    RABBITIZER_INSTR_ID_cpu_tlbr,
-    RABBITIZER_INSTR_ID_cpu_tlbwi,
-    RABBITIZER_INSTR_ID_cpu_cache,
-    0,
-};
-
-
 const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId) {
     assert(uniqueId >= RABBITIZER_INSTR_ID_cpu_INVALID && uniqueId < RABBITIZER_INSTR_ID_ALL_MAX);
     assert(uniqueId != RABBITIZER_INSTR_ID_cpu_MAX);

@@ -36,7 +36,14 @@ typedef struct RabbitizerInstrDescriptor {
     bool modifiesRt;
     bool modifiesRd;
 
-    int mipsVersion;
+    bool notEmitedByCompilers;
+
+    bool isHiPair;
+    bool isLoPair;
+    bool doesLink; // "and link" family of instructions
+    bool doesDereference;
+
+    // int mipsVersion;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -59,5 +66,12 @@ bool RabbitizerInstrDescriptor_isUnsigned(const RabbitizerInstrDescriptor *self)
 
 bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self);
 
 #endif

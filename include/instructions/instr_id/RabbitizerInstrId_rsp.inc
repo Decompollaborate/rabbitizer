@@ -92,15 +92,15 @@
 
     // OP rs
     RABBITIZER_DEF_INSTR_ID(rsp, jr,                    .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true),                        // Jump Register
-    RABBITIZER_DEF_INSTR_ID(rsp, jalr,                  .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true),      // Jump And Link Register
+    RABBITIZER_DEF_INSTR_ID(rsp, jalr,                  .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true, .doesLink=true),      // Jump And Link Register
 
     // OP rd, rs
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(rsp, jalr_rd, jalr, .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true),   // Jump And Link Register // Special case for rd != 31
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(rsp, jalr_rd, jalr, .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true, .doesLink=true),   // Jump And Link Register // Special case for rd != 31
 
     // OP rd, rs, rt
     RABBITIZER_DEF_INSTR_ID(rsp, movz,                  .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // MOVe conditional on Zero
     RABBITIZER_DEF_INSTR_ID(rsp, movn,                  .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // MOVe conditional on Not zero
-    RABBITIZER_DEF_INSTR_ID(rsp, add,                   .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // ADD word
+    RABBITIZER_DEF_INSTR_ID(rsp, add,                   .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .notEmitedByCompilers=true),       // ADD word
     RABBITIZER_DEF_INSTR_ID(rsp, addu,                  .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // ADD Unsigned word
     RABBITIZER_DEF_INSTR_ID(rsp, sub,                   .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // Subtract word
     RABBITIZER_DEF_INSTR_ID(rsp, subu,                  .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // SUBtract Unsigned word
@@ -127,12 +127,12 @@
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(rsp, bltz,                  .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),      // Branch on Less Than Zero
     RABBITIZER_DEF_INSTR_ID(rsp, bgez,                  .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),      // Branch on Greater than or Equal to Zero
-    RABBITIZER_DEF_INSTR_ID(rsp, bltzal,                .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),
-    RABBITIZER_DEF_INSTR_ID(rsp, bgezal,                .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),
+    RABBITIZER_DEF_INSTR_ID(rsp, bltzal,                .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true), // Branch on Less Than Zero and Link
+    RABBITIZER_DEF_INSTR_ID(rsp, bgezal,                .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true), // Branch on Greater Than or Equal to Zero and Link
 
     // OP LABEL
     RABBITIZER_DEF_INSTR_ID(rsp, j,                     .operands={RABBITIZER_OPERAND_TYPE_LABEL}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true),         // Jump
-    RABBITIZER_DEF_INSTR_ID(rsp, jal,                   .operands={RABBITIZER_OPERAND_TYPE_LABEL}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true),       // Jump And Link
+    RABBITIZER_DEF_INSTR_ID(rsp, jal,                   .operands={RABBITIZER_OPERAND_TYPE_LABEL}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true, .doesLink=true),       // Jump And Link
 
     // OP rs, rt, IMM
     RABBITIZER_DEF_INSTR_ID(rsp, beq,                   .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),       // Branch on EQual
@@ -143,37 +143,37 @@
     RABBITIZER_DEF_INSTR_ID(rsp, bgtz,                  .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),      // Branch on Greater Than Zero
 
     // OP rt, IMM
-    RABBITIZER_DEF_INSTR_ID(rsp, lui,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),       // Load Upper Immediate
+    RABBITIZER_DEF_INSTR_ID(rsp, lui,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true, .isHiPair=true),       // Load Upper Immediate
 
     // OP rt, rs, IMM
     RABBITIZER_DEF_INSTR_ID(rsp, andi,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),      // And Immediate
-    RABBITIZER_DEF_INSTR_ID(rsp, ori,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),       // Or Immediate
+    RABBITIZER_DEF_INSTR_ID(rsp, ori,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true, .isLoPair=true),       // Or Immediate
     RABBITIZER_DEF_INSTR_ID(rsp, xori,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),      // eXclusive OR Immediate
-    RABBITIZER_DEF_INSTR_ID(rsp, addi,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),      // Add Immediate
-    RABBITIZER_DEF_INSTR_ID(rsp, addiu,                 .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),     // Add Immediate Unsigned Word
+    RABBITIZER_DEF_INSTR_ID(rsp, addi,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .notEmitedByCompilers=true, .isLoPair=true),      // Add Immediate
+    RABBITIZER_DEF_INSTR_ID(rsp, addiu,                 .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true),     // Add Immediate Unsigned Word
     RABBITIZER_DEF_INSTR_ID(rsp, slti,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),      // Set on Less Than Immediate
     RABBITIZER_DEF_INSTR_ID(rsp, sltiu,                 .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),     // Set on Less Than Immediate Unsigned
 
     // OP rt, IMM(base)
-    RABBITIZER_DEF_INSTR_ID(rsp, lb,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Byte
-    RABBITIZER_DEF_INSTR_ID(rsp, lh,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Halfword
-    RABBITIZER_DEF_INSTR_ID(rsp, lw,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Word
-    RABBITIZER_DEF_INSTR_ID(rsp, lbu,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Byte Insigned
-    RABBITIZER_DEF_INSTR_ID(rsp, lhu,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Halfword Unsigned
-    RABBITIZER_DEF_INSTR_ID(rsp, sb,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),        // Store Byte
-    RABBITIZER_DEF_INSTR_ID(rsp, sh,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),        // Store Halfword
-    RABBITIZER_DEF_INSTR_ID(rsp, sw,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),        // Store Word
-    RABBITIZER_DEF_INSTR_ID(rsp, pref,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),      // Prefetch
+    RABBITIZER_DEF_INSTR_ID(rsp, lb,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Byte
+    RABBITIZER_DEF_INSTR_ID(rsp, lh,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Halfword
+    RABBITIZER_DEF_INSTR_ID(rsp, lw,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Word
+    RABBITIZER_DEF_INSTR_ID(rsp, lbu,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Byte Insigned
+    RABBITIZER_DEF_INSTR_ID(rsp, lhu,                   .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Halfword Unsigned
+    RABBITIZER_DEF_INSTR_ID(rsp, sb,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),        // Store Byte
+    RABBITIZER_DEF_INSTR_ID(rsp, sh,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),        // Store Halfword
+    RABBITIZER_DEF_INSTR_ID(rsp, sw,                    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),        // Store Word
+    RABBITIZER_DEF_INSTR_ID(rsp, pref,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),      // Prefetch
 
-    RABBITIZER_DEF_INSTR_ID(rsp, cache,                 .operands={RABBITIZER_OPERAND_TYPE_op, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),     // Cache
+    RABBITIZER_DEF_INSTR_ID(rsp, cache,                 .operands={RABBITIZER_OPERAND_TYPE_op, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .notEmitedByCompilers=true),     // Cache
 
     // OP ft, IMM(base)
-    RABBITIZER_DEF_INSTR_ID(rsp, lwc1,                  .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true),      // Load Word to Coprocessor z
-    RABBITIZER_DEF_INSTR_ID(rsp, swc1,                  .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true),      // Store Word from Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(rsp, lwc1,                  .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isLoPair=true, .doesDereference=true),      // Load Word to Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(rsp, swc1,                  .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isLoPair=true, .doesDereference=true),      // Store Word from Coprocessor z
 
     // OP rt, cop0d
-    RABBITIZER_DEF_INSTR_ID(rsp, mfc0,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true),      // Move word From CP0
-    RABBITIZER_DEF_INSTR_ID(rsp, mtc0,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),      // Move word to CP0
+    RABBITIZER_DEF_INSTR_ID(rsp, mfc0,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true, .notEmitedByCompilers=true),      // Move word From CP0
+    RABBITIZER_DEF_INSTR_ID(rsp, mtc0,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true),      // Move word to CP0
 
     // Pseudo-Instruction Unique IDs
     // OP

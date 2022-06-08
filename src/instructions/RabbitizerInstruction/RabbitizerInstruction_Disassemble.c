@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstruction.h"
-#include "instructions/RabbitizerInstrRsp.h"
+#include "instructions/RabbitizerInstructionRsp.h"
 
 #include <assert.h>
 #include <string.h>

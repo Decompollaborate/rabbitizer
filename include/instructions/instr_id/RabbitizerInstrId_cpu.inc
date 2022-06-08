@@ -7,10 +7,10 @@
     RABBITIZER_DEF_INSTR_ID(cpu, mthi,                          .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R), // Move To HI register
     RABBITIZER_DEF_INSTR_ID(cpu, mtlo,                          .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R),      // Move To LO register
     RABBITIZER_DEF_INSTR_ID(cpu, jr,                            .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true),                        // Jump Register
-    RABBITIZER_DEF_INSTR_ID(cpu, jalr,                          .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true),      // Jump And Link Register
+    RABBITIZER_DEF_INSTR_ID(cpu, jalr,                          .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true, .doesLink=true),      // Jump And Link Register
 
     // OP rd, rs
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, jalr_rd, jalr,         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true),   // Jump And Link Register // Special case for rd != 31
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, jalr_rd, jalr,         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true, .doesLink=true),   // Jump And Link Register // Special case for rd != 31
 
     // OP rd
     RABBITIZER_DEF_INSTR_ID(cpu, mfhi,                          .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // Move From HI register
@@ -41,7 +41,7 @@
     RABBITIZER_DEF_INSTR_ID(cpu, ddivu,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R),     // Doubleword DIVide Unsigned
     // RABBITIZER_DEF_INSTR_ID(cpu, ddiv,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R),
     // RABBITIZER_DEF_INSTR_ID(cpu, ddivu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R),
-    RABBITIZER_DEF_INSTR_ID(cpu, add,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // ADD word
+    RABBITIZER_DEF_INSTR_ID(cpu, add,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .notEmitedByCompilers=true),       // ADD word
     RABBITIZER_DEF_INSTR_ID(cpu, addu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // ADD Unsigned word
     RABBITIZER_DEF_INSTR_ID(cpu, sub,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // Subtract word
     RABBITIZER_DEF_INSTR_ID(cpu, subu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // SUBtract Unsigned word
@@ -89,16 +89,16 @@
     RABBITIZER_DEF_INSTR_ID(cpu, tgeiu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true),
     RABBITIZER_DEF_INSTR_ID(cpu, tlti,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true),
     RABBITIZER_DEF_INSTR_ID(cpu, tltiu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true),
-    RABBITIZER_DEF_INSTR_ID(cpu, bltzal,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),
-    RABBITIZER_DEF_INSTR_ID(cpu, bgezal,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),
-    RABBITIZER_DEF_INSTR_ID(cpu, bltzall,                       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true),
-    RABBITIZER_DEF_INSTR_ID(cpu, bgezall,                       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true),
+    RABBITIZER_DEF_INSTR_ID(cpu, bltzal,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true), // Branch on Less Than Zero and Link
+    RABBITIZER_DEF_INSTR_ID(cpu, bgezal,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true), // Branch on Greater Than or Equal to Zero and Link
+    RABBITIZER_DEF_INSTR_ID(cpu, bltzall,                       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .doesLink=true), // Branch on Less Than Zero and Link Likely
+    RABBITIZER_DEF_INSTR_ID(cpu, bgezall,                       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .doesLink=true), // Branch on Greater Than or Equal to Zero and Link Likely
     RABBITIZER_DEF_INSTR_ID(cpu, teqi,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true),
     RABBITIZER_DEF_INSTR_ID(cpu, tnei,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true),
 
     // OP LABEL
     RABBITIZER_DEF_INSTR_ID(cpu, j,                             .operands={RABBITIZER_OPERAND_TYPE_LABEL}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true),         // Jump
-    RABBITIZER_DEF_INSTR_ID(cpu, jal,                           .operands={RABBITIZER_OPERAND_TYPE_LABEL}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true),       // Jump And Link
+    RABBITIZER_DEF_INSTR_ID(cpu, jal,                           .operands={RABBITIZER_OPERAND_TYPE_LABEL}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true, .doesLink=true),       // Jump And Link
 
     // OP rs, rt, IMM
     RABBITIZER_DEF_INSTR_ID(cpu, beq,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),       // Branch on EQual
@@ -113,73 +113,73 @@
     RABBITIZER_DEF_INSTR_ID(cpu, bgtzl,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true),     // Branch on Greater Than Zero Likely
 
     // OP rt, IMM
-    RABBITIZER_DEF_INSTR_ID(cpu, lui,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),       // Load Upper Immediate
+    RABBITIZER_DEF_INSTR_ID(cpu, lui,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true, .isHiPair=true),       // Load Upper Immediate
 
     // OP rt, rs, IMM
     RABBITIZER_DEF_INSTR_ID(cpu, andi,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),      // And Immediate
-    RABBITIZER_DEF_INSTR_ID(cpu, ori,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),       // Or Immediate
+    RABBITIZER_DEF_INSTR_ID(cpu, ori,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true, .isLoPair=true),       // Or Immediate
     RABBITIZER_DEF_INSTR_ID(cpu, xori,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true),      // eXclusive OR Immediate
-    RABBITIZER_DEF_INSTR_ID(cpu, addi,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),      // Add Immediate
-    RABBITIZER_DEF_INSTR_ID(cpu, addiu,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),     // Add Immediate Unsigned Word
-    RABBITIZER_DEF_INSTR_ID(cpu, daddi,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),     // Doubleword add Immediate
-    RABBITIZER_DEF_INSTR_ID(cpu, daddiu,                        .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),    // Doubleword add Immediate Unsigned
+    RABBITIZER_DEF_INSTR_ID(cpu, addi,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .notEmitedByCompilers=true, .isLoPair=true),      // Add Immediate
+    RABBITIZER_DEF_INSTR_ID(cpu, addiu,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true),     // Add Immediate Unsigned Word
+    RABBITIZER_DEF_INSTR_ID(cpu, daddi,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true),     // Doubleword add Immediate
+    RABBITIZER_DEF_INSTR_ID(cpu, daddiu,                        .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true),    // Doubleword add Immediate Unsigned
     RABBITIZER_DEF_INSTR_ID(cpu, slti,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),      // Set on Less Than Immediate
     RABBITIZER_DEF_INSTR_ID(cpu, sltiu,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),     // Set on Less Than Immediate Unsigned
 
     // OP rt, IMM(base)
-    RABBITIZER_DEF_INSTR_ID(cpu, ldl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Doubleword Left
-    RABBITIZER_DEF_INSTR_ID(cpu, ldr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Doubleword Right
-    RABBITIZER_DEF_INSTR_ID(cpu, lb,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Byte
-    RABBITIZER_DEF_INSTR_ID(cpu, lh,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Halfword
-    RABBITIZER_DEF_INSTR_ID(cpu, lwl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Word Left
-    RABBITIZER_DEF_INSTR_ID(cpu, lw,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Word
-    RABBITIZER_DEF_INSTR_ID(cpu, lbu,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Byte Insigned
-    RABBITIZER_DEF_INSTR_ID(cpu, lhu,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Halfword Unsigned
-    RABBITIZER_DEF_INSTR_ID(cpu, lwr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Word Right
-    RABBITIZER_DEF_INSTR_ID(cpu, lwu,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Word Unsigned
-    RABBITIZER_DEF_INSTR_ID(cpu, sb,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),        // Store Byte
-    RABBITIZER_DEF_INSTR_ID(cpu, sh,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),        // Store Halfword
-    RABBITIZER_DEF_INSTR_ID(cpu, swl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),       // Store Word Left
-    RABBITIZER_DEF_INSTR_ID(cpu, sw,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),        // Store Word
-    RABBITIZER_DEF_INSTR_ID(cpu, sdl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),       // Store Doubleword Left
-    RABBITIZER_DEF_INSTR_ID(cpu, sdr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),       // Store Doubleword Right
-    RABBITIZER_DEF_INSTR_ID(cpu, swr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),       // Store Word Right
-    RABBITIZER_DEF_INSTR_ID(cpu, ll,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Linked word
-    RABBITIZER_DEF_INSTR_ID(cpu, pref,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),      // Prefetch
-    RABBITIZER_DEF_INSTR_ID(cpu, lld,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Load Linked Doubleword
-    RABBITIZER_DEF_INSTR_ID(cpu, ld,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Load Doubleword
-    RABBITIZER_DEF_INSTR_ID(cpu, sc,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Store Conditional word
-    RABBITIZER_DEF_INSTR_ID(cpu, scd,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),       // Store Conditional Doubleword
-    RABBITIZER_DEF_INSTR_ID(cpu, sd,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true),        // Store Doubleword
+    RABBITIZER_DEF_INSTR_ID(cpu, ldl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Doubleword Left
+    RABBITIZER_DEF_INSTR_ID(cpu, ldr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Doubleword Right
+    RABBITIZER_DEF_INSTR_ID(cpu, lb,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Byte
+    RABBITIZER_DEF_INSTR_ID(cpu, lh,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Halfword
+    RABBITIZER_DEF_INSTR_ID(cpu, lwl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Word Left
+    RABBITIZER_DEF_INSTR_ID(cpu, lw,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Word
+    RABBITIZER_DEF_INSTR_ID(cpu, lbu,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Byte Insigned
+    RABBITIZER_DEF_INSTR_ID(cpu, lhu,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Halfword Unsigned
+    RABBITIZER_DEF_INSTR_ID(cpu, lwr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Word Right
+    RABBITIZER_DEF_INSTR_ID(cpu, lwu,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Word Unsigned
+    RABBITIZER_DEF_INSTR_ID(cpu, sb,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),        // Store Byte
+    RABBITIZER_DEF_INSTR_ID(cpu, sh,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),        // Store Halfword
+    RABBITIZER_DEF_INSTR_ID(cpu, swl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),       // Store Word Left
+    RABBITIZER_DEF_INSTR_ID(cpu, sw,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),        // Store Word
+    RABBITIZER_DEF_INSTR_ID(cpu, sdl,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),       // Store Doubleword Left
+    RABBITIZER_DEF_INSTR_ID(cpu, sdr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),       // Store Doubleword Right
+    RABBITIZER_DEF_INSTR_ID(cpu, swr,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),       // Store Word Right
+    RABBITIZER_DEF_INSTR_ID(cpu, ll,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Linked word
+    RABBITIZER_DEF_INSTR_ID(cpu, pref,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),      // Prefetch
+    RABBITIZER_DEF_INSTR_ID(cpu, lld,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Load Linked Doubleword
+    RABBITIZER_DEF_INSTR_ID(cpu, ld,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Load Doubleword
+    RABBITIZER_DEF_INSTR_ID(cpu, sc,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Store Conditional word
+    RABBITIZER_DEF_INSTR_ID(cpu, scd,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),       // Store Conditional Doubleword
+    RABBITIZER_DEF_INSTR_ID(cpu, sd,                            .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .isLoPair=true, .doesDereference=true),        // Store Doubleword
 
-    RABBITIZER_DEF_INSTR_ID(cpu, cache,                         .operands={RABBITIZER_OPERAND_TYPE_op, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),     // Cache
+    RABBITIZER_DEF_INSTR_ID(cpu, cache,                         .operands={RABBITIZER_OPERAND_TYPE_op, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .notEmitedByCompilers=true),     // Cache
 
     // OP ft, IMM(base)
-    RABBITIZER_DEF_INSTR_ID(cpu, lwc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true),      // Load Word to Coprocessor z
-    RABBITIZER_DEF_INSTR_ID(cpu, ldc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isDouble=true),      // Load Doubleword to Coprocessor z
-    RABBITIZER_DEF_INSTR_ID(cpu, swc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true),      // Store Word from Coprocessor z
-    RABBITIZER_DEF_INSTR_ID(cpu, sdc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isDouble=true),      // Store Doubleword from Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, lwc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isLoPair=true, .doesDereference=true),      // Load Word to Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, ldc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isDouble=true, .isLoPair=true, .doesDereference=true),      // Load Doubleword to Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, swc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isLoPair=true, .doesDereference=true),      // Store Word from Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, sdc1,                          .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isFloat=true, .isDouble=true, .isLoPair=true, .doesDereference=true),      // Store Doubleword from Coprocessor z
 
     // OP cop2t, IMM(base)
-    RABBITIZER_DEF_INSTR_ID(cpu, lwc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),      // Load Word to Coprocessor z
-    RABBITIZER_DEF_INSTR_ID(cpu, ldc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),      // Load Doubleword to Coprocessor z
-    RABBITIZER_DEF_INSTR_ID(cpu, swc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),      // Store Word from Coprocessor z
-    RABBITIZER_DEF_INSTR_ID(cpu, sdc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I),      // Store Doubleword from Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, lwc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),      // Load Word to Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, ldc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),      // Load Doubleword to Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, swc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),      // Store Word from Coprocessor z
+    RABBITIZER_DEF_INSTR_ID(cpu, sdc2,                          .operands={RABBITIZER_OPERAND_TYPE_cop2t, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .isLoPair=true, .doesDereference=true),      // Store Doubleword from Coprocessor z
 
     // OP rt, cop0d
-    RABBITIZER_DEF_INSTR_ID(cpu, mfc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true),      // Move word From CP0
+    RABBITIZER_DEF_INSTR_ID(cpu, mfc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true, .notEmitedByCompilers=true),      // Move word From CP0
     RABBITIZER_DEF_INSTR_ID(cpu, dmfc0,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true),     // Doubleword Move From CP0
     RABBITIZER_DEF_INSTR_ID(cpu, cfc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true),      // Move control word From CP0
-    RABBITIZER_DEF_INSTR_ID(cpu, mtc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),      // Move word to CP0
+    RABBITIZER_DEF_INSTR_ID(cpu, mtc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true),      // Move word to CP0
     RABBITIZER_DEF_INSTR_ID(cpu, dmtc0,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),     // Doubleword Move To CP0
     RABBITIZER_DEF_INSTR_ID(cpu, ctc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),      // Move control word To CP0
 
     // OP
-    RABBITIZER_DEF_INSTR_ID(cpu, tlbr,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),      // Read Indexed TLB Entry
-    RABBITIZER_DEF_INSTR_ID(cpu, tlbwi,                         .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),     // Write Indexed TLB Entry
+    RABBITIZER_DEF_INSTR_ID(cpu, tlbr,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true),      // Read Indexed TLB Entry
+    RABBITIZER_DEF_INSTR_ID(cpu, tlbwi,                         .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true),     // Write Indexed TLB Entry
     RABBITIZER_DEF_INSTR_ID(cpu, tlbwr,                         .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),     // Write Random TLB Entry
-    RABBITIZER_DEF_INSTR_ID(cpu, tlbp,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),      // Probe TLB for Matching Entry
-    RABBITIZER_DEF_INSTR_ID(cpu, eret,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN),      // Return from Exception
+    RABBITIZER_DEF_INSTR_ID(cpu, tlbp,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true),      // Probe TLB for Matching Entry
+    RABBITIZER_DEF_INSTR_ID(cpu, eret,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true),      // Return from Exception
 
     // OP IMM
     RABBITIZER_DEF_INSTR_ID(cpu, bc0t,                          .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true),      // Branch on FP True

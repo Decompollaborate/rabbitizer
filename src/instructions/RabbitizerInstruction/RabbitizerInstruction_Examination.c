@@ -31,10 +31,8 @@ bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self
         }
     }
 
-    for (size_t i = 0; RabbitizerInstrId_NotEmitedByCompilers[i] != 0; i++) {
-        if (self->uniqueId == RabbitizerInstrId_NotEmitedByCompilers[i]) {
-            return true;
-        }
+    if (RabbitizerInstrDescriptor_notEmitedByCompilers(self->descriptor)) {
+        return true;
     }
 
     return false;

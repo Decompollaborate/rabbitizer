@@ -20,7 +20,7 @@ static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
 }
 
 static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
-    static char *kwlist[] = {"word", NULL};
+    static char *kwlist[] = { "word", NULL };
     uint32_t word;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "I", kwlist, &word)) {
@@ -97,6 +97,16 @@ DEF_METHOD_GET_UINT(getImmediate)
 DEF_METHOD_GET_UINT(getInstrIndexAsVram)
 DEF_METHOD_GET_INT(getBranchOffset)
 
+static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "currentVram", NULL };
+    uint32_t currentVram;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I", kwlist, &currentVram)) {
+        return NULL;
+    }
+
+    return PyLong_FromLong(RabbitizerInstruction_getGenericBranchOffset(&self->instr, currentVram));
+}
 
 static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
     RabbitizerInstruction_blankOut(&self->instr);
@@ -129,7 +139,7 @@ static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruct
 }
 
 static PyObject *rabbitizer_type_Instruction_sameOpcode(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
-    static char *kwlist[] = {"other", NULL};
+    static char *kwlist[] = { "other", NULL };
     PyRabbitizerInstruction *other;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &other)) {
@@ -176,6 +186,11 @@ DEF_DESCRIPTOR_METHOD_BOOL(isDouble)
 DEF_DESCRIPTOR_METHOD_BOOL(isUnsigned)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRt)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRd)
+DEF_DESCRIPTOR_METHOD_BOOL(notEmitedByCompilers)
+DEF_DESCRIPTOR_METHOD_BOOL(isHiPair)
+DEF_DESCRIPTOR_METHOD_BOOL(isLoPair)
+DEF_DESCRIPTOR_METHOD_BOOL(doesLink)
+DEF_DESCRIPTOR_METHOD_BOOL(doesDereference)
 
 
 static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
@@ -211,7 +226,8 @@ static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction
 }
 
 
-#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_NOARGS, PyDoc_STR(docs) }
+#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_NOARGS,                  PyDoc_STR(docs) }
+#define METHOD_ARGS(name, docs)     { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
 
 
 static PyMethodDef Instr_methods[] = {
@@ -219,6 +235,7 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(getImmediate, ""),
     METHOD_NO_ARGS(getInstrIndexAsVram, ""),
     METHOD_NO_ARGS(getBranchOffset, ""),
+    METHOD_ARGS(getGenericBranchOffset, ""),
 
     METHOD_NO_ARGS(blankOut, ""),
 
@@ -230,8 +247,8 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(isJrNotRa, ""),
     METHOD_NO_ARGS(mapInstrToType, ""),
 
-    { "sameOpcode",                      (PyCFunction) rabbitizer_type_Instruction_sameOpcode,                       METH_VARARGS | METH_KEYWORDS, "description" },
-    { "sameOpcodeButDifferentArguments", (PyCFunction) rabbitizer_type_Instruction_sameOpcodeButDifferentArguments,  METH_VARARGS | METH_KEYWORDS, "description" },
+    METHOD_ARGS(sameOpcode, "description"),
+    METHOD_ARGS(sameOpcodeButDifferentArguments, "description"),
 
     METHOD_NO_ARGS(isJType, ""),
     METHOD_NO_ARGS(isIType, ""),
@@ -247,8 +264,13 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(isUnsigned, ""),
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
+    METHOD_NO_ARGS(notEmitedByCompilers, ""),
+    METHOD_NO_ARGS(isHiPair, ""),
+    METHOD_NO_ARGS(isLoPair, ""),
+    METHOD_NO_ARGS(doesLink, ""),
+    METHOD_NO_ARGS(doesDereference, ""),
 
-    { "disassemble", (PyCFunction) rabbitizer_type_Instruction_disassemble, METH_VARARGS | METH_KEYWORDS, "description" },
+    METHOD_ARGS(disassemble, "description"),
 
     { 0 },
 };
@@ -295,6 +317,7 @@ static PyObject *rabbitizer_type_Instruction_repr(PyRabbitizerInstruction *self)
 static PyObject *rabbitizer_type_Instruction_str(PyRabbitizerInstruction *self) {
     return rabbitizer_type_Instruction_disassemble(self, Py_BuildValue("()"), Py_BuildValue("{}"));
 }
+
 
 PyTypeObject rabbitizer_type_Instruction_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)

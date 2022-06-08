@@ -62,3 +62,20 @@ bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self)
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self) {
     return self->modifiesRd;
 }
+
+bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self) {
+    return self->notEmitedByCompilers;
+}
+
+bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self) {
+    return self->isHiPair;
+}
+bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self) {
+    return self->isLoPair;
+}
+bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self) {
+    return self->doesLink;
+}
+bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self) {
+    return self->doesDereference;
+}

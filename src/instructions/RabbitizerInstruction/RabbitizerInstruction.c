@@ -102,6 +102,13 @@ int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self)
     return diff*4 + 4;
 }
 
+int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_j) {
+        return RabbitizerInstruction_getInstrIndexAsVram(self) - currentVram;
+    }
+    return RabbitizerInstruction_getBranchOffset(self);
+}
+
 /* General getters */
 
 

@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "instructions/RabbitizerInstrRsp.h"
+#include "instructions/RabbitizerInstructionRsp.h"
 
 
 void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word) {

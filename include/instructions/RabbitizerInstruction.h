@@ -1,8 +1,8 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#ifndef RABBITIZER_INSTR_H
-#define RABBITIZER_INSTR_H
+#ifndef RABBITIZER_INSTRUCTION_H
+#define RABBITIZER_INSTRUCTION_H
 #pragma once
 
 #include <stdbool.h>
@@ -87,6 +87,7 @@ uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self);
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self);
 
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self);
+int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram);
 
 /* General getters */
 
@@ -99,13 +100,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self);
 bool RabbitizerInstruction_isImplemented(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self);
-bool RabbitizerInstruction_isLui(const RabbitizerInstruction *self);
-bool RabbitizerInstruction_isOri(const RabbitizerInstruction *self);
-bool RabbitizerInstruction_isLo(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self);
-bool RabbitizerInstruction_isAndLink(const RabbitizerInstruction *self);
 
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self);
 

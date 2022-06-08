@@ -1,8 +1,8 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#ifndef RABBITIZER_INSTR_RSP_H
-#define RABBITIZER_INSTR_RSP_H
+#ifndef RABBITIZER_INSTRUCTION_RSP_H
+#define RABBITIZER_INSTRUCTION_RSP_H
 #pragma once
 
 #include "RabbitizerInstruction.h"
