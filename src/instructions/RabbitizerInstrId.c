@@ -5,7 +5,7 @@
 
 #include <assert.h>
 
-//#include "instructions/RabbitizerInstr.h"
+//#include "instructions/RabbitizerInstruction.h"
 
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \

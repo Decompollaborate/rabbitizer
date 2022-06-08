@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "instructions/RabbitizerInstr.h"
+#include "instructions/RabbitizerInstruction.h"
 
 #include <assert.h>
 
@@ -10,7 +10,7 @@
 #include "instructions/RabbitizerRegister.h"
 
 
-void RabbitizerInstr_init(RabbitizerInstr *self, uint32_t word) {
+void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word) {
     self->opcode = (word >> 26) & 0x3F;
     self->rs = (word >> 21) & 0x1F;
     self->rt = (word >> 16) & 0x1F;
@@ -27,20 +27,20 @@ void RabbitizerInstr_init(RabbitizerInstr *self, uint32_t word) {
     self->category = RABBITIZER_INSTRCAT_CPU;
 }
 
-void RabbitizerInstr_destroy(RabbitizerInstr *self) {
+void RabbitizerInstruction_destroy(RabbitizerInstruction *self) {
     (void)self;
 }
 
 
 /* Register getters */
 
-uint8_t RabbitizerInstr_getFs(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getFs(const RabbitizerInstruction *self) {
     return self->rd;
 }
-uint8_t RabbitizerInstr_getFt(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getFt(const RabbitizerInstruction *self) {
     return self->rt;
 }
-uint8_t RabbitizerInstr_getFd(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getFd(const RabbitizerInstruction *self) {
     return self->sa;
 }
 
@@ -49,20 +49,20 @@ uint8_t RabbitizerInstr_getFd(const RabbitizerInstr *self) {
 
 /* Coprocessor stuffs */
 
-uint8_t RabbitizerInstr_getFmt(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getFmt(const RabbitizerInstruction *self) {
     return self->rs;
 }
 
-uint8_t RabbitizerInstr_getTf(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getTf(const RabbitizerInstruction *self) {
     return self->rt & 0x1;
 }
-uint8_t RabbitizerInstr_getNd(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getNd(const RabbitizerInstruction *self) {
     return (self->rt >> 1) & 0x1;
 }
-uint8_t RabbitizerInstr_getFc(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getFc(const RabbitizerInstruction *self) {
     return (self->function >> 4) & 0x3;
 }
-uint8_t RabbitizerInstr_getCond(const RabbitizerInstr *self) {
+uint8_t RabbitizerInstruction_getCond(const RabbitizerInstruction *self) {
     return self->function & 0xF;
 }
 
@@ -71,21 +71,21 @@ uint8_t RabbitizerInstr_getCond(const RabbitizerInstr *self) {
 
 /* General getters */
 
-uint32_t RabbitizerInstr_getRaw(const RabbitizerInstr *self) {
+uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self) {
     return (self->opcode << 26) | (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
 }
 
-uint32_t RabbitizerInstr_getImmediate(const RabbitizerInstr *self) {
+uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self) {
     //return (self->rd << 11) | (self->sa << 6) | (self->function);
     return RAB_INSTR_GET_IMMEDIATE(self);
 }
 
-uint32_t RabbitizerInstr_getInstrIndex(const RabbitizerInstr *self) {
+uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self) {
     return (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
 }
 
-uint32_t RabbitizerInstr_getInstrIndexAsVram(const RabbitizerInstr *self) {
-    uint32_t vram = RabbitizerInstr_getInstrIndex(self) << 2;
+uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self) {
+    uint32_t vram = RabbitizerInstruction_getInstrIndex(self) << 2;
 
     if (self->vram == 0) {
         vram |= 0x80000000;
@@ -96,8 +96,8 @@ uint32_t RabbitizerInstr_getInstrIndexAsVram(const RabbitizerInstr *self) {
     return vram;
 }
 
-int32_t RabbitizerInstr_getBranchOffset(const RabbitizerInstr *self) {
-    int32_t diff = RabbitizerUtils_From2Complement(RabbitizerInstr_getImmediate(self), 16);
+int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self) {
+    int32_t diff = RabbitizerUtils_From2Complement(RabbitizerInstruction_getImmediate(self), 16);
 
     return diff*4 + 4;
 }
@@ -105,7 +105,7 @@ int32_t RabbitizerInstr_getBranchOffset(const RabbitizerInstr *self) {
 /* General getters */
 
 
-void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
+void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
         switch (self->descriptor->operands[i]) {
             case RABBITIZER_OPERAND_TYPE_rs:

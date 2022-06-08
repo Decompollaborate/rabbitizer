@@ -5,7 +5,7 @@
 #define RABBITIZER_INSTR_RSP_H
 #pragma once
 
-#include "RabbitizerInstr.h"
+#include "RabbitizerInstruction.h"
 
 
 #define RAB_INSTR_RSP_GET_VS(self) ((self)->rd)
@@ -17,20 +17,20 @@
 #define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self) (RAB_INSTR_GET_IMMEDIATE(self) & 0x7F)
 
 
-void RabbitizerInstrRsp_init(RabbitizerInstr *self, uint32_t word);
-void RabbitizerInstrRsp_destroy(RabbitizerInstr *self);
+void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word);
+void RabbitizerInstructionRsp_destroy(RabbitizerInstruction *self);
 
 
-void RabbitizerInstrRsp_processUniqueId_Normal(RabbitizerInstr *self);
-void RabbitizerInstrRsp_processUniqueId_Special(RabbitizerInstr *self);
-void RabbitizerInstrRsp_processUniqueId_Regimm(RabbitizerInstr *self);
+void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self);
+void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *self);
+void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self);
 
-void RabbitizerInstrRsp_processUniqueId(RabbitizerInstr *self);
+void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self);
 
 
-uint16_t RabbitizerInstrRsp_GetOffsetVector(const RabbitizerInstr *self);
+uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *self);
 
-uint8_t RabbitizerInstrRsp_processVectorElement(const RabbitizerInstr *self, uint8_t element);
+uint8_t RabbitizerInstructionRsp_processVectorElement(const RabbitizerInstruction *self, uint8_t element);
 
 
 #endif

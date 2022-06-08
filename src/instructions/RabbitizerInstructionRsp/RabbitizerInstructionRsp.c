@@ -4,8 +4,8 @@
 #include "instructions/RabbitizerInstrRsp.h"
 
 
-void RabbitizerInstrRsp_init(RabbitizerInstr *self, uint32_t word) {
-    RabbitizerInstr_init(self, word);
+void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word) {
+    RabbitizerInstruction_init(self, word);
 
     self->uniqueId = RABBITIZER_INSTR_ID_rsp_INVALID;
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -14,12 +14,12 @@ void RabbitizerInstrRsp_init(RabbitizerInstr *self, uint32_t word) {
     self->category = RABBITIZER_INSTRCAT_RSP;
 }
 
-void RabbitizerInstrRsp_destroy(RabbitizerInstr *self) {
-    RabbitizerInstr_destroy(self);
+void RabbitizerInstructionRsp_destroy(RabbitizerInstruction *self) {
+    RabbitizerInstruction_destroy(self);
 }
 
 
-uint16_t RabbitizerInstrRsp_GetOffsetVector(const RabbitizerInstr *self) {
+uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *self) {
     uint16_t offset = RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self);
 
     switch (self->uniqueId) {
@@ -57,7 +57,7 @@ uint16_t RabbitizerInstrRsp_GetOffsetVector(const RabbitizerInstr *self) {
     }
 }
 
-uint8_t RabbitizerInstrRsp_processVectorElement(const RabbitizerInstr *self, uint8_t element) {
+uint8_t RabbitizerInstructionRsp_processVectorElement(const RabbitizerInstruction *self, uint8_t element) {
     (void)self;
 
     if ((element & 0x8) == 0x8) {

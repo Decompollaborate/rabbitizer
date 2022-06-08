@@ -1,12 +1,12 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "instructions/RabbitizerInstr.h"
+#include "instructions/RabbitizerInstruction.h"
 
 #include "common/RabbitizerConfig.h"
 
 
-void RabbitizerInstr_processUniqueId_Normal(RabbitizerInstr *self) {
+void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     switch (self->opcode) {
         // 0b000000: "SPECIAL",
         // 0b000001: "REGIMM",
@@ -211,7 +211,7 @@ void RabbitizerInstr_processUniqueId_Normal(RabbitizerInstr *self) {
 }
 
 
-void RabbitizerInstr_processUniqueId_Special(RabbitizerInstr *self) {
+void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) {
     switch (self->function) {
         case 0b000000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_sll;
@@ -398,7 +398,7 @@ void RabbitizerInstr_processUniqueId_Special(RabbitizerInstr *self) {
             break;
     }
 
-    if (RabbitizerInstr_isNop(self)) {
+    if (RabbitizerInstruction_isNop(self)) {
         // NOP is special enough
         self->uniqueId = RABBITIZER_INSTR_ID_cpu_nop;
     } else if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -440,7 +440,7 @@ void RabbitizerInstr_processUniqueId_Special(RabbitizerInstr *self) {
 }
 
 
-void RabbitizerInstr_processUniqueId_Regimm(RabbitizerInstr *self) {
+void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
     switch (self->rt) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_bltz;
@@ -497,10 +497,10 @@ void RabbitizerInstr_processUniqueId_Regimm(RabbitizerInstr *self) {
 }
 
 
-void RabbitizerInstr_processUniqueId_Coprocessor0(RabbitizerInstr *self) {
+void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
     self->_handwrittenCategory = true;
 
-    switch (RabbitizerInstr_getFmt(self)) {
+    switch (RabbitizerInstruction_getFmt(self)) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_mfc0;
             break;
@@ -523,14 +523,14 @@ void RabbitizerInstr_processUniqueId_Coprocessor0(RabbitizerInstr *self) {
         // 0b00_111: "",
 
         case 0b01000:
-            if (RabbitizerInstr_getTf(self)) {
-                if (RabbitizerInstr_getNd(self)) {
+            if (RabbitizerInstruction_getTf(self)) {
+                if (RabbitizerInstruction_getNd(self)) {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0tl;
                 } else {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0t;
                 }
             } else {
-                if (RabbitizerInstr_getNd(self)) {
+                if (RabbitizerInstruction_getNd(self)) {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0fl;
                 } else {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc0f;
@@ -567,8 +567,8 @@ void RabbitizerInstr_processUniqueId_Coprocessor0(RabbitizerInstr *self) {
 }
 
 
-void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
-    uint8_t fmt = RabbitizerInstr_getFmt(self);
+void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
+    uint8_t fmt = RabbitizerInstruction_getFmt(self);
     uint8_t fc;
 
     self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
@@ -595,14 +595,14 @@ void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
             break;
 
         case 0b01000: // fmt = BC
-            if (RabbitizerInstr_getTf(self)) {
-                if (RabbitizerInstr_getNd(self)) {
+            if (RabbitizerInstruction_getTf(self)) {
+                if (RabbitizerInstruction_getNd(self)) {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1tl;
                 } else {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1t;
                 }
             } else {
-                if (RabbitizerInstr_getNd(self)) {
+                if (RabbitizerInstruction_getNd(self)) {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1fl;
                 } else {
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_bc1f;
@@ -730,10 +730,10 @@ void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
                     break;
 
                 default:
-                    fc = RabbitizerInstr_getFc(self);
+                    fc = RabbitizerInstruction_getFc(self);
                     if (fc == 0b11) {
                         // Compare conditions codes
-                        switch (RabbitizerInstr_getCond(self)) {
+                        switch (RabbitizerInstruction_getCond(self)) {
                             case 0b0000:
                                 if (fmt == 0) {
                                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_c_f_s;
@@ -894,7 +894,7 @@ void RabbitizerInstr_processUniqueId_Coprocessor1(RabbitizerInstr *self) {
 }
 
 
-void RabbitizerInstr_processUniqueId_Coprocessor2(RabbitizerInstr *self) {
+void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
     self->_handwrittenCategory = true;
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -902,25 +902,25 @@ void RabbitizerInstr_processUniqueId_Coprocessor2(RabbitizerInstr *self) {
 
 
 
-void RabbitizerInstr_processUniqueId(RabbitizerInstr *self) {
+void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self) {
     switch (self->opcode) {
         default:
-            RabbitizerInstr_processUniqueId_Normal(self);
+            RabbitizerInstruction_processUniqueId_Normal(self);
             break;
         case 0x00:
-            RabbitizerInstr_processUniqueId_Special(self);
+            RabbitizerInstruction_processUniqueId_Special(self);
             break;
         case 0x01:
-            RabbitizerInstr_processUniqueId_Regimm(self);
+            RabbitizerInstruction_processUniqueId_Regimm(self);
             break;
         case 0x10:
-            RabbitizerInstr_processUniqueId_Coprocessor0(self);
+            RabbitizerInstruction_processUniqueId_Coprocessor0(self);
             break;
         case 0x11:
-            RabbitizerInstr_processUniqueId_Coprocessor1(self);
+            RabbitizerInstruction_processUniqueId_Coprocessor1(self);
             break;
         case 0x12:
-            RabbitizerInstr_processUniqueId_Coprocessor2(self);
+            RabbitizerInstruction_processUniqueId_Coprocessor2(self);
             break;
     }
 }
