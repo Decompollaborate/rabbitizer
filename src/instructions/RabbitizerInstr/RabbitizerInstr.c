@@ -106,43 +106,43 @@ int32_t RabbitizerInstr_getBranchOffset(const RabbitizerInstr *self) {
 
 
 void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
+    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
         switch (self->descriptor->operands[i]) {
-            case RABBITIZER_REGISTER_TYPE_rs:
-            case RABBITIZER_REGISTER_TYPE_RSP_rs:
-            case RABBITIZER_REGISTER_TYPE_RSP_vs:
+            case RABBITIZER_OPERAND_TYPE_rs:
+            case RABBITIZER_OPERAND_TYPE_RSP_rs:
+            case RABBITIZER_OPERAND_TYPE_RSP_vs:
                 self->rs = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_rt:
-            case RABBITIZER_REGISTER_TYPE_ft:
-            case RABBITIZER_REGISTER_TYPE_cop2t:
-            case RABBITIZER_REGISTER_TYPE_op:
-            case RABBITIZER_REGISTER_TYPE_RSP_rt:
-            case RABBITIZER_REGISTER_TYPE_RSP_vt:
+            case RABBITIZER_OPERAND_TYPE_rt:
+            case RABBITIZER_OPERAND_TYPE_ft:
+            case RABBITIZER_OPERAND_TYPE_cop2t:
+            case RABBITIZER_OPERAND_TYPE_op:
+            case RABBITIZER_OPERAND_TYPE_RSP_rt:
+            case RABBITIZER_OPERAND_TYPE_RSP_vt:
                 self->rt = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_rd:
-            case RABBITIZER_REGISTER_TYPE_cop0d:
-            case RABBITIZER_REGISTER_TYPE_fs:
-            case RABBITIZER_REGISTER_TYPE_cop1cs:
-            case RABBITIZER_REGISTER_TYPE_RSP_rd:
-            case RABBITIZER_REGISTER_TYPE_RSP_vd:
-            case RABBITIZER_REGISTER_TYPE_RSP_cop0d:
+            case RABBITIZER_OPERAND_TYPE_rd:
+            case RABBITIZER_OPERAND_TYPE_cop0d:
+            case RABBITIZER_OPERAND_TYPE_fs:
+            case RABBITIZER_OPERAND_TYPE_cop1cs:
+            case RABBITIZER_OPERAND_TYPE_RSP_rd:
+            case RABBITIZER_OPERAND_TYPE_RSP_vd:
+            case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
                 self->rd = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_sa:
-            case RABBITIZER_REGISTER_TYPE_fd:
+            case RABBITIZER_OPERAND_TYPE_sa:
+            case RABBITIZER_OPERAND_TYPE_fd:
                 self->sa = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_LABEL:
+            case RABBITIZER_OPERAND_TYPE_LABEL:
                 // rs rt rd sa function
                 self->function = 0;
                 FALLTHROUGH;
-            case RABBITIZER_REGISTER_TYPE_code:
+            case RABBITIZER_OPERAND_TYPE_code:
                 // rs rt rd sa
                 self->rs = 0;
                 self->rt = 0;
@@ -150,46 +150,46 @@ void RabbitizerInstr_blankOut(RabbitizerInstr *self) {
                 self->sa = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_IMM_base:
+            case RABBITIZER_OPERAND_TYPE_IMM_base:
                 // rs rd sa function
                 self->rs = 0;
                 FALLTHROUGH;
-            case RABBITIZER_REGISTER_TYPE_IMM:
+            case RABBITIZER_OPERAND_TYPE_IMM:
                 // rd sa function
                 self->rd = 0;
                 self->sa = 0;
                 self->function = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_RSP_vt_elementhigh:
+            case RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh:
                 self->rt = 0;
                 self->rs &= ~0xF;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_RSP_vt_elementlow:
+            case RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow:
                 self->rt = 0;
                 self->sa &= ~0x1E;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_RSP_vd_vs:
+            case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
                 self->rd = 0;
                 self->rs = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_RSP_vd_index:
+            case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
                 self->rd = 0;
                 self->sa &= ~0x1;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_RSP_offset_rs:
+            case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
                 self->function = 0;
                 self->sa &= ~0x1;
                 self->rs = 0;
                 break;
 
-            case RABBITIZER_REGISTER_TYPE_INVALID:
-            case RABBITIZER_REGISTER_TYPE_MAX:
-                assert(self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_MAX);
+            case RABBITIZER_OPERAND_TYPE_INVALID:
+            case RABBITIZER_OPERAND_TYPE_MAX:
+                assert(self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_MAX);
                 break;
         }
     }

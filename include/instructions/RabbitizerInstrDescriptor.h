@@ -7,7 +7,7 @@
 
 #include <stdbool.h>
 
-#include "RabbitizerRegisterType.h"
+#include "RabbitizerOperandType.h"
 #include "RabbitizerInstrId.h"
 
 typedef enum RabbitizerInstrType {
@@ -20,7 +20,7 @@ typedef enum RabbitizerInstrType {
 } RabbitizerInstrType;
 
 typedef struct RabbitizerInstrDescriptor {
-    RabbitizerRegisterType operands[4];
+    RabbitizerOperandType operands[4];
     RabbitizerInstrType instrType;
 
     bool isBranch;

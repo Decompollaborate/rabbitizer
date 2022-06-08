@@ -47,7 +47,7 @@
 typedef size_t (*OperandCallback)(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength);
 
 
-size_t RabbitizerRegisterType_processRs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processRs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(self->rs);
 
@@ -55,7 +55,7 @@ size_t RabbitizerRegisterType_processRs(const RabbitizerInstr *self, char *dst, 
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processRt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processRt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(self->rt);
 
@@ -63,7 +63,7 @@ size_t RabbitizerRegisterType_processRt(const RabbitizerInstr *self, char *dst, 
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processRd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processRd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(self->rd);
 
@@ -71,7 +71,7 @@ size_t RabbitizerRegisterType_processRd(const RabbitizerInstr *self, char *dst, 
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processCop0d(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processCop0d(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop0(self->rd);
 
@@ -79,7 +79,7 @@ size_t RabbitizerRegisterType_processCop0d(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processFs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processFs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1(RabbitizerInstr_getFs(self));
 
@@ -87,7 +87,7 @@ size_t RabbitizerRegisterType_processFs(const RabbitizerInstr *self, char *dst, 
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processFt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processFt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1(RabbitizerInstr_getFt(self));
 
@@ -95,7 +95,7 @@ size_t RabbitizerRegisterType_processFt(const RabbitizerInstr *self, char *dst, 
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processFd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processFd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1(RabbitizerInstr_getFd(self));
 
@@ -103,7 +103,7 @@ size_t RabbitizerRegisterType_processFd(const RabbitizerInstr *self, char *dst, 
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processCop1Cs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processCop1Cs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1Control(RabbitizerInstr_getFs(self));
 
@@ -111,7 +111,7 @@ size_t RabbitizerRegisterType_processCop1Cs(const RabbitizerInstr *self, char *d
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processCop2t(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processCop2t(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop2(self->rt);
 
@@ -119,21 +119,21 @@ size_t RabbitizerRegisterType_processCop2t(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processSa(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processSa(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", self->sa);
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processOp(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processOp(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%02X", self->rt);
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processCode(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_processCode(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     int code = (self->rs << 5) | (self->rt);
     int lower = (self->rd << 5) | (self->sa);
@@ -146,7 +146,7 @@ size_t RabbitizerRegisterType_processCode(const RabbitizerInstr *self, char *dst
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processLabel(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_processLabel(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     if (immOverride != NULL) {
@@ -159,7 +159,7 @@ size_t RabbitizerRegisterType_processLabel(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processImmediate(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_processImmediate(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint32_t imm;
 
@@ -182,21 +182,21 @@ size_t RabbitizerRegisterType_processImmediate(const RabbitizerInstr *self, char
     return totalSize;
 }
 
-size_t RabbitizerRegisterType_processImmediateBase(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_processImmediateBase(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterType_processImmediate(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterType_processRs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processRs(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
 
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processRs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processRs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspGpr(self->rs);
 
@@ -204,7 +204,7 @@ size_t RabbitizerRegisterTypeRsp_processRs(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processRt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processRt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspGpr(self->rt);
 
@@ -212,7 +212,7 @@ size_t RabbitizerRegisterTypeRsp_processRt(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processRd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processRd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspVector(self->rd);
 
@@ -220,7 +220,7 @@ size_t RabbitizerRegisterTypeRsp_processRd(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processCop0d(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processCop0d(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspCop0(self->rd);
 
@@ -228,7 +228,7 @@ size_t RabbitizerRegisterTypeRsp_processCop0d(const RabbitizerInstr *self, char 
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVs(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_VS(self));
 
@@ -236,7 +236,7 @@ size_t RabbitizerRegisterTypeRsp_processVs(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVt(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_VT(self));
 
@@ -244,7 +244,7 @@ size_t RabbitizerRegisterTypeRsp_processVt(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVd(const RabbitizerInstr *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_VD(self));
 
@@ -252,11 +252,11 @@ size_t RabbitizerRegisterTypeRsp_processVd(const RabbitizerInstr *self, char *ds
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVtElementhigh(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVtElementhigh(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t element;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
 
     element = RabbitizerInstrRsp_processVectorElement(self, RAB_INSTR_RSP_GET_ELEMENT_HIGH(self));
     if (element != 0) {
@@ -267,11 +267,11 @@ size_t RabbitizerRegisterTypeRsp_processVtElementhigh(const RabbitizerInstr *sel
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVtElementlow(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVtElementlow(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t element;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
 
@@ -282,10 +282,10 @@ size_t RabbitizerRegisterTypeRsp_processVtElementlow(const RabbitizerInstr *self
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVdVs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVdVs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", RAB_INSTR_RSP_GET_VS(self));
@@ -293,10 +293,10 @@ size_t RabbitizerRegisterTypeRsp_processVdVs(const RabbitizerInstr *self, char *
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processVdIndex(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVdIndex(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", (self->sa >> 1));
@@ -304,47 +304,47 @@ size_t RabbitizerRegisterTypeRsp_processVdIndex(const RabbitizerInstr *self, cha
     return totalSize;
 }
 
-size_t RabbitizerRegisterTypeRsp_processOffsetVs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processOffsetVs(const RabbitizerInstr *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", RabbitizerInstrRsp_GetOffsetVector(self));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerRegisterTypeRsp_processRs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processRs(self, dst, immOverride, immOverrideLength));
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
     return totalSize;
 }
 
 const OperandCallback instrOpercandCallbacks[] = {
-    [RABBITIZER_REGISTER_TYPE_rs]                   = RabbitizerRegisterType_processRs,
-    [RABBITIZER_REGISTER_TYPE_rt]                   = RabbitizerRegisterType_processRt,
-    [RABBITIZER_REGISTER_TYPE_rd]                   = RabbitizerRegisterType_processRd,
-    [RABBITIZER_REGISTER_TYPE_cop0d]                = RabbitizerRegisterType_processCop0d,
-    [RABBITIZER_REGISTER_TYPE_fs]                   = RabbitizerRegisterType_processFs,
-    [RABBITIZER_REGISTER_TYPE_ft]                   = RabbitizerRegisterType_processFt,
-    [RABBITIZER_REGISTER_TYPE_fd]                   = RabbitizerRegisterType_processFd,
-    [RABBITIZER_REGISTER_TYPE_cop1cs]               = RabbitizerRegisterType_processCop1Cs,
-    [RABBITIZER_REGISTER_TYPE_cop2t]                = RabbitizerRegisterType_processCop2t,
-    [RABBITIZER_REGISTER_TYPE_sa]                   = RabbitizerRegisterType_processSa,
-    [RABBITIZER_REGISTER_TYPE_op]                   = RabbitizerRegisterType_processOp,
-    [RABBITIZER_REGISTER_TYPE_code]                 = RabbitizerRegisterType_processCode,
-    [RABBITIZER_REGISTER_TYPE_LABEL]                = RabbitizerRegisterType_processLabel,
-    [RABBITIZER_REGISTER_TYPE_IMM]                  = RabbitizerRegisterType_processImmediate,
-    [RABBITIZER_REGISTER_TYPE_IMM_base]             = RabbitizerRegisterType_processImmediateBase,
+    [RABBITIZER_OPERAND_TYPE_rs]                   = RabbitizerOperandType_processRs,
+    [RABBITIZER_OPERAND_TYPE_rt]                   = RabbitizerOperandType_processRt,
+    [RABBITIZER_OPERAND_TYPE_rd]                   = RabbitizerOperandType_processRd,
+    [RABBITIZER_OPERAND_TYPE_cop0d]                = RabbitizerOperandType_processCop0d,
+    [RABBITIZER_OPERAND_TYPE_fs]                   = RabbitizerOperandType_processFs,
+    [RABBITIZER_OPERAND_TYPE_ft]                   = RabbitizerOperandType_processFt,
+    [RABBITIZER_OPERAND_TYPE_fd]                   = RabbitizerOperandType_processFd,
+    [RABBITIZER_OPERAND_TYPE_cop1cs]               = RabbitizerOperandType_processCop1Cs,
+    [RABBITIZER_OPERAND_TYPE_cop2t]                = RabbitizerOperandType_processCop2t,
+    [RABBITIZER_OPERAND_TYPE_sa]                   = RabbitizerOperandType_processSa,
+    [RABBITIZER_OPERAND_TYPE_op]                   = RabbitizerOperandType_processOp,
+    [RABBITIZER_OPERAND_TYPE_code]                 = RabbitizerOperandType_processCode,
+    [RABBITIZER_OPERAND_TYPE_LABEL]                = RabbitizerOperandType_processLabel,
+    [RABBITIZER_OPERAND_TYPE_IMM]                  = RabbitizerOperandType_processImmediate,
+    [RABBITIZER_OPERAND_TYPE_IMM_base]             = RabbitizerOperandType_processImmediateBase,
 
     // rsp
-    [RABBITIZER_REGISTER_TYPE_RSP_rs]               = RabbitizerRegisterTypeRsp_processRs,
-    [RABBITIZER_REGISTER_TYPE_RSP_rt]               = RabbitizerRegisterTypeRsp_processRt,
-    [RABBITIZER_REGISTER_TYPE_RSP_rd]               = RabbitizerRegisterTypeRsp_processRd,
-    [RABBITIZER_REGISTER_TYPE_RSP_cop0d]            = RabbitizerRegisterTypeRsp_processCop0d,
-    [RABBITIZER_REGISTER_TYPE_RSP_vs]               = RabbitizerRegisterTypeRsp_processVs,
-    [RABBITIZER_REGISTER_TYPE_RSP_vt]               = RabbitizerRegisterTypeRsp_processVt,
-    [RABBITIZER_REGISTER_TYPE_RSP_vd]               = RabbitizerRegisterTypeRsp_processVd,
-    [RABBITIZER_REGISTER_TYPE_RSP_vt_elementhigh]   = RabbitizerRegisterTypeRsp_processVtElementhigh,
-    [RABBITIZER_REGISTER_TYPE_RSP_vt_elementlow]    = RabbitizerRegisterTypeRsp_processVtElementlow,
-    [RABBITIZER_REGISTER_TYPE_RSP_vd_vs]            = RabbitizerRegisterTypeRsp_processVdVs,
-    [RABBITIZER_REGISTER_TYPE_RSP_vd_index]         = RabbitizerRegisterTypeRsp_processVdIndex,
-    [RABBITIZER_REGISTER_TYPE_RSP_offset_rs]        = RabbitizerRegisterTypeRsp_processOffsetVs,
+    [RABBITIZER_OPERAND_TYPE_RSP_rs]               = RabbitizerOperandTypeRsp_processRs,
+    [RABBITIZER_OPERAND_TYPE_RSP_rt]               = RabbitizerOperandTypeRsp_processRt,
+    [RABBITIZER_OPERAND_TYPE_RSP_rd]               = RabbitizerOperandTypeRsp_processRd,
+    [RABBITIZER_OPERAND_TYPE_RSP_cop0d]            = RabbitizerOperandTypeRsp_processCop0d,
+    [RABBITIZER_OPERAND_TYPE_RSP_vs]               = RabbitizerOperandTypeRsp_processVs,
+    [RABBITIZER_OPERAND_TYPE_RSP_vt]               = RabbitizerOperandTypeRsp_processVt,
+    [RABBITIZER_OPERAND_TYPE_RSP_vd]               = RabbitizerOperandTypeRsp_processVd,
+    [RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh]   = RabbitizerOperandTypeRsp_processVtElementhigh,
+    [RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow]    = RabbitizerOperandTypeRsp_processVtElementlow,
+    [RABBITIZER_OPERAND_TYPE_RSP_vd_vs]            = RabbitizerOperandTypeRsp_processVdVs,
+    [RABBITIZER_OPERAND_TYPE_RSP_vd_index]         = RabbitizerOperandTypeRsp_processVdIndex,
+    [RABBITIZER_OPERAND_TYPE_RSP_offset_rs]        = RabbitizerOperandTypeRsp_processOffsetVs,
 };
 
 
@@ -356,7 +356,7 @@ size_t RabbitizerInstr_getSizeForBufferInstrDisasm(const RabbitizerInstr *self, 
 
     totalSize += opcodeNameLength;
 
-    if (self->descriptor->operands[0] == RABBITIZER_REGISTER_TYPE_INVALID) {
+    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
         // There are no operands
         return totalSize;
     }
@@ -364,7 +364,7 @@ size_t RabbitizerInstr_getSizeForBufferInstrDisasm(const RabbitizerInstr *self, 
     totalSize += extraLJust;
     totalSize++;
 
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
+    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
         if (i != 0) {
             totalSize += 2;
         }
@@ -384,7 +384,7 @@ size_t RabbitizerInstr_disassembleInstruction(const RabbitizerInstr *self, char 
 
     RABUTILS_BUFFER_CPY(dst, totalSize, opcodeName);
 
-    if (self->descriptor->operands[0] == RABBITIZER_REGISTER_TYPE_INVALID) {
+    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
         // There are no operands
         *dst = '\0';
         return totalSize;
@@ -394,8 +394,8 @@ size_t RabbitizerInstr_disassembleInstruction(const RabbitizerInstr *self, char 
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
 
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
-        RabbitizerRegisterType operand;
+    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
+        RabbitizerOperandType operand;
         OperandCallback callback;
 
         if (i != 0) {
@@ -404,8 +404,8 @@ size_t RabbitizerInstr_disassembleInstruction(const RabbitizerInstr *self, char 
         }
 
         operand = self->descriptor->operands[i];
-        assert(operand > RABBITIZER_REGISTER_TYPE_INVALID);
-        assert(operand < RABBITIZER_REGISTER_TYPE_MAX);
+        assert(operand > RABBITIZER_OPERAND_TYPE_INVALID);
+        assert(operand < RABBITIZER_OPERAND_TYPE_MAX);
 
         callback = instrOpercandCallbacks[operand];
         assert(callback != NULL);
@@ -454,22 +454,22 @@ bool RabbitizerInstr_mustDisasmAsData(const RabbitizerInstr *self) {
         bool hasRd = false;
         bool hasSa = false;
 
-        for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_REGISTER_TYPE_INVALID; i++) {
-            RabbitizerRegisterType operand = self->descriptor->operands[i];
+        for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
+            RabbitizerOperandType operand = self->descriptor->operands[i];
 
-            if (operand == RABBITIZER_REGISTER_TYPE_code) {
+            if (operand == RABBITIZER_OPERAND_TYPE_code) {
                 hasCode = true;
             }
-            if (operand == RABBITIZER_REGISTER_TYPE_rs) {
+            if (operand == RABBITIZER_OPERAND_TYPE_rs) {
                 hasRs = true;
             }
-            if (operand == RABBITIZER_REGISTER_TYPE_rt) {
+            if (operand == RABBITIZER_OPERAND_TYPE_rt) {
                 hasRt = true;
             }
-            if (operand == RABBITIZER_REGISTER_TYPE_rd) {
+            if (operand == RABBITIZER_OPERAND_TYPE_rd) {
                 hasRd = true;
             }
-            if (operand == RABBITIZER_REGISTER_TYPE_sa) {
+            if (operand == RABBITIZER_OPERAND_TYPE_sa) {
                 hasSa = true;
             }
         }
