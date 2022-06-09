@@ -29,6 +29,7 @@ typedef struct ModuleAttribute {
 
 #define MODULE_ATTRIBUTE_TYPE(name)   { {.type   = &rabbitizer_type_##name##_TypeObject},   MODULE_ATTRIBUTE_CAT_TYPE,   #name, false, NULL }
 #define MODULE_ATTRIBUTE_INIT(name)   { {.init   = rabbitizer_submodule_##name##_Init},     MODULE_ATTRIBUTE_CAT_INIT,   #name, false, NULL }
+#define MODULE_ATTRIBUTE_ENUM(name)   { {.init   = rabbitizer_enum_##name##_Init},          MODULE_ATTRIBUTE_CAT_INIT,   #name, false, NULL }
 #define MODULE_ATTRIBUTE_GLOBAL(name) { {.global = &rabbitizer_global_##name##_TypeObject}, MODULE_ATTRIBUTE_CAT_GLOBAL, #name, false, NULL }
 
 static ModuleAttributes rabbitizer_module_attributes[] = {
@@ -36,6 +37,7 @@ static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_GLOBAL(instr_id),
     MODULE_ATTRIBUTE_TYPE(Enum),
     MODULE_ATTRIBUTE_TYPE(Instruction),
+    MODULE_ATTRIBUTE_ENUM(InstrCategory),
 };
 
 static int rabbitizer_module_attributes_Ready(void) {

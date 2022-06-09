@@ -5,7 +5,11 @@
 
 from __future__ import annotations
 
-from .Enum import *
-from .InstrCategory import *
+from .Enum import Enum
 
-from .rabbitizer import *
+
+class InstrCategory:
+    CPU: Enum
+    RSP: Enum
+    # PS2: Enum
+    MAX: Enum

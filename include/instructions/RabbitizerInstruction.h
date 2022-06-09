@@ -13,14 +13,17 @@
 #include "RabbitizerInstrDescriptor.h"
 
 
+#define RABBITIZER_DEF_INSTR_CATEGORY(name) RABBITIZER_INSTRCAT_##name
+
 typedef enum RabbitizerInstrCategory {
-    RABBITIZER_INSTRCAT_CPU,
-    RABBITIZER_INSTRCAT_RSP,
-    // RABBITIZER_INSTRCAT_PS2,
-    RABBITIZER_INSTRCAT_MAX,
+    #include "instructions/InstrCategory.inc"
+
+    RABBITIZER_DEF_INSTR_CATEGORY(MAX),
 } RabbitizerInstrCategory;
 
-// TODO: consider renaming to RabbitizerInstruction
+#undef RABBITIZER_DEF_INSTR_CATEGORY
+
+
 typedef struct RabbitizerInstruction {
     uint8_t opcode;
     uint8_t rs;
