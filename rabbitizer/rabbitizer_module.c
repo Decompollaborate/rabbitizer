@@ -34,6 +34,7 @@ typedef struct ModuleAttribute {
 static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_GLOBAL(config),
     MODULE_ATTRIBUTE_GLOBAL(instr_id),
+    MODULE_ATTRIBUTE_TYPE(Enum),
     MODULE_ATTRIBUTE_TYPE(Instruction),
 };
 

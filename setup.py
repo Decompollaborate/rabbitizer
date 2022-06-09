@@ -8,7 +8,7 @@ setup(
     ext_modules=[
         Extension(
             "rabbitizer",
-            ["rabbitizer/rabbitizer_module.c", "rabbitizer/rabbitizer_type_Instruction.c", "rabbitizer/rabbitizer_global_instr_id.c", "rabbitizer/rabbitizer_global_config.c",
+            ["rabbitizer/rabbitizer_module.c", "rabbitizer/rabbitizer_type_Instruction.c", "rabbitizer/rabbitizer_global_instr_id.c", "rabbitizer/rabbitizer_global_config.c", "rabbitizer/rabbitizer_type_Enum.c",
             "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Disassemble.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_ProcessUniqueId.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Examination.c",
             "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp.c", "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp_ProcessUniqueId.c",
             "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c",
