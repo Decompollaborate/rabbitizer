@@ -51,8 +51,18 @@ DEF_MEMBER_GET_UINT(rt)
 DEF_MEMBER_GET_UINT(rd)
 DEF_MEMBER_GET_UINT(sa)
 DEF_MEMBER_GET_UINT(function)
-DEF_MEMBER_GET_UINT(uniqueId)
 
+static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
+    PyObject *enumInstance = rabbitizer_enum_InstrId_enumvalues[self->instr.uniqueId].instance;
+
+    if (enumInstance == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: invalid uniqueId enum value");
+        return NULL;
+    }
+
+    Py_INCREF(enumInstance);
+    return enumInstance;
+}
 
 static PyObject *rabbitizer_type_Instruction_member_get_instr(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
     return PyLong_FromUnsignedLong(RabbitizerInstruction_getRaw(&self->instr));
@@ -73,7 +83,7 @@ static PyGetSetDef Instr_getsetters[] = {
     MEMBER_GET(rd, "", NULL), // todo: deprecate
     MEMBER_GET(sa, "", NULL), // todo: deprecate
     MEMBER_GET(function, "", NULL), // todo: deprecate
-    MEMBER_GET(uniqueId, "", NULL), // todo: deprecate
+    MEMBER_GET(uniqueId, "", NULL),
 
     { "instr",      (getter) rabbitizer_type_Instruction_member_get_instr,     (setter) NULL, "", NULL }, // todo: deprecate
     { "immediate",  (getter) rabbitizer_type_Instruction_member_get_immediate, (setter) NULL, "", NULL }, // todo: deprecate

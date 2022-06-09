@@ -7,5 +7,6 @@ from __future__ import annotations
 
 from .Enum import *
 from .InstrCategory import *
+from .InstrId import *
 
 from .rabbitizer import *

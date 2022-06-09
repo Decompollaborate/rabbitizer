@@ -98,6 +98,16 @@ static PyGetSetDef rabbitizer_type_Enum_getsetters[] = {
 };
 
 
+// Crappy hash
+Py_hash_t rabbitizer_type_Enum_hash(PyRabbitizerEnum *self) {
+    Py_hash_t hash = PyObject_Hash(self->enumType);
+
+    if (hash == -1) {
+        return -1;
+    }
+
+    return hash + self->value;
+}
 
 PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *other, int op) {
     int isInstance = PyObject_IsInstance(other, (PyObject*)&rabbitizer_type_Enum_TypeObject);
@@ -146,6 +156,7 @@ PyTypeObject rabbitizer_type_Enum_TypeObject = {
     .tp_new = rabbitizer_type_Enum_new,
     .tp_init = (initproc) rabbitizer_type_Enum_init,
     .tp_dealloc = (destructor) rabbitizer_type_Enum_dealloc,
+    .tp_hash = (hashfunc) rabbitizer_type_Enum_hash,
     .tp_richcompare = (richcmpfunc) rabbitizer_type_Enum_richcompare,
     .tp_repr = (reprfunc) rabbitizer_type_Enum_repr,
     .tp_str = (reprfunc) rabbitizer_type_Enum_str,
