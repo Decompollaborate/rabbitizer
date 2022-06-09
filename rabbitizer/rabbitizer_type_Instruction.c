@@ -174,9 +174,11 @@ static PyObject *rabbitizer_type_Instruction_sameOpcodeButDifferentArguments(PyR
         Py_RETURN_FALSE; \
     }
 
+DEF_DESCRIPTOR_METHOD_BOOL(isUnknownType)
 DEF_DESCRIPTOR_METHOD_BOOL(isJType)
 DEF_DESCRIPTOR_METHOD_BOOL(isIType)
 DEF_DESCRIPTOR_METHOD_BOOL(isRType)
+DEF_DESCRIPTOR_METHOD_BOOL(isRegimmType)
 DEF_DESCRIPTOR_METHOD_BOOL(isBranch)
 DEF_DESCRIPTOR_METHOD_BOOL(isBranchLikely)
 DEF_DESCRIPTOR_METHOD_BOOL(isJump)
@@ -250,9 +252,11 @@ static PyMethodDef Instr_methods[] = {
     METHOD_ARGS(sameOpcode, "description"),
     METHOD_ARGS(sameOpcodeButDifferentArguments, "description"),
 
+    METHOD_NO_ARGS(isUnknownType, ""),
     METHOD_NO_ARGS(isJType, ""),
     METHOD_NO_ARGS(isIType, ""),
     METHOD_NO_ARGS(isRType, ""),
+    METHOD_NO_ARGS(isRegimmType, ""),
     METHOD_NO_ARGS(isBranch, ""),
     METHOD_NO_ARGS(isBranchLikely, ""),
     METHOD_NO_ARGS(isJump, ""),

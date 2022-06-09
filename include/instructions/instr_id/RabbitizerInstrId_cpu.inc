@@ -101,16 +101,16 @@
     RABBITIZER_DEF_INSTR_ID(cpu, jal,                           .operands={RABBITIZER_OPERAND_TYPE_LABEL}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true, .doesLink=true),       // Jump And Link
 
     // OP rs, rt, IMM
-    RABBITIZER_DEF_INSTR_ID(cpu, beq,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),       // Branch on EQual
-    RABBITIZER_DEF_INSTR_ID(cpu, bne,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),       // Branch on Not Equal
-    RABBITIZER_DEF_INSTR_ID(cpu, beql,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true),      // Branch on EQual Likely
-    RABBITIZER_DEF_INSTR_ID(cpu, bnel,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true),      // Branch on Not Equal Likely
+    RABBITIZER_DEF_INSTR_ID(cpu, beq,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),       // Branch on EQual
+    RABBITIZER_DEF_INSTR_ID(cpu, bne,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),       // Branch on Not Equal
+    RABBITIZER_DEF_INSTR_ID(cpu, beql,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true),      // Branch on EQual Likely
+    RABBITIZER_DEF_INSTR_ID(cpu, bnel,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true),      // Branch on Not Equal Likely
 
     // OP rs, IMM
-    RABBITIZER_DEF_INSTR_ID(cpu, blez,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),      // Branch on Less than or Equal to Zero
-    RABBITIZER_DEF_INSTR_ID(cpu, bgtz,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),      // Branch on Greater Than Zero
-    RABBITIZER_DEF_INSTR_ID(cpu, blezl,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true),     // Branch on Less than or Equal to Zero Likely
-    RABBITIZER_DEF_INSTR_ID(cpu, bgtzl,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true),     // Branch on Greater Than Zero Likely
+    RABBITIZER_DEF_INSTR_ID(cpu, blez,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),      // Branch on Less than or Equal to Zero
+    RABBITIZER_DEF_INSTR_ID(cpu, bgtz,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),      // Branch on Greater Than Zero
+    RABBITIZER_DEF_INSTR_ID(cpu, blezl,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true),     // Branch on Less than or Equal to Zero Likely
+    RABBITIZER_DEF_INSTR_ID(cpu, bgtzl,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true),     // Branch on Greater Than Zero Likely
 
     // OP rt, IMM
     RABBITIZER_DEF_INSTR_ID(cpu, lui,                           .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isUnsigned=true, .modifiesRt=true, .isHiPair=true),       // Load Upper Immediate
@@ -290,11 +290,11 @@
     RABBITIZER_DEF_INSTR_ID(cpu, nop,                           .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_R),       // No OPeration
 
     // OP rs, IMM
-    RABBITIZER_DEF_INSTR_ID(cpu, beqz,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),      // Branch on EQual Zero
-    RABBITIZER_DEF_INSTR_ID(cpu, bnez,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),      // Branch on Not Equal Zero
+    RABBITIZER_DEF_INSTR_ID(cpu, beqz,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),      // Branch on EQual Zero
+    RABBITIZER_DEF_INSTR_ID(cpu, bnez,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),      // Branch on Not Equal Zero
 
     // OP IMM
-    RABBITIZER_DEF_INSTR_ID(cpu, b,                             .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true),         // Branch (unconditional)
+    RABBITIZER_DEF_INSTR_ID(cpu, b,                             .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),         // Branch (unconditional)
 
     // OP rd, rs
     RABBITIZER_DEF_INSTR_ID(cpu, move,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // Move

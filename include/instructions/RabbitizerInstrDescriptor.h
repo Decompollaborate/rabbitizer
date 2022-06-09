@@ -50,9 +50,11 @@ typedef struct RabbitizerInstrDescriptor {
 extern const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[];
 
 
+bool RabbitizerInstrDescriptor_isUnknownType(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_isJType(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_isIType(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *self);
 
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *self);

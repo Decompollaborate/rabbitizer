@@ -22,6 +22,9 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
 
 
+bool RabbitizerInstrDescriptor_isUnknownType(const RabbitizerInstrDescriptor *self) {
+    return self->instrType == RABBITIZER_INSTR_TYPE_UNKNOWN;
+}
 bool RabbitizerInstrDescriptor_isJType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_J;
 }
@@ -30,6 +33,9 @@ bool RabbitizerInstrDescriptor_isIType(const RabbitizerInstrDescriptor *self) {
 }
 bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_R;
+}
+bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *self) {
+    return self->instrType == RABBITIZER_INSTR_TYPE_REGIMM;
 }
 
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self) {
