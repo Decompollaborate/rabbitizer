@@ -19,6 +19,8 @@ extern RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[];
 int rabbitizer_enum_Abi_Check(PyObject *o);
 
 
+PyObject *rabbitizer_submodule_Utils_Init(void);
+
 extern PyTypeObject rabbitizer_global_config_TypeObject;
 
 extern PyTypeObject rabbitizer_type_Enum_TypeObject;

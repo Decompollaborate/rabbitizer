@@ -5,12 +5,7 @@
 
 from __future__ import annotations
 
-from .Utils import *
 
-from .Enum import *
-from .InstrCategory import *
-from .InstrId import *
-
-from .Config import *
-
-from .rabbitizer import *
+class Utils:
+    @staticmethod
+    def from2Complement(number: int, bits: int) -> int: ...

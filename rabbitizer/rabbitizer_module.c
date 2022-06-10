@@ -33,6 +33,7 @@ typedef struct ModuleAttribute {
 #define MODULE_ATTRIBUTE_GLOBAL(name) { {.global = &rabbitizer_global_##name##_TypeObject}, MODULE_ATTRIBUTE_CAT_GLOBAL, #name, false, NULL }
 
 static ModuleAttributes rabbitizer_module_attributes[] = {
+    MODULE_ATTRIBUTE_INIT(Utils),
     MODULE_ATTRIBUTE_GLOBAL(config),
     MODULE_ATTRIBUTE_TYPE(Enum),
     MODULE_ATTRIBUTE_ENUM(Abi),

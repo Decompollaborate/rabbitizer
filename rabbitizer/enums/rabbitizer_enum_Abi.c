@@ -19,7 +19,7 @@ RabbitizerEnumMetadata rabbitizer_enum_Abi_enumvalues[] = {
 
 
 static PyObject *rabbitizer_enum_Abi_fromStr(UNUSED PyObject *self, PyObject *args, PyObject *kwds) {
-    static char *kwlist[] = { "name", NULL} ;
+    static char *kwlist[] = { "name", NULL };
     const char *name = NULL;
     RabbitizerAbi abi;
     PyObject *ret;
