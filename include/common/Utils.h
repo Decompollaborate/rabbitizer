@@ -26,6 +26,12 @@
 #define UNUSED __attribute__((unused))
 #endif
 
+#if defined(_MSC_VER)
+#  define UNREACHABLE __assume(0)
+#else
+#  define UNREACHABLE __builtin_unreachable()
+#endif
+
 #define PURE __attribute__((pure))
 
 
