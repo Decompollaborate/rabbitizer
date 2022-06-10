@@ -3,8 +3,6 @@
 
 from setuptools import setup, Extension
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
 
 setup(
     ext_modules=[
@@ -15,6 +13,7 @@ setup(
             "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Disassemble.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_ProcessUniqueId.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Examination.c",
             "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp.c", "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp_ProcessUniqueId.c",
             "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c",
+            "src/analysis/TrackedRegisterState.c",
             "src/common/Utils.c", "src/common/RabbitizerConfig.c"],
             include_dirs=["include", "rabbitizer"],
             extra_compile_args = [
