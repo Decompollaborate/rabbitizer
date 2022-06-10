@@ -45,12 +45,10 @@ static PyMemberDef rabbitizer_type_Instruction_members[] = {
         return PyLong_FromUnsignedLong(self->instr.name); \
     }
 
-DEF_MEMBER_GET_UINT(opcode)
 DEF_MEMBER_GET_UINT(rs)
 DEF_MEMBER_GET_UINT(rt)
 DEF_MEMBER_GET_UINT(rd)
 DEF_MEMBER_GET_UINT(sa)
-DEF_MEMBER_GET_UINT(function)
 
 static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
     PyObject *enumInstance = rabbitizer_enum_InstrId_enumvalues[self->instr.uniqueId].instance;
@@ -64,29 +62,17 @@ static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerIns
     return enumInstance;
 }
 
-static PyObject *rabbitizer_type_Instruction_member_get_instr(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
-    return PyLong_FromUnsignedLong(RabbitizerInstruction_getRaw(&self->instr));
-}
-static PyObject *rabbitizer_type_Instruction_member_get_immediate(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
-    return PyLong_FromUnsignedLong(RabbitizerInstruction_getImmediate(&self->instr));
-}
-
 #define MEMBER_GET(name, docs, closure)      { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) NULL,                                          PyDoc_STR(docs), closure }
 #define MEMBER_SET(name, docs, closure)      { #name, (getter) NULL,                                          (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 #define MEMBER_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 
 
 static PyGetSetDef Instr_getsetters[] = {
-    MEMBER_GET(opcode, "", NULL), // todo: deprecate
     MEMBER_GET(rs, "", NULL), // todo: deprecate
     MEMBER_GET(rt, "", NULL), // todo: deprecate
     MEMBER_GET(rd, "", NULL), // todo: deprecate
     MEMBER_GET(sa, "", NULL), // todo: deprecate
-    MEMBER_GET(function, "", NULL), // todo: deprecate
     MEMBER_GET(uniqueId, "", NULL),
-
-    { "instr",      (getter) rabbitizer_type_Instruction_member_get_instr,     (setter) NULL, "", NULL }, // todo: deprecate
-    { "immediate",  (getter) rabbitizer_type_Instruction_member_get_immediate, (setter) NULL, "", NULL }, // todo: deprecate
 
     { 0 }
 };
@@ -272,9 +258,7 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(isJump, ""),
     METHOD_NO_ARGS(isTrap, ""),
     METHOD_NO_ARGS(isFloat, ""),
-    { "isFloatInstruction", (PyCFunction) rabbitizer_type_Instruction_isFloat, METH_NOARGS, ""}, // TODO: deprecate
     METHOD_NO_ARGS(isDouble, ""),
-    { "isDoubleInstruction", (PyCFunction) rabbitizer_type_Instruction_isDouble, METH_NOARGS, ""}, // TODO: deprecate
     METHOD_NO_ARGS(isUnsigned, ""),
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
