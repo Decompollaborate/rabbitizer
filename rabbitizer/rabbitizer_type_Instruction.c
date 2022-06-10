@@ -283,8 +283,7 @@ static PyObject *rabbitizer_type_Instruction_repr(PyRabbitizerInstruction *self)
     size_t extraSize = 3 + 8 + 4; // "(0x" + 32bits hex + ") # "
     int len;
 
-    // self->ob_base.ob_type->tp_name is the type name (rabbitizer.Instruction)
-    typeNameLength = strlen(self->ob_base.ob_type->tp_name);
+    typeNameLength = strlen("rabbitizer.Instruction");
 
     disasmBufferSize = RabbitizerInstruction_getSizeForBuffer(&self->instr, 0, 0);
 
@@ -294,7 +293,7 @@ static PyObject *rabbitizer_type_Instruction_repr(PyRabbitizerInstruction *self)
         return NULL;
     }
 
-    memcpy(buffer, self->ob_base.ob_type->tp_name, typeNameLength);
+    memcpy(buffer, "rabbitizer.Instruction", typeNameLength);
     buffer += typeNameLength;
 
     len = sprintf(buffer, "(0x%08X) # ", RabbitizerInstruction_getRaw(&self->instr));
