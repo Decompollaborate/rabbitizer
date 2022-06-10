@@ -145,9 +145,9 @@ PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *oth
         case Py_LE: if ((self->value) <= (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
         case Py_GE: if ((self->value) >= (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
         default:
-            Py_UNREACHABLE();
+            //Py_UNREACHABLE();
+            UNREACHABLE;
     }
-
 }
 
 
