@@ -106,6 +106,7 @@ Py_hash_t rabbitizer_type_Enum_hash(PyRabbitizerEnum *self) {
 PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *other, int op) {
     int isInstance = PyObject_IsInstance(other, (PyObject*)&rabbitizer_type_Enum_TypeObject);
     int enumTypeCmp;
+    int otherValue;
 
     if (isInstance < 0) {
         // An error happened
@@ -131,7 +132,22 @@ PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *oth
         Py_RETURN_FALSE;
     }
 
-    Py_RETURN_RICHCOMPARE(self->value, ((PyRabbitizerEnum*)other)->value, op);
+    otherValue = ((PyRabbitizerEnum*)other)->value;
+
+    // Fails to build on ci builds for some reason
+    // Py_RETURN_RICHCOMPARE(self->value, ((PyRabbitizerEnum*)other)->value, op);
+
+    switch (op) {
+        case Py_EQ: if ((self->value) == (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
+        case Py_NE: if ((self->value) != (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
+        case Py_LT: if ((self->value) < (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE; 
+        case Py_GT: if ((self->value) > (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE; 
+        case Py_LE: if ((self->value) <= (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
+        case Py_GE: if ((self->value) >= (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
+        default:
+            Py_UNREACHABLE();
+    }
+
 }
 
 
