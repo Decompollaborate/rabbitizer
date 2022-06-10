@@ -12,11 +12,10 @@ setup(
     author="Decompollaborate",
     description="MIPS instruction decoder",
     long_description=long_description,
-    py_modules=["rabbitizer"],
     ext_modules=[
         Extension(
-            "rabbitizer",
-            ["rabbitizer/rabbitizer_module.c", "rabbitizer/rabbitizer_submodule_Utils.c", "rabbitizer/rabbitizer_type_Instruction.c", "rabbitizer/rabbitizer_global_config.c",
+            name="rabbitizer",
+            sources=["rabbitizer/rabbitizer_module.c", "rabbitizer/rabbitizer_submodule_Utils.c", "rabbitizer/rabbitizer_type_Instruction.c", "rabbitizer/rabbitizer_global_config.c",
             "rabbitizer/enums/rabbitizer_type_Enum.c", "rabbitizer/enums/enums_utils.c", "rabbitizer/enums/rabbitizer_enum_InstrCategory.c", "rabbitizer/enums/rabbitizer_enum_InstrId.c", "rabbitizer/enums/rabbitizer_enum_Abi.c",
             "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Disassemble.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_ProcessUniqueId.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Examination.c",
             "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp.c", "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp_ProcessUniqueId.c",
