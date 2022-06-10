@@ -5,4 +5,4 @@
 requires = ["setuptools", "wheel"]
 
 [tool.cibuildwheel]
-skip = ["cp36-*", pp37*]
+skip = ["cp36-*"]
