@@ -3,8 +3,16 @@
 
 from setuptools import setup, Extension
 
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
 setup(
+    name="rabbitizer",
+    version="1.0.0",
+    author="Decompollaborate",
+    description="MIPS instruction decoder",
+    long_description=long_description,
+    py_modules=["rabbitizer"],
     ext_modules=[
         Extension(
             "rabbitizer",
