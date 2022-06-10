@@ -3,3 +3,6 @@
 
 [build-system]
 requires = ["setuptools", "wheel"]
+
+[tool.cibuildwheel]
+skip = ["cp36-*"]
