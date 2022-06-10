@@ -15,6 +15,14 @@
 
 extern PyTypeObject rabbitizer_type_Enum_TypeObject;
 
+
+typedef struct PyRabbitizerEnum {
+    PyObject_HEAD
+    PyObject *enumType;
+    PyObject *name;
+    int value;
+} PyRabbitizerEnum;
+
 typedef struct RabbitizerEnumMetadata {
     const char *enumType;
     const char *name;

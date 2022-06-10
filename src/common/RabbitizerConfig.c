@@ -6,14 +6,14 @@
 #include <string.h>
 
 
-RabbitizerAbi RabbitizerAbi_FromStr(const char *name) {
-    if (strcmp(name, "32") == 0 || strcmp(name, "o32") == 0) {
+RabbitizerAbi RabbitizerAbi_fromStr(const char *name) {
+    if (strcmp(name, "32") == 0 || strcmp(name, "o32") == 0 || strcmp(name, "O32") == 0) {
         return RABBITIZER_ABI_O32;
     }
-    if (strcmp(name, "n32") == 0) {
+    if (strcmp(name, "n32") == 0 || strcmp(name, "N32") == 0) {
         return RABBITIZER_ABI_N32;
     }
-    if (strcmp(name, "64") == 0 || strcmp(name, "n64") == 0) {
+    if (strcmp(name, "64") == 0 || strcmp(name, "n64") == 0 || strcmp(name, "N64") == 0) {
         return RABBITIZER_ABI_N64;
     }
     return RABBITIZER_ABI_NUMERIC;

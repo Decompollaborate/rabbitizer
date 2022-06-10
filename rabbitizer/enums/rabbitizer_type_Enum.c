@@ -2,15 +2,8 @@
 /* SPDX-License-Identifier: MIT */
 
 #include "rabbitizer_module.h"
+#include "enums_utils.h"
 #include "common/Utils.h"
-
-
-typedef struct PyRabbitizerEnum {
-    PyObject_HEAD
-    PyObject *enumType;
-    PyObject *name;
-    int value;
-} PyRabbitizerEnum;
 
 
 static void rabbitizer_type_Enum_dealloc(PyRabbitizerEnum *self) {
@@ -109,20 +102,26 @@ Py_hash_t rabbitizer_type_Enum_hash(PyRabbitizerEnum *self) {
     return hash + self->value;
 }
 
+// Checks for the 6 basic comparisons (==, !=, <, <=, >, >=)
 PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *other, int op) {
     int isInstance = PyObject_IsInstance(other, (PyObject*)&rabbitizer_type_Enum_TypeObject);
     int enumTypeCmp;
 
     if (isInstance < 0) {
+        // An error happened
+        // PyObject_IsInstance already sets an exception, so nothing else to do here
         return NULL;
     }
 
     if (isInstance == 0) {
+        // `other` isn't an instance of the Enum type
         Py_RETURN_FALSE;
     }
 
+    // Check if both enums have the same `enumType`
     enumTypeCmp = PyUnicode_Compare(self->enumType, ((PyRabbitizerEnum*)other)->enumType);
     if (enumTypeCmp < 0) {
+        // Negative could mean it isn't equal or an error occurred, so we need to check for errors
         if (PyErr_Occurred() != NULL) {
             return NULL;
         }

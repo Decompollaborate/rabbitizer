@@ -7,15 +7,17 @@
 #include <stdbool.h>
 
 
+#define RABBITIZER_DEF_ABI(name) RABBITIZER_ABI_##name
+
 typedef enum RabbitizerAbi {
-    RABBITIZER_ABI_NUMERIC,
-    RABBITIZER_ABI_O32,
-    RABBITIZER_ABI_N32,
-    RABBITIZER_ABI_N64,
-    RABBITIZER_ABI_MAX,
+    #include "Abi.inc"
+
+    RABBITIZER_DEF_ABI(MAX),
 } RabbitizerAbi;
 
-RabbitizerAbi RabbitizerAbi_FromStr(const char *name);
+#undef RABBITIZER_DEF_ABI
+
+RabbitizerAbi RabbitizerAbi_fromStr(const char *name);
 
 
 typedef struct RabbitizerConfig_RegisterNames {

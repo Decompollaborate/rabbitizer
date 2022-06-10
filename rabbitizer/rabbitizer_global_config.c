@@ -5,11 +5,9 @@
  * Wrapper to expose rabbitizer's global configuration
  */
 
-#define PY_SSIZE_T_CLEAN
-#include <Python.h>
-#include "structmember.h"
-
+#include "rabbitizer_module.h"
 #include "common/RabbitizerConfig.h"
+#include "common/Utils.h"
 
 
 #define DEF_MEMBER_GET_BOOL(category, name) \
@@ -46,10 +44,10 @@
         long val; \
         (void)self; \
         if (value == NULL) { \
-            PyErr_SetString(PyExc_TypeError, "Cannot delete '" #category "." #name "' attribute"); \
+            PyErr_SetString(PyExc_TypeError, "Cannot delete '" #category "_" #name "' attribute"); \
             return -1; \
         } \
-        val = PyLong_AsLong(value);\
+        val = PyLong_AsLong(value); \
         if (val == -1) { \
             PyObject *err = PyErr_Occurred(); \
             if (err != NULL) { \
@@ -57,7 +55,7 @@
             } \
         } \
         if (rangeCheck && (val < minVal || val > maxVal)) { \
-            PyErr_SetString(PyExc_TypeError, "Invalid value for '" #category "." #name "' attribute"); \
+            PyErr_SetString(PyExc_ValueError, "Invalid value for '" #category "_" #name "' attribute"); \
             return -1; \
         } \
         RabbitizerConfig_Cfg.category.name = val;\
@@ -68,6 +66,38 @@
     DEF_MEMBER_GET_INT(category, name) \
     DEF_MEMBER_SET_INT(category, name, rangeCheck, minVal, maxVal)
 
+#define DEF_MEMBER_GET_ABI(category, name) \
+    static PyObject *rabbitizer_global_config_get_##category##_##name(UNUSED PyObject *self, UNUSED PyObject *ignored) { \
+        PyObject *enumInstance = rabbitizer_enum_Abi_enumvalues[RabbitizerConfig_Cfg.category.name].instance; \
+        if (enumInstance == NULL) { \
+            PyErr_SetString(PyExc_RuntimeError, "Internal error: invalid enum value for '" #category "_" #name "'"); \
+            return NULL; \
+        } \
+        Py_INCREF(enumInstance); \
+        return enumInstance; \
+    }
+#define DEF_MEMBER_SET_ABI(category, name) \
+    static int rabbitizer_global_config_set_##category##_##name(UNUSED PyObject *self, PyObject *value, UNUSED void *closure) { \
+        int enumCheck; \
+        if (value == NULL) { \
+            PyErr_SetString(PyExc_TypeError, "Cannot delete '" #category "_" #name "' attribute"); \
+            return -1; \
+        } \
+        enumCheck = rabbitizer_enum_Abi_Check(value); \
+        if (enumCheck <= 0) { \
+            if (enumCheck == 0) { \
+                PyErr_SetString(PyExc_ValueError, "Invalid value for '" #category "_" #name "' attribute"); \
+            } \
+            return -1; \
+        } \
+        RabbitizerConfig_Cfg.category.name = ((PyRabbitizerEnum*)value)->value; \
+        return 0; \
+    }
+
+#define DEF_MEMBER_GET_SET_ABI(category, name) \
+    DEF_MEMBER_GET_ABI(category, name) \
+    DEF_MEMBER_SET_ABI(category, name)
+
 
 #define MEMBER_GET(category, name, docs, closure)      { #category "_" #name, (getter) rabbitizer_global_config_get_##category##_##name, (setter) NULL,                                             PyDoc_STR(docs), closure }
 #define MEMBER_SET(category, name, docs, closure)      { #category "_" #name, (getter) NULL,                                             (setter) rabbitizer_global_config_set_##category##_##name, PyDoc_STR(docs), closure }
@@ -75,8 +105,8 @@
 
 
 DEF_MEMBER_GET_SET_BOOL(regNames, namedRegisters)
-DEF_MEMBER_GET_SET_INT(regNames, gprAbiNames, true, 0, RABBITIZER_ABI_MAX-1)
-DEF_MEMBER_GET_SET_INT(regNames, fprAbiNames, true, 0, RABBITIZER_ABI_MAX-1)
+DEF_MEMBER_GET_SET_ABI(regNames, gprAbiNames)
+DEF_MEMBER_GET_SET_ABI(regNames, fprAbiNames)
 DEF_MEMBER_GET_SET_BOOL(regNames, userFpcCsr)
 DEF_MEMBER_GET_SET_BOOL(regNames, vr4300Cop0NamedRegisters)
 DEF_MEMBER_GET_SET_BOOL(regNames, vr4300RspCop0NamedRegisters)

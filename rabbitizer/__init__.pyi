@@ -9,4 +9,6 @@ from .Enum import *
 from .InstrCategory import *
 from .InstrId import *
 
+from .Config import *
+
 from .rabbitizer import *
