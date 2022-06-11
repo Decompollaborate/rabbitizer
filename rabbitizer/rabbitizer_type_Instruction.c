@@ -3,13 +3,6 @@
 
 #include "rabbitizer_module.h"
 
-#include "instructions/RabbitizerInstruction.h"
-
-
-typedef struct PyRabbitizerInstruction {
-    PyObject_HEAD
-    RabbitizerInstruction instr;
-} PyRabbitizerInstruction;
 
 extern PyTypeObject rabbitizer_type_Instruction_TypeObject;
 

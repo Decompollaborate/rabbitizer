@@ -319,7 +319,7 @@ bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *se
 void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int value, int offset) {
     RabbitizerTrackedRegisterState *stateDst;
 
-    if (!RabbitizerInstrDescriptor_modifiesRt(instr)) {
+    if (!RabbitizerInstrDescriptor_modifiesRt(instr->descriptor)) {
         return;
     }
 
