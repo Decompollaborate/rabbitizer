@@ -3,7 +3,11 @@
 
 #include "analysis/RabbitizerRegistersTracker.h"
 
+#include <assert.h>
+
 #include "common/Utils.h"
+#include "common/RabbitizerConfig.h"
+#include "instructions/RabbitizerRegister.h"
 
 
 // TODO: abi checks
@@ -121,7 +125,7 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
     if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor)) {
         shouldRemove = true;
         reg = instr->rt;
-        if (RabbitizerInstrDescriptor_isHiPair(instr)) {
+        if (RabbitizerInstrDescriptor_isHiPair(instr->descriptor)) {
             RabbitizerTrackedRegisterState_clearLo(&self->registers[instr->rt]);
             shouldRemove = false;
         }
@@ -147,121 +151,186 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
 }
 
 void RabbitizerRegistersTracker_unsetRegistersAfterFuncCall(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, const RabbitizerInstruction *prevInstr) {
-    #if 0
-    if not previnstr->doesLink():
-        return
+    RabbitizerTrackedRegisterState *state = NULL;
 
-    // It happen that every reg that we want to clear on a function call have the same raw values for both o32 and n32 ABIs, so no need to worry about it for now...
-    registersToInvalidate = (
-        1,  // $at
-        2,  // $v0
-        3,  // $v1
-        4,  // $a0
-        5,  // $a1
-        6,  // $a2
-        7,  // $a3
-        8,  // $t0 / $a4
-        9,  // $t1 / $a5
-        10, // $t2 / $a6
-        11, // $t3 / $a7
-        12, // $t4 / $t0
-        13, // $t5 / $t1
-        14, // $t6 / $t2
-        15, // $t7 / $t3
-        24, // $t8 / $t8
-        25, // $t9 / $t9
-        31, // $ra
-    )
+    if (!RabbitizerInstrDescriptor_doesLink(prevInstr->descriptor)) {
+        return;
+    }
 
-    for reg in registersToInvalidate:
-        state = self->registers[reg]
-        if state.hasLuiValue:
-            self->_printDebugInfo_clearRegister(instr, reg, currentVram)
-        state.clear()
-    #endif
+    if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_O32 || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_NUMERIC) {
+        for (size_t reg = 0; reg < ARRAY_COUNT(self->registers); reg++) {
+            switch (reg) {
+                case RABBITIZER_REG_GPR_O32_at:
+                case RABBITIZER_REG_GPR_O32_v0:
+                case RABBITIZER_REG_GPR_O32_v1:
+                case RABBITIZER_REG_GPR_O32_a0:
+                case RABBITIZER_REG_GPR_O32_a1:
+                case RABBITIZER_REG_GPR_O32_a2:
+                case RABBITIZER_REG_GPR_O32_a3:
+                case RABBITIZER_REG_GPR_O32_t0:
+                case RABBITIZER_REG_GPR_O32_t1:
+                case RABBITIZER_REG_GPR_O32_t2:
+                case RABBITIZER_REG_GPR_O32_t3:
+                case RABBITIZER_REG_GPR_O32_t4:
+                case RABBITIZER_REG_GPR_O32_t5:
+                case RABBITIZER_REG_GPR_O32_t6:
+                case RABBITIZER_REG_GPR_O32_t7:
+                case RABBITIZER_REG_GPR_O32_t8:
+                case RABBITIZER_REG_GPR_O32_t9:
+                case RABBITIZER_REG_GPR_O32_ra:
+                    state = &self->registers[reg];
+                    #if 0
+                    if (state.hasLuiValue) {
+                        self->_printDebugInfo_clearRegister(instr, reg)
+                    }
+                    #endif
+                    RabbitizerTrackedRegisterState_clear(state);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    } else if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_N32 || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_N64) {
+        for (size_t reg = 0; reg < ARRAY_COUNT(self->registers); reg++) {
+            switch (reg) {
+                case RABBITIZER_REG_GPR_N32_at:
+                case RABBITIZER_REG_GPR_N32_v0:
+                case RABBITIZER_REG_GPR_N32_v1:
+                case RABBITIZER_REG_GPR_N32_a0:
+                case RABBITIZER_REG_GPR_N32_a1:
+                case RABBITIZER_REG_GPR_N32_a2:
+                case RABBITIZER_REG_GPR_N32_a3:
+                case RABBITIZER_REG_GPR_N32_a4:
+                case RABBITIZER_REG_GPR_N32_a5:
+                case RABBITIZER_REG_GPR_N32_a6:
+                case RABBITIZER_REG_GPR_N32_a7:
+                case RABBITIZER_REG_GPR_N32_t0:
+                case RABBITIZER_REG_GPR_N32_t1:
+                case RABBITIZER_REG_GPR_N32_t2:
+                case RABBITIZER_REG_GPR_N32_t3:
+                case RABBITIZER_REG_GPR_N32_t8:
+                case RABBITIZER_REG_GPR_N32_t9:
+                case RABBITIZER_REG_GPR_N32_ra:
+                    state = &self->registers[reg];
+                    #if 0
+                    if (state.hasLuiValue) {
+                        self->_printDebugInfo_clearRegister(instr, reg)
+                    }
+                    #endif
+                    RabbitizerTrackedRegisterState_clear(state);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
 }
 
 bool RabbitizerRegistersTracker_getAddressIfCanSetType(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, int *dstAddress) {
-    #if 0
-    state = self->registers[instr->rs]
-    if not state.hasLoValue:
-        return None
+    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
 
-    if not state.dereferenced or instrOffset == state.dereferenceOffset:
-        return state.value
+    if (!state->hasLoValue) {
+        return false;
+    }
 
-    return None
-    #endif
+    if (!state->dereferenced || instrOffset == state->dereferenceOffset) {
+        *dstAddress = state->value;
+        return true;
+    }
+
     return false;
 }
 
-#if 0
-def getJrInfo(self, instr: rabbitizer.Instruction) -> tuple[int, int]|None:
-    state = self->registers[instr->rs]
-    if state.hasLoValue and state.dereferenced:
-        return state.loOffset, state.value
-    return None
-#endif
+bool RabbitizerRegistersTracker_getJrInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset, int *dstAddress) {
+    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
+
+    if (!state->hasLoValue || !state->dereferenced) {
+        return false;
+    }
+
+    *dstOffset = state->loOffset;
+    *dstAddress = state->value;
+    return true;
+}
 
 
+// prevInstr can be NULL
 void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, const RabbitizerInstruction *prevInstr, int instrOffset) {
-    #if 0
-    assert instr->isHiPair()
+    RabbitizerTrackedRegisterState *state = NULL;
 
-    state = self->registers[instr->rt]
-    state.clear()
-    state.setHi(instr->getImmediate(), instrOffset)
+    assert(RabbitizerInstrDescriptor_isHiPair(instr->descriptor));
 
-    if prevInstr is not None:
+    state = &self->registers[instr->rt];
+    RabbitizerTrackedRegisterState_clear(state);
+    RabbitizerTrackedRegisterState_setHi(state, RabbitizerInstruction_getImmediate(instr), instrOffset);
+
+    if (prevInstr != NULL) {
         // If the previous instructions is a branch likely, then nulify
         // the effects of this instruction for future analysis
-        state.luiSetOnBranchLikely = previnstr->isBranchLikely() or previnstr->isUnconditionalBranch()
-    #endif
+        state->luiSetOnBranchLikely = RabbitizerInstrDescriptor_isBranchLikely(prevInstr->descriptor) || RabbitizerInstruction_isUnconditionalBranch(prevInstr);
+    }
 }
 
-#if 0
-def getLuiOffsetForConstant(self, instr: rabbitizer.Instruction) -> int|None:
-    stateSrc = self->registers[instr->rs]
-    if stateSrc.hasLuiValue:
-        return stateSrc.luiOffset
-    return None
-#endif
+bool RabbitizerRegistersTracker_getLuiOffsetForConstant(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset) {
+    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
+
+    if (!state->hasLuiValue) {
+        return false;
+    }
+
+    *dstOffset = state->luiOffset;
+    return true;
+}
 
 void RabbitizerRegistersTracker_processConstant(RabbitizerRegistersTracker *self, int value, const RabbitizerInstruction *instr, int offset) {
-    #if 0
-    stateDst = self->registers[instr->rt]
-    stateDst.setLo(value, offset)
-    #endif
+    RabbitizerTrackedRegisterState *stateDst = &self->registers[instr->rt];
+
+    RabbitizerTrackedRegisterState_setLo(stateDst, value, offset);
 }
 
-#if 0
-def getLuiOffsetForLo(self, instr: rabbitizer.Instruction, instrOffset: int) -> tuple[int|None, bool]:
-    stateSrc = self->registers[instr->rs]
-    if stateSrc.hasLuiValue and not stateSrc.luiSetOnBranchLikely:
-        return stateSrc.luiOffset, True
+bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, int *dstOffset, bool *dstIsGp) {
+    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
 
-    if instr->rs == 28: // $gp
-        return None, True
+    if (state->hasLuiValue && !state->luiSetOnBranchLikely) {
+        *dstOffset = state->luiOffset;
+        *dstIsGp = false;
+        return true;
+    }
 
-    if instr->modifiesRt() and instr->doesDereference():
-        if stateSrc.hasLoValue and not stateSrc.dereferenced:
+    // TODO: abi
+    if (instr->rs == 28) { // $gp
+        *dstOffset = 0;
+        *dstIsGp = true;
+        return true;
+    }
+
+    if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor) && RabbitizerInstrDescriptor_doesDereference(instr->descriptor)) {
+        if (state->hasLoValue && !state->dereferenced) {
             // Simulate a dereference
-            self->registers[instr->rt].dereferenceState(stateSrc, instrOffset)
-    return None, False
-#endif
+            RabbitizerTrackedRegisterState_dereferenceState(&self->registers[instr->rt], state, instrOffset);
+        }
+    }
+
+    return false;
+}
 
 void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int value, int offset) {
-    #if 0
-    if not instr->modifiesRt():
-        return
+    RabbitizerTrackedRegisterState *stateDst;
 
-    stateDst = self->registers[instr->rt]
-    stateDst.setLo(value, offset)
-    if instr->doesDereference():
-        stateDst.deref(offset)
-    if instr->rt == instr->rs:
-        stateDst.clearHi()
-    #endif
+    if (!RabbitizerInstrDescriptor_modifiesRt(instr)) {
+        return;
+    }
+
+    stateDst = &self->registers[instr->rt];
+    RabbitizerTrackedRegisterState_setLo(stateDst, value, offset);
+    if (RabbitizerInstrDescriptor_doesDereference(instr->descriptor)) {
+        RabbitizerTrackedRegisterState_deref(stateDst, offset);
+    }
+    if (instr->rt == instr->rs) {
+        RabbitizerTrackedRegisterState_clearHi(stateDst);
+    }
 }
 
 
