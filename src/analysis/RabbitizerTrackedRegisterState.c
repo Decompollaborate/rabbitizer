@@ -1,14 +1,14 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "analysis/TrackedRegisterState.h"
+#include "analysis/RabbitizerTrackedRegisterState.h"
 
 #include <assert.h>
 
 #include "common/Utils.h"
 
 
-void TrackedRegisterState_init(TrackedRegisterState *self, int registerNum) {
+void RabbitizerTrackedRegisterState_init(RabbitizerTrackedRegisterState *self, int registerNum) {
     self->registerNum = registerNum;
 
     self->hasLuiValue = false;
@@ -23,11 +23,11 @@ void TrackedRegisterState_init(TrackedRegisterState *self, int registerNum) {
     self->value = 0;
 }
 
-void TrackedRegisterState_destroy(UNUSED TrackedRegisterState *self) {
+void RabbitizerTrackedRegisterState_destroy(UNUSED RabbitizerTrackedRegisterState *self) {
 }
 
 
-void TrackedRegisterState_clear(TrackedRegisterState *self) {
+void RabbitizerTrackedRegisterState_clear(RabbitizerTrackedRegisterState *self) {
     self->hasLuiValue = false;
     self->luiOffset = 0;
     self->luiSetOnBranchLikely = false;
@@ -38,13 +38,13 @@ void TrackedRegisterState_clear(TrackedRegisterState *self) {
     self->value = 0;
 }
 
-void TrackedRegisterState_clearHi(TrackedRegisterState *self) {
+void RabbitizerTrackedRegisterState_clearHi(RabbitizerTrackedRegisterState *self) {
     self->hasLuiValue = false;
     self->luiOffset = 0;
     self->luiSetOnBranchLikely = false;
 }
 
-void TrackedRegisterState_clearLo(TrackedRegisterState *self) {
+void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self) {
     self->hasLoValue = false;
     self->loOffset = 0;
     self->dereferenced = false;
@@ -53,7 +53,7 @@ void TrackedRegisterState_clearLo(TrackedRegisterState *self) {
 }
 
 
-void TrackedRegisterState_copyState(TrackedRegisterState *self, const TrackedRegisterState *other) {
+void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other) {
     self->hasLuiValue = other->hasLuiValue;
     self->luiOffset = other->luiOffset;
     self->luiSetOnBranchLikely = other->luiSetOnBranchLikely;
@@ -67,13 +67,13 @@ void TrackedRegisterState_copyState(TrackedRegisterState *self, const TrackedReg
 }
 
 
-void TrackedRegisterState_setHi(TrackedRegisterState *self, int value, int offset) {
+void RabbitizerTrackedRegisterState_setHi(RabbitizerTrackedRegisterState *self, int value, int offset) {
     self->hasLuiValue = true;
     self->luiOffset = offset;
     self->value = value << 16;
 }
 
-void TrackedRegisterState_setLo(TrackedRegisterState *self, int value, int offset) {
+void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, int value, int offset) {
     self->value = value;
     self->loOffset = offset;
     self->hasLoValue = true;
@@ -82,24 +82,24 @@ void TrackedRegisterState_setLo(TrackedRegisterState *self, int value, int offse
 }
 
 
-void TrackedRegisterState_deref(TrackedRegisterState *self, int offset) {
+void RabbitizerTrackedRegisterState_deref(RabbitizerTrackedRegisterState *self, int offset) {
     self->dereferenced = true;
     self->dereferenceOffset = offset;
 }
 
-void TrackedRegisterState_dereferenceState(TrackedRegisterState *self, const TrackedRegisterState *other, int offset) {
+void RabbitizerTrackedRegisterState_dereferenceState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other, int offset) {
     assert(other->hasLoValue);
     assert(!other->dereferenced);
 
-    TrackedRegisterState_copyState(self, other);
-    TrackedRegisterState_deref(self, offset);
+    RabbitizerTrackedRegisterState_copyState(self, other);
+    RabbitizerTrackedRegisterState_deref(self, offset);
 }
 
 
-bool TrackedRegisterState_hasAnyValue(const TrackedRegisterState *self) {
+bool RabbitizerTrackedRegisterState_hasAnyValue(const RabbitizerTrackedRegisterState *self) {
     return self->hasLuiValue || self->hasLoValue;
 }
 
-bool TrackedRegisterState_wasSetInCurrentOffset(const TrackedRegisterState *self, int offset) {
+bool RabbitizerTrackedRegisterState_wasSetInCurrentOffset(const RabbitizerTrackedRegisterState *self, int offset) {
     return self->loOffset == offset || self->dereferenceOffset == offset;
 }

@@ -42,17 +42,17 @@
     // RABBITIZER_DEF_INSTR_ID(cpu, ddiv,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R),
     // RABBITIZER_DEF_INSTR_ID(cpu, ddivu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R),
     RABBITIZER_DEF_INSTR_ID(cpu, add,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .notEmitedByCompilers=true),       // ADD word
-    RABBITIZER_DEF_INSTR_ID(cpu, addu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // ADD Unsigned word
+    RABBITIZER_DEF_INSTR_ID(cpu, addu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true),      // ADD Unsigned word
     RABBITIZER_DEF_INSTR_ID(cpu, sub,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // Subtract word
     RABBITIZER_DEF_INSTR_ID(cpu, subu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // SUBtract Unsigned word
     RABBITIZER_DEF_INSTR_ID(cpu, and,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // AND
-    RABBITIZER_DEF_INSTR_ID(cpu, or,                            .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),        // OR
+    RABBITIZER_DEF_INSTR_ID(cpu, or,                            .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true),        // OR
     RABBITIZER_DEF_INSTR_ID(cpu, xor,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // eXclusive OR
     RABBITIZER_DEF_INSTR_ID(cpu, nor,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // Not OR
     RABBITIZER_DEF_INSTR_ID(cpu, slt,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // Set on Less Than
     RABBITIZER_DEF_INSTR_ID(cpu, sltu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // Set on Less Than Unsigned
     RABBITIZER_DEF_INSTR_ID(cpu, dadd,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // Doubleword Add
-    RABBITIZER_DEF_INSTR_ID(cpu, daddu,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),     // Doubleword Add Unsigned
+    RABBITIZER_DEF_INSTR_ID(cpu, daddu,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true),     // Doubleword Add Unsigned
     RABBITIZER_DEF_INSTR_ID(cpu, dsub,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // Doubleword SUBtract
     RABBITIZER_DEF_INSTR_ID(cpu, dsubu,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),     // Doubleword SUBtract Unsigned
 
@@ -297,7 +297,7 @@
     RABBITIZER_DEF_INSTR_ID(cpu, b,                             .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true),         // Branch (unconditional)
 
     // OP rd, rs
-    RABBITIZER_DEF_INSTR_ID(cpu, move,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),      // Move
+    RABBITIZER_DEF_INSTR_ID(cpu, move,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true),      // Move
     RABBITIZER_DEF_INSTR_ID(cpu, not,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true),       // Not
 
     // OP rd, rt

@@ -85,3 +85,6 @@ bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self) {
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self) {
     return self->doesDereference;
 }
+bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self) {
+    return self->maybeIsMove;
+}

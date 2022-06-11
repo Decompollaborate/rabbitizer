@@ -42,6 +42,7 @@ typedef struct RabbitizerInstrDescriptor {
     bool isLoPair;
     bool doesLink; // "and link" family of instructions
     bool doesDereference;
+    bool maybeIsMove;
 
     // int mipsVersion;
 } RabbitizerInstrDescriptor;
@@ -75,5 +76,6 @@ bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self);
 
 #endif
