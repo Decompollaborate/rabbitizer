@@ -3,8 +3,7 @@
 
 #include "rabbitizer_module.h"
 
-
-extern PyTypeObject rabbitizer_type_Instruction_TypeObject;
+#include "instructions/RabbitizerInstructionRsp.h"
 
 
 static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
@@ -13,15 +12,39 @@ static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
 }
 
 static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
-    static char *kwlist[] = { "word", NULL };
+    static char *kwlist[] = { "word", "category", NULL };
     uint32_t word;
+    PyObject *category;
+    int enumCheck;
+    RabbitizerInstrCategory instrCategory;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I", kwlist, &word)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I|O!", kwlist, &word, &rabbitizer_type_Enum_TypeObject, &category)) {
         return -1;
     }
 
-    RabbitizerInstruction_init(&self->instr, word);
-    RabbitizerInstruction_processUniqueId(&self->instr);
+    enumCheck = rabbitizer_enum_InstrCategory_Check(category);
+
+    if (enumCheck <= 0) {
+        if (enumCheck == 0) {
+            PyErr_SetString(PyExc_ValueError, "Invalid value for 'category' parameter");
+        }
+        return -1;
+    }
+
+    instrCategory = ((PyRabbitizerEnum*)category)->value;
+
+    switch (instrCategory) {
+        case RABBITIZER_INSTRCAT_RSP:
+            RabbitizerInstructionRsp_init(&self->instr, word);
+            RabbitizerInstructionRsp_processUniqueId(&self->instr);
+            break;
+
+        case RABBITIZER_INSTRCAT_CPU:
+        case RABBITIZER_INSTRCAT_MAX:
+            RabbitizerInstruction_init(&self->instr, word);
+            RabbitizerInstruction_processUniqueId(&self->instr);
+            break;
+    }
 
     return 0;
 }
@@ -29,6 +52,7 @@ static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObj
 static PyMemberDef rabbitizer_type_Instruction_members[] = {
     { "vram", T_UINT, offsetof(PyRabbitizerInstruction, instr.vram), 0, "vram description" },
     { "inHandwrittenFunction", T_BOOL, offsetof(PyRabbitizerInstruction, instr.inHandwrittenFunction), 0, "inHandwrittenFunction description" },
+
     { 0 }
 };
 

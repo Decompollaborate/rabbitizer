@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 from .Enum import Enum
+from .InstrCategory import InstrCategory
 
 
 class Instruction:
@@ -20,7 +21,7 @@ class Instruction:
     inHandwrittenFunction: bool = False
 
 
-    def __init__(self, word: int) -> None: ...
+    def __init__(self, word: int, category: Enum=InstrCategory.CPU) -> None: ...
 
     def getRaw(self) -> int: ...
     def getImmediate(self) -> int: ...

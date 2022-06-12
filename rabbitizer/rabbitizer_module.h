@@ -21,13 +21,6 @@ typedef struct PyRabbitizerInstruction {
     RabbitizerInstruction instr;
 } PyRabbitizerInstruction;
 
-
-extern RabbitizerEnumMetadata rabbitizer_enum_Abi_enumvalues[];
-extern RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[];
-
-int rabbitizer_enum_Abi_Check(PyObject *o);
-
-
 PyObject *rabbitizer_submodule_Utils_Init(void);
 
 extern PyTypeObject rabbitizer_global_config_TypeObject;
@@ -36,8 +29,8 @@ extern PyTypeObject rabbitizer_type_Enum_TypeObject;
 extern PyTypeObject rabbitizer_type_Instruction_TypeObject;
 extern PyTypeObject rabbitizer_type_RegistersTracker_TypeObject;
 
-PyObject *rabbitizer_enum_Abi_Init(void);
-PyObject *rabbitizer_enum_InstrCategory_Init(void);
-PyObject *rabbitizer_enum_InstrId_Init(void);
+DECL_ENUM(Abi)
+DECL_ENUM(InstrCategory)
+DECL_ENUM(InstrId)
 
 #endif

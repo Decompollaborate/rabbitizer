@@ -35,6 +35,12 @@ typedef struct RabbitizerEnumMetadata {
 int rabbitizer_EnumMetadata_Initialize(PyObject *submodule, RabbitizerEnumMetadata *enumValues);
 
 
+#define DECL_ENUM(enumName) \
+    extern RabbitizerEnumMetadata rabbitizer_enum_##enumName##_enumvalues[]; \
+    PyObject *rabbitizer_enum_##enumName##_Init(void); \
+    /* Return true if o is of this enum type */ \
+    int rabbitizer_enum_##enumName##_Check(PyObject *o);
+
 #define DEF_ENUM(enumName, docs) \
     static PyModuleDef rabbitizer_enum_##enumName##_module = { \
         PyModuleDef_HEAD_INIT, \
