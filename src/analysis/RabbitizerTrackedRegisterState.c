@@ -67,13 +67,13 @@ void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *se
 }
 
 
-void RabbitizerTrackedRegisterState_setHi(RabbitizerTrackedRegisterState *self, int value, int offset) {
+void RabbitizerTrackedRegisterState_setHi(RabbitizerTrackedRegisterState *self, uint32_t value, int offset) {
     self->hasLuiValue = true;
     self->luiOffset = offset;
     self->value = value << 16;
 }
 
-void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, int value, int offset) {
+void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, uint32_t value, int offset) {
     self->value = value;
     self->loOffset = offset;
     self->hasLoValue = true;

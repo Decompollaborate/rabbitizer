@@ -6,6 +6,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stdint.h>
 
 
 typedef struct RabbitizerTrackedRegisterState {
@@ -20,7 +21,7 @@ typedef struct RabbitizerTrackedRegisterState {
     bool dereferenced;
     int dereferenceOffset;
 
-    int value;
+    uint32_t value;
 } RabbitizerTrackedRegisterState;
 
 
@@ -33,8 +34,8 @@ void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self
 
 void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other);
 
-void RabbitizerTrackedRegisterState_setHi(RabbitizerTrackedRegisterState *self, int value, int offset);
-void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, int value, int offset);
+void RabbitizerTrackedRegisterState_setHi(RabbitizerTrackedRegisterState *self, uint32_t value, int offset);
+void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, uint32_t value, int offset);
 
 void RabbitizerTrackedRegisterState_deref(RabbitizerTrackedRegisterState *self, int offset);
 void RabbitizerTrackedRegisterState_dereferenceState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other, int offset);

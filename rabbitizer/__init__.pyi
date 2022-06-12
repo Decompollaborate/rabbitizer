@@ -14,3 +14,5 @@ from .InstrId import *
 from .Config import *
 
 from .rabbitizer import *
+
+from .RegistersTracker import *

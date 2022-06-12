@@ -78,6 +78,123 @@ static PyObject *rabbitizer_type_RegistersTracker_unsetRegistersAfterFuncCall(Py
     Py_RETURN_NONE;
 }
 
+static PyObject *rabbitizer_type_RegistersTracker_getAddressIfCanSetType(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    int instrOffset;
+    uint32_t dstAddress = 0;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset)) {
+        return NULL;
+    }
+
+    if (RabbitizerRegistersTracker_getAddressIfCanSetType(&self->tracker, &instr->instr, instrOffset, &dstAddress)) {
+        return PyLong_FromLong(dstAddress);
+    }
+
+    Py_RETURN_NONE;
+}
+
+static PyObject *rabbitizer_type_RegistersTracker_getJrInfo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", NULL };
+    PyRabbitizerInstruction *instr;
+    int dstOffset = 0;
+    uint32_t dstAddress = 0;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr)) {
+        return NULL;
+    }
+
+    if (RabbitizerRegistersTracker_getJrInfo(&self->tracker, &instr->instr, &dstOffset, &dstAddress)) {
+        return PyTuple_Pack(2, PyLong_FromLong(dstOffset), PyLong_FromLong(dstAddress));
+    }
+
+    Py_RETURN_NONE;
+}
+
+static PyObject *rabbitizer_type_RegistersTracker_processLui(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "instrOffset", "prevInstr", NULL };
+    PyRabbitizerInstruction *instr;
+    int instrOffset;
+    PyRabbitizerInstruction *pyPrevInstr = NULL;
+    RabbitizerInstruction *prevInstr = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i|O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset, &rabbitizer_type_Instruction_TypeObject, &pyPrevInstr)) {
+        return NULL;
+    }
+
+    if (pyPrevInstr != NULL) {
+        prevInstr = &pyPrevInstr->instr;
+    }
+
+    RabbitizerRegistersTracker_processLui(&self->tracker, &instr->instr, instrOffset, prevInstr);
+
+    Py_RETURN_NONE;
+}
+
+static PyObject *rabbitizer_type_RegistersTracker_getLuiOffsetForConstant(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", NULL };
+    PyRabbitizerInstruction *instr;
+    int dstOffset = 0;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr)) {
+        return NULL;
+    }
+
+    if (RabbitizerRegistersTracker_getLuiOffsetForConstant(&self->tracker, &instr->instr, &dstOffset)) {
+        return PyLong_FromLong(dstOffset);
+    }
+
+    Py_RETURN_NONE;
+}
+
+static PyObject *rabbitizer_type_RegistersTracker_processConstant(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "value", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    uint32_t value;
+    int instrOffset;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!Ii", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &value, &instrOffset)) {
+        return NULL;
+    }
+
+    RabbitizerRegistersTracker_processConstant(&self->tracker, &instr->instr, value, instrOffset);
+
+    Py_RETURN_NONE;
+}
+
+static PyObject *rabbitizer_type_RegistersTracker_getLuiOffsetForLo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    int instrOffset;
+    int dstOffset = 0;
+    bool dstIsGp = false;
+    bool validResults = false;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset)) {
+        return NULL;
+    }
+
+    validResults = RabbitizerRegistersTracker_getLuiOffsetForLo(&self->tracker, &instr->instr, instrOffset, &dstOffset, &dstIsGp);
+
+    return PyTuple_Pack(3, PyLong_FromLong(dstOffset), PyBool_FromLong(dstIsGp), PyBool_FromLong(validResults));
+}
+
+static PyObject *rabbitizer_type_RegistersTracker_processLo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "value", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    uint32_t value;
+    int instrOffset;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!Ii", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &value, &instrOffset)) {
+        return NULL;
+    }
+
+    RabbitizerRegistersTracker_processLo(&self->tracker, &instr->instr, value, instrOffset);
+
+    Py_RETURN_NONE;
+}
+
 
 #define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)rabbitizer_type_RegistersTracker_##name, METH_NOARGS,                  PyDoc_STR(docs) }
 #define METHOD_ARGS(name, docs)     { #name, (PyCFunction)rabbitizer_type_RegistersTracker_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
@@ -86,6 +203,13 @@ static PyMethodDef rabbitizer_type_RegistersTracker_methods[] = {
     METHOD_ARGS(moveRegisters, ""),
     METHOD_ARGS(overwriteRegisters, ""),
     METHOD_ARGS(unsetRegistersAfterFuncCall, ""),
+    METHOD_ARGS(getAddressIfCanSetType, ""),
+    METHOD_ARGS(getJrInfo, ""),
+    METHOD_ARGS(processLui, ""),
+    METHOD_ARGS(getLuiOffsetForConstant, ""),
+    METHOD_ARGS(processConstant, ""),
+    METHOD_ARGS(getLuiOffsetForLo, ""),
+    METHOD_ARGS(processLo, ""),
 
     { 0 },
 };
