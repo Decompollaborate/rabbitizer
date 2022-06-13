@@ -14,24 +14,26 @@ static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
 static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = { "word", "category", NULL };
     uint32_t word;
-    PyObject *category;
+    PyObject *category = NULL;
     int enumCheck;
-    RabbitizerInstrCategory instrCategory;
+    RabbitizerInstrCategory instrCategory = RABBITIZER_INSTRCAT_CPU;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "I|O!", kwlist, &word, &rabbitizer_type_Enum_TypeObject, &category)) {
         return -1;
     }
 
-    enumCheck = rabbitizer_enum_InstrCategory_Check(category);
+    if (category != NULL) {
+        enumCheck = rabbitizer_enum_InstrCategory_Check(category);
 
-    if (enumCheck <= 0) {
-        if (enumCheck == 0) {
-            PyErr_SetString(PyExc_ValueError, "Invalid value for 'category' parameter");
+        if (enumCheck <= 0) {
+            if (enumCheck == 0) {
+                PyErr_SetString(PyExc_ValueError, "Invalid value for 'category' parameter");
+            }
+            return -1;
         }
-        return -1;
-    }
 
-    instrCategory = ((PyRabbitizerEnum*)category)->value;
+        instrCategory = ((PyRabbitizerEnum*)category)->value;
+    }
 
     switch (instrCategory) {
         case RABBITIZER_INSTRCAT_RSP:
