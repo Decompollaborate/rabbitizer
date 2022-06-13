@@ -29,6 +29,7 @@ bool RabbitizerRegistersTracker_getLuiOffsetForConstant(RabbitizerRegistersTrack
 void RabbitizerRegistersTracker_processConstant(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, uint32_t value, int offset);
 bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, int *dstOffset, bool *dstIsGp);
 void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, uint32_t value, int offset);
+bool RabbitizerRegistersTracker_hasLoButNoHi(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr);
 
 
 #endif

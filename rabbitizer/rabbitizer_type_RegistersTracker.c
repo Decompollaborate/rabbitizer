@@ -195,6 +195,20 @@ static PyObject *rabbitizer_type_RegistersTracker_processLo(PyRabbitizerRegister
     Py_RETURN_NONE;
 }
 
+static PyObject *rabbitizer_type_RegistersTracker_hasLoButNoHi(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", NULL };
+    PyRabbitizerInstruction *instr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr)) {
+        return NULL;
+    }
+
+    if (RabbitizerRegistersTracker_hasLoButNoHi(&self->tracker, &instr->instr)) {
+        Py_RETURN_TRUE;
+    }
+    Py_RETURN_FALSE;
+}
+
 
 #define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)rabbitizer_type_RegistersTracker_##name, METH_NOARGS,                  PyDoc_STR(docs) }
 #define METHOD_ARGS(name, docs)     { #name, (PyCFunction)rabbitizer_type_RegistersTracker_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
@@ -210,6 +224,7 @@ static PyMethodDef rabbitizer_type_RegistersTracker_methods[] = {
     METHOD_ARGS(processConstant, ""),
     METHOD_ARGS(getLuiOffsetForLo, ""),
     METHOD_ARGS(processLo, ""),
+    METHOD_ARGS(hasLoButNoHi, ""),
 
     { 0 },
 };

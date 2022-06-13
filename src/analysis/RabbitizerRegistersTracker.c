@@ -333,6 +333,15 @@ void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, cons
     }
 }
 
+bool RabbitizerRegistersTracker_hasLoButNoHi(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr) {
+    RabbitizerTrackedRegisterState *state;
+
+    assert(instr != NULL);
+
+    state = &self->registers[instr->rs];
+    return state->hasLoValue && !state->hasLuiValue;
+}
+
 
 #if 0
 def _printDebugInfo_clearRegister(self, instr: rabbitizer.Instruction, reg: int, currentVram: int|None=None) -> None:
