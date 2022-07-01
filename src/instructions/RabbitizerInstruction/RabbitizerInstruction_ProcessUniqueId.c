@@ -4,6 +4,7 @@
 #include "instructions/RabbitizerInstruction.h"
 
 #include "common/RabbitizerConfig.h"
+#include "instructions/RabbitizerRegister.h"
 
 
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
@@ -188,22 +189,31 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
-        if (self->rt == 0) {
-            if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_beq) {
-                if (self->rs == 0) {
-                    if (RabbitizerConfig_Cfg.pseudos.pseudoB) {
-                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_b;
-                    }
-                } else {
-                    if (RabbitizerConfig_Cfg.pseudos.pseudoBeqz) {
-                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_beqz;
+        switch (self->uniqueId) {
+            case RABBITIZER_INSTR_ID_cpu_beq:
+                if (self->rt == 0) {
+                    if (self->rs == 0) {
+                        if (RabbitizerConfig_Cfg.pseudos.pseudoB) {
+                            self->uniqueId = RABBITIZER_INSTR_ID_cpu_b;
+                        }
+                    } else {
+                        if (RabbitizerConfig_Cfg.pseudos.pseudoBeqz) {
+                            self->uniqueId = RABBITIZER_INSTR_ID_cpu_beqz;
+                        }
                     }
                 }
-            } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_bne) {
-                if (RabbitizerConfig_Cfg.pseudos.pseudoBnez) {
-                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_bnez;
+                break;
+
+            case RABBITIZER_INSTR_ID_cpu_bne:
+                if (self->rt == 0) {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoBnez) {
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_bnez;
+                    }
                 }
-            }
+                break;
+
+            default:
+                break;
         }
     }
 
@@ -402,40 +412,65 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
         // NOP is special enough
         self->uniqueId = RABBITIZER_INSTR_ID_cpu_nop;
     } else if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
-        if (self->rt == 0) {
-            if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_or) {
-                if (RabbitizerConfig_Cfg.pseudos.pseudoMove) {
-                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_move;
+        switch (self->uniqueId) {
+            case RABBITIZER_INSTR_ID_cpu_or:
+                if (self->rt == 0) {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoMove) {
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_move;
+                    }
                 }
-            } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_nor) {
-                if (RabbitizerConfig_Cfg.pseudos.pseudoNot) {
-                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_not;
+                break;
+
+            case RABBITIZER_INSTR_ID_cpu_nor:
+                if (self->rt == 0) {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoNot) {
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_not;
+                    }
                 }
-            }
-        } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_subu) {
-            if (self->rs == 0) {
-                if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {
-                    self->uniqueId = RABBITIZER_INSTR_ID_cpu_negu;
+                break;
+
+            case RABBITIZER_INSTR_ID_cpu_subu:
+                if (self->rs == 0) {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_negu;
+                    }
                 }
-            }
+                break;
+
+            default:
+                break;
         }
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 
-    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jalr) {
-        // $ra
-        if (self->rd != 31) {
-            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
-        }
-    } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_div) {
-        if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
-            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_div];
-        }
-    } else if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_divu) {
-        if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
-            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_divu];
-        }
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_jalr:
+            if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_NUMERIC || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_O32) {
+                if (self->rd != RABBITIZER_REG_GPR_O32_ra) {
+                    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
+                }
+            } else {
+                if (self->rd != RABBITIZER_REG_GPR_N32_ra) {
+                    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
+                }
+            }
+            break;
+
+        case RABBITIZER_INSTR_ID_cpu_div:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
+                self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_div];
+            }
+            break;
+
+        case RABBITIZER_INSTR_ID_cpu_divu:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
+                self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_divu];
+            }
+            break;
+
+        default:
+            break;
     }
 }
 
