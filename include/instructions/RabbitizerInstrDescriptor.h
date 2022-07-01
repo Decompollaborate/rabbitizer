@@ -19,6 +19,15 @@ typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_MAX,
 } RabbitizerInstrType;
 
+typedef enum RabbitizerArchitectureVersion {
+    RABBITIZER_ARCHVERSION_INVALID=-1,
+    RABBITIZER_ARCHVERSION_UNKNOWN,
+    RABBITIZER_ARCHVERSION_MIPS_I,
+    RABBITIZER_ARCHVERSION_MIPS_II,
+    RABBITIZER_ARCHVERSION_MIPS_III,
+    RABBITIZER_ARCHVERSION_MIPS_IV
+} RabbitizerArchitectureVersion;
+
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];
     RabbitizerInstrType instrType;
@@ -44,7 +53,9 @@ typedef struct RabbitizerInstrDescriptor {
     bool doesDereference;
     bool maybeIsMove;
 
-    // int mipsVersion;
+    bool isPseudo;
+
+    int architectureVersion;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
