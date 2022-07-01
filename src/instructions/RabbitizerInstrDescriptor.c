@@ -88,3 +88,11 @@ bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *
 bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self) {
     return self->maybeIsMove;
 }
+
+bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self) {
+    return self->isPseudo;
+}
+
+RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self) {
+    return self->architectureVersion;
+}

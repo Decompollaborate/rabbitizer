@@ -55,7 +55,7 @@ typedef struct RabbitizerInstrDescriptor {
 
     bool isPseudo;
 
-    int architectureVersion;
+    RabbitizerArchitectureVersion architectureVersion;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -88,5 +88,9 @@ bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
+
+RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self);
 
 #endif
