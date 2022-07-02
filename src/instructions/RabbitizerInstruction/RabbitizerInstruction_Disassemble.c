@@ -13,34 +13,31 @@
 #include "instructions/RabbitizerRegister.h"
 
 
+#define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
+    do { \
+        size_t __tempSize = expression; \
+        (buffer) += __tempSize; \
+        (totalSize) += __tempSize; \
+    } while(0)
+
 #define RABUTILS_BUFFER_WRITE_CHAR(buffer, totalSize, character) \
     do { \
         *(buffer) = (character); \
-        (buffer)++; \
-        (totalSize)++; \
+        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, 1); \
     } while(0)
 
 #define RABUTILS_BUFFER_SPRINTF(buffer, totalSize, format, ...) \
     do { \
-        int len = sprintf(buffer, format, __VA_ARGS__);\
-        assert(len > 0); \
-        (buffer) += len; \
-        (totalSize) += len; \
+        int _len = sprintf(buffer, format, __VA_ARGS__); \
+        assert(_len > 0); \
+        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _len); \
     } while(0)
 
 #define RABUTILS_BUFFER_CPY(buffer, totalSize, string) \
     do { \
-        size_t tempSize = strlen(string);\
-        memcpy(buffer, string, tempSize); \
-        (buffer) += tempSize; \
-        (totalSize) += tempSize; \
-    } while(0)
-
-#define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
-    do { \
-        size_t tempSize = expression;\
-        (buffer) += tempSize; \
-        (totalSize) += tempSize; \
+        size_t _tempSize = strlen(string); \
+        memcpy(buffer, string, _tempSize); \
+        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _tempSize); \
     } while(0)
 
 
@@ -188,9 +185,7 @@ size_t RabbitizerOperandType_processImmediateBase(const RabbitizerInstruction *s
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
-
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processRs(self, dst, immOverride, immOverrideLength));
-
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
 
     return totalSize;
@@ -260,9 +255,7 @@ size_t RabbitizerOperandTypeRsp_processVtElementhigh(const RabbitizerInstruction
 
     element = RabbitizerInstructionRsp_processVectorElement(self, RAB_INSTR_RSP_GET_ELEMENT_HIGH(self));
     if (element != 0) {
-        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", element);
-        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", element);
     }
     return totalSize;
 }
@@ -273,12 +266,8 @@ size_t RabbitizerOperandTypeRsp_processVtElementlow(const RabbitizerInstruction 
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
 
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
-
     element = RabbitizerInstructionRsp_processVectorElement(self, RAB_INSTR_RSP_GET_ELEMENT_LOW(self));
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", element);
-
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", element);
     return totalSize;
 }
 
@@ -287,9 +276,7 @@ size_t RabbitizerOperandTypeRsp_processVdVs(const RabbitizerInstruction *self, c
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
 
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", RAB_INSTR_RSP_GET_VS(self));
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", RAB_INSTR_RSP_GET_VS(self));
     return totalSize;
 }
 
@@ -298,9 +285,7 @@ size_t RabbitizerOperandTypeRsp_processVdIndex(const RabbitizerInstruction *self
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
 
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '[');
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", (self->sa >> 1));
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ']');
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", (self->sa >> 1));
     return totalSize;
 }
 
