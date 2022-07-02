@@ -35,13 +35,13 @@ void RabbitizerInstruction_destroy(RabbitizerInstruction *self) {
 /* Register getters */
 
 uint8_t RabbitizerInstruction_getFs(const RabbitizerInstruction *self) {
-    return self->rd;
+    return RAB_INSTR_GET_fs(self);
 }
 uint8_t RabbitizerInstruction_getFt(const RabbitizerInstruction *self) {
-    return self->rt;
+    return RAB_INSTR_GET_ft(self);
 }
 uint8_t RabbitizerInstruction_getFd(const RabbitizerInstruction *self) {
-    return self->sa;
+    return RAB_INSTR_GET_fd(self);
 }
 
 /* Register getters */
@@ -50,20 +50,20 @@ uint8_t RabbitizerInstruction_getFd(const RabbitizerInstruction *self) {
 /* Coprocessor stuffs */
 
 uint8_t RabbitizerInstruction_getFmt(const RabbitizerInstruction *self) {
-    return self->rs;
+    return RAB_INSTR_GET_fmt(self);
 }
 
 uint8_t RabbitizerInstruction_getTf(const RabbitizerInstruction *self) {
-    return self->rt & 0x1;
+    return RAB_INSTR_GET_rt(self) & 0x1;
 }
 uint8_t RabbitizerInstruction_getNd(const RabbitizerInstruction *self) {
-    return (self->rt >> 1) & 0x1;
+    return (RAB_INSTR_GET_rt(self) >> 1) & 0x1;
 }
 uint8_t RabbitizerInstruction_getFc(const RabbitizerInstruction *self) {
-    return (self->function >> 4) & 0x3;
+    return RAB_INSTR_GET_fc(self);
 }
 uint8_t RabbitizerInstruction_getCond(const RabbitizerInstruction *self) {
-    return self->function & 0xF;
+    return RAB_INSTR_GET_cond(self);
 }
 
 /* Coprocessor stuffs */
@@ -76,12 +76,11 @@ uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self) {
 }
 
 uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self) {
-    //return (self->rd << 11) | (self->sa << 6) | (self->function);
-    return RAB_INSTR_GET_IMMEDIATE(self);
+    return RAB_INSTR_GET_immediate(self);
 }
 
 uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self) {
-    return (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
+    return RAB_INSTR_GET_instr_index(self);
 }
 
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self) {

@@ -41,8 +41,28 @@ typedef struct RabbitizerInstruction {
     RabbitizerInstrCategory category;
 } RabbitizerInstruction;
 
-#define RAB_INSTR_GET_IMMEDIATE(self) (((self)->rd << 11) | ((self)->sa << 6) | ((self)->function))
+#define RAB_INSTR_GET_opcode(self)      ((self)->opcode)
+#define RAB_INSTR_GET_rs(self)          ((self)->rs)
+#define RAB_INSTR_GET_rt(self)          ((self)->rt)
+#define RAB_INSTR_GET_rd(self)          ((self)->rd)
+#define RAB_INSTR_GET_sa(self)          ((self)->sa)
+#define RAB_INSTR_GET_function(self)    ((self)->function)
 
+#define RAB_INSTR_GET_instr_index(self) (((self)->rs << 21) | ((self)->rt << 16) | ((self)->rd << 11) | ((self)->sa << 6) | ((self)->function))
+#define RAB_INSTR_GET_immediate(self)   (((self)->rd << 11) | ((self)->sa << 6) | ((self)->function))
+
+#define RAB_INSTR_GET_fs(self)          ((self)->rd)
+#define RAB_INSTR_GET_ft(self)          ((self)->rt)
+#define RAB_INSTR_GET_fd(self)          ((self)->sa)
+
+#define RAB_INSTR_GET_op(self)          ((self)->rt)
+#define RAB_INSTR_GET_fmt(self)         ((self)->rs)
+#define RAB_INSTR_GET_fc(self)          (((self)->function >> 4) & 0x3)
+#define RAB_INSTR_GET_cond(self)        ((self)->function & 0xF)
+
+#define RAB_INSTR_GET_cop0d(self)       ((self)->rd)
+
+#define RAB_INSTR_GET_cop2t(self)       ((self)->rt)
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word);
 void RabbitizerInstruction_destroy(RabbitizerInstruction* self);

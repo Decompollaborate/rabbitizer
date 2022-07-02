@@ -23,10 +23,10 @@ bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self
     }
 
     if (RabbitizerInstrDescriptor_isIType(self->descriptor) && !RabbitizerInstrDescriptor_isFloat(self->descriptor)) {
-        if (self->rs == RABBITIZER_REG_GPR_O32_k0 || self->rs == RABBITIZER_REG_GPR_O32_k1) {
+        if (RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_k0 || RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_k1) {
             return true;
         }
-        if (self->rt == RABBITIZER_REG_GPR_O32_k0 || self->rt == RABBITIZER_REG_GPR_O32_k1) {
+        if (RAB_INSTR_GET_rt(self) == RABBITIZER_REG_GPR_O32_k0 || RAB_INSTR_GET_rt(self) == RABBITIZER_REG_GPR_O32_k1) {
             return true;
         }
     }
@@ -39,19 +39,19 @@ bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self
 }
 
 bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self) {
-    return self->opcode == 0 &&
-    self->rs == 0 &&
-    self->rt == 0 &&
-    self->rd == 0 &&
-    self->sa == 0 &&
-    self->function == 0;
+    return RAB_INSTR_GET_opcode(self) == 0 &&
+    RAB_INSTR_GET_rs(self) == 0 &&
+    RAB_INSTR_GET_rt(self) == 0 &&
+    RAB_INSTR_GET_rd(self) == 0 &&
+    RAB_INSTR_GET_sa(self) == 0 &&
+    RAB_INSTR_GET_function(self) == 0;
 }
 
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self) {
     if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_b) {
         return true;
     }
-    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_beq && self->rt == 0 && self->rs == 0) {
+    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_beq && RAB_INSTR_GET_rt(self) == 0 && RAB_INSTR_GET_rs(self) == 0) {
         return true;
     }
     if (RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch && self->uniqueId == RABBITIZER_INSTR_ID_cpu_j) {
@@ -63,7 +63,7 @@ bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *se
 bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self) {
     if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jr) {
         // TODO: abi stuffs
-        return self->rs == RABBITIZER_REG_GPR_O32_ra;
+        return RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_ra;
     }
     return false;
 }
@@ -71,7 +71,7 @@ bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self) {
 bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self) {
     if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jr) {
         // TODO: abi stuffs
-        return self->rs != RABBITIZER_REG_GPR_O32_ra;
+        return RAB_INSTR_GET_rs(self) != RABBITIZER_REG_GPR_O32_ra;
     }
     return false;
 }

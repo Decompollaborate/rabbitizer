@@ -14,7 +14,9 @@
 
 #define RAB_INSTR_RSP_GET_ELEMENT_HIGH(self) ((((self)->rs)) & 0xF)
 #define RAB_INSTR_RSP_GET_ELEMENT_LOW(self) ((((self)->sa) >> 1) & 0xF)
-#define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self) (RAB_INSTR_GET_IMMEDIATE(self) & 0x7F)
+#define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self) (RAB_INSTR_GET_immediate(self) & 0x7F)
+
+#define RAB_INSTR_RSP_GET_index(self)   ((self)->sa >> 1)
 
 
 void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word);

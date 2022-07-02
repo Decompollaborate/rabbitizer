@@ -7,7 +7,7 @@
 
 
 void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self) {
-    switch (self->opcode) {
+    switch (RAB_INSTR_GET_opcode(self)) {
         case 0b000010:
             self->uniqueId = RABBITIZER_INSTR_ID_rsp_j;
             break;
@@ -98,7 +98,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
 
         // new rsp stuff
         case 0b111010:
-            switch (self->rd) {
+            switch (RAB_INSTR_GET_rd(self)) {
                 case 0b00000:
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_sbv;
                     break;
@@ -144,7 +144,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
             break;
 
         case 0b110010:
-            switch (self->rd) {
+            switch (RAB_INSTR_GET_rd(self)) {
                 case 0b00000:
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_lbv;
                     break;
@@ -187,9 +187,9 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
-        if (self->rt == 0) {
+        if (RAB_INSTR_GET_rt(self) == 0) {
             if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_beq) {
-                if (self->rs == 0) {
+                if (RAB_INSTR_GET_rs(self) == 0) {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoB) {
                         self->uniqueId = RABBITIZER_INSTR_ID_rsp_b;
                     }
@@ -211,7 +211,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
 
 
 void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *self) {
-    switch (self->function) {
+    switch (RAB_INSTR_GET_function(self)) {
         case 0b000000:
             self->uniqueId = RABBITIZER_INSTR_ID_rsp_sll;
             break;
@@ -288,7 +288,7 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
         // NOP is special enough
         self->uniqueId = RABBITIZER_INSTR_ID_rsp_nop;
     } else if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
-        if (self->rt == 0) {
+        if (RAB_INSTR_GET_rt(self) == 0) {
             if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_or) {
                 if (RabbitizerConfig_Cfg.pseudos.pseudoMove) {
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_move;
@@ -299,7 +299,7 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
                 }
             }
         } else if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_subu) {
-            if (self->rs == 0) {
+            if (RAB_INSTR_GET_rs(self) == 0) {
                 if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_negu;
                 }
@@ -311,7 +311,7 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
 
     if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_jalr) {
         // $ra
-        if (self->rd != 31) {
+        if (RAB_INSTR_GET_rd(self) != 31) {
             self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_rsp_jalr_rd];
         }
     }
@@ -319,7 +319,7 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
 
 
 void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self) {
-    switch (self->rt) {
+    switch (RAB_INSTR_GET_rt(self)) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_ID_rsp_bltz;
             break;
@@ -363,7 +363,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
 
 
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
-    if (((self->rs >> 4) & 0x1) == 0) {
+    if (((RAB_INSTR_GET_rs(self) >> 4) & 0x1) == 0) {
         switch (RAB_INSTR_RSP_GET_ELEMENT_HIGH(self)) {
             case 0b00000:
                 self->uniqueId = RABBITIZER_INSTR_ID_rsp_mfc2;
@@ -386,7 +386,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
                 break;
         }
     } else {
-        switch (self->function) {
+        switch (RAB_INSTR_GET_function(self)) {
             case 0x00:
                 self->uniqueId = RABBITIZER_INSTR_ID_rsp_vmulf;
                 break;
@@ -533,7 +533,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
 
 
 void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
-    switch (self->opcode) {
+    switch (RAB_INSTR_GET_opcode(self)) {
         default:
             RabbitizerInstructionRsp_processUniqueId_Normal(self);
             break;

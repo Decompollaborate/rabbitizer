@@ -8,7 +8,7 @@
 
 
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
-    switch (self->opcode) {
+    switch (RAB_INSTR_GET_opcode(self)) {
         // 0b000000: "SPECIAL",
         // 0b000001: "REGIMM",
         case 0b000010:
@@ -191,8 +191,8 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
         switch (self->uniqueId) {
             case RABBITIZER_INSTR_ID_cpu_beq:
-                if (self->rt == 0) {
-                    if (self->rs == 0) {
+                if (RAB_INSTR_GET_rt(self) == 0) {
+                    if (RAB_INSTR_GET_rs(self) == 0) {
                         if (RabbitizerConfig_Cfg.pseudos.pseudoB) {
                             self->uniqueId = RABBITIZER_INSTR_ID_cpu_b;
                         }
@@ -205,7 +205,7 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
                 break;
 
             case RABBITIZER_INSTR_ID_cpu_bne:
-                if (self->rt == 0) {
+                if (RAB_INSTR_GET_rt(self) == 0) {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoBnez) {
                         self->uniqueId = RABBITIZER_INSTR_ID_cpu_bnez;
                     }
@@ -222,7 +222,7 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
 
 
 void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) {
-    switch (self->function) {
+    switch (RAB_INSTR_GET_function(self)) {
         case 0b000000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_sll;
             break;
@@ -414,7 +414,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
     } else if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
         switch (self->uniqueId) {
             case RABBITIZER_INSTR_ID_cpu_or:
-                if (self->rt == 0) {
+                if (RAB_INSTR_GET_rt(self) == 0) {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoMove) {
                         self->uniqueId = RABBITIZER_INSTR_ID_cpu_move;
                     }
@@ -422,7 +422,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
                 break;
 
             case RABBITIZER_INSTR_ID_cpu_nor:
-                if (self->rt == 0) {
+                if (RAB_INSTR_GET_rt(self) == 0) {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoNot) {
                         self->uniqueId = RABBITIZER_INSTR_ID_cpu_not;
                     }
@@ -430,7 +430,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
                 break;
 
             case RABBITIZER_INSTR_ID_cpu_subu:
-                if (self->rs == 0) {
+                if (RAB_INSTR_GET_rs(self) == 0) {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {
                         self->uniqueId = RABBITIZER_INSTR_ID_cpu_negu;
                     }
@@ -447,11 +447,11 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jalr:
             if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_NUMERIC || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_O32) {
-                if (self->rd != RABBITIZER_REG_GPR_O32_ra) {
+                if (RAB_INSTR_GET_rd(self) != RABBITIZER_REG_GPR_O32_ra) {
                     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
                 }
             } else {
-                if (self->rd != RABBITIZER_REG_GPR_N32_ra) {
+                if (RAB_INSTR_GET_rd(self) != RABBITIZER_REG_GPR_N32_ra) {
                     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
                 }
             }
@@ -476,7 +476,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
 
 
 void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
-    switch (self->rt) {
+    switch (RAB_INSTR_GET_rt(self)) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_bltz;
             break;
@@ -574,7 +574,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
             break;
 
         default:
-            switch (self->function) {
+            switch (RAB_INSTR_GET_function(self)) {
                 case 0b000001:
                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_tlbr;
                     break;
@@ -647,7 +647,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
 
         default:
             fmt = fmt & 0x07;
-            switch (self->function) {
+            switch (RAB_INSTR_GET_function(self)) {
                 case 0b000000:
                     if (fmt == 0) {
                         self->uniqueId = RABBITIZER_INSTR_ID_cpu_add_s;
@@ -886,7 +886,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
 
                     } else if (fc == 0b10) {
                         // Convert codes
-                        switch (self->function & 0x07) {
+                        switch (RAB_INSTR_GET_function(self) & 0x07) {
                             case 0b000:
                                 if (fmt == 0b001) {
                                     self->uniqueId = RABBITIZER_INSTR_ID_cpu_cvt_s_d;
@@ -938,7 +938,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *s
 
 
 void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self) {
-    switch (self->opcode) {
+    switch (RAB_INSTR_GET_opcode(self)) {
         default:
             RabbitizerInstruction_processUniqueId_Normal(self);
             break;
