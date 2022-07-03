@@ -38,6 +38,24 @@
 #define ARRAY_COUNT(arr) (sizeof(arr) / sizeof(arr[0]))
 
 
+/*
+ * the SHIFT macros take a value, a shift amount, and a width.
+ *
+ * For the left shift, the lower bits of the value are masked,
+ * then shifted left.
+ *
+ * For the right shift, the value is shifted right, then the lower bits
+ * are masked.
+ *
+ * (NOTE: SHIFTL(v, 0, 32) won't work, just use an assignment)
+ *
+ */
+#define SHIFTL(v, s, w)	(((v) & ((1 << (w)) - 1)) << (s))
+#define SHIFTR(v, s, w)	(((v) >> (s)) & ((1 << (w)) - 1))
+
+#define BITREPACK(fullword, v, s, w) (SHIFTL((self)->word, (s)+(w), 32-((s)+(w))) | SHIFTL((v), (s), (w)) | SHIFTL((self)->word, 0, (s)))
+
+
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits);
 size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar);
 

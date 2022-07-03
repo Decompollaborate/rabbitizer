@@ -8,15 +8,26 @@
 #include "RabbitizerInstruction.h"
 
 
-#define RAB_INSTR_RSP_GET_VS(self) ((self)->rd)
-#define RAB_INSTR_RSP_GET_VT(self) ((self)->rt)
-#define RAB_INSTR_RSP_GET_VD(self) ((self)->sa)
+#define RAB_INSTR_RSP_GET_VS(self)                  (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_RSP_GET_VT(self)                  (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_RSP_GET_VD(self)                  (SHIFTR((self)->word,  6,  5))
 
-#define RAB_INSTR_RSP_GET_ELEMENT_HIGH(self) ((((self)->rs)) & 0xF)
-#define RAB_INSTR_RSP_GET_ELEMENT_LOW(self) ((((self)->sa) >> 1) & 0xF)
-#define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self) (RAB_INSTR_GET_immediate(self) & 0x7F)
+#define RAB_INSTR_RSP_GET_elementhigh(self)         (SHIFTR((self)->word, 21,  4))
+#define RAB_INSTR_RSP_GET_elementlow(self)          (SHIFTR((self)->word,  7,  4))
+#define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self)   (SHIFTR((self)->word,  0,  7))
 
-#define RAB_INSTR_RSP_GET_index(self)   ((self)->sa >> 1)
+#define RAB_INSTR_RSP_GET_index(self)               (SHIFTR((self)->word,  7,  4))
+
+
+#define RAB_INSTR_RSP_SET_vs(self, value)           ((self)->word = BITREPACK((self)->word, value, 11,  5))
+#define RAB_INSTR_RSP_SET_vt(self, value)           ((self)->word = BITREPACK((self)->word, value, 16,  5))
+#define RAB_INSTR_RSP_SET_vd(self, value)           ((self)->word = BITREPACK((self)->word, value,  6,  5))
+
+#define RAB_INSTR_RSP_SET_elementhigh(self, value)  ((self)->word = BITREPACK((self)->word, value, 16,  4))
+#define RAB_INSTR_RSP_SET_elementlow(self, value)   ((self)->word = BITREPACK((self)->word, value,  7,  4))
+
+#define RAB_INSTR_RSP_SET_index(self, value)        ((self)->word = BITREPACK((self)->word, value,  7,  4))
+#define RAB_INSTR_RSP_SET_offset(self, value)       ((self)->word = BITREPACK((self)->word, value,  0,  7))
 
 
 void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word);

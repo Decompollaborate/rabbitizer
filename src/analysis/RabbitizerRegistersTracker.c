@@ -36,27 +36,27 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
     if (!RabbitizerInstrDescriptor_maybeIsMove(instr->descriptor)) {
         return false;
     }
-    if (instr->rt == 0 && instr->rs == 0) {
+    if (RAB_INSTR_GET_rt(instr) == 0 && RAB_INSTR_GET_rs(instr) == 0) {
         // ?
         // RabbitizerTrackedRegisterState_clear(dstState);
         return false;
     }
 
-    if (instr->rt == 0) {
-        reg = instr->rs;
-    } else if (instr->rs == 0) {
-        reg = instr->rt;
+    if (RAB_INSTR_GET_rt(instr) == 0) {
+        reg = RAB_INSTR_GET_rs(instr);
+    } else if (RAB_INSTR_GET_rs(instr) == 0) {
+        reg = RAB_INSTR_GET_rt(instr);
     } else {
         // Check stuff like  `addu   $3, $3, $2`
-        if (instr->rd == instr->rs) {
-            reg = instr->rt;
-            if (self->registers[instr->rs].hasLuiValue) {
-                reg = instr->rs;
+        if (RAB_INSTR_GET_rd(instr) == RAB_INSTR_GET_rs(instr)) {
+            reg = RAB_INSTR_GET_rt(instr);
+            if (self->registers[RAB_INSTR_GET_rs(instr)].hasLuiValue) {
+                reg = RAB_INSTR_GET_rs(instr);
             }
-        } else if (instr->rd == instr->rt) {
-            reg = instr->rs;
-            if (self->registers[instr->rt].hasLuiValue) {
-                reg = instr->rt;
+        } else if (RAB_INSTR_GET_rd(instr) == RAB_INSTR_GET_rt(instr)) {
+            reg = RAB_INSTR_GET_rs(instr);
+            if (self->registers[RAB_INSTR_GET_rt(instr)].hasLuiValue) {
+                reg = RAB_INSTR_GET_rt(instr);
             }
         } else {
             // ?
@@ -65,12 +65,12 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
         }
 
         srcState = &self->registers[reg];
-        RabbitizerTrackedRegisterState_copyState(&self->registers[instr->rd], srcState);
+        RabbitizerTrackedRegisterState_copyState(&self->registers[RAB_INSTR_GET_rd(instr)], srcState);
         return true;
     }
 
     srcState = &self->registers[reg];
-    dstState = &self->registers[instr->rd];
+    dstState = &self->registers[RAB_INSTR_GET_rd(instr)];
 
     if (srcState->hasLoValue || srcState->hasLuiValue) {
         RabbitizerTrackedRegisterState_copyState(dstState, srcState);
@@ -99,7 +99,7 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
                 // into the float coprocessor, after that IDO never re-uses the value
                 // in that reg for anything else
                 shouldRemove = true;
-                reg = instr->rt;
+                reg = RAB_INSTR_GET_rt(instr);
                 break;
 
             default:
@@ -109,10 +109,10 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
         // $at usually is a one-use reg
         uint8_t at = 0;
 
-        if (instr->rs == 1) {
-            at = instr->rs;
-        } else if (instr->rt == 1) {
-            at = instr->rt;
+        if (RAB_INSTR_GET_rs(instr) == 1) {
+            at = RAB_INSTR_GET_rs(instr);
+        } else if (RAB_INSTR_GET_rt(instr) == 1) {
+            at = RAB_INSTR_GET_rt(instr);
         }
 
         state = &self->registers[at];
@@ -124,15 +124,15 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
 
     if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor)) {
         shouldRemove = true;
-        reg = instr->rt;
+        reg = RAB_INSTR_GET_rt(instr);
         if (RabbitizerInstrDescriptor_isHiPair(instr->descriptor)) {
-            RabbitizerTrackedRegisterState_clearLo(&self->registers[instr->rt]);
+            RabbitizerTrackedRegisterState_clearLo(&self->registers[RAB_INSTR_GET_rt(instr)]);
             shouldRemove = false;
         }
     }
     if (RabbitizerInstrDescriptor_modifiesRd(instr->descriptor)) {
         shouldRemove = true;
-        reg = instr->rd;
+        reg = RAB_INSTR_GET_rd(instr);
     }
 
     if (shouldRemove) {
@@ -229,7 +229,7 @@ void RabbitizerRegistersTracker_unsetRegistersAfterFuncCall(RabbitizerRegistersT
 }
 
 bool RabbitizerRegistersTracker_getAddressIfCanSetType(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, uint32_t *dstAddress) {
-    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
+    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (!state->hasLoValue) {
         return false;
@@ -244,7 +244,7 @@ bool RabbitizerRegistersTracker_getAddressIfCanSetType(RabbitizerRegistersTracke
 }
 
 bool RabbitizerRegistersTracker_getJrInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset, uint32_t *dstAddress) {
-    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
+    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (!state->hasLoValue || !state->dereferenced) {
         return false;
@@ -262,7 +262,7 @@ void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, con
 
     assert(RabbitizerInstrDescriptor_isHiPair(instr->descriptor));
 
-    state = &self->registers[instr->rt];
+    state = &self->registers[RAB_INSTR_GET_rt(instr)];
     RabbitizerTrackedRegisterState_clear(state);
     RabbitizerTrackedRegisterState_setHi(state, RabbitizerInstruction_getImmediate(instr), instrOffset);
 
@@ -274,7 +274,7 @@ void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, con
 }
 
 bool RabbitizerRegistersTracker_getLuiOffsetForConstant(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset) {
-    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
+    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (!state->hasLuiValue) {
         return false;
@@ -285,13 +285,13 @@ bool RabbitizerRegistersTracker_getLuiOffsetForConstant(RabbitizerRegistersTrack
 }
 
 void RabbitizerRegistersTracker_processConstant(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, uint32_t value, int offset) {
-    RabbitizerTrackedRegisterState *stateDst = &self->registers[instr->rt];
+    RabbitizerTrackedRegisterState *stateDst = &self->registers[RAB_INSTR_GET_rt(instr)];
 
     RabbitizerTrackedRegisterState_setLo(stateDst, value, offset);
 }
 
 bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, int *dstOffset, bool *dstIsGp) {
-    RabbitizerTrackedRegisterState *state = &self->registers[instr->rs];
+    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (state->hasLuiValue && !state->luiSetOnBranchLikely) {
         *dstOffset = state->luiOffset;
@@ -300,7 +300,7 @@ bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *se
     }
 
     // TODO: abi
-    if (instr->rs == 28) { // $gp
+    if (RAB_INSTR_GET_rs(instr) == 28) { // $gp
         *dstOffset = 0;
         *dstIsGp = true;
         return true;
@@ -309,7 +309,7 @@ bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *se
     if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor) && RabbitizerInstrDescriptor_doesDereference(instr->descriptor)) {
         if (state->hasLoValue && !state->dereferenced) {
             // Simulate a dereference
-            RabbitizerTrackedRegisterState_dereferenceState(&self->registers[instr->rt], state, instrOffset);
+            RabbitizerTrackedRegisterState_dereferenceState(&self->registers[RAB_INSTR_GET_rt(instr)], state, instrOffset);
         }
     }
 
@@ -323,12 +323,12 @@ void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, cons
         return;
     }
 
-    stateDst = &self->registers[instr->rt];
+    stateDst = &self->registers[RAB_INSTR_GET_rt(instr)];
     RabbitizerTrackedRegisterState_setLo(stateDst, value, offset);
     if (RabbitizerInstrDescriptor_doesDereference(instr->descriptor)) {
         RabbitizerTrackedRegisterState_deref(stateDst, offset);
     }
-    if (instr->rt == instr->rs) {
+    if (RAB_INSTR_GET_rt(instr) == RAB_INSTR_GET_rs(instr)) {
         RabbitizerTrackedRegisterState_clearHi(stateDst);
     }
 }
@@ -338,7 +338,7 @@ bool RabbitizerRegistersTracker_hasLoButNoHi(RabbitizerRegistersTracker *self, c
 
     assert(instr != NULL);
 
-    state = &self->registers[instr->rs];
+    state = &self->registers[RAB_INSTR_GET_rs(instr)];
     return state->hasLoValue && !state->hasLuiValue;
 }
 

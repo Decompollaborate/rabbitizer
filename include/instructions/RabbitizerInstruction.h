@@ -9,6 +9,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "common/Utils.h"
+
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrDescriptor.h"
 
@@ -25,12 +27,7 @@ typedef enum RabbitizerInstrCategory {
 
 
 typedef struct RabbitizerInstruction {
-    uint8_t opcode;
-    uint8_t rs;
-    uint8_t rt;
-    uint8_t rd;
-    uint8_t sa;
-    uint8_t function;
+    uint32_t word;
 
     RabbitizerInstrId uniqueId;
     const RabbitizerInstrDescriptor *descriptor;
@@ -41,28 +38,47 @@ typedef struct RabbitizerInstruction {
     RabbitizerInstrCategory category;
 } RabbitizerInstruction;
 
-#define RAB_INSTR_GET_opcode(self)      ((self)->opcode)
-#define RAB_INSTR_GET_rs(self)          ((self)->rs)
-#define RAB_INSTR_GET_rt(self)          ((self)->rt)
-#define RAB_INSTR_GET_rd(self)          ((self)->rd)
-#define RAB_INSTR_GET_sa(self)          ((self)->sa)
-#define RAB_INSTR_GET_function(self)    ((self)->function)
 
-#define RAB_INSTR_GET_instr_index(self) (((self)->rs << 21) | ((self)->rt << 16) | ((self)->rd << 11) | ((self)->sa << 6) | ((self)->function))
-#define RAB_INSTR_GET_immediate(self)   (((self)->rd << 11) | ((self)->sa << 6) | ((self)->function))
+#define RAB_INSTR_GET_opcode(self)                  (SHIFTR((self)->word, 26,  6))
+#define RAB_INSTR_GET_rs(self)                      (SHIFTR((self)->word, 21,  5))
+#define RAB_INSTR_GET_rt(self)                      (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_GET_rd(self)                      (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_GET_sa(self)                      (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_GET_function(self)                (SHIFTR((self)->word,  0,  6))
 
-#define RAB_INSTR_GET_fs(self)          ((self)->rd)
-#define RAB_INSTR_GET_ft(self)          ((self)->rt)
-#define RAB_INSTR_GET_fd(self)          ((self)->sa)
+#define RAB_INSTR_GET_instr_index(self)             (SHIFTR((self)->word,  0, 26))
+#define RAB_INSTR_GET_immediate(self)               (SHIFTR((self)->word,  0, 16))
 
-#define RAB_INSTR_GET_op(self)          ((self)->rt)
-#define RAB_INSTR_GET_fmt(self)         ((self)->rs)
-#define RAB_INSTR_GET_fc(self)          (((self)->function >> 4) & 0x3)
-#define RAB_INSTR_GET_cond(self)        ((self)->function & 0xF)
+#define RAB_INSTR_GET_fs(self)                      (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_GET_ft(self)                      (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_GET_fd(self)                      (SHIFTR((self)->word,  6,  5))
 
-#define RAB_INSTR_GET_cop0d(self)       ((self)->rd)
+#define RAB_INSTR_GET_op(self)                      (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_GET_fmt(self)                     (SHIFTR((self)->word, 21,  5))
+#define RAB_INSTR_GET_fc(self)                      (SHIFTR((self)->word,  4,  2))
+#define RAB_INSTR_GET_cond(self)                    (SHIFTR((self)->word,  0,  4))
 
-#define RAB_INSTR_GET_cop2t(self)       ((self)->rt)
+#define RAB_INSTR_GET_cop0d(self)                   (SHIFTR((self)->word, 11,  5))
+
+#define RAB_INSTR_GET_cop2t(self)                   (SHIFTR((self)->word, 16,  5))
+
+
+#define RAB_INSTR_SET_opcode(self, value)           ((self)->word = BITREPACK((self)->word, value, 26,  6))
+#define RAB_INSTR_SET_rs(self, value)               ((self)->word = BITREPACK((self)->word, value, 21,  5))
+#define RAB_INSTR_SET_rt(self, value)               ((self)->word = BITREPACK((self)->word, value, 16,  5))
+#define RAB_INSTR_SET_rd(self, value)               ((self)->word = BITREPACK((self)->word, value, 11,  5))
+#define RAB_INSTR_SET_sa(self, value)               ((self)->word = BITREPACK((self)->word, value,  6,  5))
+#define RAB_INSTR_SET_function(self, value)         ((self)->word = BITREPACK((self)->word, value,  0,  6))
+
+#define RAB_INSTR_SET_instr_index(self, value)      ((self)->word = BITREPACK((self)->word, value,  0, 26))
+#define RAB_INSTR_SET_immediate(self, value)        ((self)->word = BITREPACK((self)->word, value,  0, 16))
+
+#define RAB_INSTR_SET_code(self, value)             ((self)->word = BITREPACK((self)->word, value,  6, 20))
+
+#define RAB_INSTR_SET_fs(self, value)               ((self)->word = BITREPACK((self)->word, value, 11,  5))
+#define RAB_INSTR_SET_ft(self, value)               ((self)->word = BITREPACK((self)->word, value, 16,  5))
+#define RAB_INSTR_SET_fd(self, value)               ((self)->word = BITREPACK((self)->word, value,  6,  5))
+
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word);
 void RabbitizerInstruction_destroy(RabbitizerInstruction* self);

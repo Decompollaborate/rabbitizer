@@ -253,7 +253,7 @@ size_t RabbitizerOperandTypeRsp_processVtElementhigh(const RabbitizerInstruction
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
 
-    element = RabbitizerInstructionRsp_processVectorElement(self, RAB_INSTR_RSP_GET_ELEMENT_HIGH(self));
+    element = RabbitizerInstructionRsp_processVectorElement(self, RAB_INSTR_RSP_GET_elementhigh(self));
     if (element != 0) {
         RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", element);
     }
@@ -266,7 +266,7 @@ size_t RabbitizerOperandTypeRsp_processVtElementlow(const RabbitizerInstruction 
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
 
-    element = RabbitizerInstructionRsp_processVectorElement(self, RAB_INSTR_RSP_GET_ELEMENT_LOW(self));
+    element = RabbitizerInstructionRsp_processVectorElement(self, RAB_INSTR_RSP_GET_elementlow(self));
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", element);
     return totalSize;
 }

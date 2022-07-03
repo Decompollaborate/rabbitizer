@@ -121,7 +121,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_spv;
                     break;
                 case 0b00111:
-                    if (RAB_INSTR_RSP_GET_ELEMENT_LOW(self) == 0) {
+                    if (RAB_INSTR_RSP_GET_elementlow(self) == 0) {
                         self->uniqueId = RABBITIZER_INSTR_ID_rsp_suv;
                     } else {
                         self->uniqueId = RABBITIZER_INSTR_ID_rsp_swv;
@@ -364,7 +364,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
 
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
     if (((RAB_INSTR_GET_rs(self) >> 4) & 0x1) == 0) {
-        switch (RAB_INSTR_RSP_GET_ELEMENT_HIGH(self)) {
+        switch (RAB_INSTR_RSP_GET_elementhigh(self)) {
             case 0b00000:
                 self->uniqueId = RABBITIZER_INSTR_ID_rsp_mfc2;
                 break;

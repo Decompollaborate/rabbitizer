@@ -61,7 +61,7 @@ static PyMemberDef rabbitizer_type_Instruction_members[] = {
 
 #define DEF_MEMBER_GET_UINT(name) \
     static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
-        return PyLong_FromUnsignedLong(self->instr.name); \
+        return PyLong_FromUnsignedLong(RAB_INSTR_GET_##name(&self->instr)); \
     }
 
 DEF_MEMBER_GET_UINT(rs)

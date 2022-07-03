@@ -5,18 +5,13 @@
 
 #include <assert.h>
 
-#include "common/Utils.h"
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
+#include "instructions/RabbitizerInstructionRsp.h"
 
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word) {
-    self->opcode = (word >> 26) & 0x3F;
-    self->rs = (word >> 21) & 0x1F;
-    self->rt = (word >> 16) & 0x1F;
-    self->rd = (word >> 11) & 0x1F;
-    self->sa = (word >>  6) & 0x1F;
-    self->function = (word >> 0) & 0x3F;
+    self->word = word;
 
     self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -72,7 +67,7 @@ uint8_t RabbitizerInstruction_getCond(const RabbitizerInstruction *self) {
 /* General getters */
 
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self) {
-    return (self->opcode << 26) | (self->rs << 21) | (self->rt << 16) | (self->rd << 11) | (self->sa << 6) | (self->function);
+    return self->word;
 }
 
 uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self) {
@@ -117,80 +112,81 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_rs:
             case RABBITIZER_OPERAND_TYPE_RSP_rs:
             case RABBITIZER_OPERAND_TYPE_RSP_vs:
-                self->rs = 0;
+                RAB_INSTR_SET_rs(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_rt:
-            case RABBITIZER_OPERAND_TYPE_ft:
             case RABBITIZER_OPERAND_TYPE_cop2t:
             case RABBITIZER_OPERAND_TYPE_op:
             case RABBITIZER_OPERAND_TYPE_RSP_rt:
             case RABBITIZER_OPERAND_TYPE_RSP_vt:
-                self->rt = 0;
+                RAB_INSTR_SET_rt(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_rd:
             case RABBITIZER_OPERAND_TYPE_cop0d:
-            case RABBITIZER_OPERAND_TYPE_fs:
             case RABBITIZER_OPERAND_TYPE_cop1cs:
             case RABBITIZER_OPERAND_TYPE_RSP_rd:
             case RABBITIZER_OPERAND_TYPE_RSP_vd:
             case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
-                self->rd = 0;
+                RAB_INSTR_SET_rd(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_sa:
+                RAB_INSTR_SET_sa(self, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_fs:
+                RAB_INSTR_SET_fs(self, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_ft:
+                RAB_INSTR_SET_ft(self, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_fd:
-                self->sa = 0;
+                RAB_INSTR_SET_fd(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_LABEL:
-                // rs rt rd sa function
-                self->function = 0;
-                FALLTHROUGH;
+                RAB_INSTR_SET_instr_index(self, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_code:
-                // rs rt rd sa
-                self->rs = 0;
-                self->rt = 0;
-                self->rd = 0;
-                self->sa = 0;
+                RAB_INSTR_SET_code(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_IMM_base:
-                // rs rd sa function
-                self->rs = 0;
+                // rs imm
+                RAB_INSTR_SET_rs(self, 0);
                 FALLTHROUGH;
             case RABBITIZER_OPERAND_TYPE_IMM:
-                // rd sa function
-                self->rd = 0;
-                self->sa = 0;
-                self->function = 0;
+                RAB_INSTR_SET_immediate(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh:
-                self->rt = 0;
-                self->rs &= ~0xF;
+                RAB_INSTR_RSP_SET_vt(self, 0);
+                RAB_INSTR_RSP_SET_elementhigh(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow:
-                self->rt = 0;
-                self->sa &= ~0x1E;
+                RAB_INSTR_RSP_SET_vt(self, 0);
+                RAB_INSTR_RSP_SET_elementlow(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
-                self->rd = 0;
-                self->rs = 0;
+                RAB_INSTR_RSP_SET_vd(self, 0);
+                RAB_INSTR_RSP_SET_vs(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
-                self->rd = 0;
-                self->sa &= ~0x1;
+                RAB_INSTR_RSP_SET_vd(self, 0);
+                RAB_INSTR_RSP_SET_index(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
-                self->function = 0;
-                self->sa &= ~0x1;
-                self->rs = 0;
+                RAB_INSTR_RSP_SET_offset(self, 0);
+                RAB_INSTR_SET_rs(self, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_INVALID:
