@@ -107,7 +107,9 @@ int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction
 
 
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
+    size_t i;
+
+    for (i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
         switch (self->descriptor->operands[i]) {
             case RABBITIZER_OPERAND_TYPE_rs:
             case RABBITIZER_OPERAND_TYPE_RSP_rs:

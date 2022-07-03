@@ -132,8 +132,8 @@ size_t RabbitizerOperandType_processOp(const RabbitizerInstruction *self, char *
 
 size_t RabbitizerOperandType_processCode(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    int code = (RAB_INSTR_GET_rs(self) << 5) | (RAB_INSTR_GET_rt(self));
-    int lower = (RAB_INSTR_GET_rd(self) << 5) | (RAB_INSTR_GET_sa(self));
+    int code = RAB_INSTR_GET_code_upper(self);
+    int lower = RAB_INSTR_GET_code_lower(self);
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", code);
     if (lower) {

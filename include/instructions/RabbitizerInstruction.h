@@ -46,19 +46,25 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_GET_sa(self)                      (SHIFTR((self)->word,  6,  5))
 #define RAB_INSTR_GET_function(self)                (SHIFTR((self)->word,  0,  6))
 
+#define RAB_INSTR_GET_cop0d(self)                   (SHIFTR((self)->word, 11,  5))
+
 #define RAB_INSTR_GET_instr_index(self)             (SHIFTR((self)->word,  0, 26))
 #define RAB_INSTR_GET_immediate(self)               (SHIFTR((self)->word,  0, 16))
 
 #define RAB_INSTR_GET_fs(self)                      (SHIFTR((self)->word, 11,  5))
 #define RAB_INSTR_GET_ft(self)                      (SHIFTR((self)->word, 16,  5))
 #define RAB_INSTR_GET_fd(self)                      (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_GET_cop1cs(self)                  (SHIFTR((self)->word, 11,  5))
 
 #define RAB_INSTR_GET_op(self)                      (SHIFTR((self)->word, 16,  5))
+
+#define RAB_INSTR_GET_code(self)                    (SHIFTR((self)->word,  6, 20))
+#define RAB_INSTR_GET_code_upper(self)              (SHIFTR((self)->word, 16, 10))
+#define RAB_INSTR_GET_code_lower(self)              (SHIFTR((self)->word,  6, 10))
+
 #define RAB_INSTR_GET_fmt(self)                     (SHIFTR((self)->word, 21,  5))
 #define RAB_INSTR_GET_fc(self)                      (SHIFTR((self)->word,  4,  2))
 #define RAB_INSTR_GET_cond(self)                    (SHIFTR((self)->word,  0,  4))
-
-#define RAB_INSTR_GET_cop0d(self)                   (SHIFTR((self)->word, 11,  5))
 
 #define RAB_INSTR_GET_cop2t(self)                   (SHIFTR((self)->word, 16,  5))
 
@@ -78,6 +84,7 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_SET_fs(self, value)               ((self)->word = BITREPACK((self)->word, value, 11,  5))
 #define RAB_INSTR_SET_ft(self, value)               ((self)->word = BITREPACK((self)->word, value, 16,  5))
 #define RAB_INSTR_SET_fd(self, value)               ((self)->word = BITREPACK((self)->word, value,  6,  5))
+#define RAB_INSTR_SET_cop1cs(self, value)           ((self)->word = BITREPACK((self)->word, value, 11,  5))
 
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word);
@@ -147,6 +154,8 @@ const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *se
 
 bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
 bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
+
+bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand);
 
 /* Instruction examination */
 
