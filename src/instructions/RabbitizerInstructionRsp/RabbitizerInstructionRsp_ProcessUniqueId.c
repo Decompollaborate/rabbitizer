@@ -7,7 +7,13 @@
 
 
 void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self) {
-    switch (RAB_INSTR_GET_opcode(self)) {
+    uint32_t opcode = RAB_INSTR_GET_opcode(self);
+    uint32_t rd;
+    uint32_t elementlow;
+
+    self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+
+    switch (opcode) {
         case 0b000010:
             self->uniqueId = RABBITIZER_INSTR_ID_rsp_j;
             break;
@@ -98,7 +104,9 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
 
         // new rsp stuff
         case 0b111010:
-            switch (RAB_INSTR_GET_rd(self)) {
+            rd = RAB_INSTR_GET_rd(self);
+            self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, rd);
+            switch (rd) {
                 case 0b00000:
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_sbv;
                     break;
@@ -121,7 +129,9 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_spv;
                     break;
                 case 0b00111:
-                    if (RAB_INSTR_RSP_GET_elementlow(self) == 0) {
+                    elementlow = RAB_INSTR_RSP_GET_elementlow(self);
+                    self->_mandatorybits = RAB_INSTR_RSP_PACK_elementlow(self->_mandatorybits, elementlow);
+                    if (elementlow == 0) {
                         self->uniqueId = RABBITIZER_INSTR_ID_rsp_suv;
                     } else {
                         self->uniqueId = RABBITIZER_INSTR_ID_rsp_swv;
@@ -144,7 +154,9 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
             break;
 
         case 0b110010:
-            switch (RAB_INSTR_GET_rd(self)) {
+            rd = RAB_INSTR_GET_rd(self);
+            self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, rd);
+            switch (rd) {
                 case 0b00000:
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_lbv;
                     break;
@@ -211,7 +223,11 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
 
 
 void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *self) {
-    switch (RAB_INSTR_GET_function(self)) {
+    uint32_t function = RAB_INSTR_GET_function(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+
+    switch (function) {
         case 0b000000:
             self->uniqueId = RABBITIZER_INSTR_ID_rsp_sll;
             break;
@@ -319,7 +335,11 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
 
 
 void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self) {
-    switch (RAB_INSTR_GET_rt(self)) {
+    uint32_t rt = RAB_INSTR_GET_rt(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
+
+    switch (rt) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_ID_rsp_bltz;
             break;
@@ -344,7 +364,11 @@ void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self
 
 
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
-    switch (RabbitizerInstruction_getFmt(self)) {
+    uint32_t fmt = RabbitizerInstruction_getFmt(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+
+    switch (fmt) {
         case 0b00000:
             self->uniqueId = RABBITIZER_INSTR_ID_rsp_mfc0;
             break;
@@ -363,8 +387,17 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
 
 
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
-    if (((RAB_INSTR_GET_rs(self) >> 4) & 0x1) == 0) {
-        switch (RAB_INSTR_RSP_GET_elementhigh(self)) {
+    uint32_t aux = SHIFTR(self->word, 25,  1);
+    uint32_t elementhigh;
+    uint32_t function;
+
+    // TODO: name this bit range
+    self->_mandatorybits = BITREPACK(self->_mandatorybits, aux, 25, 1);
+
+    if (aux == 0) {
+        elementhigh = RAB_INSTR_RSP_GET_elementhigh(self);
+        self->_mandatorybits = RAB_INSTR_RSP_PACK_elementhigh(self->_mandatorybits, elementhigh);
+        switch (elementhigh) {
             case 0b00000:
                 self->uniqueId = RABBITIZER_INSTR_ID_rsp_mfc2;
                 break;
@@ -386,7 +419,9 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
                 break;
         }
     } else {
-        switch (RAB_INSTR_GET_function(self)) {
+        function = RAB_INSTR_GET_function(self);
+        self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+        switch (function) {
             case 0x00:
                 self->uniqueId = RABBITIZER_INSTR_ID_rsp_vmulf;
                 break;
@@ -533,7 +568,11 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
 
 
 void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
-    switch (RAB_INSTR_GET_opcode(self)) {
+    uint32_t opcode = RAB_INSTR_GET_opcode(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+
+    switch (opcode) {
         default:
             RabbitizerInstructionRsp_processUniqueId_Normal(self);
             break;

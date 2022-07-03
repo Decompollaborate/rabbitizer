@@ -28,6 +28,7 @@ typedef enum RabbitizerInstrCategory {
 
 typedef struct RabbitizerInstruction {
     uint32_t word;
+    uint32_t _mandatorybits;
 
     RabbitizerInstrId uniqueId;
     const RabbitizerInstrDescriptor *descriptor;
@@ -69,22 +70,35 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_GET_cop2t(self)                   (SHIFTR((self)->word, 16,  5))
 
 
-#define RAB_INSTR_SET_opcode(self, value)           ((self)->word = BITREPACK((self)->word, value, 26,  6))
-#define RAB_INSTR_SET_rs(self, value)               ((self)->word = BITREPACK((self)->word, value, 21,  5))
-#define RAB_INSTR_SET_rt(self, value)               ((self)->word = BITREPACK((self)->word, value, 16,  5))
-#define RAB_INSTR_SET_rd(self, value)               ((self)->word = BITREPACK((self)->word, value, 11,  5))
-#define RAB_INSTR_SET_sa(self, value)               ((self)->word = BITREPACK((self)->word, value,  6,  5))
-#define RAB_INSTR_SET_function(self, value)         ((self)->word = BITREPACK((self)->word, value,  0,  6))
+#define RAB_INSTR_PACK_opcode(word, value)          (BITREPACK_RIGHT((word), (value), 26,  6))
+#define RAB_INSTR_PACK_rs(word, value)              (BITREPACK((word), (value), 21,  5))
+#define RAB_INSTR_PACK_rt(word, value)              (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_PACK_rd(word, value)              (BITREPACK((word), (value), 11,  5))
+#define RAB_INSTR_PACK_sa(word, value)              (BITREPACK((word), (value),  6,  5))
+#define RAB_INSTR_PACK_function(word, value)        (BITREPACK((word), (value),  0,  6))
 
-#define RAB_INSTR_SET_instr_index(self, value)      ((self)->word = BITREPACK((self)->word, value,  0, 26))
-#define RAB_INSTR_SET_immediate(self, value)        ((self)->word = BITREPACK((self)->word, value,  0, 16))
+#define RAB_INSTR_PACK_cop0d(word, value)           (BITREPACK((word), (value), 11,  5))
 
-#define RAB_INSTR_SET_code(self, value)             ((self)->word = BITREPACK((self)->word, value,  6, 20))
+#define RAB_INSTR_PACK_instr_index(word, value)     (BITREPACK((word), (value),  0, 26))
+#define RAB_INSTR_PACK_immediate(word, value)       (BITREPACK((word), (value),  0, 16))
 
-#define RAB_INSTR_SET_fs(self, value)               ((self)->word = BITREPACK((self)->word, value, 11,  5))
-#define RAB_INSTR_SET_ft(self, value)               ((self)->word = BITREPACK((self)->word, value, 16,  5))
-#define RAB_INSTR_SET_fd(self, value)               ((self)->word = BITREPACK((self)->word, value,  6,  5))
-#define RAB_INSTR_SET_cop1cs(self, value)           ((self)->word = BITREPACK((self)->word, value, 11,  5))
+#define RAB_INSTR_PACK_code(word, value)            (BITREPACK((word), (value),  6, 20))
+
+#define RAB_INSTR_PACK_fmt(word, value)             (BITREPACK((word), (value), 21,  5))
+#define RAB_INSTR_PACK_fc(word, value)              (BITREPACK((word), (value),  4,  2))
+#define RAB_INSTR_PACK_cond(word, value)            (BITREPACK((word), (value),  0,  4))
+
+#define RAB_INSTR_PACK_fs(word, value)              (BITREPACK((word), (value), 11,  5))
+#define RAB_INSTR_PACK_ft(word, value)              (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_PACK_fd(word, value)              (BITREPACK((word), (value),  6,  5))
+#define RAB_INSTR_PACK_cop1cs(word, value)          (BITREPACK((word), (value), 11,  5))
+
+#define RAB_INSTR_PACK_op(word, value)              (BITREPACK((word), (value), 16,  5))
+
+#define RAB_INSTR_PACK_cop2t(word, value)           (BITREPACK((word), (value), 16,  5))
+
+#define RAB_INSTR_PACK_tf(word, value)              (BITREPACK((word), (value), 16,  1))
+#define RAB_INSTR_PACK_nd(word, value)              (BITREPACK((word), (value), 17,  1))
 
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word);
@@ -156,6 +170,8 @@ bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const R
 bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
 
 bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand);
+
+bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 
 /* Instruction examination */
 

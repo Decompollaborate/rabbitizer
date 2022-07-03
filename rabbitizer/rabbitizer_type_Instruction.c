@@ -181,6 +181,8 @@ static PyObject *rabbitizer_type_Instruction_sameOpcodeButDifferentArguments(PyR
     Py_RETURN_FALSE;
 }
 
+DEF_METHOD_BOOL(isValid)
+
 #define DEF_DESCRIPTOR_METHOD_BOOL(name) \
     static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
         if (RabbitizerInstrDescriptor_##name(self->instr.descriptor)) { \
@@ -270,6 +272,8 @@ static PyMethodDef Instr_methods[] = {
 
     METHOD_ARGS(sameOpcode, "description"),
     METHOD_ARGS(sameOpcodeButDifferentArguments, "description"),
+
+    METHOD_NO_ARGS(isValid, ""),
 
     METHOD_NO_ARGS(isUnknownType, ""),
     METHOD_NO_ARGS(isJType, ""),

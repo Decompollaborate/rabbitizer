@@ -12,6 +12,7 @@
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word) {
     self->word = word;
+    self->_mandatorybits = 0;
 
     self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -114,7 +115,7 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_rs:
             case RABBITIZER_OPERAND_TYPE_RSP_rs:
             case RABBITIZER_OPERAND_TYPE_RSP_vs:
-                RAB_INSTR_SET_rs(self, 0);
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_rt:
@@ -122,7 +123,7 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_op:
             case RABBITIZER_OPERAND_TYPE_RSP_rt:
             case RABBITIZER_OPERAND_TYPE_RSP_vt:
-                RAB_INSTR_SET_rt(self, 0);
+                self->word = RAB_INSTR_PACK_rt(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_rd:
@@ -131,64 +132,64 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_RSP_rd:
             case RABBITIZER_OPERAND_TYPE_RSP_vd:
             case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
-                RAB_INSTR_SET_rd(self, 0);
+                self->word = RAB_INSTR_PACK_rd(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_sa:
-                RAB_INSTR_SET_sa(self, 0);
+                self->word = RAB_INSTR_PACK_sa(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_fs:
-                RAB_INSTR_SET_fs(self, 0);
+                self->word = RAB_INSTR_PACK_fs(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_ft:
-                RAB_INSTR_SET_ft(self, 0);
+                self->word = RAB_INSTR_PACK_ft(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_fd:
-                RAB_INSTR_SET_fd(self, 0);
+                self->word = RAB_INSTR_PACK_fd(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_LABEL:
-                RAB_INSTR_SET_instr_index(self, 0);
+                self->word = RAB_INSTR_PACK_instr_index(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_code:
-                RAB_INSTR_SET_code(self, 0);
+                self->word = RAB_INSTR_PACK_code(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_IMM_base:
                 // rs imm
-                RAB_INSTR_SET_rs(self, 0);
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 FALLTHROUGH;
             case RABBITIZER_OPERAND_TYPE_IMM:
-                RAB_INSTR_SET_immediate(self, 0);
+                self->word = RAB_INSTR_PACK_immediate(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh:
-                RAB_INSTR_RSP_SET_vt(self, 0);
-                RAB_INSTR_RSP_SET_elementhigh(self, 0);
+                self->word = RAB_INSTR_RSP_PACK_vt(self->word, 0);
+                self->word = RAB_INSTR_RSP_PACK_elementhigh(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow:
-                RAB_INSTR_RSP_SET_vt(self, 0);
-                RAB_INSTR_RSP_SET_elementlow(self, 0);
+                self->word = RAB_INSTR_RSP_PACK_vt(self->word, 0);
+                self->word = RAB_INSTR_RSP_PACK_elementlow(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
-                RAB_INSTR_RSP_SET_vd(self, 0);
-                RAB_INSTR_RSP_SET_vs(self, 0);
+                self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
+                self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
-                RAB_INSTR_RSP_SET_vd(self, 0);
-                RAB_INSTR_RSP_SET_index(self, 0);
+                self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
+                self->word = RAB_INSTR_RSP_PACK_index(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
-                RAB_INSTR_RSP_SET_offset(self, 0);
-                RAB_INSTR_SET_rs(self, 0);
+                self->word = RAB_INSTR_RSP_PACK_offset(self->word, 0);
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);;
                 break;
 
             case RABBITIZER_OPERAND_TYPE_INVALID:

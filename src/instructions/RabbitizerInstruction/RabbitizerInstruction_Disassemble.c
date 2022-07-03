@@ -432,55 +432,8 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
         }
     }
 
-    if (self->descriptor->instrType == RABBITIZER_INSTR_TYPE_R) {
-        bool hasCode = false;
-        bool hasRs = false;
-        bool hasRt = false;
-        bool hasRd = false;
-        bool hasSa = false;
-
-        for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
-            RabbitizerOperandType operand = self->descriptor->operands[i];
-
-            if (operand == RABBITIZER_OPERAND_TYPE_code) {
-                hasCode = true;
-            }
-            if (operand == RABBITIZER_OPERAND_TYPE_rs) {
-                hasRs = true;
-            }
-            if (operand == RABBITIZER_OPERAND_TYPE_rt) {
-                hasRt = true;
-            }
-            if (operand == RABBITIZER_OPERAND_TYPE_rd) {
-                hasRd = true;
-            }
-            if (operand == RABBITIZER_OPERAND_TYPE_sa) {
-                hasSa = true;
-            }
-        }
-
-        if (!hasCode) {
-            if (!hasRs) {
-                if (RAB_INSTR_GET_rs(self) != 0) {
-                    return true;
-                }
-            }
-            if (!hasRt) {
-                if (RAB_INSTR_GET_rt(self) != 0) {
-                    return true;
-                }
-            }
-            if (!hasRd) {
-                if (RAB_INSTR_GET_rd(self) != 0 && self->uniqueId != RABBITIZER_INSTR_ID_cpu_jalr) {
-                    return true;
-                }
-            }
-            if (!hasSa) {
-                if (RAB_INSTR_GET_sa(self) != 0) {
-                    return true;
-                }
-            }
-        }
+    if (!RabbitizerInstruction_isValid(self)) {
+        return true;
     }
     return false;
 }

@@ -37,6 +37,7 @@
 
 #define ARRAY_COUNT(arr) (sizeof(arr) / sizeof(arr[0]))
 
+#define MASK(v, w) ((v) & ((1 << (w)) - 1))
 
 /*
  * the SHIFT macros take a value, a shift amount, and a width.
@@ -53,7 +54,8 @@
 #define SHIFTL(v, s, w)	(((v) & ((1 << (w)) - 1)) << (s))
 #define SHIFTR(v, s, w)	(((v) >> (s)) & ((1 << (w)) - 1))
 
-#define BITREPACK(fullword, v, s, w) (SHIFTL((self)->word, (s)+(w), 32-((s)+(w))) | SHIFTL((v), (s), (w)) | SHIFTL((self)->word, 0, (s)))
+#define BITREPACK(fullword, v, s, w) ((SHIFTR((fullword), (s)+(w), 32-((s)+(w))) << ((s)+(w))) | SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
+#define BITREPACK_RIGHT(fullword, v, s, w) (SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 
 
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits);
