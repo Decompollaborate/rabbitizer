@@ -546,7 +546,7 @@ void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
 
 
 void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
-    uint32_t fmt = RabbitizerInstruction_getFmt(self);
+    uint32_t fmt = RAB_INSTR_GET_fmt(self);
     uint32_t tf;
     uint32_t nd;
     uint32_t function;
@@ -577,8 +577,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
         // 0b00_111: "",
 
         case 0b01000:
-            tf = RabbitizerInstruction_getTf(self);
-            nd = RabbitizerInstruction_getNd(self);
+            tf = RAB_INSTR_GET_tf(self);
+            nd = RAB_INSTR_GET_nd(self);
             self->_mandatorybits = RAB_INSTR_PACK_tf(self->_mandatorybits, tf);
             self->_mandatorybits = RAB_INSTR_PACK_nd(self->_mandatorybits, nd);
             if (tf) {
@@ -628,7 +628,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
 
 
 void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
-    uint8_t fmt = RabbitizerInstruction_getFmt(self);
+    uint8_t fmt = RAB_INSTR_GET_fmt(self);
     uint8_t fc;
     uint32_t tf;
     uint32_t nd;
@@ -660,8 +660,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
             break;
 
         case 0b01000: // fmt = BC
-            tf = RabbitizerInstruction_getTf(self);
-            nd = RabbitizerInstruction_getNd(self);
+            tf = RAB_INSTR_GET_tf(self);
+            nd = RAB_INSTR_GET_nd(self);
             self->_mandatorybits = RAB_INSTR_PACK_tf(self->_mandatorybits, tf);
             self->_mandatorybits = RAB_INSTR_PACK_nd(self->_mandatorybits, nd);
             if (tf) {
@@ -801,11 +801,11 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
                     break;
 
                 default:
-                    fc = RabbitizerInstruction_getFc(self);
+                    fc = RAB_INSTR_GET_fc(self);
                     self->_mandatorybits = RAB_INSTR_PACK_fc(self->_mandatorybits, fc);
                     if (fc == 0b11) {
                         // Compare conditions codes
-                        cond = RabbitizerInstruction_getCond(self);
+                        cond = RAB_INSTR_GET_cond(self);
                         self->_mandatorybits = RAB_INSTR_PACK_cond(self->_mandatorybits, cond);
                         switch (cond) {
                             case 0b0000:

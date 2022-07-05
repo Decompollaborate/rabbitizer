@@ -23,7 +23,6 @@ setup(
                 # "-Wpedantic", # binary constants :s
                 #"-Wno-cast-function-type",
                 #"-Werror=implicit-function-declaration",
-                #"-Werror=implicit-function-declaration",
                 #"-Werror=incompatible-pointer-types",
                 #"-Werror=vla",
                 #"-Werror=switch",

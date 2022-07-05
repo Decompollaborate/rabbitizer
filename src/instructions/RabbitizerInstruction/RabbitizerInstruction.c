@@ -28,43 +28,6 @@ void RabbitizerInstruction_destroy(RabbitizerInstruction *self) {
 }
 
 
-/* Register getters */
-
-uint8_t RabbitizerInstruction_getFs(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_fs(self);
-}
-uint8_t RabbitizerInstruction_getFt(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_ft(self);
-}
-uint8_t RabbitizerInstruction_getFd(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_fd(self);
-}
-
-/* Register getters */
-
-
-/* Coprocessor stuffs */
-
-uint8_t RabbitizerInstruction_getFmt(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_fmt(self);
-}
-
-uint8_t RabbitizerInstruction_getTf(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_rt(self) & 0x1;
-}
-uint8_t RabbitizerInstruction_getNd(const RabbitizerInstruction *self) {
-    return (RAB_INSTR_GET_rt(self) >> 1) & 0x1;
-}
-uint8_t RabbitizerInstruction_getFc(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_fc(self);
-}
-uint8_t RabbitizerInstruction_getCond(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_cond(self);
-}
-
-/* Coprocessor stuffs */
-
-
 /* General getters */
 
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self) {
@@ -113,30 +76,23 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
     for (i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
         switch (self->descriptor->operands[i]) {
             case RABBITIZER_OPERAND_TYPE_rs:
-            case RABBITIZER_OPERAND_TYPE_RSP_rs:
-            case RABBITIZER_OPERAND_TYPE_RSP_vs:
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_rt:
-            case RABBITIZER_OPERAND_TYPE_cop2t:
-            case RABBITIZER_OPERAND_TYPE_op:
-            case RABBITIZER_OPERAND_TYPE_RSP_rt:
-            case RABBITIZER_OPERAND_TYPE_RSP_vt:
                 self->word = RAB_INSTR_PACK_rt(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_rd:
-            case RABBITIZER_OPERAND_TYPE_cop0d:
-            case RABBITIZER_OPERAND_TYPE_cop1cs:
-            case RABBITIZER_OPERAND_TYPE_RSP_rd:
-            case RABBITIZER_OPERAND_TYPE_RSP_vd:
-            case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
                 self->word = RAB_INSTR_PACK_rd(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_sa:
                 self->word = RAB_INSTR_PACK_sa(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_cop0d:
+                self->word = RAB_INSTR_PACK_cop0d(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_fs:
@@ -151,20 +107,61 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_fd(self->word, 0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_LABEL:
-                self->word = RAB_INSTR_PACK_instr_index(self->word, 0);
+            case RABBITIZER_OPERAND_TYPE_cop1cs:
+                self->word = RAB_INSTR_PACK_cop1cs(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_cop2t:
+                self->word = RAB_INSTR_PACK_cop2t(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_op:
+                self->word = RAB_INSTR_PACK_op(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_code:
                 self->word = RAB_INSTR_PACK_code(self->word, 0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_LABEL:
+                self->word = RAB_INSTR_PACK_instr_index(self->word, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_IMM_base:
-                // rs imm
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
-                FALLTHROUGH;
+                self->word = RAB_INSTR_PACK_immediate(self->word, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_IMM:
                 self->word = RAB_INSTR_PACK_immediate(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_rs:
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_rt:
+                self->word = RAB_INSTR_PACK_rt(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_rd:
+                self->word = RAB_INSTR_PACK_rd(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
+                self->word = RAB_INSTR_PACK_cop0d(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_vs:
+                self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_vt:
+                self->word = RAB_INSTR_RSP_PACK_vt(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_vd:
+                self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh:

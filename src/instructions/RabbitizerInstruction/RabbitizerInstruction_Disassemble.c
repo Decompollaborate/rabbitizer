@@ -78,7 +78,7 @@ size_t RabbitizerOperandType_processCop0d(const RabbitizerInstruction *self, cha
 
 size_t RabbitizerOperandType_processFs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameCop1(RabbitizerInstruction_getFs(self));
+    const char *reg = RabbitizerRegister_getNameCop1(RAB_INSTR_GET_fs(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
@@ -86,7 +86,7 @@ size_t RabbitizerOperandType_processFs(const RabbitizerInstruction *self, char *
 
 size_t RabbitizerOperandType_processFt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameCop1(RabbitizerInstruction_getFt(self));
+    const char *reg = RabbitizerRegister_getNameCop1(RAB_INSTR_GET_ft(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
@@ -94,7 +94,7 @@ size_t RabbitizerOperandType_processFt(const RabbitizerInstruction *self, char *
 
 size_t RabbitizerOperandType_processFd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameCop1(RabbitizerInstruction_getFd(self));
+    const char *reg = RabbitizerRegister_getNameCop1(RAB_INSTR_GET_fd(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
@@ -102,7 +102,7 @@ size_t RabbitizerOperandType_processFd(const RabbitizerInstruction *self, char *
 
 size_t RabbitizerOperandType_processCop1Cs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameCop1Control(RabbitizerInstruction_getFs(self));
+    const char *reg = RabbitizerRegister_getNameCop1Control(RAB_INSTR_GET_cop1cs(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;

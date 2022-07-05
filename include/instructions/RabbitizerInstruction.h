@@ -69,6 +69,9 @@ typedef struct RabbitizerInstruction {
 
 #define RAB_INSTR_GET_cop2t(self)                   (SHIFTR((self)->word, 16,  5))
 
+#define RAB_INSTR_GET_tf(self)                      (SHIFTR((self)->word, 16,  1))
+#define RAB_INSTR_GET_nd(self)                      (SHIFTR((self)->word, 17,  1))
+
 
 #define RAB_INSTR_PACK_opcode(word, value)          (BITREPACK_RIGHT((word), (value), 26,  6))
 #define RAB_INSTR_PACK_rs(word, value)              (BITREPACK((word), (value), 21,  5))
@@ -116,26 +119,6 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *s
 void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self);
 
 /* Process uniqueId */
-
-
-/* Register getters */
-
-uint8_t RabbitizerInstruction_getFs(const RabbitizerInstruction* self);
-uint8_t RabbitizerInstruction_getFt(const RabbitizerInstruction* self);
-uint8_t RabbitizerInstruction_getFd(const RabbitizerInstruction* self);
-
-/* Register getters */
-
-
-/* Coprocessor stuffs */
-
-uint8_t RabbitizerInstruction_getFmt(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getTf(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getNd(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getFc(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getCond(const RabbitizerInstruction *self);
-
-/* Coprocessor stuffs */
 
 
 /* General getters */

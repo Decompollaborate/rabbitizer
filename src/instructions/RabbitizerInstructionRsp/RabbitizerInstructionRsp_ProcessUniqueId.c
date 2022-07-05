@@ -364,7 +364,7 @@ void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self
 
 
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
-    uint32_t fmt = RabbitizerInstruction_getFmt(self);
+    uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 

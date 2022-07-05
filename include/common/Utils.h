@@ -51,8 +51,8 @@
  * (NOTE: SHIFTL(v, 0, 32) won't work, just use an assignment)
  *
  */
-#define SHIFTL(v, s, w)	(((v) & ((1 << (w)) - 1)) << (s))
-#define SHIFTR(v, s, w)	(((v) >> (s)) & ((1 << (w)) - 1))
+#define SHIFTL(v, s, w) (MASK((v), (w)) << (s))
+#define SHIFTR(v, s, w) (MASK((v) >> (s), (w)))
 
 #define BITREPACK(fullword, v, s, w) ((SHIFTR((fullword), (s)+(w), 32-((s)+(w))) << ((s)+(w))) | SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 #define BITREPACK_RIGHT(fullword, v, s, w) (SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
