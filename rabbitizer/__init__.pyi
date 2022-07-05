@@ -11,6 +11,9 @@ from .Enum import *
 from .InstrCategory import *
 from .InstrId import *
 
+from .RegGprO32 import *
+from .RegGprN32 import *
+
 from .Config import *
 
 from .rabbitizer import *
