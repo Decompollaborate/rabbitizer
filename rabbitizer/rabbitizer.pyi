@@ -10,9 +10,9 @@ from .InstrCategory import InstrCategory
 
 
 class Instruction:
-    rs: int
-    rt: int
-    rd: int
+    rs: Enum
+    rt: Enum
+    rd: Enum
     sa: int
 
     uniqueId: Enum

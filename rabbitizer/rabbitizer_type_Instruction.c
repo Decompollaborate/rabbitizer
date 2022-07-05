@@ -4,6 +4,7 @@
 #include "rabbitizer_module.h"
 
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "common/RabbitizerConfig.h"
 
 
 static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
@@ -64,9 +65,41 @@ static PyMemberDef rabbitizer_type_Instruction_members[] = {
         return PyLong_FromUnsignedLong(RAB_INSTR_GET_##name(&self->instr)); \
     }
 
-DEF_MEMBER_GET_UINT(rs)
-DEF_MEMBER_GET_UINT(rt)
-DEF_MEMBER_GET_UINT(rd)
+#define DEF_MEMBER_GET_REGGPR(name) \
+    static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
+        uint32_t reg; \
+        PyObject *enumInstance = NULL; \
+        \
+        if (!RabbitizerInstruction_hasOperandAlias(&self->instr, RABBITIZER_OPERAND_TYPE_##name)) { \
+            PyErr_Format(PyExc_RuntimeError, "'%s' instruction does not reference register '" #name "'", RabbitizerInstrId_getOpcodeName(self->instr.uniqueId)); \
+            return NULL; \
+        } \
+        \
+        reg = RAB_INSTR_GET_##name(&self->instr); \
+        switch (RabbitizerConfig_Cfg.regNames.gprAbiNames) { \
+            case RABBITIZER_ABI_N32: \
+            case RABBITIZER_ABI_N64: \
+                enumInstance = rabbitizer_enum_RegGprN32_enumvalues[reg].instance; \
+                break; \
+        \
+            default: \
+                enumInstance = rabbitizer_enum_RegGprO32_enumvalues[reg].instance; \
+                break; \
+        } \
+        \
+        if (enumInstance == NULL) { \
+            PyErr_SetString(PyExc_RuntimeError, "Internal error: invalid RegGpr enum value"); \
+            return NULL; \
+        } \
+        \
+        Py_INCREF(enumInstance); \
+        return enumInstance; \
+    }
+
+DEF_MEMBER_GET_REGGPR(rs)
+DEF_MEMBER_GET_REGGPR(rt)
+DEF_MEMBER_GET_REGGPR(rd)
+
 DEF_MEMBER_GET_UINT(sa)
 
 static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
@@ -87,10 +120,10 @@ static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerIns
 
 
 static PyGetSetDef Instr_getsetters[] = {
-    MEMBER_GET(rs, "", NULL), // todo: deprecate
-    MEMBER_GET(rt, "", NULL), // todo: deprecate
-    MEMBER_GET(rd, "", NULL), // todo: deprecate
-    MEMBER_GET(sa, "", NULL), // todo: deprecate
+    MEMBER_GET(rs, "", NULL),
+    MEMBER_GET(rt, "", NULL),
+    MEMBER_GET(rd, "", NULL),
+    MEMBER_GET(sa, "", NULL),
     MEMBER_GET(uniqueId, "", NULL),
 
     { 0 }
