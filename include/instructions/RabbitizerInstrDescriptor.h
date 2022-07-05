@@ -51,6 +51,8 @@ typedef struct RabbitizerInstrDescriptor {
     bool isLoPair;
     bool doesLink; // "and link" family of instructions
     bool doesDereference;
+    bool doesLoad; // loads data from memory
+    bool doesStore; // stores data to memory
     bool maybeIsMove;
 
     bool isPseudo;
@@ -87,6 +89,8 @@ bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_doesLoad(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_doesStore(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self);
 
 bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);

@@ -243,6 +243,8 @@ DEF_DESCRIPTOR_METHOD_BOOL(isHiPair)
 DEF_DESCRIPTOR_METHOD_BOOL(isLoPair)
 DEF_DESCRIPTOR_METHOD_BOOL(doesLink)
 DEF_DESCRIPTOR_METHOD_BOOL(doesDereference)
+DEF_DESCRIPTOR_METHOD_BOOL(doesLoad)
+DEF_DESCRIPTOR_METHOD_BOOL(doesStore)
 DEF_DESCRIPTOR_METHOD_BOOL(maybeIsMove)
 DEF_DESCRIPTOR_METHOD_BOOL(isPseudo)
 // TODO: create an enum type for architectureVersion
@@ -327,6 +329,8 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(isLoPair, ""),
     METHOD_NO_ARGS(doesLink, ""),
     METHOD_NO_ARGS(doesDereference, ""),
+    METHOD_NO_ARGS(doesLoad, ""),
+    METHOD_NO_ARGS(doesStore, ""),
     METHOD_NO_ARGS(maybeIsMove, ""),
     METHOD_NO_ARGS(isPseudo, ""),
     // METHOD_NO_ARGS(getArchitectureVersion, ""),
