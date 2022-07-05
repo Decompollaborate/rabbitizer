@@ -8,6 +8,7 @@
 
 typedef enum RabbitizerOperandType {
     RABBITIZER_OPERAND_TYPE_INVALID,
+
     RABBITIZER_OPERAND_TYPE_rs,
     RABBITIZER_OPERAND_TYPE_rt,
     RABBITIZER_OPERAND_TYPE_rd,
@@ -23,9 +24,10 @@ typedef enum RabbitizerOperandType {
     RABBITIZER_OPERAND_TYPE_code,
     RABBITIZER_OPERAND_TYPE_LABEL,
     RABBITIZER_OPERAND_TYPE_IMM,
+    // composed/aliased operands
     RABBITIZER_OPERAND_TYPE_IMM_base,
 
-    // rsp
+    /* rsp */
     RABBITIZER_OPERAND_TYPE_RSP_rs,
     RABBITIZER_OPERAND_TYPE_RSP_rt,
     RABBITIZER_OPERAND_TYPE_RSP_rd,
@@ -33,12 +35,17 @@ typedef enum RabbitizerOperandType {
     RABBITIZER_OPERAND_TYPE_RSP_vs,
     RABBITIZER_OPERAND_TYPE_RSP_vt,
     RABBITIZER_OPERAND_TYPE_RSP_vd,
+    // RABBITIZER_OPERAND_TYPE_RSP_elementhigh,
+    // RABBITIZER_OPERAND_TYPE_RSP_elementlow,
+    // RABBITIZER_OPERAND_TYPE_RSP_index,
+    // RABBITIZER_OPERAND_TYPE_RSP_offset,
+    // composed/aliased operands
     RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh,
     RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow,
     RABBITIZER_OPERAND_TYPE_RSP_vd_vs,
     RABBITIZER_OPERAND_TYPE_RSP_vd_index,
     RABBITIZER_OPERAND_TYPE_RSP_offset_rs,
-    // rsp
+    /* rsp */
 
     RABBITIZER_OPERAND_TYPE_MAX,
 } RabbitizerOperandType;

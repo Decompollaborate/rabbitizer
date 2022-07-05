@@ -134,6 +134,159 @@ bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, Rabbiti
     return false;
 }
 
+bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, RabbitizerOperandType operand) {
+    switch (operand) {
+        case RABBITIZER_OPERAND_TYPE_rs:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_IMM_base)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_rs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_offset_rs)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_IMM:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_IMM_base)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_rt:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_rt)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_rd:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_rd)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_sa:
+        // case RABBITIZER_OPERAND_TYPE_function:
+        case RABBITIZER_OPERAND_TYPE_cop0d:
+        case RABBITIZER_OPERAND_TYPE_fs:
+        case RABBITIZER_OPERAND_TYPE_ft:
+        case RABBITIZER_OPERAND_TYPE_fd:
+        case RABBITIZER_OPERAND_TYPE_cop1cs:
+        case RABBITIZER_OPERAND_TYPE_cop2t:
+        case RABBITIZER_OPERAND_TYPE_op:
+        case RABBITIZER_OPERAND_TYPE_code:
+        case RABBITIZER_OPERAND_TYPE_LABEL:
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_IMM_base:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_rs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_IMM)) {
+                return true;
+            }
+            break;
+
+
+        /* rsp */
+        case RABBITIZER_OPERAND_TYPE_RSP_rs:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_rs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_offset_rs)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_rt:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_rt)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_rd:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_rd)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
+            break;
+
+        // case RABBITIZER_OPERAND_TYPE_RSP_elementhigh:
+        // case RABBITIZER_OPERAND_TYPE_RSP_elementlow:
+        // case RABBITIZER_OPERAND_TYPE_RSP_index:
+        // case RABBITIZER_OPERAND_TYPE_RSP_offset:
+
+        case RABBITIZER_OPERAND_TYPE_RSP_vs:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_vs)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_vt:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_vd:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_vs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_index)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vt)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vt)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vd)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vs)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vd)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_rs)) {
+                return true;
+            }
+            break;
+        /* rsp */
+
+        case RABBITIZER_OPERAND_TYPE_INVALID:
+        case RABBITIZER_OPERAND_TYPE_MAX:
+            assert(operand != RABBITIZER_OPERAND_TYPE_INVALID && operand != RABBITIZER_OPERAND_TYPE_MAX);
+            break;
+    }
+
+    return RabbitizerInstruction_hasOperand(self, operand);
+}
+
+
 bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
     size_t i;
     uint32_t validbits;

@@ -153,6 +153,7 @@ bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const R
 bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
 
 bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand);
+bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, RabbitizerOperandType operand);
 
 bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 
