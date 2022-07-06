@@ -145,6 +145,10 @@ DEF_METHOD_GET_UINT(getImmediate)
 DEF_METHOD_GET_UINT(getInstrIndexAsVram)
 DEF_METHOD_GET_INT(getBranchOffset)
 
+static PyObject *rabbitizer_type_Instruction_getOpcodeName(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    return PyUnicode_FromString(RabbitizerInstrId_getOpcodeName(self->instr.uniqueId));
+}
+
 static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = { "currentVram", NULL };
     uint32_t currentVram;
@@ -294,6 +298,7 @@ static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(getInstrIndexAsVram, ""),
     METHOD_NO_ARGS(getBranchOffset, ""),
     METHOD_ARGS(getGenericBranchOffset, ""),
+    METHOD_NO_ARGS(getOpcodeName, ""),
 
     METHOD_NO_ARGS(blankOut, ""),
 
