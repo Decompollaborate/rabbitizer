@@ -333,21 +333,8 @@ const OperandCallback instrOpercandCallbacks[] = {
 };
 
 
-size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust) {
+size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust) {
     size_t totalSize = 0;
-    size_t opcodeNameLength;
-
-    opcodeNameLength = strlen(RabbitizerInstrId_getOpcodeName(self->uniqueId));
-
-    totalSize += opcodeNameLength;
-
-    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
-        // There are no operands
-        return totalSize;
-    }
-
-    totalSize += extraLJust;
-    totalSize++;
 
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
         if (i != 0) {
@@ -362,22 +349,8 @@ size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruc
     return totalSize;
 }
 
-
-size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) {
+size_t RabbitizerInstruction_disassembleOperands(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) {
     size_t totalSize = 0;
-    const char *opcodeName = RabbitizerInstrId_getOpcodeName(self->uniqueId);
-
-    RABUTILS_BUFFER_CPY(dst, totalSize, opcodeName);
-
-    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
-        // There are no operands
-        *dst = '\0';
-        return totalSize;
-    }
-
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' '));
-
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
 
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
         RabbitizerOperandType operand;
@@ -397,6 +370,49 @@ size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction 
 
         RABUTILS_BUFFER_ADVANCE(dst, totalSize, callback(self, dst, immOverride, immOverrideLength));
     }
+
+    *dst = '\0';
+    return totalSize;
+}
+
+
+size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust) {
+    size_t totalSize = 0;
+    size_t opcodeNameLength;
+
+    opcodeNameLength = strlen(RabbitizerInstrId_getOpcodeName(self->uniqueId));
+
+    totalSize += opcodeNameLength;
+
+    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
+        // There are no operands
+        return totalSize;
+    }
+
+    totalSize += extraLJust;
+    totalSize++;
+
+    totalSize += RabbitizerInstruction_getSizeForBufferOperandsDisasm(self, immOverrideLength, extraLJust);
+
+    return totalSize;
+}
+
+size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) {
+    size_t totalSize = 0;
+    const char *opcodeName = RabbitizerInstrId_getOpcodeName(self->uniqueId);
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, opcodeName);
+
+    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
+        // There are no operands
+        *dst = '\0';
+        return totalSize;
+    }
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' '));
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstruction_disassembleOperands(self, dst, immOverride, immOverrideLength, extraLJust));
 
     *dst = '\0';
     return totalSize;
