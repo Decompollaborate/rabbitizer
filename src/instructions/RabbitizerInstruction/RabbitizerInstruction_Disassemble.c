@@ -151,8 +151,7 @@ size_t RabbitizerOperandType_processLabel(const RabbitizerInstruction *self, cha
         return immOverrideLength;
     }
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "func_");
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%06X", RabbitizerInstruction_getInstrIndexAsVram(self));
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "func_%06X", RabbitizerInstruction_getInstrIndexAsVram(self));
     return totalSize;
 }
 
@@ -166,16 +165,24 @@ size_t RabbitizerOperandType_processImmediate(const RabbitizerInstruction *self,
     }
 
     number = RabbitizerInstruction_getProcessedImmediate(self);
-    if (RabbitizerConfig_Cfg.misc.omit0XOnSmallHex) {
+    if (RabbitizerConfig_Cfg.misc.omit0XOnSmallImm) {
         if (number > -10 && number < 10) {
             RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);
             return totalSize;
         }
     }
     if (number < 0) {
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%x", -number);
+        }
     } else {
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", number);
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", number);
+        }
     }
     return totalSize;
 }
