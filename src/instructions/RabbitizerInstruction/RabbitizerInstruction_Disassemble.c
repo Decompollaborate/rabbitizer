@@ -158,24 +158,19 @@ size_t RabbitizerOperandType_processLabel(const RabbitizerInstruction *self, cha
 
 size_t RabbitizerOperandType_processImmediate(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
-    uint32_t imm;
+    int32_t number;
 
     if (immOverride != NULL) {
         memcpy(dst, immOverride, immOverrideLength);
         return immOverrideLength;
     }
 
-    imm = RabbitizerInstruction_getImmediate(self);
-    if (!self->descriptor->isUnsigned) {
-        int32_t number = RabbitizerUtils_From2Complement(imm, 16);
-
-        if (number < 0) {
-            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
-            return totalSize;
-        }
+    number = RabbitizerInstruction_getProcessedImmediate(self);
+    if (number < 0) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
+    } else {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", number);
     }
-
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", imm);
     return totalSize;
 }
 
