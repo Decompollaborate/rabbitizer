@@ -147,6 +147,7 @@ bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self);
+bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self);
 
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self);
 

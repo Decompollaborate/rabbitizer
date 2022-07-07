@@ -79,6 +79,10 @@ bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self) {
     return false;
 }
 
+bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self) {
+    return RabbitizerInstrDescriptor_isBranch(self->descriptor) || RabbitizerInstrDescriptor_isJump(self->descriptor);
+}
+
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self) {
     if (RabbitizerInstrDescriptor_isDouble(self->descriptor)) {
         return "f64";

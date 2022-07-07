@@ -182,6 +182,7 @@ DEF_METHOD_BOOL(isNop)
 DEF_METHOD_BOOL(isUnconditionalBranch)
 DEF_METHOD_BOOL(isJrRa)
 DEF_METHOD_BOOL(isJrNotRa)
+DEF_METHOD_BOOL(hasDelaySlot)
 
 static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
     const char *type = RabbitizerInstruction_mapInstrToType(&self->instr);
@@ -328,6 +329,7 @@ static PyMethodDef rabbitizer_type_Instr_methods[] = {
     METHOD_NO_ARGS(isUnconditionalBranch, ""),
     METHOD_NO_ARGS(isJrRa, ""),
     METHOD_NO_ARGS(isJrNotRa, ""),
+    METHOD_NO_ARGS(hasDelaySlot, ""),
     METHOD_NO_ARGS(mapInstrToType, ""),
 
     METHOD_ARGS(sameOpcode, "description"),
