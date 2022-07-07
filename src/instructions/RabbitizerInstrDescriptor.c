@@ -73,11 +73,11 @@ bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescrip
     return self->notEmitedByCompilers;
 }
 
-bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self) {
-    return self->isHiPair;
+bool RabbitizerInstrDescriptor_canBeHi(const RabbitizerInstrDescriptor *self) {
+    return self->canBeHi;
 }
-bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self) {
-    return self->isLoPair;
+bool RabbitizerInstrDescriptor_canBeLo(const RabbitizerInstrDescriptor *self) {
+    return self->canBeLo;
 }
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self) {
     return self->doesLink;

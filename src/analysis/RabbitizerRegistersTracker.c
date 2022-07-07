@@ -125,7 +125,7 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
     if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor)) {
         shouldRemove = true;
         reg = RAB_INSTR_GET_rt(instr);
-        if (RabbitizerInstrDescriptor_isHiPair(instr->descriptor)) {
+        if (RabbitizerInstrDescriptor_canBeHi(instr->descriptor)) {
             RabbitizerTrackedRegisterState_clearLo(&self->registers[RAB_INSTR_GET_rt(instr)]);
             shouldRemove = false;
         }
@@ -260,7 +260,7 @@ bool RabbitizerRegistersTracker_getJrInfo(RabbitizerRegistersTracker *self, cons
 void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, const RabbitizerInstruction *prevInstr) {
     RabbitizerTrackedRegisterState *state = NULL;
 
-    assert(RabbitizerInstrDescriptor_isHiPair(instr->descriptor));
+    assert(RabbitizerInstrDescriptor_canBeHi(instr->descriptor));
 
     state = &self->registers[RAB_INSTR_GET_rt(instr)];
     RabbitizerTrackedRegisterState_clear(state);

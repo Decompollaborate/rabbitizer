@@ -246,8 +246,8 @@ DEF_DESCRIPTOR_METHOD_BOOL(isUnsigned)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRt)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRd)
 DEF_DESCRIPTOR_METHOD_BOOL(notEmitedByCompilers)
-DEF_DESCRIPTOR_METHOD_BOOL(isHiPair)
-DEF_DESCRIPTOR_METHOD_BOOL(isLoPair)
+DEF_DESCRIPTOR_METHOD_BOOL(canBeHi)
+DEF_DESCRIPTOR_METHOD_BOOL(canBeLo)
 DEF_DESCRIPTOR_METHOD_BOOL(doesLink)
 DEF_DESCRIPTOR_METHOD_BOOL(doesDereference)
 DEF_DESCRIPTOR_METHOD_BOOL(doesLoad)
@@ -352,8 +352,8 @@ static PyMethodDef rabbitizer_type_Instr_methods[] = {
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
     METHOD_NO_ARGS(notEmitedByCompilers, ""),
-    METHOD_NO_ARGS(isHiPair, ""),
-    METHOD_NO_ARGS(isLoPair, ""),
+    METHOD_NO_ARGS(canBeHi, ""),
+    METHOD_NO_ARGS(canBeLo, ""),
     METHOD_NO_ARGS(doesLink, ""),
     METHOD_NO_ARGS(doesDereference, ""),
     METHOD_NO_ARGS(doesLoad, ""),

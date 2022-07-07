@@ -47,8 +47,8 @@ typedef struct RabbitizerInstrDescriptor {
 
     bool notEmitedByCompilers;
 
-    bool isHiPair;
-    bool isLoPair;
+    bool canBeHi;
+    bool canBeLo;
     bool doesLink; // "and link" family of instructions
     bool doesDereference;
     bool doesLoad; // loads data from memory
@@ -85,8 +85,8 @@ bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self)
 
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);
 
-bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_canBeHi(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_canBeLo(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesLoad(const RabbitizerInstrDescriptor *self);
