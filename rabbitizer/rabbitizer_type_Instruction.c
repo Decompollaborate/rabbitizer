@@ -142,6 +142,7 @@ static PyGetSetDef Instr_getsetters[] = {
 
 DEF_METHOD_GET_UINT(getRaw)
 DEF_METHOD_GET_UINT(getImmediate)
+DEF_METHOD_GET_INT(getProcessedImmediate)
 DEF_METHOD_GET_UINT(getInstrIndexAsVram)
 DEF_METHOD_GET_INT(getBranchOffset)
 
@@ -295,6 +296,7 @@ static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction
 static PyMethodDef Instr_methods[] = {
     METHOD_NO_ARGS(getRaw, ""),
     METHOD_NO_ARGS(getImmediate, ""),
+    METHOD_NO_ARGS(getProcessedImmediate, ""),
     METHOD_NO_ARGS(getInstrIndexAsVram, ""),
     METHOD_NO_ARGS(getBranchOffset, ""),
     METHOD_ARGS(getGenericBranchOffset, ""),

@@ -37,6 +37,12 @@ uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self) {
 uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self) {
     return RAB_INSTR_GET_immediate(self);
 }
+int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self) {
+    if (RabbitizerInstrDescriptor_isUnsigned(self->descriptor)) {
+        return RAB_INSTR_GET_immediate(self);
+    }
+    return RabbitizerUtils_From2Complement(RAB_INSTR_GET_immediate(self), 16);
+}
 
 uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self) {
     return RAB_INSTR_GET_instr_index(self);

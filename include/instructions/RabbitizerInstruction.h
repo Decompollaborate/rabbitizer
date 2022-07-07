@@ -126,6 +126,7 @@ void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self);
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self);
 
 uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self);
+int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self);
 uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self);
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self);
 
