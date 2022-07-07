@@ -39,5 +39,6 @@ class _RabbitizerConfig:
 
     misc_opcodeLJust: int = 11
     misc_unknownInstrComment: bool = True
+    misc_omit0XOnSmallHex: bool = False
 
 config: _RabbitizerConfig

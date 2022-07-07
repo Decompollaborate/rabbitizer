@@ -166,6 +166,12 @@ size_t RabbitizerOperandType_processImmediate(const RabbitizerInstruction *self,
     }
 
     number = RabbitizerInstruction_getProcessedImmediate(self);
+    if (RabbitizerConfig_Cfg.misc.omit0XOnSmallHex) {
+        if (number > -10 && number < 10) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);
+            return totalSize;
+        }
+    }
     if (number < 0) {
         RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
     } else {

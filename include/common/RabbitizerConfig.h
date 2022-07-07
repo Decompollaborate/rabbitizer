@@ -57,6 +57,7 @@ typedef struct RabbitizerConfig_ToolchainTweaks {
 typedef struct RabbitizerConfig_Misc {
     int opcodeLJust; // The minimal number of characters to left-align the opcode name
     bool unknownInstrComment; // Generate a pseudo-disassembly comment when disassembling non implemented instructions
+    bool omit0XOnSmallHex;
 } RabbitizerConfig_Misc;
 
 typedef struct RabbitizerConfig {

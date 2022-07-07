@@ -45,5 +45,6 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
     .misc = {
         .opcodeLJust = 7+4,
         .unknownInstrComment = true,
+        .omit0XOnSmallHex = false,
     }
 };
