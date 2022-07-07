@@ -119,6 +119,14 @@ size_t RabbitizerOperandType_processCop2t(const RabbitizerInstruction *self, cha
 size_t RabbitizerOperandType_processSa(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
+    // TODO: consider making this a proper configuration
+    #if 0
+    if (RAB_INSTR_GET_sa(self) < 10) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", RAB_INSTR_GET_sa(self));
+    } else {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", RAB_INSTR_GET_sa(self));
+    }
+    #endif
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", RAB_INSTR_GET_sa(self));
     return totalSize;
 }
@@ -126,6 +134,14 @@ size_t RabbitizerOperandType_processSa(const RabbitizerInstruction *self, char *
 size_t RabbitizerOperandType_processOp(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
+    // TODO: consider making this a proper configuration
+    #if 0
+    if (RAB_INSTR_GET_op(self) < 10) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", RAB_INSTR_GET_op(self));
+    } else {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", RAB_INSTR_GET_op(self));
+    }
+    #endif
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%02X", RAB_INSTR_GET_op(self));
     return totalSize;
 }
@@ -190,6 +206,12 @@ size_t RabbitizerOperandType_processImmediate(const RabbitizerInstruction *self,
 size_t RabbitizerOperandType_processImmediateBase(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
+    // TODO: consider making this a proper configuration
+    #if 0
+    if (immOverride != NULL || RAB_INSTR_GET_immediate(self) != 0) {
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
+    }
+    #endif
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');

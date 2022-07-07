@@ -30,7 +30,7 @@
 #define RAB_INSTR_RSP_PACK_offset(word, value)      (BITREPACK((word), value,  0,  7))
 
 
-void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word);
+void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
 void RabbitizerInstructionRsp_destroy(RabbitizerInstruction *self);
 
 

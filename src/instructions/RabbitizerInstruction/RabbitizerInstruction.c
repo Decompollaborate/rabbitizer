@@ -10,14 +10,14 @@
 #include "instructions/RabbitizerInstructionRsp.h"
 
 
-void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word) {
+void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
     self->word = word;
     self->_mandatorybits = 0;
 
     self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 
-    self->vram = 0;
+    self->vram = vram;
     self->_handwrittenCategory = false;
     self->inHandwrittenFunction = false;
     self->category = RABBITIZER_INSTRCAT_CPU;

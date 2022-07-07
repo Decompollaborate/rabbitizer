@@ -104,7 +104,7 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_nd(word, value)              (BITREPACK((word), (value), 17,  1))
 
 
-void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word);
+void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
 void RabbitizerInstruction_destroy(RabbitizerInstruction* self);
 
 

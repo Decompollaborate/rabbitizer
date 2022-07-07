@@ -13,13 +13,14 @@ static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
 }
 
 static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
-    static char *kwlist[] = { "word", "category", NULL };
+    static char *kwlist[] = { "word", "vram", "category", NULL };
     uint32_t word;
+    uint32_t vram;
     PyObject *category = NULL;
     int enumCheck;
     RabbitizerInstrCategory instrCategory = RABBITIZER_INSTRCAT_CPU;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I|O!", kwlist, &word, &rabbitizer_type_Enum_TypeObject, &category)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I|IO!", kwlist, &word, &vram, &rabbitizer_type_Enum_TypeObject, &category)) {
         return -1;
     }
 
@@ -38,13 +39,13 @@ static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObj
 
     switch (instrCategory) {
         case RABBITIZER_INSTRCAT_RSP:
-            RabbitizerInstructionRsp_init(&self->instr, word);
+            RabbitizerInstructionRsp_init(&self->instr, word, vram);
             RabbitizerInstructionRsp_processUniqueId(&self->instr);
             break;
 
         case RABBITIZER_INSTRCAT_CPU:
         case RABBITIZER_INSTRCAT_MAX:
-            RabbitizerInstruction_init(&self->instr, word);
+            RabbitizerInstruction_init(&self->instr, word, vram);
             RabbitizerInstruction_processUniqueId(&self->instr);
             break;
     }
@@ -289,11 +290,28 @@ static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction
 }
 
 
+// To allow piclking the object
+static PyObject *rabbitizer_type_Instruction___reduce__(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    PyObject *args;
+    PyObject *word;
+    PyObject *vram;
+    PyObject *category;
+
+    word = PyLong_FromUnsignedLong(RabbitizerInstruction_getRaw(&self->instr));
+    vram = PyLong_FromUnsignedLong(self->instr.vram);
+    category = rabbitizer_enum_InstrCategory_enumvalues[self->instr.category].instance;
+
+    args = PyTuple_Pack(3, word, vram, category);
+
+    return PyTuple_Pack(2, (PyObject*)&rabbitizer_type_Instruction_TypeObject, args);
+}
+
+
 #define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_NOARGS,                  PyDoc_STR(docs) }
 #define METHOD_ARGS(name, docs)     { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
 
 
-static PyMethodDef Instr_methods[] = {
+static PyMethodDef rabbitizer_type_Instr_methods[] = {
     METHOD_NO_ARGS(getRaw, ""),
     METHOD_NO_ARGS(getImmediate, ""),
     METHOD_NO_ARGS(getProcessedImmediate, ""),
@@ -343,6 +361,8 @@ static PyMethodDef Instr_methods[] = {
     // METHOD_NO_ARGS(getArchitectureVersion, ""),
 
     METHOD_ARGS(disassemble, "description"),
+
+    METHOD_ARGS(__reduce__, ""),
 
     { 0 },
 };
@@ -403,6 +423,6 @@ PyTypeObject rabbitizer_type_Instruction_TypeObject = {
     .tp_repr = (reprfunc) rabbitizer_type_Instruction_repr,
     .tp_str = (reprfunc) rabbitizer_type_Instruction_str,
     .tp_members = rabbitizer_type_Instruction_members,
-    .tp_methods = Instr_methods,
+    .tp_methods = rabbitizer_type_Instr_methods,
     .tp_getset = Instr_getsetters,
 };

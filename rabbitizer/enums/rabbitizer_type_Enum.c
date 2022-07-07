@@ -151,6 +151,36 @@ PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *oth
 }
 
 
+// To allow piclking the object
+static PyObject *rabbitizer_type_Enum___reduce__(PyRabbitizerEnum *self, UNUSED PyObject *closure) {
+    PyObject *args;
+    PyObject *enumType;
+    PyObject *name;
+    PyObject *value;
+
+    enumType = self->enumType; 
+    Py_INCREF(enumType);
+    name = self->name;
+    Py_INCREF(name);
+    value = PyLong_FromLong(self->value);
+
+
+    args = PyTuple_Pack(3, enumType, name, value);
+
+    return PyTuple_Pack(2, (PyObject*)&rabbitizer_type_Enum_TypeObject, args);
+}
+
+
+#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)rabbitizer_type_Enum_##name, METH_NOARGS,                  PyDoc_STR(docs) }
+#define METHOD_ARGS(name, docs)     { #name, (PyCFunction)rabbitizer_type_Enum_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
+
+
+static PyMethodDef rabbitizer_type_Enum_methods[] = {
+    METHOD_ARGS(__reduce__, ""),
+
+    { 0 },
+};
+
 static PyObject *rabbitizer_type_Enum_repr(PyRabbitizerEnum *self) {
     return PyUnicode_FromFormat("<%U: %U (%i)>", self->enumType, self->name, self->value);
 }
@@ -176,6 +206,6 @@ PyTypeObject rabbitizer_type_Enum_TypeObject = {
     .tp_repr = (reprfunc) rabbitizer_type_Enum_repr,
     .tp_str = (reprfunc) rabbitizer_type_Enum_str,
     //.tp_members = rabbitizer_type_Enum_members,
-    //.tp_methods = rabbitizer_type_Enum_methods,
+    .tp_methods = rabbitizer_type_Enum_methods,
     .tp_getset = rabbitizer_type_Enum_getsetters,
 };
