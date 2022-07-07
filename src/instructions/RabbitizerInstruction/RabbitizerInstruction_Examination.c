@@ -42,12 +42,7 @@ bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self
 }
 
 bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_opcode(self) == 0 &&
-    RAB_INSTR_GET_rs(self) == 0 &&
-    RAB_INSTR_GET_rt(self) == 0 &&
-    RAB_INSTR_GET_rd(self) == 0 &&
-    RAB_INSTR_GET_sa(self) == 0 &&
-    RAB_INSTR_GET_function(self) == 0;
+    return self->word == 0;
 }
 
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self) {
