@@ -5,8 +5,6 @@
 
 #include <assert.h>
 
-//#include "instructions/RabbitizerInstruction.h"
-
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
     [RABBITIZER_INSTR_ID_##prefix##_##name] = #name

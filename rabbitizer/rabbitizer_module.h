@@ -11,13 +11,15 @@
 
 #include "enums/enums_utils.h"
 
+#include "instructions/RabbitizerInstruction.h"
+
 // TODO: clean up this...
 
-extern RabbitizerEnumMetadata rabbitizer_enum_Abi_enumvalues[];
-extern RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[];
 
-int rabbitizer_enum_Abi_Check(PyObject *o);
-
+typedef struct PyRabbitizerInstruction {
+    PyObject_HEAD
+    RabbitizerInstruction instr;
+} PyRabbitizerInstruction;
 
 PyObject *rabbitizer_submodule_Utils_Init(void);
 
@@ -25,9 +27,13 @@ extern PyTypeObject rabbitizer_global_config_TypeObject;
 
 extern PyTypeObject rabbitizer_type_Enum_TypeObject;
 extern PyTypeObject rabbitizer_type_Instruction_TypeObject;
+extern PyTypeObject rabbitizer_type_RegistersTracker_TypeObject;
 
-PyObject *rabbitizer_enum_Abi_Init(void);
-PyObject *rabbitizer_enum_InstrCategory_Init(void);
-PyObject *rabbitizer_enum_InstrId_Init(void);
+DECL_ENUM(Abi)
+DECL_ENUM(InstrCategory)
+DECL_ENUM(InstrId)
+
+DECL_ENUM(RegGprO32)
+DECL_ENUM(RegGprN32)
 
 #endif

@@ -39,7 +39,10 @@ static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_ENUM(Abi),
     MODULE_ATTRIBUTE_ENUM(InstrCategory),
     MODULE_ATTRIBUTE_ENUM(InstrId),
+    MODULE_ATTRIBUTE_ENUM(RegGprO32),
+    MODULE_ATTRIBUTE_ENUM(RegGprN32),
     MODULE_ATTRIBUTE_TYPE(Instruction),
+    MODULE_ATTRIBUTE_TYPE(RegistersTracker),
 };
 
 static int rabbitizer_module_attributes_Ready(void) {

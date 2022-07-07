@@ -19,6 +19,15 @@ typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_MAX,
 } RabbitizerInstrType;
 
+typedef enum RabbitizerArchitectureVersion {
+    RABBITIZER_ARCHVERSION_INVALID=-1,
+    RABBITIZER_ARCHVERSION_UNKNOWN,
+    RABBITIZER_ARCHVERSION_MIPS_I,
+    RABBITIZER_ARCHVERSION_MIPS_II,
+    RABBITIZER_ARCHVERSION_MIPS_III,
+    RABBITIZER_ARCHVERSION_MIPS_IV
+} RabbitizerArchitectureVersion;
+
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];
     RabbitizerInstrType instrType;
@@ -38,12 +47,17 @@ typedef struct RabbitizerInstrDescriptor {
 
     bool notEmitedByCompilers;
 
-    bool isHiPair;
-    bool isLoPair;
+    bool canBeHi;
+    bool canBeLo;
     bool doesLink; // "and link" family of instructions
     bool doesDereference;
+    bool doesLoad; // loads data from memory
+    bool doesStore; // stores data to memory
+    bool maybeIsMove;
 
-    // int mipsVersion;
+    bool isPseudo;
+
+    RabbitizerArchitectureVersion architectureVersion;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -71,9 +85,16 @@ bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self)
 
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);
 
-bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self);
-bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_canBeHi(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_canBeLo(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self);
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_doesLoad(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_doesStore(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self);
+
+bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
+
+RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self);
 
 #endif

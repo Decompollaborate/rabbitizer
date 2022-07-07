@@ -73,15 +73,32 @@ bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescrip
     return self->notEmitedByCompilers;
 }
 
-bool RabbitizerInstrDescriptor_isHiPair(const RabbitizerInstrDescriptor *self) {
-    return self->isHiPair;
+bool RabbitizerInstrDescriptor_canBeHi(const RabbitizerInstrDescriptor *self) {
+    return self->canBeHi;
 }
-bool RabbitizerInstrDescriptor_isLoPair(const RabbitizerInstrDescriptor *self) {
-    return self->isLoPair;
+bool RabbitizerInstrDescriptor_canBeLo(const RabbitizerInstrDescriptor *self) {
+    return self->canBeLo;
 }
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self) {
     return self->doesLink;
 }
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self) {
     return self->doesDereference;
+}
+bool RabbitizerInstrDescriptor_doesLoad(const RabbitizerInstrDescriptor *self) {
+    return self->doesLoad;
+}
+bool RabbitizerInstrDescriptor_doesStore(const RabbitizerInstrDescriptor *self) {
+    return self->doesStore;
+}
+bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self) {
+    return self->maybeIsMove;
+}
+
+bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self) {
+    return self->isPseudo;
+}
+
+RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self) {
+    return self->architectureVersion;
 }

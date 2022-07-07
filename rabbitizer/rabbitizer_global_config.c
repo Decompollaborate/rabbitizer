@@ -124,6 +124,8 @@ DEF_MEMBER_GET_SET_BOOL(toolchainTweaks, sn64DivFix)
 
 DEF_MEMBER_GET_SET_INT(misc, opcodeLJust, false, 0, 0)
 DEF_MEMBER_GET_SET_BOOL(misc, unknownInstrComment)
+DEF_MEMBER_GET_SET_BOOL(misc, omit0XOnSmallImm)
+DEF_MEMBER_GET_SET_BOOL(misc, upperCaseImm)
 
 
 static PyGetSetDef rabbitizer_global_config_GetSets[] = {
@@ -147,6 +149,8 @@ static PyGetSetDef rabbitizer_global_config_GetSets[] = {
 
     MEMBER_GET_SET(misc, opcodeLJust, "", NULL),
     MEMBER_GET_SET(misc, unknownInstrComment, "", NULL),
+    MEMBER_GET_SET(misc, omit0XOnSmallImm, "", NULL),
+    MEMBER_GET_SET(misc, upperCaseImm, "", NULL),
 
     { 0 },
 };

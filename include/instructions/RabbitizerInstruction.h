@@ -9,6 +9,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "common/Utils.h"
+
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrDescriptor.h"
 
@@ -25,12 +27,8 @@ typedef enum RabbitizerInstrCategory {
 
 
 typedef struct RabbitizerInstruction {
-    uint8_t opcode;
-    uint8_t rs;
-    uint8_t rt;
-    uint8_t rd;
-    uint8_t sa;
-    uint8_t function;
+    uint32_t word;
+    uint32_t _mandatorybits;
 
     RabbitizerInstrId uniqueId;
     const RabbitizerInstrDescriptor *descriptor;
@@ -41,10 +39,72 @@ typedef struct RabbitizerInstruction {
     RabbitizerInstrCategory category;
 } RabbitizerInstruction;
 
-#define RAB_INSTR_GET_IMMEDIATE(self) (((self)->rd << 11) | ((self)->sa << 6) | ((self)->function))
+
+#define RAB_INSTR_GET_opcode(self)                  (SHIFTR((self)->word, 26,  6))
+#define RAB_INSTR_GET_rs(self)                      (SHIFTR((self)->word, 21,  5))
+#define RAB_INSTR_GET_rt(self)                      (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_GET_rd(self)                      (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_GET_sa(self)                      (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_GET_function(self)                (SHIFTR((self)->word,  0,  6))
+
+#define RAB_INSTR_GET_cop0d(self)                   (SHIFTR((self)->word, 11,  5))
+
+#define RAB_INSTR_GET_instr_index(self)             (SHIFTR((self)->word,  0, 26))
+#define RAB_INSTR_GET_immediate(self)               (SHIFTR((self)->word,  0, 16))
+
+#define RAB_INSTR_GET_fs(self)                      (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_GET_ft(self)                      (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_GET_fd(self)                      (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_GET_cop1cs(self)                  (SHIFTR((self)->word, 11,  5))
+
+#define RAB_INSTR_GET_op(self)                      (SHIFTR((self)->word, 16,  5))
+
+#define RAB_INSTR_GET_code(self)                    (SHIFTR((self)->word,  6, 20))
+#define RAB_INSTR_GET_code_upper(self)              (SHIFTR((self)->word, 16, 10))
+#define RAB_INSTR_GET_code_lower(self)              (SHIFTR((self)->word,  6, 10))
+
+#define RAB_INSTR_GET_fmt(self)                     (SHIFTR((self)->word, 21,  5))
+#define RAB_INSTR_GET_fc(self)                      (SHIFTR((self)->word,  4,  2))
+#define RAB_INSTR_GET_cond(self)                    (SHIFTR((self)->word,  0,  4))
+
+#define RAB_INSTR_GET_cop2t(self)                   (SHIFTR((self)->word, 16,  5))
+
+#define RAB_INSTR_GET_tf(self)                      (SHIFTR((self)->word, 16,  1))
+#define RAB_INSTR_GET_nd(self)                      (SHIFTR((self)->word, 17,  1))
 
 
-void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word);
+#define RAB_INSTR_PACK_opcode(word, value)          (BITREPACK_RIGHT((word), (value), 26,  6))
+#define RAB_INSTR_PACK_rs(word, value)              (BITREPACK((word), (value), 21,  5))
+#define RAB_INSTR_PACK_rt(word, value)              (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_PACK_rd(word, value)              (BITREPACK((word), (value), 11,  5))
+#define RAB_INSTR_PACK_sa(word, value)              (BITREPACK((word), (value),  6,  5))
+#define RAB_INSTR_PACK_function(word, value)        (BITREPACK((word), (value),  0,  6))
+
+#define RAB_INSTR_PACK_cop0d(word, value)           (BITREPACK((word), (value), 11,  5))
+
+#define RAB_INSTR_PACK_instr_index(word, value)     (BITREPACK((word), (value),  0, 26))
+#define RAB_INSTR_PACK_immediate(word, value)       (BITREPACK((word), (value),  0, 16))
+
+#define RAB_INSTR_PACK_code(word, value)            (BITREPACK((word), (value),  6, 20))
+
+#define RAB_INSTR_PACK_fmt(word, value)             (BITREPACK((word), (value), 21,  5))
+#define RAB_INSTR_PACK_fc(word, value)              (BITREPACK((word), (value),  4,  2))
+#define RAB_INSTR_PACK_cond(word, value)            (BITREPACK((word), (value),  0,  4))
+
+#define RAB_INSTR_PACK_fs(word, value)              (BITREPACK((word), (value), 11,  5))
+#define RAB_INSTR_PACK_ft(word, value)              (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_PACK_fd(word, value)              (BITREPACK((word), (value),  6,  5))
+#define RAB_INSTR_PACK_cop1cs(word, value)          (BITREPACK((word), (value), 11,  5))
+
+#define RAB_INSTR_PACK_op(word, value)              (BITREPACK((word), (value), 16,  5))
+
+#define RAB_INSTR_PACK_cop2t(word, value)           (BITREPACK((word), (value), 16,  5))
+
+#define RAB_INSTR_PACK_tf(word, value)              (BITREPACK((word), (value), 16,  1))
+#define RAB_INSTR_PACK_nd(word, value)              (BITREPACK((word), (value), 17,  1))
+
+
+void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
 void RabbitizerInstruction_destroy(RabbitizerInstruction* self);
 
 
@@ -61,31 +121,12 @@ void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self);
 /* Process uniqueId */
 
 
-/* Register getters */
-
-uint8_t RabbitizerInstruction_getFs(const RabbitizerInstruction* self);
-uint8_t RabbitizerInstruction_getFt(const RabbitizerInstruction* self);
-uint8_t RabbitizerInstruction_getFd(const RabbitizerInstruction* self);
-
-/* Register getters */
-
-
-/* Coprocessor stuffs */
-
-uint8_t RabbitizerInstruction_getFmt(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getTf(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getNd(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getFc(const RabbitizerInstruction *self);
-uint8_t RabbitizerInstruction_getCond(const RabbitizerInstruction *self);
-
-/* Coprocessor stuffs */
-
-
 /* General getters */
 
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self);
 
 uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self);
+int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self);
 uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self);
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self);
 
@@ -106,11 +147,17 @@ bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self);
 bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self);
+bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self);
 
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self);
 
 bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
 bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
+
+bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand);
+bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, RabbitizerOperandType operand);
+
+bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 
 /* Instruction examination */
 
@@ -118,6 +165,9 @@ bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstr
 /* Disassembly */
 
 bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self);
+
+size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust);
+size_t RabbitizerInstruction_disassembleOperands(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);
 
 size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust);
 size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);

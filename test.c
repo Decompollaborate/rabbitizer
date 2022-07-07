@@ -9,10 +9,13 @@
 
 
 int main() {
-    uint32_t word = 0x8D4A7E18;
+    uint32_t word;
     RabbitizerInstruction instr;
     char *buffer;
-    int extraLJust = 10;
+    int extraLJust = 5;
+
+    // word = 0x8D4A7E18; // lw
+    word = 0x00004010; // mfhi
 
     RabbitizerInstruction_init(&instr, word);
 

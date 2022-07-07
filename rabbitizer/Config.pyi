@@ -39,5 +39,7 @@ class _RabbitizerConfig:
 
     misc_opcodeLJust: int = 11
     misc_unknownInstrComment: bool = True
+    misc_omit0XOnSmallImm: bool = False
+    misc_upperCaseImm: bool = True
 
 config: _RabbitizerConfig
