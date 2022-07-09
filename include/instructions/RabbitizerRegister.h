@@ -66,7 +66,6 @@ typedef enum RabbitizerRegister_RspVector {
 extern const char *RabbitizerRegister_GprO32_Names[][2];
 extern const char *RabbitizerRegister_GprN32_Names[][2];
 extern const char *RabbitizerRegister_Cop0_Names[][2];
-extern const char *RabbitizerRegister_Cop0_Names[][2];
 extern const char *RabbitizerRegister_Cop1O32_Names[][2];
 extern const char *RabbitizerRegister_Cop1N32_Names[][2];
 extern const char *RabbitizerRegister_Cop1N64_Names[][2];

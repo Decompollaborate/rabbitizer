@@ -5,6 +5,9 @@
 
 #include "common/RabbitizerConfig.h"
 
+
+// NOLINTBEGIN(readability-magic-numbers)
+
 void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
     uint32_t rd;
@@ -587,3 +590,5 @@ void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
             break;
     }
 }
+
+// NOLINTEND(readability-magic-numbers)

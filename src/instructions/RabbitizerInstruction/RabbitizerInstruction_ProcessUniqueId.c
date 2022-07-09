@@ -6,6 +6,9 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
+
+// NOLINTBEGIN(readability-magic-numbers)
+
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
@@ -994,3 +997,5 @@ void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self) {
             break;
     }
 }
+
+// NOLINTEND(readability-magic-numbers)

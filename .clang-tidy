@@ -1,4 +1,4 @@
-Checks: '-*,readability-braces-around-statements,readability-inconsistent-declaration-parameter-name'
+Checks: 'readability-*,-readability-magic-numbers,clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling,bugprone*,-bugprone-branch-clone,modernize*,performance*,portability*,diagnostic-*,analyzer-*,misc*,-misc-no-recursion'
 WarningsAsErrors: ''
 HeaderFilterRegex: '(src|include)\/.*\.h$'
 FormatStyle: 'file'
