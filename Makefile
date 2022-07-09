@@ -59,7 +59,7 @@ format:
 	clang-format-11 -i -style=file $(C_FILES)
 
 tidy:
-	@echo "TODO"
+	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS)
 
 tests: build/test.elf
 
