@@ -18,7 +18,7 @@ jobs:
         uses: pypa/cibuildwheel@v2.5.0
         env:
           CIBW_ARCHS_WINDOWS: "auto"
-          CIBW_ARCHS_LINUX: "auto x86_64 aarch64"
+          CIBW_ARCHS_LINUX: "auto"
           CIBW_ARCHS_MACOS: "all"
 
       - uses: actions/upload-artifact@v2
