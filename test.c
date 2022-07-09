@@ -17,7 +17,7 @@ int main() {
     // word = 0x8D4A7E18; // lw
     word = 0x00004010; // mfhi
 
-    RabbitizerInstruction_init(&instr, word);
+    RabbitizerInstruction_init(&instr, word, 0x80000000);
 
     RabbitizerInstruction_processUniqueId(&instr);
 
