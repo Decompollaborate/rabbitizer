@@ -9,7 +9,6 @@
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerRegister.h"
 
-
 bool RabbitizerInstruction_isImplemented(const RabbitizerInstruction *self) {
     if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_INVALID) {
         return false;
@@ -120,7 +119,6 @@ bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstr
     return RabbitizerInstruction_getRaw(self) != RabbitizerInstruction_getRaw(other);
 }
 
-
 bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand) {
     size_t i;
 
@@ -187,7 +185,6 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             }
             break;
 
-
         /* rsp */
         case RABBITIZER_OPERAND_TYPE_RSP_rs:
             if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_rs)) {
@@ -213,10 +210,10 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
         case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
             break;
 
-        // case RABBITIZER_OPERAND_TYPE_RSP_elementhigh:
-        // case RABBITIZER_OPERAND_TYPE_RSP_elementlow:
-        // case RABBITIZER_OPERAND_TYPE_RSP_index:
-        // case RABBITIZER_OPERAND_TYPE_RSP_offset:
+            // case RABBITIZER_OPERAND_TYPE_RSP_elementhigh:
+            // case RABBITIZER_OPERAND_TYPE_RSP_elementlow:
+            // case RABBITIZER_OPERAND_TYPE_RSP_index:
+            // case RABBITIZER_OPERAND_TYPE_RSP_offset:
 
         case RABBITIZER_OPERAND_TYPE_RSP_vs:
             if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_vs)) {
@@ -274,7 +271,7 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
                 return true;
             }
             break;
-        /* rsp */
+            /* rsp */
 
         case RABBITIZER_OPERAND_TYPE_INVALID:
         case RABBITIZER_OPERAND_TYPE_MAX:
@@ -284,7 +281,6 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
 
     return RabbitizerInstruction_hasOperand(self, operand);
 }
-
 
 bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
     size_t i;
@@ -355,7 +351,6 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
-
 
             case RABBITIZER_OPERAND_TYPE_RSP_rs:
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);

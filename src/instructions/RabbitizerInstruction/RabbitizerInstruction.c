@@ -9,7 +9,6 @@
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstructionRsp.h"
 
-
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
     self->word = word;
     self->_mandatorybits = 0;
@@ -26,7 +25,6 @@ void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint
 void RabbitizerInstruction_destroy(RabbitizerInstruction *self) {
     (void)self;
 }
-
 
 /* General getters */
 
@@ -55,7 +53,7 @@ uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *
         vram |= 0x80000000;
     } else {
         // Jumps are PC-region branches. The upper bits are filled with the address in the delay slot
-        vram |= (self->vram+4) & 0xFF000000;
+        vram |= (self->vram + 4) & 0xFF000000;
     }
     return vram;
 }
@@ -63,7 +61,7 @@ uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self) {
     int32_t diff = RabbitizerUtils_From2Complement(RabbitizerInstruction_getImmediate(self), 16);
 
-    return diff*4 + 4;
+    return diff * 4 + 4;
 }
 
 int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram) {
@@ -74,7 +72,6 @@ int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction
 }
 
 /* General getters */
-
 
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
     size_t i;
@@ -192,7 +189,7 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
 
             case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
                 self->word = RAB_INSTR_RSP_PACK_offset(self->word, 0);
-                self->word = RAB_INSTR_PACK_rs(self->word, 0);;
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_INVALID:

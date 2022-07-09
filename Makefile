@@ -10,7 +10,7 @@ CSTD            := -std=c11
 CFLAGS          :=
 LDFLAGS         :=
 WARNINGS        := -Wall -Wextra
-# WARNINGS        := -Wall -Wextra -Wpedantic # binary constants :s
+# WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded # binary constants :s
 WARNINGS        += -Wno-cast-function-type
 WARNINGS        += -Werror=implicit-function-declaration -Werror=incompatible-pointer-types -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
 
@@ -41,6 +41,12 @@ O_FILES         := $(foreach f,$(C_FILES:.c=.o),build/$f)
 DEP_FILES       := $(O_FILES:%.o=%.d)
 
 
+# create build directories
+$(shell mkdir -p $(foreach dir,$(SRC_DIRS),build/$(dir)))
+
+
+#### Main Targets ###
+
 all: tests
 
 clean:
@@ -50,7 +56,7 @@ distclean: clean
 	$(RM) -rf dist rabbitizer.egg-info .mypy_cache
 
 format:
-	@echo "TODO"
+	clang-format-11 -i -style=file $(C_FILES)
 
 tidy:
 	@echo "TODO"
@@ -58,11 +64,11 @@ tidy:
 tests: build/test.elf
 
 .PHONY: all clean distclean format tidy tests
+.DEFAULT_GOAL := all
 .SECONDARY:
 
 
-# create build directories
-$(shell mkdir -p $(foreach dir,$(SRC_DIRS),build/$(dir)))
+#### Various Recipes ####
 
 build/%.elf: %.c $(O_FILES)
 	$(CC) -MMD $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) $(LDFLAGS) -o $@ $^

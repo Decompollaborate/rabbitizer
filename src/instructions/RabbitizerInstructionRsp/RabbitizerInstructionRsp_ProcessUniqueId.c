@@ -5,7 +5,6 @@
 
 #include "common/RabbitizerConfig.h"
 
-
 void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
     uint32_t rd;
@@ -221,7 +220,6 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-
 void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
 
@@ -333,7 +331,6 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
     }
 }
 
-
 void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self) {
     uint32_t rt = RAB_INSTR_GET_rt(self);
 
@@ -362,7 +359,6 @@ void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
@@ -385,9 +381,8 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
-    uint32_t aux = SHIFTR(self->word, 25,  1);
+    uint32_t aux = SHIFTR(self->word, 25, 1);
     uint32_t elementhigh;
     uint32_t function;
 
@@ -566,7 +561,6 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-
 void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
@@ -585,7 +579,7 @@ void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
         case 0x10:
             RabbitizerInstructionRsp_processUniqueId_Coprocessor0(self);
             break;
-        //case 0x11:
+        // case 0x11:
         //    RabbitizerInstructionRsp_processUniqueId_Coprocessor1(self);
         //    break;
         case 0x12:

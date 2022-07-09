@@ -3,7 +3,6 @@
 
 #include "instructions/RabbitizerInstructionRsp.h"
 
-
 void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
     RabbitizerInstruction_init(self, word, vram);
 
@@ -17,7 +16,6 @@ void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word, u
 void RabbitizerInstructionRsp_destroy(RabbitizerInstruction *self) {
     RabbitizerInstruction_destroy(self);
 }
-
 
 uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *self) {
     uint16_t offset = RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self);

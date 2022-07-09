@@ -6,7 +6,6 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
@@ -172,7 +171,7 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
             break;
         case 0b111010:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_swc2;
-        // 0b111011: "",
+            // 0b111011: "",
             break;
         case 0b111100:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_scd;
@@ -223,7 +222,6 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
-
 
 void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
@@ -389,7 +387,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
         case 0b110110:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_tne;
             break;
-        // 0b110_111: "",
+            // 0b110_111: "",
 
         case 0b111000:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_dsll;
@@ -483,7 +481,6 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
     }
 }
 
-
 void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
     uint32_t rt = RAB_INSTR_GET_rt(self);
 
@@ -544,7 +541,6 @@ void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-
 void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
     uint32_t tf;
@@ -574,7 +570,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
         case 0b00110:
             self->uniqueId = RABBITIZER_INSTR_ID_cpu_ctc0;
             break;
-        // 0b00_111: "",
+            // 0b00_111: "",
 
         case 0b01000:
             tf = RAB_INSTR_GET_tf(self);
@@ -625,7 +621,6 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
-
 
 void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
     uint8_t fmt = RAB_INSTR_GET_fmt(self);
@@ -967,14 +962,11 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-
 void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
     self->_handwrittenCategory = true;
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
-
-
 
 void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
