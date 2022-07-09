@@ -17,7 +17,7 @@ jobs:
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.5.0
         env:
-          CIBW_ARCHS_WINDOWS: "all"
+          CIBW_ARCHS_WINDOWS: "auto"
           CIBW_ARCHS_LINUX: "all"
           CIBW_ARCHS_MACOS: "all"
 
