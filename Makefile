@@ -34,10 +34,11 @@ ifneq ($(EXPERIMENTAL),0)
 endif
 
 
-SRC_DIRS    := $(shell find src -type d)
-C_FILES     := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
-H_FILES     := $(foreach dir,$(IINC),$(wildcard $(dir)/**/*.h))
-O_FILES     := $(foreach f,$(C_FILES:.c=.o),build/$f)
+SRC_DIRS        := $(shell find src -type d)
+C_FILES         := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
+H_FILES         := $(foreach dir,$(IINC),$(wildcard $(dir)/**/*.h))
+O_FILES         := $(foreach f,$(C_FILES:.c=.o),build/$f)
+DEP_FILES       := $(O_FILES:%.o=%.d)
 
 
 all: tests
@@ -51,9 +52,12 @@ distclean: clean
 format:
 	@echo "TODO"
 
+tidy:
+	@echo "TODO"
+
 tests: build/test.elf
 
-.PHONY: all clean distclean format tests
+.PHONY: all clean distclean format tidy tests
 .SECONDARY:
 
 
@@ -61,7 +65,11 @@ tests: build/test.elf
 $(shell mkdir -p $(foreach dir,$(SRC_DIRS),build/$(dir)))
 
 build/%.elf: %.c $(O_FILES)
-	$(CC) $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
+	$(CC) -MMD $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 build/%.o: %.c
-	$(CC) -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) -o $@ $<
+#	The -MMD flags additionaly creates a .d file with the same name as the .o file.
+	$(CC) -MMD -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) -o $@ $<
+
+
+-include $(DEP_FILES)

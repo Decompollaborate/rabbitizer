@@ -13,7 +13,9 @@
 // TODO: abi checks
 
 void RabbitizerRegistersTracker_init(RabbitizerRegistersTracker *self, const RabbitizerRegistersTracker *other) {
-    for (size_t i = 0; i < ARRAY_COUNT(self->registers); i++) {
+    size_t i;
+
+    for (i = 0; i < ARRAY_COUNT(self->registers); i++) {
         RabbitizerTrackedRegisterState_init(&self->registers[i], i);
         if (other != NULL) {
             RabbitizerTrackedRegisterState_copyState(&self->registers[i], &other->registers[i]);
