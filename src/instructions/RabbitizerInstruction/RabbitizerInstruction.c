@@ -22,8 +22,7 @@ void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint
     self->category = RABBITIZER_INSTRCAT_CPU;
 }
 
-void RabbitizerInstruction_destroy(RabbitizerInstruction *self) {
-    (void)self;
+void RabbitizerInstruction_destroy(UNUSED RabbitizerInstruction *self) {
 }
 
 /* General getters */

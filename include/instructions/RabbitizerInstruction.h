@@ -104,18 +104,27 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_nd(word, value)              (BITREPACK((word), (value), 17,  1))
 
 
+NON_NULL(1)
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
+NON_NULL(1)
 void RabbitizerInstruction_destroy(RabbitizerInstruction* self);
 
 
 /* Process uniqueId */
 
+NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self);
 
 /* Process uniqueId */
@@ -123,40 +132,60 @@ void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self);
 
 /* General getters */
 
+NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self);
 
+NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self);
 
+NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram);
 
 /* General getters */
 
-
+NON_NULL(1)
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self);
 
 
 /* Instruction examination */
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isImplemented(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self);
 
+NODISCARD NON_NULL(1) PURE
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self);
 
+NODISCARD NON_NULL(1, 2) PURE
 bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
+NODISCARD NON_NULL(1, 2) PURE
 bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self, const RabbitizerInstruction *other);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, RabbitizerOperandType operand);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 
 /* Instruction examination */
@@ -164,18 +193,27 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 
 /* Disassembly */
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self);
 
+NODISCARD NON_NULL(1) PURE
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength);
+NON_NULL(1, 2)
 size_t RabbitizerInstruction_disassembleOperands(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
 
+NODISCARD NON_NULL(1) PURE
 size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust);
+NON_NULL(1, 2)
 size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);
 
+NODISCARD NON_NULL(1) PURE
 size_t RabbitizerInstruction_getSizeForBufferDataDisasm(const RabbitizerInstruction *self, int extraLJust);
+NON_NULL(1, 2)
 size_t RabbitizerInstruction_disassembleAsData(const RabbitizerInstruction *self, char *dst, int extraLJust);
 
+NODISCARD NON_NULL(1) PURE
 size_t RabbitizerInstruction_getSizeForBuffer(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust);
+NON_NULL(1, 2)
 size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);
 
 /* Disassembly */

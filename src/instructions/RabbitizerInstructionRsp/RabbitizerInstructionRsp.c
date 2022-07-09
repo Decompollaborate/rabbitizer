@@ -55,9 +55,7 @@ uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *s
     }
 }
 
-uint8_t RabbitizerInstructionRsp_processVectorElement(const RabbitizerInstruction *self, uint8_t element) {
-    (void)self;
-
+uint8_t RabbitizerInstructionRsp_processVectorElement(UNUSED const RabbitizerInstruction *self, uint8_t element) {
     if ((element & 0x8) == 0x8) {
         return element & 7;
     }

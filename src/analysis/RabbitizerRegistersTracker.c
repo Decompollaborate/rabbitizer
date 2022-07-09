@@ -230,9 +230,9 @@ void RabbitizerRegistersTracker_unsetRegistersAfterFuncCall(RabbitizerRegistersT
     }
 }
 
-bool RabbitizerRegistersTracker_getAddressIfCanSetType(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset,
+bool RabbitizerRegistersTracker_getAddressIfCanSetType(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset,
                                                        uint32_t *dstAddress) {
-    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
+    const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (!state->hasLoValue) {
         return false;
@@ -246,8 +246,8 @@ bool RabbitizerRegistersTracker_getAddressIfCanSetType(RabbitizerRegistersTracke
     return false;
 }
 
-bool RabbitizerRegistersTracker_getJrInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset, uint32_t *dstAddress) {
-    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
+bool RabbitizerRegistersTracker_getJrInfo(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset, uint32_t *dstAddress) {
+    const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (!state->hasLoValue || !state->dereferenced) {
         return false;
@@ -276,8 +276,8 @@ void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, con
     }
 }
 
-bool RabbitizerRegistersTracker_getLuiOffsetForConstant(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset) {
-    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
+bool RabbitizerRegistersTracker_getLuiOffsetForConstant(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset) {
+    const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (!state->hasLuiValue) {
         return false;
@@ -293,9 +293,10 @@ void RabbitizerRegistersTracker_processConstant(RabbitizerRegistersTracker *self
     RabbitizerTrackedRegisterState_setLo(stateDst, value, offset);
 }
 
+// TODO: this function should not be changing the state of the tracker
 bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, int *dstOffset,
                                                   bool *dstIsGp) {
-    RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
+    const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
     if (state->hasLuiValue && !state->luiSetOnBranchLikely) {
         *dstOffset = state->luiOffset;
@@ -337,8 +338,8 @@ void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, cons
     }
 }
 
-bool RabbitizerRegistersTracker_hasLoButNoHi(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr) {
-    RabbitizerTrackedRegisterState *state;
+bool RabbitizerRegistersTracker_hasLoButNoHi(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr) {
+    const RabbitizerTrackedRegisterState *state;
 
     assert(instr != NULL);
 

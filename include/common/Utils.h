@@ -12,30 +12,39 @@
 #define __attribute__(x)
 #endif
 
-#if __STDC_VERSION__ >= 202300L
+#if __STDC_VERSION__ >= 202000L
+#define CONST [[gnu::const]]
 #define DEPRECATED(reason) [[deprecated (reason)]]
 #define FALLTHROUGH [[fallthrough]]
-#define NODISCARD(reason) [[nodiscard (reason)]]
+#define NODISCARD [[nodiscard]]
 #define NORETURN [[noreturn]]
+#define NON_NULL(...) [[gnu::nonnull (__VA_ARGS__)]]
+#define PURE [[gnu::pure]]
+#define RETURNS_NON_NULL [[gnu::returns_nonnull]]
 #define UNUSED [[maybe_unused]]
 #else
+#define CONST __attribute__((const))
 #define DEPRECATED(reason) __attribute__((deprecated (reason)))
 #define FALLTHROUGH __attribute__((fallthrough))
-#define NODISCARD(reason) __attribute__((warn_unused_result))
+#define NODISCARD __attribute__((warn_unused_result))
 #define NORETURN _Noreturn
+#define NON_NULL(...) __attribute__((nonnull (__VA_ARGS__)))
+#define PURE __attribute__((pure))
+#define RETURNS_NON_NULL __attribute__((returns_nonnull))
 #define UNUSED __attribute__((unused))
 #endif
 
+
 #if defined(_MSC_VER)
 #  define UNREACHABLE __assume(0)
-#else
+#elif defined(__GNUC__) || defined(__clang__)
 #  define UNREACHABLE __builtin_unreachable()
+#else
+#  define UNREACHABLE
 #endif
 
-#define PURE __attribute__((pure))
 
-
-#define ARRAY_COUNT(arr) (sizeof(arr) / sizeof(arr[0]))
+#define ARRAY_COUNT(arr) (sizeof(arr) / sizeof((arr)[0]))
 
 #define MASK(v, w) ((v) & ((1 << (w)) - 1))
 
@@ -58,7 +67,9 @@
 #define BITREPACK_RIGHT(fullword, v, s, w) (SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 
 
+CONST NODISCARD
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits);
+NON_NULL(1)
 size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar);
 
 #endif
