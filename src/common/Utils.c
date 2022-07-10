@@ -25,3 +25,48 @@ size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar) {
 
     return count;
 }
+
+size_t RabbitizerUtils_escapeString(char *dst, size_t dstSize, const char *src, size_t srcSize) {
+    size_t srcPos = 0;
+    size_t dstpos = 0;
+
+    for (; srcPos < srcSize && dstpos < dstSize; srcPos++, src++) {
+        switch (*src) {
+            case '\a':
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, 'a');
+                break;
+
+            case '\t':
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, 't');
+                break;
+
+            case '\n':
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, 'n');
+                break;
+
+            case '\f':
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, 'f');
+                break;
+
+            case '\r':
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, 'r');
+                break;
+
+            case '"':
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '"');
+                break;
+
+            default:
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, *src);
+                break;
+        }
+    }
+
+    return dstpos;
+}

@@ -12,33 +12,6 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-#define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
-    do {                                                       \
-        size_t __tempSize = expression;                        \
-        (buffer) += __tempSize;                                \
-        (totalSize) += __tempSize;                             \
-    } while (0)
-
-#define RABUTILS_BUFFER_WRITE_CHAR(buffer, totalSize, character) \
-    do {                                                         \
-        *(buffer) = (character);                                 \
-        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, 1);           \
-    } while (0)
-
-#define RABUTILS_BUFFER_SPRINTF(buffer, totalSize, format, ...) \
-    do {                                                        \
-        int _len = sprintf(buffer, format, __VA_ARGS__);        \
-        assert(_len > 0);                                       \
-        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _len);       \
-    } while (0)
-
-#define RABUTILS_BUFFER_CPY(buffer, totalSize, string)         \
-    do {                                                       \
-        size_t _tempSize = strlen(string);                     \
-        memcpy(buffer, string, _tempSize);                     \
-        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _tempSize); \
-    } while (0)
-
 typedef size_t (*OperandCallback)(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
 
 size_t RabbitizerOperandType_processRs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {

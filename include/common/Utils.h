@@ -67,9 +67,39 @@
 #define BITREPACK_RIGHT(fullword, v, s, w) (SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 
 
+#define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
+    do {                                                       \
+        size_t __tempSize = expression;                        \
+        (buffer) += __tempSize;                                \
+        (totalSize) += __tempSize;                             \
+    } while (0)
+
+#define RABUTILS_BUFFER_WRITE_CHAR(buffer, totalSize, character) \
+    do {                                                         \
+        *(buffer) = (character);                                 \
+        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, 1);           \
+    } while (0)
+
+#define RABUTILS_BUFFER_SPRINTF(buffer, totalSize, format, ...) \
+    do {                                                        \
+        int _len = sprintf(buffer, format, __VA_ARGS__);        \
+        assert(_len > 0);                                       \
+        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _len);       \
+    } while (0)
+
+#define RABUTILS_BUFFER_CPY(buffer, totalSize, string)         \
+    do {                                                       \
+        size_t _tempSize = strlen(string);                     \
+        memcpy(buffer, string, _tempSize);                     \
+        RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _tempSize); \
+    } while (0)
+
+
 CONST NODISCARD
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits);
 NON_NULL(1)
 size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar);
+NON_NULL(1, 3)
+size_t RabbitizerUtils_escapeString(char *dst, size_t dstSize, const char *src, size_t srcSize);
 
 #endif

@@ -11,8 +11,11 @@ CFLAGS          :=
 LDFLAGS         :=
 WARNINGS        := -Wall -Wextra
 # WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded # binary constants :s
-WARNINGS        += -Wno-cast-function-type
 WARNINGS        += -Werror=implicit-function-declaration -Werror=incompatible-pointer-types -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
+
+ifeq ($(CC),gcc)
+    WARNINGS    += -Wno-cast-function-type
+endif
 
 ifeq ($(DEBUG),0)
 	OPTFLAGS    := -O2 -g

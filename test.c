@@ -5,6 +5,7 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 
@@ -30,6 +31,12 @@ int main() {
 
     free(buffer);
     RabbitizerInstruction_destroy(&instr);
+
+    char someMagicBuffer[0x1000];
+
+    RabbitizerUtils_escapeString(someMagicBuffer, ARRAY_COUNT(someMagicBuffer), "\tsomeExample\n", strlen("\tsomeExample\n"));
+
+    printf("%s\n", someMagicBuffer);
 
     return 0;
 }
