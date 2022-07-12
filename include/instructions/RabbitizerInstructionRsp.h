@@ -30,19 +30,27 @@
 #define RAB_INSTR_RSP_PACK_offset(word, value)      (BITREPACK((word), value,  0,  7))
 
 
+NON_NULL(1)
 void RabbitizerInstructionRsp_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
+NON_NULL(1)
 void RabbitizerInstructionRsp_destroy(RabbitizerInstruction *self);
 
 
+NON_NULL(1)
 void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *self);
+NON_NULL(1)
 void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self);
 
+NON_NULL(1)
 void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self);
 
 
+NODISCARD NON_NULL(1) PURE
 uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *self);
 
+NODISCARD NON_NULL(1) PURE
 uint8_t RabbitizerInstructionRsp_processVectorElement(const RabbitizerInstruction *self, uint8_t element);
 
 

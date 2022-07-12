@@ -7,6 +7,7 @@
 
 #include <stdbool.h>
 
+#include "common/Utils.h"
 #include "RabbitizerOperandType.h"
 #include "RabbitizerInstrId.h"
 
@@ -64,37 +65,61 @@ typedef struct RabbitizerInstrDescriptor {
 extern const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[];
 
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isUnknownType(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isJType(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isIType(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isJump(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isTrap(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isFloat(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isDouble(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isUnsigned(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_canBeHi(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_canBeLo(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_doesLink(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_doesDereference(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_doesLoad(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_doesStore(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
 
+NODISCARD NON_NULL(1) PURE
 RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self);
 
 #endif

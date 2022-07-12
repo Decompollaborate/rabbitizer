@@ -8,59 +8,55 @@
 #include "common/Utils.h"
 #include "common/RabbitizerConfig.h"
 
+#define RABBITIZER_DEF_REG(prefix, name, numeric) [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, "$" #name }
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, "$" #name }
-
-#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
-    [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, #name }
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, #name }
 
 // numeric, named
 
 const char *RabbitizerRegister_GprO32_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_GprO32.inc"
+#include "instructions/registers/RabbitizerRegister_GprO32.inc"
 };
 
 const char *RabbitizerRegister_GprN32_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_GprN32.inc"
+#include "instructions/registers/RabbitizerRegister_GprN32.inc"
 };
 
 const char *RabbitizerRegister_Cop0_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_Cop0.inc"
+#include "instructions/registers/RabbitizerRegister_Cop0.inc"
 };
 
 const char *RabbitizerRegister_Cop1O32_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_Cop1O32.inc"
+#include "instructions/registers/RabbitizerRegister_Cop1O32.inc"
 };
 
 const char *RabbitizerRegister_Cop1N32_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_Cop1N32.inc"
+#include "instructions/registers/RabbitizerRegister_Cop1N32.inc"
 };
 
 const char *RabbitizerRegister_Cop1N64_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
+#include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
 };
 
 const char *RabbitizerRegister_Cop1Control_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_Cop1Control.inc"
+#include "instructions/registers/RabbitizerRegister_Cop1Control.inc"
 };
 
 const char *RabbitizerRegister_Cop2_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_Cop2.inc"
+#include "instructions/registers/RabbitizerRegister_Cop2.inc"
 };
 
 const char *RabbitizerRegister_RspGpr_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_RspGpr.inc"
+#include "instructions/registers/RabbitizerRegister_RspGpr.inc"
 };
 
 const char *RabbitizerRegister_RspCop0_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_RspCop0.inc"
+#include "instructions/registers/RabbitizerRegister_RspCop0.inc"
 };
 
 const char *RabbitizerRegister_RspVector_Names[][2] = {
-    #include "instructions/registers/RabbitizerRegister_RspVector.inc"
+#include "instructions/registers/RabbitizerRegister_RspVector.inc"
 };
-
 
 const char *RabbitizerRegister_getNameGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_GprO32_Names));
@@ -82,7 +78,8 @@ const char *RabbitizerRegister_getNameGpr(uint8_t regValue) {
 const char *RabbitizerRegister_getNameCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop0_Names));
 
-    return RabbitizerRegister_Cop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300Cop0NamedRegisters ? 1 : 0];
+    return RabbitizerRegister_Cop0_Names[regValue]
+                                        [RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300Cop0NamedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_getNameCop1(uint8_t regValue) {
@@ -125,7 +122,8 @@ const char *RabbitizerRegister_getNameRspGpr(uint8_t regValue) {
 const char *RabbitizerRegister_getNameRspCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspCop0_Names));
 
-    return RabbitizerRegister_RspCop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300RspCop0NamedRegisters ? 1 : 0];
+    return RabbitizerRegister_RspCop0_Names[regValue]
+                                           [RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300RspCop0NamedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_getNameRspVector(uint8_t regValue) {

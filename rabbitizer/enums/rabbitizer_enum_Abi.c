@@ -24,7 +24,7 @@ static PyObject *rabbitizer_enum_Abi_fromStr(UNUSED PyObject *self, PyObject *ar
     RabbitizerAbi abi;
     PyObject *ret;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s", kwlist, &name)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "z", kwlist, &name)) {
         return NULL;
     }
 

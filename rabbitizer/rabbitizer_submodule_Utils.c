@@ -18,12 +18,44 @@ static PyObject *rabbitizer_submodule_Utils_from2Complement(UNUSED PyObject *sel
     return PyLong_FromLong(RabbitizerUtils_From2Complement(number, bits));
 }
 
+static PyObject *rabbitizer_submodule_Utils_escapeString(UNUSED PyObject *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "src", NULL };
+    const char *src = NULL;
+    Py_ssize_t srcSize = 0;
+    char *dst;
+    size_t dstSize;
+    size_t wroteBytes;
+    PyObject *ret;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s#", kwlist, &src, &srcSize)) {
+        return NULL;
+    }
+
+    dstSize = 2 * srcSize;
+    dst = malloc(dstSize * sizeof(char));
+    if (dst == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error on 'escapeString'");
+        return NULL;
+    }
+
+    wroteBytes = RabbitizerUtils_escapeString(dst, dstSize, src, srcSize);
+    if (wroteBytes > dstSize) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error on 'escapeString'");
+        return NULL;
+    }
+
+    ret = PyUnicode_FromStringAndSize(dst, wroteBytes);
+    free(dst);
+    return ret;
+}
+
 
 #define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction) rabbitizer_submodule_Utils_##name, METH_NOARGS,                  PyDoc_STR(docs) }
 #define METHOD_ARGS(name, docs)     { #name, (PyCFunction) rabbitizer_submodule_Utils_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
 
 static PyMethodDef rabbitizer_submodule_Utils_methods[] = {
     METHOD_ARGS(from2Complement, ""),
+    METHOD_ARGS(escapeString, ""),
 
     { 0 },
 };

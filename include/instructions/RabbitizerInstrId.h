@@ -5,6 +5,8 @@
 #define RABBITIZER_INSTRID_H
 #pragma once
 
+#include "common/Utils.h"
+
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
     RABBITIZER_INSTR_ID_##prefix##_##name
@@ -29,6 +31,7 @@ typedef enum RabbitizerInstrId {
 extern const char *RabbitizerInstrId_Names[];
 
 
+CONST NODISCARD RETURNS_NON_NULL
 const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId);
 
 #endif

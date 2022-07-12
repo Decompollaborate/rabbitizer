@@ -15,7 +15,7 @@ class Abi:
     N64: Enum
 
     @staticmethod
-    def fromStr(name: str) -> Enum: ...
+    def fromStr(name: str | None) -> Enum: ...
 
 
 class _RabbitizerConfig:

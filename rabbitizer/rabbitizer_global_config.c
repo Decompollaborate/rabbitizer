@@ -11,16 +11,14 @@
 
 
 #define DEF_MEMBER_GET_BOOL(category, name) \
-    static PyObject *rabbitizer_global_config_get_##category##_##name(PyObject *self, PyObject *Py_UNUSED(ignored)) { \
-        (void)self; \
+    static PyObject *rabbitizer_global_config_get_##category##_##name(UNUSED PyObject *self, UNUSED PyObject *closure) { \
         if (RabbitizerConfig_Cfg.category.name) { \
             Py_RETURN_TRUE; \
         } \
         Py_RETURN_FALSE; \
     }
 #define DEF_MEMBER_SET_BOOL(category, name) \
-    static int rabbitizer_global_config_set_##category##_##name(PyObject *self, PyObject *value, void *Py_UNUSED(closure)) { \
-        (void)self; \
+    static int rabbitizer_global_config_set_##category##_##name(UNUSED PyObject *self, PyObject *value, UNUSED void *closure) { \
         if (value == NULL) { \
             PyErr_SetString(PyExc_TypeError, "Cannot delete '" #category "." #name "' attribute"); \
             return -1; \
@@ -35,14 +33,12 @@
 
 
 #define DEF_MEMBER_GET_INT(category, name) \
-    static PyObject *rabbitizer_global_config_get_##category##_##name(PyObject *self, PyObject *Py_UNUSED(ignored)) { \
-        (void)self; \
+    static PyObject *rabbitizer_global_config_get_##category##_##name(UNUSED PyObject *self, UNUSED PyObject *closure) { \
         return PyLong_FromLong(RabbitizerConfig_Cfg.category.name); \
     }
 #define DEF_MEMBER_SET_INT(category, name, rangeCheck, minVal, maxVal) \
-    static int rabbitizer_global_config_set_##category##_##name(PyObject *self, PyObject *value, void *Py_UNUSED(closure)) { \
+    static int rabbitizer_global_config_set_##category##_##name(UNUSED PyObject *self, PyObject *value, UNUSED void *closure) { \
         long val; \
-        (void)self; \
         if (value == NULL) { \
             PyErr_SetString(PyExc_TypeError, "Cannot delete '" #category "_" #name "' attribute"); \
             return -1; \

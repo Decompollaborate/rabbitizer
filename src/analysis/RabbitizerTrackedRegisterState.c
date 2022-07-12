@@ -7,7 +7,6 @@
 
 #include "common/Utils.h"
 
-
 void RabbitizerTrackedRegisterState_init(RabbitizerTrackedRegisterState *self, int registerNum) {
     self->registerNum = registerNum;
 
@@ -25,7 +24,6 @@ void RabbitizerTrackedRegisterState_init(RabbitizerTrackedRegisterState *self, i
 
 void RabbitizerTrackedRegisterState_destroy(UNUSED RabbitizerTrackedRegisterState *self) {
 }
-
 
 void RabbitizerTrackedRegisterState_clear(RabbitizerTrackedRegisterState *self) {
     self->hasLuiValue = false;
@@ -52,7 +50,6 @@ void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self
     self->value = 0;
 }
 
-
 void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other) {
     self->hasLuiValue = other->hasLuiValue;
     self->luiOffset = other->luiOffset;
@@ -65,7 +62,6 @@ void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *se
 
     self->value = other->value;
 }
-
 
 void RabbitizerTrackedRegisterState_setHi(RabbitizerTrackedRegisterState *self, uint32_t value, int offset) {
     self->hasLuiValue = true;
@@ -81,7 +77,6 @@ void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, 
     self->dereferenceOffset = 0;
 }
 
-
 void RabbitizerTrackedRegisterState_deref(RabbitizerTrackedRegisterState *self, int offset) {
     self->dereferenced = true;
     self->dereferenceOffset = offset;
@@ -94,7 +89,6 @@ void RabbitizerTrackedRegisterState_dereferenceState(RabbitizerTrackedRegisterSt
     RabbitizerTrackedRegisterState_copyState(self, other);
     RabbitizerTrackedRegisterState_deref(self, offset);
 }
-
 
 bool RabbitizerTrackedRegisterState_hasAnyValue(const RabbitizerTrackedRegisterState *self) {
     return self->hasLuiValue || self->hasLoValue;
