@@ -6,7 +6,7 @@
 #include <string.h>
 
 RabbitizerAbi RabbitizerAbi_fromStr(const char *name) {
-    if (strcmp(name, "32") == 0 || strcmp(name, "o32") == 0 || strcmp(name, "O32") == 0) {
+    if (name == NULL || strcmp(name, "32") == 0 || strcmp(name, "o32") == 0 || strcmp(name, "O32") == 0) {
         return RABBITIZER_ABI_O32;
     }
     if (strcmp(name, "n32") == 0 || strcmp(name, "N32") == 0) {
