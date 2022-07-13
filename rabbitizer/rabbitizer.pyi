@@ -11,14 +11,34 @@ from .InstrCategory import InstrCategory
 
 class Instruction:
     rs: Enum
+    """The value of the `rs` register for this instruction.
+    The type of this attribute will be either a `RegGprO32` or a `RegGprN32` depending on the current `config.regNames_gprAbiNames` value.
+    If the current instruction does not use the `rs` register, then a Runtime exception will be raised.
+    Read-only."""
     rt: Enum
+    """The value of the `rt` register for this instruction.
+    The type of this attribute will be either a `RegGprO32` or a `RegGprN32` depending on the current `config.regNames_gprAbiNames` value.
+    If the current instruction does not use the `rt` register, then a Runtime exception will be raised.
+    Read-only."""
     rd: Enum
+    """The value of the `rd` register for this instruction.
+    The type of this attribute will be either a `RegGprO32` or a `RegGprN32` depending on the current `config.regNames_gprAbiNames` value.
+    If the current instruction does not use the `rd` register, then a Runtime exception will be raised.
+    Read-only."""
     sa: int
+    """The value of the `sa` field for this instruction.
+    If the current instruction does not have a `sa` field, then a Runtime exception will be raised.
+    Read-only."""
 
     uniqueId: Enum
+    """An unique identificator for the opcode of this instruction.
+    The type is an `InstrId` enum.
+    Read-only."""
 
     vram: int = 0
+    """The vram (virtual ram) address for this instruction"""
     inHandwrittenFunction: bool = False
+    """Boolean value indicating if the current instruction is used on a handwritten function. This is intended to be determined by the user."""
 
 
     def __init__(self, word: int, vram: int=0, category: Enum=InstrCategory.CPU) -> None: ...
