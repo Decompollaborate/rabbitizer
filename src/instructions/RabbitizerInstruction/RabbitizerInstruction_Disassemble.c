@@ -300,6 +300,24 @@ size_t RabbitizerOperandTypeRsp_processOffsetVs(const RabbitizerInstruction *sel
     return totalSize;
 }
 
+size_t RabbitizerOperandTypeRsp_processImmediateBase(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+// TODO: consider making this a proper configuration
+#if 0
+    if (immOverride != NULL || RAB_INSTR_GET_immediate(self) != 0) {
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
+    }
+#endif
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processRs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
 const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_rs] = RabbitizerOperandType_processRs,
     [RABBITIZER_OPERAND_TYPE_rt] = RabbitizerOperandType_processRt,
@@ -330,6 +348,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_RSP_vd_vs] = RabbitizerOperandTypeRsp_processVdVs,
     [RABBITIZER_OPERAND_TYPE_RSP_vd_index] = RabbitizerOperandTypeRsp_processVdIndex,
     [RABBITIZER_OPERAND_TYPE_RSP_offset_rs] = RabbitizerOperandTypeRsp_processOffsetVs,
+    [RABBITIZER_OPERAND_TYPE_RSP_IMM_base] = RabbitizerOperandTypeRsp_processImmediateBase,
 };
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {

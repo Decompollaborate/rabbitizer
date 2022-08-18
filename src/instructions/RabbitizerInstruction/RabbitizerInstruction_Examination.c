@@ -143,10 +143,16 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_offset_rs)) {
                 return true;
             }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_IMM_base)) {
+                return true;
+            }
             break;
 
         case RABBITIZER_OPERAND_TYPE_IMM:
             if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_IMM_base)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_IMM_base)) {
                 return true;
             }
             break;
@@ -268,6 +274,18 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
 
         case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
             if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_rs)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_IMM_base:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_rs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_rs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_IMM)) {
                 return true;
             }
             break;
@@ -402,6 +420,11 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
 
             case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
                 validbits = RAB_INSTR_RSP_PACK_offset(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_IMM_base:
+                validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
 

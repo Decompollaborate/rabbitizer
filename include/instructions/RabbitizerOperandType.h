@@ -45,6 +45,7 @@ typedef enum RabbitizerOperandType {
     RABBITIZER_OPERAND_TYPE_RSP_vd_vs,
     RABBITIZER_OPERAND_TYPE_RSP_vd_index,
     RABBITIZER_OPERAND_TYPE_RSP_offset_rs,
+    RABBITIZER_OPERAND_TYPE_RSP_IMM_base,
     /* rsp */
 
     RABBITIZER_OPERAND_TYPE_MAX,

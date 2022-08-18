@@ -191,6 +191,11 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_RSP_IMM_base:
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
+                self->word = RAB_INSTR_PACK_immediate(self->word, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_INVALID:
             case RABBITIZER_OPERAND_TYPE_MAX:
                 assert(self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_MAX);
