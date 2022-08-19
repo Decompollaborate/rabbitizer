@@ -184,9 +184,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_RSP_PACK_elementlow(self->word, 0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
+            case RABBITIZER_OPERAND_TYPE_RSP_vd_de:
                 self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
-                self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
+                self->word = RAB_INSTR_RSP_PACK_de(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vs_index:

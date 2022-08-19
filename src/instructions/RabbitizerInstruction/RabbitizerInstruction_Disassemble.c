@@ -293,12 +293,22 @@ size_t RabbitizerOperandTypeRsp_processVtElementlow(const RabbitizerInstruction 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVdVs(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandTypeRsp_processVdDe(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
+    uint8_t de;
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
 
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", RAB_INSTR_RSP_GET_vs(self));
+    de = RAB_INSTR_RSP_GET_de(self);
+    if ((de & 0x8) == 0x8) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", de & (~0x8));
+    } else if ((de & 0xC) == 0x4) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%ih]", de & (~0xC));
+    } else if ((de & 0xE) == 0x2) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%iq]", de & (~0xE));
+    } else {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", de);
+    }
     return totalSize;
 }
 
@@ -369,7 +379,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_RSP_vd] = RabbitizerOperandTypeRsp_processVd,
     [RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh] = RabbitizerOperandTypeRsp_processVtElementhigh,
     [RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow] = RabbitizerOperandTypeRsp_processVtElementlow,
-    [RABBITIZER_OPERAND_TYPE_RSP_vd_vs] = RabbitizerOperandTypeRsp_processVdVs,
+    [RABBITIZER_OPERAND_TYPE_RSP_vd_de] = RabbitizerOperandTypeRsp_processVdDe,
     [RABBITIZER_OPERAND_TYPE_RSP_vs_index] = RabbitizerOperandTypeRsp_processVsIndex,
     [RABBITIZER_OPERAND_TYPE_RSP_offset_rs] = RabbitizerOperandTypeRsp_processOffsetVs,
     [RABBITIZER_OPERAND_TYPE_RSP_IMM_base] = RabbitizerOperandTypeRsp_processImmediateBase,

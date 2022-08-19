@@ -42,14 +42,14 @@
     RABBITIZER_DEF_INSTR_ID(rsp, vcr,                   .operands={RABBITIZER_OPERAND_TYPE_RSP_vd, RABBITIZER_OPERAND_TYPE_RSP_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
     RABBITIZER_DEF_INSTR_ID(rsp, vmrg,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_vd, RABBITIZER_OPERAND_TYPE_RSP_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
 
-    // OP vd[vs], vt[elementhigh]
-    RABBITIZER_DEF_INSTR_ID(rsp, vrcp,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
-    RABBITIZER_DEF_INSTR_ID(rsp, vrcpl,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}), // operands may be wrong
-    RABBITIZER_DEF_INSTR_ID(rsp, vrcph,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
-    RABBITIZER_DEF_INSTR_ID(rsp, vmov,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
-    RABBITIZER_DEF_INSTR_ID(rsp, vrsq,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
-    RABBITIZER_DEF_INSTR_ID(rsp, vrsql,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
-    RABBITIZER_DEF_INSTR_ID(rsp, vrsqh,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
+    // OP vd[de], vt[elementhigh]
+    RABBITIZER_DEF_INSTR_ID(rsp, vrcp,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_de, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
+    RABBITIZER_DEF_INSTR_ID(rsp, vrcpl,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_de, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}), // operands may be wrong
+    RABBITIZER_DEF_INSTR_ID(rsp, vrcph,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_de, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
+    RABBITIZER_DEF_INSTR_ID(rsp, vmov,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_de, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
+    RABBITIZER_DEF_INSTR_ID(rsp, vrsq,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_de, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
+    RABBITIZER_DEF_INSTR_ID(rsp, vrsql,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_de, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
+    RABBITIZER_DEF_INSTR_ID(rsp, vrsqh,                 .operands={RABBITIZER_OPERAND_TYPE_RSP_vd_de, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh}),
 
     // OP
     RABBITIZER_DEF_INSTR_ID(rsp, vnop,                  .operands={0}),

@@ -44,7 +44,7 @@ typedef enum RabbitizerOperandType {
     // composed/aliased operands
     RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh,
     RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow,
-    RABBITIZER_OPERAND_TYPE_RSP_vd_vs,
+    RABBITIZER_OPERAND_TYPE_RSP_vd_de,
     RABBITIZER_OPERAND_TYPE_RSP_vs_index,
     RABBITIZER_OPERAND_TYPE_RSP_offset_rs,
     RABBITIZER_OPERAND_TYPE_RSP_IMM_base,

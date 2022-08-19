@@ -20,6 +20,7 @@
 #define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self)   (SHIFTR((self)->word,  0,  7))
 
 #define RAB_INSTR_RSP_GET_index(self)               (SHIFTR((self)->word,  7,  4))
+#define RAB_INSTR_RSP_GET_de(self)                  (SHIFTR((self)->word, 11,  5))
 
 
 #define RAB_INSTR_RSP_PACK_cop2t(word, value)       (BITREPACK((word), value, 16,  5))
@@ -34,6 +35,7 @@
 
 #define RAB_INSTR_RSP_PACK_index(word, value)       (BITREPACK((word), value,  7,  4))
 #define RAB_INSTR_RSP_PACK_offset(word, value)      (BITREPACK((word), value,  0,  7))
+#define RAB_INSTR_RSP_PACK_de(word, value)          (BITREPACK((word), value, 11,  5))
 
 
 NON_NULL(1)
