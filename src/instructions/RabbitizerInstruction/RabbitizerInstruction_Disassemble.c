@@ -209,7 +209,7 @@ size_t RabbitizerOperandTypeRsp_processRt(const RabbitizerInstruction *self, cha
 
 size_t RabbitizerOperandTypeRsp_processRd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_GET_rd(self));
+    const char *reg = RabbitizerRegister_getNameRspGpr(RAB_INSTR_GET_rd(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
