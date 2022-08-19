@@ -54,13 +54,13 @@
     // OP
     RABBITIZER_DEF_INSTR_ID(rsp, vnop,                  .operands={0}),
 
-    // OP rt, vd[index]
-    RABBITIZER_DEF_INSTR_ID(rsp, mfc2,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_RSP_vd_index}, .modifiesRt=true),
-    RABBITIZER_DEF_INSTR_ID(rsp, mtc2,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_RSP_vd_index}),
+    // OP cop2t, vd[index]
+    RABBITIZER_DEF_INSTR_ID(rsp, mfc2,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_cop2t, RABBITIZER_OPERAND_TYPE_RSP_vs_index}, .modifiesRt=true),
+    RABBITIZER_DEF_INSTR_ID(rsp, mtc2,                  .operands={RABBITIZER_OPERAND_TYPE_RSP_cop2t, RABBITIZER_OPERAND_TYPE_RSP_vs_index}),
 
-    // OP rt, rd
-    RABBITIZER_DEF_INSTR_ID(rsp, cfc2,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rd}, .modifiesRt=true),
-    RABBITIZER_DEF_INSTR_ID(rsp, ctc2,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rd}),
+    // OP rt, cop2cd
+    RABBITIZER_DEF_INSTR_ID(rsp, cfc2,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_RSP_cop2cd}, .modifiesRt=true),
+    RABBITIZER_DEF_INSTR_ID(rsp, ctc2,                  .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_RSP_cop2cd}),
 
     // OP vt[elementlow], offset(vs)
     RABBITIZER_DEF_INSTR_ID(rsp, sbv,                   .operands={RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow, RABBITIZER_OPERAND_TYPE_RSP_offset_rs}),

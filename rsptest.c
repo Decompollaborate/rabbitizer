@@ -16,7 +16,8 @@ int main() {
     int extraLJust = 5;
     uint32_t validbits;
 
-    word = 0x4B01C8E8; // vand    $v3, $v25, $v1[0]
+    //word = 0x4B01C8E8; // vand    $v3, $v25, $v1[0]
+    word = 0x48952000; // mtc2    $21, $v4[0]
 
     RabbitizerInstructionRsp_init(&instr, word, 0x80000000);
 
@@ -34,8 +35,7 @@ int main() {
     printf("word:           %08X\n", instr.word);
     printf("mandatory bits: %08X\n", instr._mandatorybits);
     printf("valid bits:     %08X\n", validbits);
-    printf("valid bits:     %08X\n", (~validbits) & instr.word);
-    
+    printf("invalid bits:   %08X\n", (~validbits) & instr.word);
 
     free(buffer);
     RabbitizerInstructionRsp_destroy(&instr);

@@ -54,6 +54,14 @@ const char *RabbitizerRegister_RspCop0_Names[][2] = {
 #include "instructions/registers/RabbitizerRegister_RspCop0.inc"
 };
 
+const char *RabbitizerRegister_RspCop2_Names[][2] = {
+#include "instructions/registers/RabbitizerRegister_RspCop2.inc"
+};
+
+const char *RabbitizerRegister_RspCop2Control_Names[][2] = {
+#include "instructions/registers/RabbitizerRegister_RspCop2Control.inc"
+};
+
 const char *RabbitizerRegister_RspVector_Names[][2] = {
 #include "instructions/registers/RabbitizerRegister_RspVector.inc"
 };
@@ -124,6 +132,18 @@ const char *RabbitizerRegister_getNameRspCop0(uint8_t regValue) {
 
     return RabbitizerRegister_RspCop0_Names[regValue]
                                            [RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300RspCop0NamedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameRspCop2(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspCop2_Names));
+
+    return RabbitizerRegister_RspCop2_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameRspCop2Control(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspCop2Control_Names));
+
+    return RabbitizerRegister_RspCop2Control_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_getNameRspVector(uint8_t regValue) {
