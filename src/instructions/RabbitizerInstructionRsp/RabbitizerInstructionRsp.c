@@ -56,12 +56,13 @@ uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *s
 }
 
 uint8_t RabbitizerInstructionRsp_processVectorElement(UNUSED const RabbitizerInstruction *self, uint8_t element) {
-    if ((element & 0x8) == 0x8) {
-        return element & 7;
-    }
-    if ((element & 0xC) == 0x4) {
-        return element & 4;
-    }
+    // Why is this even a thing?
+    //if ((element & 0x8) == 0x8) {
+    //    return element & 7;
+    //}
+    //if ((element & 0xC) == 0x4) {
+    //    return element & 4;
+    //}
     if ((element & 0xE) == 0x2) {
         return element & 2;
     }
