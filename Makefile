@@ -64,7 +64,7 @@ format:
 tidy:
 	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS)
 
-tests: build/test.elf
+tests: build/test.elf build/rsptest.elf
 
 .PHONY: all clean distclean format tidy tests
 .DEFAULT_GOAL := all

@@ -23,7 +23,7 @@
 #define RAB_INSTR_RSP_PACK_vt(word, value)          (BITREPACK((word), value, 16,  5))
 #define RAB_INSTR_RSP_PACK_vd(word, value)          (BITREPACK((word), value,  6,  5))
 
-#define RAB_INSTR_RSP_PACK_elementhigh(word, value) (BITREPACK((word), value, 16,  4))
+#define RAB_INSTR_RSP_PACK_elementhigh(word, value) (BITREPACK((word), value, 21,  4))
 #define RAB_INSTR_RSP_PACK_elementlow(word, value)  (BITREPACK((word), value,  7,  4))
 
 #define RAB_INSTR_RSP_PACK_index(word, value)       (BITREPACK((word), value,  7,  4))
@@ -49,9 +49,6 @@ void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self);
 
 NODISCARD NON_NULL(1) PURE
 uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *self);
-
-NODISCARD NON_NULL(1) PURE
-uint8_t RabbitizerInstructionRsp_processVectorElement(const RabbitizerInstruction *self, uint8_t element);
 
 
 #endif

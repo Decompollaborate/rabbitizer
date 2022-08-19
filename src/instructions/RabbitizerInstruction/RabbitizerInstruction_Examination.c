@@ -300,7 +300,7 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
     return RabbitizerInstruction_hasOperand(self, operand);
 }
 
-bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
+uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
     size_t i;
     uint32_t validbits;
 
@@ -434,6 +434,14 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
                 break;
         }
     }
+
+    return validbits;
+}
+
+bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
+    uint32_t validbits;
+
+    validbits = RabbitizerInstruction_getValidBits(self);
 
     return ((~validbits) & self->word) == 0;
 }

@@ -186,6 +186,8 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, RabbitizerOperandType operand);
 
 NODISCARD NON_NULL(1) PURE
+uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 
 /* Instruction examination */
