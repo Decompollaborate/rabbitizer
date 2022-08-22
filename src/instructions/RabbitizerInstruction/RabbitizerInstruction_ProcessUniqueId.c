@@ -6,7 +6,6 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-
 // NOLINTBEGIN(readability-magic-numbers)
 
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
