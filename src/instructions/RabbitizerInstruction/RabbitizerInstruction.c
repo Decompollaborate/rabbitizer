@@ -154,6 +154,14 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_cop0d(self->word, 0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_RSP_cop2t:
+                self->word = RAB_INSTR_RSP_PACK_cop2t(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_cop2cd:
+                self->word = RAB_INSTR_RSP_PACK_cop2cd(self->word, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_RSP_vs:
                 self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
                 break;
@@ -176,19 +184,24 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_RSP_PACK_elementlow(self->word, 0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
+            case RABBITIZER_OPERAND_TYPE_RSP_vd_de:
                 self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
-                self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
+                self->word = RAB_INSTR_RSP_PACK_de(self->word, 0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
-                self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
+            case RABBITIZER_OPERAND_TYPE_RSP_vs_index:
+                self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
                 self->word = RAB_INSTR_RSP_PACK_index(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
                 self->word = RAB_INSTR_RSP_PACK_offset(self->word, 0);
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_IMM_base:
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
+                self->word = RAB_INSTR_PACK_immediate(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_INVALID:

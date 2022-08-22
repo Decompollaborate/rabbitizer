@@ -143,10 +143,16 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_offset_rs)) {
                 return true;
             }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_IMM_base)) {
+                return true;
+            }
             break;
 
         case RABBITIZER_OPERAND_TYPE_IMM:
             if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_IMM_base)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_IMM_base)) {
                 return true;
             }
             break;
@@ -208,6 +214,8 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             break;
 
         case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
+        case RABBITIZER_OPERAND_TYPE_RSP_cop2t:
+        case RABBITIZER_OPERAND_TYPE_RSP_cop2cd:
             break;
 
             // case RABBITIZER_OPERAND_TYPE_RSP_elementhigh:
@@ -216,7 +224,7 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             // case RABBITIZER_OPERAND_TYPE_RSP_offset:
 
         case RABBITIZER_OPERAND_TYPE_RSP_vs:
-            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_vs)) {
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vs_index)) {
                 return true;
             }
             break;
@@ -231,10 +239,7 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             break;
 
         case RABBITIZER_OPERAND_TYPE_RSP_vd:
-            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_vs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_index)) {
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_RSP_vd_de)) {
                 return true;
             }
             break;
@@ -251,23 +256,32 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             }
             break;
 
-        case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
+        case RABBITIZER_OPERAND_TYPE_RSP_vd_de:
             if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vd)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vs)) {
                 return true;
             }
             break;
 
-        case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
-            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vd)) {
+        case RABBITIZER_OPERAND_TYPE_RSP_vs_index:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_vs)) {
                 return true;
             }
             break;
 
         case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
             if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_rs)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_RSP_IMM_base:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_RSP_rs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_rs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_IMM)) {
                 return true;
             }
             break;
@@ -282,7 +296,7 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
     return RabbitizerInstruction_hasOperand(self, operand);
 }
 
-bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
+uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
     size_t i;
     uint32_t validbits;
 
@@ -368,6 +382,14 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_cop0d(validbits, ~0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_RSP_cop2t:
+                validbits = RAB_INSTR_RSP_PACK_cop2t(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_cop2cd:
+                validbits = RAB_INSTR_RSP_PACK_cop2cd(validbits, ~0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_RSP_vs:
                 validbits = RAB_INSTR_RSP_PACK_vs(validbits, ~0);
                 break;
@@ -390,18 +412,23 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_RSP_PACK_elementlow(validbits, ~0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
+            case RABBITIZER_OPERAND_TYPE_RSP_vd_de:
                 validbits = RAB_INSTR_RSP_PACK_vd(validbits, ~0);
-                validbits = RAB_INSTR_RSP_PACK_vs(validbits, ~0);
+                validbits = RAB_INSTR_RSP_PACK_de(validbits, ~0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
-                validbits = RAB_INSTR_RSP_PACK_vd(validbits, ~0);
+            case RABBITIZER_OPERAND_TYPE_RSP_vs_index:
+                validbits = RAB_INSTR_RSP_PACK_vs(validbits, ~0);
                 validbits = RAB_INSTR_RSP_PACK_index(validbits, ~0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_offset_rs:
                 validbits = RAB_INSTR_RSP_PACK_offset(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_IMM_base:
+                validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
 
@@ -411,6 +438,14 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
                 break;
         }
     }
+
+    return validbits;
+}
+
+bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
+    uint32_t validbits;
+
+    validbits = RabbitizerInstruction_getValidBits(self);
 
     return ((~validbits) & self->word) == 0;
 }

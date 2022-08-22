@@ -32,6 +32,8 @@ typedef enum RabbitizerOperandType {
     RABBITIZER_OPERAND_TYPE_RSP_rt,
     RABBITIZER_OPERAND_TYPE_RSP_rd,
     RABBITIZER_OPERAND_TYPE_RSP_cop0d,
+    RABBITIZER_OPERAND_TYPE_RSP_cop2t,
+    RABBITIZER_OPERAND_TYPE_RSP_cop2cd, // Coprocessor 2 control rd
     RABBITIZER_OPERAND_TYPE_RSP_vs,
     RABBITIZER_OPERAND_TYPE_RSP_vt,
     RABBITIZER_OPERAND_TYPE_RSP_vd,
@@ -42,9 +44,10 @@ typedef enum RabbitizerOperandType {
     // composed/aliased operands
     RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh,
     RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow,
-    RABBITIZER_OPERAND_TYPE_RSP_vd_vs,
-    RABBITIZER_OPERAND_TYPE_RSP_vd_index,
+    RABBITIZER_OPERAND_TYPE_RSP_vd_de,
+    RABBITIZER_OPERAND_TYPE_RSP_vs_index,
     RABBITIZER_OPERAND_TYPE_RSP_offset_rs,
+    RABBITIZER_OPERAND_TYPE_RSP_IMM_base,
     /* rsp */
 
     RABBITIZER_OPERAND_TYPE_MAX,

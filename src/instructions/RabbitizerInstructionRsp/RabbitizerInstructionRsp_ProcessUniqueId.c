@@ -5,7 +5,6 @@
 
 #include "common/RabbitizerConfig.h"
 
-
 // NOLINTBEGIN(readability-magic-numbers)
 
 void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self) {
