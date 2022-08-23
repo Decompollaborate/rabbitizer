@@ -5,9 +5,9 @@
 
 #include <assert.h>
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #name
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #altname
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #altname,
 
 const char *RabbitizerInstrId_Names[] = {
 #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
