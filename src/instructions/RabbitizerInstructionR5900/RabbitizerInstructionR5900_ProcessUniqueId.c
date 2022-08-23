@@ -106,8 +106,43 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0(RabbitizerInstructi
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
+
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor1_FpuS(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_GET_function(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+
+    switch (function) {
+#include "instructions/instr_id/r5900/r5900_cop1_fpu_s.inc"
+
+        default:
+            RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(self);
+            break;
+    }
+}
+
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
-    RabbitizerInstruction_processUniqueId_Coprocessor1(self);
+    uint8_t fmt = RAB_INSTR_GET_fmt(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+
+    switch (fmt) {
+#include "instructions/instr_id/cpu/cpu_cop1.inc"
+
+        case 0x08: // fmt = BC
+            RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(self);
+            break;
+
+        case 0x10:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor1_FpuS(self);
+            break;
+
+        case 0x14:
+            RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(self);
+            break;
+    }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
