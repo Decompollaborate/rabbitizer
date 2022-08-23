@@ -80,10 +80,12 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-        case 0x04:
+#include "instructions/instr_id/r5900/r5900_mmi.inc"
+
+        case 0x08:
             RabbitizerInstructionR5900_processUniqueId_MMI_0(self);
             break;
-        case 0x05:
+        case 0x09:
             RabbitizerInstructionR5900_processUniqueId_MMI_1(self);
             break;
         case 0x28:
@@ -92,8 +94,6 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
         case 0x29:
             RabbitizerInstructionR5900_processUniqueId_MMI_3(self);
             break;
-
-        // TODO
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];

@@ -166,7 +166,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->_handwrittenCategory = true;
+    // self->_handwrittenCategory = true;
 
     switch (fmt) {
 #include "instructions/instr_id/cpu/cpu_cop0.inc"
@@ -266,7 +266,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
-    self->_handwrittenCategory = true;
+    // self->_handwrittenCategory = true;
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }

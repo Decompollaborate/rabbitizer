@@ -18,7 +18,7 @@ int main() {
     uint32_t validbits;
 #endif
 
-    word = 0x70000C28;
+    word = 0x70000011;
 
     RabbitizerInstructionR5900_init(&instr, word, 0x00100000);
 

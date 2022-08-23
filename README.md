@@ -44,3 +44,9 @@ NOTE: Installing the development version is not recommended. Proceed at your own
     - `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and `break` instructions.
 - N64 RSP instruction decoding support.
   - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
+
+## References
+
+- R5900:
+  - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>
+  - Official documentation from Toshiba: <https://wiki.qemu.org/images/2/2a/C790.pdf>
