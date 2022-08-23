@@ -10,13 +10,15 @@
 #include "instructions/RabbitizerRegister.h"
 
 bool RabbitizerInstruction_isImplemented(const RabbitizerInstruction *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_INVALID) {
-        return false;
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_INVALID:
+        case RABBITIZER_INSTR_ID_rsp_INVALID:
+        case RABBITIZER_INSTR_ID_r5900_INVALID:
+            return false;
+
+        default:
+            return true;
     }
-    if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_INVALID) {
-        return false;
-    }
-    return true;
 }
 
 bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self) {

@@ -21,7 +21,10 @@ typedef enum RabbitizerInstrId {
     #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
     RABBITIZER_DEF_INSTR_ID(rsp, MAX, ),
 
-    RABBITIZER_DEF_INSTR_ID(ALL, MAX, ) = RABBITIZER_DEF_INSTR_ID(rsp, MAX, ),
+    #include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
+    RABBITIZER_DEF_INSTR_ID(r5900, MAX, ),
+
+    RABBITIZER_DEF_INSTR_ID(ALL, MAX, ) = RABBITIZER_DEF_INSTR_ID(r5900, MAX, ),
 } RabbitizerInstrId;
 
 #undef RABBITIZER_DEF_INSTR_ID
