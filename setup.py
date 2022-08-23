@@ -13,6 +13,7 @@ setup(
             "rabbitizer/enums/registers/rabbitizer_enum_GprO32.c", "rabbitizer/enums/registers/rabbitizer_enum_GprN32.c",
             "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Disassemble.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_ProcessUniqueId.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Examination.c",
             "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp.c", "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp_ProcessUniqueId.c",
+            "src/instructions/RabbitizerInstructionR5900/RabbitizerInstructionR5900.c", "src/instructions/RabbitizerInstructionR5900/RabbitizerInstructionR5900_ProcessUniqueId.c",
             "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c",
             "src/analysis/RabbitizerTrackedRegisterState.c", "src/analysis/RabbitizerRegistersTracker.c",
             "src/common/Utils.c", "src/common/RabbitizerConfig.c"],
