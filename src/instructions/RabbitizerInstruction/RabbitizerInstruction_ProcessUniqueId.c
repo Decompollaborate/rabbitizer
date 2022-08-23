@@ -6,6 +6,12 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
+        case (caseBits): \
+            self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
+            break;
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+
 // NOLINTBEGIN(readability-magic-numbers)
 
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
@@ -14,183 +20,7 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
 
     switch (opcode) {
-        // 0b000000: "SPECIAL",
-        // 0b000001: "REGIMM",
-        case 0b000010:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_j;
-            break;
-        case 0b000011:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_jal;
-            break;
-        case 0b000100:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_beq;
-            break;
-        case 0b000101:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bne;
-            break;
-        case 0b000110:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_blez;
-            break;
-        case 0b000111:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgtz;
-            break;
-
-        case 0b001000:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_addi;
-            break;
-        case 0b001001:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_addiu;
-            break;
-        case 0b001010:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_slti;
-            break;
-        case 0b001011:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sltiu;
-            break;
-        case 0b001100:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_andi;
-            break;
-        case 0b001101:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ori;
-            break;
-        case 0b001110:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_xori;
-            break;
-        case 0b001111:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lui;
-            break;
-
-        // 0b010000: "COP0", // Coprocessor OPeration z
-        // 0b010001: "COP1", // Coprocessor OPeration z
-        // 0b010010: "COP2", // Coprocessor OPeration z
-        // 0b010011: "COP3", // Coprocessor OPeration z
-        case 0b010100:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_beql;
-            break;
-        case 0b010101:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bnel;
-            break;
-        case 0b010110:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_blezl;
-            break;
-        case 0b010111:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_bgtzl;
-            break;
-
-        case 0b011000:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_daddi;
-            break;
-        case 0b011001:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_daddiu;
-            break;
-        case 0b011010:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldl;
-            break;
-        case 0b011011:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldr;
-            break;
-
-        case 0b100000:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lb;
-            break;
-        case 0b100001:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lh;
-            break;
-        case 0b100010:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwl;
-            break;
-        case 0b100011:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lw;
-            break;
-        case 0b100100:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lbu;
-            break;
-        case 0b100101:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lhu;
-            break;
-        case 0b100110:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwr;
-            break;
-        case 0b100111:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwu;
-            break;
-
-        case 0b101000:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sb;
-            break;
-        case 0b101001:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sh;
-            break;
-        case 0b101010:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swl;
-            break;
-        case 0b101011:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sw;
-            break;
-        case 0b101100:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdl;
-            break;
-        case 0b101101:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdr;
-            break;
-        case 0b101110:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swr;
-            break;
-        case 0b101111:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_cache;
-            break;
-
-        case 0b110000:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ll;
-            break;
-        case 0b110001:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwc1;
-            break;
-        case 0b110010:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lwc2;
-            break;
-        case 0b110011:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_pref;
-            break;
-        case 0b110100:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_lld;
-            break;
-        case 0b110101:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldc1;
-            break;
-        case 0b110110:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ldc2;
-            break;
-        case 0b110111:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_ld;
-            break;
-
-        case 0b111000:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sc;
-            break;
-        case 0b111001:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swc1;
-            break;
-        case 0b111010:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_swc2;
-            // 0b111011: "",
-            break;
-        case 0b111100:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_scd;
-            break;
-        case 0b111101:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdc1;
-            break;
-        case 0b111110:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sdc2;
-            break;
-        case 0b111111:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_sd;
-            break;
-
-        default:
-            self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
-            break;
+#include "instructions/instr_id/cpu/cpu_normal.inc"
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -970,10 +800,15 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *s
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
+#undef RABBITIZER_DEF_INSTR_ID
+#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+
 void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+
+    self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
 
     switch (opcode) {
         default:
