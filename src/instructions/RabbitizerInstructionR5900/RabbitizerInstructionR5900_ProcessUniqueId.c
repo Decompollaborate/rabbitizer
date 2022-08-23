@@ -4,10 +4,11 @@
 #include "instructions/RabbitizerInstructionR5900.h"
 
 
-#define SET_UNIQUE_ID_CASE(self, caseBits, mnemonic) \
-        case (caseBits): \
-            (self)->uniqueId = RABBITIZER_INSTR_ID_r5900_##mnemonic; \
-            break
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
+    case (caseBits):                                            \
+        self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
+        break;
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *self) {
     RabbitizerInstruction_processUniqueId_Normal(self);
@@ -33,28 +34,16 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstructi
     RabbitizerInstruction_processUniqueId_Coprocessor2(self);
 }
 
-void RabbitizerInstructionR5900_processUniqueId_MMI0(UNUSED RabbitizerInstruction *self) {
+void RabbitizerInstructionR5900_processUniqueId_MMI_0(UNUSED RabbitizerInstruction *self) {
     // TODO
 }
 
-void RabbitizerInstructionR5900_processUniqueId_MMI1(RabbitizerInstruction *self) {
+void RabbitizerInstructionR5900_processUniqueId_MMI_1(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
 
     switch (function) {
-/*
-    |---00--|---01--|---10--|---11--| lo
-000 |  ---  | PABSW | PCEQW | PMINW |
-001 |PADSBH | PABSH | PCEQH | PMINH |
-010 |  ---  |  ---  | PCEQB |  ---  |
-011 |  ---  |  ---  |  ---  |  ---  |
-100 |PADDUW |PSUBUW |PEXTUW |  ---  |
-101 |PADDUH |PSUBUH |PEXTUH |  ---  |
-110 |PADDUB |PSUBUB |PEXTUB | QFSRV |
-111 |  ---  |  ---  |  ---  |  ---  |
- hi |-------|-------|-------|-------|
-*/
         case 0x01:
             self->uniqueId = RABBITIZER_INSTR_ID_r5900_pabsw;
             break;
@@ -117,57 +106,17 @@ void RabbitizerInstructionR5900_processUniqueId_MMI1(RabbitizerInstruction *self
     }
 }
 
-void RabbitizerInstructionR5900_processUniqueId_MMI2(UNUSED RabbitizerInstruction *self) {
+void RabbitizerInstructionR5900_processUniqueId_MMI_2(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
 
     switch (function) {
-/*
-    |---00--|---01--|---10--|---11--| lo
-000 |PMADDW |  ---  |PSLLVW |PSRLVW |
-001 |PMSUBW |  ---  |  ---  |  ---  |
-010 |PMFHI  |PMFLO  |PINTH  |  ---  |
-011 |PMULTW |PDIVW  |PCPYLD |  ---  |
-100 |PMADDH |PHMADH | PAND  |  PXOR |
-101 |PMSUBH |PHMSBH |  ---  |  ---  |
-110 | ---   |  ---  | PEXEH | PREVH |
-111 |PMULTH |PDIVBW | PEXEW |PROT3W |
- hi |-------|-------|-------|-------|
-*/
-        SET_UNIQUE_ID_CASE(self, 0x00, pmaddw);
-        SET_UNIQUE_ID_CASE(self, 0x02, psllvw);
-        SET_UNIQUE_ID_CASE(self, 0x03, psrlvw);
-
-        SET_UNIQUE_ID_CASE(self, 0x04, pmsubw);
-
-        SET_UNIQUE_ID_CASE(self, 0x08, pmfhi);
-        SET_UNIQUE_ID_CASE(self, 0x09, pmflo);
-        SET_UNIQUE_ID_CASE(self, 0x0A, pinth);
-
-        SET_UNIQUE_ID_CASE(self, 0x0C, pmultw);
-        SET_UNIQUE_ID_CASE(self, 0x0D, pdivw);
-        SET_UNIQUE_ID_CASE(self, 0x0E, pcpyld);
-
-        SET_UNIQUE_ID_CASE(self, 0x10, pmaddh);
-        SET_UNIQUE_ID_CASE(self, 0x11, phmadh);
-        SET_UNIQUE_ID_CASE(self, 0x12, pand);
-        SET_UNIQUE_ID_CASE(self, 0x13, pxor);
-
-        SET_UNIQUE_ID_CASE(self, 0x14, pmsubh);
-        SET_UNIQUE_ID_CASE(self, 0x15, phmsbh);
-
-        SET_UNIQUE_ID_CASE(self, 0x1A, pexeh);
-        SET_UNIQUE_ID_CASE(self, 0x1B, prevh);
-
-        SET_UNIQUE_ID_CASE(self, 0x1C, pmulth);
-        SET_UNIQUE_ID_CASE(self, 0x1D, pdivbw);
-        SET_UNIQUE_ID_CASE(self, 0x1E, pexew);
-        SET_UNIQUE_ID_CASE(self, 0x1F, prot3w);
+#include "instructions/instr_id/r5900/r5900_mmi_2.inc"
     }
 }
 
-void RabbitizerInstructionR5900_processUniqueId_MMI3(UNUSED RabbitizerInstruction *self) {
+void RabbitizerInstructionR5900_processUniqueId_MMI_3(UNUSED RabbitizerInstruction *self) {
     // TODO
 }
 
@@ -178,16 +127,16 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
 
     switch (function) {
         case 0x04:
-            RabbitizerInstructionR5900_processUniqueId_MMI0(self);
+            RabbitizerInstructionR5900_processUniqueId_MMI_0(self);
             break;
         case 0x05:
-            RabbitizerInstructionR5900_processUniqueId_MMI1(self);
+            RabbitizerInstructionR5900_processUniqueId_MMI_1(self);
             break;
         case 0x28:
-            RabbitizerInstructionR5900_processUniqueId_MMI2(self);
+            RabbitizerInstructionR5900_processUniqueId_MMI_2(self);
             break;
         case 0x29:
-            RabbitizerInstructionR5900_processUniqueId_MMI3(self);
+            RabbitizerInstructionR5900_processUniqueId_MMI_3(self);
             break;
 
         // TODO
@@ -195,6 +144,9 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
+
+#undef RABBITIZER_DEF_INSTR_ID
+#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
 
 
 void RabbitizerInstructionR5900_processUniqueId(RabbitizerInstruction *self) {
