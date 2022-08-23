@@ -9,8 +9,8 @@ IINC            := -I include
 CSTD            := -std=c11
 CFLAGS          :=
 LDFLAGS         :=
-WARNINGS        := -Wall -Wextra
-# WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded # binary constants :s
+WARNINGS        := -Wall -Wextra -Wpedantic
+# WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded
 WARNINGS        += -Werror=implicit-function-declaration -Werror=incompatible-pointer-types -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
 
 ifeq ($(CC),gcc)

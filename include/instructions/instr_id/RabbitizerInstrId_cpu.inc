@@ -16,4 +16,4 @@ RABBITIZER_DEF_INSTR_ID(cpu, , INVALID, .operands={RABBITIZER_OPERAND_TYPE_rs, R
 #include "instructions/instr_id/cpu/cpu_cop1_fpu_w.inc"
 #include "instructions/instr_id/cpu/cpu_cop1_fpu_l.inc"
 
-RABBITIZER_DEF_INSTR_ID(cpu, , MAX, )
+RABBITIZER_DEF_INSTR_ID(cpu, , MAX, 0)
