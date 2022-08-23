@@ -120,8 +120,15 @@ NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self);
+
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *self);
 NON_NULL(1)

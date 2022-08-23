@@ -11,19 +11,99 @@
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *self) {
-    RabbitizerInstruction_processUniqueId_Normal(self);
+    uint32_t opcode = RAB_INSTR_GET_opcode(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+
+    switch (opcode) {
+#include "instructions/instr_id/r5900/r5900_normal.inc"
+
+        default:
+            RabbitizerInstruction_processUniqueId_Normal(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Special(RabbitizerInstruction *self) {
-    RabbitizerInstruction_processUniqueId_Special(self);
+    uint32_t function = RAB_INSTR_GET_function(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+
+    switch (function) {
+#include "instructions/instr_id/r5900/r5900_special.inc"
+
+        default:
+            RabbitizerInstruction_processUniqueId_Special(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Regimm(RabbitizerInstruction *self) {
-    RabbitizerInstruction_processUniqueId_Regimm(self);
+    uint32_t rt = RAB_INSTR_GET_rt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
+
+    switch (rt) {
+#include "instructions/instr_id/r5900/r5900_regimm.inc"
+
+        default:
+            RabbitizerInstruction_processUniqueId_Regimm(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor0_Tlb(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_GET_function(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+
+    switch (function) {
+#include "instructions/instr_id/r5900/r5900_cop0_tlb.inc"
+
+        default:
+            RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(self);
+            break;
+    }
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
-    RabbitizerInstruction_processUniqueId_Coprocessor0(self);
+    uint32_t fmt = RAB_INSTR_GET_fmt(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->_handwrittenCategory = true;
+
+    switch (fmt) {
+#include "instructions/instr_id/cpu/cpu_cop0.inc"
+
+        case 0x08:
+            RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(self);
+            break;
+
+        case 0x10:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor0_Tlb(self);
+            break;
+    }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {

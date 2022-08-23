@@ -1,0 +1,25 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+/*
+    31---------26------------------------------------------5--------0
+    | = SPECIAL |                                         | function|
+    ------6----------------------------------------------------6-----
+    |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| lo
+000 | SLL   | ---   | SRL   | SRA   | SLLV  |  ---  | SRLV  | SRAV  |
+001 | JR    | JALR  | MOVZ  | MOVN  |SYSCALL| BREAK |  ---  | SYNC  |
+010 | MFHI  | MTHI  | MFLO  | MTLO  | DSLLV |  ---  | DSRLV | DSRAV |
+011 | MULT  | MULTU | DIV   | DIVU  | ----  |  ---  | ----  | ----- |
+100 | ADD   | ADDU  | SUB   | SUBU  | AND   | OR    | XOR   | NOR   |
+101 | MFSA  | MTSA  | SLT   | SLTU  | DADD  | DADDU | DSUB  | DSUBU |
+110 | TGE   | TGEU  | TLT   | TLTU  | TEQ   |  ---  | TNE   |  ---  |
+111 | DSLL  |  ---  | DSRL  | DSRA  |DSLL32 |  ---  |DSRL32 |DSRA32 |
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
+*/
+
+// The other instructions are implemented using the main CPU table
+
+// TODO: operands and properties
+
+RABBITIZER_DEF_INSTR_ID(cpu, 0x28, mfsa,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
+RABBITIZER_DEF_INSTR_ID(cpu, 0x29, mtsa,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
