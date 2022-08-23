@@ -14,7 +14,6 @@ RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[] = {
     #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
 
     #include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
-    RABBITIZER_DEF_INSTR_ID(r5900, , MAX, )
 
     RABBITIZER_DEF_INSTR_ID(ALL, , MAX, )
     { 0 },
