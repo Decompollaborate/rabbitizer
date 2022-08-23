@@ -11,7 +11,6 @@
 
 const char *RabbitizerInstrId_Names[] = {
 #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
-#include "instructions/instr_id/cpu/cpu_normal.inc"
 #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
 };
 

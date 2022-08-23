@@ -71,6 +71,7 @@ typedef struct RabbitizerInstruction {
 
 #define RAB_INSTR_GET_tf(self)                      (SHIFTR((self)->word, 16,  1))
 #define RAB_INSTR_GET_nd(self)                      (SHIFTR((self)->word, 17,  1))
+#define RAB_INSTR_GET_bc0_fmt(self)                 (SHIFTR((self)->word, 16,  5))
 
 
 #define RAB_INSTR_PACK_opcode(word, value)          (BITREPACK_RIGHT((word), (value), 26,  6))
@@ -102,6 +103,7 @@ typedef struct RabbitizerInstruction {
 
 #define RAB_INSTR_PACK_tf(word, value)              (BITREPACK((word), (value), 16,  1))
 #define RAB_INSTR_PACK_nd(word, value)              (BITREPACK((word), (value), 17,  1))
+#define RAB_INSTR_PACK_bc0_fmt(word, value)         (BITREPACK((word), (value), 16,  5))
 
 
 NON_NULL(1)

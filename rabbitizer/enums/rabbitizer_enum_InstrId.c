@@ -10,13 +10,12 @@
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[] = {
     #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
-    #include "instructions/instr_id/cpu/cpu_normal.inc"
-    RABBITIZER_DEF_INSTR_ID(cpu, , MAX, ),
+    RABBITIZER_DEF_INSTR_ID(cpu, , MAX, )
 
     #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
-    RABBITIZER_DEF_INSTR_ID(rsp, , MAX, ),
+    RABBITIZER_DEF_INSTR_ID(rsp, , MAX, )
 
-    RABBITIZER_DEF_INSTR_ID(ALL, , MAX, ),
+    RABBITIZER_DEF_INSTR_ID(ALL, , MAX, )
     { 0 },
 };
 

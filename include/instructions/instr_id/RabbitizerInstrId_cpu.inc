@@ -3,119 +3,12 @@
 
     RABBITIZER_DEF_INSTR_ID(cpu, , INVALID,                       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
 
-    // OP rs
-    RABBITIZER_DEF_INSTR_ID(cpu, , mthi,                          .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // Move To HI register
-    RABBITIZER_DEF_INSTR_ID(cpu, , mtlo,                          .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Move To LO register
-    RABBITIZER_DEF_INSTR_ID(cpu, , jr,                            .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)                        // Jump Register
-    RABBITIZER_DEF_INSTR_ID(cpu, , jalr,                          .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Jump And Link Register
-
-    // OP rd, rs
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, , jalr_rd, jalr,         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .isJump=true, .modifiesRd=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)   // Jump And Link Register // Special case for rd != 31
-
-    // OP rd
-    RABBITIZER_DEF_INSTR_ID(cpu, , mfhi,                          .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Move From HI register
-    RABBITIZER_DEF_INSTR_ID(cpu, , mflo,                          .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Move From LO register
-
-    // OP rs, rt
-    RABBITIZER_DEF_INSTR_ID(cpu, , mult,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // MULTtiply word
-    RABBITIZER_DEF_INSTR_ID(cpu, , multu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)     // MULTtiply Unsigned word
-    RABBITIZER_DEF_INSTR_ID(cpu, , dmult,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)     // Doubleword MULTiply
-    RABBITIZER_DEF_INSTR_ID(cpu, , dmultu,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)    // Doubleword MULTiply Unsigned
-    RABBITIZER_DEF_INSTR_ID(cpu, , tge,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)       // Trap if Greater or Equal
-    RABBITIZER_DEF_INSTR_ID(cpu, , tgeu,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Trap if Greater or Equal Unsigned
-    RABBITIZER_DEF_INSTR_ID(cpu, , tlt,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)       // Trap if Less Than
-    RABBITIZER_DEF_INSTR_ID(cpu, , tltu,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Trap if Less Than Unsigned
-    RABBITIZER_DEF_INSTR_ID(cpu, , teq,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)       // Trap if EQual
-    RABBITIZER_DEF_INSTR_ID(cpu, , tne,                           .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)       // Trap if Not Equal
-
-    // OP rd, rs, rt
-    RABBITIZER_DEF_INSTR_ID(cpu, , movz,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_IV)      // MOVe conditional on Zero
-    RABBITIZER_DEF_INSTR_ID(cpu, , movn,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_IV)      // MOVe conditional on Not zero
-    RABBITIZER_DEF_INSTR_ID(cpu, , div,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // DIVide word
-    RABBITIZER_DEF_INSTR_ID(cpu, , divu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // DIVide Unsigned word
-
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, , sn64_div, div,         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)  // DIVide word
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, , sn64_divu, divu,       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // DIVide Unsigned word
-
-    RABBITIZER_DEF_INSTR_ID(cpu, , ddiv,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)      // Doubleword DIVide
-    RABBITIZER_DEF_INSTR_ID(cpu, , ddivu,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)     // Doubleword DIVide Unsigned
-    // RABBITIZER_DEF_INSTR_ID(cpu, , ddiv,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)
-    // RABBITIZER_DEF_INSTR_ID(cpu, , ddivu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)
-    RABBITIZER_DEF_INSTR_ID(cpu, , add,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .notEmitedByCompilers=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // ADD word
-    RABBITIZER_DEF_INSTR_ID(cpu, , addu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // ADD Unsigned word
-    RABBITIZER_DEF_INSTR_ID(cpu, , sub,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Subtract word
-    RABBITIZER_DEF_INSTR_ID(cpu, , subu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // SUBtract Unsigned word
-    RABBITIZER_DEF_INSTR_ID(cpu, , and,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // AND
-    RABBITIZER_DEF_INSTR_ID(cpu, , or,                            .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)        // OR
-    RABBITIZER_DEF_INSTR_ID(cpu, , xor,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // eXclusive OR
-    RABBITIZER_DEF_INSTR_ID(cpu, , nor,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Not OR
-    RABBITIZER_DEF_INSTR_ID(cpu, , slt,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Set on Less Than
-    RABBITIZER_DEF_INSTR_ID(cpu, , sltu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Set on Less Than Unsigned
-    RABBITIZER_DEF_INSTR_ID(cpu, , dadd,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)      // Doubleword Add
-    RABBITIZER_DEF_INSTR_ID(cpu, , daddu,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)     // Doubleword Add Unsigned
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsub,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)      // Doubleword SUBtract
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsubu,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)     // Doubleword SUBtract Unsigned
-
-    // OP code
-    RABBITIZER_DEF_INSTR_ID(cpu, , syscall,                       .operands={RABBITIZER_OPERAND_TYPE_code}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)   // SYStem CALL
-    RABBITIZER_DEF_INSTR_ID(cpu, , break,                         .operands={RABBITIZER_OPERAND_TYPE_code}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)     // Break
-    RABBITIZER_DEF_INSTR_ID(cpu, , sync,                          .operands={RABBITIZER_OPERAND_TYPE_code}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Sync
-
-    // OP rd, rt, rs
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsllv,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)     // Doubleword Shift Left Logical Variable
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsrlv,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)     // Doubleword Shift Right Logical Variable
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsrav,                         .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)     // Doubleword Shift Right Arithmetic Variable
-    RABBITIZER_DEF_INSTR_ID(cpu, , sllv,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Shift word Left Logical Variable
-    RABBITIZER_DEF_INSTR_ID(cpu, , srlv,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Shift word Right Logical Variable
-    RABBITIZER_DEF_INSTR_ID(cpu, , srav,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Shift word Right Arithmetic Variable
-
-    // OP rd, rt, sa
-    RABBITIZER_DEF_INSTR_ID(cpu, , sll,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Shift word Left Logical
-    RABBITIZER_DEF_INSTR_ID(cpu, , srl,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Shift word Right Logical
-    RABBITIZER_DEF_INSTR_ID(cpu, , sra,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Shift word Right Arithmetic
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsll,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)      // Doubleword Shift Left Logical
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsrl,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)      // Doubleword Shift Right Logical
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsra,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)      // Doubleword Shift Right Arithmetic
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsll32,                        .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)    // Doubleword Shift Left Logical plus 32
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsrl32,                        .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)    // Doubleword Shift Right Logical plus 32
-    RABBITIZER_DEF_INSTR_ID(cpu, , dsra32,                        .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III)    // Doubleword Shift Right Arithmetic plus 32
-
-    // OP rs, IMM
-    RABBITIZER_DEF_INSTR_ID(cpu, , bltz,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Branch on Less Than Zero
-    RABBITIZER_DEF_INSTR_ID(cpu, , bgez,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Branch on Greater than or Equal to Zero
-    RABBITIZER_DEF_INSTR_ID(cpu, , bltzl,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)     // Branch on Less Than Zero Likely
-    RABBITIZER_DEF_INSTR_ID(cpu, , bgezl,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)     // Branch on Greater than or Equal to Zero Likely
-    RABBITIZER_DEF_INSTR_ID(cpu, , tgei,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)
-    RABBITIZER_DEF_INSTR_ID(cpu, , tgeiu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)
-    RABBITIZER_DEF_INSTR_ID(cpu, , tlti,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)
-    RABBITIZER_DEF_INSTR_ID(cpu, , tltiu,                         .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)
-    RABBITIZER_DEF_INSTR_ID(cpu, , bltzal,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // Branch on Less Than Zero and Link
-    RABBITIZER_DEF_INSTR_ID(cpu, , bgezal,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // Branch on Greater Than or Equal to Zero and Link
-    RABBITIZER_DEF_INSTR_ID(cpu, , bltzall,                       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II) // Branch on Less Than Zero and Link Likely
-    RABBITIZER_DEF_INSTR_ID(cpu, , bgezall,                       .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II) // Branch on Greater Than or Equal to Zero and Link Likely
-    RABBITIZER_DEF_INSTR_ID(cpu, , teqi,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)
-    RABBITIZER_DEF_INSTR_ID(cpu, , tnei,                          .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isTrap=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)
-
-    // OP rt, cop0d
-    RABBITIZER_DEF_INSTR_ID(cpu, , mfc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true, .notEmitedByCompilers=true)      // Move word From CP0
-    RABBITIZER_DEF_INSTR_ID(cpu, , dmfc0,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true)     // Doubleword Move From CP0
-    RABBITIZER_DEF_INSTR_ID(cpu, , cfc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRt=true)      // Move control word From CP0
-    RABBITIZER_DEF_INSTR_ID(cpu, , mtc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true)      // Move word to CP0
-    RABBITIZER_DEF_INSTR_ID(cpu, , dmtc0,                         .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)     // Doubleword Move To CP0
-    RABBITIZER_DEF_INSTR_ID(cpu, , ctc0,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_cop0d}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)      // Move control word To CP0
-
-    // OP
-    RABBITIZER_DEF_INSTR_ID(cpu, , tlbr,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true)      // Read Indexed TLB Entry
-    RABBITIZER_DEF_INSTR_ID(cpu, , tlbwi,                         .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true)     // Write Indexed TLB Entry
-    RABBITIZER_DEF_INSTR_ID(cpu, , tlbwr,                         .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)     // Write Random TLB Entry
-    RABBITIZER_DEF_INSTR_ID(cpu, , tlbp,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true)      // Probe TLB for Matching Entry
-    RABBITIZER_DEF_INSTR_ID(cpu, , eret,                          .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmitedByCompilers=true)      // Return from Exception
-
-    // OP IMM
-    RABBITIZER_DEF_INSTR_ID(cpu, , bc0t,                          .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true)      // Branch on FP True
-    RABBITIZER_DEF_INSTR_ID(cpu, , bc0f,                          .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true)      // Branch on FP False
-    RABBITIZER_DEF_INSTR_ID(cpu, , bc0tl,                         .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true, .isBranchLikely=true)     // Branch on FP True Likely
-    RABBITIZER_DEF_INSTR_ID(cpu, , bc0fl,                         .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true, .isBranchLikely=true)     // Branch on FP False Likely
+#include "instructions/instr_id/cpu/cpu_normal.inc"
+#include "instructions/instr_id/cpu/cpu_special.inc"
+#include "instructions/instr_id/cpu/cpu_regimm.inc"
+#include "instructions/instr_id/cpu/cpu_cop0.inc"
+#include "instructions/instr_id/cpu/cpu_cop0_bc0.inc"
+#include "instructions/instr_id/cpu/cpu_cop0_tlb.inc"
 
     // OP rt, fs
     RABBITIZER_DEF_INSTR_ID(cpu, , mfc1,                          .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .modifiesRt=true)      // Move Word From Floating-Point
@@ -214,15 +107,3 @@
     RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, , cvt_w_d, cvt.w.d,      .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .isDouble=true)
     RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, , cvt_l_s, cvt.l.s,      .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
     RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, , cvt_l_d, cvt.l.d,      .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .isDouble=true)
-
-    // Pseudo-Instruction Unique IDs
-    // OP
-    RABBITIZER_DEF_INSTR_ID(cpu, , nop,                           .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_R, .isPseudo=true)       // No OPeration
-
-
-    // OP rd, rs
-    RABBITIZER_DEF_INSTR_ID(cpu, , move,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .maybeIsMove=true, .isPseudo=true)      // Move
-    RABBITIZER_DEF_INSTR_ID(cpu, , not,                           .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .isPseudo=true)       // Not
-
-    // OP rd, rt
-    RABBITIZER_DEF_INSTR_ID(cpu, , negu,                          .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .isPseudo=true)
