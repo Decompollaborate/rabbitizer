@@ -51,7 +51,7 @@ RABBITIZER_DEF_INSTR_ID(r5900, pmultw,      .operands={0}, .instrType=RABBITIZER
 RABBITIZER_DEF_INSTR_ID(r5900, pdivw,       .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1),
 RABBITIZER_DEF_INSTR_ID(r5900, pcpyld,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1),
 
-RABBITIZER_DEF_INSTR_ID(r5900, pmaddh,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1),
+RABBITIZER_DEF_INSTR_ID(r5900, pmaddh,      .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true, .architectureVersion=-1),
 RABBITIZER_DEF_INSTR_ID(r5900, phmadh,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1),
 RABBITIZER_DEF_INSTR_ID(r5900, pand,        .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1),
 RABBITIZER_DEF_INSTR_ID(r5900, pxor,        .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1),
