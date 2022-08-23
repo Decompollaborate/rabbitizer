@@ -5,6 +5,12 @@
 
 #include "common/RabbitizerConfig.h"
 
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
+    case (caseBits):                                            \
+        self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
+        break;
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+
 // NOLINTBEGIN(readability-magic-numbers)
 
 void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self) {
@@ -15,96 +21,10 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
 
     switch (opcode) {
-        case 0b000010:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_j;
-            break;
-        case 0b000011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_jal;
-            break;
-        case 0b000100:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_beq;
-            break;
-        case 0b000101:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_bne;
-            break;
-        case 0b000110:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_blez;
-            break;
-        case 0b000111:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_bgtz;
-            break;
-
-        case 0b001000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_addi;
-            break;
-        case 0b001001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_addiu;
-            break;
-        case 0b001010:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_slti;
-            break;
-        case 0b001011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sltiu;
-            break;
-        case 0b001100:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_andi;
-            break;
-        case 0b001101:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_ori;
-            break;
-        case 0b001110:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_xori;
-            break;
-        case 0b001111:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_lui;
-            break;
-
-        case 0b100000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_lb;
-            break;
-        case 0b100001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_lh;
-            break;
-        case 0b100011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_lw;
-            break;
-        case 0b100100:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_lbu;
-            break;
-        case 0b100101:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_lhu;
-            break;
-
-        case 0b101000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sb;
-            break;
-        case 0b101001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sh;
-            break;
-        case 0b101011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sw;
-            break;
-        case 0b101111:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_cache;
-            break;
-
-        case 0b110001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_lwc1;
-            break;
-        case 0b110011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_pref;
-            break;
-
-        case 0b111001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_swc1;
-            break;
-
-        default:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_INVALID;
-            break;
+#include "instructions/instr_id/rsp/rsp_normal.inc"
 
         // new rsp stuff
-        case 0b111010:
+        case 0x3A:
             rd = RAB_INSTR_GET_rd(self);
             self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, rd);
             switch (rd) {
@@ -154,7 +74,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
             }
             break;
 
-        case 0b110010:
+        case 0x32:
             rd = RAB_INSTR_GET_rd(self);
             self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, rd);
             switch (rd) {
@@ -228,76 +148,7 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-        case 0b000000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sll;
-            break;
-        case 0b000010:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_srl;
-            break;
-        case 0b000011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sra;
-            break;
-        case 0b000100:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sllv;
-            break;
-        case 0b000110:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_srlv;
-            break;
-        case 0b000111:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_srav;
-            break;
-
-        case 0b001000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_jr;
-            break;
-        case 0b001001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_jalr;
-            break;
-        case 0b001010:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_movz;
-            break;
-        case 0b001011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_movn;
-            break;
-        case 0b001101:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_break;
-            break;
-
-        case 0b100000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_add;
-            break;
-        case 0b100001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_addu;
-            break;
-        case 0b100010:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sub;
-            break;
-        case 0b100011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_subu;
-            break;
-        case 0b100100:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_and;
-            break;
-        case 0b100101:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_or;
-            break;
-        case 0b100110:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_xor;
-            break;
-        case 0b100111:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_nor;
-            break;
-
-        case 0b101010:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_slt;
-            break;
-        case 0b101011:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_sltu;
-            break;
-
-        default:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_INVALID;
-            break;
+#include "instructions/instr_id/rsp/rsp_special.inc"
     }
 
     if (RabbitizerInstruction_isNop(self)) {
@@ -339,23 +190,7 @@ void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self
     self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
 
     switch (rt) {
-        case 0b00000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_bltz;
-            break;
-        case 0b00001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_bgez;
-            break;
-
-        case 0b10000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_bltzal;
-            break;
-        case 0b10001:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_bgezal;
-            break;
-
-        default:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_INVALID;
-            break;
+#include "instructions/instr_id/rsp/rsp_regimm.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -367,17 +202,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-        case 0b00000:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_mfc0;
-            break;
-
-        case 0b00100:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_mtc0;
-            break;
-
-        default:
-            self->uniqueId = RABBITIZER_INSTR_ID_rsp_INVALID;
-            break;
+#include "instructions/instr_id/cpu/cpu_cop0.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -563,10 +388,15 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
+#undef RABBITIZER_DEF_INSTR_ID
+#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+
 void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+
+    self->uniqueId = RABBITIZER_INSTR_ID_rsp_INVALID;
 
     switch (opcode) {
         default:
