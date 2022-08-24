@@ -266,10 +266,10 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
             RabbitizerInstructionR5900_processUniqueId_MMI_0(self);
             break;
         case 0x09:
-            RabbitizerInstructionR5900_processUniqueId_MMI_1(self);
+            RabbitizerInstructionR5900_processUniqueId_MMI_2(self);
             break;
         case 0x28:
-            RabbitizerInstructionR5900_processUniqueId_MMI_2(self);
+            RabbitizerInstructionR5900_processUniqueId_MMI_1(self);
             break;
         case 0x29:
             RabbitizerInstructionR5900_processUniqueId_MMI_3(self);
