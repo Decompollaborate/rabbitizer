@@ -19,5 +19,7 @@
 
 // The other instructions are implemented using the main CPU table
 
-RABBITIZER_DEF_INSTR_ID(cpu, 0x28, mfsa,    .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Move From Shift Amount register
-RABBITIZER_DEF_INSTR_ID(cpu, 0x29, mtsa,    .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move To Shift Amount register
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, -0x0F, sync_p, sync.p,   .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Sync
+
+RABBITIZER_DEF_INSTR_ID(r5900, 0x28, mfsa,                      .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Move From Shift Amount register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x29, mtsa,                      .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move To Shift Amount register

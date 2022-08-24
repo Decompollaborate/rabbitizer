@@ -64,7 +64,7 @@ RABBITIZER_DEF_INSTR_ID(cpu, 0x2F, dsubu,                       .operands={RABBI
 // OP code
 RABBITIZER_DEF_INSTR_ID(cpu, 0x0C, syscall,                     .operands={RABBITIZER_OPERAND_TYPE_code}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)   // SYStem CALL
 RABBITIZER_DEF_INSTR_ID(cpu, 0x0D, break,                       .operands={RABBITIZER_OPERAND_TYPE_code}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)     // Break
-RABBITIZER_DEF_INSTR_ID(cpu, 0x0F, sync,                        .operands={RABBITIZER_OPERAND_TYPE_code}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Sync
+RABBITIZER_DEF_INSTR_ID(cpu, 0x0F, sync,                        .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Sync
 
 // OP rs, rt
 RABBITIZER_DEF_INSTR_ID(cpu, 0x18, mult,                        .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // MULTtiply word

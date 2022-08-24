@@ -32,6 +32,7 @@ void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *se
 void RabbitizerInstructionR5900_processUniqueId_Special(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
     bool fetchDescriptor = true;
+    uint32_t stype;
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
@@ -41,6 +42,20 @@ void RabbitizerInstructionR5900_processUniqueId_Special(RabbitizerInstruction *s
         default:
             RabbitizerInstruction_processUniqueId_Special(self);
             fetchDescriptor = false;
+            break;
+    }
+
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_sync:
+            stype = RAB_INSTR_GET_stype(self);
+            self->_mandatorybits = RAB_INSTR_PACK_stype(self->_mandatorybits, stype);
+            if ((stype & 0x10) == 0x10) {
+                self->uniqueId = RABBITIZER_INSTR_ID_r5900_sync_p;
+                fetchDescriptor = true;
+            }
+            break;
+
+        default:
             break;
     }
 
