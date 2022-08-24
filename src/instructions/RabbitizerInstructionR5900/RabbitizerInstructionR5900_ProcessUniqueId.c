@@ -3,7 +3,6 @@
 
 #include "instructions/RabbitizerInstructionR5900.h"
 
-
 #define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
@@ -70,7 +69,6 @@ void RabbitizerInstructionR5900_processUniqueId_Regimm(RabbitizerInstruction *se
     }
 }
 
-
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor0_Tlb(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
 
@@ -105,7 +103,6 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0(RabbitizerInstructi
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
-
 
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor1_FpuS(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
@@ -145,8 +142,69 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1(RabbitizerInstructi
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
+void RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_GET_bc_fmt(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
+
+    switch (fmt) {
+#include "instructions/instr_id/r5900/r5900_cop2_bc2.inc"
+    }
+}
+
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(UNUSED RabbitizerInstruction *self) {
+    // TODO
+}
+
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_GET_function(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+
+    switch (function) {
+#include "instructions/instr_id/r5900/r5900_cop2_special1.inc"
+
+        case 0x3C:
+        case 0x3D:
+        case 0x3E:
+        case 0x3F:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(self);
+            break;
+    }
+}
+
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
-    RabbitizerInstruction_processUniqueId_Coprocessor2(self);
+    uint8_t fmt = RAB_INSTR_GET_fmt(self);
+
+    self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+
+    switch (fmt) {
+#include "instructions/instr_id/r5900/r5900_cop2.inc"
+
+        case 0x08:
+            RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(self);
+            break;
+
+        case 0x10:
+        case 0x11:
+        case 0x12:
+        case 0x13:
+        case 0x14:
+        case 0x15:
+        case 0x16:
+        case 0x17:
+        case 0x18:
+        case 0x19:
+        case 0x1A:
+        case 0x1B:
+        case 0x1C:
+        case 0x1D:
+        case 0x1E:
+        case 0x1F:
+            break;
+    }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstructionR5900_processUniqueId_MMI_0(RabbitizerInstruction *self) {
@@ -216,7 +274,6 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
 
 #undef RABBITIZER_DEF_INSTR_ID
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
-
 
 void RabbitizerInstructionR5900_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);

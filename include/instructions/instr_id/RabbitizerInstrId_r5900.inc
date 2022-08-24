@@ -17,5 +17,9 @@ RABBITIZER_DEF_INSTR_ID(r5900, , INVALID,     .operands={RABBITIZER_OPERAND_TYPE
 
 #include "instructions/instr_id/r5900/r5900_cop1_fpu_s.inc"
 
+#include "instructions/instr_id/r5900/r5900_cop2.inc"
+#include "instructions/instr_id/r5900/r5900_cop2_bc2.inc"
+#include "instructions/instr_id/r5900/r5900_cop2_special1.inc"
+
 
 RABBITIZER_DEF_INSTR_ID(r5900, , MAX, 0)
