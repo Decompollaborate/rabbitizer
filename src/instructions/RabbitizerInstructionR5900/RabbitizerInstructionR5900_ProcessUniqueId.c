@@ -153,7 +153,13 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(RabbitizerInstructio
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(UNUSED RabbitizerInstruction *self) {
-    // TODO
+    uint32_t fhiflo = RAB_INSTR_R5900_GET_fhi_flo(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_fhi_flo(self->_mandatorybits, fhiflo);
+
+    switch (fhiflo) {
+#include "instructions/instr_id/r5900/r5900_cop2_special2.inc"
+    }
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(RabbitizerInstruction *self) {
@@ -201,6 +207,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstructi
         case 0x1D:
         case 0x1E:
         case 0x1F:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(self);
             break;
     }
 

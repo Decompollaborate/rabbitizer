@@ -9,9 +9,11 @@
 
 
 #define RAB_INSTR_R5900_GET_mmi_function(self)          (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_R5900_GET_fhi_flo(self)               ((SHIFTR((self)->word,  6,  5) << 2) | SHIFTR((self)->word,  0,  2))
 
 
-#define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), value, 6,  5))
+#define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), (value), 6,  5))
+#define RAB_INSTR_R5900_PACK_fhi_flo(word, value)       (BITREPACK(BITREPACK((word), (value) >> 2, 6,  5), (value), 0,  2))
 
 
 NON_NULL(1)
