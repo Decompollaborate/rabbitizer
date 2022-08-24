@@ -19,7 +19,5 @@
 
 // The other instructions are implemented using the main CPU table
 
-// TODO: operands and properties
-
 RABBITIZER_DEF_INSTR_ID(cpu, 0x38, ei,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
 RABBITIZER_DEF_INSTR_ID(cpu, 0x39, di,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)

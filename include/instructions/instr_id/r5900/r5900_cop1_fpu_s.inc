@@ -23,7 +23,7 @@
 
 RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, 0x16, rsqrt_s, rsqrt.s,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
 
-RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, 0x18, adda_s, adda.s,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
+RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, 0x18, adda_s, adda.s,      .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point ADD to Accumulator
 RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, 0x19, suba_s, suba.s,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
 RABBITIZER_DEF_INSTR_ID_ALTNAME(cpu, 0x1A, mula_s, mula.s,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
 
