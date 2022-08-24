@@ -17,35 +17,34 @@
  hi |-------|-------|-------|-------|
 */
 
-// TODO: operands and properties
-RABBITIZER_DEF_INSTR_ID(r5900, 0x00, paddw,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x01, psubw,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x02, pcgtw,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x03, pmaxw,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x00, paddw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel ADD Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x01, psubw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel SUBtract Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x02, pcgtw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Compare for Greater Than Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x03, pmaxw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel MAXimum Word
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x04, paddh,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x05, psubh,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x06, pcgth,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x07, pmaxh,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x04, paddh,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel ADD Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x05, psubh,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel SUBtract Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x06, pcgth,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Compare for Greater Than Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x07, pmaxh,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel MAXimum Halfword
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x08, paddb,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x09, psubb,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x0A, pcgtb,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x08, paddb,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel ADD Byte
+RABBITIZER_DEF_INSTR_ID(r5900, 0x09, psubb,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel SUBtract Byte
+RABBITIZER_DEF_INSTR_ID(r5900, 0x0A, pcgtb,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Compare for Greater Than Byte
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x10, paddsw,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x11, psubsw,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x12, pextlw,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x13, ppacw,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x10, paddsw,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel ADD with Signed saturation Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x11, psubsw,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel SUBtract with Signed saturation Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x12, pextlw,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel EXTend Lower from Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x13, ppacw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel PACk to Word
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x14, paddsh,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x15, psubsh,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x16, pextlh,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x17, ppach,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x14, paddsh,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel ADD with Signed saturation Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x15, psubsh,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel SUBtract with Signed saturation Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x16, pextlh,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel EXTend Lower from Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x17, ppach,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel PACk to Halfword
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x18, paddsb,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x19, psubsb,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1A, pextlb,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1B, ppacb,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x18, paddsb,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel ADD with Signed saturation Bytes
+RABBITIZER_DEF_INSTR_ID(r5900, 0x19, psubsb,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel SUBtract with Signed saturation Bytes
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1A, pextlb,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel EXTend Lower from Bytes
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1B, ppacb,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel PACk to Bytes
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1E, pext5,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1F, ppac5,     .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1E, pext5,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel EXTend from 5-bits
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1F, ppac5,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel PACk to 5-bits

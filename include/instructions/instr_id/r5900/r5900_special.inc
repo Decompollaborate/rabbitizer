@@ -19,7 +19,5 @@
 
 // The other instructions are implemented using the main CPU table
 
-// TODO: operands and properties
-
-RABBITIZER_DEF_INSTR_ID(cpu, 0x28, mfsa,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
-RABBITIZER_DEF_INSTR_ID(cpu, 0x29, mtsa,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
+RABBITIZER_DEF_INSTR_ID(cpu, 0x28, mfsa,    .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Move From Shift Amount register
+RABBITIZER_DEF_INSTR_ID(cpu, 0x29, mtsa,    .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move To Shift Amount register
