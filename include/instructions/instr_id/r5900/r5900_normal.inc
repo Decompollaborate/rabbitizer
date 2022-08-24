@@ -27,6 +27,6 @@
 RABBITIZER_DEF_INSTR_ID(r5900, 0x1E, lq,    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .canBeLo=true, .doesDereference=true, .doesLoad=true) // Load Quadword
 RABBITIZER_DEF_INSTR_ID(r5900, 0x1F, sq,    .operands={RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .canBeLo=true, .doesDereference=true, .doesStore=true) // Store Quadword
 
-// RABBITIZER_DEF_INSTR_ID(r5900, 0x36, lqc2,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x36, lqc2,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
 
-// RABBITIZER_DEF_INSTR_ID(r5900, 0x3E, sqc2,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3E, sqc2,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
