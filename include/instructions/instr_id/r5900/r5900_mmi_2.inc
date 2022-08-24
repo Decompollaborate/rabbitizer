@@ -17,7 +17,6 @@
  hi |-------|-------|-------|-------|
 */
 
-// TODO: operands and properties
 RABBITIZER_DEF_INSTR_ID(r5900, 0x00, pmaddw,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Multiply-ADD Word
 RABBITIZER_DEF_INSTR_ID(r5900, 0x02, psllvw,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Left Logical Variable Word
 RABBITIZER_DEF_INSTR_ID(r5900, 0x03, psrlvw,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Right Logical Variable Word

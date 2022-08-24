@@ -19,18 +19,16 @@
 
 // The other instructions are implemented using the main CPU table
 
-// TODO: operands and properties
-
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x16, rsqrt_s, rsqrt.s,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x16, rsqrt_s, rsqrt.s,  .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point Reciprocal SQuare RooT
 
 RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x18, adda_s, adda.s,    .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point ADD to Accumulator
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x19, suba_s, suba.s,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1A, mula_s, mula.s,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x19, suba_s, suba.s,    .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point SUBtract to Accumulator
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1A, mula_s, mula.s,    .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point MULtiply to Accumulator
 
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1C, madd_s, madd.s,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1D, msub_s, msub.s,    .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1E, madda_s, madda.s,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1F, msuba_s, msuba.s,  .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1C, madd_s, madd.s,    .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point Multiply-ADD
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1D, msub_s, msub.s,    .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point Multiply abd SUBtract
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1E, madda_s, madda.s,  .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point Multiply-ADD Accumulator
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1F, msuba_s, msuba.s,  .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point Multiply SUBtract from Accumulator
 
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x28, max_s, max.s,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
-RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x29, min_s, min.s,      .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x28, max_s, max.s,      .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point MAXimum
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x29, min_s, min.s,      .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point MINimum
