@@ -511,6 +511,7 @@ size_t RabbitizerInstruction_getSizeForBuffer(const RabbitizerInstruction *self,
             totalSize += 40;
             totalSize += 3;
             totalSize += RabbitizerInstruction_getSizeForBufferInstrDisasm(self, immOverrideLength, extraLJust);
+            totalSize += 11;
         }
         return totalSize;
     }
@@ -527,6 +528,8 @@ size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char
         RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstruction_disassembleAsData(self, dst, extraLJust));
 
         if (RabbitizerConfig_Cfg.misc.unknownInstrComment) {
+            uint32_t validBits;
+
             RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerUtils_CharFill(dst, 40 - totalSize, ' '));
 
             RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
@@ -534,6 +537,10 @@ size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char
             RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
 
             RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstruction_disassembleInstruction(self, dst, immOverride, immOverrideLength, extraLJust));
+
+            validBits = RabbitizerInstruction_getValidBits(self);
+
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, " # %08X", ((~validBits) & self->word));
         }
 
         return totalSize;
