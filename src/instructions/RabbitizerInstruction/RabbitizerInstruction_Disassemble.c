@@ -527,6 +527,78 @@ size_t RabbitizerOperandTypeR5900_processVfdn(const RabbitizerInstruction *self,
     return totalSize;
 }
 
+size_t RabbitizerOperandTypeR5900_processVfsl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_l(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVftl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_l(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfdl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_l(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfsm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_m(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVftm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_m(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfdm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_m(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
 size_t RabbitizerOperandTypeR5900_processVis(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vis(self));
@@ -548,78 +620,6 @@ size_t RabbitizerOperandTypeR5900_processVid(const RabbitizerInstruction *self, 
     const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vid(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
-    return totalSize;
-}
-
-size_t RabbitizerOperandTypeR5900_processVisl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
-    size_t totalSize = 0;
-    uint8_t n;
-
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVis(self, dst, immOverride, immOverrideLength));
-
-    n = RAB_INSTR_R5900_GET_l(self);
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
-
-    return totalSize;
-}
-
-size_t RabbitizerOperandTypeR5900_processVitl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
-    size_t totalSize = 0;
-    uint8_t n;
-
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVit(self, dst, immOverride, immOverrideLength));
-
-    n = RAB_INSTR_R5900_GET_l(self);
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
-
-    return totalSize;
-}
-
-size_t RabbitizerOperandTypeR5900_processVidl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
-    size_t totalSize = 0;
-    uint8_t n;
-
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVid(self, dst, immOverride, immOverrideLength));
-
-    n = RAB_INSTR_R5900_GET_l(self);
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
-
-    return totalSize;
-}
-
-size_t RabbitizerOperandTypeR5900_processVism(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
-    size_t totalSize = 0;
-    uint8_t n;
-
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVis(self, dst, immOverride, immOverrideLength));
-
-    n = RAB_INSTR_R5900_GET_m(self);
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
-
-    return totalSize;
-}
-
-size_t RabbitizerOperandTypeR5900_processVitm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
-    size_t totalSize = 0;
-    uint8_t n;
-
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVit(self, dst, immOverride, immOverrideLength));
-
-    n = RAB_INSTR_R5900_GET_m(self);
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
-
-    return totalSize;
-}
-
-size_t RabbitizerOperandTypeR5900_processVidm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
-    size_t totalSize = 0;
-    uint8_t n;
-
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVid(self, dst, immOverride, immOverrideLength));
-
-    n = RAB_INSTR_R5900_GET_m(self);
-    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
-
     return totalSize;
 }
 
@@ -788,15 +788,15 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_R5900_vfsn] = RabbitizerOperandTypeR5900_processVfsn,
     [RABBITIZER_OPERAND_TYPE_R5900_vftn] = RabbitizerOperandTypeR5900_processVftn,
     [RABBITIZER_OPERAND_TYPE_R5900_vfdn] = RabbitizerOperandTypeR5900_processVfdn,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfsl] = RabbitizerOperandTypeR5900_processVfsl,
+    [RABBITIZER_OPERAND_TYPE_R5900_vftl] = RabbitizerOperandTypeR5900_processVftl,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfdl] = RabbitizerOperandTypeR5900_processVfdl,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfsm] = RabbitizerOperandTypeR5900_processVfsm,
+    [RABBITIZER_OPERAND_TYPE_R5900_vftm] = RabbitizerOperandTypeR5900_processVftm,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfdm] = RabbitizerOperandTypeR5900_processVfdm,
     [RABBITIZER_OPERAND_TYPE_R5900_vis] = RabbitizerOperandTypeR5900_processVis,
     [RABBITIZER_OPERAND_TYPE_R5900_vit] = RabbitizerOperandTypeR5900_processVit,
     [RABBITIZER_OPERAND_TYPE_R5900_vid] = RabbitizerOperandTypeR5900_processVid,
-    [RABBITIZER_OPERAND_TYPE_R5900_visl] = RabbitizerOperandTypeR5900_processVisl,
-    [RABBITIZER_OPERAND_TYPE_R5900_vitl] = RabbitizerOperandTypeR5900_processVitl,
-    [RABBITIZER_OPERAND_TYPE_R5900_vidl] = RabbitizerOperandTypeR5900_processVidl,
-    [RABBITIZER_OPERAND_TYPE_R5900_vism] = RabbitizerOperandTypeR5900_processVism,
-    [RABBITIZER_OPERAND_TYPE_R5900_vitm] = RabbitizerOperandTypeR5900_processVitm,
-    [RABBITIZER_OPERAND_TYPE_R5900_vidm] = RabbitizerOperandTypeR5900_processVidm,
     [RABBITIZER_OPERAND_TYPE_R5900_vis_predecr] = RabbitizerOperandTypeR5900_processVis_predecr,
     [RABBITIZER_OPERAND_TYPE_R5900_vit_predecr] = RabbitizerOperandTypeR5900_processVit_predecr,
     [RABBITIZER_OPERAND_TYPE_R5900_vid_predecr] = RabbitizerOperandTypeR5900_processVid_predecr,
