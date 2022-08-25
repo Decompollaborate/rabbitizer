@@ -14,11 +14,11 @@ int main() {
     RabbitizerInstruction instr;
     char *buffer;
     int extraLJust = 5;
-#if 0
+#if 1
     uint32_t validbits;
 #endif
 
-    word = 0x4A0003BE;
+    word = 0x4BE1634B;
 
     RabbitizerInstructionR5900_init(&instr, word, 0x00100000);
 
@@ -31,7 +31,7 @@ int main() {
 
     printf("%08X: %s\n", word, buffer);
 
-#if 0
+#if 1
     validbits = RabbitizerInstruction_getValidBits(&instr);
 
     printf("word:           %08X\n", instr.word);

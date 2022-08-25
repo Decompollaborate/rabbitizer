@@ -294,7 +294,99 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
         case RABBITIZER_OPERAND_TYPE_R5900_I:
         case RABBITIZER_OPERAND_TYPE_R5900_Q:
         case RABBITIZER_OPERAND_TYPE_R5900_R:
+            break;
+
         case RABBITIZER_OPERAND_TYPE_R5900_ACC:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_ACC)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vfs:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfsn)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vft:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vftn)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vfd:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfdn)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfsn)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vftxyzw:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vft)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vftn)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfd)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfdn)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vfsn:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfs)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vftn:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vft)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vfdn:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfd)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw)) {
+                return true;
+            }
             break;
 
         case RABBITIZER_OPERAND_TYPE_R5900_vis:
@@ -457,6 +549,64 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_R5900_R:
             case RABBITIZER_OPERAND_TYPE_R5900_ACC:
                 // Not real registers encoded on the instruction itself
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw:
+                validbits = RAB_INSTR_R5900_PACK_xyzw_x(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_y(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_z(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_w(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfs:
+                validbits = RAB_INSTR_R5900_PACK_vfs(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vft:
+                validbits = RAB_INSTR_R5900_PACK_vft(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfd:
+                validbits = RAB_INSTR_R5900_PACK_vfd(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw:
+                validbits = RAB_INSTR_R5900_PACK_vfs(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_x(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_y(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_z(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_w(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vftxyzw:
+                validbits = RAB_INSTR_R5900_PACK_vft(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_x(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_y(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_z(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_w(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw:
+                validbits = RAB_INSTR_R5900_PACK_vfd(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_x(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_y(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_z(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_xyzw_w(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfsn:
+                validbits = RAB_INSTR_R5900_PACK_vfs(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_n(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vftn:
+                validbits = RAB_INSTR_R5900_PACK_vft(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_n(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfdn:
+                validbits = RAB_INSTR_R5900_PACK_vfd(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_n(validbits, ~0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_R5900_vis:

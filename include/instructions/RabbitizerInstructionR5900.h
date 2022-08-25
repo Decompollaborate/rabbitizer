@@ -11,6 +11,16 @@
 #define RAB_INSTR_R5900_GET_mmi_function(self)          (SHIFTR((self)->word,  6,  5))
 #define RAB_INSTR_R5900_GET_fhi_flo(self)               ((SHIFTR((self)->word,  6,  5) << 2) | SHIFTR((self)->word,  0,  2))
 
+#define RAB_INSTR_R5900_GET_vfs(self)                   (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_R5900_GET_vft(self)                   (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_R5900_GET_vfd(self)                   (SHIFTR((self)->word,  6,  5))
+
+#define RAB_INSTR_R5900_GET_xyzw_x(self)                (SHIFTR((self)->word, 24,  1))
+#define RAB_INSTR_R5900_GET_xyzw_y(self)                (SHIFTR((self)->word, 23,  1))
+#define RAB_INSTR_R5900_GET_xyzw_z(self)                (SHIFTR((self)->word, 22,  1))
+#define RAB_INSTR_R5900_GET_xyzw_w(self)                (SHIFTR((self)->word, 21,  1))
+#define RAB_INSTR_R5900_GET_n(self)                     (SHIFTR((self)->word,  0,  2))
+
 #define RAB_INSTR_R5900_GET_vis(self)                   (SHIFTR((self)->word, 11,  5))
 #define RAB_INSTR_R5900_GET_vit(self)                   (SHIFTR((self)->word, 16,  5))
 #define RAB_INSTR_R5900_GET_vid(self)                   (SHIFTR((self)->word,  6,  5))
@@ -20,6 +30,16 @@
 
 #define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), (value),  6,  5))
 #define RAB_INSTR_R5900_PACK_fhi_flo(word, value)       (BITREPACK(BITREPACK((word), (value) >> 2,  6,  5), (value),  0,  2))
+
+#define RAB_INSTR_R5900_PACK_vfs(word, value)           (BITREPACK((word), (value), 11,  5))
+#define RAB_INSTR_R5900_PACK_vft(word, value)           (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_R5900_PACK_vfd(word, value)           (BITREPACK((word), (value),  6,  5))
+
+#define RAB_INSTR_R5900_PACK_xyzw_x(word, value)        (BITREPACK((word), (value), 24,  1))
+#define RAB_INSTR_R5900_PACK_xyzw_y(word, value)        (BITREPACK((word), (value), 23,  1))
+#define RAB_INSTR_R5900_PACK_xyzw_z(word, value)        (BITREPACK((word), (value), 22,  1))
+#define RAB_INSTR_R5900_PACK_xyzw_w(word, value)        (BITREPACK((word), (value), 21,  1))
+#define RAB_INSTR_R5900_PACK_n(word, value)             (BITREPACK((word), (value),  0,  2))
 
 #define RAB_INSTR_R5900_PACK_vis(word, value)           (BITREPACK((word), (value), 11,  5))
 #define RAB_INSTR_R5900_PACK_vit(word, value)           (BITREPACK((word), (value), 16,  5))

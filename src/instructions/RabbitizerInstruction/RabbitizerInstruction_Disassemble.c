@@ -383,6 +383,150 @@ size_t RabbitizerOperandTypeR5900_processACC(UNUSED const RabbitizerInstruction 
     return totalSize;
 }
 
+size_t RabbitizerOperandTypeR5900_processACCxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processACC(self, dst, immOverride, immOverrideLength));
+
+    if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_y(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'y');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_z(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'z');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
+    }
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR5900VF(RAB_INSTR_R5900_GET_vfs(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVft(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR5900VF(RAB_INSTR_R5900_GET_vft(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR5900VF(RAB_INSTR_R5900_GET_vfd(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfsxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+
+    if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_y(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'y');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_z(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'z');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
+    }
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVftxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+
+    if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_y(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'y');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_z(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'z');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
+    }
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfdxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+
+    if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_y(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'y');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_z(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'z');
+    }
+    if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
+    }
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfsn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_n(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVftn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_n(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVfdn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t n;
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+
+    n = RAB_INSTR_R5900_GET_n(self);
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
+
+    return totalSize;
+}
+
 size_t RabbitizerOperandTypeR5900_processVis(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vis(self));
@@ -478,6 +622,16 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_R5900_Q] = RabbitizerOperandTypeR5900_processQ,
     [RABBITIZER_OPERAND_TYPE_R5900_R] = RabbitizerOperandTypeR5900_processR,
     [RABBITIZER_OPERAND_TYPE_R5900_ACC] = RabbitizerOperandTypeR5900_processACC,
+    [RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw] = RabbitizerOperandTypeR5900_processACCxyzw,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfs] = RabbitizerOperandTypeR5900_processVfs,
+    [RABBITIZER_OPERAND_TYPE_R5900_vft] = RabbitizerOperandTypeR5900_processVft,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfd] = RabbitizerOperandTypeR5900_processVfd,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw] = RabbitizerOperandTypeR5900_processVfsxyzw,
+    [RABBITIZER_OPERAND_TYPE_R5900_vftxyzw] = RabbitizerOperandTypeR5900_processVftxyzw,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw] = RabbitizerOperandTypeR5900_processVfdxyzw,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfsn] = RabbitizerOperandTypeR5900_processVfsn,
+    [RABBITIZER_OPERAND_TYPE_R5900_vftn] = RabbitizerOperandTypeR5900_processVftn,
+    [RABBITIZER_OPERAND_TYPE_R5900_vfdn] = RabbitizerOperandTypeR5900_processVfdn,
     [RABBITIZER_OPERAND_TYPE_R5900_vis] = RabbitizerOperandTypeR5900_processVis,
     [RABBITIZER_OPERAND_TYPE_R5900_vit] = RabbitizerOperandTypeR5900_processVit,
     [RABBITIZER_OPERAND_TYPE_R5900_vid] = RabbitizerOperandTypeR5900_processVid,

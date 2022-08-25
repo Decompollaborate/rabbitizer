@@ -46,6 +46,9 @@ const char *RabbitizerRegister_Cop2_Names[][2] = {
 #include "instructions/registers/RabbitizerRegister_Cop2.inc"
 };
 
+
+/* RSP */
+
 const char *RabbitizerRegister_RspGpr_Names[][2] = {
 #include "instructions/registers/RabbitizerRegister_RspGpr.inc"
 };
@@ -66,9 +69,20 @@ const char *RabbitizerRegister_RspVector_Names[][2] = {
 #include "instructions/registers/RabbitizerRegister_RspVector.inc"
 };
 
+/* RSP */
+
+/* R5900 */
+
+const char *RabbitizerRegister_R5900VF_Names[][2] = {
+#include "instructions/registers/RabbitizerRegister_R5900VF.inc"
+};
+
 const char *RabbitizerRegister_R5900VI_Names[][2] = {
 #include "instructions/registers/RabbitizerRegister_R5900VI.inc"
 };
+
+/* R5900 */
+
 
 const char *RabbitizerRegister_getNameGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_GprO32_Names));
@@ -154,6 +168,12 @@ const char *RabbitizerRegister_getNameRspVector(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspVector_Names));
 
     return RabbitizerRegister_RspVector_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R5900VF_Names));
+
+    return RabbitizerRegister_R5900VF_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_getNameR5900VI(uint8_t regValue) {
