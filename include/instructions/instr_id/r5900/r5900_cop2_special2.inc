@@ -89,10 +89,10 @@ RABBITIZER_DEF_INSTR_ID(r5900, 0x2F, vnop,      .operands={0}, .instrType=RABBIT
 
 RABBITIZER_DEF_INSTR_ID(r5900, 0x30, vmove,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Move floating point registers
 RABBITIZER_DEF_INSTR_ID(r5900, 0x31, vmr32,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Move and rotate per word
-RABBITIZER_DEF_INSTR_ID(r5900, 0x34, vlqi,      .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_R5900_vis}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Load quadraword post increment
-RABBITIZER_DEF_INSTR_ID(r5900, 0x35, vsqi,      .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_R5900_vit}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Store quadraword post increment
-RABBITIZER_DEF_INSTR_ID(r5900, 0x36, vlqd,      .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_R5900_vis}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Load quadraword pre decrement
-RABBITIZER_DEF_INSTR_ID(r5900, 0x37, vsqd,      .operands={RABBITIZER_OPERAND_TYPE_ft, RABBITIZER_OPERAND_TYPE_R5900_vit}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Store quadraword pre decrement
+RABBITIZER_DEF_INSTR_ID(r5900, 0x34, vlqi,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vis_postincr}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Load quadraword post increment
+RABBITIZER_DEF_INSTR_ID(r5900, 0x35, vsqi,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vit_postincr}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Store quadraword post increment
+RABBITIZER_DEF_INSTR_ID(r5900, 0x36, vlqd,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vis_predecr}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Load quadraword pre decrement
+RABBITIZER_DEF_INSTR_ID(r5900, 0x37, vsqd,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vit_predecr}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Store quadraword pre decrement
 
 RABBITIZER_DEF_INSTR_ID(r5900, 0x38, vdiv,      .operands={RABBITIZER_OPERAND_TYPE_R5900_Q,RABBITIZER_OPERAND_TYPE_R5900_visl,RABBITIZER_OPERAND_TYPE_R5900_vitm}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
 RABBITIZER_DEF_INSTR_ID(r5900, 0x39, vsqrt,     .operands={RABBITIZER_OPERAND_TYPE_R5900_Q,RABBITIZER_OPERAND_TYPE_R5900_vitm}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)

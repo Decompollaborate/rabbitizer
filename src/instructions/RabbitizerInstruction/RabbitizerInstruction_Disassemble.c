@@ -623,6 +623,90 @@ size_t RabbitizerOperandTypeR5900_processVidm(const RabbitizerInstruction *self,
     return totalSize;
 }
 
+size_t RabbitizerOperandTypeR5900_processVis_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVis(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVit_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVit(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVid_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVid(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVis_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVis(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVit_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVit(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVid_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVid(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
 size_t RabbitizerOperandTypeR5900_processImm5(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     int32_t number;
@@ -713,6 +797,12 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_R5900_vism] = RabbitizerOperandTypeR5900_processVism,
     [RABBITIZER_OPERAND_TYPE_R5900_vitm] = RabbitizerOperandTypeR5900_processVitm,
     [RABBITIZER_OPERAND_TYPE_R5900_vidm] = RabbitizerOperandTypeR5900_processVidm,
+    [RABBITIZER_OPERAND_TYPE_R5900_vis_predecr] = RabbitizerOperandTypeR5900_processVis_predecr,
+    [RABBITIZER_OPERAND_TYPE_R5900_vit_predecr] = RabbitizerOperandTypeR5900_processVit_predecr,
+    [RABBITIZER_OPERAND_TYPE_R5900_vid_predecr] = RabbitizerOperandTypeR5900_processVid_predecr,
+    [RABBITIZER_OPERAND_TYPE_R5900_vis_postincr] = RabbitizerOperandTypeR5900_processVis_postincr,
+    [RABBITIZER_OPERAND_TYPE_R5900_vit_postincr] = RabbitizerOperandTypeR5900_processVit_postincr,
+    [RABBITIZER_OPERAND_TYPE_R5900_vid_postincr] = RabbitizerOperandTypeR5900_processVid_postincr,
     [RABBITIZER_OPERAND_TYPE_R5900_imm5] = RabbitizerOperandTypeR5900_processImm5,
 };
 

@@ -315,6 +315,30 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_R5900_PACK_m(self->word, 0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_R5900_vis_predecr:
+                self->word = RAB_INSTR_R5900_PACK_vis(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vit_predecr:
+                self->word = RAB_INSTR_R5900_PACK_vit(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vid_predecr:
+                self->word = RAB_INSTR_R5900_PACK_vid(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vis_postincr:
+                self->word = RAB_INSTR_R5900_PACK_vis(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vit_postincr:
+                self->word = RAB_INSTR_R5900_PACK_vit(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vid_postincr:
+                self->word = RAB_INSTR_R5900_PACK_vid(self->word, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_R5900_imm5:
                 self->word = RAB_INSTR_R5900_PACK_imm5(self->word, 0);
                 break;
