@@ -32,3 +32,10 @@ RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x1F, msuba_s, msuba.s,  .operands={RABBI
 
 RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x28, max_s, max.s,      .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point MAXimum
 RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x29, min_s, min.s,      .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point MINimum
+
+// Due to the R5900's FPU being non properly complaint the instruction cvt.w.s always behaves as trunc.w.s because is because EE can only do round-to-zero.
+// Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, so we mimic that behaviour to allow assembling with GAS.
+// Here's some reading about the binutils rationale:
+// https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
+// https://sourceware.org/pipermail/binutils/2013-January/079863.html
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x24, trunc_w_s, trunc.w.s,  .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Floating-Point Truncate to Word Fixed-Point
