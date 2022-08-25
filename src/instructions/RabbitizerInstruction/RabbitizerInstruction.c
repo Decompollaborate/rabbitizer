@@ -8,6 +8,7 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "instructions/RabbitizerInstructionR5900.h"
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
     self->word = word;
@@ -212,6 +213,22 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_R5900_R:
             case RABBITIZER_OPERAND_TYPE_R5900_ACC:
                 // Not real registers encoded on the instruction itself
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vis:
+                self->word = RAB_INSTR_R5900_PACK_vis(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vit:
+                self->word = RAB_INSTR_R5900_PACK_vit(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vid:
+                self->word = RAB_INSTR_R5900_PACK_vid(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_imm5:
+                self->word = RAB_INSTR_R5900_PACK_imm5(self->word, 0);
                 break;
             /* r5900 */
 

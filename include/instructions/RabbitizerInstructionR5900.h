@@ -11,9 +11,21 @@
 #define RAB_INSTR_R5900_GET_mmi_function(self)          (SHIFTR((self)->word,  6,  5))
 #define RAB_INSTR_R5900_GET_fhi_flo(self)               ((SHIFTR((self)->word,  6,  5) << 2) | SHIFTR((self)->word,  0,  2))
 
+#define RAB_INSTR_R5900_GET_vis(self)                   (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_R5900_GET_vit(self)                   (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_R5900_GET_vid(self)                   (SHIFTR((self)->word,  6,  5))
 
-#define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), (value), 6,  5))
-#define RAB_INSTR_R5900_PACK_fhi_flo(word, value)       (BITREPACK(BITREPACK((word), (value) >> 2, 6,  5), (value), 0,  2))
+#define RAB_INSTR_R5900_GET_imm5(self)                  (SHIFTR((self)->word,  6,  5))
+
+
+#define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), (value),  6,  5))
+#define RAB_INSTR_R5900_PACK_fhi_flo(word, value)       (BITREPACK(BITREPACK((word), (value) >> 2,  6,  5), (value),  0,  2))
+
+#define RAB_INSTR_R5900_PACK_vis(word, value)           (BITREPACK((word), (value), 11,  5))
+#define RAB_INSTR_R5900_PACK_vit(word, value)           (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_R5900_PACK_vid(word, value)           (BITREPACK((word), (value),  6,  5))
+
+#define RAB_INSTR_R5900_PACK_imm5(word, value)          (BITREPACK((word), (value),  6,  5))
 
 
 NON_NULL(1)

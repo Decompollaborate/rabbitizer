@@ -70,6 +70,10 @@ typedef enum RabbitizerRegister_RspVector {
     #include "instructions/registers/RabbitizerRegister_RspVector.inc"
 } RabbitizerRegister_RspVector;
 
+typedef enum RabbitizerRegister_R5900VI {
+    #include "instructions/registers/RabbitizerRegister_R5900VI.inc"
+} RabbitizerRegister_R5900VI;
+
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
 
@@ -106,5 +110,7 @@ NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspCop2Control(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspVector(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR5900VI(uint8_t regValue);
 
 #endif

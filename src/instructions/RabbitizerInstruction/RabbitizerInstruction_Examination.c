@@ -7,6 +7,7 @@
 
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "instructions/RabbitizerInstructionR5900.h"
 #include "instructions/RabbitizerRegister.h"
 
 bool RabbitizerInstruction_isImplemented(const RabbitizerInstruction *self) {
@@ -295,6 +296,12 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
         case RABBITIZER_OPERAND_TYPE_R5900_R:
         case RABBITIZER_OPERAND_TYPE_R5900_ACC:
             break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vis:
+        case RABBITIZER_OPERAND_TYPE_R5900_vit:
+        case RABBITIZER_OPERAND_TYPE_R5900_vid:
+        case RABBITIZER_OPERAND_TYPE_R5900_imm5:
+            break;
             /* r5900 */
 
         case RABBITIZER_OPERAND_TYPE_INVALID:
@@ -450,6 +457,22 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_R5900_R:
             case RABBITIZER_OPERAND_TYPE_R5900_ACC:
                 // Not real registers encoded on the instruction itself
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vis:
+                validbits = RAB_INSTR_R5900_PACK_vis(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vit:
+                validbits = RAB_INSTR_R5900_PACK_vit(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vid:
+                validbits = RAB_INSTR_R5900_PACK_vid(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_imm5:
+                validbits = RAB_INSTR_R5900_PACK_imm5(validbits, ~0);
                 break;
             /* r5900 */
 

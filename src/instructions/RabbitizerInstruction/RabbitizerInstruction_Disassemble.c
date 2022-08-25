@@ -3,6 +3,7 @@
 
 #include "instructions/RabbitizerInstruction.h"
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "instructions/RabbitizerInstructionR5900.h"
 
 #include <assert.h>
 #include <string.h>
@@ -382,6 +383,62 @@ size_t RabbitizerOperandTypeR5900_processACC(UNUSED const RabbitizerInstruction 
     return totalSize;
 }
 
+size_t RabbitizerOperandTypeR5900_processVis(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vis(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVit(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vit(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processVid(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vid(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processImm5(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    int32_t number;
+
+    if (immOverride != NULL) {
+        memcpy(dst, immOverride, immOverrideLength);
+        return immOverrideLength;
+    }
+
+    number = RAB_INSTR_R5900_GET_imm5(self);
+    if (RabbitizerConfig_Cfg.misc.omit0XOnSmallImm) {
+        if (number > -10 && number < 10) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);
+            return totalSize;
+        }
+    }
+    if (number < 0) {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%x", -number);
+        }
+    } else {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", number);
+        }
+    }
+    return totalSize;
+}
+
 const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_rs] = RabbitizerOperandType_processRs,
     [RABBITIZER_OPERAND_TYPE_rt] = RabbitizerOperandType_processRt,
@@ -421,7 +478,10 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_R5900_Q] = RabbitizerOperandTypeR5900_processQ,
     [RABBITIZER_OPERAND_TYPE_R5900_R] = RabbitizerOperandTypeR5900_processR,
     [RABBITIZER_OPERAND_TYPE_R5900_ACC] = RabbitizerOperandTypeR5900_processACC,
-
+    [RABBITIZER_OPERAND_TYPE_R5900_vis] = RabbitizerOperandTypeR5900_processVis,
+    [RABBITIZER_OPERAND_TYPE_R5900_vit] = RabbitizerOperandTypeR5900_processVit,
+    [RABBITIZER_OPERAND_TYPE_R5900_vid] = RabbitizerOperandTypeR5900_processVid,
+    [RABBITIZER_OPERAND_TYPE_R5900_imm5] = RabbitizerOperandTypeR5900_processImm5,
 };
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {
