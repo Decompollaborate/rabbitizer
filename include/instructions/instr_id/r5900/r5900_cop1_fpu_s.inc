@@ -39,3 +39,6 @@ RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x29, min_s, min.s,      .operands={RABBI
 // https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
 // https://sourceware.org/pipermail/binutils/2013-January/079863.html
 RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x24, trunc_w_s, trunc.w.s,  .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // Floating-Point Truncate to Word Fixed-Point
+
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x34, c_lt_s, c.lt.s,        .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x36, c_le_s, c.le.s,        .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true)
