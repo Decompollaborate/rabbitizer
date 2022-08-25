@@ -318,10 +318,9 @@ void RabbitizerInstructionR5900_processUniqueId(RabbitizerInstruction *self) {
         case 0x11:
             RabbitizerInstructionR5900_processUniqueId_Coprocessor1(self);
             break;
-        // TODO: properly decode cop2 instructions
-        // case 0x12:
-        //     RabbitizerInstructionR5900_processUniqueId_Coprocessor2(self);
-        //     break;
+        case 0x12:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor2(self);
+            break;
         case 0x1C:
             RabbitizerInstructionR5900_processUniqueId_MMI(self);
             break;

@@ -350,6 +350,38 @@ size_t RabbitizerOperandTypeRsp_processImmediateBase(const RabbitizerInstruction
     return totalSize;
 }
 
+size_t RabbitizerOperandTypeR5900_processI(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processQ(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processR(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandTypeR5900_processACC(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");
+
+    return totalSize;
+}
+
 const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_rs] = RabbitizerOperandType_processRs,
     [RABBITIZER_OPERAND_TYPE_rt] = RabbitizerOperandType_processRt,
@@ -383,6 +415,13 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_RSP_vs_index] = RabbitizerOperandTypeRsp_processVsIndex,
     [RABBITIZER_OPERAND_TYPE_RSP_offset_rs] = RabbitizerOperandTypeRsp_processOffsetVs,
     [RABBITIZER_OPERAND_TYPE_RSP_IMM_base] = RabbitizerOperandTypeRsp_processImmediateBase,
+
+    // r5900
+    [RABBITIZER_OPERAND_TYPE_R5900_I] = RabbitizerOperandTypeR5900_processI,
+    [RABBITIZER_OPERAND_TYPE_R5900_Q] = RabbitizerOperandTypeR5900_processQ,
+    [RABBITIZER_OPERAND_TYPE_R5900_R] = RabbitizerOperandTypeR5900_processR,
+    [RABBITIZER_OPERAND_TYPE_R5900_ACC] = RabbitizerOperandTypeR5900_processACC,
+
 };
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {

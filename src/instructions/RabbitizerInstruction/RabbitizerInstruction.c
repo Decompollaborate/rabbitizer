@@ -138,6 +138,7 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_immediate(self->word, 0);
                 break;
 
+            /* rsp */
             case RABBITIZER_OPERAND_TYPE_RSP_rs:
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
@@ -203,6 +204,16 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 self->word = RAB_INSTR_PACK_immediate(self->word, 0);
                 break;
+            /* rsp */
+
+            /* r5900 */
+            case RABBITIZER_OPERAND_TYPE_R5900_I:
+            case RABBITIZER_OPERAND_TYPE_R5900_Q:
+            case RABBITIZER_OPERAND_TYPE_R5900_R:
+            case RABBITIZER_OPERAND_TYPE_R5900_ACC:
+                // Not real registers encoded on the instruction itself
+                break;
+            /* r5900 */
 
             case RABBITIZER_OPERAND_TYPE_INVALID:
             case RABBITIZER_OPERAND_TYPE_MAX:

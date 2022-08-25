@@ -289,6 +289,14 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             break;
             /* rsp */
 
+            /* r5900 */
+        case RABBITIZER_OPERAND_TYPE_R5900_I:
+        case RABBITIZER_OPERAND_TYPE_R5900_Q:
+        case RABBITIZER_OPERAND_TYPE_R5900_R:
+        case RABBITIZER_OPERAND_TYPE_R5900_ACC:
+            break;
+            /* r5900 */
+
         case RABBITIZER_OPERAND_TYPE_INVALID:
         case RABBITIZER_OPERAND_TYPE_MAX:
             assert(operand != RABBITIZER_OPERAND_TYPE_INVALID && operand != RABBITIZER_OPERAND_TYPE_MAX);
@@ -368,6 +376,7 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
 
+            /* rsp */
             case RABBITIZER_OPERAND_TYPE_RSP_rs:
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
@@ -433,6 +442,16 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
+            /* rsp */
+
+            /* r5900 */
+            case RABBITIZER_OPERAND_TYPE_R5900_I:
+            case RABBITIZER_OPERAND_TYPE_R5900_Q:
+            case RABBITIZER_OPERAND_TYPE_R5900_R:
+            case RABBITIZER_OPERAND_TYPE_R5900_ACC:
+                // Not real registers encoded on the instruction itself
+                break;
+            /* r5900 */
 
             case RABBITIZER_OPERAND_TYPE_INVALID:
             case RABBITIZER_OPERAND_TYPE_MAX:
