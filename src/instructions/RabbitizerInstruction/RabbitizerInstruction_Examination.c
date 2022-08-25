@@ -390,8 +390,68 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             break;
 
         case RABBITIZER_OPERAND_TYPE_R5900_vis:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_visl)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vism)) {
+                return true;
+            }
+            break;
+
         case RABBITIZER_OPERAND_TYPE_R5900_vit:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vitl)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vitm)) {
+                return true;
+            }
+            break;
+
         case RABBITIZER_OPERAND_TYPE_R5900_vid:
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vidl)) {
+                return true;
+            }
+            if (RabbitizerInstruction_hasOperand(self, RABBITIZER_OPERAND_TYPE_R5900_vidm)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_visl:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_R5900_vis)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vitl:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_R5900_vit)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vidl:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_R5900_vid)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vism:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_R5900_vis)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vitm:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_R5900_vit)) {
+                return true;
+            }
+            break;
+
+        case RABBITIZER_OPERAND_TYPE_R5900_vidm:
+            if (RabbitizerInstruction_hasOperandAlias(self, RABBITIZER_OPERAND_TYPE_R5900_vid)) {
+                return true;
+            }
+            break;
+
         case RABBITIZER_OPERAND_TYPE_R5900_imm5:
             break;
             /* r5900 */
@@ -619,6 +679,36 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RABBITIZER_OPERAND_TYPE_R5900_vid:
                 validbits = RAB_INSTR_R5900_PACK_vid(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_visl:
+                validbits = RAB_INSTR_R5900_PACK_vis(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_l(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vitl:
+                validbits = RAB_INSTR_R5900_PACK_vit(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_l(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vidl:
+                validbits = RAB_INSTR_R5900_PACK_vid(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_l(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vism:
+                validbits = RAB_INSTR_R5900_PACK_vis(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_m(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vitm:
+                validbits = RAB_INSTR_R5900_PACK_vit(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_m(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vidm:
+                validbits = RAB_INSTR_R5900_PACK_vid(validbits, ~0);
+                validbits = RAB_INSTR_R5900_PACK_m(validbits, ~0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_R5900_imm5:
