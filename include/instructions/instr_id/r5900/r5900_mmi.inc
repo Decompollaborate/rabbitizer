@@ -19,31 +19,31 @@
      *3 = MMI1 list                    *4 = MMI3 list
 */
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x00, madd,      .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Multiply-ADD word
-RABBITIZER_DEF_INSTR_ID(r5900, 0x01, maddu,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Multiply-ADD Unsigned word
-RABBITIZER_DEF_INSTR_ID(r5900, 0x04, plzcw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Leading Zero or one Count Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x00, madd,      .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .modifiesRd=true) // Multiply-ADD word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x01, maddu,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .modifiesRd=true) // Multiply-ADD Unsigned word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x04, plzcw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs}, .modifiesRd=true) // Parallel Leading Zero or one Count Word
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x10, mfhi1,     .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Move From HI1 register
-RABBITIZER_DEF_INSTR_ID(r5900, 0x11, mthi1,     .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move To HI1 register
-RABBITIZER_DEF_INSTR_ID(r5900, 0x12, mflo1,     .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move From LO1 register
-RABBITIZER_DEF_INSTR_ID(r5900, 0x13, mtlo1,     .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move To LO1 register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x10, mfhi1,     .operands={RABBITIZER_OPERAND_TYPE_rd}, .modifiesRd=true) // Move From HI1 register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x11, mthi1,     .operands={RABBITIZER_OPERAND_TYPE_rs}) // Move To HI1 register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x12, mflo1,     .operands={RABBITIZER_OPERAND_TYPE_rd}) // Move From LO1 register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x13, mtlo1,     .operands={RABBITIZER_OPERAND_TYPE_rs}) // Move To LO1 register
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x18, mult1,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // MULTiply word pipeline 1
-RABBITIZER_DEF_INSTR_ID(r5900, 0x19, multu1,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // MULTiply Unsigned word pipeline 1
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1A, div1,      .operands={RABBITIZER_OPERAND_TYPE_zero, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // DIVide word pipeline 1
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1B, divu1,     .operands={RABBITIZER_OPERAND_TYPE_zero, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // DIVide Unsigned word pipeline 1
+RABBITIZER_DEF_INSTR_ID(r5900, 0x18, mult1,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .modifiesRd=true) // MULTiply word pipeline 1
+RABBITIZER_DEF_INSTR_ID(r5900, 0x19, multu1,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .modifiesRd=true) // MULTiply Unsigned word pipeline 1
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1A, div1,      .operands={RABBITIZER_OPERAND_TYPE_zero, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}) // DIVide word pipeline 1
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1B, divu1,     .operands={RABBITIZER_OPERAND_TYPE_zero, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}) // DIVide Unsigned word pipeline 1
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x20, madd1,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Multiply-ADD word pipeline 1
-RABBITIZER_DEF_INSTR_ID(r5900, 0x21, maddu1,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Multiply-ADD Unsigned word pipeline 1
+RABBITIZER_DEF_INSTR_ID(r5900, 0x20, madd1,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .modifiesRd=true) // Multiply-ADD word pipeline 1
+RABBITIZER_DEF_INSTR_ID(r5900, 0x21, maddu1,    .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .modifiesRd=true) // Multiply-ADD Unsigned word pipeline 1
 
 // TODO: check this two instruction, it is supposed to have an extra .fmt
-RABBITIZER_DEF_INSTR_ID(r5900, 0x30, pmfhl,     .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Move From Hi/Lo register
-RABBITIZER_DEF_INSTR_ID(r5900, 0x31, pmthl,     .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Parallel Move To Hi/Lo register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x30, pmfhl,     .operands={RABBITIZER_OPERAND_TYPE_rd}, .modifiesRd=true) // Parallel Move From Hi/Lo register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x31, pmthl,     .operands={RABBITIZER_OPERAND_TYPE_rs}) // Parallel Move To Hi/Lo register
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x34, psllh,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Left Logical Halfword
-RABBITIZER_DEF_INSTR_ID(r5900, 0x36, psrlh,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Right Logical Halfword
-RABBITIZER_DEF_INSTR_ID(r5900, 0x37, psrah,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Right Arithmetic Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x34, psllh,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .modifiesRd=true) // Parallel Shift Left Logical Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x36, psrlh,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .modifiesRd=true) // Parallel Shift Right Logical Halfword
+RABBITIZER_DEF_INSTR_ID(r5900, 0x37, psrah,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .modifiesRd=true) // Parallel Shift Right Arithmetic Halfword
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3C, psllw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Left Logical Word
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3E, psrlw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Right Logical Word
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3F, psraw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Parallel Shift Right Arithmetic Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3C, psllw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .modifiesRd=true) // Parallel Shift Left Logical Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3E, psrlw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .modifiesRd=true) // Parallel Shift Right Logical Word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3F, psraw,     .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_sa}, .modifiesRd=true) // Parallel Shift Right Arithmetic Word

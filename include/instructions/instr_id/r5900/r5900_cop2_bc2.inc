@@ -15,7 +15,7 @@
 
 // TODO: operands and properties
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x00, bc2f,  .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x01, bc2t,  .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x02, bc2fl, .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true, .isBranchLikely=true)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x03, bc2tl, .operands={RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true, .isBranchLikely=true)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x00, bc2f,  .operands={RABBITIZER_OPERAND_TYPE_IMM}, .isBranch=true)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x01, bc2t,  .operands={RABBITIZER_OPERAND_TYPE_IMM}, .isBranch=true)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x02, bc2fl, .operands={RABBITIZER_OPERAND_TYPE_IMM}, .isBranch=true, .isBranchLikely=true)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x03, bc2tl, .operands={RABBITIZER_OPERAND_TYPE_IMM}, .isBranch=true, .isBranchLikely=true)
