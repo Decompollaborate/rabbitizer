@@ -13,12 +13,12 @@
 100 |VADDq  |VMADDq |VADDi  |VMADDi |VSUBq  |VMSUBq |VSUbi  |VMSUBi |
 101 |VADD   |VMADD  |VMUL   |VMAX   |VSUB   |VMSUB  |VOPMSUB|VMINI  |
 110 |VIADD  |VISUB  |VIADDI |  ---  |VIAND  |VIOR   |  ---  |  ---  |
-111 |VCALLMS|CALLMSR|  ---  |  ---  |  *1   |  *1   |  *1   |  *1   |
+111 |VCALLMS|VCALLMSR| ---  |  ---  |  *1   |  *1   |  *1   |  *1   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
     *1=see special2 table
 */
 
-// TODO: operands and properties
+// TODO: properties
 
 RABBITIZER_DEF_INSTR_ID(r5900, 0x00, vaddx,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // ADD broadcast
 RABBITIZER_DEF_INSTR_ID(r5900, 0x01, vaddy,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // ADD broadcast
@@ -79,4 +79,4 @@ RABBITIZER_DEF_INSTR_ID(r5900, 0x35, vior,      .operands={RABBITIZER_OPERAND_TY
 
 // TODO: operands and properties
 RABBITIZER_DEF_INSTR_ID(r5900, 0x38, vcallms,   .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x39, callmsr,   .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x39, vcallmsr,  .operands={RABBITIZER_OPERAND_TYPE_R5900_vis}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
