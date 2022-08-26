@@ -19,6 +19,8 @@
 
 // The other instructions are implemented using the main CPU table
 
+RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x04, c1__sqrt_s, c1,    .operands={RABBITIZER_OPERAND_TYPE_copraw}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN)
+
 RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x16, rsqrt_s, rsqrt.s,  .operands={RABBITIZER_OPERAND_TYPE_fd, RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point Reciprocal SQuare RooT
 
 RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, 0x18, adda_s, adda.s,    .operands={RABBITIZER_OPERAND_TYPE_fs, RABBITIZER_OPERAND_TYPE_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true) // floating point ADD to Accumulator

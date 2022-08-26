@@ -183,6 +183,7 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
         case RABBITIZER_OPERAND_TYPE_cop2t:
         case RABBITIZER_OPERAND_TYPE_op:
         case RABBITIZER_OPERAND_TYPE_code:
+        case RABBITIZER_OPERAND_TYPE_copraw:
         case RABBITIZER_OPERAND_TYPE_LABEL:
             break;
 
@@ -578,6 +579,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RABBITIZER_OPERAND_TYPE_code:
                 validbits = RAB_INSTR_PACK_code(validbits, ~0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_copraw:
+                validbits = RAB_INSTR_PACK_copraw(validbits, ~0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_LABEL:

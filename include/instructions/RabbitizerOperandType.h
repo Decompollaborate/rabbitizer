@@ -23,6 +23,7 @@ typedef enum RabbitizerOperandType {
     RABBITIZER_OPERAND_TYPE_cop2t,
     RABBITIZER_OPERAND_TYPE_op,
     RABBITIZER_OPERAND_TYPE_code,
+    RABBITIZER_OPERAND_TYPE_copraw,
     RABBITIZER_OPERAND_TYPE_LABEL,
     RABBITIZER_OPERAND_TYPE_IMM,
     // composed/aliased operands

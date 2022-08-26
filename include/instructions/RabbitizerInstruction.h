@@ -63,6 +63,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_GET_code_upper(self)              (SHIFTR((self)->word, 16, 10))
 #define RAB_INSTR_GET_code_lower(self)              (SHIFTR((self)->word,  6, 10))
 
+#define RAB_INSTR_GET_copraw(self)                  (SHIFTR((self)->word,  0, 25))
+
 #define RAB_INSTR_GET_fmt(self)                     (SHIFTR((self)->word, 21,  5))
 #define RAB_INSTR_GET_fc(self)                      (SHIFTR((self)->word,  4,  2))
 #define RAB_INSTR_GET_cond(self)                    (SHIFTR((self)->word,  0,  4))
@@ -89,6 +91,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_immediate(word, value)       (BITREPACK((word), (value),  0, 16))
 
 #define RAB_INSTR_PACK_code(word, value)            (BITREPACK((word), (value),  6, 20))
+
+#define RAB_INSTR_PACK_copraw(word, value)          (BITREPACK((word), (value),  0, 25))
 
 #define RAB_INSTR_PACK_fmt(word, value)             (BITREPACK((word), (value), 21,  5))
 #define RAB_INSTR_PACK_fc(word, value)              (BITREPACK((word), (value),  4,  2))
