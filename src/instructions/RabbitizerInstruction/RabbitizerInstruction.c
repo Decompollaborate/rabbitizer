@@ -94,6 +94,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_sa(self->word, 0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_zero:
+                break;
+
             case RABBITIZER_OPERAND_TYPE_cop0d:
                 self->word = RAB_INSTR_PACK_cop0d(self->word, 0);
                 break;

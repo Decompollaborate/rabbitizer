@@ -39,6 +39,14 @@ size_t RabbitizerOperandType_processRd(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
+size_t RabbitizerOperandType_processZero(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameGpr(0);
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_processCop0d(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop0(RAB_INSTR_GET_cop0d(self));
@@ -743,6 +751,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RABBITIZER_OPERAND_TYPE_rs] = RabbitizerOperandType_processRs,
     [RABBITIZER_OPERAND_TYPE_rt] = RabbitizerOperandType_processRt,
     [RABBITIZER_OPERAND_TYPE_rd] = RabbitizerOperandType_processRd,
+    [RABBITIZER_OPERAND_TYPE_zero] = RabbitizerOperandType_processZero,
     [RABBITIZER_OPERAND_TYPE_cop0d] = RabbitizerOperandType_processCop0d,
     [RABBITIZER_OPERAND_TYPE_fs] = RabbitizerOperandType_processFs,
     [RABBITIZER_OPERAND_TYPE_ft] = RabbitizerOperandType_processFt,
