@@ -24,4 +24,4 @@ RABBITIZER_DEF_INSTR_ID_ALTNAME(r5900, -0x0F, sync_p, sync.p,   .operands={0}, .
 RABBITIZER_DEF_INSTR_ID(r5900, 0x18, mult,                      .operands={RABBITIZER_OPERAND_TYPE_rd, RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true)      // MULTtiply word
 
 RABBITIZER_DEF_INSTR_ID(r5900, 0x28, mfsa,                      .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .modifiesRd=true) // Move From Shift Amount register
-RABBITIZER_DEF_INSTR_ID(r5900, 0x29, mtsa,                      .operands={RABBITIZER_OPERAND_TYPE_rd}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move To Shift Amount register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x29, mtsa,                      .operands={RABBITIZER_OPERAND_TYPE_rs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN) // Move To Shift Amount register
