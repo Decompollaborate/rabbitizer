@@ -405,6 +405,7 @@ size_t RabbitizerOperandTypeR5900_processACCxyzw(const RabbitizerInstruction *se
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processACC(self, dst, immOverride, immOverrideLength));
 
+#if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
     }
@@ -417,6 +418,7 @@ size_t RabbitizerOperandTypeR5900_processACCxyzw(const RabbitizerInstruction *se
     if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
     }
+#endif
 
     return totalSize;
 }
@@ -450,6 +452,7 @@ size_t RabbitizerOperandTypeR5900_processVfsxyzw(const RabbitizerInstruction *se
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
 
+#if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
     }
@@ -462,6 +465,7 @@ size_t RabbitizerOperandTypeR5900_processVfsxyzw(const RabbitizerInstruction *se
     if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
     }
+#endif
 
     return totalSize;
 }
@@ -471,6 +475,7 @@ size_t RabbitizerOperandTypeR5900_processVftxyzw(const RabbitizerInstruction *se
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
 
+#if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
     }
@@ -483,6 +488,7 @@ size_t RabbitizerOperandTypeR5900_processVftxyzw(const RabbitizerInstruction *se
     if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
     }
+#endif
 
     return totalSize;
 }
@@ -492,6 +498,7 @@ size_t RabbitizerOperandTypeR5900_processVfdxyzw(const RabbitizerInstruction *se
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
 
+#if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'x');
     }
@@ -504,6 +511,7 @@ size_t RabbitizerOperandTypeR5900_processVfdxyzw(const RabbitizerInstruction *se
     if (RAB_INSTR_R5900_GET_xyzw_w(self)) {
         RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, 'w');
     }
+#endif
 
     return totalSize;
 }
