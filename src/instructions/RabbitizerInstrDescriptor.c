@@ -12,6 +12,7 @@
 const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
 #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
 #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
+#include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
 };
 
 #undef RABBITIZER_DEF_INSTR_ID
@@ -31,6 +32,10 @@ bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self) {
 }
 bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_REGIMM;
+}
+
+RabbitizerInstrSuffix RabbitizerInstrDescriptor_instrSuffix(const RabbitizerInstrDescriptor *self) {
+    return self->instrSuffix;
 }
 
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self) {

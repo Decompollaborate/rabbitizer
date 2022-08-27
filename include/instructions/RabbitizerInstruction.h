@@ -63,6 +63,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_GET_code_upper(self)              (SHIFTR((self)->word, 16, 10))
 #define RAB_INSTR_GET_code_lower(self)              (SHIFTR((self)->word,  6, 10))
 
+#define RAB_INSTR_GET_copraw(self)                  (SHIFTR((self)->word,  0, 25))
+
 #define RAB_INSTR_GET_fmt(self)                     (SHIFTR((self)->word, 21,  5))
 #define RAB_INSTR_GET_fc(self)                      (SHIFTR((self)->word,  4,  2))
 #define RAB_INSTR_GET_cond(self)                    (SHIFTR((self)->word,  0,  4))
@@ -72,6 +74,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_GET_tf(self)                      (SHIFTR((self)->word, 16,  1))
 #define RAB_INSTR_GET_nd(self)                      (SHIFTR((self)->word, 17,  1))
 #define RAB_INSTR_GET_bc_fmt(self)                  (SHIFTR((self)->word, 16,  5))
+
+#define RAB_INSTR_GET_stype(self)                   (SHIFTR((self)->word,  6,  5))
 
 
 #define RAB_INSTR_PACK_opcode(word, value)          (BITREPACK_RIGHT((word), (value), 26,  6))
@@ -87,6 +91,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_immediate(word, value)       (BITREPACK((word), (value),  0, 16))
 
 #define RAB_INSTR_PACK_code(word, value)            (BITREPACK((word), (value),  6, 20))
+
+#define RAB_INSTR_PACK_copraw(word, value)          (BITREPACK((word), (value),  0, 25))
 
 #define RAB_INSTR_PACK_fmt(word, value)             (BITREPACK((word), (value), 21,  5))
 #define RAB_INSTR_PACK_fc(word, value)              (BITREPACK((word), (value),  4,  2))
@@ -105,6 +111,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_nd(word, value)              (BITREPACK((word), (value), 17,  1))
 #define RAB_INSTR_PACK_bc_fmt(word, value)          (BITREPACK((word), (value), 16,  5))
 
+#define RAB_INSTR_PACK_stype(word, value)           (BITREPACK((word), (value),  6,  5))
+
 
 NON_NULL(1)
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
@@ -120,10 +128,29 @@ NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self);
+
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *self);
+
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuD(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuL(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *self);
 NON_NULL(1)
