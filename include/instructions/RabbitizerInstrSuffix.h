@@ -14,9 +14,6 @@ typedef enum RabbitizerInstrSuffix {
     RABINSTRSUFFIX_NONE,
 
     RABINSTRSUFFIX_R5900_xyzw,
-    RABINSTRSUFFIX_R5900_l,
-    RABINSTRSUFFIX_R5900_m,
-    RABINSTRSUFFIX_R5900_n,
 
     RABINSTRSUFFIX_MAX
 } RabbitizerInstrSuffix;

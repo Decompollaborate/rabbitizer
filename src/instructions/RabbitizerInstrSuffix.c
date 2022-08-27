@@ -38,32 +38,10 @@ size_t RabbitizerInstrSuffixR5900_xyzw(const RabbitizerInstruction *self, char *
 
     return totalSize;
 }
-
-size_t RabbitizerInstrSuffixR5900_l(UNUSED const RabbitizerInstruction *self, UNUSED char *dst) {
-    size_t totalSize = 0;
-
-    return totalSize;
-}
-
-size_t RabbitizerInstrSuffixR5900_m(UNUSED const RabbitizerInstruction *self, UNUSED char *dst) {
-    size_t totalSize = 0;
-
-    return totalSize;
-}
-
-size_t RabbitizerInstrSuffixR5900_n(UNUSED const RabbitizerInstruction *self, UNUSED char *dst) {
-    size_t totalSize = 0;
-
-    return totalSize;
-}
-
 const InstrSuffixCallback instrSuffixCallbacks[] = {
     [RABINSTRSUFFIX_NONE] = RabbitizerInstrSuffix_None,
 
     [RABINSTRSUFFIX_R5900_xyzw] = RabbitizerInstrSuffixR5900_xyzw,
-    [RABINSTRSUFFIX_R5900_l] = RabbitizerInstrSuffixR5900_l,
-    [RABINSTRSUFFIX_R5900_m] = RabbitizerInstrSuffixR5900_m,
-    [RABINSTRSUFFIX_R5900_n] = RabbitizerInstrSuffixR5900_n,
 };
 
 
