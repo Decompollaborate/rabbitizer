@@ -8,20 +8,20 @@
 #include "common/Utils.h"
 
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) \
-    RABBITIZER_INSTR_ID_##prefix##_##name
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
+    RABBITIZER_INSTR_ID_##prefix##_##name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...) \
-    RABBITIZER_INSTR_ID_##prefix##_##name
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 typedef enum RabbitizerInstrId {
     #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
-    RABBITIZER_DEF_INSTR_ID(cpu, MAX, ),
 
     #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
-    RABBITIZER_DEF_INSTR_ID(rsp, MAX, ),
 
-    RABBITIZER_DEF_INSTR_ID(ALL, MAX, ) = RABBITIZER_DEF_INSTR_ID(rsp, MAX, ),
+    #include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
+
+    RABBITIZER_INSTR_ID_ALL_MAX = RABBITIZER_DEF_INSTR_ID(r5900, , MAX, )
 } RabbitizerInstrId;
 
 #undef RABBITIZER_DEF_INSTR_ID

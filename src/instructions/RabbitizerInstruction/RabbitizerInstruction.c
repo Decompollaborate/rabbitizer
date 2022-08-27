@@ -8,6 +8,7 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "instructions/RabbitizerInstructionR5900.h"
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
     self->word = word;
@@ -93,6 +94,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_sa(self->word, 0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_zero:
+                break;
+
             case RABBITIZER_OPERAND_TYPE_cop0d:
                 self->word = RAB_INSTR_PACK_cop0d(self->word, 0);
                 break;
@@ -125,6 +129,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_code(self->word, 0);
                 break;
 
+            case RABBITIZER_OPERAND_TYPE_copraw:
+                self->word = RAB_INSTR_PACK_copraw(self->word, 0);
+                break;
+
             case RABBITIZER_OPERAND_TYPE_LABEL:
                 self->word = RAB_INSTR_PACK_instr_index(self->word, 0);
                 break;
@@ -138,6 +146,7 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_immediate(self->word, 0);
                 break;
 
+            /* rsp */
             case RABBITIZER_OPERAND_TYPE_RSP_rs:
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
@@ -152,6 +161,14 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
 
             case RABBITIZER_OPERAND_TYPE_RSP_cop0d:
                 self->word = RAB_INSTR_PACK_cop0d(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_cop2t:
+                self->word = RAB_INSTR_RSP_PACK_cop2t(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_cop2cd:
+                self->word = RAB_INSTR_RSP_PACK_cop2cd(self->word, 0);
                 break;
 
             case RABBITIZER_OPERAND_TYPE_RSP_vs:
@@ -176,13 +193,13 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_RSP_PACK_elementlow(self->word, 0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_RSP_vd_vs:
+            case RABBITIZER_OPERAND_TYPE_RSP_vd_de:
                 self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
-                self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
+                self->word = RAB_INSTR_RSP_PACK_de(self->word, 0);
                 break;
 
-            case RABBITIZER_OPERAND_TYPE_RSP_vd_index:
-                self->word = RAB_INSTR_RSP_PACK_vd(self->word, 0);
+            case RABBITIZER_OPERAND_TYPE_RSP_vs_index:
+                self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
                 self->word = RAB_INSTR_RSP_PACK_index(self->word, 0);
                 break;
 
@@ -190,6 +207,149 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_RSP_PACK_offset(self->word, 0);
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
+
+            case RABBITIZER_OPERAND_TYPE_RSP_IMM_base:
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
+                self->word = RAB_INSTR_PACK_immediate(self->word, 0);
+                break;
+            /* rsp */
+
+            /* r5900 */
+            case RABBITIZER_OPERAND_TYPE_R5900_I:
+            case RABBITIZER_OPERAND_TYPE_R5900_Q:
+            case RABBITIZER_OPERAND_TYPE_R5900_R:
+            case RABBITIZER_OPERAND_TYPE_R5900_ACC:
+                // Not real registers encoded on the instruction itself
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw:
+                self->word = RAB_INSTR_R5900_PACK_xyzw_x(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_y(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_z(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_w(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfs:
+                self->word = RAB_INSTR_R5900_PACK_vfs(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vft:
+                self->word = RAB_INSTR_R5900_PACK_vft(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfd:
+                self->word = RAB_INSTR_R5900_PACK_vfd(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw:
+                self->word = RAB_INSTR_R5900_PACK_vfs(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_x(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_y(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_z(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_w(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vftxyzw:
+                self->word = RAB_INSTR_R5900_PACK_vft(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_x(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_y(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_z(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_w(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw:
+                self->word = RAB_INSTR_R5900_PACK_vfd(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_x(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_y(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_z(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_xyzw_w(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfsn:
+                self->word = RAB_INSTR_R5900_PACK_vfs(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_n(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vftn:
+                self->word = RAB_INSTR_R5900_PACK_vft(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_n(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfdn:
+                self->word = RAB_INSTR_R5900_PACK_vfd(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_n(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfsl:
+                self->word = RAB_INSTR_R5900_PACK_vfs(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_l(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vftl:
+                self->word = RAB_INSTR_R5900_PACK_vft(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_l(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfdl:
+                self->word = RAB_INSTR_R5900_PACK_vfd(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_l(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfsm:
+                self->word = RAB_INSTR_R5900_PACK_vfs(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_m(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vftm:
+                self->word = RAB_INSTR_R5900_PACK_vft(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_m(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vfdm:
+                self->word = RAB_INSTR_R5900_PACK_vfd(self->word, 0);
+                self->word = RAB_INSTR_R5900_PACK_m(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vis:
+                self->word = RAB_INSTR_R5900_PACK_vis(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vit:
+                self->word = RAB_INSTR_R5900_PACK_vit(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vid:
+                self->word = RAB_INSTR_R5900_PACK_vid(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vis_predecr:
+                self->word = RAB_INSTR_R5900_PACK_vis(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vit_predecr:
+                self->word = RAB_INSTR_R5900_PACK_vit(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vid_predecr:
+                self->word = RAB_INSTR_R5900_PACK_vid(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vis_postincr:
+                self->word = RAB_INSTR_R5900_PACK_vis(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vit_postincr:
+                self->word = RAB_INSTR_R5900_PACK_vit(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_vid_postincr:
+                self->word = RAB_INSTR_R5900_PACK_vid(self->word, 0);
+                break;
+
+            case RABBITIZER_OPERAND_TYPE_R5900_imm5:
+                self->word = RAB_INSTR_R5900_PACK_imm5(self->word, 0);
+                break;
+                /* r5900 */
 
             case RABBITIZER_OPERAND_TYPE_INVALID:
             case RABBITIZER_OPERAND_TYPE_MAX:

@@ -5,17 +5,17 @@
 #include "instructions/RabbitizerInstrId.h"
 
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, name, ...)                   { "InstrId", #prefix "_" #name, RABBITIZER_INSTR_ID_##prefix##_##name, false, NULL }
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...)  { "InstrId", #prefix "_" #name, RABBITIZER_INSTR_ID_##prefix##_##name, false, NULL }
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)                   { "InstrId", #prefix "_" #name, RABBITIZER_INSTR_ID_##prefix##_##name, false, NULL },
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...)  RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[] = {
     #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
-    RABBITIZER_DEF_INSTR_ID(cpu, MAX, ),
 
     #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
-    RABBITIZER_DEF_INSTR_ID(rsp, MAX, ),
 
-    RABBITIZER_DEF_INSTR_ID(ALL, MAX, ),
+    #include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
+
+    RABBITIZER_DEF_INSTR_ID(ALL, , MAX, )
     { 0 },
 };
 

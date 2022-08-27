@@ -42,5 +42,14 @@ NOTE: Installing the development version is not recommended. Proceed at your own
 - Some workarounds for some specific compilers/assemblers:
   - `SN64`:
     - `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and `break` instructions.
-- (Experimental) N64 RSP disassembly support.
-  - NOTE: This mode has not been tested to even be assemblable.
+- N64 RSP instruction decoding support.
+  - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
+- R5900 (PS2's Emotion Engine processor) decoding support.
+
+## References
+
+- R5900:
+  - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>
+  - Official documentation from Toshiba: <https://wiki.qemu.org/images/2/2a/C790.pdf>
+  - VU instruction manual: <http://lukasz.dk/files/vu-instruction-manual.pdf>
+  - GNU binutils: <https://github.com/bminor/binutils-gdb/blob/master/opcodes/mips-opc.c>

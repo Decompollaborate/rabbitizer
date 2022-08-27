@@ -50,6 +50,9 @@ typedef enum RabbitizerRegister_Cop2 {
     #include "instructions/registers/RabbitizerRegister_Cop2.inc"
 } RabbitizerRegister_Cop2;
 
+
+/* RSP */
+
 typedef enum RabbitizerRegister_RspGpr {
     #include "instructions/registers/RabbitizerRegister_RspGpr.inc"
 } RabbitizerRegister_RspGpr;
@@ -58,9 +61,32 @@ typedef enum RabbitizerRegister_RspCop0 {
     #include "instructions/registers/RabbitizerRegister_RspCop0.inc"
 } RabbitizerRegister_RspCop0;
 
+typedef enum RabbitizerRegister_RspCop2 {
+    #include "instructions/registers/RabbitizerRegister_RspCop2.inc"
+} RabbitizerRegister_RspCop2;
+
+typedef enum RabbitizerRegister_RspCop2Control {
+    #include "instructions/registers/RabbitizerRegister_RspCop2Control.inc"
+} RabbitizerRegister_RspCop2Control;
+
 typedef enum RabbitizerRegister_RspVector {
     #include "instructions/registers/RabbitizerRegister_RspVector.inc"
 } RabbitizerRegister_RspVector;
+
+/* RSP */
+
+/* R5900 */
+
+typedef enum RabbitizerRegister_R5900VF {
+    #include "instructions/registers/RabbitizerRegister_R5900VF.inc"
+} RabbitizerRegister_R5900VF;
+
+typedef enum RabbitizerRegister_R5900VI {
+    #include "instructions/registers/RabbitizerRegister_R5900VI.inc"
+} RabbitizerRegister_R5900VI;
+
+/* R5900 */
+
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
@@ -88,11 +114,21 @@ NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameCop1Control(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameCop2(uint8_t regValue);
+
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspGpr(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspCop0(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameRspCop2(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameRspCop2Control(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspVector(uint8_t regValue);
+
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR5900VI(uint8_t regValue);
 
 #endif

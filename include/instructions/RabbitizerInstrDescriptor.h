@@ -10,6 +10,7 @@
 #include "common/Utils.h"
 #include "RabbitizerOperandType.h"
 #include "RabbitizerInstrId.h"
+#include "RabbitizerInstrSuffix.h"
 
 typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_UNKNOWN,
@@ -32,6 +33,8 @@ typedef enum RabbitizerArchitectureVersion {
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];
     RabbitizerInstrType instrType;
+
+    RabbitizerInstrSuffix instrSuffix;
 
     bool isBranch;
     bool isBranchLikely;
@@ -58,7 +61,7 @@ typedef struct RabbitizerInstrDescriptor {
 
     bool isPseudo;
 
-    RabbitizerArchitectureVersion architectureVersion;
+    RabbitizerArchitectureVersion architectureVersion; // TODO: consider removing
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -75,6 +78,9 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+RabbitizerInstrSuffix RabbitizerInstrDescriptor_instrSuffix(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self);

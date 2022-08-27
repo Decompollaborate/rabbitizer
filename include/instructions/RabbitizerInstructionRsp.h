@@ -8,26 +8,34 @@
 #include "RabbitizerInstruction.h"
 
 
-#define RAB_INSTR_RSP_GET_VS(self)                  (SHIFTR((self)->word, 11,  5))
-#define RAB_INSTR_RSP_GET_VT(self)                  (SHIFTR((self)->word, 16,  5))
-#define RAB_INSTR_RSP_GET_VD(self)                  (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_RSP_GET_cop2t(self)               (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_RSP_GET_cop2cd(self)              (SHIFTR((self)->word, 11,  5))
+
+#define RAB_INSTR_RSP_GET_vs(self)                  (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_RSP_GET_vt(self)                  (SHIFTR((self)->word, 16,  5))
+#define RAB_INSTR_RSP_GET_vd(self)                  (SHIFTR((self)->word,  6,  5))
 
 #define RAB_INSTR_RSP_GET_elementhigh(self)         (SHIFTR((self)->word, 21,  4))
 #define RAB_INSTR_RSP_GET_elementlow(self)          (SHIFTR((self)->word,  7,  4))
 #define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self)   (SHIFTR((self)->word,  0,  7))
 
 #define RAB_INSTR_RSP_GET_index(self)               (SHIFTR((self)->word,  7,  4))
+#define RAB_INSTR_RSP_GET_de(self)                  (SHIFTR((self)->word, 11,  5))
 
+
+#define RAB_INSTR_RSP_PACK_cop2t(word, value)       (BITREPACK((word), value, 16,  5))
+#define RAB_INSTR_RSP_PACK_cop2cd(word, value)      (BITREPACK((word), value, 11,  5))
 
 #define RAB_INSTR_RSP_PACK_vs(word, value)          (BITREPACK((word), value, 11,  5))
 #define RAB_INSTR_RSP_PACK_vt(word, value)          (BITREPACK((word), value, 16,  5))
 #define RAB_INSTR_RSP_PACK_vd(word, value)          (BITREPACK((word), value,  6,  5))
 
-#define RAB_INSTR_RSP_PACK_elementhigh(word, value) (BITREPACK((word), value, 16,  4))
+#define RAB_INSTR_RSP_PACK_elementhigh(word, value) (BITREPACK((word), value, 21,  4))
 #define RAB_INSTR_RSP_PACK_elementlow(word, value)  (BITREPACK((word), value,  7,  4))
 
 #define RAB_INSTR_RSP_PACK_index(word, value)       (BITREPACK((word), value,  7,  4))
 #define RAB_INSTR_RSP_PACK_offset(word, value)      (BITREPACK((word), value,  0,  7))
+#define RAB_INSTR_RSP_PACK_de(word, value)          (BITREPACK((word), value, 11,  5))
 
 
 NON_NULL(1)
@@ -49,9 +57,6 @@ void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self);
 
 NODISCARD NON_NULL(1) PURE
 uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *self);
-
-NODISCARD NON_NULL(1) PURE
-uint8_t RabbitizerInstructionRsp_processVectorElement(const RabbitizerInstruction *self, uint8_t element);
 
 
 #endif

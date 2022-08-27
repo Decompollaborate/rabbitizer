@@ -4,6 +4,7 @@
 #include "rabbitizer_module.h"
 
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "instructions/RabbitizerInstructionR5900.h"
 #include "common/RabbitizerConfig.h"
 
 
@@ -41,6 +42,11 @@ static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObj
         case RABBITIZER_INSTRCAT_RSP:
             RabbitizerInstructionRsp_init(&self->instr, word, vram);
             RabbitizerInstructionRsp_processUniqueId(&self->instr);
+            break;
+
+        case RABBITIZER_INSTRCAT_R5900:
+            RabbitizerInstructionR5900_init(&self->instr, word, vram);
+            RabbitizerInstructionR5900_processUniqueId(&self->instr);
             break;
 
         case RABBITIZER_INSTRCAT_CPU:

@@ -5,13 +5,14 @@
 
 #include "instructions/RabbitizerInstruction.h"
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = { __VA_ARGS__ }
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = { __VA_ARGS__ },
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, name, altname, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = { __VA_ARGS__ }
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
 #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
 #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
+#include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
 };
 
 #undef RABBITIZER_DEF_INSTR_ID
@@ -31,6 +32,10 @@ bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self) {
 }
 bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_REGIMM;
+}
+
+RabbitizerInstrSuffix RabbitizerInstrDescriptor_instrSuffix(const RabbitizerInstrDescriptor *self) {
+    return self->instrSuffix;
 }
 
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self) {

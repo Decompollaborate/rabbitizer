@@ -11,5 +11,5 @@ from .Enum import Enum
 class InstrCategory:
     CPU: Enum
     RSP: Enum
-    # PS2: Enum
+    R5900: Enum
     MAX: Enum
