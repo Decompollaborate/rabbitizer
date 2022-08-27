@@ -10,6 +10,7 @@
 #include "common/Utils.h"
 #include "RabbitizerOperandType.h"
 #include "RabbitizerInstrId.h"
+#include "RabbitizerInstrSuffix.h"
 
 typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_UNKNOWN,
@@ -28,14 +29,6 @@ typedef enum RabbitizerArchitectureVersion {
     RABBITIZER_ARCHVERSION_MIPS_III,
     RABBITIZER_ARCHVERSION_MIPS_IV
 } RabbitizerArchitectureVersion;
-
-typedef enum RabbitizerInstrSuffix {
-    RABINSTRSUFFIX_NONE,
-    RABINSTRSUFFIX_R5900_xyzw,
-    RABINSTRSUFFIX_R5900_l,
-    RABINSTRSUFFIX_R5900_m,
-    RABINSTRSUFFIX_R5900_n,
-} RabbitizerInstrSuffix;
 
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];

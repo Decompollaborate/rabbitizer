@@ -12,6 +12,7 @@
 #include "common/Utils.h"
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
+#include "instructions/RabbitizerInstrSuffix.h"
 
 typedef size_t (*OperandCallback)(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
 
@@ -874,6 +875,8 @@ size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruc
 
     totalSize += opcodeNameLength;
 
+    totalSize += RabbitizerInstrSuffix_getSizeForBuffer(self, self->descriptor->instrType);
+
     if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
         // There are no operands
         return totalSize;
@@ -893,6 +896,8 @@ size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction 
     const char *opcodeName = RabbitizerInstrId_getOpcodeName(self->uniqueId);
 
     RABUTILS_BUFFER_CPY(dst, totalSize, opcodeName);
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstrSuffix_processSuffix(self, dst, self->descriptor->instrSuffix));
 
     if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
         // There are no operands
