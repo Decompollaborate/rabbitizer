@@ -368,7 +368,8 @@ size_t RabbitizerOperandTypeRsp_processImmediateBase(const RabbitizerInstruction
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processI(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeR5900_processI(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+                                           UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
@@ -376,7 +377,8 @@ size_t RabbitizerOperandTypeR5900_processI(UNUSED const RabbitizerInstruction *s
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processQ(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeR5900_processQ(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+                                           UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
@@ -384,7 +386,8 @@ size_t RabbitizerOperandTypeR5900_processQ(UNUSED const RabbitizerInstruction *s
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processR(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeR5900_processR(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+                                           UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
@@ -392,7 +395,8 @@ size_t RabbitizerOperandTypeR5900_processR(UNUSED const RabbitizerInstruction *s
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processACC(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandTypeR5900_processACC(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+                                             UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");

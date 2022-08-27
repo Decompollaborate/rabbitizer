@@ -46,7 +46,6 @@ const char *RabbitizerRegister_Cop2_Names[][2] = {
 #include "instructions/registers/RabbitizerRegister_Cop2.inc"
 };
 
-
 /* RSP */
 
 const char *RabbitizerRegister_RspGpr_Names[][2] = {
@@ -82,7 +81,6 @@ const char *RabbitizerRegister_R5900VI_Names[][2] = {
 };
 
 /* R5900 */
-
 
 const char *RabbitizerRegister_getNameGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_GprO32_Names));

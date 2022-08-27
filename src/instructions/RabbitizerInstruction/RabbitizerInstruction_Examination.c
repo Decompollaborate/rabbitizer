@@ -801,7 +801,7 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_R5900_imm5:
                 validbits = RAB_INSTR_R5900_PACK_imm5(validbits, ~0);
                 break;
-            /* r5900 */
+                /* r5900 */
 
             case RABBITIZER_OPERAND_TYPE_INVALID:
             case RABBITIZER_OPERAND_TYPE_MAX:

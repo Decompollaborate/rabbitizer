@@ -44,12 +44,10 @@ const InstrSuffixCallback instrSuffixCallbacks[] = {
     [RABINSTRSUFFIX_R5900_xyzw] = RabbitizerInstrSuffixR5900_xyzw,
 };
 
-
 size_t RabbitizerInstrSuffix_getSizeForBuffer(const RabbitizerInstruction *self, RabbitizerInstrSuffix instrSuffix) {
     // Just hardcode the size of the bigger possible suffix, faster than actually computing it.
     return 5;
 }
-
 
 size_t RabbitizerInstrSuffix_processSuffix(const RabbitizerInstruction *self, char *dst, RabbitizerInstrSuffix instrSuffix) {
     InstrSuffixCallback callback;

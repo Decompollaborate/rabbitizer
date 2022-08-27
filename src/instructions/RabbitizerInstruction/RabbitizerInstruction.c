@@ -349,7 +349,7 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RABBITIZER_OPERAND_TYPE_R5900_imm5:
                 self->word = RAB_INSTR_R5900_PACK_imm5(self->word, 0);
                 break;
-            /* r5900 */
+                /* r5900 */
 
             case RABBITIZER_OPERAND_TYPE_INVALID:
             case RABBITIZER_OPERAND_TYPE_MAX:
