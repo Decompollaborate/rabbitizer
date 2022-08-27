@@ -22,6 +22,7 @@ const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId) {
     assert(uniqueId >= RABBITIZER_INSTR_ID_cpu_INVALID && uniqueId < RABBITIZER_INSTR_ID_ALL_MAX);
     assert(uniqueId != RABBITIZER_INSTR_ID_cpu_MAX);
     assert(uniqueId != RABBITIZER_INSTR_ID_rsp_MAX);
+    assert(uniqueId != RABBITIZER_INSTR_ID_r5900_MAX);
 
     return RabbitizerInstrId_Names[uniqueId];
 }

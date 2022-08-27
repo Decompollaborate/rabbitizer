@@ -29,9 +29,19 @@ typedef enum RabbitizerArchitectureVersion {
     RABBITIZER_ARCHVERSION_MIPS_IV
 } RabbitizerArchitectureVersion;
 
+typedef enum RabbitizerInstrSuffix {
+    RABINSTRSUFFIX_NONE,
+    RABINSTRSUFFIX_R5900_xyzw,
+    RABINSTRSUFFIX_R5900_l,
+    RABINSTRSUFFIX_R5900_m,
+    RABINSTRSUFFIX_R5900_n,
+} RabbitizerInstrSuffix;
+
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];
     RabbitizerInstrType instrType;
+
+    RabbitizerInstrSuffix instrSuffix;
 
     bool isBranch;
     bool isBranchLikely;
@@ -58,7 +68,7 @@ typedef struct RabbitizerInstrDescriptor {
 
     bool isPseudo;
 
-    RabbitizerArchitectureVersion architectureVersion;
+    RabbitizerArchitectureVersion architectureVersion; // TODO: consider removing
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -75,6 +85,9 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isRType(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+RabbitizerInstrSuffix RabbitizerInstrDescriptor_instrSuffix(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self);

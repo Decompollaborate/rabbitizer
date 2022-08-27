@@ -34,6 +34,10 @@ bool RabbitizerInstrDescriptor_isRegimmType(const RabbitizerInstrDescriptor *sel
     return self->instrType == RABBITIZER_INSTR_TYPE_REGIMM;
 }
 
+RabbitizerInstrSuffix RabbitizerInstrDescriptor_instrSuffix(const RabbitizerInstrDescriptor *self) {
+    return self->instrSuffix;
+}
+
 bool RabbitizerInstrDescriptor_isBranch(const RabbitizerInstrDescriptor *self) {
     return self->isBranch;
 }
