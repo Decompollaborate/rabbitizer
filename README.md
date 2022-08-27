@@ -44,6 +44,7 @@ NOTE: Installing the development version is not recommended. Proceed at your own
     - `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and `break` instructions.
 - N64 RSP instruction decoding support.
   - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
+- R5900 (PS2's Emotion Engine processor) decoding support.
 
 ## References
 
