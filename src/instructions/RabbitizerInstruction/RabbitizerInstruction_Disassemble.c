@@ -887,7 +887,7 @@ size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruc
 
     totalSize += opcodeNameLength;
 
-    totalSize += RabbitizerInstrSuffix_getSizeForBuffer(self, self->descriptor->instrType);
+    totalSize += RabbitizerInstrSuffix_getSizeForBuffer(self, self->descriptor->instrSuffix);
 
     if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
         // There are no operands
