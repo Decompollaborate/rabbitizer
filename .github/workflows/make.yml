@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: make
 
 # Build on every branch push, tag push, and pull request change:
 on: [push, pull_request]
