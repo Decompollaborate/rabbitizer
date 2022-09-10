@@ -77,7 +77,7 @@ static PyMemberDef rabbitizer_type_Instruction_members[] = {
         uint32_t reg; \
         PyObject *enumInstance = NULL; \
         \
-        if (!RabbitizerInstruction_hasOperandAlias(&self->instr, RABBITIZER_OPERAND_TYPE_##name)) { \
+        if (!RabbitizerInstruction_hasOperandAlias(&self->instr, RAB_OPERAND_cpu_##name)) { \
             PyErr_Format(PyExc_RuntimeError, "'%s' instruction does not reference register '" #name "'", RabbitizerInstrId_getOpcodeName(self->instr.uniqueId)); \
             return NULL; \
         } \

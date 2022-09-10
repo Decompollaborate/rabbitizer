@@ -16,7 +16,7 @@
 
 typedef size_t (*OperandCallback)(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
 
-size_t RabbitizerOperandType_processRs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_rs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(RAB_INSTR_GET_rs(self));
 
@@ -24,7 +24,7 @@ size_t RabbitizerOperandType_processRs(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processRt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_rt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(RAB_INSTR_GET_rt(self));
 
@@ -32,7 +32,7 @@ size_t RabbitizerOperandType_processRt(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processRd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_rd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(RAB_INSTR_GET_rd(self));
 
@@ -40,7 +40,7 @@ size_t RabbitizerOperandType_processRd(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processZero(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_zero(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(0);
 
@@ -48,7 +48,7 @@ size_t RabbitizerOperandType_processZero(UNUSED const RabbitizerInstruction *sel
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processCop0d(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_cop0d(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop0(RAB_INSTR_GET_cop0d(self));
 
@@ -56,7 +56,7 @@ size_t RabbitizerOperandType_processCop0d(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processFs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_fs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1(RAB_INSTR_GET_fs(self));
 
@@ -64,7 +64,7 @@ size_t RabbitizerOperandType_processFs(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processFt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_ft(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1(RAB_INSTR_GET_ft(self));
 
@@ -72,7 +72,7 @@ size_t RabbitizerOperandType_processFt(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processFd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_fd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1(RAB_INSTR_GET_fd(self));
 
@@ -80,7 +80,7 @@ size_t RabbitizerOperandType_processFd(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processCop1Cs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_cop1cs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop1Control(RAB_INSTR_GET_cop1cs(self));
 
@@ -88,7 +88,7 @@ size_t RabbitizerOperandType_processCop1Cs(const RabbitizerInstruction *self, ch
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processCop2t(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_cop2t(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameCop2(RAB_INSTR_GET_cop2t(self));
 
@@ -96,7 +96,7 @@ size_t RabbitizerOperandType_processCop2t(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processSa(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_sa(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
 // TODO: consider making this a proper configuration
@@ -111,7 +111,7 @@ size_t RabbitizerOperandType_processSa(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processOp(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_op(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
 // TODO: consider making this a proper configuration
@@ -126,7 +126,7 @@ size_t RabbitizerOperandType_processOp(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processCode(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_code(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     int code = RAB_INSTR_GET_code_upper(self);
     int lower = RAB_INSTR_GET_code_lower(self);
@@ -139,7 +139,7 @@ size_t RabbitizerOperandType_processCode(const RabbitizerInstruction *self, char
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processCopraw(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_copraw(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", RAB_INSTR_GET_copraw(self));
@@ -147,7 +147,7 @@ size_t RabbitizerOperandType_processCopraw(const RabbitizerInstruction *self, ch
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processLabel(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_label(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     if (immOverride != NULL) {
@@ -159,7 +159,7 @@ size_t RabbitizerOperandType_processLabel(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processImmediate(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_immediate(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     int32_t number;
 
@@ -191,25 +191,25 @@ size_t RabbitizerOperandType_processImmediate(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandType_processImmediateBase(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_immediate_base(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
 // TODO: consider making this a proper configuration
 #if 0
     if (immOverride != NULL || RAB_INSTR_GET_immediate(self) != 0) {
-        RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_cpu_immediate(self, dst, immOverride, immOverrideLength));
     }
 #endif
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_cpu_immediate(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processRs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_cpu_rs(self, dst, immOverride, immOverrideLength));
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processRs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_rs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspGpr(RAB_INSTR_GET_rs(self));
 
@@ -217,7 +217,7 @@ size_t RabbitizerOperandTypeRsp_processRs(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processRt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_rt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspGpr(RAB_INSTR_GET_rt(self));
 
@@ -225,7 +225,7 @@ size_t RabbitizerOperandTypeRsp_processRt(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processRd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_rd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspGpr(RAB_INSTR_GET_rd(self));
 
@@ -233,7 +233,7 @@ size_t RabbitizerOperandTypeRsp_processRd(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processCop0d(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_cop0d(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspCop0(RAB_INSTR_GET_cop0d(self));
 
@@ -241,7 +241,7 @@ size_t RabbitizerOperandTypeRsp_processCop0d(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processCop2t(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_cop2t(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspCop2(RAB_INSTR_RSP_GET_cop2t(self));
 
@@ -249,7 +249,7 @@ size_t RabbitizerOperandTypeRsp_processCop2t(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processcop2cd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_cop2cd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspCop2Control(RAB_INSTR_RSP_GET_cop2cd(self));
 
@@ -257,7 +257,7 @@ size_t RabbitizerOperandTypeRsp_processcop2cd(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_vs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_vs(self));
 
@@ -265,7 +265,7 @@ size_t RabbitizerOperandTypeRsp_processVs(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_vt(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_vt(self));
 
@@ -273,7 +273,7 @@ size_t RabbitizerOperandTypeRsp_processVt(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_vd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameRspVector(RAB_INSTR_RSP_GET_vd(self));
 
@@ -281,11 +281,11 @@ size_t RabbitizerOperandTypeRsp_processVd(const RabbitizerInstruction *self, cha
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVtElementhigh(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_vt_elementhigh(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t element;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_vt(self, dst, immOverride, immOverrideLength));
 
     element = RAB_INSTR_RSP_GET_elementhigh(self);
     if (element != 0) {
@@ -302,20 +302,20 @@ size_t RabbitizerOperandTypeRsp_processVtElementhigh(const RabbitizerInstruction
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVtElementlow(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_vt_elementlow(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_vt(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", RAB_INSTR_RSP_GET_elementlow(self));
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVdDe(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_vd_de(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t de;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVd(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_vd(self, dst, immOverride, immOverrideLength));
 
     de = RAB_INSTR_RSP_GET_de(self);
     if ((de & 0x8) == 0x8) {
@@ -330,45 +330,45 @@ size_t RabbitizerOperandTypeRsp_processVdDe(const RabbitizerInstruction *self, c
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processVsIndex(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_vs_index(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processVs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_vs(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "[%i]", RAB_INSTR_RSP_GET_index(self));
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processOffsetVs(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_offset_rs(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", RabbitizerInstructionRsp_GetOffsetVector(self));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processRs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_rs(self, dst, immOverride, immOverrideLength));
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeRsp_processImmediateBase(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_rsp_immediate_base(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
 // TODO: consider making this a proper configuration
 #if 0
     if (immOverride != NULL || RAB_INSTR_GET_immediate(self) != 0) {
-        RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_cpu_immediate(self, dst, immOverride, immOverrideLength));
     }
 #endif
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_processImmediate(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_cpu_immediate(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeRsp_processRs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_rs(self, dst, immOverride, immOverrideLength));
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processI(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+size_t RabbitizerOperandType_process_r5900_I(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
                                            UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
@@ -377,7 +377,7 @@ size_t RabbitizerOperandTypeR5900_processI(UNUSED const RabbitizerInstruction *s
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processQ(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+size_t RabbitizerOperandType_process_r5900_Q(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
                                            UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
@@ -386,7 +386,7 @@ size_t RabbitizerOperandTypeR5900_processQ(UNUSED const RabbitizerInstruction *s
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processR(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+size_t RabbitizerOperandType_process_r5900_R(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
                                            UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
@@ -395,7 +395,7 @@ size_t RabbitizerOperandTypeR5900_processR(UNUSED const RabbitizerInstruction *s
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processACC(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+size_t RabbitizerOperandType_process_r5900_ACC(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
                                              UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
@@ -404,10 +404,10 @@ size_t RabbitizerOperandTypeR5900_processACC(UNUSED const RabbitizerInstruction 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processACCxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_ACCxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processACC(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_ACC(self, dst, immOverride, immOverrideLength));
 
 #if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
@@ -427,7 +427,7 @@ size_t RabbitizerOperandTypeR5900_processACCxyzw(const RabbitizerInstruction *se
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VF(RAB_INSTR_R5900_GET_vfs(self));
 
@@ -435,7 +435,7 @@ size_t RabbitizerOperandTypeR5900_processVfs(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVft(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vft(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VF(RAB_INSTR_R5900_GET_vft(self));
 
@@ -443,7 +443,7 @@ size_t RabbitizerOperandTypeR5900_processVft(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfd(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VF(RAB_INSTR_R5900_GET_vfd(self));
 
@@ -451,10 +451,10 @@ size_t RabbitizerOperandTypeR5900_processVfd(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfsxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfsxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfs(self, dst, immOverride, immOverrideLength));
 
 #if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
@@ -474,10 +474,10 @@ size_t RabbitizerOperandTypeR5900_processVfsxyzw(const RabbitizerInstruction *se
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVftxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vftxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vft(self, dst, immOverride, immOverrideLength));
 
 #if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
@@ -497,10 +497,10 @@ size_t RabbitizerOperandTypeR5900_processVftxyzw(const RabbitizerInstruction *se
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfdxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfdxyzw(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfd(self, dst, immOverride, immOverrideLength));
 
 #if 0
     if (RAB_INSTR_R5900_GET_xyzw_x(self)) {
@@ -520,11 +520,11 @@ size_t RabbitizerOperandTypeR5900_processVfdxyzw(const RabbitizerInstruction *se
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfsn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfsn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfs(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_n(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -532,11 +532,11 @@ size_t RabbitizerOperandTypeR5900_processVfsn(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVftn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vftn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vft(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_n(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -544,11 +544,11 @@ size_t RabbitizerOperandTypeR5900_processVftn(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfdn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfdn(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfd(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_n(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -556,11 +556,11 @@ size_t RabbitizerOperandTypeR5900_processVfdn(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfsl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfsl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfs(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_l(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -568,11 +568,11 @@ size_t RabbitizerOperandTypeR5900_processVfsl(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVftl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vftl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vft(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_l(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -580,11 +580,11 @@ size_t RabbitizerOperandTypeR5900_processVftl(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfdl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfdl(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfd(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_l(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -592,11 +592,11 @@ size_t RabbitizerOperandTypeR5900_processVfdl(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfsm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfsm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfs(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_m(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -604,11 +604,11 @@ size_t RabbitizerOperandTypeR5900_processVfsm(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVftm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vftm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVft(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vft(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_m(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -616,11 +616,11 @@ size_t RabbitizerOperandTypeR5900_processVftm(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVfdm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vfdm(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t n;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVfd(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vfd(self, dst, immOverride, immOverrideLength));
 
     n = RAB_INSTR_R5900_GET_m(self);
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, "xyzw"[n]);
@@ -628,7 +628,7 @@ size_t RabbitizerOperandTypeR5900_processVfdm(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVis(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vis(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vis(self));
 
@@ -636,7 +636,7 @@ size_t RabbitizerOperandTypeR5900_processVis(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVit(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vit(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vit(self));
 
@@ -644,7 +644,7 @@ size_t RabbitizerOperandTypeR5900_processVit(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVid(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vid(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR5900VI(RAB_INSTR_R5900_GET_vid(self));
 
@@ -652,54 +652,54 @@ size_t RabbitizerOperandTypeR5900_processVid(const RabbitizerInstruction *self, 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVis_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vis_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVis(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vis(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVit_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vit_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVit(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vit(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVid_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vid_predecr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '-');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVid(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vid(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
 
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVis_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vis_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVis(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vis(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
@@ -708,12 +708,12 @@ size_t RabbitizerOperandTypeR5900_processVis_postincr(const RabbitizerInstructio
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVit_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vit_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVit(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vit(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
@@ -722,12 +722,12 @@ size_t RabbitizerOperandTypeR5900_processVit_postincr(const RabbitizerInstructio
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processVid_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_vid_postincr(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandTypeR5900_processVid(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r5900_vid(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '+');
@@ -736,7 +736,7 @@ size_t RabbitizerOperandTypeR5900_processVid_postincr(const RabbitizerInstructio
     return totalSize;
 }
 
-size_t RabbitizerOperandTypeR5900_processImm5(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r5900_immediate5(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     int32_t number;
 
@@ -768,79 +768,21 @@ size_t RabbitizerOperandTypeR5900_processImm5(const RabbitizerInstruction *self,
     return totalSize;
 }
 
+#define RAB_DEF_OPERAND(prefix, operand) \
+    [RAB_OPERAND_##prefix##_##operand] = RabbitizerOperandType_process_##prefix##_##operand,
+
 const OperandCallback instrOpercandCallbacks[] = {
-    [RABBITIZER_OPERAND_TYPE_rs] = RabbitizerOperandType_processRs,
-    [RABBITIZER_OPERAND_TYPE_rt] = RabbitizerOperandType_processRt,
-    [RABBITIZER_OPERAND_TYPE_rd] = RabbitizerOperandType_processRd,
-    [RABBITIZER_OPERAND_TYPE_zero] = RabbitizerOperandType_processZero,
-    [RABBITIZER_OPERAND_TYPE_cop0d] = RabbitizerOperandType_processCop0d,
-    [RABBITIZER_OPERAND_TYPE_fs] = RabbitizerOperandType_processFs,
-    [RABBITIZER_OPERAND_TYPE_ft] = RabbitizerOperandType_processFt,
-    [RABBITIZER_OPERAND_TYPE_fd] = RabbitizerOperandType_processFd,
-    [RABBITIZER_OPERAND_TYPE_cop1cs] = RabbitizerOperandType_processCop1Cs,
-    [RABBITIZER_OPERAND_TYPE_cop2t] = RabbitizerOperandType_processCop2t,
-    [RABBITIZER_OPERAND_TYPE_sa] = RabbitizerOperandType_processSa,
-    [RABBITIZER_OPERAND_TYPE_op] = RabbitizerOperandType_processOp,
-    [RABBITIZER_OPERAND_TYPE_code] = RabbitizerOperandType_processCode,
-    [RABBITIZER_OPERAND_TYPE_copraw] = RabbitizerOperandType_processCopraw,
-    [RABBITIZER_OPERAND_TYPE_LABEL] = RabbitizerOperandType_processLabel,
-    [RABBITIZER_OPERAND_TYPE_IMM] = RabbitizerOperandType_processImmediate,
-    [RABBITIZER_OPERAND_TYPE_IMM_base] = RabbitizerOperandType_processImmediateBase,
-
-    // rsp
-    [RABBITIZER_OPERAND_TYPE_RSP_rs] = RabbitizerOperandTypeRsp_processRs,
-    [RABBITIZER_OPERAND_TYPE_RSP_rt] = RabbitizerOperandTypeRsp_processRt,
-    [RABBITIZER_OPERAND_TYPE_RSP_rd] = RabbitizerOperandTypeRsp_processRd,
-    [RABBITIZER_OPERAND_TYPE_RSP_cop0d] = RabbitizerOperandTypeRsp_processCop0d,
-    [RABBITIZER_OPERAND_TYPE_RSP_cop2t] = RabbitizerOperandTypeRsp_processCop2t,
-    [RABBITIZER_OPERAND_TYPE_RSP_cop2cd] = RabbitizerOperandTypeRsp_processcop2cd,
-    [RABBITIZER_OPERAND_TYPE_RSP_vs] = RabbitizerOperandTypeRsp_processVs,
-    [RABBITIZER_OPERAND_TYPE_RSP_vt] = RabbitizerOperandTypeRsp_processVt,
-    [RABBITIZER_OPERAND_TYPE_RSP_vd] = RabbitizerOperandTypeRsp_processVd,
-    [RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh] = RabbitizerOperandTypeRsp_processVtElementhigh,
-    [RABBITIZER_OPERAND_TYPE_RSP_vt_elementlow] = RabbitizerOperandTypeRsp_processVtElementlow,
-    [RABBITIZER_OPERAND_TYPE_RSP_vd_de] = RabbitizerOperandTypeRsp_processVdDe,
-    [RABBITIZER_OPERAND_TYPE_RSP_vs_index] = RabbitizerOperandTypeRsp_processVsIndex,
-    [RABBITIZER_OPERAND_TYPE_RSP_offset_rs] = RabbitizerOperandTypeRsp_processOffsetVs,
-    [RABBITIZER_OPERAND_TYPE_RSP_IMM_base] = RabbitizerOperandTypeRsp_processImmediateBase,
-
-    // r5900
-    [RABBITIZER_OPERAND_TYPE_R5900_I] = RabbitizerOperandTypeR5900_processI,
-    [RABBITIZER_OPERAND_TYPE_R5900_Q] = RabbitizerOperandTypeR5900_processQ,
-    [RABBITIZER_OPERAND_TYPE_R5900_R] = RabbitizerOperandTypeR5900_processR,
-    [RABBITIZER_OPERAND_TYPE_R5900_ACC] = RabbitizerOperandTypeR5900_processACC,
-    [RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw] = RabbitizerOperandTypeR5900_processACCxyzw,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfs] = RabbitizerOperandTypeR5900_processVfs,
-    [RABBITIZER_OPERAND_TYPE_R5900_vft] = RabbitizerOperandTypeR5900_processVft,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfd] = RabbitizerOperandTypeR5900_processVfd,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw] = RabbitizerOperandTypeR5900_processVfsxyzw,
-    [RABBITIZER_OPERAND_TYPE_R5900_vftxyzw] = RabbitizerOperandTypeR5900_processVftxyzw,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfdxyzw] = RabbitizerOperandTypeR5900_processVfdxyzw,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfsn] = RabbitizerOperandTypeR5900_processVfsn,
-    [RABBITIZER_OPERAND_TYPE_R5900_vftn] = RabbitizerOperandTypeR5900_processVftn,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfdn] = RabbitizerOperandTypeR5900_processVfdn,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfsl] = RabbitizerOperandTypeR5900_processVfsl,
-    [RABBITIZER_OPERAND_TYPE_R5900_vftl] = RabbitizerOperandTypeR5900_processVftl,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfdl] = RabbitizerOperandTypeR5900_processVfdl,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfsm] = RabbitizerOperandTypeR5900_processVfsm,
-    [RABBITIZER_OPERAND_TYPE_R5900_vftm] = RabbitizerOperandTypeR5900_processVftm,
-    [RABBITIZER_OPERAND_TYPE_R5900_vfdm] = RabbitizerOperandTypeR5900_processVfdm,
-    [RABBITIZER_OPERAND_TYPE_R5900_vis] = RabbitizerOperandTypeR5900_processVis,
-    [RABBITIZER_OPERAND_TYPE_R5900_vit] = RabbitizerOperandTypeR5900_processVit,
-    [RABBITIZER_OPERAND_TYPE_R5900_vid] = RabbitizerOperandTypeR5900_processVid,
-    [RABBITIZER_OPERAND_TYPE_R5900_vis_predecr] = RabbitizerOperandTypeR5900_processVis_predecr,
-    [RABBITIZER_OPERAND_TYPE_R5900_vit_predecr] = RabbitizerOperandTypeR5900_processVit_predecr,
-    [RABBITIZER_OPERAND_TYPE_R5900_vid_predecr] = RabbitizerOperandTypeR5900_processVid_predecr,
-    [RABBITIZER_OPERAND_TYPE_R5900_vis_postincr] = RabbitizerOperandTypeR5900_processVis_postincr,
-    [RABBITIZER_OPERAND_TYPE_R5900_vit_postincr] = RabbitizerOperandTypeR5900_processVit_postincr,
-    [RABBITIZER_OPERAND_TYPE_R5900_vid_postincr] = RabbitizerOperandTypeR5900_processVid_postincr,
-    [RABBITIZER_OPERAND_TYPE_R5900_imm5] = RabbitizerOperandTypeR5900_processImm5,
+#include "instructions/operands/RabbitizerOperandType_cpu.inc"
+#include "instructions/operands/RabbitizerOperandType_rsp.inc"
+#include "instructions/operands/RabbitizerOperandType_r5900.inc"
 };
+
+#undef RAB_DEF_OPERAND
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
+    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
         if (i != 0) {
             totalSize += 2;
         }
@@ -856,7 +798,7 @@ size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInst
 size_t RabbitizerInstruction_disassembleOperands(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RABBITIZER_OPERAND_TYPE_INVALID; i++) {
+    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
         RabbitizerOperandType operand;
         OperandCallback callback;
 
@@ -866,8 +808,8 @@ size_t RabbitizerInstruction_disassembleOperands(const RabbitizerInstruction *se
         }
 
         operand = self->descriptor->operands[i];
-        assert(operand > RABBITIZER_OPERAND_TYPE_INVALID);
-        assert(operand < RABBITIZER_OPERAND_TYPE_MAX);
+        assert(operand > RAB_OPERAND_ALL_INVALID);
+        assert(operand < RAB_OPERAND_ALL_MAX);
 
         callback = instrOpercandCallbacks[operand];
         assert(callback != NULL);
@@ -889,7 +831,7 @@ size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruc
 
     totalSize += RabbitizerInstrSuffix_getSizeForBuffer(self, self->descriptor->instrSuffix);
 
-    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
+    if (self->descriptor->operands[0] == RAB_OPERAND_ALL_INVALID) {
         // There are no operands
         return totalSize;
     }
@@ -911,7 +853,7 @@ size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction 
 
     RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstrSuffix_processSuffix(self, dst, self->descriptor->instrSuffix));
 
-    if (self->descriptor->operands[0] == RABBITIZER_OPERAND_TYPE_INVALID) {
+    if (self->descriptor->operands[0] == RAB_OPERAND_ALL_INVALID) {
         // There are no operands
         *dst = '\0';
         return totalSize;

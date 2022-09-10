@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-RABBITIZER_DEF_INSTR_ID(r5900, , INVALID,     .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
+RABBITIZER_DEF_INSTR_ID(r5900, , INVALID,     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .architectureVersion=-1)
 
 #include "instructions/instr_id/r5900/r5900_normal.inc"
 #include "instructions/instr_id/r5900/r5900_special.inc"

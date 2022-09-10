@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-RABBITIZER_DEF_INSTR_ID(cpu, , INVALID, .operands={RABBITIZER_OPERAND_TYPE_rs, RABBITIZER_OPERAND_TYPE_rt, RABBITIZER_OPERAND_TYPE_IMM})
+RABBITIZER_DEF_INSTR_ID(cpu, , INVALID, .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate})
 
 #include "instructions/instr_id/cpu/cpu_normal.inc"
 #include "instructions/instr_id/cpu/cpu_special.inc"

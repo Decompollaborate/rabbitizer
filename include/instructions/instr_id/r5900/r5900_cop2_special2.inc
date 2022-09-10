@@ -28,98 +28,98 @@ Note: opcode is flo | (fhi * 4).
 
 // TODO: operands and properties
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x00, vaddax,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x01, vadday,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x02, vaddaz,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x03, vaddaw,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x04, vsubax,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x05, vsubay,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x06, vsubaz,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x07, vsubaw,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x08, vmaddax,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x09, vmadday,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x0A, vmaddaz,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x0B, vmaddaw,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x0C, vmsubax,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x0D, vmsubay,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x0E, vmsubaz,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
-RABBITIZER_DEF_INSTR_ID(r5900, 0x0F, vmsubaw,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x00, vaddax,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x01, vadday,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x02, vaddaz,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x03, vaddaw,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x04, vsubax,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x05, vsubay,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x06, vsubaz,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x07, vsubaw,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x08, vmaddax,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x09, vmadday,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x0A, vmaddaz,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x0B, vmaddaw,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw) // Multiply and add accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x0C, vmsubax,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x0D, vmsubay,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x0E, vmsubaz,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
+RABBITIZER_DEF_INSTR_ID(r5900, 0x0F, vmsubaw,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator broadcast
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x10, vitof0,    .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
-RABBITIZER_DEF_INSTR_ID(r5900, 0x11, vitof4,    .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
-RABBITIZER_DEF_INSTR_ID(r5900, 0x12, vitof12,   .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
-RABBITIZER_DEF_INSTR_ID(r5900, 0x13, vitof15,   .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
-RABBITIZER_DEF_INSTR_ID(r5900, 0x14, vftoi0,    .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
-RABBITIZER_DEF_INSTR_ID(r5900, 0x15, vftoi4,    .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
-RABBITIZER_DEF_INSTR_ID(r5900, 0x16, vftoi12,   .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
-RABBITIZER_DEF_INSTR_ID(r5900, 0x17, vftoi15,   .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
+RABBITIZER_DEF_INSTR_ID(r5900, 0x10, vitof0,    .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
+RABBITIZER_DEF_INSTR_ID(r5900, 0x11, vitof4,    .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
+RABBITIZER_DEF_INSTR_ID(r5900, 0x12, vitof12,   .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
+RABBITIZER_DEF_INSTR_ID(r5900, 0x13, vitof15,   .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Integer to floating point
+RABBITIZER_DEF_INSTR_ID(r5900, 0x14, vftoi0,    .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
+RABBITIZER_DEF_INSTR_ID(r5900, 0x15, vftoi4,    .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
+RABBITIZER_DEF_INSTR_ID(r5900, 0x16, vftoi12,   .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
+RABBITIZER_DEF_INSTR_ID(r5900, 0x17, vftoi15,   .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Floating to integer
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x18, vmulax,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x19, vmulay,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1A, vmulaz,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1B, vmulaw,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x18, vmulax,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x19, vmulay,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1A, vmulaz,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1B, vmulaw,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
 // TODO
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1C, vmulaq,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1C, vmulaq,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1D, vabs,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Absolute
-
-// TODO
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1E, vmulai,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
-
-RABBITIZER_DEF_INSTR_ID(r5900, 0x1F, vclipw,    .operands={RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Clip
-
-RABBITIZER_DEF_INSTR_ID(r5900, 0x20, vaddaq,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator Q
-RABBITIZER_DEF_INSTR_ID(r5900, 0x21, vmaddaq,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and add accumulator Q
-RABBITIZER_DEF_INSTR_ID(r5900, 0x22, vaddai,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator I
-RABBITIZER_DEF_INSTR_ID(r5900, 0x23, vmaddai,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and add accumulator I
-RABBITIZER_DEF_INSTR_ID(r5900, 0x24, vsubaq,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Subtract accumulator Q
-RABBITIZER_DEF_INSTR_ID(r5900, 0x25, vmsubaq,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and Subtract accumulator Q
-RABBITIZER_DEF_INSTR_ID(r5900, 0x26, vsubai,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Subtract accumulator I
-RABBITIZER_DEF_INSTR_ID(r5900, 0x27, vmsubai,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and Subtract accumulator I
-RABBITIZER_DEF_INSTR_ID(r5900, 0x28, vadda,     .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator
-RABBITIZER_DEF_INSTR_ID(r5900, 0x29, vmadda,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and add accumulator
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1D, vabs,      .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Absolute
 
 // TODO
-RABBITIZER_DEF_INSTR_ID(r5900, 0x2A, vmula,     .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1E, vmulai,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x2C, vsuba,     .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x2D, vmsuba,    .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator
-RABBITIZER_DEF_INSTR_ID(r5900, 0x2E, vopmula,   .operands={RABBITIZER_OPERAND_TYPE_R5900_ACCxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Outer product pre increment
+RABBITIZER_DEF_INSTR_ID(r5900, 0x1F, vclipw,    .operands={RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Clip
+
+RABBITIZER_DEF_INSTR_ID(r5900, 0x20, vaddaq,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator Q
+RABBITIZER_DEF_INSTR_ID(r5900, 0x21, vmaddaq,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and add accumulator Q
+RABBITIZER_DEF_INSTR_ID(r5900, 0x22, vaddai,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator I
+RABBITIZER_DEF_INSTR_ID(r5900, 0x23, vmaddai,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and add accumulator I
+RABBITIZER_DEF_INSTR_ID(r5900, 0x24, vsubaq,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Subtract accumulator Q
+RABBITIZER_DEF_INSTR_ID(r5900, 0x25, vmsubaq,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and Subtract accumulator Q
+RABBITIZER_DEF_INSTR_ID(r5900, 0x26, vsubai,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Subtract accumulator I
+RABBITIZER_DEF_INSTR_ID(r5900, 0x27, vmsubai,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and Subtract accumulator I
+RABBITIZER_DEF_INSTR_ID(r5900, 0x28, vadda,     .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Add accumulator
+RABBITIZER_DEF_INSTR_ID(r5900, 0x29, vmadda,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and add accumulator
+
+// TODO
+RABBITIZER_DEF_INSTR_ID(r5900, 0x2A, vmula,     .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw)
+
+RABBITIZER_DEF_INSTR_ID(r5900, 0x2C, vsuba,     .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true)
+RABBITIZER_DEF_INSTR_ID(r5900, 0x2D, vmsuba,    .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Multiply and substract accumulator
+RABBITIZER_DEF_INSTR_ID(r5900, 0x2E, vopmula,   .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Outer product pre increment
 RABBITIZER_DEF_INSTR_ID(r5900, 0x2F, vnop,      .operands={0}) // No operation
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x30, vmove,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Move floating point registers
-RABBITIZER_DEF_INSTR_ID(r5900, 0x31, vmr32,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Move and rotate per word
-RABBITIZER_DEF_INSTR_ID(r5900, 0x34, vlqi,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vis_postincr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Load quadraword post increment
-RABBITIZER_DEF_INSTR_ID(r5900, 0x35, vsqi,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vit_postincr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Store quadraword post increment
-RABBITIZER_DEF_INSTR_ID(r5900, 0x36, vlqd,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vis_predecr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Load quadraword pre decrement
-RABBITIZER_DEF_INSTR_ID(r5900, 0x37, vsqd,      .operands={RABBITIZER_OPERAND_TYPE_R5900_vfsxyzw, RABBITIZER_OPERAND_TYPE_R5900_vit_predecr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Store quadraword pre decrement
+RABBITIZER_DEF_INSTR_ID(r5900, 0x30, vmove,     .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Move floating point registers
+RABBITIZER_DEF_INSTR_ID(r5900, 0x31, vmr32,     .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Move and rotate per word
+RABBITIZER_DEF_INSTR_ID(r5900, 0x34, vlqi,      .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vis_postincr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Load quadraword post increment
+RABBITIZER_DEF_INSTR_ID(r5900, 0x35, vsqi,      .operands={RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vit_postincr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Store quadraword post increment
+RABBITIZER_DEF_INSTR_ID(r5900, 0x36, vlqd,      .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vis_predecr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Load quadraword pre decrement
+RABBITIZER_DEF_INSTR_ID(r5900, 0x37, vsqd,      .operands={RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vit_predecr}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Store quadraword pre decrement
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x38, vdiv,      .operands={RABBITIZER_OPERAND_TYPE_R5900_Q, RABBITIZER_OPERAND_TYPE_R5900_vfsl, RABBITIZER_OPERAND_TYPE_R5900_vftm})
-RABBITIZER_DEF_INSTR_ID(r5900, 0x39, vsqrt,     .operands={RABBITIZER_OPERAND_TYPE_R5900_Q, RABBITIZER_OPERAND_TYPE_R5900_vftm})
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3A, vrsqrt,    .operands={RABBITIZER_OPERAND_TYPE_R5900_Q, RABBITIZER_OPERAND_TYPE_R5900_vfsl,RABBITIZER_OPERAND_TYPE_R5900_vftm})
+RABBITIZER_DEF_INSTR_ID(r5900, 0x38, vdiv,      .operands={RAB_OPERAND_r5900_Q, RAB_OPERAND_r5900_vfsl, RAB_OPERAND_r5900_vftm})
+RABBITIZER_DEF_INSTR_ID(r5900, 0x39, vsqrt,     .operands={RAB_OPERAND_r5900_Q, RAB_OPERAND_r5900_vftm})
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3A, vrsqrt,    .operands={RAB_OPERAND_r5900_Q, RAB_OPERAND_r5900_vfsl,RAB_OPERAND_r5900_vftm})
 
 RABBITIZER_DEF_INSTR_ID(r5900, 0x3B, vwaitq,    .operands={0}) // Wait Q operation
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3C, vmtir,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vit, RABBITIZER_OPERAND_TYPE_R5900_vfsl})
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3C, vmtir,     .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vfsl})
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3D, vmfir,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_vis}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Move from integer register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3D, vmfir,     .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vis}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // Move from integer register
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3E, vilwr,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vit, RABBITIZER_OPERAND_TYPE_R5900_vis}, .isFloat=true, .doesDereference=true, .doesLoad=true) // Integer load word register
-RABBITIZER_DEF_INSTR_ID(r5900, 0x3F, viswr,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vit, RABBITIZER_OPERAND_TYPE_R5900_vis}, .isFloat=true, .doesDereference=true, .doesStore=true) // Integer store word register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3E, vilwr,     .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis}, .isFloat=true, .doesDereference=true, .doesLoad=true) // Integer load word register
+RABBITIZER_DEF_INSTR_ID(r5900, 0x3F, viswr,     .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis}, .isFloat=true, .doesDereference=true, .doesStore=true) // Integer store word register
 /*
-"vilwr.w",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
-"vilwr.x",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
-"vilwr.y",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
-"vilwr.z",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
-"viswr.w",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
-"viswr.x",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
-"viswr.y",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
-"viswr.z",		RABBITIZER_OPERAND_TYPE_R5900_vit,(RABBITIZER_OPERAND_TYPE_R5900_vis)
+"vilwr.w",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
+"vilwr.x",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
+"vilwr.y",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
+"vilwr.z",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
+"viswr.w",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
+"viswr.x",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
+"viswr.y",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
+"viswr.z",		RAB_OPERAND_r5900_vit,(RAB_OPERAND_r5900_vis)
 */
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x40, vrnext,    .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_R}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // R next
-RABBITIZER_DEF_INSTR_ID(r5900, 0x41, vrget,     .operands={RABBITIZER_OPERAND_TYPE_R5900_vftxyzw, RABBITIZER_OPERAND_TYPE_R5900_R}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // R move
+RABBITIZER_DEF_INSTR_ID(r5900, 0x40, vrnext,    .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_R}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // R next
+RABBITIZER_DEF_INSTR_ID(r5900, 0x41, vrget,     .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_R}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true) // R move
 
 // TODO
-RABBITIZER_DEF_INSTR_ID(r5900, 0x42, vrinit,    .operands={RABBITIZER_OPERAND_TYPE_R5900_R, RABBITIZER_OPERAND_TYPE_R5900_vfsl})
-RABBITIZER_DEF_INSTR_ID(r5900, 0x43, vrxor,     .operands={RABBITIZER_OPERAND_TYPE_R5900_R, RABBITIZER_OPERAND_TYPE_R5900_vfsl})
+RABBITIZER_DEF_INSTR_ID(r5900, 0x42, vrinit,    .operands={RAB_OPERAND_r5900_R, RAB_OPERAND_r5900_vfsl})
+RABBITIZER_DEF_INSTR_ID(r5900, 0x43, vrxor,     .operands={RAB_OPERAND_r5900_R, RAB_OPERAND_r5900_vfsl})
