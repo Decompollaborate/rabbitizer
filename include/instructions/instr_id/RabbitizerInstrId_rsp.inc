@@ -17,4 +17,4 @@ RABBITIZER_DEF_INSTR_ID(rsp, , INVALID,               .operands={RAB_OPERAND_rsp
 #include "instructions/instr_id/rsp/rsp_regimm.inc"
 #include "instructions/instr_id/rsp/rsp_cop0.inc"
 
-RABBITIZER_DEF_INSTR_ID(rsp, , MAX, 0)
+RABBITIZER_DEF_INSTR_ID(rsp, , MAX, .operands={0})

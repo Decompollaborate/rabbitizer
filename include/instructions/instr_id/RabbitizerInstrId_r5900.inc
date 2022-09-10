@@ -23,4 +23,4 @@ RABBITIZER_DEF_INSTR_ID(r5900, , INVALID,     .operands={RAB_OPERAND_cpu_rs, RAB
 #include "instructions/instr_id/r5900/r5900_cop2_special2.inc"
 
 
-RABBITIZER_DEF_INSTR_ID(r5900, , MAX, 0)
+RABBITIZER_DEF_INSTR_ID(r5900, , MAX, .operands={0})
