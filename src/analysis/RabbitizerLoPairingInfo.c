@@ -6,9 +6,10 @@
 
 void RabbitizerLoPairingInfo_Init(RabbitizerLoPairingInfo *self) {
     *self = (RabbitizerLoPairingInfo){ 
-        .shouldProcess = false,
         .instrOffset = 0,
+        .value = 0,
+        .shouldProcess = false,
         .isGpRel = false,
-        .isGpLoad = false,
+        .isGpGot = false,
     };
 }

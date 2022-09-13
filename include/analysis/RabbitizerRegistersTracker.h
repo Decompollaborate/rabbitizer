@@ -35,13 +35,15 @@ bool RabbitizerRegistersTracker_getJrInfo(const RabbitizerRegistersTracker *self
 // prevInstr can be NULL
 NON_NULL(1, 2)
 void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, const RabbitizerInstruction *prevInstr);
+NON_NULL(1, 2)
+void RabbitizerRegistersTracker_processGpLoad(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset);
 NON_NULL(1, 2, 3)
 bool RabbitizerRegistersTracker_getLuiOffsetForConstant(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset);
 NON_NULL(1, 2)
 void RabbitizerRegistersTracker_processConstant(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, uint32_t value, int offset);
 NON_NULL(1, 2, 4, 5) // deprecated
 bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, int *dstOffset, bool *dstIsGp);
-NON_NULL(1, 2)
+NODISCARD NON_NULL(1, 2)
 RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset);
 NON_NULL(1, 2)
 void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, uint32_t value, int offset);

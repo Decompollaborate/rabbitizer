@@ -146,6 +146,7 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
 
         RabbitizerTrackedRegisterState_clearHi(state);
         if (!RabbitizerTrackedRegisterState_wasSetInCurrentOffset(state, instrOffset)) {
+            RabbitizerTrackedRegisterState_clearGp(state);
             RabbitizerTrackedRegisterState_clearLo(state);
         }
     }
@@ -276,6 +277,17 @@ void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, con
     }
 }
 
+void RabbitizerRegistersTracker_processGpLoad(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset) {
+    RabbitizerTrackedRegisterState *state = NULL;
+
+    assert(RabbitizerInstrDescriptor_canBeLo(instr->descriptor));
+
+    state = &self->registers[RAB_INSTR_GET_rt(instr)];
+
+    RabbitizerTrackedRegisterState_clear(state);
+    RabbitizerTrackedRegisterState_setGpLoad(state, RabbitizerInstruction_getImmediate(instr), instrOffset);
+}
+
 bool RabbitizerRegistersTracker_getLuiOffsetForConstant(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset) {
     const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
 
@@ -328,14 +340,24 @@ RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(Rabbit
     RabbitizerLoPairingInfo_Init(&pairingInfo);
 
     if (state->hasLuiValue && !state->luiSetOnBranchLikely) {
-        pairingInfo.shouldProcess = true;
         pairingInfo.instrOffset = state->luiOffset;
+        pairingInfo.value = state->value;
+        pairingInfo.shouldProcess = true;
         return pairingInfo;
     }
 
     if ((RAB_INSTR_GET_rs(instr) == RABBITIZER_REG_GPR_O32_gp) || (RAB_INSTR_GET_rs(instr) == RABBITIZER_REG_GPR_N32_gp)) {
-        pairingInfo.shouldProcess = true;
+        pairingInfo.value = state->value;
         pairingInfo.isGpRel = true;
+        pairingInfo.shouldProcess = true;
+        return pairingInfo;
+    }
+
+    if (state->hasGpGot) {
+        pairingInfo.instrOffset = state->gpGotOffset;
+        pairingInfo.value = state->value;
+        pairingInfo.shouldProcess = true;
+        pairingInfo.isGpGot = true;
         return pairingInfo;
     }
 
@@ -363,6 +385,7 @@ void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, cons
     }
     if (RAB_INSTR_GET_rt(instr) == RAB_INSTR_GET_rs(instr)) {
         RabbitizerTrackedRegisterState_clearHi(stateDst);
+        RabbitizerTrackedRegisterState_clearGp(stateDst);
     }
 }
 

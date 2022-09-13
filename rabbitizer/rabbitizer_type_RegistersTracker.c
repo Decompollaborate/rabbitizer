@@ -132,6 +132,20 @@ static PyObject *rabbitizer_type_RegistersTracker_processLui(PyRabbitizerRegiste
     Py_RETURN_NONE;
 }
 
+static PyObject *rabbitizer_type_RegistersTracker_processGpLoad(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    int instrOffset;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset)) {
+        return NULL;
+    }
+
+    RabbitizerRegistersTracker_processGpLoad(&self->tracker, &instr->instr, instrOffset);
+
+    Py_RETURN_NONE;
+}
+
 static PyObject *rabbitizer_type_RegistersTracker_getLuiOffsetForConstant(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = { "instr", NULL };
     PyRabbitizerInstruction *instr;
@@ -241,6 +255,7 @@ static PyMethodDef rabbitizer_type_RegistersTracker_methods[] = {
     METHOD_ARGS(getAddressIfCanSetType, ""),
     METHOD_ARGS(getJrInfo, ""),
     METHOD_ARGS(processLui, ""),
+    METHOD_ARGS(processGpLoad, ""),
     METHOD_ARGS(getLuiOffsetForConstant, ""),
     METHOD_ARGS(processConstant, ""),
     METHOD_ARGS(getLuiOffsetForLo, ""),

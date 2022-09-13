@@ -11,10 +11,11 @@
 
 
 typedef struct RabbitizerLoPairingInfo {
-    bool shouldProcess;
     int instrOffset;
+    int value;
+    bool shouldProcess;
     bool isGpRel;
-    bool isGpLoad;
+    bool isGpGot;
 } RabbitizerLoPairingInfo;
 
 

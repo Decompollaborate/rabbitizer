@@ -7,6 +7,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "common/Utils.h"
 
@@ -17,6 +18,9 @@ typedef struct RabbitizerTrackedRegisterState {
     bool hasLuiValue;
     int luiOffset; // The offset of last lui which set a value to this register
     bool luiSetOnBranchLikely;
+
+    bool hasGpGot;
+    int gpGotOffset;
 
     bool hasLoValue;
     int loOffset;
@@ -37,6 +41,8 @@ void RabbitizerTrackedRegisterState_clear(RabbitizerTrackedRegisterState *self);
 NON_NULL(1)
 void RabbitizerTrackedRegisterState_clearHi(RabbitizerTrackedRegisterState *self);
 NON_NULL(1)
+void RabbitizerTrackedRegisterState_clearGp(RabbitizerTrackedRegisterState *self);
+NON_NULL(1)
 void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self);
 
 NON_NULL(1, 2)
@@ -44,6 +50,8 @@ void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *se
 
 NON_NULL(1)
 void RabbitizerTrackedRegisterState_setHi(RabbitizerTrackedRegisterState *self, uint32_t value, int offset);
+NON_NULL(1)
+void RabbitizerTrackedRegisterState_setGpLoad(RabbitizerTrackedRegisterState *self, uint32_t value, int offset);
 NON_NULL(1)
 void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, uint32_t value, int offset);
 
@@ -57,5 +65,7 @@ bool RabbitizerTrackedRegisterState_hasAnyValue(const RabbitizerTrackedRegisterS
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerTrackedRegisterState_wasSetInCurrentOffset(const RabbitizerTrackedRegisterState *self, int offset);
 
+NON_NULL(1)
+void RabbitizerTrackedRegisterState_fprint(const RabbitizerTrackedRegisterState *self, FILE* outFile);
 
 #endif

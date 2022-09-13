@@ -22,10 +22,11 @@ static int rabbitizer_type_LoPairingInfo_init(PyRabbitizerLoPairingInfo *self, P
 
 
 static PyMemberDef rabbitizer_type_LoPairingInfo_members[] = {
-    { "shouldProcess", T_BOOL, offsetof(PyRabbitizerLoPairingInfo, pairingInfo.shouldProcess), 0, "" },
     { "instrOffset", T_INT, offsetof(PyRabbitizerLoPairingInfo, pairingInfo.instrOffset), 0, "" },
+    { "value", T_INT, offsetof(PyRabbitizerLoPairingInfo, pairingInfo.value), 0, "" },
+    { "shouldProcess", T_BOOL, offsetof(PyRabbitizerLoPairingInfo, pairingInfo.shouldProcess), 0, "" },
     { "isGpRel", T_BOOL, offsetof(PyRabbitizerLoPairingInfo, pairingInfo.isGpRel), 0, "" },
-    { "isGpLoad", T_BOOL, offsetof(PyRabbitizerLoPairingInfo, pairingInfo.isGpLoad), 0, "" },
+    { "isGpGot", T_BOOL, offsetof(PyRabbitizerLoPairingInfo, pairingInfo.isGpGot), 0, "" },
 
     { 0 }
 };

@@ -7,9 +7,10 @@ from __future__ import annotations
 
 
 class LoPairingInfo:
-    shouldProcess: bool
     instrOffset: int
+    value: int
+    shouldProcess: bool
     isGpRel: bool
-    isGpLoad: bool
+    isGpGot: bool
 
     def __init__(self): ...
