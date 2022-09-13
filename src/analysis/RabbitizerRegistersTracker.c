@@ -321,6 +321,34 @@ bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *se
     return false;
 }
 
+RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset) {
+    const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
+    RabbitizerLoPairingInfo pairingInfo;
+
+    RabbitizerLoPairingInfo_Init(&pairingInfo);
+
+    if (state->hasLuiValue && !state->luiSetOnBranchLikely) {
+        pairingInfo.shouldProcess = true;
+        pairingInfo.instrOffset = state->luiOffset;
+        return pairingInfo;
+    }
+
+    if ((RAB_INSTR_GET_rs(instr) == RABBITIZER_REG_GPR_O32_gp) || (RAB_INSTR_GET_rs(instr) == RABBITIZER_REG_GPR_N32_gp)) {
+        pairingInfo.shouldProcess = true;
+        pairingInfo.isGpRel = true;
+        return pairingInfo;
+    }
+
+    if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor) && RabbitizerInstrDescriptor_doesDereference(instr->descriptor)) {
+        if (state->hasLoValue && !state->dereferenced) {
+            // Simulate a dereference
+            RabbitizerTrackedRegisterState_dereferenceState(&self->registers[RAB_INSTR_GET_rt(instr)], state, instrOffset);
+        }
+    }
+
+    return pairingInfo;
+}
+
 void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, uint32_t value, int offset) {
     RabbitizerTrackedRegisterState *stateDst;
 

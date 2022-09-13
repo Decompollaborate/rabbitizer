@@ -180,6 +180,27 @@ static PyObject *rabbitizer_type_RegistersTracker_getLuiOffsetForLo(PyRabbitizer
     return PyTuple_Pack(3, PyLong_FromLong(dstOffset), PyBool_FromLong(dstIsGp), PyBool_FromLong(validResults));
 }
 
+static PyObject *rabbitizer_type_RegistersTracker_preprocessLoAndGetInfo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    int instrOffset;
+    PyRabbitizerLoPairingInfo *ret;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset)) {
+        return NULL;
+    }
+
+    ret = PyObject_CallObject((PyObject*)&rabbitizer_type_LoPairingInfo_TypeObject, NULL);
+    if (ret == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance LoPairingInfo object");
+        return NULL;
+    }
+
+    ret->pairingInfo = RabbitizerRegistersTracker_preprocessLoAndGetInfo(&self->tracker, &instr->instr, instrOffset);
+
+    return ret;
+}
+
 static PyObject *rabbitizer_type_RegistersTracker_processLo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = { "instr", "value", "instrOffset", NULL };
     PyRabbitizerInstruction *instr;
@@ -223,6 +244,7 @@ static PyMethodDef rabbitizer_type_RegistersTracker_methods[] = {
     METHOD_ARGS(getLuiOffsetForConstant, ""),
     METHOD_ARGS(processConstant, ""),
     METHOD_ARGS(getLuiOffsetForLo, ""),
+    METHOD_ARGS(preprocessLoAndGetInfo, ""),
     METHOD_ARGS(processLo, ""),
     METHOD_ARGS(hasLoButNoHi, ""),
 
