@@ -32,31 +32,34 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
     RabbitizerTrackedRegisterState *dstState;
     RabbitizerTrackedRegisterState *srcState;
     uint8_t reg;
+    uint8_t rd = RAB_INSTR_GET_rd(instr);
+    uint8_t rs = RAB_INSTR_GET_rs(instr);
+    uint8_t rt = RAB_INSTR_GET_rt(instr);
 
     if (!RabbitizerInstrDescriptor_maybeIsMove(instr->descriptor)) {
         return false;
     }
-    if (RAB_INSTR_GET_rt(instr) == 0 && RAB_INSTR_GET_rs(instr) == 0) {
+    if (rt == 0 && rs == 0) {
         // ?
         // RabbitizerTrackedRegisterState_clear(dstState);
         return false;
     }
 
-    if (RAB_INSTR_GET_rt(instr) == 0) {
-        reg = RAB_INSTR_GET_rs(instr);
-    } else if (RAB_INSTR_GET_rs(instr) == 0) {
-        reg = RAB_INSTR_GET_rt(instr);
+    if (rt == 0) {
+        reg = rs;
+    } else if (rs == 0) {
+        reg = rt;
     } else {
         // Check stuff like  `addu   $3, $3, $2`
-        if (RAB_INSTR_GET_rd(instr) == RAB_INSTR_GET_rs(instr)) {
-            reg = RAB_INSTR_GET_rt(instr);
-            if (self->registers[RAB_INSTR_GET_rs(instr)].hasLuiValue) {
-                reg = RAB_INSTR_GET_rs(instr);
+        if (rd == rs) {
+            reg = rt;
+            if (self->registers[rs].hasLuiValue || self->registers[rs].hasGpGot) {
+                reg = rs;
             }
-        } else if (RAB_INSTR_GET_rd(instr) == RAB_INSTR_GET_rt(instr)) {
-            reg = RAB_INSTR_GET_rs(instr);
-            if (self->registers[RAB_INSTR_GET_rt(instr)].hasLuiValue) {
-                reg = RAB_INSTR_GET_rt(instr);
+        } else if (rd == rt) {
+            reg = rs;
+            if (self->registers[rt].hasLuiValue || self->registers[rt].hasGpGot) {
+                reg = rt;
             }
         } else {
             // ?
@@ -65,14 +68,14 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
         }
 
         srcState = &self->registers[reg];
-        RabbitizerTrackedRegisterState_copyState(&self->registers[RAB_INSTR_GET_rd(instr)], srcState);
+        RabbitizerTrackedRegisterState_copyState(&self->registers[rd], srcState);
         return true;
     }
 
     srcState = &self->registers[reg];
-    dstState = &self->registers[RAB_INSTR_GET_rd(instr)];
+    dstState = &self->registers[rd];
 
-    if (srcState->hasLoValue || srcState->hasLuiValue) {
+    if (srcState->hasLoValue || srcState->hasLuiValue || srcState->hasGpGot) {
         RabbitizerTrackedRegisterState_copyState(dstState, srcState);
         return true;
     }
@@ -117,7 +120,7 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
         }
 
         state = &self->registers[at];
-        if (state->hasLoValue || state->hasLuiValue) {
+        if (state->hasLoValue || state->hasLuiValue || state->hasGpGot) {
             shouldRemove = true;
             reg = at;
         }
