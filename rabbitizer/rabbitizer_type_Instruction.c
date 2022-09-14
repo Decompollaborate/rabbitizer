@@ -126,7 +126,7 @@ static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerIns
 #define MEMBER_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 
 
-static PyGetSetDef Instr_getsetters[] = {
+static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(rs, "", NULL),
     MEMBER_GET(rt, "", NULL),
     MEMBER_GET(rd, "", NULL),
@@ -318,7 +318,7 @@ static PyObject *rabbitizer_type_Instruction___reduce__(PyRabbitizerInstruction 
 #define METHOD_ARGS(name, docs)     { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
 
 
-static PyMethodDef rabbitizer_type_Instr_methods[] = {
+static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(getRaw, ""),
     METHOD_NO_ARGS(getImmediate, ""),
     METHOD_NO_ARGS(getProcessedImmediate, ""),
@@ -431,6 +431,6 @@ PyTypeObject rabbitizer_type_Instruction_TypeObject = {
     .tp_repr = (reprfunc) rabbitizer_type_Instruction_repr,
     .tp_str = (reprfunc) rabbitizer_type_Instruction_str,
     .tp_members = rabbitizer_type_Instruction_members,
-    .tp_methods = rabbitizer_type_Instr_methods,
-    .tp_getset = Instr_getsetters,
+    .tp_methods = rabbitizer_type_Instruction_methods,
+    .tp_getset = rabbitizer_type_Instruction_getsetters,
 };

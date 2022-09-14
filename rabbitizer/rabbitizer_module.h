@@ -12,6 +12,7 @@
 #include "enums/enums_utils.h"
 
 #include "instructions/RabbitizerInstruction.h"
+#include "analysis/RabbitizerTrackedRegisterState.h"
 #include "analysis/RabbitizerLoPairingInfo.h"
 
 // TODO: clean up this...
@@ -22,6 +23,10 @@ typedef struct PyRabbitizerInstruction {
     RabbitizerInstruction instr;
 } PyRabbitizerInstruction;
 
+typedef struct PyRabbitizerTrackedRegisterState {
+    PyObject_HEAD
+    RabbitizerTrackedRegisterState registerState;
+} PyRabbitizerTrackedRegisterState;
 
 typedef struct PyRabbitizerLoPairingInfo {
     PyObject_HEAD
@@ -36,6 +41,7 @@ extern PyTypeObject rabbitizer_global_config_TypeObject;
 extern PyTypeObject rabbitizer_type_Enum_TypeObject;
 extern PyTypeObject rabbitizer_type_Instruction_TypeObject;
 extern PyTypeObject rabbitizer_type_LoPairingInfo_TypeObject;
+extern PyTypeObject rabbitizer_type_TrackedRegisterState_TypeObject;
 extern PyTypeObject rabbitizer_type_RegistersTracker_TypeObject;
 
 DECL_ENUM(Abi)

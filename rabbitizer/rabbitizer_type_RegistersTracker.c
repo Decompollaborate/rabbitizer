@@ -267,6 +267,41 @@ static PyMethodDef rabbitizer_type_RegistersTracker_methods[] = {
 };
 
 
+PyObject *rabbitizer_type_RegistersTracker___getitem__(PyRabbitizerRegistersTracker* self, Py_ssize_t index) {
+    RabbitizerTrackedRegisterState *state;
+    PyObject *args;
+    PyRabbitizerTrackedRegisterState *pyState;
+
+    if (index < 0 || index >= ARRAY_COUNT(self->tracker.registers)) {
+        PyErr_SetString(PyExc_IndexError, "Index must be a value between 0 and 31");
+        return NULL;
+    }
+
+    state = &self->tracker.registers[index];
+
+    args = Py_BuildValue("(i)", state->registerNum);
+    if (args == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance TrackedRegisterState parameters");
+        return NULL;
+    }
+
+    pyState = PyObject_CallObject((PyObject*)&rabbitizer_type_TrackedRegisterState_TypeObject, args);
+    Py_DECREF(args);
+    if (pyState == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance TrackedRegisterState object");
+        return NULL;
+    }
+
+    RabbitizerTrackedRegisterState_copyState(&pyState->registerState, state);
+    return pyState;
+}
+
+
+static PySequenceMethods example_classSeqMethods = {
+	.sq_item = (ssizeargfunc)rabbitizer_type_RegistersTracker___getitem__, // sq_item
+};
+
+
 PyTypeObject rabbitizer_type_RegistersTracker_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)
     .tp_name = "rabbitizer.RegistersTracker",
@@ -278,6 +313,7 @@ PyTypeObject rabbitizer_type_RegistersTracker_TypeObject = {
     .tp_init = (initproc) rabbitizer_type_RegistersTracker_init,
     .tp_dealloc = (destructor) rabbitizer_type_RegistersTracker_dealloc,
     // .tp_repr = (reprfunc) rabbitizer_type_RegistersTracker_repr,
+    .tp_as_sequence = &example_classSeqMethods,
     // .tp_str = (reprfunc) rabbitizer_type_RegistersTracker_str,
     .tp_methods = rabbitizer_type_RegistersTracker_methods,
     // .tp_getset = rabbitizer_type_RegistersTracker_getsetters,
