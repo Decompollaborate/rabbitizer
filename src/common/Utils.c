@@ -7,10 +7,10 @@
 #include <string.h>
 
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits) {
-    bool isNegative = number & (1 << (bits - 1));
+    bool isNegative = number & (1ULL << (bits - 1));
 
     if (isNegative) {
-        return -((~number + 1) & ((1 << bits) - 1));
+        return -((~number + 1) & ((1ULL << bits) - 1));
     }
 
     return number;
