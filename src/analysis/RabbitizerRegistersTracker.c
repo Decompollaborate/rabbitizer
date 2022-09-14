@@ -28,6 +28,7 @@ void RabbitizerRegistersTracker_destroy(RabbitizerRegistersTracker *self) {
     }
 }
 
+// TODO: simplify logic
 bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr) {
     RabbitizerTrackedRegisterState *dstState;
     RabbitizerTrackedRegisterState *srcState;
@@ -50,8 +51,11 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
     } else if (rs == 0) {
         reg = rt;
     } else {
-        // Check stuff like  `addu   $3, $3, $2`
-        if (rd == rs) {
+        if (RabbitizerTrackedRegisterState_hasAnyValue(&self->registers[rs]) && !RabbitizerTrackedRegisterState_hasAnyValue(&self->registers[rt])) {
+            reg = rs;
+        } else if (RabbitizerTrackedRegisterState_hasAnyValue(&self->registers[rt]) && !RabbitizerTrackedRegisterState_hasAnyValue(&self->registers[rs])) {
+            reg = rt;
+        } else if (rd == rs) { // Check stuff like  `addu   $3, $3, $2`
             reg = rt;
             if (self->registers[rs].hasLuiValue || self->registers[rs].hasGpGot) {
                 reg = rs;
@@ -75,7 +79,7 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
     srcState = &self->registers[reg];
     dstState = &self->registers[rd];
 
-    if (srcState->hasLoValue || srcState->hasLuiValue || srcState->hasGpGot) {
+    if (RabbitizerTrackedRegisterState_hasAnyValue(srcState)) {
         RabbitizerTrackedRegisterState_copyState(dstState, srcState);
         return true;
     }

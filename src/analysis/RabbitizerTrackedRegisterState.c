@@ -118,7 +118,7 @@ void RabbitizerTrackedRegisterState_dereferenceState(RabbitizerTrackedRegisterSt
 }
 
 bool RabbitizerTrackedRegisterState_hasAnyValue(const RabbitizerTrackedRegisterState *self) {
-    return self->hasLuiValue || self->hasLoValue;
+    return self->hasLuiValue || self->hasLoValue || self->hasGpGot;
 }
 
 bool RabbitizerTrackedRegisterState_wasSetInCurrentOffset(const RabbitizerTrackedRegisterState *self, int offset) {
