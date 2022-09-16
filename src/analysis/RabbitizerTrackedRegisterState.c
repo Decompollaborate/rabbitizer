@@ -61,7 +61,6 @@ void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self
     self->loOffset = 0;
     self->dereferenced = false;
     self->dereferenceOffset = 0;
-    self->value = 0;
 }
 
 void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other) {

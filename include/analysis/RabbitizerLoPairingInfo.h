@@ -12,7 +12,7 @@
 
 typedef struct RabbitizerLoPairingInfo {
     int instrOffset;
-    int value;
+    int64_t value; // could be either an unsigned 32 bits number or a signed one, so use 64 bits to ensure it fits
     bool shouldProcess;
     bool isGpRel;
     bool isGpGot;
