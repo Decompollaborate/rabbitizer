@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 // RSP instructions
-RABBITIZER_DEF_INSTR_ID(rsp, , INVALID,               .operands={RABBITIZER_OPERAND_TYPE_RSP_vd, RABBITIZER_OPERAND_TYPE_RSP_vs, RABBITIZER_OPERAND_TYPE_RSP_vt_elementhigh})
+RABBITIZER_DEF_INSTR_ID(rsp, , INVALID,               .operands={RAB_OPERAND_rsp_vd, RAB_OPERAND_rsp_vs, RAB_OPERAND_rsp_vt_elementhigh})
 
 #include "instructions/instr_id/rsp/rsp_cop2.inc"
 #include "instructions/instr_id/rsp/rsp_cop2_vu.inc"
@@ -17,4 +17,4 @@ RABBITIZER_DEF_INSTR_ID(rsp, , INVALID,               .operands={RABBITIZER_OPER
 #include "instructions/instr_id/rsp/rsp_regimm.inc"
 #include "instructions/instr_id/rsp/rsp_cop0.inc"
 
-RABBITIZER_DEF_INSTR_ID(rsp, , MAX, 0)
+RABBITIZER_DEF_INSTR_ID(rsp, , MAX, .operands={0})

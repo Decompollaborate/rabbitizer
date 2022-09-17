@@ -132,6 +132,20 @@ static PyObject *rabbitizer_type_RegistersTracker_processLui(PyRabbitizerRegiste
     Py_RETURN_NONE;
 }
 
+static PyObject *rabbitizer_type_RegistersTracker_processGpLoad(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    int instrOffset;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset)) {
+        return NULL;
+    }
+
+    RabbitizerRegistersTracker_processGpLoad(&self->tracker, &instr->instr, instrOffset);
+
+    Py_RETURN_NONE;
+}
+
 static PyObject *rabbitizer_type_RegistersTracker_getLuiOffsetForConstant(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = { "instr", NULL };
     PyRabbitizerInstruction *instr;
@@ -180,6 +194,27 @@ static PyObject *rabbitizer_type_RegistersTracker_getLuiOffsetForLo(PyRabbitizer
     return PyTuple_Pack(3, PyLong_FromLong(dstOffset), PyBool_FromLong(dstIsGp), PyBool_FromLong(validResults));
 }
 
+static PyObject *rabbitizer_type_RegistersTracker_preprocessLoAndGetInfo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "instr", "instrOffset", NULL };
+    PyRabbitizerInstruction *instr;
+    int instrOffset;
+    PyRabbitizerLoPairingInfo *ret;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset)) {
+        return NULL;
+    }
+
+    ret = PyObject_CallObject((PyObject*)&rabbitizer_type_LoPairingInfo_TypeObject, NULL);
+    if (ret == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance LoPairingInfo object");
+        return NULL;
+    }
+
+    ret->pairingInfo = RabbitizerRegistersTracker_preprocessLoAndGetInfo(&self->tracker, &instr->instr, instrOffset);
+
+    return ret;
+}
+
 static PyObject *rabbitizer_type_RegistersTracker_processLo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = { "instr", "value", "instrOffset", NULL };
     PyRabbitizerInstruction *instr;
@@ -220,13 +255,50 @@ static PyMethodDef rabbitizer_type_RegistersTracker_methods[] = {
     METHOD_ARGS(getAddressIfCanSetType, ""),
     METHOD_ARGS(getJrInfo, ""),
     METHOD_ARGS(processLui, ""),
+    METHOD_ARGS(processGpLoad, ""),
     METHOD_ARGS(getLuiOffsetForConstant, ""),
     METHOD_ARGS(processConstant, ""),
     METHOD_ARGS(getLuiOffsetForLo, ""),
+    METHOD_ARGS(preprocessLoAndGetInfo, ""),
     METHOD_ARGS(processLo, ""),
     METHOD_ARGS(hasLoButNoHi, ""),
 
     { 0 },
+};
+
+
+PyObject *rabbitizer_type_RegistersTracker___getitem__(PyRabbitizerRegistersTracker* self, Py_ssize_t index) {
+    RabbitizerTrackedRegisterState *state;
+    PyObject *args;
+    PyRabbitizerTrackedRegisterState *pyState;
+
+    if (index < 0 || index >= ARRAY_COUNT(self->tracker.registers)) {
+        PyErr_SetString(PyExc_IndexError, "Index must be a value between 0 and 31");
+        return NULL;
+    }
+
+    state = &self->tracker.registers[index];
+
+    args = Py_BuildValue("(i)", state->registerNum);
+    if (args == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance TrackedRegisterState parameters");
+        return NULL;
+    }
+
+    pyState = PyObject_CallObject((PyObject*)&rabbitizer_type_TrackedRegisterState_TypeObject, args);
+    Py_DECREF(args);
+    if (pyState == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance TrackedRegisterState object");
+        return NULL;
+    }
+
+    RabbitizerTrackedRegisterState_copyState(&pyState->registerState, state);
+    return pyState;
+}
+
+
+static PySequenceMethods example_classSeqMethods = {
+	.sq_item = (ssizeargfunc)rabbitizer_type_RegistersTracker___getitem__, // sq_item
 };
 
 
@@ -241,6 +313,7 @@ PyTypeObject rabbitizer_type_RegistersTracker_TypeObject = {
     .tp_init = (initproc) rabbitizer_type_RegistersTracker_init,
     .tp_dealloc = (destructor) rabbitizer_type_RegistersTracker_dealloc,
     // .tp_repr = (reprfunc) rabbitizer_type_RegistersTracker_repr,
+    .tp_as_sequence = &example_classSeqMethods,
     // .tp_str = (reprfunc) rabbitizer_type_RegistersTracker_str,
     .tp_methods = rabbitizer_type_RegistersTracker_methods,
     // .tp_getset = rabbitizer_type_RegistersTracker_getsetters,
