@@ -40,7 +40,8 @@ size_t RabbitizerOperandType_process_cpu_rd(const RabbitizerInstruction *self, c
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_cpu_zero(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_zero(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+                                              UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(0);
 
@@ -369,7 +370,7 @@ size_t RabbitizerOperandType_process_rsp_immediate_base(const RabbitizerInstruct
 }
 
 size_t RabbitizerOperandType_process_r5900_I(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
-                                           UNUSED size_t immOverrideLength) {
+                                             UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
@@ -378,7 +379,7 @@ size_t RabbitizerOperandType_process_r5900_I(UNUSED const RabbitizerInstruction 
 }
 
 size_t RabbitizerOperandType_process_r5900_Q(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
-                                           UNUSED size_t immOverrideLength) {
+                                             UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
@@ -387,7 +388,7 @@ size_t RabbitizerOperandType_process_r5900_Q(UNUSED const RabbitizerInstruction 
 }
 
 size_t RabbitizerOperandType_process_r5900_R(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
-                                           UNUSED size_t immOverrideLength) {
+                                             UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
@@ -396,7 +397,7 @@ size_t RabbitizerOperandType_process_r5900_R(UNUSED const RabbitizerInstruction 
 }
 
 size_t RabbitizerOperandType_process_r5900_ACC(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
-                                             UNUSED size_t immOverrideLength) {
+                                               UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");
@@ -768,8 +769,7 @@ size_t RabbitizerOperandType_process_r5900_immediate5(const RabbitizerInstructio
     return totalSize;
 }
 
-#define RAB_DEF_OPERAND(prefix, operand) \
-    [RAB_OPERAND_##prefix##_##operand] = RabbitizerOperandType_process_##prefix##_##operand,
+#define RAB_DEF_OPERAND(prefix, operand) [RAB_OPERAND_##prefix##_##operand] = RabbitizerOperandType_process_##prefix##_##operand,
 
 const OperandCallback instrOpercandCallbacks[] = {
 #include "instructions/operands/RabbitizerOperandType_cpu.inc"

@@ -340,7 +340,8 @@ bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *se
     return false;
 }
 
-RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset) {
+RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr,
+                                                                          int instrOffset) {
     const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
     RabbitizerLoPairingInfo pairingInfo;
 

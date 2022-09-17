@@ -3,9 +3,8 @@
 
 #include "analysis/RabbitizerLoPairingInfo.h"
 
-
 void RabbitizerLoPairingInfo_Init(RabbitizerLoPairingInfo *self) {
-    *self = (RabbitizerLoPairingInfo){ 
+    *self = (RabbitizerLoPairingInfo){
         .instrOffset = 0,
         .value = 0,
         .shouldProcess = false,

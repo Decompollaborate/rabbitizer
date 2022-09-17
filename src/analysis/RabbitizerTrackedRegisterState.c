@@ -8,7 +8,6 @@
 #include "common/Utils.h"
 #include "instructions/RabbitizerRegister.h"
 
-
 void RabbitizerTrackedRegisterState_init(RabbitizerTrackedRegisterState *self, int registerNum) {
     self->registerNum = registerNum;
 
@@ -124,8 +123,7 @@ bool RabbitizerTrackedRegisterState_wasSetInCurrentOffset(const RabbitizerTracke
     return self->loOffset == offset || self->dereferenceOffset == offset;
 }
 
-
-void RabbitizerTrackedRegisterState_fprint(const RabbitizerTrackedRegisterState *self, FILE* outFile) {
+void RabbitizerTrackedRegisterState_fprint(const RabbitizerTrackedRegisterState *self, FILE *outFile) {
     fprintf(outFile, "TrackedRegisterState(%i / %s)\n", self->registerNum, RabbitizerRegister_getNameGpr(self->registerNum));
 
     fprintf(outFile, "    hasLuiValue: %s\n", self->hasLuiValue ? "true" : "false");
