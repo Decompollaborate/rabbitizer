@@ -1,8 +1,8 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#ifndef RAB_OPERAND_cpu_H
-#define RAB_OPERAND_cpu_H
+#ifndef RABBITIZER_OPERAND_TYPE_H
+#define RABBITIZER_OPERAND_TYPE_H
 #pragma once
 
 
