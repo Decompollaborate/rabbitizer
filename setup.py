@@ -16,7 +16,7 @@ setup(
             "src/instructions/RabbitizerInstructionR5900/RabbitizerInstructionR5900.c", "src/instructions/RabbitizerInstructionR5900/RabbitizerInstructionR5900_ProcessUniqueId.c",
             "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c", "src/instructions/RabbitizerInstrSuffix.c",
             "src/analysis/RabbitizerTrackedRegisterState.c", "src/analysis/RabbitizerRegistersTracker.c", "src/analysis/RabbitizerLoPairingInfo.c",
-            "src/common/Utils.c", "src/common/RabbitizerConfig.c"],
+            "src/common/Utils.c", "src/common/RabbitizerVersion.c", "src/common/RabbitizerConfig.c"],
             include_dirs=["include", "rabbitizer"],
             extra_compile_args = [
                 "-std=c11",
