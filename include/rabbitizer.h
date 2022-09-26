@@ -1,7 +1,11 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
 #ifndef RABBITIZER_H
 #define RABBITIZER_H
 
 #include "common/Utils.h"
+#include "common/RabbitizerVersion.h"
 #include "common/RabbitizerConfig.h"
 
 #include "instructions/RabbitizerOperandType.h"
