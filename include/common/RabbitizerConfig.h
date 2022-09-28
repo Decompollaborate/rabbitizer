@@ -37,6 +37,7 @@ typedef struct RabbitizerConfig_PseudoInstr {
     bool pseudoMove;
     bool pseudoNot;
     bool pseudoNegu;
+    bool pseudoBal;
 } RabbitizerConfig_PseudoInstr;
 
 typedef struct RabbitizerConfig_ToolchainTweaks {

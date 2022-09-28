@@ -18,3 +18,8 @@ RABBITIZER_DEF_INSTR_ID(cpu, 0x10, bltzal,  .operands={RAB_OPERAND_cpu_rs, RAB_O
 RABBITIZER_DEF_INSTR_ID(cpu, 0x11, bgezal,  .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // Branch on Greater Than or Equal to Zero and Link
 RABBITIZER_DEF_INSTR_ID(cpu, 0x12, bltzall, .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II) // Branch on Less Than Zero and Link Likely
 RABBITIZER_DEF_INSTR_ID(cpu, 0x13, bgezall, .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .isBranchLikely=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II) // Branch on Greater Than or Equal to Zero and Link Likely
+
+
+// Pseudo-Instruction Unique IDs
+
+RABBITIZER_DEF_INSTR_ID(cpu, -0x11, bal,    .operands={RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // Branch and Link
