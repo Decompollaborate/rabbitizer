@@ -187,6 +187,12 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
         case RAB_OPERAND_cpu_label:
             break;
 
+        case RAB_OPERAND_cpu_branch_target_label:
+            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_immediate)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_cpu_immediate_base:
             if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
                 return true;
@@ -590,6 +596,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 break;
 
             case RAB_OPERAND_cpu_immediate:
+                validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_cpu_branch_target_label:
                 validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
                 break;
 

@@ -192,6 +192,20 @@ size_t RabbitizerOperandType_process_cpu_immediate(const RabbitizerInstruction *
     return totalSize;
 }
 
+size_t RabbitizerOperandType_process_cpu_branch_target_label(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    if (immOverride != NULL) {
+        memcpy(dst, immOverride, immOverrideLength);
+        return immOverrideLength;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ". + 4 + (");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_cpu_immediate(self, dst, NULL, 0));
+    RABUTILS_BUFFER_CPY(dst, totalSize, " << 2)");
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_process_cpu_immediate_base(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
 

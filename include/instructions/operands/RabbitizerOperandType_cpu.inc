@@ -18,6 +18,7 @@ RAB_DEF_OPERAND(cpu, code)
 RAB_DEF_OPERAND(cpu, copraw)
 RAB_DEF_OPERAND(cpu, label)
 RAB_DEF_OPERAND(cpu, immediate)
+RAB_DEF_OPERAND(cpu, branch_target_label)
 
 // composed/aliased operands
 RAB_DEF_OPERAND(cpu, immediate_base)
