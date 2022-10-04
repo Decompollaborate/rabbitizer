@@ -7,6 +7,10 @@
 
 #include "RabbitizerInstruction.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define RAB_INSTR_RSP_GET_cop2t(self)               (SHIFTR((self)->word, 16,  5))
 #define RAB_INSTR_RSP_GET_cop2cd(self)              (SHIFTR((self)->word, 11,  5))
@@ -58,5 +62,9 @@ void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 uint16_t RabbitizerInstructionRsp_GetOffsetVector(const RabbitizerInstruction *self);
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

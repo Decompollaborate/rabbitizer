@@ -7,6 +7,10 @@
 
 #include "common/Utils.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
     RABBITIZER_INSTR_ID_##prefix##_##name,
@@ -33,5 +37,10 @@ extern const char *RabbitizerInstrId_Names[];
 
 CONST NODISCARD RETURNS_NON_NULL
 const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

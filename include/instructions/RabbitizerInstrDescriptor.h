@@ -12,6 +12,11 @@
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrSuffix.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_UNKNOWN,
     RABBITIZER_INSTR_TYPE_J,
@@ -127,5 +132,10 @@ bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

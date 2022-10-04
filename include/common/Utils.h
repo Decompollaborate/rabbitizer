@@ -7,6 +7,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #if !defined(__GNUC__) && !defined(__clang__)
 #define __attribute__(x)
@@ -103,5 +107,10 @@ NON_NULL(1)
 size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar);
 NON_NULL(1, 3)
 size_t RabbitizerUtils_escapeString(char *dst, size_t dstSize, const char *src, size_t srcSize);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

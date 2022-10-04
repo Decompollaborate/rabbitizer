@@ -14,6 +14,10 @@
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrDescriptor.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define RABBITIZER_DEF_INSTR_CATEGORY(name) RABBITIZER_INSTRCAT_##name
 
@@ -248,5 +252,10 @@ NON_NULL(1, 2)
 size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust);
 
 /* Disassembly */
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

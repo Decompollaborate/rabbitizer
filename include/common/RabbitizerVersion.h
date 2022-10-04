@@ -6,6 +6,11 @@
 
 #include "Utils.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 // Header version
 #define RAB_VERSION_MAJOR 1
 #define RAB_VERSION_MINOR 2
@@ -19,5 +24,10 @@ extern const int RabVersion_Minor;
 extern const int RabVersion_Patch;
 
 extern const char RabVersion_Str[];
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

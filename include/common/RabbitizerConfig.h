@@ -6,6 +6,10 @@
 
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define RABBITIZER_DEF_ABI(name) RABBITIZER_ABI_##name
 
@@ -70,5 +74,10 @@ typedef struct RabbitizerConfig {
 } RabbitizerConfig;
 
 extern RabbitizerConfig RabbitizerConfig_Cfg;
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
