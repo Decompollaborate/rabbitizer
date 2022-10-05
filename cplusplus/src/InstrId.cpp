@@ -7,7 +7,6 @@
 
 using namespace rabbitizer;
 
-
 std::string InstrId::getOpcodeName(InstrId::UniqueId uniqueId) {
     RabbitizerInstrId id = static_cast<RabbitizerInstrId>(uniqueId);
 

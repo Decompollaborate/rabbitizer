@@ -100,6 +100,7 @@ distclean: clean
 
 format:
 	clang-format-11 -i -style=file $(C_FILES)
+	clang-format-11 -i -style=file $(CXX_FILES)
 
 tidy:
 	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS)

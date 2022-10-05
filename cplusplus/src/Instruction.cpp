@@ -9,7 +9,6 @@
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 
-
 using namespace rabbitizer;
 
 InstructionBase::InstructionBase() {
@@ -27,12 +26,12 @@ constexpr uint8_t InstructionBase::Get_opcode() const {
     return RAB_INSTR_GET_opcode(&this->instr);
 }
 constexpr uint8_t InstructionBase::Get_sa() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_sa)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'sa' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_sa(&this->instr);
 }
@@ -50,252 +49,252 @@ constexpr uint8_t InstructionBase::Get_function() const {
 }
 
 constexpr Registers::Cpu::GprO32 InstructionBase::GetO32_rs() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_rs)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rs' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::GprO32>(RAB_INSTR_GET_rs(&this->instr));
 }
 constexpr Registers::Cpu::GprO32 InstructionBase::GetO32_rt() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_rt)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rt' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::GprO32>(RAB_INSTR_GET_rt(&this->instr));
 }
 constexpr Registers::Cpu::GprO32 InstructionBase::GetO32_rd() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_rd)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rd' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::GprO32>(RAB_INSTR_GET_rd(&this->instr));
 }
 
 constexpr Registers::Cpu::GprN32 InstructionBase::GetN32_rs() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_rs)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rs' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::GprN32>(RAB_INSTR_GET_rs(&this->instr));
 }
 constexpr Registers::Cpu::GprN32 InstructionBase::GetN32_rt() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_rt)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rt' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::GprN32>(RAB_INSTR_GET_rt(&this->instr));
 }
 constexpr Registers::Cpu::GprN32 InstructionBase::GetN32_rd() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_rd)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rd' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::GprN32>(RAB_INSTR_GET_rd(&this->instr));
 }
 
 constexpr Registers::Cpu::Cop0 InstructionBase::Get_cop0d() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_cop0d)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop0d' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop0>(RAB_INSTR_GET_cop0d(&this->instr));
 }
 
 constexpr uint32_t InstructionBase::Get_instr_index() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_label)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'label' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_instr_index(&this->instr);
 }
 constexpr uint16_t InstructionBase::Get_immediate() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_immediate)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'immediate' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_immediate(&this->instr);
 }
 
 constexpr Registers::Cpu::Cop1O32 InstructionBase::GetO32_fs() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_fs)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fs' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1O32>(RAB_INSTR_GET_fs(&this->instr));
 }
 constexpr Registers::Cpu::Cop1O32 InstructionBase::GetO32_ft() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_ft)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'ft' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1O32>(RAB_INSTR_GET_ft(&this->instr));
 }
 constexpr Registers::Cpu::Cop1O32 InstructionBase::GetO32_fd() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_fd)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fd' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1O32>(RAB_INSTR_GET_fd(&this->instr));
 }
 
 constexpr Registers::Cpu::Cop1N32 InstructionBase::GetN32_fs() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_fs)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fs' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1N32>(RAB_INSTR_GET_fs(&this->instr));
 }
 constexpr Registers::Cpu::Cop1N32 InstructionBase::GetN32_ft() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_ft)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'ft' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1N32>(RAB_INSTR_GET_ft(&this->instr));
 }
 constexpr Registers::Cpu::Cop1N32 InstructionBase::GetN32_fd() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_fd)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fd' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1N32>(RAB_INSTR_GET_fd(&this->instr));
 }
 
 constexpr Registers::Cpu::Cop1N64 InstructionBase::GetN64_fs() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_fs)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fs' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1N64>(RAB_INSTR_GET_fs(&this->instr));
 }
 constexpr Registers::Cpu::Cop1N64 InstructionBase::GetN64_ft() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_ft)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'ft' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1N64>(RAB_INSTR_GET_ft(&this->instr));
 }
 constexpr Registers::Cpu::Cop1N64 InstructionBase::GetN64_fd() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_fd)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fd' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1N64>(RAB_INSTR_GET_fd(&this->instr));
 }
 
 constexpr Registers::Cpu::Cop1Control InstructionBase::Get_cop1cs() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_cop1cs)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop1cs' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop1Control>(RAB_INSTR_GET_cop1cs(&this->instr));
 }
 
 constexpr uint8_t InstructionBase::Get_op() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_op)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'op' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_op(&this->instr);
 }
 
 constexpr uint32_t InstructionBase::Get_code() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_code)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_code(&this->instr);
 }
 constexpr uint32_t InstructionBase::Get_code_upper() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_code)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_code_upper(&this->instr);
 }
 constexpr uint32_t InstructionBase::Get_code_lower() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_code)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_code_lower(&this->instr);
 }
 
 constexpr uint32_t InstructionBase::Get_copraw() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_copraw)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'copraw' operand.");
     }
-    #endif
+#endif
 
     return RAB_INSTR_GET_copraw(&this->instr);
 }
@@ -311,12 +310,12 @@ constexpr uint8_t InstructionBase::Get_cond() const {
 }
 
 constexpr Registers::Cpu::Cop2 InstructionBase::Get_cop2t() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_cop2t)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop2t' operand.");
     }
-    #endif
+#endif
 
     return static_cast<Registers::Cpu::Cop2>(RAB_INSTR_GET_cop2t(&this->instr));
 }
@@ -337,7 +336,6 @@ constexpr uint8_t InstructionBase::Get_stype() const {
 
 /* getters */
 
-
 /* more getters */
 
 constexpr uint32_t InstructionBase::getRaw() const {
@@ -355,47 +353,46 @@ constexpr bool InstructionBase::isInHandwrittenFunction() const {
 }
 
 constexpr int32_t InstructionBase::getProcessedImmediate() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_immediate)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'immediate' operand.");
     }
-    #endif
+#endif
 
     return RabbitizerInstruction_getProcessedImmediate(&this->instr);
 }
 constexpr uint32_t InstructionBase::getInstrIndexAsVram() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_label)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'label' operand.");
     }
-    #endif
+#endif
 
     return RabbitizerInstruction_getInstrIndexAsVram(&this->instr);
 }
 
 constexpr int32_t InstructionBase::getBranchOffset() const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_branch_target_label)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'branch_target_label' operand.");
     }
-    #endif
+#endif
 
     return RabbitizerInstruction_getBranchOffset(&this->instr);
 }
 constexpr int32_t InstructionBase::getGenericBranchOffset(uint32_t currentVram) const {
-    #ifdef RAB_SANITY_CHECKS
+#ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_branch_target_label) && !hasOperandAlias(OperandType::cpu_label)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have either 'branch_target_label' or 'label' operands.");
     }
-    #endif
+#endif
 
     return RabbitizerInstruction_getGenericBranchOffset(&this->instr, currentVram);
 }
-
 
 std::string InstructionBase::getOpcodeName() const {
     return InstrId::getOpcodeName(getUniqueId());
@@ -403,13 +400,11 @@ std::string InstructionBase::getOpcodeName() const {
 
 /* more getters */
 
-
 /* */
 
 void InstructionBase::blankOut() {
     RabbitizerInstruction_blankOut(&this->instr);
 }
-
 
 /* Instruction examination */
 
@@ -461,7 +456,6 @@ constexpr bool InstructionBase::isValid() const {
 }
 
 /* Instruction examination */
-
 
 /* Instruction descriptor */
 
@@ -547,7 +541,6 @@ constexpr bool InstructionBase::isPseudo() const {
 
 /* Instruction descriptor */
 
-
 /* Disassembly */
 
 constexpr bool InstructionBase::mustDisasmAsData() const {
@@ -579,7 +572,7 @@ std::string InstructionBase::disassemble(bool useImmOverride, std::string_view i
 
     bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, extraLJust);
 
-    buffer = (char*)malloc(bufferSize + 1);
+    buffer = (char *)malloc(bufferSize + 1);
     if (buffer == NULL) {
         throw std::runtime_error("buffer == NULL");
     }
@@ -595,11 +588,7 @@ std::string InstructionBase::disassemble(bool useImmOverride, std::string_view i
     return output;
 }
 
-
-
-
-InstructionCpu::InstructionCpu(uint32_t word, uint32_t vram)
-    : InstructionBase() {
+InstructionCpu::InstructionCpu(uint32_t word, uint32_t vram) : InstructionBase() {
     RabbitizerInstruction_init(&this->instr, word, vram);
     RabbitizerInstruction_processUniqueId(&this->instr);
 }
@@ -608,9 +597,7 @@ InstructionCpu::~InstructionCpu() {
     RabbitizerInstruction_destroy(&this->instr);
 }
 
-
-InstructionRsp::InstructionRsp(uint32_t word, uint32_t vram)
-    : InstructionBase() {
+InstructionRsp::InstructionRsp(uint32_t word, uint32_t vram) : InstructionBase() {
     RabbitizerInstructionRsp_init(&this->instr, word, vram);
     RabbitizerInstructionRsp_processUniqueId(&this->instr);
 }
@@ -619,9 +606,7 @@ InstructionRsp::~InstructionRsp() {
     RabbitizerInstructionRsp_destroy(&this->instr);
 }
 
-
-InstructionR5900::InstructionR5900(uint32_t word, uint32_t vram)
-    : InstructionBase() {
+InstructionR5900::InstructionR5900(uint32_t word, uint32_t vram) : InstructionBase() {
     RabbitizerInstructionR5900_init(&this->instr, word, vram);
     RabbitizerInstructionR5900_processUniqueId(&this->instr);
 }
@@ -629,4 +614,3 @@ InstructionR5900::InstructionR5900(uint32_t word, uint32_t vram)
 InstructionR5900::~InstructionR5900() {
     RabbitizerInstructionR5900_destroy(&this->instr);
 }
-
