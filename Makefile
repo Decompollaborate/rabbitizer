@@ -59,23 +59,35 @@ O_FILES         := $(foreach f,$(C_FILES:.c=.o),build/$f)
 SRCXX_DIRS      := $(shell find cplusplus/src -type d)
 CXX_FILES       := $(foreach dir,$(SRCXX_DIRS),$(wildcard $(dir)/*.cpp))
 HXX_FILES       := $(foreach dir,$(IINC_XX),$(wildcard $(dir)/**/*.hpp))
-OXX_FILES       := $(foreach f,$(C_FILES:.cpp=.o),build/$f)
+OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
 DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
 
 STATIC_LIB      := build/librabbitizer.a
 DYNAMIC_LIB     := build/librabbitizer.so
 
+STATIC_LIB_XX   := build/librabbitizerpp.a
+DYNAMIC_LIB_XX  := build/librabbitizerpp.so
+
 # create build directories
 $(shell mkdir -p $(foreach dir,$(SRC_DIRS) $(SRCXX_DIRS),build/$(dir)))
+
+
+# Dependencies of libraries
+
+$(STATIC_LIB):  $(O_FILES)
+$(DYNAMIC_LIB): $(O_FILES)
+
+$(STATIC_LIB_XX):  $(O_FILES) $(OXX_FILES)
+$(DYNAMIC_LIB_XX): $(O_FILES) $(OXX_FILES)
 
 
 #### Main Targets ###
 
 all: static tests
 
-static: $(STATIC_LIB)
-dynamic: $(DYNAMIC_LIB)
+static: $(STATIC_LIB) $(STATIC_LIB_XX)
+dynamic: $(DYNAMIC_LIB) $(DYNAMIC_LIB_XX)
 
 clean:
 	$(RM) -rf build
@@ -101,10 +113,10 @@ tests: build/test.elf build/rsptest.elf build/r5900test.elf build/registersTrack
 build/%.elf: %.c | $(STATIC_LIB)
 	$(CC) -MMD $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-build/%.a: $(O_FILES)
+build/%.a:
 	$(AR) rcs $@ $^
 
-build/%.so: $(O_FILES)
+build/%.so:
 	$(CC) -shared -o $@ $^
 
 build/%.o: %.c

@@ -11,6 +11,7 @@
 
 #include "instructions/Registers.hpp"
 #include "instructions/OperandType.hpp"
+#include "instructions/InstrId.hpp"
 
 
 namespace rabbitizer {
