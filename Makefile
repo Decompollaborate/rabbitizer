@@ -5,10 +5,14 @@ ASAN            ?= 0
 EXPERIMENTAL    ?= 0
 
 CC              := clang
+CXX             := clang++
 AR              := ar
 IINC            := -I include
+IINC_XX         := -I include -I cplusplus/include
 CSTD            := -std=c11
+CXXSTD          := -std=c++17
 CFLAGS          := -fPIC
+CXXFLAGS        := -fPIC
 LDFLAGS         := -Lbuild -lrabbitizer
 WARNINGS        := -Wall -Wextra -Wpedantic
 # WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded
@@ -19,10 +23,11 @@ ifeq ($(CC),gcc)
 endif
 
 ifeq ($(DEBUG),0)
-	OPTFLAGS    := -O2 -g
+	OPTFLAGS    := -Os -g
 else
 	OPTFLAGS    := -O0 -g3
 	CFLAGS      += -DDEVELOPMENT=1
+	CXXFLAGS    += -DDEVELOPMENT=1
 endif
 
 ifneq ($(WERROR),0)
@@ -31,10 +36,12 @@ endif
 
 ifneq ($(ASAN),0)
 	CFLAGS      += -fsanitize=address -fsanitize=pointer-compare -fsanitize=pointer-subtract -fsanitize=undefined
+	CXXFLAGS    += -fsanitize=address -fsanitize=pointer-compare -fsanitize=pointer-subtract -fsanitize=undefined
 endif
 
 ifneq ($(EXPERIMENTAL),0)
 	CFLAGS      += -DEXPERIMENTAL
+	CXXFLAGS    += -DEXPERIMENTAL
 endif
 
 
@@ -42,13 +49,19 @@ SRC_DIRS        := $(shell find src -type d)
 C_FILES         := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))
 H_FILES         := $(foreach dir,$(IINC),$(wildcard $(dir)/**/*.h))
 O_FILES         := $(foreach f,$(C_FILES:.c=.o),build/$f)
-DEP_FILES       := $(O_FILES:%.o=%.d)
+
+SRCXX_DIRS      := $(shell find cplusplus/src -type d)
+CXX_FILES       := $(foreach dir,$(SRCXX_DIRS),$(wildcard $(dir)/*.cpp))
+HXX_FILES       := $(foreach dir,$(IINC_XX),$(wildcard $(dir)/**/*.hpp))
+OXX_FILES       := $(foreach f,$(C_FILES:.cpp=.o),build/$f)
+
+DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
 
 STATIC_LIB      := build/librabbitizer.a
 DYNAMIC_LIB     := build/librabbitizer.so
 
 # create build directories
-$(shell mkdir -p $(foreach dir,$(SRC_DIRS),build/$(dir)))
+$(shell mkdir -p $(foreach dir,$(SRC_DIRS) $(SRCXX_DIRS),build/$(dir)))
 
 
 #### Main Targets ###
@@ -91,6 +104,10 @@ build/%.so: $(O_FILES)
 build/%.o: %.c
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
 	$(CC) -MMD -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) -o $@ $<
+
+build/%.o: %.cpp
+#	The -MMD flags additionaly creates a .d file with the same name as the .o file.
+	$(CXX) -MMD -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(CXXFLAGS) -o $@ $<
 
 
 -include $(DEP_FILES)
