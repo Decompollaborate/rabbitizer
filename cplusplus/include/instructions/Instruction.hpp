@@ -22,6 +22,12 @@ namespace rabbitizer {
         virtual ~InstructionBase();
 
     public:
+        /**
+         * Returns a reference to the inner RabbitizerInstruction.
+         * It is recommended to not mess with it unless you know what you are doing.
+         */
+        RabbitizerInstruction &getCInstr();
+
         /* getters */
 
         constexpr uint8_t Get_opcode() const;
@@ -82,11 +88,18 @@ namespace rabbitizer {
 
         constexpr uint32_t getRaw() const;
 
+        constexpr InstrId::UniqueId getUniqueId() const;
+        constexpr uint32_t getVram() const;
+        constexpr bool isInHandwrittenFunction() const;
+
         constexpr int32_t getProcessedImmediate() const;
         constexpr uint32_t getInstrIndexAsVram() const;
 
         constexpr int32_t getBranchOffset() const;
         constexpr int32_t getGenericBranchOffset(uint32_t currentVram) const;
+
+
+        std::string getOpcodeName() const;
 
         /* more getters */
 

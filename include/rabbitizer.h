@@ -3,6 +3,7 @@
 
 #ifndef RABBITIZER_H
 #define RABBITIZER_H
+#pragma once
 
 #include "common/Utils.h"
 #include "common/RabbitizerVersion.h"

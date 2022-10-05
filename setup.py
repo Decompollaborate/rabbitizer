@@ -21,18 +21,6 @@ setup(
             extra_compile_args = [
                 "-std=c11",
                 "-Wall",
-                #"-Wextra",
-                # "-Wpedantic", # binary constants :s
-                #"-Wno-cast-function-type",
-                #"-Werror=implicit-function-declaration",
-                #"-Werror=incompatible-pointer-types",
-                #"-Werror=vla",
-                #"-Werror=switch",
-                #"-Werror=implicit-fallthrough",
-                #"-Werror=unused-function",
-                #"-Werror=unused-parameter",
-                #"-Werror=shadow",
-                # "-Werror",
                 "-g",
             ],
         ),

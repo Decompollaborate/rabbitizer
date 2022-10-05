@@ -3,6 +3,7 @@ DEBUG           ?= 0
 WERROR          ?= 0
 ASAN            ?= 0
 EXPERIMENTAL    ?= 0
+SANITY_CHECKS   ?= 1
 
 CC              := clang
 CXX             := clang++
@@ -42,6 +43,11 @@ endif
 ifneq ($(EXPERIMENTAL),0)
 	CFLAGS      += -DEXPERIMENTAL
 	CXXFLAGS    += -DEXPERIMENTAL
+endif
+
+ifneq ($(SANITY_CHECKS),0)
+	CFLAGS      += -DRAB_SANITY_CHECKS=1
+	CXXFLAGS    += -DRAB_SANITY_CHECKS=1
 endif
 
 
