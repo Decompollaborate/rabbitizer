@@ -133,6 +133,45 @@ namespace rabbitizer {
         /* Instruction examination */
 
 
+        /* Instruction descriptor */
+
+        constexpr bool isUnknownType() const;
+        constexpr bool isJType() const;
+        constexpr bool isIType() const;
+        constexpr bool isRType() const;
+        constexpr bool isRegimmType() const;
+
+        // TODO
+        // constexpr RabbitizerInstrSuffix instrSuffix() const;
+
+        constexpr bool isBranch() const;
+        constexpr bool isBranchLikely() const;
+        constexpr bool isJump() const;
+        constexpr bool isTrap() const;
+
+        constexpr bool isFloat() const;
+        constexpr bool isDouble() const;
+
+        constexpr bool isUnsigned() const;
+
+        constexpr bool modifiesRt() const;
+        constexpr bool modifiesRd() const;
+
+        constexpr bool notEmitedByCompilers() const;
+
+        constexpr bool canBeHi() const;
+        constexpr bool canBeLo() const;
+        constexpr bool doesLink() const;
+        constexpr bool doesDereference() const;
+        constexpr bool doesLoad() const;
+        constexpr bool doesStore() const;
+        constexpr bool maybeIsMove() const;
+
+        constexpr bool isPseudo() const;
+
+        /* Instruction descriptor */
+
+
         /* Disassembly */
 
         constexpr bool mustDisasmAsData() const;

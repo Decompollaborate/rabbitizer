@@ -465,6 +465,91 @@ constexpr bool InstructionBase::isValid() const {
 /* Instruction examination */
 
 
+/* Instruction descriptor */
+
+constexpr bool InstructionBase::isUnknownType() const {
+    return RabbitizerInstrDescriptor_isUnknownType(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isJType() const {
+    return RabbitizerInstrDescriptor_isJType(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isIType() const {
+    return RabbitizerInstrDescriptor_isIType(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isRType() const {
+    return RabbitizerInstrDescriptor_isRType(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isRegimmType() const {
+    return RabbitizerInstrDescriptor_isRegimmType(this->instr.descriptor);
+}
+
+// TODO
+// constexpr RabbitizerInstrSuffix instrSuffix() const;
+
+constexpr bool InstructionBase::isBranch() const {
+    return RabbitizerInstrDescriptor_isBranch(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isBranchLikely() const {
+    return RabbitizerInstrDescriptor_isBranchLikely(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isJump() const {
+    return RabbitizerInstrDescriptor_isJump(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isTrap() const {
+    return RabbitizerInstrDescriptor_isTrap(this->instr.descriptor);
+}
+
+constexpr bool InstructionBase::isFloat() const {
+    return RabbitizerInstrDescriptor_isFloat(this->instr.descriptor);
+}
+constexpr bool InstructionBase::isDouble() const {
+    return RabbitizerInstrDescriptor_isDouble(this->instr.descriptor);
+}
+
+constexpr bool InstructionBase::isUnsigned() const {
+    return RabbitizerInstrDescriptor_isUnsigned(this->instr.descriptor);
+}
+
+constexpr bool InstructionBase::modifiesRt() const {
+    return RabbitizerInstrDescriptor_modifiesRt(this->instr.descriptor);
+}
+constexpr bool InstructionBase::modifiesRd() const {
+    return RabbitizerInstrDescriptor_modifiesRd(this->instr.descriptor);
+}
+
+constexpr bool InstructionBase::notEmitedByCompilers() const {
+    return RabbitizerInstrDescriptor_notEmitedByCompilers(this->instr.descriptor);
+}
+
+constexpr bool InstructionBase::canBeHi() const {
+    return RabbitizerInstrDescriptor_canBeHi(this->instr.descriptor);
+}
+constexpr bool InstructionBase::canBeLo() const {
+    return RabbitizerInstrDescriptor_canBeLo(this->instr.descriptor);
+}
+constexpr bool InstructionBase::doesLink() const {
+    return RabbitizerInstrDescriptor_doesLink(this->instr.descriptor);
+}
+constexpr bool InstructionBase::doesDereference() const {
+    return RabbitizerInstrDescriptor_doesDereference(this->instr.descriptor);
+}
+constexpr bool InstructionBase::doesLoad() const {
+    return RabbitizerInstrDescriptor_doesLoad(this->instr.descriptor);
+}
+constexpr bool InstructionBase::doesStore() const {
+    return RabbitizerInstrDescriptor_doesStore(this->instr.descriptor);
+}
+constexpr bool InstructionBase::maybeIsMove() const {
+    return RabbitizerInstrDescriptor_maybeIsMove(this->instr.descriptor);
+}
+
+constexpr bool InstructionBase::isPseudo() const {
+    return RabbitizerInstrDescriptor_isPseudo(this->instr.descriptor);
+}
+
+/* Instruction descriptor */
+
+
 /* Disassembly */
 
 constexpr bool InstructionBase::mustDisasmAsData() const {
