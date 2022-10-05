@@ -15,6 +15,7 @@ CXXSTD          := -std=c++17
 CFLAGS          := -fPIC
 CXXFLAGS        := -fPIC
 LDFLAGS         := -Lbuild -lrabbitizer
+LDXXFLAGS       := -Lbuild -lrabbitizerpp
 WARNINGS        := -Wall -Wextra -Wpedantic
 # WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded
 WARNINGS        += -Werror=implicit-function-declaration -Werror=incompatible-pointer-types -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
@@ -63,6 +64,8 @@ OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
 DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
 
+TESTS_DIRS      := $(shell find tests -type d)
+
 STATIC_LIB      := build/librabbitizer.a
 DYNAMIC_LIB     := build/librabbitizer.so
 
@@ -70,7 +73,7 @@ STATIC_LIB_XX   := build/librabbitizerpp.a
 DYNAMIC_LIB_XX  := build/librabbitizerpp.so
 
 # create build directories
-$(shell mkdir -p $(foreach dir,$(SRC_DIRS) $(SRCXX_DIRS),build/$(dir)))
+$(shell mkdir -p $(foreach dir,$(SRC_DIRS) $(SRCXX_DIRS) $(TESTS_DIRS),build/$(dir)))
 
 
 # Dependencies of libraries
@@ -101,7 +104,7 @@ format:
 tidy:
 	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS)
 
-tests: build/test.elf build/rsptest.elf build/r5900test.elf build/registersTrackerTest.elf
+tests: build/test.elf build/rsptest.elf build/r5900test.elf build/registersTrackerTest.elf build/tests/cplusplus/test.elf
 
 .PHONY: all clean distclean format tidy tests
 .DEFAULT_GOAL := all
@@ -112,6 +115,9 @@ tests: build/test.elf build/rsptest.elf build/r5900test.elf build/registersTrack
 
 build/%.elf: %.c | $(STATIC_LIB)
 	$(CC) -MMD $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+build/%.elf: %.cpp | $(STATIC_LIB_XX)
+	$(CXX) -MMD $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(CXXFLAGS) -o $@ $^ $(LDXXFLAGS)
 
 build/%.a:
 	$(AR) rcs $@ $^

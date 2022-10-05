@@ -563,10 +563,37 @@ constexpr size_t RabbitizerInstruction_disassembleInstruction(char *dst, const c
 
 constexpr size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const {
 }
-
-constexpr size_t RabbitizerInstruction_disassemble(char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) const {
-}
 #endif
+
+std::string InstructionBase::disassemble(bool useImmOverride, std::string_view immOverride, int extraLJust) const {
+    const char *immOverridePtr = NULL;
+    size_t immOverrideLength = 0;
+    size_t bufferSize;
+    size_t disassmbledSize;
+    char *buffer;
+
+    if (useImmOverride) {
+        immOverridePtr = immOverride.data();
+        immOverrideLength = immOverride.size();
+    }
+
+    bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, extraLJust);
+
+    buffer = (char*)malloc(bufferSize + 1);
+    if (buffer == NULL) {
+        throw std::runtime_error("buffer == NULL");
+    }
+
+    disassmbledSize = RabbitizerInstruction_disassemble(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
+
+    std::string output(buffer);
+    free(buffer);
+
+    return output;
+}
 
 
 

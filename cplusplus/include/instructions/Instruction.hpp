@@ -6,6 +6,7 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 
 #include "instructions/RabbitizerInstruction.h"
 
@@ -183,22 +184,21 @@ namespace rabbitizer {
         constexpr size_t RabbitizerInstruction_disassembleInstruction(char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) const;
 
         constexpr size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const;
-
-        constexpr size_t RabbitizerInstruction_disassemble(char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) const;
         #endif
 
-        /* Disassembly */
+        std::string disassemble(bool useImmOverride, std::string_view immOverride, int extraLJust) const;
 
+        /* Disassembly */
     };
 
 
-    class InstructionCpu : InstructionBase {
+    class InstructionCpu : public InstructionBase {
     public:
         InstructionCpu(uint32_t word, uint32_t vram);
         virtual ~InstructionCpu();
     };
 
-    class InstructionRsp : InstructionBase {
+    class InstructionRsp : public InstructionBase {
     public:
         InstructionRsp(uint32_t word, uint32_t vram);
         virtual ~InstructionRsp();
@@ -206,7 +206,7 @@ namespace rabbitizer {
         // TODO: more methods
     };
 
-    class InstructionR5900 : InstructionBase {
+    class InstructionR5900 : public InstructionBase {
     public:
         InstructionR5900(uint32_t word, uint32_t vram);
         virtual ~InstructionR5900();
