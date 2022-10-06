@@ -32,73 +32,73 @@ namespace rabbitizer {
 
         /* getters */
 
-        constexpr uint8_t Get_opcode() const;
-        constexpr uint8_t Get_sa() const;
-        constexpr uint8_t Get_function() const;
+        uint8_t Get_opcode() const;
+        uint8_t Get_sa() const;
+        uint8_t Get_function() const;
 
-        constexpr Registers::Cpu::GprO32 GetO32_rs() const;
-        constexpr Registers::Cpu::GprO32 GetO32_rt() const;
-        constexpr Registers::Cpu::GprO32 GetO32_rd() const;
+        Registers::Cpu::GprO32 GetO32_rs() const;
+        Registers::Cpu::GprO32 GetO32_rt() const;
+        Registers::Cpu::GprO32 GetO32_rd() const;
 
-        constexpr Registers::Cpu::GprN32 GetN32_rs() const;
-        constexpr Registers::Cpu::GprN32 GetN32_rt() const;
-        constexpr Registers::Cpu::GprN32 GetN32_rd() const;
+        Registers::Cpu::GprN32 GetN32_rs() const;
+        Registers::Cpu::GprN32 GetN32_rt() const;
+        Registers::Cpu::GprN32 GetN32_rd() const;
 
-        constexpr Registers::Cpu::Cop0 Get_cop0d() const;
+        Registers::Cpu::Cop0 Get_cop0d() const;
 
-        constexpr uint32_t Get_instr_index() const;
-        constexpr uint16_t Get_immediate() const;
+        uint32_t Get_instr_index() const;
+        uint16_t Get_immediate() const;
 
-        constexpr Registers::Cpu::Cop1O32 GetO32_fs() const;
-        constexpr Registers::Cpu::Cop1O32 GetO32_ft() const;
-        constexpr Registers::Cpu::Cop1O32 GetO32_fd() const;
+        Registers::Cpu::Cop1O32 GetO32_fs() const;
+        Registers::Cpu::Cop1O32 GetO32_ft() const;
+        Registers::Cpu::Cop1O32 GetO32_fd() const;
 
-        constexpr Registers::Cpu::Cop1N32 GetN32_fs() const;
-        constexpr Registers::Cpu::Cop1N32 GetN32_ft() const;
-        constexpr Registers::Cpu::Cop1N32 GetN32_fd() const;
+        Registers::Cpu::Cop1N32 GetN32_fs() const;
+        Registers::Cpu::Cop1N32 GetN32_ft() const;
+        Registers::Cpu::Cop1N32 GetN32_fd() const;
 
-        constexpr Registers::Cpu::Cop1N64 GetN64_fs() const;
-        constexpr Registers::Cpu::Cop1N64 GetN64_ft() const;
-        constexpr Registers::Cpu::Cop1N64 GetN64_fd() const;
+        Registers::Cpu::Cop1N64 GetN64_fs() const;
+        Registers::Cpu::Cop1N64 GetN64_ft() const;
+        Registers::Cpu::Cop1N64 GetN64_fd() const;
 
-        constexpr Registers::Cpu::Cop1Control Get_cop1cs() const;
+        Registers::Cpu::Cop1Control Get_cop1cs() const;
 
-        constexpr uint8_t Get_op() const;
+        uint8_t Get_op() const;
 
-        constexpr uint32_t Get_code() const;
-        constexpr uint32_t Get_code_upper() const;
-        constexpr uint32_t Get_code_lower() const;
+        uint32_t Get_code() const;
+        uint32_t Get_code_upper() const;
+        uint32_t Get_code_lower() const;
 
-        constexpr uint32_t Get_copraw() const;
+        uint32_t Get_copraw() const;
 
-        constexpr uint8_t Get_fmt() const;
-        constexpr uint8_t Get_fc() const;
-        constexpr uint8_t Get_cond() const;
+        uint8_t Get_fmt() const;
+        uint8_t Get_fc() const;
+        uint8_t Get_cond() const;
 
-        constexpr Registers::Cpu::Cop2 Get_cop2t() const;
+        Registers::Cpu::Cop2 Get_cop2t() const;
 
-        constexpr uint8_t Get_tf() const;
-        constexpr uint8_t Get_nd() const;
-        constexpr uint8_t Get_bc_fmt() const;
+        uint8_t Get_tf() const;
+        uint8_t Get_nd() const;
+        uint8_t Get_bc_fmt() const;
 
-        constexpr uint8_t Get_stype() const;
+        uint8_t Get_stype() const;
 
         /* getters */
 
 
         /* more getters */
 
-        constexpr uint32_t getRaw() const;
+        uint32_t getRaw() const;
 
-        constexpr InstrId::UniqueId getUniqueId() const;
-        constexpr uint32_t getVram() const;
-        constexpr bool isInHandwrittenFunction() const;
+        InstrId::UniqueId getUniqueId() const;
+        uint32_t getVram() const;
+        bool isInHandwrittenFunction() const;
 
-        constexpr int32_t getProcessedImmediate() const;
-        constexpr uint32_t getInstrIndexAsVram() const;
+        int32_t getProcessedImmediate() const;
+        uint32_t getInstrIndexAsVram() const;
 
-        constexpr int32_t getBranchOffset() const;
-        constexpr int32_t getGenericBranchOffset(uint32_t currentVram) const;
+        int32_t getBranchOffset() const;
+        int32_t getGenericBranchOffset(uint32_t currentVram) const;
 
 
         std::string getOpcodeName() const;
@@ -113,77 +113,77 @@ namespace rabbitizer {
 
         /* Instruction examination */
 
-        constexpr bool isImplemented() const;
-        constexpr bool isLikelyHandwritten() const;
-        constexpr bool isNop() const;
-        constexpr bool isUnconditionalBranch() const;
-        constexpr bool isJrRa() const;
-        constexpr bool isJrNotRa() const;
-        constexpr bool hasDelaySlot() const;
+        bool isImplemented() const;
+        bool isLikelyHandwritten() const;
+        bool isNop() const;
+        bool isUnconditionalBranch() const;
+        bool isJrRa() const;
+        bool isJrNotRa() const;
+        bool hasDelaySlot() const;
 
         std::string mapInstrToType() const;
 
-        constexpr bool sameOpcode(const InstructionBase &other) const;
-        constexpr bool sameOpcodeButDifferentArguments(const InstructionBase &other) const;
+        bool sameOpcode(const InstructionBase &other) const;
+        bool sameOpcodeButDifferentArguments(const InstructionBase &other) const;
 
-        constexpr bool hasOperand(OperandType operand) const;
-        constexpr bool hasOperandAlias(OperandType operand) const;
+        bool hasOperand(OperandType operand) const;
+        bool hasOperandAlias(OperandType operand) const;
 
-        constexpr uint32_t getValidBits() const;
-        constexpr bool isValid() const;
+        uint32_t getValidBits() const;
+        bool isValid() const;
 
         /* Instruction examination */
 
 
         /* Instruction descriptor */
 
-        constexpr bool isUnknownType() const;
-        constexpr bool isJType() const;
-        constexpr bool isIType() const;
-        constexpr bool isRType() const;
-        constexpr bool isRegimmType() const;
+        bool isUnknownType() const;
+        bool isJType() const;
+        bool isIType() const;
+        bool isRType() const;
+        bool isRegimmType() const;
 
         // TODO
-        // constexpr RabbitizerInstrSuffix instrSuffix() const;
+        // RabbitizerInstrSuffix instrSuffix() const;
 
-        constexpr bool isBranch() const;
-        constexpr bool isBranchLikely() const;
-        constexpr bool isJump() const;
-        constexpr bool isTrap() const;
+        bool isBranch() const;
+        bool isBranchLikely() const;
+        bool isJump() const;
+        bool isTrap() const;
 
-        constexpr bool isFloat() const;
-        constexpr bool isDouble() const;
+        bool isFloat() const;
+        bool isDouble() const;
 
-        constexpr bool isUnsigned() const;
+        bool isUnsigned() const;
 
-        constexpr bool modifiesRt() const;
-        constexpr bool modifiesRd() const;
+        bool modifiesRt() const;
+        bool modifiesRd() const;
 
-        constexpr bool notEmitedByCompilers() const;
+        bool notEmitedByCompilers() const;
 
-        constexpr bool canBeHi() const;
-        constexpr bool canBeLo() const;
-        constexpr bool doesLink() const;
-        constexpr bool doesDereference() const;
-        constexpr bool doesLoad() const;
-        constexpr bool doesStore() const;
-        constexpr bool maybeIsMove() const;
+        bool canBeHi() const;
+        bool canBeLo() const;
+        bool doesLink() const;
+        bool doesDereference() const;
+        bool doesLoad() const;
+        bool doesStore() const;
+        bool maybeIsMove() const;
 
-        constexpr bool isPseudo() const;
+        bool isPseudo() const;
 
         /* Instruction descriptor */
 
 
         /* Disassembly */
 
-        constexpr bool mustDisasmAsData() const;
+        bool mustDisasmAsData() const;
 
         #if 0
-        constexpr size_t RabbitizerInstruction_disassembleOperands(char *dst, const char *immOverride, size_t immOverrideLength) const;
+        size_t RabbitizerInstruction_disassembleOperands(char *dst, const char *immOverride, size_t immOverrideLength) const;
 
-        constexpr size_t RabbitizerInstruction_disassembleInstruction(char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) const;
+        size_t RabbitizerInstruction_disassembleInstruction(char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) const;
 
-        constexpr size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const;
+        size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const;
         #endif
 
         std::string disassemble(bool useImmOverride, std::string_view immOverride, int extraLJust) const;

@@ -20,7 +20,7 @@ namespace rabbitizer {
         RAB_DEF_OPERAND(ALL, MAX)
     };
 
-    #undef RAB_DEF_OPERAN
+    #undef RAB_DEF_OPERAND
 };
 
 
