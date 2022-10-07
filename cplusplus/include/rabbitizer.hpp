@@ -6,6 +6,9 @@
 #pragma once
 
 
+#include "common/RabbitizerVersion.h"
+#include "common/RabbitizerConfig.h"
+
 #include "instructions/OperandType.hpp"
 #include "instructions/InstrId.hpp"
 //#include "instructions/InstrSuffix.hpp"
