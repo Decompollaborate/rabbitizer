@@ -63,6 +63,8 @@ namespace rabbitizer {
 
         Registers::Cpu::Cop1Control Get_cop1cs() const;
 
+        Registers::Cpu::Cop2 Get_cop2t() const;
+
         uint8_t Get_op() const;
 
         uint32_t Get_code() const;
@@ -74,8 +76,6 @@ namespace rabbitizer {
         uint8_t Get_fmt() const;
         uint8_t Get_fc() const;
         uint8_t Get_cond() const;
-
-        Registers::Cpu::Cop2 Get_cop2t() const;
 
         uint8_t Get_tf() const;
         uint8_t Get_nd() const;
