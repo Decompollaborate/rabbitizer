@@ -86,6 +86,9 @@ namespace rabbitizer {
         /* getters */
 
 
+        // TODO: setters
+
+
         /* more getters */
 
         uint32_t getRaw() const;
