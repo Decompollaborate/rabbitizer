@@ -11,9 +11,10 @@
 //#include "instructions/InstrSuffix.hpp"
 //#include "instructions/InstrDescriptor.hpp"
 #include "instructions/Registers.hpp"
-#include "instructions/Instruction.hpp"
-//#include "instructions/InstructionRsp.hpp"
-//#include "instructions/InstructionR5900.hpp"
+#include "instructions/InstructionBase.hpp"
+#include "instructions/InstructionCpu.hpp"
+#include "instructions/InstructionRsp.hpp"
+#include "instructions/InstructionR5900.hpp"
 
 
 #endif

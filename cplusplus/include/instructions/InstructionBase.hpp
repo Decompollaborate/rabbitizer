@@ -1,8 +1,8 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#ifndef RABBITIZER_INSTRUCTION_HPP
-#define RABBITIZER_INSTRUCTION_HPP
+#ifndef RABBITIZER_INSTRUCTION_BASE_HPP
+#define RABBITIZER_INSTRUCTION_BASE_HPP
 #pragma once
 
 #include <string>
@@ -20,8 +20,8 @@ namespace rabbitizer {
     protected:
         RabbitizerInstruction instr;
 
-        InstructionBase();
-        virtual ~InstructionBase();
+        InstructionBase() = default;
+        virtual ~InstructionBase() = default;
 
     public:
         /**
@@ -186,32 +186,10 @@ namespace rabbitizer {
         size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const;
         #endif
 
-        std::string disassemble(bool useImmOverride, std::string_view immOverride, int extraLJust) const;
+        std::string disassemble(int extraLJust) const;
+        std::string disassemble(int extraLJust, std::string_view immOverride) const;
 
         /* Disassembly */
-    };
-
-
-    class InstructionCpu : public InstructionBase {
-    public:
-        InstructionCpu(uint32_t word, uint32_t vram);
-        virtual ~InstructionCpu();
-    };
-
-    class InstructionRsp : public InstructionBase {
-    public:
-        InstructionRsp(uint32_t word, uint32_t vram);
-        virtual ~InstructionRsp();
-
-        // TODO: more methods
-    };
-
-    class InstructionR5900 : public InstructionBase {
-    public:
-        InstructionR5900(uint32_t word, uint32_t vram);
-        virtual ~InstructionR5900();
-
-        // TODO: more methods
     };
 };
 

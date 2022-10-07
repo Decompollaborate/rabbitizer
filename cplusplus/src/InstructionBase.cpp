@@ -1,20 +1,15 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "instructions/Instruction.hpp"
+#include "instructions/InstructionBase.hpp"
 
 #include <stdexcept>
 
 #include "instructions/RabbitizerInstruction.h"
-#include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 
 using namespace rabbitizer;
 
-InstructionBase::InstructionBase() {
-}
-InstructionBase::~InstructionBase() {
-}
 
 RabbitizerInstruction &InstructionBase::getCInstr() {
     return this->instr;
@@ -558,17 +553,12 @@ size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const 
 }
 #endif
 
-std::string InstructionBase::disassemble(bool useImmOverride, std::string_view immOverride, int extraLJust) const {
+std::string InstructionBase::disassemble(int extraLJust) const {
     const char *immOverridePtr = NULL;
     size_t immOverrideLength = 0;
     size_t bufferSize;
     size_t disassmbledSize;
     char *buffer;
-
-    if (useImmOverride) {
-        immOverridePtr = immOverride.data();
-        immOverrideLength = immOverride.size();
-    }
 
     bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, extraLJust);
 
@@ -588,29 +578,27 @@ std::string InstructionBase::disassemble(bool useImmOverride, std::string_view i
     return output;
 }
 
-InstructionCpu::InstructionCpu(uint32_t word, uint32_t vram) : InstructionBase() {
-    RabbitizerInstruction_init(&this->instr, word, vram);
-    RabbitizerInstruction_processUniqueId(&this->instr);
-}
+std::string InstructionBase::disassemble(int extraLJust, std::string_view immOverride) const {
+    const char *immOverridePtr = immOverride.data();
+    size_t immOverrideLength = immOverride.size();
+    size_t bufferSize;
+    size_t disassmbledSize;
+    char *buffer;
 
-InstructionCpu::~InstructionCpu() {
-    RabbitizerInstruction_destroy(&this->instr);
-}
+    bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, extraLJust);
 
-InstructionRsp::InstructionRsp(uint32_t word, uint32_t vram) : InstructionBase() {
-    RabbitizerInstructionRsp_init(&this->instr, word, vram);
-    RabbitizerInstructionRsp_processUniqueId(&this->instr);
-}
+    buffer = (char *)malloc(bufferSize + 1);
+    if (buffer == NULL) {
+        throw std::runtime_error("buffer == NULL");
+    }
 
-InstructionRsp::~InstructionRsp() {
-    RabbitizerInstructionRsp_destroy(&this->instr);
-}
+    disassmbledSize = RabbitizerInstruction_disassemble(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
 
-InstructionR5900::InstructionR5900(uint32_t word, uint32_t vram) : InstructionBase() {
-    RabbitizerInstructionR5900_init(&this->instr, word, vram);
-    RabbitizerInstructionR5900_processUniqueId(&this->instr);
-}
+    std::string output(buffer);
+    free(buffer);
 
-InstructionR5900::~InstructionR5900() {
-    RabbitizerInstructionR5900_destroy(&this->instr);
+    return output;
 }
