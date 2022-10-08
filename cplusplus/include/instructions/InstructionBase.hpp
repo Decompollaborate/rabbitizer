@@ -87,7 +87,58 @@ namespace rabbitizer {
         /* getters */
 
 
-        // TODO: setters
+        /* setters */
+
+        void Set_opcode(uint8_t val);
+        void Set_sa(uint8_t val);
+        void Set_function(uint8_t val);
+
+        void Set_rs(Registers::Cpu::GprO32 val);
+        void Set_rt(Registers::Cpu::GprO32 val);
+        void Set_rd(Registers::Cpu::GprO32 val);
+
+        void Set_rs(Registers::Cpu::GprN32 val);
+        void Set_rt(Registers::Cpu::GprN32 val);
+        void Set_rd(Registers::Cpu::GprN32 val);
+
+        void Set_cop0d(Registers::Cpu::Cop0 val);
+
+        void Set_instr_index(uint32_t val);
+        void Set_immediate(uint16_t val);
+
+        void Set_fs(Registers::Cpu::Cop1O32 val);
+        void Set_ft(Registers::Cpu::Cop1O32 val);
+        void Set_fd(Registers::Cpu::Cop1O32 val);
+
+        void Set_fs(Registers::Cpu::Cop1N32 val);
+        void Set_ft(Registers::Cpu::Cop1N32 val);
+        void Set_fd(Registers::Cpu::Cop1N32 val);
+
+        void Set_fs(Registers::Cpu::Cop1N64 val);
+        void Set_ft(Registers::Cpu::Cop1N64 val);
+        void Set_fd(Registers::Cpu::Cop1N64 val);
+
+        void Set_cop1cs(Registers::Cpu::Cop1Control val);
+
+        void Set_cop2t(Registers::Cpu::Cop2 val);
+
+        void Set_op(uint8_t val);
+
+        void Set_code(uint32_t val);
+
+        void Set_copraw(uint32_t val);
+
+        void Set_fmt(uint8_t val);
+        void Set_fc(uint8_t val);
+        void Set_cond(uint8_t val);
+
+        void Set_tf(uint8_t val);
+        void Set_nd(uint8_t val);
+        void Set_bc_fmt(uint8_t val);
+
+        void Set_stype(uint8_t val);
+
+        /* setters */
 
 
         /* more getters */
@@ -182,13 +233,13 @@ namespace rabbitizer {
 
         bool mustDisasmAsData() const;
 
-        #if 0
-        size_t RabbitizerInstruction_disassembleOperands(char *dst, const char *immOverride, size_t immOverrideLength) const;
+        std::string disassembleOperands() const;
+        std::string disassembleOperands(std::string_view immOverride) const;
 
-        size_t RabbitizerInstruction_disassembleInstruction(char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) const;
+        std::string disassembleInstruction(int extraLJust) const;
+        std::string disassembleInstruction(int extraLJust, std::string_view immOverride) const;
 
-        size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const;
-        #endif
+        std::string disassembleAsData(int extraLJust) const;
 
         std::string disassemble(int extraLJust) const;
         std::string disassemble(int extraLJust, std::string_view immOverride) const;

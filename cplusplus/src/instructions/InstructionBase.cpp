@@ -244,6 +244,17 @@ Registers::Cpu::Cop1Control InstructionBase::Get_cop1cs() const {
     return static_cast<Registers::Cpu::Cop1Control>(RAB_INSTR_GET_cop1cs(&this->instr));
 }
 
+Registers::Cpu::Cop2 InstructionBase::Get_cop2t() const {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_cop2t)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop2t' operand.");
+    }
+#endif
+
+    return static_cast<Registers::Cpu::Cop2>(RAB_INSTR_GET_cop2t(&this->instr));
+}
+
 uint8_t InstructionBase::Get_op() const {
 #ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_op)) {
@@ -307,17 +318,6 @@ uint8_t InstructionBase::Get_cond() const {
     return RAB_INSTR_GET_cond(&this->instr);
 }
 
-Registers::Cpu::Cop2 InstructionBase::Get_cop2t() const {
-#ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::cpu_cop2t)) {
-        // TODO: make a rabbitizer exception class
-        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop2t' operand.");
-    }
-#endif
-
-    return static_cast<Registers::Cpu::Cop2>(RAB_INSTR_GET_cop2t(&this->instr));
-}
-
 uint8_t InstructionBase::Get_tf() const {
     return RAB_INSTR_GET_tf(&this->instr);
 }
@@ -325,7 +325,7 @@ uint8_t InstructionBase::Get_nd() const {
     return RAB_INSTR_GET_nd(&this->instr);
 }
 uint8_t InstructionBase::Get_bc_fmt() const {
-    return RAB_INSTR_GET_fmt(&this->instr);
+    return RAB_INSTR_GET_bc_fmt(&this->instr);
 }
 
 uint8_t InstructionBase::Get_stype() const {
@@ -333,6 +333,295 @@ uint8_t InstructionBase::Get_stype() const {
 }
 
 /* getters */
+
+
+/* setters */
+
+void InstructionBase::Set_opcode(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_opcode(this->instr.word, val);
+}
+void InstructionBase::Set_sa(uint8_t val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_sa)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'sa' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_sa(this->instr.word, val);
+}
+void InstructionBase::Set_function(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_function(this->instr.word, val);
+}
+
+void InstructionBase::Set_rs(Registers::Cpu::GprO32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_rs)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rs' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_rs(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_rt(Registers::Cpu::GprO32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_rt)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rt' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_rt(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_rd(Registers::Cpu::GprO32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_rd)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rd' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_rd(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_rs(Registers::Cpu::GprN32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_rs)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rs' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_rs(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_rt(Registers::Cpu::GprN32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_rt)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rt' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_rt(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_rd(Registers::Cpu::GprN32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_rd)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'rd' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_rd(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_cop0d(Registers::Cpu::Cop0 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_cop0d)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop0d' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_cop0d(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_instr_index(uint32_t val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_label)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'label' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_instr_index(this->instr.word, val);
+}
+void InstructionBase::Set_immediate(uint16_t val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_immediate)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'immediate' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_immediate(this->instr.word, val);
+}
+
+void InstructionBase::Set_fs(Registers::Cpu::Cop1O32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_fs)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fs' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_fs(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_ft(Registers::Cpu::Cop1O32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_ft)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'ft' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_ft(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_fd(Registers::Cpu::Cop1O32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_fd)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fd' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_fd(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_fs(Registers::Cpu::Cop1N32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_fs)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fs' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_fs(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_ft(Registers::Cpu::Cop1N32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_ft)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'ft' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_ft(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_fd(Registers::Cpu::Cop1N32 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_fd)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fd' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_fd(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_fs(Registers::Cpu::Cop1N64 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_fs)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fs' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_fs(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_ft(Registers::Cpu::Cop1N64 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_ft)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'ft' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_ft(this->instr.word, static_cast<int>(val));
+}
+void InstructionBase::Set_fd(Registers::Cpu::Cop1N64 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_fd)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'fd' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_fd(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_cop1cs(Registers::Cpu::Cop1Control val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_cop1cs)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop1cs' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_cop1cs(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_cop2t(Registers::Cpu::Cop2 val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_cop2t)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'cop2t' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_cop2t(this->instr.word, static_cast<int>(val));
+}
+
+void InstructionBase::Set_op(uint8_t val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_op)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'op' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_op(this->instr.word, val);
+}
+
+void InstructionBase::Set_code(uint32_t val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_code)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_code(this->instr.word, val);
+}
+
+void InstructionBase::Set_copraw(uint32_t val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_copraw)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'copraw' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_copraw(this->instr.word, val);
+}
+
+void InstructionBase::Set_fmt(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_fmt(this->instr.word, val);
+}
+void InstructionBase::Set_fc(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_fc(this->instr.word, val);
+}
+void InstructionBase::Set_cond(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_cond(this->instr.word, val);
+}
+
+void InstructionBase::Set_tf(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_tf(this->instr.word, val);
+}
+void InstructionBase::Set_nd(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_nd(this->instr.word, val);
+}
+void InstructionBase::Set_bc_fmt(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_bc_fmt(this->instr.word, val);
+}
+
+void InstructionBase::Set_stype(uint8_t val) {
+    this->instr.word = RAB_INSTR_PACK_stype(this->instr.word, val);
+}
+
+/* setters */
+
 
 /* more getters */
 
@@ -545,16 +834,133 @@ bool InstructionBase::mustDisasmAsData() const {
     return RabbitizerInstruction_mustDisasmAsData(&this->instr);
 }
 
-#if 0
-size_t RabbitizerInstruction_disassembleOperands(char *dst, const char *immOverride, size_t immOverrideLength) const {
+
+std::string InstructionBase::disassembleOperands() const {
+    const char *immOverridePtr = NULL;
+    size_t immOverrideLength = 0;
+    size_t bufferSize;
+    size_t disassmbledSize;
+    char *buffer;
+
+    bufferSize = RabbitizerInstruction_getSizeForBufferOperandsDisasm(&instr, immOverrideLength);
+
+    buffer = (char *)malloc(bufferSize + 1);
+    if (buffer == NULL) {
+        throw std::runtime_error("buffer == NULL");
+    }
+
+    disassmbledSize = RabbitizerInstruction_disassembleOperands(&instr, buffer, immOverridePtr, immOverrideLength);
+
+    std::string output(buffer);
+    free(buffer);
+
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
+
+    return output;
+}
+std::string InstructionBase::disassembleOperands(std::string_view immOverride) const {
+    const char *immOverridePtr = immOverride.data();
+    size_t immOverrideLength = immOverride.size();
+    size_t bufferSize;
+    size_t disassmbledSize;
+    char *buffer;
+
+    bufferSize = RabbitizerInstruction_getSizeForBufferOperandsDisasm(&instr, immOverrideLength);
+
+    buffer = (char *)malloc(bufferSize + 1);
+    if (buffer == NULL) {
+        throw std::runtime_error("buffer == NULL");
+    }
+
+    disassmbledSize = RabbitizerInstruction_disassembleOperands(&instr, buffer, immOverridePtr, immOverrideLength);
+
+    std::string output(buffer);
+    free(buffer);
+
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
+
+    return output;
 }
 
-size_t RabbitizerInstruction_disassembleInstruction(char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) const {
+std::string InstructionBase::disassembleInstruction(int extraLJust) const {
+    const char *immOverridePtr = NULL;
+    size_t immOverrideLength = 0;
+    size_t bufferSize;
+    size_t disassmbledSize;
+    char *buffer;
+
+    bufferSize = RabbitizerInstruction_getSizeForBufferInstrDisasm(&instr, immOverrideLength, extraLJust);
+
+    buffer = (char *)malloc(bufferSize + 1);
+    if (buffer == NULL) {
+        throw std::runtime_error("buffer == NULL");
+    }
+
+    disassmbledSize = RabbitizerInstruction_disassembleInstruction(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
+
+    std::string output(buffer);
+    free(buffer);
+
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
+
+    return output;
+}
+std::string InstructionBase::disassembleInstruction(int extraLJust, std::string_view immOverride) const {
+    const char *immOverridePtr = immOverride.data();
+    size_t immOverrideLength = immOverride.size();
+    size_t bufferSize;
+    size_t disassmbledSize;
+    char *buffer;
+
+    bufferSize = RabbitizerInstruction_getSizeForBufferInstrDisasm(&instr, immOverrideLength, extraLJust);
+
+    buffer = (char *)malloc(bufferSize + 1);
+    if (buffer == NULL) {
+        throw std::runtime_error("buffer == NULL");
+    }
+
+    disassmbledSize = RabbitizerInstruction_disassembleInstruction(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
+
+    std::string output(buffer);
+    free(buffer);
+
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
+
+    return output;
 }
 
-size_t RabbitizerInstruction_disassembleAsData(char *dst, int extraLJust) const {
+std::string InstructionBase::disassembleAsData(int extraLJust) const {
+    size_t bufferSize;
+    size_t disassmbledSize;
+    char *buffer;
+
+    bufferSize = RabbitizerInstruction_getSizeForBufferDataDisasm(&instr, extraLJust);
+
+    buffer = (char *)malloc(bufferSize + 1);
+    if (buffer == NULL) {
+        throw std::runtime_error("buffer == NULL");
+    }
+
+    disassmbledSize = RabbitizerInstruction_disassembleAsData(&instr, buffer, extraLJust);
+
+    std::string output(buffer);
+    free(buffer);
+
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
+
+    return output;
 }
-#endif
+
 
 std::string InstructionBase::disassemble(int extraLJust) const {
     const char *immOverridePtr = NULL;
@@ -571,12 +977,13 @@ std::string InstructionBase::disassemble(int extraLJust) const {
     }
 
     disassmbledSize = RabbitizerInstruction_disassemble(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
-    if (disassmbledSize > bufferSize) {
-        throw std::runtime_error("disassmbledSize > bufferSize");
-    }
 
     std::string output(buffer);
     free(buffer);
+
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
 
     return output;
 }
@@ -596,12 +1003,13 @@ std::string InstructionBase::disassemble(int extraLJust, std::string_view immOve
     }
 
     disassmbledSize = RabbitizerInstruction_disassemble(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
-    if (disassmbledSize > bufferSize) {
-        throw std::runtime_error("disassmbledSize > bufferSize");
-    }
 
     std::string output(buffer);
     free(buffer);
+
+    if (disassmbledSize > bufferSize) {
+        throw std::runtime_error("disassmbledSize > bufferSize");
+    }
 
     return output;
 }
