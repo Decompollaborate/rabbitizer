@@ -11,8 +11,11 @@
 using namespace rabbitizer;
 
 
-RabbitizerInstruction &InstructionBase::getCInstr() {
-    return this->instr;
+RabbitizerInstruction *InstructionBase::getCPtr() {
+    return &this->instr;
+}
+const RabbitizerInstruction *InstructionBase::getCPtr() const {
+    return &this->instr;
 }
 
 /* getters */

@@ -19,5 +19,8 @@
 #include "instructions/InstructionRsp.hpp"
 #include "instructions/InstructionR5900.hpp"
 
+#include "analysis/LoPairingInfo.hpp"
+#include "analysis/RegistersTracker.hpp"
+
 
 #endif

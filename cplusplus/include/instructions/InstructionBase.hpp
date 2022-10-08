@@ -25,10 +25,11 @@ namespace rabbitizer {
 
     public:
         /**
-         * Returns a reference to the inner RabbitizerInstruction.
+         * Returns a pointer to the inner RabbitizerInstruction.
          * It is recommended to not mess with it unless you know what you are doing.
          */
-        RabbitizerInstruction &getCInstr();
+        RabbitizerInstruction *getCPtr();
+        const RabbitizerInstruction *getCPtr() const;
 
         /* getters */
 
