@@ -79,6 +79,7 @@ class InstrId:
     cpu_bgezal: Enum
     cpu_bltzall: Enum
     cpu_bgezall: Enum
+    cpu_bal: Enum
     cpu_teqi: Enum
     cpu_tnei: Enum
     cpu_j: Enum
@@ -339,6 +340,7 @@ class InstrId:
     rsp_bgez: Enum
     rsp_bltzal: Enum
     rsp_bgezal: Enum
+    rsp_bal: Enum
     rsp_j: Enum
     rsp_jal: Enum
     rsp_beq: Enum

@@ -6,12 +6,12 @@ RABBITIZER_DEF_INSTR_ID(rsp, 0x02, j,       .operands={RAB_OPERAND_cpu_label}, .
 RABBITIZER_DEF_INSTR_ID(rsp, 0x03, jal,     .operands={RAB_OPERAND_cpu_label}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true, .doesLink=true)       // Jump And Link
 
 // OP rs, rt, IMM
-RABBITIZER_DEF_INSTR_ID(rsp, 0x04, beq,     .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)       // Branch on EQual
-RABBITIZER_DEF_INSTR_ID(rsp, 0x05, bne,     .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)       // Branch on Not Equal
+RABBITIZER_DEF_INSTR_ID(rsp, 0x04, beq,     .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)       // Branch on EQual
+RABBITIZER_DEF_INSTR_ID(rsp, 0x05, bne,     .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)       // Branch on Not Equal
 
 // OP rs, IMM
-RABBITIZER_DEF_INSTR_ID(rsp, 0x06, blez,    .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on Less than or Equal to Zero
-RABBITIZER_DEF_INSTR_ID(rsp, 0x07, bgtz,    .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on Greater Than Zero
+RABBITIZER_DEF_INSTR_ID(rsp, 0x06, blez,    .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on Less than or Equal to Zero
+RABBITIZER_DEF_INSTR_ID(rsp, 0x07, bgtz,    .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on Greater Than Zero
 
 // OP rt, rs, IMM
 RABBITIZER_DEF_INSTR_ID(rsp, 0x08, addi,    .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .notEmitedByCompilers=true, .canBeLo=true)      // Add Immediate
@@ -46,8 +46,8 @@ RABBITIZER_DEF_INSTR_ID(rsp, 0x39, swc1,    .operands={RAB_OPERAND_cpu_ft, RAB_O
 // Pseudo-Instruction Unique IDs
 
 // OP IMM
-RABBITIZER_DEF_INSTR_ID(rsp, -0x03, b,      .operands={RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)         // Branch (unconditional)
+RABBITIZER_DEF_INSTR_ID(rsp, -0x03, b,      .operands={RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)         // Branch (unconditional)
 
 // OP rs, IMM
-RABBITIZER_DEF_INSTR_ID(rsp, -0x04, beqz,   .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on EQual Zero
-RABBITIZER_DEF_INSTR_ID(rsp, -0x05, bnez,   .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on Not Equal Zero
+RABBITIZER_DEF_INSTR_ID(rsp, -0x04, beqz,   .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on EQual Zero
+RABBITIZER_DEF_INSTR_ID(rsp, -0x05, bnez,   .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true)      // Branch on Not Equal Zero

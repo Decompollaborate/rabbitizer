@@ -6,16 +6,16 @@ RABBITIZER_DEF_INSTR_ID(cpu, 0x02, j,       .operands={RAB_OPERAND_cpu_label}, .
 RABBITIZER_DEF_INSTR_ID(cpu, 0x03, jal,     .operands={RAB_OPERAND_cpu_label}, .instrType=RABBITIZER_INSTR_TYPE_J, .isJump=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Jump And Link
 
 // OP rs, rt, IMM
-RABBITIZER_DEF_INSTR_ID(cpu, 0x04, beq,     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Branch on EQual
-RABBITIZER_DEF_INSTR_ID(cpu, 0x05, bne,     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Branch on Not Equal
-RABBITIZER_DEF_INSTR_ID(cpu, 0x14, beql,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Branch on EQual Likely
-RABBITIZER_DEF_INSTR_ID(cpu, 0x15, bnel,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Branch on Not Equal Likely
+RABBITIZER_DEF_INSTR_ID(cpu, 0x04, beq,     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Branch on EQual
+RABBITIZER_DEF_INSTR_ID(cpu, 0x05, bne,     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)       // Branch on Not Equal
+RABBITIZER_DEF_INSTR_ID(cpu, 0x14, beql,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Branch on EQual Likely
+RABBITIZER_DEF_INSTR_ID(cpu, 0x15, bnel,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)      // Branch on Not Equal Likely
 
 // OP rs, IMM
-RABBITIZER_DEF_INSTR_ID(cpu, 0x06, blez,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Branch on Less than or Equal to Zero
-RABBITIZER_DEF_INSTR_ID(cpu, 0x16, blezl,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)     // Branch on Less than or Equal to Zero Likely
-RABBITIZER_DEF_INSTR_ID(cpu, 0x07, bgtz,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Branch on Greater Than Zero
-RABBITIZER_DEF_INSTR_ID(cpu, 0x17, bgtzl,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)     // Branch on Greater Than Zero Likely
+RABBITIZER_DEF_INSTR_ID(cpu, 0x06, blez,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Branch on Less than or Equal to Zero
+RABBITIZER_DEF_INSTR_ID(cpu, 0x16, blezl,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)     // Branch on Less than or Equal to Zero Likely
+RABBITIZER_DEF_INSTR_ID(cpu, 0x07, bgtz,    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Branch on Greater Than Zero
+RABBITIZER_DEF_INSTR_ID(cpu, 0x17, bgtzl,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isBranchLikely=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II)     // Branch on Greater Than Zero Likely
 
 // OP rt, rs, IMM
 RABBITIZER_DEF_INSTR_ID(cpu, 0x08, addi,    .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .modifiesRt=true, .notEmitedByCompilers=true, .canBeLo=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I)      // Add Immediate
@@ -76,8 +76,8 @@ RABBITIZER_DEF_INSTR_ID(cpu, 0x3E, sdc2,    .operands={RAB_OPERAND_cpu_cop2t, RA
 // Pseudo-Instruction Unique IDs
 
 // OP IMM
-RABBITIZER_DEF_INSTR_ID(cpu, -0x03, b,      .operands={RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isPseudo=true)         // Branch (unconditional)
+RABBITIZER_DEF_INSTR_ID(cpu, -0x03, b,      .operands={RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isPseudo=true)         // Branch (unconditional)
 
 // OP rs, IMM
-RABBITIZER_DEF_INSTR_ID(cpu, -0x04, beqz,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isPseudo=true)      // Branch on EQual Zero
-RABBITIZER_DEF_INSTR_ID(cpu, -0x05, bnez,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isPseudo=true)      // Branch on Not Equal Zero
+RABBITIZER_DEF_INSTR_ID(cpu, -0x04, beqz,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isPseudo=true)      // Branch on EQual Zero
+RABBITIZER_DEF_INSTR_ID(cpu, -0x05, bnez,   .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_I, .isBranch=true, .isPseudo=true)      // Branch on Not Equal Zero

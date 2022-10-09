@@ -10,6 +10,10 @@
 #include "RabbitizerLoPairingInfo.h"
 #include "instructions/RabbitizerInstruction.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 typedef struct RabbitizerRegistersTracker {
     RabbitizerTrackedRegisterState registers[32];
@@ -50,5 +54,9 @@ void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, cons
 NON_NULL(1, 2)
 bool RabbitizerRegistersTracker_hasLoButNoHi(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr);
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

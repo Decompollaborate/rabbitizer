@@ -5,6 +5,10 @@
 #define RABBITIZER_OPERAND_TYPE_H
 #pragma once
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define RAB_DEF_OPERAND(prefix, operand) \
     RAB_OPERAND_##prefix##_##operand,
@@ -20,5 +24,10 @@ typedef enum RabbitizerOperandType {
 } RabbitizerOperandType;
 
 #undef RAB_DEF_OPERAND
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

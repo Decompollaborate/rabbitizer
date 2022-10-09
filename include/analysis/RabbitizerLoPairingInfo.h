@@ -9,6 +9,10 @@
 
 #include "common/Utils.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 typedef struct RabbitizerLoPairingInfo {
     int instrOffset;
@@ -22,5 +26,9 @@ typedef struct RabbitizerLoPairingInfo {
 NON_NULL(1)
 void RabbitizerLoPairingInfo_Init(RabbitizerLoPairingInfo *self);
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

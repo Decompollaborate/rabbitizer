@@ -7,6 +7,10 @@
 
 #include "common/Utils.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 struct RabbitizerInstruction;
 
@@ -23,5 +27,10 @@ size_t RabbitizerInstrSuffix_getSizeForBuffer(const struct RabbitizerInstruction
 
 CONST NODISCARD NON_NULL(1, 2)
 size_t RabbitizerInstrSuffix_processSuffix(const struct RabbitizerInstruction *self, char *dst, RabbitizerInstrSuffix instrSuffix);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

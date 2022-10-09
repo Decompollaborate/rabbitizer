@@ -31,6 +31,7 @@ size_t RabbitizerUtils_escapeString(char *dst, size_t dstSize, const char *src, 
     size_t dstpos = 0;
 
     for (; srcPos < srcSize && dstpos < dstSize; srcPos++, src++) {
+        // The cases of this switch are sorted by ASCII order
         switch (*src) {
             case '\a':
                 RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
@@ -60,6 +61,11 @@ size_t RabbitizerUtils_escapeString(char *dst, size_t dstSize, const char *src, 
             case '"':
                 RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
                 RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '"');
+                break;
+
+            case '\\':
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
+                RABUTILS_BUFFER_WRITE_CHAR(dst, dstpos, '\\');
                 break;
 
             default:

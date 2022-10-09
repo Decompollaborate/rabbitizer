@@ -9,6 +9,10 @@
 
 #include "common/Utils.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define RABBITIZER_DEF_REG(prefix, name, numeric) \
     RABBITIZER_REG_##prefix##_##name
@@ -130,5 +134,10 @@ NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VI(uint8_t regValue);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

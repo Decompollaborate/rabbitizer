@@ -11,6 +11,10 @@
 
 #include "common/Utils.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 typedef struct RabbitizerTrackedRegisterState {
     int registerNum;
@@ -67,5 +71,10 @@ bool RabbitizerTrackedRegisterState_wasSetInCurrentOffset(const RabbitizerTracke
 
 NON_NULL(1)
 void RabbitizerTrackedRegisterState_fprint(const RabbitizerTrackedRegisterState *self, FILE* outFile);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

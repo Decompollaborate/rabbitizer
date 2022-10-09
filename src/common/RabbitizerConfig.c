@@ -35,6 +35,7 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
         .pseudoMove = true,
         .pseudoNot = true,
         .pseudoNegu = true,
+        .pseudoBal = true,
     },
     .toolchainTweaks = {
         .treatJAsUnconditionalBranch = false,

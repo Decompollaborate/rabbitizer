@@ -7,6 +7,10 @@
 
 #include "RabbitizerInstruction.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define RAB_INSTR_R5900_GET_mmi_function(self)          (SHIFTR((self)->word,  6,  5))
 #define RAB_INSTR_R5900_GET_fhi_flo(self)               ((SHIFTR((self)->word,  6,  5) << 2) | SHIFTR((self)->word,  0,  2))
@@ -74,5 +78,10 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
 
 NON_NULL(1)
 void RabbitizerInstructionR5900_processUniqueId(RabbitizerInstruction *self);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

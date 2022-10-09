@@ -137,6 +137,21 @@ void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self
 #include "instructions/instr_id/rsp/rsp_regimm.inc"
     }
 
+    if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
+        switch (self->uniqueId) {
+            case RABBITIZER_INSTR_ID_rsp_bgezal:
+                if (RAB_INSTR_GET_rs(self) == 0) {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoBal) {
+                        self->uniqueId = RABBITIZER_INSTR_ID_rsp_bal;
+                    }
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
