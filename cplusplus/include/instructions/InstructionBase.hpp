@@ -125,6 +125,8 @@ namespace rabbitizer {
         void Set_op(uint8_t val);
 
         void Set_code(uint32_t val);
+        void Set_code_upper(uint32_t val);
+        void Set_code_lower(uint32_t val);
 
         void Set_copraw(uint32_t val);
 

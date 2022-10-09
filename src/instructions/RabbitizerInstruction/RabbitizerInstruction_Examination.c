@@ -186,6 +186,7 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
         case RAB_OPERAND_cpu_cop2t:
         case RAB_OPERAND_cpu_op:
         case RAB_OPERAND_cpu_code:
+        case RAB_OPERAND_cpu_code_lower:
         case RAB_OPERAND_cpu_copraw:
         case RAB_OPERAND_cpu_label:
             break;
@@ -588,6 +589,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RAB_OPERAND_cpu_code:
                 validbits = RAB_INSTR_PACK_code(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_cpu_code_lower:
+                validbits = RAB_INSTR_PACK_code_lower(validbits, ~0);
                 break;
 
             case RAB_OPERAND_cpu_copraw:

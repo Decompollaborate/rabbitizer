@@ -95,6 +95,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_immediate(word, value)       (BITREPACK((word), (value),  0, 16))
 
 #define RAB_INSTR_PACK_code(word, value)            (BITREPACK((word), (value),  6, 20))
+#define RAB_INSTR_PACK_code_upper(word, value)      (BITREPACK((word), (value), 16, 10))
+#define RAB_INSTR_PACK_code_lower(word, value)      (BITREPACK((word), (value),  6, 10))
 
 #define RAB_INSTR_PACK_copraw(word, value)          (BITREPACK((word), (value),  0, 25))
 

@@ -129,6 +129,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_code(self->word, 0);
                 break;
 
+            case RAB_OPERAND_cpu_code_lower:
+                self->word = RAB_INSTR_PACK_code_lower(self->word, 0);
+                break;
+
             case RAB_OPERAND_cpu_copraw:
                 self->word = RAB_INSTR_PACK_copraw(self->word, 0);
                 break;

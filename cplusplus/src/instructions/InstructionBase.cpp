@@ -585,6 +585,30 @@ void InstructionBase::Set_code(uint32_t val) {
     this->instr.word = RAB_INSTR_PACK_code(this->instr.word, val);
 }
 
+void InstructionBase::Set_code_upper(uint32_t val) {
+#if 0
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_code_upper)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code_upper' operand.");
+    }
+#endif
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_code_upper(this->instr.word, val);
+}
+
+void InstructionBase::Set_code_lower(uint32_t val) {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_code_lower)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code_lower' operand.");
+    }
+#endif
+
+    this->instr.word = RAB_INSTR_PACK_code_lower(this->instr.word, val);
+}
+
 void InstructionBase::Set_copraw(uint32_t val) {
 #ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_copraw)) {

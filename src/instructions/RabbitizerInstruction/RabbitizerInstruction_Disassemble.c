@@ -140,6 +140,15 @@ size_t RabbitizerOperandType_process_cpu_code(const RabbitizerInstruction *self,
     return totalSize;
 }
 
+size_t RabbitizerOperandType_process_cpu_code_lower(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    int code_lower = RAB_INSTR_GET_code_lower(self);
+
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", code_lower);
+
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_process_cpu_copraw(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
