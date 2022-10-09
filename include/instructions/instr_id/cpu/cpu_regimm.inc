@@ -22,4 +22,4 @@ RABBITIZER_DEF_INSTR_ID(cpu, 0x13, bgezall, .operands={RAB_OPERAND_cpu_rs, RAB_O
 
 // Pseudo-Instruction Unique IDs
 
-RABBITIZER_DEF_INSTR_ID(cpu, -0x11, bal,    .operands={RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // Branch and Link
+RABBITIZER_DEF_INSTR_ID(cpu, -0x11, bal,    .operands={RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true, .doesLink=true, .isPseudo=true, .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I) // Branch and Link
