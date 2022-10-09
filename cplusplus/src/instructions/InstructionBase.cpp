@@ -277,20 +277,22 @@ uint32_t InstructionBase::Get_code() const {
     return RAB_INSTR_GET_code(&this->instr);
 }
 uint32_t InstructionBase::Get_code_upper() const {
+#if 0
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::cpu_code)) {
+    if (!hasOperandAlias(OperandType::cpu_code_upper)) {
         // TODO: make a rabbitizer exception class
-        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code' operand.");
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code_upper' operand.");
     }
+#endif
 #endif
 
     return RAB_INSTR_GET_code_upper(&this->instr);
 }
 uint32_t InstructionBase::Get_code_lower() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::cpu_code)) {
+    if (!hasOperandAlias(OperandType::cpu_code_lower)) {
         // TODO: make a rabbitizer exception class
-        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code' operand.");
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'code_lower' operand.");
     }
 #endif
 
