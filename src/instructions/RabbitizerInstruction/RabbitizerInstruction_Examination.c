@@ -155,6 +155,9 @@ bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, Ra
             if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_immediate_base)) {
                 return true;
             }
+            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_branch_target_label)) {
+                return true;
+            }
             if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_immediate_base)) {
                 return true;
             }
