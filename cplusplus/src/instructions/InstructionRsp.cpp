@@ -9,7 +9,6 @@
 
 using namespace rabbitizer;
 
-
 InstructionRsp::InstructionRsp(uint32_t word, uint32_t vram) : InstructionBase() {
     RabbitizerInstructionRsp_init(&this->instr, word, vram);
     RabbitizerInstructionRsp_processUniqueId(&this->instr);
@@ -18,7 +17,6 @@ InstructionRsp::InstructionRsp(uint32_t word, uint32_t vram) : InstructionBase()
 InstructionRsp::~InstructionRsp() {
     RabbitizerInstructionRsp_destroy(&this->instr);
 }
-
 
 Registers::Rsp::Gpr InstructionRsp::GetRsp_rs() const {
 #ifdef RAB_SANITY_CHECKS

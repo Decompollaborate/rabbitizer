@@ -10,7 +10,6 @@
 
 using namespace rabbitizer;
 
-
 RabbitizerInstruction *InstructionBase::getCPtr() {
     return &this->instr;
 }
@@ -336,7 +335,6 @@ uint8_t InstructionBase::Get_stype() const {
 
 /* getters */
 
-
 /* setters */
 
 void InstructionBase::Set_opcode(uint8_t val) {
@@ -648,7 +646,6 @@ void InstructionBase::Set_stype(uint8_t val) {
 
 /* setters */
 
-
 /* more getters */
 
 uint32_t InstructionBase::getRaw() const {
@@ -860,7 +857,6 @@ bool InstructionBase::mustDisasmAsData() const {
     return RabbitizerInstruction_mustDisasmAsData(&this->instr);
 }
 
-
 std::string InstructionBase::disassembleOperands() const {
     const char *immOverridePtr = NULL;
     size_t immOverrideLength = 0;
@@ -986,7 +982,6 @@ std::string InstructionBase::disassembleAsData(int extraLJust) const {
 
     return output;
 }
-
 
 std::string InstructionBase::disassemble(int extraLJust) const {
     const char *immOverridePtr = NULL;

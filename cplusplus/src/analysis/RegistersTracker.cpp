@@ -5,7 +5,6 @@
 
 using namespace rabbitizer;
 
-
 RegistersTracker::RegistersTracker() {
     RabbitizerRegistersTracker_init(&this->tracker, NULL);
 }
@@ -16,14 +15,12 @@ RegistersTracker::~RegistersTracker() {
     RabbitizerRegistersTracker_destroy(&this->tracker);
 }
 
-
 RabbitizerRegistersTracker *RegistersTracker::getCPtr() {
     return &this->tracker;
 }
 const RabbitizerRegistersTracker *RegistersTracker::getCPtr() const {
     return &this->tracker;
 }
-
 
 bool RegistersTracker::moveRegisters(const InstructionBase &instr) {
     return RabbitizerRegistersTracker_moveRegisters(&this->tracker, instr.getCPtr());

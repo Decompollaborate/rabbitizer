@@ -140,7 +140,8 @@ size_t RabbitizerOperandType_process_cpu_code(const RabbitizerInstruction *self,
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_cpu_code_lower(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_cpu_code_lower(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
+                                                    UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     int code_lower = RAB_INSTR_GET_code_lower(self);
 
@@ -804,8 +805,8 @@ const OperandCallback instrOpercandCallbacks[] = {
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {
     size_t totalSize = 0;
-    char auxBuffer[0x100] = {0};
-    char immOverride[0x100] = {0};
+    char auxBuffer[0x100] = { 0 };
+    char immOverride[0x100] = { 0 };
 
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
         RabbitizerOperandType operand;

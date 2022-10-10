@@ -9,7 +9,6 @@
 
 using namespace rabbitizer;
 
-
 InstructionR5900::InstructionR5900(uint32_t word, uint32_t vram) : InstructionBase() {
     RabbitizerInstructionR5900_init(&this->instr, word, vram);
     RabbitizerInstructionR5900_processUniqueId(&this->instr);
@@ -18,7 +17,6 @@ InstructionR5900::InstructionR5900(uint32_t word, uint32_t vram) : InstructionBa
 InstructionR5900::~InstructionR5900() {
     RabbitizerInstructionR5900_destroy(&this->instr);
 }
-
 
 Registers::R5900::VF InstructionR5900::GetR5900_vfs() const {
 #ifdef RAB_SANITY_CHECKS
@@ -85,7 +83,6 @@ Registers::R5900::VI InstructionR5900::GetR5900_vid() const {
 
     return static_cast<Registers::R5900::VI>(RAB_INSTR_R5900_GET_vid(&this->instr));
 }
-
 
 uint8_t InstructionR5900::GetR5900_mmi_function() const {
     return RAB_INSTR_R5900_GET_mmi_function(&this->instr);

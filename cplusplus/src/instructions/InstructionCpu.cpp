@@ -5,7 +5,6 @@
 
 using namespace rabbitizer;
 
-
 InstructionCpu::InstructionCpu(uint32_t word, uint32_t vram) : InstructionBase() {
     RabbitizerInstruction_init(&this->instr, word, vram);
     RabbitizerInstruction_processUniqueId(&this->instr);
