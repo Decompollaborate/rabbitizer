@@ -804,15 +804,24 @@ const OperandCallback instrOpercandCallbacks[] = {
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {
     size_t totalSize = 0;
+    char auxBuffer[0x100] = {0};
+    char immOverride[0x100] = {0};
 
     for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
+        RabbitizerOperandType operand;
+        OperandCallback callback;
+
         if (i != 0) {
             totalSize += 2;
         }
 
-        // A bit arbitrary, but no operand should be longer than 25 characters
-        totalSize += 25;
-        totalSize += immOverrideLength;
+        operand = self->descriptor->operands[i];
+        assert(operand > RAB_OPERAND_ALL_INVALID);
+        assert(operand < RAB_OPERAND_ALL_MAX);
+
+        callback = instrOpercandCallbacks[operand];
+        assert(callback != NULL);
+        totalSize += callback(self, auxBuffer, immOverride, immOverrideLength);
     }
 
     return totalSize;
