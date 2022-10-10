@@ -18,7 +18,9 @@ LDFLAGS         := -Lbuild -lrabbitizer
 LDXXFLAGS       := -Lbuild -lrabbitizerpp
 WARNINGS        := -Wall -Wextra -Wpedantic
 # WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded
-WARNINGS        += -Werror=implicit-function-declaration -Werror=incompatible-pointer-types -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
+WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
+WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
+WARNINGS_CXX    :=
 
 ifeq ($(CC),gcc)
     WARNINGS    += -Wno-cast-function-type
@@ -103,7 +105,7 @@ format:
 	clang-format-11 -i -style=file $(CXX_FILES)
 
 tidy:
-	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS)
+	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS)
 
 tests: build/test.elf build/rsptest.elf build/r5900test.elf build/registersTrackerTest.elf build/tests/cplusplus/test.elf
 
@@ -115,10 +117,10 @@ tests: build/test.elf build/rsptest.elf build/r5900test.elf build/registersTrack
 #### Various Recipes ####
 
 build/%.elf: %.c | $(STATIC_LIB)
-	$(CC) -MMD $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) -MMD $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 build/%.elf: %.cpp | $(STATIC_LIB_XX)
-	$(CXX) -MMD $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(CXXFLAGS) -o $@ $^ $(LDXXFLAGS)
+	$(CXX) -MMD $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $^ $(LDXXFLAGS)
 
 build/%.a:
 	$(AR) rcs $@ $^
@@ -128,11 +130,11 @@ build/%.so:
 
 build/%.o: %.c
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
-	$(CC) -MMD -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(CFLAGS) -o $@ $<
+	$(CC) -MMD -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $<
 
 build/%.o: %.cpp
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
-	$(CXX) -MMD -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(CXXFLAGS) -o $@ $<
+	$(CXX) -MMD -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $<
 
 
 -include $(DEP_FILES)
