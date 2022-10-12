@@ -67,6 +67,9 @@ OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
 
 TESTS_DIRS      := $(shell find tests -type d)
+TESTS_C         := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.c))
+TESTS_CXX       := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.cpp))
+TESTS_ELFS      := $(foreach f,$(TESTS_C:.c=.elf) $(TESTS_CXX:.cpp=.elf),build/$f)
 
 STATIC_LIB      := build/librabbitizer.a
 DYNAMIC_LIB     := build/librabbitizer.so
@@ -107,7 +110,7 @@ format:
 tidy:
 	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS)
 
-tests: build/test.elf build/rsptest.elf build/r5900test.elf build/registersTrackerTest.elf build/tests/cplusplus/test.elf
+tests: $(TESTS_ELFS)
 
 .PHONY: all clean distclean format tidy tests
 .DEFAULT_GOAL := all
@@ -138,3 +141,6 @@ build/%.o: %.cpp
 
 
 -include $(DEP_FILES)
+
+# Print target for debugging
+print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
