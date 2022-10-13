@@ -47,6 +47,9 @@ bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *s
 bool RabbitizerInstrDescriptor_isJump(const RabbitizerInstrDescriptor *self) {
     return self->isJump;
 }
+bool RabbitizerInstrDescriptor_isJumpWithAddress(const RabbitizerInstrDescriptor *self) {
+    return self->isJumpWithAddress;
+}
 bool RabbitizerInstrDescriptor_isTrap(const RabbitizerInstrDescriptor *self) {
     return self->isTrap;
 }

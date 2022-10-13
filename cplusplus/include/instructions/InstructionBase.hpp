@@ -206,6 +206,7 @@ namespace rabbitizer {
         bool isBranch() const;
         bool isBranchLikely() const;
         bool isJump() const;
+        bool isJumpWithAddress() const;
         bool isTrap() const;
 
         bool isFloat() const;

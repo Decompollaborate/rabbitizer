@@ -245,6 +245,7 @@ DEF_DESCRIPTOR_METHOD_BOOL(isRegimmType)
 DEF_DESCRIPTOR_METHOD_BOOL(isBranch)
 DEF_DESCRIPTOR_METHOD_BOOL(isBranchLikely)
 DEF_DESCRIPTOR_METHOD_BOOL(isJump)
+DEF_DESCRIPTOR_METHOD_BOOL(isJumpWithAddress)
 DEF_DESCRIPTOR_METHOD_BOOL(isTrap)
 DEF_DESCRIPTOR_METHOD_BOOL(isFloat)
 DEF_DESCRIPTOR_METHOD_BOOL(isDouble)
@@ -351,6 +352,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isBranch, ""),
     METHOD_NO_ARGS(isBranchLikely, ""),
     METHOD_NO_ARGS(isJump, ""),
+    METHOD_NO_ARGS(isJumpWithAddress, ""),
     METHOD_NO_ARGS(isTrap, ""),
     METHOD_NO_ARGS(isFloat, ""),
     METHOD_NO_ARGS(isDouble, ""),

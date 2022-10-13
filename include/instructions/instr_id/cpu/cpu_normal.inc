@@ -7,6 +7,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_label},
     .instrType=RABBITIZER_INSTR_TYPE_J,
     .isJump=true,
+    .isJumpWithAddress=true,
     .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
 ) // Jump
 RABBITIZER_DEF_INSTR_ID(
@@ -14,6 +15,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_label},
     .instrType=RABBITIZER_INSTR_TYPE_J,
     .isJump=true,
+    .isJumpWithAddress=true,
     .doesLink=true,
     .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
 ) // Jump And Link

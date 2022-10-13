@@ -6,13 +6,15 @@ RABBITIZER_DEF_INSTR_ID(
     rsp, 0x02, j,
     .operands={RAB_OPERAND_cpu_label},
     .instrType=RABBITIZER_INSTR_TYPE_J,
-    .isJump=true
+    .isJump=true,
+    .isJumpWithAddress=true
 ) // Jump
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x03, jal,
     .operands={RAB_OPERAND_cpu_label},
     .instrType=RABBITIZER_INSTR_TYPE_J,
     .isJump=true,
+    .isJumpWithAddress=true,
     .doesLink=true
 ) // Jump And Link
 

@@ -51,6 +51,10 @@ typedef struct RabbitizerInstrDescriptor {
      */
     bool isJump;
     /**
+     * The target address of this jump is encoded in the instruction (MIPS: J and JAL)
+     */
+    bool isJumpWithAddress;
+    /**
      * Triggers a trap on the processor
      */
     bool isTrap;
@@ -148,6 +152,8 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isJump(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_isJumpWithAddress(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isTrap(const RabbitizerInstrDescriptor *self);
 

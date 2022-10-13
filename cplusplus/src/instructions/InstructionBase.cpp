@@ -797,6 +797,9 @@ bool InstructionBase::isBranchLikely() const {
 bool InstructionBase::isJump() const {
     return RabbitizerInstrDescriptor_isJump(this->instr.descriptor);
 }
+bool InstructionBase::isJumpWithAddress() const {
+    return RabbitizerInstrDescriptor_isJumpWithAddress(this->instr.descriptor);
+}
 bool InstructionBase::isTrap() const {
     return RabbitizerInstrDescriptor_isTrap(this->instr.descriptor);
 }
