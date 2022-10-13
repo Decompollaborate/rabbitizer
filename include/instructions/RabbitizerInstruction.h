@@ -171,11 +171,7 @@ NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self);
 
 NODISCARD NON_NULL(1) PURE
-uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self);
-NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self);
-NODISCARD NON_NULL(1) PURE
-uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self);
 

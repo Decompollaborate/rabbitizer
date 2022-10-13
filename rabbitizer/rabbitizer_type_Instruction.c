@@ -68,7 +68,7 @@ static PyMemberDef rabbitizer_type_Instruction_members[] = {
 
 
 #define DEF_MEMBER_GET_UINT(name) \
-    static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         return PyLong_FromUnsignedLong(RAB_INSTR_GET_##name(&self->instr)); \
     }
 
@@ -109,7 +109,7 @@ DEF_MEMBER_GET_REGGPR(rd)
 
 DEF_MEMBER_GET_UINT(sa)
 
-static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
+static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     PyObject *enumInstance = rabbitizer_enum_InstrId_enumvalues[self->instr.uniqueId].instance;
 
     if (enumInstance == NULL) {
@@ -138,17 +138,19 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
 
 
 #define DEF_METHOD_GET_UINT(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         return PyLong_FromUnsignedLong(RabbitizerInstruction_##name(&self->instr)); \
     }
 
 #define DEF_METHOD_GET_INT(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         return PyLong_FromLong(RabbitizerInstruction_##name(&self->instr)); \
     }
 
 DEF_METHOD_GET_UINT(getRaw)
-DEF_METHOD_GET_UINT(getImmediate)
+static PyObject *rabbitizer_type_Instruction_getImmediate(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    return PyLong_FromUnsignedLong(RAB_INSTR_GET_immediate(&self->instr));
+}
 DEF_METHOD_GET_INT(getProcessedImmediate)
 DEF_METHOD_GET_UINT(getInstrIndexAsVram)
 DEF_METHOD_GET_INT(getBranchOffset)
@@ -168,14 +170,14 @@ static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizer
     return PyLong_FromLong(RabbitizerInstruction_getGenericBranchOffset(&self->instr, currentVram));
 }
 
-static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
+static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     RabbitizerInstruction_blankOut(&self->instr);
     Py_RETURN_NONE;
 }
 
 
 #define DEF_METHOD_BOOL(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         if (RabbitizerInstruction_##name(&self->instr)) { \
             Py_RETURN_TRUE; \
         } \
@@ -190,7 +192,7 @@ DEF_METHOD_BOOL(isJrRa)
 DEF_METHOD_BOOL(isJrNotRa)
 DEF_METHOD_BOOL(hasDelaySlot)
 
-static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
+static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     const char *type = RabbitizerInstruction_mapInstrToType(&self->instr);
 
     if (type != NULL) {
@@ -292,7 +294,7 @@ static PyObject *rabbitizer_type_Instruction_hasOperandAlias(PyRabbitizerInstruc
 DEF_METHOD_BOOL(isValid)
 
 #define DEF_DESCRIPTOR_METHOD_BOOL(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         if (RabbitizerInstrDescriptor_##name(self->instr.descriptor)) { \
             Py_RETURN_TRUE; \
         } \
