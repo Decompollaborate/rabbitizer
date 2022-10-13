@@ -7,8 +7,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_label},
     .instrType=RABBITIZER_INSTR_TYPE_J,
     .isJump=true,
-    .isJumpWithAddress=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .isJumpWithAddress=true
 ) // Jump
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x03, jal,
@@ -16,8 +15,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_J,
     .isJump=true,
     .isJumpWithAddress=true,
-    .doesLink=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLink=true
 ) // Jump And Link
 
 // OP rs, rt, IMM
@@ -25,31 +23,27 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x04, beq,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .isBranch=true
 ) // Branch on EQual
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x05, bne,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .isBranch=true
 ) // Branch on Not Equal
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x14, beql,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .isBranchLikely=true
 ) // Branch on EQual Likely
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x15, bnel,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .isBranchLikely=true
 ) // Branch on Not Equal Likely
 
 // OP rs, IMM
@@ -57,31 +51,27 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x06, blez,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .isBranch=true
 ) // Branch on Less than or Equal to Zero
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x16, blezl,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .isBranchLikely=true
 ) // Branch on Less than or Equal to Zero Likely
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x07, bgtz,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .isBranch=true
 ) // Branch on Greater Than Zero
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x17, bgtzl,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .isBranchLikely=true
 ) // Branch on Greater Than Zero Likely
 
 // OP rt, rs, IMM
@@ -91,38 +81,33 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .notEmitedByCompilers=true,
-    .canBeLo=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .canBeLo=true
 ) // Add Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x09, addiu,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
-    .canBeLo=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .canBeLo=true
 ) // Add Immediate Unsigned Word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0A, slti,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .modifiesRt=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .modifiesRt=true
 ) // Set on Less Than Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0B, sltiu,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .modifiesRt=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .modifiesRt=true
 ) // Set on Less Than Immediate Unsigned
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0C, andi,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isUnsigned=true,
-    .modifiesRt=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .modifiesRt=true
 ) // And Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0D, ori,
@@ -130,32 +115,28 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isUnsigned=true,
     .modifiesRt=true,
-    .canBeLo=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .canBeLo=true
 ) // Or Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0E, xori,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isUnsigned=true,
-    .modifiesRt=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .modifiesRt=true
 ) // eXclusive OR Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x18, daddi,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
-    .canBeLo=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .canBeLo=true
 ) // Doubleword add Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x19, daddiu,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
-    .canBeLo=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .canBeLo=true
 ) // Doubleword add Immediate Unsigned
 
 // OP rt, IMM
@@ -165,8 +146,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isUnsigned=true,
     .modifiesRt=true,
-    .canBeHi=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .canBeHi=true
 ) // Load Upper Immediate
 
 // OP rt, IMM(base)
@@ -177,8 +157,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesLoad=true
 ) // Load Doubleword Left
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x1B, ldr,
@@ -187,8 +166,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesLoad=true
 ) // Load Doubleword Right
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x20, lb,
@@ -197,8 +175,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Byte
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x21, lh,
@@ -207,8 +184,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Halfword
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x22, lwl,
@@ -217,8 +193,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Word Left
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x23, lw,
@@ -227,8 +202,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x24, lbu,
@@ -237,8 +211,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Byte Insigned
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x25, lhu,
@@ -247,8 +220,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Halfword Unsigned
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x26, lwr,
@@ -257,8 +229,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Word Right
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x27, lwu,
@@ -267,8 +238,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesLoad=true
 ) // Load Word Unsigned
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x28, sb,
@@ -276,8 +246,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesStore=true
 ) // Store Byte
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x29, sh,
@@ -285,8 +254,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesStore=true
 ) // Store Halfword
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2A, swl,
@@ -294,8 +262,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesStore=true
 ) // Store Word Left
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2B, sw,
@@ -303,8 +270,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesStore=true
 ) // Store Word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2C, sdl,
@@ -312,8 +278,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesStore=true
 ) // Store Doubleword Left
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2D, sdr,
@@ -321,8 +286,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesStore=true
 ) // Store Doubleword Right
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2E, swr,
@@ -330,8 +294,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesStore=true
 ) // Store Word Right
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x30, ll,
@@ -340,8 +303,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .doesLoad=true
 ) // Load Linked word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x33, pref,
@@ -349,8 +311,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .canBeLo=true,
-    .doesDereference=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_IV
+    .doesDereference=true
 ) // Prefetch
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x34, lld,
@@ -359,8 +320,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesLoad=true
 ) // Load Linked Doubleword
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x37, ld,
@@ -369,8 +329,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRt=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesLoad=true
 ) // Load Doubleword
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x38, sc,
@@ -378,8 +337,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .doesStore=true
 ) // Store Conditional word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3C, scd,
@@ -387,8 +345,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesStore=true
 ) // Store Conditional Doubleword
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3F, sd,
@@ -396,8 +353,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_III
+    .doesStore=true
 ) // Store Doubleword
 
 // OP op, IMM(base)
@@ -416,8 +372,7 @@ RABBITIZER_DEF_INSTR_ID(
     .isFloat=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Word to Coprocessor z
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x35, ldc1,
@@ -427,8 +382,7 @@ RABBITIZER_DEF_INSTR_ID(
     .isDouble=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .doesLoad=true
 ) // Load Doubleword to Coprocessor z
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x39, swc1,
@@ -437,8 +391,7 @@ RABBITIZER_DEF_INSTR_ID(
     .isFloat=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesStore=true
 ) // Store Word from Coprocessor z
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3D, sdc1,
@@ -448,8 +401,7 @@ RABBITIZER_DEF_INSTR_ID(
     .isDouble=true,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .doesStore=true
 ) // Store Doubleword from Coprocessor z
 
 // OP cop2t, IMM(base)
@@ -459,8 +411,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesLoad=true
 ) // Load Word to Coprocessor z
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x36, ldc2,
@@ -468,8 +419,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesLoad=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .doesLoad=true
 ) // Load Doubleword to Coprocessor z
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3A, swc2,
@@ -477,8 +427,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .doesStore=true
 ) // Store Word from Coprocessor z
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3E, sdc2,
@@ -486,8 +435,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .canBeLo=true,
     .doesDereference=true,
-    .doesStore=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .doesStore=true
 ) // Store Doubleword from Coprocessor z
 
 

@@ -4,8 +4,7 @@
 RABBITIZER_DEF_INSTR_ID(
     r5900, , INVALID,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate},
-    .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-    .architectureVersion=-1
+    .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
 )
 
 #include "instructions/instr_id/r5900/r5900_normal.inc"

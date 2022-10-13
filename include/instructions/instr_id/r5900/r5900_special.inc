@@ -22,8 +22,7 @@
 RABBITIZER_DEF_INSTR_ID_ALTNAME(
     r5900, -0x0F, sync_p, sync.p,
     .operands={0},
-    .instrType=RABBITIZER_INSTR_TYPE_R,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_II
+    .instrType=RABBITIZER_INSTR_TYPE_R
 ) // Sync
 
 RABBITIZER_DEF_INSTR_ID(

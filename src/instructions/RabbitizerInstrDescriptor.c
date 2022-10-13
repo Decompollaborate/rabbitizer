@@ -101,7 +101,3 @@ bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self
 bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self) {
     return self->isPseudo;
 }
-
-RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self) {
-    return self->architectureVersion;
-}

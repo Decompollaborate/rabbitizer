@@ -17,6 +17,7 @@ extern "C" {
 #endif
 
 
+//! @deprecated
 typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_UNKNOWN,
     RABBITIZER_INSTR_TYPE_J,
@@ -25,15 +26,6 @@ typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_REGIMM,
     RABBITIZER_INSTR_TYPE_MAX,
 } RabbitizerInstrType;
-
-typedef enum RabbitizerArchitectureVersion {
-    RABBITIZER_ARCHVERSION_INVALID=-1,
-    RABBITIZER_ARCHVERSION_UNKNOWN,
-    RABBITIZER_ARCHVERSION_MIPS_I,
-    RABBITIZER_ARCHVERSION_MIPS_II,
-    RABBITIZER_ARCHVERSION_MIPS_III,
-    RABBITIZER_ARCHVERSION_MIPS_IV
-} RabbitizerArchitectureVersion;
 
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];
@@ -124,8 +116,6 @@ typedef struct RabbitizerInstrDescriptor {
      * This instruction is a pseudo-instruction
      */
     bool isPseudo;
-
-    RabbitizerArchitectureVersion architectureVersion; // TODO: consider removing
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -190,9 +180,6 @@ bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
-
-NODISCARD NON_NULL(1) PURE
-RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self);
 
 
 #ifdef __cplusplus

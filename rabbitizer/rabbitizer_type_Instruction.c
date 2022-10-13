@@ -323,8 +323,6 @@ DEF_DESCRIPTOR_METHOD_BOOL(doesLoad)
 DEF_DESCRIPTOR_METHOD_BOOL(doesStore)
 DEF_DESCRIPTOR_METHOD_BOOL(maybeIsMove)
 DEF_DESCRIPTOR_METHOD_BOOL(isPseudo)
-// TODO: create an enum type for architectureVersion
-// architectureVersion
 
 
 static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
@@ -433,7 +431,6 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(doesStore, ""),
     METHOD_NO_ARGS(maybeIsMove, ""),
     METHOD_NO_ARGS(isPseudo, ""),
-    // METHOD_NO_ARGS(getArchitectureVersion, ""),
 
     METHOD_ARGS(disassemble, "description"),
 

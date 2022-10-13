@@ -39,6 +39,5 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isBranch=true,
     .doesLink=true,
-    .isPseudo=true,
-    .architectureVersion=RABBITIZER_ARCHVERSION_MIPS_I
+    .isPseudo=true
 ) // Branch and Link
