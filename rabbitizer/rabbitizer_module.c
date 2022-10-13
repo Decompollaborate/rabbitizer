@@ -34,13 +34,18 @@ typedef struct ModuleAttribute {
 
 static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_INIT(Utils),
+
     MODULE_ATTRIBUTE_GLOBAL(config),
+
     MODULE_ATTRIBUTE_TYPE(Enum),
     MODULE_ATTRIBUTE_ENUM(Abi),
     MODULE_ATTRIBUTE_ENUM(InstrCategory),
     MODULE_ATTRIBUTE_ENUM(InstrId),
+    MODULE_ATTRIBUTE_ENUM(OperandType),
+
     MODULE_ATTRIBUTE_ENUM(RegGprO32),
     MODULE_ATTRIBUTE_ENUM(RegGprN32),
+
     MODULE_ATTRIBUTE_TYPE(Instruction),
     MODULE_ATTRIBUTE_TYPE(LoPairingInfo),
     MODULE_ATTRIBUTE_TYPE(TrackedRegisterState),

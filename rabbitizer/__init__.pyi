@@ -10,6 +10,7 @@ from .Utils import *
 from .Enum import *
 from .InstrCategory import *
 from .InstrId import *
+from .OperandType import *
 
 from .RegGprO32 import *
 from .RegGprN32 import *

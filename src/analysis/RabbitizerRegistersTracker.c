@@ -112,22 +112,6 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
             default:
                 break;
         }
-    } else if (RabbitizerInstrDescriptor_isRType(instr->descriptor) ||
-               (RabbitizerInstrDescriptor_isBranch(instr->descriptor) && RabbitizerInstrDescriptor_isIType(instr->descriptor))) {
-        // $at usually is a one-use reg
-        uint8_t at = 0;
-
-        if (RAB_INSTR_GET_rs(instr) == 1) {
-            at = RAB_INSTR_GET_rs(instr);
-        } else if (RAB_INSTR_GET_rt(instr) == 1) {
-            at = RAB_INSTR_GET_rt(instr);
-        }
-
-        state = &self->registers[at];
-        if (state->hasLoValue || state->hasLuiValue || state->hasGpGot) {
-            shouldRemove = true;
-            reg = at;
-        }
     }
 
     if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor)) {
