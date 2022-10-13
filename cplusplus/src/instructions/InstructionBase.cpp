@@ -872,6 +872,10 @@ bool InstructionBase::isPseudo() const {
     return RabbitizerInstrDescriptor_isPseudo(this->instr.descriptor);
 }
 
+AccessType InstructionBase::getAccessType() const {
+    return static_cast<AccessType>(RabbitizerInstrDescriptor_getAccessType(this->instr.descriptor));
+}
+
 /* Instruction descriptor */
 
 /* Disassembly */

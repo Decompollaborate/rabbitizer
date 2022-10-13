@@ -11,6 +11,7 @@ from .Enum import *
 from .InstrCategory import *
 from .InstrId import *
 from .OperandType import *
+from .AccessType import *
 
 from .RegGprO32 import *
 from .RegGprN32 import *

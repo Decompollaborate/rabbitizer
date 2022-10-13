@@ -13,6 +13,7 @@
 #include "instructions/Registers.hpp"
 #include "instructions/OperandType.hpp"
 #include "instructions/InstrId.hpp"
+#include "instructions/AccessType.hpp"
 
 
 namespace rabbitizer {
@@ -181,6 +182,7 @@ namespace rabbitizer {
         bool isJrNotRa() const;
         bool hasDelaySlot() const;
 
+        //! @deprecated
         std::string mapInstrToType() const;
 
         bool sameOpcode(const InstructionBase &other) const;
@@ -231,6 +233,8 @@ namespace rabbitizer {
         bool maybeIsMove() const;
 
         bool isPseudo() const;
+
+        AccessType getAccessType() const;
 
         /* Instruction descriptor */
 

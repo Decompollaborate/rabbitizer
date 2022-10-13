@@ -42,6 +42,7 @@ static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_ENUM(InstrCategory),
     MODULE_ATTRIBUTE_ENUM(InstrId),
     MODULE_ATTRIBUTE_ENUM(OperandType),
+    MODULE_ATTRIBUTE_ENUM(AccessType),
 
     MODULE_ATTRIBUTE_ENUM(RegGprO32),
     MODULE_ATTRIBUTE_ENUM(RegGprN32),

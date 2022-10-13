@@ -207,6 +207,7 @@ bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self);
 
+//! @deprecated
 NODISCARD NON_NULL(1) PURE
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self);
 

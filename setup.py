@@ -9,7 +9,7 @@ setup(
         Extension(
             name="rabbitizer",
             sources=["rabbitizer/rabbitizer_module.c", "rabbitizer/rabbitizer_submodule_Utils.c", "rabbitizer/rabbitizer_type_Instruction.c", "rabbitizer/rabbitizer_global_config.c", "rabbitizer/rabbitizer_type_TrackedRegisterState.c", "rabbitizer/rabbitizer_type_RegistersTracker.c", "rabbitizer/rabbitizer_type_LoPairingInfo.c",
-            "rabbitizer/enums/rabbitizer_type_Enum.c", "rabbitizer/enums/enums_utils.c", "rabbitizer/enums/rabbitizer_enum_InstrCategory.c", "rabbitizer/enums/rabbitizer_enum_InstrId.c", "rabbitizer/enums/rabbitizer_enum_Abi.c", "rabbitizer/enums/rabbitizer_enum_OperandType.c",
+            "rabbitizer/enums/rabbitizer_type_Enum.c", "rabbitizer/enums/enums_utils.c", "rabbitizer/enums/rabbitizer_enum_InstrCategory.c", "rabbitizer/enums/rabbitizer_enum_InstrId.c", "rabbitizer/enums/rabbitizer_enum_Abi.c", "rabbitizer/enums/rabbitizer_enum_OperandType.c", "rabbitizer/enums/rabbitizer_enum_AccessType.c",
             "rabbitizer/enums/registers/rabbitizer_enum_GprO32.c", "rabbitizer/enums/registers/rabbitizer_enum_GprN32.c",
             "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Disassemble.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_ProcessUniqueId.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction.c", "src/instructions/RabbitizerInstruction/RabbitizerInstruction_Examination.c",
             "src/instructions/RabbitizerInstructionCpu/RabbitizerInstructionCpu_OperandType.c",

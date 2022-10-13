@@ -329,6 +329,16 @@ DEF_DESCRIPTOR_METHOD_BOOL(doesStore)
 DEF_DESCRIPTOR_METHOD_BOOL(maybeIsMove)
 DEF_DESCRIPTOR_METHOD_BOOL(isPseudo)
 
+static PyObject *rabbitizer_type_Instruction_getAccessType(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    RabbitizerAccessType accessType = RabbitizerInstrDescriptor_getAccessType(self->instr.descriptor);
+    PyObject *enumInstance;
+
+    enumInstance = rabbitizer_enum_AccessType_enumvalues[accessType].instance;
+
+    Py_INCREF(enumInstance);
+    return enumInstance;
+}
+
 
 static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = {"immOverride", "extraLJust", NULL};
@@ -438,6 +448,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(doesStore, ""),
     METHOD_NO_ARGS(maybeIsMove, ""),
     METHOD_NO_ARGS(isPseudo, ""),
+    METHOD_NO_ARGS(getAccessType, ""),
 
     METHOD_ARGS(disassemble, "description"),
 

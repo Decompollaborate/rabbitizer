@@ -101,3 +101,7 @@ bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self
 bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self) {
     return self->isPseudo;
 }
+
+RabbitizerAccessType RabbitizerInstrDescriptor_getAccessType(const RabbitizerInstrDescriptor *self) {
+    return self->accessType;
+}

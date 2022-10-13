@@ -11,6 +11,7 @@
 #include "RabbitizerOperandType.h"
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrSuffix.h"
+#include "RabbitizerAccessType.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -116,6 +117,8 @@ typedef struct RabbitizerInstrDescriptor {
      * This instruction is a pseudo-instruction
      */
     bool isPseudo;
+
+    RabbitizerAccessType accessType;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -180,6 +183,9 @@ bool RabbitizerInstrDescriptor_maybeIsMove(const RabbitizerInstrDescriptor *self
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+RabbitizerAccessType RabbitizerInstrDescriptor_getAccessType(const RabbitizerInstrDescriptor *self);
 
 
 #ifdef __cplusplus
