@@ -11,7 +11,6 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-
 size_t RabbitizerOperandType_process_cpu_rs(const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameGpr(RAB_INSTR_GET_rs(self));

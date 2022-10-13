@@ -11,7 +11,6 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-
 size_t RabbitizerOperandType_process_r5900_I(UNUSED const RabbitizerInstruction *self, char *dst, UNUSED const char *immOverride,
                                              UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;

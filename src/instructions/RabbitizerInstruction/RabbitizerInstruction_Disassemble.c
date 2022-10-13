@@ -12,7 +12,6 @@
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstrSuffix.h"
 
-
 #define RAB_DEF_OPERAND(prefix, operand) [RAB_OPERAND_##prefix##_##operand] = RabbitizerOperandType_process_##prefix##_##operand,
 
 const OperandCallback instrOpercandCallbacks[] = {

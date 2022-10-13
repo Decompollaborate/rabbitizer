@@ -5,6 +5,8 @@
 #define RABBITIZER_OPERAND_TYPE_H
 #pragma once
 
+#include <stddef.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
