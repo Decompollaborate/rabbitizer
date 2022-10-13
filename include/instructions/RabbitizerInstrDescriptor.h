@@ -41,29 +41,84 @@ typedef struct RabbitizerInstrDescriptor {
 
     RabbitizerInstrSuffix instrSuffix;
 
+    /**
+     * Local branch with "restricted" range, usually it doesn't jump outside the current function
+     */
     bool isBranch;
     bool isBranchLikely;
+    /**
+     * The instruction can jump inside or outside its current function
+     */
     bool isJump;
+    /**
+     * Triggers a trap on the processor
+     */
     bool isTrap;
 
+    /**
+     * The instruction performs float (any kind of float, including double precision) operations
+     */
     bool isFloat;
+    /**
+     * The instruction performs double precision float operations
+     */
     bool isDouble;
 
+    /**
+     * The instruction holds an immediate which is treated as an unsigned value,
+     * otherwise the immediate it may hold should be treated as a Two's complement value
+     */
     bool isUnsigned;
 
+    /**
+     * The instruction modifies the state of the MIPS `rt` register
+     */
     bool modifiesRt;
+    /**
+     * The instruction modifies the state of the MIPS `rd` register
+     */
     bool modifiesRd;
 
+    /**
+     * This instruction is not emited by a C compiler
+     */
     bool notEmitedByCompilers;
 
+    /**
+     * The instruction can hold the "hi" value of a %hi/%lo pair
+     */
     bool canBeHi;
+    /**
+     * The instruction can hold the "lo" value of a %hi/%lo pair
+     */
     bool canBeLo;
-    bool doesLink; // "and link" family of instructions
+    /**
+     * "and link" family of instructions
+     * The instruction stores the return address link in the MIPS $ra (GPR 31) register
+     */
+    bool doesLink;
+
+    /**
+     * This instruction performs a pointer dereference, either by loading from RAM or storing into RAM
+     */
     bool doesDereference;
-    bool doesLoad; // loads data from memory
-    bool doesStore; // stores data to memory
+    /**
+     * Dereferences a pointer and loads data from RAM
+     */
+    bool doesLoad;
+    /**
+     * Dereferences a pointer and stores data to RAM
+     */
+    bool doesStore;
+
+    /**
+     * This instruction may be the result of expanding the `move` pseudo-instruction
+     */
     bool maybeIsMove;
 
+    /**
+     * This instruction is a pseudo-instruction
+     */
     bool isPseudo;
 
     RabbitizerArchitectureVersion architectureVersion; // TODO: consider removing
