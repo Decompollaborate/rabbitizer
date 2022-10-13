@@ -703,6 +703,26 @@ int32_t InstructionBase::getGenericBranchOffset(uint32_t currentVram) const {
 
     return RabbitizerInstruction_getGenericBranchOffset(&this->instr, currentVram);
 }
+int32_t InstructionBase::getBranchOffsetGeneric() const {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_branch_target_label) && !hasOperandAlias(OperandType::cpu_label)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have either 'branch_target_label' or 'label' operands.");
+    }
+#endif
+
+    return RabbitizerInstruction_getBranchOffsetGeneric(&this->instr);
+}
+int32_t InstructionBase::getBranchVramGeneric() const {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::cpu_branch_target_label) && !hasOperandAlias(OperandType::cpu_label)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have either 'branch_target_label' or 'label' operands.");
+    }
+#endif
+
+    return RabbitizerInstruction_getBranchVramGeneric(&this->instr);
+}
 
 std::string InstructionBase::getOpcodeName() const {
     return InstrId::getOpcodeName(getUniqueId());

@@ -64,6 +64,20 @@ int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction
     return RabbitizerInstruction_getBranchOffset(self);
 }
 
+int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction *self) {
+    if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_label)) {
+        return RabbitizerInstruction_getInstrIndexAsVram(self) - self->vram;
+    }
+    return RabbitizerInstruction_getBranchOffset(self);
+}
+
+int32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *self) {
+    if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_label)) {
+        return RabbitizerInstruction_getInstrIndexAsVram(self);
+    }
+    return RabbitizerInstruction_getBranchOffset(self) + self->vram;
+}
+
 /* General getters */
 
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {

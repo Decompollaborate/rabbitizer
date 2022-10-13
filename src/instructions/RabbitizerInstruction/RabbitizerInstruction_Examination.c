@@ -48,32 +48,47 @@ bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self) {
 }
 
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_b) {
-        return true;
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_b:
+        case RABBITIZER_INSTR_ID_rsp_b:
+            return true;
+
+        case RABBITIZER_INSTR_ID_cpu_beq:
+        case RABBITIZER_INSTR_ID_rsp_beq:
+            // in case the b pseudoinstruction is disabled
+            return RAB_INSTR_GET_rt(self) == 0 && RAB_INSTR_GET_rs(self) == 0;
+
+        case RABBITIZER_INSTR_ID_cpu_j:
+        case RABBITIZER_INSTR_ID_rsp_j:
+            return RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch;
+
+        default:
+            return false;
     }
-    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_beq && RAB_INSTR_GET_rt(self) == 0 && RAB_INSTR_GET_rs(self) == 0) {
-        return true;
-    }
-    if (RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch && self->uniqueId == RABBITIZER_INSTR_ID_cpu_j) {
-        return true;
-    }
-    return false;
 }
 
 bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jr) {
-        // TODO: abi stuffs
-        return RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_ra;
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_jr:
+        case RABBITIZER_INSTR_ID_rsp_jr:
+            // TODO: abi stuffs
+            return RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_ra;
+
+        default:
+            return false;
     }
-    return false;
 }
 
 bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self) {
-    if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_jr) {
-        // TODO: abi stuffs
-        return RAB_INSTR_GET_rs(self) != RABBITIZER_REG_GPR_O32_ra;
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_jr:
+        case RABBITIZER_INSTR_ID_rsp_jr:
+            // TODO: abi stuffs
+            return RAB_INSTR_GET_rs(self) != RABBITIZER_REG_GPR_O32_ra;
+
+        default:
+            return false;
     }
-    return false;
 }
 
 bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self) {

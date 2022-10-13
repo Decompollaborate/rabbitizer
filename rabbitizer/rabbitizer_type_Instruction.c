@@ -170,6 +170,9 @@ static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizer
     return PyLong_FromLong(RabbitizerInstruction_getGenericBranchOffset(&self->instr, currentVram));
 }
 
+DEF_METHOD_GET_INT(getBranchOffsetGeneric)
+DEF_METHOD_GET_INT(getBranchVramGeneric)
+
 static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     RabbitizerInstruction_blankOut(&self->instr);
     Py_RETURN_NONE;
@@ -388,6 +391,8 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(getInstrIndexAsVram, ""),
     METHOD_NO_ARGS(getBranchOffset, ""),
     METHOD_ARGS(getGenericBranchOffset, ""),
+    METHOD_NO_ARGS(getBranchOffsetGeneric, ""),
+    METHOD_NO_ARGS(getBranchVramGeneric, ""),
     METHOD_NO_ARGS(getOpcodeName, ""),
 
     METHOD_NO_ARGS(blankOut, ""),

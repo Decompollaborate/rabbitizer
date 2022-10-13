@@ -155,7 +155,10 @@ namespace rabbitizer {
         uint32_t getInstrIndexAsVram() const;
 
         int32_t getBranchOffset() const;
+        //! @deprecated
         int32_t getGenericBranchOffset(uint32_t currentVram) const;
+        int32_t getBranchOffsetGeneric() const;
+        int32_t getBranchVramGeneric() const;
 
 
         std::string getOpcodeName() const;

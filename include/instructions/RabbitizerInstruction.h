@@ -179,6 +179,10 @@ NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram);
+NODISCARD NON_NULL(1) PURE
+int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
+int32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *self);
 
 /* General getters */
 
