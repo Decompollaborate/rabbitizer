@@ -227,6 +227,68 @@ static PyObject *rabbitizer_type_Instruction_sameOpcodeButDifferentArguments(PyR
     Py_RETURN_FALSE;
 }
 
+static PyObject *rabbitizer_type_Instruction_hasOperand(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "operand", NULL };
+    PyObject *pyOperand = NULL;
+    int enumCheck;
+    RabbitizerOperandType operandType = RAB_OPERAND_ALL_INVALID;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Enum_TypeObject, &pyOperand)) {
+        return NULL;
+    }
+
+    if (pyOperand == NULL) {
+        PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+    }
+
+    enumCheck = rabbitizer_enum_OperandType_Check(pyOperand);
+
+    if (enumCheck <= 0) {
+        if (enumCheck == 0) {
+            PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+        }
+        return NULL;
+    }
+
+    operandType = ((PyRabbitizerEnum*)pyOperand)->value;
+
+    if (RabbitizerInstruction_hasOperand(&self->instr, operandType)) {
+        Py_RETURN_TRUE;
+    }
+    Py_RETURN_FALSE;
+}
+
+static PyObject *rabbitizer_type_Instruction_hasOperandAlias(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "operand", NULL };
+    PyObject *pyOperand = NULL;
+    int enumCheck;
+    RabbitizerOperandType operandType = RAB_OPERAND_ALL_INVALID;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Enum_TypeObject, &pyOperand)) {
+        return NULL;
+    }
+
+    if (pyOperand == NULL) {
+        PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+    }
+
+    enumCheck = rabbitizer_enum_OperandType_Check(pyOperand);
+
+    if (enumCheck <= 0) {
+        if (enumCheck == 0) {
+            PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+        }
+        return NULL;
+    }
+
+    operandType = ((PyRabbitizerEnum*)pyOperand)->value;
+
+    if (RabbitizerInstruction_hasOperandAlias(&self->instr, operandType)) {
+        Py_RETURN_TRUE;
+    }
+    Py_RETURN_FALSE;
+}
+
 DEF_METHOD_BOOL(isValid)
 
 #define DEF_DESCRIPTOR_METHOD_BOOL(name) \
@@ -341,6 +403,9 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
 
     METHOD_ARGS(sameOpcode, "description"),
     METHOD_ARGS(sameOpcodeButDifferentArguments, "description"),
+
+    METHOD_ARGS(hasOperand, ""),
+    METHOD_ARGS(hasOperandAlias, ""),
 
     METHOD_NO_ARGS(isValid, ""),
 
