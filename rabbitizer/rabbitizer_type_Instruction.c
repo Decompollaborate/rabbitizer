@@ -353,6 +353,10 @@ DEF_DESCRIPTOR_METHOD_BOOL(isDouble)
 DEF_DESCRIPTOR_METHOD_BOOL(isUnsigned)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRt)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRd)
+DEF_DESCRIPTOR_METHOD_BOOL(readsHI)
+DEF_DESCRIPTOR_METHOD_BOOL(readsLO)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesHI)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesLO)
 DEF_DESCRIPTOR_METHOD_BOOL(notEmitedByCompilers)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeHi)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeLo)
@@ -474,6 +478,10 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isUnsigned, ""),
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
+    METHOD_NO_ARGS(readsHI, ""),
+    METHOD_NO_ARGS(readsLO, ""),
+    METHOD_NO_ARGS(modifiesHI, ""),
+    METHOD_NO_ARGS(modifiesLO, ""),
     METHOD_NO_ARGS(notEmitedByCompilers, ""),
     METHOD_NO_ARGS(canBeHi, ""),
     METHOD_NO_ARGS(canBeLo, ""),

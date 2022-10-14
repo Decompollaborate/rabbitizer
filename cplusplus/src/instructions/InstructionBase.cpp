@@ -846,6 +846,19 @@ bool InstructionBase::modifiesRd() const {
     return RabbitizerInstrDescriptor_modifiesRd(this->instr.descriptor);
 }
 
+bool InstructionBase::readsHI() const {
+    return RabbitizerInstrDescriptor_readsHI(this->instr.descriptor);
+}
+bool InstructionBase::readsLO() const {
+    return RabbitizerInstrDescriptor_readsLO(this->instr.descriptor);
+}
+bool InstructionBase::modifiesHI() const {
+    return RabbitizerInstrDescriptor_modifiesHI(this->instr.descriptor);
+}
+bool InstructionBase::modifiesLO() const {
+    return RabbitizerInstrDescriptor_modifiesLO(this->instr.descriptor);
+}
+
 bool InstructionBase::notEmitedByCompilers() const {
     return RabbitizerInstrDescriptor_notEmitedByCompilers(this->instr.descriptor);
 }

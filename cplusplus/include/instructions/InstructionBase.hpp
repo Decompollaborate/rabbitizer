@@ -223,6 +223,11 @@ namespace rabbitizer {
         bool modifiesRt() const;
         bool modifiesRd() const;
 
+        bool readsHI() const;
+        bool readsLO() const;
+        bool modifiesHI() const;
+        bool modifiesLO() const;
+
         bool notEmitedByCompilers() const;
 
         bool canBeHi() const;

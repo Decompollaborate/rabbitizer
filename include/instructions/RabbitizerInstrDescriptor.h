@@ -76,6 +76,11 @@ typedef struct RabbitizerInstrDescriptor {
      */
     bool modifiesRd;
 
+    bool readsHI;
+    bool readsLO;
+    bool modifiesHI;
+    bool modifiesLO;
+
     /**
      * This instruction is not emited by a C compiler
      */
@@ -162,6 +167,15 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsHI(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsLO(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesHI(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesLO(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);

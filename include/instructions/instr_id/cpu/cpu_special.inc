@@ -99,12 +99,14 @@ RABBITIZER_DEF_INSTR_ID(
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x11, mthi,
     .operands={RAB_OPERAND_cpu_rs},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true
 ) // Move To HI register
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x13, mtlo,
     .operands={RAB_OPERAND_cpu_rs},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesLO=true
 ) // Move To LO register
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x08, jr,
@@ -136,13 +138,15 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x10, mfhi,
     .operands={RAB_OPERAND_cpu_rd},
     .instrType=RABBITIZER_INSTR_TYPE_R,
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsHI=true
 ) // Move From HI register
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x12, mflo,
     .operands={RAB_OPERAND_cpu_rd},
     .instrType=RABBITIZER_INSTR_TYPE_R,
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsLO=true
 ) // Move From LO register
 
 // OP rd, rs, rt
@@ -161,48 +165,64 @@ RABBITIZER_DEF_INSTR_ID(
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x1A, div,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // DIVide word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x1B, divu,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // DIVide Unsigned word
 
 RABBITIZER_DEF_INSTR_ID_ALTNAME(
     cpu, -0x1A, sn64_div, div,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // DIVide word
 RABBITIZER_DEF_INSTR_ID_ALTNAME(
     cpu, -0x1B, sn64_divu, divu,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // DIVide Unsigned word
 
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x1E, ddiv,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // Doubleword DIVide
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x1F, ddivu,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // Doubleword DIVide Unsigned
 
 /*
 RABBITIZER_DEF_INSTR_ID(
     cpu, , ddiv,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 )
 */
 /*
 RABBITIZER_DEF_INSTR_ID(
     cpu, , ddivu,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 )
 */
 
@@ -316,22 +336,30 @@ RABBITIZER_DEF_INSTR_ID(
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x18, mult,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // MULTtiply word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x19, multu,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // MULTtiply Unsigned word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x1C, dmult,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // Doubleword MULTiply
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x1D, dmultu,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .modifiesHI=true,
+    .modifiesLO=true
 ) // Doubleword MULTiply Unsigned
 
 RABBITIZER_DEF_INSTR_ID(
