@@ -15,7 +15,7 @@ setup(
             "src/instructions/RabbitizerInstructionCpu/RabbitizerInstructionCpu_OperandType.c",
             "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp.c", "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp_ProcessUniqueId.c", "src/instructions/RabbitizerInstructionRsp/RabbitizerInstructionRsp_OperandType.c",
             "src/instructions/RabbitizerInstructionR5900/RabbitizerInstructionR5900.c", "src/instructions/RabbitizerInstructionR5900/RabbitizerInstructionR5900_ProcessUniqueId.c", "src/instructions/RabbitizerInstructionR5900/RabbitizerInstructionR5900_OperandType.c",
-            "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c", "src/instructions/RabbitizerInstrSuffix.c",
+            "src/instructions/RabbitizerInstrDescriptor.c", "src/instructions/RabbitizerInstrId.c", "src/instructions/RabbitizerRegister.c", "src/instructions/RabbitizerInstrSuffix.c", "src/instructions/RabbitizerInstrCategory.c",
             "src/analysis/RabbitizerTrackedRegisterState.c", "src/analysis/RabbitizerRegistersTracker.c", "src/analysis/RabbitizerLoPairingInfo.c",
             "src/common/Utils.c", "src/common/RabbitizerVersion.c", "src/common/RabbitizerConfig.c"],
             include_dirs=["include", "rabbitizer"],

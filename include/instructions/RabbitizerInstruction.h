@@ -13,21 +13,11 @@
 
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrDescriptor.h"
+#include "RabbitizerInstrCategory.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) RABBITIZER_INSTRCAT_##name
-
-typedef enum RabbitizerInstrCategory {
-    #include "instructions/InstrCategory.inc"
-
-    RABBITIZER_DEF_INSTR_CATEGORY(MAX),
-} RabbitizerInstrCategory;
-
-#undef RABBITIZER_DEF_INSTR_CATEGORY
 
 
 typedef struct RabbitizerInstruction {
