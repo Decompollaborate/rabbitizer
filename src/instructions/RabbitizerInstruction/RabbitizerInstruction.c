@@ -78,6 +78,20 @@ int32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *
     return RabbitizerInstruction_getBranchOffset(self) + self->vram;
 }
 
+/**
+ * @brief Returns the general purpose register (GPR) which this instruction modifies,
+ * or a negative value if the instruction does not modify the state of any GPR
+ */
+int8_t RabbitizerInstruction_getDestinationGpr(const RabbitizerInstruction *self) {
+    if (RabbitizerInstrDescriptor_modifiesRd(self->descriptor)) {
+        return RAB_INSTR_GET_rd(self);
+    }
+    if (RabbitizerInstrDescriptor_modifiesRt(self->descriptor)) {
+        return RAB_INSTR_GET_rt(self);
+    }
+    return -1;
+}
+
 /* General getters */
 
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {

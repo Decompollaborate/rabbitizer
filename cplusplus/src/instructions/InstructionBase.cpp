@@ -724,6 +724,10 @@ int32_t InstructionBase::getBranchVramGeneric() const {
     return RabbitizerInstruction_getBranchVramGeneric(&this->instr);
 }
 
+int8_t InstructionBase::getDestinationGpr() const {
+    return RabbitizerInstruction_getDestinationGpr(&this->instr);
+}
+
 std::string InstructionBase::getOpcodeName() const {
     return InstrId::getOpcodeName(getUniqueId());
 }

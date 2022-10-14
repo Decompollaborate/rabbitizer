@@ -72,6 +72,30 @@ static PyMemberDef rabbitizer_type_Instruction_members[] = {
         return PyLong_FromUnsignedLong(RAB_INSTR_GET_##name(&self->instr)); \
     }
 
+#define RETURN_GPR(reg) \
+    do { \
+        PyObject *enumInstance = NULL; \
+        \
+        switch (RabbitizerConfig_Cfg.regNames.gprAbiNames) { \
+            case RABBITIZER_ABI_N32: \
+            case RABBITIZER_ABI_N64: \
+                enumInstance = rabbitizer_enum_RegGprN32_enumvalues[reg].instance; \
+                break; \
+        \
+            default: \
+                enumInstance = rabbitizer_enum_RegGprO32_enumvalues[reg].instance; \
+                break; \
+        } \
+        \
+        if (enumInstance == NULL) { \
+            PyErr_SetString(PyExc_RuntimeError, "Internal error: invalid RegGpr enum value"); \
+            return NULL; \
+        } \
+        \
+        Py_INCREF(enumInstance); \
+        return enumInstance; \
+    } while (0)
+
 #define DEF_MEMBER_GET_REGGPR(name) \
     static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         uint32_t reg; \
@@ -172,6 +196,16 @@ static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizer
 
 DEF_METHOD_GET_INT(getBranchOffsetGeneric)
 DEF_METHOD_GET_INT(getBranchVramGeneric)
+
+static PyObject *rabbitizer_type_Instruction_getDestinationGpr(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    int8_t reg = RabbitizerInstruction_getDestinationGpr(&self->instr);
+
+    if (reg < 0) {
+        Py_RETURN_NONE;
+    }
+
+    RETURN_GPR(reg);
+}
 
 static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     RabbitizerInstruction_blankOut(&self->instr);
@@ -403,6 +437,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_ARGS(getGenericBranchOffset, ""),
     METHOD_NO_ARGS(getBranchOffsetGeneric, ""),
     METHOD_NO_ARGS(getBranchVramGeneric, ""),
+    METHOD_NO_ARGS(getDestinationGpr, ""),
     METHOD_NO_ARGS(getOpcodeName, ""),
 
     METHOD_NO_ARGS(blankOut, ""),
