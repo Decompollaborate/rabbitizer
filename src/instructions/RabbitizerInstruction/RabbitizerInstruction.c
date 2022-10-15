@@ -32,9 +32,6 @@ uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self) {
     return self->word;
 }
 
-uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_immediate(self);
-}
 int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self) {
     if (RabbitizerInstrDescriptor_isUnsigned(self->descriptor)) {
         return RAB_INSTR_GET_immediate(self);
@@ -42,12 +39,8 @@ int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction 
     return RabbitizerUtils_From2Complement(RAB_INSTR_GET_immediate(self), 16);
 }
 
-uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self) {
-    return RAB_INSTR_GET_instr_index(self);
-}
-
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self) {
-    uint32_t vram = RabbitizerInstruction_getInstrIndex(self) << 2;
+    uint32_t vram = RAB_INSTR_GET_instr_index(self) << 2;
 
     if (self->vram == 0) {
         vram |= 0x80000000;
@@ -59,7 +52,7 @@ uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *
 }
 
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self) {
-    int32_t diff = RabbitizerUtils_From2Complement(RabbitizerInstruction_getImmediate(self), 16);
+    int32_t diff = RabbitizerUtils_From2Complement(RAB_INSTR_GET_immediate(self), 16);
 
     return diff * 4 + 4;
 }
@@ -69,6 +62,34 @@ int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction
         return RabbitizerInstruction_getInstrIndexAsVram(self) - currentVram;
     }
     return RabbitizerInstruction_getBranchOffset(self);
+}
+
+int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction *self) {
+    if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_label)) {
+        return RabbitizerInstruction_getInstrIndexAsVram(self) - self->vram;
+    }
+    return RabbitizerInstruction_getBranchOffset(self);
+}
+
+int32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *self) {
+    if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_label)) {
+        return RabbitizerInstruction_getInstrIndexAsVram(self);
+    }
+    return RabbitizerInstruction_getBranchOffset(self) + self->vram;
+}
+
+/**
+ * @brief Returns the general purpose register (GPR) which this instruction modifies,
+ * or a negative value if the instruction does not modify the state of any GPR
+ */
+int8_t RabbitizerInstruction_getDestinationGpr(const RabbitizerInstruction *self) {
+    if (RabbitizerInstrDescriptor_modifiesRd(self->descriptor)) {
+        return RAB_INSTR_GET_rd(self);
+    }
+    if (RabbitizerInstrDescriptor_modifiesRt(self->descriptor)) {
+        return RAB_INSTR_GET_rt(self);
+    }
+    return -1;
 }
 
 /* General getters */
@@ -127,6 +148,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
 
             case RAB_OPERAND_cpu_code:
                 self->word = RAB_INSTR_PACK_code(self->word, 0);
+                break;
+
+            case RAB_OPERAND_cpu_code_lower:
+                self->word = RAB_INSTR_PACK_code_lower(self->word, 0);
                 break;
 
             case RAB_OPERAND_cpu_copraw:

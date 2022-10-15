@@ -68,9 +68,33 @@ static PyMemberDef rabbitizer_type_Instruction_members[] = {
 
 
 #define DEF_MEMBER_GET_UINT(name) \
-    static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         return PyLong_FromUnsignedLong(RAB_INSTR_GET_##name(&self->instr)); \
     }
+
+#define RETURN_GPR(reg) \
+    do { \
+        PyObject *enumInstance = NULL; \
+        \
+        switch (RabbitizerConfig_Cfg.regNames.gprAbiNames) { \
+            case RABBITIZER_ABI_N32: \
+            case RABBITIZER_ABI_N64: \
+                enumInstance = rabbitizer_enum_RegGprN32_enumvalues[reg].instance; \
+                break; \
+        \
+            default: \
+                enumInstance = rabbitizer_enum_RegGprO32_enumvalues[reg].instance; \
+                break; \
+        } \
+        \
+        if (enumInstance == NULL) { \
+            PyErr_SetString(PyExc_RuntimeError, "Internal error: invalid RegGpr enum value"); \
+            return NULL; \
+        } \
+        \
+        Py_INCREF(enumInstance); \
+        return enumInstance; \
+    } while (0)
 
 #define DEF_MEMBER_GET_REGGPR(name) \
     static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
@@ -109,7 +133,7 @@ DEF_MEMBER_GET_REGGPR(rd)
 
 DEF_MEMBER_GET_UINT(sa)
 
-static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
+static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     PyObject *enumInstance = rabbitizer_enum_InstrId_enumvalues[self->instr.uniqueId].instance;
 
     if (enumInstance == NULL) {
@@ -138,17 +162,19 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
 
 
 #define DEF_METHOD_GET_UINT(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         return PyLong_FromUnsignedLong(RabbitizerInstruction_##name(&self->instr)); \
     }
 
 #define DEF_METHOD_GET_INT(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         return PyLong_FromLong(RabbitizerInstruction_##name(&self->instr)); \
     }
 
 DEF_METHOD_GET_UINT(getRaw)
-DEF_METHOD_GET_UINT(getImmediate)
+static PyObject *rabbitizer_type_Instruction_getImmediate(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    return PyLong_FromUnsignedLong(RAB_INSTR_GET_immediate(&self->instr));
+}
 DEF_METHOD_GET_INT(getProcessedImmediate)
 DEF_METHOD_GET_UINT(getInstrIndexAsVram)
 DEF_METHOD_GET_INT(getBranchOffset)
@@ -168,14 +194,27 @@ static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizer
     return PyLong_FromLong(RabbitizerInstruction_getGenericBranchOffset(&self->instr, currentVram));
 }
 
-static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
+DEF_METHOD_GET_INT(getBranchOffsetGeneric)
+DEF_METHOD_GET_INT(getBranchVramGeneric)
+
+static PyObject *rabbitizer_type_Instruction_getDestinationGpr(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    int8_t reg = RabbitizerInstruction_getDestinationGpr(&self->instr);
+
+    if (reg < 0) {
+        Py_RETURN_NONE;
+    }
+
+    RETURN_GPR(reg);
+}
+
+static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     RabbitizerInstruction_blankOut(&self->instr);
     Py_RETURN_NONE;
 }
 
 
 #define DEF_METHOD_BOOL(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         if (RabbitizerInstruction_##name(&self->instr)) { \
             Py_RETURN_TRUE; \
         } \
@@ -190,7 +229,7 @@ DEF_METHOD_BOOL(isJrRa)
 DEF_METHOD_BOOL(isJrNotRa)
 DEF_METHOD_BOOL(hasDelaySlot)
 
-static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) {
+static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     const char *type = RabbitizerInstruction_mapInstrToType(&self->instr);
 
     if (type != NULL) {
@@ -227,10 +266,72 @@ static PyObject *rabbitizer_type_Instruction_sameOpcodeButDifferentArguments(PyR
     Py_RETURN_FALSE;
 }
 
+static PyObject *rabbitizer_type_Instruction_hasOperand(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "operand", NULL };
+    PyObject *pyOperand = NULL;
+    int enumCheck;
+    RabbitizerOperandType operandType = RAB_OPERAND_ALL_INVALID;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Enum_TypeObject, &pyOperand)) {
+        return NULL;
+    }
+
+    if (pyOperand == NULL) {
+        PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+    }
+
+    enumCheck = rabbitizer_enum_OperandType_Check(pyOperand);
+
+    if (enumCheck <= 0) {
+        if (enumCheck == 0) {
+            PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+        }
+        return NULL;
+    }
+
+    operandType = ((PyRabbitizerEnum*)pyOperand)->value;
+
+    if (RabbitizerInstruction_hasOperand(&self->instr, operandType)) {
+        Py_RETURN_TRUE;
+    }
+    Py_RETURN_FALSE;
+}
+
+static PyObject *rabbitizer_type_Instruction_hasOperandAlias(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "operand", NULL };
+    PyObject *pyOperand = NULL;
+    int enumCheck;
+    RabbitizerOperandType operandType = RAB_OPERAND_ALL_INVALID;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Enum_TypeObject, &pyOperand)) {
+        return NULL;
+    }
+
+    if (pyOperand == NULL) {
+        PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+    }
+
+    enumCheck = rabbitizer_enum_OperandType_Check(pyOperand);
+
+    if (enumCheck <= 0) {
+        if (enumCheck == 0) {
+            PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+        }
+        return NULL;
+    }
+
+    operandType = ((PyRabbitizerEnum*)pyOperand)->value;
+
+    if (RabbitizerInstruction_hasOperandAlias(&self->instr, operandType)) {
+        Py_RETURN_TRUE;
+    }
+    Py_RETURN_FALSE;
+}
+
 DEF_METHOD_BOOL(isValid)
 
 #define DEF_DESCRIPTOR_METHOD_BOOL(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, PyObject *Py_UNUSED(ignored)) { \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
         if (RabbitizerInstrDescriptor_##name(self->instr.descriptor)) { \
             Py_RETURN_TRUE; \
         } \
@@ -245,12 +346,17 @@ DEF_DESCRIPTOR_METHOD_BOOL(isRegimmType)
 DEF_DESCRIPTOR_METHOD_BOOL(isBranch)
 DEF_DESCRIPTOR_METHOD_BOOL(isBranchLikely)
 DEF_DESCRIPTOR_METHOD_BOOL(isJump)
+DEF_DESCRIPTOR_METHOD_BOOL(isJumpWithAddress)
 DEF_DESCRIPTOR_METHOD_BOOL(isTrap)
 DEF_DESCRIPTOR_METHOD_BOOL(isFloat)
 DEF_DESCRIPTOR_METHOD_BOOL(isDouble)
 DEF_DESCRIPTOR_METHOD_BOOL(isUnsigned)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRt)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRd)
+DEF_DESCRIPTOR_METHOD_BOOL(readsHI)
+DEF_DESCRIPTOR_METHOD_BOOL(readsLO)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesHI)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesLO)
 DEF_DESCRIPTOR_METHOD_BOOL(notEmitedByCompilers)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeHi)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeLo)
@@ -260,8 +366,16 @@ DEF_DESCRIPTOR_METHOD_BOOL(doesLoad)
 DEF_DESCRIPTOR_METHOD_BOOL(doesStore)
 DEF_DESCRIPTOR_METHOD_BOOL(maybeIsMove)
 DEF_DESCRIPTOR_METHOD_BOOL(isPseudo)
-// TODO: create an enum type for architectureVersion
-// architectureVersion
+
+static PyObject *rabbitizer_type_Instruction_getAccessType(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    RabbitizerAccessType accessType = RabbitizerInstrDescriptor_getAccessType(self->instr.descriptor);
+    PyObject *enumInstance;
+
+    enumInstance = rabbitizer_enum_AccessType_enumvalues[accessType].instance;
+
+    Py_INCREF(enumInstance);
+    return enumInstance;
+}
 
 
 static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
@@ -325,6 +439,9 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(getInstrIndexAsVram, ""),
     METHOD_NO_ARGS(getBranchOffset, ""),
     METHOD_ARGS(getGenericBranchOffset, ""),
+    METHOD_NO_ARGS(getBranchOffsetGeneric, ""),
+    METHOD_NO_ARGS(getBranchVramGeneric, ""),
+    METHOD_NO_ARGS(getDestinationGpr, ""),
     METHOD_NO_ARGS(getOpcodeName, ""),
 
     METHOD_NO_ARGS(blankOut, ""),
@@ -341,6 +458,9 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_ARGS(sameOpcode, "description"),
     METHOD_ARGS(sameOpcodeButDifferentArguments, "description"),
 
+    METHOD_ARGS(hasOperand, ""),
+    METHOD_ARGS(hasOperandAlias, ""),
+
     METHOD_NO_ARGS(isValid, ""),
 
     METHOD_NO_ARGS(isUnknownType, ""),
@@ -351,12 +471,17 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isBranch, ""),
     METHOD_NO_ARGS(isBranchLikely, ""),
     METHOD_NO_ARGS(isJump, ""),
+    METHOD_NO_ARGS(isJumpWithAddress, ""),
     METHOD_NO_ARGS(isTrap, ""),
     METHOD_NO_ARGS(isFloat, ""),
     METHOD_NO_ARGS(isDouble, ""),
     METHOD_NO_ARGS(isUnsigned, ""),
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
+    METHOD_NO_ARGS(readsHI, ""),
+    METHOD_NO_ARGS(readsLO, ""),
+    METHOD_NO_ARGS(modifiesHI, ""),
+    METHOD_NO_ARGS(modifiesLO, ""),
     METHOD_NO_ARGS(notEmitedByCompilers, ""),
     METHOD_NO_ARGS(canBeHi, ""),
     METHOD_NO_ARGS(canBeLo, ""),
@@ -366,7 +491,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(doesStore, ""),
     METHOD_NO_ARGS(maybeIsMove, ""),
     METHOD_NO_ARGS(isPseudo, ""),
-    // METHOD_NO_ARGS(getArchitectureVersion, ""),
+    METHOD_NO_ARGS(getAccessType, ""),
 
     METHOD_ARGS(disassemble, "description"),
 

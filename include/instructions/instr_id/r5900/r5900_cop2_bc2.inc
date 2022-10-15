@@ -15,7 +15,25 @@
 
 // TODO: operands and properties
 
-RABBITIZER_DEF_INSTR_ID(r5900, 0x00, bc2f,  .operands={RAB_OPERAND_cpu_branch_target_label}, .isBranch=true)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x01, bc2t,  .operands={RAB_OPERAND_cpu_branch_target_label}, .isBranch=true)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x02, bc2fl, .operands={RAB_OPERAND_cpu_branch_target_label}, .isBranch=true, .isBranchLikely=true)
-RABBITIZER_DEF_INSTR_ID(r5900, 0x03, bc2tl, .operands={RAB_OPERAND_cpu_branch_target_label}, .isBranch=true, .isBranchLikely=true)
+RABBITIZER_DEF_INSTR_ID(
+    r5900, 0x00, bc2f,
+    .operands={RAB_OPERAND_cpu_branch_target_label},
+    .isBranch=true
+)
+RABBITIZER_DEF_INSTR_ID(
+    r5900, 0x01, bc2t,
+    .operands={RAB_OPERAND_cpu_branch_target_label},
+    .isBranch=true
+)
+RABBITIZER_DEF_INSTR_ID(
+    r5900, 0x02, bc2fl,
+    .operands={RAB_OPERAND_cpu_branch_target_label},
+    .isBranch=true,
+    .isBranchLikely=true
+)
+RABBITIZER_DEF_INSTR_ID(
+    r5900, 0x03, bc2tl,
+    .operands={RAB_OPERAND_cpu_branch_target_label},
+    .isBranch=true,
+    .isBranchLikely=true
+)

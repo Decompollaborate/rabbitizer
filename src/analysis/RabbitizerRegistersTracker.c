@@ -112,22 +112,6 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
             default:
                 break;
         }
-    } else if (RabbitizerInstrDescriptor_isRType(instr->descriptor) ||
-               (RabbitizerInstrDescriptor_isBranch(instr->descriptor) && RabbitizerInstrDescriptor_isIType(instr->descriptor))) {
-        // $at usually is a one-use reg
-        uint8_t at = 0;
-
-        if (RAB_INSTR_GET_rs(instr) == 1) {
-            at = RAB_INSTR_GET_rs(instr);
-        } else if (RAB_INSTR_GET_rt(instr) == 1) {
-            at = RAB_INSTR_GET_rt(instr);
-        }
-
-        state = &self->registers[at];
-        if (state->hasLoValue || state->hasLuiValue || state->hasGpGot) {
-            shouldRemove = true;
-            reg = at;
-        }
     }
 
     if (RabbitizerInstrDescriptor_modifiesRt(instr->descriptor)) {
@@ -275,7 +259,7 @@ void RabbitizerRegistersTracker_processLui(RabbitizerRegistersTracker *self, con
 
     state = &self->registers[RAB_INSTR_GET_rt(instr)];
     RabbitizerTrackedRegisterState_clear(state);
-    RabbitizerTrackedRegisterState_setHi(state, RabbitizerInstruction_getImmediate(instr), instrOffset);
+    RabbitizerTrackedRegisterState_setHi(state, RabbitizerInstruction_getProcessedImmediate(instr), instrOffset);
 
     if (prevInstr != NULL) {
         // If the previous instructions is a branch likely, then nulify
@@ -292,7 +276,7 @@ void RabbitizerRegistersTracker_processGpLoad(RabbitizerRegistersTracker *self, 
     state = &self->registers[RAB_INSTR_GET_rt(instr)];
 
     RabbitizerTrackedRegisterState_clear(state);
-    RabbitizerTrackedRegisterState_setGpLoad(state, RabbitizerInstruction_getImmediate(instr), instrOffset);
+    RabbitizerTrackedRegisterState_setGpLoad(state, RabbitizerInstruction_getProcessedImmediate(instr), instrOffset);
 }
 
 bool RabbitizerRegistersTracker_getLuiOffsetForConstant(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset) {

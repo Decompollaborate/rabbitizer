@@ -13,21 +13,11 @@
 
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrDescriptor.h"
+#include "RabbitizerInstrCategory.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) RABBITIZER_INSTRCAT_##name
-
-typedef enum RabbitizerInstrCategory {
-    #include "instructions/InstrCategory.inc"
-
-    RABBITIZER_DEF_INSTR_CATEGORY(MAX),
-} RabbitizerInstrCategory;
-
-#undef RABBITIZER_DEF_INSTR_CATEGORY
 
 
 typedef struct RabbitizerInstruction {
@@ -95,6 +85,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_immediate(word, value)       (BITREPACK((word), (value),  0, 16))
 
 #define RAB_INSTR_PACK_code(word, value)            (BITREPACK((word), (value),  6, 20))
+#define RAB_INSTR_PACK_code_upper(word, value)      (BITREPACK((word), (value), 16, 10))
+#define RAB_INSTR_PACK_code_lower(word, value)      (BITREPACK((word), (value),  6, 10))
 
 #define RAB_INSTR_PACK_copraw(word, value)          (BITREPACK((word), (value),  0, 25))
 
@@ -169,11 +161,7 @@ NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self);
 
 NODISCARD NON_NULL(1) PURE
-uint32_t RabbitizerInstruction_getImmediate(const RabbitizerInstruction *self);
-NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self);
-NODISCARD NON_NULL(1) PURE
-uint32_t RabbitizerInstruction_getInstrIndex(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self);
 
@@ -181,6 +169,12 @@ NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram);
+NODISCARD NON_NULL(1) PURE
+int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
+int32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
+int8_t RabbitizerInstruction_getDestinationGpr(const RabbitizerInstruction *self);
 
 /* General getters */
 
@@ -205,6 +199,7 @@ bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self);
 
+//! @deprecated
 NODISCARD NON_NULL(1) PURE
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self);
 

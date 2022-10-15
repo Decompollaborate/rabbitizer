@@ -47,6 +47,9 @@ bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *s
 bool RabbitizerInstrDescriptor_isJump(const RabbitizerInstrDescriptor *self) {
     return self->isJump;
 }
+bool RabbitizerInstrDescriptor_isJumpWithAddress(const RabbitizerInstrDescriptor *self) {
+    return self->isJumpWithAddress;
+}
 bool RabbitizerInstrDescriptor_isTrap(const RabbitizerInstrDescriptor *self) {
     return self->isTrap;
 }
@@ -67,6 +70,19 @@ bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self)
 }
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self) {
     return self->modifiesRd;
+}
+
+bool RabbitizerInstrDescriptor_readsHI(const RabbitizerInstrDescriptor *self) {
+    return self->readsHI;
+}
+bool RabbitizerInstrDescriptor_readsLO(const RabbitizerInstrDescriptor *self) {
+    return self->readsLO;
+}
+bool RabbitizerInstrDescriptor_modifiesHI(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesHI;
+}
+bool RabbitizerInstrDescriptor_modifiesLO(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesLO;
 }
 
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self) {
@@ -99,6 +115,6 @@ bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self) {
     return self->isPseudo;
 }
 
-RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self) {
-    return self->architectureVersion;
+RabbitizerAccessType RabbitizerInstrDescriptor_getAccessType(const RabbitizerInstrDescriptor *self) {
+    return self->accessType;
 }

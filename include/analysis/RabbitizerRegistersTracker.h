@@ -14,11 +14,14 @@
 extern "C" {
 #endif
 
+#define RAB_REGISTERS_COUNT 32
+
 
 typedef struct RabbitizerRegistersTracker {
-    RabbitizerTrackedRegisterState registers[32];
+    RabbitizerTrackedRegisterState registers[RAB_REGISTERS_COUNT];
 } RabbitizerRegistersTracker;
 
+// TODO: Change functions which use parameters as a way to return values into actual structs returned by the functions
 
 NON_NULL(1)
 void RabbitizerRegistersTracker_init(RabbitizerRegistersTracker *self, const RabbitizerRegistersTracker *other);

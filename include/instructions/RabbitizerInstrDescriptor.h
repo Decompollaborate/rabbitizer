@@ -11,12 +11,14 @@
 #include "RabbitizerOperandType.h"
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrSuffix.h"
+#include "RabbitizerAccessType.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
+//! @deprecated
 typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_UNKNOWN,
     RABBITIZER_INSTR_TYPE_J,
@@ -26,47 +28,102 @@ typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_MAX,
 } RabbitizerInstrType;
 
-typedef enum RabbitizerArchitectureVersion {
-    RABBITIZER_ARCHVERSION_INVALID=-1,
-    RABBITIZER_ARCHVERSION_UNKNOWN,
-    RABBITIZER_ARCHVERSION_MIPS_I,
-    RABBITIZER_ARCHVERSION_MIPS_II,
-    RABBITIZER_ARCHVERSION_MIPS_III,
-    RABBITIZER_ARCHVERSION_MIPS_IV
-} RabbitizerArchitectureVersion;
-
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];
     RabbitizerInstrType instrType;
 
     RabbitizerInstrSuffix instrSuffix;
 
+    /**
+     * Local branch with "restricted" range, usually it doesn't jump outside the current function
+     */
     bool isBranch;
     bool isBranchLikely;
+    /**
+     * The instruction can jump inside or outside its current function
+     */
     bool isJump;
+    /**
+     * The target address of this jump is encoded in the instruction (MIPS: J and JAL)
+     */
+    bool isJumpWithAddress;
+    /**
+     * Triggers a trap on the processor
+     */
     bool isTrap;
 
+    /**
+     * The instruction performs float (any kind of float, including double precision) operations
+     */
     bool isFloat;
+    /**
+     * The instruction performs double precision float operations
+     */
     bool isDouble;
 
+    /**
+     * The instruction holds an immediate which is treated as an unsigned value,
+     * otherwise the immediate it may hold should be treated as a Two's complement value
+     */
     bool isUnsigned;
 
+    /**
+     * The instruction modifies the state of the MIPS `rt` register
+     */
     bool modifiesRt;
+    /**
+     * The instruction modifies the state of the MIPS `rd` register
+     */
     bool modifiesRd;
 
+    bool readsHI;
+    bool readsLO;
+    bool modifiesHI;
+    bool modifiesLO;
+
+    /**
+     * This instruction is not emited by a C compiler
+     */
     bool notEmitedByCompilers;
 
+    /**
+     * The instruction can hold the "hi" value of a %hi/%lo pair
+     */
     bool canBeHi;
+    /**
+     * The instruction can hold the "lo" value of a %hi/%lo pair
+     */
     bool canBeLo;
-    bool doesLink; // "and link" family of instructions
+    /**
+     * "and link" family of instructions
+     * The instruction stores the return address link in the MIPS $ra (GPR 31) register
+     */
+    bool doesLink;
+
+    /**
+     * This instruction performs a pointer dereference, either by loading from RAM or storing into RAM
+     */
     bool doesDereference;
-    bool doesLoad; // loads data from memory
-    bool doesStore; // stores data to memory
+    /**
+     * Dereferences a pointer and loads data from RAM
+     */
+    bool doesLoad;
+    /**
+     * Dereferences a pointer and stores data to RAM
+     */
+    bool doesStore;
+
+    /**
+     * This instruction may be the result of expanding the `move` pseudo-instruction
+     */
     bool maybeIsMove;
 
+    /**
+     * This instruction is a pseudo-instruction
+     */
     bool isPseudo;
 
-    RabbitizerArchitectureVersion architectureVersion; // TODO: consider removing
+    RabbitizerAccessType accessType;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -94,6 +151,8 @@ bool RabbitizerInstrDescriptor_isBranchLikely(const RabbitizerInstrDescriptor *s
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isJump(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_isJumpWithAddress(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isTrap(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
@@ -108,6 +167,15 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsHI(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsLO(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesHI(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesLO(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);
@@ -131,7 +199,7 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
-RabbitizerArchitectureVersion RabbitizerInstrDescriptor_getArchitectureVersion(const RabbitizerInstrDescriptor *self);
+RabbitizerAccessType RabbitizerInstrDescriptor_getAccessType(const RabbitizerInstrDescriptor *self);
 
 
 #ifdef __cplusplus

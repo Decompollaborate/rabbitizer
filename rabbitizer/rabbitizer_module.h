@@ -47,6 +47,8 @@ extern PyTypeObject rabbitizer_type_RegistersTracker_TypeObject;
 DECL_ENUM(Abi)
 DECL_ENUM(InstrCategory)
 DECL_ENUM(InstrId)
+DECL_ENUM(OperandType)
+DECL_ENUM(AccessType)
 
 DECL_ENUM(RegGprO32)
 DECL_ENUM(RegGprN32)
