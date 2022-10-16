@@ -893,6 +893,10 @@ AccessType InstructionBase::getAccessType() const {
     return static_cast<AccessType>(RabbitizerInstrDescriptor_getAccessType(this->instr.descriptor));
 }
 
+bool InstructionBase::doesUnsignedMemoryAccess() const {
+    return RabbitizerInstrDescriptor_doesUnsignedMemoryAccess(this->instr.descriptor);
+}
+
 /* Instruction descriptor */
 
 /* Disassembly */

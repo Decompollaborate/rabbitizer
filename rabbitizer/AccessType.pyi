@@ -11,15 +11,11 @@ from .Enum import Enum
 class AccessType:
     INVALID: Enum
 
-    BYTE_SIGNED: Enum
-    BYTE_UNSIGNED: Enum
-    SHORT_SIGNED: Enum
-    SHORT_UNSIGNED: Enum
-    WORD_SIGNED: Enum
-    WORD_UNSIGNED: Enum
-    DOUBLEWORD_SIGNED: Enum
-    DOUBLEWORD_UNSIGNED: Enum
-    FLOAT_SIGNED: Enum
-    DOUBLEFLOAT_SIGNED: Enum
+    BYTE: Enum
+    SHORT: Enum
+    WORD: Enum
+    DOUBLEWORD: Enum
+    FLOAT: Enum
+    DOUBLEFLOAT: Enum
 
     MAX: Enum

@@ -241,6 +241,7 @@ namespace rabbitizer {
         bool isPseudo() const;
 
         AccessType getAccessType() const;
+        bool doesUnsignedMemoryAccess() const;
 
         /* Instruction descriptor */
 

@@ -118,3 +118,7 @@ bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self) {
 RabbitizerAccessType RabbitizerInstrDescriptor_getAccessType(const RabbitizerInstrDescriptor *self) {
     return self->accessType;
 }
+
+bool RabbitizerInstrDescriptor_doesUnsignedMemoryAccess(const RabbitizerInstrDescriptor *self) {
+    return self->doesUnsignedMemoryAccess;
+}

@@ -6,7 +6,6 @@
 //#include <stddef.h>
 #include <string.h>
 
-
 #define RABBITIZER_DEF_INSTR_CATEGORY(name) [RABBITIZER_INSTRCAT_##name] = #name
 
 const char *const RabbitizerInstrCategory_Names[] = {
@@ -14,7 +13,6 @@ const char *const RabbitizerInstrCategory_Names[] = {
 };
 
 #undef RABBITIZER_DEF_INSTR_CATEGORY
-
 
 RabbitizerInstrCategory RabbitizerInstrCategory_fromStr(const char *name) {
     if (name == NULL) {
