@@ -377,6 +377,8 @@ static PyObject *rabbitizer_type_Instruction_getAccessType(PyRabbitizerInstructi
     return enumInstance;
 }
 
+DEF_DESCRIPTOR_METHOD_BOOL(doesUnsignedMemoryAccess)
+
 
 static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = {"immOverride", "extraLJust", NULL};
@@ -492,6 +494,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(maybeIsMove, ""),
     METHOD_NO_ARGS(isPseudo, ""),
     METHOD_NO_ARGS(getAccessType, ""),
+    METHOD_NO_ARGS(doesUnsignedMemoryAccess, ""),
 
     METHOD_ARGS(disassemble, "description"),
 

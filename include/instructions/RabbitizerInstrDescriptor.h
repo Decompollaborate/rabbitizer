@@ -124,6 +124,7 @@ typedef struct RabbitizerInstrDescriptor {
     bool isPseudo;
 
     RabbitizerAccessType accessType;
+    bool doesUnsignedMemoryAccess;
 } RabbitizerInstrDescriptor;
 
 // TODO: less redundant name
@@ -200,6 +201,8 @@ bool RabbitizerInstrDescriptor_isPseudo(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 RabbitizerAccessType RabbitizerInstrDescriptor_getAccessType(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_doesUnsignedMemoryAccess(const RabbitizerInstrDescriptor *self);
 
 
 #ifdef __cplusplus

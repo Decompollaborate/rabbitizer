@@ -116,7 +116,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
-    .accessType=RAB_ACCESSTYPE_BYTE_SIGNED
+    .accessType=RAB_ACCESSTYPE_BYTE
 ) // Load Byte
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x21, lh,
@@ -126,7 +126,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
-    .accessType=RAB_ACCESSTYPE_SHORT_SIGNED
+    .accessType=RAB_ACCESSTYPE_SHORT
 ) // Load Halfword
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x23, lw,
@@ -136,7 +136,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
-    .accessType=RAB_ACCESSTYPE_WORD_SIGNED
+    .accessType=RAB_ACCESSTYPE_WORD
 ) // Load Word
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x24, lbu,
@@ -146,7 +146,8 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
-    .accessType=RAB_ACCESSTYPE_BYTE_UNSIGNED
+    .accessType=RAB_ACCESSTYPE_BYTE,
+    .doesUnsignedMemoryAccess=true
 ) // Load Byte Insigned
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x25, lhu,
@@ -156,7 +157,8 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
-    .accessType=RAB_ACCESSTYPE_SHORT_UNSIGNED
+    .accessType=RAB_ACCESSTYPE_SHORT,
+    .doesUnsignedMemoryAccess=true
 ) // Load Halfword Unsigned
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x28, sb,
@@ -165,7 +167,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
-    .accessType=RAB_ACCESSTYPE_BYTE_SIGNED
+    .accessType=RAB_ACCESSTYPE_BYTE
 ) // Store Byte
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x29, sh,
@@ -174,7 +176,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
-    .accessType=RAB_ACCESSTYPE_SHORT_SIGNED
+    .accessType=RAB_ACCESSTYPE_SHORT
 ) // Store Halfword
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x2B, sw,
@@ -183,7 +185,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
-    .accessType=RAB_ACCESSTYPE_WORD_SIGNED
+    .accessType=RAB_ACCESSTYPE_WORD
 ) // Store Word
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x33, pref,
@@ -210,7 +212,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
-    .accessType=RAB_ACCESSTYPE_FLOAT_SIGNED
+    .accessType=RAB_ACCESSTYPE_FLOAT
 ) // Load Word to Coprocessor z
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x39, swc1,
@@ -220,7 +222,7 @@ RABBITIZER_DEF_INSTR_ID(
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
-    .accessType=RAB_ACCESSTYPE_FLOAT_SIGNED
+    .accessType=RAB_ACCESSTYPE_FLOAT
 ) // Store Word from Coprocessor z
 
 
