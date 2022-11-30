@@ -849,6 +849,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
     uint32_t validbits;
 
+    if (!RabbitizerInstruction_isImplemented(self)) {
+        return false;
+    }
+
     validbits = RabbitizerInstruction_getValidBits(self);
 
     return ((~validbits) & self->word) == 0;
