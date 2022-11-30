@@ -4,6 +4,7 @@
 #include "instructions/RabbitizerInstructionRsp.h"
 
 #include "common/RabbitizerConfig.h"
+#include "instructions/RabbitizerRegister.h"
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
@@ -120,11 +121,23 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 
-    if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_jalr) {
-        // $ra
-        if (RAB_INSTR_GET_rd(self) != 31) {
-            self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_rsp_jalr_rd];
-        }
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_rsp_jalr:
+            self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, RAB_INSTR_GET_rd(self));
+
+            if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_NUMERIC || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_O32) {
+                if (RAB_INSTR_GET_rd(self) != RABBITIZER_REG_GPR_O32_ra) {
+                    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_rsp_jalr_rd];
+                }
+            } else {
+                if (RAB_INSTR_GET_rd(self) != RABBITIZER_REG_GPR_N32_ra) {
+                    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_rsp_jalr_rd];
+                }
+            }
+            break;
+
+        default:
+            break;
     }
 }
 
