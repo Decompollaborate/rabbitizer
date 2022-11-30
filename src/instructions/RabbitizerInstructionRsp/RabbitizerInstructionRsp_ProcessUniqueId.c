@@ -161,7 +161,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop0.inc"
+#include "instructions/instr_id/rsp/rsp_cop0.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -190,7 +190,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop0.inc"
+#include "instructions/instr_id/rsp/rsp_cop2.inc"
 
         default:
             RabbitizerInstructionRsp_processUniqueId_Coprocessor2_Vu(self);
