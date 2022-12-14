@@ -196,35 +196,6 @@ RABBITIZER_DEF_INSTR_ID(
     .doesDereference=true
 ) // Prefetch
 
-RABBITIZER_DEF_INSTR_ID(
-    rsp, 0x2F, cache,
-    .operands={RAB_OPERAND_cpu_op, RAB_OPERAND_rsp_immediate_base},
-    .instrType=RABBITIZER_INSTR_TYPE_I,
-    .notEmitedByCompilers=true
-) // Cache
-
-// OP ft, IMM(base)
-RABBITIZER_DEF_INSTR_ID(
-    rsp, 0x31, lwc1,
-    .operands={RAB_OPERAND_cpu_ft, RAB_OPERAND_rsp_immediate_base},
-    .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isFloat=true,
-    .canBeLo=true,
-    .doesDereference=true,
-    .doesLoad=true,
-    .accessType=RAB_ACCESSTYPE_FLOAT
-) // Load Word to Coprocessor z
-RABBITIZER_DEF_INSTR_ID(
-    rsp, 0x39, swc1,
-    .operands={RAB_OPERAND_cpu_ft, RAB_OPERAND_rsp_immediate_base},
-    .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isFloat=true,
-    .canBeLo=true,
-    .doesDereference=true,
-    .doesStore=true,
-    .accessType=RAB_ACCESSTYPE_FLOAT
-) // Store Word from Coprocessor z
-
 
 // Pseudo-Instruction Unique IDs
 
