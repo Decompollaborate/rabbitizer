@@ -76,6 +76,19 @@ typedef struct RabbitizerInstrDescriptor {
      */
     bool modifiesRd;
 
+    /**
+     * The instruction reads the value which the MIPS `rs` register holds
+     */
+    bool readsRs;
+    /**
+     * The instruction reads the value which the MIPS `rt` register holds
+     */
+    bool readsRt;
+    /**
+     * The instruction reads the value which the MIPS `rd` register holds
+     */
+    bool readsRd;
+
     bool readsHI;
     bool readsLO;
     bool modifiesHI;
@@ -168,6 +181,13 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsRs(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsRt(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsRd(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_readsHI(const RabbitizerInstrDescriptor *self);

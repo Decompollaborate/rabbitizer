@@ -72,6 +72,16 @@ bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self)
     return self->modifiesRd;
 }
 
+bool RabbitizerInstrDescriptor_readsRs(const RabbitizerInstrDescriptor *self) {
+    return self->readsRs;
+}
+bool RabbitizerInstrDescriptor_readsRt(const RabbitizerInstrDescriptor *self) {
+    return self->readsRt;
+}
+bool RabbitizerInstrDescriptor_readsRd(const RabbitizerInstrDescriptor *self) {
+    return self->readsRd;
+}
+
 bool RabbitizerInstrDescriptor_readsHI(const RabbitizerInstrDescriptor *self) {
     return self->readsHI;
 }

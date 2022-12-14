@@ -846,6 +846,16 @@ bool InstructionBase::modifiesRd() const {
     return RabbitizerInstrDescriptor_modifiesRd(this->instr.descriptor);
 }
 
+bool InstructionBase::readsRs() const {
+    return RabbitizerInstrDescriptor_readsRs(this->instr.descriptor);
+}
+bool InstructionBase::readsRt() const {
+    return RabbitizerInstrDescriptor_readsRt(this->instr.descriptor);
+}
+bool InstructionBase::readsRd() const {
+    return RabbitizerInstrDescriptor_readsRd(this->instr.descriptor);
+}
+
 bool InstructionBase::readsHI() const {
     return RabbitizerInstrDescriptor_readsHI(this->instr.descriptor);
 }
