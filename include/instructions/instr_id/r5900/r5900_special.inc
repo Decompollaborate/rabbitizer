@@ -29,7 +29,9 @@ RABBITIZER_DEF_INSTR_ID(
     r5900, 0x18, mult,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
     .instrType=RABBITIZER_INSTR_TYPE_R,
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true,
+    .readsRt=true
 ) // MULTtiply word
 
 RABBITIZER_DEF_INSTR_ID(
@@ -39,5 +41,6 @@ RABBITIZER_DEF_INSTR_ID(
 ) // Move From Shift Amount register
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x29, mtsa,
-    .operands={RAB_OPERAND_cpu_rs}
+    .operands={RAB_OPERAND_cpu_rs},
+    .readsRs=true
 ) // Move To Shift Amount register

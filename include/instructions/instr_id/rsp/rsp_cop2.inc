@@ -20,5 +20,6 @@ RABBITIZER_DEF_INSTR_ID(
 )
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x06, ctc2,
-    .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_rsp_cop2cd}
+    .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_rsp_cop2cd},
+    .readsRt=true
 )

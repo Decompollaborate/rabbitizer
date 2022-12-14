@@ -22,17 +22,22 @@
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x00, madd,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Multiply-ADD word
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x01, maddu,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Multiply-ADD Unsigned word
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x04, plzcw,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true
 ) // Parallel Leading Zero or one Count Word
 
 RABBITIZER_DEF_INSTR_ID(
@@ -42,45 +47,60 @@ RABBITIZER_DEF_INSTR_ID(
 ) // Move From HI1 register
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x11, mthi1,
-    .operands={RAB_OPERAND_cpu_rs}
+    .operands={RAB_OPERAND_cpu_rs},
+    .readsRs=true
 ) // Move To HI1 register
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x12, mflo1,
-    .operands={RAB_OPERAND_cpu_rd}
+    .operands={RAB_OPERAND_cpu_rd},
+    .readsRd=true
 ) // Move From LO1 register
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x13, mtlo1,
-    .operands={RAB_OPERAND_cpu_rs}
+    .operands={RAB_OPERAND_cpu_rs},
+    .readsRs=true
 ) // Move To LO1 register
 
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x18, mult1,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true,
+    .readsRt=true
 ) // MULTiply word pipeline 1
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x19, multu1,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true,
+    .readsRt=true
 ) // MULTiply Unsigned word pipeline 1
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x1A, div1,
-    .operands={RAB_OPERAND_cpu_zero, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt}
+    .operands={RAB_OPERAND_cpu_zero, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
+    .readsRs=true,
+    .readsRt=true
 ) // DIVide word pipeline 1
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x1B, divu1,
-    .operands={RAB_OPERAND_cpu_zero, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt}
+    .operands={RAB_OPERAND_cpu_zero, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
+    .readsRs=true,
+    .readsRt=true
 ) // DIVide Unsigned word pipeline 1
 
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x20, madd1,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Multiply-ADD word pipeline 1
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x21, maddu1,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Multiply-ADD Unsigned word pipeline 1
 
 // TODO: check this two instruction, it is supposed to have an extra .fmt
@@ -91,37 +111,44 @@ RABBITIZER_DEF_INSTR_ID(
 ) // Parallel Move From Hi/Lo register
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x31, pmthl,
-    .operands={RAB_OPERAND_cpu_rs}
+    .operands={RAB_OPERAND_cpu_rs},
+    .readsRs=true
 ) // Parallel Move To Hi/Lo register
 
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x34, psllh,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRt=true
 ) // Parallel Shift Left Logical Halfword
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x36, psrlh,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRt=true
 ) // Parallel Shift Right Logical Halfword
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x37, psrah,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRt=true
 ) // Parallel Shift Right Arithmetic Halfword
 
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x3C, psllw,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRt=true
 ) // Parallel Shift Left Logical Word
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x3E, psrlw,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRt=true
 ) // Parallel Shift Right Logical Word
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x3F, psraw,
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-    .modifiesRd=true
+    .modifiesRd=true,
+    .readsRt=true
 ) // Parallel Shift Right Arithmetic Word

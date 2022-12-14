@@ -36,6 +36,7 @@ RABBITIZER_DEF_INSTR_ID(
     r5900, 0x1F, sq,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
