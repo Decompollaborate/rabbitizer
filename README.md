@@ -48,6 +48,15 @@ NOTE: Installing the development version is not recommended. Proceed at your own
 
 ## References
 
+- MIPS CPU:
+  - MIPS IV Instruction Set (Revision 3.2): <https://www.cs.cmu.edu/afs/cs/academic/class/15740-f97/public/doc/mips-isa.pdf>
+  - MIPS Calling Convention Summary: <https://courses.cs.washington.edu/courses/cse410/09sp/examples/MIPSCallingConventionsSummary.pdf>
+  - mipt-mips pseudo instructions: <https://github.com/MIPT-ILab/mipt-mips/wiki/MIPS-pseudo-instructions>
+
+- N64's RSP (Reality Signal Processor):
+  - Nintendo Ultra64 RSP Programmer’s Guide: <https://ultra64.ca/files/documentation/silicon-graphics/SGI_Nintendo_64_RSP_Programmers_Guide.pdf>
+  - N64brew Reality Signal Processor/CPU Core: <https://n64brew.dev/wiki/Reality_Signal_Processor/CPU_Core>
+
 - R5900:
   - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>
   - Official documentation from Toshiba: <https://wiki.qemu.org/images/2/2a/C790.pdf>
