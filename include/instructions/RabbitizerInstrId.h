@@ -5,6 +5,8 @@
 #define RABBITIZER_INSTRID_H
 #pragma once
 
+#include <stdbool.h>
+
 #include "common/Utils.h"
 
 #ifdef __cplusplus
@@ -34,6 +36,9 @@ typedef enum RabbitizerInstrId {
 
 extern const char *RabbitizerInstrId_Names[];
 
+
+CONST NODISCARD
+bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId);
 
 CONST NODISCARD RETURNS_NON_NULL
 const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId);

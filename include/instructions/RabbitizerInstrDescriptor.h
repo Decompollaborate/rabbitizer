@@ -145,6 +145,11 @@ extern const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[];
 
 
 NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_hasSpecificOperand(const RabbitizerInstrDescriptor *self, RabbitizerOperandType operand);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *self, RabbitizerOperandType operand);
+
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isUnknownType(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isJType(const RabbitizerInstrDescriptor *self);

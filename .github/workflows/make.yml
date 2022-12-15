@@ -4,11 +4,16 @@ name: make
 on: [push, pull_request]
 
 jobs:
-  build:
-
+  build_repo:
+    name: Build repo
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout reposistory
+      uses: actions/checkout@v3
+
     - name: make
-      run: make WERROR=1
+      run: make $(nproc) WERROR=1
+
+    - name: Run logic checks
+      run: ./tests/c/logic_checks/run_logic_checks.sh
