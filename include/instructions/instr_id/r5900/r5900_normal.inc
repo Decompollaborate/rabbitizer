@@ -28,6 +28,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -36,6 +37,7 @@ RABBITIZER_DEF_INSTR_ID(
     r5900, 0x1F, sq,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
@@ -45,6 +47,7 @@ RABBITIZER_DEF_INSTR_ID(
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x36, lqc2,
     .operands={RAB_OPERAND_r5900_vft, RAB_OPERAND_cpu_immediate_base},
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -53,6 +56,7 @@ RABBITIZER_DEF_INSTR_ID(
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x3E, sqc2,
     .operands={RAB_OPERAND_r5900_vft, RAB_OPERAND_cpu_immediate_base},
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true

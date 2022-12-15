@@ -153,7 +153,7 @@ RABBITIZER_DEF_INSTR_ID(
 RABBITIZER_DEF_INSTR_ID(
     r5900, 0x1D, pdivbw,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .modifiesRd=true,
+    .readsRs=true,
     .readsRt=true
 ) // Parallel DIVide Broadcast Word
 RABBITIZER_DEF_INSTR_ID(

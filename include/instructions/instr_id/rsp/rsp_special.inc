@@ -192,7 +192,8 @@ RABBITIZER_DEF_INSTR_ID(
 RABBITIZER_DEF_INSTR_ID(
     rsp, -0x01, nop,
     .operands={0},
-    .instrType=RABBITIZER_INSTR_TYPE_R
+    .instrType=RABBITIZER_INSTR_TYPE_R,
+    .isPseudo=true
 ) // No OPeration
 
 // OP rd, rs
@@ -201,14 +202,16 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs},
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .modifiesRd=true,
-    .readsRs=true
+    .readsRs=true,
+    .isPseudo=true
 ) // Move
 RABBITIZER_DEF_INSTR_ID(
     rsp, -0x27, not,
     .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs},
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .modifiesRd=true,
-    .readsRs=true
+    .readsRs=true,
+    .isPseudo=true
 ) // Not
 
 // OP rd, rt
@@ -217,5 +220,6 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt},
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .modifiesRd=true,
-    .readsRs=true
+    .readsRt=true,
+    .isPseudo=true
 )

@@ -119,11 +119,11 @@ tests: $(TESTS_ELFS)
 
 #### Various Recipes ####
 
-build/%.elf: %.c | $(STATIC_LIB)
-	$(CC) -MMD $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+build/%.elf: %.c $(STATIC_LIB)
+	$(CC) -MMD -MP $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
-build/%.elf: %.cpp | $(STATIC_LIB_XX)
-	$(CXX) -MMD $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $^ $(LDXXFLAGS)
+build/%.elf: %.cpp $(STATIC_LIB_XX)
+	$(CXX) -MMD -MP $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $< $(LDXXFLAGS)
 
 build/%.a:
 	$(AR) rcs $@ $^
@@ -133,11 +133,11 @@ build/%.so:
 
 build/%.o: %.c
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
-	$(CC) -MMD -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $<
+	$(CC) -MMD -MP -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $<
 
 build/%.o: %.cpp
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
-	$(CXX) -MMD -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $<
+	$(CXX) -MMD -MP -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $<
 
 
 -include $(DEP_FILES)

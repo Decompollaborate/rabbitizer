@@ -533,6 +533,6 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt},
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .modifiesRd=true,
-    .readsRs=true,
+    .readsRt=true,
     .isPseudo=true
 )

@@ -10,12 +10,15 @@
 #include <stdio.h>
 
 
-#define LOGIC_ERROR(uniqueId, errorCount, errorCondition) \
-    if (errorCondition) { \
+#define LOGIC_ERROR(uniqueId, errorCount, successCondition) \
+    if (!(successCondition)) { \
         fprintf(stderr, "Logic error on %s (%i): \n", RabbitizerInstrId_getOpcodeName(uniqueId), uniqueId); \
-        fprintf(stderr, "\t%s\n", #errorCondition); \
+        fprintf(stderr, "\t%s\n", #successCondition); \
         errorCount++; \
     }
+
+#define LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, successConditionA, successConditionB) \
+    LOGIC_ERROR(uniqueId, errorCount, ((successConditionA) && (successConditionB)) || !(successConditionA))
 
 
 int main() {
@@ -30,39 +33,56 @@ int main() {
         }
 
         // An isBranchLikely must be marked as isBranch
-        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->isBranchLikely && descriptor->isBranch) || !descriptor->isBranchLikely));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->isBranchLikely, descriptor->isBranch);
 
         // An isJumpWithAddress must be marked as isJump
-        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->isJumpWithAddress && descriptor->isJump) || !descriptor->isJumpWithAddress));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->isJumpWithAddress, descriptor->isJump);
 
         // An instruction should have at either isBranch, isJump, isTramp or none of them
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->isBranch && descriptor->isJump);
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->isBranch && descriptor->isTrap);
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->isJump && descriptor->isTrap);
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->isBranch && descriptor->isJump));
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->isBranch && descriptor->isTrap));
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->isJump && descriptor->isTrap));
 
         // An isDouble must be marked as isFloat
-        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->isDouble && descriptor->isFloat) || !descriptor->isDouble));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->isDouble, descriptor->isFloat);
 
         // modifiesR* and readsR*
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->modifiesRt && descriptor->readsRt);
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->modifiesRd && descriptor->readsRd);
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->readsRs && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs));
-        LOGIC_ERROR(uniqueId, errorCount, (descriptor->modifiesRt || descriptor->readsRt) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt));
-        LOGIC_ERROR(uniqueId, errorCount, (descriptor->modifiesRd || descriptor->readsRd) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd));
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesRt && descriptor->readsRt));
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesRd && descriptor->readsRd));
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->readsRs && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs)));
+        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRt || descriptor->readsRt) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt)));
+
+        switch (uniqueId) {
+            case RABBITIZER_INSTR_ID_cpu_jalr:
+            case RABBITIZER_INSTR_ID_rsp_jalr:
+                // jalr has an implicit $ra which modifies
+                LOGIC_ERROR(uniqueId, errorCount, descriptor->modifiesRd);
+                break;
+
+            default:
+                LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRd || descriptor->readsRd) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd)));
+                break;
+        }
+
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs), descriptor->readsRs);
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt), (descriptor->readsRt || descriptor->modifiesRt));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd), (descriptor->readsRd || descriptor->modifiesRd));
 
         // An instruction should have at most canBeHi or canBeLo, not both
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->canBeHi && descriptor->canBeLo);
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->canBeHi && descriptor->canBeLo));
+
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->doesLink, (descriptor->isBranch || descriptor->isJump));
 
         // A doesDereference must have either doesLoad or doesStore
-        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->doesDereference && (descriptor->doesLoad || descriptor->doesStore)) || !descriptor->doesDereference));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->doesDereference, (descriptor->doesLoad || descriptor->doesStore));
 
         // A doesLoad must have a doesDereference
-        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->doesLoad && descriptor->doesDereference) || !descriptor->doesLoad));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->doesLoad, descriptor->doesDereference);
         // A doesStore must have a doesDereference
-        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->doesStore && descriptor->doesDereference) || !descriptor->doesStore));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->doesStore, descriptor->doesDereference);
 
         // A instruction should not have both doesLoad and doesStore
-        LOGIC_ERROR(uniqueId, errorCount, descriptor->doesLoad && descriptor->doesStore);
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->doesLoad && descriptor->doesStore));
     }
 
     if (errorCount != 0) {
