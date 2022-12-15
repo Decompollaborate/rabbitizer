@@ -754,12 +754,21 @@ bool InstructionBase::isNop() const {
 bool InstructionBase::isUnconditionalBranch() const {
     return RabbitizerInstruction_isUnconditionalBranch(&this->instr);
 }
+
+bool InstructionBase::isReturn() const {
+    return RabbitizerInstruction_isReturn(&this->instr);
+}
+bool InstructionBase::isJumptableJump() const {
+    return RabbitizerInstruction_isJumptableJump(&this->instr);
+}
+
 bool InstructionBase::isJrRa() const {
     return RabbitizerInstruction_isJrRa(&this->instr);
 }
 bool InstructionBase::isJrNotRa() const {
     return RabbitizerInstruction_isJrNotRa(&this->instr);
 }
+
 bool InstructionBase::hasDelaySlot() const {
     return RabbitizerInstruction_hasDelaySlot(&this->instr);
 }

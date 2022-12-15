@@ -179,8 +179,15 @@ namespace rabbitizer {
         bool isLikelyHandwritten() const;
         bool isNop() const;
         bool isUnconditionalBranch() const;
+
+        bool isReturn() const;
+        bool isJumptableJump() const;
+
+        //! @deprecated
         bool isJrRa() const;
+        //! @deprecated
         bool isJrNotRa() const;
+
         bool hasDelaySlot() const;
 
         //! @deprecated

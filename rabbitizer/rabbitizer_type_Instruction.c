@@ -225,8 +225,13 @@ DEF_METHOD_BOOL(isImplemented)
 DEF_METHOD_BOOL(isLikelyHandwritten)
 DEF_METHOD_BOOL(isNop)
 DEF_METHOD_BOOL(isUnconditionalBranch)
+
+DEF_METHOD_BOOL(isReturn)
+DEF_METHOD_BOOL(isJumptableJump)
+
 DEF_METHOD_BOOL(isJrRa)
 DEF_METHOD_BOOL(isJrNotRa)
+
 DEF_METHOD_BOOL(hasDelaySlot)
 
 static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
@@ -455,8 +460,13 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isLikelyHandwritten, ""),
     METHOD_NO_ARGS(isNop, ""),
     METHOD_NO_ARGS(isUnconditionalBranch, ""),
+
+    METHOD_NO_ARGS(isReturn, ""),
+    METHOD_NO_ARGS(isJumptableJump, ""),
+
     METHOD_NO_ARGS(isJrRa, ""),
     METHOD_NO_ARGS(isJrNotRa, ""),
+
     METHOD_NO_ARGS(hasDelaySlot, ""),
     METHOD_NO_ARGS(mapInstrToType, ""),
 

@@ -60,7 +60,7 @@ bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *se
     }
 }
 
-bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self) {
+bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
         case RABBITIZER_INSTR_ID_rsp_jr:
@@ -72,7 +72,7 @@ bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self) {
     }
 }
 
-bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self) {
+bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
         case RABBITIZER_INSTR_ID_rsp_jr:
