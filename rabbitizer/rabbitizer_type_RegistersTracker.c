@@ -204,7 +204,7 @@ static PyObject *rabbitizer_type_RegistersTracker_preprocessLoAndGetInfo(PyRabbi
         return NULL;
     }
 
-    ret = PyObject_CallObject((PyObject*)&rabbitizer_type_LoPairingInfo_TypeObject, NULL);
+    ret = (PyRabbitizerLoPairingInfo*)PyObject_CallObject((PyObject*)&rabbitizer_type_LoPairingInfo_TypeObject, NULL);
     if (ret == NULL) {
         PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance LoPairingInfo object");
         return NULL;
@@ -212,7 +212,7 @@ static PyObject *rabbitizer_type_RegistersTracker_preprocessLoAndGetInfo(PyRabbi
 
     ret->pairingInfo = RabbitizerRegistersTracker_preprocessLoAndGetInfo(&self->tracker, &instr->instr, instrOffset);
 
-    return ret;
+    return (PyObject*)ret;
 }
 
 static PyObject *rabbitizer_type_RegistersTracker_processLo(PyRabbitizerRegistersTracker *self, PyObject *args, PyObject *kwds) {
@@ -272,7 +272,7 @@ PyObject *rabbitizer_type_RegistersTracker___getitem__(PyRabbitizerRegistersTrac
     PyObject *args;
     PyRabbitizerTrackedRegisterState *pyState;
 
-    if (index < 0 || index >= ARRAY_COUNT(self->tracker.registers)) {
+    if (index < 0 || index >= (Py_ssize_t)ARRAY_COUNT(self->tracker.registers)) {
         PyErr_SetString(PyExc_IndexError, "Index must be a value between 0 and 31");
         return NULL;
     }
@@ -285,7 +285,7 @@ PyObject *rabbitizer_type_RegistersTracker___getitem__(PyRabbitizerRegistersTrac
         return NULL;
     }
 
-    pyState = PyObject_CallObject((PyObject*)&rabbitizer_type_TrackedRegisterState_TypeObject, args);
+    pyState = (PyRabbitizerTrackedRegisterState *)PyObject_CallObject((PyObject*)&rabbitizer_type_TrackedRegisterState_TypeObject, args);
     Py_DECREF(args);
     if (pyState == NULL) {
         PyErr_SetString(PyExc_RuntimeError, "Internal error: not able to instance TrackedRegisterState object");
@@ -293,7 +293,7 @@ PyObject *rabbitizer_type_RegistersTracker___getitem__(PyRabbitizerRegistersTrac
     }
 
     RabbitizerTrackedRegisterState_copyState(&pyState->registerState, state);
-    return pyState;
+    return (PyObject *)pyState;
 }
 
 

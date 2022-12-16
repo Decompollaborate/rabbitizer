@@ -364,8 +364,6 @@ class InstrId:
     rsp_sh: Enum
     rsp_sw: Enum
     rsp_pref: Enum
-    rsp_lwc1: Enum
-    rsp_swc1: Enum
     rsp_mfc0: Enum
     rsp_mtc0: Enum
     rsp_nop: Enum

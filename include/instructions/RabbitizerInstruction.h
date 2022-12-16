@@ -192,10 +192,17 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self);
+
 NODISCARD NON_NULL(1) PURE
-bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self);
+bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
-bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self);
+bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self);
+
+//! @deprecated
+#define RabbitizerInstruction_isJrRa RabbitizerInstruction_isReturn
+//! @deprecated
+#define RabbitizerInstruction_isJrNotRa RabbitizerInstruction_isJumptableJump
+
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self);
 

@@ -10,16 +10,9 @@
 #include "instructions/RabbitizerInstructionR5900.h"
 #include "instructions/RabbitizerRegister.h"
 
+// TODO: deprecate
 bool RabbitizerInstruction_isImplemented(const RabbitizerInstruction *self) {
-    switch (self->uniqueId) {
-        case RABBITIZER_INSTR_ID_cpu_INVALID:
-        case RABBITIZER_INSTR_ID_rsp_INVALID:
-        case RABBITIZER_INSTR_ID_r5900_INVALID:
-            return false;
-
-        default:
-            return true;
-    }
+    return RabbitizerInstrId_isValid(self->uniqueId);
 }
 
 bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self) {
@@ -67,7 +60,7 @@ bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *se
     }
 }
 
-bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self) {
+bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
         case RABBITIZER_INSTR_ID_rsp_jr:
@@ -79,7 +72,7 @@ bool RabbitizerInstruction_isJrRa(const RabbitizerInstruction *self) {
     }
 }
 
-bool RabbitizerInstruction_isJrNotRa(const RabbitizerInstruction *self) {
+bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
         case RABBITIZER_INSTR_ID_rsp_jr:
@@ -124,7 +117,7 @@ const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *se
 }
 
 bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const RabbitizerInstruction *other) {
-    if (!RabbitizerInstruction_isImplemented(self) || !RabbitizerInstruction_isImplemented(other)) {
+    if (!RabbitizerInstrId_isValid(self->uniqueId) || !RabbitizerInstrId_isValid(self->uniqueId)) {
         return false;
     }
     return self->uniqueId == other->uniqueId;
@@ -137,413 +130,13 @@ bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstr
     return RabbitizerInstruction_getRaw(self) != RabbitizerInstruction_getRaw(other);
 }
 
+// TODO: deprecate?
 bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand) {
-    size_t i;
-
-    for (i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
-        if (self->descriptor->operands[i] == operand) {
-            return true;
-        }
-    }
-
-    return false;
+    return RabbitizerInstrDescriptor_hasSpecificOperand(self->descriptor, operand);
 }
 
 bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, RabbitizerOperandType operand) {
-    switch (operand) {
-        case RAB_OPERAND_cpu_rs:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_immediate_base)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_rs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_offset_rs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_immediate_base)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_cpu_immediate:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_immediate_base)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_branch_target_label)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_immediate_base)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_cpu_rt:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_rt)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_cpu_rd:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_rd)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_cpu_sa:
-        case RAB_OPERAND_cpu_zero:
-        // case RAB_OPERAND_cpu_function:
-        case RAB_OPERAND_cpu_cop0d:
-        case RAB_OPERAND_cpu_fs:
-        case RAB_OPERAND_cpu_ft:
-        case RAB_OPERAND_cpu_fd:
-        case RAB_OPERAND_cpu_cop1cs:
-        case RAB_OPERAND_cpu_cop2t:
-        case RAB_OPERAND_cpu_op:
-        case RAB_OPERAND_cpu_code:
-        case RAB_OPERAND_cpu_code_lower:
-        case RAB_OPERAND_cpu_copraw:
-        case RAB_OPERAND_cpu_label:
-            break;
-
-        case RAB_OPERAND_cpu_branch_target_label:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_immediate)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_cpu_immediate_base:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_immediate)) {
-                return true;
-            }
-            break;
-
-        /* rsp */
-        case RAB_OPERAND_rsp_rs:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_rs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_offset_rs)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_rt:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_rt)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_rd:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_cpu_rd)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_cop0d:
-        case RAB_OPERAND_rsp_cop2t:
-        case RAB_OPERAND_rsp_cop2cd:
-            break;
-
-            // case RAB_OPERAND_rsp_elementhigh:
-            // case RAB_OPERAND_rsp_elementlow:
-            // case RAB_OPERAND_rsp_index:
-            // case RAB_OPERAND_rsp_offset:
-
-        case RAB_OPERAND_rsp_vs:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_vs_index)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_vt:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_vt_elementhigh)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_vt_elementlow)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_vd:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_rsp_vd_de)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_vt_elementhigh:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_rsp_vt)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_vt_elementlow:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_rsp_vt)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_vd_de:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_rsp_vd)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_vs_index:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_rsp_vs)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_offset_rs:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_rsp_rs)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_rsp_immediate_base:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_rsp_rs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_immediate)) {
-                return true;
-            }
-            break;
-            /* rsp */
-
-            /* r5900 */
-        case RAB_OPERAND_r5900_I:
-        case RAB_OPERAND_r5900_Q:
-        case RAB_OPERAND_r5900_R:
-            break;
-
-        case RAB_OPERAND_r5900_ACC:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_ACCxyzw)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_ACCxyzw:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_ACC)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfs:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfsxyzw)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfsn)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfsl)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfsm)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vft:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vftxyzw)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vftn)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vftl)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vftm)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfd:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfdxyzw)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfdn)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfdl)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfdm)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfsxyzw:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfsn)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vftxyzw:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vft)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vftn)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfdxyzw:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfd)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfdn)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfsn:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfs)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfsxyzw)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vftn:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vft)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vftxyzw)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfdn:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfd)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vfdxyzw)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfsl:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vfs)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vftl:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vft)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfdl:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vfd)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfsm:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vfs)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vftm:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vft)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vfdm:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vfd)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vis:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vis_predecr)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vis_postincr)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vit:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vit_predecr)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vit_postincr)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vid:
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vid_predecr)) {
-                return true;
-            }
-            if (RabbitizerInstruction_hasOperand(self, RAB_OPERAND_r5900_vid_postincr)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vis_predecr:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vis)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vit_predecr:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vit)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vid_predecr:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vid)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vis_postincr:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vis)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vit_postincr:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vit)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_vid_postincr:
-            if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_r5900_vid)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r5900_immediate5:
-            break;
-            /* r5900 */
-
-        case RAB_OPERAND_ALL_INVALID:
-        case RAB_OPERAND_ALL_MAX:
-            assert(operand != RAB_OPERAND_ALL_INVALID && operand != RAB_OPERAND_ALL_MAX);
-            break;
-    }
-
-    return RabbitizerInstruction_hasOperand(self, operand);
+    return RabbitizerInstrDescriptor_hasOperandAlias(self->descriptor, operand);
 }
 
 uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
@@ -849,7 +442,7 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self) {
     uint32_t validbits;
 
-    if (!RabbitizerInstruction_isImplemented(self)) {
+    if (!RabbitizerInstrId_isValid(self->uniqueId)) {
         return false;
     }
 

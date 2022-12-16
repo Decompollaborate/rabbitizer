@@ -23,27 +23,35 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x04, beq,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true
+    .isBranch=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Branch on EQual
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x05, bne,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true
+    .isBranch=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Branch on Not Equal
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x14, beql,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true
+    .isBranchLikely=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Branch on EQual Likely
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x15, bnel,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true
+    .isBranchLikely=true,
+    .readsRs=true,
+    .readsRt=true
 ) // Branch on Not Equal Likely
 
 // OP rs, IMM
@@ -51,27 +59,31 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x06, blez,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true
+    .isBranch=true,
+    .readsRs=true
 ) // Branch on Less than or Equal to Zero
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x16, blezl,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true
+    .isBranchLikely=true,
+    .readsRs=true
 ) // Branch on Less than or Equal to Zero Likely
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x07, bgtz,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .isBranch=true
+    .isBranch=true,
+    .readsRs=true
 ) // Branch on Greater Than Zero
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x17, bgtzl,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isBranch=true,
-    .isBranchLikely=true
+    .isBranchLikely=true,
+    .readsRs=true
 ) // Branch on Greater Than Zero Likely
 
 // OP rt, rs, IMM
@@ -80,6 +92,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .notEmitedByCompilers=true,
     .canBeLo=true
 ) // Add Immediate
@@ -88,26 +101,30 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true
 ) // Add Immediate Unsigned Word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0A, slti,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .modifiesRt=true
+    .modifiesRt=true,
+    .readsRs=true
 ) // Set on Less Than Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0B, sltiu,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .modifiesRt=true
+    .modifiesRt=true,
+    .readsRs=true
 ) // Set on Less Than Immediate Unsigned
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0C, andi,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isUnsigned=true,
-    .modifiesRt=true
+    .modifiesRt=true,
+    .readsRs=true
 ) // And Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0D, ori,
@@ -115,6 +132,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isUnsigned=true,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true
 ) // Or Immediate
 RABBITIZER_DEF_INSTR_ID(
@@ -122,13 +140,15 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isUnsigned=true,
-    .modifiesRt=true
+    .modifiesRt=true,
+    .readsRs=true
 ) // eXclusive OR Immediate
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x18, daddi,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true
 ) // Doubleword add Immediate
 RABBITIZER_DEF_INSTR_ID(
@@ -136,6 +156,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true
 ) // Doubleword add Immediate Unsigned
 
@@ -155,6 +176,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -164,6 +186,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -173,6 +196,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -183,6 +207,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -193,6 +218,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -202,6 +228,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -212,6 +239,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -223,6 +251,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -234,6 +263,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -243,6 +273,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -253,6 +284,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x28, sb,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
@@ -262,6 +295,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x29, sh,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
@@ -271,6 +306,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2A, swl,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -279,6 +316,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2B, sw,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
@@ -288,6 +327,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2C, sdl,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -296,6 +337,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2D, sdr,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -304,6 +347,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2E, swr,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -313,6 +358,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -321,15 +367,15 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x33, pref,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
-    .modifiesRt=true,
-    .canBeLo=true,
-    .doesDereference=true
+    .readsRs=true,
+    .readsRt=true
 ) // Prefetch
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x34, lld,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -339,6 +385,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -348,6 +395,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x38, sc,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -356,6 +405,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3C, scd,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -364,6 +415,8 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3F, sd,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
+    .readsRt=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
@@ -375,6 +428,7 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x2F, cache,
     .operands={RAB_OPERAND_cpu_op, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .notEmitedByCompilers=true
 ) // Cache
 
@@ -384,6 +438,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_ft, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isFloat=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -395,6 +450,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isFloat=true,
     .isDouble=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true,
@@ -405,6 +461,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_ft, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isFloat=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
@@ -416,6 +473,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .isFloat=true,
     .isDouble=true,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true,
@@ -427,6 +485,7 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x32, lwc2,
     .operands={RAB_OPERAND_cpu_cop2t, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -435,6 +494,7 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x36, ldc2,
     .operands={RAB_OPERAND_cpu_cop2t, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -443,6 +503,7 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3A, swc2,
     .operands={RAB_OPERAND_cpu_cop2t, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -451,6 +512,7 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x3E, sdc2,
     .operands={RAB_OPERAND_cpu_cop2t, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -473,6 +535,7 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, -0x04, beqz,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .isBranch=true,
     .isPseudo=true
 ) // Branch on EQual Zero
@@ -480,6 +543,7 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, -0x05, bnez,
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_I,
+    .readsRs=true,
     .isBranch=true,
     .isPseudo=true
 ) // Branch on Not Equal Zero

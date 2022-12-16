@@ -754,12 +754,21 @@ bool InstructionBase::isNop() const {
 bool InstructionBase::isUnconditionalBranch() const {
     return RabbitizerInstruction_isUnconditionalBranch(&this->instr);
 }
+
+bool InstructionBase::isReturn() const {
+    return RabbitizerInstruction_isReturn(&this->instr);
+}
+bool InstructionBase::isJumptableJump() const {
+    return RabbitizerInstruction_isJumptableJump(&this->instr);
+}
+
 bool InstructionBase::isJrRa() const {
     return RabbitizerInstruction_isJrRa(&this->instr);
 }
 bool InstructionBase::isJrNotRa() const {
     return RabbitizerInstruction_isJrNotRa(&this->instr);
 }
+
 bool InstructionBase::hasDelaySlot() const {
     return RabbitizerInstruction_hasDelaySlot(&this->instr);
 }
@@ -844,6 +853,16 @@ bool InstructionBase::modifiesRt() const {
 }
 bool InstructionBase::modifiesRd() const {
     return RabbitizerInstrDescriptor_modifiesRd(this->instr.descriptor);
+}
+
+bool InstructionBase::readsRs() const {
+    return RabbitizerInstrDescriptor_readsRs(this->instr.descriptor);
+}
+bool InstructionBase::readsRt() const {
+    return RabbitizerInstrDescriptor_readsRt(this->instr.descriptor);
+}
+bool InstructionBase::readsRd() const {
+    return RabbitizerInstrDescriptor_readsRd(this->instr.descriptor);
 }
 
 bool InstructionBase::readsHI() const {

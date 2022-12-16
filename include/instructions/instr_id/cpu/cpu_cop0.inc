@@ -25,15 +25,18 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x04, mtc0,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
+    .readsRt=true,
     .notEmitedByCompilers=true
 ) // Move word to CP0
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x05, dmtc0,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-    .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+    .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
+    .readsRt=true
 ) // Doubleword Move To CP0
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x06, ctc0,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-    .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+    .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
+    .readsRt=true
 ) // Move control word To CP0

@@ -225,8 +225,13 @@ DEF_METHOD_BOOL(isImplemented)
 DEF_METHOD_BOOL(isLikelyHandwritten)
 DEF_METHOD_BOOL(isNop)
 DEF_METHOD_BOOL(isUnconditionalBranch)
+
+DEF_METHOD_BOOL(isReturn)
+DEF_METHOD_BOOL(isJumptableJump)
+
 DEF_METHOD_BOOL(isJrRa)
 DEF_METHOD_BOOL(isJrNotRa)
+
 DEF_METHOD_BOOL(hasDelaySlot)
 
 static PyObject *rabbitizer_type_Instruction_mapInstrToType(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
@@ -353,6 +358,9 @@ DEF_DESCRIPTOR_METHOD_BOOL(isDouble)
 DEF_DESCRIPTOR_METHOD_BOOL(isUnsigned)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRt)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRd)
+DEF_DESCRIPTOR_METHOD_BOOL(readsRs)
+DEF_DESCRIPTOR_METHOD_BOOL(readsRt)
+DEF_DESCRIPTOR_METHOD_BOOL(readsRd)
 DEF_DESCRIPTOR_METHOD_BOOL(readsHI)
 DEF_DESCRIPTOR_METHOD_BOOL(readsLO)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesHI)
@@ -452,8 +460,13 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isLikelyHandwritten, ""),
     METHOD_NO_ARGS(isNop, ""),
     METHOD_NO_ARGS(isUnconditionalBranch, ""),
+
+    METHOD_NO_ARGS(isReturn, ""),
+    METHOD_NO_ARGS(isJumptableJump, ""),
+
     METHOD_NO_ARGS(isJrRa, ""),
     METHOD_NO_ARGS(isJrNotRa, ""),
+
     METHOD_NO_ARGS(hasDelaySlot, ""),
     METHOD_NO_ARGS(mapInstrToType, ""),
 
@@ -480,6 +493,9 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isUnsigned, ""),
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
+    METHOD_NO_ARGS(readsRs, ""),
+    METHOD_NO_ARGS(readsRt, ""),
+    METHOD_NO_ARGS(readsRd, ""),
     METHOD_NO_ARGS(readsHI, ""),
     METHOD_NO_ARGS(readsLO, ""),
     METHOD_NO_ARGS(modifiesHI, ""),
