@@ -68,7 +68,7 @@ OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
 DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
 
-TABLE_DIRS      := $(shell find include rabbitizer -type d)
+TABLE_DIRS      := $(shell find include src cplusplus rabbitizer -type d)
 TABLE_TEMPLATES := $(foreach dir,$(TABLE_DIRS),$(wildcard $(dir)/*.table.template))
 TABLE_GENERATED := $(TABLE_TEMPLATES:%.table.template=%.table.h)
 
@@ -140,17 +140,17 @@ build/%.a:
 build/%.so:
 	$(CC) -shared -o $@ $^
 
-build/%.o: %.c $(TABLE_GENERATED)
+build/%.o: %.c | $(TABLE_GENERATED)
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
 	$(CC) -MMD -MP -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $<
 
-build/%.o: %.cpp $(TABLE_GENERATED)
+build/%.o: %.cpp | $(TABLE_GENERATED)
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
 	$(CXX) -MMD -MP -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $<
 
 
 %.table.h: %.table.template
-	$(CC) -x c -MMD -MP -fsyntax-only -o $@ $<
+	cpp -P $(IINC) -M -MM -MMD -MP -MF $(@:.table.h=.table.d) $<
 	$(TABLE_GEN) $< $@ $(@F)
 
 

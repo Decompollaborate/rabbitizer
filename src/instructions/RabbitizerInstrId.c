@@ -5,18 +5,7 @@
 
 #include <assert.h>
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #name,
-
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #altname,
-
-const char *RabbitizerInstrId_Names[] = {
-#include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
-#include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
-#include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
-};
-
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#include "InstrId_Names_array.table.h"
 
 bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId) {
     switch (uniqueId) {

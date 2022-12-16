@@ -3,16 +3,9 @@
 
 #include "instructions/RabbitizerInstrCategory.h"
 
-//#include <stddef.h>
 #include <string.h>
 
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) [RABBITIZER_INSTRCAT_##name] = #name
-
-const char *const RabbitizerInstrCategory_Names[] = {
-#include "instructions/InstrCategory.inc"
-};
-
-#undef RABBITIZER_DEF_INSTR_CATEGORY
+#include "InstrCategory_Names_array.table.h"
 
 RabbitizerInstrCategory RabbitizerInstrCategory_fromStr(const char *name) {
     if (name == NULL) {

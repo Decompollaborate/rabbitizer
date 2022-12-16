@@ -7,20 +7,7 @@
 
 
 namespace rabbitizer {
-    #define RAB_DEF_OPERAND(prefix, operand) \
-        prefix##_##operand,
-
-    enum class OperandType {
-        RAB_DEF_OPERAND(ALL, INVALID)
-
-    #include "instructions/operands/RabbitizerOperandType_cpu.inc"
-    #include "instructions/operands/RabbitizerOperandType_rsp.inc"
-    #include "instructions/operands/RabbitizerOperandType_r5900.inc"
-
-        RAB_DEF_OPERAND(ALL, MAX)
-    };
-
-    #undef RAB_DEF_OPERAND
+#include "OperandType_enum_class.table.h"
 };
 
 

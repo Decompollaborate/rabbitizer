@@ -9,17 +9,7 @@
 extern "C" {
 #endif
 
-
-#define RAB_DEF_ACCESSTYPE(name) RAB_ACCESSTYPE_##name,
-
-typedef enum RabbitizerAccessType {
-    #include "instructions/AccessType.inc"
-
-    RAB_DEF_ACCESSTYPE(MAX)
-} RabbitizerAccessType;
-
-#undef RAB_DEF_ACCESSTYPE
-
+#include "AccessType_enum.table.h"
 
 #ifdef __cplusplus
 }

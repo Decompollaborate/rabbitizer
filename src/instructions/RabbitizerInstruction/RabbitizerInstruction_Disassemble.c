@@ -12,15 +12,8 @@
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstrSuffix.h"
 
-#define RAB_DEF_OPERAND(prefix, operand) [RAB_OPERAND_##prefix##_##operand] = RabbitizerOperandType_process_##prefix##_##operand,
 
-const OperandCallback instrOpercandCallbacks[] = {
-#include "instructions/operands/RabbitizerOperandType_cpu.inc"
-#include "instructions/operands/RabbitizerOperandType_rsp.inc"
-#include "instructions/operands/RabbitizerOperandType_r5900.inc"
-};
-
-#undef RAB_DEF_OPERAND
+#include "instrOpercandCallbacks_array.table.h"
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {
     size_t totalSize = 0;

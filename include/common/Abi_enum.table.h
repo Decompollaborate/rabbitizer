@@ -1,7 +1,10 @@
-#ifndef Abi_enum_table_h_automatic
-#define Abi_enum_table_h_automatic
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
 
 /* Automatically generated. DO NOT MODIFY */
+
+#ifndef Abi_enum_table_h_automatic
+#define Abi_enum_table_h_automatic
 
 typedef enum RabbitizerAbi {
 RABBITIZER_ABI_NUMERIC,

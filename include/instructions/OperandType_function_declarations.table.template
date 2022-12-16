@@ -1,0 +1,10 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define RAB_DEF_OPERAND(prefix, operand) size_t RabbitizerOperandType_process_##prefix##_##operand (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+
+#include "operands/RabbitizerOperandType_cpu.inc"
+#include "operands/RabbitizerOperandType_rsp.inc"
+#include "operands/RabbitizerOperandType_r5900.inc"
+
+#undef RAB_DEF_OPERAND
