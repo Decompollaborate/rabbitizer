@@ -11,15 +11,7 @@ extern "C" {
 #endif
 
 
-#define RABBITIZER_DEF_ABI(name) RABBITIZER_ABI_##name
-
-typedef enum RabbitizerAbi {
-    #include "Abi.inc"
-
-    RABBITIZER_DEF_ABI(MAX),
-} RabbitizerAbi;
-
-#undef RABBITIZER_DEF_ABI
+#include "Abi_enum.table.h"
 
 RabbitizerAbi RabbitizerAbi_fromStr(const char *name);
 
