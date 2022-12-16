@@ -101,7 +101,7 @@ clean:
 	$(RM) -rf build
 
 distclean: clean
-	$(RM) -rf dist rabbitizer.egg-info .mypy_cache
+	$(RM) -rf dist *.egg-info .mypy_cache
 
 format:
 	clang-format-11 -i -style=file $(C_FILES)
