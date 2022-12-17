@@ -23,6 +23,7 @@ pub struct Instruction {
     instr: InstructionBase,
 }
 
+#[link(name = "rabbitizer", kind = "static")]
 extern "C" {
     fn RabbitizerInstrId_getOpcodeName(unique_id: instr_id_enum::InstrId) -> *const cty::c_char;
 }
