@@ -3,7 +3,7 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
-mod registers {
+pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]

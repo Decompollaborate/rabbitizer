@@ -15,4 +15,4 @@ echo "/* Automatically generated. DO NOT MODIFY */" >> ${OUTPUT_FILE}
 
 echo >> ${OUTPUT_FILE}
 
-cpp -P -I include ${INPUT_FILE} >> ${OUTPUT_FILE}
+cpp -P -I include -I ../include ${INPUT_FILE} >> ${OUTPUT_FILE}
