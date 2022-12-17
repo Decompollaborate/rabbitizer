@@ -9,6 +9,8 @@ pub mod registers_enum;
 pub mod instr_suffix_enum;
 pub mod instruction;
 pub mod instr_descriptor;
+pub mod abi_enum;
+pub mod config;
 
 #[cfg(test)]
 mod tests {
