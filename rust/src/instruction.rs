@@ -478,13 +478,14 @@ impl Instruction {
             let buffer_size = RabbitizerInstruction_getSizeForBuffer(& self.instr, imm_override_len, extra_l_just.try_into().unwrap());
 
             let mut buffer: Vec<u8> = vec![0; buffer_size.try_into().unwrap()];
-            RabbitizerInstruction_disassemble(
+            let disassembled_size = RabbitizerInstruction_disassemble(
                 &self.instr,
                 buffer.as_mut_ptr() as *mut cty::c_char,
                 imm_override_ptr,
                 imm_override_len,
                 extra_l_just.try_into().unwrap(),
             );
+            buffer.truncate(disassembled_size.try_into().unwrap());
 
             String::from_utf8(buffer.try_into().unwrap()).unwrap()
         }

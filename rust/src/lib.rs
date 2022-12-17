@@ -10,17 +10,15 @@ pub mod instr_suffix_enum;
 pub mod instruction;
 pub mod instr_descriptor;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+        assert_eq!(
+            instruction::Instruction::new(0x8D4A7E18, 0x80000000, instr_category_enum::InstrCategory::CPU).disassemble(None, 0),
+            "lw          $t2, 0x7E18($t2)".to_string()
+        );
     }
 }
