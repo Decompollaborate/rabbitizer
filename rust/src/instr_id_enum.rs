@@ -5,6 +5,7 @@
 
  #[repr(u32)]
  #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+ #[allow(non_camel_case_types)]
 pub enum InstrId {
 cpu_INVALID,
 cpu_j,
@@ -686,5 +687,4 @@ r5900_USERDEF_17,
 r5900_USERDEF_18,
 r5900_USERDEF_19,
 r5900_MAX,
-    ALL_MAX = r5900_MAX,
 }

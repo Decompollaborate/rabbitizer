@@ -9,6 +9,7 @@
 
 SPECIAL_RS_TAG(repr(u32))
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+SPECIAL_RS_TAG(allow(non_camel_case_types))
 pub enum InstrCategory {
     #include "instructions/InstrCategory.inc"
 

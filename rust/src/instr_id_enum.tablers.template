@@ -13,6 +13,7 @@
 
 SPECIAL_RS_TAG(repr(u32))
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+SPECIAL_RS_TAG(allow(non_camel_case_types))
 pub enum InstrId {
     #include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
 
@@ -20,7 +21,10 @@ pub enum InstrId {
 
     #include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
 
-    ALL_MAX = RABBITIZER_DEF_INSTR_ID(r5900, , MAX, )
+    // Rust does not like enums with repeated values, so this is commented out until we figure out a proper way to 
+    // properly expose this value to Rust
+    // See https://doc.rust-lang.org/reference/items/enumerations.html
+    // ALL_MAX = RABBITIZER_DEF_INSTR_ID(r5900, , MAX, )
 }
 
 #undef RABBITIZER_DEF_INSTR_ID

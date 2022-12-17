@@ -1,3 +1,12 @@
+/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+pub mod access_type_enum;
+pub mod instr_category_enum;
+pub mod instr_id_enum;
+pub mod operand_type_enum;
+pub mod registers_enum;
+
 pub fn add(left: usize, right: usize) -> usize {
     left + right
 }

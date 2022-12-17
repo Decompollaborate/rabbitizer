@@ -6,6 +6,7 @@
 mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum GprO32 {
     GPR_O32_zero,
     GPR_O32_at,
@@ -42,6 +43,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum GprN32 {
     GPR_N32_zero,
     GPR_N32_at,
@@ -78,6 +80,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum Cop0 {
     COP0_Index,
     COP0_Random,
@@ -114,6 +117,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum Cop1O32 {
     COP1_O32_fv0,
     COP1_O32_fv0f,
@@ -150,6 +154,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum Cop1N32 {
     COP1_N32_fv0,
     COP1_N32_ft14,
@@ -186,6 +191,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum Cop1N64 {
     COP1_N64_fv0,
     COP1_N64_ft12,
@@ -222,6 +228,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum Cop1Control {
     COP1_CONTROL_0,
     COP1_CONTROL_1,
@@ -258,6 +265,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum Cop2 {
     COP2_0,
     COP2_1,
@@ -294,6 +302,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum RspGpr {
     RSP_GPR_zero,
     RSP_GPR_1,
@@ -330,6 +339,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum RspCop0 {
     RSP_COP0_SP_MEM_ADDR,
     RSP_COP0_SP_DRAM_ADDR,
@@ -350,6 +360,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum RspCop2 {
     RSP_COP2_0,
     RSP_COP2_1,
@@ -386,6 +397,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum RspCop2Control {
     RSP_COP2_CONTROL_0,
     RSP_COP2_CONTROL_1,
@@ -422,6 +434,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum RspVector {
     RSP_VECTOR_v0,
     RSP_VECTOR_v1,
@@ -458,6 +471,7 @@ mod registers {
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum R5900VF {
 R5900_VF_vf0,
 R5900_VF_vf1,
@@ -494,6 +508,7 @@ R5900_VF_vf31,
     }
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
     pub enum R5900VI {
 R5900_VI_vi0,
 R5900_VI_vi1,
