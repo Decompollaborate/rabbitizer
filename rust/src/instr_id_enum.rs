@@ -688,3 +688,6 @@ r5900_USERDEF_18,
 r5900_USERDEF_19,
 r5900_MAX,
 }
+impl InstrId {
+    pub const ALL_MAX: InstrId = InstrId::r5900_MAX;
+}

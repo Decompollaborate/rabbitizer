@@ -20,11 +20,10 @@ pub enum InstrId {
     #include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
 
     #include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
+}
 
-    // Rust does not like enums with repeated values, so this is commented out until we figure out a proper way to 
-    // properly expose this value to Rust
-    // See https://doc.rust-lang.org/reference/items/enumerations.html
-    // ALL_MAX = RABBITIZER_DEF_INSTR_ID(r5900, , MAX, )
+impl InstrId {
+    pub const ALL_MAX: InstrId = InstrId::r5900_MAX;
 }
 
 #undef RABBITIZER_DEF_INSTR_ID
