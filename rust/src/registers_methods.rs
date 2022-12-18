@@ -20,6 +20,7 @@ extern "C" {
     pub static mut RabbitizerRegister_R5900VF_Names: [[*const cty::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_R5900VI_Names: [[*const cty::c_char; 2usize]; 0usize];
 
+    /*
     pub fn RabbitizerRegister_getNameGpr(reg_value: u8) -> *const cty::c_char;
     pub fn RabbitizerRegister_getNameCop0(reg_value: u8) -> *const cty::c_char;
     pub fn RabbitizerRegister_getNameCop1(reg_value: u8) -> *const cty::c_char;
@@ -34,6 +35,7 @@ extern "C" {
 
     pub fn RabbitizerRegister_getNameR5900VF(reg_value: u8) -> *const cty::c_char;
     pub fn RabbitizerRegister_getNameR5900VI(reg_value: u8) -> *const cty::c_char;
+    */
 }
 
 impl registers_enum::registers::GprO32 {
