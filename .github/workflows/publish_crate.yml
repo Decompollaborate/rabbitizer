@@ -12,12 +12,6 @@ jobs:
     - name: Checkout reposistory
       uses: actions/checkout@v3
 
-    - name: Build C library
-      run: make -j $(nproc) WERROR=1
-
-    - name: Run logic checks
-      run: ./tests/c/logic_checks/run_logic_checks.sh
-
     - name: Setup Rust toolchain
       uses: actions-rs/toolchain@v1
       with:
