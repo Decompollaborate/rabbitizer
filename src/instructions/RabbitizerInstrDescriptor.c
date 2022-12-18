@@ -72,8 +72,20 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_cpu_cop1cs:
         case RAB_OPERAND_cpu_cop2t:
         case RAB_OPERAND_cpu_op:
+            break;
+
         case RAB_OPERAND_cpu_code:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_cpu_code_lower)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_cpu_code_lower:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_code)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_cpu_copraw:
         case RAB_OPERAND_cpu_label:
             break;

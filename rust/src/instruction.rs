@@ -283,7 +283,43 @@ impl Instruction {
     }
 
     pub fn get_immediate(&self) -> u16 {
+        if !self.has_operand_alias(operand_type_enum::OperandType::cpu_immediate) {
+            core::panic!();
+        }
+
         utils::shiftr(self.instr.word, 0, 16).try_into().unwrap()
+    }
+
+    pub fn get_code(&self) -> u32 {
+        if !self.has_operand_alias(operand_type_enum::OperandType::cpu_code) {
+            core::panic!();
+        }
+
+        utils::shiftr(self.instr.word, 6, 20)
+    }
+
+    pub fn get_code_upper(&self) -> u32 {
+        if !self.has_operand_alias(operand_type_enum::OperandType::cpu_code) {
+            core::panic!();
+        }
+
+        utils::shiftr(self.instr.word, 16, 10)
+    }
+
+    pub fn get_code_lower(&self) -> u32 {
+        if !self.has_operand_alias(operand_type_enum::OperandType::cpu_code_lower) {
+            core::panic!();
+        }
+
+        utils::shiftr(self.instr.word, 6, 10)
+    }
+
+    pub fn get_copraw(&self) -> u32 {
+        if !self.has_operand_alias(operand_type_enum::OperandType::cpu_copraw) {
+            core::panic!();
+        }
+
+        utils::shiftr(self.instr.word, 0, 25)
     }
 
 
