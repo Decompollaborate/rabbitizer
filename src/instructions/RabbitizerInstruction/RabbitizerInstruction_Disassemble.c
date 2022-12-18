@@ -7,71 +7,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "common/Utils.h"
 #include "common/RabbitizerConfig.h"
-#include "instructions/RabbitizerRegister.h"
-#include "instructions/RabbitizerInstrSuffix.h"
 
-#define RAB_DEF_OPERAND(prefix, operand) [RAB_OPERAND_##prefix##_##operand] = RabbitizerOperandType_process_##prefix##_##operand,
-
-const OperandCallback instrOpercandCallbacks[] = {
-#include "instructions/operands/RabbitizerOperandType_cpu.inc"
-#include "instructions/operands/RabbitizerOperandType_rsp.inc"
-#include "instructions/operands/RabbitizerOperandType_r5900.inc"
-};
-
-#undef RAB_DEF_OPERAND
-
-size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength) {
-    size_t totalSize = 0;
-    char auxBuffer[0x100] = { 0 };
-    char immOverride[0x100] = { 0 };
-
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
-        RabbitizerOperandType operand;
-        OperandCallback callback;
-
-        if (i != 0) {
-            totalSize += 2;
-        }
-
-        operand = self->descriptor->operands[i];
-        assert(operand > RAB_OPERAND_ALL_INVALID);
-        assert(operand < RAB_OPERAND_ALL_MAX);
-
-        callback = instrOpercandCallbacks[operand];
-        assert(callback != NULL);
-        totalSize += callback(self, auxBuffer, immOverride, immOverrideLength);
-    }
-
-    return totalSize;
-}
-
-size_t RabbitizerInstruction_disassembleOperands(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
-    size_t totalSize = 0;
-
-    for (size_t i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
-        RabbitizerOperandType operand;
-        OperandCallback callback;
-
-        if (i != 0) {
-            RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ',');
-            RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
-        }
-
-        operand = self->descriptor->operands[i];
-        assert(operand > RAB_OPERAND_ALL_INVALID);
-        assert(operand < RAB_OPERAND_ALL_MAX);
-
-        callback = instrOpercandCallbacks[operand];
-        assert(callback != NULL);
-
-        RABUTILS_BUFFER_ADVANCE(dst, totalSize, callback(self, dst, immOverride, immOverrideLength));
-    }
-
-    *dst = '\0';
-    return totalSize;
-}
 
 size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust) {
     size_t totalSize = 0;

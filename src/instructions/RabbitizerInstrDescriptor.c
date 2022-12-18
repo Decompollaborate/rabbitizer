@@ -7,19 +7,7 @@
 
 #include "instructions/RabbitizerInstruction.h"
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = { __VA_ARGS__ },
-
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
-
-const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
-#include "instructions/instr_id/RabbitizerInstrId_cpu.inc"
-#include "instructions/instr_id/RabbitizerInstrId_rsp.inc"
-#include "instructions/instr_id/RabbitizerInstrId_r5900.inc"
-};
-
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
-
+#include "InstrDescriptor_Descriptors_array.table.h"
 
 bool RabbitizerInstrDescriptor_hasSpecificOperand(const RabbitizerInstrDescriptor *self, RabbitizerOperandType operand) {
     size_t i;
@@ -84,8 +72,20 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_cpu_cop1cs:
         case RAB_OPERAND_cpu_cop2t:
         case RAB_OPERAND_cpu_op:
+            break;
+
         case RAB_OPERAND_cpu_code:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_cpu_code_lower)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_cpu_code_lower:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_code)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_cpu_copraw:
         case RAB_OPERAND_cpu_label:
             break;

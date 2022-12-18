@@ -39,7 +39,7 @@ size_t RabbitizerInstrSuffixR5900_xyzw(const RabbitizerInstruction *self, char *
     return totalSize;
 }
 const InstrSuffixCallback instrSuffixCallbacks[] = {
-    [RABINSTRSUFFIX_NONE] = RabbitizerInstrSuffix_None,
+    [RABINSTRSUFFIX_ALL_NONE] = RabbitizerInstrSuffix_None,
 
     [RABINSTRSUFFIX_R5900_xyzw] = RabbitizerInstrSuffixR5900_xyzw,
 };
@@ -52,8 +52,8 @@ size_t RabbitizerInstrSuffix_getSizeForBuffer(UNUSED const RabbitizerInstruction
 size_t RabbitizerInstrSuffix_processSuffix(const RabbitizerInstruction *self, char *dst, RabbitizerInstrSuffix instrSuffix) {
     InstrSuffixCallback callback;
 
-    assert(instrSuffix >= RABINSTRSUFFIX_NONE);
-    assert(instrSuffix < RABINSTRSUFFIX_MAX);
+    assert(instrSuffix >= RABINSTRSUFFIX_ALL_NONE);
+    assert(instrSuffix < RABINSTRSUFFIX_ALL_MAX);
 
     callback = instrSuffixCallbacks[instrSuffix];
     assert(callback != NULL);

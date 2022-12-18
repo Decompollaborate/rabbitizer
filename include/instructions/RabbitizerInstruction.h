@@ -167,8 +167,11 @@ uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *
 
 NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self);
+
+//! @deprecated
 NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram);
+
 NODISCARD NON_NULL(1) PURE
 int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
@@ -232,6 +235,11 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self);
+
+NODISCARD NON_NULL(2) PURE
+size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const RabbitizerInstruction *instr, size_t immOverrideLength);
+NODISCARD NON_NULL(2, 3)
+size_t RabbitizerOperandType_disassemble(RabbitizerOperandType operand, const RabbitizerInstruction *instr, char *dst, const char *immOverride, size_t immOverrideLength);
 
 NODISCARD NON_NULL(1) PURE
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength);

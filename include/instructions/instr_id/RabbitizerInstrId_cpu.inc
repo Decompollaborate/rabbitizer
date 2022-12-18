@@ -6,18 +6,18 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}
 )
 
-#include "instructions/instr_id/cpu/cpu_normal.inc"
-#include "instructions/instr_id/cpu/cpu_special.inc"
-#include "instructions/instr_id/cpu/cpu_regimm.inc"
-#include "instructions/instr_id/cpu/cpu_cop0.inc"
-#include "instructions/instr_id/cpu/cpu_cop0_bc0.inc"
-#include "instructions/instr_id/cpu/cpu_cop0_tlb.inc"
-#include "instructions/instr_id/cpu/cpu_cop1.inc"
-#include "instructions/instr_id/cpu/cpu_cop1_bc1.inc"
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_s.inc"
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_d.inc"
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_w.inc"
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_l.inc"
+#include "cpu/cpu_normal.inc"
+#include "cpu/cpu_special.inc"
+#include "cpu/cpu_regimm.inc"
+#include "cpu/cpu_cop0.inc"
+#include "cpu/cpu_cop0_bc0.inc"
+#include "cpu/cpu_cop0_tlb.inc"
+#include "cpu/cpu_cop1.inc"
+#include "cpu/cpu_cop1_bc1.inc"
+#include "cpu/cpu_cop1_fpu_s.inc"
+#include "cpu/cpu_cop1_fpu_d.inc"
+#include "cpu/cpu_cop1_fpu_w.inc"
+#include "cpu/cpu_cop1_fpu_l.inc"
 
 RABBITIZER_DEF_INSTR_ID(
     cpu, , USERDEF_00,

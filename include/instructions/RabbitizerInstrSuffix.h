@@ -14,13 +14,7 @@ extern "C" {
 
 struct RabbitizerInstruction;
 
-typedef enum RabbitizerInstrSuffix {
-    RABINSTRSUFFIX_NONE,
-
-    RABINSTRSUFFIX_R5900_xyzw,
-
-    RABINSTRSUFFIX_MAX
-} RabbitizerInstrSuffix;
+#include "InstrSuffix_enum.table.h"
 
 CONST NODISCARD NON_NULL(1)
 size_t RabbitizerInstrSuffix_getSizeForBuffer(const struct RabbitizerInstruction *self, RabbitizerInstrSuffix instrSuffix);

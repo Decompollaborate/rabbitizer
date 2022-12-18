@@ -22,6 +22,8 @@ WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werr
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
 WARNINGS_CXX    :=
 
+TABLE_GEN       := tools/table_gen.sh
+
 ifeq ($(CC),gcc)
     WARNINGS    += -Wno-cast-function-type
 endif
@@ -66,6 +68,12 @@ OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
 DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
 
+TABLE_DIRS      := $(shell find include src cplusplus rabbitizer -type d)
+TABLE_TEMPLATES := $(foreach dir,$(TABLE_DIRS),$(wildcard $(dir)/*.table.template))
+TABLE_GENERATED := $(TABLE_TEMPLATES:%.table.template=%.table.h)
+
+TABLE_DEP_FILES := $(TABLE_GENERATED:%.table.h=%.table.d)
+
 TESTS_DIRS      := $(shell find tests -type d)
 TESTS_C         := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.c))
 TESTS_CXX       := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.cpp))
@@ -102,6 +110,7 @@ clean:
 
 distclean: clean
 	$(RM) -rf dist *.egg-info .mypy_cache
+	$(RM) -rf $(TABLE_GENERATED)
 
 format:
 	clang-format-11 -i -style=file $(C_FILES)
@@ -131,16 +140,22 @@ build/%.a:
 build/%.so:
 	$(CC) -shared -o $@ $^
 
-build/%.o: %.c
+build/%.o: %.c | $(TABLE_GENERATED)
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
 	$(CC) -MMD -MP -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $<
 
-build/%.o: %.cpp
+build/%.o: %.cpp | $(TABLE_GENERATED)
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
 	$(CXX) -MMD -MP -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $<
 
 
+%.table.h: %.table.template
+	cpp -P $(IINC) -M -MM -MMD -MP -MF $(@:.table.h=.table.d) $<
+	$(TABLE_GEN) $< $@ $(@F)
+
+
 -include $(DEP_FILES)
+-include $(TABLE_DEP_FILES)
 
 # Print target for debugging
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

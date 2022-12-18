@@ -7,15 +7,7 @@
 
 
 namespace rabbitizer {
-    #define RAB_DEF_ACCESSTYPE(name) name,
-
-    enum class AccessType {
-        #include "instructions/AccessType.inc"
-
-        RAB_DEF_ACCESSTYPE(MAX)
-    };
-
-    #undef RAB_DEF_ACCESSTYPE
+#include "AccessType_enum_class.table.h"
 };
 
 

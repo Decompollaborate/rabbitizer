@@ -11,22 +11,7 @@
 extern "C" {
 #endif
 
-
-#define RAB_DEF_OPERAND(prefix, operand) \
-    RAB_OPERAND_##prefix##_##operand,
-
-typedef enum RabbitizerOperandType {
-    RAB_DEF_OPERAND(ALL, INVALID)
-
-#include "operands/RabbitizerOperandType_cpu.inc"
-#include "operands/RabbitizerOperandType_rsp.inc"
-#include "operands/RabbitizerOperandType_r5900.inc"
-
-    RAB_DEF_OPERAND(ALL, MAX)
-} RabbitizerOperandType;
-
-#undef RAB_DEF_OPERAND
-
+#include "OperandType_enum.table.h"
 
 struct RabbitizerInstruction;
 
@@ -34,15 +19,7 @@ typedef size_t (*OperandCallback)(const struct RabbitizerInstruction *self, char
 
 extern const OperandCallback instrOpercandCallbacks[];
 
-
-#define RAB_DEF_OPERAND(prefix, operand) size_t RabbitizerOperandType_process_##prefix##_##operand (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
-
-#include "instructions/operands/RabbitizerOperandType_cpu.inc"
-#include "instructions/operands/RabbitizerOperandType_rsp.inc"
-#include "instructions/operands/RabbitizerOperandType_r5900.inc"
-
-#undef RAB_DEF_OPERAND
-
+#include "OperandType_function_declarations.table.h"
 
 #ifdef __cplusplus
 }

@@ -7,18 +7,18 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_rsp_vd, RAB_OPERAND_rsp_vs, RAB_OPERAND_rsp_vt_elementhigh}
 )
 
-#include "instructions/instr_id/rsp/rsp_cop2.inc"
-#include "instructions/instr_id/rsp/rsp_cop2_vu.inc"
+#include "rsp/rsp_cop2.inc"
+#include "rsp/rsp_cop2_vu.inc"
 
-#include "instructions/instr_id/rsp/rsp_normal_lwc2.inc"
-#include "instructions/instr_id/rsp/rsp_normal_swc2.inc"
+#include "rsp/rsp_normal_lwc2.inc"
+#include "rsp/rsp_normal_swc2.inc"
 
 // CPU instructions but with rsp registers
 
-#include "instructions/instr_id/rsp/rsp_normal.inc"
-#include "instructions/instr_id/rsp/rsp_special.inc"
-#include "instructions/instr_id/rsp/rsp_regimm.inc"
-#include "instructions/instr_id/rsp/rsp_cop0.inc"
+#include "rsp/rsp_normal.inc"
+#include "rsp/rsp_special.inc"
+#include "rsp/rsp_regimm.inc"
+#include "rsp/rsp_cop0.inc"
 
 RABBITIZER_DEF_INSTR_ID(
     rsp, , USERDEF_00,
