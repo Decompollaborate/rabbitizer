@@ -1,6 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::registers_enum;
 
 extern "C" {
     pub static mut RabbitizerRegister_GprO32_Names: [[*const cty::c_char; 2usize]; 0usize];
@@ -35,9 +36,9 @@ extern "C" {
     pub fn RabbitizerRegister_getNameR5900VI(reg_value: u8) -> *const cty::c_char;
 }
 
-impl crate::registers_enum::registers::GprO32 {
-    pub fn name(self) -> &'static str {
-        let reg_value: u32 = self.into();
+impl registers_enum::registers::GprO32 {
+    pub fn name(&self) -> &'static str {
+        let reg_value: u32 = (*self).into();
 
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_GprO32_Names[reg_value as usize][1]).to_str().unwrap()
@@ -45,7 +46,7 @@ impl crate::registers_enum::registers::GprO32 {
     }
 }
 
-impl crate::registers_enum::registers::GprN32 {
+impl registers_enum::registers::GprN32 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -55,7 +56,7 @@ impl crate::registers_enum::registers::GprN32 {
     }
 }
 
-impl crate::registers_enum::registers::Cop0 {
+impl registers_enum::registers::Cop0 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -65,7 +66,7 @@ impl crate::registers_enum::registers::Cop0 {
     }
 }
 
-impl crate::registers_enum::registers::Cop1O32 {
+impl registers_enum::registers::Cop1O32 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -75,7 +76,7 @@ impl crate::registers_enum::registers::Cop1O32 {
     }
 }
 
-impl crate::registers_enum::registers::Cop1N32 {
+impl registers_enum::registers::Cop1N32 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -85,7 +86,7 @@ impl crate::registers_enum::registers::Cop1N32 {
     }
 }
 
-impl crate::registers_enum::registers::Cop1N64 {
+impl registers_enum::registers::Cop1N64 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -95,7 +96,7 @@ impl crate::registers_enum::registers::Cop1N64 {
     }
 }
 
-impl crate::registers_enum::registers::Cop1Control {
+impl registers_enum::registers::Cop1Control {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -105,7 +106,7 @@ impl crate::registers_enum::registers::Cop1Control {
     }
 }
 
-impl crate::registers_enum::registers::Cop2 {
+impl registers_enum::registers::Cop2 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -115,7 +116,7 @@ impl crate::registers_enum::registers::Cop2 {
     }
 }
 
-impl crate::registers_enum::registers::RspGpr {
+impl registers_enum::registers::RspGpr {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -125,7 +126,7 @@ impl crate::registers_enum::registers::RspGpr {
     }
 }
 
-impl crate::registers_enum::registers::RspCop0 {
+impl registers_enum::registers::RspCop0 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -135,7 +136,7 @@ impl crate::registers_enum::registers::RspCop0 {
     }
 }
 
-impl crate::registers_enum::registers::RspCop2 {
+impl registers_enum::registers::RspCop2 {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -145,7 +146,7 @@ impl crate::registers_enum::registers::RspCop2 {
     }
 }
 
-impl crate::registers_enum::registers::RspCop2Control {
+impl registers_enum::registers::RspCop2Control {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -155,7 +156,7 @@ impl crate::registers_enum::registers::RspCop2Control {
     }
 }
 
-impl crate::registers_enum::registers::RspVector {
+impl registers_enum::registers::RspVector {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -165,7 +166,7 @@ impl crate::registers_enum::registers::RspVector {
     }
 }
 
-impl crate::registers_enum::registers::R5900VF {
+impl registers_enum::registers::R5900VF {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
@@ -175,7 +176,7 @@ impl crate::registers_enum::registers::R5900VF {
     }
 }
 
-impl crate::registers_enum::registers::R5900VI {
+impl registers_enum::registers::R5900VI {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 

@@ -236,6 +236,11 @@ bool RabbitizerInstruction_isValid(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self);
 
+NODISCARD NON_NULL(2) PURE
+size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const RabbitizerInstruction *instr, size_t immOverrideLength);
+NODISCARD NON_NULL(2, 3)
+size_t RabbitizerOperandType_disassemble(RabbitizerOperandType operand, const RabbitizerInstruction *instr, char *dst, const char *immOverride, size_t immOverrideLength);
+
 NODISCARD NON_NULL(1) PURE
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self, size_t immOverrideLength);
 NON_NULL(1, 2)

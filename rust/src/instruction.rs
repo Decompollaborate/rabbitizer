@@ -1,9 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{instr_id_enum, instr_category_enum, instr_descriptor, operand_type_enum, instr_suffix_enum, access_type_enum, registers_enum};
-
-pub type SizeT = cty::c_ulong;
+use crate::{instr_id_enum, instr_category_enum, instr_descriptor, operand_type_enum, instr_suffix_enum, access_type_enum, registers_enum, utils};
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -91,16 +89,16 @@ extern "C" {
 
     fn RabbitizerInstruction_getSizeForBuffer(
         self_: *const InstructionBase,
-        immOverrideLength: SizeT,
+        immOverrideLength: utils::SizeT,
         extraLJust: cty::c_int,
-    ) -> SizeT;
+    ) -> utils::SizeT;
     fn RabbitizerInstruction_disassemble(
         self_: *const InstructionBase,
         dst: *mut cty::c_char,
         immOverride: *const cty::c_char,
-        immOverrideLength: SizeT,
+        immOverrideLength: utils::SizeT,
         extraLJust: cty::c_int,
-    ) -> SizeT;
+    ) -> utils::SizeT;
 }
 
 extern "C" {
@@ -149,22 +147,6 @@ extern "C" {
     fn RabbitizerInstrDescriptor_doesUnsignedMemoryAccess(
         self_: *const instr_descriptor::InstrDescriptor,
     ) -> bool;
-}
-
-fn c_string_from_str(str: Option<&str>) -> (*const cty::c_char, SizeT) {
-    if let Some(str) = str {
-        (str.as_ptr() as *const cty::c_char, str.len().try_into().unwrap())
-    } else {
-        (std::ptr::null(), 0)
-    }
-}
-
-fn mask(v: u32, w: u32) -> u32 {
-    v & ((1 << w) - 1)
-}
-
-fn shiftr(v: u32, s: u32, w: u32) -> u32 {
-    mask(v >> s, w)
 }
 
 impl Drop for Instruction {
@@ -217,7 +199,7 @@ impl Instruction {
     }
 
     pub fn get_opcode(&self) -> u32 {
-        shiftr(self.instr.word, 26, 6)
+        utils::shiftr(self.instr.word, 26, 6)
     }
 
     pub fn get_rs(&self) -> u32 {
@@ -225,7 +207,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 21, 5)
+        utils::shiftr(self.instr.word, 21, 5)
     }
 
     pub fn get_rs_o32(&self) -> registers_enum::registers::GprO32 {
@@ -241,7 +223,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 16, 5)
+        utils::shiftr(self.instr.word, 16, 5)
     }
 
     pub fn get_rt_o32(&self) -> registers_enum::registers::GprO32 {
@@ -257,7 +239,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 11, 5)
+        utils::shiftr(self.instr.word, 11, 5)
     }
 
     pub fn get_rd_o32(&self) -> registers_enum::registers::GprO32 {
@@ -273,7 +255,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 6, 5)
+        utils::shiftr(self.instr.word, 6, 5)
     }
 
     pub fn get_function(&self) -> u32 {
@@ -281,7 +263,7 @@ impl Instruction {
         //    core::panic!();
         //}
 
-        shiftr(self.instr.word, 0, 6)
+        utils::shiftr(self.instr.word, 0, 6)
     }
 
     pub fn get_cop0d(&self) -> u32 {
@@ -289,7 +271,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 11, 5)
+        utils::shiftr(self.instr.word, 11, 5)
     }
 
     pub fn get_cop0d_cop0(&self) -> registers_enum::registers::Cop0 {
@@ -297,11 +279,11 @@ impl Instruction {
     }
 
     pub fn get_instr_index(&self) -> u32 {
-        shiftr(self.instr.word, 0, 26)
+        utils::shiftr(self.instr.word, 0, 26)
     }
 
     pub fn get_immediate(&self) -> u16 {
-        shiftr(self.instr.word, 0, 16).try_into().unwrap()
+        utils::shiftr(self.instr.word, 0, 16).try_into().unwrap()
     }
 
 
@@ -310,7 +292,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 11, 5)
+        utils::shiftr(self.instr.word, 11, 5)
     }
 
     pub fn get_fs_o32(&self) -> registers_enum::registers::Cop1O32 {
@@ -330,7 +312,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 16, 5)
+        utils::shiftr(self.instr.word, 16, 5)
     }
 
     pub fn get_ft_o32(&self) -> registers_enum::registers::Cop1O32 {
@@ -350,7 +332,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 6, 5)
+        utils::shiftr(self.instr.word, 6, 5)
     }
 
     pub fn get_fd_o32(&self) -> registers_enum::registers::Cop1O32 {
@@ -370,7 +352,7 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 11, 5)
+        utils::shiftr(self.instr.word, 11, 5)
     }
 
     pub fn get_cop1cs_cop1control(&self) -> registers_enum::registers::Cop1Control {
@@ -382,11 +364,17 @@ impl Instruction {
             core::panic!();
         }
 
-        shiftr(self.instr.word, 16, 5)
+        utils::shiftr(self.instr.word, 16, 5)
     }
 
     pub fn get_cop2t_cop2(&self) -> registers_enum::registers::Cop2 {
         self.get_cop2t().try_into().unwrap()
+    }
+
+    pub fn get_operand_type(&self, index: usize) -> operand_type_enum::OperandType {
+        unsafe {
+            self.instr.descriptor.as_ref().unwrap().get_operand_type(index)
+        }
     }
 
     pub fn raw(&self) -> u32 {
@@ -651,7 +639,7 @@ impl Instruction {
     }
 
     pub fn disassemble(&self, imm_override: Option<&str>, extra_l_just: i32) -> String {
-        let (imm_override_ptr, imm_override_len) = c_string_from_str(imm_override);
+        let (imm_override_ptr, imm_override_len) = utils::c_string_from_str(imm_override);
 
         unsafe {
             let buffer_size = RabbitizerInstruction_getSizeForBuffer(& self.instr, imm_override_len, extra_l_just.try_into().unwrap());

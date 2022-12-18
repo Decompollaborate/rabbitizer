@@ -52,3 +52,11 @@ pub struct InstrDescriptor {
     access_type: access_type_enum::AccessType,
     does_unsigned_memory_access: bool,
 }
+
+impl InstrDescriptor {
+    pub fn get_operand_type(&self, index: usize) -> operand_type_enum::OperandType {
+        assert!(index < self.operands.len());
+
+        self.operands[index]
+    }
+}
