@@ -8,14 +8,18 @@ version = "1.5.4"
 edition = "2021"
 authors = ["Anghelo Carvajal <angheloalf95@gmail.com>"]
 description = "MIPS instruction decoder"
-readme = "../README.md"
+readme = "README.md"
 homepage = "https://github.com/Decompollaborate/rabbitizer"
 repository = "https://github.com/Decompollaborate/rabbitizer"
 license = "MIT"
 keywords = ["MIPS", "decoder"]
-build = "build.rs"
+build = "rust/build.rs"
+include = ["/rust/src", "/rust/build.rs", "/src", "/include"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "rust/src/lib.rs"
 
 [dependencies]
 cty = "0.2.2"
