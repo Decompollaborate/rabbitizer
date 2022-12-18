@@ -25,7 +25,7 @@ jobs:
         override: true
 
     - name: Build Rust bindings
-      if: not startsWith(github.ref, 'refs/tags/')
+      if: ! startsWith(github.ref, 'refs/tags/')
       run: cd rust && cargo build --release
 
     - name: Upload crate
