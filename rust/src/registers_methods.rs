@@ -46,6 +46,10 @@ impl registers_enum::registers::GprO32 {
             std::ffi::CStr::from_ptr(RabbitizerRegister_GprO32_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::GprN32 {
@@ -56,6 +60,10 @@ impl registers_enum::registers::GprN32 {
             std::ffi::CStr::from_ptr(RabbitizerRegister_GprN32_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::Cop0 {
@@ -64,6 +72,35 @@ impl registers_enum::registers::Cop0 {
 
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_Cop0_Names[reg_value as usize][1]).to_str().unwrap()
+        }
+    }
+
+    pub fn is_reserved(&self) -> bool {
+        match *self {
+            registers_enum::registers::Cop0::Reserved07 => {
+                return true;
+            }
+            registers_enum::registers::Cop0::Reserved21 => {
+                return true;
+            }
+            registers_enum::registers::Cop0::Reserved22 => {
+                return true;
+            }
+            registers_enum::registers::Cop0::Reserved23 => {
+                return true;
+            }
+            registers_enum::registers::Cop0::Reserved24 => {
+                return true;
+            }
+            registers_enum::registers::Cop0::Reserved25 => {
+                return true;
+            }
+            registers_enum::registers::Cop0::Reserved31 => {
+                return true;
+            }
+            _ => {
+                return false;
+            }
         }
     }
 }
@@ -76,6 +113,10 @@ impl registers_enum::registers::Cop1O32 {
             std::ffi::CStr::from_ptr(RabbitizerRegister_Cop1O32_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::Cop1N32 {
@@ -85,6 +126,10 @@ impl registers_enum::registers::Cop1N32 {
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_Cop1N32_Names[reg_value as usize][1]).to_str().unwrap()
         }
+    }
+
+    pub fn is_reserved(&self) -> bool {
+        false
     }
 }
 
@@ -96,6 +141,10 @@ impl registers_enum::registers::Cop1N64 {
             std::ffi::CStr::from_ptr(RabbitizerRegister_Cop1N64_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::Cop1Control {
@@ -105,6 +154,10 @@ impl registers_enum::registers::Cop1Control {
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_Cop1Control_Names[reg_value as usize][1]).to_str().unwrap()
         }
+    }
+
+    pub fn is_reserved(&self) -> bool {
+        false
     }
 }
 
@@ -116,6 +169,10 @@ impl registers_enum::registers::Cop2 {
             std::ffi::CStr::from_ptr(RabbitizerRegister_Cop2_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::RspGpr {
@@ -125,6 +182,10 @@ impl registers_enum::registers::RspGpr {
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_RspGpr_Names[reg_value as usize][1]).to_str().unwrap()
         }
+    }
+
+    pub fn is_reserved(&self) -> bool {
+        false
     }
 }
 
@@ -136,6 +197,10 @@ impl registers_enum::registers::RspCop0 {
             std::ffi::CStr::from_ptr(RabbitizerRegister_RspCop0_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::RspCop2 {
@@ -145,6 +210,10 @@ impl registers_enum::registers::RspCop2 {
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_RspCop2_Names[reg_value as usize][1]).to_str().unwrap()
         }
+    }
+
+    pub fn is_reserved(&self) -> bool {
+        false
     }
 }
 
@@ -156,6 +225,10 @@ impl registers_enum::registers::RspCop2Control {
             std::ffi::CStr::from_ptr(RabbitizerRegister_RspCop2Control_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::RspVector {
@@ -165,6 +238,10 @@ impl registers_enum::registers::RspVector {
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_RspVector_Names[reg_value as usize][1]).to_str().unwrap()
         }
+    }
+
+    pub fn is_reserved(&self) -> bool {
+        false
     }
 }
 
@@ -176,6 +253,10 @@ impl registers_enum::registers::R5900VF {
             std::ffi::CStr::from_ptr(RabbitizerRegister_R5900VF_Names[reg_value as usize][1]).to_str().unwrap()
         }
     }
+
+    pub fn is_reserved(&self) -> bool {
+        false
+    }
 }
 
 impl registers_enum::registers::R5900VI {
@@ -185,5 +266,9 @@ impl registers_enum::registers::R5900VI {
         unsafe {
             std::ffi::CStr::from_ptr(RabbitizerRegister_R5900VI_Names[reg_value as usize][1]).to_str().unwrap()
         }
+    }
+
+    pub fn is_reserved(&self) -> bool {
+        false
     }
 }
