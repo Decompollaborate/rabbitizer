@@ -1,14 +1,4 @@
-# Build options can be changed by modifying the makefile or by building with 'make SETTING=value'.
-DEBUG           ?= 1
-
-
-ifeq ($(DEBUG),0)
-	CARGO_ARGS  += --release
-endif
-
-
 RS_TABLE_GEN    := ../tools/rs_table_gen.sh
-
 
 IINC            := -I ../include
 
@@ -20,8 +10,6 @@ TABLE_DEP_FILES := $(TABLE_GENERATED:%.rs=%.tablers.d)
 
 
 all: $(TABLE_GENERATED)
-	make -C ..
-	cargo build $(CARGO_ARGS)
 
 distclean:
 	$(RM) -rf $(TABLE_GENERATED)
