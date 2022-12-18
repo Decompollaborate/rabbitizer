@@ -1,7 +1,16 @@
 [package]
 name = "rabbitizer"
+# Version should be synced with include/common/RabbitizerVersion.h
 version = "1.4.0"
 edition = "2021"
+authors = ["Anghelo Carvajal <angheloalf95@gmail.com>"]
+description = "MIPS instruction decoder"
+readme = "README.md"
+homepage = "https://github.com/Decompollaborate/rabbitizer"
+repository = "https://github.com/Decompollaborate/rabbitizer"
+license = "MIT"
+keywords = ["MIPS", "decoder"]
+build = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
