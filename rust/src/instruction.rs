@@ -654,7 +654,7 @@ impl Instruction {
             );
             buffer.truncate(disassembled_size.try_into().unwrap());
 
-            String::from_utf8(buffer.try_into().unwrap()).unwrap()
+            String::from_utf8(buffer).unwrap()
         }
     }
 }

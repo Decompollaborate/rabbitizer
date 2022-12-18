@@ -3,22 +3,20 @@
 
 use crate::{operand_type_enum, instruction, utils};
 
-pub type SizeT = cty::c_ulong;
-
 extern "C" {
     fn RabbitizerOperandType_getBufferSize(
         operand: operand_type_enum::OperandType,
         instr: *const instruction::InstructionBase,
-        immOverrideLength: SizeT ,
-    ) -> SizeT;
+        immOverrideLength: utils::SizeT,
+    ) -> utils::SizeT;
 
     fn RabbitizerOperandType_disassemble(
         operand: operand_type_enum::OperandType,
         instr: *const instruction::InstructionBase,
         dst: *mut cty::c_char,
         immOverride: *const cty::c_char,
-        immOverrideLength: SizeT ,
-    ) -> SizeT;
+        immOverrideLength: utils::SizeT,
+    ) -> utils::SizeT;
 }
 
 impl operand_type_enum::OperandType {
@@ -38,7 +36,7 @@ impl operand_type_enum::OperandType {
             );
             buffer.truncate(disassembled_size.try_into().unwrap());
 
-            String::from_utf8(buffer.try_into().unwrap()).unwrap()
+            String::from_utf8(buffer).unwrap()
         }
     }
 }

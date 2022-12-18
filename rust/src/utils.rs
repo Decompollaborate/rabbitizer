@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-pub type SizeT = cty::c_ulong;
+pub type SizeT = usize;
 
 
 pub fn c_string_from_str(str: Option<&str>) -> (*const cty::c_char, SizeT) {
