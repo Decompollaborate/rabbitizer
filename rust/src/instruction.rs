@@ -49,7 +49,6 @@ extern "C" {
     fn RabbitizerInstructionR5900_processUniqueId(self_: *mut InstructionBase);
 }
 
-
 extern "C" {
     fn RabbitizerInstruction_getRaw(self_: *const InstructionBase) -> u32;
     fn RabbitizerInstruction_getProcessedImmediate(self_: *const InstructionBase) -> i32;
@@ -103,7 +102,6 @@ extern "C" {
         extraLJust: cty::c_int,
     ) -> SizeT;
 }
-
 
 extern "C" {
     fn RabbitizerInstrDescriptor_instrSuffix(

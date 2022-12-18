@@ -11,6 +11,7 @@ pub mod instruction;
 pub mod instr_descriptor;
 pub mod abi_enum;
 pub mod config;
+pub mod registers;
 
 #[cfg(test)]
 mod tests {
