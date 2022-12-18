@@ -1,7 +1,10 @@
+# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-License-Identifier: MIT
+
 [package]
 name = "rabbitizer"
 # Version should be synced with include/common/RabbitizerVersion.h
-version = "1.4.0"
+version = "1.5.0"
 edition = "2021"
 authors = ["Anghelo Carvajal <angheloalf95@gmail.com>"]
 description = "MIPS instruction decoder"
