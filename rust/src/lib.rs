@@ -1,19 +1,29 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-pub mod access_type_enum;
-pub mod instr_category_enum;
-pub mod instr_id_enum;
-pub mod operand_type_enum;
-pub mod registers_enum;
-pub mod instr_suffix_enum;
-pub mod instruction;
-pub mod instr_descriptor;
-pub mod abi_enum;
+mod access_type_enum;
+mod instr_category_enum;
+mod instr_id_enum;
+mod operand_type_enum;
+mod registers_enum;
+mod instr_suffix_enum;
+mod instruction;
+mod instr_descriptor;
+mod abi_enum;
+mod registers_methods;
+mod opereand_type;
 pub mod config;
-pub mod registers;
-pub mod opereand_type;
 pub mod utils;
+
+pub use access_type_enum::AccessType;
+pub use instr_category_enum::InstrCategory;
+pub use instr_id_enum::InstrId;
+pub use operand_type_enum::OperandType;
+pub use registers_enum::registers;
+pub use instr_suffix_enum::InstrSuffix;
+pub use instruction::Instruction;
+pub use instr_descriptor::InstrDescriptor;
+pub use abi_enum::Abi;
 
 #[cfg(test)]
 mod tests {
