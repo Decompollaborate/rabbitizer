@@ -10,7 +10,7 @@ description = "MIPS instruction decoder"
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [
-    { name="Anghelo Carvajal", email="angheloalf@gmail.com" },
+    { name="Anghelo Carvajal", email="angheloalf95@gmail.com" },
 ]
 
 [project.urls]

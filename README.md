@@ -32,6 +32,8 @@ NOTE: Installing the development version is not recommended. Proceed at your own
 - Fully written in C for fast decoding.
 - Python bindings.
   - The minimal Python version is 3.7, older versions are not guaranteed to work.
+- C++ bindings
+- Rust bindings
 - Includes some minor tools to build your own pointer/symbol detection.
 - Configurable, many features can be turned on and off.
 - MIPS instructions features:

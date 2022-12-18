@@ -22,10 +22,15 @@ extern const char *RabbitizerRegister_Cop0_Names[][2];
 extern const char *RabbitizerRegister_Cop1O32_Names[][2];
 extern const char *RabbitizerRegister_Cop1N32_Names[][2];
 extern const char *RabbitizerRegister_Cop1N64_Names[][2];
+extern const char *RabbitizerRegister_Cop1Control_Names[][2];
 extern const char *RabbitizerRegister_Cop2_Names[][2];
 extern const char *RabbitizerRegister_RspGpr_Names[][2];
 extern const char *RabbitizerRegister_RspCop0_Names[][2];
+extern const char *RabbitizerRegister_RspCop2_Names[][2];
+extern const char *RabbitizerRegister_RspCop2Control_Names[][2];
 extern const char *RabbitizerRegister_RspVector_Names[][2];
+extern const char *RabbitizerRegister_R5900VF_Names[][2];
+extern const char *RabbitizerRegister_R5900VI_Names[][2];
 
 
 NODISCARD PURE RETURNS_NON_NULL
