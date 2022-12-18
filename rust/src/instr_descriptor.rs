@@ -59,4 +59,10 @@ impl InstrDescriptor {
 
         self.operands[index]
     }
+
+    pub fn operands_slice(&self) -> &[operand_type_enum::OperandType] {
+        let end = self.operands.iter().position(|&r| r == operand_type_enum::OperandType::ALL_INVALID).unwrap_or(self.operands.len());
+
+        &self.operands[0..end]
+    }
 }

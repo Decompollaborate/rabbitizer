@@ -371,12 +371,6 @@ impl Instruction {
         self.get_cop2t().try_into().unwrap()
     }
 
-    pub fn get_operand_type(&self, index: usize) -> operand_type_enum::OperandType {
-        unsafe {
-            self.instr.descriptor.as_ref().unwrap().get_operand_type(index)
-        }
-    }
-
     pub fn raw(&self) -> u32 {
         unsafe {
             RabbitizerInstruction_getRaw(&self.instr)
@@ -489,6 +483,18 @@ impl Instruction {
     pub fn is_valid(&self) -> bool {
         unsafe {
             RabbitizerInstruction_isValid(&self.instr)
+        }
+    }
+
+    pub fn get_operand_type(&self, index: usize) -> operand_type_enum::OperandType {
+        unsafe {
+            self.instr.descriptor.as_ref().unwrap().get_operand_type(index)
+        }
+    }
+
+    pub fn get_operands_slice(&self) -> &[operand_type_enum::OperandType] {
+        unsafe {
+            self.instr.descriptor.as_ref().unwrap().operands_slice()
         }
     }
 

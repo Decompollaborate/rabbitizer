@@ -37,4 +37,12 @@ mod tests {
             "$t2".to_string()
         );
     }
+
+    #[test]
+    fn test_operands_slice() {
+        let instr = instruction::Instruction::new(0x8D4A7E18, 0x80000000, instr_category_enum::InstrCategory::CPU);
+        let operands_slice= instr.get_operands_slice();
+
+        assert_eq!(operands_slice.len(), 2);
+    }
 }
