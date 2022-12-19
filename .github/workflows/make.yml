@@ -16,4 +16,7 @@ jobs:
       run: make -j $(nproc) WERROR=1
 
     - name: Run logic checks
-      run: ./tests/c/logic_checks/run_logic_checks.sh
+      run: ./tests/run_logic_checks.sh
+
+    - name: Run instruction checks
+      run: ./tests/run_instruction_checks.sh
