@@ -14,6 +14,7 @@
 #include "instructions/RabbitizerInstrSuffix.h"
 #include "instructions/RabbitizerInstrDescriptor.h"
 #include "instructions/RabbitizerRegister.h"
+#include "instructions/RabbitizerRegisterDescriptor.h"
 #include "instructions/RabbitizerInstruction.h"
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR5900.h"

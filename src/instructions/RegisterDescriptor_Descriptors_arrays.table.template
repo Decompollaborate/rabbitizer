@@ -2,64 +2,62 @@
 /* SPDX-License-Identifier: MIT */
 
 #define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
-    [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, "$" #name },
+    [RABBITIZER_REG_##prefix##_##name] = { __VA_ARGS__ },
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
-    [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, #name },
+    RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
 
-// numeric, named
-
-const char *RabbitizerRegister_GprO32_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_GprO32_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_GprO32.inc"
 };
 
-const char *RabbitizerRegister_GprN32_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_GprN32_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_GprN32.inc"
 };
 
-const char *RabbitizerRegister_Cop0_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_Cop0_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_Cop0.inc"
 };
 
-const char *RabbitizerRegister_Cop1O32_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_Cop1O32_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_Cop1O32.inc"
 };
 
-const char *RabbitizerRegister_Cop1N32_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_Cop1N32_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_Cop1N32.inc"
 };
 
-const char *RabbitizerRegister_Cop1N64_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_Cop1N64_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
 };
 
-const char *RabbitizerRegister_Cop1Control_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_Cop1Control_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_Cop1Control.inc"
 };
 
-const char *RabbitizerRegister_Cop2_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_Cop2_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_Cop2.inc"
 };
 
 /* RSP */
 
-const char *RabbitizerRegister_RspGpr_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_RspGpr_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_RspGpr.inc"
 };
 
-const char *RabbitizerRegister_RspCop0_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_RspCop0_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_RspCop0.inc"
 };
 
-const char *RabbitizerRegister_RspCop2_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_RspCop2_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_RspCop2.inc"
 };
 
-const char *RabbitizerRegister_RspCop2Control_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_RspCop2Control_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_RspCop2Control.inc"
 };
 
-const char *RabbitizerRegister_RspVector_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_RspVector.inc"
 };
 
@@ -67,11 +65,11 @@ const char *RabbitizerRegister_RspVector_Names[][2] = {
 
 /* R5900 */
 
-const char *RabbitizerRegister_R5900VF_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VF_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_R5900VF.inc"
 };
 
-const char *RabbitizerRegister_R5900VI_Names[][2] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VI_Descriptors[] = {
 #include "instructions/registers/RabbitizerRegister_R5900VI.inc"
 };
 

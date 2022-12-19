@@ -5,11 +5,11 @@
 #include "instructions/RabbitizerRegister.h"
 
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    { "RegGprN32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL }
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    { "RegGprN32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
-#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
-    { "RegGprN32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL }
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
+    { "RegGprN32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_RegGprN32_enumvalues[] = {
     #include "instructions/registers/RabbitizerRegister_GprN32.inc"
