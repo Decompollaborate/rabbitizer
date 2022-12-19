@@ -19,7 +19,7 @@ pub struct Instruction {
 
 #[link(name = "rabbitizer", kind = "static")]
 extern "C" {
-    fn RabbitizerInstrId_getOpcodeName(unique_id: instr_id_enum::InstrId) -> *const cty::c_char;
+    fn RabbitizerInstrId_getOpcodeName(unique_id: instr_id_enum::InstrId) -> *const core::ffi::c_char;
 }
 
 extern "C" {
@@ -86,14 +86,14 @@ extern "C" {
     fn RabbitizerInstruction_getSizeForBuffer(
         self_: *const Instruction,
         immOverrideLength: utils::SizeT,
-        extraLJust: cty::c_int,
+        extraLJust: core::ffi::c_int,
     ) -> utils::SizeT;
     fn RabbitizerInstruction_disassemble(
         self_: *const Instruction,
-        dst: *mut cty::c_char,
-        immOverride: *const cty::c_char,
+        dst: *mut core::ffi::c_char,
+        immOverride: *const core::ffi::c_char,
         immOverrideLength: utils::SizeT,
-        extraLJust: cty::c_int,
+        extraLJust: core::ffi::c_int,
     ) -> utils::SizeT;
 }
 
@@ -683,7 +683,7 @@ impl Instruction {
             let mut buffer: Vec<u8> = vec![0; buffer_size.try_into().unwrap()];
             let disassembled_size = RabbitizerInstruction_disassemble(
                 self,
-                buffer.as_mut_ptr() as *mut cty::c_char,
+                buffer.as_mut_ptr() as *mut core::ffi::c_char,
                 imm_override_ptr,
                 imm_override_len,
                 extra_l_just.try_into().unwrap(),

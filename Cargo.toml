@@ -22,7 +22,6 @@ include = ["/rust/src", "/rust/build.rs", "/src", "/include"]
 path = "rust/src/lib.rs"
 
 [dependencies]
-cty = "0.2.2"
 num_enum = "0.5.7"
 
 [build-dependencies]

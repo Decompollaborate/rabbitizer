@@ -4,37 +4,37 @@
 use crate::registers_enum;
 
 extern "C" {
-    pub static mut RabbitizerRegister_GprO32_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_GprN32_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop0_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1O32_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1N32_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1N64_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1Control_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop2_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspGpr_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspCop0_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspCop2_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspCop2Control_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspVector_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R5900VF_Names: [[*const cty::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R5900VI_Names: [[*const cty::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_GprO32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_GprN32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_Cop0_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_Cop1O32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_Cop1N32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_Cop1N64_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_Cop1Control_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_Cop2_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_RspGpr_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_RspCop0_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_RspCop2_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_RspCop2Control_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_RspVector_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_R5900VF_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_R5900VI_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
 
     /*
-    pub fn RabbitizerRegister_getNameGpr(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameCop0(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameCop1(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameCop1Control(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameCop2(reg_value: u8) -> *const cty::c_char;
+    pub fn RabbitizerRegister_getNameGpr(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameCop0(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameCop1(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameCop1Control(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameCop2(reg_value: u8) -> *const core::ffi::c_char;
 
-    pub fn RabbitizerRegister_getNameRspGpr(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameRspCop0(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameRspCop2(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameRspCop2Control(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameRspVector(reg_value: u8) -> *const cty::c_char;
+    pub fn RabbitizerRegister_getNameRspGpr(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameRspCop0(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameRspCop2(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameRspCop2Control(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameRspVector(reg_value: u8) -> *const core::ffi::c_char;
 
-    pub fn RabbitizerRegister_getNameR5900VF(reg_value: u8) -> *const cty::c_char;
-    pub fn RabbitizerRegister_getNameR5900VI(reg_value: u8) -> *const cty::c_char;
+    pub fn RabbitizerRegister_getNameR5900VF(reg_value: u8) -> *const core::ffi::c_char;
+    pub fn RabbitizerRegister_getNameR5900VI(reg_value: u8) -> *const core::ffi::c_char;
     */
 }
 

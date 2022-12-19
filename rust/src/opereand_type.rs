@@ -13,8 +13,8 @@ extern "C" {
     fn RabbitizerOperandType_disassemble(
         operand: operand_type_enum::OperandType,
         instr: *const instruction::Instruction,
-        dst: *mut cty::c_char,
-        immOverride: *const cty::c_char,
+        dst: *mut core::ffi::c_char,
+        immOverride: *const core::ffi::c_char,
         immOverrideLength: utils::SizeT,
     ) -> utils::SizeT;
 }
@@ -30,7 +30,7 @@ impl operand_type_enum::OperandType {
             let disassembled_size = RabbitizerOperandType_disassemble(
                 *self,
                 &instr,
-                buffer.as_mut_ptr() as *mut cty::c_char,
+                buffer.as_mut_ptr() as *mut core::ffi::c_char,
                 imm_override_ptr,
                 imm_override_len,
             );
