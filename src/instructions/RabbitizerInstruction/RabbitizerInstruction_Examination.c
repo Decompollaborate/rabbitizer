@@ -117,7 +117,7 @@ const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *se
 }
 
 bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const RabbitizerInstruction *other) {
-    if (!RabbitizerInstrId_isValid(self->uniqueId) || !RabbitizerInstrId_isValid(self->uniqueId)) {
+    if (!RabbitizerInstrId_isValid(self->uniqueId) || !RabbitizerInstrId_isValid(other->uniqueId)) {
         return false;
     }
     return self->uniqueId == other->uniqueId;

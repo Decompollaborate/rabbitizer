@@ -7,7 +7,6 @@
 
 #include "instrOpercandCallbacks_array.table.h"
 
-
 size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const RabbitizerInstruction *instr, size_t immOverrideLength) {
     char auxBuffer[0x100] = { 0 };
     char immOverride[0x100] = { 0 };
@@ -36,7 +35,8 @@ size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInst
     return totalSize;
 }
 
-size_t RabbitizerOperandType_disassemble(RabbitizerOperandType operand, const RabbitizerInstruction *instr, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_disassemble(RabbitizerOperandType operand, const RabbitizerInstruction *instr, char *dst, const char *immOverride,
+                                         size_t immOverrideLength) {
     OperandCallback callback;
 
     assert(operand > RAB_OPERAND_ALL_INVALID);

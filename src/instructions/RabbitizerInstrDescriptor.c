@@ -76,7 +76,7 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
 
         case RAB_OPERAND_cpu_sa:
         case RAB_OPERAND_cpu_zero:
-        // case RAB_OPERAND_cpu_function:
+            // case RAB_OPERAND_cpu_function:
             break;
 
         case RAB_OPERAND_cpu_cop0d:
@@ -477,7 +477,6 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
 
     return RabbitizerInstrDescriptor_hasSpecificOperand(self, operand);
 }
-
 
 bool RabbitizerInstrDescriptor_isUnknownType(const RabbitizerInstrDescriptor *self) {
     return self->instrType == RABBITIZER_INSTR_TYPE_UNKNOWN;
