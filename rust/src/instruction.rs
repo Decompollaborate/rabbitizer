@@ -221,27 +221,29 @@ impl Instruction {
     }
 
     pub fn get_rt_o32(&self) -> registers_enum::registers::GprO32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rt().try_into().unwrap()
     }
 
     pub fn get_rt_n32(&self) -> registers_enum::registers::GprN32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rt().try_into().unwrap()
     }
 
     pub fn get_rd(&self) -> u32 {
         if !self.has_operand_alias(operand_type_enum::OperandType::cpu_rd) {
-            core::panic!();
+            if !matches!(self.unique_id, instr_id_enum::InstrId::cpu_jalr|instr_id_enum::InstrId::rsp_jalr) {
+                core::panic!();
+            }
         }
 
         utils::shiftr(self.word, 11, 5)
     }
 
     pub fn get_rd_o32(&self) -> registers_enum::registers::GprO32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rd().try_into().unwrap()
     }
 
     pub fn get_rd_n32(&self) -> registers_enum::registers::GprN32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rd().try_into().unwrap()
     }
 
     pub fn get_sa(&self) -> u32 {
