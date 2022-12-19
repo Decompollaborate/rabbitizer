@@ -92,6 +92,14 @@ int8_t RabbitizerInstruction_getDestinationGpr(const RabbitizerInstruction *self
     return -1;
 }
 
+/**
+ * @brief Returns `true` if the GPR which is modified by this register is $zero, `false` otherwise.
+ * Returns `false` if this instruction does not modify a GPR.
+ */
+bool RabbitizerInstruction_outputsToGprZero(const RabbitizerInstruction *self) {
+    return RabbitizerInstruction_getDestinationGpr(self) == 0;
+}
+
 /* General getters */
 
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {

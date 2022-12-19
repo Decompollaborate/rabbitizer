@@ -171,6 +171,14 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
         return PyLong_FromLong(RabbitizerInstruction_##name(&self->instr)); \
     }
 
+#define DEF_METHOD_BOOL(name) \
+    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
+        if (RabbitizerInstruction_##name(&self->instr)) { \
+            Py_RETURN_TRUE; \
+        } \
+        Py_RETURN_FALSE; \
+    }
+
 DEF_METHOD_GET_UINT(getRaw)
 static PyObject *rabbitizer_type_Instruction_getImmediate(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     return PyLong_FromUnsignedLong(RAB_INSTR_GET_immediate(&self->instr));
@@ -207,19 +215,12 @@ static PyObject *rabbitizer_type_Instruction_getDestinationGpr(PyRabbitizerInstr
     RETURN_GPR(reg);
 }
 
+DEF_METHOD_BOOL(outputsToGprZero)
+
 static PyObject *rabbitizer_type_Instruction_blankOut(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     RabbitizerInstruction_blankOut(&self->instr);
     Py_RETURN_NONE;
 }
-
-
-#define DEF_METHOD_BOOL(name) \
-    static PyObject *rabbitizer_type_Instruction_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
-        if (RabbitizerInstruction_##name(&self->instr)) { \
-            Py_RETURN_TRUE; \
-        } \
-        Py_RETURN_FALSE; \
-    }
 
 DEF_METHOD_BOOL(isImplemented)
 DEF_METHOD_BOOL(isLikelyHandwritten)
@@ -452,6 +453,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(getBranchOffsetGeneric, ""),
     METHOD_NO_ARGS(getBranchVramGeneric, ""),
     METHOD_NO_ARGS(getDestinationGpr, ""),
+    METHOD_NO_ARGS(outputsToGprZero, ""),
     METHOD_NO_ARGS(getOpcodeName, ""),
 
     METHOD_NO_ARGS(blankOut, ""),

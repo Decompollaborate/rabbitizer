@@ -53,6 +53,7 @@ extern "C" {
         -> i32;
     fn RabbitizerInstruction_getBranchVramGeneric(self_: *const Instruction) -> i32;
     fn RabbitizerInstruction_getDestinationGpr(self_: *const Instruction) -> i8;
+    fn RabbitizerInstruction_outputsToGprZero(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_blankOut(self_: *mut Instruction);
     fn RabbitizerInstruction_isImplemented(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isLikelyHandwritten(self_: *const Instruction) -> bool;
@@ -433,9 +434,19 @@ impl Instruction {
             RabbitizerInstruction_getBranchVramGeneric(self)
         }
     }
-    pub fn destination_gpr(&self) -> i8 {
+    pub fn destination_gpr(&self) -> Option<u32> {
         unsafe {
-            RabbitizerInstruction_getDestinationGpr(self)
+            let reg: i8 = RabbitizerInstruction_getDestinationGpr(self);
+
+            if reg < 0 {
+                return None;
+            }
+            Some(reg as u32)
+        }
+    }
+    pub fn outputs_to_gpr_zero(&self) -> bool {
+        unsafe {
+            RabbitizerInstruction_outputsToGprZero(self)
         }
     }
     pub fn opcode_name(&self) -> &'static str {
