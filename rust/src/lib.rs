@@ -38,6 +38,19 @@ mod tests {
     }
 
     #[test]
+    fn test_instruction_checks() {
+        // jalr
+        let instr = instruction::Instruction::new(0x00A0F809, 0x80000000, instr_category_enum::InstrCategory::CPU);
+
+        assert!(instr.modifies_rd());
+        assert_eq!(instr.get_rd_o32(), registers::GprO32::ra);
+        assert_eq!(
+            instr.disassemble(None, 0),
+            "jalr        $a1".to_string()
+        );
+    }
+
+    #[test]
     fn test_get_operand_type() {
         let instr = instruction::Instruction::new(0x8D4A7E18, 0x80000000, instr_category_enum::InstrCategory::CPU);
         let operand = instr.get_operand_type(0);

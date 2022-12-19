@@ -51,18 +51,7 @@ int main() {
         LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesRd && descriptor->readsRd));
         LOGIC_ERROR(uniqueId, errorCount, !(descriptor->readsRs && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs)));
         LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRt || descriptor->readsRt) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt)));
-
-        switch (uniqueId) {
-            case RABBITIZER_INSTR_ID_cpu_jalr:
-            case RABBITIZER_INSTR_ID_rsp_jalr:
-                // jalr has an implicit $ra which modifies
-                LOGIC_ERROR(uniqueId, errorCount, descriptor->modifiesRd);
-                break;
-
-            default:
-                LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRd || descriptor->readsRd) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd)));
-                break;
-        }
+        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRd || descriptor->readsRd) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd)));
 
         LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs), descriptor->readsRs);
         LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt), (descriptor->readsRt || descriptor->modifiesRt));

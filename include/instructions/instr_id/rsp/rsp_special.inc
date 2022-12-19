@@ -60,24 +60,13 @@ RABBITIZER_DEF_INSTR_ID(
 ) // Jump Register
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x09, jalr,
-    .operands={RAB_OPERAND_rsp_rs},
+    .operands={RAB_OPERAND_rsp_maybe_rd_rs},
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .isJump=true,
     .modifiesRd=true,
     .readsRs=true,
     .doesLink=true
 ) // Jump And Link Register
-
-// OP rd, rs
-RABBITIZER_DEF_INSTR_ID_ALTNAME(
-    rsp, -0x09, jalr_rd, jalr,
-    .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs},
-    .instrType=RABBITIZER_INSTR_TYPE_R,
-    .isJump=true,
-    .modifiesRd=true,
-    .readsRs=true,
-    .doesLink=true
-) // Jump And Link Register // Special case for rd != 31
 
 // OP rd, rs, rt
 RABBITIZER_DEF_INSTR_ID(

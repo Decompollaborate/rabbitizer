@@ -169,3 +169,30 @@ size_t RabbitizerOperandType_process_rsp_immediate_base(const RabbitizerInstruct
 
     return totalSize;
 }
+
+size_t RabbitizerOperandType_process_rsp_maybe_rd_rs(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t rd = RAB_INSTR_GET_rd(self);
+    bool shouldOutputRd = true;
+
+    if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_NUMERIC || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_O32) {
+        if (rd == RABBITIZER_REG_GPR_O32_ra) {
+            shouldOutputRd = false;
+        }
+    } else {
+        if (rd == RABBITIZER_REG_GPR_N32_ra) {
+            shouldOutputRd = false;
+        }
+    }
+
+    if (shouldOutputRd) {
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_rd(self, dst, immOverride, immOverrideLength));
+
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ',');
+        RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
+    }
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_rsp_rs(self, dst, immOverride, immOverrideLength));
+
+    return totalSize;
+}

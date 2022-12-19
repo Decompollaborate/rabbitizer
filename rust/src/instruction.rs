@@ -230,9 +230,7 @@ impl Instruction {
 
     pub fn get_rd(&self) -> u32 {
         if !self.has_operand_alias(operand_type_enum::OperandType::cpu_rd) {
-            if !matches!(self.unique_id, instr_id_enum::InstrId::cpu_jalr|instr_id_enum::InstrId::rsp_jalr) {
-                core::panic!();
-            }
+            core::panic!();
         }
 
         utils::shiftr(self.word, 11, 5)

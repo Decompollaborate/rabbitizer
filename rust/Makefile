@@ -11,17 +11,19 @@ TABLE_DEP_FILES := $(TABLE_GENERATED:%.rs=%.tablers.d)
 
 all: $(TABLE_GENERATED)
 
-distclean:
+clean:
 	$(RM) -rf $(TABLE_GENERATED)
 
+distclean: clean
 
-.PHONY: all distclean
+
+.PHONY: all clean distclean
 .DEFAULT_GOAL := all
 .SECONDARY:
 
 
 %.rs: %.tablers.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MF $(@:.rs=.tablers.d) $<
+	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.rs=.tablers.d) $<
 	$(RS_TABLE_GEN) $< $@
 
 -include $(TABLE_DEP_FILES)

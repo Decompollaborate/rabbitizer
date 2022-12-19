@@ -23,3 +23,4 @@ RAB_DEF_OPERAND(cpu, branch_target_label)
 
 // composed/aliased operands
 RAB_DEF_OPERAND(cpu, immediate_base)
+RAB_DEF_OPERAND(cpu, maybe_rd_rs) // $rd is omitted if it is $ra

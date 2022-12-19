@@ -36,6 +36,12 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_immediate_base)) {
                 return true;
             }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_cpu_maybe_rd_rs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_maybe_rd_rs)) {
+                return true;
+            }
             break;
 
         case RAB_OPERAND_cpu_immediate:
@@ -58,6 +64,12 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
 
         case RAB_OPERAND_cpu_rd:
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_rd)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_cpu_maybe_rd_rs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_maybe_rd_rs)) {
                 return true;
             }
             break;
@@ -112,12 +124,24 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             }
             break;
 
+        case RAB_OPERAND_cpu_maybe_rd_rs:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rd)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
+                return true;
+            }
+            break;
+
         /* rsp */
         case RAB_OPERAND_rsp_rs:
-            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_cpu_rs)) {
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
                 return true;
             }
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_offset_rs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_maybe_rd_rs)) {
                 return true;
             }
             break;
@@ -129,7 +153,10 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             break;
 
         case RAB_OPERAND_rsp_rd:
-            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_cpu_rd)) {
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rd)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_maybe_rd_rs)) {
                 return true;
             }
             break;
@@ -208,6 +235,15 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
                 return true;
             }
             if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_immediate)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_rsp_maybe_rd_rs:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_rsp_rd)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_rsp_rs)) {
                 return true;
             }
             break;

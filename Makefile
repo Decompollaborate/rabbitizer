@@ -18,7 +18,7 @@ LDFLAGS         := -Lbuild -lrabbitizer
 LDXXFLAGS       := -Lbuild -lrabbitizerpp
 WARNINGS        := -Wall -Wextra -Wpedantic
 # WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded
-WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
+WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow -Werror=switch
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
 WARNINGS_CXX    :=
 
@@ -150,7 +150,7 @@ build/%.o: %.cpp | $(TABLE_GENERATED)
 
 
 %.table.h: %.table.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MF $(@:.table.h=.table.d) $<
+	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.table.h=.table.d) $<
 	$(TABLE_GEN) $< $@ $(@F)
 
 

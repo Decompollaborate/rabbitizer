@@ -224,6 +224,11 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
 
+            case RAB_OPERAND_cpu_maybe_rd_rs:
+                validbits = RAB_INSTR_PACK_rd(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
             /* rsp */
             case RAB_OPERAND_rsp_rs:
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
@@ -288,6 +293,11 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RAB_OPERAND_rsp_immediate_base:
                 validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_rsp_maybe_rd_rs:
+                validbits = RAB_INSTR_PACK_rd(validbits, ~0);
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
             /* rsp */
