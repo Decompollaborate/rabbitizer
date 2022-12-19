@@ -60,4 +60,3 @@ pub struct Config {
 extern "C" {
     pub static mut RabbitizerConfig_Cfg: Config;
 }
-

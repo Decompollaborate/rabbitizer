@@ -37,7 +37,7 @@ Add this crate to your `Cargo.toml` via:
 
 ```toml
 [build]
-rabbitizer = "*"
+rabbitizer = "1.5.5"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
