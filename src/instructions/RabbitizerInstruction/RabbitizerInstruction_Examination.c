@@ -63,9 +63,11 @@ bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *se
 bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
-        case RABBITIZER_INSTR_ID_rsp_jr:
-            // TODO: abi stuffs
-            return RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_ra;
+        case RABBITIZER_INSTR_ID_rsp_jr: {
+            const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
+
+            return RabbitizerRegisterDescriptor_isRa(regDescriptor);
+        }
 
         default:
             return false;
@@ -75,9 +77,11 @@ bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
 bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
-        case RABBITIZER_INSTR_ID_rsp_jr:
-            // TODO: abi stuffs
-            return RAB_INSTR_GET_rs(self) != RABBITIZER_REG_GPR_O32_ra;
+        case RABBITIZER_INSTR_ID_rsp_jr: {
+            const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
+
+            return !RabbitizerRegisterDescriptor_isRa(regDescriptor);
+        }
 
         default:
             return false;
