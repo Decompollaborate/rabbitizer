@@ -4,6 +4,7 @@
 ![GitHub](https://img.shields.io/github/license/Decompollaborate/rabbitizer)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Decompollaborate/rabbitizer)
 ![PyPI](https://img.shields.io/pypi/v/rabbitizer)
+![crate.io](https://img.shields.io/crates/dv/rabbitizer)
 ![GitHub contributors](https://img.shields.io/github/contributors/Decompollaborate/rabbitizer?logo=purple)
 
 A MIPS instruction decoder API.
@@ -11,6 +12,8 @@ A MIPS instruction decoder API.
 Currently supports all the CPU instructions for MIPS I, II, III and IV.
 
 ## Installing
+
+### Python bindings
 
 The recommended way to install is using from the PyPi release, via `pip`:
 
@@ -25,6 +28,19 @@ pip install git+https://github.com/Decompollaborate/rabbitizer.git@develop
 ```
 
 NOTE: Installing the development version is not recommended. Proceed at your own risk.
+
+See this package at <https://pypi.org/project/rabbitizer/>.
+
+### Rust bindings
+
+Add this crate to your `Cargo.toml` via:
+
+```toml
+[build]
+rabbitizer = "1.5.5"
+```
+
+See this crate at <https://crates.io/crates/rabbitizer>.
 
 ## Features
 

@@ -6,10 +6,10 @@
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
 #define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    prefix##_##name
+    name
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
-    prefix##_##name
+    RABBITIZER_DEF_REG(prefix, name, numeric)
 
 pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
@@ -67,6 +67,11 @@ pub mod registers {
         #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
     }
 
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, numeric) \
+    prefix##_##name
+
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
@@ -97,6 +102,11 @@ pub mod registers {
         #include "instructions/registers/RabbitizerRegister_RspGpr.inc"
     }
 
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, numeric) \
+    name
+
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
@@ -105,6 +115,11 @@ pub mod registers {
     pub enum RspCop0 {
         #include "instructions/registers/RabbitizerRegister_RspCop0.inc"
     }
+
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, numeric) \
+    prefix##_##name
 
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
@@ -123,6 +138,11 @@ pub mod registers {
     pub enum RspCop2Control {
         #include "instructions/registers/RabbitizerRegister_RspCop2Control.inc"
     }
+
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, numeric) \
+    name
 
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))

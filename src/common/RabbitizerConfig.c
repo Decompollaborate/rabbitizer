@@ -38,7 +38,7 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
         .pseudoBal = true,
     },
     .toolchainTweaks = {
-        .treatJAsUnconditionalBranch = false,
+        .treatJAsUnconditionalBranch = true,
         .sn64DivFix = false,
     },
     .misc = {
