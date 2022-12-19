@@ -65,7 +65,14 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_cpu_sa:
         case RAB_OPERAND_cpu_zero:
         // case RAB_OPERAND_cpu_function:
+            break;
+
         case RAB_OPERAND_cpu_cop0d:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_cop0d)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_cpu_fs:
         case RAB_OPERAND_cpu_ft:
         case RAB_OPERAND_cpu_fd:
@@ -128,6 +135,11 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             break;
 
         case RAB_OPERAND_rsp_cop0d:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_cpu_cop0d)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_rsp_cop2t:
         case RAB_OPERAND_rsp_cop2cd:
             break;
