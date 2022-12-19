@@ -5,10 +5,10 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    name
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    name,
 
-#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     RABBITIZER_DEF_REG(prefix, name, numeric)
 
 pub mod registers {
@@ -69,8 +69,8 @@ pub mod registers {
 
 #undef RABBITIZER_DEF_REG
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    prefix##_##name
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    prefix##_##name,
 
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
@@ -104,8 +104,8 @@ pub mod registers {
 
 #undef RABBITIZER_DEF_REG
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    name
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    name,
 
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
@@ -118,8 +118,8 @@ pub mod registers {
 
 #undef RABBITIZER_DEF_REG
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    prefix##_##name
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    prefix##_##name,
 
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
@@ -141,8 +141,8 @@ pub mod registers {
 
 #undef RABBITIZER_DEF_REG
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    name
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    name,
 
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))

@@ -53,6 +53,7 @@ extern "C" {
         -> i32;
     fn RabbitizerInstruction_getBranchVramGeneric(self_: *const Instruction) -> i32;
     fn RabbitizerInstruction_getDestinationGpr(self_: *const Instruction) -> i8;
+    fn RabbitizerInstruction_outputsToGprZero(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_blankOut(self_: *mut Instruction);
     fn RabbitizerInstruction_isImplemented(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isLikelyHandwritten(self_: *const Instruction) -> bool;
@@ -221,11 +222,11 @@ impl Instruction {
     }
 
     pub fn get_rt_o32(&self) -> registers_enum::registers::GprO32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rt().try_into().unwrap()
     }
 
     pub fn get_rt_n32(&self) -> registers_enum::registers::GprN32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rt().try_into().unwrap()
     }
 
     pub fn get_rd(&self) -> u32 {
@@ -237,11 +238,11 @@ impl Instruction {
     }
 
     pub fn get_rd_o32(&self) -> registers_enum::registers::GprO32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rd().try_into().unwrap()
     }
 
     pub fn get_rd_n32(&self) -> registers_enum::registers::GprN32 {
-        self.get_rs().try_into().unwrap()
+        self.get_rd().try_into().unwrap()
     }
 
     pub fn get_sa(&self) -> u32 {
@@ -433,9 +434,19 @@ impl Instruction {
             RabbitizerInstruction_getBranchVramGeneric(self)
         }
     }
-    pub fn destination_gpr(&self) -> i8 {
+    pub fn destination_gpr(&self) -> Option<u32> {
         unsafe {
-            RabbitizerInstruction_getDestinationGpr(self)
+            let reg: i8 = RabbitizerInstruction_getDestinationGpr(self);
+
+            if reg < 0 {
+                return None;
+            }
+            Some(reg as u32)
+        }
+    }
+    pub fn outputs_to_gpr_zero(&self) -> bool {
+        unsafe {
+            RabbitizerInstruction_outputsToGprZero(self)
         }
     }
     pub fn opcode_name(&self) -> &'static str {

@@ -1,11 +1,11 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    RABBITIZER_REG_##prefix##_##name
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    RABBITIZER_REG_##prefix##_##name,
 
-#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
-    RABBITIZER_REG_##prefix##_##name
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
+    RABBITIZER_REG_##prefix##_##name,
 
 
 typedef enum RabbitizerRegister_GprO32 {

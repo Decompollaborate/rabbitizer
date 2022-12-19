@@ -9,7 +9,6 @@
 
 #include "common/RabbitizerConfig.h"
 
-
 size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust) {
     size_t totalSize = 0;
     size_t opcodeNameLength;

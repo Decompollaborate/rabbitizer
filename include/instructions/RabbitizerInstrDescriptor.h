@@ -28,6 +28,8 @@ typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_MAX,
 } RabbitizerInstrType;
 
+// Please note the members of this struct may be renamed or removed without further notice.
+// For consistent usage please use the functions instead
 typedef struct RabbitizerInstrDescriptor {
     RabbitizerOperandType operands[4];
     RabbitizerInstrType instrType;
@@ -140,7 +142,6 @@ typedef struct RabbitizerInstrDescriptor {
     bool doesUnsignedMemoryAccess;
 } RabbitizerInstrDescriptor;
 
-// TODO: less redundant name
 extern const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[];
 
 

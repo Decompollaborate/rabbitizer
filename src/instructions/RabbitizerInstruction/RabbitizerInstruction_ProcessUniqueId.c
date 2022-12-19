@@ -99,20 +99,6 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 
     switch (self->uniqueId) {
-        case RABBITIZER_INSTR_ID_cpu_jalr:
-            self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, RAB_INSTR_GET_rd(self));
-
-            if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_NUMERIC || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_O32) {
-                if (RAB_INSTR_GET_rd(self) != RABBITIZER_REG_GPR_O32_ra) {
-                    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
-                }
-            } else {
-                if (RAB_INSTR_GET_rd(self) != RABBITIZER_REG_GPR_N32_ra) {
-                    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_jalr_rd];
-                }
-            }
-            break;
-
         case RABBITIZER_INSTR_ID_cpu_div:
             if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
                 self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_div];

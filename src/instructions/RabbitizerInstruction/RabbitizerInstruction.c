@@ -92,6 +92,14 @@ int8_t RabbitizerInstruction_getDestinationGpr(const RabbitizerInstruction *self
     return -1;
 }
 
+/**
+ * @brief Returns `true` if the GPR which is modified by this register is $zero, `false` otherwise.
+ * Returns `false` if this instruction does not modify a GPR.
+ */
+bool RabbitizerInstruction_outputsToGprZero(const RabbitizerInstruction *self) {
+    return RabbitizerInstruction_getDestinationGpr(self) == 0;
+}
+
 /* General getters */
 
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
@@ -175,6 +183,11 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_immediate(self->word, 0);
                 break;
 
+            case RAB_OPERAND_cpu_maybe_rd_rs:
+                self->word = RAB_INSTR_PACK_rd(self->word, 0);
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
+                break;
+
             /* rsp */
             case RAB_OPERAND_rsp_rs:
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
@@ -240,6 +253,11 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_rsp_immediate_base:
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 self->word = RAB_INSTR_PACK_immediate(self->word, 0);
+                break;
+
+            case RAB_OPERAND_rsp_maybe_rd_rs:
+                self->word = RAB_INSTR_PACK_rd(self->word, 0);
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
             /* rsp */
 

@@ -63,9 +63,11 @@ bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *se
 bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
-        case RABBITIZER_INSTR_ID_rsp_jr:
-            // TODO: abi stuffs
-            return RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_ra;
+        case RABBITIZER_INSTR_ID_rsp_jr: {
+            const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
+
+            return RabbitizerRegisterDescriptor_isRa(regDescriptor);
+        }
 
         default:
             return false;
@@ -75,9 +77,11 @@ bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
 bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
-        case RABBITIZER_INSTR_ID_rsp_jr:
-            // TODO: abi stuffs
-            return RAB_INSTR_GET_rs(self) != RABBITIZER_REG_GPR_O32_ra;
+        case RABBITIZER_INSTR_ID_rsp_jr: {
+            const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
+
+            return !RabbitizerRegisterDescriptor_isRa(regDescriptor);
+        }
 
         default:
             return false;
@@ -117,7 +121,7 @@ const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *se
 }
 
 bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const RabbitizerInstruction *other) {
-    if (!RabbitizerInstrId_isValid(self->uniqueId) || !RabbitizerInstrId_isValid(self->uniqueId)) {
+    if (!RabbitizerInstrId_isValid(self->uniqueId) || !RabbitizerInstrId_isValid(other->uniqueId)) {
         return false;
     }
     return self->uniqueId == other->uniqueId;
@@ -224,6 +228,11 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
 
+            case RAB_OPERAND_cpu_maybe_rd_rs:
+                validbits = RAB_INSTR_PACK_rd(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
             /* rsp */
             case RAB_OPERAND_rsp_rs:
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
@@ -288,6 +297,11 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RAB_OPERAND_rsp_immediate_base:
                 validbits = RAB_INSTR_PACK_immediate(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_rsp_maybe_rd_rs:
+                validbits = RAB_INSTR_PACK_rd(validbits, ~0);
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
             /* rsp */

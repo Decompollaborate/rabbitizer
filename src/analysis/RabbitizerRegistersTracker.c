@@ -9,8 +9,6 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-// TODO: abi checks
-
 void RabbitizerRegistersTracker_init(RabbitizerRegistersTracker *self, const RabbitizerRegistersTracker *other) {
     size_t i;
 
@@ -145,79 +143,17 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
 
 void RabbitizerRegistersTracker_unsetRegistersAfterFuncCall(RabbitizerRegistersTracker *self, UNUSED const RabbitizerInstruction *instr,
                                                             const RabbitizerInstruction *prevInstr) {
-    RabbitizerTrackedRegisterState *state = NULL;
-
     if (!RabbitizerInstrDescriptor_doesLink(prevInstr->descriptor)) {
         return;
     }
 
-    if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_O32 || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_NUMERIC) {
-        for (size_t reg = 0; reg < ARRAY_COUNT(self->registers); reg++) {
-            switch (reg) {
-                case RABBITIZER_REG_GPR_O32_at:
-                case RABBITIZER_REG_GPR_O32_v0:
-                case RABBITIZER_REG_GPR_O32_v1:
-                case RABBITIZER_REG_GPR_O32_a0:
-                case RABBITIZER_REG_GPR_O32_a1:
-                case RABBITIZER_REG_GPR_O32_a2:
-                case RABBITIZER_REG_GPR_O32_a3:
-                case RABBITIZER_REG_GPR_O32_t0:
-                case RABBITIZER_REG_GPR_O32_t1:
-                case RABBITIZER_REG_GPR_O32_t2:
-                case RABBITIZER_REG_GPR_O32_t3:
-                case RABBITIZER_REG_GPR_O32_t4:
-                case RABBITIZER_REG_GPR_O32_t5:
-                case RABBITIZER_REG_GPR_O32_t6:
-                case RABBITIZER_REG_GPR_O32_t7:
-                case RABBITIZER_REG_GPR_O32_t8:
-                case RABBITIZER_REG_GPR_O32_t9:
-                case RABBITIZER_REG_GPR_O32_ra:
-                    state = &self->registers[reg];
-#if 0
-                    if (state.hasLuiValue) {
-                        self->_printDebugInfo_clearRegister(instr, reg)
-                    }
-#endif
-                    RabbitizerTrackedRegisterState_clear(state);
-                    break;
+    for (size_t reg = 0; reg < ARRAY_COUNT(self->registers); reg++) {
+        const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(reg);
 
-                default:
-                    break;
-            }
-        }
-    } else if (RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_N32 || RabbitizerConfig_Cfg.regNames.gprAbiNames == RABBITIZER_ABI_N64) {
-        for (size_t reg = 0; reg < ARRAY_COUNT(self->registers); reg++) {
-            switch (reg) {
-                case RABBITIZER_REG_GPR_N32_at:
-                case RABBITIZER_REG_GPR_N32_v0:
-                case RABBITIZER_REG_GPR_N32_v1:
-                case RABBITIZER_REG_GPR_N32_a0:
-                case RABBITIZER_REG_GPR_N32_a1:
-                case RABBITIZER_REG_GPR_N32_a2:
-                case RABBITIZER_REG_GPR_N32_a3:
-                case RABBITIZER_REG_GPR_N32_a4:
-                case RABBITIZER_REG_GPR_N32_a5:
-                case RABBITIZER_REG_GPR_N32_a6:
-                case RABBITIZER_REG_GPR_N32_a7:
-                case RABBITIZER_REG_GPR_N32_t0:
-                case RABBITIZER_REG_GPR_N32_t1:
-                case RABBITIZER_REG_GPR_N32_t2:
-                case RABBITIZER_REG_GPR_N32_t3:
-                case RABBITIZER_REG_GPR_N32_t8:
-                case RABBITIZER_REG_GPR_N32_t9:
-                case RABBITIZER_REG_GPR_N32_ra:
-                    state = &self->registers[reg];
-#if 0
-                    if (state.hasLuiValue) {
-                        self->_printDebugInfo_clearRegister(instr, reg)
-                    }
-#endif
-                    RabbitizerTrackedRegisterState_clear(state);
-                    break;
+        if (RabbitizerRegisterDescriptor_isClobberedByFuncCall(regDescriptor)) {
+            RabbitizerTrackedRegisterState *state = &self->registers[reg];
 
-                default:
-                    break;
-            }
+            RabbitizerTrackedRegisterState_clear(state);
         }
     }
 }
@@ -300,6 +236,7 @@ void RabbitizerRegistersTracker_processConstant(RabbitizerRegistersTracker *self
 bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, int *dstOffset,
                                                   bool *dstIsGp) {
     const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
+    const RabbitizerRegisterDescriptor *regDescriptor;
 
     if (state->hasLuiValue && !state->luiSetOnBranchLikely) {
         *dstOffset = state->luiOffset;
@@ -307,8 +244,8 @@ bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *se
         return true;
     }
 
-    // TODO: abi
-    if (RAB_INSTR_GET_rs(instr) == 28) { // $gp
+    regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(instr));
+    if (RabbitizerRegisterDescriptor_isGp(regDescriptor)) {
         *dstOffset = 0;
         *dstIsGp = true;
         return true;
@@ -328,6 +265,7 @@ RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(Rabbit
                                                                           int instrOffset) {
     const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
     RabbitizerLoPairingInfo pairingInfo;
+    const RabbitizerRegisterDescriptor *regDescriptor;
 
     RabbitizerLoPairingInfo_Init(&pairingInfo);
 
@@ -338,7 +276,8 @@ RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(Rabbit
         return pairingInfo;
     }
 
-    if ((RAB_INSTR_GET_rs(instr) == RABBITIZER_REG_GPR_O32_gp) || (RAB_INSTR_GET_rs(instr) == RABBITIZER_REG_GPR_N32_gp)) {
+    regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(instr));
+    if (RabbitizerRegisterDescriptor_isGp(regDescriptor)) {
         pairingInfo.value = state->value;
         pairingInfo.isGpRel = true;
         pairingInfo.shouldProcess = true;

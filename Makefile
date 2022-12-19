@@ -18,7 +18,7 @@ LDFLAGS         := -Lbuild -lrabbitizer
 LDXXFLAGS       := -Lbuild -lrabbitizerpp
 WARNINGS        := -Wall -Wextra -Wpedantic
 # WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded
-WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow
+WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow -Werror=switch
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
 WARNINGS_CXX    :=
 
@@ -117,7 +117,7 @@ format:
 	clang-format-11 -i -style=file $(CXX_FILES)
 
 tidy:
-	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) $(H_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS)
+	clang-tidy-11 -p . --fix --fix-errors $(C_FILES) -- $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS)
 
 tests: $(TESTS_ELFS)
 
@@ -150,7 +150,7 @@ build/%.o: %.cpp | $(TABLE_GENERATED)
 
 
 %.table.h: %.table.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MF $(@:.table.h=.table.d) $<
+	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.table.h=.table.d) $<
 	$(TABLE_GEN) $< $@ $(@F)
 
 

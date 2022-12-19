@@ -728,6 +728,10 @@ int8_t InstructionBase::getDestinationGpr() const {
     return RabbitizerInstruction_getDestinationGpr(&this->instr);
 }
 
+bool InstructionBase::outputsToGprZero() const {
+    return RabbitizerInstruction_outputsToGprZero(&this->instr);
+}
+
 std::string InstructionBase::getOpcodeName() const {
     return InstrId::getOpcodeName(getUniqueId());
 }

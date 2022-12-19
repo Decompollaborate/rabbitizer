@@ -14,7 +14,6 @@ class InstrId:
     cpu_mtlo: Enum
     cpu_jr: Enum
     cpu_jalr: Enum
-    cpu_jalr_rd: Enum
     cpu_mfhi: Enum
     cpu_mflo: Enum
     cpu_mult: Enum
@@ -316,7 +315,6 @@ class InstrId:
     rsp_ltv: Enum
     rsp_jr: Enum
     rsp_jalr: Enum
-    rsp_jalr_rd: Enum
     rsp_movz: Enum
     rsp_movn: Enum
     rsp_add: Enum

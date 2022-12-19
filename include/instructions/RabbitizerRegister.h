@@ -8,6 +8,8 @@
 #include <stdint.h>
 
 #include "common/Utils.h"
+#include "RabbitizerRegisterDescriptor.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -59,6 +61,35 @@ NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VI(uint8_t regValue);
+
+
+
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_Gpr(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_Cop0(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_Cop1(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_Cop1Control(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_Cop2(uint8_t regValue);
+
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspGpr(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspCop0(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspCop2(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspCop2Control(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspVector(uint8_t regValue);
+
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VI(uint8_t regValue);
 
 
 #ifdef __cplusplus

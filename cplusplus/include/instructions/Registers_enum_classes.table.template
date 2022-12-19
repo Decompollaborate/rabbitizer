@@ -1,11 +1,11 @@
 /* SPDX-FileCopyrightText: © 2022 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#define RABBITIZER_DEF_REG(prefix, name, numeric) \
-    prefix##_##name
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    prefix##_##name,
 
-#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric) \
-    prefix##_##name
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
+    prefix##_##name,
 
     namespace Cpu {
         enum class GprO32 {

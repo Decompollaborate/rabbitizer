@@ -161,6 +161,7 @@ namespace rabbitizer {
         int32_t getBranchOffsetGeneric() const;
         int32_t getBranchVramGeneric() const;
         int8_t getDestinationGpr() const;
+        bool outputsToGprZero() const;
 
 
         std::string getOpcodeName() const;

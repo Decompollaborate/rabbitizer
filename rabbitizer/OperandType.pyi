@@ -30,6 +30,7 @@ class OperandType:
     cpu_immediate: Enum
     cpu_branch_target_label: Enum
     cpu_immediate_base: Enum
+    cpu_maybe_rd_rs: Enum
 
     rsp_rs: Enum
     rsp_rt: Enum
@@ -46,6 +47,7 @@ class OperandType:
     rsp_vs_index: Enum
     rsp_offset_rs: Enum
     rsp_immediate_base: Enum
+    rsp_maybe_rd_rs: Enum
 
     r5900_I: Enum
     r5900_Q: Enum
