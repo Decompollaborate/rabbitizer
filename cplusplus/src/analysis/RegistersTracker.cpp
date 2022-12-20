@@ -31,7 +31,8 @@ void RegistersTracker::overwriteRegisters(const InstructionBase &instr, int inst
 void RegistersTracker::unsetRegistersAfterFuncCall(const InstructionBase &instr, const InstructionBase &prevInstr) {
     RabbitizerRegistersTracker_unsetRegistersAfterFuncCall(&this->tracker, instr.getCPtr(), prevInstr.getCPtr());
 }
-bool RegistersTracker::getAddressIfCanSetType(const InstructionBase &instr, int instrOffset, uint32_t *dstAddress) const {
+bool RegistersTracker::getAddressIfCanSetType(const InstructionBase &instr, int instrOffset,
+                                              uint32_t *dstAddress) const {
     return RabbitizerRegistersTracker_getAddressIfCanSetType(&this->tracker, instr.getCPtr(), instrOffset, dstAddress);
 }
 bool RegistersTracker::getJrInfo(const InstructionBase &instr, int *dstOffset, uint32_t *dstAddress) const {

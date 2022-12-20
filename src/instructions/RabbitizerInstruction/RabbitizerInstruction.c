@@ -105,7 +105,8 @@ bool RabbitizerInstruction_outputsToGprZero(const RabbitizerInstruction *self) {
 void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
     size_t i;
 
-    for (i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
+    for (i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID;
+         i++) {
         switch (self->descriptor->operands[i]) {
             case RAB_OPERAND_cpu_rs:
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
@@ -400,7 +401,8 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
 
             case RAB_OPERAND_ALL_INVALID:
             case RAB_OPERAND_ALL_MAX:
-                assert(self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID && self->descriptor->operands[i] != RAB_OPERAND_ALL_MAX);
+                assert(self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID &&
+                       self->descriptor->operands[i] != RAB_OPERAND_ALL_MAX);
                 break;
         }
     }

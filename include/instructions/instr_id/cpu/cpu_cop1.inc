@@ -7,28 +7,32 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_fs},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
     .isFloat=true,
-    .modifiesRt=true
+    .modifiesRt=true,
+    .readsFs=true
 ) // Move Word From Floating-Point
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x01, dmfc1,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_fs},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
     .isFloat=true,
-    .modifiesRt=true
+    .modifiesRt=true,
+    .readsFs=true
 ) // Doubleword Move From Floating-Point
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x04, mtc1,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_fs},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
     .isFloat=true,
-    .readsRt=true
+    .readsRt=true,
+    .modifiesFs=true
 ) // Move Word to Floating-Point
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x05, dmtc1,
     .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_fs},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
     .isFloat=true,
-    .readsRt=true
+    .readsRt=true,
+    .modifiesFs=true
 ) // Doubleword Move To Floating-Point
 
 // OP rt, cop1cs

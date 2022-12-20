@@ -115,6 +115,7 @@ extern "C" {
     fn RabbitizerInstrDescriptor_isDouble(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_isUnsigned(self_: *const instr_descriptor::InstrDescriptor) -> bool;
 
+    fn RabbitizerInstrDescriptor_modifiesRs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_modifiesRt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_modifiesRd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_readsRs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
@@ -125,6 +126,14 @@ extern "C" {
     fn RabbitizerInstrDescriptor_readsLO(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_modifiesHI(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_modifiesLO(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+
+    fn RabbitizerInstrDescriptor_modifiesFs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesFt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesFd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_readsFs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_readsFt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_readsFd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+
     fn RabbitizerInstrDescriptor_notEmitedByCompilers(
         self_: *const instr_descriptor::InstrDescriptor,
     ) -> bool;
@@ -584,6 +593,11 @@ impl Instruction {
             RabbitizerInstrDescriptor_isUnsigned(self.descriptor)
         }
     }
+    pub fn modifies_rs(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_modifiesRs(self.descriptor)
+        }
+    }
     pub fn modifies_rt(&self) -> bool {
         unsafe {
             RabbitizerInstrDescriptor_modifiesRt(self.descriptor)
@@ -627,6 +641,36 @@ impl Instruction {
     pub fn modifies_lo(&self) -> bool {
         unsafe {
             RabbitizerInstrDescriptor_modifiesLO(self.descriptor)
+        }
+    }
+    pub fn modifies_fs(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_modifiesFs(self.descriptor)
+        }
+    }
+    pub fn modifies_ft(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_modifiesFt(self.descriptor)
+        }
+    }
+    pub fn modifies_fd(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_modifiesFd(self.descriptor)
+        }
+    }
+    pub fn reads_fs(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_readsFs(self.descriptor)
+        }
+    }
+    pub fn reads_ft(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_readsFt(self.descriptor)
+        }
+    }
+    pub fn reads_fd(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_readsFd(self.descriptor)
         }
     }
     pub fn not_emited_by_compilers(&self) -> bool {

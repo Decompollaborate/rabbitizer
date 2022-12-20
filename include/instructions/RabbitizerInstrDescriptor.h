@@ -70,6 +70,10 @@ typedef struct RabbitizerInstrDescriptor {
     bool isUnsigned;
 
     /**
+     * The instruction modifies the state of the MIPS `rs` register
+     */
+    bool modifiesRs;
+    /**
      * The instruction modifies the state of the MIPS `rt` register
      */
     bool modifiesRt;
@@ -95,6 +99,13 @@ typedef struct RabbitizerInstrDescriptor {
     bool readsLO;
     bool modifiesHI;
     bool modifiesLO;
+
+    bool modifiesFs;
+    bool modifiesFt;
+    bool modifiesFd;
+    bool readsFs;
+    bool readsFt;
+    bool readsFd;
 
     /**
      * This instruction is not emited by a C compiler
@@ -184,6 +195,8 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_isUnsigned(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesRs(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesRd(const RabbitizerInstrDescriptor *self);
@@ -203,6 +216,20 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesHI(const RabbitizerInstrDescriptor *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_modifiesLO(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesFs(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesFt(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_modifiesFd(const RabbitizerInstrDescriptor *self);
+
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsFs(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsFt(const RabbitizerInstrDescriptor *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstrDescriptor_readsFd(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);
