@@ -4,7 +4,7 @@
 [package]
 name = "rabbitizer"
 # Version should be synced with include/common/RabbitizerVersion.h
-version = "1.5.6"
+version = "1.5.7"
 edition = "2021"
 authors = ["Anghelo Carvajal <angheloalf95@gmail.com>"]
 description = "MIPS instruction decoder"

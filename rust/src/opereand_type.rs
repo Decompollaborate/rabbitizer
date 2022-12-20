@@ -20,16 +20,16 @@ extern "C" {
 }
 
 impl operand_type_enum::OperandType {
-    pub fn disassemble(&self, instr: instruction::Instruction, imm_override: Option<&str>) -> String {
+    pub fn disassemble(&self, instr: &instruction::Instruction, imm_override: Option<&str>) -> String {
         let (imm_override_ptr, imm_override_len) = utils::c_string_from_str(imm_override);
 
         unsafe {
-            let buffer_size = RabbitizerOperandType_getBufferSize(*self, &instr, imm_override_len);
+            let buffer_size = RabbitizerOperandType_getBufferSize(*self, instr, imm_override_len);
 
             let mut buffer: Vec<u8> = vec![0; buffer_size.try_into().unwrap()];
             let disassembled_size = RabbitizerOperandType_disassemble(
                 *self,
-                &instr,
+                instr,
                 buffer.as_mut_ptr() as *mut core::ffi::c_char,
                 imm_override_ptr,
                 imm_override_len,

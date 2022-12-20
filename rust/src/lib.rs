@@ -58,7 +58,7 @@ mod tests {
         let operand = instr.get_operand_type(0);
 
         assert_eq!(
-            operand.disassemble(instr, None),
+            operand.disassemble(&instr, None),
             "$t2".to_string()
         );
     }
