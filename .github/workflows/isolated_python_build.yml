@@ -1,4 +1,4 @@
-name: Build and upload to PyPI
+name: Build Python package in isolated environment
 
 # Build on every branch push, tag push, and pull request change:
 on: [push, pull_request]
