@@ -697,7 +697,8 @@ int32_t InstructionBase::getGenericBranchOffset(uint32_t currentVram) const {
 #ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_branch_target_label) && !hasOperandAlias(OperandType::cpu_label)) {
         // TODO: make a rabbitizer exception class
-        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have either 'branch_target_label' or 'label' operands.");
+        throw std::runtime_error("Instruction '" + getOpcodeName() +
+                                 "' does not have either 'branch_target_label' or 'label' operands.");
     }
 #endif
 
@@ -707,7 +708,8 @@ int32_t InstructionBase::getBranchOffsetGeneric() const {
 #ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_branch_target_label) && !hasOperandAlias(OperandType::cpu_label)) {
         // TODO: make a rabbitizer exception class
-        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have either 'branch_target_label' or 'label' operands.");
+        throw std::runtime_error("Instruction '" + getOpcodeName() +
+                                 "' does not have either 'branch_target_label' or 'label' operands.");
     }
 #endif
 
@@ -717,7 +719,8 @@ int32_t InstructionBase::getBranchVramGeneric() const {
 #ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_branch_target_label) && !hasOperandAlias(OperandType::cpu_label)) {
         // TODO: make a rabbitizer exception class
-        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have either 'branch_target_label' or 'label' operands.");
+        throw std::runtime_error("Instruction '" + getOpcodeName() +
+                                 "' does not have either 'branch_target_label' or 'label' operands.");
     }
 #endif
 
@@ -1016,7 +1019,8 @@ std::string InstructionBase::disassembleInstruction(int extraLJust) const {
         throw std::runtime_error("buffer == NULL");
     }
 
-    disassmbledSize = RabbitizerInstruction_disassembleInstruction(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
+    disassmbledSize =
+        RabbitizerInstruction_disassembleInstruction(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
 
     std::string output(buffer);
     free(buffer);
@@ -1041,7 +1045,8 @@ std::string InstructionBase::disassembleInstruction(int extraLJust, std::string_
         throw std::runtime_error("buffer == NULL");
     }
 
-    disassmbledSize = RabbitizerInstruction_disassembleInstruction(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
+    disassmbledSize =
+        RabbitizerInstruction_disassembleInstruction(&instr, buffer, immOverridePtr, immOverrideLength, extraLJust);
 
     std::string output(buffer);
     free(buffer);

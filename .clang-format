@@ -1,7 +1,7 @@
 IndentWidth: 4
 Language: Cpp
 UseTab: Never
-ColumnLimit: 160
+ColumnLimit: 120
 PointerAlignment: Right
 BreakBeforeBraces: Attach
 SpaceAfterCStyleCast: false

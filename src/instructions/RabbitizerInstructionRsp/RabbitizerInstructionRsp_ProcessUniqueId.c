@@ -10,7 +10,8 @@
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
         break;
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionRsp_processUniqueId_Normal_Lwc2(RabbitizerInstruction *self) {
     uint32_t rd = RAB_INSTR_GET_rd(self);

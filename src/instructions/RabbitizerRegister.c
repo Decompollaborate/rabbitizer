@@ -30,8 +30,10 @@ const char *RabbitizerRegister_getNameGpr(uint8_t regValue) {
 const char *RabbitizerRegister_getNameCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop0_Names));
 
-    return RabbitizerRegister_Cop0_Names[regValue]
-                                        [RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300Cop0NamedRegisters ? 1 : 0];
+    return RabbitizerRegister_Cop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters &&
+                                                           RabbitizerConfig_Cfg.regNames.vr4300Cop0NamedRegisters
+                                                       ? 1
+                                                       : 0];
 }
 
 const char *RabbitizerRegister_getNameCop1(uint8_t regValue) {
@@ -56,7 +58,8 @@ const char *RabbitizerRegister_getNameCop1(uint8_t regValue) {
 const char *RabbitizerRegister_getNameCop1Control(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_Cop1Control_Names));
 
-    return RabbitizerRegister_Cop1Control_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.userFpcCsr ? 1 : 0];
+    return RabbitizerRegister_Cop1Control_Names
+        [regValue][RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.userFpcCsr ? 1 : 0];
 }
 
 const char *RabbitizerRegister_getNameCop2(uint8_t regValue) {
@@ -74,8 +77,10 @@ const char *RabbitizerRegister_getNameRspGpr(uint8_t regValue) {
 const char *RabbitizerRegister_getNameRspCop0(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspCop0_Names));
 
-    return RabbitizerRegister_RspCop0_Names[regValue]
-                                           [RabbitizerConfig_Cfg.regNames.namedRegisters && RabbitizerConfig_Cfg.regNames.vr4300RspCop0NamedRegisters ? 1 : 0];
+    return RabbitizerRegister_RspCop0_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters &&
+                                                              RabbitizerConfig_Cfg.regNames.vr4300RspCop0NamedRegisters
+                                                          ? 1
+                                                          : 0];
 }
 
 const char *RabbitizerRegister_getNameRspCop2(uint8_t regValue) {
@@ -107,7 +112,6 @@ const char *RabbitizerRegister_getNameR5900VI(uint8_t regValue) {
 
     return RabbitizerRegister_R5900VI_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
-
 
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_Gpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_GprO32_Names));

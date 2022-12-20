@@ -9,7 +9,8 @@
 
 #include "common/RabbitizerConfig.h"
 
-size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust) {
+size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruction *self, size_t immOverrideLength,
+                                                         int extraLJust) {
     size_t totalSize = 0;
     size_t opcodeNameLength;
 
@@ -37,14 +38,15 @@ size_t RabbitizerInstruction_getSizeForBufferInstrDisasm(const RabbitizerInstruc
     return totalSize;
 }
 
-size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength,
-                                                    int extraLJust) {
+size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction *self, char *dst,
+                                                    const char *immOverride, size_t immOverrideLength, int extraLJust) {
     size_t totalSize = 0;
     const char *opcodeName = RabbitizerInstrId_getOpcodeName(self->uniqueId);
 
     RABUTILS_BUFFER_CPY(dst, totalSize, opcodeName);
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstrSuffix_processSuffix(self, dst, self->descriptor->instrSuffix));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize,
+                            RabbitizerInstrSuffix_processSuffix(self, dst, self->descriptor->instrSuffix));
 
     if (self->descriptor->operands[0] == RAB_OPERAND_ALL_INVALID) {
         // There are no operands
@@ -52,10 +54,13 @@ size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction 
         return totalSize;
     }
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' '));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' '));
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstruction_disassembleOperands(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize,
+                            RabbitizerInstruction_disassembleOperands(self, dst, immOverride, immOverrideLength));
 
     *dst = '\0';
     return totalSize;
@@ -75,7 +80,9 @@ size_t RabbitizerInstruction_disassembleAsData(const RabbitizerInstruction *self
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ".word");
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' '));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerUtils_CharFill(dst, RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust - totalSize, ' '));
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, " 0x%08X", RabbitizerInstruction_getRaw(self));
     return totalSize;
@@ -94,7 +101,8 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
     return false;
 }
 
-size_t RabbitizerInstruction_getSizeForBuffer(const RabbitizerInstruction *self, size_t immOverrideLength, int extraLJust) {
+size_t RabbitizerInstruction_getSizeForBuffer(const RabbitizerInstruction *self, size_t immOverrideLength,
+                                              int extraLJust) {
     if (!RabbitizerInstruction_isImplemented(self) || RabbitizerInstruction_mustDisasmAsData(self)) {
         size_t totalSize = RabbitizerInstruction_getSizeForBufferDataDisasm(self, extraLJust);
 
@@ -110,7 +118,8 @@ size_t RabbitizerInstruction_getSizeForBuffer(const RabbitizerInstruction *self,
     return RabbitizerInstruction_getSizeForBufferInstrDisasm(self, immOverrideLength, extraLJust);
 }
 
-size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength, int extraLJust) {
+size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char *dst, const char *immOverride,
+                                         size_t immOverrideLength, int extraLJust) {
     assert(dst != NULL);
 
     if (!RabbitizerInstruction_isImplemented(self) || RabbitizerInstruction_mustDisasmAsData(self)) {
@@ -127,7 +136,9 @@ size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char
             RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '#');
             RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ' ');
 
-            RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstruction_disassembleInstruction(self, dst, immOverride, immOverrideLength, extraLJust));
+            RABUTILS_BUFFER_ADVANCE(
+                dst, totalSize,
+                RabbitizerInstruction_disassembleInstruction(self, dst, immOverride, immOverrideLength, extraLJust));
 
             validBits = RabbitizerInstruction_getValidBits(self);
 

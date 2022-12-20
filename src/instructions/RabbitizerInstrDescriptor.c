@@ -9,7 +9,8 @@
 
 #include "InstrDescriptor_Descriptors_array.table.h"
 
-bool RabbitizerInstrDescriptor_hasSpecificOperand(const RabbitizerInstrDescriptor *self, RabbitizerOperandType operand) {
+bool RabbitizerInstrDescriptor_hasSpecificOperand(const RabbitizerInstrDescriptor *self,
+                                                  RabbitizerOperandType operand) {
     size_t i;
 
     for (i = 0; i < ARRAY_COUNT(self->operands) && self->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {

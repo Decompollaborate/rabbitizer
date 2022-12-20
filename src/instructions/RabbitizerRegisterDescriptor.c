@@ -7,7 +7,6 @@
 
 #include "RegisterDescriptor_Descriptors_arrays.table.h"
 
-
 bool RabbitizerRegisterDescriptor_isClobberedByFuncCall(const RabbitizerRegisterDescriptor *self) {
     return self->isClobberedByFuncCall;
 }

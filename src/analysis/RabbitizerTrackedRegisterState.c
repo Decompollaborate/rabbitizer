@@ -62,7 +62,8 @@ void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self
     self->dereferenceOffset = 0;
 }
 
-void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other) {
+void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self,
+                                              const RabbitizerTrackedRegisterState *other) {
     self->hasLuiValue = other->hasLuiValue;
     self->luiOffset = other->luiOffset;
     self->luiSetOnBranchLikely = other->luiSetOnBranchLikely;
@@ -107,7 +108,8 @@ void RabbitizerTrackedRegisterState_deref(RabbitizerTrackedRegisterState *self, 
     self->dereferenceOffset = offset;
 }
 
-void RabbitizerTrackedRegisterState_dereferenceState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other, int offset) {
+void RabbitizerTrackedRegisterState_dereferenceState(RabbitizerTrackedRegisterState *self,
+                                                     const RabbitizerTrackedRegisterState *other, int offset) {
     assert(other->hasLoValue);
     assert(!other->dereferenced);
 
@@ -124,7 +126,8 @@ bool RabbitizerTrackedRegisterState_wasSetInCurrentOffset(const RabbitizerTracke
 }
 
 void RabbitizerTrackedRegisterState_fprint(const RabbitizerTrackedRegisterState *self, FILE *outFile) {
-    fprintf(outFile, "TrackedRegisterState(%i / %s)\n", self->registerNum, RabbitizerRegister_getNameGpr(self->registerNum));
+    fprintf(outFile, "TrackedRegisterState(%i / %s)\n", self->registerNum,
+            RabbitizerRegister_getNameGpr(self->registerNum));
 
     fprintf(outFile, "    hasLuiValue: %s\n", self->hasLuiValue ? "true" : "false");
     fprintf(outFile, "    luiOffset: 0x%X\n", self->luiOffset);

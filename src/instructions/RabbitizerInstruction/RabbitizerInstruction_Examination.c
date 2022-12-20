@@ -21,10 +21,12 @@ bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self
     }
 
     if (RabbitizerInstrDescriptor_isIType(self->descriptor) && !RabbitizerInstrDescriptor_isFloat(self->descriptor)) {
-        if (RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_k0 || RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_k1) {
+        if (RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_k0 ||
+            RAB_INSTR_GET_rs(self) == RABBITIZER_REG_GPR_O32_k1) {
             return true;
         }
-        if (RAB_INSTR_GET_rt(self) == RABBITIZER_REG_GPR_O32_k0 || RAB_INSTR_GET_rt(self) == RABBITIZER_REG_GPR_O32_k1) {
+        if (RAB_INSTR_GET_rt(self) == RABBITIZER_REG_GPR_O32_k0 ||
+            RAB_INSTR_GET_rt(self) == RABBITIZER_REG_GPR_O32_k1) {
             return true;
         }
     }
@@ -64,7 +66,8 @@ bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
         case RABBITIZER_INSTR_ID_rsp_jr: {
-            const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
+            const RabbitizerRegisterDescriptor *regDescriptor =
+                RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
 
             return RabbitizerRegisterDescriptor_isRa(regDescriptor);
         }
@@ -78,7 +81,8 @@ bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
         case RABBITIZER_INSTR_ID_rsp_jr: {
-            const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
+            const RabbitizerRegisterDescriptor *regDescriptor =
+                RabbitizerRegister_getDescriptor_Gpr(RAB_INSTR_GET_rs(self));
 
             return !RabbitizerRegisterDescriptor_isRa(regDescriptor);
         }
@@ -127,7 +131,8 @@ bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const R
     return self->uniqueId == other->uniqueId;
 }
 
-bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self, const RabbitizerInstruction *other) {
+bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self,
+                                                           const RabbitizerInstruction *other) {
     if (!RabbitizerInstruction_sameOpcode(self, other)) {
         return false;
     }
@@ -149,7 +154,8 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
     validbits = self->_mandatorybits;
 
-    for (i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID; i++) {
+    for (i = 0; i < ARRAY_COUNT(self->descriptor->operands) && self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID;
+         i++) {
 
         switch (self->descriptor->operands[i]) {
             case RAB_OPERAND_cpu_rs:
@@ -445,7 +451,8 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RAB_OPERAND_ALL_INVALID:
             case RAB_OPERAND_ALL_MAX:
-                assert(self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID && self->descriptor->operands[i] != RAB_OPERAND_ALL_MAX);
+                assert(self->descriptor->operands[i] != RAB_OPERAND_ALL_INVALID &&
+                       self->descriptor->operands[i] != RAB_OPERAND_ALL_MAX);
                 break;
         }
     }
