@@ -357,6 +357,7 @@ DEF_DESCRIPTOR_METHOD_BOOL(isTrap)
 DEF_DESCRIPTOR_METHOD_BOOL(isFloat)
 DEF_DESCRIPTOR_METHOD_BOOL(isDouble)
 DEF_DESCRIPTOR_METHOD_BOOL(isUnsigned)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesRs)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRt)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesRd)
 DEF_DESCRIPTOR_METHOD_BOOL(readsRs)
@@ -366,6 +367,12 @@ DEF_DESCRIPTOR_METHOD_BOOL(readsHI)
 DEF_DESCRIPTOR_METHOD_BOOL(readsLO)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesHI)
 DEF_DESCRIPTOR_METHOD_BOOL(modifiesLO)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesFs)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesFt)
+DEF_DESCRIPTOR_METHOD_BOOL(modifiesFd)
+DEF_DESCRIPTOR_METHOD_BOOL(readsFs)
+DEF_DESCRIPTOR_METHOD_BOOL(readsFt)
+DEF_DESCRIPTOR_METHOD_BOOL(readsFd)
 DEF_DESCRIPTOR_METHOD_BOOL(notEmitedByCompilers)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeHi)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeLo)
@@ -493,6 +500,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isFloat, ""),
     METHOD_NO_ARGS(isDouble, ""),
     METHOD_NO_ARGS(isUnsigned, ""),
+    METHOD_NO_ARGS(modifiesRs, ""),
     METHOD_NO_ARGS(modifiesRt, ""),
     METHOD_NO_ARGS(modifiesRd, ""),
     METHOD_NO_ARGS(readsRs, ""),
@@ -502,6 +510,12 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(readsLO, ""),
     METHOD_NO_ARGS(modifiesHI, ""),
     METHOD_NO_ARGS(modifiesLO, ""),
+    METHOD_NO_ARGS(modifiesFs, ""),
+    METHOD_NO_ARGS(modifiesFt, ""),
+    METHOD_NO_ARGS(modifiesFd, ""),
+    METHOD_NO_ARGS(readsFs, ""),
+    METHOD_NO_ARGS(readsFt, ""),
+    METHOD_NO_ARGS(readsFd, ""),
     METHOD_NO_ARGS(notEmitedByCompilers, ""),
     METHOD_NO_ARGS(canBeHi, ""),
     METHOD_NO_ARGS(canBeLo, ""),

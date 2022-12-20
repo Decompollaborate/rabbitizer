@@ -47,15 +47,29 @@ int main() {
         LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->isDouble, descriptor->isFloat);
 
         // modifiesR* and readsR*
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesRs && descriptor->readsRs));
         LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesRt && descriptor->readsRt));
         LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesRd && descriptor->readsRd));
-        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->readsRs && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs)));
+        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRs || descriptor->readsRs) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs)));
         LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRt || descriptor->readsRt) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt)));
         LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesRd || descriptor->readsRd) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd)));
 
-        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs), descriptor->readsRs);
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs), (descriptor->readsRs || descriptor->modifiesRs));
         LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt), (descriptor->readsRt || descriptor->modifiesRt));
         LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd), (descriptor->readsRd || descriptor->modifiesRd));
+
+        // float modifiesR* and readsR*
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesFs && descriptor->readsFs));
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesFt && descriptor->readsFt));
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->modifiesFd && descriptor->readsFd));
+        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesFs || descriptor->readsFs) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_fs)));
+        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesFt || descriptor->readsFt) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_ft)));
+        LOGIC_ERROR(uniqueId, errorCount, !((descriptor->modifiesFd || descriptor->readsFd) && !RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_fd)));
+
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_fs), (descriptor->readsFs || descriptor->modifiesFs));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_ft), (descriptor->readsFt || descriptor->modifiesFt));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_fd), (descriptor->readsFd || descriptor->modifiesFd));
+
 
         // An instruction should have at most canBeHi or canBeLo, not both
         LOGIC_ERROR(uniqueId, errorCount, !(descriptor->canBeHi && descriptor->canBeLo));

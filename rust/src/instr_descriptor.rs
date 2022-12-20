@@ -23,6 +23,7 @@ pub struct InstrDescriptor {
 
     is_unsigned: bool,
 
+    modifies_rs: bool,
     modifies_rt: bool,
     modifies_rd: bool,
 
@@ -34,6 +35,14 @@ pub struct InstrDescriptor {
     reads_lo: bool,
     modifies_hi: bool,
     modifies_lo: bool,
+
+    modifies_fs: bool,
+    modifies_ft: bool,
+    modifies_fd: bool,
+
+    reads_fs: bool,
+    reads_ft: bool,
+    reads_fd: bool,
 
     not_emited_by_compilers: bool,
 

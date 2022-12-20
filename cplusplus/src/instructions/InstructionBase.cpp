@@ -852,6 +852,9 @@ bool InstructionBase::isUnsigned() const {
     return RabbitizerInstrDescriptor_isUnsigned(this->instr.descriptor);
 }
 
+bool InstructionBase::modifiesRs() const {
+    return RabbitizerInstrDescriptor_modifiesRs(this->instr.descriptor);
+}
 bool InstructionBase::modifiesRt() const {
     return RabbitizerInstrDescriptor_modifiesRt(this->instr.descriptor);
 }
@@ -880,6 +883,26 @@ bool InstructionBase::modifiesHI() const {
 }
 bool InstructionBase::modifiesLO() const {
     return RabbitizerInstrDescriptor_modifiesLO(this->instr.descriptor);
+}
+
+bool InstructionBase::modifiesFs() const {
+    return RabbitizerInstrDescriptor_modifiesFs(this->instr.descriptor);
+}
+bool InstructionBase::modifiesFt() const {
+    return RabbitizerInstrDescriptor_modifiesFt(this->instr.descriptor);
+}
+bool InstructionBase::modifiesFd() const {
+    return RabbitizerInstrDescriptor_modifiesFd(this->instr.descriptor);
+}
+
+bool InstructionBase::readsFs() const {
+    return RabbitizerInstrDescriptor_readsFs(this->instr.descriptor);
+}
+bool InstructionBase::readsFt() const {
+    return RabbitizerInstrDescriptor_readsFt(this->instr.descriptor);
+}
+bool InstructionBase::readsFd() const {
+    return RabbitizerInstrDescriptor_readsFd(this->instr.descriptor);
 }
 
 bool InstructionBase::notEmitedByCompilers() const {

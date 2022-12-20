@@ -525,6 +525,9 @@ bool RabbitizerInstrDescriptor_isUnsigned(const RabbitizerInstrDescriptor *self)
     return self->isUnsigned;
 }
 
+bool RabbitizerInstrDescriptor_modifiesRs(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesRs;
+}
 bool RabbitizerInstrDescriptor_modifiesRt(const RabbitizerInstrDescriptor *self) {
     return self->modifiesRt;
 }
@@ -553,6 +556,26 @@ bool RabbitizerInstrDescriptor_modifiesHI(const RabbitizerInstrDescriptor *self)
 }
 bool RabbitizerInstrDescriptor_modifiesLO(const RabbitizerInstrDescriptor *self) {
     return self->modifiesLO;
+}
+
+bool RabbitizerInstrDescriptor_modifiesFs(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesFs;
+}
+bool RabbitizerInstrDescriptor_modifiesFt(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesFt;
+}
+bool RabbitizerInstrDescriptor_modifiesFd(const RabbitizerInstrDescriptor *self) {
+    return self->modifiesFd;
+}
+
+bool RabbitizerInstrDescriptor_readsFs(const RabbitizerInstrDescriptor *self) {
+    return self->readsFs;
+}
+bool RabbitizerInstrDescriptor_readsFt(const RabbitizerInstrDescriptor *self) {
+    return self->readsFt;
+}
+bool RabbitizerInstrDescriptor_readsFd(const RabbitizerInstrDescriptor *self) {
+    return self->readsFd;
 }
 
 bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self) {

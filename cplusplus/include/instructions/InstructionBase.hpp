@@ -228,6 +228,7 @@ namespace rabbitizer {
 
         bool isUnsigned() const;
 
+        bool modifiesRs() const;
         bool modifiesRt() const;
         bool modifiesRd() const;
 
@@ -239,6 +240,14 @@ namespace rabbitizer {
         bool readsLO() const;
         bool modifiesHI() const;
         bool modifiesLO() const;
+
+        bool modifiesFs() const;
+        bool modifiesFt() const;
+        bool modifiesFd() const;
+
+        bool readsFs() const;
+        bool readsFt() const;
+        bool readsFd() const;
 
         bool notEmitedByCompilers() const;
 
