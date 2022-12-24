@@ -111,6 +111,7 @@ clean:
 distclean: clean
 	$(RM) -rf dist *.egg-info .mypy_cache
 	$(RM) -rf $(TABLE_GENERATED)
+	$(RM) -rf target/
 
 format:
 	clang-format-11 -i -style=file $(C_FILES)
