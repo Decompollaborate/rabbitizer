@@ -188,9 +188,18 @@ int main() {
 passed string as immediate so the user doesn't have to do string manipulations
 to replace it.
 
-Also note both `RabbitizerInstruction_getSizeForBuffer` and
+Note both `RabbitizerInstruction_getSizeForBuffer` and
 `RabbitizerInstruction_disassemble` require the length of the override string,
 it can be easily computed with `strlen`.
+
+Also note the passed `immOverride` includes the `%lo` reloc operand.
+`rabbitizer` does not perform any kind of logic to add reloc operands, that kind
+of logic is expected to be handled by the user, the library will use the
+`immOverride` blindly.
+
+Finally, `immOverride` and `immOverrideLength` must be both `NULL`/`0` or both
+point to a valid NUL-terminated string and its size, using a combination of them
+(as in non-`NULL` and `0` length or `NULL` and non-`zero` length) is UB.
 
 For completeness sake, here's the code to produce the `bnez` from the above
 example.
