@@ -81,13 +81,14 @@ has been passed to this pair of functions.
 
 3. Disassembling into a string
 
-To produce a string disassembly of the word we passed we could simply call to
+To disassemble the passed word as a string we can call
 `RabbitizerInstruction_disassemble`. This function expects a `char` buffer to
 fill, which should have enough space to hold the resulting string. To know how
 big this buffer needs to be we should use the
 `RabbitizerInstruction_getSizeForBuffer` function which calculates a size big
 enough to hold the disassembled string for the passed instruction (without
-taking into account the finalizing NUL character).
+taking into account the finalizing NUL character, similar to how `strlen`
+behaves).
 
 With this information we can just `malloc` our buffer and call
 `RabbitizerInstruction_disassemble` to get our disassembled instruction.
@@ -113,6 +114,10 @@ Not much to say here, just print the disassembled instruction to `stdout`.
 
 Finally since we know we won't be using the produced string or the instruction
 we just `free` and `RabbitizerInstruction_destroy` them.
+
+As a curiosity, `RabbitizerInstruction_destroy` currently does nothing, but
+exists in case some destruction is needed in the future, so it recommended to
+call this function as a future-proof method.
 
 ```c
     free(buffer);
