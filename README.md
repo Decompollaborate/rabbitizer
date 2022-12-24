@@ -13,16 +13,20 @@ MIPS instruction decoder API.
 
 - Should produce matching assembly.
 - Fully written in C for fast decoding.
-  - The library is completely allocation-less, in other words `rabbitizer` doesn't allocate in anything in the heap by itself.
+  - The library is completely allocation-less, in other words `rabbitizer`
+  doesn't allocate in anything in the heap by itself.
 - Other language bindings supported in this repo:
   - Python bindings
     - The minimal Python version is 3.7, older versions are not guaranteed to work.
   - C++ bindings
   - Rust bindings
 - Simple per-word instruction decoding.
-  - The library doesn't try to be too smart by processing multiple instructions at a time.
+  - The library doesn't try to be too smart by processing multiple instructions
+  at a time.
 - Can perform validation checks for instructions.
-- Provides many examination/grouping functions for instructions, allowing to simplify checking characteristics of an instruction and minimizing the need to check for specific instructions in a hardcoded way.
+- Provides many examination/grouping functions for instructions, allowing to
+  simplify checking characteristics of an instruction and minimizing the need to
+  check for specific instructions in a hardcoded way.
 - Includes some minor tools to build your own pointer/symbol detection.
 - Configurable, many features can be turned on and off.
 - MIPS instructions features:
@@ -55,13 +59,15 @@ The recommended way to install is using from the PyPi release, via `pip`:
 pip install rabbitizer
 ```
 
-In case you want to mess with the latest development version without wanting to clone the repository, then you could use the following command:
+In case you want to mess with the latest development version without wanting to
+clone the repository, then you could use the following command:
 
 ```bash
 pip install git+https://github.com/Decompollaborate/rabbitizer.git@develop
 ```
 
-NOTE: Installing the development version is not recommended. Proceed at your own risk.
+NOTE: Installing the development version is not recommended. Proceed at your own
+risk.
 
 See this package at <https://pypi.org/project/rabbitizer/>.
 
