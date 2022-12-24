@@ -6,3 +6,4 @@
 set -e
 
 ./build/tests/c/instruction_checks/jalr.elf
+./build/tests/c/instruction_checks/plain_disassembly.elf
