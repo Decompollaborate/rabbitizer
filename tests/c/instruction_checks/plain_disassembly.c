@@ -5,6 +5,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 
 size_t strlen_null(const char *string) {
     if (string == NULL) {
@@ -75,6 +76,7 @@ int main() {
 
         bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, 0);
         buffer = malloc(bufferSize + 1);
+        assert(buffer != NULL);
 
         RabbitizerInstruction_disassemble(&instr, buffer, entry->immOverride, immOverrideLength, 0);
 

@@ -126,3 +126,104 @@ call this function as a future-proof method.
     return 0;
 }
 ```
+
+## Overriding the immediate
+
+When disassembling an instruction which has an immediate you'll probably don't
+want raw immediate embedded in the disassembled string, but instead it reference
+a symbol passed by the user.
+
+For example, instead of having the raw immediate here
+
+```mips
+lw          $t2, 0x7E18($t2)
+bnez        $t1, . + 4 + (-0x5 << 2)
+```
+
+You may want to reference symbols like this
+
+```mips
+lw          $t2, %lo(some_symbol)($t2)
+bnez        $t1, some_branch_label
+```
+
+To do this you need to simply pass the string which will override the immediate
+to the `immOverride` parameter of the `RabbitizerInstruction_disassemble`
+function. For example:
+
+```c
+#include "rabbitizer.h"
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    RabbitizerInstruction instr;
+    uint32_t word = 0x8D4A7E18; // lw          $t2, 0x7E18($t2)
+    uint32_t vram = 0x80000000;
+    char *buffer;
+    size_t bufferSize;
+    const char *immOverride = "%lo(some_symbol)";
+    size_t immOverrideLength;
+
+    immOverrideLength = strlen(immOverride);
+
+    RabbitizerInstruction_init(&instr, word, vram);
+    RabbitizerInstruction_processUniqueId(&instr);
+
+    bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, 0);
+    buffer = malloc(bufferSize + 1);
+
+    RabbitizerInstruction_disassemble(&instr, buffer, immOverride, immOverrideLength, 0);
+
+    printf("%s\n", buffer);
+
+    free(buffer);
+    RabbitizerInstruction_destroy(&instr);
+
+    return 0;
+}
+```
+
+`RabbitizerInstruction_disassemble` will do the heavy lifting of using the
+passed string as immediate so the user doesn't have to do string manipulations
+to replace it.
+
+Also note both `RabbitizerInstruction_getSizeForBuffer` and
+`RabbitizerInstruction_disassemble` require the length of the override string,
+it can be easily computed with `strlen`.
+
+For completeness sake, here's the code to produce the `bnez` from the above
+example.
+
+```c
+#include "rabbitizer.h"
+#include <stdlib.h>
+#include <string.h>
+
+int main() {
+    RabbitizerInstruction instr;
+    uint32_t word = 0x1520FFFB; // bnez        $t1, . + 4 + (-0x5 << 2)
+    uint32_t vram = 0x80000000;
+    char *buffer;
+    size_t bufferSize;
+    const char *immOverride = "some_branch_label";
+    size_t immOverrideLength;
+
+    immOverrideLength = strlen(immOverride);
+
+    RabbitizerInstruction_init(&instr, word, vram);
+    RabbitizerInstruction_processUniqueId(&instr);
+
+    bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, 0);
+    buffer = malloc(bufferSize + 1);
+
+    RabbitizerInstruction_disassemble(&instr, buffer, immOverride, immOverrideLength, 0);
+
+    printf("%s\n", buffer);
+
+    free(buffer);
+    RabbitizerInstruction_destroy(&instr);
+
+    return 0;
+}
+```
