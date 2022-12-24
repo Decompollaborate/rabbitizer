@@ -1,5 +1,10 @@
 # Usage of the C API
 
+- [Usage of the C API](#usage-of-the-c-api)
+  - [Simple example to disassemble a word](#simple-example-to-disassemble-a-word)
+  - [Overriding the immediate](#overriding-the-immediate)
+  - [Examinating an instruction](#examinating-an-instruction)
+
 ## Simple example to disassemble a word
 
 ```c
