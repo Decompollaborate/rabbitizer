@@ -39,7 +39,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isTrap=true,
     .readsRs=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 )
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x09, tgeiu,
@@ -47,7 +47,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isTrap=true,
     .readsRs=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 )
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0A, tlti,
@@ -55,7 +55,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isTrap=true,
     .readsRs=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 )
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0B, tltiu,
@@ -63,7 +63,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isTrap=true,
     .readsRs=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 )
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0C, teqi,
@@ -71,7 +71,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isTrap=true,
     .readsRs=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 )
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x0E, tnei,
@@ -79,7 +79,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isTrap=true,
     .readsRs=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 )
 
 RABBITIZER_DEF_INSTR_ID(
@@ -114,7 +114,7 @@ RABBITIZER_DEF_INSTR_ID(
     .isBranch=true,
     .isBranchLikely=true,
     .readsRs=true,
-    .notEmitedByCompilers=true,
+    .notEmittedByCompilers=true,
     .doesLink=true
 ) // Branch on Greater Than or Equal to Zero and Link Likely
 
@@ -126,7 +126,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isBranch=true,
-    .notEmitedByCompilers=true,
+    .notEmittedByCompilers=true,
     .doesLink=true,
     .isPseudo=true
 ) // Branch and Link

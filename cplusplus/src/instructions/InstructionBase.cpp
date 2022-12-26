@@ -909,7 +909,11 @@ bool InstructionBase::readsFd() const {
 }
 
 bool InstructionBase::notEmitedByCompilers() const {
-    return RabbitizerInstrDescriptor_notEmitedByCompilers(this->instr.descriptor);
+    return RabbitizerInstrDescriptor_notEmittedByCompilers(this->instr.descriptor);
+}
+
+bool InstructionBase::notEmittedByCompilers() const {
+    return RabbitizerInstrDescriptor_notEmittedByCompilers(this->instr.descriptor);
 }
 
 bool InstructionBase::canBeHi() const {

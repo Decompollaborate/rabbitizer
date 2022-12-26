@@ -249,7 +249,10 @@ namespace rabbitizer {
         bool readsFt() const;
         bool readsFd() const;
 
+        //! @deprecated
         bool notEmitedByCompilers() const;
+
+        bool notEmittedByCompilers() const;
 
         bool canBeHi() const;
         bool canBeLo() const;

@@ -31,7 +31,7 @@ bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self
         }
     }
 
-    if (RabbitizerInstrDescriptor_notEmitedByCompilers(self->descriptor)) {
+    if (RabbitizerInstrDescriptor_notEmittedByCompilers(self->descriptor)) {
         return true;
     }
 

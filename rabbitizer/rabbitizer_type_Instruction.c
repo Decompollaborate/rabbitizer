@@ -374,6 +374,7 @@ DEF_DESCRIPTOR_METHOD_BOOL(readsFs)
 DEF_DESCRIPTOR_METHOD_BOOL(readsFt)
 DEF_DESCRIPTOR_METHOD_BOOL(readsFd)
 DEF_DESCRIPTOR_METHOD_BOOL(notEmitedByCompilers)
+DEF_DESCRIPTOR_METHOD_BOOL(notEmittedByCompilers)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeHi)
 DEF_DESCRIPTOR_METHOD_BOOL(canBeLo)
 DEF_DESCRIPTOR_METHOD_BOOL(doesLink)
@@ -517,6 +518,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(readsFt, ""),
     METHOD_NO_ARGS(readsFd, ""),
     METHOD_NO_ARGS(notEmitedByCompilers, ""),
+    METHOD_NO_ARGS(notEmittedByCompilers, ""),
     METHOD_NO_ARGS(canBeHi, ""),
     METHOD_NO_ARGS(canBeLo, ""),
     METHOD_NO_ARGS(doesLink, ""),

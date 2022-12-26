@@ -110,7 +110,7 @@ typedef struct RabbitizerInstrDescriptor {
     /**
      * This instruction is not emited by a C compiler
      */
-    bool notEmitedByCompilers;
+    bool notEmittedByCompilers;
 
     /**
      * The instruction can hold the "hi" value of a %hi/%lo pair
@@ -232,7 +232,10 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_readsFd(const RabbitizerInstrDescriptor *self);
 
 NODISCARD NON_NULL(1) PURE
-bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self);
+bool RabbitizerInstrDescriptor_notEmittedByCompilers(const RabbitizerInstrDescriptor *self);
+
+//! @deprecated
+#define RabbitizerInstrDescriptor_notEmitedByCompilers RabbitizerInstrDescriptor_notEmittedByCompilers
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstrDescriptor_canBeHi(const RabbitizerInstrDescriptor *self);

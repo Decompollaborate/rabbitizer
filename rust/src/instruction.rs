@@ -134,7 +134,7 @@ extern "C" {
     fn RabbitizerInstrDescriptor_readsFt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_readsFd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
 
-    fn RabbitizerInstrDescriptor_notEmitedByCompilers(
+    fn RabbitizerInstrDescriptor_notEmittedByCompilers(
         self_: *const instr_descriptor::InstrDescriptor,
     ) -> bool;
     fn RabbitizerInstrDescriptor_canBeHi(self_: *const instr_descriptor::InstrDescriptor) -> bool;
@@ -673,9 +673,16 @@ impl Instruction {
             RabbitizerInstrDescriptor_readsFd(self.descriptor)
         }
     }
+
+    // @deprecated
     pub fn not_emited_by_compilers(&self) -> bool {
         unsafe {
-            RabbitizerInstrDescriptor_notEmitedByCompilers(self.descriptor)
+            RabbitizerInstrDescriptor_notEmittedByCompilers(self.descriptor)
+        }
+    }
+    pub fn not_emitted_by_compilers(&self) -> bool {
+        unsafe {
+            RabbitizerInstrDescriptor_notEmittedByCompilers(self.descriptor)
         }
     }
     pub fn can_be_hi(&self) -> bool {

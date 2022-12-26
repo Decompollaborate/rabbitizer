@@ -59,7 +59,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .readsRs=true,
-    .notEmitedByCompilers=true,
+    .notEmittedByCompilers=true,
     .canBeLo=true
 ) // Add Immediate
 RABBITIZER_DEF_INSTR_ID(

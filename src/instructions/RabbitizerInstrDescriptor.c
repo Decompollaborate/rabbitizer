@@ -579,8 +579,8 @@ bool RabbitizerInstrDescriptor_readsFd(const RabbitizerInstrDescriptor *self) {
     return self->readsFd;
 }
 
-bool RabbitizerInstrDescriptor_notEmitedByCompilers(const RabbitizerInstrDescriptor *self) {
-    return self->notEmitedByCompilers;
+bool RabbitizerInstrDescriptor_notEmittedByCompilers(const RabbitizerInstrDescriptor *self) {
+    return self->notEmittedByCompilers;
 }
 
 bool RabbitizerInstrDescriptor_canBeHi(const RabbitizerInstrDescriptor *self) {

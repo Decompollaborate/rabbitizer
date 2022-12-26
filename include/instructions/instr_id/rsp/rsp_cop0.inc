@@ -7,12 +7,12 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_cop0d},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
     .modifiesRt=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // Move word From CP0
 RABBITIZER_DEF_INSTR_ID(
     rsp, 0x04, mtc0,
     .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_cop0d},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
     .readsRt=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // Move word to CP0
