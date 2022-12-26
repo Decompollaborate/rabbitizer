@@ -1,3 +1,4 @@
 {
-  "MD029": false
+  "MD029": false,
+  "MD013": { "code_block_line_length": 120}
 }

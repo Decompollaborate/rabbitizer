@@ -359,6 +359,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .readsRs=true,
+    .notEmitedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -376,6 +377,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .readsRs=true,
+    .notEmitedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -397,6 +399,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .readsRs=true,
     .readsRt=true,
+    .notEmitedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -407,6 +410,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .readsRs=true,
     .readsRt=true,
+    .notEmitedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true

@@ -108,6 +108,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .modifiesRd=true,
+    .notEmitedByCompilers=true,
     .readsRs=true,
     .readsRt=true
 ) // Subtract word
