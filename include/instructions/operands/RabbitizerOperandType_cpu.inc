@@ -13,6 +13,7 @@ RAB_DEF_OPERAND(cpu, ft)
 RAB_DEF_OPERAND(cpu, fd)
 RAB_DEF_OPERAND(cpu, cop1cs) // Coprocessor 1 control fs
 RAB_DEF_OPERAND(cpu, cop2t)
+RAB_DEF_OPERAND(cpu, cop2cd) // Coprocessor 2 control rd
 RAB_DEF_OPERAND(cpu, op)
 RAB_DEF_OPERAND(cpu, code)
 RAB_DEF_OPERAND(cpu, code_lower)

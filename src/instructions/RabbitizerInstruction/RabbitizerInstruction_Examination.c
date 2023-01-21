@@ -31,7 +31,7 @@ bool RabbitizerInstruction_isLikelyHandwritten(const RabbitizerInstruction *self
         }
     }
 
-    if (RabbitizerInstrDescriptor_notEmitedByCompilers(self->descriptor)) {
+    if (RabbitizerInstrDescriptor_notEmittedByCompilers(self->descriptor)) {
         return true;
     }
 
@@ -199,6 +199,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RAB_OPERAND_cpu_cop2t:
                 validbits = RAB_INSTR_PACK_cop2t(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_cpu_cop2cd:
+                validbits = RAB_INSTR_PACK_cop2cd(validbits, ~0);
                 break;
 
             case RAB_OPERAND_cpu_op:

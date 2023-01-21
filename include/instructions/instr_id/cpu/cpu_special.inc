@@ -272,7 +272,7 @@ RABBITIZER_DEF_INSTR_ID(
     .modifiesRd=true,
     .readsRs=true,
     .readsRt=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // ADD word
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x21, addu,
@@ -288,6 +288,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .modifiesRd=true,
+    .notEmittedByCompilers=true,
     .readsRs=true,
     .readsRt=true
 ) // Subtract word
@@ -443,7 +444,8 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .readsRs=true,
     .readsRt=true,
-    .isTrap=true
+    .isTrap=true,
+    .notEmittedByCompilers=true
 ) // Trap if Greater or Equal
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x31, tgeu,
@@ -451,7 +453,8 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .readsRs=true,
     .readsRt=true,
-    .isTrap=true
+    .isTrap=true,
+    .notEmittedByCompilers=true
 ) // Trap if Greater or Equal Unsigned
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x32, tlt,
@@ -459,7 +462,8 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .readsRs=true,
     .readsRt=true,
-    .isTrap=true
+    .isTrap=true,
+    .notEmittedByCompilers=true
 ) // Trap if Less Than
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x33, tltu,
@@ -467,7 +471,8 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .readsRs=true,
     .readsRt=true,
-    .isTrap=true
+    .isTrap=true,
+    .notEmittedByCompilers=true
 ) // Trap if Less Than Unsigned
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x34, teq,
@@ -475,7 +480,8 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .readsRs=true,
     .readsRt=true,
-    .isTrap=true
+    .isTrap=true,
+    .notEmittedByCompilers=true
 ) // Trap if EQual
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x36, tne,
@@ -483,7 +489,8 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_R,
     .readsRs=true,
     .readsRt=true,
-    .isTrap=true
+    .isTrap=true,
+    .notEmittedByCompilers=true
 ) // Trap if Not Equal
 
 

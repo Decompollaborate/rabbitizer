@@ -101,6 +101,15 @@ size_t RabbitizerOperandType_process_cpu_cop2t(const RabbitizerInstruction *self
     return totalSize;
 }
 
+size_t RabbitizerOperandType_process_cpu_cop2cd(const RabbitizerInstruction *self, char *dst,
+                                                UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameCop2(RAB_INSTR_GET_cop2cd(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_process_cpu_sa(const RabbitizerInstruction *self, char *dst,
                                             UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;

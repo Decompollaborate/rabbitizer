@@ -151,6 +151,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_cop2t(self->word, 0);
                 break;
 
+            case RAB_OPERAND_cpu_cop2cd:
+                self->word = RAB_INSTR_PACK_cop2cd(self->word, 0);
+                break;
+
             case RAB_OPERAND_cpu_op:
                 self->word = RAB_INSTR_PACK_op(self->word, 0);
                 break;

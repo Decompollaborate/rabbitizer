@@ -93,7 +93,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .readsRs=true,
-    .notEmitedByCompilers=true,
+    .notEmittedByCompilers=true,
     .canBeLo=true
 ) // Add Immediate
 RABBITIZER_DEF_INSTR_ID(
@@ -359,6 +359,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .readsRs=true,
+    .notEmittedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -376,6 +377,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .modifiesRt=true,
     .readsRs=true,
+    .notEmittedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesLoad=true
@@ -397,6 +399,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .readsRs=true,
     .readsRt=true,
+    .notEmittedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -407,6 +410,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .readsRs=true,
     .readsRt=true,
+    .notEmittedByCompilers=true,
     .canBeLo=true,
     .doesDereference=true,
     .doesStore=true
@@ -429,7 +433,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_op, RAB_OPERAND_cpu_immediate_base},
     .instrType=RABBITIZER_INSTR_TYPE_I,
     .readsRs=true,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // Cache
 
 // OP ft, IMM(base)

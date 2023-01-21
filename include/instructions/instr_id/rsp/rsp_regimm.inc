@@ -31,6 +31,7 @@ RABBITIZER_DEF_INSTR_ID(
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .readsRs=true,
     .isBranch=true,
+    .notEmittedByCompilers=true,
     .doesLink=true
 ) // Branch on Greater Than or Equal to Zero and Link
 
@@ -42,6 +43,7 @@ RABBITIZER_DEF_INSTR_ID(
     .operands={RAB_OPERAND_cpu_branch_target_label},
     .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
     .isBranch=true,
+    .notEmittedByCompilers=true,
     .doesLink=true,
     .isPseudo=true
 ) // Branch and Link

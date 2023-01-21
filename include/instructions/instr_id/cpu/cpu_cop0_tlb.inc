@@ -6,13 +6,13 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x01, tlbr,
     .operands={0},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // Read Indexed TLB Entry
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x02, tlbwi,
     .operands={0},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // Write Indexed TLB Entry
 
 RABBITIZER_DEF_INSTR_ID(
@@ -25,12 +25,12 @@ RABBITIZER_DEF_INSTR_ID(
     cpu, 0x08, tlbp,
     .operands={0},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // Probe TLB for Matching Entry
 
 RABBITIZER_DEF_INSTR_ID(
     cpu, 0x18, eret,
     .operands={0},
     .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-    .notEmitedByCompilers=true
+    .notEmittedByCompilers=true
 ) // Return from Exception

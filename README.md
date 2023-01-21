@@ -7,9 +7,47 @@
 ![crate.io](https://img.shields.io/crates/dv/rabbitizer)
 ![GitHub contributors](https://img.shields.io/github/contributors/Decompollaborate/rabbitizer?logo=purple)
 
-A MIPS instruction decoder API.
+MIPS instruction decoder API.
 
-Currently supports all the CPU instructions for MIPS I, II, III and IV.
+## Features
+
+- Should produce matching assembly.
+- Fully written in C for fast decoding.
+  - The library is completely allocation-less, in other words `rabbitizer`
+  doesn't allocate in anything in the heap by itself.
+- Other language bindings supported in this repo:
+  - Python bindings
+    - The minimal Python version is 3.7, older versions are not guaranteed to work.
+  - C++ bindings
+  - Rust bindings
+- Simple per-word instruction decoding.
+  - The library doesn't try to be too smart by processing multiple instructions
+  at a time.
+- Can perform validation checks for instructions.
+- Provides many examination/grouping functions for instructions, allowing to
+  simplify checking characteristics of an instruction and minimizing the need to
+  check for specific instructions in a hardcoded way.
+- Includes some minor tools to build your own pointer/symbol detection.
+- Configurable, many features can be turned on and off.
+- MIPS instructions features:
+  - Named registers for MIPS VR4300's coprocessors.
+  - Support for many pseudo-instructions.
+  - Properly handle move to/from coprocessor instructions.
+  - Support for numeric, o32, n32 and n64 ABI register names.
+- Some workarounds for some specific compilers/assemblers:
+  - `SN64`:
+    - `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and `break` instructions.
+- Multiple MIPS architectures are supported:
+  - Main focus on MIPS I, II and III architectures. Partial support for MIPS IV too.
+  - N64 RSP instruction decoding support.
+    - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
+  - R5900 (PS2's Emotion Engine processor) decoding support.
+
+## Non-features
+
+In order to keep it simple and fast the following features will not be added:
+
+- Pseudo-instructions which expands to more than one instruction.
 
 ## Installing
 
@@ -21,13 +59,15 @@ The recommended way to install is using from the PyPi release, via `pip`:
 pip install rabbitizer
 ```
 
-In case you want to mess with the latest development version without wanting to clone the repository, then you could use the following command:
+In case you want to mess with the latest development version without wanting to
+clone the repository, then you could use the following command:
 
 ```bash
 pip install git+https://github.com/Decompollaborate/rabbitizer.git@develop
 ```
 
-NOTE: Installing the development version is not recommended. Proceed at your own risk.
+NOTE: Installing the development version is not recommended. Proceed at your own
+risk.
 
 See this package at <https://pypi.org/project/rabbitizer/>.
 
@@ -41,28 +81,6 @@ rabbitizer = "1.5.8"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
-
-## Features
-
-- Should produces matching assembly.
-- Fully written in C for fast decoding.
-- Python bindings.
-  - The minimal Python version is 3.7, older versions are not guaranteed to work.
-- C++ bindings
-- Rust bindings
-- Includes some minor tools to build your own pointer/symbol detection.
-- Configurable, many features can be turned on and off.
-- MIPS instructions features:
-  - Named registers for MIPS VR4300's coprocessors.
-  - Support for many pseudoinstructions.
-  - Properly handle move to/from coprocessor instructions.
-  - Support for numeric, o32, n32 and n64 ABI register names.
-- Some workarounds for some specific compilers/assemblers:
-  - `SN64`:
-    - `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and `break` instructions.
-- N64 RSP instruction decoding support.
-  - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
-- R5900 (PS2's Emotion Engine processor) decoding support.
 
 ## References
 

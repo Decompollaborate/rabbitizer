@@ -228,6 +228,10 @@ class InstrId:
     cpu_cvt_d_s: Enum
     cpu_cvt_d_w: Enum
     cpu_cvt_d_l: Enum
+    cpu_mfc2: Enum
+    cpu_mtc2: Enum
+    cpu_cfc2: Enum
+    cpu_ctc2: Enum
     cpu_cvt_w_s: Enum
     cpu_cvt_w_d: Enum
     cpu_cvt_l_s: Enum
