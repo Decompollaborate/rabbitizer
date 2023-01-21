@@ -18,6 +18,7 @@ RABBITIZER_DEF_INSTR_ID(
 #include "cpu/cpu_cop1_fpu_d.inc"
 #include "cpu/cpu_cop1_fpu_w.inc"
 #include "cpu/cpu_cop1_fpu_l.inc"
+#include "cpu/cpu_cop2.inc"
 
 RABBITIZER_DEF_INSTR_ID(
     cpu, , USERDEF_00,

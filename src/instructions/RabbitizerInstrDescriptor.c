@@ -91,6 +91,7 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_cpu_fd:
         case RAB_OPERAND_cpu_cop1cs:
         case RAB_OPERAND_cpu_cop2t:
+        case RAB_OPERAND_cpu_cop2cd:
         case RAB_OPERAND_cpu_op:
             break;
 

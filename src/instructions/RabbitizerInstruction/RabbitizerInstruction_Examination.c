@@ -201,6 +201,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_cop2t(validbits, ~0);
                 break;
 
+            case RAB_OPERAND_cpu_cop2cd:
+                validbits = RAB_INSTR_PACK_cop2cd(validbits, ~0);
+                break;
+
             case RAB_OPERAND_cpu_op:
                 validbits = RAB_INSTR_PACK_op(validbits, ~0);
                 break;
