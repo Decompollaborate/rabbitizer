@@ -50,7 +50,8 @@ extern "C" {
 
 #define ARRAY_COUNT(arr) (sizeof(arr) / sizeof((arr)[0]))
 
-#define RAB_STRINGIFY(x) #x
+#define RAB_STRINGIFY2(x) #x
+#define RAB_STRINGIFY(x) RAB_STRINGIFY2(x)
 
 #define MASK(v, w) ((v) & ((1 << (w)) - 1))
 

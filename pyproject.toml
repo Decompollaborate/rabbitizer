@@ -1,10 +1,10 @@
-# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 [project]
 name = "rabbitizer"
 # Version should be synced with include/common/RabbitizerVersion.h
-version = "1.5.10"
+version = "1.5.9"
 description = "MIPS instruction decoder"
 # license = "MIT"
 readme = "README.md"
