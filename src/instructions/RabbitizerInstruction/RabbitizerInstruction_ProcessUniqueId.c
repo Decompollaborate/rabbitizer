@@ -101,13 +101,15 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
 
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_div:
-            if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
+            if ((!RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) ||
+                (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction)) {
                 self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_div];
             }
             break;
 
         case RABBITIZER_INSTR_ID_cpu_divu:
-            if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction) {
+            if ((!RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) ||
+                (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix && !self->inHandwrittenFunction)) {
                 self->descriptor = &RabbitizerInstrDescriptor_Descriptors[RABBITIZER_INSTR_ID_cpu_sn64_divu];
             }
             break;
