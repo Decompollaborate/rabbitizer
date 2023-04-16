@@ -103,19 +103,6 @@ RABBITIZER_DEF_INSTR_ID_ALTNAME(
     .readsFt=true
 ) // floating point MINimum
 
-// Due to the R5900's FPU being non properly complaint the instruction cvt.w.s always behaves as trunc.w.s because is because EE can only do round-to-zero.
-// Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, so we mimic that behaviour to allow assembling with GAS.
-// Here's some reading about the binutils rationale:
-// https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
-// https://sourceware.org/pipermail/binutils/2013-January/079863.html
-RABBITIZER_DEF_INSTR_ID_ALTNAME(
-    r5900, 0x24, trunc_w_s, trunc.w.s,
-    .operands={RAB_OPERAND_cpu_fd, RAB_OPERAND_cpu_fs},
-    .isFloat=true,
-    .modifiesFd=true,
-    .readsFs=true
-) // Floating-Point Truncate to Word Fixed-Point
-
 RABBITIZER_DEF_INSTR_ID_ALTNAME(
     r5900, 0x34, c_lt_s, c.lt.s,
     .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft},

@@ -40,6 +40,7 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
     .toolchainTweaks = {
         .treatJAsUnconditionalBranch = true,
         .sn64DivFix = false,
+        .gnuMode = true,
     },
     .misc = {
         .opcodeLJust = 7+4,

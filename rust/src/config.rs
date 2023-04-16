@@ -35,6 +35,7 @@ pub struct PseudoInstr {
 pub struct ToolchainTweaks {
     pub treat_j_as_unconditional_branch: bool,
     pub sn64_div_fix: bool,
+    pub gnu_mode: bool,
 }
 
 #[repr(C)]

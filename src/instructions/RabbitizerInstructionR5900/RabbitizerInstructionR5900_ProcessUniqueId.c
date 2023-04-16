@@ -2,6 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstructionR5900.h"
+#include "common/RabbitizerConfig.h"
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
@@ -131,6 +132,36 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1_FpuS(RabbitizerInst
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(self);
             break;
+    }
+
+    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+        switch (self->uniqueId) {
+            case RABBITIZER_INSTR_ID_cpu_trunc_w_s:
+            case RABBITIZER_INSTR_ID_cpu_cvt_w_s:
+                /**
+                 * Due to the R5900's FPU being non properly complaint, the instruction cvt.w.s always behaves as
+                 * trunc.w.s because EE can only do round-to-zero.
+                 *
+                 * Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, but other assemblers just
+                 * use trunc.w.s and cvt.w.s as-is.
+                 *
+                 * Here's some reading about the binutils rationale:
+                 * - https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
+                 * - https://sourceware.org/pipermail/binutils/2013-January/079863.html
+                 *
+                 * Because of this, building with GAS with the -march=r5900 flag produces:
+                 * - trunc.w.s is built as the cvt.w.s instruction.
+                 * - cvt.w.s errors complaining as not being supported by the processor.
+                 *
+                 * To ensure the produced disassembly will still match when built with GAS, we decode this two
+                 * instructions as .word
+                 */
+                self->_mandatorybits = 0x0;
+                break;
+
+            default:
+                break;
+        }
     }
 }
 

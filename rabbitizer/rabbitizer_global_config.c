@@ -118,6 +118,7 @@ DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoBal)
 
 DEF_MEMBER_GET_SET_BOOL(toolchainTweaks, treatJAsUnconditionalBranch)
 DEF_MEMBER_GET_SET_BOOL(toolchainTweaks, sn64DivFix)
+DEF_MEMBER_GET_SET_BOOL(toolchainTweaks, gnuMode)
 
 DEF_MEMBER_GET_SET_INT(misc, opcodeLJust, false, 0, 0)
 DEF_MEMBER_GET_SET_BOOL(misc, unknownInstrComment)
@@ -144,6 +145,7 @@ static PyGetSetDef rabbitizer_global_config_GetSets[] = {
 
     MEMBER_GET_SET(toolchainTweaks, treatJAsUnconditionalBranch, "", NULL),
     MEMBER_GET_SET(toolchainTweaks, sn64DivFix, "", NULL),
+    MEMBER_GET_SET(toolchainTweaks, gnuMode, "", NULL),
 
     MEMBER_GET_SET(misc, opcodeLJust, "", NULL),
     MEMBER_GET_SET(misc, unknownInstrComment, "", NULL),

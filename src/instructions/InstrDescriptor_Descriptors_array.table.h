@@ -537,7 +537,6 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
 [RABBITIZER_INSTR_ID_r5900_msuba_s] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .isFloat=true, .readsFs=true, .readsFt=true },
 [RABBITIZER_INSTR_ID_r5900_max_s] = { .operands={RAB_OPERAND_cpu_fd, RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .isFloat=true, .modifiesFd=true, .readsFs=true, .readsFt=true },
 [RABBITIZER_INSTR_ID_r5900_min_s] = { .operands={RAB_OPERAND_cpu_fd, RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .isFloat=true, .modifiesFd=true, .readsFs=true, .readsFt=true },
-[RABBITIZER_INSTR_ID_r5900_trunc_w_s] = { .operands={RAB_OPERAND_cpu_fd, RAB_OPERAND_cpu_fs}, .isFloat=true, .modifiesFd=true, .readsFs=true },
 [RABBITIZER_INSTR_ID_r5900_c_lt_s] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .isFloat=true, .readsFs=true, .readsFt=true },
 [RABBITIZER_INSTR_ID_r5900_c_le_s] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .isFloat=true, .readsFs=true, .readsFt=true },
 [RABBITIZER_INSTR_ID_r5900_qmfc2] = { .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vfs}, .modifiesRt=true },
