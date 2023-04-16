@@ -23,3 +23,11 @@ cplusplus/include/instructions/AccessType_enum_class.table.h linguist-generated=
 cplusplus/include/instructions/OperandType_enum_class.table.h linguist-generated=true
 cplusplus/include/instructions/Registers_enum_classes.table.h linguist-generated=true
 cplusplus/include/instructions/UniqueId_enum_class.table.h linguist-generated=true
+
+rust/src/abi_enum.rs linguist-generated=true
+rust/src/access_type_enum.rs linguist-generated=true
+rust/src/instr_category_enum.rs linguist-generated=true
+rust/src/instr_id_enum.rs linguist-generated=true
+rust/src/instr_suffix_enum.rs linguist-generated=true
+rust/src/operand_type_enum.rs linguist-generated=true
+rust/src/registers_enum.rs linguist-generated=true
