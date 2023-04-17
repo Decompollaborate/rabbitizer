@@ -2,6 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstructionR5900.h"
+#include "common/RabbitizerConfig.h"
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \

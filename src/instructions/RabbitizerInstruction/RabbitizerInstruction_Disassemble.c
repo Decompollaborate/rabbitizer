@@ -95,6 +95,38 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
         }
     }
 
+    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+        switch (self->uniqueId) {
+            case RABBITIZER_INSTR_ID_cpu_trunc_w_s:
+            case RABBITIZER_INSTR_ID_cpu_cvt_w_s:
+                if (self->category == RABBITIZER_INSTRCAT_R5900) {
+                    /**
+                     * Due to the R5900's FPU being non properly complaint, the instruction cvt.w.s always behaves as
+                     * trunc.w.s because EE can only do round-to-zero.
+                     *
+                     * Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, but other assemblers
+                     * just use trunc.w.s and cvt.w.s as-is.
+                     *
+                     * Here's some reading about the binutils rationale:
+                     * - https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
+                     * - https://sourceware.org/pipermail/binutils/2013-January/079863.html
+                     *
+                     * Because of this, building with GAS with the -march=r5900 flag produces:
+                     * - trunc.w.s is built as the cvt.w.s instruction.
+                     * - cvt.w.s errors complaining as not being supported by the processor.
+                     *
+                     * To ensure the produced disassembly will still match when built with GAS, we decode this two
+                     * instructions as .word
+                     */
+                    return true;
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
+
     if (!RabbitizerInstruction_isValid(self)) {
         return true;
     }

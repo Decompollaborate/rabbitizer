@@ -49,6 +49,11 @@ typedef struct RabbitizerConfig_ToolchainTweaks {
      * So we replace break instrutions for SN64 with the exact word that the assembler generates when expanding div
      */
     bool sn64DivFix;
+    /**
+     * Enables various tweaks to allow building matching with GNU as which
+     * break original compiler behavior and what's specified in the manuals.
+     */
+    bool gnuMode;
 } RabbitizerConfig_ToolchainTweaks;
 
 typedef struct RabbitizerConfig_Misc {

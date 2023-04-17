@@ -537,7 +537,6 @@ const char *RabbitizerInstrId_Names[] = {
 [RABBITIZER_INSTR_ID_r5900_msuba_s] = "msuba.s",
 [RABBITIZER_INSTR_ID_r5900_max_s] = "max.s",
 [RABBITIZER_INSTR_ID_r5900_min_s] = "min.s",
-[RABBITIZER_INSTR_ID_r5900_trunc_w_s] = "trunc.w.s",
 [RABBITIZER_INSTR_ID_r5900_c_lt_s] = "c.lt.s",
 [RABBITIZER_INSTR_ID_r5900_c_le_s] = "c.le.s",
 [RABBITIZER_INSTR_ID_r5900_qmfc2] = "qmfc2",
