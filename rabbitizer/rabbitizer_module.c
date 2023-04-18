@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "rabbitizer_module.h"
@@ -46,6 +46,9 @@ static ModuleAttributes rabbitizer_module_attributes[] = {
 
     MODULE_ATTRIBUTE_ENUM(RegGprO32),
     MODULE_ATTRIBUTE_ENUM(RegGprN32),
+    MODULE_ATTRIBUTE_ENUM(RegCop1O32),
+    MODULE_ATTRIBUTE_ENUM(RegCop1N32),
+    MODULE_ATTRIBUTE_ENUM(RegCop1N64),
 
     MODULE_ATTRIBUTE_TYPE(Instruction),
     MODULE_ATTRIBUTE_TYPE(LoPairingInfo),

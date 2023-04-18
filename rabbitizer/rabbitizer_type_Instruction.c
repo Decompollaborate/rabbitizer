@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "rabbitizer_module.h"
@@ -133,6 +133,44 @@ DEF_MEMBER_GET_REGGPR(rd)
 
 DEF_MEMBER_GET_UINT(sa)
 
+#define DEF_MEMBER_GET_REGCOP1(name) \
+    static PyObject *rabbitizer_type_Instruction_member_get_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
+        uint32_t reg; \
+        PyObject *enumInstance = NULL; \
+        \
+        if (!RabbitizerInstruction_hasOperandAlias(&self->instr, RAB_OPERAND_cpu_##name)) { \
+            PyErr_Format(PyExc_RuntimeError, "'%s' instruction does not reference register '" #name "'", RabbitizerInstrId_getOpcodeName(self->instr.uniqueId)); \
+            return NULL; \
+        } \
+        \
+        reg = RAB_INSTR_GET_##name(&self->instr); \
+        switch (RabbitizerConfig_Cfg.regNames.fprAbiNames) { \
+            case RABBITIZER_ABI_N32: \
+                enumInstance = rabbitizer_enum_RegCop1N32_enumvalues[reg].instance; \
+                break; \
+        \
+            case RABBITIZER_ABI_N64: \
+                enumInstance = rabbitizer_enum_RegCop1N64_enumvalues[reg].instance; \
+                break; \
+        \
+            default: \
+                enumInstance = rabbitizer_enum_RegCop1O32_enumvalues[reg].instance; \
+                break; \
+        } \
+        \
+        if (enumInstance == NULL) { \
+            PyErr_SetString(PyExc_RuntimeError, "Internal error: invalid RegCop1 enum value"); \
+            return NULL; \
+        } \
+        \
+        Py_INCREF(enumInstance); \
+        return enumInstance; \
+    }
+
+DEF_MEMBER_GET_REGCOP1(fs)
+DEF_MEMBER_GET_REGCOP1(ft)
+DEF_MEMBER_GET_REGCOP1(fd)
+
 static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     PyObject *enumInstance = rabbitizer_enum_InstrId_enumvalues[self->instr.uniqueId].instance;
 
@@ -155,6 +193,9 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(rt, "", NULL),
     MEMBER_GET(rd, "", NULL),
     MEMBER_GET(sa, "", NULL),
+    MEMBER_GET(fs, "", NULL),
+    MEMBER_GET(ft, "", NULL),
+    MEMBER_GET(fd, "", NULL),
     MEMBER_GET(uniqueId, "", NULL),
 
     { 0 }
