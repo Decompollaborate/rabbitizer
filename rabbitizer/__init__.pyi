@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 from __future__ import annotations
@@ -15,6 +15,10 @@ from .AccessType import *
 
 from .RegGprO32 import *
 from .RegGprN32 import *
+
+from .RegCop1O32 import *
+from .RegCop1N32 import *
+from .RegCop1N64 import *
 
 from .Config import *
 

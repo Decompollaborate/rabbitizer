@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 from __future__ import annotations
@@ -28,6 +28,21 @@ class Instruction:
     sa: int
     """The value of the `sa` field for this instruction.
     If the current instruction does not have a `sa` field, then a Runtime exception will be raised.
+    Read-only."""
+    fs: Enum
+    """The value of the `fs` register for this instruction.
+    The type of this attribute will be either a `RegGprO32`, `RegGprN32` or a `RegGprN64` depending on the current `config.regNames_gprAbiNames` value.
+    If the current instruction does not use the `fs` register, then a Runtime exception will be raised.
+    Read-only."""
+    ft: Enum
+    """The value of the `ft` register for this instruction.
+    The type of this attribute will be either a `RegGprO32`, `RegGprN32` or a `RegGprN64` depending on the current `config.regNames_gprAbiNames` value.
+    If the current instruction does not use the `ft` register, then a Runtime exception will be raised.
+    Read-only."""
+    fd: Enum
+    """The value of the `fd` register for this instruction.
+    The type of this attribute will be either a `RegGprO32`, `RegGprN32` or a `RegGprN64` depending on the current `config.regNames_gprAbiNames` value.
+    If the current instruction does not use the `fd` register, then a Runtime exception will be raised.
     Read-only."""
 
     uniqueId: Enum

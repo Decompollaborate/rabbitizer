@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_MODULE_H
@@ -52,5 +52,9 @@ DECL_ENUM(AccessType)
 
 DECL_ENUM(RegGprO32)
 DECL_ENUM(RegGprN32)
+
+DECL_ENUM(RegCop1O32)
+DECL_ENUM(RegCop1N32)
+DECL_ENUM(RegCop1N64)
 
 #endif
