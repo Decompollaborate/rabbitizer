@@ -16,7 +16,7 @@ static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
 static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
     static char *kwlist[] = { "word", "vram", "category", NULL };
     uint32_t word;
-    uint32_t vram;
+    uint32_t vram = 0;
     PyObject *category = NULL;
     int enumCheck;
     RabbitizerInstrCategory instrCategory = RABBITIZER_INSTRCAT_CPU;
