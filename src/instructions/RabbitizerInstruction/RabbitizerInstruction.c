@@ -46,7 +46,7 @@ uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *
         vram |= 0x80000000;
     } else {
         // Jumps are PC-region branches. The upper bits are filled with the address in the delay slot
-        vram |= (self->vram + 4) & 0xFF000000;
+        vram |= (self->vram + 4) & 0xF0000000;
     }
     return vram;
 }
