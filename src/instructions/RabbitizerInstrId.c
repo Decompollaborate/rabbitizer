@@ -24,7 +24,12 @@ bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId) {
 }
 
 const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId) {
+    const char *name;
+
     assert(uniqueId >= RABBITIZER_INSTR_ID_cpu_INVALID && uniqueId < RABBITIZER_INSTR_ID_ALL_MAX);
 
-    return RabbitizerInstrId_Names[uniqueId];
+    name = RabbitizerInstrId_Names[uniqueId];
+    assert(name != NULL);
+
+    return name;
 }
