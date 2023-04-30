@@ -26,7 +26,10 @@ jobs:
 
     - name: tables changes
       if: steps.tables_changes.outputs.files_changed == 'true'
-      run: exit 1
+      run: |
+        echo "Changed files: ${{ steps.tables_changes.outputs.changed_files }}"
+        echo "Please run `make tables` and commit the result"
+        exit 1
 
   check_rust_tables:
     name: Check Rust tables
@@ -50,4 +53,7 @@ jobs:
 
     - name: Rust tables changes
       if: steps.rust_tables_changes.outputs.files_changed == 'true'
-      run: exit 1
+      run: |
+        echo "Changed files: ${{ steps.rust_tables_changes.outputs.changed_files }}"
+        echo "Please run `make -C rust tables` and commit the result"
+        exit 1
