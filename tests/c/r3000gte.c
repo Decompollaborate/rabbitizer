@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "instructions/RabbitizerInstructionR3000_GTE.h"
+#include "instructions/RabbitizerInstructionR3000GTE.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -20,9 +20,9 @@ int main() {
 
     word = 0x4A180001; // RTPS
 
-    RabbitizerInstructionR3000_GTE_init(&instr, word, 0x00100000);
+    RabbitizerInstructionR3000GTE_init(&instr, word, 0x00100000);
 
-    RabbitizerInstructionR3000_GTE_processUniqueId(&instr);
+    RabbitizerInstructionR3000GTE_processUniqueId(&instr);
 
     buffer = malloc(RabbitizerInstruction_getSizeForBuffer(&instr, 0, extraLJust) + 1);
     assert(buffer != NULL);
@@ -41,7 +41,7 @@ int main() {
 #endif
 
     free(buffer);
-    RabbitizerInstructionR3000_GTE_destroy(&instr);
+    RabbitizerInstructionR3000GTE_destroy(&instr);
 
     return 0;
 }

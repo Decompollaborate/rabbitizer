@@ -12,7 +12,7 @@ RabbitizerEnumMetadata rabbitizer_enum_OperandType_enumvalues[] = {
 
 #include "instructions/operands/RabbitizerOperandType_cpu.inc"
 #include "instructions/operands/RabbitizerOperandType_rsp.inc"
-#include "instructions/operands/RabbitizerOperandType_r3000_gte.inc"
+#include "instructions/operands/RabbitizerOperandType_r3000gte.inc"
 #include "instructions/operands/RabbitizerOperandType_r5900.inc"
 
     RAB_DEF_OPERAND(ALL, MAX)

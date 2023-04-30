@@ -106,8 +106,8 @@ int main() {
         size_t bufferSize;
         size_t immOverrideLength = strlen_null(entry->immOverride);
 
-        RabbitizerInstructionR3000_GTE_init(&instr, entry->word, 0);
-        RabbitizerInstructionR3000_GTE_processUniqueId(&instr);
+        RabbitizerInstructionR3000GTE_init(&instr, entry->word, 0);
+        RabbitizerInstructionR3000GTE_processUniqueId(&instr);
 
         bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, 0);
         buffer = malloc(bufferSize + 1);
@@ -124,7 +124,7 @@ int main() {
         }
 
         free(buffer);
-        RabbitizerInstructionR3000_GTE_destroy(&instr);
+        RabbitizerInstructionR3000GTE_destroy(&instr);
     }
 
     return errorCount;

@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "instructions/RabbitizerInstructionR3000_GTE.h"
+#include "instructions/RabbitizerInstructionR3000GTE.h"
 #include "common/RabbitizerConfig.h"
 #include "stdio.h"
 
@@ -13,41 +13,41 @@
     RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 
-void RabbitizerInstructionR3000_GTE_processUniqueId_Normal(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId_Normal(RabbitizerInstruction *self) {
     RabbitizerInstruction_processUniqueId_Normal(self);
 }
 
-void RabbitizerInstructionR3000_GTE_processUniqueId_Special(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId_Special(RabbitizerInstruction *self) {
     RabbitizerInstruction_processUniqueId_Special(self);
 }
 
-void RabbitizerInstructionR3000_GTE_processUniqueId_Regimm(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId_Regimm(RabbitizerInstruction *self) {
     RabbitizerInstruction_processUniqueId_Regimm(self);
 }
 
-void RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
     RabbitizerInstruction_processUniqueId_Coprocessor0(self);
 }
 
-void RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
     RabbitizerInstruction_processUniqueId_Coprocessor1(self);
 }
 
 
-void RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor2_gte(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerInstruction *self) {
 
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r3000_gte/r3000_gte_cop2_gte.inc"
+#include "instructions/instr_id/r3000gte/r3000gte_cop2_gte.inc"
     }
 }
 
 bool yadayada[1 << 6];
 
-void RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
     uint8_t fmt = RAB_INSTR_GET_fmt(self);
     bool fetchDescriptor = true;
 
@@ -77,7 +77,7 @@ void RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor2(RabbitizerInstr
         case 0x1B:
         case 0x1C:
         case 0x1D:
-            RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor2_gte(self);
+            RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(self);
             break;
 
         default:
@@ -95,7 +95,7 @@ void RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor2(RabbitizerInstr
 #undef RABBITIZER_DEF_INSTR_ID
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
 
-void RabbitizerInstructionR3000_GTE_processUniqueId(RabbitizerInstruction *self) {
+void RabbitizerInstructionR3000GTE_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
@@ -105,22 +105,22 @@ void RabbitizerInstructionR3000_GTE_processUniqueId(RabbitizerInstruction *self)
 
     switch (opcode) {
         default:
-            RabbitizerInstructionR3000_GTE_processUniqueId_Normal(self);
+            RabbitizerInstructionR3000GTE_processUniqueId_Normal(self);
             break;
         case 0x00:
-            RabbitizerInstructionR3000_GTE_processUniqueId_Special(self);
+            RabbitizerInstructionR3000GTE_processUniqueId_Special(self);
             break;
         case 0x01:
-            RabbitizerInstructionR3000_GTE_processUniqueId_Regimm(self);
+            RabbitizerInstructionR3000GTE_processUniqueId_Regimm(self);
             break;
         case 0x10:
-            RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor0(self);
+            RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor0(self);
             break;
         case 0x11:
-            RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor1(self);
+            RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor1(self);
             break;
         case 0x12:
-            RabbitizerInstructionR3000_GTE_processUniqueId_Coprocessor2(self);
+            RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2(self);
             break;
     }
 }

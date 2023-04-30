@@ -1,114 +1,96 @@
 /* SPDX-FileCopyrightText: © 2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-/* Indexed by "function" operand */
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , INVALID,
+    .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate},
+    .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+)
+
+#include "r3000gte/r3000gte_cop2_gte.inc"
 
 RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x01, RTPS,
+    r3000gte, , USERDEF_00,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_01,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_02,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_03,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_04,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_05,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_06,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_07,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_08,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_09,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_10,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_11,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_12,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_13,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_14,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_15,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_16,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_17,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_18,
+    .operands={0}
+)
+RABBITIZER_DEF_INSTR_ID(
+    r3000gte, , USERDEF_19,
     .operands={0}
 )
 
 RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x30, RTPT,
+    r3000gte, , MAX,
     .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x29, DPCL,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x10, DPCS,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x2A, DPCT,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x11, INTPL,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x1E, NCS,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x20, NCT,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x13, NCDS,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x16, NCDT,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x1B, NCCS,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x3F, NCCT,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x14, CDP,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x1C, CC,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x06, NCLIP,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x2D, AVSZ3,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x2E, AVSZ4,
-    .operands={0}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x12, MVMVA,
-    .operands={0/*sf, mx, v, cv, lm*/}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x28, SQR,
-    .operands={0/*sf*/}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x0C, OP,
-    .operands={0/*sf*/}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x3D, GPF,
-    .operands={0/*sf*/}
-)
-
-RABBITIZER_DEF_INSTR_ID(
-    r3000_gte, 0x3E, GPL,
-    .operands={0/*sf*/}
 )
