@@ -4,7 +4,7 @@
 #include "rabbitizer_module.h"
 
 #include "instructions/RabbitizerInstructionRsp.h"
-#include "instructions/RabbitizerInstructionR3000GTE.h"
+//#include "instructions/RabbitizerInstructionR3000GTE.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 #include "common/RabbitizerConfig.h"
 
