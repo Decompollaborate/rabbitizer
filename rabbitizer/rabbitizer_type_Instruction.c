@@ -44,6 +44,11 @@ static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObj
             RabbitizerInstructionRsp_processUniqueId(&self->instr);
             break;
 
+        case RABBITIZER_INSTRCAT_R3000GTE:
+            RabbitizerInstructionR3000GTE_init(&self->instr, word, vram);
+            RabbitizerInstructionR3000GTE_processUniqueId(&self->instr);
+            break;
+
         case RABBITIZER_INSTRCAT_R5900:
             RabbitizerInstructionR5900_init(&self->instr, word, vram);
             RabbitizerInstructionR5900_processUniqueId(&self->instr);
