@@ -1,7 +1,11 @@
 name: Build and upload to PyPI
 
-# Build on every branch push, tag push, and pull request change:
-on: [push, pull_request]
+# Only run on releases
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:
+      - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
 
 jobs:
   build_wheels:

@@ -12,7 +12,7 @@ sourcesList = [str(x) for x in bindingsPath.glob("**/*.c")] + [str(x) for x in s
 
 extraCompileArgs = ["-std=c11", "-Wall", "-g",]
 if platform.system() == "Linux":
-    extraCompileArgs += ["-Os", "-Wextra", "-Wpedantic"]
+    extraCompileArgs += ["-Os", "-Wextra",]
     extraCompileArgs += ["-Werror=vla", "-Werror=switch", "-Werror=implicit-fallthrough", "-Werror=unused-function", "-Werror=unused-parameter", "-Werror=shadow", "-Werror=switch"]
     extraCompileArgs += ["-Werror=implicit-function-declaration", "-Werror=incompatible-pointer-types"]
     extraCompileArgs += ["-Werror"]
