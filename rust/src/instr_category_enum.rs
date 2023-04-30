@@ -9,6 +9,7 @@
 pub enum InstrCategory {
 CPU,
 RSP,
+R3000GTE,
 R5900,
     MAX,
 }
