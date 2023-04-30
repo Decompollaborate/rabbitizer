@@ -1,0 +1,49 @@
+name: Check for format changes
+
+# Build on every branch push, tag push, and pull request change:
+on: [push, pull_request]
+
+jobs:
+  check_format:
+    name: Check format
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout reposistory
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt install clang-format-11
+
+    - name: make format
+      run: make -j $(nproc) format
+
+    - name: Check if there are format changes
+      id: format_changes
+      uses: UnicornGlobal/has-changes-action@v1.0.11
+
+    - name: format changes
+      if: steps.format_changes.outputs.changed == 1
+      run: exit 1
+
+  check_tidy:
+    name: Check tidy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout reposistory
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: sudo apt install clang-tidy-11
+
+    - name: make tidy
+      run: make -j $(nproc) tidy
+
+    - name: Check if there are tidy changes
+      id: tidy_changes
+      uses: UnicornGlobal/has-changes-action@v1.0.11
+
+    - name: tidy changes
+      if: steps.tidy_changes.outputs.changed == 1
+      run: exit 1

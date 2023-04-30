@@ -1,0 +1,49 @@
+name: Check for ungenerated tables
+
+# Build on every branch push, tag push, and pull request change:
+on: [push, pull_request]
+
+jobs:
+  check_tables:
+    name: Check tables
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout reposistory
+      uses: actions/checkout@v3
+
+    - name: clean everything
+      run: make -j $(nproc) distclean
+
+    - name: make tables
+      run: make -j $(nproc) tables
+
+    - name: Check if there are tables changes
+      id: tables_changes
+      uses: UnicornGlobal/has-changes-action@v1.0.11
+
+    - name: tables changes
+      if: steps.tables_changes.outputs.changed == 1
+      run: exit 1
+
+  check_rust_tables:
+    name: Check Rust tables
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout reposistory
+      uses: actions/checkout@v3
+
+    - name: clean everything
+      run: make -j $(nproc) -C rust distclean
+
+    - name: make Rust tables
+      run: make -j $(nproc) -C rust tables
+
+    - name: Check if there are Rust tables changes
+      id: rust_tables_changes
+      uses: UnicornGlobal/has-changes-action@v1.0.11
+
+    - name: Rust tables changes
+      if: steps.rust_tables_changes.outputs.changed == 1
+      run: exit 1
