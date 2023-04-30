@@ -12,7 +12,6 @@
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
     RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
-
 void RabbitizerInstructionR3000GTE_processUniqueId_Normal(RabbitizerInstruction *self) {
     RabbitizerInstruction_processUniqueId_Normal(self);
 }
@@ -33,14 +32,14 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor1(RabbitizerInstru
     RabbitizerInstruction_processUniqueId_Coprocessor1(self);
 }
 
-
 void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     // GTE instructions are weird
-    self->_mandatorybits = BITREPACK(self->_mandatorybits, (1 << 5)-1, 20, 5); // fake bits?
+    self->_mandatorybits =
+        RAB_INSTR_R3000GTE_PACK_FAKE_OPCODE(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_FAKE_OPCODE(self));
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_sf(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_sf(self));
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_mx(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_mx(self));
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_v(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_v(self));
@@ -86,7 +85,6 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2(RabbitizerInstru
         self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
     }
 }
-
 
 #undef RABBITIZER_DEF_INSTR_ID
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
