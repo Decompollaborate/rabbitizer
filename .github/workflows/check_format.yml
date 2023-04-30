@@ -11,6 +11,8 @@ jobs:
     steps:
     - name: Checkout reposistory
       uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
 
     - name: Install dependencies
       run: sudo apt install clang-format-11
@@ -33,6 +35,8 @@ jobs:
     steps:
     - name: Checkout reposistory
       uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
 
     - name: Install dependencies
       run: sudo apt install clang-tidy-11
