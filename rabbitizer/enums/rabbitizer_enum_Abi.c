@@ -10,7 +10,7 @@
 
 RabbitizerEnumMetadata rabbitizer_enum_Abi_enumvalues[] = {
     #include "common/Abi.inc"
-    RABBITIZER_DEF_ABI(MAX),
+    RABBITIZER_DEF_ABI(MAX)
 
     { 0 },
 };

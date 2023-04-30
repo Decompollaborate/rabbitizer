@@ -9,7 +9,7 @@
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrCategory_enumvalues[] = {
     #include "instructions/InstrCategory.inc"
-    RABBITIZER_DEF_INSTR_CATEGORY(MAX),
+    RABBITIZER_DEF_INSTR_CATEGORY(MAX)
 
     { 0 },
 };
