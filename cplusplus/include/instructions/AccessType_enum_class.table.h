@@ -7,13 +7,13 @@
 #define AccessType_enum_class_table_h_automatic
 
 enum class AccessType {
-INVALID,
-BYTE,
-SHORT,
-WORD,
-DOUBLEWORD,
-FLOAT,
-DOUBLEFLOAT,
+    INVALID,
+    BYTE,
+    SHORT,
+    WORD,
+    DOUBLEWORD,
+    FLOAT,
+    DOUBLEFLOAT,
     MAX,
 };
 

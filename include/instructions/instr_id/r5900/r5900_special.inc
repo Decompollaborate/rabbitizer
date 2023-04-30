@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 /*
@@ -17,30 +17,30 @@
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
 */
 
-// The other instructions are implemented using the main CPU table
+    // The other instructions are implemented using the main CPU table
 
-RABBITIZER_DEF_INSTR_ID_ALTNAME(
-    r5900, -0x0F, sync_p, sync.p,
-    .operands={0},
-    .instrType=RABBITIZER_INSTR_TYPE_R
-) // Sync
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r5900, -0x0F, sync_p, sync.p,
+        .operands={0},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // Sync
 
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x18, mult,
-    .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-    .instrType=RABBITIZER_INSTR_TYPE_R,
-    .modifiesRd=true,
-    .readsRs=true,
-    .readsRt=true
-) // MULTtiply word
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x18, mult,
+        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .modifiesRd=true,
+        .readsRs=true,
+        .readsRt=true
+    ) // MULTtiply word
 
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x28, mfsa,
-    .operands={RAB_OPERAND_cpu_rd},
-    .modifiesRd=true
-) // Move From Shift Amount register
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x29, mtsa,
-    .operands={RAB_OPERAND_cpu_rs},
-    .readsRs=true
-) // Move To Shift Amount register
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x28, mfsa,
+        .operands={RAB_OPERAND_cpu_rd},
+        .modifiesRd=true
+    ) // Move From Shift Amount register
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x29, mtsa,
+        .operands={RAB_OPERAND_cpu_rs},
+        .readsRs=true
+    ) // Move To Shift Amount register

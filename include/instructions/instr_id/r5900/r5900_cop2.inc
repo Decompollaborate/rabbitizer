@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 /*
@@ -14,24 +14,24 @@
      *1 = BC instructions, see BC2 list   *2 =see special1 table
 */
 
-// TODO: properties
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x01, qmfc2,
-    .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vfs},
-    .modifiesRt=true
-)
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x02, cfc2,
-    .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vis},
-    .modifiesRt=true
-)
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x05, qmtc2,
-    .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vfs},
-    .readsRt=true
-)
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x06, ctc2,
-    .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vis},
-    .readsRt=true
-)
+    // TODO: properties
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x01, qmfc2,
+        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vfs},
+        .modifiesRt=true
+    )
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x02, cfc2,
+        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vis},
+        .modifiesRt=true
+    )
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x05, qmtc2,
+        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vfs},
+        .readsRt=true
+    )
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x06, ctc2,
+        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vis},
+        .readsRt=true
+    )

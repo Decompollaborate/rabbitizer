@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 /*
@@ -17,13 +17,13 @@
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
 */
 
-// The other instructions are implemented using the main CPU table
+    // The other instructions are implemented using the main CPU table
 
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x38, ei,
-    .operands={0}
-)
-RABBITIZER_DEF_INSTR_ID(
-    r5900, 0x39, di,
-    .operands={0}
-)
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x38, ei,
+        .operands={0}
+    )
+    RABBITIZER_DEF_INSTR_ID(
+        r5900, 0x39, di,
+        .operands={0}
+    )

@@ -106,6 +106,7 @@ static: $(STATIC_LIB) $(STATIC_LIB_XX)
 dynamic: $(DYNAMIC_LIB) $(DYNAMIC_LIB_XX)
 
 tables: $(TABLE_GENERATED)
+	make -C rust tables
 
 clean:
 	$(RM) -rf build
