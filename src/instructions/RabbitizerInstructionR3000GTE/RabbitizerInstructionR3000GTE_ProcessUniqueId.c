@@ -52,20 +52,9 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerIn
     }
 }
 
-bool yadayada[1 << 6];
-
 void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
     uint8_t fmt = RAB_INSTR_GET_fmt(self);
     bool fetchDescriptor = true;
-
-    if (yadayada[RAB_INSTR_GET_function(self)]) {
-        fprintf(stderr, "\n\nHERE\n\n");
-    }
-
-    yadayada[RAB_INSTR_GET_function(self)] = true;
-
-    fprintf(stderr, "fmt: %08X 0x%02X 0x%06X\n", (fmt << 21), fmt, self->word & 0x1FFFFF);
-    fprintf(stderr, "function: 0x%02X\n", RAB_INSTR_GET_function(self));
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 
@@ -106,9 +95,6 @@ void RabbitizerInstructionR3000GTE_processUniqueId(RabbitizerInstruction *self) 
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
-
-    fprintf(stderr, "word: %08X\n", self->word);
-    fprintf(stderr, "opcode: %08X\n", (opcode << 26));
 
     switch (opcode) {
         default:
