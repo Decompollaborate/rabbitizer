@@ -36,8 +36,8 @@ static PyObject *rabbitizer_enum_Abi_fromStr(UNUSED PyObject *self, PyObject *ar
 }
 
 
-#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction) rabbitizer_enum_Abi_##name, METH_NOARGS,                  PyDoc_STR(docs) }
-#define METHOD_ARGS(name, docs)     { #name, (PyCFunction) rabbitizer_enum_Abi_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
+#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction) (void *) rabbitizer_enum_Abi_##name, METH_NOARGS,                  PyDoc_STR(docs) }
+#define METHOD_ARGS(name, docs)     { #name, (PyCFunction) (void *) rabbitizer_enum_Abi_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
 
 static PyMethodDef rabbitizer_enum_Abi_methods[] = {
     METHOD_ARGS(fromStr, ""),

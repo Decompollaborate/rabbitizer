@@ -23,3 +23,10 @@ pub fn shiftl(v: u32, s: u32, w: u32) -> u32 {
 pub fn shiftr(v: u32, s: u32, w: u32) -> u32 {
     mask(v >> s, w)
 }
+
+pub fn convert_option_string_to_option_str(input: &Option<String>) -> Option<&str> {
+    match input {
+        None => None,
+        Some(x) => Some(x.as_str())
+    }
+}

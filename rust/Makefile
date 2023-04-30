@@ -9,7 +9,9 @@ TABLE_GENERATED := $(TABLE_TEMPLATES:%.tablers.template=%.rs)
 TABLE_DEP_FILES := $(TABLE_GENERATED:%.rs=%.tablers.d)
 
 
-all: $(TABLE_GENERATED)
+all: tables
+
+tables: $(TABLE_GENERATED)
 
 clean:
 	$(RM) -rf $(TABLE_GENERATED)
@@ -17,7 +19,7 @@ clean:
 distclean: clean
 
 
-.PHONY: all clean distclean
+.PHONY: all tables clean distclean
 .DEFAULT_GOAL := all
 .SECONDARY:
 

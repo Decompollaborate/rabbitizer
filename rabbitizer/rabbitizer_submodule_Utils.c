@@ -50,8 +50,8 @@ static PyObject *rabbitizer_submodule_Utils_escapeString(UNUSED PyObject *self, 
 }
 
 
-#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction) rabbitizer_submodule_Utils_##name, METH_NOARGS,                  PyDoc_STR(docs) }
-#define METHOD_ARGS(name, docs)     { #name, (PyCFunction) rabbitizer_submodule_Utils_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
+#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction) (void *) rabbitizer_submodule_Utils_##name, METH_NOARGS,                  PyDoc_STR(docs) }
+#define METHOD_ARGS(name, docs)     { #name, (PyCFunction) (void *) rabbitizer_submodule_Utils_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
 
 static PyMethodDef rabbitizer_submodule_Utils_methods[] = {
     METHOD_ARGS(from2Complement, ""),

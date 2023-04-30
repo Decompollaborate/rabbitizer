@@ -494,8 +494,8 @@ static PyObject *rabbitizer_type_Instruction___reduce__(PyRabbitizerInstruction 
 }
 
 
-#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_NOARGS,                  PyDoc_STR(docs) }
-#define METHOD_ARGS(name, docs)     { #name, (PyCFunction)rabbitizer_type_Instruction_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
+#define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction) (void *) rabbitizer_type_Instruction_##name, METH_NOARGS,                  PyDoc_STR(docs) }
+#define METHOD_ARGS(name, docs)     { #name, (PyCFunction) (void *) rabbitizer_type_Instruction_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
 
 
 static PyMethodDef rabbitizer_type_Instruction_methods[] = {
