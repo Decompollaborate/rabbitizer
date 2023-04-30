@@ -22,10 +22,10 @@ jobs:
 
     - name: Check if there are tables changes
       id: tables_changes
-      uses: UnicornGlobal/has-changes-action@v1.0.11
+      uses: tj-actions/verify-changed-files@v14
 
     - name: tables changes
-      if: steps.tables_changes.outputs.changed == 1
+      if: steps.tables_changes.outputs.files_changed == 'true'
       run: exit 1
 
   check_rust_tables:
@@ -46,8 +46,8 @@ jobs:
 
     - name: Check if there are Rust tables changes
       id: rust_tables_changes
-      uses: UnicornGlobal/has-changes-action@v1.0.11
+      uses: tj-actions/verify-changed-files@v14
 
     - name: Rust tables changes
-      if: steps.rust_tables_changes.outputs.changed == 1
+      if: steps.rust_tables_changes.outputs.files_changed == 'true'
       run: exit 1

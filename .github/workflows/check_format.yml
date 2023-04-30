@@ -22,10 +22,10 @@ jobs:
 
     - name: Check if there are format changes
       id: format_changes
-      uses: UnicornGlobal/has-changes-action@v1.0.11
+      uses: tj-actions/verify-changed-files@v14
 
     - name: format changes
-      if: steps.format_changes.outputs.changed == 1
+      if: steps.format_changes.outputs.files_changed == 'true'
       run: exit 1
 
   check_tidy:
@@ -46,8 +46,8 @@ jobs:
 
     - name: Check if there are tidy changes
       id: tidy_changes
-      uses: UnicornGlobal/has-changes-action@v1.0.11
+      uses: tj-actions/verify-changed-files@v14
 
     - name: tidy changes
-      if: steps.tidy_changes.outputs.changed == 1
+      if: steps.tidy_changes.outputs.files_changed == 'true'
       run: exit 1
