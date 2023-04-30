@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #define RAB_DEF_OPERAND(prefix, operand) \
@@ -7,10 +7,7 @@
 typedef enum RabbitizerOperandType {
     RAB_DEF_OPERAND(ALL, INVALID)
 
-#include "operands/RabbitizerOperandType_cpu.inc"
-#include "operands/RabbitizerOperandType_rsp.inc"
-#include "instructions/operands/RabbitizerOperandType_r3000gte.inc"
-#include "operands/RabbitizerOperandType_r5900.inc"
+#include "instructions/OperandTypes.inc"
 
     RAB_DEF_OPERAND(ALL, MAX)
 } RabbitizerOperandType;

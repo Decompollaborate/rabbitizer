@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "enums_utils.h"
@@ -10,10 +10,7 @@
 RabbitizerEnumMetadata rabbitizer_enum_OperandType_enumvalues[] = {
     RAB_DEF_OPERAND(ALL, INVALID)
 
-#include "instructions/operands/RabbitizerOperandType_cpu.inc"
-#include "instructions/operands/RabbitizerOperandType_rsp.inc"
-#include "instructions/operands/RabbitizerOperandType_r3000gte.inc"
-#include "instructions/operands/RabbitizerOperandType_r5900.inc"
+#include "instructions/OperandTypes.inc"
 
     RAB_DEF_OPERAND(ALL, MAX)
 
