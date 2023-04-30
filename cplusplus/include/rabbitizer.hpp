@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_HPP
@@ -17,6 +17,7 @@
 #include "instructions/InstructionBase.hpp"
 #include "instructions/InstructionCpu.hpp"
 #include "instructions/InstructionRsp.hpp"
+#include "instructions/InstructionR3000GTE.hpp"
 #include "instructions/InstructionR5900.hpp"
 
 #include "analysis/LoPairingInfo.hpp"
