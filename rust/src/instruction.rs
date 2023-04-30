@@ -37,6 +37,13 @@ extern "C" {
 }
 
 extern "C" {
+    fn RabbitizerInstructionR3000GTE_init(self_: *mut Instruction, word: u32, vram: u32);
+    fn RabbitizerInstructionR3000GTE_destroy(self_: *mut Instruction);
+
+    fn RabbitizerInstructionR3000GTE_processUniqueId(self_: *mut Instruction);
+}
+
+extern "C" {
     fn RabbitizerInstructionR5900_init(self_: *mut Instruction, word: u32, vram: u32);
     fn RabbitizerInstructionR5900_destroy(self_: *mut Instruction);
 
@@ -165,6 +172,9 @@ impl Drop for Instruction {
                 instr_category_enum::InstrCategory::RSP => {
                     RabbitizerInstructionRsp_destroy(self);
                 }
+                instr_category_enum::InstrCategory::R3000GTE => {
+                    RabbitizerInstructionR3000GTE_destroy(self);
+                }
                 instr_category_enum::InstrCategory::R5900 => {
                     RabbitizerInstructionR5900_destroy(self);
                 }
@@ -188,6 +198,10 @@ impl Instruction {
                 instr_category_enum::InstrCategory::RSP => {
                     RabbitizerInstructionRsp_init(instr.as_mut_ptr(), word, vram);
                     RabbitizerInstructionRsp_processUniqueId(instr.as_mut_ptr());
+                }
+                instr_category_enum::InstrCategory::R3000GTE => {
+                    RabbitizerInstructionR3000GTE_init(instr.as_mut_ptr(), word, vram);
+                    RabbitizerInstructionR3000GTE_processUniqueId(instr.as_mut_ptr());
                 }
                 instr_category_enum::InstrCategory::R5900 => {
                     RabbitizerInstructionR5900_init(instr.as_mut_ptr(), word, vram);
