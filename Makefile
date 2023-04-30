@@ -105,6 +105,8 @@ all: static tests
 static: $(STATIC_LIB) $(STATIC_LIB_XX)
 dynamic: $(DYNAMIC_LIB) $(DYNAMIC_LIB_XX)
 
+tables: $(TABLE_GENERATED)
+
 clean:
 	$(RM) -rf build
 
@@ -123,7 +125,7 @@ tidy:
 
 tests: $(TESTS_ELFS)
 
-.PHONY: all clean distclean format tidy tests
+.PHONY: all static dynamic tables clean distclean format tidy tests
 .DEFAULT_GOAL := all
 .SECONDARY:
 
