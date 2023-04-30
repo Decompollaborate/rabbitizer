@@ -8,6 +8,7 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "instructions/RabbitizerInstructionR3000GTE.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
@@ -265,6 +266,28 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_rs(self->word, 0);
                 break;
             /* rsp */
+
+            /* r3000gte */
+            case RAB_OPERAND_r3000gte_sf:
+                self->word = RAB_INSTR_R3000GTE_PACK_sf(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r3000gte_mx:
+                self->word = RAB_INSTR_R3000GTE_PACK_mx(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r3000gte_v:
+                self->word = RAB_INSTR_R3000GTE_PACK_v(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r3000gte_cv:
+                self->word = RAB_INSTR_R3000GTE_PACK_cv(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r3000gte_lm:
+                self->word = RAB_INSTR_R3000GTE_PACK_lm(self->word, 0);
+                break;
+            /* r3000gte */
 
             /* r5900 */
             case RAB_OPERAND_r5900_I:

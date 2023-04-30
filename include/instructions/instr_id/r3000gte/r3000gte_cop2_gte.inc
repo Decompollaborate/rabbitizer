@@ -90,25 +90,25 @@ RABBITIZER_DEF_INSTR_ID(
 
 RABBITIZER_DEF_INSTR_ID(
     r3000gte, 0x12, MVMVA,
-    .operands={0/*sf, mx, v, cv, lm*/}
+    .operands={RAB_OPERAND_r3000gte_sf, RAB_OPERAND_r3000gte_mx, RAB_OPERAND_r3000gte_v, RAB_OPERAND_r3000gte_cv, RAB_OPERAND_r3000gte_lm}
 )
 
 RABBITIZER_DEF_INSTR_ID(
     r3000gte, 0x28, SQR,
-    .operands={0/*sf*/}
+    .operands={RAB_OPERAND_r3000gte_sf}
 )
 
 RABBITIZER_DEF_INSTR_ID(
     r3000gte, 0x0C, OP,
-    .operands={0/*sf*/}
+    .operands={RAB_OPERAND_r3000gte_sf}
 )
 
 RABBITIZER_DEF_INSTR_ID(
     r3000gte, 0x3D, GPF,
-    .operands={0/*sf*/}
+    .operands={RAB_OPERAND_r3000gte_sf}
 )
 
 RABBITIZER_DEF_INSTR_ID(
     r3000gte, 0x3E, GPL,
-    .operands={0/*sf*/}
+    .operands={RAB_OPERAND_r3000gte_sf}
 )

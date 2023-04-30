@@ -2,72 +2,58 @@ word: 4A180001
 opcode: 48000000
 fmt: 02000000 0x10 0x180001
 function: 0x01
-Error on word '0x4A180001'. Expected 'RTPS', got '.word       0x4A180001                   # RTPS # 00180000'
 word: 4A280030
 opcode: 48000000
 fmt: 02200000 0x11 0x080030
 function: 0x30
-Error on word '0x4A280030'. Expected 'RTPT', got '.word       0x4A280030                   # RTPT # 00080000'
 word: 4A680029
 opcode: 48000000
 fmt: 02600000 0x13 0x080029
 function: 0x29
-Error on word '0x4A680029'. Expected 'DPCL', got '.word       0x4A680029                   # DPCL # 00080000'
 word: 4A780010
 opcode: 48000000
 fmt: 02600000 0x13 0x180010
 function: 0x10
-Error on word '0x4A780010'. Expected 'DPCS', got '.word       0x4A780010                   # DPCS # 00180000'
 word: 4AF8002A
 opcode: 48000000
 fmt: 02E00000 0x17 0x18002A
 function: 0x2A
-Error on word '0x4AF8002A'. Expected 'DPCT', got '.word       0x4AF8002A                   # DPCT # 00180000'
 word: 4A980011
 opcode: 48000000
 fmt: 02800000 0x14 0x180011
 function: 0x11
-Error on word '0x4A980011'. Expected 'INTPL', got '.word       0x4A980011                   # INTPL # 00180000'
 word: 4AC8041E
 opcode: 48000000
 fmt: 02C00000 0x16 0x08041E
 function: 0x1E
-Error on word '0x4AC8041E'. Expected 'NCS', got '.word       0x4AC8041E                   # NCS # 00080400'
 word: 4AD80420
 opcode: 48000000
 fmt: 02C00000 0x16 0x180420
 function: 0x20
-Error on word '0x4AD80420'. Expected 'NCT', got '.word       0x4AD80420                   # NCT # 00180400'
 word: 4AE80413
 opcode: 48000000
 fmt: 02E00000 0x17 0x080413
 function: 0x13
-Error on word '0x4AE80413'. Expected 'NCDS', got '.word       0x4AE80413                   # NCDS # 00080400'
 word: 4AF80416
 opcode: 48000000
 fmt: 02E00000 0x17 0x180416
 function: 0x16
-Error on word '0x4AF80416'. Expected 'NCDT', got '.word       0x4AF80416                   # NCDT # 00180400'
 word: 4B08041B
 opcode: 48000000
 fmt: 03000000 0x18 0x08041B
 function: 0x1B
-Error on word '0x4B08041B'. Expected 'NCCS', got '.word       0x4B08041B                   # NCCS # 00080400'
 word: 4B18043F
 opcode: 48000000
 fmt: 03000000 0x18 0x18043F
 function: 0x3F
-Error on word '0x4B18043F'. Expected 'NCCT', got '.word       0x4B18043F                   # NCCT # 00180400'
 word: 4B280414
 opcode: 48000000
 fmt: 03200000 0x19 0x080414
 function: 0x14
-Error on word '0x4B280414'. Expected 'CDP', got '.word       0x4B280414                   # CDP # 00080400'
 word: 4B38041C
 opcode: 48000000
 fmt: 03200000 0x19 0x18041C
 function: 0x1C
-Error on word '0x4B38041C'. Expected 'CC', got '.word       0x4B38041C                   # CC # 00180400'
 word: 4B400006
 opcode: 48000000
 fmt: 03400000 0x1A 0x000006
@@ -76,37 +62,35 @@ word: 4B58002D
 opcode: 48000000
 fmt: 03400000 0x1A 0x18002D
 function: 0x2D
-Error on word '0x4B58002D'. Expected 'AVSZ3', got '.word       0x4B58002D                   # AVSZ3 # 00180000'
 word: 4B68002E
 opcode: 48000000
 fmt: 03600000 0x1B 0x08002E
 function: 0x2E
-Error on word '0x4B68002E'. Expected 'AVSZ4', got '.word       0x4B68002E                   # AVSZ4 # 00080000'
 word: 4A400012
 opcode: 48000000
 fmt: 02400000 0x12 0x000012
 function: 0x12
-Error on word '0x4A400012'. Expected 'MVMVA sf, mx, v, cv, lm', got 'MVMVA'
+Error on word '0x4A400012'. Expected 'MVMVA sf, mx, v, cv, lm', got 'MVMVA       , , , , '
 word: 4AA00428
 opcode: 48000000
 fmt: 02A00000 0x15 0x000428
 function: 0x28
-Error on word '0x4AA00428'. Expected 'SQR sf', got '.word       0x4AA00428                   # SQR # 00000400'
+Error on word '0x4AA00428'. Expected 'SQR sf', got 'SQR         '
 word: 4B70000C
 opcode: 48000000
 fmt: 03600000 0x1B 0x10000C
 function: 0x0C
-Error on word '0x4B70000C'. Expected 'OP sf', got '.word       0x4B70000C                   # OP # 00100000'
+Error on word '0x4B70000C'. Expected 'OP sf', got 'OP          '
 word: 4B90003D
 opcode: 48000000
 fmt: 03800000 0x1C 0x10003D
 function: 0x3D
-Error on word '0x4B90003D'. Expected 'GPF sf', got '.word       0x4B90003D                   # GPF # 00100000'
+Error on word '0x4B90003D'. Expected 'GPF sf', got 'GPF         '
 word: 4BA0003E
 opcode: 48000000
 fmt: 03A00000 0x1D 0x00003E
 function: 0x3E
-Error on word '0x4BA0003E'. Expected 'GPL sf', got 'GPL'
+Error on word '0x4BA0003E'. Expected 'GPL sf', got 'GPL         '
 word: 4A486012
 opcode: 48000000
 
@@ -115,7 +99,7 @@ HERE
 
 fmt: 02400000 0x12 0x086012
 function: 0x12
-Error on word '0x4A486012'. Expected 'rtv0', got '.word       0x4A486012                   # MVMVA # 00086000'
+Error on word '0x4A486012'. Expected 'rtv0', got 'MVMVA       , , , , '
 word: 4A48E012
 opcode: 48000000
 
@@ -124,7 +108,7 @@ HERE
 
 fmt: 02400000 0x12 0x08E012
 function: 0x12
-Error on word '0x4A48E012'. Expected 'rtv1', got '.word       0x4A48E012                   # MVMVA # 0008E000'
+Error on word '0x4A48E012'. Expected 'rtv1', got 'MVMVA       , , , , '
 word: 4A496012
 opcode: 48000000
 
@@ -133,7 +117,7 @@ HERE
 
 fmt: 02400000 0x12 0x096012
 function: 0x12
-Error on word '0x4A496012'. Expected 'rtv2', got '.word       0x4A496012                   # MVMVA # 00096000'
+Error on word '0x4A496012'. Expected 'rtv2', got 'MVMVA       , , , , '
 word: 4A49E012
 opcode: 48000000
 
@@ -142,7 +126,7 @@ HERE
 
 fmt: 02400000 0x12 0x09E012
 function: 0x12
-Error on word '0x4A49E012'. Expected 'rtir12', got '.word       0x4A49E012                   # MVMVA # 0009E000'
+Error on word '0x4A49E012'. Expected 'rtir12', got 'MVMVA       , , , , '
 word: 4A41E012
 opcode: 48000000
 
@@ -151,7 +135,7 @@ HERE
 
 fmt: 02400000 0x12 0x01E012
 function: 0x12
-Error on word '0x4A41E012'. Expected 'rtir0', got '.word       0x4A41E012                   # MVMVA # 0001E000'
+Error on word '0x4A41E012'. Expected 'rtir0', got 'MVMVA       , , , , '
 word: 4A480012
 opcode: 48000000
 
@@ -160,7 +144,7 @@ HERE
 
 fmt: 02400000 0x12 0x080012
 function: 0x12
-Error on word '0x4A480012'. Expected 'rtv0tr', got '.word       0x4A480012                   # MVMVA # 00080000'
+Error on word '0x4A480012'. Expected 'rtv0tr', got 'MVMVA       , , , , '
 word: 4A488012
 opcode: 48000000
 
@@ -169,7 +153,7 @@ HERE
 
 fmt: 02400000 0x12 0x088012
 function: 0x12
-Error on word '0x4A488012'. Expected 'rtv1tr', got '.word       0x4A488012                   # MVMVA # 00088000'
+Error on word '0x4A488012'. Expected 'rtv1tr', got 'MVMVA       , , , , '
 word: 4A490012
 opcode: 48000000
 
@@ -178,7 +162,7 @@ HERE
 
 fmt: 02400000 0x12 0x090012
 function: 0x12
-Error on word '0x4A490012'. Expected 'rtv2tr', got '.word       0x4A490012                   # MVMVA # 00090000'
+Error on word '0x4A490012'. Expected 'rtv2tr', got 'MVMVA       , , , , '
 word: 4A498012
 opcode: 48000000
 
@@ -187,7 +171,7 @@ HERE
 
 fmt: 02400000 0x12 0x098012
 function: 0x12
-Error on word '0x4A498012'. Expected 'rtirtr', got '.word       0x4A498012                   # MVMVA # 00098000'
+Error on word '0x4A498012'. Expected 'rtirtr', got 'MVMVA       , , , , '
 word: 4A482012
 opcode: 48000000
 
@@ -196,7 +180,7 @@ HERE
 
 fmt: 02400000 0x12 0x082012
 function: 0x12
-Error on word '0x4A482012'. Expected 'rtv0bk', got '.word       0x4A482012                   # MVMVA # 00082000'
+Error on word '0x4A482012'. Expected 'rtv0bk', got 'MVMVA       , , , , '
 word: 4A48A012
 opcode: 48000000
 
@@ -205,7 +189,7 @@ HERE
 
 fmt: 02400000 0x12 0x08A012
 function: 0x12
-Error on word '0x4A48A012'. Expected 'rtv1bk', got '.word       0x4A48A012                   # MVMVA # 0008A000'
+Error on word '0x4A48A012'. Expected 'rtv1bk', got 'MVMVA       , , , , '
 word: 4A492012
 opcode: 48000000
 
@@ -214,7 +198,7 @@ HERE
 
 fmt: 02400000 0x12 0x092012
 function: 0x12
-Error on word '0x4A492012'. Expected 'rtv2bk', got '.word       0x4A492012                   # MVMVA # 00092000'
+Error on word '0x4A492012'. Expected 'rtv2bk', got 'MVMVA       , , , , '
 word: 4A49A012
 opcode: 48000000
 
@@ -223,7 +207,7 @@ HERE
 
 fmt: 02400000 0x12 0x09A012
 function: 0x12
-Error on word '0x4A49A012'. Expected 'rtirbk', got '.word       0x4A49A012                   # MVMVA # 0009A000'
+Error on word '0x4A49A012'. Expected 'rtirbk', got 'MVMVA       , , , , '
 word: 4A4A6412
 opcode: 48000000
 
@@ -232,7 +216,7 @@ HERE
 
 fmt: 02400000 0x12 0x0A6412
 function: 0x12
-Error on word '0x4A4A6412'. Expected 'll', got '.word       0x4A4A6412                   # MVMVA # 000A6400'
+Error on word '0x4A4A6412'. Expected 'll', got 'MVMVA       , , , , '
 word: 4A4A6012
 opcode: 48000000
 
@@ -241,7 +225,7 @@ HERE
 
 fmt: 02400000 0x12 0x0A6012
 function: 0x12
-Error on word '0x4A4A6012'. Expected 'llv0', got '.word       0x4A4A6012                   # MVMVA # 000A6000'
+Error on word '0x4A4A6012'. Expected 'llv0', got 'MVMVA       , , , , '
 word: 4A4AE012
 opcode: 48000000
 
@@ -250,7 +234,7 @@ HERE
 
 fmt: 02400000 0x12 0x0AE012
 function: 0x12
-Error on word '0x4A4AE012'. Expected 'llv1', got '.word       0x4A4AE012                   # MVMVA # 000AE000'
+Error on word '0x4A4AE012'. Expected 'llv1', got 'MVMVA       , , , , '
 word: 4A4B6012
 opcode: 48000000
 
@@ -259,7 +243,7 @@ HERE
 
 fmt: 02400000 0x12 0x0B6012
 function: 0x12
-Error on word '0x4A4B6012'. Expected 'llv2', got '.word       0x4A4B6012                   # MVMVA # 000B6000'
+Error on word '0x4A4B6012'. Expected 'llv2', got 'MVMVA       , , , , '
 word: 4A4BE012
 opcode: 48000000
 
@@ -268,7 +252,7 @@ HERE
 
 fmt: 02400000 0x12 0x0BE012
 function: 0x12
-Error on word '0x4A4BE012'. Expected 'llvir', got '.word       0x4A4BE012                   # MVMVA # 000BE000'
+Error on word '0x4A4BE012'. Expected 'llvir', got 'MVMVA       , , , , '
 word: 4A4A0012
 opcode: 48000000
 
@@ -277,7 +261,7 @@ HERE
 
 fmt: 02400000 0x12 0x0A0012
 function: 0x12
-Error on word '0x4A4A0012'. Expected 'llv0tr', got '.word       0x4A4A0012                   # MVMVA # 000A0000'
+Error on word '0x4A4A0012'. Expected 'llv0tr', got 'MVMVA       , , , , '
 word: 4A4A8012
 opcode: 48000000
 
@@ -286,7 +270,7 @@ HERE
 
 fmt: 02400000 0x12 0x0A8012
 function: 0x12
-Error on word '0x4A4A8012'. Expected 'llv1tr', got '.word       0x4A4A8012                   # MVMVA # 000A8000'
+Error on word '0x4A4A8012'. Expected 'llv1tr', got 'MVMVA       , , , , '
 word: 4A4B0012
 opcode: 48000000
 
@@ -295,7 +279,7 @@ HERE
 
 fmt: 02400000 0x12 0x0B0012
 function: 0x12
-Error on word '0x4A4B0012'. Expected 'llv2tr', got '.word       0x4A4B0012                   # MVMVA # 000B0000'
+Error on word '0x4A4B0012'. Expected 'llv2tr', got 'MVMVA       , , , , '
 word: 4A4B8012
 opcode: 48000000
 
@@ -304,7 +288,7 @@ HERE
 
 fmt: 02400000 0x12 0x0B8012
 function: 0x12
-Error on word '0x4A4B8012'. Expected 'llirtr', got '.word       0x4A4B8012                   # MVMVA # 000B8000'
+Error on word '0x4A4B8012'. Expected 'llirtr', got 'MVMVA       , , , , '
 word: 4A4A2012
 opcode: 48000000
 
@@ -313,7 +297,7 @@ HERE
 
 fmt: 02400000 0x12 0x0A2012
 function: 0x12
-Error on word '0x4A4A2012'. Expected 'llv0bk', got '.word       0x4A4A2012                   # MVMVA # 000A2000'
+Error on word '0x4A4A2012'. Expected 'llv0bk', got 'MVMVA       , , , , '
 word: 4A4AA012
 opcode: 48000000
 
@@ -322,7 +306,7 @@ HERE
 
 fmt: 02400000 0x12 0x0AA012
 function: 0x12
-Error on word '0x4A4AA012'. Expected 'llv1bk', got '.word       0x4A4AA012                   # MVMVA # 000AA000'
+Error on word '0x4A4AA012'. Expected 'llv1bk', got 'MVMVA       , , , , '
 word: 4A4B2012
 opcode: 48000000
 
@@ -331,7 +315,7 @@ HERE
 
 fmt: 02400000 0x12 0x0B2012
 function: 0x12
-Error on word '0x4A4B2012'. Expected 'llv2bk', got '.word       0x4A4B2012                   # MVMVA # 000B2000'
+Error on word '0x4A4B2012'. Expected 'llv2bk', got 'MVMVA       , , , , '
 word: 4A4BA012
 opcode: 48000000
 
@@ -340,7 +324,7 @@ HERE
 
 fmt: 02400000 0x12 0x0BA012
 function: 0x12
-Error on word '0x4A4BA012'. Expected 'llirbk', got '.word       0x4A4BA012                   # MVMVA # 000BA000'
+Error on word '0x4A4BA012'. Expected 'llirbk', got 'MVMVA       , , , , '
 word: 4A4DA412
 opcode: 48000000
 
@@ -349,7 +333,7 @@ HERE
 
 fmt: 02400000 0x12 0x0DA412
 function: 0x12
-Error on word '0x4A4DA412'. Expected 'lc', got '.word       0x4A4DA412                   # MVMVA # 000DA400'
+Error on word '0x4A4DA412'. Expected 'lc', got 'MVMVA       , , , , '
 word: 4A4C6012
 opcode: 48000000
 
@@ -358,7 +342,7 @@ HERE
 
 fmt: 02400000 0x12 0x0C6012
 function: 0x12
-Error on word '0x4A4C6012'. Expected 'lcv0', got '.word       0x4A4C6012                   # MVMVA # 000C6000'
+Error on word '0x4A4C6012'. Expected 'lcv0', got 'MVMVA       , , , , '
 word: 4A4CE012
 opcode: 48000000
 
@@ -367,7 +351,7 @@ HERE
 
 fmt: 02400000 0x12 0x0CE012
 function: 0x12
-Error on word '0x4A4CE012'. Expected 'lcv1', got '.word       0x4A4CE012                   # MVMVA # 000CE000'
+Error on word '0x4A4CE012'. Expected 'lcv1', got 'MVMVA       , , , , '
 word: 4A4D6012
 opcode: 48000000
 
@@ -376,7 +360,7 @@ HERE
 
 fmt: 02400000 0x12 0x0D6012
 function: 0x12
-Error on word '0x4A4D6012'. Expected 'lcv2', got '.word       0x4A4D6012                   # MVMVA # 000D6000'
+Error on word '0x4A4D6012'. Expected 'lcv2', got 'MVMVA       , , , , '
 word: 4A4DE012
 opcode: 48000000
 
@@ -385,7 +369,7 @@ HERE
 
 fmt: 02400000 0x12 0x0DE012
 function: 0x12
-Error on word '0x4A4DE012'. Expected 'lcvir', got '.word       0x4A4DE012                   # MVMVA # 000DE000'
+Error on word '0x4A4DE012'. Expected 'lcvir', got 'MVMVA       , , , , '
 word: 4A4C0012
 opcode: 48000000
 
@@ -394,7 +378,7 @@ HERE
 
 fmt: 02400000 0x12 0x0C0012
 function: 0x12
-Error on word '0x4A4C0012'. Expected 'lcv0tr', got '.word       0x4A4C0012                   # MVMVA # 000C0000'
+Error on word '0x4A4C0012'. Expected 'lcv0tr', got 'MVMVA       , , , , '
 word: 4A4C8012
 opcode: 48000000
 
@@ -403,7 +387,7 @@ HERE
 
 fmt: 02400000 0x12 0x0C8012
 function: 0x12
-Error on word '0x4A4C8012'. Expected 'lcv1tr', got '.word       0x4A4C8012                   # MVMVA # 000C8000'
+Error on word '0x4A4C8012'. Expected 'lcv1tr', got 'MVMVA       , , , , '
 word: 4A4D0012
 opcode: 48000000
 
@@ -412,7 +396,7 @@ HERE
 
 fmt: 02400000 0x12 0x0D0012
 function: 0x12
-Error on word '0x4A4D0012'. Expected 'lcv2tr', got '.word       0x4A4D0012                   # MVMVA # 000D0000'
+Error on word '0x4A4D0012'. Expected 'lcv2tr', got 'MVMVA       , , , , '
 word: 4A4D8012
 opcode: 48000000
 
@@ -421,7 +405,7 @@ HERE
 
 fmt: 02400000 0x12 0x0D8012
 function: 0x12
-Error on word '0x4A4D8012'. Expected 'lcirtr', got '.word       0x4A4D8012                   # MVMVA # 000D8000'
+Error on word '0x4A4D8012'. Expected 'lcirtr', got 'MVMVA       , , , , '
 word: 4A4C2012
 opcode: 48000000
 
@@ -430,7 +414,7 @@ HERE
 
 fmt: 02400000 0x12 0x0C2012
 function: 0x12
-Error on word '0x4A4C2012'. Expected 'lev0bk', got '.word       0x4A4C2012                   # MVMVA # 000C2000'
+Error on word '0x4A4C2012'. Expected 'lev0bk', got 'MVMVA       , , , , '
 word: 4A4CA012
 opcode: 48000000
 
@@ -439,7 +423,7 @@ HERE
 
 fmt: 02400000 0x12 0x0CA012
 function: 0x12
-Error on word '0x4A4CA012'. Expected 'lev1bk', got '.word       0x4A4CA012                   # MVMVA # 000CA000'
+Error on word '0x4A4CA012'. Expected 'lev1bk', got 'MVMVA       , , , , '
 word: 4A4D2012
 opcode: 48000000
 
@@ -448,7 +432,7 @@ HERE
 
 fmt: 02400000 0x12 0x0D2012
 function: 0x12
-Error on word '0x4A4D2012'. Expected 'lev2bk', got '.word       0x4A4D2012                   # MVMVA # 000D2000'
+Error on word '0x4A4D2012'. Expected 'lev2bk', got 'MVMVA       , , , , '
 word: 4A4DA012
 opcode: 48000000
 
@@ -457,7 +441,7 @@ HERE
 
 fmt: 02400000 0x12 0x0DA012
 function: 0x12
-Error on word '0x4A4DA012'. Expected 'leirbk', got '.word       0x4A4DA012                   # MVMVA # 000DA000'
+Error on word '0x4A4DA012'. Expected 'leirbk', got 'MVMVA       , , , , '
 word: 4AA80428
 opcode: 48000000
 
@@ -466,7 +450,7 @@ HERE
 
 fmt: 02A00000 0x15 0x080428
 function: 0x28
-Error on word '0x4AA80428'. Expected 'sqr12', got '.word       0x4AA80428                   # SQR # 00080400'
+Error on word '0x4AA80428'. Expected 'sqr12', got 'SQR         '
 word: 4AA80428
 opcode: 48000000
 
@@ -475,7 +459,7 @@ HERE
 
 fmt: 02A00000 0x15 0x080428
 function: 0x28
-Error on word '0x4AA80428'. Expected 'sqr0', got '.word       0x4AA80428                   # SQR # 00080400'
+Error on word '0x4AA80428'. Expected 'sqr0', got 'SQR         '
 word: 4B78000C
 opcode: 48000000
 
@@ -484,7 +468,7 @@ HERE
 
 fmt: 03600000 0x1B 0x18000C
 function: 0x0C
-Error on word '0x4B78000C'. Expected 'op12', got '.word       0x4B78000C                   # OP # 00180000'
+Error on word '0x4B78000C'. Expected 'op12', got 'OP          '
 word: 4B70000C
 opcode: 48000000
 
@@ -493,7 +477,7 @@ HERE
 
 fmt: 03600000 0x1B 0x10000C
 function: 0x0C
-Error on word '0x4B70000C'. Expected 'op0', got '.word       0x4B70000C                   # OP # 00100000'
+Error on word '0x4B70000C'. Expected 'op0', got 'OP          '
 word: 4B98003D
 opcode: 48000000
 
@@ -502,7 +486,7 @@ HERE
 
 fmt: 03800000 0x1C 0x18003D
 function: 0x3D
-Error on word '0x4B98003D'. Expected 'gpf12', got '.word       0x4B98003D                   # GPF # 00180000'
+Error on word '0x4B98003D'. Expected 'gpf12', got 'GPF         '
 word: 4B90003D
 opcode: 48000000
 
@@ -511,7 +495,7 @@ HERE
 
 fmt: 03800000 0x1C 0x10003D
 function: 0x3D
-Error on word '0x4B90003D'. Expected 'gpf0', got '.word       0x4B90003D                   # GPF # 00100000'
+Error on word '0x4B90003D'. Expected 'gpf0', got 'GPF         '
 word: 4BA8003E
 opcode: 48000000
 
@@ -520,7 +504,7 @@ HERE
 
 fmt: 03A00000 0x1D 0x08003E
 function: 0x3E
-Error on word '0x4BA8003E'. Expected 'gpl12', got '.word       0x4BA8003E                   # GPL # 00080000'
+Error on word '0x4BA8003E'. Expected 'gpl12', got 'GPL         '
 word: 4BA0003E
 opcode: 48000000
 
@@ -529,4 +513,4 @@ HERE
 
 fmt: 03A00000 0x1D 0x00003E
 function: 0x3E
-Error on word '0x4BA0003E'. Expected 'gpl0', got 'GPL'
+Error on word '0x4BA0003E'. Expected 'gpl0', got 'GPL         '

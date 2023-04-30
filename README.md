@@ -96,6 +96,7 @@ See this crate at <https://crates.io/crates/rabbitizer>.
 - R3000 GTE:
   - PSYQ SDK headers: <https://github.com/FoxdieTeam/psyq_sdk/blob/master/psyq_4.4/INCLUDE/INLINE_A.H>
   - no$psx documentation: <https://problemkaputt.de/psxspx-gte-opcode-summary.htm>
+  - no$psx documentation: <http://problemkaputt.de/psx-spx.htm#geometrytransformationenginegte>
   - <http://www.raphnet.net/electronique/psx_adaptor/Playstation.txt>
 
 - R5900:

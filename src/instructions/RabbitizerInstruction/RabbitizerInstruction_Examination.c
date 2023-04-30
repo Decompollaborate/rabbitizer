@@ -7,6 +7,7 @@
 
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerInstructionRsp.h"
+#include "instructions/RabbitizerInstructionR3000GTE.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 #include "instructions/RabbitizerRegister.h"
 
@@ -315,6 +316,28 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_PACK_rs(validbits, ~0);
                 break;
             /* rsp */
+
+            /* r3000gte */
+            case RAB_OPERAND_r3000gte_sf:
+                validbits = RAB_INSTR_R3000GTE_PACK_sf(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r3000gte_mx:
+                validbits = RAB_INSTR_R3000GTE_PACK_mx(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r3000gte_v:
+                validbits = RAB_INSTR_R3000GTE_PACK_v(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r3000gte_cv:
+                validbits = RAB_INSTR_R3000GTE_PACK_cv(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r3000gte_lm:
+                validbits = RAB_INSTR_R3000GTE_PACK_lm(validbits, ~0);
+                break;
+            /* r3000gte */
 
             /* r5900 */
             case RAB_OPERAND_r5900_I:

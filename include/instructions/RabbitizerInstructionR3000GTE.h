@@ -13,12 +13,26 @@ extern "C" {
 
 
 
+#define RAB_INSTR_R3000GTE_GET_sf(self)                 (SHIFTR((self)->word, 19,  1))
+#define RAB_INSTR_R3000GTE_GET_mx(self)                 (SHIFTR((self)->word, 17,  2))
+#define RAB_INSTR_R3000GTE_GET_v(self)                  (SHIFTR((self)->word, 15,  2))
+#define RAB_INSTR_R3000GTE_GET_cv(self)                 (SHIFTR((self)->word, 13,  2))
+#define RAB_INSTR_R3000GTE_GET_lm(self)                 (SHIFTR((self)->word, 10,  1))
+
+
+#define RAB_INSTR_R3000GTE_PACK_sf(word, value)         (BITREPACK((word), (value), 19,  1))
+#define RAB_INSTR_R3000GTE_PACK_mx(word, value)         (BITREPACK((word), (value), 17,  2))
+#define RAB_INSTR_R3000GTE_PACK_v(word, value)          (BITREPACK((word), (value), 15,  2))
+#define RAB_INSTR_R3000GTE_PACK_cv(word, value)         (BITREPACK((word), (value), 13,  2))
+#define RAB_INSTR_R3000GTE_PACK_lm(word, value)         (BITREPACK((word), (value), 10,  1))
+
+
+
 NON_NULL(1)
 void RabbitizerInstructionR3000GTE_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
 NON_NULL(1)
 void RabbitizerInstructionR3000GTE_destroy(RabbitizerInstruction *self);
 
-#if 0
 NON_NULL(1)
 void RabbitizerInstructionR3000GTE_processUniqueId_Normal(RabbitizerInstruction *self);
 NON_NULL(1)
@@ -31,9 +45,6 @@ NON_NULL(1)
 void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor1(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR3000GTE_processUniqueId_MMI(RabbitizerInstruction *self);
-#endif
 
 NON_NULL(1)
 void RabbitizerInstructionR3000GTE_processUniqueId(RabbitizerInstruction *self);

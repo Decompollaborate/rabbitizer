@@ -35,10 +35,17 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor1(RabbitizerInstru
 
 
 void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerInstruction *self) {
-
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+
+    // GTE instructions are weird
+    self->_mandatorybits = BITREPACK(self->_mandatorybits, (1 << 5)-1, 20, 5); // fake bits?
+    self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_sf(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_sf(self));
+    self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_mx(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_mx(self));
+    self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_v(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_v(self));
+    self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_cv(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_cv(self));
+    self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_lm(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_lm(self));
 
     switch (function) {
 #include "instructions/instr_id/r3000gte/r3000gte_cop2_gte.inc"
