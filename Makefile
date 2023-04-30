@@ -111,6 +111,7 @@ clean:
 distclean: clean
 	$(RM) -rf dist *.egg-info .mypy_cache
 	$(RM) -rf $(TABLE_GENERATED)
+	$(RM) -rf $(DEP_FILES) $(TABLE_DEP_FILES)
 	$(RM) -rf target/
 
 format:

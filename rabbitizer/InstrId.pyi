@@ -377,6 +377,31 @@ class InstrId:
     rsp_negu: Enum
     rsp_MAX: Enum
 
+    r3000gte_INVALID: Enum
+    r3000gte_RTPS: Enum
+    r3000gte_RTPT: Enum
+    r3000gte_DPCL: Enum
+    r3000gte_DPCS: Enum
+    r3000gte_DPCT: Enum
+    r3000gte_INTPL: Enum
+    r3000gte_NCS: Enum
+    r3000gte_NCT: Enum
+    r3000gte_NCDS: Enum
+    r3000gte_NCDT: Enum
+    r3000gte_NCCS: Enum
+    r3000gte_NCCT: Enum
+    r3000gte_CDP: Enum
+    r3000gte_CC: Enum
+    r3000gte_NCLIP: Enum
+    r3000gte_AVSZ3: Enum
+    r3000gte_AVSZ4: Enum
+    r3000gte_MVMVA: Enum
+    r3000gte_SQR: Enum
+    r3000gte_OP: Enum
+    r3000gte_GPF: Enum
+    r3000gte_GPL: Enum
+    r3000gte_MAX: Enum
+
     r5900_INVALID: Enum
     r5900_lq: Enum
     r5900_sq: Enum

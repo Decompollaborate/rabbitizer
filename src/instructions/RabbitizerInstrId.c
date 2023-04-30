@@ -11,9 +11,11 @@ bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId) {
     switch (uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_INVALID:
         case RABBITIZER_INSTR_ID_rsp_INVALID:
+        case RABBITIZER_INSTR_ID_r3000gte_INVALID:
         case RABBITIZER_INSTR_ID_r5900_INVALID:
         case RABBITIZER_INSTR_ID_cpu_MAX:
         case RABBITIZER_INSTR_ID_rsp_MAX:
+        case RABBITIZER_INSTR_ID_r3000gte_MAX:
         case RABBITIZER_INSTR_ID_r5900_MAX:
             // case RABBITIZER_INSTR_ID_ALL_MAX: Same as last MAX
             return false;
@@ -24,7 +26,12 @@ bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId) {
 }
 
 const char *RabbitizerInstrId_getOpcodeName(RabbitizerInstrId uniqueId) {
+    const char *name;
+
     assert(uniqueId >= RABBITIZER_INSTR_ID_cpu_INVALID && uniqueId < RABBITIZER_INSTR_ID_ALL_MAX);
 
-    return RabbitizerInstrId_Names[uniqueId];
+    name = RabbitizerInstrId_Names[uniqueId];
+    assert(name != NULL);
+
+    return name;
 }

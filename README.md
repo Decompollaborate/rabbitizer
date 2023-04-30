@@ -93,6 +93,12 @@ See this crate at <https://crates.io/crates/rabbitizer>.
   - Nintendo Ultra64 RSP Programmer’s Guide: <https://ultra64.ca/files/documentation/silicon-graphics/SGI_Nintendo_64_RSP_Programmers_Guide.pdf>
   - N64brew Reality Signal Processor/CPU Core: <https://n64brew.dev/wiki/Reality_Signal_Processor/CPU_Core>
 
+- R3000 GTE:
+  - PSYQ SDK headers: <https://github.com/FoxdieTeam/psyq_sdk/blob/master/psyq_4.4/INCLUDE/INLINE_A.H>
+  - no$psx documentation: <https://problemkaputt.de/psxspx-gte-opcode-summary.htm>
+  - no$psx documentation: <http://problemkaputt.de/psx-spx.htm#geometrytransformationenginegte>
+  - <http://www.raphnet.net/electronique/psx_adaptor/Playstation.txt>
+
 - R5900:
   - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>
   - Official documentation from Toshiba: <https://wiki.qemu.org/images/2/2a/C790.pdf>

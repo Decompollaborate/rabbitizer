@@ -28,10 +28,13 @@ typedef enum RabbitizerInstrType {
     RABBITIZER_INSTR_TYPE_MAX,
 } RabbitizerInstrType;
 
+
+#define OPERAND_COUNT_MAX 5
+
 // Please note the members of this struct may be renamed or removed without further notice.
 // For consistent usage please use the functions instead
 typedef struct RabbitizerInstrDescriptor {
-    RabbitizerOperandType operands[4];
+    RabbitizerOperandType operands[OPERAND_COUNT_MAX+1];
     RabbitizerInstrType instrType;
 
     RabbitizerInstrSuffix instrSuffix;

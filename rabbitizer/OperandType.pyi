@@ -49,6 +49,12 @@ class OperandType:
     rsp_immediate_base: Enum
     rsp_maybe_rd_rs: Enum
 
+    r3000gte_sf: Enum
+    r3000gte_mx: Enum
+    r3000gte_v: Enum
+    r3000gte_cv: Enum
+    r3000gte_lm: Enum
+
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum

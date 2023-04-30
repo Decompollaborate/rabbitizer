@@ -251,6 +251,15 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             break;
             /* rsp */
 
+            /* r3000gte */
+        case RAB_OPERAND_r3000gte_sf:
+        case RAB_OPERAND_r3000gte_mx:
+        case RAB_OPERAND_r3000gte_v:
+        case RAB_OPERAND_r3000gte_cv:
+        case RAB_OPERAND_r3000gte_lm:
+            break;
+            /* r3000gte */
+
             /* r5900 */
         case RAB_OPERAND_r5900_I:
         case RAB_OPERAND_r5900_Q:
