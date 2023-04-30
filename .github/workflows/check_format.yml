@@ -28,7 +28,7 @@ jobs:
       if: steps.format_changes.outputs.files_changed == 'true'
       run: |
         echo "Changed files: ${{ steps.format_changes.outputs.changed_files }}"
-        echo "Please run `make format` and commit the result"
+        echo "Please run \`make format\` and commit the result"
         exit 1
 
   check_tidy:
@@ -55,5 +55,5 @@ jobs:
       if: steps.tidy_changes.outputs.files_changed == 'true'
       run: |
         echo "Changed files: ${{ steps.tidy_changes.outputs.changed_files }}"
-        echo "Please run `make tidy` and commit the result"
+        echo "Please run \`make tidy\` and commit the result"
         exit 1
