@@ -9,6 +9,7 @@
 
     #include "r3000gte/r3000gte_cop2_gte.inc"
 
+#ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
         r3000gte, , USERDEF_00,
         .operands={0}
@@ -89,6 +90,7 @@
         r3000gte, , USERDEF_19,
         .operands={0}
     )
+#endif
 
     RABBITIZER_DEF_INSTR_ID(
         r3000gte, , MAX,

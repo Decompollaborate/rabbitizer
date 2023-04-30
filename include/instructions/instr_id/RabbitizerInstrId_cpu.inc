@@ -20,6 +20,7 @@
     #include "cpu/cpu_cop1_fpu_l.inc"
     #include "cpu/cpu_cop2.inc"
 
+#ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_00,
         .operands={0}
@@ -100,6 +101,7 @@
         cpu, , USERDEF_19,
         .operands={0}
     )
+#endif
 
     RABBITIZER_DEF_INSTR_ID(
         cpu, , MAX,

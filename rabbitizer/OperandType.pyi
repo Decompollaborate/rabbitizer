@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 
-# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
 # SPDX-License-Identifier: MIT
 
+# Automatically generated. DO NOT MODIFY
+
 from __future__ import annotations
-
 from .Enum import Enum
-
-
 class OperandType:
     ALL_INVALID: Enum
-
     cpu_rs: Enum
     cpu_rt: Enum
     cpu_rd: Enum
@@ -22,6 +20,7 @@ class OperandType:
     cpu_fd: Enum
     cpu_cop1cs: Enum
     cpu_cop2t: Enum
+    cpu_cop2cd: Enum
     cpu_op: Enum
     cpu_code: Enum
     cpu_code_lower: Enum
@@ -31,7 +30,6 @@ class OperandType:
     cpu_branch_target_label: Enum
     cpu_immediate_base: Enum
     cpu_maybe_rd_rs: Enum
-
     rsp_rs: Enum
     rsp_rt: Enum
     rsp_rd: Enum
@@ -48,13 +46,11 @@ class OperandType:
     rsp_offset_rs: Enum
     rsp_immediate_base: Enum
     rsp_maybe_rd_rs: Enum
-
     r3000gte_sf: Enum
     r3000gte_mx: Enum
     r3000gte_v: Enum
     r3000gte_cv: Enum
     r3000gte_lm: Enum
-
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum
@@ -85,5 +81,4 @@ class OperandType:
     r5900_vit_postincr: Enum
     r5900_vid_postincr: Enum
     r5900_immediate5: Enum
-
     ALL_MAX: Enum

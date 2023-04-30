@@ -107,6 +107,7 @@ dynamic: $(DYNAMIC_LIB) $(DYNAMIC_LIB_XX)
 
 tables: $(TABLE_GENERATED)
 	make -C rust tables
+	make -C rabbitizer tables
 
 clean:
 	$(RM) -rf build
@@ -116,6 +117,8 @@ distclean: clean
 	$(RM) -rf $(TABLE_GENERATED)
 	$(RM) -rf $(DEP_FILES) $(TABLE_DEP_FILES)
 	$(RM) -rf target/
+	make -C rust distclean
+	make -C rabbitizer distclean
 
 format:
 	clang-format-11 -i -style=file $(C_FILES)

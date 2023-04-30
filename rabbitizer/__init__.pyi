@@ -20,6 +20,7 @@ from .RegCop1O32 import *
 from .RegCop1N32 import *
 from .RegCop1N64 import *
 
+from .Abi import *
 from .Config import *
 
 from .rabbitizer import *

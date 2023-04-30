@@ -26,6 +26,7 @@
     #include "r5900/r5900_cop2_special1.inc"
     #include "r5900/r5900_cop2_special2.inc"
 
+#ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
         r5900, , USERDEF_00,
         .operands={0}
@@ -106,6 +107,7 @@
         r5900, , USERDEF_19,
         .operands={0}
     )
+#endif
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, , MAX,

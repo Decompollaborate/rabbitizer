@@ -21,6 +21,7 @@
     #include "rsp/rsp_regimm.inc"
     #include "rsp/rsp_cop0.inc"
 
+#ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
         rsp, , USERDEF_00,
         .operands={0}
@@ -101,6 +102,7 @@
         rsp, , USERDEF_19,
         .operands={0}
     )
+#endif
 
     RABBITIZER_DEF_INSTR_ID(
         rsp, , MAX,
