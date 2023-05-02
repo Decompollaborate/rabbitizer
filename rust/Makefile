@@ -25,7 +25,7 @@ distclean: clean
 
 
 %.rs: %.tablers.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.rs=.tablers.d) $<
+	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
 	$(RS_TABLE_GEN) $< $@
 
 -include $(TABLE_DEP_FILES)

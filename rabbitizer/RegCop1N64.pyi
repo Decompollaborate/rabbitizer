@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
-# SPDX-FileCopyrightText: © 2023 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
 # SPDX-License-Identifier: MIT
 
+# Automatically generated. DO NOT MODIFY
+
 from __future__ import annotations
-
 from .Enum import Enum
-
-
 class RegCop1N64:
     fv0: Enum
     ft12: Enum

@@ -8,13 +8,7 @@
     RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 typedef enum RabbitizerInstrId {
-    #include "instr_id/RabbitizerInstrId_cpu.inc"
-
-    #include "instr_id/RabbitizerInstrId_rsp.inc"
-
-    #include "instr_id/RabbitizerInstrId_r3000gte.inc"
-
-    #include "instr_id/RabbitizerInstrId_r5900.inc"
+    #include "instructions/InstrIds.inc"
 
     RABBITIZER_INSTR_ID_ALL_MAX = RABBITIZER_DEF_INSTR_ID(r5900, , MAX, )
 } RabbitizerInstrId;

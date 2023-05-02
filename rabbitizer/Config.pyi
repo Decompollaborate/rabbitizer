@@ -6,17 +6,7 @@
 from __future__ import annotations
 
 from .Enum import Enum
-
-
-class Abi:
-    NUMERIC: Enum
-    O32: Enum
-    N32: Enum
-    N64: Enum
-
-    @staticmethod
-    def fromStr(name: str | None) -> Enum: ...
-
+from .Abi import Abi
 
 class _RabbitizerConfig:
     regNames_namedRegisters: bool = True

@@ -7,12 +7,12 @@
  #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
  #[allow(non_camel_case_types)]
 pub enum AccessType {
-INVALID,
-BYTE,
-SHORT,
-WORD,
-DOUBLEWORD,
-FLOAT,
-DOUBLEFLOAT,
+    INVALID,
+    BYTE,
+    SHORT,
+    WORD,
+    DOUBLEWORD,
+    FLOAT,
+    DOUBLEFLOAT,
     MAX,
 }

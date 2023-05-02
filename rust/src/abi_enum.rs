@@ -7,9 +7,9 @@
  #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
  #[allow(non_camel_case_types)]
 pub enum Abi {
-NUMERIC,
-O32,
-N32,
-N64,
+    NUMERIC,
+    O32,
+    N32,
+    N64,
     MAX,
 }

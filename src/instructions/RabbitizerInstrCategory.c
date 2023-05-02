@@ -9,14 +9,14 @@
 
 RabbitizerInstrCategory RabbitizerInstrCategory_fromStr(const char *name) {
     if (name == NULL) {
-        return -2;
+        return (RabbitizerInstrCategory)-2;
     }
 
-    for (size_t i = 0; i < RABBITIZER_INSTRCAT_MAX; i++) {
+    for (RabbitizerInstrCategory i = 0; i < RABBITIZER_INSTRCAT_MAX; i++) {
         if (strcmp(RabbitizerInstrCategory_Names[i], name) == 0) {
             return i;
         }
     }
 
-    return -1;
+    return (RabbitizerInstrCategory)-1;
 }
