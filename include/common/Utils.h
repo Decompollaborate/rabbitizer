@@ -73,10 +73,9 @@ extern "C" {
 #define BITREPACK(fullword, v, s, w) ((SHIFTR((fullword), (s)+(w), 32-((s)+(w))) << ((s)+(w))) | SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 #define BITREPACK_RIGHT(fullword, v, s, w) (SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 
-
 #define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
     do {                                                       \
-        size_t __tempSize = (size_t)expression;                \
+        size_t __tempSize = (size_t)(expression);              \
         (buffer) += __tempSize;                                \
         (totalSize) += __tempSize;                             \
     } while (0)
