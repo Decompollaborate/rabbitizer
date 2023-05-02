@@ -11,7 +11,7 @@ fn main() {
     cc::Build::new()
         .files(c_paths)
         .include("include")
-        .include(".")
+        .include("tables")
         .warnings(false)
         .compile("rabbitizer");
 }
