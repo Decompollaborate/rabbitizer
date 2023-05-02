@@ -47,7 +47,7 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerIn
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_lm(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_lm(self));
 
     switch (function) {
-#include "instructions/instr_id/r3000gte/r3000gte_cop2_gte.inc"
+#include "tables/instr_id/r3000gte/r3000gte_cop2_gte.inc"
     }
 }
 

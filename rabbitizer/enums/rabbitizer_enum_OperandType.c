@@ -10,7 +10,7 @@
 RabbitizerEnumMetadata rabbitizer_enum_OperandType_enumvalues[] = {
     RAB_DEF_OPERAND(ALL, INVALID)
 
-#include "instructions/OperandTypes.inc"
+#include "tables/OperandTypes.inc"
 
     RAB_DEF_OPERAND(ALL, MAX)
 

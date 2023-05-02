@@ -8,7 +8,7 @@
 
 namespace rabbitizer {
     namespace Registers {
-#include "Registers_enum_classes.table.h"
+#include "generated/Registers_enum_classes.hpp"
     };
 };
 

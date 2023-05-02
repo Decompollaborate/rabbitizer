@@ -11,6 +11,7 @@ fn main() {
     cc::Build::new()
         .files(c_paths)
         .include("include")
+        .include(".")
         .warnings(false)
         .compile("rabbitizer");
 }

@@ -16,7 +16,7 @@ extern "C" {
 #endif
 
 
-#include "Registers_enums.table.h"
+#include "generated/Registers_enums.h"
 
 extern const char *RabbitizerRegister_GprO32_Names[][2];
 extern const char *RabbitizerRegister_GprN32_Names[][2];

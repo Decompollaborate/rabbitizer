@@ -7,7 +7,7 @@
 
 
 namespace rabbitizer {
-#include "OperandType_enum_class.table.h"
+#include "generated/OperandType_enum_class.hpp"
 };
 
 

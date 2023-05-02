@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 
-#include "InstrCategory_enum.table.h"
+#include "generated/InstrCategory_enum.h"
 
 extern const char *const RabbitizerInstrCategory_Names[];
 

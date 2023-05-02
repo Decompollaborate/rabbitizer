@@ -12,7 +12,7 @@
     { "RegGprO32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_RegGprO32_enumvalues[] = {
-    #include "instructions/registers/RabbitizerRegister_GprO32.inc"
+    #include "tables/registers/RabbitizerRegister_GprO32.inc"
 
     { 0 },
 };

@@ -19,7 +19,7 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
 
     switch (opcode) {
-#include "instructions/instr_id/cpu/cpu_normal.inc"
+#include "tables/instr_id/cpu/cpu_normal.inc"
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -60,7 +60,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/cpu/cpu_special.inc"
+#include "tables/instr_id/cpu/cpu_special.inc"
     }
 
     if (RabbitizerInstruction_isNop(self)) {
@@ -125,7 +125,7 @@ void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
     self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
 
     switch (rt) {
-#include "instructions/instr_id/cpu/cpu_regimm.inc"
+#include "tables/instr_id/cpu/cpu_regimm.inc"
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -152,7 +152,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(RabbitizerInstructio
     self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop0_bc0.inc"
+#include "tables/instr_id/cpu/cpu_cop0_bc0.inc"
     }
 }
 
@@ -162,7 +162,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(RabbitizerInstructio
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/cpu/cpu_cop0_tlb.inc"
+#include "tables/instr_id/cpu/cpu_cop0_tlb.inc"
     }
 }
 
@@ -173,7 +173,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop0.inc"
+#include "tables/instr_id/cpu/cpu_cop0.inc"
 
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(self);
@@ -193,7 +193,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(RabbitizerInstructio
     self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop1_bc1.inc"
+#include "tables/instr_id/cpu/cpu_cop1_bc1.inc"
     }
 }
 
@@ -203,7 +203,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(RabbitizerInstructi
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_s.inc"
+#include "tables/instr_id/cpu/cpu_cop1_fpu_s.inc"
     }
 }
 
@@ -213,7 +213,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuD(RabbitizerInstructi
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_d.inc"
+#include "tables/instr_id/cpu/cpu_cop1_fpu_d.inc"
     }
 }
 
@@ -223,7 +223,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(RabbitizerInstructi
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_w.inc"
+#include "tables/instr_id/cpu/cpu_cop1_fpu_w.inc"
     }
 }
 
@@ -233,7 +233,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuL(RabbitizerInstructi
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/cpu/cpu_cop1_fpu_l.inc"
+#include "tables/instr_id/cpu/cpu_cop1_fpu_l.inc"
     }
 }
 
@@ -243,7 +243,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop1.inc"
+#include "tables/instr_id/cpu/cpu_cop1.inc"
 
         case 0x08: // fmt = BC
             RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(self);
@@ -277,7 +277,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *s
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop2.inc"
+#include "tables/instr_id/cpu/cpu_cop2.inc"
 
         default:
             break;

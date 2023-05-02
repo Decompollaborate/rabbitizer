@@ -8,7 +8,7 @@
 #define RAB_DEF_ACCESSTYPE(name) { "AccessType", #name , RAB_ACCESSTYPE_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_AccessType_enumvalues[] = {
-#include "instructions/AccessType.inc"
+#include "tables/AccessType.inc"
 
     RAB_DEF_ACCESSTYPE(MAX)
 

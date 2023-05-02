@@ -22,7 +22,7 @@ setup(
         Extension(
             name="rabbitizer",
             sources=sourcesList,
-            include_dirs=["include", "rabbitizer"],
+            include_dirs=["include", "rabbitizer", "tables"],
             extra_compile_args = extraCompileArgs,
         ),
     ],

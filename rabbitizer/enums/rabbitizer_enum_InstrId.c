@@ -9,7 +9,7 @@
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...)  RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[] = {
-    #include "instructions/InstrIds.inc"
+    #include "tables/InstrIds.inc"
 
     RABBITIZER_DEF_INSTR_ID(ALL, , MAX, )
     { 0 },

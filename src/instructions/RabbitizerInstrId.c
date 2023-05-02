@@ -5,7 +5,7 @@
 
 #include <assert.h>
 
-#include "InstrId_Names_array.table.h"
+#include "generated/InstrId_Names_array.h"
 
 bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId) {
     switch (uniqueId) {

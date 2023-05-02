@@ -8,7 +8,7 @@
 #include "common/Utils.h"
 #include "common/RabbitizerConfig.h"
 
-#include "Registers_Names_arrays.table.h"
+#include "generated/Registers_Names_arrays.h"
 
 const char *RabbitizerRegister_getNameGpr(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_GprO32_Names));

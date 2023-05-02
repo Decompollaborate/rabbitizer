@@ -13,7 +13,7 @@
 extern "C" {
 #endif
 
-#include "InstrId_enum.table.h"
+#include "generated/InstrId_enum.h"
 
 extern const char *RabbitizerInstrId_Names[];
 

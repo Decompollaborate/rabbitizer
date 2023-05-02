@@ -7,7 +7,7 @@
 
 
 namespace rabbitizer {
-#include "AccessType_enum_class.table.h"
+#include "generated/AccessType_enum_class.hpp"
 };
 
 

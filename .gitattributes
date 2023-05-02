@@ -1,28 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-src/instructions/RabbitizerInstruction/instrOpercandCallbacks_array.table.h linguist-generated=true
-
-src/instructions/InstrCategory_Names_array.table.h linguist-generated=true
-src/instructions/InstrDescriptor_Descriptors_array.table.h linguist-generated=true
-src/instructions/InstrId_Names_array.table.h linguist-generated=true
-src/instructions/RegisterDescriptor_Descriptors_arrays.table.h linguist-generated=true
-src/instructions/Registers_Names_arrays.table.h linguist-generated=true
-
-include/common/Abi_enum.table.h linguist-generated=true
-
-include/instructions/AccessType_enum.table.h linguist-generated=true
-include/instructions/InstrCategory_enum.table.h linguist-generated=true
-include/instructions/InstrId_enum.table.h linguist-generated=true
-include/instructions/InstrSuffix_enum.table.h linguist-generated=true
-include/instructions/OperandType_enum.table.h linguist-generated=true
-include/instructions/OperandType_function_declarations.table.h linguist-generated=true
-include/instructions/Registers_enums.table.h linguist-generated=true
-
-cplusplus/include/instructions/AccessType_enum_class.table.h linguist-generated=true
-cplusplus/include/instructions/OperandType_enum_class.table.h linguist-generated=true
-cplusplus/include/instructions/Registers_enum_classes.table.h linguist-generated=true
-cplusplus/include/instructions/UniqueId_enum_class.table.h linguist-generated=true
+include/generated/* linguist-generated=true
+cplusplus/include/generated/* linguist-generated=true
 
 rust/src/abi_enum.rs linguist-generated=true
 rust/src/access_type_enum.rs linguist-generated=true

@@ -12,7 +12,7 @@
     { "RegGprN32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_RegGprN32_enumvalues[] = {
-    #include "instructions/registers/RabbitizerRegister_GprN32.inc"
+    #include "tables/registers/RabbitizerRegister_GprN32.inc"
 
     { 0 },
 };

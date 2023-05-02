@@ -10,7 +10,7 @@
 
 namespace rabbitizer {
     namespace InstrId {
-#include "UniqueId_enum_class.table.h"
+#include "generated/UniqueId_enum_class.hpp"
 
         std::string getOpcodeName(UniqueId uniqueId);
     };

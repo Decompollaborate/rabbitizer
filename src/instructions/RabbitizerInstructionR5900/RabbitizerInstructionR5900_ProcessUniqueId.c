@@ -18,7 +18,7 @@ void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *se
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
 
     switch (opcode) {
-#include "instructions/instr_id/r5900/r5900_normal.inc"
+#include "tables/instr_id/r5900/r5900_normal.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Normal(self);
@@ -39,7 +39,7 @@ void RabbitizerInstructionR5900_processUniqueId_Special(RabbitizerInstruction *s
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_special.inc"
+#include "tables/instr_id/r5900/r5900_special.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Special(self);
@@ -73,7 +73,7 @@ void RabbitizerInstructionR5900_processUniqueId_Regimm(RabbitizerInstruction *se
     self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
 
     switch (rt) {
-#include "instructions/instr_id/r5900/r5900_regimm.inc"
+#include "tables/instr_id/r5900/r5900_regimm.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Regimm(self);
@@ -92,7 +92,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0_Tlb(RabbitizerInstr
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_cop0_tlb.inc"
+#include "tables/instr_id/r5900/r5900_cop0_tlb.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(self);
@@ -107,7 +107,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0(RabbitizerInstructi
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop0.inc"
+#include "tables/instr_id/cpu/cpu_cop0.inc"
 
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(self);
@@ -127,7 +127,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1_FpuS(RabbitizerInst
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_cop1_fpu_s.inc"
+#include "tables/instr_id/r5900/r5900_cop1_fpu_s.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(self);
@@ -141,7 +141,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1(RabbitizerInstructi
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/cpu/cpu_cop1.inc"
+#include "tables/instr_id/cpu/cpu_cop1.inc"
 
         case 0x08: // fmt = BC
             RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(self);
@@ -165,7 +165,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(RabbitizerInstructio
     self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/r5900/r5900_cop2_bc2.inc"
+#include "tables/instr_id/r5900/r5900_cop2_bc2.inc"
     }
 }
 
@@ -175,7 +175,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(UNUSED Rab
     self->_mandatorybits = RAB_INSTR_R5900_PACK_fhi_flo(self->_mandatorybits, fhiflo);
 
     switch (fhiflo) {
-#include "instructions/instr_id/r5900/r5900_cop2_special2.inc"
+#include "tables/instr_id/r5900/r5900_cop2_special2.inc"
     }
 }
 
@@ -185,7 +185,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(Rabbitizer
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_cop2_special1.inc"
+#include "tables/instr_id/r5900/r5900_cop2_special1.inc"
 
         case 0x3C:
         case 0x3D:
@@ -202,7 +202,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstructi
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
 
     switch (fmt) {
-#include "instructions/instr_id/r5900/r5900_cop2.inc"
+#include "tables/instr_id/r5900/r5900_cop2.inc"
 
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(self);
@@ -237,7 +237,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_0(RabbitizerInstruction *sel
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_mmi_0.inc"
+#include "tables/instr_id/r5900/r5900_mmi_0.inc"
     }
 }
 
@@ -247,7 +247,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_1(RabbitizerInstruction *sel
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_mmi_1.inc"
+#include "tables/instr_id/r5900/r5900_mmi_1.inc"
     }
 }
 
@@ -257,7 +257,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_2(RabbitizerInstruction *sel
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_mmi_2.inc"
+#include "tables/instr_id/r5900/r5900_mmi_2.inc"
     }
 }
 
@@ -267,7 +267,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_3(RabbitizerInstruction *sel
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_mmi_3.inc"
+#include "tables/instr_id/r5900/r5900_mmi_3.inc"
     }
 }
 
@@ -277,7 +277,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/r5900/r5900_mmi.inc"
+#include "tables/instr_id/r5900/r5900_mmi.inc"
 
         case 0x08:
             RabbitizerInstructionR5900_processUniqueId_MMI_0(self);
