@@ -12,20 +12,22 @@ IINC            := -I include
 IINC_XX         := -I include -I cplusplus/include
 CSTD            := -std=c11
 CXXSTD          := -std=c++17
-CFLAGS          := -fPIC
-CXXFLAGS        := -fPIC
+CFLAGS          := -fPIC -fno-common
+CXXFLAGS        := -fPIC -fno-common
 LDFLAGS         := -Lbuild -lrabbitizer
 LDXXFLAGS       := -Lbuild -lrabbitizerpp
 WARNINGS        := -Wall -Wextra -Wpedantic
-# WARNINGS        := -Wall -Wextra -Wpedantic -Wpadded
-WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function -Werror=unused-parameter -Werror=shadow -Werror=switch
+WARNINGS        += -Wformat=2 -Wundef
+# WARNINGS        += -Wconversion
+WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function
+WARNINGS        += -Werror=unused-parameter -Werror=shadow -Werror=switch -Werror=double-promotion
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
 WARNINGS_CXX    :=
 
 TABLE_GEN       := tools/table_gen.sh
 
 ifeq ($(CC),gcc)
-    WARNINGS    += -Wno-cast-function-type
+    WARNINGS    += -Wno-cast-function-type -Wformat-truncation -Wformat-overflow
 endif
 
 ifeq ($(DEBUG),0)

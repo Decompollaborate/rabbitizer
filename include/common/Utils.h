@@ -16,7 +16,7 @@ extern "C" {
 #define __attribute__(x)
 #endif
 
-#if __STDC_VERSION__ >= 202000L
+#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202000L) || (defined(__cplusplus) && __cplusplus >= 201103L)
 #define CONST [[gnu::const]]
 #define DEPRECATED(reason) [[deprecated (reason)]]
 #define FALLTHROUGH [[fallthrough]]
@@ -76,7 +76,7 @@ extern "C" {
 
 #define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
     do {                                                       \
-        size_t __tempSize = expression;                        \
+        size_t __tempSize = (size_t)expression;                \
         (buffer) += __tempSize;                                \
         (totalSize) += __tempSize;                             \
     } while (0)
