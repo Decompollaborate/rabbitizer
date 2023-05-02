@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 set -e
@@ -12,7 +12,7 @@ HEADER_GUARD_BAD=$3
 # Change dots to underscores
 HEADER_GUARD=$(echo ${HEADER_GUARD_BAD} | sed 's/\./_/g')
 
-echo "/* SPDX-FileCopyrightText: © 2022 Decompollaborate */" > ${OUTPUT_FILE}
+echo "/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */" > ${OUTPUT_FILE}
 echo "/* SPDX-License-Identifier: MIT */" >> ${OUTPUT_FILE}
 echo >> ${OUTPUT_FILE}
 echo "/* Automatically generated. DO NOT MODIFY */" >> ${OUTPUT_FILE}
