@@ -7,8 +7,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum GprO32 {
     zero,
     at,
@@ -46,8 +45,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum GprN32 {
     zero,
     at,
@@ -85,8 +83,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum Cop0 {
     Index,
     Random,
@@ -124,8 +121,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum Cop1O32 {
     fv0,
     fv0f,
@@ -163,8 +159,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum Cop1N32 {
     fv0,
     ft14,
@@ -202,8 +197,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum Cop1N64 {
     fv0,
     ft12,
@@ -241,8 +235,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum Cop1Control {
     COP1_CONTROL_0,
     COP1_CONTROL_1,
@@ -280,8 +273,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum Cop2 {
     COP2_0,
     COP2_1,
@@ -319,8 +311,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum RspGpr {
     RSP_GPR_zero,
     RSP_GPR_1,
@@ -358,8 +349,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum RspCop0 {
     SP_MEM_ADDR,
     SP_DRAM_ADDR,
@@ -381,8 +371,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum RspCop2 {
     RSP_COP2_0,
     RSP_COP2_1,
@@ -420,8 +409,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum RspCop2Control {
     RSP_COP2_CONTROL_0,
     RSP_COP2_CONTROL_1,
@@ -459,8 +447,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum RspVector {
     v0,
     v1,
@@ -498,8 +485,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum R5900VF {
     vf0,
     vf1,
@@ -537,8 +523,7 @@ pub mod registers {
     #[repr(u32)]
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive)]
-    #[derive(num_enum::IntoPrimitive)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum R5900VI {
     vi0,
     vi1,

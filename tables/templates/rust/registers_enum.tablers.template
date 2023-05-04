@@ -15,8 +15,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum GprO32 {
         #include "registers/RabbitizerRegister_GprO32.inc"
     }
@@ -24,8 +23,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum GprN32 {
         #include "registers/RabbitizerRegister_GprN32.inc"
     }
@@ -33,8 +31,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum Cop0 {
         #include "registers/RabbitizerRegister_Cop0.inc"
     }
@@ -43,8 +40,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum Cop1O32 {
         #include "registers/RabbitizerRegister_Cop1O32.inc"
     }
@@ -52,8 +48,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum Cop1N32 {
         #include "registers/RabbitizerRegister_Cop1N32.inc"
     }
@@ -61,8 +56,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum Cop1N64 {
         #include "registers/RabbitizerRegister_Cop1N64.inc"
     }
@@ -75,8 +69,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum Cop1Control {
         #include "registers/RabbitizerRegister_Cop1Control.inc"
     }
@@ -84,8 +77,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum Cop2 {
         #include "registers/RabbitizerRegister_Cop2.inc"
     }
@@ -96,8 +88,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum RspGpr {
         #include "registers/RabbitizerRegister_RspGpr.inc"
     }
@@ -110,8 +101,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum RspCop0 {
         #include "registers/RabbitizerRegister_RspCop0.inc"
     }
@@ -124,8 +114,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum RspCop2 {
         #include "registers/RabbitizerRegister_RspCop2.inc"
     }
@@ -133,8 +122,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum RspCop2Control {
         #include "registers/RabbitizerRegister_RspCop2Control.inc"
     }
@@ -147,8 +135,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum RspVector {
         #include "registers/RabbitizerRegister_RspVector.inc"
     }
@@ -160,8 +147,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum R5900VF {
         #include "registers/RabbitizerRegister_R5900VF.inc"
     }
@@ -169,8 +155,7 @@ pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive))
-    SPECIAL_RS_TAG(derive(num_enum::IntoPrimitive))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
     pub enum R5900VI {
         #include "registers/RabbitizerRegister_R5900VI.inc"
     }

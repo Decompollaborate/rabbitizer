@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{operand_type_enum, instruction, utils};
+use crate::{instruction, operand_type_enum, utils};
 
 extern "C" {
     fn RabbitizerOperandType_getBufferSize(
@@ -20,7 +20,11 @@ extern "C" {
 }
 
 impl operand_type_enum::OperandType {
-    pub fn disassemble(&self, instr: &instruction::Instruction, imm_override: Option<&str>) -> String {
+    pub fn disassemble(
+        &self,
+        instr: &instruction::Instruction,
+        imm_override: Option<&str>,
+    ) -> String {
         let (imm_override_ptr, imm_override_len) = utils::c_string_from_str(imm_override);
 
         unsafe {

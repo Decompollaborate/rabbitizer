@@ -3,10 +3,12 @@
 
 pub type SizeT = usize;
 
-
 pub fn c_string_from_str(str: Option<&str>) -> (*const core::ffi::c_char, SizeT) {
     if let Some(str) = str {
-        (str.as_ptr() as *const core::ffi::c_char, str.len().try_into().unwrap())
+        (
+            str.as_ptr() as *const core::ffi::c_char,
+            str.len().try_into().unwrap(),
+        )
     } else {
         (std::ptr::null(), 0)
     }
@@ -27,6 +29,6 @@ pub fn shiftr(v: u32, s: u32, w: u32) -> u32 {
 pub fn convert_option_string_to_option_str(input: &Option<String>) -> Option<&str> {
     match input {
         None => None,
-        Some(x) => Some(x.as_str())
+        Some(x) => Some(x.as_str()),
     }
 }
