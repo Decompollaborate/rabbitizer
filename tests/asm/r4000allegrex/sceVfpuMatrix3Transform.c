@@ -6,7 +6,6 @@ typedef struct ScePspFMatrix3 {
     ScePspFVector3 x, y, z;
 } ScePspFMatrix3;
 
-#if 0
 ScePspFVector3 *sceVfpuMatrix3Transform(ScePspFVector3 *pv0, const ScePspFMatrix3 *pm1, const ScePspFVector3 *pv2)
 {
 #if 0
@@ -40,4 +39,3 @@ ScePspFVector3 *sceVfpuMatrix3Transform(ScePspFVector3 *pv0, const ScePspFMatrix
 #endif
     return (pv0);
 }
-#endif
