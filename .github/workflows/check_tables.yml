@@ -14,6 +14,12 @@ jobs:
       with:
         ref: ${{ github.head_ref }}
 
+    - name: Setup Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
     - name: clean tables
       run: make -C tables -j $(nproc) distclean
 

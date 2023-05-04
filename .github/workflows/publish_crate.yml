@@ -18,6 +18,9 @@ jobs:
         toolchain: stable
         override: true
 
+    - name: Check format
+      run: cargo fmt --check
+
     - name: Build Rust tests
       run: cargo test
 

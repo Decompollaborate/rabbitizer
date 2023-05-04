@@ -31,6 +31,7 @@ TABLE_DEP_FILES     += $(TABLE_PYI_TEMPLATES:%.template=%.d)
 all: tables
 
 tables: $(TABLE_C_GENERATED) $(TABLE_CPLUSPLUS_GENERATES) $(TABLE_RS_GENERATED) $(TABLE_PYI_GENERATED)
+	cargo fmt
 
 clean:
 	$(RM) -rf $(TABLE_C_GENERATED)

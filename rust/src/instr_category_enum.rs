@@ -3,9 +3,9 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
- #[repr(u32)]
- #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
- #[allow(non_camel_case_types)]
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+#[allow(non_camel_case_types)]
 pub enum InstrCategory {
     CPU,
     RSP,
