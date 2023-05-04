@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/InstructionBase.hpp"
@@ -655,6 +655,14 @@ uint32_t InstructionBase::getRaw() const {
 InstrId::UniqueId InstructionBase::getUniqueId() const {
     return static_cast<InstrId::UniqueId>(this->instr.uniqueId);
 }
+
+InstrIdType::IdType InstructionBase::getInstrIdType() const {
+    return static_cast<InstrIdType::IdType>(this->instr.instrIdType);
+}
+std::string InstructionBase::getInstrIdTypeName() const {
+    return InstrIdType::getName(getInstrIdType());
+}
+
 uint32_t InstructionBase::getVram() const {
     return this->instr.vram;
 }

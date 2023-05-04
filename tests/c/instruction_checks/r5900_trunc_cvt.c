@@ -16,8 +16,8 @@ typedef struct TestEntry {
 
 
 const TestEntry entries[] = {
-    { 0x4600600D, true, ".word       0x4600600D                   # trunc.w.s   $f0, $f12 # 00000000" },
-    { 0x46006024, true, ".word       0x46006024                   # cvt.w.s     $f0, $f12 # 00000000" },
+    { 0x4600600D, true, ".word       0x4600600D                   # trunc.w.s   $f0, $f12 # 00000000 <InstrIdType: CPU_COP1_FPUS>" },
+    { 0x46006024, true, ".word       0x46006024                   # cvt.w.s     $f0, $f12 # 00000000 <InstrIdType: CPU_COP1_FPUS>" },
     { 0x4600600D, false, "trunc.w.s   $f0, $f12" },
     { 0x46006024, false, "cvt.w.s     $f0, $f12" },
 };

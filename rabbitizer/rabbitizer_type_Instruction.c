@@ -189,6 +189,18 @@ static PyObject *rabbitizer_type_Instruction_member_get_uniqueId(PyRabbitizerIns
     return enumInstance;
 }
 
+static PyObject *rabbitizer_type_Instruction_member_get_instrIdType(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    PyObject *enumInstance = rabbitizer_enum_InstrIdType_enumvalues[self->instr.instrIdType].instance;
+
+    if (enumInstance == NULL) {
+        PyErr_SetString(PyExc_RuntimeError, "Internal error: invalid instrIdType enum value");
+        return NULL;
+    }
+
+    Py_INCREF(enumInstance);
+    return enumInstance;
+}
+
 #define MEMBER_GET(name, docs, closure)      { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) NULL,                                          PyDoc_STR(docs), closure }
 #define MEMBER_SET(name, docs, closure)      { #name, (getter) NULL,                                          (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 #define MEMBER_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
@@ -203,6 +215,7 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(ft, "", NULL),
     MEMBER_GET(fd, "", NULL),
     MEMBER_GET(uniqueId, "", NULL),
+    MEMBER_GET(instrIdType, "", NULL),
 
     { 0 }
 };

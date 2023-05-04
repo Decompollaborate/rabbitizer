@@ -1,7 +1,8 @@
-# SPDX-FileCopyrightText: © 2022 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 include **/*.h
 include **/**/*.h
 graft include
+graft tables
 graft src

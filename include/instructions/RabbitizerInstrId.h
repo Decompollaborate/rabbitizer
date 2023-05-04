@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_INSTRID_H
@@ -13,7 +13,7 @@
 extern "C" {
 #endif
 
-#include "InstrId_enum.table.h"
+#include "generated/InstrId_enum.h"
 
 extern const char *RabbitizerInstrId_Names[];
 

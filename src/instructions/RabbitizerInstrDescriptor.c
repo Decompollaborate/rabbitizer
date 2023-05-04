@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstrDescriptor.h"
@@ -7,7 +7,7 @@
 
 #include "instructions/RabbitizerInstruction.h"
 
-#include "InstrDescriptor_Descriptors_array.table.h"
+#include "generated/InstrDescriptor_Descriptors_array.h"
 
 bool RabbitizerInstrDescriptor_hasSpecificOperand(const RabbitizerInstrDescriptor *self,
                                                   RabbitizerOperandType operand) {

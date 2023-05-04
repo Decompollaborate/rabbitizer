@@ -1,11 +1,11 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstruction.h"
 
 #include <assert.h>
 
-#include "instrOpercandCallbacks_array.table.h"
+#include "generated/instrOpercandCallbacks_array.h"
 
 size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const RabbitizerInstruction *instr,
                                            size_t immOverrideLength) {

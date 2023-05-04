@@ -8,7 +8,7 @@
 #define RABBITIZER_DEF_INSTR_CATEGORY(name) { "InstrCategory", #name, RABBITIZER_INSTRCAT_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrCategory_enumvalues[] = {
-    #include "instructions/InstrCategory.inc"
+    #include "tables/InstrCategory.inc"
     RABBITIZER_DEF_INSTR_CATEGORY(MAX)
 
     { 0 },

@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_INSTRUCTION_H
@@ -14,6 +14,7 @@
 #include "RabbitizerInstrId.h"
 #include "RabbitizerInstrDescriptor.h"
 #include "RabbitizerInstrCategory.h"
+#include "RabbitizerInstrIdType.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,6 +27,7 @@ typedef struct RabbitizerInstruction {
 
     RabbitizerInstrId uniqueId;
     const RabbitizerInstrDescriptor *descriptor;
+    RabInstrIdType instrIdType;
 
     uint32_t vram;
     bool _handwrittenCategory;

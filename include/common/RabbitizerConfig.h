@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_CONFIG_H
@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 
-#include "Abi_enum.table.h"
+#include "generated/Abi_enum.h"
 
 RabbitizerAbi RabbitizerAbi_fromStr(const char *name);
 

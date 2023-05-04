@@ -1,11 +1,11 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerRegisterDescriptor.h"
 
 #include "instructions/RabbitizerRegister.h"
 
-#include "RegisterDescriptor_Descriptors_arrays.table.h"
+#include "generated/RegisterDescriptor_Descriptors_arrays.h"
 
 bool RabbitizerRegisterDescriptor_isClobberedByFuncCall(const RabbitizerRegisterDescriptor *self) {
     return self->isClobberedByFuncCall;

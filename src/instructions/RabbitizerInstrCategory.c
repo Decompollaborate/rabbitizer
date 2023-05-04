@@ -1,11 +1,11 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstrCategory.h"
 
 #include <string.h>
 
-#include "InstrCategory_Names_array.table.h"
+#include "generated/InstrCategory_Names_array.h"
 
 RabbitizerInstrCategory RabbitizerInstrCategory_fromStr(const char *name) {
     if (name == NULL) {

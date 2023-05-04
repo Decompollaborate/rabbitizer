@@ -12,7 +12,7 @@
     { "RegCop1N64", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_RegCop1N64_enumvalues[] = {
-    #include "instructions/registers/RabbitizerRegister_Cop1N64.inc"
+    #include "tables/registers/RabbitizerRegister_Cop1N64.inc"
 
     { 0 },
 };

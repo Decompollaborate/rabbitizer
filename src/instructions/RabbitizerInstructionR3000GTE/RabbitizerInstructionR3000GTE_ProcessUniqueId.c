@@ -13,22 +13,32 @@
     RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionR3000GTE_processUniqueId_Normal(RabbitizerInstruction *self) {
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_NORMAL;
+
     RabbitizerInstruction_processUniqueId_Normal(self);
 }
 
 void RabbitizerInstructionR3000GTE_processUniqueId_Special(RabbitizerInstruction *self) {
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_SPECIAL;
+
     RabbitizerInstruction_processUniqueId_Special(self);
 }
 
 void RabbitizerInstructionR3000GTE_processUniqueId_Regimm(RabbitizerInstruction *self) {
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_REGIMM;
+
     RabbitizerInstruction_processUniqueId_Regimm(self);
 }
 
 void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_COP0;
+
     RabbitizerInstruction_processUniqueId_Coprocessor0(self);
 }
 
 void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_COP1;
+
     RabbitizerInstruction_processUniqueId_Coprocessor1(self);
 }
 
@@ -36,6 +46,7 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerIn
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_COP2_GTE;
 
     // GTE instructions are weird
     self->_mandatorybits =
@@ -47,7 +58,7 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerIn
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_lm(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_lm(self));
 
     switch (function) {
-#include "instructions/instr_id/r3000gte/r3000gte_cop2_gte.inc"
+#include "tables/instr_id/r3000gte/r3000gte_cop2_gte.inc"
     }
 }
 
@@ -56,6 +67,7 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2(RabbitizerInstru
     bool fetchDescriptor = true;
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_COP2;
 
     switch (fmt) {
         case 0x10:
@@ -93,6 +105,7 @@ void RabbitizerInstructionR3000GTE_processUniqueId(RabbitizerInstruction *self) 
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_INVALID;
 
     switch (opcode) {
         default:

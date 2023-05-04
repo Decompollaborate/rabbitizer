@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "enums/enums_utils.h"
@@ -12,7 +12,7 @@
     { "RegGprO32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_RegGprO32_enumvalues[] = {
-    #include "instructions/registers/RabbitizerRegister_GprO32.inc"
+    #include "tables/registers/RabbitizerRegister_GprO32.inc"
 
     { 0 },
 };

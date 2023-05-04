@@ -10,6 +10,7 @@ from .Utils import *
 from .Enum import *
 from .InstrCategory import *
 from .InstrId import *
+from .InstrIdType import *
 from .OperandType import *
 from .AccessType import *
 

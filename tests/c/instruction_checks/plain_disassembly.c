@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "rabbitizer.h"
@@ -55,9 +55,9 @@ const TestEntry entries[] = {
     { 0x8F858028, "%got(STR_10007C90)", "lw          $a1, %got(STR_10007C90)($gp)"},
 
     // Invalid instructions
-    { 0x44444444, NULL, ".word       0x44444444                   # cfc1        $a0, $8 # 00000444" },
-    { 0x77777777, NULL, ".word       0x77777777                   # INVALID     $k1, $s7, 0x7777 # 00000000" },
-    { 0xEEEEEEEE, NULL, ".word       0xEEEEEEEE                   # INVALID     $s7, $t6, -0x1112 # 00000000" },
+    { 0x44444444, NULL, ".word       0x44444444                   # cfc1        $a0, $8 # 00000444 <InstrIdType: CPU_COP1>" },
+    { 0x77777777, NULL, ".word       0x77777777                   # INVALID     $k1, $s7, 0x7777 # 00000000 <InstrIdType: CPU_NORMAL>" },
+    { 0xEEEEEEEE, NULL, ".word       0xEEEEEEEE                   # INVALID     $s7, $t6, -0x1112 # 00000000 <InstrIdType: CPU_NORMAL>" },
 };
 
 int main() {

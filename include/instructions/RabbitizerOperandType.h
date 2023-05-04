@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_OPERAND_TYPE_H
@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-#include "OperandType_enum.table.h"
+#include "generated/OperandType_enum.h"
 
 struct RabbitizerInstruction;
 
@@ -19,7 +19,7 @@ typedef size_t (*OperandCallback)(const struct RabbitizerInstruction *self, char
 
 extern const OperandCallback instrOpercandCallbacks[];
 
-#include "OperandType_function_declarations.table.h"
+#include "generated/OperandType_function_declarations.h"
 
 #ifdef __cplusplus
 }

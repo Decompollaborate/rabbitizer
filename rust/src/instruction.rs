@@ -1,7 +1,10 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{instr_id_enum, instr_category_enum, instr_descriptor, operand_type_enum, instr_suffix_enum, access_type_enum, registers_enum, utils};
+use crate::{
+    access_type_enum, instr_category_enum, instr_descriptor, instr_id_enum, instr_id_type_enum,
+    instr_suffix_enum, operand_type_enum, registers_enum, utils,
+};
 
 #[repr(C)]
 #[derive(Debug, Clone)]
@@ -11,6 +14,7 @@ pub struct Instruction {
     _mandatorybits: u32,
     pub unique_id: instr_id_enum::InstrId,
     descriptor: *const instr_descriptor::InstrDescriptor,
+    instr_id_type: instr_id_type_enum::InstrIdType,
     pub vram: u32,
     _handwritten_category: bool,
     pub in_handwritten_function: bool,
@@ -19,7 +23,14 @@ pub struct Instruction {
 
 #[link(name = "rabbitizer", kind = "static")]
 extern "C" {
-    fn RabbitizerInstrId_getOpcodeName(unique_id: instr_id_enum::InstrId) -> *const core::ffi::c_char;
+    fn RabbitizerInstrId_getOpcodeName(
+        unique_id: instr_id_enum::InstrId,
+    ) -> *const core::ffi::c_char;
+}
+
+extern "C" {
+    fn RabInstrIdType_getName(id_type: instr_id_type_enum::InstrIdType)
+        -> *const core::ffi::c_char;
 }
 
 extern "C" {
@@ -56,8 +67,7 @@ extern "C" {
     fn RabbitizerInstruction_getInstrIndexAsVram(self_: *const Instruction) -> u32;
     fn RabbitizerInstruction_getBranchOffset(self_: *const Instruction) -> i32;
 
-    fn RabbitizerInstruction_getBranchOffsetGeneric(self_: *const Instruction)
-        -> i32;
+    fn RabbitizerInstruction_getBranchOffsetGeneric(self_: *const Instruction) -> i32;
     fn RabbitizerInstruction_getBranchVramGeneric(self_: *const Instruction) -> i32;
     fn RabbitizerInstruction_getDestinationGpr(self_: *const Instruction) -> i8;
     fn RabbitizerInstruction_outputsToGprZero(self_: *const Instruction) -> bool;
@@ -65,8 +75,7 @@ extern "C" {
     fn RabbitizerInstruction_isImplemented(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isLikelyHandwritten(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isNop(self_: *const Instruction) -> bool;
-    fn RabbitizerInstruction_isUnconditionalBranch(self_: *const Instruction)
-        -> bool;
+    fn RabbitizerInstruction_isUnconditionalBranch(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isReturn(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isJumptableJump(self_: *const Instruction) -> bool;
 
@@ -120,23 +129,41 @@ extern "C" {
     fn RabbitizerInstrDescriptor_isTrap(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_isFloat(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_isDouble(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_isUnsigned(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_isUnsigned(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
 
-    fn RabbitizerInstrDescriptor_modifiesRs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_modifiesRt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_modifiesRd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesRs(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesRt(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesRd(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
     fn RabbitizerInstrDescriptor_readsRs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_readsRt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_readsRd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
 
     fn RabbitizerInstrDescriptor_readsHI(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_readsLO(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_modifiesHI(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_modifiesLO(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesHI(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesLO(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
 
-    fn RabbitizerInstrDescriptor_modifiesFs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_modifiesFt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_modifiesFd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesFs(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesFt(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
+    fn RabbitizerInstrDescriptor_modifiesFd(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
     fn RabbitizerInstrDescriptor_readsFs(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_readsFt(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_readsFd(self_: *const instr_descriptor::InstrDescriptor) -> bool;
@@ -151,8 +178,11 @@ extern "C" {
         self_: *const instr_descriptor::InstrDescriptor,
     ) -> bool;
     fn RabbitizerInstrDescriptor_doesLoad(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_doesStore(self_: *const instr_descriptor::InstrDescriptor) -> bool;
-    fn RabbitizerInstrDescriptor_maybeIsMove(self_: *const instr_descriptor::InstrDescriptor) -> bool;
+    fn RabbitizerInstrDescriptor_doesStore(self_: *const instr_descriptor::InstrDescriptor)
+        -> bool;
+    fn RabbitizerInstrDescriptor_maybeIsMove(
+        self_: *const instr_descriptor::InstrDescriptor,
+    ) -> bool;
     fn RabbitizerInstrDescriptor_isPseudo(self_: *const instr_descriptor::InstrDescriptor) -> bool;
     fn RabbitizerInstrDescriptor_getAccessType(
         self_: *const instr_descriptor::InstrDescriptor,
@@ -209,8 +239,7 @@ impl Instruction {
                 }
                 instr_category_enum::InstrCategory::MAX => {
                     core::panic!();
-                }
-                // _ => not used in purpose
+                } // _ => not used in purpose
             }
             instr.assume_init()
         }
@@ -340,7 +369,6 @@ impl Instruction {
         utils::shiftr(self.word, 0, 25)
     }
 
-
     pub fn get_fs(&self) -> u32 {
         if !self.has_operand_alias(operand_type_enum::OperandType::cpu_fs) {
             core::panic!();
@@ -425,37 +453,31 @@ impl Instruction {
         self.get_cop2t().try_into().unwrap()
     }
 
+    pub fn instr_id_type_name(&self) -> &'static str {
+        unsafe { std::ffi::CStr::from_ptr(RabInstrIdType_getName(self.instr_id_type)) }
+            .to_str()
+            .unwrap()
+    }
+
     pub fn raw(&self) -> u32 {
-        unsafe {
-            RabbitizerInstruction_getRaw(self)
-        }
+        unsafe { RabbitizerInstruction_getRaw(self) }
     }
     pub fn processed_immediate(&self) -> i32 {
-        unsafe {
-            RabbitizerInstruction_getProcessedImmediate(self)
-        }
+        unsafe { RabbitizerInstruction_getProcessedImmediate(self) }
     }
     pub fn instr_index_as_vram(&self) -> u32 {
-        unsafe {
-            RabbitizerInstruction_getInstrIndexAsVram(self)
-        }
+        unsafe { RabbitizerInstruction_getInstrIndexAsVram(self) }
     }
     pub fn branch_offset(&self) -> i32 {
-        unsafe {
-            RabbitizerInstruction_getBranchOffset(self)
-        }
+        unsafe { RabbitizerInstruction_getBranchOffset(self) }
     }
 
     pub fn branch_offset_generic(&self) -> i32 {
-        unsafe {
-            RabbitizerInstruction_getBranchOffsetGeneric(self)
-        }
+        unsafe { RabbitizerInstruction_getBranchOffsetGeneric(self) }
     }
 
     pub fn branch_vram_generic(&self) -> i32 {
-        unsafe {
-            RabbitizerInstruction_getBranchVramGeneric(self)
-        }
+        unsafe { RabbitizerInstruction_getBranchVramGeneric(self) }
     }
     pub fn destination_gpr(&self) -> Option<u32> {
         unsafe {
@@ -468,303 +490,204 @@ impl Instruction {
         }
     }
     pub fn outputs_to_gpr_zero(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_outputsToGprZero(self)
-        }
+        unsafe { RabbitizerInstruction_outputsToGprZero(self) }
     }
     pub fn opcode_name(&self) -> &'static str {
         unsafe {
-            std::ffi::CStr::from_ptr(RabbitizerInstrId_getOpcodeName(self.unique_id)).to_str().unwrap()
+            std::ffi::CStr::from_ptr(RabbitizerInstrId_getOpcodeName(self.unique_id))
+                .to_str()
+                .unwrap()
         }
     }
 
     pub fn blank_out(mut self) {
-        unsafe {
-            RabbitizerInstruction_blankOut(&mut self)
-        }
+        unsafe { RabbitizerInstruction_blankOut(&mut self) }
     }
 
     pub fn is_implemented(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_isImplemented(self)
-        }
+        unsafe { RabbitizerInstruction_isImplemented(self) }
     }
     pub fn is_likely_handwritten(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_isLikelyHandwritten(self)
-        }
+        unsafe { RabbitizerInstruction_isLikelyHandwritten(self) }
     }
     pub fn is_nop(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_isNop(self)
-        }
+        unsafe { RabbitizerInstruction_isNop(self) }
     }
     pub fn is_unconditional_branch(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_isUnconditionalBranch(self)
-        }
+        unsafe { RabbitizerInstruction_isUnconditionalBranch(self) }
     }
 
     pub fn is_return(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_isReturn(self)
-        }
+        unsafe { RabbitizerInstruction_isReturn(self) }
     }
     pub fn is_jumptable_jump(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_isJumptableJump(self)
-        }
+        unsafe { RabbitizerInstruction_isJumptableJump(self) }
     }
 
     pub fn has_delay_slot(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_hasDelaySlot(self)
-        }
+        unsafe { RabbitizerInstruction_hasDelaySlot(self) }
     }
 
     pub fn same_opcode(&self, other: &Instruction) -> bool {
-        unsafe {
-            RabbitizerInstruction_sameOpcode(self, other)
-        }
+        unsafe { RabbitizerInstruction_sameOpcode(self, other) }
     }
     pub fn same_opcode_but_different_arguments(&self, other: &Instruction) -> bool {
-        unsafe {
-            RabbitizerInstruction_sameOpcodeButDifferentArguments(self, other)
-        }
+        unsafe { RabbitizerInstruction_sameOpcodeButDifferentArguments(self, other) }
     }
 
     pub fn has_operand(&self, operand: operand_type_enum::OperandType) -> bool {
-        unsafe {
-            RabbitizerInstruction_hasOperand(self, operand)
-        }
+        unsafe { RabbitizerInstruction_hasOperand(self, operand) }
     }
     pub fn has_operand_alias(&self, operand: operand_type_enum::OperandType) -> bool {
-        unsafe {
-            RabbitizerInstruction_hasOperandAlias(self, operand)
-        }
+        unsafe { RabbitizerInstruction_hasOperandAlias(self, operand) }
     }
 
     pub fn is_valid(&self) -> bool {
-        unsafe {
-            RabbitizerInstruction_isValid(self)
-        }
+        unsafe { RabbitizerInstruction_isValid(self) }
     }
 
     pub fn get_operand_type(&self, index: usize) -> operand_type_enum::OperandType {
-        unsafe {
-            self.descriptor.as_ref().unwrap().get_operand_type(index)
-        }
+        unsafe { self.descriptor.as_ref().unwrap().get_operand_type(index) }
     }
 
     pub fn get_operands_slice(&self) -> &[operand_type_enum::OperandType] {
-        unsafe {
-            self.descriptor.as_ref().unwrap().operands_slice()
-        }
+        unsafe { self.descriptor.as_ref().unwrap().operands_slice() }
     }
 
     pub fn instr_suffix(&self) -> instr_suffix_enum::InstrSuffix {
-        unsafe {
-            RabbitizerInstrDescriptor_instrSuffix(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_instrSuffix(self.descriptor) }
     }
     pub fn is_branch(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isBranch(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isBranch(self.descriptor) }
     }
     pub fn is_branch_likely(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isBranchLikely(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isBranchLikely(self.descriptor) }
     }
     pub fn is_jump(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isJump(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isJump(self.descriptor) }
     }
     pub fn is_jump_with_address(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isJumpWithAddress(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isJumpWithAddress(self.descriptor) }
     }
     pub fn is_trap(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isTrap(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isTrap(self.descriptor) }
     }
     pub fn is_float(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isFloat(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isFloat(self.descriptor) }
     }
     pub fn is_double(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isDouble(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isDouble(self.descriptor) }
     }
     pub fn is_unsigned(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isUnsigned(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isUnsigned(self.descriptor) }
     }
     pub fn modifies_rs(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesRs(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesRs(self.descriptor) }
     }
     pub fn modifies_rt(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesRt(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesRt(self.descriptor) }
     }
     pub fn modifies_rd(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesRd(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesRd(self.descriptor) }
     }
     pub fn reads_rs(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsRs(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsRs(self.descriptor) }
     }
     pub fn reads_rt(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsRt(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsRt(self.descriptor) }
     }
     pub fn reads_rd(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsRd(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsRd(self.descriptor) }
     }
     pub fn reads_hi(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsHI(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsHI(self.descriptor) }
     }
     pub fn reads_lo(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsLO(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsLO(self.descriptor) }
     }
     pub fn modifies_hi(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesHI(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesHI(self.descriptor) }
     }
     pub fn modifies_lo(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesLO(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesLO(self.descriptor) }
     }
     pub fn modifies_fs(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesFs(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesFs(self.descriptor) }
     }
     pub fn modifies_ft(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesFt(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesFt(self.descriptor) }
     }
     pub fn modifies_fd(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_modifiesFd(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_modifiesFd(self.descriptor) }
     }
     pub fn reads_fs(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsFs(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsFs(self.descriptor) }
     }
     pub fn reads_ft(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsFt(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsFt(self.descriptor) }
     }
     pub fn reads_fd(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_readsFd(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_readsFd(self.descriptor) }
     }
 
     // @deprecated
     pub fn not_emited_by_compilers(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_notEmittedByCompilers(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_notEmittedByCompilers(self.descriptor) }
     }
     pub fn not_emitted_by_compilers(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_notEmittedByCompilers(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_notEmittedByCompilers(self.descriptor) }
     }
     pub fn can_be_hi(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_canBeHi(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_canBeHi(self.descriptor) }
     }
     pub fn can_be_lo(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_canBeLo(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_canBeLo(self.descriptor) }
     }
     pub fn does_link(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_doesLink(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_doesLink(self.descriptor) }
     }
     pub fn does_dereference(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_doesDereference(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_doesDereference(self.descriptor) }
     }
     pub fn does_load(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_doesLoad(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_doesLoad(self.descriptor) }
     }
     pub fn does_store(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_doesStore(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_doesStore(self.descriptor) }
     }
     pub fn maybe_is_move(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_maybeIsMove(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_maybeIsMove(self.descriptor) }
     }
     pub fn is_pseudo(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_isPseudo(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_isPseudo(self.descriptor) }
     }
     pub fn access_type(&self) -> access_type_enum::AccessType {
-        unsafe {
-            RabbitizerInstrDescriptor_getAccessType(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_getAccessType(self.descriptor) }
     }
     pub fn does_unsigned_memory_access(&self) -> bool {
-        unsafe {
-            RabbitizerInstrDescriptor_doesUnsignedMemoryAccess(self.descriptor)
-        }
+        unsafe { RabbitizerInstrDescriptor_doesUnsignedMemoryAccess(self.descriptor) }
     }
 
-    pub fn disassemble(&self, imm_override: Option<&str>, extra_l_just: i32) -> String {
+    pub fn disassemble(
+        &self,
+        imm_override: Option<&str>,
+        extra_l_just: core::ffi::c_int,
+    ) -> String {
         let (imm_override_ptr, imm_override_len) = utils::c_string_from_str(imm_override);
 
         unsafe {
-            let buffer_size = RabbitizerInstruction_getSizeForBuffer(self, imm_override_len, extra_l_just.try_into().unwrap());
+            let buffer_size =
+                RabbitizerInstruction_getSizeForBuffer(self, imm_override_len, extra_l_just);
 
-            let mut buffer: Vec<u8> = vec![0; buffer_size.try_into().unwrap()];
+            let mut buffer: Vec<u8> = vec![0; buffer_size];
             let disassembled_size = RabbitizerInstruction_disassemble(
                 self,
                 buffer.as_mut_ptr() as *mut core::ffi::c_char,
                 imm_override_ptr,
                 imm_override_len,
-                extra_l_just.try_into().unwrap(),
+                extra_l_just,
             );
-            buffer.truncate(disassembled_size.try_into().unwrap());
+            buffer.truncate(disassembled_size);
 
             String::from_utf8(buffer).unwrap()
         }

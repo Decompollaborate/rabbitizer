@@ -1,13 +1,13 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{operand_type_enum, instr_suffix_enum, access_type_enum};
+use crate::{access_type_enum, instr_suffix_enum, operand_type_enum};
 
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 #[allow(non_camel_case_types)]
 pub struct InstrDescriptor {
-    operands: [operand_type_enum::OperandType; 4usize],
+    operands: [operand_type_enum::OperandType; 6usize],
     instr_type: u32, // RabbitizerInstrType, // This type is deprecated and I don't care enough to make a binding for it
 
     instr_suffix: instr_suffix_enum::InstrSuffix,
@@ -70,7 +70,11 @@ impl InstrDescriptor {
     }
 
     pub fn operands_slice(&self) -> &[operand_type_enum::OperandType] {
-        let end = self.operands.iter().position(|&r| r == operand_type_enum::OperandType::ALL_INVALID).unwrap_or(self.operands.len());
+        let end = self
+            .operands
+            .iter()
+            .position(|&r| r == operand_type_enum::OperandType::ALL_INVALID)
+            .unwrap_or(self.operands.len());
 
         &self.operands[0..end]
     }

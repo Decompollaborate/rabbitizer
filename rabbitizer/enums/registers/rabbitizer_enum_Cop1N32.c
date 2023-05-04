@@ -12,7 +12,7 @@
     { "RegCop1N32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_RegCop1N32_enumvalues[] = {
-    #include "instructions/registers/RabbitizerRegister_Cop1N32.inc"
+    #include "tables/registers/RabbitizerRegister_Cop1N32.inc"
 
     { 0 },
 };

@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_ACCESS_TYPE_H
@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-#include "AccessType_enum.table.h"
+#include "generated/AccessType_enum.h"
 
 #ifdef __cplusplus
 }

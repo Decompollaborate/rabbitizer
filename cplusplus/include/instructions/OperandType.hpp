@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_OPERAND_TYPE_HPP
@@ -7,7 +7,7 @@
 
 
 namespace rabbitizer {
-#include "OperandType_enum_class.table.h"
+#include "generated/OperandType_enum_class.hpp"
 };
 
 

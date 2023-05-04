@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_REGISTER_H
@@ -16,7 +16,7 @@ extern "C" {
 #endif
 
 
-#include "Registers_enums.table.h"
+#include "generated/Registers_enums.h"
 
 extern const char *RabbitizerRegister_GprO32_Names[][2];
 extern const char *RabbitizerRegister_GprN32_Names[][2];

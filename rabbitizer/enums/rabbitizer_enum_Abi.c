@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "enums_utils.h"
@@ -9,7 +9,7 @@
 #define RABBITIZER_DEF_ABI(name) { "Abi", #name, RABBITIZER_ABI_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_Abi_enumvalues[] = {
-    #include "common/Abi.inc"
+    #include "tables/Abi.inc"
     RABBITIZER_DEF_ABI(MAX)
 
     { 0 },

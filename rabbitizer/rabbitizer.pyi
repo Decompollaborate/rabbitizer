@@ -50,6 +50,11 @@ class Instruction:
     The type is an `InstrId` enum.
     Read-only."""
 
+    instrIdType: Enum
+    """An identificator for the general type for the opcode of this instruction.
+    The type is an `InstrIdType` enum.
+    Read-only."""
+
     vram: int = 0
     """The vram (virtual ram) address for this instruction"""
     inHandwrittenFunction: bool = False

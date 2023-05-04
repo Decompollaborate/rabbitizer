@@ -8,8 +8,8 @@ SANITY_CHECKS   ?= 1
 CC              := clang
 CXX             := clang++
 AR              := ar
-IINC            := -I include
-IINC_XX         := -I include -I cplusplus/include
+IINC            := -I tables -I include
+IINC_XX         := -I tables -I include -I cplusplus/include
 CSTD            := -std=c11
 CXXSTD          := -std=c++17
 CFLAGS          := -fPIC -fno-common
@@ -23,8 +23,6 @@ WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werr
 WARNINGS        += -Werror=unused-parameter -Werror=shadow -Werror=switch -Werror=double-promotion
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
 WARNINGS_CXX    :=
-
-TABLE_GEN       := tools/table_gen.sh
 
 ifeq ($(CC),gcc)
     WARNINGS    += -Wno-cast-function-type -Wformat-truncation -Wformat-overflow
@@ -70,12 +68,6 @@ OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
 DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
 
-TABLE_DIRS      := $(shell find include src cplusplus rabbitizer -type d)
-TABLE_TEMPLATES := $(foreach dir,$(TABLE_DIRS),$(wildcard $(dir)/*.table.template))
-TABLE_GENERATED := $(TABLE_TEMPLATES:%.table.template=%.table.h)
-
-TABLE_DEP_FILES := $(TABLE_GENERATED:%.table.h=%.table.d)
-
 TESTS_DIRS      := $(shell find tests -type d)
 TESTS_C         := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.c))
 TESTS_CXX       := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.cpp))
@@ -107,20 +99,17 @@ all: static tests
 static: $(STATIC_LIB) $(STATIC_LIB_XX)
 dynamic: $(DYNAMIC_LIB) $(DYNAMIC_LIB_XX)
 
-tables: $(TABLE_GENERATED)
-	make -C rust tables
-	make -C rabbitizer tables
+tables:
+	make -C tables
 
 clean:
 	$(RM) -rf build
 
 distclean: clean
 	$(RM) -rf dist *.egg-info .mypy_cache
-	$(RM) -rf $(TABLE_GENERATED)
-	$(RM) -rf $(DEP_FILES) $(TABLE_DEP_FILES)
+	$(RM) -rf $(DEP_FILES)
 	$(RM) -rf target/
-	make -C rust distclean
-	make -C rabbitizer distclean
+	make -C tables distclean
 
 format:
 	clang-format-11 -i -style=file $(C_FILES)
@@ -150,22 +139,16 @@ build/%.a:
 build/%.so:
 	$(CC) -shared -o $@ $^
 
-build/%.o: %.c | $(TABLE_GENERATED)
+build/%.o: %.c
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
 	$(CC) -MMD -MP -c $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $<
 
-build/%.o: %.cpp | $(TABLE_GENERATED)
+build/%.o: %.cpp
 #	The -MMD flags additionaly creates a .d file with the same name as the .o file.
 	$(CXX) -MMD -MP -c $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $<
 
 
-%.table.h: %.table.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.table.h=.table.d) $<
-	$(TABLE_GEN) $< $@ $(@F)
-
-
 -include $(DEP_FILES)
--include $(TABLE_DEP_FILES)
 
 # Print target for debugging
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

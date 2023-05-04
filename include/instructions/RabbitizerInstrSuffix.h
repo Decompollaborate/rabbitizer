@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_INSTRSUFFIX_H
@@ -14,7 +14,7 @@ extern "C" {
 
 struct RabbitizerInstruction;
 
-#include "InstrSuffix_enum.table.h"
+#include "generated/InstrSuffix_enum.h"
 
 CONST NODISCARD NON_NULL(1)
 size_t RabbitizerInstrSuffix_getSizeForBuffer(const struct RabbitizerInstruction *self, RabbitizerInstrSuffix instrSuffix);

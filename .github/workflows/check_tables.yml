@@ -4,60 +4,6 @@ name: Check for ungenerated tables
 on: [push, pull_request]
 
 jobs:
-  check_rust_tables:
-    name: Check Rust tables
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout reposistory
-      uses: actions/checkout@v3
-      with:
-        ref: ${{ github.head_ref }}
-
-    - name: clean everything
-      run: make -j $(nproc) -C rust distclean
-
-    - name: make Rust tables
-      run: make -j $(nproc) -C rust tables
-
-    - name: Check if there are Rust tables changes
-      id: rust_tables_changes
-      uses: tj-actions/verify-changed-files@v14
-
-    - name: Rust tables changes
-      if: steps.rust_tables_changes.outputs.files_changed == 'true'
-      run: |
-        echo "Changed files: ${{ steps.rust_tables_changes.outputs.changed_files }}"
-        echo "Please run \`make -C rust distclean && make -C rust tables\` and commit the result"
-        exit 1
-
-  check_python_tables:
-    name: Check Python tables
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout reposistory
-      uses: actions/checkout@v3
-      with:
-        ref: ${{ github.head_ref }}
-
-    - name: clean everything
-      run: make -j $(nproc) -C rabbitizer distclean
-
-    - name: make Python tables
-      run: make -j $(nproc) -C rabbitizer tables
-
-    - name: Check if there are Python tables changes
-      id: python_tables_changes
-      uses: tj-actions/verify-changed-files@v14
-
-    - name: Python tables changes
-      if: steps.python_tables_changes.outputs.files_changed == 'true'
-      run: |
-        echo "Changed files: ${{ steps.python_tables_changes.outputs.changed_files }}"
-        echo "Please run \`make -C rabbitizer distclean && make -C rabbitizer tables\` and commit the result"
-        exit 1
-
   check_tables:
     name: Check tables
     runs-on: ubuntu-latest
@@ -68,11 +14,17 @@ jobs:
       with:
         ref: ${{ github.head_ref }}
 
-    - name: clean everything
-      run: make -j $(nproc) distclean
+    - name: Setup Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: clean tables
+      run: make -C tables -j $(nproc) distclean
 
     - name: make tables
-      run: make -j $(nproc) tables
+      run: make -C tables -j $(nproc)
 
     - name: Check if there are tables changes
       id: tables_changes
@@ -82,5 +34,5 @@ jobs:
       if: steps.tables_changes.outputs.files_changed == 'true'
       run: |
         echo "Changed files: ${{ steps.tables_changes.outputs.changed_files }}"
-        echo "Please run \`make distclean && make tables\` and commit the result"
+        echo "Please run \`make -C tables distclean && make -C tables tables\` and commit the result"
         exit 1

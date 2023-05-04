@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_INSTRCATEGORY_H
@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 
-#include "InstrCategory_enum.table.h"
+#include "generated/InstrCategory_enum.h"
 
 extern const char *const RabbitizerInstrCategory_Names[];
 

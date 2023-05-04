@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/RabbitizerInstructionRsp.h"
@@ -17,9 +17,10 @@ void RabbitizerInstructionRsp_processUniqueId_Normal_Lwc2(RabbitizerInstruction 
     uint32_t rd = RAB_INSTR_GET_rd(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, rd);
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_NORMAL_LWC2;
 
     switch (rd) {
-#include "instructions/instr_id/rsp/rsp_normal_lwc2.inc"
+#include "tables/instr_id/rsp/rsp_normal_lwc2.inc"
     }
 }
 
@@ -28,9 +29,10 @@ void RabbitizerInstructionRsp_processUniqueId_Normal_Swc2(RabbitizerInstruction 
     uint32_t elementlow;
 
     self->_mandatorybits = RAB_INSTR_PACK_rd(self->_mandatorybits, rd);
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_NORMAL_SWC2;
 
     switch (rd) {
-#include "instructions/instr_id/rsp/rsp_normal_swc2.inc"
+#include "tables/instr_id/rsp/rsp_normal_swc2.inc"
     }
 
     switch (self->uniqueId) {
@@ -51,9 +53,10 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_NORMAL;
 
     switch (opcode) {
-#include "instructions/instr_id/rsp/rsp_normal.inc"
+#include "tables/instr_id/rsp/rsp_normal.inc"
 
         // new rsp stuff
         case 0x32:
@@ -92,9 +95,10 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_SPECIAL;
 
     switch (function) {
-#include "instructions/instr_id/rsp/rsp_special.inc"
+#include "tables/instr_id/rsp/rsp_special.inc"
     }
 
     if (RabbitizerInstruction_isNop(self)) {
@@ -127,9 +131,10 @@ void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self
     uint32_t rt = RAB_INSTR_GET_rt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_REGIMM;
 
     switch (rt) {
-#include "instructions/instr_id/rsp/rsp_regimm.inc"
+#include "tables/instr_id/rsp/rsp_regimm.inc"
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -154,10 +159,17 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_COP0;
 
     switch (fmt) {
-#include "instructions/instr_id/rsp/rsp_cop0.inc"
+#include "tables/instr_id/rsp/rsp_cop0.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+}
+
+void RabbitizerInstructionRsp_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_COP1;
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
@@ -165,6 +177,8 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
 void RabbitizerInstructionRsp_processUniqueId_Coprocessor2_Vu(RabbitizerInstruction *self) {
     uint32_t aux = SHIFTR(self->word, 25, 1);
     uint32_t function = RAB_INSTR_GET_function(self);
+
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_COP2_VU;
 
     if (aux != 1) {
         return;
@@ -175,7 +189,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2_Vu(RabbitizerInstruct
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "instructions/instr_id/rsp/rsp_cop2_vu.inc"
+#include "tables/instr_id/rsp/rsp_cop2_vu.inc"
     }
 }
 
@@ -183,9 +197,10 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_COP2;
 
     switch (fmt) {
-#include "instructions/instr_id/rsp/rsp_cop2.inc"
+#include "tables/instr_id/rsp/rsp_cop2.inc"
 
         default:
             RabbitizerInstructionRsp_processUniqueId_Coprocessor2_Vu(self);
@@ -204,6 +219,7 @@ void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
 
     self->uniqueId = RABBITIZER_INSTR_ID_rsp_INVALID;
+    self->instrIdType = RAB_INSTR_ID_TYPE_RSP_INVALID;
 
     switch (opcode) {
         default:
@@ -218,9 +234,9 @@ void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
         case 0x10:
             RabbitizerInstructionRsp_processUniqueId_Coprocessor0(self);
             break;
-        // case 0x11:
-        //    RabbitizerInstructionRsp_processUniqueId_Coprocessor1(self);
-        //    break;
+        case 0x11:
+            RabbitizerInstructionRsp_processUniqueId_Coprocessor1(self);
+            break;
         case 0x12:
             RabbitizerInstructionRsp_processUniqueId_Coprocessor2(self);
             break;
