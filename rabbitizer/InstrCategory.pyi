@@ -11,6 +11,7 @@ class InstrCategory:
     CPU: Enum
     RSP: Enum
     R3000GTE: Enum
+    R4000ALLEGREX: Enum
     R5900: Enum
     MAX: Enum
     @staticmethod

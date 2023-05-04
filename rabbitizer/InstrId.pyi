@@ -399,6 +399,8 @@ class InstrId:
     r3000gte_GPF: Enum
     r3000gte_GPL: Enum
     r3000gte_MAX: Enum
+    r4000allegrex_INVALID: Enum
+    r4000allegrex_MAX: Enum
     r5900_INVALID: Enum
     r5900_lq: Enum
     r5900_sq: Enum
