@@ -16,6 +16,7 @@ void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *se
     bool fetchDescriptor = true;
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_NORMAL;
 
     switch (opcode) {
 #include "tables/instr_id/r5900/r5900_normal.inc"
@@ -37,6 +38,7 @@ void RabbitizerInstructionR5900_processUniqueId_Special(RabbitizerInstruction *s
     uint32_t stype;
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_SPECIAL;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_special.inc"
@@ -71,6 +73,7 @@ void RabbitizerInstructionR5900_processUniqueId_Regimm(RabbitizerInstruction *se
     bool fetchDescriptor = true;
 
     self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_REGIMM;
 
     switch (rt) {
 #include "tables/instr_id/r5900/r5900_regimm.inc"
@@ -90,6 +93,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0_Tlb(RabbitizerInstr
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP0_TLB;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_cop0_tlb.inc"
@@ -104,6 +108,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0(RabbitizerInstructi
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP0;
     self->_handwrittenCategory = true;
 
     switch (fmt) {
@@ -125,6 +130,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1_FpuS(RabbitizerInst
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP1_FPUS;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_cop1_fpu_s.inc"
@@ -139,6 +145,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1(RabbitizerInstructi
     uint8_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP1;
 
     switch (fmt) {
 #include "tables/instr_id/cpu/cpu_cop1.inc"
@@ -163,16 +170,18 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(RabbitizerInstructio
     uint32_t fmt = RAB_INSTR_GET_bc_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_BC2;
 
     switch (fmt) {
 #include "tables/instr_id/r5900/r5900_cop2_bc2.inc"
     }
 }
 
-void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(UNUSED RabbitizerInstruction *self) {
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(RabbitizerInstruction *self) {
     uint32_t fhiflo = RAB_INSTR_R5900_GET_fhi_flo(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_fhi_flo(self->_mandatorybits, fhiflo);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_SPECIAL2;
 
     switch (fhiflo) {
 #include "tables/instr_id/r5900/r5900_cop2_special2.inc"
@@ -183,6 +192,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(Rabbitizer
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_SPECIAL1;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_cop2_special1.inc"
@@ -200,6 +210,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstructi
     uint8_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2;
 
     switch (fmt) {
 #include "tables/instr_id/r5900/r5900_cop2.inc"
@@ -235,6 +246,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_0(RabbitizerInstruction *sel
     uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_0;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_mmi_0.inc"
@@ -245,6 +257,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_1(RabbitizerInstruction *sel
     uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_1;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_mmi_1.inc"
@@ -255,6 +268,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_2(RabbitizerInstruction *sel
     uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_2;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_mmi_2.inc"
@@ -265,6 +279,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_3(RabbitizerInstruction *sel
     uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_3;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_mmi_3.inc"
@@ -275,6 +290,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI;
 
     switch (function) {
 #include "tables/instr_id/r5900/r5900_mmi.inc"
@@ -303,6 +319,7 @@ void RabbitizerInstructionR5900_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_INVALID;
 
     switch (opcode) {
         default:

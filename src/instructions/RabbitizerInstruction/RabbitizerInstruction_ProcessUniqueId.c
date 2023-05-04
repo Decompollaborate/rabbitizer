@@ -17,6 +17,7 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_NORMAL;
 
     switch (opcode) {
 #include "tables/instr_id/cpu/cpu_normal.inc"
@@ -58,6 +59,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_SPECIAL;
 
     switch (function) {
 #include "tables/instr_id/cpu/cpu_special.inc"
@@ -123,6 +125,7 @@ void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
     uint32_t rt = RAB_INSTR_GET_rt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_rt(self->_mandatorybits, rt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_REGIMM;
 
     switch (rt) {
 #include "tables/instr_id/cpu/cpu_regimm.inc"
@@ -150,6 +153,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(RabbitizerInstructio
     uint32_t fmt = RAB_INSTR_GET_bc_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP0_BC0;
 
     switch (fmt) {
 #include "tables/instr_id/cpu/cpu_cop0_bc0.inc"
@@ -160,6 +164,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(RabbitizerInstructio
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP0_TLB;
 
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop0_tlb.inc"
@@ -170,6 +175,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP0;
     self->_handwrittenCategory = true;
 
     switch (fmt) {
@@ -191,6 +197,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(RabbitizerInstructio
     uint32_t fmt = RAB_INSTR_GET_bc_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_BC1;
 
     switch (fmt) {
 #include "tables/instr_id/cpu/cpu_cop1_bc1.inc"
@@ -201,6 +208,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(RabbitizerInstructi
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUS;
 
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_s.inc"
@@ -211,6 +219,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuD(RabbitizerInstructi
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUD;
 
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_d.inc"
@@ -221,6 +230,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(RabbitizerInstructi
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUW;
 
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_w.inc"
@@ -231,6 +241,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuL(RabbitizerInstructi
     uint32_t function = RAB_INSTR_GET_function(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUL;
 
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_l.inc"
@@ -241,6 +252,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
     uint8_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1;
 
     switch (fmt) {
 #include "tables/instr_id/cpu/cpu_cop1.inc"
@@ -273,6 +285,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *s
     uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP2;
 
     self->_handwrittenCategory = true;
 
@@ -295,6 +308,7 @@ void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self) {
     self->_mandatorybits = RAB_INSTR_PACK_opcode(self->_mandatorybits, opcode);
 
     self->uniqueId = RABBITIZER_INSTR_ID_cpu_INVALID;
+    self->instrIdType = RAB_INSTR_ID_TYPE_CPU_INVALID;
 
     switch (opcode) {
         default:

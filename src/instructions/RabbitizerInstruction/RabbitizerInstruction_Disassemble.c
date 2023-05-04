@@ -175,6 +175,8 @@ size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char
             validBits = RabbitizerInstruction_getValidBits(self);
 
             RABUTILS_BUFFER_SPRINTF(dst, totalSize, " # %08X", ((~validBits) & self->word));
+
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, " <InstrIdType: %s>", RabInstrIdType_getName(self->instrIdType));
         }
 
         return totalSize;
