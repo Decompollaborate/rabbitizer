@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{instr_id_enum, instr_category_enum, instr_descriptor, operand_type_enum, instr_suffix_enum, access_type_enum, registers_enum, utils};
+use crate::{instr_id_enum, instr_category_enum, instr_descriptor, operand_type_enum, instr_suffix_enum, access_type_enum, registers_enum, utils, instr_id_type_enum};
 
 #[repr(C)]
 #[derive(Debug, Clone)]
@@ -11,6 +11,7 @@ pub struct Instruction {
     _mandatorybits: u32,
     pub unique_id: instr_id_enum::InstrId,
     descriptor: *const instr_descriptor::InstrDescriptor,
+    instr_id_type: instr_id_type_enum::InstrIdType,
     pub vram: u32,
     _handwritten_category: bool,
     pub in_handwritten_function: bool,
@@ -20,6 +21,10 @@ pub struct Instruction {
 #[link(name = "rabbitizer", kind = "static")]
 extern "C" {
     fn RabbitizerInstrId_getOpcodeName(unique_id: instr_id_enum::InstrId) -> *const core::ffi::c_char;
+}
+
+extern "C" {
+    fn RabInstrIdType_getName(id_type: instr_id_type_enum::InstrIdType) -> *const core::ffi::c_char;
 }
 
 extern "C" {
@@ -423,6 +428,12 @@ impl Instruction {
 
     pub fn get_cop2t_cop2(&self) -> registers_enum::registers::Cop2 {
         self.get_cop2t().try_into().unwrap()
+    }
+
+    pub fn instr_id_type_name(&self) -> &'static str {
+        unsafe {
+            std::ffi::CStr::from_ptr(RabInstrIdType_getName(self.instr_id_type))
+        }.to_str().unwrap()
     }
 
     pub fn raw(&self) -> u32 {

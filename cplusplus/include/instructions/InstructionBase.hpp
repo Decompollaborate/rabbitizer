@@ -13,6 +13,7 @@
 #include "instructions/Registers.hpp"
 #include "instructions/OperandType.hpp"
 #include "instructions/InstrId.hpp"
+#include "instructions/InstrIdType.hpp"
 #include "instructions/AccessType.hpp"
 
 
@@ -149,6 +150,9 @@ namespace rabbitizer {
         uint32_t getRaw() const;
 
         InstrId::UniqueId getUniqueId() const;
+        InstrIdType::IdType getInstrIdType() const;
+        std::string getInstrIdTypeName() const;
+
         uint32_t getVram() const;
         bool isInHandwrittenFunction() const;
 

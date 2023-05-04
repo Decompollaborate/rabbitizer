@@ -1,8 +1,8 @@
 /* SPDX-FileCopyrightText: © 2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#ifndef RABBITIZER_INSTRID_TYPE_H
-#define RABBITIZER_INSTRID_TYPE_H
+#ifndef RABBITIZER_INSTR_ID_TYPE_H
+#define RABBITIZER_INSTR_ID_TYPE_H
 #pragma once
 
 #include "common/Utils.h"
@@ -17,7 +17,7 @@ extern const char *RabInstrIdType_Names[];
 
 
 CONST NODISCARD RETURNS_NON_NULL
-const char *RabInstrIdType_getName(RabInstrIdType uniqueId);
+const char *RabInstrIdType_getName(RabInstrIdType idType);
 
 
 #ifdef __cplusplus

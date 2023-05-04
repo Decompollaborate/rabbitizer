@@ -4,6 +4,7 @@
 mod access_type_enum;
 mod instr_category_enum;
 mod instr_id_enum;
+mod instr_id_type_enum;
 mod operand_type_enum;
 mod registers_enum;
 mod instr_suffix_enum;
@@ -19,6 +20,7 @@ pub mod utils;
 pub use access_type_enum::AccessType;
 pub use instr_category_enum::InstrCategory;
 pub use instr_id_enum::InstrId;
+pub use instr_id_type_enum::InstrIdType;
 pub use operand_type_enum::OperandType;
 pub use registers_enum::registers;
 pub use instr_suffix_enum::InstrSuffix;
