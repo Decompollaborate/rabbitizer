@@ -456,7 +456,7 @@ mod tests {
             );
 
             assert_eq!(
-                instr.disassemble(entry.imm_override.as_ref().map(|x| x.as_str()), 0),
+                instr.disassemble(entry.imm_override.as_deref(), 0),
                 entry.expected_str
             );
         }

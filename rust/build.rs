@@ -12,7 +12,7 @@ fn main() {
         println!("cargo:rerun-if-changed={}", path.to_string_lossy());
     }
 
-    assert!(c_paths.len() > 0);
+    assert!(!c_paths.is_empty());
 
     cc::Build::new()
         .files(c_paths)

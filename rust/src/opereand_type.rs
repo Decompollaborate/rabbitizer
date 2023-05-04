@@ -30,7 +30,7 @@ impl operand_type_enum::OperandType {
         unsafe {
             let buffer_size = RabbitizerOperandType_getBufferSize(*self, instr, imm_override_len);
 
-            let mut buffer: Vec<u8> = vec![0; buffer_size.try_into().unwrap()];
+            let mut buffer: Vec<u8> = vec![0; buffer_size];
             let disassembled_size = RabbitizerOperandType_disassemble(
                 *self,
                 instr,
@@ -38,7 +38,7 @@ impl operand_type_enum::OperandType {
                 imm_override_ptr,
                 imm_override_len,
             );
-            buffer.truncate(disassembled_size.try_into().unwrap());
+            buffer.truncate(disassembled_size);
 
             String::from_utf8(buffer).unwrap()
         }

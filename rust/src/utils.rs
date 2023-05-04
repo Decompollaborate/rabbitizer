@@ -5,10 +5,7 @@ pub type SizeT = usize;
 
 pub fn c_string_from_str(str: Option<&str>) -> (*const core::ffi::c_char, SizeT) {
     if let Some(str) = str {
-        (
-            str.as_ptr() as *const core::ffi::c_char,
-            str.len().try_into().unwrap(),
-        )
+        (str.as_ptr() as *const core::ffi::c_char, str.len())
     } else {
         (std::ptr::null(), 0)
     }

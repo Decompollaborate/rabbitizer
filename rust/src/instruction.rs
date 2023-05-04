@@ -668,25 +668,26 @@ impl Instruction {
         unsafe { RabbitizerInstrDescriptor_doesUnsignedMemoryAccess(self.descriptor) }
     }
 
-    pub fn disassemble(&self, imm_override: Option<&str>, extra_l_just: i32) -> String {
+    pub fn disassemble(
+        &self,
+        imm_override: Option<&str>,
+        extra_l_just: core::ffi::c_int,
+    ) -> String {
         let (imm_override_ptr, imm_override_len) = utils::c_string_from_str(imm_override);
 
         unsafe {
-            let buffer_size = RabbitizerInstruction_getSizeForBuffer(
-                self,
-                imm_override_len,
-                extra_l_just.try_into().unwrap(),
-            );
+            let buffer_size =
+                RabbitizerInstruction_getSizeForBuffer(self, imm_override_len, extra_l_just);
 
-            let mut buffer: Vec<u8> = vec![0; buffer_size.try_into().unwrap()];
+            let mut buffer: Vec<u8> = vec![0; buffer_size];
             let disassembled_size = RabbitizerInstruction_disassemble(
                 self,
                 buffer.as_mut_ptr() as *mut core::ffi::c_char,
                 imm_override_ptr,
                 imm_override_len,
-                extra_l_just.try_into().unwrap(),
+                extra_l_just,
             );
-            buffer.truncate(disassembled_size.try_into().unwrap());
+            buffer.truncate(disassembled_size);
 
             String::from_utf8(buffer).unwrap()
         }

@@ -80,7 +80,7 @@ impl registers_enum::registers::GprO32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_GprO32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_GprO32_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -98,7 +98,7 @@ impl registers_enum::registers::GprN32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_GprN32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_GprN32_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -116,7 +116,7 @@ impl registers_enum::registers::Cop0 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_Cop0_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_Cop0_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -134,7 +134,7 @@ impl registers_enum::registers::Cop1O32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_Cop1O32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_Cop1O32_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -152,7 +152,7 @@ impl registers_enum::registers::Cop1N32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_Cop1N32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_Cop1N32_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -170,7 +170,7 @@ impl registers_enum::registers::Cop1N64 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_Cop1N64_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_Cop1N64_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -188,7 +188,7 @@ impl registers_enum::registers::Cop1Control {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_Cop1Control_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_Cop1Control_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -206,7 +206,7 @@ impl registers_enum::registers::Cop2 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_Cop2_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_Cop2_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -224,7 +224,7 @@ impl registers_enum::registers::RspGpr {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_RspGpr_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_RspGpr_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -242,7 +242,7 @@ impl registers_enum::registers::RspCop0 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_RspCop0_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_RspCop0_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -260,7 +260,7 @@ impl registers_enum::registers::RspCop2 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_RspCop2_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_RspCop2_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -278,7 +278,7 @@ impl registers_enum::registers::RspCop2Control {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_RspCop2Control_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_RspCop2Control_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -296,7 +296,7 @@ impl registers_enum::registers::RspVector {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_RspVector_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_RspVector_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -314,7 +314,7 @@ impl registers_enum::registers::R5900VF {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_R5900VF_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_R5900VF_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
@@ -330,6 +330,6 @@ impl registers_enum::registers::R5900VI {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { &RabbitizerRegister_R5900VI_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe { RabbitizerRegister_R5900VI_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
