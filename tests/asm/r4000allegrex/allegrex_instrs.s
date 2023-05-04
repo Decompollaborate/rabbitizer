@@ -116,7 +116,7 @@ extract_bit_field_7_5:
 .type insert_bit_field_2_5,@function
 .globl insert_bit_field_2_5
 insert_bit_field_2_5:
-    ext         $v0, $a0, 2, 5 #
+    ins         $v0, $a0, 2, 5 #
     jr          $ra
 .size insert_bit_field_2_5, . - insert_bit_field_2_5
 
@@ -375,4 +375,34 @@ all_caches:
     cache       0x1F, 0x0($a0) #
     jr          $ra
 .size all_caches, . - all_caches
+
+
+
+.type halt,@function
+.globl halt
+halt:
+    sleep       #
+    jr          $ra
+.size halt, . - halt
+
+.type get_interrupt_state,@function
+.globl get_interrupt_state
+get_interrupt_state:
+    mfie        $v0
+    jr          $ra
+.size get_interrupt_state, . - get_interrupt_state
+
+.type disable_interrupts,@function
+.globl disable_interrupts
+disable_interrupts:
+    mfie        $zero
+    jr          $ra
+.size disable_interrupts, . - disable_interrupts
+
+.type set_interrupt_state,@function
+.globl set_interrupt_state
+set_interrupt_state:
+    mtie        $a0
+    jr          $ra
+.size set_interrupt_state, . - set_interrupt_state
 

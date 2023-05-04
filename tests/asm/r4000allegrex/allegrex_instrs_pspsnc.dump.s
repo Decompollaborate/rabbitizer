@@ -73,7 +73,7 @@ extract_bit_field_7_5:
 0x000000BC: 0x00000000 nop
 
 insert_bit_field_2_5:
-0x000000C0: 0x7C822080 ext      v0,a0,2,5
+0x000000C0: 0x7C823084 ins      v0,a0,2,5
 0x000000C4: 0x03E00008 jr       ra
 0x000000C8: 0x00000000 nop
 
@@ -246,4 +246,24 @@ all_caches:
 0x00000290: 0xBC9F0000 cache    DFL,0x0000(a0)
 0x00000294: 0x03E00008 jr       ra
 0x00000298: 0x00000000 nop
+
+halt:
+0x0000029C: 0x70000000 sleep
+0x000002A0: 0x03E00008 jr       ra
+0x000002A4: 0x00000000 nop
+
+get_interrupt_state:
+0x000002A8: 0x70020024 mfie     v0
+0x000002AC: 0x03E00008 jr       ra
+0x000002B0: 0x00000000 nop
+
+disable_interrupts:
+0x000002B4: 0x70000024 mfie     zero
+0x000002B8: 0x03E00008 jr       ra
+0x000002BC: 0x00000000 nop
+
+set_interrupt_state:
+0x000002C0: 0x70040026 mtie     a0
+0x000002C4: 0x03E00008 jr       ra
+0x000002C8: 0x00000000 nop
 
