@@ -3,56 +3,56 @@
 .type count_leading_one,@function
 .globl count_leading_one
 count_leading_one:
-    clo $v0, $a0 #
-    jr $ra
+    clo         $v0, $a0 #
+    jr          $ra
 .size count_leading_one, . - count_leading_one
 
 
 .type count_leading_zero,@function
 .globl count_leading_zero
 count_leading_zero:
-    clz $v0, $a0 #
-    jr $ra
+    clz         $v0, $a0 #
+    jr          $ra
 .size count_leading_zero, . - count_leading_zero
 
 
 .type multiply_add,@function
 .globl multiply_add
 multiply_add:
-	mult  $a0, $a1
-    madd  $a2, $a3 #
-    mflo  $v0
-    jr $ra
+	mult        $a0, $a1
+    madd        $a2, $a3 #
+    mflo        $v0
+    jr          $ra
 .size multiply_add, . - multiply_add
 
 
 .type multiply_add_unsigned,@function
 .globl multiply_add_unsigned
 multiply_add_unsigned:
-	mult  $a0, $a1
-    maddu $a2, $a3 #
-    mflo  $v0
-    jr $ra
+	mult        $a0, $a1
+    maddu       $a2, $a3 #
+    mflo        $v0
+    jr          $ra
 .size multiply_add_unsigned, . - multiply_add_unsigned
 
 
 .type multiply_subtract,@function
 .globl multiply_subtract
 multiply_subtract:
-	mult  $a0, $a1
-    msub  $a2, $a3 #
-    mflo  $v0
-    jr $ra
+	mult        $a0, $a1
+    msub        $a2, $a3 #
+    mflo        $v0
+    jr          $ra
 .size multiply_subtract, . - multiply_subtract
 
 
 .type multiply_subtract_unsigned,@function
 .globl multiply_subtract_unsigned
 multiply_subtract_unsigned:
-	mult  $a0, $a1
-    msubu  $a2, $a3 #
-    mflo  $v0
-    jr $ra
+	mult        $a0, $a1
+    msubu       $a2, $a3 #
+    mflo        $v0
+    jr          $ra
 .size multiply_subtract_unsigned, . - multiply_subtract_unsigned
 
 
@@ -61,16 +61,16 @@ multiply_subtract_unsigned:
 .type select_max,@function
 .globl select_max
 select_max:
-    max $v0, $a0, $a1 #
-    jr $ra
+    max         $v0, $a0, $a1 #
+    jr          $ra
 .size select_max, . - select_max
 
 
 .type select_min,@function
 .globl select_min
 select_min:
-    min $v0, $a0, $a1 #
-    jr $ra
+    min         $v0, $a0, $a1 #
+    jr          $ra
 .size select_min, . - select_min
 
 
