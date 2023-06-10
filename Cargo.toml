@@ -14,7 +14,7 @@ repository = "https://github.com/Decompollaborate/rabbitizer"
 license = "MIT"
 keywords = ["MIPS", "decoder"]
 build = "rust/build.rs"
-include = ["/rust/src", "/rust/build.rs", "/src", "/include"]
+include = ["/rust/src", "/rust/build.rs", "/src", "/include", "/tables"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
