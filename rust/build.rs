@@ -7,8 +7,12 @@ fn main() {
         .unwrap()
         .filter_map(|g| g.ok())
         .collect();
+    let tables_paths: Vec<std::path::PathBuf> = glob::glob("tables/tables/**/*.inc")
+        .unwrap()
+        .filter_map(|g| g.ok())
+        .collect();
 
-    for path in c_paths.iter().chain(&h_paths) {
+    for path in c_paths.iter().chain(&h_paths).chain(&tables_paths) {
         println!("cargo:rerun-if-changed={}", path.to_string_lossy());
     }
 
