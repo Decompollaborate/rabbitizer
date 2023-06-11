@@ -1,5 +1,5 @@
 ## GTE instructions macros
-## This macros are meant to be used with GAS
+## This macros are meant to be used with GAS and avoid using DMPSX
 
 /*  RTPS    15      0x4A180001  Perspective transform */
 .macro RTPS
