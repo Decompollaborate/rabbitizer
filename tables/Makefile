@@ -13,7 +13,7 @@ TABLE_C_TEMPLATES           := $(wildcard $(TEMPLATE_FOLDER)/c/*.table.template)
 TABLE_C_GENERATED           := $(TABLE_C_TEMPLATES:$(TEMPLATE_FOLDER)/c/%.table.template=../include/generated/%.h)
 
 TABLE_CPLUSPLUS_TEMPLATES   := $(wildcard $(TEMPLATE_FOLDER)/cplusplus/*.table.template)
-TABLE_CPLUSPLUS_GENERATES   := $(TABLE_CPLUSPLUS_TEMPLATES:$(TEMPLATE_FOLDER)/cplusplus/%.table.template=../cplusplus/include/generated/%.hpp)
+TABLE_CPLUSPLUS_GENERATED   := $(TABLE_CPLUSPLUS_TEMPLATES:$(TEMPLATE_FOLDER)/cplusplus/%.table.template=../cplusplus/include/generated/%.hpp)
 
 TABLE_RS_TEMPLATES          := $(wildcard $(TEMPLATE_FOLDER)/rust/*.tablers.template)
 TABLE_RS_GENERATED          := $(TABLE_RS_TEMPLATES:$(TEMPLATE_FOLDER)/rust/%.tablers.template=../rust/src/%.rs)
@@ -22,20 +22,20 @@ TABLE_PYI_TEMPLATES         := $(wildcard $(TEMPLATE_FOLDER)/python/*.tablepyi.t
 TABLE_PYI_GENERATED         := $(TABLE_PYI_TEMPLATES:$(TEMPLATE_FOLDER)/python/%.tablepyi.template=../rabbitizer/%.pyi)
 
 
-TABLE_DEP_FILES     += $(TABLE_C_TEMPLATES:%.template=%.d)
-TABLE_DEP_FILES     += $(TABLE_CPLUSPLUS_TEMPLATES:%.template=%.d)
+TABLE_DEP_FILES     += $(TABLE_C_GENERATED:%.h=%.d)
+TABLE_DEP_FILES     += $(TABLE_CPLUSPLUS_GENERATED:%.hpp=%.d)
 TABLE_DEP_FILES     += $(TABLE_RS_TEMPLATES:%.template=%.d)
 TABLE_DEP_FILES     += $(TABLE_PYI_TEMPLATES:%.template=%.d)
 
 
 all: tables
 
-tables: $(TABLE_C_GENERATED) $(TABLE_CPLUSPLUS_GENERATES) $(TABLE_RS_GENERATED) $(TABLE_PYI_GENERATED)
+tables: $(TABLE_C_GENERATED) $(TABLE_CPLUSPLUS_GENERATED) $(TABLE_RS_GENERATED) $(TABLE_PYI_GENERATED)
 	cargo fmt
 
 clean:
 	$(RM) -rf $(TABLE_C_GENERATED)
-	$(RM) -rf $(TABLE_CPLUSPLUS_GENERATES)
+	$(RM) -rf $(TABLE_CPLUSPLUS_GENERATED)
 	$(RM) -rf $(TABLE_RS_GENERATED)
 	$(RM) -rf $(TABLE_PYI_GENERATED)
 
@@ -49,11 +49,11 @@ distclean: clean
 
 
 ../include/generated/%.h: $(TEMPLATE_FOLDER)/c/%.table.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.table.h=.table.d) $<
+	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.h=.d) $<
 	$(C_TABLE_GEN) $< $@ $(@F) || rm -rf $@
 
 ../cplusplus/include/generated/%.hpp: $(TEMPLATE_FOLDER)/cplusplus/%.table.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.table.hpp=.table.d) $<
+	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.hpp=.d) $<
 	$(C_TABLE_GEN) $< $@ $(@F) || rm -rf $@
 
 ../rust/src/%.rs: $(TEMPLATE_FOLDER)/rust/%.tablers.template
