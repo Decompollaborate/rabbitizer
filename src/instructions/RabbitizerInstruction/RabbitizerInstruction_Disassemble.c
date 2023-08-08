@@ -68,9 +68,14 @@ size_t RabbitizerInstruction_disassembleInstruction(const RabbitizerInstruction 
 
 size_t RabbitizerInstruction_getSizeForBufferDataDisasm(UNUSED const RabbitizerInstruction *self, int extraLJust) {
     size_t totalSize = 0;
+    int tempLJust;
 
     totalSize += strlen(".word");
-    totalSize += RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust;
+
+    tempLJust = RabbitizerConfig_Cfg.misc.opcodeLJust + extraLJust;
+    tempLJust = RAB_MAX(tempLJust, 0);
+    totalSize += tempLJust;
+
     totalSize += 11;
     return totalSize;
 }
