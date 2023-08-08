@@ -463,6 +463,7 @@ static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction
     size_t immOverrideLength = 0;
     int extraLJust = 0;
     size_t bufferSize;
+    size_t disassembledSize;
     char *buffer;
     PyObject *ret;
 
@@ -478,11 +479,18 @@ static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction
 
     buffer = malloc(bufferSize+1);
     if (buffer == NULL) {
-        // TODO: signal an exception?
+        PyErr_SetString(PyExc_MemoryError, "Not able to allocate enough space for decoded instruction.");
         return NULL;
     }
 
-    RabbitizerInstruction_disassemble(&self->instr, buffer, immOverride, immOverrideLength, extraLJust);
+    disassembledSize = RabbitizerInstruction_disassemble(&self->instr, buffer, immOverride, immOverrideLength, extraLJust);
+    if (disassembledSize > bufferSize) {
+        PyErr_SetString(PyExc_AssertionError, "Decoded instruction does not fit in the allocated buffer.\n"
+                                              "This will produce a memory corruption error.\n"
+                                              "This is not an user error, please report this bug.");
+        free(buffer);
+        return NULL;
+    }
 
     ret = PyUnicode_FromString(buffer);
     free(buffer);
@@ -601,6 +609,8 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
 static PyObject *rabbitizer_type_Instruction_repr(PyRabbitizerInstruction *self) {
     PyObject *ret;
     size_t disasmBufferSize;
+    size_t bufferSize;
+    size_t disassembledSize;
     char *bufferStart;
     char *buffer;
     size_t typeNameLength;
@@ -611,9 +621,10 @@ static PyObject *rabbitizer_type_Instruction_repr(PyRabbitizerInstruction *self)
 
     disasmBufferSize = RabbitizerInstruction_getSizeForBuffer(&self->instr, 0, 0);
 
-    buffer = bufferStart = malloc(disasmBufferSize+1 + typeNameLength + extraSize);
+    bufferSize = disasmBufferSize + typeNameLength + extraSize;
+    buffer = bufferStart = malloc(bufferSize + 1);
     if (buffer == NULL) {
-        // TODO: signal an exception?
+        PyErr_SetString(PyExc_MemoryError, "Not able to allocate enough space for decoded instruction.");
         return NULL;
     }
 
@@ -622,13 +633,20 @@ static PyObject *rabbitizer_type_Instruction_repr(PyRabbitizerInstruction *self)
 
     len = sprintf(buffer, "(0x%08X) # ", RabbitizerInstruction_getRaw(&self->instr));
     if (len != 15) {
-        // bad stuff
-        // TODO: exception?
+        PyErr_SetString(PyExc_AssertionError, "This should not be triggered. assertion: len == 15");
+        return NULL;
     }
     assert(len == 15);
     buffer += len;
 
-    RabbitizerInstruction_disassemble(&self->instr, buffer, NULL, 0, 0);
+    disassembledSize = RabbitizerInstruction_disassemble(&self->instr, buffer, NULL, 0, 0);
+    if (disassembledSize > bufferSize) {
+        PyErr_SetString(PyExc_AssertionError, "Decoded instruction does not fit in the allocated buffer.\n"
+                                              "This will produce a memory corruption error.\n"
+                                              "This is not an user error, please report this bug.");
+        free(bufferStart);
+        return NULL;
+    }
 
     ret = PyUnicode_FromString(bufferStart);
     free(bufferStart);
