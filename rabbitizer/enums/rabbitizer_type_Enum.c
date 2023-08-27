@@ -91,15 +91,21 @@ static PyGetSetDef rabbitizer_type_Enum_getsetters[] = {
 };
 
 
-// Crappy hash
 Py_hash_t rabbitizer_type_Enum_hash(PyRabbitizerEnum *self) {
-    Py_hash_t hash = PyObject_Hash(self->enumType);
+    PyObject *tuple = PyTuple_Pack(2, self->enumType, PyLong_FromLong(self->value));
+    Py_hash_t hash;
+
+    if (tuple == NULL) {
+        return -1;
+    }
+
+    hash = PyObject_Hash(tuple);
 
     if (hash == -1) {
         return -1;
     }
 
-    return hash + self->value;
+    return hash;
 }
 
 // Checks for the 6 basic comparisons (==, !=, <, <=, >, >=)
@@ -140,8 +146,8 @@ PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *oth
     switch (op) {
         case Py_EQ: if ((self->value) == (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
         case Py_NE: if ((self->value) != (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
-        case Py_LT: if ((self->value) < (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE; 
-        case Py_GT: if ((self->value) > (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE; 
+        case Py_LT: if ((self->value) < (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
+        case Py_GT: if ((self->value) > (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
         case Py_LE: if ((self->value) <= (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
         case Py_GE: if ((self->value) >= (otherValue)) Py_RETURN_TRUE; Py_RETURN_FALSE;
         default:
@@ -158,7 +164,7 @@ static PyObject *rabbitizer_type_Enum___reduce__(PyRabbitizerEnum *self, UNUSED 
     PyObject *name;
     PyObject *value;
 
-    enumType = self->enumType; 
+    enumType = self->enumType;
     Py_INCREF(enumType);
     name = self->name;
     Py_INCREF(name);
