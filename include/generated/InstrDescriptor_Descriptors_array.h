@@ -107,7 +107,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_cpu_daddu] = { .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .readsRs=true, .readsRt=true, .maybeIsMove=true },
     [RABBITIZER_INSTR_ID_cpu_dsub] = { .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .readsRs=true, .readsRt=true },
     [RABBITIZER_INSTR_ID_cpu_dsubu] = { .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .readsRs=true, .readsRt=true },
-    [RABBITIZER_INSTR_ID_cpu_syscall] = { .operands={RAB_OPERAND_cpu_code_lower}, .instrType=RABBITIZER_INSTR_TYPE_R },
+    [RABBITIZER_INSTR_ID_cpu_syscall] = { .operands={RAB_OPERAND_cpu_code_lower}, .instrType=RABBITIZER_INSTR_TYPE_R, .notEmittedByCompilers=true },
     [RABBITIZER_INSTR_ID_cpu_break] = { .operands={RAB_OPERAND_cpu_code}, .instrType=RABBITIZER_INSTR_TYPE_R },
     [RABBITIZER_INSTR_ID_cpu_sync] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_R },
     [RABBITIZER_INSTR_ID_cpu_mult] = { .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt}, .instrType=RABBITIZER_INSTR_TYPE_R, .readsRs=true, .readsRt=true, .modifiesHI=true, .modifiesLO=true },
