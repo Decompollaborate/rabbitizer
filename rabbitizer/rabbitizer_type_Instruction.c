@@ -485,9 +485,19 @@ static PyObject *rabbitizer_type_Instruction_disassemble(PyRabbitizerInstruction
 
     disassembledSize = RabbitizerInstruction_disassemble(&self->instr, buffer, immOverride, immOverrideLength, extraLJust);
     if (disassembledSize > bufferSize) {
-        PyErr_SetString(PyExc_AssertionError, "Decoded instruction does not fit in the allocated buffer.\n"
-                                              "This will produce a memory corruption error.\n"
-                                              "This is not an user error, please report this bug.");
+        PyErr_Format(PyExc_AssertionError, "Decoded instruction does not fit in the allocated buffer.\n"
+                                           "This will produce a memory corruption error.\n"
+                                           "This is not an user error, please report this bug.\n"
+                                           "    word:              0x%x\n"
+                                           "    immOverride:       %s\n"
+                                           "    immOverrideLength: %i\n"
+                                           "    extraLJust:        %i\n"
+                                           "    bufferSize:        %zu\n"
+                                           "    disassembledSize:  %zu\n",
+                                           self->instr.word,
+                                           immOverride != NULL ? immOverride : "(nil)",
+                                           immOverrideLength,
+                                           extraLJust, bufferSize, disassembledSize);
         free(buffer);
         return NULL;
     }
@@ -641,9 +651,13 @@ static PyObject *rabbitizer_type_Instruction_repr(PyRabbitizerInstruction *self)
 
     disassembledSize = RabbitizerInstruction_disassemble(&self->instr, buffer, NULL, 0, 0);
     if (disassembledSize > bufferSize) {
-        PyErr_SetString(PyExc_AssertionError, "Decoded instruction does not fit in the allocated buffer.\n"
-                                              "This will produce a memory corruption error.\n"
-                                              "This is not an user error, please report this bug.");
+        PyErr_Format(PyExc_AssertionError, "Decoded instruction does not fit in the allocated buffer.\n"
+                                           "This will produce a memory corruption error.\n"
+                                           "This is not an user error, please report this bug.\n"
+                                           "    word:              0x%x\n"
+                                           "    bufferSize:        %zu\n"
+                                           "    disassembledSize:  %zu\n",
+                                           self->instr.word, bufferSize, disassembledSize);
         free(bufferStart);
         return NULL;
     }
