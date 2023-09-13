@@ -455,3 +455,37 @@ size_t RabbitizerOperandType_process_r5900_immediate5(const RabbitizerInstructio
     }
     return totalSize;
 }
+
+size_t RabbitizerOperandType_process_r5900_immediate15(const RabbitizerInstruction *self, char *dst,
+                                                       const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    int32_t number;
+
+    if ((immOverride != NULL) && (immOverrideLength > 0)) {
+        memcpy(dst, immOverride, immOverrideLength);
+        return immOverrideLength;
+    }
+
+    number = RAB_INSTR_R5900_GET_imm15(self) * 8;
+    if (RabbitizerConfig_Cfg.misc.omit0XOnSmallImm) {
+        if (number > -10 && number < 10) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);
+            return totalSize;
+        }
+    }
+    if (number < 0) {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%x", -number);
+        }
+    } else {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", number);
+        }
+    }
+
+    return totalSize;
+}
