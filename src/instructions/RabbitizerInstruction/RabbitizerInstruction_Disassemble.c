@@ -145,9 +145,12 @@ size_t RabbitizerInstruction_getSizeForBuffer(const RabbitizerInstruction *self,
 
         if (RabbitizerConfig_Cfg.misc.unknownInstrComment) {
             totalSize += 40;
-            totalSize += 3;
+            totalSize += 3; // " # "
             totalSize += RabbitizerInstruction_getSizeForBufferInstrDisasm(self, immOverrideLength, extraLJust);
-            totalSize += 11;
+            totalSize += strlen(" # 00000000"); // " # %08X"
+
+            totalSize += strlen(" <InstrIdType: %s>");
+            totalSize += strlen(RabInstrIdType_getName(self->instrIdType));
         }
         return totalSize;
     }

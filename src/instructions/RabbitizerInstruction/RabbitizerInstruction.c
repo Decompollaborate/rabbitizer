@@ -425,6 +425,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r5900_immediate5:
                 self->word = RAB_INSTR_R5900_PACK_imm5(self->word, 0);
                 break;
+
+            case RAB_OPERAND_r5900_immediate15:
+                self->word = RAB_INSTR_R5900_PACK_imm15(self->word, 0);
+                break;
                 /* r5900 */
 
             case RAB_OPERAND_ALL_INVALID:

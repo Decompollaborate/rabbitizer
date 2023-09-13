@@ -37,7 +37,7 @@ typedef struct RabbitizerConfig_PseudoInstr {
 } RabbitizerConfig_PseudoInstr;
 
 typedef struct RabbitizerConfig_ToolchainTweaks {
-    bool treatJAsUnconditionalBranch; //! @deprecated
+    bool treatJAsUnconditionalBranch;
     /**
      * Enables a few fixes for SN64's assembler related to div/divu instructions
      *

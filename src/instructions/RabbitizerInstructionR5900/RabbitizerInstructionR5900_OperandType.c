@@ -15,7 +15,11 @@ size_t RabbitizerOperandType_process_r5900_I(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "I");
+    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
+    } else {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "I");
+    }
 
     return totalSize;
 }
@@ -24,7 +28,11 @@ size_t RabbitizerOperandType_process_r5900_Q(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "Q");
+    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
+    } else {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "Q");
+    }
 
     return totalSize;
 }
@@ -33,7 +41,11 @@ size_t RabbitizerOperandType_process_r5900_R(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "R");
+    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
+    } else {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "R");
+    }
 
     return totalSize;
 }
@@ -42,7 +54,11 @@ size_t RabbitizerOperandType_process_r5900_ACC(UNUSED const RabbitizerInstructio
                                                UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "ACC");
+    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");
+    } else {
+        RABUTILS_BUFFER_CPY(dst, totalSize, "ACC");
+    }
 
     return totalSize;
 }
@@ -453,5 +469,39 @@ size_t RabbitizerOperandType_process_r5900_immediate5(const RabbitizerInstructio
             RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", number);
         }
     }
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r5900_immediate15(const RabbitizerInstruction *self, char *dst,
+                                                       const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    int32_t number;
+
+    if ((immOverride != NULL) && (immOverrideLength > 0)) {
+        memcpy(dst, immOverride, immOverrideLength);
+        return immOverrideLength;
+    }
+
+    number = RAB_INSTR_R5900_GET_imm15(self) * 8;
+    if (RabbitizerConfig_Cfg.misc.omit0XOnSmallImm) {
+        if (number > -10 && number < 10) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);
+            return totalSize;
+        }
+    }
+    if (number < 0) {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%x", -number);
+        }
+    } else {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", number);
+        }
+    }
+
     return totalSize;
 }

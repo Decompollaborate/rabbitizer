@@ -81,4 +81,5 @@ class OperandType:
     r5900_vit_postincr: Enum
     r5900_vid_postincr: Enum
     r5900_immediate5: Enum
+    r5900_immediate15: Enum
     ALL_MAX: Enum

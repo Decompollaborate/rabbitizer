@@ -19,14 +19,29 @@ const char *const tomlPaths[] = {
 };
 
 
+// returns negative value on error
 long getFileSize(FILE *file) {
     long current = ftell(file);
     long totalSize;
+    int temp;
 
-    fseek(file, 0L, SEEK_END);
+    if (current == -1L) {
+        return -1;
+    }
+
+    temp = fseek(file, 0L, SEEK_END);
+    if (temp != 0) {
+        return -1;
+    }
     totalSize = ftell(file);
+    if (totalSize == -1L) {
+        return -1;
+    }
 
-    fseek(file, current, SEEK_SET);
+    temp = fseek(file, current, SEEK_SET);
+    if (temp != 0) {
+        return -1;
+    }
 
     return totalSize;
 }
@@ -85,6 +100,13 @@ int main() {
         }
 
         fileSize = getFileSize(file);
+        if (fileSize < 0) {
+            fclose(file);
+            fprintf(stderr, "Failed to get the size of file '%s'\n", path);
+            errorCount++;
+            continue;
+        }
+
         buffer = malloc(fileSize * sizeof(char));
         if (buffer == NULL) {
             fclose(file);

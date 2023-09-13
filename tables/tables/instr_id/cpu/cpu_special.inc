@@ -387,7 +387,8 @@
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x0C, syscall,
         .operands={RAB_OPERAND_cpu_code_lower},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .notEmittedByCompilers=true
     ) // SYStem CALL
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x0D, break,

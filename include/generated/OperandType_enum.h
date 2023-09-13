@@ -80,6 +80,7 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_r5900_vit_postincr,
     RAB_OPERAND_r5900_vid_postincr,
     RAB_OPERAND_r5900_immediate5,
+    RAB_OPERAND_r5900_immediate15,
     RAB_OPERAND_ALL_MAX,
 } RabbitizerOperandType;
 

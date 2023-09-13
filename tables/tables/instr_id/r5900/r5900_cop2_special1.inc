@@ -332,10 +332,9 @@
         .operands={RAB_OPERAND_r5900_vid, RAB_OPERAND_r5900_vis, RAB_OPERAND_r5900_vit}
     ) // Integer OR
 
-    // TODO: operands and properties
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x38, vcallms,
-        .operands={0}
+        .operands={RAB_OPERAND_r5900_immediate15}
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x39, vcallmsr,
