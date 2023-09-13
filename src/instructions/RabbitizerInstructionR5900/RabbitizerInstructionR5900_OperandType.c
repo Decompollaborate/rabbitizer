@@ -15,7 +15,7 @@ size_t RabbitizerOperandType_process_r5900_I(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "I");
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
 
     return totalSize;
 }
@@ -24,7 +24,7 @@ size_t RabbitizerOperandType_process_r5900_Q(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "Q");
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
 
     return totalSize;
 }
@@ -33,7 +33,7 @@ size_t RabbitizerOperandType_process_r5900_R(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "R");
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
 
     return totalSize;
 }
@@ -42,7 +42,7 @@ size_t RabbitizerOperandType_process_r5900_ACC(UNUSED const RabbitizerInstructio
                                                UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, "ACC");
+    RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");
 
     return totalSize;
 }
