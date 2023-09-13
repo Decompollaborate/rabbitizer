@@ -36,8 +36,6 @@ jobs:
     steps:
     - name: Checkout reposistory
       uses: actions/checkout@v4
-      with:
-        ref: ${{ github.head_ref }}
 
     - name: Install dependencies
       run: sudo apt install clang-tidy-11
