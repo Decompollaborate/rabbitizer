@@ -677,7 +677,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_r5900_vmulaq] = { .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw },
     [RABBITIZER_INSTR_ID_r5900_vabs] = { .operands={RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true },
     [RABBITIZER_INSTR_ID_r5900_vmulai] = { .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw },
-    [RABBITIZER_INSTR_ID_r5900_vclipw] = { .operands={RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true },
+    [RABBITIZER_INSTR_ID_r5900_vclipw] = { .operands={RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn}, .isFloat=true },
     [RABBITIZER_INSTR_ID_r5900_vaddaq] = { .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true },
     [RABBITIZER_INSTR_ID_r5900_vmaddaq] = { .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_Q}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true },
     [RABBITIZER_INSTR_ID_r5900_vaddai] = { .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_I}, .instrSuffix=RABINSTRSUFFIX_R5900_xyzw, .isFloat=true },
