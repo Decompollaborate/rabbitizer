@@ -474,6 +474,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RAB_OPERAND_r5900_immediate5:
                 validbits = RAB_INSTR_R5900_PACK_imm5(validbits, ~0);
                 break;
+
+            case RAB_OPERAND_r5900_immediate15:
+                validbits = RAB_INSTR_R5900_PACK_imm15(validbits, ~0);
+                break;
                 /* r5900 */
 
             case RAB_OPERAND_ALL_INVALID:

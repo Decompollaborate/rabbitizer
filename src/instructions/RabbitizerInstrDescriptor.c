@@ -478,6 +478,9 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
 
         case RAB_OPERAND_r5900_immediate5:
             break;
+
+        case RAB_OPERAND_r5900_immediate15:
+            break;
             /* r5900 */
 
         case RAB_OPERAND_ALL_INVALID:

@@ -32,6 +32,7 @@ extern "C" {
 #define RAB_INSTR_R5900_GET_vid(self)                   (SHIFTR((self)->word,  6,  5))
 
 #define RAB_INSTR_R5900_GET_imm5(self)                  (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_R5900_GET_imm15(self)                 (SHIFTR((self)->word,  6, 15))
 
 
 #define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), (value),  6,  5))
@@ -54,6 +55,7 @@ extern "C" {
 #define RAB_INSTR_R5900_PACK_vid(word, value)           (BITREPACK((word), (value),  6,  5))
 
 #define RAB_INSTR_R5900_PACK_imm5(word, value)          (BITREPACK((word), (value),  6,  5))
+#define RAB_INSTR_R5900_PACK_imm15(word, value)         (BITREPACK((word), (value),  6, 15))
 
 
 NON_NULL(1)
