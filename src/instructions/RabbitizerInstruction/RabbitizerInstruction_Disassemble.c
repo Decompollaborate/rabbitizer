@@ -126,6 +126,8 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
                     return true;
                 }
                 break;
+            case RABBITIZER_INSTR_ID_r5900_vclipw:
+                return true;
 
             default:
                 break;
