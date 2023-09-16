@@ -128,6 +128,8 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
                 break;
             case RABBITIZER_INSTR_ID_r5900_vclipw:
                 return true;
+            case RABBITIZER_INSTR_ID_r5900_vsqrt:
+                return true;
 
             default:
                 break;
