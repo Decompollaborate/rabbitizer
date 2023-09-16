@@ -126,6 +126,14 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
                     return true;
                 }
                 break;
+            case RABBITIZER_INSTR_ID_r5900_vclipw:
+                // The vclipw instruction has variants that are undocumented (vclipw.xy, vclipw.z) and don't assemble in
+                // gnu as
+                return true;
+            case RABBITIZER_INSTR_ID_r5900_vsqrt:
+                // The vclipw instruction seems to be representable in multiple ways, and we only disassemble one of
+                // them
+                return true;
 
             default:
                 break;
