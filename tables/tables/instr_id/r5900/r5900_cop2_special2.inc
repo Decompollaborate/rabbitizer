@@ -216,6 +216,7 @@ Note: opcode is flo | (
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1F, vclipw,
         .operands={RAB_OPERAND_r5900_vfsxyzw, RAB_OPERAND_r5900_vftn},
+        .instrSuffix=RABINSTRSUFFIX_R5900_xyzw,
         .isFloat=true
     ) // Clip
 
