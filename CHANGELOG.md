@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
 - Add `CHANGELOG.md`
+- Add markdown linter to CI
 
 ## [1.7.9] - 2023-09-18
 

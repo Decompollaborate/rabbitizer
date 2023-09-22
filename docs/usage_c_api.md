@@ -48,89 +48,89 @@ Let's break up the example and explain each part:
 
 1. The stack
 
-The `RabbitizerInstruction` type is the type `rabbitizer` uses to represent an
-instruction. It is a simple struct which doesn't need dynamic memory
-allocation of any kind, so it can be declared as an automatic variable and live
-in the stack, without worrying about pointers and such.
+    The `RabbitizerInstruction` type is the type `rabbitizer` uses to represent an
+    instruction. It is a simple struct which doesn't need dynamic memory
+    allocation of any kind, so it can be declared as an automatic variable and live
+    in the stack, without worrying about pointers and such.
 
-The other stack variables should be self-explanatory. `word` is a 32-bit word
-representing a raw MIPS instruction (spoiler, it is an `lw`). `rabbitizer`
-needs to know the `vram` address of the instruction it is decoding, so we
-initialize with a place-holder one. `buffer` and `bufferSize` will be used for
-storing the disassembled string.
+    The other stack variables should be self-explanatory. `word` is a 32-bit word
+    representing a raw MIPS instruction (spoiler, it is an `lw`). `rabbitizer`
+    needs to know the `vram` address of the instruction it is decoding, so we
+    initialize with a place-holder one. `buffer` and `bufferSize` will be used for
+    storing the disassembled string.
 
-```c
-int main() {
-    RabbitizerInstruction instr;
-    uint32_t word = 0x8D4A7E18;
-    uint32_t vram = 0x80000000;
-    char *buffer;
-    size_t bufferSize;
-```
+    ```c
+    int main() {
+        RabbitizerInstruction instr;
+        uint32_t word = 0x8D4A7E18;
+        uint32_t vram = 0x80000000;
+        char *buffer;
+        size_t bufferSize;
+    ```
 
 2. Initializing
 
-To initialize our `instr` we need to call the pair `RabbitizerInstruction_init`
-and `RabbitizerInstruction_processUniqueId`. `RabbitizerInstruction_init`
-initialises all the members of the struct so it doesn't contain garbage data
-anymore, while `RabbitizerInstruction_processUniqueId` does the heavy lifting of
-identifying the actual instruction id out of the `word` we passed.
+    To initialize our `instr` we need to call the pair `RabbitizerInstruction_init`
+    and `RabbitizerInstruction_processUniqueId`. `RabbitizerInstruction_init`
+    initialises all the members of the struct so it doesn't contain garbage data
+    anymore, while `RabbitizerInstruction_processUniqueId` does the heavy lifting of
+    identifying the actual instruction id out of the `word` we passed.
 
-A `RabbitizerInstruction` variable is not considered fully initialized until it
-has been passed to this pair of functions.
+    A `RabbitizerInstruction` variable is not considered fully initialized until it
+    has been passed to this pair of functions.
 
-```c
-    RabbitizerInstruction_init(&instr, word, vram);
-    RabbitizerInstruction_processUniqueId(&instr);
-```
+    ```c
+        RabbitizerInstruction_init(&instr, word, vram);
+        RabbitizerInstruction_processUniqueId(&instr);
+    ```
 
 3. Disassembling into a string
 
-To disassemble the passed word as a string we can call
-`RabbitizerInstruction_disassemble`. This function expects a `char` buffer to
-fill, which should have enough space to hold the resulting string. To know how
-big this buffer needs to be we should use the
-`RabbitizerInstruction_getSizeForBuffer` function which calculates a size big
-enough to hold the disassembled string for the passed instruction (without
-taking into account the finalizing NUL character, similar to how `strlen`
-behaves).
+    To disassemble the passed word as a string we can call
+    `RabbitizerInstruction_disassemble`. This function expects a `char` buffer to
+    fill, which should have enough space to hold the resulting string. To know how
+    big this buffer needs to be we should use the
+    `RabbitizerInstruction_getSizeForBuffer` function which calculates a size big
+    enough to hold the disassembled string for the passed instruction (without
+    taking into account the finalizing NUL character, similar to how `strlen`
+    behaves).
 
-With this information we can just `malloc` our buffer and call
-`RabbitizerInstruction_disassemble` to get our disassembled instruction.
+    With this information we can just `malloc` our buffer and call
+    `RabbitizerInstruction_disassemble` to get our disassembled instruction.
 
-(Ignore the extra `0` and `NULL` arguments for now, they will be discussed later)
+    (Ignore the extra `0` and `NULL` arguments for now, they will be discussed later)
 
-```c
-    bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, 0, 0);
-    buffer = malloc(bufferSize + 1);
+    ```c
+        bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, 0, 0);
+        buffer = malloc(bufferSize + 1);
 
-    RabbitizerInstruction_disassemble(&instr, buffer, NULL, 0, 0);
-```
+        RabbitizerInstruction_disassemble(&instr, buffer, NULL, 0, 0);
+    ```
 
 4. Printing
 
-Not much to say here, just print the disassembled instruction to `stdout`.
+    Not much to say here, just print the disassembled instruction to `stdout`.
 
-```c
-    printf("%s\n", buffer);
-```
+    ```c
+        printf("%s\n", buffer);
+    ```
 
 5. Clean-up
 
-Finally since we know we won't be using the produced string or the instruction
-we just `free` and `RabbitizerInstruction_destroy` them.
+    Finally since we know we won't be using the produced string or the instruction
+    we just `free` and `RabbitizerInstruction_destroy` them.
 
-As a curiosity, `RabbitizerInstruction_destroy` currently does nothing, but
-exists in case some destruction is needed in the future, so it recommended to
-call this function as a future-proof method.
+    As a curiosity, `RabbitizerInstruction_destroy` currently does nothing, but
+    exists in case some destruction is needed in the future, so it recommended to
+    call this function as a future-proof method.
 
-```c
-    free(buffer);
-    RabbitizerInstruction_destroy(&instr);
+    ```c
+        free(buffer);
+        RabbitizerInstruction_destroy(&instr);
 
-    return 0;
-}
-```
+        return 0;
+    }
+    ```
 
 ## Overriding the immediate
 
