@@ -73,11 +73,11 @@ Let's break up the example and explain each part:
     To initialize our `instr` we need to call the pair `RabbitizerInstruction_init`
     and `RabbitizerInstruction_processUniqueId`. `RabbitizerInstruction_init`
     initialises all the members of the struct so it doesn't contain garbage data
-    anymore, while `RabbitizerInstruction_processUniqueId` does the heavy lifting of
-    identifying the actual instruction id out of the `word` we passed.
+    anymore, while `RabbitizerInstruction_processUniqueId` does the heavy lifting
+    of identifying the actual instruction id out of the `word` we passed.
 
-    A `RabbitizerInstruction` variable is not considered fully initialized until it
-    has been passed to this pair of functions.
+    A `RabbitizerInstruction` variable is not considered fully initialized until
+    it has been passed to this pair of functions.
 
     ```c
         RabbitizerInstruction_init(&instr, word, vram);

@@ -44,6 +44,11 @@ extern PyTypeObject rabbitizer_type_LoPairingInfo_TypeObject;
 extern PyTypeObject rabbitizer_type_TrackedRegisterState_TypeObject;
 extern PyTypeObject rabbitizer_type_RegistersTracker_TypeObject;
 
+int rabbitizer_type_Instruction_TypeObject_Check(PyObject *o);
+
+int rabbitizer_converter_InstructionOrNone(PyObject *object, PyRabbitizerInstruction **address);
+
+
 DECL_ENUM(Abi)
 DECL_ENUM(InstrCategory)
 DECL_ENUM(InstrId)

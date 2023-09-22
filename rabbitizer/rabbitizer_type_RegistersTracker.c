@@ -11,7 +11,6 @@ typedef struct PyRabbitizerRegistersTracker {
     RabbitizerRegistersTracker tracker;
 } PyRabbitizerRegistersTracker;
 
-
 static void rabbitizer_type_RegistersTracker_dealloc(PyRabbitizerRegistersTracker *self) {
     RabbitizerRegistersTracker_destroy(&self->tracker);
     Py_TYPE(self)->tp_free((PyObject *) self);
@@ -119,7 +118,7 @@ static PyObject *rabbitizer_type_RegistersTracker_processLui(PyRabbitizerRegiste
     PyRabbitizerInstruction *pyPrevInstr = NULL;
     RabbitizerInstruction *prevInstr = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i|O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset, &rabbitizer_type_Instruction_TypeObject, &pyPrevInstr)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i|O&", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset, rabbitizer_converter_InstructionOrNone, &pyPrevInstr)) {
         return NULL;
     }
 

@@ -671,6 +671,57 @@ static PyObject *rabbitizer_type_Instruction_str(PyRabbitizerInstruction *self) 
     return rabbitizer_type_Instruction_disassemble(self, Py_BuildValue("()"), Py_BuildValue("{}"));
 }
 
+/**
+ * Returns:
+ *  - 1 if `o` is an RabbitizerInstruction
+ *  - 0 if not an instance of RabbitizerInstruction
+ *  - -1 if an error occurred
+ */
+int rabbitizer_type_Instruction_TypeObject_Check(PyObject *o) {
+    int isInstance = PyObject_IsInstance(o, (PyObject*)&rabbitizer_type_Instruction_TypeObject);
+
+    if (isInstance < 0) {
+        /* An error happened */
+        /* PyObject_IsInstance already sets an exception, so nothing else to do here */
+        return -1;
+    }
+
+    if (isInstance == 0) {
+        /* `o` isn't an instance of RabbitizerInstruction */
+        return 0;
+    }
+
+    return 1;
+}
+
+
+int rabbitizer_converter_InstructionOrNone(PyObject *object, PyRabbitizerInstruction **address) {
+    int instanceCheck;
+
+    if ((object == NULL) || (address == NULL)) {
+        PyErr_Format(PyExc_RuntimeError, "%s: Internal error", __func__);
+        return 0; // fail
+    }
+
+    if (object == Py_None) {
+        *address = NULL;
+        return 1; // successful
+    }
+
+    instanceCheck = rabbitizer_type_Instruction_TypeObject_Check(object);
+    if (instanceCheck < 0) {
+        return 0; // fail
+    }
+    if (instanceCheck > 0) {
+        *address = (PyRabbitizerInstruction*)object;
+        return 1; // successful
+    }
+
+    // TypeError: argument 3 must be rabbitizer.Instruction, not None
+    PyErr_Format(PyExc_TypeError, "argument must be %s or None, not %s", rabbitizer_type_Instruction_TypeObject.tp_name, object->ob_type->tp_name);
+    return 0; // fail
+}
+
 
 PyTypeObject rabbitizer_type_Instruction_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)

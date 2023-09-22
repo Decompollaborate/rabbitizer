@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `CHANGELOG.md`
 - Add markdown linter to CI
 
+### Fixed
+
+- Fix passing `None` to `RegistersTracker.processLui`
+
 ## [1.7.9] - 2023-09-18
 
 ### Changed
