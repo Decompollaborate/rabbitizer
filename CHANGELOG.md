@@ -14,7 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix passing `None` to `RegistersTracker.processLui`
+- Fix passing `None` to third argument of `RegistersTracker.processLui` on the
+  Python bindings
+- Fix passing `None` to first argument of `RegistersTracker` on the Python bindings
 
 ## [1.7.9] - 2023-09-18
 

@@ -32,6 +32,9 @@ static PyMemberDef rabbitizer_type_LoPairingInfo_members[] = {
 };
 
 
+DEF_RAB_TYPE(LoPairingInfo)
+
+
 PyTypeObject rabbitizer_type_LoPairingInfo_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)
     .tp_name = "rabbitizer.LoPairingInfo",

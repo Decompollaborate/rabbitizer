@@ -1,37 +1,24 @@
 /* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#ifndef RABBITIZER_MODULE_H
-#define RABBITIZER_MODULE_H
+#ifndef PYRABBITIZER_MODULE_H
+#define PYRABBITIZER_MODULE_H
 #pragma once
 
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include "structmember.h"
 
+#include "rabbitizer_macro_utilities.h"
 #include "enums/enums_utils.h"
 
 #include "instructions/RabbitizerInstruction.h"
-#include "analysis/RabbitizerTrackedRegisterState.h"
 #include "analysis/RabbitizerLoPairingInfo.h"
+#include "analysis/RabbitizerTrackedRegisterState.h"
+#include "analysis/RabbitizerRegistersTracker.h"
+
 
 // TODO: clean up this...
-
-
-typedef struct PyRabbitizerInstruction {
-    PyObject_HEAD
-    RabbitizerInstruction instr;
-} PyRabbitizerInstruction;
-
-typedef struct PyRabbitizerTrackedRegisterState {
-    PyObject_HEAD
-    RabbitizerTrackedRegisterState registerState;
-} PyRabbitizerTrackedRegisterState;
-
-typedef struct PyRabbitizerLoPairingInfo {
-    PyObject_HEAD
-    RabbitizerLoPairingInfo pairingInfo;
-} PyRabbitizerLoPairingInfo;
 
 
 PyObject *rabbitizer_submodule_Utils_Init(void);
@@ -39,14 +26,11 @@ PyObject *rabbitizer_submodule_Utils_Init(void);
 extern PyTypeObject rabbitizer_global_config_TypeObject;
 
 extern PyTypeObject rabbitizer_type_Enum_TypeObject;
-extern PyTypeObject rabbitizer_type_Instruction_TypeObject;
-extern PyTypeObject rabbitizer_type_LoPairingInfo_TypeObject;
-extern PyTypeObject rabbitizer_type_TrackedRegisterState_TypeObject;
-extern PyTypeObject rabbitizer_type_RegistersTracker_TypeObject;
 
-int rabbitizer_type_Instruction_TypeObject_Check(PyObject *o);
-
-int rabbitizer_converter_InstructionOrNone(PyObject *object, PyRabbitizerInstruction **address);
+DECL_RAB_TYPE(Instruction, instr)
+DECL_RAB_TYPE(LoPairingInfo, pairingInfo)
+DECL_RAB_TYPE(TrackedRegisterState, registerState)
+DECL_RAB_TYPE(RegistersTracker, tracker)
 
 
 DECL_ENUM(Abi)

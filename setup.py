@@ -9,6 +9,7 @@ bindingsPath = Path("rabbitizer")
 srcPath = Path("src")
 
 sourcesList = [str(x) for x in bindingsPath.glob("**/*.c")] + [str(x) for x in srcPath.glob("**/*.c")]
+headersList = [str(x) for x in bindingsPath.glob("**/*.h")] + [str(x) for x in srcPath.glob("**/*.h")]
 
 extraCompileArgs = ["-std=c11", "-Wall", "-g",]
 if platform.system() == "Linux":
@@ -24,6 +25,7 @@ setup(
             sources=sourcesList,
             include_dirs=["include", "rabbitizer", "tables"],
             extra_compile_args = extraCompileArgs,
+            depends=headersList,
         ),
     ],
 )

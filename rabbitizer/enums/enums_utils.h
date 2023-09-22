@@ -1,8 +1,8 @@
 /* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#ifndef RABBITIZER_ENUMS_UTILS_H
-#define RABBITIZER_ENUMS_UTILS_H
+#ifndef PYRABBITIZER_ENUMS_UTILS_H
+#define PYRABBITIZER_ENUMS_UTILS_H
 #pragma once
 
 

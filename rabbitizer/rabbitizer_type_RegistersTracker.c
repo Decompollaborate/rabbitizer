@@ -3,14 +3,6 @@
 
 #include "rabbitizer_module.h"
 
-#include "analysis/RabbitizerRegistersTracker.h"
-
-
-typedef struct PyRabbitizerRegistersTracker {
-    PyObject_HEAD
-    RabbitizerRegistersTracker tracker;
-} PyRabbitizerRegistersTracker;
-
 static void rabbitizer_type_RegistersTracker_dealloc(PyRabbitizerRegistersTracker *self) {
     RabbitizerRegistersTracker_destroy(&self->tracker);
     Py_TYPE(self)->tp_free((PyObject *) self);
@@ -21,7 +13,7 @@ static int rabbitizer_type_RegistersTracker_init(PyRabbitizerRegistersTracker *s
     PyRabbitizerRegistersTracker *pyOther = NULL;
     RabbitizerRegistersTracker *other = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O!", kwlist, &rabbitizer_type_RegistersTracker_TypeObject, &pyOther)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O&", kwlist, rabbitizer_type_RegistersTracker_Converter_Optional, &pyOther)) {
         return -1;
     }
 
@@ -118,7 +110,7 @@ static PyObject *rabbitizer_type_RegistersTracker_processLui(PyRabbitizerRegiste
     PyRabbitizerInstruction *pyPrevInstr = NULL;
     RabbitizerInstruction *prevInstr = NULL;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i|O&", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset, rabbitizer_converter_InstructionOrNone, &pyPrevInstr)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!i|O&", kwlist, &rabbitizer_type_Instruction_TypeObject, &instr, &instrOffset, rabbitizer_type_Instruction_Converter_Optional, &pyPrevInstr)) {
         return NULL;
     }
 
@@ -299,6 +291,9 @@ PyObject *rabbitizer_type_RegistersTracker___getitem__(PyRabbitizerRegistersTrac
 static PySequenceMethods example_classSeqMethods = {
 	.sq_item = (ssizeargfunc)rabbitizer_type_RegistersTracker___getitem__, // sq_item
 };
+
+
+DEF_RAB_TYPE(RegistersTracker)
 
 
 PyTypeObject rabbitizer_type_RegistersTracker_TypeObject = {
