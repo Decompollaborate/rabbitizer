@@ -10,6 +10,9 @@
 #include "structmember.h"
 
 
+#define RAB_STRCMP_LITERAL(var, literal) strncmp(var, literal, sizeof(literal) - 1)
+
+
 #define DECL_RAB_TYPE(typeName, memberName) \
     typedef struct PyRabbitizer##typeName { \
         PyObject_HEAD \

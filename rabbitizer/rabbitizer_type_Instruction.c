@@ -610,7 +610,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
 
     METHOD_ARGS(disassemble, "description"),
 
-    METHOD_ARGS(__reduce__, ""),
+    METHOD_NO_ARGS(__reduce__, ""),
 
     { 0 },
 };

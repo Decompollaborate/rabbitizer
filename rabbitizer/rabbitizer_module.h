@@ -21,6 +21,8 @@
 // TODO: clean up this...
 
 
+extern PyModuleDef rabbitizer_module;
+
 PyObject *rabbitizer_submodule_Utils_Init(void);
 
 extern PyTypeObject rabbitizer_global_config_TypeObject;

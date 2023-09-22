@@ -8,3 +8,5 @@ const int RabVersion_Minor = RAB_VERSION_MINOR;
 const int RabVersion_Patch = RAB_VERSION_PATCH;
 
 const char RabVersion_Str[] = RAB_VERSION_STR;
+
+const char RabVersion_Author[] = RAB_VERSION_AUTHOR;

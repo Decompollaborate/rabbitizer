@@ -18,12 +18,17 @@ extern "C" {
 
 #define RAB_VERSION_STR RAB_STRINGIFY(RAB_VERSION_MAJOR) "." RAB_STRINGIFY(RAB_VERSION_MINOR) "." RAB_STRINGIFY(RAB_VERSION_PATCH)
 
+#define RAB_VERSION_AUTHOR "Decompollaborate"
+
+
 // Compiled library version
 extern const int RabVersion_Major;
 extern const int RabVersion_Minor;
 extern const int RabVersion_Patch;
 
 extern const char RabVersion_Str[];
+
+extern const char RabVersion_Author[];
 
 
 #ifdef __cplusplus
