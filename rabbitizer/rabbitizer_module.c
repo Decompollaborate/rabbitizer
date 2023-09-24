@@ -7,6 +7,7 @@
 
 #include "common/Utils.h"
 #include "instructions/RabbitizerInstrId.h"
+#include "common/RabbitizerVersion.h"
 
 
 typedef enum ModuleAttributeCategory {
@@ -123,12 +124,52 @@ error:
     return -1;
 }
 
+#define rabbitizer_module_method___getattr___docs "Hacky way to get read-only global variables"
 
-static PyModuleDef rabbitizer_module = {
+PyObject *rabbitizer_module_method___getattr__(UNUSED void *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "name", NULL };
+    const char *attributeName = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s", kwlist, &attributeName)) {
+        return NULL;
+    }
+
+    if (attributeName == NULL) {
+        PyErr_Format(PyExc_AssertionError, "%s: assert(attributeName != NULL)", __func__);
+        return NULL;
+    }
+
+    if (RAB_STRCMP_LITERAL(attributeName, "__version_info__") == 0) {
+        return Py_BuildValue("(iii)", RabVersion_Major, RabVersion_Minor, RabVersion_Patch);
+    }
+    if (RAB_STRCMP_LITERAL(attributeName, "__version__") == 0) {
+        return PyUnicode_FromString(RabVersion_Str);
+    }
+    if (RAB_STRCMP_LITERAL(attributeName, "__author__") == 0) {
+        return PyUnicode_FromString(RabVersion_Author);
+    }
+
+    PyErr_Format(PyExc_AttributeError, "module '%s' has no attribute '%s'",
+                                        rabbitizer_module.m_name, attributeName);
+    return NULL;
+}
+
+#define METHOD_NO_ARGS(name)  { #name, (PyCFunction) (void *) rabbitizer_module_method_##name, METH_NOARGS,                  PyDoc_STR(rabbitizer_module_method_##name##_docs) }
+#define METHOD_ARGS(name)     { #name, (PyCFunction) (void *) rabbitizer_module_method_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(rabbitizer_module_method_##name##_docs) }
+
+PyMethodDef rabbitizer_module_methods[] = {
+    METHOD_ARGS(__getattr__),
+
+    { 0 },
+};
+
+
+PyModuleDef rabbitizer_module = {
     PyModuleDef_HEAD_INIT,
     .m_name = "rabbitizer",
     .m_doc = "",
     .m_size = -1,
+    .m_methods = rabbitizer_module_methods,
 };
 
 PyMODINIT_FUNC PyInit_rabbitizer(void) {

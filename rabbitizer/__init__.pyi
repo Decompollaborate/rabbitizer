@@ -5,6 +5,10 @@
 
 from __future__ import annotations
 
+__version_info__: tuple[int, int, int]
+__version__: str
+__author__: str
+
 from .Utils import *
 
 from .Enum import *

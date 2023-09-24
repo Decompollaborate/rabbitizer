@@ -14,9 +14,12 @@ extern "C" {
 // Header version
 #define RAB_VERSION_MAJOR 1
 #define RAB_VERSION_MINOR 7
-#define RAB_VERSION_PATCH 9
+#define RAB_VERSION_PATCH 10
 
 #define RAB_VERSION_STR RAB_STRINGIFY(RAB_VERSION_MAJOR) "." RAB_STRINGIFY(RAB_VERSION_MINOR) "." RAB_STRINGIFY(RAB_VERSION_PATCH)
+
+#define RAB_VERSION_AUTHOR "Decompollaborate"
+
 
 // Compiled library version
 extern const int RabVersion_Major;
@@ -24,6 +27,8 @@ extern const int RabVersion_Minor;
 extern const int RabVersion_Patch;
 
 extern const char RabVersion_Str[];
+
+extern const char RabVersion_Author[];
 
 
 #ifdef __cplusplus

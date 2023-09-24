@@ -610,7 +610,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
 
     METHOD_ARGS(disassemble, "description"),
 
-    METHOD_ARGS(__reduce__, ""),
+    METHOD_NO_ARGS(__reduce__, ""),
 
     { 0 },
 };
@@ -672,6 +672,9 @@ static PyObject *rabbitizer_type_Instruction_str(PyRabbitizerInstruction *self) 
 }
 
 
+DEF_RAB_TYPE(Instruction)
+
+
 PyTypeObject rabbitizer_type_Instruction_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)
     .tp_name = "rabbitizer.Instruction",
@@ -688,3 +691,4 @@ PyTypeObject rabbitizer_type_Instruction_TypeObject = {
     .tp_methods = rabbitizer_type_Instruction_methods,
     .tp_getset = rabbitizer_type_Instruction_getsetters,
 };
+

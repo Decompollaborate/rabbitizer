@@ -85,6 +85,9 @@ static PyGetSetDef rabbitizer_type_TrackedRegisterState_getsetters[] = {
 };
 
 
+DEF_RAB_TYPE(TrackedRegisterState)
+
+
 PyTypeObject rabbitizer_type_TrackedRegisterState_TypeObject = {
     PyVarObject_HEAD_INIT(NULL, 0)
     .tp_name = "rabbitizer.TrackedRegisterState",
