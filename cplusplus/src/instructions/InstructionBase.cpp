@@ -646,6 +646,18 @@ void InstructionBase::Set_stype(uint8_t val) {
 
 /* setters */
 
+/* flags */
+
+TrinaryValue InstructionBase::FlagGet_disasmAsData() const {
+    return static_cast<TrinaryValue>(RAB_INSTR_FLAGS_GET_disasmAsData(&this->instr));
+}
+void InstructionBase::FlagSet_disasmAsData(TrinaryValue value) {
+    RAB_INSTR_FLAGS_SET_disasmAsData(&this->instr, static_cast<RabTrinaryValue>(value));
+}
+
+/* flags */
+
+
 /* more getters */
 
 uint32_t InstructionBase::getRaw() const {

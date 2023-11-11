@@ -52,6 +52,8 @@ static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_ENUM(RegCop1N32),
     MODULE_ATTRIBUTE_ENUM(RegCop1N64),
 
+    MODULE_ATTRIBUTE_ENUM(TrinaryValue),
+
     MODULE_ATTRIBUTE_TYPE(Instruction),
     MODULE_ATTRIBUTE_TYPE(LoPairingInfo),
     MODULE_ATTRIBUTE_TYPE(TrackedRegisterState),

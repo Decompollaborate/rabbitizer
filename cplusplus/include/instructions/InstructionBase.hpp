@@ -10,6 +10,8 @@
 
 #include "instructions/RabbitizerInstruction.h"
 
+#include "common/Utils.hpp"
+
 #include "instructions/Registers.hpp"
 #include "instructions/OperandType.hpp"
 #include "instructions/InstrId.hpp"
@@ -143,6 +145,14 @@ namespace rabbitizer {
         void Set_stype(uint8_t val);
 
         /* setters */
+
+
+        /* flags */
+
+        TrinaryValue FlagGet_disasmAsData() const;
+        void FlagSet_disasmAsData(TrinaryValue value);
+
+        /* flags */
 
 
         /* more getters */

@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.12.3
+        uses: pypa/cibuildwheel@v2.16.2
         env:
           CIBW_ARCHS_WINDOWS: "auto"
           CIBW_ARCHS_LINUX: "auto"

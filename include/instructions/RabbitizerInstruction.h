@@ -33,6 +33,33 @@ typedef struct RabbitizerInstruction {
     bool _handwrittenCategory;
     bool inHandwrittenFunction;
     RabbitizerInstrCategory category;
+
+    /**
+     * Flags are bitpacked, refer to the `RAB_INSTR_FLAGS_` macros to access them.
+     *
+     * Bit usage:
+     * - Bits 0 ~ 1: Value of the `RabTrinaryValue` enum.
+     *     - `RAB_TRINARY_VAL_TRUE` forces the instruction to be disassembled as data.
+     *     - `RAB_TRINARY_VAL_FALSE` bypasses the global checks for disassembling a word as data. A word will still be disassembled as data if it can't be decoded.
+     *     - `RAB_TRINARY_VAL_NONE` leaves this decision to the global settings.
+     *     - Defaults to `RAB_TRINARY_VAL_NONE`
+     * - Bit 2 ~ 3: Reserved for future use.
+     * - Bit 4 ~ 5: Reserved for future use.
+     * - Bit 6 ~ 7: Reserved for future use.
+     * - Bit 8 ~ 9: Reserved for future use.
+     * - Bit 10 ~ 11: Reserved for future use.
+     * - Bit 12 ~ 13: Reserved for future use.
+     * - Bit 14 ~ 15: Reserved for future use.
+     * - Bit 16 ~ 17: Reserved for future use.
+     * - Bit 18 ~ 19: Reserved for future use.
+     * - Bit 20 ~ 21: Reserved for future use.
+     * - Bit 22 ~ 23: Reserved for future use.
+     * - Bit 24 ~ 25: Reserved for future use.
+     * - Bit 26 ~ 27: Reserved for future use.
+     * - Bit 28 ~ 29: Reserved for future use.
+     * - Bit 30 ~ 31: Reserved for future use.
+     */
+    uint32_t flags;
 } RabbitizerInstruction;
 
 
@@ -112,6 +139,10 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_bc_fmt(word, value)          (BITREPACK((word), (value), 16,  5))
 
 #define RAB_INSTR_PACK_stype(word, value)           (BITREPACK((word), (value),  6,  5))
+
+
+#define RAB_INSTR_FLAGS_GET_disasmAsData(self)                            (RabTrinaryValue)(SHIFTR((self)->flags,  0,  2))
+#define RAB_INSTR_FLAGS_SET_disasmAsData(self, value)          ((self)->flags = BITREPACK((self)->flags, (value),  0,  2))
 
 
 NON_NULL(1)

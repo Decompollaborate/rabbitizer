@@ -23,6 +23,9 @@ void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint
     self->_handwrittenCategory = false;
     self->inHandwrittenFunction = false;
     self->category = RABBITIZER_INSTRCAT_CPU;
+
+    self->flags = 0;
+    RAB_INSTR_FLAGS_SET_disasmAsData(self, RAB_TRINARY_VAL_NONE);
 }
 
 void RabbitizerInstruction_destroy(UNUSED RabbitizerInstruction *self) {

@@ -201,10 +201,53 @@ static PyObject *rabbitizer_type_Instruction_member_get_instrIdType(PyRabbitizer
     return enumInstance;
 }
 
+
+#define DEF_MEMBER_FLAG(name) \
+    static PyObject *rabbitizer_type_Instruction_member_get_flag_##name(PyRabbitizerInstruction *self, UNUSED PyObject *closure) { \
+        uint32_t flag; \
+        PyObject *enumInstance = NULL; \
+        \
+        flag = RAB_INSTR_FLAGS_GET_##name(&self->instr); \
+        enumInstance = rabbitizer_enum_TrinaryValue_enumvalues[flag].instance; \
+        \
+        Py_INCREF(enumInstance); \
+        return enumInstance; \
+    } \
+    static int rabbitizer_type_Instruction_member_set_flag_##name(PyRabbitizerInstruction *self, PyObject *pyTrinaryValue, UNUSED PyObject *closure) { \
+        int enumCheck; \
+        RabTrinaryValue trinaryValue = -1; \
+        \
+        if (pyTrinaryValue == NULL) { \
+            PyErr_SetString(PyExc_ValueError, "NULL passed for 'value' parameter?"); \
+            return -1; \
+        } \
+        \
+        enumCheck = rabbitizer_enum_TrinaryValue_Check(pyTrinaryValue); \
+        \
+        if (enumCheck <= 0) { \
+            if (enumCheck == 0) { \
+                PyErr_SetString(PyExc_ValueError, "Invalid value for 'value' parameter"); \
+            } \
+            return -1; \
+        } \
+        \
+        trinaryValue = ((PyRabbitizerEnum*)pyTrinaryValue)->value; \
+        if (trinaryValue < 0) { \
+            PyErr_SetString(PyExc_ValueError, "Invalid value for 'value' parameter"); \
+            return -1; \
+        } \
+        \
+        RAB_INSTR_FLAGS_SET_##name(&self->instr, trinaryValue); \
+        \
+        return 0; \
+    }
+
+DEF_MEMBER_FLAG(disasmAsData)
+
+
 #define MEMBER_GET(name, docs, closure)      { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) NULL,                                          PyDoc_STR(docs), closure }
 #define MEMBER_SET(name, docs, closure)      { #name, (getter) NULL,                                          (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 #define MEMBER_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
-
 
 static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(rs, "", NULL),
@@ -216,6 +259,8 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(fd, "", NULL),
     MEMBER_GET(uniqueId, "", NULL),
     MEMBER_GET(instrIdType, "", NULL),
+
+    MEMBER_GET_SET(flag_disasmAsData, "", NULL),
 
     { 0 }
 };
@@ -344,6 +389,7 @@ static PyObject *rabbitizer_type_Instruction_hasOperand(PyRabbitizerInstruction 
 
     if (pyOperand == NULL) {
         PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+        return NULL;
     }
 
     enumCheck = rabbitizer_enum_OperandType_Check(pyOperand);
@@ -375,6 +421,7 @@ static PyObject *rabbitizer_type_Instruction_hasOperandAlias(PyRabbitizerInstruc
 
     if (pyOperand == NULL) {
         PyErr_SetString(PyExc_ValueError, "Invalid value for 'operand' parameter");
+        return NULL;
     }
 
     enumCheck = rabbitizer_enum_OperandType_Check(pyOperand);

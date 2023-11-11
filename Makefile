@@ -16,7 +16,7 @@ CFLAGS          := -fPIC -fno-common
 CXXFLAGS        := -fPIC -fno-common
 LDFLAGS         := -Lbuild -lrabbitizer
 LDXXFLAGS       := -Lbuild -lrabbitizerpp
-WARNINGS        := -Wall -Wextra -Wpedantic
+WARNINGS        := -Wall -Wextra -Wpedantic -Wunused-value
 WARNINGS        += -Wformat=2 -Wundef
 # WARNINGS        += -Wconversion
 WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function

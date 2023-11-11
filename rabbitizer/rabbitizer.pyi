@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from .Enum import Enum
 from .InstrCategory import InstrCategory
+from .TrinaryValue import TrinaryValue
 
 
 class Instruction:
@@ -59,6 +60,14 @@ class Instruction:
     """The vram (virtual ram) address for this instruction"""
     inHandwrittenFunction: bool = False
     """Boolean value indicating if the current instruction is used on a handwritten function. This is intended to be determined by the user."""
+
+    flag_disasmAsData: Enum = TrinaryValue.NONE
+    """Flag to override the disasmAsData global configuration.
+
+    - `TrinaryValue.TRUE` forces the instruction to be disassembled as data.
+    - `RAB_TRINARY_VAL_FALSE` bypasses the global checks for disassembling a word as data. A word will still be disassembled as data if it can't be decoded.
+    - `RAB_TRINARY_VAL_NONE` leaves this decision to the global settings.
+    """
 
 
     def __init__(self, word: int, vram: int=0, category: Enum=InstrCategory.CPU) -> None: ...

@@ -47,6 +47,11 @@ extern "C" {
 #  define UNREACHABLE
 #endif
 
+typedef enum RabTrinaryValue {
+    RAB_TRINARY_VAL_NONE,
+    RAB_TRINARY_VAL_FALSE,
+    RAB_TRINARY_VAL_TRUE,
+} RabTrinaryValue;
 
 #define ARRAY_COUNT(arr) (sizeof(arr) / sizeof((arr)[0]))
 

@@ -23,9 +23,23 @@ pub fn shiftr(v: u32, s: u32, w: u32) -> u32 {
     mask(v >> s, w)
 }
 
+pub fn bitrepack(fullword: u32, v: u32, s: u32, w: u32) -> u32 {
+    (shiftr(fullword, s+w, 32-(s+w)) << (s+w)) | shiftl(v, s, w) | mask(fullword, s)
+}
+
 pub fn convert_option_string_to_option_str(input: &Option<String>) -> Option<&str> {
     match input {
         None => None,
         Some(x) => Some(x.as_str()),
     }
+}
+
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+#[allow(non_camel_case_types)]
+#[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
+pub enum TrinaryValue {
+    NONE,
+    FALSE,
+    TRUE,
 }

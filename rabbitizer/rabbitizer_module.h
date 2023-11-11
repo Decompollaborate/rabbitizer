@@ -49,4 +49,6 @@ DECL_ENUM(RegCop1O32)
 DECL_ENUM(RegCop1N32)
 DECL_ENUM(RegCop1N64)
 
+DECL_ENUM(TrinaryValue)
+
 #endif
