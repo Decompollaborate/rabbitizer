@@ -65,8 +65,15 @@ class Instruction:
     """Flag to override the disasmAsData global configuration.
 
     - `TrinaryValue.TRUE` forces the instruction to be disassembled as data.
-    - `RAB_TRINARY_VAL_FALSE` bypasses the global checks for disassembling a word as data. A word will still be disassembled as data if it can't be decoded.
-    - `RAB_TRINARY_VAL_NONE` leaves this decision to the global settings.
+    - `TrinaryValue.FALSE` bypasses the global checks for disassembling a word as data. A word will still be disassembled as data if it can't be decoded.
+    - `TrinaryValue.NONE` leaves this decision to the global settings.
+    """
+    flag_r5900UseDollar: Enum = TrinaryValue.NONE
+    """Flag to override the disasmAsData global configuration.
+
+    - `TrinaryValue.TRUE` forces the use of dollar signs ($) on R5900's VU instructions.
+    - `TrinaryValue.FALSE` forces disassembling to not use of dollar signs ($) on R5900's VU instructions.
+    - `TrinaryValue.NONE` leaves this decision to the global settings.
     """
 
 

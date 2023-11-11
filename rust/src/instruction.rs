@@ -461,6 +461,13 @@ impl Instruction {
         self.flags = utils::bitrepack(self.flags, value.try_into().unwrap(), 0, 2);
     }
 
+    pub fn flags_get_r5900_use_dollar(&self) -> utils::TrinaryValue {
+        utils::shiftr(self.flags, 2, 2).try_into().unwrap()
+    }
+    pub fn flags_set_r5900_use_dollar(&mut self, value: utils::TrinaryValue) {
+        self.flags = utils::bitrepack(self.flags, value.try_into().unwrap(), 2, 2);
+    }
+
     pub fn instr_id_type_name(&self) -> &'static str {
         unsafe { std::ffi::CStr::from_ptr(RabInstrIdType_getName(self.instr_id_type)) }
             .to_str()

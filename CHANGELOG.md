@@ -10,11 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add `flag_disasmAsData` member to the `Instruction` class.
-  - Flag to override the disasmAsData global configuration.
   - `TrinaryValue.TRUE` forces the instruction to be disassembled as data.
-  - `RAB_TRINARY_VAL_FALSE` bypasses the global checks for disassembling a word
+  - `TrinaryValue.FALSE` bypasses the global checks for disassembling a word
     as data. A word will still be disassembled as data if it can't be decoded.
-  - `RAB_TRINARY_VAL_NONE` leaves this decision to the global settings.
+  - `TrinaryValue.NONE` leaves this decision to the global settings.
+- Add `flag_r5900UseDollar` member to the `Instruction` class.
+  - `TrinaryValue.TRUE` forces the use of dollar signs ($) on R5900's VU
+    instructions.
+  - `TrinaryValue.FALSE` forces disassembling to not use of dollar signs ($) on
+    R5900's VU instructions.
+  - `TrinaryValue.NONE` leaves this decision to the global settings.
 
 ## [1.7.10] - 2023-09-24
 

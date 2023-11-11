@@ -655,6 +655,13 @@ void InstructionBase::FlagSet_disasmAsData(TrinaryValue value) {
     RAB_INSTR_FLAGS_SET_disasmAsData(&this->instr, static_cast<RabTrinaryValue>(value));
 }
 
+TrinaryValue InstructionBase::FlagGet_r5900UseDollar() const {
+    return static_cast<TrinaryValue>(RAB_INSTR_FLAGS_GET_r5900UseDollar(&this->instr));
+}
+void InstructionBase::FlagSet_r5900UseDollar(TrinaryValue value) {
+    RAB_INSTR_FLAGS_SET_r5900UseDollar(&this->instr, static_cast<RabTrinaryValue>(value));
+}
+
 /* flags */
 
 

@@ -243,6 +243,7 @@ static PyObject *rabbitizer_type_Instruction_member_get_instrIdType(PyRabbitizer
     }
 
 DEF_MEMBER_FLAG(disasmAsData)
+DEF_MEMBER_FLAG(r5900UseDollar)
 
 
 #define MEMBER_GET(name, docs, closure)      { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) NULL,                                          PyDoc_STR(docs), closure }
@@ -261,6 +262,7 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(instrIdType, "", NULL),
 
     MEMBER_GET_SET(flag_disasmAsData, "", NULL),
+    MEMBER_GET_SET(flag_r5900UseDollar, "", NULL),
 
     { 0 }
 };
