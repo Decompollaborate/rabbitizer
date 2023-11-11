@@ -24,7 +24,7 @@ pub fn shiftr(v: u32, s: u32, w: u32) -> u32 {
 }
 
 pub fn bitrepack(fullword: u32, v: u32, s: u32, w: u32) -> u32 {
-    (shiftr(fullword, s+w, 32-(s+w)) << (s+w)) | shiftl(v, s, w) | mask(fullword, s)
+    (shiftr(fullword, s + w, 32 - (s + w)) << (s + w)) | shiftl(v, s, w) | mask(fullword, s)
 }
 
 pub fn convert_option_string_to_option_str(input: &Option<String>) -> Option<&str> {
