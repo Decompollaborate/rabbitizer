@@ -664,7 +664,6 @@ void InstructionBase::FlagSet_r5900UseDollar(TrinaryValue value) {
 
 /* flags */
 
-
 /* more getters */
 
 uint32_t InstructionBase::getRaw() const {
