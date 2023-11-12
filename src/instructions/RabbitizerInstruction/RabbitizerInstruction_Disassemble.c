@@ -114,9 +114,11 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
                     case RAB_TRINARY_VAL_NONE:
                         if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
                             /**
-                             * Due to the R5900's FPU being non properly complaint, the instruction cvt.w.s always behaves as trunc.w.s because EE can only do round-to-zero.
+                             * Due to the R5900's FPU being non properly complaint, the instruction cvt.w.s always
+                             * behaves as trunc.w.s because EE can only do round-to-zero.
                              *
-                             * Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, but other assemblers just use trunc.w.s and cvt.w.s as-is.
+                             * Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, but other
+                             * assemblers just use trunc.w.s and cvt.w.s as-is.
                              *
                              * Here's some reading about the binutils rationale:
                              * - https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
@@ -126,7 +128,8 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
                              * - trunc.w.s is built as the cvt.w.s instruction.
                              * - cvt.w.s errors complaining as not being supported by the processor.
                              *
-                             * To ensure the produced disassembly will still match when built with GAS, we decode this two instructions as .word
+                             * To ensure the produced disassembly will still match when built with GAS, we decode this
+                             * two instructions as .word
                              */
                             return true;
                         }
@@ -145,11 +148,12 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
 
                 case RAB_TRINARY_VAL_NONE:
                     if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
-                        // The vclipw instruction has variants that are undocumented (vclipw.xy, vclipw.z) and don't assemble in gnu as
+                        // The vclipw instruction has variants that are undocumented (vclipw.xy, vclipw.z) and don't
+                        // assemble in gnu as
                         return true;
                     }
                     break;
-                }
+            }
             break;
 
         case RABBITIZER_INSTR_ID_r5900_vsqrt:
@@ -162,7 +166,8 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
 
                 case RAB_TRINARY_VAL_NONE:
                     if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
-                        // The vclipw instruction seems to be representable in multiple ways, and we only disassemble one of them
+                        // The vclipw instruction seems to be representable in multiple ways, and we only disassemble
+                        // one of them
                         return true;
                     }
                     break;
