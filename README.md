@@ -73,11 +73,16 @@ See this package at <https://pypi.org/project/rabbitizer/>.
 
 ### Rust bindings
 
-Add this crate to your `Cargo.toml` via:
+Add this crate to your project with Cargo:
+
+```bash
+cargo add rabbitizer
+```
+
+Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-[build]
-rabbitizer = "1.5.8"
+rabbitizer = "1.8.0"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
