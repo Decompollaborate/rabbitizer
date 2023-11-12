@@ -94,50 +94,88 @@ size_t RabbitizerInstruction_disassembleAsData(const RabbitizerInstruction *self
 }
 
 bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
-    if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix) {
-        if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_break) {
-            return true;
-        }
-    }
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_break:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.sn64DivFix) {
+                return true;
+            }
+            break;
 
-    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
-        switch (self->uniqueId) {
-            case RABBITIZER_INSTR_ID_cpu_trunc_w_s:
-            case RABBITIZER_INSTR_ID_cpu_cvt_w_s:
-                if (self->category == RABBITIZER_INSTRCAT_R5900) {
-                    /**
-                     * Due to the R5900's FPU being non properly complaint, the instruction cvt.w.s always behaves as
-                     * trunc.w.s because EE can only do round-to-zero.
-                     *
-                     * Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, but other assemblers
-                     * just use trunc.w.s and cvt.w.s as-is.
-                     *
-                     * Here's some reading about the binutils rationale:
-                     * - https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
-                     * - https://sourceware.org/pipermail/binutils/2013-January/079863.html
-                     *
-                     * Because of this, building with GAS with the -march=r5900 flag produces:
-                     * - trunc.w.s is built as the cvt.w.s instruction.
-                     * - cvt.w.s errors complaining as not being supported by the processor.
-                     *
-                     * To ensure the produced disassembly will still match when built with GAS, we decode this two
-                     * instructions as .word
-                     */
-                    return true;
+        case RABBITIZER_INSTR_ID_cpu_trunc_w_s:
+        case RABBITIZER_INSTR_ID_cpu_cvt_w_s:
+            if (self->category == RABBITIZER_INSTRCAT_R5900) {
+                switch (RAB_INSTR_FLAGS_GET_r5900DisasmAsData(self)) {
+                    case RAB_TRINARY_VAL_TRUE:
+                        return true;
+
+                    case RAB_TRINARY_VAL_FALSE:
+                        break;
+
+                    case RAB_TRINARY_VAL_NONE:
+                        if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+                            /**
+                             * Due to the R5900's FPU being non properly complaint, the instruction cvt.w.s always
+                             * behaves as trunc.w.s because EE can only do round-to-zero.
+                             *
+                             * Assemblers like GAS workaround this issue by decoding cvt.w.s as trunc.w.s, but other
+                             * assemblers just use trunc.w.s and cvt.w.s as-is.
+                             *
+                             * Here's some reading about the binutils rationale:
+                             * - https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
+                             * - https://sourceware.org/pipermail/binutils/2013-January/079863.html
+                             *
+                             * Because of this, building with GAS with the -march=r5900 flag produces:
+                             * - trunc.w.s is built as the cvt.w.s instruction.
+                             * - cvt.w.s errors complaining as not being supported by the processor.
+                             *
+                             * To ensure the produced disassembly will still match when built with GAS, we decode this
+                             * two instructions as .word
+                             */
+                            return true;
+                        }
+                        break;
                 }
-                break;
-            case RABBITIZER_INSTR_ID_r5900_vclipw:
-                // The vclipw instruction has variants that are undocumented (vclipw.xy, vclipw.z) and don't assemble in
-                // gnu as
-                return true;
-            case RABBITIZER_INSTR_ID_r5900_vsqrt:
-                // The vclipw instruction seems to be representable in multiple ways, and we only disassemble one of
-                // them
-                return true;
+            }
+            break;
 
-            default:
-                break;
-        }
+        case RABBITIZER_INSTR_ID_r5900_vclipw:
+            switch (RAB_INSTR_FLAGS_GET_r5900DisasmAsData(self)) {
+                case RAB_TRINARY_VAL_TRUE:
+                    return true;
+
+                case RAB_TRINARY_VAL_FALSE:
+                    break;
+
+                case RAB_TRINARY_VAL_NONE:
+                    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+                        // The vclipw instruction has variants that are undocumented (vclipw.xy, vclipw.z) and don't
+                        // assemble in gnu as
+                        return true;
+                    }
+                    break;
+            }
+            break;
+
+        case RABBITIZER_INSTR_ID_r5900_vsqrt:
+            switch (RAB_INSTR_FLAGS_GET_r5900DisasmAsData(self)) {
+                case RAB_TRINARY_VAL_TRUE:
+                    return true;
+
+                case RAB_TRINARY_VAL_FALSE:
+                    break;
+
+                case RAB_TRINARY_VAL_NONE:
+                    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+                        // The vclipw instruction seems to be representable in multiple ways, and we only disassemble
+                        // one of them
+                        return true;
+                    }
+                    break;
+            }
+            break;
+
+        default:
+            break;
     }
 
     if (!RabbitizerInstruction_isValid(self)) {

@@ -19,6 +19,7 @@ pub struct Instruction {
     _handwritten_category: bool,
     pub in_handwritten_function: bool,
     pub category: instr_category_enum::InstrCategory,
+    pub flags: u32,
 }
 
 #[link(name = "rabbitizer", kind = "static")]
@@ -451,6 +452,20 @@ impl Instruction {
 
     pub fn get_cop2t_cop2(&self) -> registers_enum::registers::Cop2 {
         self.get_cop2t().try_into().unwrap()
+    }
+
+    pub fn flags_get_r5900_disasm_as_data(&self) -> utils::TrinaryValue {
+        utils::shiftr(self.flags, 0, 2).try_into().unwrap()
+    }
+    pub fn flags_set_r5900_disasm_as_data(&mut self, value: utils::TrinaryValue) {
+        self.flags = utils::bitrepack(self.flags, value.try_into().unwrap(), 0, 2);
+    }
+
+    pub fn flags_get_r5900_use_dollar(&self) -> utils::TrinaryValue {
+        utils::shiftr(self.flags, 2, 2).try_into().unwrap()
+    }
+    pub fn flags_set_r5900_use_dollar(&mut self, value: utils::TrinaryValue) {
+        self.flags = utils::bitrepack(self.flags, value.try_into().unwrap(), 2, 2);
     }
 
     pub fn instr_id_type_name(&self) -> &'static str {

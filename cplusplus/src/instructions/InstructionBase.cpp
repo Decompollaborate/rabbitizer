@@ -646,6 +646,24 @@ void InstructionBase::Set_stype(uint8_t val) {
 
 /* setters */
 
+/* flags */
+
+TrinaryValue InstructionBase::FlagGet_r5900DisasmAsData() const {
+    return static_cast<TrinaryValue>(RAB_INSTR_FLAGS_GET_r5900DisasmAsData(&this->instr));
+}
+void InstructionBase::FlagSet_r5900DisasmAsData(TrinaryValue value) {
+    RAB_INSTR_FLAGS_SET_r5900DisasmAsData(&this->instr, static_cast<RabTrinaryValue>(value));
+}
+
+TrinaryValue InstructionBase::FlagGet_r5900UseDollar() const {
+    return static_cast<TrinaryValue>(RAB_INSTR_FLAGS_GET_r5900UseDollar(&this->instr));
+}
+void InstructionBase::FlagSet_r5900UseDollar(TrinaryValue value) {
+    RAB_INSTR_FLAGS_SET_r5900UseDollar(&this->instr, static_cast<RabTrinaryValue>(value));
+}
+
+/* flags */
+
 /* more getters */
 
 uint32_t InstructionBase::getRaw() const {

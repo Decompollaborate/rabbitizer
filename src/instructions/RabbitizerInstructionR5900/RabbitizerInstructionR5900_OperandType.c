@@ -15,10 +15,22 @@ size_t RabbitizerOperandType_process_r5900_I(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
-    } else {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "I");
+    switch (RAB_INSTR_FLAGS_GET_r5900UseDollar(self)) {
+        case RAB_TRINARY_VAL_NONE:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
+            } else {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "I");
+            }
+            break;
+
+        case RAB_TRINARY_VAL_FALSE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "I");
+            break;
+
+        case RAB_TRINARY_VAL_TRUE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "$I");
+            break;
     }
 
     return totalSize;
@@ -28,10 +40,22 @@ size_t RabbitizerOperandType_process_r5900_Q(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
-    } else {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "Q");
+    switch (RAB_INSTR_FLAGS_GET_r5900UseDollar(self)) {
+        case RAB_TRINARY_VAL_NONE:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
+            } else {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "Q");
+            }
+            break;
+
+        case RAB_TRINARY_VAL_FALSE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "Q");
+            break;
+
+        case RAB_TRINARY_VAL_TRUE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "$Q");
+            break;
     }
 
     return totalSize;
@@ -41,10 +65,22 @@ size_t RabbitizerOperandType_process_r5900_R(UNUSED const RabbitizerInstruction 
                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
-    } else {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "R");
+    switch (RAB_INSTR_FLAGS_GET_r5900UseDollar(self)) {
+        case RAB_TRINARY_VAL_NONE:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
+            } else {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "R");
+            }
+            break;
+
+        case RAB_TRINARY_VAL_FALSE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "R");
+            break;
+
+        case RAB_TRINARY_VAL_TRUE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "$R");
+            break;
     }
 
     return totalSize;
@@ -54,10 +90,22 @@ size_t RabbitizerOperandType_process_r5900_ACC(UNUSED const RabbitizerInstructio
                                                UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");
-    } else {
-        RABUTILS_BUFFER_CPY(dst, totalSize, "ACC");
+    switch (RAB_INSTR_FLAGS_GET_r5900UseDollar(self)) {
+        case RAB_TRINARY_VAL_NONE:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");
+            } else {
+                RABUTILS_BUFFER_CPY(dst, totalSize, "ACC");
+            }
+            break;
+
+        case RAB_TRINARY_VAL_FALSE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "ACC");
+            break;
+
+        case RAB_TRINARY_VAL_TRUE:
+            RABUTILS_BUFFER_CPY(dst, totalSize, "$ACC");
+            break;
     }
 
     return totalSize;

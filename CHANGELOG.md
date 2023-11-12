@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.0] - 2023-11-12
+
+### Added
+
+- Add `flag_r5900DisasmAsData` member to the `Instruction` class.
+  - This flag allows to fine-tune R5900 instruction set that are affected by
+    the global `gnuMode` option.
+    - Currently these instructions are: `trunc.w.s`, `cvt.w.s`, `vclipw` and
+      `vsqrt`.
+  - `TrinaryValue.TRUE` forces the instruction to be disassembled as data.
+  - `TrinaryValue.FALSE` bypasses the global checks for disassembling a word
+    as data. A word will still be disassembled as data if it can't be decoded.
+  - `TrinaryValue.NONE` leaves this decision to the global settings.
+- Add `flag_r5900UseDollar` member to the `Instruction` class.
+  - `TrinaryValue.TRUE` forces the use of dollar signs ($) on R5900's VU
+    instructions.
+  - `TrinaryValue.FALSE` forces disassembling to not use of dollar signs ($) on
+    R5900's VU instructions.
+  - `TrinaryValue.NONE` leaves this decision to the global settings.
+
 ## [1.7.10] - 2023-09-24
 
 ### Added
@@ -469,6 +489,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.8.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.10...1.8.0
+[1.7.10]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.9...1.7.10
 [1.7.9]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.8...1.7.9
 [1.7.8]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.7...1.7.8
 [1.7.7]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.6...1.7.7
