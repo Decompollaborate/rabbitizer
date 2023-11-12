@@ -454,10 +454,10 @@ impl Instruction {
         self.get_cop2t().try_into().unwrap()
     }
 
-    pub fn flags_get_disasm_as_data(&self) -> utils::TrinaryValue {
+    pub fn flags_get_r5900_disasm_as_data(&self) -> utils::TrinaryValue {
         utils::shiftr(self.flags, 0, 2).try_into().unwrap()
     }
-    pub fn flags_set_disasm_as_data(&mut self, value: utils::TrinaryValue) {
+    pub fn flags_set_r5900_disasm_as_data(&mut self, value: utils::TrinaryValue) {
         self.flags = utils::bitrepack(self.flags, value.try_into().unwrap(), 0, 2);
     }
 

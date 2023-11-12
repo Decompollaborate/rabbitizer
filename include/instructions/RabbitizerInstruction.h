@@ -38,7 +38,7 @@ typedef struct RabbitizerInstruction {
      * Flags are bitpacked, refer to the `RAB_INSTR_FLAGS_` macros to access them.
      *
      * Bit usage:
-     * - Bits 0 ~ 1: `disasmAsData`. Value of the `RabTrinaryValue` enum.
+     * - Bits 0 ~ 1: `r5900DisasmAsData`. Value of the `RabTrinaryValue` enum.
      *     - `RAB_TRINARY_VAL_TRUE` forces the instruction to be disassembled as data.
      *     - `RAB_TRINARY_VAL_FALSE` bypasses the global checks for disassembling a word as data. A word will still be disassembled as data if it can't be decoded.
      *     - `RAB_TRINARY_VAL_NONE` leaves this decision to the global settings.
@@ -145,8 +145,8 @@ typedef struct RabbitizerInstruction {
 #define RAB_INSTR_PACK_stype(word, value)           (BITREPACK((word), (value),  6,  5))
 
 
-#define RAB_INSTR_FLAGS_GET_disasmAsData(self)                            (RabTrinaryValue)(SHIFTR((self)->flags,  0,  2))
-#define RAB_INSTR_FLAGS_SET_disasmAsData(self, value)          ((self)->flags = BITREPACK((self)->flags, (value),  0,  2))
+#define RAB_INSTR_FLAGS_GET_r5900DisasmAsData(self)                       (RabTrinaryValue)(SHIFTR((self)->flags,  0,  2))
+#define RAB_INSTR_FLAGS_SET_r5900DisasmAsData(self, value)     ((self)->flags = BITREPACK((self)->flags, (value),  0,  2))
 
 #define RAB_INSTR_FLAGS_GET_r5900UseDollar(self)                          (RabTrinaryValue)(SHIFTR((self)->flags,  2,  2))
 #define RAB_INSTR_FLAGS_SET_r5900UseDollar(self, value)        ((self)->flags = BITREPACK((self)->flags, (value),  2,  2))

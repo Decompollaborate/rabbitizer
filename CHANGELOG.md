@@ -9,7 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add `flag_disasmAsData` member to the `Instruction` class.
+- Add `flag_r5900DisasmAsData` member to the `Instruction` class.
+  - This flag allows to fine-tune R5900 instruction set that are affected by
+    the global `gnuMode` option.
+    - Currently these instructions are: `trunc.w.s`, `cvt.w.s`, `vclipw` and
+      `vsqrt`.
   - `TrinaryValue.TRUE` forces the instruction to be disassembled as data.
   - `TrinaryValue.FALSE` bypasses the global checks for disassembling a word
     as data. A word will still be disassembled as data if it can't be decoded.

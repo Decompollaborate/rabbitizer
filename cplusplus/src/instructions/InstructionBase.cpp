@@ -648,11 +648,11 @@ void InstructionBase::Set_stype(uint8_t val) {
 
 /* flags */
 
-TrinaryValue InstructionBase::FlagGet_disasmAsData() const {
-    return static_cast<TrinaryValue>(RAB_INSTR_FLAGS_GET_disasmAsData(&this->instr));
+TrinaryValue InstructionBase::FlagGet_r5900DisasmAsData() const {
+    return static_cast<TrinaryValue>(RAB_INSTR_FLAGS_GET_r5900DisasmAsData(&this->instr));
 }
-void InstructionBase::FlagSet_disasmAsData(TrinaryValue value) {
-    RAB_INSTR_FLAGS_SET_disasmAsData(&this->instr, static_cast<RabTrinaryValue>(value));
+void InstructionBase::FlagSet_r5900DisasmAsData(TrinaryValue value) {
+    RAB_INSTR_FLAGS_SET_r5900DisasmAsData(&this->instr, static_cast<RabTrinaryValue>(value));
 }
 
 TrinaryValue InstructionBase::FlagGet_r5900UseDollar() const {

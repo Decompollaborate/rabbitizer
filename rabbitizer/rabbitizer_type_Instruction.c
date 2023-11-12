@@ -242,13 +242,15 @@ static PyObject *rabbitizer_type_Instruction_member_get_instrIdType(PyRabbitizer
         return 0; \
     }
 
-DEF_MEMBER_FLAG(disasmAsData)
+DEF_MEMBER_FLAG(r5900DisasmAsData)
 DEF_MEMBER_FLAG(r5900UseDollar)
 
 
 #define MEMBER_GET(name, docs, closure)      { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) NULL,                                          PyDoc_STR(docs), closure }
 #define MEMBER_SET(name, docs, closure)      { #name, (getter) NULL,                                          (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 #define MEMBER_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
+
+#define MEMBER_FLAG_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_flag_##name, (setter) rabbitizer_type_Instruction_member_set_flag_##name, PyDoc_STR(docs), closure }
 
 static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(rs, "", NULL),
@@ -261,8 +263,8 @@ static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(uniqueId, "", NULL),
     MEMBER_GET(instrIdType, "", NULL),
 
-    MEMBER_GET_SET(flag_disasmAsData, "", NULL),
-    MEMBER_GET_SET(flag_r5900UseDollar, "", NULL),
+    MEMBER_FLAG_GET_SET(r5900DisasmAsData, "", NULL),
+    MEMBER_FLAG_GET_SET(r5900UseDollar, "", NULL),
 
     { 0 }
 };

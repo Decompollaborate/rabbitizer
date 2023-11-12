@@ -61,8 +61,11 @@ class Instruction:
     inHandwrittenFunction: bool = False
     """Boolean value indicating if the current instruction is used on a handwritten function. This is intended to be determined by the user."""
 
-    flag_disasmAsData: Enum = TrinaryValue.NONE
-    """Flag to override the disasmAsData global configuration.
+    flag_r5900DisasmAsData: Enum = TrinaryValue.NONE
+    """Flag to override the r5900DisasmAsData global configuration.
+
+    - This flag allows to fine-tune R5900 instruction set that are affected by the global `gnuMode` option.
+        - Currently these instructions are: `trunc.w.s` (r5900 mode), `cvt.w.s` (r5900 mode), `vclipw` and `vsqrt`.
 
     - `TrinaryValue.TRUE` forces the instruction to be disassembled as data.
     - `TrinaryValue.FALSE` bypasses the global checks for disassembling a word as data. A word will still be disassembled as data if it can't be decoded.

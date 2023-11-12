@@ -149,8 +149,8 @@ namespace rabbitizer {
 
         /* flags */
 
-        TrinaryValue FlagGet_disasmAsData() const;
-        void FlagSet_disasmAsData(TrinaryValue value);
+        TrinaryValue FlagGet_r5900DisasmAsData() const;
+        void FlagSet_r5900DisasmAsData(TrinaryValue value);
 
         TrinaryValue FlagGet_r5900UseDollar() const;
         void FlagSet_r5900UseDollar(TrinaryValue value);
