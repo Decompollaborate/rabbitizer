@@ -150,6 +150,7 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
                     }
                     break;
                 }
+            break;
 
         case RABBITIZER_INSTR_ID_r5900_vsqrt:
             switch (RAB_INSTR_FLAGS_GET_r5900DisasmAsData(self)) {
@@ -166,6 +167,7 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
                     }
                     break;
             }
+            break;
 
         default:
             break;
