@@ -250,7 +250,7 @@ DEF_MEMBER_FLAG(r5900UseDollar)
 #define MEMBER_SET(name, docs, closure)      { #name, (getter) NULL,                                          (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 #define MEMBER_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_##name, (setter) rabbitizer_type_Instruction_member_set_##name, PyDoc_STR(docs), closure }
 
-#define MEMBER_FLAG_GET_SET(name, docs, closure)  { #name, (getter) rabbitizer_type_Instruction_member_get_flag_##name, (setter) rabbitizer_type_Instruction_member_set_flag_##name, PyDoc_STR(docs), closure }
+#define MEMBER_FLAG_GET_SET(name, docs, closure)  { "flag_" #name, (getter) rabbitizer_type_Instruction_member_get_flag_##name, (setter) rabbitizer_type_Instruction_member_set_flag_##name, PyDoc_STR(docs), closure }
 
 static PyGetSetDef rabbitizer_type_Instruction_getsetters[] = {
     MEMBER_GET(rs, "", NULL),
