@@ -562,11 +562,11 @@ impl Instruction {
     }
 
     pub fn get_operand_type(&self, index: usize) -> operand_type_enum::OperandType {
-        unsafe { self.descriptor.as_ref().unwrap().get_operand_type(index) }
+        unsafe { &*self.descriptor }.get_operand_type(index)
     }
 
     pub fn get_operands_slice(&self) -> &[operand_type_enum::OperandType] {
-        unsafe { self.descriptor.as_ref().unwrap().operands_slice() }
+        unsafe { &*self.descriptor }.operands_slice()
     }
 
     pub fn instr_suffix(&self) -> instr_suffix_enum::InstrSuffix {
