@@ -69,7 +69,7 @@ extern "C" {
     fn RabbitizerInstruction_getBranchOffset(self_: *const Instruction) -> i32;
 
     fn RabbitizerInstruction_getBranchOffsetGeneric(self_: *const Instruction) -> i32;
-    fn RabbitizerInstruction_getBranchVramGeneric(self_: *const Instruction) -> i32;
+    fn RabbitizerInstruction_getBranchVramGeneric(self_: *const Instruction) -> u32;
     fn RabbitizerInstruction_getDestinationGpr(self_: *const Instruction) -> i8;
     fn RabbitizerInstruction_outputsToGprZero(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_blankOut(self_: *mut Instruction);
@@ -491,7 +491,7 @@ impl Instruction {
         unsafe { RabbitizerInstruction_getBranchOffsetGeneric(self) }
     }
 
-    pub fn branch_vram_generic(&self) -> i32 {
+    pub fn branch_vram_generic(&self) -> u32 {
         unsafe { RabbitizerInstruction_getBranchVramGeneric(self) }
     }
     pub fn destination_gpr(&self) -> Option<u32> {

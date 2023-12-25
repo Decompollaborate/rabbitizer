@@ -741,7 +741,7 @@ int32_t InstructionBase::getBranchOffsetGeneric() const {
 
     return RabbitizerInstruction_getBranchOffsetGeneric(&this->instr);
 }
-int32_t InstructionBase::getBranchVramGeneric() const {
+uint32_t InstructionBase::getBranchVramGeneric() const {
 #ifdef RAB_SANITY_CHECKS
     if (!hasOperandAlias(OperandType::cpu_branch_target_label) && !hasOperandAlias(OperandType::cpu_label)) {
         // TODO: make a rabbitizer exception class

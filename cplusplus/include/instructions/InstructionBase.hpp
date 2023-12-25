@@ -176,7 +176,7 @@ namespace rabbitizer {
         //! @deprecated
         int32_t getGenericBranchOffset(uint32_t currentVram) const;
         int32_t getBranchOffsetGeneric() const;
-        int32_t getBranchVramGeneric() const;
+        uint32_t getBranchVramGeneric() const;
         int8_t getDestinationGpr() const;
         bool outputsToGprZero() const;
 

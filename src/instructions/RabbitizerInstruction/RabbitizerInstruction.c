@@ -76,7 +76,7 @@ int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction
     return RabbitizerInstruction_getBranchOffset(self);
 }
 
-int32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *self) {
+uint32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *self) {
     if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_label)) {
         return RabbitizerInstruction_getInstrIndexAsVram(self);
     }

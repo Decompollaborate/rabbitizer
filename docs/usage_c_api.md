@@ -378,7 +378,7 @@ following code:
 
 ```c
         if (RabbitizerInstrDescriptor_isBranch(instr.descriptor)) {
-            int32_t vramTarget = RabbitizerInstruction_getBranchVramGeneric(&instr);
+            uint32_t vramTarget = RabbitizerInstruction_getBranchVramGeneric(&instr);
 
             sprintf(immOverride, ".L%08X", vramTarget);
         } else if (RabbitizerInstrDescriptor_canBeHi(instr.descriptor)) {
@@ -472,7 +472,7 @@ int main(int argc, char *argv[]) {
         printf("The word %08X corresponds to the instruction (with immediate overriden):\n", word);
 
         if (RabbitizerInstrDescriptor_isBranch(instr.descriptor)) {
-            int32_t vramTarget = RabbitizerInstruction_getBranchVramGeneric(&instr);
+            uint32_t vramTarget = RabbitizerInstruction_getBranchVramGeneric(&instr);
 
             sprintf(immOverride, ".L%08X", vramTarget);
         } else if (RabbitizerInstrDescriptor_canBeHi(instr.descriptor)) {
