@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Minor cleanups on Rust code.
+- Enabled `-Werror=type-limits` in the Makefile.
+
+### Fixed
+
+- `getBranchVramGeneric` returns an unsigned type instead of a signed one.
 
 ## [1.8.0] - 2023-11-12
 
