@@ -6,6 +6,7 @@
 set -e
 
 ./build/tests/c/instruction_checks/jalr.elf
+./build/tests/c/instruction_checks/get_branch_vram_generic.elf
 ./build/tests/c/instruction_checks/plain_disassembly.elf
 ./build/tests/c/instruction_checks/r3000gte_disasm.elf
 ./build/tests/c/instruction_checks/r5900_trunc_cvt.elf
