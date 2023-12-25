@@ -312,7 +312,7 @@ static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizer
 }
 
 DEF_METHOD_GET_INT(getBranchOffsetGeneric)
-DEF_METHOD_GET_INT(getBranchVramGeneric)
+DEF_METHOD_GET_UINT(getBranchVramGeneric)
 
 static PyObject *rabbitizer_type_Instruction_getDestinationGpr(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     int8_t reg = RabbitizerInstruction_getDestinationGpr(&self->instr);

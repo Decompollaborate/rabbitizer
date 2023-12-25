@@ -22,6 +22,7 @@ WARNINGS        += -Wformat=2 -Wundef
 WARNINGS        += -Werror=vla -Werror=switch -Werror=implicit-fallthrough -Werror=unused-function
 WARNINGS        += -Werror=unused-parameter -Werror=shadow -Werror=switch -Werror=double-promotion
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
+WARNINGS        += -Werror=type-limits
 WARNINGS_CXX    :=
 
 ifeq ($(CC),gcc)

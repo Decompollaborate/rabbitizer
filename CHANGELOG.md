@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.1] - 2023-12-25
+
+### Changed
+
+- Minor cleanups on Rust code.
+- Enabled `-Werror=type-limits` in the Makefile.
+
+### Fixed
+
+- `getBranchVramGeneric` returns an unsigned type instead of a signed one.
+
 ## [1.8.0] - 2023-11-12
 
 ### Added
@@ -489,6 +500,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.8.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.0...1.8.1
 [1.8.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.10...1.8.0
 [1.7.10]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.9...1.7.10
 [1.7.9]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.8...1.7.9
