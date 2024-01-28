@@ -82,7 +82,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.8.1"
+rabbitizer = "1.8.2"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
