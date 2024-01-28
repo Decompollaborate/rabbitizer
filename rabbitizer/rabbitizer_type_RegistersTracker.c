@@ -97,7 +97,7 @@ static PyObject *rabbitizer_type_RegistersTracker_getJrInfo(PyRabbitizerRegister
     }
 
     if (RabbitizerRegistersTracker_getJrInfo(&self->tracker, &instr->instr, &dstOffset, &dstAddress)) {
-        return PyTuple_Pack(2, PyLong_FromLong(dstOffset), PyLong_FromLong(dstAddress));
+        return PyTuple_Pack(2, PyLong_FromLong(dstOffset), PyLong_FromUnsignedLong(dstAddress));
     }
 
     Py_RETURN_NONE;
