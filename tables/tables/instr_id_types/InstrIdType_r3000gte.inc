@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2023 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2023-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
     RABBITIZER_DEF_INSTR_ID_TYPE(R3000GTE, INVALID)

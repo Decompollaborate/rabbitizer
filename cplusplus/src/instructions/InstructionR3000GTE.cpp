@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2023 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2023-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #include "instructions/InstructionR3000GTE.hpp"

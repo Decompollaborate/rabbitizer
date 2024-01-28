@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2024 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 set -e
@@ -8,7 +8,7 @@ set -e
 INPUT_FILE=$1
 OUTPUT_FILE=$2
 
-echo "/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */" > ${OUTPUT_FILE}
+echo "/* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */" > ${OUTPUT_FILE}
 echo "/* SPDX-License-Identifier: MIT */" >> ${OUTPUT_FILE}
 echo >> ${OUTPUT_FILE}
 echo "/* Automatically generated. DO NOT MODIFY */" >> ${OUTPUT_FILE}
