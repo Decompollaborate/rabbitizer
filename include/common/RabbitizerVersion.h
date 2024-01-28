@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022-2023 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_VERSION_H
@@ -14,7 +14,7 @@ extern "C" {
 // Header version
 #define RAB_VERSION_MAJOR 1
 #define RAB_VERSION_MINOR 8
-#define RAB_VERSION_PATCH 1
+#define RAB_VERSION_PATCH 2
 
 #define RAB_VERSION_STR RAB_STRINGIFY(RAB_VERSION_MAJOR) "." RAB_STRINGIFY(RAB_VERSION_MINOR) "." RAB_STRINGIFY(RAB_VERSION_PATCH)
 

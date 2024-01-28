@@ -1,17 +1,17 @@
-# SPDX-FileCopyrightText: © 2022-2023 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2024 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 [package]
 name = "rabbitizer"
 # Version should be synced with include/common/RabbitizerVersion.h
-version = "1.8.1"
+version = "1.8.2"
 edition = "2021"
 authors = ["Anghelo Carvajal <angheloalf95@gmail.com>"]
 description = "MIPS instruction decoder"
 readme = "README.md"
 homepage = "https://github.com/Decompollaborate/rabbitizer"
 repository = "https://github.com/Decompollaborate/rabbitizer"
-license = "MIT"
+license-file = "LICENSE"
 keywords = ["MIPS", "decoder"]
 build = "rust/build.rs"
 include = ["/rust/src", "/rust/build.rs", "/src", "/include", "/tables"]

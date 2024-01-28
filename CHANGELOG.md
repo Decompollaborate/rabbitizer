@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.2] - 2024-01-28
+
+### Fixed
+
+- Fix Windows issue on which symbols were not properly being paired.
+  - This was caused because of a misuse of the type widths on the Python
+    binding.
+
 ## [1.8.1] - 2023-12-25
 
 ### Changed
@@ -500,6 +508,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.8.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.1...1.8.2
 [1.8.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.0...1.8.1
 [1.8.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.10...1.8.0
 [1.7.10]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.9...1.7.10
