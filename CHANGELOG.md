@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8.3] - 2024-01-28
+
+### Fixed
+
+- Fix Windows issue where jumptables where not properly identified.
+  - Caused because of an issue on `RegistersTracker.getJrInfo` not using the
+    correct type width for the return value on the Python binding.
+
 ## [1.8.2] - 2024-01-28
 
 ### Fixed
