@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `Instruction.getProcessedImmediate` now raises an exception if the
+  instruction does not contain an immediate field.
+
 ## [1.8.3] - 2024-01-28
 
 ### Fixed

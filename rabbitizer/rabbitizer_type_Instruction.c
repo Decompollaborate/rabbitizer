@@ -292,7 +292,16 @@ DEF_METHOD_GET_UINT(getRaw)
 static PyObject *rabbitizer_type_Instruction_getImmediate(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     return PyLong_FromUnsignedLong(RAB_INSTR_GET_immediate(&self->instr));
 }
-DEF_METHOD_GET_INT(getProcessedImmediate)
+
+static PyObject *rabbitizer_type_Instruction_getProcessedImmediate(PyRabbitizerInstruction *self,UNUSED PyObject *closure) {
+    if (!RabbitizerInstruction_hasOperandAlias(&self->instr, RAB_OPERAND_cpu_immediate)) {
+        PyErr_Format(PyExc_RuntimeError, "'%s' instruction does not have an 'immediate' field", RabbitizerInstrId_getOpcodeName(self->instr.uniqueId));
+        return NULL;
+    }
+
+    return PyLong_FromLong(RabbitizerInstruction_getProcessedImmediate(&self->instr)); 
+}
+
 DEF_METHOD_GET_UINT(getInstrIndexAsVram)
 DEF_METHOD_GET_INT(getBranchOffset)
 
