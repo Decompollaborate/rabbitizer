@@ -519,6 +519,7 @@ impl Instruction {
         unsafe { RabbitizerInstruction_blankOut(&mut self) }
     }
 
+    #[deprecated(since="1.8.4", note="please use `is_valid` instead")]
     pub fn is_implemented(&self) -> bool {
         unsafe { RabbitizerInstruction_isImplemented(self) }
     }

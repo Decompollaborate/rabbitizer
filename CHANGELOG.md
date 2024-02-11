@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Extend Python's `Instruction` documentation.
   - Thanks to @Dragorn421 (PR #53)
 
+### Deprecated
+
+- `Instruction.isImplemented`: Use `Instruction.isValid` instead.
+
 ## [1.8.3] - 2024-01-28
 
 ### Fixed

@@ -11,7 +11,7 @@
 #include "instructions/RabbitizerInstructionR5900.h"
 #include "instructions/RabbitizerRegister.h"
 
-// TODO: deprecate
+//! @deprecated: use RabbitizerInstrId_isValid instead
 bool RabbitizerInstruction_isImplemented(const RabbitizerInstruction *self) {
     return RabbitizerInstrId_isValid(self->uniqueId);
 }
