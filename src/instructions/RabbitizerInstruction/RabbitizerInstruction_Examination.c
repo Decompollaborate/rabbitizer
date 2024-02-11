@@ -80,6 +80,15 @@ bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *se
     }
 }
 
+/**
+ * Check if the instruction and its register is the one usually used for
+ * returning from a function.
+ *
+ * Specfically, this checks if the instruction is a `jr $ra`.
+ *
+ * Returns `False` if the instruction is not a `jr` or if it is a `jr` but
+ * the register is not `$ra`.
+ */
 bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
@@ -95,6 +104,16 @@ bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
     }
 }
 
+/**
+ * Check if the instruction and its register is the one usually used for
+ * jumping with jumptables.
+ *
+ * Specfically, this checks if the instruction is a `jr` but not its register
+ * is not `$ra`.
+ *
+ * Returns `False` if the instruction is not a `jr` or if it is a `jr` but
+ * the register is `$ra`.
+ */
 bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self) {
     switch (self->uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_jr:
@@ -110,10 +129,14 @@ bool RabbitizerInstruction_isJumptableJump(const RabbitizerInstruction *self) {
     }
 }
 
+/**
+ * Check if the instruction has a delay slot.
+ */
 bool RabbitizerInstruction_hasDelaySlot(const RabbitizerInstruction *self) {
     return RabbitizerInstrDescriptor_isBranch(self->descriptor) || RabbitizerInstrDescriptor_isJump(self->descriptor);
 }
 
+//! @deprecated: Use `RabbitizerInstrDescriptor_getAccessType` instead.
 const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *self) {
     if (RabbitizerInstrDescriptor_isDouble(self->descriptor)) {
         return "f64";
@@ -142,6 +165,9 @@ const char *RabbitizerInstruction_mapInstrToType(const RabbitizerInstruction *se
     return NULL;
 }
 
+/**
+ * Check if two instructions have the same mnemonic
+ */
 bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const RabbitizerInstruction *other) {
     if (!RabbitizerInstrId_isValid(self->uniqueId) || !RabbitizerInstrId_isValid(other->uniqueId)) {
         return false;
@@ -149,6 +175,10 @@ bool RabbitizerInstruction_sameOpcode(const RabbitizerInstruction *self, const R
     return self->uniqueId == other->uniqueId;
 }
 
+/**
+ * Check if two instructions have the same mnemonic but their arguments
+ * are different.
+ */
 bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstruction *self,
                                                            const RabbitizerInstruction *other) {
     if (!RabbitizerInstruction_sameOpcode(self, other)) {
@@ -157,11 +187,18 @@ bool RabbitizerInstruction_sameOpcodeButDifferentArguments(const RabbitizerInstr
     return RabbitizerInstruction_getRaw(self) != RabbitizerInstruction_getRaw(other);
 }
 
-// TODO: deprecate?
+/**
+ * Check if the instruction has specifically the `operand`.
+ */
 bool RabbitizerInstruction_hasOperand(const RabbitizerInstruction *self, RabbitizerOperandType operand) {
     return RabbitizerInstrDescriptor_hasSpecificOperand(self->descriptor, operand);
 }
 
+/**
+ * Check if the instruction has the `operand` or an alias of it.
+ *
+ * (if unsure whether to use `hasOperand` or `hasOperandAlias`, use `hasOperandAlias`)
+ */
 bool RabbitizerInstruction_hasOperandAlias(const RabbitizerInstruction *self, RabbitizerOperandType operand) {
     return RabbitizerInstrDescriptor_hasOperandAlias(self->descriptor, operand);
 }

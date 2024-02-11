@@ -191,32 +191,58 @@ class Instruction:
         option.
         """
 
-    def isReturn(self) -> bool: ...
-    def isJumptableJump(self) -> bool: ...
+    def isReturn(self) -> bool:
+        """Check if the instruction and its register is the one usually used for
+        returning from a function.
+
+        Specfically, this checks if the instruction is a `jr $ra`.
+
+        Returns `False` if the instruction is not a `jr` or if it is a `jr` but
+        the register is not `$ra`.
+        """
+    def isJumptableJump(self) -> bool:
+        """Check if the instruction and its register is the one usually used for
+        jumping with jumptables.
+
+        Specfically, this checks if the instruction is a `jr` but not its register
+        is not `$ra`.
+
+        Returns `False` if the instruction is not a `jr` or if it is a `jr` but
+        the register is `$ra`.
+        """
 
     def isJrRa(self) -> bool: #! deprecated
         """Use `isReturn()` instead"""
     def isJrNotRa(self) -> bool: #! deprecated
         """Use `isJumptableJump()` instead"""
 
-    def hasDelaySlot(self) -> bool: ...
+    def hasDelaySlot(self) -> bool:
+        """Check if the instruction has a delay slot."""
     def mapInstrToType(self) -> str|None: #! deprecated
         """use `getAccessType()` instead"""
 
-    def sameOpcode(self, other: Instruction) -> bool: ...
-    def sameOpcodeButDifferentArguments(self, other: Instruction) -> bool: ...
+    def sameOpcode(self, other: Instruction) -> bool:
+        """Check if two instructions have the same mnemonic"""
+    def sameOpcodeButDifferentArguments(self, other: Instruction) -> bool:
+        """Check if two instructions have the same mnemonic but their arguments
+        are different.
+        """
 
     def hasOperand(self, operand: Enum) -> bool:
         """Check if the instruction has specifically the `operand`.
+
         `operand` should be from the `OperandType` enum.
         """
     def hasOperandAlias(self, operand: Enum) -> bool:
         """Check if the instruction has the `operand` or an alias of it.
+
         (if unsure whether to use `hasOperand` or `hasOperandAlias`, use `hasOperandAlias`)
+
         `operand` should be from the `OperandType` enum.
         """
 
-    def isValid(self) -> bool: ...
+    def isValid(self) -> bool:
+        """Check the word corresponds to a valid instruction."""
 
     #! deprecated
     def isUnknownType(self) -> bool: ...
@@ -232,7 +258,11 @@ class Instruction:
     def isRegimmType(self) -> bool:
         """Use `hasOperandAlias(OperandType.cpu_immediate)` instead"""
 
-    def isBranch(self) -> bool: ...
+    def isBranch(self) -> bool:
+        """Instruction is a branch instruction.
+
+        This is also true for branch likely instructions.
+        """
     def isBranchLikely(self) -> bool: ...
     def isJump(self) -> bool: ...
     def isJumpWithAddress(self) -> bool: ...
