@@ -80,12 +80,25 @@ class Instruction:
     """
 
 
-    def __init__(self, word: int, vram: int=0, category: Enum=InstrCategory.CPU) -> None: ...
+    def __init__(self, word: int, vram: int=0, category: Enum=InstrCategory.CPU) -> None:
+        """Decode an Instruction encoded as the 4 bytes `word`, located at `vram`.
+        `vram` is used to decode jump instructions that use the PC value to get the upper bits of the target address.
+        """
 
-    def getRaw(self) -> int: ...
-    def getImmediate(self) -> int: ... #! deprecated
-    def getProcessedImmediate(self) -> int: ...
-    def getInstrIndexAsVram(self) -> int: ...
+    def getRaw(self) -> int:
+        """Get the word value encoding the instruction"""
+    def getImmediate(self) -> int: #! deprecated
+        """Use `getProcessedImmediate()` instead"""
+    def getProcessedImmediate(self) -> int:
+        """Get the (possibly signed) immediate value for this instruction.
+        This only makes sense for an instruction with an immediate,
+        which can be checked with `hasOperandAlias(OperandType.cpu_immediate)`
+        """
+    def getInstrIndexAsVram(self) -> int:
+        """Get the target vram address this instruction jumps to.
+        This only makes sense if the instruction is a jump,
+        which can be checked with `instr.isJumpWithAddress()`
+        """
     def getBranchOffset(self) -> int: ...
     def getGenericBranchOffset(self, currentVram: int) -> int: ... #! deprecated
     def getBranchOffsetGeneric(self) -> int: ...
@@ -113,21 +126,30 @@ class Instruction:
     def sameOpcode(self, other: Instruction) -> bool: ...
     def sameOpcodeButDifferentArguments(self, other: Instruction) -> bool: ...
 
-    def hasOperand(self, operand: Enum) -> bool: ...
-    def hasOperandAlias(self, operand: Enum) -> bool: ...
+    def hasOperand(self, operand: Enum) -> bool:
+        """Check if the instruction has specifically the `operand`.
+        `operand` should be from the `OperandType` enum.
+        """
+    def hasOperandAlias(self, operand: Enum) -> bool:
+        """Check if the instruction has the `operand` or an alias of it.
+        (if unsure whether to use `hasOperand` or `hasOperandAlias`, use `hasOperandAlias`)
+        `operand` should be from the `OperandType` enum.
+        """
 
     def isValid(self) -> bool: ...
 
     #! deprecated
     def isUnknownType(self) -> bool: ...
     #! deprecated
-    def isJType(self) -> bool: ...
+    def isJType(self) -> bool:
+        """Use `isJumpWithAddress()` instead"""
     #! deprecated
     def isIType(self) -> bool: ...
     #! deprecated
     def isRType(self) -> bool: ...
     #! deprecated
-    def isRegimmType(self) -> bool: ...
+    def isRegimmType(self) -> bool:
+        """Use `hasOperandAlias(OperandType.cpu_immediate)` instead"""
 
     def isBranch(self) -> bool: ...
     def isBranchLikely(self) -> bool: ...
@@ -166,7 +188,20 @@ class Instruction:
     def getAccessType(self) -> Enum: ...
     def doesUnsignedMemoryAccess(self) -> bool: ...
 
-    def disassemble(self, immOverride: str|None=None, extraLJust: int=0) -> str: ...
+    def disassemble(self, immOverride: str|None=None, extraLJust: int=0) -> str:
+        """Returns a string that can be assembled back to the instruction raw word.
+        `immOverride` can be a string that replaces the immediate in the disassembly,
+        or the jump target, if any. If the instruction has neither, it is ignored.
+        Examples:
+        >>> Instruction(0x3C0A0042).disassemble()
+        'lui         $t2, 0x42'
+        >>> Instruction(0x3C0A0042).disassemble("hex_answer")
+        'lui         $t2, hex_answer'
+        >>> Instruction(0x0C000042).disassemble()
+        'jal         func_80000108'
+        >>> Instruction(0x0C000042).disassemble("my_target")
+        'jal         my_target'
+        """
 
     def __reduce__(self) -> tuple: ...
 
