@@ -82,6 +82,7 @@ class Instruction:
 
     def __init__(self, word: int, vram: int=0, category: Enum=InstrCategory.CPU) -> None:
         """Decode an Instruction encoded as the 4 bytes `word`, located at `vram`.
+
         `vram` is used to decode jump instructions that use the PC value to get the upper bits of the target address.
         """
 
@@ -91,16 +92,34 @@ class Instruction:
         """Use `getProcessedImmediate()` instead"""
     def getProcessedImmediate(self) -> int:
         """Get the (possibly signed) immediate value for this instruction.
+
         This only makes sense for an instruction with an immediate,
         which can be checked with `hasOperandAlias(OperandType.cpu_immediate)`
+
+        An exception will be raised if the instruction does not contain an immediate field.
         """
     def getInstrIndexAsVram(self) -> int:
         """Get the target vram address this instruction jumps to.
+
         This only makes sense if the instruction is a jump,
         which can be checked with `instr.isJumpWithAddress()`
+
+        An exception will be raised if the instruction is not a jump instruction.
         """
-    def getBranchOffset(self) -> int: ...
-    def getGenericBranchOffset(self, currentVram: int) -> int: ... #! deprecated
+    def getBranchOffset(self) -> int:
+        """Returns the offset (in bytes) that the branch instruction would branch,
+        relative to the instruction itself.
+
+        The returned value can be negative, meaning the branch instructions does
+        a backwards branch.
+
+        This only makes sense for an instruction is a branch,
+        which can be checked with `instr.isBranch()`
+
+        An exception will be raised if the instruction is not a branch instruction.
+        """
+    def getGenericBranchOffset(self, currentVram: int) -> int: #! deprecated
+        """Use `getBranchOffsetGeneric()` instead"""
     def getBranchOffsetGeneric(self) -> int: ...
     def getBranchVramGeneric(self) -> int: ...
     def getDestinationGpr(self) -> Enum|None: ...

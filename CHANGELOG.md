@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   instruction does not contain an jump label field.
 - `Instruction.getBranchOffset` now raises an exception if the
   instruction does not contain an branch label field.
+- Extend Python's `Instruction` documentation.
+  - Thanks to @Dragorn421 (PR #53)
 
 ## [1.8.3] - 2024-01-28
 
