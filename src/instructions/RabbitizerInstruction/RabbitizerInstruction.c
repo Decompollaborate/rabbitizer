@@ -33,10 +33,23 @@ void RabbitizerInstruction_destroy(UNUSED RabbitizerInstruction *self) {
 
 /* General getters */
 
+/**
+ * Get the word value encoding the instruction.
+ *
+ * The returned value may not be the same as the one to instance this Instruction
+ * if a method that modifies the word has been used, like `RabbitizerInstruction_blankOut`.
+ */
 uint32_t RabbitizerInstruction_getRaw(const RabbitizerInstruction *self) {
     return self->word;
 }
 
+/**
+ * Get the (possibly signed) immediate value for this instruction.
+
+ * This only makes sense for an instruction with an immediate,
+ * which can be checked with
+ * `RabbitizerInstruction_hasOperandAlias(&instr, RAB_OPERAND_cpu_immediate)`
+ */
 int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction *self) {
     if (RabbitizerInstrDescriptor_isUnsigned(self->descriptor)) {
         return RAB_INSTR_GET_immediate(self);
@@ -44,6 +57,13 @@ int32_t RabbitizerInstruction_getProcessedImmediate(const RabbitizerInstruction 
     return RabbitizerUtils_From2Complement(RAB_INSTR_GET_immediate(self), 16);
 }
 
+/**
+ * Get the target vram address this instruction jumps to.
+ * This method is intended only for direct jump instructions.
+
+ * This only makes sense if the instruction is a direct jump,
+ * which can be checked with `RabbitizerInstrDescriptor_isJumpWithAddress`.
+ */
 uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *self) {
     uint32_t vram = RAB_INSTR_GET_instr_index(self) << 2;
 
@@ -56,12 +76,27 @@ uint32_t RabbitizerInstruction_getInstrIndexAsVram(const RabbitizerInstruction *
     return vram;
 }
 
+/**
+ * Returns the offset (in bytes) that the branch instruction would branch,
+ * relative to the instruction itself. This method is intended only for branch
+ * instructions.
+ *
+ * The returned value can be negative, meaning the branch instructions does
+ * a backwards branch.
+ *
+ * This only makes sense for an instruction is a branch,
+ * which can be checked with `RabbitizerInstrDescriptor_isBranch`.
+ *
+ * To get the branch offset of either a branch instruction or a jump instruction
+ * use `RabbitizerInstruction_getBranchOffsetGeneric` instead.
+ */
 int32_t RabbitizerInstruction_getBranchOffset(const RabbitizerInstruction *self) {
     int32_t diff = RabbitizerUtils_From2Complement(RAB_INSTR_GET_immediate(self), 16);
 
     return diff * 4 + 4;
 }
 
+//! @deprecated
 int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction *self, uint32_t currentVram) {
     if (self->uniqueId == RABBITIZER_INSTR_ID_cpu_j) {
         return RabbitizerInstruction_getInstrIndexAsVram(self) - currentVram;
@@ -69,6 +104,17 @@ int32_t RabbitizerInstruction_getGenericBranchOffset(const RabbitizerInstruction
     return RabbitizerInstruction_getBranchOffset(self);
 }
 
+/**
+ * Returns the offset (in bytes) that the instruction would branch,
+ * relative to the instruction itself. This method is intended for both branch
+ * and jump instructions.
+ *
+ * The returned value can be either positive or negative.
+ *
+ * This only makes sense for an instruction is a branch or a direct jump,
+ * which can be checked with `RabbitizerInstruction_getBranchOffsetGeneric`
+ * or `RabbitizerInstrDescriptor_isJumpWithAddress`.
+ */
 int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction *self) {
     if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_label)) {
         return RabbitizerInstruction_getInstrIndexAsVram(self) - self->vram;
@@ -76,6 +122,14 @@ int32_t RabbitizerInstruction_getBranchOffsetGeneric(const RabbitizerInstruction
     return RabbitizerInstruction_getBranchOffset(self);
 }
 
+/**
+ * Get the target vram address this instruction jumps to.
+ * This method is intended only for branch or direct jump instructions.
+ *
+ * This only makes sense for an instruction is a branch or a direct jump,
+ * which can be checked with `RabbitizerInstruction_getBranchOffsetGeneric`
+ * or `RabbitizerInstrDescriptor_isJumpWithAddress`.
+ */
 uint32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction *self) {
     if (RabbitizerInstruction_hasOperandAlias(self, RAB_OPERAND_cpu_label)) {
         return RabbitizerInstruction_getInstrIndexAsVram(self);
@@ -84,7 +138,7 @@ uint32_t RabbitizerInstruction_getBranchVramGeneric(const RabbitizerInstruction 
 }
 
 /**
- * @brief Returns the general purpose register (GPR) which this instruction modifies,
+ * Returns the general purpose register (GPR) which this instruction modifies,
  * or a negative value if the instruction does not modify the state of any GPR
  */
 int8_t RabbitizerInstruction_getDestinationGpr(const RabbitizerInstruction *self) {
@@ -98,7 +152,7 @@ int8_t RabbitizerInstruction_getDestinationGpr(const RabbitizerInstruction *self
 }
 
 /**
- * @brief Returns `true` if the GPR which is modified by this register is $zero, `false` otherwise.
+ * Returns `true` if the GPR which is modified by this register is $zero, `false` otherwise.
  * Returns `false` if this instruction does not modify a GPR.
  */
 bool RabbitizerInstruction_outputsToGprZero(const RabbitizerInstruction *self) {

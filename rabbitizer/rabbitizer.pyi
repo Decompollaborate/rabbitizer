@@ -98,7 +98,7 @@ class Instruction:
         """Get the (possibly signed) immediate value for this instruction.
 
         This only makes sense for an instruction with an immediate,
-        which can be checked with `instr.hasOperandAlias(OperandType.cpu_immediate)`
+        which can be checked with `instr.hasOperandAlias(OperandType.cpu_immediate)`.
 
         An exception will be raised if the instruction does not contain an immediate field.
         """
@@ -107,7 +107,7 @@ class Instruction:
         This method is intended only for direct jump instructions.
 
         This only makes sense if the instruction is a direct jump,
-        which can be checked with `instr.isJumpWithAddress()`
+        which can be checked with `instr.isJumpWithAddress()`.
 
         An exception will be raised if the instruction is not a jump instruction.
         """
@@ -121,6 +121,7 @@ class Instruction:
 
         This only makes sense for an instruction is a branch,
         which can be checked with `instr.isBranch()`.
+
         To get the branch offset of either a branch instruction or a jump instruction
         use `instr.getBranchOffsetGeneric()` instead.
 
@@ -151,13 +152,28 @@ class Instruction:
         An exception will be raised if the instruction is neither a branch or a
         jump instruction.
         """
-    def getDestinationGpr(self) -> Enum|None: ...
-    def outputsToGprZero(self) -> bool: ...
-    def getOpcodeName(self) -> str: ...
+    def getDestinationGpr(self) -> Enum|None:
+        """
+        Returns the general purpose register (GPR) which this instruction modifies,
+        or `None` if the instruction does not modify the state of any GPR
+        """
+    def outputsToGprZero(self) -> bool:
+        """
+        Returns `True` if the GPR which is modified by this register is $zero,
+        `False` otherwise.
+        Returns `false` if this instruction does not modify a GPR.
+        """
+    def getOpcodeName(self) -> str:
+        """Returns the mnemonic of the instruction.
+        """
 
-    def blankOut(self) -> None: ...
+    def blankOut(self) -> None:
+        """Zero'es out every field (registers and immediate) of the instruction
+        leaving only the mnemonic.
+        """
 
-    def isImplemented(self) -> bool: ...
+    def isImplemented(self) -> bool: #! deprecated
+        """Use `instr.isValid()` instead"""
     def isLikelyHandwritten(self) -> bool: ...
     def isNop(self) -> bool: ...
     def isUnconditionalBranch(self) -> bool: ...
