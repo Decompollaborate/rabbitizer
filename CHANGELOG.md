@@ -470,6 +470,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix the wrong returned value on `Utils.From2Complement` when `bits` equals 32.
 
+### Deprecated
+
+- `RegistersTracker.getLuiOffsetForLo`. Use
+  `RegistersTracker.preprocessLoAndGetInfo` instead.
+
 ## [1.1.0] - 2022-08-27
 
 1.1.0: RSP and R5900 support
