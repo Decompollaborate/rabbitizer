@@ -87,41 +87,70 @@ class Instruction:
         """
 
     def getRaw(self) -> int:
-        """Get the word value encoding the instruction"""
+        """Get the word value encoding the instruction.
+
+        The returned value may not be the same as the one to instance this Instruction
+        if a method that modifies the word has been used, like `instr.blankOut()`.
+        """
     def getImmediate(self) -> int: #! deprecated
         """Use `getProcessedImmediate()` instead"""
     def getProcessedImmediate(self) -> int:
         """Get the (possibly signed) immediate value for this instruction.
 
         This only makes sense for an instruction with an immediate,
-        which can be checked with `hasOperandAlias(OperandType.cpu_immediate)`
+        which can be checked with `instr.hasOperandAlias(OperandType.cpu_immediate)`
 
         An exception will be raised if the instruction does not contain an immediate field.
         """
     def getInstrIndexAsVram(self) -> int:
         """Get the target vram address this instruction jumps to.
+        This method is intended only for direct jump instructions.
 
-        This only makes sense if the instruction is a jump,
+        This only makes sense if the instruction is a direct jump,
         which can be checked with `instr.isJumpWithAddress()`
 
         An exception will be raised if the instruction is not a jump instruction.
         """
     def getBranchOffset(self) -> int:
         """Returns the offset (in bytes) that the branch instruction would branch,
-        relative to the instruction itself.
+        relative to the instruction itself. This method is intended only for branch
+        instructions.
 
         The returned value can be negative, meaning the branch instructions does
         a backwards branch.
 
         This only makes sense for an instruction is a branch,
-        which can be checked with `instr.isBranch()`
+        which can be checked with `instr.isBranch()`.
+        To get the branch offset of either a branch instruction or a jump instruction
+        use `instr.getBranchOffsetGeneric()` instead.
 
         An exception will be raised if the instruction is not a branch instruction.
         """
     def getGenericBranchOffset(self, currentVram: int) -> int: #! deprecated
         """Use `getBranchOffsetGeneric()` instead"""
-    def getBranchOffsetGeneric(self) -> int: ...
-    def getBranchVramGeneric(self) -> int: ...
+    def getBranchOffsetGeneric(self) -> int:
+        """Returns the offset (in bytes) that the instruction would branch,
+        relative to the instruction itself. This method is intended for both branch
+        and jump instructions.
+
+        The returned value can be either positive or negative.
+
+        This only makes sense for an instruction is a branch or a direct jump,
+        which can be checked with `instr.isBranch()` or `instr.isJumpWithAddress()`.
+
+        An exception will be raised if the instruction is neither a branch or a
+        jump instruction.
+        """
+    def getBranchVramGeneric(self) -> int:
+        """Get the target vram address this instruction jumps to.
+        This method is intended only for branch or direct jump instructions.
+
+        This only makes sense for an instruction is a branch or a direct jump,
+        which can be checked with `instr.isBranch()` or `instr.isJumpWithAddress()`.
+
+        An exception will be raised if the instruction is neither a branch or a
+        jump instruction.
+        """
     def getDestinationGpr(self) -> Enum|None: ...
     def outputsToGprZero(self) -> bool: ...
     def getOpcodeName(self) -> str: ...

@@ -341,8 +341,23 @@ static PyObject *rabbitizer_type_Instruction_getGenericBranchOffset(PyRabbitizer
     return PyLong_FromLong(RabbitizerInstruction_getGenericBranchOffset(&self->instr, currentVram));
 }
 
-DEF_METHOD_GET_INT(getBranchOffsetGeneric)
-DEF_METHOD_GET_UINT(getBranchVramGeneric)
+static PyObject *rabbitizer_type_Instruction_getBranchOffsetGeneric(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    if (!RabbitizerInstruction_hasOperandAlias(&self->instr, RAB_OPERAND_cpu_label) && !RabbitizerInstruction_hasOperand(&self->instr, RAB_OPERAND_cpu_branch_target_label)) {
+        PyErr_Format(PyExc_RuntimeError, "'%s' instruction does not not perform a branch or a jump.", RabbitizerInstrId_getOpcodeName(self->instr.uniqueId));
+        return NULL;
+    }
+
+    return PyLong_FromLong(RabbitizerInstruction_getBranchOffsetGeneric(&self->instr));
+}
+
+static PyObject *rabbitizer_type_Instruction_getBranchVramGeneric(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
+    if (!RabbitizerInstruction_hasOperandAlias(&self->instr, RAB_OPERAND_cpu_label) && !RabbitizerInstruction_hasOperand(&self->instr, RAB_OPERAND_cpu_branch_target_label)) {
+        PyErr_Format(PyExc_RuntimeError, "'%s' instruction does not not perform a branch or a jump.", RabbitizerInstrId_getOpcodeName(self->instr.uniqueId));
+        return NULL;
+    }
+
+    return PyLong_FromUnsignedLong(RabbitizerInstruction_getBranchVramGeneric(&self->instr));
+}
 
 static PyObject *rabbitizer_type_Instruction_getDestinationGpr(PyRabbitizerInstruction *self, UNUSED PyObject *closure) {
     int8_t reg = RabbitizerInstruction_getDestinationGpr(&self->instr);
