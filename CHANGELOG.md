@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Instruction.getProcessedImmediate` now raises an exception if the
   instruction does not contain an immediate field.
+- `Instruction.getInstrIndexAsVram` now raises an exception if the
+  instruction does not contain an jump label field.
+- `Instruction.getBranchOffset` now raises an exception if the
+  instruction does not contain an branch label field.
 
 ## [1.8.3] - 2024-01-28
 
