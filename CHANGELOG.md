@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.1] - 2024-02-18
+
+### Fixed
+
+- Fix PyPI releases being broken due to a GHA update.
+
 ## [1.9.0] - 2024-02-18
 
 ### Added
@@ -542,6 +548,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.9.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.3...1.9.0
 [1.8.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.2...1.8.3
 [1.8.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.1...1.8.2
