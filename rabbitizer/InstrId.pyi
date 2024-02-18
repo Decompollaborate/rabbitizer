@@ -124,6 +124,7 @@ class InstrId:
     cpu_nop: Enum
     cpu_move: Enum
     cpu_not: Enum
+    cpu_neg: Enum
     cpu_negu: Enum
     cpu_bltz: Enum
     cpu_bgez: Enum
@@ -366,6 +367,7 @@ class InstrId:
     rsp_nop: Enum
     rsp_move: Enum
     rsp_not: Enum
+    rsp_neg: Enum
     rsp_negu: Enum
     rsp_bltz: Enum
     rsp_bgez: Enum

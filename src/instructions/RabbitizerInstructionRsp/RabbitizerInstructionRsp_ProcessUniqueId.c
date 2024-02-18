@@ -115,6 +115,12 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
                     self->uniqueId = RABBITIZER_INSTR_ID_rsp_not;
                 }
             }
+        } else if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_sub) {
+            if (RAB_INSTR_GET_rs(self) == 0) {
+                if (RabbitizerConfig_Cfg.pseudos.pseudoNeg) {
+                    self->uniqueId = RABBITIZER_INSTR_ID_rsp_neg;
+                }
+            }
         } else if (self->uniqueId == RABBITIZER_INSTR_ID_rsp_subu) {
             if (RAB_INSTR_GET_rs(self) == 0) {
                 if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {

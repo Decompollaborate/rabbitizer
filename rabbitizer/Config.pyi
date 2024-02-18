@@ -22,6 +22,7 @@ class _RabbitizerConfig:
     pseudos_pseudoB: bool = True
     pseudos_pseudoMove: bool = True
     pseudos_pseudoNot: bool = True
+    pseudos_pseudoNeg: bool = True
     pseudos_pseudoNegu: bool = True
     pseudos_pseudoBal: bool = True
 

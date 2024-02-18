@@ -25,6 +25,7 @@ pub struct PseudoInstr {
     pub pseudo_b: bool,
     pub pseudo_move: bool,
     pub pseudo_not: bool,
+    pub pseudo_neg: bool,
     pub pseudo_negu: bool,
     pub pseudo_bal: bool,
 }
