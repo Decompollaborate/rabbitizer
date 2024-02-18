@@ -113,6 +113,7 @@ DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoBnez)
 DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoB)
 DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoMove)
 DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoNot)
+DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoNeg)
 DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoNegu)
 DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoBal)
 
@@ -140,6 +141,7 @@ static PyGetSetDef rabbitizer_global_config_GetSets[] = {
     MEMBER_GET_SET(pseudos, pseudoB, "", NULL),
     MEMBER_GET_SET(pseudos, pseudoMove, "", NULL),
     MEMBER_GET_SET(pseudos, pseudoNot, "", NULL),
+    MEMBER_GET_SET(pseudos, pseudoNeg, "", NULL),
     MEMBER_GET_SET(pseudos, pseudoNegu, "", NULL),
     MEMBER_GET_SET(pseudos, pseudoBal, "", NULL),
 

@@ -7,6 +7,9 @@
 
 #include "generated/InstrId_Names_array.h"
 
+/**
+ * Check the word corresponds to a valid instruction.
+ */
 bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId) {
     switch (uniqueId) {
         case RABBITIZER_INSTR_ID_cpu_INVALID:

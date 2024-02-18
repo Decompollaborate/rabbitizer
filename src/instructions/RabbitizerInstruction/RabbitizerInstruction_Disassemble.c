@@ -186,7 +186,7 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
 
 size_t RabbitizerInstruction_getSizeForBuffer(const RabbitizerInstruction *self, size_t immOverrideLength,
                                               int extraLJust) {
-    if (!RabbitizerInstruction_isImplemented(self) || RabbitizerInstruction_mustDisasmAsData(self)) {
+    if (!RabbitizerInstruction_isValid(self) || RabbitizerInstruction_mustDisasmAsData(self)) {
         size_t totalSize = RabbitizerInstruction_getSizeForBufferDataDisasm(self, extraLJust);
 
         if (RabbitizerConfig_Cfg.misc.unknownInstrComment) {
@@ -208,7 +208,7 @@ size_t RabbitizerInstruction_disassemble(const RabbitizerInstruction *self, char
                                          size_t immOverrideLength, int extraLJust) {
     assert(dst != NULL);
 
-    if (!RabbitizerInstruction_isImplemented(self) || RabbitizerInstruction_mustDisasmAsData(self)) {
+    if (!RabbitizerInstruction_isValid(self) || RabbitizerInstruction_mustDisasmAsData(self)) {
         size_t totalSize = 0;
 
         RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerInstruction_disassembleAsData(self, dst, extraLJust));

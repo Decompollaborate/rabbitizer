@@ -193,6 +193,7 @@ namespace rabbitizer {
 
         /* Instruction examination */
 
+        //! @deprecated
         bool isImplemented() const;
         bool isLikelyHandwritten() const;
         bool isNop() const;

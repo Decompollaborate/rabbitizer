@@ -22,10 +22,11 @@ class _RabbitizerConfig:
     pseudos_pseudoB: bool = True
     pseudos_pseudoMove: bool = True
     pseudos_pseudoNot: bool = True
+    pseudos_pseudoNeg: bool = True
     pseudos_pseudoNegu: bool = True
     pseudos_pseudoBal: bool = True
 
-    toolchainTweaks_treatJAsUnconditionalBranch: bool = False
+    toolchainTweaks_treatJAsUnconditionalBranch: bool = True
     toolchainTweaks_sn64DivFix: bool = False
     toolchainTweaks_gnuMode: bool = True
 

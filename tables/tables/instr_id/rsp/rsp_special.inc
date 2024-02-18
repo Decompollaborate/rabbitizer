@@ -206,6 +206,17 @@
 
     // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(
+        rsp, -0x22, neg,
+        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt},
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .notEmittedByCompilers=true,
+        .modifiesRd=true,
+        .readsRt=true,
+        .isPseudo=true
+    )
+
+    // OP rd, rt
+    RABBITIZER_DEF_INSTR_ID(
         rsp, -0x23, negu,
         .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt},
         .instrType=RABBITIZER_INSTR_TYPE_R,

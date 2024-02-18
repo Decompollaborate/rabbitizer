@@ -24,3 +24,4 @@ rabbitizer/RegGprN32.pyi linguist-generated=true
 rabbitizer/RegCop1O32.pyi linguist-generated=true
 rabbitizer/RegCop1N32.pyi linguist-generated=true
 rabbitizer/RegCop1N64.pyi linguist-generated=true
+rabbitizer/TrinaryValue.pyi linguist-generated=true

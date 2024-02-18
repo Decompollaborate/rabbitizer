@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.0] - 2024-02-18
+
+### Added
+
+- Implement `neg` pseudo.
+
+### Changed
+
+- `Instruction.getProcessedImmediate` now raises an exception if the
+  instruction does not contain an immediate field.
+- `Instruction.getInstrIndexAsVram` now raises an exception if the
+  instruction does not contain an jump label field.
+- `Instruction.getBranchOffset` now raises an exception if the
+  instruction does not contain an branch label field.
+- Extend Python's `Instruction` documentation.
+  - Thanks to @Dragorn421 (PR #53)
+
+### Deprecated
+
+- `Instruction.isImplemented`: Use `Instruction.isValid` instead.
+
 ## [1.8.3] - 2024-01-28
 
 ### Fixed
@@ -455,6 +476,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix the wrong returned value on `Utils.From2Complement` when `bits` equals 32.
 
+### Deprecated
+
+- `RegistersTracker.getLuiOffsetForLo`. Use
+  `RegistersTracker.preprocessLoAndGetInfo` instead.
+
 ## [1.1.0] - 2022-08-27
 
 1.1.0: RSP and R5900 support
@@ -516,6 +542,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.9.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.3...1.9.0
+[1.8.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.2...1.8.3
 [1.8.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.1...1.8.2
 [1.8.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.0...1.8.1
 [1.8.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.7.10...1.8.0

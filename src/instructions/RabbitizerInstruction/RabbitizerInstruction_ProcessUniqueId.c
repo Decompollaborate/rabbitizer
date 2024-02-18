@@ -86,6 +86,14 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
                 }
                 break;
 
+            case RABBITIZER_INSTR_ID_cpu_sub:
+                if (RAB_INSTR_GET_rs(self) == 0) {
+                    if (RabbitizerConfig_Cfg.pseudos.pseudoNeg) {
+                        self->uniqueId = RABBITIZER_INSTR_ID_cpu_neg;
+                    }
+                }
+                break;
+
             case RABBITIZER_INSTR_ID_cpu_subu:
                 if (RAB_INSTR_GET_rs(self) == 0) {
                     if (RabbitizerConfig_Cfg.pseudos.pseudoNegu) {

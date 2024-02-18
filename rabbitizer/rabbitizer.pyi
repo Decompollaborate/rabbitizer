@@ -80,56 +80,189 @@ class Instruction:
     """
 
 
-    def __init__(self, word: int, vram: int=0, category: Enum=InstrCategory.CPU) -> None: ...
+    def __init__(self, word: int, vram: int=0, category: Enum=InstrCategory.CPU) -> None:
+        """Decode an Instruction encoded as the 4 bytes `word`, located at `vram`.
 
-    def getRaw(self) -> int: ...
-    def getImmediate(self) -> int: ... #! deprecated
-    def getProcessedImmediate(self) -> int: ...
-    def getInstrIndexAsVram(self) -> int: ...
-    def getBranchOffset(self) -> int: ...
-    def getGenericBranchOffset(self, currentVram: int) -> int: ... #! deprecated
-    def getBranchOffsetGeneric(self) -> int: ...
-    def getBranchVramGeneric(self) -> int: ...
-    def getDestinationGpr(self) -> Enum|None: ...
-    def outputsToGprZero(self) -> bool: ...
-    def getOpcodeName(self) -> str: ...
+        `vram` is used to decode jump instructions that use the PC value to get the upper bits of the target address.
+        """
 
-    def blankOut(self) -> None: ...
+    def getRaw(self) -> int:
+        """Get the word value encoding the instruction.
 
-    def isImplemented(self) -> bool: ...
-    def isLikelyHandwritten(self) -> bool: ...
-    def isNop(self) -> bool: ...
-    def isUnconditionalBranch(self) -> bool: ...
+        The returned value may not be the same as the one to instance this Instruction
+        if a method that modifies the word has been used, like `instr.blankOut()`.
+        """
+    def getImmediate(self) -> int: #! deprecated
+        """Use `getProcessedImmediate()` instead"""
+    def getProcessedImmediate(self) -> int:
+        """Get the (possibly signed) immediate value for this instruction.
 
-    def isReturn(self) -> bool: ...
-    def isJumptableJump(self) -> bool: ...
+        This only makes sense for an instruction with an immediate,
+        which can be checked with `instr.hasOperandAlias(OperandType.cpu_immediate)`.
 
-    def isJrRa(self) -> bool: ... #! deprecated
-    def isJrNotRa(self) -> bool: ... #! deprecated
+        An exception will be raised if the instruction does not contain an immediate field.
+        """
+    def getInstrIndexAsVram(self) -> int:
+        """Get the target vram address this instruction jumps to.
+        This method is intended only for direct jump instructions.
 
-    def hasDelaySlot(self) -> bool: ...
-    def mapInstrToType(self) -> str|None: ... #! deprecated
+        This only makes sense if the instruction is a direct jump,
+        which can be checked with `instr.isJumpWithAddress()`.
 
-    def sameOpcode(self, other: Instruction) -> bool: ...
-    def sameOpcodeButDifferentArguments(self, other: Instruction) -> bool: ...
+        An exception will be raised if the instruction is not a jump instruction.
+        """
+    def getBranchOffset(self) -> int:
+        """Returns the offset (in bytes) that the branch instruction would branch,
+        relative to the instruction itself. This method is intended only for branch
+        instructions.
 
-    def hasOperand(self, operand: Enum) -> bool: ...
-    def hasOperandAlias(self, operand: Enum) -> bool: ...
+        The returned value can be negative, meaning the branch instructions does
+        a backwards branch.
 
-    def isValid(self) -> bool: ...
+        This only makes sense for an instruction is a branch,
+        which can be checked with `instr.isBranch()`.
+
+        To get the branch offset of either a branch instruction or a jump instruction
+        use `instr.getBranchOffsetGeneric()` instead.
+
+        An exception will be raised if the instruction is not a branch instruction.
+        """
+    def getGenericBranchOffset(self, currentVram: int) -> int: #! deprecated
+        """Use `getBranchOffsetGeneric()` instead"""
+    def getBranchOffsetGeneric(self) -> int:
+        """Returns the offset (in bytes) that the instruction would branch,
+        relative to the instruction itself. This method is intended for both branch
+        and jump instructions.
+
+        The returned value can be either positive or negative.
+
+        This only makes sense for an instruction is a branch or a direct jump,
+        which can be checked with `instr.isBranch()` or `instr.isJumpWithAddress()`.
+
+        An exception will be raised if the instruction is neither a branch or a
+        jump instruction.
+        """
+    def getBranchVramGeneric(self) -> int:
+        """Get the target vram address this instruction jumps to.
+        This method is intended only for branch or direct jump instructions.
+
+        This only makes sense for an instruction is a branch or a direct jump,
+        which can be checked with `instr.isBranch()` or `instr.isJumpWithAddress()`.
+
+        An exception will be raised if the instruction is neither a branch or a
+        jump instruction.
+        """
+    def getDestinationGpr(self) -> Enum|None:
+        """
+        Returns the general purpose register (GPR) which this instruction modifies,
+        or `None` if the instruction does not modify the state of any GPR
+        """
+    def outputsToGprZero(self) -> bool:
+        """
+        Returns `True` if the GPR which is modified by this register is $zero,
+        `False` otherwise.
+        Returns `false` if this instruction does not modify a GPR.
+        """
+    def getOpcodeName(self) -> str:
+        """Returns the mnemonic of the instruction.
+        """
+
+    def blankOut(self) -> None:
+        """Zero'es out every field (registers and immediate) of the instruction
+        leaving only the mnemonic.
+        """
+
+    def isImplemented(self) -> bool: #! deprecated
+        """Use `instr.isValid()` instead"""
+    def isLikelyHandwritten(self) -> bool:
+        """Try to guess if the given instruction was handwritten by a human
+        instead of generated by a C compiler.
+        """
+    def isNop(self) -> bool:
+        """Check if the instruction is literally the `nop` instruction."""
+    def isUnconditionalBranch(self) -> bool:
+        """Check if the instruction is an instruction that will always (unconditionally).
+
+        This is always true for the `b` instruction.
+
+        Some compilers use the `j` instruction for unconditional branches instead
+        of the `b` instruction. Treating this instruction as an unconditional branch
+        can be configured with the `config.toolchainTweaks_treatJAsUnconditionalBranch`
+        option.
+        """
+
+    def isReturn(self) -> bool:
+        """Check if the instruction and its register is the one usually used for
+        returning from a function.
+
+        Specfically, this checks if the instruction is a `jr $ra`.
+
+        Returns `False` if the instruction is not a `jr` or if it is a `jr` but
+        the register is not `$ra`.
+        """
+    def isJumptableJump(self) -> bool:
+        """Check if the instruction and its register is the one usually used for
+        jumping with jumptables.
+
+        Specfically, this checks if the instruction is a `jr` but not its register
+        is not `$ra`.
+
+        Returns `False` if the instruction is not a `jr` or if it is a `jr` but
+        the register is `$ra`.
+        """
+
+    def isJrRa(self) -> bool: #! deprecated
+        """Use `isReturn()` instead"""
+    def isJrNotRa(self) -> bool: #! deprecated
+        """Use `isJumptableJump()` instead"""
+
+    def hasDelaySlot(self) -> bool:
+        """Check if the instruction has a delay slot."""
+    def mapInstrToType(self) -> str|None: #! deprecated
+        """use `getAccessType()` instead"""
+
+    def sameOpcode(self, other: Instruction) -> bool:
+        """Check if two instructions have the same mnemonic"""
+    def sameOpcodeButDifferentArguments(self, other: Instruction) -> bool:
+        """Check if two instructions have the same mnemonic but their arguments
+        are different.
+        """
+
+    def hasOperand(self, operand: Enum) -> bool:
+        """Check if the instruction has specifically the `operand`.
+
+        `operand` should be from the `OperandType` enum.
+        """
+    def hasOperandAlias(self, operand: Enum) -> bool:
+        """Check if the instruction has the `operand` or an alias of it.
+
+        (if unsure whether to use `hasOperand` or `hasOperandAlias`, use `hasOperandAlias`)
+
+        `operand` should be from the `OperandType` enum.
+        """
+
+    def isValid(self) -> bool:
+        """Check the word corresponds to a valid instruction."""
 
     #! deprecated
     def isUnknownType(self) -> bool: ...
     #! deprecated
-    def isJType(self) -> bool: ...
+    def isJType(self) -> bool:
+        """Use `isJumpWithAddress()` instead"""
     #! deprecated
-    def isIType(self) -> bool: ...
+    def isIType(self) -> bool:
+        """Use `hasOperandAlias(OperandType.cpu_immediate)` instead"""
     #! deprecated
     def isRType(self) -> bool: ...
     #! deprecated
-    def isRegimmType(self) -> bool: ...
+    def isRegimmType(self) -> bool:
+        """Use `hasOperandAlias(OperandType.cpu_immediate)` instead"""
 
-    def isBranch(self) -> bool: ...
+    def isBranch(self) -> bool:
+        """Instruction is a branch instruction.
+
+        This is also true for branch likely instructions.
+        """
     def isBranchLikely(self) -> bool: ...
     def isJump(self) -> bool: ...
     def isJumpWithAddress(self) -> bool: ...
@@ -153,7 +286,8 @@ class Instruction:
     def readsFs(self) -> bool: ...
     def readsFt(self) -> bool: ...
     def readsFd(self) -> bool: ...
-    def notEmitedByCompilers(self) -> bool: ... #! deprecated
+    def notEmitedByCompilers(self) -> bool: #! deprecated
+        """Use `notEmittedByCompilers()` instead"""
     def notEmittedByCompilers(self) -> bool: ...
     def canBeHi(self) -> bool: ...
     def canBeLo(self) -> bool: ...
@@ -166,7 +300,20 @@ class Instruction:
     def getAccessType(self) -> Enum: ...
     def doesUnsignedMemoryAccess(self) -> bool: ...
 
-    def disassemble(self, immOverride: str|None=None, extraLJust: int=0) -> str: ...
+    def disassemble(self, immOverride: str|None=None, extraLJust: int=0) -> str:
+        """Returns a string that can be assembled back to the instruction raw word.
+        `immOverride` can be a string that replaces the immediate in the disassembly,
+        or the jump target, if any. If the instruction has neither, it is ignored.
+        Examples:
+        >>> Instruction(0x3C0A0042).disassemble()
+        'lui         $t2, 0x42'
+        >>> Instruction(0x3C0A0042).disassemble("hex_answer")
+        'lui         $t2, hex_answer'
+        >>> Instruction(0x0C000042).disassemble()
+        'jal         func_80000108'
+        >>> Instruction(0x0C000042).disassemble("my_target")
+        'jal         my_target'
+        """
 
     def __reduce__(self) -> tuple: ...
 

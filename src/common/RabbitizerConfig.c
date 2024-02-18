@@ -34,6 +34,7 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
         .pseudoB = true,
         .pseudoMove = true,
         .pseudoNot = true,
+        .pseudoNeg = true,
         .pseudoNegu = true,
         .pseudoBal = true,
     },
