@@ -55,7 +55,7 @@ const TestEntry entries[] = {
     { 0x8F858028, "%got(STR_10007C90)", "lw          $a1, %got(STR_10007C90)($gp)"},
 
     { 0x00435022, NULL, "sub         $t2, $v0, $v1", },
-    { 0x00025022, NULL, "sub         $t2, $zero, $v0", },
+    { 0x00025022, NULL, "neg         $t2, $v0", },
 
     { 0x00E41823, NULL, "subu        $v1, $a3, $a0" },
     { 0x00041823, NULL, "negu        $v1, $a0" },
