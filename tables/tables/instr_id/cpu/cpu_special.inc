@@ -529,6 +529,7 @@
         cpu, -0x22, neg,
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt},
         .instrType=RABBITIZER_INSTR_TYPE_R,
+        .notEmittedByCompilers=true,
         .modifiesRd=true,
         .readsRt=true,
         .isPseudo=true
