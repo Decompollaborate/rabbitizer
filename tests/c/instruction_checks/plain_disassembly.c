@@ -54,6 +54,12 @@ const TestEntry entries[] = {
     { 0x8F858028, NULL,                 "lw          $a1, -0x7FD8($gp)"},
     { 0x8F858028, "%got(STR_10007C90)", "lw          $a1, %got(STR_10007C90)($gp)"},
 
+    { 0x00435022, NULL, "sub         $t2, $v0, $v1", },
+    { 0x00025022, NULL, "sub         $t2, $zero, $v0", },
+
+    { 0x00E41823, NULL, "subu        $v1, $a3, $a0" },
+    { 0x00041823, NULL, "negu        $v1, $a0" },
+
     // Invalid instructions
     { 0x44444444, NULL, ".word       0x44444444                   # cfc1        $a0, $8 # 00000444 <InstrIdType: CPU_COP1>" },
     { 0x77777777, NULL, ".word       0x77777777                   # INVALID     $k1, $s7, 0x7777 # 00000000 <InstrIdType: CPU_NORMAL>" },
