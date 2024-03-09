@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix possible stack overflow if `immOverride` is larger than 255 bytes.
+
 ## [1.9.1] - 2024-02-18
 
 ### Fixed

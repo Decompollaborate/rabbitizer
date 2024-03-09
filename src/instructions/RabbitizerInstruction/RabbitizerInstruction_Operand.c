@@ -4,14 +4,16 @@
 #include "instructions/RabbitizerInstruction.h"
 
 #include <assert.h>
+#include <stdlib.h>
 
 #include "generated/instrOpercandCallbacks_array.h"
 
 size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const RabbitizerInstruction *instr,
                                            size_t immOverrideLength) {
-    char auxBuffer[0x100] = { 0 };
-    char immOverride[0x100] = { 0 };
+    char *auxBuffer = calloc(immOverrideLength * 2 + 2, sizeof(char));
+    char *immOverride = calloc(immOverrideLength + 2, sizeof(char));
     OperandCallback callback;
+    size_t size;
 
     assert(operand > RAB_OPERAND_ALL_INVALID);
     assert(operand < RAB_OPERAND_ALL_MAX);
@@ -19,7 +21,12 @@ size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const 
     callback = instrOpercandCallbacks[operand];
     assert(callback != NULL);
 
-    return callback(instr, auxBuffer, immOverride, immOverrideLength);
+    size = callback(instr, auxBuffer, immOverride, immOverrideLength);
+
+    free(auxBuffer);
+    free(immOverride);
+
+    return size;
 }
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self,
