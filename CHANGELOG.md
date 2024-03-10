@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.2] - 2024-03-10
+
 ### Fixed
 
 - Fix possible stack overflow if `immOverride` is larger than 255 bytes.
@@ -552,6 +554,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.9.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.1...1.9.2
 [1.9.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.3...1.9.0
 [1.8.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.8.2...1.8.3

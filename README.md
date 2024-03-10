@@ -56,7 +56,7 @@ In order to keep it simple and fast the following features will not be added:
 The recommended way to install is using from the PyPi release, via `pip`:
 
 ```bash
-pip install rabbitizer
+pip install -U rabbitizer
 ```
 
 In case you want to mess with the latest development version without wanting to
@@ -82,7 +82,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.9.1"
+rabbitizer = "1.9.2"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
