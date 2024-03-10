@@ -21,6 +21,7 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_cpu_cop2t,
     RAB_OPERAND_cpu_cop2cd,
     RAB_OPERAND_cpu_op,
+    RAB_OPERAND_cpu_hint,
     RAB_OPERAND_cpu_code,
     RAB_OPERAND_cpu_code_lower,
     RAB_OPERAND_cpu_copraw,

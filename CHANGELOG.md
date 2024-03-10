@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix the disassembly of `pref`
+
 ## [1.9.2] - 2024-03-10
 
 ### Fixed

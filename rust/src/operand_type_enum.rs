@@ -21,6 +21,7 @@ pub enum OperandType {
     cpu_cop2t,
     cpu_cop2cd,
     cpu_op,
+    cpu_hint,
     cpu_code,
     cpu_code_lower,
     cpu_copraw,

@@ -20,6 +20,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RAB_OPERAND_cpu_cop2t] = RabbitizerOperandType_process_cpu_cop2t,
     [RAB_OPERAND_cpu_cop2cd] = RabbitizerOperandType_process_cpu_cop2cd,
     [RAB_OPERAND_cpu_op] = RabbitizerOperandType_process_cpu_op,
+    [RAB_OPERAND_cpu_hint] = RabbitizerOperandType_process_cpu_hint,
     [RAB_OPERAND_cpu_code] = RabbitizerOperandType_process_cpu_code,
     [RAB_OPERAND_cpu_code_lower] = RabbitizerOperandType_process_cpu_code_lower,
     [RAB_OPERAND_cpu_copraw] = RabbitizerOperandType_process_cpu_copraw,

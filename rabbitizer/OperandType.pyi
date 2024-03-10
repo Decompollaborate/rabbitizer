@@ -22,6 +22,7 @@ class OperandType:
     cpu_cop2t: Enum
     cpu_cop2cd: Enum
     cpu_op: Enum
+    cpu_hint: Enum
     cpu_code: Enum
     cpu_code_lower: Enum
     cpu_copraw: Enum
