@@ -368,8 +368,7 @@
         cpu, 0x33, pref,
         .operands={RAB_OPERAND_cpu_hint, RAB_OPERAND_cpu_immediate_base},
         .instrType=RABBITIZER_INSTR_TYPE_I,
-        .readsRs=true,
-        .readsRt=true
+        .readsRs=true
     ) // Prefetch
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x34, lld,
