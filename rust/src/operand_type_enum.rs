@@ -39,6 +39,7 @@ pub enum OperandType {
     rsp_vs,
     rsp_vt,
     rsp_vd,
+    rsp_hint,
     rsp_vt_elementhigh,
     rsp_vt_elementlow,
     rsp_vd_de,

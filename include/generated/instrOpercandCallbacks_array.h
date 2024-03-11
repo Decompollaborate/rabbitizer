@@ -38,6 +38,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RAB_OPERAND_rsp_vs] = RabbitizerOperandType_process_rsp_vs,
     [RAB_OPERAND_rsp_vt] = RabbitizerOperandType_process_rsp_vt,
     [RAB_OPERAND_rsp_vd] = RabbitizerOperandType_process_rsp_vd,
+    [RAB_OPERAND_rsp_hint] = RabbitizerOperandType_process_rsp_hint,
     [RAB_OPERAND_rsp_vt_elementhigh] = RabbitizerOperandType_process_rsp_vt_elementhigh,
     [RAB_OPERAND_rsp_vt_elementlow] = RabbitizerOperandType_process_rsp_vt_elementlow,
     [RAB_OPERAND_rsp_vd_de] = RabbitizerOperandType_process_rsp_vd_de,

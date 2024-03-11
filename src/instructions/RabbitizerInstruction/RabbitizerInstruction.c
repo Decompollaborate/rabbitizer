@@ -281,6 +281,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_RSP_PACK_cop2cd(self->word, 0);
                 break;
 
+            case RAB_OPERAND_rsp_hint:
+                self->word = RAB_INSTR_RSP_PACK_hint(self->word, 0);
+                break;
+
             case RAB_OPERAND_rsp_vs:
                 self->word = RAB_INSTR_RSP_PACK_vs(self->word, 0);
                 break;

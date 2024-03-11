@@ -39,6 +39,7 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_rsp_vs,
     RAB_OPERAND_rsp_vt,
     RAB_OPERAND_rsp_vd,
+    RAB_OPERAND_rsp_hint,
     RAB_OPERAND_rsp_vt_elementhigh,
     RAB_OPERAND_rsp_vt_elementlow,
     RAB_OPERAND_rsp_vd_de,

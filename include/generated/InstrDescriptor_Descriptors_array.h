@@ -358,7 +358,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_rsp_sb] = { .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_immediate_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .readsRs=true, .readsRt=true, .canBeLo=true, .doesDereference=true, .doesStore=true, .accessType=RAB_ACCESSTYPE_BYTE },
     [RABBITIZER_INSTR_ID_rsp_sh] = { .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_immediate_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .readsRs=true, .readsRt=true, .canBeLo=true, .doesDereference=true, .doesStore=true, .accessType=RAB_ACCESSTYPE_SHORT },
     [RABBITIZER_INSTR_ID_rsp_sw] = { .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_immediate_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .readsRs=true, .readsRt=true, .canBeLo=true, .doesDereference=true, .doesStore=true, .accessType=RAB_ACCESSTYPE_WORD },
-    [RABBITIZER_INSTR_ID_rsp_pref] = { .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_immediate_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .readsRs=true, .readsRt=true },
+    [RABBITIZER_INSTR_ID_rsp_pref] = { .operands={RAB_OPERAND_rsp_hint, RAB_OPERAND_rsp_immediate_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .readsRs=true },
     [RABBITIZER_INSTR_ID_rsp_b] = { .operands={RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .isBranch=true },
     [RABBITIZER_INSTR_ID_rsp_beqz] = { .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .readsRs=true, .isBranch=true },
     [RABBITIZER_INSTR_ID_rsp_bnez] = { .operands={RAB_OPERAND_rsp_rs, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_REGIMM, .readsRs=true, .isBranch=true },

@@ -19,6 +19,8 @@ extern "C" {
 #define RAB_INSTR_RSP_GET_vt(self)                  (SHIFTR((self)->word, 16,  5))
 #define RAB_INSTR_RSP_GET_vd(self)                  (SHIFTR((self)->word,  6,  5))
 
+#define RAB_INSTR_RSP_GET_hint(self)                (SHIFTR((self)->word, 16,  5))
+
 #define RAB_INSTR_RSP_GET_elementhigh(self)         (SHIFTR((self)->word, 21,  4))
 #define RAB_INSTR_RSP_GET_elementlow(self)          (SHIFTR((self)->word,  7,  4))
 #define RAB_INSTR_RSP_GET_OFFSET_VECTOR_RAW(self)   (SHIFTR((self)->word,  0,  7))
@@ -33,6 +35,8 @@ extern "C" {
 #define RAB_INSTR_RSP_PACK_vs(word, value)          (BITREPACK((word), value, 11,  5))
 #define RAB_INSTR_RSP_PACK_vt(word, value)          (BITREPACK((word), value, 16,  5))
 #define RAB_INSTR_RSP_PACK_vd(word, value)          (BITREPACK((word), value,  6,  5))
+
+#define RAB_INSTR_RSP_PACK_hint(word, value)        (BITREPACK((word), (value), 16,  5))
 
 #define RAB_INSTR_RSP_PACK_elementhigh(word, value) (BITREPACK((word), value, 21,  4))
 #define RAB_INSTR_RSP_PACK_elementlow(word, value)  (BITREPACK((word), value,  7,  4))

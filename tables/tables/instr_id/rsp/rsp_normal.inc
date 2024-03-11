@@ -213,10 +213,9 @@
     ) // Store Word
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x33, pref,
-        .operands={RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_immediate_base},
+        .operands={RAB_OPERAND_rsp_hint, RAB_OPERAND_rsp_immediate_base},
         .instrType=RABBITIZER_INSTR_TYPE_I,
-        .readsRs=true,
-        .readsRt=true
+        .readsRs=true
     ) // Prefetch
 
 

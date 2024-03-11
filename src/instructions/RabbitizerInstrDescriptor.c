@@ -174,6 +174,9 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_rsp_cop2cd:
             break;
 
+        case RAB_OPERAND_rsp_hint:
+            break;
+
             // case RAB_OPERAND_rsp_elementhigh:
             // case RAB_OPERAND_rsp_elementlow:
             // case RAB_OPERAND_rsp_index:
