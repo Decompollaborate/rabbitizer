@@ -229,7 +229,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_cpu_c_ule_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
     [RABBITIZER_INSTR_ID_cpu_c_df_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
     [RABBITIZER_INSTR_ID_cpu_c_ngle_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
-    [RABBITIZER_INSTR_ID_cpu_c_deq_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
+    [RABBITIZER_INSTR_ID_cpu_c_seq_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
     [RABBITIZER_INSTR_ID_cpu_c_ngl_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
     [RABBITIZER_INSTR_ID_cpu_c_lt_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
     [RABBITIZER_INSTR_ID_cpu_c_nge_d] = { .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .readsFs=true, .readsFt=true },
