@@ -124,7 +124,7 @@ tidy:
 
 tests: $(TESTS_ELFS)
 
-.PHONY: all static dynamic tables distclean clean distclean format tidy tests
+.PHONY: all static dynamic tables cleantables clean distclean format tidy tests
 .DEFAULT_GOAL := all
 .SECONDARY:
 
