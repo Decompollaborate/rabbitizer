@@ -218,6 +218,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_PACK_op(self->word, 0);
                 break;
 
+            case RAB_OPERAND_cpu_hint:
+                self->word = RAB_INSTR_PACK_hint(self->word, 0);
+                break;
+
             case RAB_OPERAND_cpu_code:
                 self->word = RAB_INSTR_PACK_code(self->word, 0);
                 break;
@@ -275,6 +279,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
 
             case RAB_OPERAND_rsp_cop2cd:
                 self->word = RAB_INSTR_RSP_PACK_cop2cd(self->word, 0);
+                break;
+
+            case RAB_OPERAND_rsp_hint:
+                self->word = RAB_INSTR_RSP_PACK_hint(self->word, 0);
                 break;
 
             case RAB_OPERAND_rsp_vs:

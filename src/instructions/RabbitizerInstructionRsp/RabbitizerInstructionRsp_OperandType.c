@@ -92,6 +92,22 @@ size_t RabbitizerOperandType_process_rsp_vd(const RabbitizerInstruction *self, c
     return totalSize;
 }
 
+size_t RabbitizerOperandType_process_rsp_hint(const RabbitizerInstruction *self, char *dst,
+                                              UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+// TODO: consider making this a proper configuration
+#if 0
+    if (RAB_INSTR_RSP_GET_hint(self) < 10) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", RAB_INSTR_RSP_GET_hint(self));
+    } else {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", RAB_INSTR_RSP_GET_hint(self));
+    }
+#endif
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%02X", RAB_INSTR_RSP_GET_hint(self));
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_process_rsp_vt_elementhigh(const RabbitizerInstruction *self, char *dst,
                                                         const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;

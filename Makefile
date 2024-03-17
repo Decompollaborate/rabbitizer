@@ -103,6 +103,9 @@ dynamic: $(DYNAMIC_LIB) $(DYNAMIC_LIB_XX)
 tables:
 	make -C tables
 
+cleantables:
+	make -C tables distclean
+
 clean:
 	$(RM) -rf build
 
@@ -121,7 +124,7 @@ tidy:
 
 tests: $(TESTS_ELFS)
 
-.PHONY: all static dynamic tables clean distclean format tidy tests
+.PHONY: all static dynamic tables cleantables clean distclean format tidy tests
 .DEFAULT_GOAL := all
 .SECONDARY:
 

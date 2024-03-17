@@ -229,7 +229,7 @@ typedef enum RabbitizerInstrId {
     RABBITIZER_INSTR_ID_cpu_c_ule_d,
     RABBITIZER_INSTR_ID_cpu_c_df_d,
     RABBITIZER_INSTR_ID_cpu_c_ngle_d,
-    RABBITIZER_INSTR_ID_cpu_c_deq_d,
+    RABBITIZER_INSTR_ID_cpu_c_seq_d,
     RABBITIZER_INSTR_ID_cpu_c_ngl_d,
     RABBITIZER_INSTR_ID_cpu_c_lt_d,
     RABBITIZER_INSTR_ID_cpu_c_nge_d,

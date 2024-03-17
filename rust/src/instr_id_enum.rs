@@ -229,7 +229,7 @@ pub enum InstrId {
     cpu_c_ule_d,
     cpu_c_df_d,
     cpu_c_ngle_d,
-    cpu_c_deq_d,
+    cpu_c_seq_d,
     cpu_c_ngl_d,
     cpu_c_lt_d,
     cpu_c_nge_d,

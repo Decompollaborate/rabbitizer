@@ -15,6 +15,7 @@
     RAB_DEF_OPERAND(cpu, cop2t)
     RAB_DEF_OPERAND(cpu, cop2cd) // Coprocessor 2 control rd
     RAB_DEF_OPERAND(cpu, op)
+    RAB_DEF_OPERAND(cpu, hint)
     RAB_DEF_OPERAND(cpu, code)
     RAB_DEF_OPERAND(cpu, code_lower)
     RAB_DEF_OPERAND(cpu, copraw)

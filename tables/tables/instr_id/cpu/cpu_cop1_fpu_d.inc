@@ -251,7 +251,7 @@
         .readsFt=true
     )
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        cpu, 0x3A, c_deq_d, c.deq.d,
+        cpu, 0x3A, c_seq_d, c.seq.d,
         .operands={RAB_OPERAND_cpu_fs, RAB_OPERAND_cpu_ft},
         .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
         .isFloat=true,

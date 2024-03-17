@@ -22,6 +22,7 @@ class OperandType:
     cpu_cop2t: Enum
     cpu_cop2cd: Enum
     cpu_op: Enum
+    cpu_hint: Enum
     cpu_code: Enum
     cpu_code_lower: Enum
     cpu_copraw: Enum
@@ -39,6 +40,7 @@ class OperandType:
     rsp_vs: Enum
     rsp_vt: Enum
     rsp_vd: Enum
+    rsp_hint: Enum
     rsp_vt_elementhigh: Enum
     rsp_vt_elementlow: Enum
     rsp_vd_de: Enum

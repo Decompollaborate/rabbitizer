@@ -10,6 +10,7 @@
     RAB_DEF_OPERAND(rsp, vs)
     RAB_DEF_OPERAND(rsp, vt)
     RAB_DEF_OPERAND(rsp, vd)
+    RAB_DEF_OPERAND(rsp, hint)
     // RAB_DEF_OPERAND(rsp, elementhigh)
     // RAB_DEF_OPERAND(rsp, elementlow)
     // RAB_DEF_OPERAND(rsp, index)

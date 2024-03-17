@@ -230,7 +230,7 @@ class InstrId:
     cpu_c_ule_d: Enum
     cpu_c_df_d: Enum
     cpu_c_ngle_d: Enum
-    cpu_c_deq_d: Enum
+    cpu_c_seq_d: Enum
     cpu_c_ngl_d: Enum
     cpu_c_lt_d: Enum
     cpu_c_nge_d: Enum
