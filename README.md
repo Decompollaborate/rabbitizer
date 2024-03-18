@@ -56,14 +56,28 @@ In order to keep it simple and fast the following features will not be added:
 The recommended way to install is using from the PyPi release, via `pip`:
 
 ```bash
-pip install -U rabbitizer
+python3 -m pip install -U rabbitizer
 ```
+
+If you use a `requirements.txt` file in your repository, then you can add this
+library with the following line:
+
+```txt
+rabbitizer>=1.9.4,<2.0.0
+```
+
+### Development version
+
+The unstable development version is located at the
+[develop](https://github.com/Decompollaborate/rabbitizer/tree/develop)
+branch. PRs should be made into that branch instead of the main one.
 
 In case you want to mess with the latest development version without wanting to
 clone the repository, then you could use the following command:
 
 ```bash
-pip install git+https://github.com/Decompollaborate/rabbitizer.git@develop
+python3 -m pip uninstall rabbitizer
+python3 -m pip install git+https://github.com/Decompollaborate/rabbitizer.git@develop
 ```
 
 NOTE: Installing the development version is not recommended. Proceed at your own
@@ -82,7 +96,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.9.3"
+rabbitizer = "1.9.4"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
