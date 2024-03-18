@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Always use named registers for R5900's VU instructions.
+
 ## [1.9.3] - 2024-03-17
 
 ### Fixed
