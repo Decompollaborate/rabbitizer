@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Consider r5900's `paddub` as a possible move instruction.
+
 ## [1.9.4] - 2024-03-18
 
 ### Changed

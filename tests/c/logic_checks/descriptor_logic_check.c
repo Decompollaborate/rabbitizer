@@ -86,6 +86,18 @@ int main() {
 
         // A instruction should not have both doesLoad and doesStore
         LOGIC_ERROR(uniqueId, errorCount, !(descriptor->doesLoad && descriptor->doesStore));
+
+        switch (uniqueId) {
+            case RABBITIZER_INSTR_ID_cpu_move:
+            case RABBITIZER_INSTR_ID_rsp_move:
+                // move pseudos should be considered as move instructions.
+                LOGIC_ERROR(uniqueId, errorCount, descriptor->maybeIsMove);
+                break;
+
+            default:
+                LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->maybeIsMove, RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rd) && RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rs) && RabbitizerInstrDescriptor_hasOperandAlias(descriptor, RAB_OPERAND_cpu_rt));
+                break;
+        }
     }
 
     if (errorCount != 0) {

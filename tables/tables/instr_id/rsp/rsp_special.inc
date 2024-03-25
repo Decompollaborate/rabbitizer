@@ -193,6 +193,7 @@
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .modifiesRd=true,
         .readsRs=true,
+        .maybeIsMove=true,
         .isPseudo=true
     ) // Move
     RABBITIZER_DEF_INSTR_ID(
