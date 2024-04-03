@@ -115,7 +115,7 @@ int main() {
             continue;
         }
 
-        fread(buffer, sizeof(char), fileSize, file);
+        assert(fread(buffer, sizeof(char), fileSize, file) == (size_t)fileSize);
 
         errorCount += doVersionCheck(path, buffer);
 

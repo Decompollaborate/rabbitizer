@@ -17,6 +17,7 @@ if platform.system() == "Linux":
     extraCompileArgs += ["-Werror=vla", "-Werror=switch", "-Werror=implicit-fallthrough", "-Werror=unused-function", "-Werror=unused-parameter", "-Werror=shadow", "-Werror=switch"]
     extraCompileArgs += ["-Werror=implicit-function-declaration", "-Werror=incompatible-pointer-types"]
     extraCompileArgs += ["-Werror"]
+    extraCompileArgs += ["-Wno-nonnull-compare"]
 
 setup(
     ext_modules=[

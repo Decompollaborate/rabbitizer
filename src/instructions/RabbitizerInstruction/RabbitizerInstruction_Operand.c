@@ -10,10 +10,7 @@
 
 size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const RabbitizerInstruction *instr,
                                            size_t immOverrideLength) {
-    char *auxBuffer = calloc(immOverrideLength * 2 + 2, sizeof(char));
-    char *immOverride = calloc(immOverrideLength + 2, sizeof(char));
     OperandCallback callback;
-    size_t size;
 
     assert(operand > RAB_OPERAND_ALL_INVALID);
     assert(operand < RAB_OPERAND_ALL_MAX);
@@ -21,12 +18,7 @@ size_t RabbitizerOperandType_getBufferSize(RabbitizerOperandType operand, const 
     callback = instrOpercandCallbacks[operand];
     assert(callback != NULL);
 
-    size = callback(instr, auxBuffer, immOverride, immOverrideLength);
-
-    free(auxBuffer);
-    free(immOverride);
-
-    return size;
+    return callback(instr, NULL, NULL, immOverrideLength);
 }
 
 size_t RabbitizerInstruction_getSizeForBufferOperandsDisasm(const RabbitizerInstruction *self,

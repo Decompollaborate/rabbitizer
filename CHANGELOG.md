@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9.5] - 2024-04-03
+
+### Changed
+
+- Consider r5900's `paddub` as a possible move instruction.
+- Internal rework to avoid allocating memory when calculating required buffer
+  size for disassembly.
+  - This is part of the `RabbitizerInstruction_getSizeForBuffer` function.
+  - This change may help recent Windows specific issues.
+
 ## [1.9.4] - 2024-03-18
 
 ### Changed
@@ -568,6 +578,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.9.5]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.4...1.9.5
 [1.9.4]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.3...1.9.4
 [1.9.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.2...1.9.3
 [1.9.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.1...1.9.2

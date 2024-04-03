@@ -124,7 +124,8 @@
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
         .modifiesRd=true,
         .readsRs=true,
-        .readsRt=true
+        .readsRt=true,
+        .maybeIsMove=true
     ) // Parallel ADD Unsigned saturation Byte
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x19, psubub,

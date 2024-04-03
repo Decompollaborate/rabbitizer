@@ -26,7 +26,7 @@ WARNINGS        += -Werror=type-limits
 WARNINGS_CXX    :=
 
 ifeq ($(CC),gcc)
-    WARNINGS    += -Wno-cast-function-type -Wformat-truncation -Wformat-overflow
+    WARNINGS    += -Wno-cast-function-type -Wformat-truncation -Wformat-overflow -Wno-nonnull-compare
 endif
 
 ifeq ($(DEBUG),0)

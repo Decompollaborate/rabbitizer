@@ -195,6 +195,10 @@ size_t RabbitizerOperandType_process_cpu_label(const RabbitizerInstruction *self
                                                size_t immOverrideLength) {
     size_t totalSize = 0;
 
+    if ((dst == NULL) && (immOverrideLength > 0)) {
+        return immOverrideLength;
+    }
+
     if ((immOverride != NULL) && (immOverrideLength > 0)) {
         memcpy(dst, immOverride, immOverrideLength);
         return immOverrideLength;
@@ -208,6 +212,10 @@ size_t RabbitizerOperandType_process_cpu_immediate(const RabbitizerInstruction *
                                                    const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     int32_t number;
+
+    if ((dst == NULL) && (immOverrideLength > 0)) {
+        return immOverrideLength;
+    }
 
     if ((immOverride != NULL) && (immOverrideLength > 0)) {
         memcpy(dst, immOverride, immOverrideLength);
@@ -240,6 +248,10 @@ size_t RabbitizerOperandType_process_cpu_immediate(const RabbitizerInstruction *
 size_t RabbitizerOperandType_process_cpu_branch_target_label(const RabbitizerInstruction *self, char *dst,
                                                              const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
+
+    if ((dst == NULL) && (immOverrideLength > 0)) {
+        return immOverrideLength;
+    }
 
     if ((immOverride != NULL) && (immOverrideLength > 0)) {
         memcpy(dst, immOverride, immOverrideLength);
