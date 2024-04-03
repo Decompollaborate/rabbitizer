@@ -84,7 +84,7 @@ typedef enum RabTrinaryValue {
 #define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
     do {                                                       \
         size_t __tempSize = (size_t)(expression);              \
-        if (buffer != NULL) {                                  \
+        if ((buffer) != NULL) {                                \
             (buffer) += __tempSize;                            \
         }                                                      \
         (totalSize) += __tempSize;                             \
@@ -92,7 +92,7 @@ typedef enum RabTrinaryValue {
 
 #define RABUTILS_BUFFER_WRITE_CHAR(buffer, totalSize, character) \
     do {                                                         \
-        if (buffer != NULL) {                                    \
+        if ((buffer) != NULL) {                                  \
             *(buffer) = (character);                             \
         }                                                        \
         RABUTILS_BUFFER_ADVANCE(buffer, totalSize, 1);           \
@@ -113,12 +113,11 @@ typedef enum RabTrinaryValue {
 #define RABUTILS_BUFFER_CPY(buffer, totalSize, string)         \
     do {                                                       \
         size_t _tempSize = strlen(string);                     \
-        if (buffer != NULL) {                                  \
+        if ((buffer) != NULL) {                                \
             memcpy(buffer, string, _tempSize);                 \
         }                                                      \
         RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _tempSize); \
     } while (0)
-
 
 CONST NODISCARD
 int32_t RabbitizerUtils_From2Complement(uint32_t number, int bits);
