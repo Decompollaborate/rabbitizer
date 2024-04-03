@@ -84,19 +84,28 @@ typedef enum RabTrinaryValue {
 #define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
     do {                                                       \
         size_t __tempSize = (size_t)(expression);              \
-        (buffer) += __tempSize;                                \
+        if (buffer != NULL) {                                  \
+            (buffer) += __tempSize;                            \
+        }                                                      \
         (totalSize) += __tempSize;                             \
     } while (0)
 
 #define RABUTILS_BUFFER_WRITE_CHAR(buffer, totalSize, character) \
     do {                                                         \
-        *(buffer) = (character);                                 \
+        if (buffer != NULL) {                                    \
+            *(buffer) = (character);                             \
+        }                                                        \
         RABUTILS_BUFFER_ADVANCE(buffer, totalSize, 1);           \
     } while (0)
 
 #define RABUTILS_BUFFER_SPRINTF(buffer, totalSize, format, ...) \
     do {                                                        \
-        int _len = sprintf(buffer, format, __VA_ARGS__);        \
+        int _len;                                               \
+        if (buffer != NULL) {                                   \
+            _len = sprintf(buffer, format, __VA_ARGS__);        \
+        } else {                                                \
+            _len = snprintf(NULL, 0, format, __VA_ARGS__);      \
+        }                                                       \
         assert(_len > 0);                                       \
         RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _len);       \
     } while (0)
@@ -104,7 +113,9 @@ typedef enum RabTrinaryValue {
 #define RABUTILS_BUFFER_CPY(buffer, totalSize, string)         \
     do {                                                       \
         size_t _tempSize = strlen(string);                     \
-        memcpy(buffer, string, _tempSize);                     \
+        if (buffer != NULL) {                                  \
+            memcpy(buffer, string, _tempSize);                 \
+        }                                                      \
         RABUTILS_BUFFER_ADVANCE(buffer, totalSize, _tempSize); \
     } while (0)
 

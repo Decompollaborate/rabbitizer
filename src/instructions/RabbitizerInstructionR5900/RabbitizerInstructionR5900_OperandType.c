@@ -492,6 +492,10 @@ size_t RabbitizerOperandType_process_r5900_immediate5(const RabbitizerInstructio
     size_t totalSize = 0;
     int32_t number;
 
+    if ((dst == NULL) && (immOverrideLength > 0)) {
+        return immOverrideLength;
+    }
+
     if ((immOverride != NULL) && (immOverrideLength > 0)) {
         memcpy(dst, immOverride, immOverrideLength);
         return immOverrideLength;
@@ -524,6 +528,10 @@ size_t RabbitizerOperandType_process_r5900_immediate15(const RabbitizerInstructi
                                                        const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     int32_t number;
+
+    if ((dst == NULL) && (immOverrideLength > 0)) {
+        return immOverrideLength;
+    }
 
     if ((immOverride != NULL) && (immOverrideLength > 0)) {
         memcpy(dst, immOverride, immOverrideLength);

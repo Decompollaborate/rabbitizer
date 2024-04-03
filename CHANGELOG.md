@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Consider r5900's `paddub` as a possible move instruction.
+- Internal rework to avoid allocating memory when calculating required buffer
+  size for disassembly.
+  - This is part of the `RabbitizerInstruction_getSizeForBuffer` function.
+  - This change may help recent Windows specific issues.
 
 ## [1.9.4] - 2024-03-18
 
