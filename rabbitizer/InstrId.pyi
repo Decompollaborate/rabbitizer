@@ -655,4 +655,6 @@ class InstrId:
     r5900_vrinit: Enum
     r5900_vrxor: Enum
     r5900_MAX: Enum
+    allegrex_INVALID: Enum
+    allegrex_MAX: Enum
     ALL_MAX: Enum

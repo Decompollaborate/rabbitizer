@@ -5,3 +5,4 @@
     #include "instr_id/RabbitizerInstrId_rsp.inc"
     #include "instr_id/RabbitizerInstrId_r3000gte.inc"
     #include "instr_id/RabbitizerInstrId_r5900.inc"
+    #include "instr_id/RabbitizerInstrId_allegrex.inc"

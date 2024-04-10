@@ -11,5 +11,6 @@ pub enum InstrCategory {
     RSP,
     R3000GTE,
     R5900,
+    ALLEGREX,
     MAX,
 }

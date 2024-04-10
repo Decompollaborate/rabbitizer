@@ -57,6 +57,7 @@ enum class IdType {
     R5900_MMI_1,
     R5900_MMI_2,
     R5900_MMI_3,
+    ALLEGREX_INVALID,
     ALL_MAX,
 };
 

@@ -72,6 +72,13 @@ The unstable development version is located at the
 [develop](https://github.com/Decompollaborate/rabbitizer/tree/develop)
 branch. PRs should be made into that branch instead of the main one.
 
+Note that building the Python bindings from source require the Python
+development package. Under Ubuntu/Debian based distros it can be installed with:
+
+```bash
+apt install python3-dev
+```
+
 In case you want to mess with the latest development version without wanting to
 clone the repository, then you could use the following command:
 

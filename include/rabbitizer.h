@@ -19,6 +19,7 @@
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR3000GTE.h"
 #include "instructions/RabbitizerInstructionR5900.h"
+#include "instructions/RabbitizerInstructionAllegrex.h"
 
 #include "analysis/RabbitizerTrackedRegisterState.h"
 #include "analysis/RabbitizerLoPairingInfo.h"

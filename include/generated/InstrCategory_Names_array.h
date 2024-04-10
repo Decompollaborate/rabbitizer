@@ -11,6 +11,7 @@ const char *const RabbitizerInstrCategory_Names[] = {
     [RABBITIZER_INSTRCAT_RSP] = "RSP",
     [RABBITIZER_INSTRCAT_R3000GTE] = "R3000GTE",
     [RABBITIZER_INSTRCAT_R5900] = "R5900",
+    [RABBITIZER_INSTRCAT_ALLEGREX] = "ALLEGREX",
 };
 
 #endif
