@@ -6,13 +6,13 @@
     |           |                              |function   |  MMI2  |
     ------6----------------------------------------------------6-----
     |---00--|---01--|---10--|---11--| lo
-000 |PMADDW |  ---  |PSLLVW |PSRLVW |
-001 |PMSUBW |  ---  |  ---  |  ---  |
-010 |PMFHI  |PMFLO  |PINTH  |  ---  |
-011 |PMULTW |PDIVW  |PCPYLD |  ---  |
+000 |PMADDW | ---   |PSLLVW |PSRLVW |
+001 |PMSUBW | ---   | ---   | ---   |
+010 |PMFHI  |PMFLO  |PINTH  | ---   |
+011 |PMULTW |PDIVW  |PCPYLD | ---   |
 100 |PMADDH |PHMADH | PAND  |  PXOR |
-101 |PMSUBH |PHMSBH |  ---  |  ---  |
-110 | ---   |  ---  | PEXEH | PREVH |
+101 |PMSUBH |PHMSBH | ---   | ---   |
+110 | ---   | ---   | PEXEH | PREVH |
 111 |PMULTH |PDIVBW | PEXEW |PROT3W |
  hi |-------|-------|-------|-------|
 */

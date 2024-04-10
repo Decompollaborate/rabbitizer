@@ -12,8 +12,8 @@
 011 |VMULx  |VMULy  |VMULz  |VMULw  |VMULq  |VMAXi  |VMULi  |VMINIi |
 100 |VADDq  |VMADDq |VADDi  |VMADDi |VSUBq  |VMSUBq |VSUbi  |VMSUBi |
 101 |VADD   |VMADD  |VMUL   |VMAX   |VSUB   |VMSUB  |VOPMSUB|VMINI  |
-110 |VIADD  |VISUB  |VIADDI |  ---  |VIAND  |VIOR   |  ---  |  ---  |
-111 |VCALLMS|VCALLMSR| ---  |  ---  |  *1   |  *1   |  *1   |  *1   |
+110 |VIADD  |VISUB  |VIADDI | ---   |VIAND  |VIOR   | ---   | ---   |
+111 |VCALLMS|VCALLMSR| ---  | ---   |  *1   |  *1   |  *1   |  *1   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
     *1=see special2 table
 */

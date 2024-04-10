@@ -9,7 +9,7 @@
 000 | *1    | *2    | J     | JAL   | BEQ   | BNE   | BLEZ  | BGTZ  |
 001 | ADDI  | ADDIU | SLTI  | SLTIU | ANDI  | ORI   | XORI  | LUI   |
 010 | *3    | *4    |  *5   | ---   | BEQL  | BNEL  | BLEZL | BGTZL |
-011 | DADDI |DADDIU | LDL   | LDR   |  *6   |  ---  |  LQ   | SQ    |
+011 | DADDI |DADDIU | LDL   | LDR   |  *6   | ---   |  LQ   | SQ    |
 100 | LB    | LH    | LWL   | LW    | LBU   | LHU   | LWR   | LWU   |
 101 | SB    | SH    | SWL   | SW    | SDL   | SDR   | SWR   | CACHE |
 110 | ---   | LWC1  | ---   | PREF  | ---   | ---   | LQC2  | LD    |
