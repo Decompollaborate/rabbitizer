@@ -1,6 +1,22 @@
 /* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+/*
+    31----------26-25--------21 -----------------------------------------5----------0
+    |   = COP1    |   = S     |                                         | function  |
+    -------6------------5-----------------------------------------------------6------
+    |---000---|---001---|---010---|---011---|---100---|---101---|---110---|---111---| lo
+000 | ADD.D   | SUB.D   | MUL.D   | DIV.D   | SQRT.D  | ABS.D   | MOV.D   | NEG.D   |
+001 |ROUND.L.D|TRUNC.L.D| CEIL.L.D|FLOOR.L.D|ROUND.W.D|TRUNC.W.D| CEIL.W.D|FLOOR.W.D|
+010 | ---     | ---     | ---     | ---     | ---     | ---     | ---     | ---     |
+011 | ---     | ---     | ---     | ---     | ---     | ---     | ---     | ---     |
+100 | CVT.S.D | ---     | ---     | ---     | CVT.W.D | CVT.L.D | ---     | ---     |
+101 | ---     | ---     | ---     | ---     | ---     | ---     | ---     | ---     |
+110 | C.F.D   | C.UN.D  | C.EQ.D  | C.UEQ.D | C.OLT.D | C.ULT.D | C.OLE.D | C.ULE.D |
+111 | C.DF.D  | C.NGLE.D| C.SEQ.D | C.NGL.D | C.LT.D  | C.NGE.D | C.LE.D  | C.NGT.D |
+ hi |---------|---------|---------|---------|---------|---------|---------|---------|
+*/
+
     // OP fd, fs, ft
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         cpu, 0x00, add_d, add.d,
