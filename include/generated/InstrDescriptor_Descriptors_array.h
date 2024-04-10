@@ -735,6 +735,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_r5900_USERDEF_19] = { .operands={0} },
     [RABBITIZER_INSTR_ID_r5900_MAX] = { .operands={0} },
     [RABBITIZER_INSTR_ID_allegrex_INVALID] = { .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN },
+    [RABBITIZER_INSTR_ID_allegrex_clo] = { .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs}, .instrType=RABBITIZER_INSTR_TYPE_R, .modifiesRd=true, .readsRs=true },
     [RABBITIZER_INSTR_ID_allegrex_USERDEF_00] = { .operands={0} },
     [RABBITIZER_INSTR_ID_allegrex_USERDEF_01] = { .operands={0} },
     [RABBITIZER_INSTR_ID_allegrex_USERDEF_02] = { .operands={0} },

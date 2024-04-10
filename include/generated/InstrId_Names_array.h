@@ -735,6 +735,7 @@ const char *RabbitizerInstrId_Names[] = {
     [RABBITIZER_INSTR_ID_r5900_USERDEF_19] = "USERDEF_19",
     [RABBITIZER_INSTR_ID_r5900_MAX] = "MAX",
     [RABBITIZER_INSTR_ID_allegrex_INVALID] = "INVALID",
+    [RABBITIZER_INSTR_ID_allegrex_clo] = "clo",
     [RABBITIZER_INSTR_ID_allegrex_USERDEF_00] = "USERDEF_00",
     [RABBITIZER_INSTR_ID_allegrex_USERDEF_01] = "USERDEF_01",
     [RABBITIZER_INSTR_ID_allegrex_USERDEF_02] = "USERDEF_02",

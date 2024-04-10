@@ -735,6 +735,7 @@ pub enum InstrId {
     r5900_USERDEF_19,
     r5900_MAX,
     allegrex_INVALID,
+    allegrex_clo,
     allegrex_USERDEF_00,
     allegrex_USERDEF_01,
     allegrex_USERDEF_02,

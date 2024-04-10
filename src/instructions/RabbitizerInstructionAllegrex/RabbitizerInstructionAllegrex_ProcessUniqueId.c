@@ -21,7 +21,7 @@ void RabbitizerInstructionAllegrex_processUniqueId_Normal(RabbitizerInstruction 
     switch (opcode) {
 #include "tables/instr_id/allegrex/allegrex_normal.inc"
 
-        //default:
+        // default:
         //    RabbitizerInstruction_processUniqueId_Normal(self);
         //    fetchDescriptor = false;
         //    break;
@@ -35,7 +35,6 @@ void RabbitizerInstructionAllegrex_processUniqueId_Normal(RabbitizerInstruction 
 void RabbitizerInstructionAllegrex_processUniqueId_Special(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
     bool fetchDescriptor = true;
-    uint32_t stype;
 
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
     self->instrIdType = RAB_INSTR_ID_TYPE_ALLEGREX_SPECIAL;
@@ -43,7 +42,7 @@ void RabbitizerInstructionAllegrex_processUniqueId_Special(RabbitizerInstruction
     switch (function) {
 #include "tables/instr_id/allegrex/allegrex_special.inc"
 
-        //default:
+        // default:
         //    RabbitizerInstruction_processUniqueId_Special(self);
         //    fetchDescriptor = false;
         //    break;
@@ -64,7 +63,7 @@ void RabbitizerInstructionAllegrex_processUniqueId_Regimm(RabbitizerInstruction 
     switch (rt) {
 #include "tables/instr_id/allegrex/allegrex_regimm.inc"
 
-        //default:
+        // default:
         //    RabbitizerInstruction_processUniqueId_Regimm(self);
         //    fetchDescriptor = false;
         //    break;

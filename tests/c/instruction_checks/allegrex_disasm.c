@@ -21,7 +21,7 @@ typedef struct TestEntry {
 } TestEntry;
 
 const TestEntry entries[] = {
-    { 0x0040080B, NULL, "INVALID     $v0, $zero, 0x80B" },
+    { 0x00801017, NULL, "clo         $v0, $a0" },
 };
 
 int main() {
@@ -49,6 +49,7 @@ int main() {
             errorCount++;
         } else if (strcmp(buffer, entry->expectedStr) != 0) {
             fprintf(stderr, "Error on word '0x%08X'. Expected '%s', got '%s'\n", entry->word, entry->expectedStr, buffer);
+            fprintf(stderr, "  <InstrIdType:  %s>\n", RabInstrIdType_getName(instr.instrIdType));
             errorCount++;
         }
 
