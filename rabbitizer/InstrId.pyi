@@ -657,5 +657,9 @@ class InstrId:
     r5900_MAX: Enum
     allegrex_INVALID: Enum
     allegrex_clo: Enum
+    allegrex_srl: Enum
+    allegrex_rotr: Enum
+    allegrex_srlv: Enum
+    allegrex_rotrv: Enum
     allegrex_MAX: Enum
     ALL_MAX: Enum

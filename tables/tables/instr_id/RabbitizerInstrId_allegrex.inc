@@ -9,6 +9,8 @@
 
     #include "allegrex/allegrex_normal.inc"
     #include "allegrex/allegrex_special.inc"
+    #include "allegrex/allegrex_special_rs.inc"
+    #include "allegrex/allegrex_special_sa.inc"
     #include "allegrex/allegrex_regimm.inc"
 
 #ifndef INSTRID_AVOID_USERDEF

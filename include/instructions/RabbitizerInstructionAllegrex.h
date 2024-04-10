@@ -20,8 +20,14 @@ void RabbitizerInstructionAllegrex_destroy(RabbitizerInstruction *self);
 
 NON_NULL(1)
 void RabbitizerInstructionAllegrex_processUniqueId_Normal(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstructionAllegrex_processUniqueId_Special(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionAllegrex_processUniqueId_Special_Rs(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionAllegrex_processUniqueId_Special_Sa(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstructionAllegrex_processUniqueId_Regimm(RabbitizerInstruction *self);
 

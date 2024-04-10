@@ -125,6 +125,13 @@ See this crate at <https://crates.io/crates/rabbitizer>.
   - no$psx documentation: <http://problemkaputt.de/psx-spx.htm#geometrytransformationenginegte>
   - <http://www.raphnet.net/electronique/psx_adaptor/Playstation.txt>
 
+- R4000 ALLEGREX:
+  - VFPU-Instruction_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/11356335/VFPU-Instruction_Manual-English.pdf>
+  - VFPU-Users_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/11356333/VFPU-Users_Manual-English.pdf>
+  - ALLEGREX-Instruction_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/11356332/ALLEGREX-Instruction_Manual-English.pdf>
+  - yet another PlayStationPortable Documentation <http://hitmen.c02.at/files/yapspd/psp_doc/frames.html>
+    - Chapter "4.8  Allegrex Instructions" <http://hitmen.c02.at/files/yapspd/psp_doc/chap4.html#sec4.8>
+
 - R5900:
   - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>
   - Official documentation from Toshiba: <https://wiki.qemu.org/images/2/2a/C790.pdf>
