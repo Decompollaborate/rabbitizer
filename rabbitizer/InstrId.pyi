@@ -401,6 +401,18 @@ class InstrId:
     r3000gte_GPF: Enum
     r3000gte_GPL: Enum
     r3000gte_MAX: Enum
+    r4000allegrex_INVALID: Enum
+    r4000allegrex_clo: Enum
+    r4000allegrex_srl: Enum
+    r4000allegrex_rotr: Enum
+    r4000allegrex_srlv: Enum
+    r4000allegrex_rotrv: Enum
+    cpu_wsbh: Enum
+    cpu_wsbw: Enum
+    cpu_seb: Enum
+    cpu_seh: Enum
+    cpu_bitrev: Enum
+    r4000allegrex_MAX: Enum
     r5900_INVALID: Enum
     r5900_lq: Enum
     r5900_sq: Enum
@@ -655,16 +667,4 @@ class InstrId:
     r5900_vrinit: Enum
     r5900_vrxor: Enum
     r5900_MAX: Enum
-    allegrex_INVALID: Enum
-    allegrex_clo: Enum
-    allegrex_srl: Enum
-    allegrex_rotr: Enum
-    allegrex_srlv: Enum
-    allegrex_rotrv: Enum
-    cpu_wsbh: Enum
-    cpu_wsbw: Enum
-    cpu_seb: Enum
-    cpu_seh: Enum
-    cpu_bitrev: Enum
-    allegrex_MAX: Enum
     ALL_MAX: Enum

@@ -9,5 +9,5 @@ set -e
 ./build/tests/c/instruction_checks/plain_disassembly.elf
 ./build/tests/c/instruction_checks/r3000gte_disasm.elf
 ./build/tests/c/instruction_checks/r5900_trunc_cvt.elf
+./build/tests/c/instruction_checks/r4000allegrex_disasm.elf
 ./build/tests/c/instruction_checks/r5900_vcallms.elf
-./build/tests/c/instruction_checks/allegrex_disasm.elf

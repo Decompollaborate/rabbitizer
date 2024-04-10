@@ -5,8 +5,8 @@
 
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR3000GTE.h"
+#include "instructions/RabbitizerInstructionR4000Allegrex.h"
 #include "instructions/RabbitizerInstructionR5900.h"
-#include "instructions/RabbitizerInstructionAllegrex.h"
 #include "common/RabbitizerConfig.h"
 
 
@@ -56,9 +56,9 @@ static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObj
             RabbitizerInstructionR5900_processUniqueId(&self->instr);
             break;
 
-        case RABBITIZER_INSTRCAT_ALLEGREX:
-            RabbitizerInstructionAllegrex_init(&self->instr, word, vram);
-            RabbitizerInstructionAllegrex_processUniqueId(&self->instr);
+        case RABBITIZER_INSTRCAT_R4000ALLEGREX:
+            RabbitizerInstructionR4000Allegrex_init(&self->instr, word, vram);
+            RabbitizerInstructionR4000Allegrex_processUniqueId(&self->instr);
             break;
 
         case RABBITIZER_INSTRCAT_CPU:

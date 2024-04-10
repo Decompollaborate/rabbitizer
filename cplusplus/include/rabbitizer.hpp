@@ -20,8 +20,8 @@
 #include "instructions/InstructionCpu.hpp"
 #include "instructions/InstructionRsp.hpp"
 #include "instructions/InstructionR3000GTE.hpp"
+#include "instructions/InstructionR4000Allegrex.hpp"
 #include "instructions/InstructionR5900.hpp"
-#include "instructions/InstructionAllegrex.hpp"
 
 #include "analysis/LoPairingInfo.hpp"
 #include "analysis/RegistersTracker.hpp"

@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#include "instructions/RabbitizerInstructionAllegrex.h"
+#include "instructions/RabbitizerInstructionR4000Allegrex.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -20,9 +20,9 @@ int main() {
 
     word = 0x0040080B; // clo
 
-    RabbitizerInstructionAllegrex_init(&instr, word, 0x00100000);
+    RabbitizerInstructionR4000Allegrex_init(&instr, word, 0x00100000);
 
-    RabbitizerInstructionAllegrex_processUniqueId(&instr);
+    RabbitizerInstructionR4000Allegrex_processUniqueId(&instr);
 
     buffer = malloc(RabbitizerInstruction_getSizeForBuffer(&instr, 0, extraLJust) + 1);
     assert(buffer != NULL);
@@ -41,7 +41,7 @@ int main() {
 #endif
 
     free(buffer);
-    RabbitizerInstructionAllegrex_destroy(&instr);
+    RabbitizerInstructionR4000Allegrex_destroy(&instr);
 
     return 0;
 }

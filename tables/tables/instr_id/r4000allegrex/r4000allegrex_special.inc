@@ -21,7 +21,7 @@
 
     // OP rd, rs
     RABBITIZER_DEF_INSTR_ID(
-        allegrex, 0x17, clo,
+        r4000allegrex, 0x17, clo,
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs},
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .modifiesRd=true,

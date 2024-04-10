@@ -35,8 +35,8 @@ int main() {
         size_t bufferSize;
         size_t immOverrideLength = strlen_null(entry->immOverride);
 
-        RabbitizerInstructionAllegrex_init(&instr, entry->word, 0);
-        RabbitizerInstructionAllegrex_processUniqueId(&instr);
+        RabbitizerInstructionR4000Allegrex_init(&instr, entry->word, 0);
+        RabbitizerInstructionR4000Allegrex_processUniqueId(&instr);
 
         bufferSize = RabbitizerInstruction_getSizeForBuffer(&instr, immOverrideLength, 0);
         buffer = malloc(bufferSize + 1);
@@ -54,7 +54,7 @@ int main() {
         }
 
         free(buffer);
-        RabbitizerInstructionAllegrex_destroy(&instr);
+        RabbitizerInstructionR4000Allegrex_destroy(&instr);
     }
 
     return errorCount;

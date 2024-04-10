@@ -11,8 +11,8 @@ class InstrCategory:
     CPU: Enum
     RSP: Enum
     R3000GTE: Enum
+    R4000ALLEGREX: Enum
     R5900: Enum
-    ALLEGREX: Enum
     MAX: Enum
     @staticmethod
     def fromStr(name: str | None) -> Enum|None: ...
