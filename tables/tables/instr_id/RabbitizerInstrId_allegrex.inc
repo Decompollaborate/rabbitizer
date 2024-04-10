@@ -7,6 +7,10 @@
         .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
     )
 
+    #include "allegrex/allegrex_normal.inc"
+    #include "allegrex/allegrex_special.inc"
+    #include "allegrex/allegrex_regimm.inc"
+
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
         allegrex, , USERDEF_00,

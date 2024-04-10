@@ -58,5 +58,8 @@ pub enum InstrIdType {
     R5900_MMI_2,
     R5900_MMI_3,
     ALLEGREX_INVALID,
+    ALLEGREX_NORMAL,
+    ALLEGREX_SPECIAL,
+    ALLEGREX_REGIMM,
     ALL_MAX,
 }

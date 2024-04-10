@@ -59,4 +59,7 @@ class InstrIdType:
     R5900_MMI_2: Enum
     R5900_MMI_3: Enum
     ALLEGREX_INVALID: Enum
+    ALLEGREX_NORMAL: Enum
+    ALLEGREX_SPECIAL: Enum
+    ALLEGREX_REGIMM: Enum
     ALL_MAX: Enum
