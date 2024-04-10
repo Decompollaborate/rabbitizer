@@ -1164,7 +1164,7 @@ const TestEntry entries[] = {
     { 0xF4800040, NULL, "svl.q       C000, 0x40($a0)" },
     { 0xF4800042, NULL, "svr.q       C000, 0x40($a0)" },
 
-    // According to the manual, bit 1 should be zero. The compiler handles it fine, but objdump ignores this bit, do idk
+    // According to the manual, bit 1 should be zero. The compiler handles it fine, but objdump ignores this bit, so idk
     { 0xD8800043, NULL, NULL },
     { 0xD8810043, NULL, NULL },
     { 0xD8820043, NULL, NULL },
