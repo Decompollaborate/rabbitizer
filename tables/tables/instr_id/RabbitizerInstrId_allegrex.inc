@@ -8,10 +8,30 @@
     )
 
     #include "allegrex/allegrex_normal.inc"
+
     #include "allegrex/allegrex_special.inc"
     #include "allegrex/allegrex_special_rs.inc"
     #include "allegrex/allegrex_special_sa.inc"
+
     #include "allegrex/allegrex_regimm.inc"
+
+    #include "allegrex/allegrex_special2.inc"
+
+    #include "allegrex/allegrex_special3.inc"
+    #include "allegrex/allegrex_special3_bshfl.inc"
+
+    #include "allegrex/allegrex_cop0.inc"
+    #include "allegrex/allegrex_cop1.inc"
+    #include "allegrex/allegrex_cop2.inc"
+    #include "allegrex/allegrex_cop3.inc"
+
+    #include "allegrex/allegrex_vfpu0.inc"
+    #include "allegrex/allegrex_vfpu1.inc"
+    #include "allegrex/allegrex_vfpu3.inc"
+    #include "allegrex/allegrex_vfpu4.inc"
+    #include "allegrex/allegrex_vfpu5.inc"
+    #include "allegrex/allegrex_vfpu6.inc"
+    #include "allegrex/allegrex_vfpu7.inc"
 
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
