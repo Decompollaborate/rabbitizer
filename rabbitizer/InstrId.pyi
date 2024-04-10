@@ -402,7 +402,14 @@ class InstrId:
     r3000gte_GPL: Enum
     r3000gte_MAX: Enum
     r4000allegrex_INVALID: Enum
+    r4000allegrex_clz: Enum
     r4000allegrex_clo: Enum
+    r4000allegrex_madd: Enum
+    r4000allegrex_maddu: Enum
+    r4000allegrex_msub: Enum
+    r4000allegrex_msubu: Enum
+    r4000allegrex_max: Enum
+    r4000allegrex_min: Enum
     r4000allegrex_srl: Enum
     r4000allegrex_rotr: Enum
     r4000allegrex_srlv: Enum

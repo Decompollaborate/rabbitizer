@@ -131,6 +131,7 @@ See this crate at <https://crates.io/crates/rabbitizer>.
   - ALLEGREX-Instruction_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/11356332/ALLEGREX-Instruction_Manual-English.pdf>
   - yet another PlayStationPortable Documentation <http://hitmen.c02.at/files/yapspd/psp_doc/frames.html>
     - Chapter "4.8  Allegrex Instructions" <http://hitmen.c02.at/files/yapspd/psp_doc/chap4.html#sec4.8>
+  - GNU binutils: <https://github.com/bminor/binutils-gdb/compare/011365b...a0176d8>
 
 - R5900:
   - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>
