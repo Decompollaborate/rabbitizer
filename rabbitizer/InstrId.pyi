@@ -661,5 +661,10 @@ class InstrId:
     allegrex_rotr: Enum
     allegrex_srlv: Enum
     allegrex_rotrv: Enum
+    cpu_wsbh: Enum
+    cpu_wsbw: Enum
+    cpu_seb: Enum
+    cpu_seh: Enum
+    cpu_bitrev: Enum
     allegrex_MAX: Enum
     ALL_MAX: Enum
