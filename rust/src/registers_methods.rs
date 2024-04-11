@@ -19,8 +19,6 @@ extern "C" {
     pub static mut RabbitizerRegister_RspCop2Control_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_RspVector_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexCop3_Names:
-        [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_R5900VF_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_R5900VI_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
 
@@ -36,8 +34,6 @@ extern "C" {
     pub fn RabbitizerRegister_getNameRspCop2(reg_value: u8) -> *const core::ffi::c_char;
     pub fn RabbitizerRegister_getNameRspCop2Control(reg_value: u8) -> *const core::ffi::c_char;
     pub fn RabbitizerRegister_getNameRspVector(reg_value: u8) -> *const core::ffi::c_char;
-
-    pub fn RabbitizerRegister_getNameR4000AllegrexCop3(reg_value: u8) -> *const core::ffi::c_char;
 
     pub fn RabbitizerRegister_getNameR5900VF(reg_value: u8) -> *const core::ffi::c_char;
     pub fn RabbitizerRegister_getNameR5900VI(reg_value: u8) -> *const core::ffi::c_char;
@@ -61,12 +57,6 @@ extern "C" {
     pub static mut RabbitizerRegister_RspVector_Descriptors: [RegisterDescriptor; 0usize];
 
     /* RSP */
-
-    /* R4000ALLEGREX */
-
-    pub static mut RabbitizerRegister_R4000AllegrexCop3_Descriptors: [RegisterDescriptor; 0usize];
-
-    /* R4000ALLEGREX */
 
     /* R5900 */
 
@@ -307,28 +297,6 @@ impl registers_enum::registers::RspVector {
         let reg_value: u32 = (*self).into();
 
         unsafe { RabbitizerRegister_RspVector_Descriptors.get_unchecked(reg_value as usize) }
-    }
-}
-
-impl registers_enum::registers::R4000AllegrexCop3 {
-    pub fn name(self) -> &'static str {
-        let reg_value: u32 = self.into();
-
-        unsafe {
-            std::ffi::CStr::from_ptr(
-                RabbitizerRegister_R4000AllegrexCop3_Names[reg_value as usize][1],
-            )
-            .to_str()
-            .unwrap()
-        }
-    }
-
-    pub fn descriptor(&self) -> &RegisterDescriptor {
-        let reg_value: u32 = (*self).into();
-
-        unsafe {
-            RabbitizerRegister_R4000AllegrexCop3_Descriptors.get_unchecked(reg_value as usize)
-        }
     }
 }
 

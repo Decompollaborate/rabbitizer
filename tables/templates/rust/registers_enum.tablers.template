@@ -142,28 +142,6 @@ pub mod registers {
 
     /* RSP */
 
-    /* R4000ALLEGREX */
-
-#undef RABBITIZER_DEF_REG
-
-#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
-    prefix##_##name,
-
-    SPECIAL_RS_TAG(repr(u32))
-    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
-    SPECIAL_RS_TAG(allow(non_camel_case_types))
-    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
-    pub enum R4000AllegrexCop3 {
-        #include "registers/RabbitizerRegister_R4000AllegrexCop3.inc"
-    }
-
-#undef RABBITIZER_DEF_REG
-
-#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
-    name,
-
-    /* R4000ALLEGREX */
-
     /* R5900 */
 
     SPECIAL_RS_TAG(repr(u32))

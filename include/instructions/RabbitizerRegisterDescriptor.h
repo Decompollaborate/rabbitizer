@@ -51,12 +51,6 @@ extern const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descripto
 
 /* RSP */
 
-/* R4000ALLEGREX */
-
-extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexCop3_Descriptors[];
-
-/* R4000ALLEGREX */
-
 /* R5900 */
 
 extern const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VF_Descriptors[];

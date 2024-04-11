@@ -55,7 +55,6 @@ pub enum OperandType {
     r4000allegrex_pos,
     r4000allegrex_size,
     r4000allegrex_size_plus_pos,
-    r4000allegrex_cop3cd,
     r5900_I,
     r5900_Q,
     r5900_R,

@@ -66,14 +66,6 @@ typedef enum RabbitizerRegister_RspVector {
 
 /* RSP */
 
-/* R4000ALLEGREX */
-
-typedef enum RabbitizerRegister_R4000AllegrexCop3 {
-    #include "registers/RabbitizerRegister_R4000AllegrexCop3.inc"
-} RabbitizerRegister_R4000AllegrexCop3;
-
-/* R4000ALLEGREX */
-
 /* R5900 */
 
 typedef enum RabbitizerRegister_R5900VF {

@@ -486,44 +486,6 @@ pub mod registers {
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
     #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
-    pub enum R4000AllegrexCop3 {
-        R4000ALLEGREX_COP3_0,
-        R4000ALLEGREX_COP3_1,
-        R4000ALLEGREX_COP3_2,
-        R4000ALLEGREX_COP3_3,
-        R4000ALLEGREX_COP3_4,
-        R4000ALLEGREX_COP3_5,
-        R4000ALLEGREX_COP3_6,
-        R4000ALLEGREX_COP3_7,
-        R4000ALLEGREX_COP3_8,
-        R4000ALLEGREX_COP3_9,
-        R4000ALLEGREX_COP3_10,
-        R4000ALLEGREX_COP3_11,
-        R4000ALLEGREX_COP3_12,
-        R4000ALLEGREX_COP3_13,
-        R4000ALLEGREX_COP3_14,
-        R4000ALLEGREX_COP3_15,
-        R4000ALLEGREX_COP3_16,
-        R4000ALLEGREX_COP3_17,
-        R4000ALLEGREX_COP3_18,
-        R4000ALLEGREX_COP3_19,
-        R4000ALLEGREX_COP3_20,
-        R4000ALLEGREX_COP3_21,
-        R4000ALLEGREX_COP3_22,
-        R4000ALLEGREX_COP3_23,
-        R4000ALLEGREX_COP3_24,
-        R4000ALLEGREX_COP3_25,
-        R4000ALLEGREX_COP3_26,
-        R4000ALLEGREX_COP3_27,
-        R4000ALLEGREX_COP3_28,
-        R4000ALLEGREX_COP3_29,
-        R4000ALLEGREX_COP3_30,
-        R4000ALLEGREX_COP3_31,
-    }
-    #[repr(u32)]
-    #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
-    #[allow(non_camel_case_types)]
-    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum R5900VF {
         vf0,
         vf1,

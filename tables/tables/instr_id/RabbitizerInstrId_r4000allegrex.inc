@@ -32,9 +32,6 @@
     #include "r4000allegrex/r4000allegrex_cop2.inc"
     #include "r4000allegrex/r4000allegrex_cop2_bc2.inc"
 
-    #include "r4000allegrex/r4000allegrex_cop3.inc"
-    #include "r4000allegrex/r4000allegrex_cop3_bc3.inc"
-
     #include "r4000allegrex/r4000allegrex_vfpu0.inc"
     #include "r4000allegrex/r4000allegrex_vfpu1.inc"
     #include "r4000allegrex/r4000allegrex_vfpu3.inc"

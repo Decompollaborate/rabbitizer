@@ -4,5 +4,3 @@
     RAB_DEF_OPERAND(r4000allegrex, pos)
     RAB_DEF_OPERAND(r4000allegrex, size)
     RAB_DEF_OPERAND(r4000allegrex, size_plus_pos)
-
-    RAB_DEF_OPERAND(r4000allegrex, cop3cd)

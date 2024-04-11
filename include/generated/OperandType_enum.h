@@ -55,7 +55,6 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_r4000allegrex_pos,
     RAB_OPERAND_r4000allegrex_size,
     RAB_OPERAND_r4000allegrex_size_plus_pos,
-    RAB_OPERAND_r4000allegrex_cop3cd,
     RAB_OPERAND_r5900_I,
     RAB_OPERAND_r5900_Q,
     RAB_OPERAND_r5900_R,

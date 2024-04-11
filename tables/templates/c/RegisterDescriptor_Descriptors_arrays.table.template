@@ -63,14 +63,6 @@ const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descriptors[] = 
 
 /* RSP */
 
-/* R4000ALLEGREX */
-
-const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexCop3_Descriptors[] = {
-#include "registers/RabbitizerRegister_R4000AllegrexCop3.inc"
-};
-
-/* R4000ALLEGREX */
-
 /* R5900 */
 
 const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VF_Descriptors[] = {

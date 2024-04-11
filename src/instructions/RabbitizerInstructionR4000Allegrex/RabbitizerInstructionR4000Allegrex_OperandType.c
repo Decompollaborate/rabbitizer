@@ -64,13 +64,3 @@ size_t RabbitizerOperandType_process_r4000allegrex_size_plus_pos(const Rabbitize
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
     return totalSize;
 }
-
-size_t RabbitizerOperandType_process_r4000allegrex_cop3cd(const RabbitizerInstruction *self, char *dst,
-                                                          UNUSED const char *immOverride,
-                                                          UNUSED size_t immOverrideLength) {
-    size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameCop2(RAB_INSTR_R4000ALLEGREX_GET_cop3cd(self));
-
-    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
-    return totalSize;
-}
