@@ -35,6 +35,9 @@ jobs:
           name: artifact
           path: build/
 
+      - name: Make tests executable
+        run: chmod --recursive +x build/
+
       - name: Run build info checks
         run: ./tests/run_build_info_checks.sh
 
@@ -52,6 +55,9 @@ jobs:
         with:
           name: artifact
           path: build/
+
+      - name: Make tests executable
+        run: chmod --recursive +x build/
 
       - name: Run logic checks
         run: ./tests/run_logic_checks.sh
@@ -71,6 +77,12 @@ jobs:
           name: artifact
           path: build/
 
+      - name: Make tests executable
+        run: chmod --recursive +x build/
+
+      - name: test
+        run: tree build/
+
       - name: Run instruction checks
         run: ./tests/run_instruction_checks.sh
 
@@ -88,6 +100,9 @@ jobs:
         with:
           name: artifact
           path: build/
+
+      - name: Make tests executable
+        run: chmod --recursive +x build/
 
       - name: Run instruction check - jalr
         run: ./build/tests/c/instruction_checks/jalr.elf
@@ -107,6 +122,9 @@ jobs:
           name: artifact
           path: build/
 
+      - name: Make tests executable
+        run: chmod --recursive +x build/
+
       - name: Run instruction check - plain_disassembly
         run: ./build/tests/c/instruction_checks/plain_disassembly.elf
 
@@ -124,6 +142,9 @@ jobs:
         with:
           name: artifact
           path: build/
+
+      - name: Make tests executable
+        run: chmod --recursive +x build/
 
       - name: Run instruction check - r3000gte_disasm
         run: ./build/tests/c/instruction_checks/r3000gte_disasm.elf
@@ -143,6 +164,9 @@ jobs:
           name: artifact
           path: build/
 
+      - name: Make tests executable
+        run: chmod --recursive +x build/
+
       - name: Run instruction check - r5900_trunc_cvt
         run: ./build/tests/c/instruction_checks/r5900_trunc_cvt.elf
 
@@ -160,6 +184,9 @@ jobs:
         with:
           name: artifact
           path: build/
+
+      - name: Make tests executable
+        run: chmod --recursive +x build/
 
       - name: Run instruction check - r5900_vcallms
         run: ./build/tests/c/instruction_checks/r5900_vcallms.elf
