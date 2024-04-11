@@ -95,6 +95,20 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x70000024, NULL, "mfie        $zero"),
     TEST_ENTRY_C(0x70000026, NULL, "mtie        $zero"),
     TEST_ENTRY_C(0x70040026, NULL, "mtie        $a0"),
+
+    /* Allegrex removed 64 bits FPU instructions */
+    TEST_ENTRY_C(0x468020A1, NULL, ".word       0x468020A1                   # INVALID     $s4, $zero, 0x20A1 # 00000000 <InstrIdType: R4000ALLEGREX_COP1_FPUW>"),
+    TEST_ENTRY_C(0x46002088, NULL, ".word       0x46002088                   # INVALID     $s0, $zero, 0x2088 # 00000000 <InstrIdType: R4000ALLEGREX_COP1_FPUS>"),
+    TEST_ENTRY_C(0x46002089, NULL, ".word       0x46002089                   # INVALID     $s0, $zero, 0x2089 # 00000000 <InstrIdType: R4000ALLEGREX_COP1_FPUS>"),
+    TEST_ENTRY_C(0x4600208A, NULL, ".word       0x4600208A                   # INVALID     $s0, $zero, 0x208A # 00000000 <InstrIdType: R4000ALLEGREX_COP1_FPUS>"),
+    TEST_ENTRY_C(0x4600208B, NULL, ".word       0x4600208B                   # INVALID     $s0, $zero, 0x208B # 00000000 <InstrIdType: R4000ALLEGREX_COP1_FPUS>"),
+    TEST_ENTRY_C(0x460020A1, NULL, ".word       0x460020A1                   # INVALID     $s0, $zero, 0x20A1 # 00000000 <InstrIdType: R4000ALLEGREX_COP1_FPUS>"),
+    TEST_ENTRY_C(0x460020A5, NULL, ".word       0x460020A5                   # INVALID     $s0, $zero, 0x20A5 # 00000000 <InstrIdType: R4000ALLEGREX_COP1_FPUS>"),
+
+    TEST_ENTRY_C(0x46002085, NULL, "abs.s       $f2, $f4"),
+    TEST_ENTRY_C(0x46042080, NULL, "add.s       $f2, $f4, $f4"),
+    TEST_ENTRY_C(0x45000008, NULL, "bc1f        . + 4 + (0x8 << 2)"),
+    TEST_ENTRY_C(0x46100030, NULL, "c.f.s       $f0, $f16"),
 };
 
 size_t test_entries_len = ARRAY_COUNT(test_entries);

@@ -261,10 +261,18 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1(RabbitizerI
             break;
 
         case 0x10:
-        case 0x11:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_FpuS(self);
+            fetchDescriptor = false;
+            break;
+
         case 0x14:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_FpuW(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x11:
         case 0x15:
-            // ????
+            // Allegrex doesn't have D and L?
             break;
 
         default:
@@ -291,6 +299,59 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_BC1(Rabbiti
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_FpuS(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_GET_function(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_COP1_FPUS;
+
+    switch (function) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_cop1_fpu_s.inc"
+
+        case 0x08:
+        case 0x09:
+        case 0x0A:
+        case 0x0B:
+        case 0x21:
+        case 0x25:
+            break;
+
+        default:
+            RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_FpuW(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_GET_function(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_COP1_FPUW;
+
+    switch (function) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_cop1_fpu_w.inc"
+
+        case 0x21:
+            break;
+
+        default:
+            RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(self);
             fetchDescriptor = false;
             break;
     }

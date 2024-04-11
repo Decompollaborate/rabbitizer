@@ -26,6 +26,8 @@
 
     #include "r4000allegrex/r4000allegrex_cop1.inc"
     #include "r4000allegrex/r4000allegrex_cop1_bc1.inc"
+    #include "r4000allegrex/r4000allegrex_cop1_fpu_s.inc"
+    #include "r4000allegrex/r4000allegrex_cop1_fpu_w.inc"
 
     #include "r4000allegrex/r4000allegrex_cop2.inc"
     #include "r4000allegrex/r4000allegrex_cop2_bc2.inc"
