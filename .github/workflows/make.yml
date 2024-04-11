@@ -149,6 +149,48 @@ jobs:
       - name: Run instruction check - r3000gte_disasm
         run: ./build/tests/c/instruction_checks/r3000gte_disasm.elf
 
+  instruction_checks_r4000allegrex_disasm:
+    name: Test - instruction_checks_r4000allegrex_disasm
+    needs: [build_repo]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: build/
+
+      - name: Make tests executable
+        run: chmod --recursive +x build/
+
+      - name: Run instruction check - r4000allegrex_disasm
+        run: ./build/tests/c/instruction_checks/r4000allegrex_disasm.elf
+
+  instruction_checks_r4000allegrex_vfpu_disasm:
+    name: Test - instruction_checks_r4000allegrex_vfpu_disasm
+    needs: [build_repo]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: artifact
+          path: build/
+
+      - name: Make tests executable
+        run: chmod --recursive +x build/
+
+      - name: Run instruction check - r4000allegrex_vfpu_disasm
+        run: ./build/tests/c/instruction_checks/r4000allegrex_vfpu_disasm.elf
+
   instruction_checks_r5900_trunc_cvt:
     name: Test - instruction_checks_r5900_trunc_cvt
     needs: [build_repo]

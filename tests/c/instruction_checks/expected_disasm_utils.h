@@ -82,6 +82,7 @@ const InstrInitInfo initInfos[] = {
     INIT_INFOS(CPU, ),
     INIT_INFOS(RSP, Rsp),
     INIT_INFOS(R3000GTE, R3000GTE),
+    INIT_INFOS(R4000ALLEGREX, R4000Allegrex),
     INIT_INFOS(R5900, R5900),
 };
 
@@ -185,7 +186,7 @@ int main() {
         }
     }
 
-    LOG("%i errors out of %zu entries\n", errorCount, test_entries_len);
+    LOG("%i errors out of %zu entries\n\n", errorCount, test_entries_len);
 
     return errorCount;
 }
