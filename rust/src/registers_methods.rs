@@ -19,6 +19,8 @@ extern "C" {
     pub static mut RabbitizerRegister_RspCop2Control_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_RspVector_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static mut RabbitizerRegister_R4000AllegrexCop3_Names:
+        [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_R5900VF_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_R5900VI_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
 
@@ -62,7 +64,7 @@ extern "C" {
 
     /* R4000ALLEGREX */
 
-    pub static mut RabbitizerRegister_R4000AllegrexCop3_Names: [RegisterDescriptor; 0usize];
+    pub static mut RabbitizerRegister_R4000AllegrexCop3_Descriptors: [RegisterDescriptor; 0usize];
 
     /* R4000ALLEGREX */
 

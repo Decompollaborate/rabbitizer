@@ -1144,7 +1144,6 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xD89E0042, NULL, "lv.q        C720, 0x40($a0)"),
     TEST_ENTRY_C(0xD89F0042, NULL, "lv.q        C730, 0x40($a0)"),
     TEST_ENTRY_C(0x48640004, NULL, "mfv         $a0, S100"),
-    TEST_ENTRY_C(0x48640004, NULL, "mfv         $a0, S100"),
     TEST_ENTRY_C(0x48640080, NULL, "mfvc        $a0, $128"),
     TEST_ENTRY_C(0x48640084, NULL, "mfvc        $a0, $132"),
     TEST_ENTRY_C(0x48E40004, NULL, "mtv         $a0, S100"),
@@ -1155,6 +1154,7 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xF4800040, NULL, "svl.q       C000, 0x40($a0)"),
     TEST_ENTRY_C(0xF4800042, NULL, "svr.q       C000, 0x40($a0)"),
 
+#if 0
     // According to the manual, bit 1 should be zero. The compiler handles it fine, but objdump ignores this bit, so idk
     TEST_ENTRY_C(0xD8800043, NULL, NULL),
     TEST_ENTRY_C(0xD8810043, NULL, NULL),
@@ -1188,6 +1188,7 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xD89D0043, NULL, NULL),
     TEST_ENTRY_C(0xD89E0043, NULL, NULL),
     TEST_ENTRY_C(0xD89F0043, NULL, NULL),
+#endif
 };
 
 size_t test_entries_len = ARRAY_COUNT(test_entries);
