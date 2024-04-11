@@ -67,12 +67,12 @@ CXX_FILES       := $(foreach dir,$(SRCXX_DIRS),$(wildcard $(dir)/*.cpp))
 HXX_FILES       := $(foreach dir,$(IINC_XX),$(wildcard $(dir)/**/*.hpp))
 OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
-DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
-
 TESTS_DIRS      := $(shell find tests -type d)
 TESTS_C         := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.c))
 TESTS_CXX       := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.cpp))
 TESTS_ELFS      := $(foreach f,$(TESTS_C:.c=.elf) $(TESTS_CXX:.cpp=.elf),build/$f)
+
+DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d) $(TESTS_ELFS:%.elf=%.d)
 
 STATIC_LIB      := build/librabbitizer.a
 DYNAMIC_LIB     := build/librabbitizer.so
