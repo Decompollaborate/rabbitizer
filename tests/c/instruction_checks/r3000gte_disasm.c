@@ -9,7 +9,7 @@
 
 #include "expected_disasm_utils.h"
 
-#define TEST_ENTRY_C(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_R3000GTE, word, imm, expected)
+#define TEST_ENTRY_C(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_R3000GTE, word, imm, expected,)
 
 const TestEntry entries[] = {
     TEST_ENTRY_C(0x4A180001, NULL, "RTPS"),

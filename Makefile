@@ -24,6 +24,7 @@ WARNINGS        += -Werror=unused-parameter -Werror=shadow -Werror=switch -Werro
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
 WARNINGS        += -Werror=type-limits
 WARNINGS_CXX    :=
+WARNINGS_ELFS   := -Wno-override-init
 
 ifeq ($(CC),gcc)
     WARNINGS    += -Wno-cast-function-type -Wformat-truncation -Wformat-overflow -Wno-nonnull-compare
@@ -132,10 +133,10 @@ tests: $(TESTS_ELFS)
 #### Various Recipes ####
 
 build/%.elf: %.c $(STATIC_LIB)
-	$(CC) -MMD -MP $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $< $(LDFLAGS)
+	$(CC) -MMD -MP $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(WARNINGS_ELFS) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
 build/%.elf: %.cpp $(STATIC_LIB_XX)
-	$(CXX) -MMD -MP $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $< $(LDXXFLAGS)
+	$(CXX) -MMD -MP $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(WARNINGS_ELFS) $(CXXFLAGS) -o $@ $< $(LDXXFLAGS)
 
 build/%.a:
 	$(AR) rcs $@ $^

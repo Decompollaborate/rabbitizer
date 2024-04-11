@@ -9,7 +9,7 @@
 
 #include "expected_disasm_utils.h"
 
-#define TEST_ENTRY_C(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_CPU, word, imm, expected)
+#define TEST_ENTRY_C(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_CPU, word, imm, expected,)
 
 const TestEntry entries[] = {
     TEST_ENTRY_C(0x3C088001, NULL,                  "lui         $t0, 0x8001"),

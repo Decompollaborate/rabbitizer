@@ -28,10 +28,13 @@ typedef struct TestEntry {
     uint32_t word;
     const char *immOverride;
     const char *expectedStr;
+    bool gnuMode;
 } TestEntry;
 
-#define TEST_ENTRY(cat, w, imm, expected) \
-    { .category = cat, .word = w, .immOverride = imm, .expectedStr = expected, }
+#define TEST_ENTRY(cat, w, imm, expected, ...) \
+    { .category = cat, .word = w, .immOverride = imm, .expectedStr = expected, .gnuMode = true, __VA_ARGS__ }
+
+#define BOOL_STR(x) ((x) ? "true" : "false")
 
 typedef struct InstrInitInfo {
     void (*init)(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
@@ -94,6 +97,8 @@ bool check_expected_output(const TestEntry *entry) {
     size_t immOverrideLength = strlen_null(entry->immOverride);
     const InstrInitInfo *info = &initInfos[entry->category];
 
+    RabbitizerConfig_Cfg.toolchainTweaks.gnuMode = entry->gnuMode;
+
     check_infos_validity();
 
     info->init(&instr, entry->word, 0);
@@ -106,10 +111,12 @@ bool check_expected_output(const TestEntry *entry) {
     RabbitizerInstruction_disassemble(&instr, buffer, entry->immOverride, immOverrideLength, 0);
 
     if (entry->expectedStr == NULL) {
-        printf("Word '0x%08X' doesn't have a expected str, got '%s'\n", entry->word, buffer);
+        fprintf(stderr, "Word '0x%08X' doesn't have a expected str, got '%s'\n", entry->word, buffer);
+        fprintf(stderr, "    gnuMode '%s'\n", BOOL_STR(entry->gnuMode));
         expected = false;
     } else if (strcmp(buffer, entry->expectedStr) != 0) {
         fprintf(stderr, "Error on word '0x%08X'. Expected '%s', got '%s'\n", entry->word, entry->expectedStr, buffer);
+        fprintf(stderr, "    gnuMode '%s'\n", BOOL_STR(entry->gnuMode));
         expected = false;
     }
 
