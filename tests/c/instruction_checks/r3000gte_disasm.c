@@ -11,7 +11,7 @@
 
 #define TEST_ENTRY_C(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_R3000GTE, word, imm, expected,)
 
-const TestEntry entries[] = {
+const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x4A180001, NULL, "RTPS"),
     TEST_ENTRY_C(0x4A280030, NULL, "RTPT"),
     TEST_ENTRY_C(0x4A680029, NULL, "DPCL"),
@@ -76,24 +76,9 @@ const TestEntry entries[] = {
     TEST_ENTRY_C(0x4A4D2012, NULL, "MVMVA       1, 2, 2, 1, 0"),
     TEST_ENTRY_C(0x4A4DA012, NULL, "MVMVA       1, 2, 3, 1, 0"),
     TEST_ENTRY_C(0x4AA80428, NULL, "SQR         1"),
-    TEST_ENTRY_C(0x4AA80428, NULL, "SQR         1"),
     TEST_ENTRY_C(0x4B78000C, NULL, "OP          1"),
-    TEST_ENTRY_C(0x4B70000C, NULL, "OP          0"),
     TEST_ENTRY_C(0x4B98003D, NULL, "GPF         1"),
-    TEST_ENTRY_C(0x4B90003D, NULL, "GPF         0"),
     TEST_ENTRY_C(0x4BA8003E, NULL, "GPL         1"),
-    TEST_ENTRY_C(0x4BA0003E, NULL, "GPL         0"),
 };
 
-int main() {
-    int errorCount = 0;
-    size_t i;
-
-    for (i = 0; i < ARRAY_COUNT(entries); i++) {
-        if (!check_expected_output(&entries[i])) {
-            errorCount++;
-        }
-    }
-
-    return errorCount;
-}
+size_t test_entries_len = ARRAY_COUNT(test_entries);

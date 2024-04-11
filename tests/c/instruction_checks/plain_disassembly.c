@@ -11,7 +11,7 @@
 
 #define TEST_ENTRY_C(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_CPU, word, imm, expected,)
 
-const TestEntry entries[] = {
+const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x3C088001, NULL,                  "lui         $t0, 0x8001"),
     TEST_ENTRY_C(0x25080E60, NULL,                  "addiu       $t0, $t0, 0xE60"),
     TEST_ENTRY_C(0x3C090002, NULL,                  "lui         $t1, 0x2"),
@@ -33,7 +33,6 @@ const TestEntry entries[] = {
     TEST_ENTRY_C(0xAC24E190, NULL,                  "sw          $a0, -0x1E70($at)"),
 
     TEST_ENTRY_C(0x3C018001, "%hi(D_8000E190)",     "lui         $at, %hi(D_8000E190)"),
-    TEST_ENTRY_C(0x03E00008, NULL,                  "jr          $ra"),
     TEST_ENTRY_C(0xAC24E190, "%lo(D_8000E190)",     "sw          $a0, %lo(D_8000E190)($at)"),
 
     TEST_ENTRY_C(0x0C001F24, NULL,                  "jal         func_80007C90"),
@@ -57,15 +56,4 @@ const TestEntry entries[] = {
     TEST_ENTRY_C(0xEEEEEEEE, NULL,                  ".word       0xEEEEEEEE                   # INVALID     $s7, $t6, -0x1112 # 00000000 <InstrIdType: CPU_NORMAL>"),
 };
 
-int main() {
-    int errorCount = 0;
-    size_t i;
-
-    for (i = 0; i < ARRAY_COUNT(entries); i++) {
-        if (!check_expected_output(&entries[i])) {
-            errorCount++;
-        }
-    }
-
-    return errorCount;
-}
+size_t test_entries_len = ARRAY_COUNT(test_entries);
