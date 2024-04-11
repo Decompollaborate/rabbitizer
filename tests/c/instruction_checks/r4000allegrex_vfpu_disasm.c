@@ -1154,6 +1154,12 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xF4800040, NULL, "svl.q       C000, 0x40($a0)"),
     TEST_ENTRY_C(0xF4800042, NULL, "svr.q       C000, 0x40($a0)"),
 
+    TEST_ENTRY_C(0xD0010101, NULL, "vabs.s      S010, S010"),
+    TEST_ENTRY_C(0xD0010181, NULL, "vabs.p      S010, S010"),
+    TEST_ENTRY_C(0xD0018101, NULL, "vabs.t      S010, S010"),
+    TEST_ENTRY_C(0xD0018181, NULL, "vabs.q      S010, S010"),
+
+    TEST_ENTRY_C(0xFFFF040D, NULL, "vflush"),
 #if 0
     // According to the manual, bit 1 should be zero. The compiler handles it fine, but objdump ignores this bit, so idk
     TEST_ENTRY_C(0xD8800043, NULL, NULL),
