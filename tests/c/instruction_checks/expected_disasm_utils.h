@@ -18,18 +18,18 @@
 
 #define BOOL_STR(x) ((x) ? "true" : "false")
 
-#define LOG(...) \
-    do { \
+#define LOG(...)                                \
+    do {                                        \
         fprintf(stderr, "%s: ", __BASE_FILE__); \
-        fprintf(stderr, __VA_ARGS__); \
-    } while(0)
+        fprintf(stderr, __VA_ARGS__);           \
+    } while (0)
 
-#define LOG_ENTRY_DATA(entry, instr)  \
-    do { \
+#define LOG_ENTRY_DATA(entry, instr)                                                                  \
+    do {                                                                                              \
         fprintf(stderr, "        InstrIdType: '%s'\n", RabInstrIdType_getName((instr)->instrIdType)); \
-        fprintf(stderr, "        gnuMode '%s'\n", BOOL_STR((entry)->gnuMode)); \
-        fprintf(stderr, "\n"); \
-    } while(0)
+        fprintf(stderr, "        gnuMode '%s'\n", BOOL_STR((entry)->gnuMode));                        \
+        fprintf(stderr, "\n");                                                                        \
+    } while (0)
 
 size_t strlen_null(const char *string) {
     if (string == NULL) {
@@ -71,27 +71,18 @@ typedef struct InstrInitInfo {
     void (*destroy)(RabbitizerInstruction *self);
 } InstrInitInfo;
 
+#define INIT_INFOS(catSuffix, plainSuffix)                                       \
+    [RABBITIZER_INSTRCAT_##catSuffix] = {                                        \
+        .init = RabbitizerInstruction##plainSuffix##_init,                       \
+        .processUniqueId = RabbitizerInstruction##plainSuffix##_processUniqueId, \
+        .destroy = RabbitizerInstruction##plainSuffix##_destroy,                 \
+    }
+
 const InstrInitInfo initInfos[] = {
-    [RABBITIZER_INSTRCAT_CPU] = {
-        .init = RabbitizerInstruction_init,
-        .processUniqueId = RabbitizerInstruction_processUniqueId,
-        .destroy = RabbitizerInstruction_destroy,
-    },
-    [RABBITIZER_INSTRCAT_RSP] = {
-        .init = RabbitizerInstructionRsp_init,
-        .processUniqueId = RabbitizerInstructionRsp_processUniqueId,
-        .destroy = RabbitizerInstructionRsp_destroy,
-    },
-    [RABBITIZER_INSTRCAT_R3000GTE] = {
-        .init = RabbitizerInstructionR3000GTE_init,
-        .processUniqueId = RabbitizerInstructionR3000GTE_processUniqueId,
-        .destroy = RabbitizerInstructionR3000GTE_destroy,
-    },
-    [RABBITIZER_INSTRCAT_R5900] = {
-        .init = RabbitizerInstructionR5900_init,
-        .processUniqueId = RabbitizerInstructionR5900_processUniqueId,
-        .destroy = RabbitizerInstructionR5900_destroy,
-    },
+    INIT_INFOS(CPU, ),
+    INIT_INFOS(RSP, Rsp),
+    INIT_INFOS(R3000GTE, R3000GTE),
+    INIT_INFOS(R5900, R5900),
 };
 
 static_assert(ARRAY_COUNT(initInfos) == RABBITIZER_INSTRCAT_MAX, "oy noy, the tests are borken");
@@ -124,10 +115,12 @@ int check_duplicated_entries(size_t entries_len, const TestEntry entries_arr[]) 
     for (i = 0; i < entries_len; i++) {
         size_t j;
 
-        for (j = i+1; j < entries_len; j++) {
-            if ((entries_arr[i].word == entries_arr[j].word) && (strcmp_null(entries_arr[i].immOverride, entries_arr[j].immOverride) == 0)) {
+        for (j = i + 1; j < entries_len; j++) {
+            if ((entries_arr[i].word == entries_arr[j].word) &&
+                (strcmp_null(entries_arr[i].immOverride, entries_arr[j].immOverride) == 0)) {
                 if (entries_arr[i].gnuMode == entries_arr[j].gnuMode) {
-                    LOG("Duplicated entry. Word: '0x%08X'. immOverride: '%s'\n", entries_arr[i].word, entries_arr[i].immOverride);
+                    LOG("Duplicated entry. Word: '0x%08X'. immOverride: '%s'\n", entries_arr[i].word,
+                        entries_arr[i].immOverride);
                     errorCount++;
                 }
             }
