@@ -116,9 +116,10 @@ const TestEntry entries[] = {
     { 0xBC9D0000, NULL, "cache       0x1D, 0x0($a0)" },
 
     { 0x70000000, NULL, "sleep" },
-    { 0x000002A8, NULL, "mfie        $v0" },
-    { 0x000002B4, NULL, "mfie        $zero" },
-    { 0x000002C0, NULL, "mtie        $a0" },
+    { 0x70020024, NULL, "mfie        $v0" },
+    { 0x70000024, NULL, "mfie        $zero" },
+    { 0x70000026, NULL, "mtie        $zero", },
+    { 0x70040026, NULL, "mtie        $a0" },
 };
 
 int main() {
