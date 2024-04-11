@@ -66,6 +66,11 @@
         };
     };
 
+    namespace R4000Allegrex {
+        enum class Cop3 {
+            #include "registers/RabbitizerRegister_R4000AllegrexCop3.inc"
+        };
+    };
 
     namespace R5900 {
         enum class VF {

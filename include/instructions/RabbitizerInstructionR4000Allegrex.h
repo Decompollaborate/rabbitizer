@@ -16,10 +16,14 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_size(self)                      (SHIFTR((self)->word, 11,  5))
 #define RAB_INSTR_R4000ALLEGREX_GET_size_plus_pos(self)             (SHIFTR((self)->word, 11,  5))
 
+#define RAB_INSTR_R4000ALLEGREX_GET_cop3cd(self)                    (SHIFTR((self)->word, 11,  5))
+
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_pos(word, value)               (BITREPACK((word), (value),  6,  5))
 #define RAB_INSTR_R4000ALLEGREX_PACK_size(word, value)              (BITREPACK((word), (value), 11,  5))
 #define RAB_INSTR_R4000ALLEGREX_PACK_size_plus_pos(word, value)     (BITREPACK((word), (value), 11,  5))
+
+#define RAB_INSTR_R4000ALLEGREX_PACK_cop3cd(word, value)            (BITREPACK((word), value, 11,  5))
 
 
 NON_NULL(1)
@@ -52,11 +56,24 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Special3_Bshfl(Rabbitize
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor0(RabbitizerInstruction *self);
 NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor0_BC0(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor0_Tlb(RabbitizerInstruction *self);
+
+NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_BC1(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2(RabbitizerInstruction *self);
 NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_BC2(RabbitizerInstruction *self);
+
+NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor3(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor3_BC3(RabbitizerInstruction *self);
 
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu0(RabbitizerInstruction *self);

@@ -21,9 +21,17 @@
     #include "r4000allegrex/r4000allegrex_special3_bshfl.inc"
 
     #include "r4000allegrex/r4000allegrex_cop0.inc"
+    #include "r4000allegrex/r4000allegrex_cop0_bc0.inc"
+    #include "r4000allegrex/r4000allegrex_cop0_tlb.inc"
+
     #include "r4000allegrex/r4000allegrex_cop1.inc"
+    #include "r4000allegrex/r4000allegrex_cop1_bc1.inc"
+
     #include "r4000allegrex/r4000allegrex_cop2.inc"
+    #include "r4000allegrex/r4000allegrex_cop2_bc2.inc"
+
     #include "r4000allegrex/r4000allegrex_cop3.inc"
+    #include "r4000allegrex/r4000allegrex_cop3_bc3.inc"
 
     #include "r4000allegrex/r4000allegrex_vfpu0.inc"
     #include "r4000allegrex/r4000allegrex_vfpu1.inc"

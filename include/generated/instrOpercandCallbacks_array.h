@@ -54,6 +54,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RAB_OPERAND_r4000allegrex_pos] = RabbitizerOperandType_process_r4000allegrex_pos,
     [RAB_OPERAND_r4000allegrex_size] = RabbitizerOperandType_process_r4000allegrex_size,
     [RAB_OPERAND_r4000allegrex_size_plus_pos] = RabbitizerOperandType_process_r4000allegrex_size_plus_pos,
+    [RAB_OPERAND_r4000allegrex_cop3cd] = RabbitizerOperandType_process_r4000allegrex_cop3cd,
     [RAB_OPERAND_r5900_I] = RabbitizerOperandType_process_r5900_I,
     [RAB_OPERAND_r5900_Q] = RabbitizerOperandType_process_r5900_Q,
     [RAB_OPERAND_r5900_R] = RabbitizerOperandType_process_r5900_R,
