@@ -473,6 +473,8 @@ typedef enum RabbitizerInstrId {
     RABBITIZER_INSTR_ID_r4000allegrex_rotr,
     RABBITIZER_INSTR_ID_r4000allegrex_srlv,
     RABBITIZER_INSTR_ID_r4000allegrex_rotrv,
+    RABBITIZER_INSTR_ID_r4000allegrex_ext,
+    RABBITIZER_INSTR_ID_r4000allegrex_ins,
     RABBITIZER_INSTR_ID_cpu_wsbh,
     RABBITIZER_INSTR_ID_cpu_wsbw,
     RABBITIZER_INSTR_ID_cpu_seb,

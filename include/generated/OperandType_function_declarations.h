@@ -50,6 +50,9 @@
     size_t RabbitizerOperandType_process_r3000gte_v (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r3000gte_cv (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r3000gte_lm (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+    size_t RabbitizerOperandType_process_r4000allegrex_pos (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+    size_t RabbitizerOperandType_process_r4000allegrex_size (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+    size_t RabbitizerOperandType_process_r4000allegrex_size_plus_pos (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r5900_I (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r5900_Q (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r5900_R (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);

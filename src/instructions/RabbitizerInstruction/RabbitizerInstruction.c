@@ -9,6 +9,7 @@
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR3000GTE.h"
+#include "instructions/RabbitizerInstructionR4000Allegrex.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
@@ -354,6 +355,20 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_R3000GTE_PACK_lm(self->word, 0);
                 break;
             /* r3000gte */
+
+            /* r4000allegrex */
+            case RAB_OPERAND_r4000allegrex_pos:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_pos(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_size:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_size(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_size_plus_pos:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_size_plus_pos(self->word, 0);
+                break;
+            /* r4000allegrex */
 
             /* r5900 */
             case RAB_OPERAND_r5900_I:

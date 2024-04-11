@@ -12,6 +12,16 @@ extern "C" {
 #endif
 
 
+#define RAB_INSTR_R4000ALLEGREX_GET_pos(self)                       (SHIFTR((self)->word,  6,  5))
+#define RAB_INSTR_R4000ALLEGREX_GET_size(self)                      (SHIFTR((self)->word, 11,  5))
+#define RAB_INSTR_R4000ALLEGREX_GET_size_plus_pos(self)             (SHIFTR((self)->word, 11,  5))
+
+
+#define RAB_INSTR_R4000ALLEGREX_PACK_pos(word, value)               (BITREPACK((word), (value),  6,  5))
+#define RAB_INSTR_R4000ALLEGREX_PACK_size(word, value)              (BITREPACK((word), (value), 11,  5))
+#define RAB_INSTR_R4000ALLEGREX_PACK_size_plus_pos(word, value)     (BITREPACK((word), (value), 11,  5))
+
+
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
 NON_NULL(1)

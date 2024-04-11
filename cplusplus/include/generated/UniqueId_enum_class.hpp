@@ -473,6 +473,8 @@ enum class UniqueId {
     r4000allegrex_rotr,
     r4000allegrex_srlv,
     r4000allegrex_rotrv,
+    r4000allegrex_ext,
+    r4000allegrex_ins,
     cpu_wsbh,
     cpu_wsbw,
     cpu_seb,

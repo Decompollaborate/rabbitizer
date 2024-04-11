@@ -414,6 +414,8 @@ class InstrId:
     r4000allegrex_rotr: Enum
     r4000allegrex_srlv: Enum
     r4000allegrex_rotrv: Enum
+    r4000allegrex_ext: Enum
+    r4000allegrex_ins: Enum
     cpu_wsbh: Enum
     cpu_wsbw: Enum
     cpu_seb: Enum

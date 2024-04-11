@@ -53,6 +53,9 @@ class OperandType:
     r3000gte_v: Enum
     r3000gte_cv: Enum
     r3000gte_lm: Enum
+    r4000allegrex_pos: Enum
+    r4000allegrex_size: Enum
+    r4000allegrex_size_plus_pos: Enum
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum
