@@ -43,6 +43,12 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_maybe_rd_rs)) {
                 return true;
             }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb)) {
+                return true;
+            }
             break;
 
         case RAB_OPERAND_cpu_immediate:
@@ -269,6 +275,36 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_r4000allegrex_size:
         case RAB_OPERAND_r4000allegrex_size_plus_pos:
         case RAB_OPERAND_r4000allegrex_imm3:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_offset14_base:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vt_6:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vt_7)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vt_7:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vt_6)) {
+                return true;
+            }
             break;
             /* r4000allegrex */
 

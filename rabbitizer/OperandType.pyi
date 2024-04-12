@@ -57,6 +57,10 @@ class OperandType:
     r4000allegrex_size: Enum
     r4000allegrex_size_plus_pos: Enum
     r4000allegrex_imm3: Enum
+    r4000allegrex_offset14_base: Enum
+    r4000allegrex_offset14_base_maybe_wb: Enum
+    r4000allegrex_vt_6: Enum
+    r4000allegrex_vt_7: Enum
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum

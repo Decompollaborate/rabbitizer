@@ -418,6 +418,22 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_imm3:
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_imm3(validbits, ~0);
                 break;
+
+            case RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_wb(validbits, ~0);
+                FALLTHROUGH;
+            case RAB_OPERAND_r4000allegrex_offset14_base:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_offset14(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vt_6:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt_6(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vt_7:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt_7(validbits, ~0);
+                break;
             /* r4000allegrex */
 
             /* r5900 */

@@ -1,0 +1,1 @@
+./build/tests/c/instruction_checks/r4000allegrex_vfpu_disasm.elf  2>&1 | grep -E "lv\.|sv\." > asdf.txt

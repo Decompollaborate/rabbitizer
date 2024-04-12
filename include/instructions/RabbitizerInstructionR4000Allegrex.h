@@ -19,6 +19,11 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_bc2_fmt(self)                   (SHIFTR((self)->word, 16,  2))
 
 #define RAB_INSTR_R4000ALLEGREX_GET_imm3(self)                      (SHIFTR((self)->word, 18,  3))
+#define RAB_INSTR_R4000ALLEGREX_GET_offset14(self)                  (SHIFTR((self)->word,  2, 14))
+#define RAB_INSTR_R4000ALLEGREX_GET_wb(self)                        (SHIFTR((self)->word,  1,  1))
+
+#define RAB_INSTR_R4000ALLEGREX_GET_vt_6(self)                      ((SHIFTR((self)->word,  0,  1) << 5) | (SHIFTR((self)->word, 16,  5)))
+#define RAB_INSTR_R4000ALLEGREX_GET_vt_7(self)                      ((SHIFTR((self)->word,  0,  2) << 5) | (SHIFTR((self)->word, 16,  5)))
 
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_pos(word, value)               (BITREPACK((word), (value),  6,  5))
@@ -28,6 +33,11 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_PACK_bc2_fmt(word, value)           (BITREPACK((word), (value), 16,  2))
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_imm3(word, value)              (BITREPACK((word), (value), 18,  3))
+#define RAB_INSTR_R4000ALLEGREX_PACK_offset14(word, value)          (BITREPACK((word), (value),  2, 14))
+#define RAB_INSTR_R4000ALLEGREX_PACK_wb(word, value)                (BITREPACK((word), (value),  1,  1))
+
+#define RAB_INSTR_R4000ALLEGREX_PACK_vt_6(word, value)              (BITREPACK(BITREPACK((word), (value) >> 5,  0,  1), (value), 16,  5))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vt_7(word, value)              (BITREPACK(BITREPACK((word), (value) >> 5,  0,  2), (value), 16,  5))
 
 
 NON_NULL(1)

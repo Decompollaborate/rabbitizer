@@ -12,8 +12,8 @@
 011 | *6    | *7    | ---   | *8    | *9    | ---   | ---   | *10   |
 100 | LB    | LH    | LWL   | LW    | LBU   | LHU   | LWR   | ---   |
 101 | SB    | SH    | SWL   | SW    | ---   | ---   | SWR   | CACHE |
-110 | LL    | LWC1  | LWC2  | ---   | *11   | ---   | ---   | *12   |
-111 | SC    | SWC1  | SWC2  | ---   | *13   | ---   | ---   | *14   |
+110 | LL    | LWC1  | LV.S  | ---   | *11   | ---   | LV.Q  | *12   |
+111 | SC    | SWC1  | SV.S  | ---   | *13   | ---   | SV.Q  | *14   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
      *1 = SPECIAL, see SPECIAL list
      *2 = REGIMM, see REGIMM list
@@ -32,3 +32,35 @@
 */
 
     // The other instructions are implemented using the main CPU table
+
+    // OP vt, offset_14(base)
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x32, lv_s, lv.s,
+        .operands={RAB_OPERAND_r4000allegrex_vt_7, RAB_OPERAND_r4000allegrex_offset14_base},
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .readsRt=true
+    ) // Load Single word to Vfpu
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x3A, sv_s, sv.s,
+        .operands={RAB_OPERAND_r4000allegrex_vt_7, RAB_OPERAND_r4000allegrex_offset14_base},
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .modifiesRt=true
+    ) // Store Single word to Vfpu
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x36, lv_q, lv.q,
+        .operands={RAB_OPERAND_r4000allegrex_vt_6, RAB_OPERAND_r4000allegrex_offset14_base},
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .readsRt=true
+    ) // Load Single word to Vfpu
+
+    // OP vt, offset_14(base), maybe_wb
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x3E, sv_q, sv.q,
+        .operands={RAB_OPERAND_r4000allegrex_vt_6, RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb},
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .modifiesRt=true
+    ) // Store Single word to Vfpu

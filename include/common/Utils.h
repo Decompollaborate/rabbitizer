@@ -61,7 +61,7 @@ typedef enum RabTrinaryValue {
 #define RAB_STRINGIFY2(x) #x
 #define RAB_STRINGIFY(x) RAB_STRINGIFY2(x)
 
-#define MASK(v, w) ((v) & ((1 << (w)) - 1))
+#define MASK(v, w) ((v) & ((1U << (w)) - 1U))
 
 /*
  * the SHIFT macros take a value, a shift amount, and a width.
@@ -78,7 +78,7 @@ typedef enum RabTrinaryValue {
 #define SHIFTL(v, s, w) (MASK((v), (w)) << (s))
 #define SHIFTR(v, s, w) (MASK((v) >> (s), (w)))
 
-#define BITREPACK(fullword, v, s, w) ((SHIFTR((fullword), (s)+(w), 32-((s)+(w))) << ((s)+(w))) | SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
+#define BITREPACK(fullword, v, s, w) ((SHIFTR((fullword), (s)+(w), 32U-((s)+(w))) << ((s)+(w))) | SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 #define BITREPACK_RIGHT(fullword, v, s, w) (SHIFTL((v), (s), (w)) | MASK((fullword), (s)))
 
 #define RABUTILS_BUFFER_ADVANCE(buffer, totalSize, expression) \
