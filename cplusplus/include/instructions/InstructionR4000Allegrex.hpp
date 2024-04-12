@@ -17,6 +17,8 @@ namespace rabbitizer {
         uint8_t GetR4000Allegrex_pos() const;
         uint8_t GetR4000Allegrex_size() const;
         uint8_t GetR4000Allegrex_size_plus_pos() const;
+
+        uint8_t GetR4000Allegrex_imm3() const;
     };
 };
 

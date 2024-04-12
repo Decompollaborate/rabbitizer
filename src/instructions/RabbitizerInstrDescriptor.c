@@ -268,6 +268,7 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_r4000allegrex_pos:
         case RAB_OPERAND_r4000allegrex_size:
         case RAB_OPERAND_r4000allegrex_size_plus_pos:
+        case RAB_OPERAND_r4000allegrex_imm3:
             break;
             /* r4000allegrex */
 

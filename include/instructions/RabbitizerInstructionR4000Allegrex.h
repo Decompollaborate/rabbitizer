@@ -16,10 +16,18 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_size(self)                      (SHIFTR((self)->word, 11,  5))
 #define RAB_INSTR_R4000ALLEGREX_GET_size_plus_pos(self)             (SHIFTR((self)->word, 11,  5))
 
+#define RAB_INSTR_R4000ALLEGREX_GET_bc2_fmt(self)                   (SHIFTR((self)->word, 16,  2))
+
+#define RAB_INSTR_R4000ALLEGREX_GET_imm3(self)                      (SHIFTR((self)->word, 18,  3))
+
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_pos(word, value)               (BITREPACK((word), (value),  6,  5))
 #define RAB_INSTR_R4000ALLEGREX_PACK_size(word, value)              (BITREPACK((word), (value), 11,  5))
 #define RAB_INSTR_R4000ALLEGREX_PACK_size_plus_pos(word, value)     (BITREPACK((word), (value), 11,  5))
+
+#define RAB_INSTR_R4000ALLEGREX_PACK_bc2_fmt(word, value)           (BITREPACK((word), (value), 16,  2))
+
+#define RAB_INSTR_R4000ALLEGREX_PACK_imm3(word, value)              (BITREPACK((word), (value), 18,  3))
 
 
 NON_NULL(1)

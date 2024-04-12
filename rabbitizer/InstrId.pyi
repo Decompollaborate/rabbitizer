@@ -424,10 +424,10 @@ class InstrId:
     cpu_seb: Enum
     cpu_seh: Enum
     cpu_bitrev: Enum
-    r4000allegrex_bc2f: Enum
-    r4000allegrex_bc2t: Enum
-    r4000allegrex_bc2fl: Enum
-    r4000allegrex_bc2tl: Enum
+    r4000allegrex_bvf: Enum
+    r4000allegrex_bvt: Enum
+    r4000allegrex_bvfl: Enum
+    r4000allegrex_bvtl: Enum
     r4000allegrex_MAX: Enum
     r5900_INVALID: Enum
     r5900_lq: Enum

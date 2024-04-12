@@ -64,3 +64,20 @@ size_t RabbitizerOperandType_process_r4000allegrex_size_plus_pos(const Rabbitize
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
     return totalSize;
 }
+
+size_t RabbitizerOperandType_process_r4000allegrex_imm3(const RabbitizerInstruction *self, char *dst,
+                                                       UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_imm3(self);
+
+// TODO: consider making this a proper configuration
+#if 0
+    if (temp < 10) {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
+    } else {
+        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", temp);
+    }
+#endif
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
+    return totalSize;
+}

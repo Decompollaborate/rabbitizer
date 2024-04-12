@@ -389,10 +389,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2(RabbitizerI
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_BC2(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_GET_bc_fmt(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_bc2_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_PACK_bc_fmt(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_bc2_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_COP2_BC2;
     self->_handwrittenCategory = true;
 
