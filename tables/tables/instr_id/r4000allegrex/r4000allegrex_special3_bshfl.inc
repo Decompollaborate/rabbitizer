@@ -16,7 +16,7 @@
     // OP rd, rt
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x02, wsbh,
+        r4000allegrex, 0x02, wsbh,
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt},
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .modifiesRd=true,
@@ -24,7 +24,7 @@
     ) // Word Swap Bytes within Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x03, wsbw,
+        r4000allegrex, 0x03, wsbw,
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt},
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .modifiesRd=true,
@@ -32,7 +32,7 @@
     ) // Word Swap Bytes within Word
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x10, seb,
+        r4000allegrex, 0x10, seb,
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt},
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .modifiesRd=true,
@@ -40,7 +40,7 @@
     ) // Sign-Extend Byte
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x18, seh,
+        r4000allegrex, 0x18, seh,
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt},
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .modifiesRd=true,
@@ -48,7 +48,7 @@
     ) // Sign-Extend Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x14, bitrev,
+        r4000allegrex, 0x14, bitrev,
         .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt},
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .modifiesRd=true,

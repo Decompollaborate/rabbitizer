@@ -419,11 +419,11 @@ class InstrId:
     r4000allegrex_mtie: Enum
     r4000allegrex_ext: Enum
     r4000allegrex_ins: Enum
-    cpu_wsbh: Enum
-    cpu_wsbw: Enum
-    cpu_seb: Enum
-    cpu_seh: Enum
-    cpu_bitrev: Enum
+    r4000allegrex_wsbh: Enum
+    r4000allegrex_wsbw: Enum
+    r4000allegrex_seb: Enum
+    r4000allegrex_seh: Enum
+    r4000allegrex_bitrev: Enum
     r4000allegrex_bvf: Enum
     r4000allegrex_bvt: Enum
     r4000allegrex_bvfl: Enum
