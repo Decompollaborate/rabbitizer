@@ -66,7 +66,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_size_plus_pos(const Rabbitize
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_imm3(const RabbitizerInstruction *self, char *dst,
-                                                       UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+                                                        UNUSED const char *immOverride,
+                                                        UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_imm3(self);
 
@@ -83,7 +84,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_imm3(const RabbitizerInstruct
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_offset14(const RabbitizerInstruction *self, char *dst,
-                                                   const char *immOverride, size_t immOverrideLength) {
+                                                            const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;
     int32_t number;
 
@@ -129,8 +130,9 @@ size_t RabbitizerOperandType_process_r4000allegrex_offset14_base(const Rabbitize
         RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_offset14(self, dst, immOverride, immOverrideLength));
     }
 #endif
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize,
-                            RabbitizerOperandType_process_r4000allegrex_offset14(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerOperandType_process_r4000allegrex_offset14(self, dst, immOverride, immOverrideLength));
 
     RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
     RABUTILS_BUFFER_ADVANCE(dst, totalSize,
@@ -141,11 +143,13 @@ size_t RabbitizerOperandType_process_r4000allegrex_offset14_base(const Rabbitize
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_offset14_base_maybe_wb(const RabbitizerInstruction *self, char *dst,
-                                                                 const char *immOverride, size_t immOverrideLength) {
+                                                                          const char *immOverride,
+                                                                          size_t immOverrideLength) {
     size_t totalSize = 0;
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize,
-                            RabbitizerOperandType_process_r4000allegrex_offset14_base(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerOperandType_process_r4000allegrex_offset14_base(self, dst, immOverride, immOverrideLength));
 
     if (RAB_INSTR_R4000ALLEGREX_GET_wb(self)) {
         RABUTILS_BUFFER_CPY(dst, totalSize, ", wb");
@@ -166,7 +170,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vfs(const RabbitizerInstructi
 #endif
 
 size_t RabbitizerOperandType_process_r4000allegrex_vt_6(const RabbitizerInstruction *self, char *dst,
-                                               UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+                                                        UNUSED const char *immOverride,
+                                                        UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     // TODO
 #if 0
@@ -181,16 +186,13 @@ size_t RabbitizerOperandType_process_r4000allegrex_vt_6(const RabbitizerInstruct
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_vt_7(const RabbitizerInstruction *self, char *dst,
-                                               UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+                                                        UNUSED const char *immOverride,
+                                                        UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    // TODO
-#if 0
     const char *reg = RabbitizerRegister_getNameR4000AllegrexVF(RAB_INSTR_R4000ALLEGREX_GET_vt_7(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
-#else
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", RAB_INSTR_R4000ALLEGREX_GET_vt_7(self));
-#endif
+
     return totalSize;
 }
 

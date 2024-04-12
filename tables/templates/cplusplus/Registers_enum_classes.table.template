@@ -5,7 +5,10 @@
     prefix##_##name,
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
-    prefix##_##name,
+    RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
+
+#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
+    RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
 
     namespace Cpu {
         enum class GprO32 {
@@ -66,6 +69,12 @@
         };
     };
 
+    namespace R4000Allegrex {
+        enum class VF {
+            #include "registers/RabbitizerRegister_R4000AllegrexVF.inc"
+        };
+    };
+
     namespace R5900 {
         enum class VF {
             #include "registers/RabbitizerRegister_R5900VF.inc"
@@ -78,3 +87,4 @@
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
+#undef RABBITIZER_DEF_REG_NONODOLLAR

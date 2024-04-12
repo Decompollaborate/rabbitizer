@@ -7,6 +7,9 @@
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
 
+#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
+    RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
+
 const RabbitizerRegisterDescriptor RabbitizerRegister_GprO32_Descriptors[] = {
 #include "registers/RabbitizerRegister_GprO32.inc"
 };
@@ -63,6 +66,14 @@ const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descriptors[] = 
 
 /* RSP */
 
+/* R4000ALLEGREX */
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVF_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexVF.inc"
+};
+
+/* R4000ALLEGREX */
+
 /* R5900 */
 
 const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VF_Descriptors[] = {
@@ -77,3 +88,4 @@ const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VI_Descriptors[] = {
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
+#undef RABBITIZER_DEF_REG_NONODOLLAR

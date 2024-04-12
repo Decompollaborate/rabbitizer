@@ -7,6 +7,9 @@
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, #name },
 
+#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
+    [RABBITIZER_REG_##prefix##_##name] = { #numeric, #name },
+
 // numeric, named
 
 const char *RabbitizerRegister_GprO32_Names[][2] = {
@@ -65,6 +68,14 @@ const char *RabbitizerRegister_RspVector_Names[][2] = {
 
 /* RSP */
 
+/* R4000ALLEGREX */
+
+const char *RabbitizerRegister_R4000AllegrexVF_Names[][2] = {
+#include "registers/RabbitizerRegister_R4000AllegrexVF.inc"
+};
+
+/* R4000ALLEGREX */
+
 /* R5900 */
 
 const char *RabbitizerRegister_R5900VF_Names[][2] = {
@@ -79,3 +90,4 @@ const char *RabbitizerRegister_R5900VI_Names[][2] = {
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
+#undef RABBITIZER_DEF_REG_NONODOLLAR

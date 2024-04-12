@@ -101,6 +101,12 @@ const char *RabbitizerRegister_getNameRspVector(uint8_t regValue) {
     return RabbitizerRegister_RspVector_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
+const char *RabbitizerRegister_getNameR4000AllegrexVF(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexVF_Names));
+
+    return RabbitizerRegister_R4000AllegrexVF_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_R5900VF_Names));
 
@@ -184,6 +190,12 @@ const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspVector(u
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_RspVector_Names));
 
     return &RabbitizerRegister_RspVector_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVF(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexVF_Names));
+
+    return &RabbitizerRegister_R4000AllegrexVF_Descriptors[regValue];
 }
 
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue) {
