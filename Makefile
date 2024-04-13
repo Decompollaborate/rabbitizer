@@ -1,4 +1,8 @@
 # Build options can be changed by modifying the makefile or by building with 'make SETTING=value'.
+# It is also possible to override the settings in Defaults in a file called .make_options as 'SETTING=value'.
+
+-include .make_options
+
 DEBUG           ?= 0
 WERROR          ?= 0
 ASAN            ?= 0

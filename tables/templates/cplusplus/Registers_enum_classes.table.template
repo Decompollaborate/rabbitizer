@@ -71,7 +71,7 @@
 
     namespace R4000Allegrex {
         enum class VF {
-            #include "registers/RabbitizerRegister_R4000AllegrexVF.inc"
+            #include "registers/RabbitizerRegister_R4000AllegrexVScalar.inc"
         };
     };
 

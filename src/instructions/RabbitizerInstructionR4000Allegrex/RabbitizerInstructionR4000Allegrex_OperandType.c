@@ -162,7 +162,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_offset14_base_maybe_wb(const 
 size_t RabbitizerOperandType_process_r4000allegrex_vfs(const RabbitizerInstruction *self, char *dst,
                                                UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexVF(RAB_INSTR_R4000ALLEGREX_GET_vfs(self));
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexVScalar(RAB_INSTR_R4000ALLEGREX_GET_vfs(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;
@@ -175,7 +175,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_vt_6(const RabbitizerInstruct
     size_t totalSize = 0;
     // TODO
 #if 0
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexVF(RAB_INSTR_R4000ALLEGREX_GET_vt_6(self));
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexVScalar(RAB_INSTR_R4000ALLEGREX_GET_vt_6(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 #else
@@ -189,7 +189,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_vt_7(const RabbitizerInstruct
                                                         UNUSED const char *immOverride,
                                                         UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexVF(RAB_INSTR_R4000ALLEGREX_GET_vt_7(self));
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexVScalar(RAB_INSTR_R4000ALLEGREX_GET_vt_7(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 
@@ -200,7 +200,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_vt_7(const RabbitizerInstruct
 size_t RabbitizerOperandType_process_r4000allegrex_vfd(const RabbitizerInstruction *self, char *dst,
                                                UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexVF(RAB_INSTR_R4000ALLEGREX_GET_vfd(self));
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexVScalar(RAB_INSTR_R4000ALLEGREX_GET_vfd(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
     return totalSize;

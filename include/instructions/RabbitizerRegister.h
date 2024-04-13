@@ -31,7 +31,7 @@ extern const char *RabbitizerRegister_RspCop0_Names[][2];
 extern const char *RabbitizerRegister_RspCop2_Names[][2];
 extern const char *RabbitizerRegister_RspCop2Control_Names[][2];
 extern const char *RabbitizerRegister_RspVector_Names[][2];
-extern const char *RabbitizerRegister_R4000AllegrexVF_Names[][2];
+extern const char *RabbitizerRegister_R4000AllegrexVScalar_Names[][2];
 extern const char *RabbitizerRegister_R5900VF_Names[][2];
 extern const char *RabbitizerRegister_R5900VI_Names[][2];
 
@@ -59,7 +59,7 @@ NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspVector(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
-const char *RabbitizerRegister_getNameR4000AllegrexVF(uint8_t regValue);
+const char *RabbitizerRegister_getNameR4000AllegrexVScalar(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue);
@@ -91,7 +91,7 @@ NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspVector(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
-const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVF(uint8_t regValue);
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVScalar(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue);

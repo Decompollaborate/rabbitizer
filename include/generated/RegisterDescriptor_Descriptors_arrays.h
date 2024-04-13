@@ -432,7 +432,7 @@ const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descriptors[] = 
     [RABBITIZER_REG_RSP_VECTOR_v30] = { 0 },
     [RABBITIZER_REG_RSP_VECTOR_v31] = { 0 },
 };
-const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVF_Descriptors[] = {
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVScalar_Descriptors[] = {
     [RABBITIZER_REG_R4000ALLEGREX_VF_S000] = { 0 },
     [RABBITIZER_REG_R4000ALLEGREX_VF_S010] = { 0 },
     [RABBITIZER_REG_R4000ALLEGREX_VF_S020] = { 0 },

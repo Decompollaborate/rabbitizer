@@ -70,8 +70,8 @@ const char *RabbitizerRegister_RspVector_Names[][2] = {
 
 /* R4000ALLEGREX */
 
-const char *RabbitizerRegister_R4000AllegrexVF_Names[][2] = {
-#include "registers/RabbitizerRegister_R4000AllegrexVF.inc"
+const char *RabbitizerRegister_R4000AllegrexVScalar_Names[][2] = {
+#include "registers/RabbitizerRegister_R4000AllegrexVScalar.inc"
 };
 
 /* R4000ALLEGREX */

@@ -432,7 +432,7 @@ typedef enum RabbitizerRegister_RspVector {
     RABBITIZER_REG_RSP_VECTOR_v30,
     RABBITIZER_REG_RSP_VECTOR_v31,
 } RabbitizerRegister_RspVector;
-typedef enum RabbitizerRegister_R4000AllegrexVF {
+typedef enum RabbitizerRegister_R4000AllegrexVScalar {
     RABBITIZER_REG_R4000ALLEGREX_VF_S000,
     RABBITIZER_REG_R4000ALLEGREX_VF_S010,
     RABBITIZER_REG_R4000ALLEGREX_VF_S020,
@@ -561,7 +561,7 @@ typedef enum RabbitizerRegister_R4000AllegrexVF {
     RABBITIZER_REG_R4000ALLEGREX_VF_S713,
     RABBITIZER_REG_R4000ALLEGREX_VF_S723,
     RABBITIZER_REG_R4000ALLEGREX_VF_S733,
-} RabbitizerRegister_R4000AllegrexVF;
+} RabbitizerRegister_R4000AllegrexVScalar;
 typedef enum RabbitizerRegister_R5900VF {
     RABBITIZER_REG_R5900_VF_vf0,
     RABBITIZER_REG_R5900_VF_vf1,
