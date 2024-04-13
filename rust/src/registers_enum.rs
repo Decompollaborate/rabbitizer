@@ -486,7 +486,7 @@ pub mod registers {
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
     #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
-    pub enum R4000AllegrexVScalar {
+    pub enum R4000AllegrexS {
         S000,
         S010,
         S020,

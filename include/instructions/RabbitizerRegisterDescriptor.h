@@ -53,7 +53,7 @@ extern const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descripto
 
 /* R4000ALLEGREX */
 
-extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVScalar_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexS_Descriptors[];
 
 /* R4000ALLEGREX */
 

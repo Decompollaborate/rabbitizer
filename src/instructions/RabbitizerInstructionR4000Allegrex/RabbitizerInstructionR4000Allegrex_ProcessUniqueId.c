@@ -410,7 +410,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu0(RabbitizerInstruct
     // uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     // self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VScalarPU0;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU0;
 
 #if 0
     switch (fmt) {
@@ -426,7 +426,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu1(RabbitizerInstruct
     // uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     // self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VScalarPU1;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU1;
 
 #if 0
     switch (fmt) {
@@ -442,7 +442,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu3(RabbitizerInstruct
     // uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     // self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VScalarPU3;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU3;
 
 #if 0
     switch (fmt) {
@@ -458,7 +458,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4(RabbitizerInstruct
     // uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     // self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VScalarPU4;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4;
 
 #if 0
     switch (fmt) {
@@ -474,7 +474,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5(RabbitizerInstruct
     // uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     // self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VScalarPU5;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU5;
 
 #if 0
     switch (fmt) {
@@ -490,7 +490,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(RabbitizerInstruct
     // uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     // self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VScalarPU6;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU6;
 
 #if 0
     switch (fmt) {
@@ -506,7 +506,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu7(RabbitizerInstruct
     // uint32_t fmt = RAB_INSTR_GET_fmt(self);
 
     // self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VScalarPU7;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU7;
 
 #if 0
     switch (fmt) {

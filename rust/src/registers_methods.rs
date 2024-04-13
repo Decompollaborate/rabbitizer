@@ -19,7 +19,7 @@ extern "C" {
     pub static mut RabbitizerRegister_RspCop2Control_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_RspVector_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexVScalar_Names:
+    pub static mut RabbitizerRegister_R4000AllegrexS_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_R5900VF_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
     pub static mut RabbitizerRegister_R5900VI_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
@@ -60,8 +60,7 @@ extern "C" {
 
     /* RSP */
 
-    pub static mut RabbitizerRegister_R4000AllegrexVScalar_Descriptors:
-        [RegisterDescriptor; 0usize];
+    pub static mut RabbitizerRegister_R4000AllegrexS_Descriptors: [RegisterDescriptor; 0usize];
 
     /* R5900 */
 
@@ -305,25 +304,21 @@ impl registers_enum::registers::RspVector {
     }
 }
 
-impl registers_enum::registers::R4000AllegrexVScalar {
+impl registers_enum::registers::R4000AllegrexS {
     pub fn name(self) -> &'static str {
         let reg_value: u32 = self.into();
 
         unsafe {
-            std::ffi::CStr::from_ptr(
-                RabbitizerRegister_R4000AllegrexVScalar_Names[reg_value as usize][1],
-            )
-            .to_str()
-            .unwrap()
+            std::ffi::CStr::from_ptr(RabbitizerRegister_R4000AllegrexS_Names[reg_value as usize][1])
+                .to_str()
+                .unwrap()
         }
     }
 
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe {
-            RabbitizerRegister_R4000AllegrexVScalar_Descriptors.get_unchecked(reg_value as usize)
-        }
+        unsafe { RabbitizerRegister_R4000AllegrexS_Descriptors.get_unchecked(reg_value as usize) }
     }
 }
 
