@@ -7,7 +7,10 @@
     RAB_DEF_OPERAND(r4000allegrex, s_vt_imm)
     RAB_DEF_OPERAND(r4000allegrex, s_vd_imm)
 
-    RAB_DEF_OPERAND(r4000allegrex, vt_6)
+    RAB_DEF_OPERAND(r4000allegrex, q_vs)
+    RAB_DEF_OPERAND(r4000allegrex, q_vt)
+    RAB_DEF_OPERAND(r4000allegrex, q_vd)
+    RAB_DEF_OPERAND(r4000allegrex, q_vt_imm)
 
     RAB_DEF_OPERAND(r4000allegrex, pos)
     RAB_DEF_OPERAND(r4000allegrex, size)

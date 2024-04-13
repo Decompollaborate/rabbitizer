@@ -73,6 +73,30 @@
         enum class S {
             #include "registers/RabbitizerRegister_R4000AllegrexS.inc"
         };
+
+        enum class V2D {
+            #include "registers/RabbitizerRegister_R4000AllegrexV2D.inc"
+        };
+
+        enum class V3D {
+            #include "registers/RabbitizerRegister_R4000AllegrexV3D.inc"
+        };
+
+        enum class V4D {
+            #include "registers/RabbitizerRegister_R4000AllegrexV4D.inc"
+        };
+
+        enum class M2x2 {
+            #include "registers/RabbitizerRegister_R4000AllegrexM2x2.inc"
+        };
+
+        enum class M3x3 {
+            #include "registers/RabbitizerRegister_R4000AllegrexM3x3.inc"
+        };
+
+        enum class M4x4 {
+            #include "registers/RabbitizerRegister_R4000AllegrexM4x4.inc"
+        };
     };
 
     namespace R5900 {

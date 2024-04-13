@@ -66,18 +66,46 @@ size_t RabbitizerOperandType_process_r4000allegrex_s_vd_imm(const RabbitizerInst
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_r4000allegrex_vt_6(const RabbitizerInstruction *self, char *dst,
+size_t RabbitizerOperandType_process_r4000allegrex_q_vs(const RabbitizerInstruction *self, char *dst,
                                                         UNUSED const char *immOverride,
                                                         UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    // TODO
-#if 0
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexS(RAB_INSTR_R4000ALLEGREX_GET_vt_6(self));
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexV4D(RAB_INSTR_R4000ALLEGREX_GET_vs(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
-#else
-    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", RAB_INSTR_R4000ALLEGREX_GET_vt_6(self));
-#endif
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_q_vt(const RabbitizerInstruction *self, char *dst,
+                                                        UNUSED const char *immOverride,
+                                                        UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexV4D(RAB_INSTR_R4000ALLEGREX_GET_vt(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_q_vd(const RabbitizerInstruction *self, char *dst,
+                                                        UNUSED const char *immOverride,
+                                                        UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexV4D(RAB_INSTR_R4000ALLEGREX_GET_vd(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_q_vt_imm(const RabbitizerInstruction *self, char *dst,
+                                                            UNUSED const char *immOverride,
+                                                            UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexV4D(RAB_INSTR_R4000ALLEGREX_GET_vt_6_imm(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 
     return totalSize;
 }

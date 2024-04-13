@@ -155,6 +155,54 @@ pub mod registers {
         #include "registers/RabbitizerRegister_R4000AllegrexS.inc"
     }
 
+    SPECIAL_RS_TAG(repr(u32))
+    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+    SPECIAL_RS_TAG(allow(non_camel_case_types))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
+    pub enum R4000AllegrexV2D {
+        #include "registers/RabbitizerRegister_R4000AllegrexV2D.inc"
+    }
+
+    SPECIAL_RS_TAG(repr(u32))
+    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+    SPECIAL_RS_TAG(allow(non_camel_case_types))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
+    pub enum R4000AllegrexV3D {
+        #include "registers/RabbitizerRegister_R4000AllegrexV3D.inc"
+    }
+
+    SPECIAL_RS_TAG(repr(u32))
+    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+    SPECIAL_RS_TAG(allow(non_camel_case_types))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
+    pub enum R4000AllegrexV4D {
+        #include "registers/RabbitizerRegister_R4000AllegrexV4D.inc"
+    }
+
+    SPECIAL_RS_TAG(repr(u32))
+    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+    SPECIAL_RS_TAG(allow(non_camel_case_types))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
+    pub enum R4000AllegrexM2x2 {
+        #include "registers/RabbitizerRegister_R4000AllegrexM2x2.inc"
+    }
+
+    SPECIAL_RS_TAG(repr(u32))
+    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+    SPECIAL_RS_TAG(allow(non_camel_case_types))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
+    pub enum R4000AllegrexM3x3 {
+        #include "registers/RabbitizerRegister_R4000AllegrexM3x3.inc"
+    }
+
+    SPECIAL_RS_TAG(repr(u32))
+    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+    SPECIAL_RS_TAG(allow(non_camel_case_types))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
+    pub enum R4000AllegrexM4x4 {
+        #include "registers/RabbitizerRegister_R4000AllegrexM4x4.inc"
+    }
+
     /* R4000ALLEGREX */
 
     /* R5900 */

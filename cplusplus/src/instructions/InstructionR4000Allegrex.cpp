@@ -73,6 +73,50 @@ Registers::R4000Allegrex::S InstructionR4000Allegrex::GetR4000Allegrex_s_vd_imm(
     return static_cast<Registers::R4000Allegrex::S>(RAB_INSTR_R4000ALLEGREX_GET_vd_imm(&this->instr));
 }
 
+Registers::R4000Allegrex::V2D InstructionR4000Allegrex::GetR4000Allegrex_q_vs() const {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::r4000allegrex_q_vs)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'q_vs' operand.");
+    }
+#endif
+
+    return static_cast<Registers::R4000Allegrex::V2D>(RAB_INSTR_R4000ALLEGREX_GET_vs(&this->instr));
+}
+
+Registers::R4000Allegrex::V2D InstructionR4000Allegrex::GetR4000Allegrex_q_vt() const {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::r4000allegrex_q_vt)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'q_vt' operand.");
+    }
+#endif
+
+    return static_cast<Registers::R4000Allegrex::V2D>(RAB_INSTR_R4000ALLEGREX_GET_vt(&this->instr));
+}
+
+Registers::R4000Allegrex::V2D InstructionR4000Allegrex::GetR4000Allegrex_q_vd() const {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::r4000allegrex_q_vd)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'q_vd' operand.");
+    }
+#endif
+
+    return static_cast<Registers::R4000Allegrex::V2D>(RAB_INSTR_R4000ALLEGREX_GET_vd(&this->instr));
+}
+
+Registers::R4000Allegrex::V2D InstructionR4000Allegrex::GetR4000Allegrex_q_vt_imm() const {
+#ifdef RAB_SANITY_CHECKS
+    if (!hasOperandAlias(OperandType::r4000allegrex_q_vt_imm)) {
+        // TODO: make a rabbitizer exception class
+        throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'q_vt_imm' operand.");
+    }
+#endif
+
+    return static_cast<Registers::R4000Allegrex::V2D>(RAB_INSTR_R4000ALLEGREX_GET_vt_imm(&this->instr));
+}
+
 uint8_t InstructionR4000Allegrex::GetR4000Allegrex_pos() const {
     return RAB_INSTR_R4000ALLEGREX_GET_pos(&this->instr);
 }

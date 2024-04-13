@@ -1116,6 +1116,7 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xD89D0041, NULL, "lv.q        R701, 0x40($a0)"),
     TEST_ENTRY_C(0xD89E0041, NULL, "lv.q        R702, 0x40($a0)"),
     TEST_ENTRY_C(0xD89F0041, NULL, "lv.q        R703, 0x40($a0)"),
+
     TEST_ENTRY_C(0xD8800042, NULL, "lv.q        C000, 0x40($a0)"),
     TEST_ENTRY_C(0xD8810042, NULL, "lv.q        C010, 0x40($a0)"),
     TEST_ENTRY_C(0xD8820042, NULL, "lv.q        C020, 0x40($a0)"),
@@ -1148,6 +1149,7 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xD89D0042, NULL, "lv.q        C710, 0x40($a0)"),
     TEST_ENTRY_C(0xD89E0042, NULL, "lv.q        C720, 0x40($a0)"),
     TEST_ENTRY_C(0xD89F0042, NULL, "lv.q        C730, 0x40($a0)"),
+
     TEST_ENTRY_C(0x48640004, NULL, "mfv         $a0, S100"),
     TEST_ENTRY_C(0x48640080, NULL, "mfvc        $a0, $128"),
     // TEST_ENTRY_C(0x48640080, NULL, "mfvc        $a0, VFPU_PFXS"),

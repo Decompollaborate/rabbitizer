@@ -60,6 +60,18 @@ const char *RabbitizerRegister_getNameRspVector(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR4000AllegrexS(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexV2D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexV3D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexV4D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexM2x2(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexM3x3(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexM4x4(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue);
@@ -92,6 +104,18 @@ const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspVector(u
 
 NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexS(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV2D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV3D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV4D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM2x2(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM3x3(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM4x4(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue);

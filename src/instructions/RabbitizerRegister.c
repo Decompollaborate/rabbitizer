@@ -107,6 +107,42 @@ const char *RabbitizerRegister_getNameR4000AllegrexS(uint8_t regValue) {
     return RabbitizerRegister_R4000AllegrexS_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
+const char *RabbitizerRegister_getNameR4000AllegrexV2D(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexV2D_Names));
+
+    return RabbitizerRegister_R4000AllegrexV2D_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameR4000AllegrexV3D(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexV3D_Names));
+
+    return RabbitizerRegister_R4000AllegrexV3D_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameR4000AllegrexV4D(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexV4D_Names));
+
+    return RabbitizerRegister_R4000AllegrexV4D_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameR4000AllegrexM2x2(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM2x2_Names));
+
+    return RabbitizerRegister_R4000AllegrexM2x2_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameR4000AllegrexM3x3(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM3x3_Names));
+
+    return RabbitizerRegister_R4000AllegrexM3x3_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
+const char *RabbitizerRegister_getNameR4000AllegrexM4x4(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM4x4_Names));
+
+    return RabbitizerRegister_R4000AllegrexM4x4_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+}
+
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_R5900VF_Names));
 
@@ -196,6 +232,42 @@ const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000Allegr
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexS_Names));
 
     return &RabbitizerRegister_R4000AllegrexS_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV2D(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexV2D_Names));
+
+    return &RabbitizerRegister_R4000AllegrexV2D_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV3D(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexV3D_Names));
+
+    return &RabbitizerRegister_R4000AllegrexV3D_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV4D(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexV4D_Names));
+
+    return &RabbitizerRegister_R4000AllegrexV4D_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM2x2(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM2x2_Names));
+
+    return &RabbitizerRegister_R4000AllegrexM2x2_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM3x3(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM3x3_Names));
+
+    return &RabbitizerRegister_R4000AllegrexM3x3_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM4x4(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM4x4_Names));
+
+    return &RabbitizerRegister_R4000AllegrexM4x4_Descriptors[regValue];
 }
 
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue) {
