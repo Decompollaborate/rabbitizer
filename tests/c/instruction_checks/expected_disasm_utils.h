@@ -180,6 +180,12 @@ int main() {
     int errorCount = check_duplicated_entries(test_entries_len, test_entries);
     size_t i;
 
+    if (errorCount != 0) {
+        LOG("Found %i duplicated entries. Stopping\n", errorCount);
+
+        return errorCount;
+    }
+
     for (i = 0; i < test_entries_len; i++) {
         if (!check_expected_output(&test_entries[i])) {
             errorCount++;
