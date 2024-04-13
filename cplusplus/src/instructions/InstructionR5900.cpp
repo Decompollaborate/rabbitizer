@@ -20,7 +20,7 @@ InstructionR5900::~InstructionR5900() {
 
 Registers::R5900::VF InstructionR5900::GetR5900_vfs() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::rsp_rs)) {
+    if (!hasOperandAlias(OperandType::r5900_vfs)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'vfs' operand.");
     }
@@ -31,7 +31,7 @@ Registers::R5900::VF InstructionR5900::GetR5900_vfs() const {
 
 Registers::R5900::VF InstructionR5900::GetR5900_vft() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::rsp_rt)) {
+    if (!hasOperandAlias(OperandType::r5900_vft)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'vft' operand.");
     }
@@ -42,7 +42,7 @@ Registers::R5900::VF InstructionR5900::GetR5900_vft() const {
 
 Registers::R5900::VF InstructionR5900::GetR5900_vfd() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::rsp_rd)) {
+    if (!hasOperandAlias(OperandType::r5900_vfd)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'vfd' operand.");
     }
@@ -53,7 +53,7 @@ Registers::R5900::VF InstructionR5900::GetR5900_vfd() const {
 
 Registers::R5900::VI InstructionR5900::GetR5900_vis() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::rsp_rs)) {
+    if (!hasOperandAlias(OperandType::r5900_vis)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'vis' operand.");
     }
@@ -64,7 +64,7 @@ Registers::R5900::VI InstructionR5900::GetR5900_vis() const {
 
 Registers::R5900::VI InstructionR5900::GetR5900_vit() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::rsp_rt)) {
+    if (!hasOperandAlias(OperandType::r5900_vit)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'vit' operand.");
     }
@@ -75,7 +75,7 @@ Registers::R5900::VI InstructionR5900::GetR5900_vit() const {
 
 Registers::R5900::VI InstructionR5900::GetR5900_vid() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::rsp_rd)) {
+    if (!hasOperandAlias(OperandType::r5900_vid)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'vid' operand.");
     }

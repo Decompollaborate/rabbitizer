@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Cleanups in tests code.
 
+### Fixed
+
+- Fix typo on C++ bindings.
+  - The registers getters of the R5900 instruction class was checking for the
+    wrong operands.
+
 ## [1.9.5] - 2024-04-03
 
 ### Changed
