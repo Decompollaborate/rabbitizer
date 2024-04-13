@@ -70,7 +70,7 @@
     };
 
     namespace R4000Allegrex {
-        enum class VF {
+        enum class S {
             #include "registers/RabbitizerRegister_R4000AllegrexS.inc"
         };
     };

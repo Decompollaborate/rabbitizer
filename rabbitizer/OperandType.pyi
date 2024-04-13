@@ -53,14 +53,18 @@ class OperandType:
     r3000gte_v: Enum
     r3000gte_cv: Enum
     r3000gte_lm: Enum
+    r4000allegrex_s_vs: Enum
+    r4000allegrex_s_vt: Enum
+    r4000allegrex_s_vd: Enum
+    r4000allegrex_s_vt_imm: Enum
+    r4000allegrex_s_vd_imm: Enum
+    r4000allegrex_vt_6: Enum
     r4000allegrex_pos: Enum
     r4000allegrex_size: Enum
     r4000allegrex_size_plus_pos: Enum
     r4000allegrex_imm3: Enum
     r4000allegrex_offset14_base: Enum
     r4000allegrex_offset14_base_maybe_wb: Enum
-    r4000allegrex_vt_6: Enum
-    r4000allegrex_vt_7: Enum
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum

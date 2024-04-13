@@ -271,6 +271,24 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             /* r3000gte */
 
             /* r4000allegrex */
+        case RAB_OPERAND_r4000allegrex_s_vs:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_s_vt:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_s_vd:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_s_vt_imm:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_s_vd_imm:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vt_6:
+            break;
+
         case RAB_OPERAND_r4000allegrex_pos:
         case RAB_OPERAND_r4000allegrex_size:
         case RAB_OPERAND_r4000allegrex_size_plus_pos:
@@ -291,18 +309,6 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
                 return true;
             }
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r4000allegrex_vt_6:
-            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vt_7)) {
-                return true;
-            }
-            break;
-
-        case RAB_OPERAND_r4000allegrex_vt_7:
-            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vt_6)) {
                 return true;
             }
             break;

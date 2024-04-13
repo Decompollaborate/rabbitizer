@@ -437,7 +437,7 @@
         };
     };
     namespace R4000Allegrex {
-        enum class VF {
+        enum class S {
     R4000ALLEGREX_S_S000,
     R4000ALLEGREX_S_S010,
     R4000ALLEGREX_S_S020,
