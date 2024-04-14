@@ -432,6 +432,12 @@ class InstrId:
     r4000allegrex_bvt: Enum
     r4000allegrex_bvfl: Enum
     r4000allegrex_bvtl: Enum
+    r4000allegrex_vadd_s: Enum
+    r4000allegrex_vadd_q: Enum
+    r4000allegrex_vsub_s: Enum
+    r4000allegrex_vsub_q: Enum
+    r4000allegrex_vsbn_s: Enum
+    r4000allegrex_vdiv_s: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum
