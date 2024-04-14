@@ -58,6 +58,12 @@ class OperandType:
     r4000allegrex_s_vd: Enum
     r4000allegrex_s_vt_imm: Enum
     r4000allegrex_s_vd_imm: Enum
+    r4000allegrex_p_vs: Enum
+    r4000allegrex_p_vt: Enum
+    r4000allegrex_p_vd: Enum
+    r4000allegrex_t_vs: Enum
+    r4000allegrex_t_vt: Enum
+    r4000allegrex_t_vd: Enum
     r4000allegrex_q_vs: Enum
     r4000allegrex_q_vt: Enum
     r4000allegrex_q_vd: Enum

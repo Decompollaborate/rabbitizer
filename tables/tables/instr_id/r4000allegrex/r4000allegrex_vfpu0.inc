@@ -35,13 +35,11 @@ vadd.p
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-#if 0
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x1, vadd_p, vadd.p,
         .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // ADD Pair word
-#endif
 
 /*
 vadd.t
@@ -50,13 +48,11 @@ vadd.t
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-#if 0
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x2, vadd_t, vadd.t,
         .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // ADD Triple word
-#endif
 
 /*
 vadd.q
@@ -91,13 +87,11 @@ vsub.p
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-#if 0
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x01 << 2 | 0x1, vsub_p, vsub.p,
         .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // ADD Pair word
-#endif
 
 /*
 vsub.t
@@ -106,13 +100,11 @@ vsub.t
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-#if 0
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x01 << 2 | 0x2, vsub_t, vsub.t,
         .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // ADD Triple word
-#endif
 
 /*
 vsub.q
