@@ -13,7 +13,7 @@
 100 | LB    | LH    | LWL   | LW    | LBU   | LHU   | LWR   | ---   |
 101 | SB    | SH    | SWL   | SW    | ---   | ---   | SWR   | CACHE |
 110 | LL    | LWC1  | LV.S  | ---   | *11   | ---   | LV.Q  | *12   |
-111 | SC    | SWC1  | SV.S  | ---   | *13   | ---   | SV.Q  | *14   |
+111 | SC    | SWC1  | SV.S  | ---   | *13   | *14   | SV.Q  | *15   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
      *1 = SPECIAL, see SPECIAL list
      *2 = REGIMM, see REGIMM list
@@ -28,7 +28,8 @@
      *11 = VFPU4
      *12 = VFPU5
      *13 = VFPU6
-     *14 = VFPU7
+     *14 = QUADLR
+     *15 = VFPU7
 */
 
     // The other instructions are implemented using the main CPU table

@@ -517,6 +517,23 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu7(RabbitizerInstruct
 #endif
 }
 
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Quadlr(RabbitizerInstruction *self) {
+    uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wb(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_wb(self->_mandatorybits, temp);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_QUADLR;
+    self->_handwrittenCategory = true;
+
+    switch (temp) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_quadlr.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
 #undef RABBITIZER_DEF_INSTR_ID
 #undef RABBITIZER_DEF_INSTR_ID_ALTNAME
 
@@ -572,6 +589,11 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId(RabbitizerInstruction *s
         case 0x3C:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(self);
             break;
+
+        case 0x3D:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Quadlr(self);
+            break;
+
         case 0x3F:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu7(self);
             break;

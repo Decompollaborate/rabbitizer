@@ -491,6 +491,8 @@ enum class UniqueId {
     r4000allegrex_bvt,
     r4000allegrex_bvfl,
     r4000allegrex_bvtl,
+    r4000allegrex_svl_q,
+    r4000allegrex_svr_q,
     r4000allegrex_USERDEF_00,
     r4000allegrex_USERDEF_01,
     r4000allegrex_USERDEF_02,

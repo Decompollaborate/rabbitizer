@@ -491,6 +491,8 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_r4000allegrex_bvt] = { .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_bvfl] = { .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true, .isBranchLikely=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_bvtl] = { .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true, .isBranchLikely=true },
+    [RABBITIZER_INSTR_ID_r4000allegrex_svl_q] = { .operands={RAB_OPERAND_r4000allegrex_q_vt_imm, RAB_OPERAND_r4000allegrex_offset14_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .readsRs=true },
+    [RABBITIZER_INSTR_ID_r4000allegrex_svr_q] = { .operands={RAB_OPERAND_r4000allegrex_q_vt_imm, RAB_OPERAND_r4000allegrex_offset14_base}, .instrType=RABBITIZER_INSTR_TYPE_I, .readsRs=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_USERDEF_00] = { .operands={0} },
     [RABBITIZER_INSTR_ID_r4000allegrex_USERDEF_01] = { .operands={0} },
     [RABBITIZER_INSTR_ID_r4000allegrex_USERDEF_02] = { .operands={0} },

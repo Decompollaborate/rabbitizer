@@ -491,6 +491,8 @@ typedef enum RabbitizerInstrId {
     RABBITIZER_INSTR_ID_r4000allegrex_bvt,
     RABBITIZER_INSTR_ID_r4000allegrex_bvfl,
     RABBITIZER_INSTR_ID_r4000allegrex_bvtl,
+    RABBITIZER_INSTR_ID_r4000allegrex_svl_q,
+    RABBITIZER_INSTR_ID_r4000allegrex_svr_q,
     RABBITIZER_INSTR_ID_r4000allegrex_USERDEF_00,
     RABBITIZER_INSTR_ID_r4000allegrex_USERDEF_01,
     RABBITIZER_INSTR_ID_r4000allegrex_USERDEF_02,

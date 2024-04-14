@@ -116,6 +116,9 @@ NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu7(RabbitizerInstruction *self);
 
 NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Quadlr(RabbitizerInstruction *self);
+
+NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId(RabbitizerInstruction *self);
 
 

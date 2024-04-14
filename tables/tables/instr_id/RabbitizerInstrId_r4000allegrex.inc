@@ -40,6 +40,8 @@
     #include "r4000allegrex/r4000allegrex_vfpu6.inc"
     #include "r4000allegrex/r4000allegrex_vfpu7.inc"
 
+    #include "r4000allegrex/r4000allegrex_quadlr.inc"
+
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, , USERDEF_00,
