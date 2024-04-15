@@ -14,6 +14,7 @@ def vd(x: int) -> int:
 
 VFPU0 = 0b011000 << 26
 VFPU1 = 0b011001 << 26
+VFPU3 = 0b011011 << 26
 
 def vfpu0_fmt_tp(x: int) -> int:
     assert x in range(1<<5)
@@ -38,4 +39,10 @@ def do_vfp1():
     for i in range(1<<5):
         print(f"    .word 0x{VFPU1:08X} | 0x{vfpu0_fmt_tp(i):08X} | 0x{VT:08X} | 0x{VS:08X} | 0x{VD:08X}")
 
-do_vfp1()
+def do_vfp3():
+    print("    # VFPU3")
+
+    for i in range(1<<5):
+        print(f"    .word 0x{VFPU3:08X} | 0x{vfpu0_fmt_tp(i):08X} | 0x{VT:08X} | 0x{VS:08X} | 0x{VD:08X}")
+
+do_vfp3()

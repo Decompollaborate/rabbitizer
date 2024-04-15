@@ -1748,8 +1748,6 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xF17E8000, NULL, "vtfm3.t     C000, M000, R712"),
     TEST_ENTRY_C(0xF17F8000, NULL, "vtfm3.t     C000, M000, R713"),
 
-    TEST_ENTRY_C(0xFFFF040D, NULL, "vflush"),
-
     /* abs all */
     TEST_ENTRY_C(0xD0010000, NULL, "vabs.s      S000, S000"),
     TEST_ENTRY_C(0xD0010101, NULL, "vabs.s      S010, S010"),
@@ -2297,6 +2295,11 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x638010C0, NULL, "vdiv.p     C002, C400, C000"),
     TEST_ENTRY_C(0x63809040, NULL, "vdiv.t     C001, C400, C000"),
     TEST_ENTRY_C(0x638090C0, NULL, "vdiv.q     C002, C400, C000"),
+
+    /* VFPU7 */
+    TEST_ENTRY_C(0xFFFF040D, NULL, "vflush"),
+    TEST_ENTRY_C(0xFFFF0000, NULL, "vnop"),
+    TEST_ENTRY_C(0xFFFF0320, NULL, "vsync"),
 };
 
 size_t test_entries_len = ARRAY_COUNT(test_entries);

@@ -5652,10 +5652,6 @@ tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xF17F800
         InstrIdType: 'R4000ALLEGREX_VFPU6'
         gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xFFFF040D'. Expected 'vflush', got '.word       0xFFFF040D                   # INVALID     $ra, $ra, 0x40D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU7>'
-        InstrIdType: 'R4000ALLEGREX_VFPU7'
-        gnuMode 'true'
-
 tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xD0010000'. Expected 'vabs.s      S000, S000', got '.word       0xD0010000                   # INVALID     $zero, $at, 0x0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4>'
         InstrIdType: 'R4000ALLEGREX_VFPU4'
         gnuMode 'true'
@@ -7720,5 +7716,17 @@ tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x638090C
         InstrIdType: 'R4000ALLEGREX_VFPU0'
         gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1929 errors out of 2194 entries
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xFFFF040D'. Expected 'vflush', got '.word       0xFFFF040D                   # INVALID     $ra, $ra, 0x40D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU7>'
+        InstrIdType: 'R4000ALLEGREX_VFPU7'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xFFFF0000'. Expected 'vnop', got '.word       0xFFFF0000                   # INVALID     $ra, $ra, 0x0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU7>'
+        InstrIdType: 'R4000ALLEGREX_VFPU7'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xFFFF0320'. Expected 'vsync', got '.word       0xFFFF0320                   # INVALID     $ra, $ra, 0x320 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU7>'
+        InstrIdType: 'R4000ALLEGREX_VFPU7'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1931 errors out of 2196 entries
 
