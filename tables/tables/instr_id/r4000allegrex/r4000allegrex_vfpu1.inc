@@ -76,7 +76,7 @@ vdot.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x1 << 2 | 0x1, vdot_p, vdot.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // DOT Product Pair word
 
@@ -89,7 +89,7 @@ vdot.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x1 << 2 | 0x2, vdot_t, vdot.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // DOT Product Triple word
 
@@ -102,7 +102,7 @@ vdot.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x1 << 2 | 0x3, vdot_q, vdot.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // DOT Product Quad word
 
@@ -115,7 +115,7 @@ vscl.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x2 << 2 | 0x1, vscl_p, vscl.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
+        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_s_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // DOT Product Pair word
 
@@ -128,7 +128,7 @@ vscl.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x2 << 2 | 0x2, vscl_t, vscl.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
+        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_s_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // DOT Product Triple word
 
@@ -141,7 +141,7 @@ vscl.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x2 << 2 | 0x3, vscl_q, vscl.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
+        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_s_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // SCaLe Quad word
 
@@ -154,7 +154,7 @@ vhdp.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x4 << 2 | 0x1, vhdp_p, vhdp.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Homogeneous Dot Product Pair word
 
@@ -167,7 +167,7 @@ vhdp.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x4 << 2 | 0x2, vhdp_t, vhdp.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Homogeneous Dot Product Pair word
 
@@ -180,7 +180,7 @@ vhdp.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x4 << 2 | 0x3, vhdp_q, vhdp.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Homogeneous Dot Product Pair word
 
@@ -206,6 +206,6 @@ vdet.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x6 << 2 | 0x1, vdet_p, vdet.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // 2x2 matrix DETerminant
