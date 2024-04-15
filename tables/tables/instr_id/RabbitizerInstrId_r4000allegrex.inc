@@ -42,6 +42,8 @@
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt3.inc"
 
     #include "r4000allegrex/r4000allegrex_vfpu5.inc"
+    #include "r4000allegrex/r4000allegrex_vfpu5_fmt3.inc"
+
     #include "r4000allegrex/r4000allegrex_vfpu6.inc"
     #include "r4000allegrex/r4000allegrex_vfpu7.inc"
 

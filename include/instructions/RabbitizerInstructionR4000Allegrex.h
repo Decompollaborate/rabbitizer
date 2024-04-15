@@ -125,6 +125,9 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt3(RabbitizerIns
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5(RabbitizerInstruction *self);
 NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5_Fmt3(RabbitizerInstruction *self);
+
+NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu7(RabbitizerInstruction *self);
