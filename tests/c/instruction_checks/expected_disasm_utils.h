@@ -192,7 +192,7 @@ int main() {
         }
     }
 
-    LOG("%i errors out of %zu entries\n\n", errorCount, test_entries_len);
+    LOG("%i errors out of %zu entries. %.2f%% correct.\n\n", errorCount, test_entries_len, (double)((test_entries_len - errorCount) / (float)test_entries_len * 100.0f));
 
     return errorCount;
 }
