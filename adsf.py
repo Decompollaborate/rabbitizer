@@ -31,6 +31,12 @@ def func_end(name: str):
     print(f".size {name}, . - {name}")
 
 
+def tp(x: int) -> int:
+    assert x in range(1<<2), f"0x{x:X}"
+    t = (x & 0b00010) >> 1
+    p = (x & 0b00001) >> 0
+    return (t << 15) | (p << 7)
+
 def vfpu0_fmt_tp(x: int) -> int:
     assert x in range(1<<5), f"0x{x:X}"
     fmt = (x & 0b11100) >> 2
@@ -143,4 +149,18 @@ def do_vfp4_fmt2():
                 print(f"    .word 0x{VFPU4:08X} | 0x{fmt:08X} | 0x{vfpu4_fmt_fmt(j):08X} | 0x{vfpu4_fmt_fmt_fmt(k):08X} | 0x{vfpu4_fmt_fmt_fmt_fmt_tp(l):08X} | 0x{VS:08X} | 0x{VD:08X}")
     func_end("vfpu4_fmt2_all")
 
-do_vfp4_fmt2()
+def do_vfp4_fmt3():
+    func_start("vfpu4_fmt3_all")
+    print("    # VFPU4 FMT3")
+
+    VT = vt(1 << 6)
+    VS = vs(1 << 4)
+    VD = vd(1 << 0)
+
+    fmt = vfpu4_fmt(3)
+
+    for j in range(1<<8):
+        print(f"    .word 0x{VFPU4:08X} | 0x{fmt:08X} | 0x{j<<16:08X} | 0x{tp(0):08X} | 0x{VS:08X} | 0x{VD:08X}")
+    func_end("vfpu4_fmt3_all")
+
+do_vfp4_fmt3()
