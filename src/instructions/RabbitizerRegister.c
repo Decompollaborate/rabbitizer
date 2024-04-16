@@ -140,7 +140,18 @@ const char *RabbitizerRegister_getNameR4000AllegrexM3x3(uint8_t regValue) {
 const char *RabbitizerRegister_getNameR4000AllegrexM4x4(uint8_t regValue) {
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM4x4_Names));
 
-    return RabbitizerRegister_R4000AllegrexM4x4_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
+    return RabbitizerRegister_R4000AllegrexM4x4_Names[regValue][RabbitizerConfig_Cfg.regNames.namedRegisters &&
+                                                                        RabbitizerConfig_Cfg.regNames
+                                                                            .r4000AllegrexVfpuControlNamedRegisters
+                                                                    ? 1
+                                                                    : 0];
+}
+
+const char *RabbitizerRegister_getNameR4000AllegrexVfpuControl(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexVfpuControl_Names));
+
+    return RabbitizerRegister_R4000AllegrexVfpuControl_Names[regValue]
+                                                            [RabbitizerConfig_Cfg.regNames.namedRegisters ? 1 : 0];
 }
 
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue) {
@@ -268,6 +279,12 @@ const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000Allegr
     assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexM4x4_Names));
 
     return &RabbitizerRegister_R4000AllegrexM4x4_Descriptors[regValue];
+}
+
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVfpuControl(uint8_t regValue) {
+    assert(regValue < ARRAY_COUNT(RabbitizerRegister_R4000AllegrexVfpuControl_Names));
+
+    return &RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors[regValue];
 }
 
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue) {

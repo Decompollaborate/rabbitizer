@@ -97,6 +97,10 @@
         enum class M4x4 {
             #include "registers/RabbitizerRegister_R4000AllegrexM4x4.inc"
         };
+
+        enum class VfpuControl {
+            #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
+        };
     };
 
     namespace R5900 {

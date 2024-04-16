@@ -60,6 +60,7 @@ extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexV4D_De
 extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM2x2_Descriptors[];
 extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM3x3_Descriptors[];
 extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM4x4_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors[];
 
 /* R4000ALLEGREX */
 

@@ -1424,6 +1424,28 @@ pub mod registers {
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
     #[allow(non_camel_case_types)]
     #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
+    pub enum R4000AllegrexVfpuControl {
+        VFPU_PFXS,
+        VFPU_PFXT,
+        VFPU_PFXD,
+        VFPU_CC,
+        VFPU_INF4,
+        VFPU_RSV5,
+        VFPU_RSV6,
+        VFPU_REV,
+        VFPU_RCX0,
+        VFPU_RCX1,
+        VFPU_RCX2,
+        VFPU_RCX3,
+        VFPU_RCX4,
+        VFPU_RCX5,
+        VFPU_RCX6,
+        VFPU_RCX7,
+    }
+    #[repr(u32)]
+    #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
+    #[allow(non_camel_case_types)]
+    #[derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive)]
     pub enum R5900VF {
         vf0,
         vf1,

@@ -96,6 +96,10 @@ const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM4x4_Descript
 #include "registers/RabbitizerRegister_R4000AllegrexM4x4.inc"
 };
 
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
+};
+
 /* R4000ALLEGREX */
 
 /* R5900 */

@@ -17,3 +17,10 @@ mfv
     |    COP2   |0 0 0 1 1|    rt   |0 0 0 0 0 0 0 0|0|      vd     |
     ------6----------5---------5---------------------1-------7-------
 */
+
+    RABBITIZER_DEF_INSTR_ID(
+        r4000allegrex, 0, mfv,
+        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_s_vd},
+        .instrType=RABBITIZER_INSTR_TYPE_R,
+        .readsRs=true
+    ) // Move word From Vfpu

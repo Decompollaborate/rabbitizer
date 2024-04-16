@@ -67,6 +67,7 @@ pub enum OperandType {
     r4000allegrex_q_vt,
     r4000allegrex_q_vd,
     r4000allegrex_q_vt_imm,
+    r4000allegrex_cop2cd_128,
     r4000allegrex_pos,
     r4000allegrex_size,
     r4000allegrex_size_plus_pos,

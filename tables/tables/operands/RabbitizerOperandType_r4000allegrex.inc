@@ -20,6 +20,8 @@
     RAB_DEF_OPERAND(r4000allegrex, q_vd)
     RAB_DEF_OPERAND(r4000allegrex, q_vt_imm)
 
+    RAB_DEF_OPERAND(r4000allegrex, cop2cd_128)
+
     RAB_DEF_OPERAND(r4000allegrex, pos)
     RAB_DEF_OPERAND(r4000allegrex, size)
     RAB_DEF_OPERAND(r4000allegrex, size_plus_pos)
