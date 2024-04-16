@@ -119,11 +119,28 @@ def do_vfp4_fmt0():
     VS = vs(1 << 4)
     VD = vd(1 << 0)
 
-    for i in range(1<<2):
-        for j in range(1<<3):
-            for k in range(1<<2):
-                for l in range(1<<5):
-                    print(f"    .word 0x{VFPU4:08X} | 0x{vfpu4_fmt(i):08X} | 0x{vfpu4_fmt_fmt(j):08X} | 0x{vfpu4_fmt_fmt_fmt(k):08X} | 0x{vfpu4_fmt_fmt_fmt_fmt_tp(l):08X} | 0x{VS:08X} | 0x{VD:08X}")
+    fmt = vfpu4_fmt(0)
+
+    for j in range(1<<3):
+        for k in range(1<<2):
+            for l in range(1<<5):
+                print(f"    .word 0x{VFPU4:08X} | 0x{fmt:08X} | 0x{vfpu4_fmt_fmt(j):08X} | 0x{vfpu4_fmt_fmt_fmt(k):08X} | 0x{vfpu4_fmt_fmt_fmt_fmt_tp(l):08X} | 0x{VS:08X} | 0x{VD:08X}")
     func_end("vfpu4_fmt0_all")
 
-do_vfp4_fmt0()
+def do_vfp4_fmt2():
+    func_start("vfpu4_fmt2_all")
+    print("    # VFPU4 FMT2")
+
+    VT = vt(1 << 6)
+    VS = vs(1 << 4)
+    VD = vd(1 << 0)
+
+    fmt = vfpu4_fmt(2)
+
+    for j in range(1<<3):
+        for k in range(1<<2):
+            for l in range(1<<5):
+                print(f"    .word 0x{VFPU4:08X} | 0x{fmt:08X} | 0x{vfpu4_fmt_fmt(j):08X} | 0x{vfpu4_fmt_fmt_fmt(k):08X} | 0x{vfpu4_fmt_fmt_fmt_fmt_tp(l):08X} | 0x{VS:08X} | 0x{VD:08X}")
+    func_end("vfpu4_fmt2_all")
+
+do_vfp4_fmt2()

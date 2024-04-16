@@ -39,6 +39,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt(self)                        (SHIFTR((self)->word, 21,  3))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self)                   (SHIFTR((self)->word, 19,  2))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self)           ((SHIFTR((self)->word, 16,  3) << 2) | (SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
+#define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt2_fmt5_fmt_tp(self)                ((SHIFTR((self)->word, 19,  2) << 2) | (SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu6_fmt(self)                             (SHIFTR((self)->word, 23,  3))
 
 
@@ -69,6 +70,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt(word, value)                (BITREPACK((word), (value), 21,  3))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(word, value)           (BITREPACK((word), (value), 19,  2))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(word, value)   (BITREPACK(BITREPACK(BITREPACK((word), (value) >> 2, 16,  3), (value) >> 1, 15,  1), (value),  7,  1))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt2_fmt5_fmt_tp(word, value)        (BITREPACK(BITREPACK(BITREPACK((word), (value) >> 2, 19,  2), (value) >> 1, 15,  1), (value),  7,  1))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu6_fmt(word, value)                     (BITREPACK((word), (value), 23,  2))
 
 
@@ -165,8 +167,22 @@ NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt3(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt3(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt0(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt1(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt2(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt3(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt4(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt5(RabbitizerInstruction *self);
+
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt3(RabbitizerInstruction *self);
 
