@@ -194,4 +194,30 @@ def do_vfp5():
                 print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0xF000:08X}")
     func_end("vfpu5_all")
 
-do_vfp5()
+def do_vfpu6():
+    func_start("vfpu6_all")
+    print("    # VFPU6")
+
+    VT = vt(0)
+    VS = vs(1 << 4)
+    VD = vd(1 << 6)
+
+    for i in range(1<<3):
+        if i == 7:
+            for j in range(1<<2):
+                if j == 0:
+                    for t in range(1 << 1):
+                        for p in range(1 << 1):
+                            print(f"    .word 0x{VFPU6:08X} | 0x{i << 23:08X} | 0x{j << 21:08X} | 0x{VT:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
+                else:
+                    for t in range(1 << 1):
+                        for p in range(1 << 1):
+                            for k in range(1 << 2):
+                                print(f"    .word 0x{VFPU6:08X} | 0x{i << 23:08X} | 0x{j << 21:08X} | 0x{k << 16:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
+        else:
+            for t in range(1 << 1):
+                for p in range(1 << 1):
+                    print(f"    .word 0x{VFPU6:08X} | 0x{i << 23:08X} | 0x{VT:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
+    func_end("vfpu6_all")
+
+do_vfpu6()

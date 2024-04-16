@@ -41,7 +41,9 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self)           ((SHIFTR((self)->word, 16,  3) << 2) | (SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt2_fmt5_fmt_tp(self)                ((SHIFTR((self)->word, 19,  2) << 2) | (SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu5_fmt3_f(self)                          (SHIFTR((self)->word, 23,  1))
-#define RAB_INSTR_R4000ALLEGREX_GET_vfpu6_fmt(self)                             (SHIFTR((self)->word, 23,  3))
+#define RAB_INSTR_R4000ALLEGREX_GET_vfpu6_fmt(self)                             ((SHIFTR((self)->word, 23,  3) << 2) | (SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
+#define RAB_INSTR_R4000ALLEGREX_GET_vfpu6_fmt7_fmt(self)                        ((SHIFTR((self)->word, 21,  2) << 2) | (SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
+#define RAB_INSTR_R4000ALLEGREX_GET_vfpu6_fmt7_fmt0_fmt(self)                   ((SHIFTR((self)->word, 16,  3) << 2) | (SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
 
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_vt(word, value)                            (BITREPACK((word), (value), 16,  7))
@@ -73,7 +75,9 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(word, value)   (BITREPACK(BITREPACK(BITREPACK((word), (value) >> 2, 16,  3), (value) >> 1, 15,  1), (value),  7,  1))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt2_fmt5_fmt_tp(word, value)        (BITREPACK(BITREPACK(BITREPACK((word), (value) >> 2, 19,  2), (value) >> 1, 15,  1), (value),  7,  1))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu5_fmt3_f(word, value)                  (BITREPACK((word), (value), 23,  1))
-#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu6_fmt(word, value)                     (BITREPACK((word), (value), 23,  2))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu6_fmt(word, value)                     (BITREPACK(BITREPACK(BITREPACK((word), (value) >> 2, 23,  3), (value) >> 1, 15,  1), (value),  7,  1))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu6_fmt7_fmt(word, value)                (BITREPACK(BITREPACK(BITREPACK((word), (value) >> 2, 21,  2), (value) >> 1, 15,  1), (value),  7,  1))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu6_fmt7_fmt0_fmt(word, value)           (BITREPACK(BITREPACK(BITREPACK((word), (value) >> 2, 16,  3), (value) >> 1, 15,  1), (value),  7,  1))
 
 
 NON_NULL(1)

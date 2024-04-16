@@ -1072,7 +1072,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(RabbitizerInstruct
     switch (fmt) {
 #include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu6.inc"
 
-        case 0x7:
+        case 0x1C:
+        case 0x1D:
+        case 0x1E:
+        case 0x1F:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6_Fmt7(self);
             fetchDescriptor = false;
             break;
@@ -1084,11 +1087,43 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(RabbitizerInstruct
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6_Fmt7(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu6_fmt7_fmt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu6_fmt7_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU6_FMT7;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu6_fmt7.inc"
+
+        case 0x0:
+        case 0x1:
+        case 0x2:
+        case 0x3:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6_Fmt7_Fmt0(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6_Fmt7_Fmt0(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu6_fmt7_fmt0_fmt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu6_fmt7_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU6_FMT7_FMT0;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu6_fmt7_fmt0.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu7(RabbitizerInstruction *self) {
