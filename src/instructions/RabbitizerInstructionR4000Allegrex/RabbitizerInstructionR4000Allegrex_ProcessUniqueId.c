@@ -551,7 +551,316 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4(RabbitizerInstruct
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0.inc"
+
+        case 0x0:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x1:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x2:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x3:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt3(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT0;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0.inc"
+
+        case 0x0:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt0(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x2:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt2(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x3:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt3(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt0(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT0;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0_fmt0.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt2(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT2;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0_fmt2.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt3(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT3;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0_fmt3.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT1;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1.inc"
+
+        case 0x0:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt0(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x2:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt2(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x3:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt3(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt0(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT0;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1_fmt0.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt2(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT2;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1_fmt2.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt3(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1_fmt3.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2.inc"
+
+        case 0x0:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt0(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x1:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt1(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x2:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt2(self);
+            fetchDescriptor = false;
+            break;
+
+        case 0x3:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt3(self);
+            fetchDescriptor = false;
+            break;
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt0(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2_fmt0.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt1(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT1;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2_fmt1.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt2(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2_fmt2.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt3(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2_fmt3.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt3(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_tp(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_tp(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT3;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt3.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerInstruction *self) {

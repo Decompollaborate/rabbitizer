@@ -15,10 +15,10 @@ def vd(x: int) -> int:
 VFPU0 = 0b011000 << 26
 VFPU1 = 0b011001 << 26
 VFPU3 = 0b011011 << 26
-VFPU4 = 0b111000 << 26
-VFPU5 = 0b111001 << 26
-VFPU6 = 0b111010 << 26
-VFPU7 = 0b111011 << 26
+VFPU4 = 0b110100 << 26
+VFPU5 = 0b110111 << 26
+VFPU6 = 0b111100 << 26
+VFPU7 = 0b111111 << 26
 
 def func_start(name: str):
     print(f".type {name},@function")
@@ -32,11 +32,34 @@ def func_end(name: str):
 
 
 def vfpu0_fmt_tp(x: int) -> int:
-    assert x in range(1<<5)
+    assert x in range(1<<5), f"0x{x:X}"
     fmt = (x & 0b11100) >> 2
     t = (x & 0b00010) >> 1
     p = (x & 0b00001) >> 0
     return (fmt << 23) | (t << 15) | (p << 7)
+
+def vfpu4_fmt(x: int) -> int:
+    assert x in range(1<<2), f"0x{x:X}"
+    return x << 24
+
+def vfpu4_fmt_fmt(x: int) -> int:
+    assert x in range(1<<3), f"0x{x:X}"
+    return x << 21
+
+def vfpu4_fmt_fmt_fmt(x: int) -> int:
+    assert x in range(1<<2), f"0x{x:X}"
+    return x << 19
+
+def vfpu4_fmt_fmt_fmt_fmt_tp(x: int) -> int:
+    assert x in range(1<<5), f"0x{x:X}"
+    fmt = (x & 0b11100) >> 2
+    t = (x & 0b00010) >> 1
+    p = (x & 0b00001) >> 0
+    return (fmt << 16) | (t << 15) | (p << 7)
+
+def vfpu6_fmt(x: int) -> int:
+    assert x in range(1<<3), f"0x{x:X}"
+    return x << 23
 
 def do_vfpu0():
     func_start("vfpu0_all")
@@ -88,4 +111,19 @@ def do_vfp3_vcmp():
             print(f"    .word 0x{VFPU3:08X} | 0x{vfpu0_fmt_tp(i):08X} | 0x{VT:08X} | 0x{VS:08X} | 0x{cond:08X}")
     func_end("vcmp_all")
 
-do_vfp1()
+def do_vfp4_fmt0():
+    func_start("vfpu4_fmt0_all")
+    print("    # VFPU4 FMT0")
+
+    VT = vt(1 << 6)
+    VS = vs(1 << 4)
+    VD = vd(1 << 0)
+
+    for i in range(1<<2):
+        for j in range(1<<3):
+            for k in range(1<<2):
+                for l in range(1<<5):
+                    print(f"    .word 0x{VFPU4:08X} | 0x{vfpu4_fmt(i):08X} | 0x{vfpu4_fmt_fmt(j):08X} | 0x{vfpu4_fmt_fmt_fmt(k):08X} | 0x{vfpu4_fmt_fmt_fmt_fmt_tp(l):08X} | 0x{VS:08X} | 0x{VD:08X}")
+    func_end("vfpu4_fmt0_all")
+
+do_vfp4_fmt0()
