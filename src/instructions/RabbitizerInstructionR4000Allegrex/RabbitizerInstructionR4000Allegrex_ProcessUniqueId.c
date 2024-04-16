@@ -1047,7 +1047,19 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5(RabbitizerInstruct
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5_Fmt3(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu5_fmt3_f(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu5_fmt3_f(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU5_FMT3;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu5_fmt3.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(RabbitizerInstruction *self) {

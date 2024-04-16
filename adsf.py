@@ -163,4 +163,35 @@ def do_vfp4_fmt3():
         print(f"    .word 0x{VFPU4:08X} | 0x{fmt:08X} | 0x{j<<16:08X} | 0x{tp(0):08X} | 0x{VS:08X} | 0x{VD:08X}")
     func_end("vfpu4_fmt3_all")
 
-do_vfp4_fmt3()
+def do_vfp5():
+    func_start("vfpu5_all")
+    print("    # VFPU5")
+
+    VT = vt(1 << 6)
+    VS = vs(1 << 4)
+    VD = vd(1 << 0)
+
+    for i in range(1<<2):
+        fmt = i << 24
+        if i != 3:
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x000000:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x000001:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x000010:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x000100:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x001000:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x010000:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x100000:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0x800000:08X}")
+            print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{0xF00000:08X}")
+        else:
+            for j in range(1<<1):
+                print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0x0000:08X}")
+                print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0x0001:08X}")
+                print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0x0010:08X}")
+                print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0x0100:08X}")
+                print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0x1000:08X}")
+                print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0x8000:08X}")
+                print(f"    .word 0x{VFPU5:08X} | 0x{fmt:08X} | 0x{j << 23:08X} | 0x{VT:08X} | 0x{0xF000:08X}")
+    func_end("vfpu5_all")
+
+do_vfp5()
