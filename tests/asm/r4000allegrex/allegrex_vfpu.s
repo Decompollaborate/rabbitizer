@@ -2523,3 +2523,43 @@ vcmp_all:
 
     jr $ra
 .size vcmp_all, . - vcmp_all
+
+
+.type mfvc_test,@function
+.globl mfvc_test
+mfvc_test:
+    mfvc        $a0, $128
+    mfvc        $a0, $129
+    mfvc        $a0, $130
+    mfvc        $a0, $131
+    mfvc        $a0, $132
+    mfvc        $a0, $133
+    mfvc        $a0, $134
+    mfvc        $a0, $135
+    mfvc        $a0, $136
+    mfvc        $a0, $137
+    mfvc        $a0, $138
+    mfvc        $a0, $139
+    mfvc        $a0, $140
+    mfvc        $a0, $141
+    mfvc        $a0, $142
+    mfvc        $a0, $143
+    nop
+    mfvc        $a0, $144
+    mfvc        $a0, $145
+    mfvc        $a0, $146
+    jr $ra
+.size mfvc_test, . - mfvc_test
+
+
+.type cop2_test,@function
+.globl cop2_test
+cop2_test:
+    vsync2
+    mfv         $a1, S000
+    mfvc        $a1, $129
+    mtv         $a1, S000
+    mtvc        $a1, $129
+
+    jr $ra
+.size cop2_test, . - cop2_test

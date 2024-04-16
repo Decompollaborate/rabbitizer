@@ -3592,24 +3592,16 @@ tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x4900000
         InstrIdType: 'R4000ALLEGREX_COP2_BC2'
         gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640004'. Expected 'mfv         $a0, S100', got '.word       0x48640004                   # INVALID     $v1, $a0, 0x4 # 00000000 <InstrIdType: CPU_COP2>'
-        InstrIdType: 'CPU_COP2'
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640004'. Expected 'mfv         $a0, S100', got '.word       0x48640004                   # INVALID     $v1, $a0, 0x4 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2'
         gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640080'. Expected 'mfvc        $a0, $128', got '.word       0x48640080                   # INVALID     $v1, $a0, 0x80 # 00000000 <InstrIdType: CPU_COP2>'
-        InstrIdType: 'CPU_COP2'
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48E40004'. Expected 'mtv         $a0, S100', got '.word       0x48E40004                   # INVALID     $a3, $a0, 0x4 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MTHC2>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MTHC2'
         gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640084'. Expected 'mfvc        $a0, $132', got '.word       0x48640084                   # INVALID     $v1, $a0, 0x84 # 00000000 <InstrIdType: CPU_COP2>'
-        InstrIdType: 'CPU_COP2'
-        gnuMode 'true'
-
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48E40004'. Expected 'mtv         $a0, S100', got '.word       0x48E40004                   # INVALID     $a3, $a0, 0x4 # 00000000 <InstrIdType: CPU_COP2>'
-        InstrIdType: 'CPU_COP2'
-        gnuMode 'true'
-
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48E40084'. Expected 'mtvc        $a0, $132', got '.word       0x48E40084                   # INVALID     $a3, $a0, 0x84 # 00000000 <InstrIdType: CPU_COP2>'
-        InstrIdType: 'CPU_COP2'
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48E40084'. Expected 'mtvc        $a0, $132', got '.word       0x48E40084                   # INVALID     $a3, $a0, 0x84 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MTHC2>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MTHC2'
         gnuMode 'true'
 
 tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xF2008080'. Expected 'vmscl.q     M000, M000, S000', got '.word       0xF2008080                   # INVALID     $s0, $zero, -0x7F80 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6>'
@@ -7984,6 +7976,102 @@ tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x6C40888
         InstrIdType: 'R4000ALLEGREX_VFPU3'
         gnuMode 'true'
 
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640080'. Expected 'mfvc        $a0, VFPU_PFXS', got '.word       0x48640080                   # INVALID     $v1, $a0, 0x80 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640081'. Expected 'mfvc        $a0, VFPU_PFXT', got '.word       0x48640081                   # INVALID     $v1, $a0, 0x81 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640082'. Expected 'mfvc        $a0, VFPU_PFXD', got '.word       0x48640082                   # INVALID     $v1, $a0, 0x82 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640083'. Expected 'mfvc        $a0, VFPU_CC', got '.word       0x48640083                   # INVALID     $v1, $a0, 0x83 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640084'. Expected 'mfvc        $a0, VFPU_INF4', got '.word       0x48640084                   # INVALID     $v1, $a0, 0x84 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640085'. Expected 'mfvc        $a0, VFPU_RSV5', got '.word       0x48640085                   # INVALID     $v1, $a0, 0x85 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640086'. Expected 'mfvc        $a0, VFPU_RSV6', got '.word       0x48640086                   # INVALID     $v1, $a0, 0x86 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640087'. Expected 'mfvc        $a0, VFPU_REV', got '.word       0x48640087                   # INVALID     $v1, $a0, 0x87 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640088'. Expected 'mfvc        $a0, VFPU_RCX0', got '.word       0x48640088                   # INVALID     $v1, $a0, 0x88 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640089'. Expected 'mfvc        $a0, VFPU_RCX1', got '.word       0x48640089                   # INVALID     $v1, $a0, 0x89 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x4864008A'. Expected 'mfvc        $a0, VFPU_RCX2', got '.word       0x4864008A                   # INVALID     $v1, $a0, 0x8A # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x4864008B'. Expected 'mfvc        $a0, VFPU_RCX3', got '.word       0x4864008B                   # INVALID     $v1, $a0, 0x8B # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x4864008C'. Expected 'mfvc        $a0, VFPU_RCX4', got '.word       0x4864008C                   # INVALID     $v1, $a0, 0x8C # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x4864008D'. Expected 'mfvc        $a0, VFPU_RCX5', got '.word       0x4864008D                   # INVALID     $v1, $a0, 0x8D # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x4864008E'. Expected 'mfvc        $a0, VFPU_RCX6', got '.word       0x4864008E                   # INVALID     $v1, $a0, 0x8E # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x4864008F'. Expected 'mfvc        $a0, VFPU_RCX7', got '.word       0x4864008F                   # INVALID     $v1, $a0, 0x8F # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640090'. Expected 'illegal', got '.word       0x48640090                   # INVALID     $v1, $a0, 0x90 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640091'. Expected 'illegal', got '.word       0x48640091                   # INVALID     $v1, $a0, 0x91 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48640092'. Expected 'illegal', got '.word       0x48640092                   # INVALID     $v1, $a0, 0x92 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x486000FF'. Expected 'vsync2', got '.word       0x486000FF                   # INVALID     $v1, $zero, 0xFF # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48650000'. Expected 'mfv      $a1, S000', got '.word       0x48650000                   # INVALID     $v1, $a1, 0x0 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48650081'. Expected 'mfvc     $a1, VFPU_PFXT', got '.word       0x48650081                   # INVALID     $v1, $a1, 0x81 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MFHC2_P>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MFHC2_P'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48E50000'. Expected 'mtv      $a1, S000', got '.word       0x48E50000                   # INVALID     $a3, $a1, 0x0 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MTHC2>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MTHC2'
+        gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0x48E50081'. Expected 'mtvc     $a1, VFPU_PFXT', got '.word       0x48E50081                   # INVALID     $a3, $a1, 0x81 # 00000000 <InstrIdType: R4000ALLEGREX_COP2_MTHC2>'
+        InstrIdType: 'R4000ALLEGREX_COP2_MTHC2'
+        gnuMode 'true'
+
 tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xFFFF040D'. Expected 'vflush', got '.word       0xFFFF040D                   # INVALID     $ra, $ra, 0x40D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU7>'
         InstrIdType: 'R4000ALLEGREX_VFPU7'
         gnuMode 'true'
@@ -7996,5 +8084,5 @@ tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: Error on word '0xFFFF032
         InstrIdType: 'R4000ALLEGREX_VFPU7'
         gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1998 errors out of 2324 entries. 14.03% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 2020 errors out of 2346 entries. 13.90% correct.
 
