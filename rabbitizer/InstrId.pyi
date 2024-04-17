@@ -547,6 +547,18 @@ class InstrId:
     r4000allegrex_vasin_p: Enum
     r4000allegrex_vasin_t: Enum
     r4000allegrex_vasin_q: Enum
+    r4000allegrex_vnrcp_s: Enum
+    r4000allegrex_vnrcp_p: Enum
+    r4000allegrex_vnrcp_t: Enum
+    r4000allegrex_vnrcp_q: Enum
+    r4000allegrex_vnsin_s: Enum
+    r4000allegrex_vnsin_p: Enum
+    r4000allegrex_vnsin_t: Enum
+    r4000allegrex_vnsin_q: Enum
+    r4000allegrex_vrexp2_s: Enum
+    r4000allegrex_vrexp2_p: Enum
+    r4000allegrex_vrexp2_t: Enum
+    r4000allegrex_vrexp2_q: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum
