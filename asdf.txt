@@ -5759,11 +5759,6 @@ Error on word '0xD0409001'. Expected 'illegal', got '.word       0xD0409001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
     gnuMode 'true'
 
-Error on word '0xD0409081'. Expected 'vsrt1.q     C010, C400', got '.word       0xD0409081                   # INVALID     $v0, $zero, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
 Error on word '0xD0411001'. Expected 'illegal', got '.word       0xD0411001                   # INVALID     $v0, $at, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
@@ -5779,27 +5774,12 @@ Error on word '0xD0419001'. Expected 'illegal', got '.word       0xD0419001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
     gnuMode 'true'
 
-Error on word '0xD0419081'. Expected 'vsrt2.q     C010, C400', got '.word       0xD0419081                   # INVALID     $v0, $at, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
 Error on word '0xD0421001'. Expected 'illegal', got '.word       0xD0421001                   # INVALID     $v0, $v0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
     gnuMode 'true'
 
-Error on word '0xD0421081'. Expected 'vbfy1.pq    C010, C400', got '.word       0xD0421081                   # INVALID     $v0, $v0, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
 Error on word '0xD0429001'. Expected 'illegal', got '.word       0xD0429001                   # INVALID     $v0, $v0, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0429081'. Expected 'vbfy1.pq    C010, C400', got '.word       0xD0429081                   # INVALID     $v0, $v0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
     gnuMode 'true'
@@ -5819,41 +5799,6 @@ Error on word '0xD0439001'. Expected 'illegal', got '.word       0xD0439001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
     gnuMode 'true'
 
-Error on word '0xD0439081'. Expected 'vbfy2.q     C010, C400', got '.word       0xD0439081                   # INVALID     $v0, $v1, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0441001'. Expected 'vocp.s      S010, S400', got '.word       0xD0441001                   # INVALID     $v0, $a0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0441081'. Expected 'vocp.p      C010, C400', got '.word       0xD0441081                   # INVALID     $v0, $a0, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0449001'. Expected 'vocp.t      C010, C400', got '.word       0xD0449001                   # INVALID     $v0, $a0, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0449081'. Expected 'vocp.q      C010, C400', got '.word       0xD0449081                   # INVALID     $v0, $a0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0451001'. Expected 'vsocp.s     C010, S400', got '.word       0xD0451001                   # INVALID     $v0, $a1, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0451081'. Expected 'vsocp.p     C010, C400', got '.word       0xD0451081                   # INVALID     $v0, $a1, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
 Error on word '0xD0459001'. Expected 'illegal', got '.word       0xD0459001                   # INVALID     $v0, $a1, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
@@ -5869,37 +5814,7 @@ Error on word '0xD0461001'. Expected 'illegal', got '.word       0xD0461001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
     gnuMode 'true'
 
-Error on word '0xD0461081'. Expected 'vfad.p      S010, C400', got '.word       0xD0461081                   # INVALID     $v0, $a2, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0469001'. Expected 'vfad.t      S010, C400', got '.word       0xD0469001                   # INVALID     $v0, $a2, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0469081'. Expected 'vfad.q      S010, C400', got '.word       0xD0469081                   # INVALID     $v0, $a2, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
 Error on word '0xD0471001'. Expected 'illegal', got '.word       0xD0471001                   # INVALID     $v0, $a3, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0471081'. Expected 'vavg.p      S010, C400', got '.word       0xD0471081                   # INVALID     $v0, $a3, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0479001'. Expected 'vavg.t      S010, C400', got '.word       0xD0479001                   # INVALID     $v0, $a3, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD0479081'. Expected 'vavg.q      S010, C400', got '.word       0xD0479081                   # INVALID     $v0, $a3, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT0'
     gnuMode 'true'
@@ -16604,5 +16519,5 @@ Error on word '0xFFFF0320'. Expected 'vsync', got '.word       0xFFFF0320       
     InstrIdType: 'R4000ALLEGREX_VFPU7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 3320 errors out of 4773 entries. 30.44% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 3303 errors out of 4773 entries. 30.80% correct.
 
