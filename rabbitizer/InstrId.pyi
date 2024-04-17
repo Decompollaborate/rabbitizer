@@ -515,6 +515,38 @@ class InstrId:
     r4000allegrex_vone_p: Enum
     r4000allegrex_vone_t: Enum
     r4000allegrex_vone_q: Enum
+    r4000allegrex_vrcp_s: Enum
+    r4000allegrex_vrcp_p: Enum
+    r4000allegrex_vrcp_t: Enum
+    r4000allegrex_vrcp_q: Enum
+    r4000allegrex_vrsq_s: Enum
+    r4000allegrex_vrsq_p: Enum
+    r4000allegrex_vrsq_t: Enum
+    r4000allegrex_vrsq_q: Enum
+    r4000allegrex_vsin_s: Enum
+    r4000allegrex_vsin_p: Enum
+    r4000allegrex_vsin_t: Enum
+    r4000allegrex_vsin_q: Enum
+    r4000allegrex_vcos_s: Enum
+    r4000allegrex_vcos_p: Enum
+    r4000allegrex_vcos_t: Enum
+    r4000allegrex_vcos_q: Enum
+    r4000allegrex_vexp2_s: Enum
+    r4000allegrex_vexp2_p: Enum
+    r4000allegrex_vexp2_t: Enum
+    r4000allegrex_vexp2_q: Enum
+    r4000allegrex_vlog2_s: Enum
+    r4000allegrex_vlog2_p: Enum
+    r4000allegrex_vlog2_t: Enum
+    r4000allegrex_vlog2_q: Enum
+    r4000allegrex_vsqrt_s: Enum
+    r4000allegrex_vsqrt_p: Enum
+    r4000allegrex_vsqrt_t: Enum
+    r4000allegrex_vsqrt_q: Enum
+    r4000allegrex_vasin_s: Enum
+    r4000allegrex_vasin_p: Enum
+    r4000allegrex_vasin_t: Enum
+    r4000allegrex_vasin_q: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum
