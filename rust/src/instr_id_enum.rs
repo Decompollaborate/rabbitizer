@@ -672,6 +672,8 @@ pub enum InstrId {
     r4000allegrex_vsgn_p,
     r4000allegrex_vsgn_t,
     r4000allegrex_vsgn_q,
+    r4000allegrex_vmfvc,
+    r4000allegrex_vmtvc,
     r4000allegrex_svl_q,
     r4000allegrex_svr_q,
     r4000allegrex_USERDEF_00,

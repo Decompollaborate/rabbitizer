@@ -5949,42 +5949,42 @@ Error on word '0xD04F9081'. Expected 'illegal', got '.word       0xD04F9081     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT1'
     gnuMode 'true'
 
-Error on word '0xD0501001'. Expected 'vmfvc       S010, 0x10', got '.word       0xD0501001                   # INVALID     $v0, $s0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0501001'. Expected 'vmfvc       S010, 0x10', got 'vmfvc       S010, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0501081'. Expected 'vmfvc       S010, 0x10', got '.word       0xD0501081                   # INVALID     $v0, $s0, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0501081'. Expected 'vmfvc       S010, 0x10', got '.word       0xD0501081                   # vmfvc       S010, S400 # 00000080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0509001'. Expected 'vmfvc       S010, 0x90', got '.word       0xD0509001                   # INVALID     $v0, $s0, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0509001'. Expected 'vmfvc       S010, 0x90', got '.word       0xD0509001                   # vmfvc       S010, S400 # 00008000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0509081'. Expected 'vmfvc       S010, 0x90', got '.word       0xD0509081                   # INVALID     $v0, $s0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0509081'. Expected 'vmfvc       S010, 0x90', got '.word       0xD0509081                   # vmfvc       S010, S400 # 00008080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0511001'. Expected 'vmtvc       0x01, S400', got '.word       0xD0511001                   # INVALID     $v0, $s1, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0511001'. Expected 'vmtvc       0x01, S400', got 'vmtvc       S010, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0511081'. Expected 'vmtvc       VFPU_PFXT, S400', got '.word       0xD0511081                   # INVALID     $v0, $s1, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0511081'. Expected 'vmtvc       VFPU_PFXT, S400', got '.word       0xD0511081                   # vmtvc       S010, S400 # 00000080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0519001'. Expected 'vmtvc       0x01, S400', got '.word       0xD0519001                   # INVALID     $v0, $s1, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0519001'. Expected 'vmtvc       0x01, S400', got '.word       0xD0519001                   # vmtvc       S010, S400 # 00008000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0519081'. Expected 'vmtvc       VFPU_PFXT, S400', got '.word       0xD0519081                   # INVALID     $v0, $s1, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
+Error on word '0xD0519081'. Expected 'vmtvc       VFPU_PFXT, S400', got '.word       0xD0519081                   # vmtvc       S010, S400 # 00008080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
     gnuMode 'true'
