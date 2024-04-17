@@ -559,6 +559,19 @@ class InstrId:
     r4000allegrex_vrexp2_p: Enum
     r4000allegrex_vrexp2_t: Enum
     r4000allegrex_vrexp2_q: Enum
+    r4000allegrex_vrnds_s: Enum
+    r4000allegrex_vrndi_s: Enum
+    r4000allegrex_vrndi_p: Enum
+    r4000allegrex_vrndi_t: Enum
+    r4000allegrex_vrndi_q: Enum
+    r4000allegrex_vrndf1_s: Enum
+    r4000allegrex_vrndf1_p: Enum
+    r4000allegrex_vrndf1_t: Enum
+    r4000allegrex_vrndf1_q: Enum
+    r4000allegrex_vrndf2_s: Enum
+    r4000allegrex_vrndf2_p: Enum
+    r4000allegrex_vrndf2_t: Enum
+    r4000allegrex_vrndf2_q: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum
