@@ -6,10 +6,10 @@
     |  = COP2   |0 0|0 0 0|0 0| fmt |t|             |p|             |
     ------6-------2----3----2----3---1---------------1---------------
     |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| fmt
- 00 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
- 01 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
- 10 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
- 11 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+ 00 | vmov.s| vabs.s| vneg.s| ---   |vsat0.s|vsat1.s|vzero.s| vocp.s|
+ 01 | vmov.p| vabs.p| vneg.p| vidt.p|vsat0.p|vsat1.p|vzero.p| vocp.p|
+ 10 | vmov.t| vabs.t| vneg.t| ---   |vsat0.t|vsat1.t|vzero.t| vocp.t|
+ 11 | vmov.q| vabs.q| vneg.q| vidt.q|vsat0.q|vsat1.q|vzero.q| vocp.q|
  tp |-------|-------|-------|-------|-------|-------|-------|-------|
 */
 
@@ -20,12 +20,24 @@ vmov.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x00 << 2 | 0x0, vmov_s, vmov.s,
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // MOVe Single word
+
 /*
 vmov.p
     31--------26-25-24--21--19----16---14----------8---6------------0
     |   VFPU4   |0 0|0 0 0|0 0|0 0 0|0|      vs     |1|      vd     |
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x00 << 2 | 0x1, vmov_p, vmov.p,
+        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // MOVe Pair word
 
 /*
 vmov.t
@@ -34,12 +46,24 @@ vmov.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x00 << 2 | 0x2, vmov_t, vmov.t,
+        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // MOVe Triple word
+
 /*
 vmov.q
     31--------26-25-24--21--19----16---14----------8---6------------0
     |   VFPU4   |0 0|0 0 0|0 0|0 0 0|1|      vs     |1|      vd     |
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x00 << 2 | 0x3, vmov_q, vmov.q,
+        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // MOVe Quad word
 
 /*
 vabs.s
@@ -48,12 +72,24 @@ vabs.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x01 << 2 | 0x0, vabs_s, vabs.s,
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // ABSolute value Single word
+
 /*
 vabs.p
     31--------26-25-24--21--19----16---14----------8---6------------0
     |   VFPU4   |0 0|0 0 0|0 0|0 0 1|0|      vs     |1|      vd     |
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x01 << 2 | 0x1, vabs_p, vabs.p,
+        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // ABSolute value Pair word
 
 /*
 vabs.t
@@ -62,12 +98,24 @@ vabs.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x01 << 2 | 0x2, vabs_t, vabs.t,
+        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // ABSolute value Triple word
+
 /*
 vabs.q
     31--------26-25-24--21--19----16---14----------8---6------------0
     |   VFPU4   |0 0|0 0 0|0 0|0 0 1|1|      vs     |1|      vd     |
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x01 << 2 | 0x3, vabs_q, vabs.q,
+        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // ABSolute value Quad word
 
 /*
 vneg.s
@@ -76,12 +124,24 @@ vneg.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x02 << 2 | 0x0, vneg_s, vneg.s,
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // NEGate Single word
+
 /*
 vneg.p
     31--------26-25-24--21--19----16---14----------8---6------------0
     |   VFPU4   |0 0|0 0 0|0 0|0 1 0|0|      vs     |1|      vd     |
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x02 << 2 | 0x1, vneg_p, vneg.p,
+        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // NEGate Pair word
 
 /*
 vneg.t
@@ -90,12 +150,24 @@ vneg.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x02 << 2 | 0x2, vneg_t, vneg.t,
+        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // NEGate Triple word
+
 /*
 vneg.q
     31--------26-25-24--21--19----16---14----------8---6------------0
     |   VFPU4   |0 0|0 0 0|0 0|0 1 0|1|      vs     |1|      vd     |
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
+
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x02 << 2 | 0x3, vneg_q, vneg.q,
+        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // NEGate Quad word
 
 /*
 vidt.p

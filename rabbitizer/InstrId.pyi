@@ -485,6 +485,18 @@ class InstrId:
     r4000allegrex_vslt_p: Enum
     r4000allegrex_vslt_t: Enum
     r4000allegrex_vslt_q: Enum
+    r4000allegrex_vmov_s: Enum
+    r4000allegrex_vmov_p: Enum
+    r4000allegrex_vmov_t: Enum
+    r4000allegrex_vmov_q: Enum
+    r4000allegrex_vabs_s: Enum
+    r4000allegrex_vabs_p: Enum
+    r4000allegrex_vabs_t: Enum
+    r4000allegrex_vabs_q: Enum
+    r4000allegrex_vneg_s: Enum
+    r4000allegrex_vneg_p: Enum
+    r4000allegrex_vneg_t: Enum
+    r4000allegrex_vneg_q: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum
