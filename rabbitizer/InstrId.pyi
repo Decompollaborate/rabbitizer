@@ -497,6 +497,24 @@ class InstrId:
     r4000allegrex_vneg_p: Enum
     r4000allegrex_vneg_t: Enum
     r4000allegrex_vneg_q: Enum
+    r4000allegrex_vidt_p: Enum
+    r4000allegrex_vidt_q: Enum
+    r4000allegrex_vsat0_s: Enum
+    r4000allegrex_vsat0_p: Enum
+    r4000allegrex_vsat0_t: Enum
+    r4000allegrex_vsat0_q: Enum
+    r4000allegrex_vsat1_s: Enum
+    r4000allegrex_vsat1_p: Enum
+    r4000allegrex_vsat1_t: Enum
+    r4000allegrex_vsat1_q: Enum
+    r4000allegrex_vzero_s: Enum
+    r4000allegrex_vzero_p: Enum
+    r4000allegrex_vzero_t: Enum
+    r4000allegrex_vzero_q: Enum
+    r4000allegrex_vone_s: Enum
+    r4000allegrex_vone_p: Enum
+    r4000allegrex_vone_t: Enum
+    r4000allegrex_vone_q: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum
