@@ -615,6 +615,9 @@ class InstrId:
     r4000allegrex_vsgn_q: Enum
     r4000allegrex_vmfvc: Enum
     r4000allegrex_vmtvc: Enum
+    r4000allegrex_vt4444_q: Enum
+    r4000allegrex_vt5551_q: Enum
+    r4000allegrex_vt5650_q: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum

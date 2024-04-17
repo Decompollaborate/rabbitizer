@@ -6144,11 +6144,6 @@ Error on word '0xD0599001'. Expected 'illegal', got '.word       0xD0599001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
     gnuMode 'true'
 
-Error on word '0xD0599081'. Expected 'vt4444.q    C010, C400', got '.word       0xD0599081                   # INVALID     $v0, $t9, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD05A1001'. Expected 'illegal', got '.word       0xD05A1001                   # INVALID     $v0, $k0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
@@ -6164,11 +6159,6 @@ Error on word '0xD05A9001'. Expected 'illegal', got '.word       0xD05A9001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
     gnuMode 'true'
 
-Error on word '0xD05A9081'. Expected 'vt5551.q    C010, C400', got '.word       0xD05A9081                   # INVALID     $v0, $k0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD05B1001'. Expected 'illegal', got '.word       0xD05B1001                   # INVALID     $v0, $k1, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
@@ -6180,11 +6170,6 @@ Error on word '0xD05B1081'. Expected 'illegal', got '.word       0xD05B1081     
     gnuMode 'true'
 
 Error on word '0xD05B9001'. Expected 'illegal', got '.word       0xD05B9001                   # INVALID     $v0, $k1, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
-    gnuMode 'true'
-
-Error on word '0xD05B9081'. Expected 'vt5650.q    C010, C400', got '.word       0xD05B9081                   # INVALID     $v0, $k1, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT3'
     gnuMode 'true'
@@ -16489,5 +16474,5 @@ Error on word '0xFFFF0320'. Expected 'vsync', got '.word       0xFFFF0320       
     InstrIdType: 'R4000ALLEGREX_VFPU7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 3297 errors out of 4773 entries. 30.92% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 3294 errors out of 4773 entries. 30.99% correct.
 
