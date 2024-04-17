@@ -20,14 +20,20 @@
 
 #define LOG(...)                                \
     do {                                        \
+        fprintf(stderr, __VA_ARGS__);           \
+        fprintf(stderr, "    File: %s\n", __BASE_FILE__); \
+    } while (0)
+
+#define LOG_END(...)                                \
+    do {                                        \
         fprintf(stderr, "%s: ", __BASE_FILE__); \
         fprintf(stderr, __VA_ARGS__);           \
     } while (0)
 
 #define LOG_ENTRY_DATA(entry, instr)                                                                  \
     do {                                                                                              \
-        fprintf(stderr, "        InstrIdType: '%s'\n", RabInstrIdType_getName((instr)->instrIdType)); \
-        fprintf(stderr, "        gnuMode '%s'\n", BOOL_STR((entry)->gnuMode));                        \
+        fprintf(stderr, "    InstrIdType: '%s'\n", RabInstrIdType_getName((instr)->instrIdType)); \
+        fprintf(stderr, "    gnuMode '%s'\n", BOOL_STR((entry)->gnuMode));                        \
         fprintf(stderr, "\n");                                                                        \
     } while (0)
 
@@ -181,7 +187,7 @@ int main() {
     size_t i;
 
     if (errorCount != 0) {
-        LOG("Found %i duplicated entries. Stopping\n", errorCount);
+        LOG_END("Found %i duplicated entries. Stopping\n", errorCount);
 
         return errorCount;
     }
@@ -192,7 +198,7 @@ int main() {
         }
     }
 
-    LOG("%i errors out of %zu entries. %.2f%% correct.\n\n", errorCount, test_entries_len, (double)((test_entries_len - errorCount) / (float)test_entries_len * 100.0f));
+    LOG_END("%i errors out of %zu entries. %.2f%% correct.\n\n", errorCount, test_entries_len, (double)((test_entries_len - errorCount) / (float)test_entries_len * 100.0f));
 
     return errorCount;
 }
