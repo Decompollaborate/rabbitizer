@@ -2843,7 +2843,7 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xD05F1081, NULL, "illegal"),
     TEST_ENTRY_C(0xD05F9001, NULL, "illegal"),
     TEST_ENTRY_C(0xD05F9081, NULL, "illegal"),
-    TEST_ENTRY_C(0xD0601001, NULL, "vcst.s      S010, Undefined        02 (00002B7C) WAW"),
+    TEST_ENTRY_C(0xD0601001, NULL, "vcst.s      S010, Undefined"),
     TEST_ENTRY_C(0xD0601081, NULL, "vcst.p      C010, Undefined"),
     TEST_ENTRY_C(0xD0609001, NULL, "vcst.t      C010, Undefined"),
     TEST_ENTRY_C(0xD0609081, NULL, "vcst.q      C010, Undefined"),
