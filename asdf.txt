@@ -5644,11 +5644,6 @@ Error on word '0xD0379081'. Expected 'illegal', got '.word       0xD0379081     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT2'
     gnuMode 'true'
 
-Error on word '0xD0381001'. Expected 'vuc2ifs.s      C010, S400      02 (000028FC) WAW', got '.word       0xD0381001                   # INVALID     $at, $t8, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD0381081'. Expected 'illegal', got '.word       0xD0381081                   # INVALID     $at, $t8, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
@@ -5660,11 +5655,6 @@ Error on word '0xD0389001'. Expected 'illegal', got '.word       0xD0389001     
     gnuMode 'true'
 
 Error on word '0xD0389081'. Expected 'illegal', got '.word       0xD0389081                   # INVALID     $at, $t8, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
-Error on word '0xD0391001'. Expected 'vc2i.s      C010, S400', got '.word       0xD0391001                   # INVALID     $at, $t9, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
@@ -5684,32 +5674,12 @@ Error on word '0xD0399081'. Expected 'illegal', got '.word       0xD0399081     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
 
-Error on word '0xD03A1001'. Expected 'vus2i.s     C010, S400', got '.word       0xD03A1001                   # INVALID     $at, $k0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
-Error on word '0xD03A1081'. Expected 'vus2i.p     C010, C400', got '.word       0xD03A1081                   # INVALID     $at, $k0, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD03A9001'. Expected 'illegal', got '.word       0xD03A9001                   # INVALID     $at, $k0, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
 
 Error on word '0xD03A9081'. Expected 'illegal', got '.word       0xD03A9081                   # INVALID     $at, $k0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
-Error on word '0xD03B1001'. Expected 'vs2i.s      C010, S400', got '.word       0xD03B1001                   # INVALID     $at, $k1, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
-Error on word '0xD03B1081'. Expected 'vs2i.p      C010, C400', got '.word       0xD03B1081                   # INVALID     $at, $k1, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
@@ -5739,11 +5709,6 @@ Error on word '0xD03C9001'. Expected 'illegal', got '.word       0xD03C9001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
 
-Error on word '0xD03C9081'. Expected 'vi2uc.q     S010, C400', got '.word       0xD03C9081                   # INVALID     $at, $gp, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD03D1001'. Expected 'illegal', got '.word       0xD03D1001                   # INVALID     $at, $sp, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
@@ -5759,17 +5724,7 @@ Error on word '0xD03D9001'. Expected 'illegal', got '.word       0xD03D9001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
 
-Error on word '0xD03D9081'. Expected 'vi2c.q      S010, C400', got '.word       0xD03D9081                   # INVALID     $at, $sp, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD03E1001'. Expected 'illegal', got '.word       0xD03E1001                   # INVALID     $at, $fp, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
-Error on word '0xD03E1081'. Expected 'vi2us.p     S010, C400', got '.word       0xD03E1081                   # INVALID     $at, $fp, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
@@ -5779,27 +5734,12 @@ Error on word '0xD03E9001'. Expected 'illegal', got '.word       0xD03E9001     
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
 
-Error on word '0xD03E9081'. Expected 'vi2us.q     C010, C400', got '.word       0xD03E9081                   # INVALID     $at, $fp, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD03F1001'. Expected 'illegal', got '.word       0xD03F1001                   # INVALID     $at, $ra, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
 
-Error on word '0xD03F1081'. Expected 'vi2s.p      S010, C400', got '.word       0xD03F1081                   # INVALID     $at, $ra, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
 Error on word '0xD03F9001'. Expected 'illegal', got '.word       0xD03F9001                   # INVALID     $at, $ra, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
-    gnuMode 'true'
-
-Error on word '0xD03F9081'. Expected 'vi2s.q      C010, C400', got '.word       0xD03F9081                   # INVALID     $at, $ra, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT3'
     gnuMode 'true'
@@ -16664,5 +16604,5 @@ Error on word '0xFFFF0320'. Expected 'vsync', got '.word       0xFFFF0320       
     InstrIdType: 'R4000ALLEGREX_VFPU7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 3332 errors out of 4773 entries. 30.19% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 3320 errors out of 4773 entries. 30.44% correct.
 

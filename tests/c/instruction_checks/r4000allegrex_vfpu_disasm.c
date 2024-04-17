@@ -2683,7 +2683,7 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xD0371081, NULL, "illegal"),
     TEST_ENTRY_C(0xD0379001, NULL, "illegal"),
     TEST_ENTRY_C(0xD0379081, NULL, "illegal"),
-    TEST_ENTRY_C(0xD0381001, NULL, "vuc2ifs.s      C010, S400      02 (000028FC) WAW"),
+    TEST_ENTRY_C(0xD0381001, NULL, "vuc2ifs.s   C010, S400"),
     TEST_ENTRY_C(0xD0381081, NULL, "illegal"),
     TEST_ENTRY_C(0xD0389001, NULL, "illegal"),
     TEST_ENTRY_C(0xD0389081, NULL, "illegal"),
