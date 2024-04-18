@@ -8249,17 +8249,12 @@ Error on word '0xF00010C0'. Expected 'vmmul.p     M002, E400, M000', got 'vmmul.
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
 
-Error on word '0xF0009040'. Expected 'vmmul.t     M001, E400, M000', got 'vmmul.t     M001, M400, M000'
+Error on word '0xF0009004'. Expected 'vmmul.t     M100, E400, M000', got 'vmmul.t     M100, M400, M000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
 
 Error on word '0xF00090C0'. Expected 'vmmul.q     M002, E400, M000', got 'vmmul.q     INVALID_64, M400, M000'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU6'
-    gnuMode 'true'
-
-Error on word '0xF0801040'. Expected 'vhtfm2.p    C002, M???, C000', got 'vhtfm2.p    C002, M400, C000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
@@ -8284,7 +8279,12 @@ Error on word '0xF1001040'. Expected 'vtfm3.t     S002, M???, S000', got '.word 
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
 
-Error on word '0xF10090C0'. Expected 'vtfm3.t     C002, M400, C000', got '.word       0xF10090C0                   # INVALID     $t0, $zero, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6>'
+Error on word '0xF1009040'. Expected 'vtfm3.t     C100, M400, C000', got 'vtfm3.t     C001, M400, C000'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF1009004'. Expected 'vtfm3.t     C002, M400, C000', got 'vtfm3.t     C100, M400, C000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
@@ -8374,5 +8374,5 @@ Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'v
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1674 errors out of 5011 entries. 66.59% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1674 errors out of 4756 entries. 64.80% correct.
 
