@@ -203,6 +203,11 @@ pub mod registers {
         #include "registers/RabbitizerRegister_R4000AllegrexM4x4.inc"
     }
 
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    prefix##_##name,
+
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
     SPECIAL_RS_TAG(allow(non_camel_case_types))
@@ -210,6 +215,11 @@ pub mod registers {
     pub enum R4000AllegrexVfpuControl {
         #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
     }
+
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
+    name,
 
     /* R4000ALLEGREX */
 

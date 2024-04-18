@@ -813,10 +813,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt1(Rab
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt2(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2;
 
     switch (fmt) {

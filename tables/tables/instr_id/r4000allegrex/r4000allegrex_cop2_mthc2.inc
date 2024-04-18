@@ -26,14 +26,14 @@ mtv
 
 /*
 mtvc
-    31--------26-25-----21-20-----16-----------------7-6---4-3------0
-    |    COP2   |0 0 1 1 1|    rt   |0 0 0 0 0 0 0 0|1|0 0 0|cop2cd_128|
-    ------6----------5---------5---------------------1---3------4----
+    31--------26-25-----21-20-----16-----------------7-6------------0
+    |    COP2   |0 0 1 1 1|    rt   |0 0 0 0 0 0 0 0|1|    cop2cd   |
+    ------6----------5---------5---------------------1-------7-------
 */
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x1, mtvc,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_cop2cd_128},
+        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_cop2cd},
         .instrType=RABBITIZER_INSTR_TYPE_R,
         .readsRs=true
     ) // Move word To Vfpu Control

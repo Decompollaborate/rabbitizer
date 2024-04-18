@@ -39,7 +39,8 @@
     RAB_DEF_OPERAND(r4000allegrex, mq_vt)
     RAB_DEF_OPERAND(r4000allegrex, mq_vd)
 
-    RAB_DEF_OPERAND(r4000allegrex, cop2cd_128)
+    RAB_DEF_OPERAND(r4000allegrex, cop2cs)
+    RAB_DEF_OPERAND(r4000allegrex, cop2cd)
 
     RAB_DEF_OPERAND(r4000allegrex, pos)
     RAB_DEF_OPERAND(r4000allegrex, size)

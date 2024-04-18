@@ -275,11 +275,22 @@ size_t RabbitizerOperandType_process_r4000allegrex_mq_vd(const RabbitizerInstruc
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_r4000allegrex_cop2cd_128(const RabbitizerInstruction *self, char *dst,
+size_t RabbitizerOperandType_process_r4000allegrex_cop2cs(const RabbitizerInstruction *self, char *dst,
                                                               UNUSED const char *immOverride,
                                                               UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexVfpuControl(RAB_INSTR_R4000ALLEGREX_GET_cop2cd_128(self));
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexVfpuControl(RAB_INSTR_R4000ALLEGREX_GET_cop2cs(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_cop2cd(const RabbitizerInstruction *self, char *dst,
+                                                              UNUSED const char *immOverride,
+                                                              UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexVfpuControl(RAB_INSTR_R4000ALLEGREX_GET_cop2cd(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 

@@ -295,7 +295,8 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_r4000allegrex_mq_vs:
         case RAB_OPERAND_r4000allegrex_mq_vt:
         case RAB_OPERAND_r4000allegrex_mq_vd:
-        case RAB_OPERAND_r4000allegrex_cop2cd_128:
+        case RAB_OPERAND_r4000allegrex_cop2cs:
+        case RAB_OPERAND_r4000allegrex_cop2cd:
             break;
 
         case RAB_OPERAND_r4000allegrex_pos:

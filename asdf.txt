@@ -2279,46 +2279,6 @@ Error on word '0xD0239081'. Expected 'vrndf2.q    C010', got '.word       0xD023
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT1_FMT0'
     gnuMode 'true'
 
-Error on word '0xD0501001'. Expected 'vmfvc       S010, 0x10', got 'vmfvc       S010, S400'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
-Error on word '0xD0501081'. Expected 'vmfvc       S010, 0x10', got '.word       0xD0501081                   # vmfvc       S010, S400 # 00000080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
-Error on word '0xD0509001'. Expected 'vmfvc       S010, 0x90', got '.word       0xD0509001                   # vmfvc       S010, S400 # 00008000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
-Error on word '0xD0509081'. Expected 'vmfvc       S010, 0x90', got '.word       0xD0509081                   # vmfvc       S010, S400 # 00008080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
-Error on word '0xD0511001'. Expected 'vmtvc       0x01, S400', got 'vmtvc       S010, S400'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
-Error on word '0xD0511081'. Expected 'vmtvc       VFPU_PFXT, S400', got '.word       0xD0511081                   # vmtvc       S010, S400 # 00000080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
-Error on word '0xD0519001'. Expected 'vmtvc       0x01, S400', got '.word       0xD0519001                   # vmtvc       S010, S400 # 00008000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
-Error on word '0xD0519081'. Expected 'vmtvc       VFPU_PFXT, S400', got '.word       0xD0519081                   # vmtvc       S010, S400 # 00008080 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT2_FMT2'
-    gnuMode 'true'
-
 Error on word '0xD0601001'. Expected 'vcst.s      S010, Undefined', got '.word       0xD0601001                   # vcst.s      S010 # 00001000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT0_FMT3>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT3'
@@ -8414,5 +8374,5 @@ Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'v
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1682 errors out of 4763 entries. 64.69% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1674 errors out of 5011 entries. 66.59% correct.
 

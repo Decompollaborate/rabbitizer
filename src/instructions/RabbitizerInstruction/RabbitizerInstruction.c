@@ -399,8 +399,12 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vt_6_imm(self->word, 0);
                 break;
 
-            case RAB_OPERAND_r4000allegrex_cop2cd_128:
-                self->word = RAB_INSTR_R4000ALLEGREX_PACK_cop2cd_128(self->word, 0);
+            case RAB_OPERAND_r4000allegrex_cop2cd:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_cop2cd(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_cop2cs:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_cop2cs(self->word, 0);
                 break;
 
             case RAB_OPERAND_r4000allegrex_pos:

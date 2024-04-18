@@ -74,7 +74,8 @@
     size_t RabbitizerOperandType_process_r4000allegrex_mq_vs (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r4000allegrex_mq_vt (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r4000allegrex_mq_vd (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
-    size_t RabbitizerOperandType_process_r4000allegrex_cop2cd_128 (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+    size_t RabbitizerOperandType_process_r4000allegrex_cop2cs (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+    size_t RabbitizerOperandType_process_r4000allegrex_cop2cd (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r4000allegrex_pos (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r4000allegrex_size (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r4000allegrex_size_plus_pos (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
