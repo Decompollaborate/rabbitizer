@@ -176,6 +176,105 @@ size_t RabbitizerOperandType_process_r4000allegrex_q_vt_imm(const RabbitizerInst
     return totalSize;
 }
 
+size_t RabbitizerOperandType_process_r4000allegrex_mp_vs(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM2x2(RAB_INSTR_R4000ALLEGREX_GET_vs(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mp_vt(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM2x2(RAB_INSTR_R4000ALLEGREX_GET_vt(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mp_vd(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM2x2(RAB_INSTR_R4000ALLEGREX_GET_vd(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mt_vs(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM3x3(RAB_INSTR_R4000ALLEGREX_GET_vs(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mt_vt(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM3x3(RAB_INSTR_R4000ALLEGREX_GET_vt(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mt_vd(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM3x3(RAB_INSTR_R4000ALLEGREX_GET_vd(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mq_vs(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM4x4(RAB_INSTR_R4000ALLEGREX_GET_vs(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mq_vt(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM4x4(RAB_INSTR_R4000ALLEGREX_GET_vt(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_mq_vd(const RabbitizerInstruction *self, char *dst,
+                                                         UNUSED const char *immOverride,
+                                                         UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM4x4(RAB_INSTR_R4000ALLEGREX_GET_vd(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
+
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_process_r4000allegrex_cop2cd_128(const RabbitizerInstruction *self, char *dst,
                                                               UNUSED const char *immOverride,
                                                               UNUSED size_t immOverrideLength) {

@@ -361,6 +361,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_p_vs:
             case RAB_OPERAND_r4000allegrex_t_vs:
             case RAB_OPERAND_r4000allegrex_q_vs:
+            case RAB_OPERAND_r4000allegrex_mp_vs:
+            case RAB_OPERAND_r4000allegrex_mt_vs:
+            case RAB_OPERAND_r4000allegrex_mq_vs:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vs(self->word, 0);
                 break;
 
@@ -368,6 +371,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_p_vt:
             case RAB_OPERAND_r4000allegrex_t_vt:
             case RAB_OPERAND_r4000allegrex_q_vt:
+            case RAB_OPERAND_r4000allegrex_mp_vt:
+            case RAB_OPERAND_r4000allegrex_mt_vt:
+            case RAB_OPERAND_r4000allegrex_mq_vt:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vt(self->word, 0);
                 break;
 
@@ -375,6 +381,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_p_vd:
             case RAB_OPERAND_r4000allegrex_t_vd:
             case RAB_OPERAND_r4000allegrex_q_vd:
+            case RAB_OPERAND_r4000allegrex_mp_vd:
+            case RAB_OPERAND_r4000allegrex_mt_vd:
+            case RAB_OPERAND_r4000allegrex_mq_vd:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vd(self->word, 0);
                 break;
 

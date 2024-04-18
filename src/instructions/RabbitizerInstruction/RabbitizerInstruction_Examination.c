@@ -407,6 +407,9 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_p_vs:
             case RAB_OPERAND_r4000allegrex_t_vs:
             case RAB_OPERAND_r4000allegrex_q_vs:
+            case RAB_OPERAND_r4000allegrex_mp_vs:
+            case RAB_OPERAND_r4000allegrex_mt_vs:
+            case RAB_OPERAND_r4000allegrex_mq_vs:
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_vs(validbits, ~0);
                 break;
 
@@ -414,6 +417,9 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_p_vt:
             case RAB_OPERAND_r4000allegrex_t_vt:
             case RAB_OPERAND_r4000allegrex_q_vt:
+            case RAB_OPERAND_r4000allegrex_mp_vt:
+            case RAB_OPERAND_r4000allegrex_mt_vt:
+            case RAB_OPERAND_r4000allegrex_mq_vt:
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt(validbits, ~0);
                 break;
 
@@ -421,6 +427,9 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_p_vd:
             case RAB_OPERAND_r4000allegrex_t_vd:
             case RAB_OPERAND_r4000allegrex_q_vd:
+            case RAB_OPERAND_r4000allegrex_mp_vd:
+            case RAB_OPERAND_r4000allegrex_mt_vd:
+            case RAB_OPERAND_r4000allegrex_mq_vd:
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_vd(validbits, ~0);
                 break;
 
