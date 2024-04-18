@@ -2035,9 +2035,9 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x63009040, NULL, ".word       0x63009040                   # INVALID     $t8, $zero, -0x6FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU0>"),
     TEST_ENTRY_C(0x630090C0, NULL, ".word       0x630090C0                   # INVALID     $t8, $zero, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU0>"),
     TEST_ENTRY_C(0x63801040, NULL, "vdiv.s      S002, S400, S000"),
-    TEST_ENTRY_C(0x638010C0, NULL, "vdiv.p      C002, C400, C000"),
-    TEST_ENTRY_C(0x63809040, NULL, "vdiv.t      C001, C400, C000"),
-    TEST_ENTRY_C(0x638090C0, NULL, "vdiv.q      C002, C400, C000"),
+    TEST_ENTRY_C(0x63801084, NULL, "vdiv.p      C100, C400, C000"),
+    TEST_ENTRY_C(0x63809004, NULL, "vdiv.t      C100, C400, C000"),
+    TEST_ENTRY_C(0x63809084, NULL, "vdiv.q      C100, C400, C000"),
 
     /* VFPU1 */
     TEST_ENTRY_C(0x64001040, NULL, "vmul.s      S002, S400, S000"),
@@ -4818,7 +4818,6 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xF1001040, NULL, "vtfm3.t     S002, M???, S000"),
     TEST_ENTRY_C(0xF1001084, NULL, "vhtfm3.t    C100, M400, C000"),
     TEST_ENTRY_C(0xF1009040, NULL, "vtfm3.t     C100, M400, C000"),
-    TEST_ENTRY_C(0xF1009004, NULL, "vtfm3.t     C002, M400, C000"),
     TEST_ENTRY_C(0xF1801040, NULL, "vtfm4.q     S002, M???, S000"),
     TEST_ENTRY_C(0xF18010C0, NULL, "vtfm4.q     C002, M400, C000"),
     TEST_ENTRY_C(0xF1809040, NULL, "vhtfm4.q    C002, M400, C000"),

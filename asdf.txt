@@ -4,16 +4,6 @@ tests/c/instruction_checks/r3000gte_disasm.c: 0 errors out of 65 entries. 100.00
 
 tests/c/instruction_checks/r4000allegrex_disasm.c: 0 errors out of 73 entries. 100.00% correct.
 
-Error on word '0xD00600EF'. Expected 'vzero.p     R323', got 'vzero.p     R333'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD00680EF'. Expected 'vzero.q     R323', got 'vzero.q     R333'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT0'
-    gnuMode 'true'
-
 Error on word '0xF3860081'. Expected 'vmzero.p    M010', got 'vmzero.p    INVALID_1'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
@@ -1782,31 +1772,6 @@ Error on word '0xF20080FE'. Expected 'vmscl.q     E722, M000, S000', got 'vmscl.
 Error on word '0xF20080FF'. Expected 'vmscl.q     E723, M000, S000', got 'vmscl.q     INVALID_127, M000, S000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6'
-    gnuMode 'true'
-
-Error on word '0xD0016FEF'. Expected 'vabs.p      R323, R323', got 'vabs.p      R333, R333'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT0'
-    gnuMode 'true'
-
-Error on word '0xD001EFEF'. Expected 'vabs.q      R323, R323', got 'vabs.q      R333, R333'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT0'
-    gnuMode 'true'
-
-Error on word '0x638010C0'. Expected 'vdiv.p      C002, C400, C000', got '.word       0x638010C0                   # INVALID     $gp, $zero, 0x10C0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU0'
-    gnuMode 'true'
-
-Error on word '0x63809040'. Expected 'vdiv.t      C001, C400, C000', got '.word       0x63809040                   # INVALID     $gp, $zero, -0x6FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU0'
-    gnuMode 'true'
-
-Error on word '0x638090C0'. Expected 'vdiv.q      C002, C400, C000', got '.word       0x638090C0                   # INVALID     $gp, $zero, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU0>'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU0'
     gnuMode 'true'
 
 Error on word '0x6C401001'. Expected 'vcmp.s      eq, S400, S002', got 'vcmp.s      S010, S400, S002'
@@ -8284,11 +8249,6 @@ Error on word '0xF1009040'. Expected 'vtfm3.t     C100, M400, C000', got 'vtfm3.
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
 
-Error on word '0xF1009004'. Expected 'vtfm3.t     C002, M400, C000', got 'vtfm3.t     C100, M400, C000'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU6'
-    gnuMode 'true'
-
 Error on word '0xF1801040'. Expected 'vtfm4.q     S002, M???, S000', got '.word       0xF1801040                   # INVALID     $t4, $zero, 0x1040 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6'
@@ -8374,5 +8334,5 @@ Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'v
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1674 errors out of 4756 entries. 64.80% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1666 errors out of 4755 entries. 64.96% correct.
 

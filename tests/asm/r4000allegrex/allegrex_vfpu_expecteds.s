@@ -1884,6 +1884,9 @@ vsub.t      C001, C400, C000
 vsub.q      C002, C400, C000
 vsbn.s      S002, S400, S000
 vdiv.s      S002, S400, S000
+vdiv.p      C100, C400, C000
+vdiv.t      C100, C400, C000
+vdiv.q      C100, C400, C000
 vmul.s      S002, S400, S000
 vmul.p      C002, C400, C000
 vmul.t      C001, C400, C000

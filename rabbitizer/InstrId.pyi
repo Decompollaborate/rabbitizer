@@ -446,6 +446,9 @@ class InstrId:
     r4000allegrex_vsub_q: Enum
     r4000allegrex_vsbn_s: Enum
     r4000allegrex_vdiv_s: Enum
+    r4000allegrex_vdiv_p: Enum
+    r4000allegrex_vdiv_t: Enum
+    r4000allegrex_vdiv_q: Enum
     r4000allegrex_vmul_s: Enum
     r4000allegrex_vmul_p: Enum
     r4000allegrex_vmul_t: Enum
