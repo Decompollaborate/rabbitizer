@@ -2033,10 +2033,6 @@ vsat1.s     S010, S400
 vsat1.p     C010, C400
 vsat1.t     C010, C400
 vsat1.q     C010, C400
-vzero.s     S010
-vzero.p     C010
-vzero.t     C010
-vzero.q     C010
 vone.s      S010
 vone.p      C010
 vone.t      C010
@@ -3569,9 +3565,6 @@ viim.s      S002, 4096
 viim.s      S002, -32768
 viim.s      S002, -4096
 vfim.s      S002, 0.0
-nop # vfim.s      S002, 2.980232238769531e-008
-nop # vfim.s      S002, 4.76837158203125e-007
-nop # vfim.s      S002, 7.62939453125e-006
 vfim.s      S002, 4.8828125e-004
 vfim.s      S002, -0.0
 vfim.s      S002, -8192.0
@@ -3581,12 +3574,10 @@ vmmul.q     M002, E400, M000
 vhtfm2.p    C002, M100, C000
 vtfm2.p     C002, M400, C000
 vtfm2.p     C100, M400, C000
-vtfm2.p     C002, M400, C000
 vtfm3.t     C100, M000, C000
 vhtfm3.t    C100, M400, C000
 vtfm3.t     C100, M400, C000
 vtfm4.q     C200, M000, C000
-vtfm4.q     C002, M400, C000
 vhtfm4.q    C002, M400, C000
 vtfm4.q     C002, M400, C000
 vmscl.p     M002, M400, S000
@@ -3600,12 +3591,6 @@ vmmov.q     M002, M400
 vmidt.p     M002
 vmidt.t     M001
 vmidt.q     M002
-vmzero.p    M002
-vmzero.t    M001
-vmzero.q    M002
-vmone.p     M002
-vmone.t     M001
-vmone.q     M002
 vrot.p      C002, S400, [C,S]
 vrot.t      C001, S400, [C,S,S]
 vrot.q      C002, S400, [C,S,S,S]

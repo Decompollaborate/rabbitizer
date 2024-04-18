@@ -127,7 +127,7 @@ vtfm4.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x03 << 2 | 0x3, vtfm4_q, vtfm4.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
+        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_mq_vs, RAB_OPERAND_r4000allegrex_q_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Transform 4 Quad Word
 

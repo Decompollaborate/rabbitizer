@@ -136,6 +136,14 @@ int check_duplicated_entries(size_t entries_len, const TestEntry entries_arr[]) 
                     errorCount++;
                 }
             }
+
+#if 0
+            if (strcmp_null(entries_arr[i].expectedStr, entries_arr[j].expectedStr) == 0) {
+                LOG("Duplicated expected entry. Word: '0x%08X'. immOverride: '%s'. expectedStr: '%s'\n", entries_arr[i].word,
+                    entries_arr[i].immOverride, entries_arr[i].expectedStr);
+                errorCount++;
+            }
+#endif
         }
     }
 

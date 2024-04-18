@@ -360,7 +360,7 @@ vone.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x07 << 2 | 0x0, vone_s, vone.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
+        .operands={RAB_OPERAND_r4000allegrex_s_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // One's ComPlement Single word
 
@@ -373,7 +373,7 @@ vone.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x07 << 2 | 0x1, vone_p, vone.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs},
+        .operands={RAB_OPERAND_r4000allegrex_p_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // One's ComPlement Pair word
 
@@ -386,7 +386,7 @@ vone.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x07 << 2 | 0x2, vone_t, vone.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs},
+        .operands={RAB_OPERAND_r4000allegrex_t_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // One's ComPlement Triple word
 
@@ -399,6 +399,6 @@ vone.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x07 << 2 | 0x3, vone_q, vone.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs},
+        .operands={RAB_OPERAND_r4000allegrex_q_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // One's ComPlement Quad word
