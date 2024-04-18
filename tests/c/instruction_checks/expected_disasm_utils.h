@@ -71,6 +71,10 @@ typedef struct TestEntry {
 #define TEST_ENTRY(cat, w, imm, expected, ...) \
     { .category = cat, .word = w, .immOverride = imm, .expectedStr = expected, .gnuMode = true, __VA_ARGS__ }
 
+// Must be defined by the test
+const TestEntry test_entries[];
+size_t test_entries_len;
+
 typedef struct InstrInitInfo {
     void (*init)(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
     void (*processUniqueId)(RabbitizerInstruction *self);
@@ -177,14 +181,59 @@ bool check_expected_output(const TestEntry *entry) {
     return expected;
 }
 
-// Must be defined by the test
-const TestEntry test_entries[];
-size_t test_entries_len;
+void print_expected(void) {
+    size_t i;
+
+    for (i = 0; i < test_entries_len; i++) {
+        const TestEntry *entry = &test_entries[i];
+
+        RabbitizerInstruction instr;
+        const InstrInitInfo *info = &initInfos[entry->category];
+
+        assert(entry->category < RABBITIZER_INSTRCAT_MAX);
+
+        RabbitizerConfig_Cfg.toolchainTweaks.gnuMode = entry->gnuMode;
+
+        info->init(&instr, entry->word, 0);
+        info->processUniqueId(&instr);
+
+        if (RabbitizerInstruction_isValid(&instr)) {
+            printf("%s\n", entry->expectedStr);
+        }
+
+        info->destroy(&instr);
+    }
+}
+
+bool process_argv(int argc, char *argv[]) {
+    bool ret = false;
+    int i;
+
+    for (i = 1; i < argc; i++) {
+        const char *opt = argv[i];
+
+        if (strcmp(opt, "--print-expected") == 0) {
+            print_expected();
+            ret = true;
+        } else {
+            LOG_END("Unknown option: '%s'\n", opt);
+            ret = true;
+        }
+    }
+
+    return ret;
+}
 
 #ifndef AVOID_DEF_MAIN
-int main() {
-    int errorCount = check_duplicated_entries(test_entries_len, test_entries);
+int main(int argc, char *argv[]) {
+    int errorCount;
     size_t i;
+
+    if (process_argv(argc, argv)) {
+        return 0;
+    }
+
+    errorCount = check_duplicated_entries(test_entries_len, test_entries);
 
     if (errorCount != 0) {
         LOG_END("Found %i duplicated entries. Stopping\n", errorCount);

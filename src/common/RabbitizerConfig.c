@@ -26,7 +26,7 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
         .userFpcCsr = true,
         .vr4300Cop0NamedRegisters = true,
         .vr4300RspCop0NamedRegisters = true,
-        .r4000AllegrexVfpuControlNamedRegisters = true,
+        .r4000AllegrexVfpuControlNamedRegisters = false,
     },
     .pseudos = {
         .enablePseudos = true,

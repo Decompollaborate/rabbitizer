@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: © 2024 Decompollaborate
 # SPDX-License-Identifier: MIT
 
-TARGETS := allegrex_instrs_pspsnc.dump.s allegrex_vfpu_pspsnc.dump.s
+TARGETS := allegrex_instrs_pspsnc.dump.s allegrex_vfpu_pspsnc.dump.s allegrex_vfpu_expecteds_pspsnc.dump.s
 
 
 COMPILER_PATH   ?=
