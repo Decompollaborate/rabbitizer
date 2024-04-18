@@ -1010,7 +1010,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt3(RabbitizerIns
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT3;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt2.inc"
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt3.inc"
     }
 
     if (fetchDescriptor) {

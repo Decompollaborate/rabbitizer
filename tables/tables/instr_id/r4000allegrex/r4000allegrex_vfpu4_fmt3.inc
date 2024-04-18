@@ -6,7 +6,7 @@
     |   VFPU4   |1 1|               |t|             |p|             |
     ------6-------2------------------1---------------1---------------
     |-------|
- 00 |       |
+ 00 | vwbn.s|
  01 |       |
  10 |       |
  11 |       |
@@ -19,3 +19,10 @@ vwbn.s
     |   VFPU4   |1 1|      imm8     |0|      vs     |0|      vd     |
     ------6-------2---------8--------1-------7-------1-------7-------
 */
+
+    // TODO: vd, vs, imm8
+    RABBITIZER_DEF_INSTR_ID_ALTNAME(
+        r4000allegrex, 0x0, vwbn_s, vwbn.s,
+        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
+        .instrType=RABBITIZER_INSTR_TYPE_R
+    ) // WrapBN Single word
