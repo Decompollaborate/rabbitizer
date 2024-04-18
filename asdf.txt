@@ -12654,322 +12654,322 @@ Error on word '0xD29F9081'. Expected 'vi2f.q      C010, C400, 31', got '.word   
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT4'
     gnuMode 'true'
 
-Error on word '0xD2A01001'. Expected 'vcmovt.s    S010, S400, cc0', got '.word       0xD2A01001                   # INVALID     $s5, $zero, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A01001'. Expected 'vcmovt.s    S010, S400, cc0', got 'vcmovt.s    S010, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A01081'. Expected 'vcmovt.p    C010, C400, cc0', got '.word       0xD2A01081                   # INVALID     $s5, $zero, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A01081'. Expected 'vcmovt.p    C010, C400, cc0', got 'vcmovt.p    C010, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A09001'. Expected 'vcmovt.t    C010, C400, cc0', got '.word       0xD2A09001                   # INVALID     $s5, $zero, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A09001'. Expected 'vcmovt.t    C010, C400, cc0', got 'vcmovt.t    C010, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A09081'. Expected 'vcmovt.q    C010, C400, cc0', got '.word       0xD2A09081                   # INVALID     $s5, $zero, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A09081'. Expected 'vcmovt.q    C010, C400, cc0', got 'vcmovt.q    C010, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A11001'. Expected 'vcmovt.s    S010, S400, cc1', got '.word       0xD2A11001                   # INVALID     $s5, $at, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A11001'. Expected 'vcmovt.s    S010, S400, cc1', got '.word       0xD2A11001                   # vcmovt.s    S010, S400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A11081'. Expected 'vcmovt.p    C010, C400, cc1', got '.word       0xD2A11081                   # INVALID     $s5, $at, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A11081'. Expected 'vcmovt.p    C010, C400, cc1', got '.word       0xD2A11081                   # vcmovt.p    C010, C400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A19001'. Expected 'vcmovt.t    C010, C400, cc1', got '.word       0xD2A19001                   # INVALID     $s5, $at, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A19001'. Expected 'vcmovt.t    C010, C400, cc1', got '.word       0xD2A19001                   # vcmovt.t    C010, C400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A19081'. Expected 'vcmovt.q    C010, C400, cc1', got '.word       0xD2A19081                   # INVALID     $s5, $at, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A19081'. Expected 'vcmovt.q    C010, C400, cc1', got '.word       0xD2A19081                   # vcmovt.q    C010, C400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A21001'. Expected 'vcmovt.s    S010, S400, cc2', got '.word       0xD2A21001                   # INVALID     $s5, $v0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A21001'. Expected 'vcmovt.s    S010, S400, cc2', got '.word       0xD2A21001                   # vcmovt.s    S010, S400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A21081'. Expected 'vcmovt.p    C010, C400, cc2', got '.word       0xD2A21081                   # INVALID     $s5, $v0, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A21081'. Expected 'vcmovt.p    C010, C400, cc2', got '.word       0xD2A21081                   # vcmovt.p    C010, C400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A29001'. Expected 'vcmovt.t    C010, C400, cc2', got '.word       0xD2A29001                   # INVALID     $s5, $v0, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A29001'. Expected 'vcmovt.t    C010, C400, cc2', got '.word       0xD2A29001                   # vcmovt.t    C010, C400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A29081'. Expected 'vcmovt.q    C010, C400, cc2', got '.word       0xD2A29081                   # INVALID     $s5, $v0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A29081'. Expected 'vcmovt.q    C010, C400, cc2', got '.word       0xD2A29081                   # vcmovt.q    C010, C400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A31001'. Expected 'vcmovt.s    S010, S400, cc3', got '.word       0xD2A31001                   # INVALID     $s5, $v1, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A31001'. Expected 'vcmovt.s    S010, S400, cc3', got '.word       0xD2A31001                   # vcmovt.s    S010, S400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A31081'. Expected 'vcmovt.p    C010, C400, cc3', got '.word       0xD2A31081                   # INVALID     $s5, $v1, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A31081'. Expected 'vcmovt.p    C010, C400, cc3', got '.word       0xD2A31081                   # vcmovt.p    C010, C400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A39001'. Expected 'vcmovt.t    C010, C400, cc3', got '.word       0xD2A39001                   # INVALID     $s5, $v1, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A39001'. Expected 'vcmovt.t    C010, C400, cc3', got '.word       0xD2A39001                   # vcmovt.t    C010, C400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A39081'. Expected 'vcmovt.q    C010, C400, cc3', got '.word       0xD2A39081                   # INVALID     $s5, $v1, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A39081'. Expected 'vcmovt.q    C010, C400, cc3', got '.word       0xD2A39081                   # vcmovt.q    C010, C400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A41001'. Expected 'vcmovt.s    S010, S400, cc4', got '.word       0xD2A41001                   # INVALID     $s5, $a0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A41001'. Expected 'vcmovt.s    S010, S400, cc4', got '.word       0xD2A41001                   # vcmovt.s    S010, S400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A41081'. Expected 'vcmovt.p    C010, C400, cc4', got '.word       0xD2A41081                   # INVALID     $s5, $a0, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A41081'. Expected 'vcmovt.p    C010, C400, cc4', got '.word       0xD2A41081                   # vcmovt.p    C010, C400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A49001'. Expected 'vcmovt.t    C010, C400, cc4', got '.word       0xD2A49001                   # INVALID     $s5, $a0, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A49001'. Expected 'vcmovt.t    C010, C400, cc4', got '.word       0xD2A49001                   # vcmovt.t    C010, C400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A49081'. Expected 'vcmovt.q    C010, C400, cc4', got '.word       0xD2A49081                   # INVALID     $s5, $a0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A49081'. Expected 'vcmovt.q    C010, C400, cc4', got '.word       0xD2A49081                   # vcmovt.q    C010, C400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A51001'. Expected 'vcmovt.s    S010, S400, cc5', got '.word       0xD2A51001                   # INVALID     $s5, $a1, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A51001'. Expected 'vcmovt.s    S010, S400, cc5', got '.word       0xD2A51001                   # vcmovt.s    S010, S400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A51081'. Expected 'vcmovt.p    C010, C400, cc5', got '.word       0xD2A51081                   # INVALID     $s5, $a1, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A51081'. Expected 'vcmovt.p    C010, C400, cc5', got '.word       0xD2A51081                   # vcmovt.p    C010, C400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A59001'. Expected 'vcmovt.t    C010, C400, cc5', got '.word       0xD2A59001                   # INVALID     $s5, $a1, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A59001'. Expected 'vcmovt.t    C010, C400, cc5', got '.word       0xD2A59001                   # vcmovt.t    C010, C400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A59081'. Expected 'vcmovt.q    C010, C400, cc5', got '.word       0xD2A59081                   # INVALID     $s5, $a1, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A59081'. Expected 'vcmovt.q    C010, C400, cc5', got '.word       0xD2A59081                   # vcmovt.q    C010, C400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A61001'. Expected 'vcmovt.s    S010, S400, cc6', got '.word       0xD2A61001                   # INVALID     $s5, $a2, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A61001'. Expected 'vcmovt.s    S010, S400, cc6', got '.word       0xD2A61001                   # vcmovt.s    S010, S400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A61081'. Expected 'vcmovt.p    C010, C400, cc6', got '.word       0xD2A61081                   # INVALID     $s5, $a2, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A61081'. Expected 'vcmovt.p    C010, C400, cc6', got '.word       0xD2A61081                   # vcmovt.p    C010, C400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A69001'. Expected 'vcmovt.t    C010, C400, cc6', got '.word       0xD2A69001                   # INVALID     $s5, $a2, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A69001'. Expected 'vcmovt.t    C010, C400, cc6', got '.word       0xD2A69001                   # vcmovt.t    C010, C400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A69081'. Expected 'vcmovt.q    C010, C400, cc6', got '.word       0xD2A69081                   # INVALID     $s5, $a2, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A69081'. Expected 'vcmovt.q    C010, C400, cc6', got '.word       0xD2A69081                   # vcmovt.q    C010, C400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A71001'. Expected 'vcmovt.s    S010, S400, cc7', got '.word       0xD2A71001                   # INVALID     $s5, $a3, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A71001'. Expected 'vcmovt.s    S010, S400, cc7', got '.word       0xD2A71001                   # vcmovt.s    S010, S400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A71081'. Expected 'vcmovt.p    C010, C400, cc7', got '.word       0xD2A71081                   # INVALID     $s5, $a3, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A71081'. Expected 'vcmovt.p    C010, C400, cc7', got '.word       0xD2A71081                   # vcmovt.p    C010, C400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A79001'. Expected 'vcmovt.t    C010, C400, cc7', got '.word       0xD2A79001                   # INVALID     $s5, $a3, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A79001'. Expected 'vcmovt.t    C010, C400, cc7', got '.word       0xD2A79001                   # vcmovt.t    C010, C400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A79081'. Expected 'vcmovt.q    C010, C400, cc7', got '.word       0xD2A79081                   # INVALID     $s5, $a3, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A79081'. Expected 'vcmovt.q    C010, C400, cc7', got '.word       0xD2A79081                   # vcmovt.q    C010, C400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A81001'. Expected 'vcmovf.s    S010, S400, cc0', got '.word       0xD2A81001                   # INVALID     $s5, $t0, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A81001'. Expected 'vcmovf.s    S010, S400, cc0', got 'vcmovf.s    S010, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A81081'. Expected 'vcmovf.p    C010, C400, cc0', got '.word       0xD2A81081                   # INVALID     $s5, $t0, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A81081'. Expected 'vcmovf.p    C010, C400, cc0', got 'vcmovf.p    C010, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A89001'. Expected 'vcmovf.t    C010, C400, cc0', got '.word       0xD2A89001                   # INVALID     $s5, $t0, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A89001'. Expected 'vcmovf.t    C010, C400, cc0', got 'vcmovf.t    C010, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A89081'. Expected 'vcmovf.q    C010, C400, cc0', got '.word       0xD2A89081                   # INVALID     $s5, $t0, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A89081'. Expected 'vcmovf.q    C010, C400, cc0', got 'vcmovf.q    C010, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A91001'. Expected 'vcmovf.s    S010, S400, cc1', got '.word       0xD2A91001                   # INVALID     $s5, $t1, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A91001'. Expected 'vcmovf.s    S010, S400, cc1', got '.word       0xD2A91001                   # vcmovf.s    S010, S400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A91081'. Expected 'vcmovf.p    C010, C400, cc1', got '.word       0xD2A91081                   # INVALID     $s5, $t1, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A91081'. Expected 'vcmovf.p    C010, C400, cc1', got '.word       0xD2A91081                   # vcmovf.p    C010, C400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A99001'. Expected 'vcmovf.t    C010, C400, cc1', got '.word       0xD2A99001                   # INVALID     $s5, $t1, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A99001'. Expected 'vcmovf.t    C010, C400, cc1', got '.word       0xD2A99001                   # vcmovf.t    C010, C400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2A99081'. Expected 'vcmovf.q    C010, C400, cc1', got '.word       0xD2A99081                   # INVALID     $s5, $t1, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2A99081'. Expected 'vcmovf.q    C010, C400, cc1', got '.word       0xD2A99081                   # vcmovf.q    C010, C400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AA1001'. Expected 'vcmovf.s    S010, S400, cc2', got '.word       0xD2AA1001                   # INVALID     $s5, $t2, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AA1001'. Expected 'vcmovf.s    S010, S400, cc2', got '.word       0xD2AA1001                   # vcmovf.s    S010, S400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AA1081'. Expected 'vcmovf.p    C010, C400, cc2', got '.word       0xD2AA1081                   # INVALID     $s5, $t2, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AA1081'. Expected 'vcmovf.p    C010, C400, cc2', got '.word       0xD2AA1081                   # vcmovf.p    C010, C400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AA9001'. Expected 'vcmovf.t    C010, C400, cc2', got '.word       0xD2AA9001                   # INVALID     $s5, $t2, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AA9001'. Expected 'vcmovf.t    C010, C400, cc2', got '.word       0xD2AA9001                   # vcmovf.t    C010, C400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AA9081'. Expected 'vcmovf.q    C010, C400, cc2', got '.word       0xD2AA9081                   # INVALID     $s5, $t2, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AA9081'. Expected 'vcmovf.q    C010, C400, cc2', got '.word       0xD2AA9081                   # vcmovf.q    C010, C400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AB1001'. Expected 'vcmovf.s    S010, S400, cc3', got '.word       0xD2AB1001                   # INVALID     $s5, $t3, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AB1001'. Expected 'vcmovf.s    S010, S400, cc3', got '.word       0xD2AB1001                   # vcmovf.s    S010, S400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AB1081'. Expected 'vcmovf.p    C010, C400, cc3', got '.word       0xD2AB1081                   # INVALID     $s5, $t3, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AB1081'. Expected 'vcmovf.p    C010, C400, cc3', got '.word       0xD2AB1081                   # vcmovf.p    C010, C400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AB9001'. Expected 'vcmovf.t    C010, C400, cc3', got '.word       0xD2AB9001                   # INVALID     $s5, $t3, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AB9001'. Expected 'vcmovf.t    C010, C400, cc3', got '.word       0xD2AB9001                   # vcmovf.t    C010, C400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AB9081'. Expected 'vcmovf.q    C010, C400, cc3', got '.word       0xD2AB9081                   # INVALID     $s5, $t3, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AB9081'. Expected 'vcmovf.q    C010, C400, cc3', got '.word       0xD2AB9081                   # vcmovf.q    C010, C400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AC1001'. Expected 'vcmovf.s    S010, S400, cc4', got '.word       0xD2AC1001                   # INVALID     $s5, $t4, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AC1001'. Expected 'vcmovf.s    S010, S400, cc4', got '.word       0xD2AC1001                   # vcmovf.s    S010, S400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AC1081'. Expected 'vcmovf.p    C010, C400, cc4', got '.word       0xD2AC1081                   # INVALID     $s5, $t4, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AC1081'. Expected 'vcmovf.p    C010, C400, cc4', got '.word       0xD2AC1081                   # vcmovf.p    C010, C400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AC9001'. Expected 'vcmovf.t    C010, C400, cc4', got '.word       0xD2AC9001                   # INVALID     $s5, $t4, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AC9001'. Expected 'vcmovf.t    C010, C400, cc4', got '.word       0xD2AC9001                   # vcmovf.t    C010, C400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AC9081'. Expected 'vcmovf.q    C010, C400, cc4', got '.word       0xD2AC9081                   # INVALID     $s5, $t4, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AC9081'. Expected 'vcmovf.q    C010, C400, cc4', got '.word       0xD2AC9081                   # vcmovf.q    C010, C400 # 00040000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AD1001'. Expected 'vcmovf.s    S010, S400, cc5', got '.word       0xD2AD1001                   # INVALID     $s5, $t5, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AD1001'. Expected 'vcmovf.s    S010, S400, cc5', got '.word       0xD2AD1001                   # vcmovf.s    S010, S400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AD1081'. Expected 'vcmovf.p    C010, C400, cc5', got '.word       0xD2AD1081                   # INVALID     $s5, $t5, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AD1081'. Expected 'vcmovf.p    C010, C400, cc5', got '.word       0xD2AD1081                   # vcmovf.p    C010, C400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AD9001'. Expected 'vcmovf.t    C010, C400, cc5', got '.word       0xD2AD9001                   # INVALID     $s5, $t5, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AD9001'. Expected 'vcmovf.t    C010, C400, cc5', got '.word       0xD2AD9001                   # vcmovf.t    C010, C400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AD9081'. Expected 'vcmovf.q    C010, C400, cc5', got '.word       0xD2AD9081                   # INVALID     $s5, $t5, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AD9081'. Expected 'vcmovf.q    C010, C400, cc5', got '.word       0xD2AD9081                   # vcmovf.q    C010, C400 # 00050000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AE1001'. Expected 'vcmovf.s    S010, S400, cc6', got '.word       0xD2AE1001                   # INVALID     $s5, $t6, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AE1001'. Expected 'vcmovf.s    S010, S400, cc6', got '.word       0xD2AE1001                   # vcmovf.s    S010, S400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AE1081'. Expected 'vcmovf.p    C010, C400, cc6', got '.word       0xD2AE1081                   # INVALID     $s5, $t6, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AE1081'. Expected 'vcmovf.p    C010, C400, cc6', got '.word       0xD2AE1081                   # vcmovf.p    C010, C400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AE9001'. Expected 'vcmovf.t    C010, C400, cc6', got '.word       0xD2AE9001                   # INVALID     $s5, $t6, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AE9001'. Expected 'vcmovf.t    C010, C400, cc6', got '.word       0xD2AE9001                   # vcmovf.t    C010, C400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AE9081'. Expected 'vcmovf.q    C010, C400, cc6', got '.word       0xD2AE9081                   # INVALID     $s5, $t6, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AE9081'. Expected 'vcmovf.q    C010, C400, cc6', got '.word       0xD2AE9081                   # vcmovf.q    C010, C400 # 00060000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AF1001'. Expected 'vcmovf.s    S010, S400, cc7', got '.word       0xD2AF1001                   # INVALID     $s5, $t7, 0x1001 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AF1001'. Expected 'vcmovf.s    S010, S400, cc7', got '.word       0xD2AF1001                   # vcmovf.s    S010, S400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AF1081'. Expected 'vcmovf.p    C010, C400, cc7', got '.word       0xD2AF1081                   # INVALID     $s5, $t7, 0x1081 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AF1081'. Expected 'vcmovf.p    C010, C400, cc7', got '.word       0xD2AF1081                   # vcmovf.p    C010, C400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AF9001'. Expected 'vcmovf.t    C010, C400, cc7', got '.word       0xD2AF9001                   # INVALID     $s5, $t7, -0x6FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AF9001'. Expected 'vcmovf.t    C010, C400, cc7', got '.word       0xD2AF9001                   # vcmovf.t    C010, C400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'
 
-Error on word '0xD2AF9081'. Expected 'vcmovf.q    C010, C400, cc7', got '.word       0xD2AF9081                   # INVALID     $s5, $t7, -0x6F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
+Error on word '0xD2AF9081'. Expected 'vcmovf.q    C010, C400, cc7', got '.word       0xD2AF9081                   # vcmovf.q    C010, C400 # 00070000 <InstrIdType: R4000ALLEGREX_VFPU4_FMT2_FMT5>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT2_FMT5'
     gnuMode 'true'

@@ -642,6 +642,14 @@ class InstrId:
     r4000allegrex_vi2f_p: Enum
     r4000allegrex_vi2f_t: Enum
     r4000allegrex_vi2f_q: Enum
+    r4000allegrex_vcmovt_s: Enum
+    r4000allegrex_vcmovt_p: Enum
+    r4000allegrex_vcmovt_t: Enum
+    r4000allegrex_vcmovt_q: Enum
+    r4000allegrex_vcmovf_s: Enum
+    r4000allegrex_vcmovf_p: Enum
+    r4000allegrex_vcmovf_t: Enum
+    r4000allegrex_vcmovf_q: Enum
     r4000allegrex_svl_q: Enum
     r4000allegrex_svr_q: Enum
     r4000allegrex_MAX: Enum
