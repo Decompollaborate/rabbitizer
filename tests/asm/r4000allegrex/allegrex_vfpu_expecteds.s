@@ -2394,14 +2394,14 @@ vi2f.s      S010, S400, 0
 vi2f.p      C010, C400, 0
 vi2f.t      C010, C400, 0
 vi2f.q      C010, C400, 0
-nop # vcmovt.s    S010, S400, cc0
-nop # vcmovt.p    C010, C400, cc0
-nop # vcmovt.t    C010, C400, cc0
-nop # vcmovt.q    C010, C400, cc0
-nop # vcmovf.s    S010, S400, cc0
-nop # vcmovf.p    C010, C400, cc0
-nop # vcmovf.t    C010, C400, cc0
-nop # vcmovf.q    C010, C400, cc0
+vcmovt.s    S010, S400, 0
+vcmovt.p    C010, C400, 0
+vcmovt.t    C010, C400, 0
+vcmovt.q    C010, C400, 0
+vcmovf.s    S010, S400, 0
+vcmovf.p    C010, C400, 0
+vcmovf.t    C010, C400, 0
+vcmovf.q    C010, C400, 0
 vwbn.s      S010, S400, 0
 vpfxs       X, X, X, X
 vpfxt       X, X, X, X
