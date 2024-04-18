@@ -2006,6 +2006,7 @@ mfvc        $a0, $140
 mfvc        $a0, $141
 mfvc        $a0, $142
 mfvc        $a0, $143
+vsync2
 mfv         $a1, S000
 mfvc        $a1, $129
 mtv         $a1, S000
@@ -2032,6 +2033,10 @@ vsat1.s     S010, S400
 vsat1.p     C010, C400
 vsat1.t     C010, C400
 vsat1.q     C010, C400
+vzero.s     S010
+vzero.p     C010
+vzero.t     C010
+vzero.q     C010
 vone.s      S010
 vone.p      C010
 vone.t      C010
@@ -2060,6 +2065,10 @@ vlog2.s     S010, S400
 vlog2.p     C010, C400
 vlog2.t     C010, C400
 vlog2.q     C010, C400
+vsqrt.s     S010, S400
+vsqrt.p     C010, C400
+vsqrt.t     C010, C400
+vsqrt.q     C010, C400
 vasin.s     S010, S400
 vasin.p     C010, C400
 vasin.t     C010, C400
@@ -2076,6 +2085,19 @@ vrexp2.s    S010, S400
 vrexp2.p    C010, C400
 vrexp2.t    C010, C400
 vrexp2.q    C010, C400
+vrnds.s     S400
+vrndi.s     S010
+vrndi.p     C010
+vrndi.t     C010
+vrndi.q     C010
+vrndf1.s    S010
+vrndf1.p    C010
+vrndf1.t    C010
+vrndf1.q    C010
+vrndf2.s    S010
+vrndf2.p    C010
+vrndf2.t    C010
+vrndf2.q    C010
 vf2h.p      S010, C400
 vf2h.q      C010, C400
 vh2f.s      C010, S400
@@ -2376,47 +2398,1195 @@ vmtvc       $255, S010
 vt4444.q    C010, C400
 vt5551.q    C010, C400
 vt5650.q    C010, C400
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+vcst.s      S010, VFPU_HUGE
+vcst.p      C010, VFPU_HUGE
+vcst.t      C010, VFPU_HUGE
+vcst.q      C010, VFPU_HUGE
+vcst.s      S010, VFPU_SQRT2
+vcst.p      C010, VFPU_SQRT2
+vcst.t      C010, VFPU_SQRT2
+vcst.q      C010, VFPU_SQRT2
+vcst.s      S010, VFPU_SQRT1_2
+vcst.p      C010, VFPU_SQRT1_2
+vcst.t      C010, VFPU_SQRT1_2
+vcst.q      C010, VFPU_SQRT1_2
+vcst.s      S010, VFPU_2_SQRTPI
+vcst.p      C010, VFPU_2_SQRTPI
+vcst.t      C010, VFPU_2_SQRTPI
+vcst.q      C010, VFPU_2_SQRTPI
+vcst.s      S010, VFPU_2_PI
+vcst.p      C010, VFPU_2_PI
+vcst.t      C010, VFPU_2_PI
+vcst.q      C010, VFPU_2_PI
+vcst.s      S010, VFPU_1_PI
+vcst.p      C010, VFPU_1_PI
+vcst.t      C010, VFPU_1_PI
+vcst.q      C010, VFPU_1_PI
+vcst.s      S010, VFPU_PI_4
+vcst.p      C010, VFPU_PI_4
+vcst.t      C010, VFPU_PI_4
+vcst.q      C010, VFPU_PI_4
+vcst.s      S010, VFPU_PI_2
+vcst.p      C010, VFPU_PI_2
+vcst.t      C010, VFPU_PI_2
+vcst.q      C010, VFPU_PI_2
+vcst.s      S010, VFPU_PI
+vcst.p      C010, VFPU_PI
+vcst.t      C010, VFPU_PI
+vcst.q      C010, VFPU_PI
+vcst.s      S010, VFPU_E
+vcst.p      C010, VFPU_E
+vcst.t      C010, VFPU_E
+vcst.q      C010, VFPU_E
+vcst.s      S010, VFPU_LOG2E
+vcst.p      C010, VFPU_LOG2E
+vcst.t      C010, VFPU_LOG2E
+vcst.q      C010, VFPU_LOG2E
+vcst.s      S010, VFPU_LOG10E
+vcst.p      C010, VFPU_LOG10E
+vcst.t      C010, VFPU_LOG10E
+vcst.q      C010, VFPU_LOG10E
+vcst.s      S010, VFPU_LN2
+vcst.p      C010, VFPU_LN2
+vcst.t      C010, VFPU_LN2
+vcst.q      C010, VFPU_LN2
+vcst.s      S010, VFPU_LN10
+vcst.p      C010, VFPU_LN10
+vcst.t      C010, VFPU_LN10
+vcst.q      C010, VFPU_LN10
+vcst.s      S010, VFPU_2PI
+vcst.p      C010, VFPU_2PI
+vcst.t      C010, VFPU_2PI
+vcst.q      C010, VFPU_2PI
+vcst.s      S010, VFPU_PI_6
+vcst.p      C010, VFPU_PI_6
+vcst.t      C010, VFPU_PI_6
+vcst.q      C010, VFPU_PI_6
+vcst.s      S010, VFPU_LOG10TWO
+vcst.p      C010, VFPU_LOG10TWO
+vcst.t      C010, VFPU_LOG10TWO
+vcst.q      C010, VFPU_LOG10TWO
+vcst.s      S010, VFPU_LOG2TEN
+vcst.p      C010, VFPU_LOG2TEN
+vcst.t      C010, VFPU_LOG2TEN
+vcst.q      C010, VFPU_LOG2TEN
+vcst.s      S010, VFPU_SQRT3_2
+vcst.p      C010, VFPU_SQRT3_2
+vcst.t      C010, VFPU_SQRT3_2
+vcst.q      C010, VFPU_SQRT3_2
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, Undefined
+nop # vcst.p      C010, Undefined
+nop # vcst.t      C010, Undefined
+nop # vcst.q      C010, Undefined
 vf2in.s     S010, S400, 0
 vf2in.p     C010, C400, 0
 vf2in.t     C010, C400, 0
 vf2in.q     C010, C400, 0
+vf2in.s     S010, S400, 1
+vf2in.p     C010, C400, 1
+vf2in.t     C010, C400, 1
+vf2in.q     C010, C400, 1
+vf2in.s     S010, S400, 2
+vf2in.p     C010, C400, 2
+vf2in.t     C010, C400, 2
+vf2in.q     C010, C400, 2
+vf2in.s     S010, S400, 3
+vf2in.p     C010, C400, 3
+vf2in.t     C010, C400, 3
+vf2in.q     C010, C400, 3
+vf2in.s     S010, S400, 4
+vf2in.p     C010, C400, 4
+vf2in.t     C010, C400, 4
+vf2in.q     C010, C400, 4
+vf2in.s     S010, S400, 5
+vf2in.p     C010, C400, 5
+vf2in.t     C010, C400, 5
+vf2in.q     C010, C400, 5
+vf2in.s     S010, S400, 6
+vf2in.p     C010, C400, 6
+vf2in.t     C010, C400, 6
+vf2in.q     C010, C400, 6
+vf2in.s     S010, S400, 7
+vf2in.p     C010, C400, 7
+vf2in.t     C010, C400, 7
+vf2in.q     C010, C400, 7
+vf2in.s     S010, S400, 8
+vf2in.p     C010, C400, 8
+vf2in.t     C010, C400, 8
+vf2in.q     C010, C400, 8
+vf2in.s     S010, S400, 9
+vf2in.p     C010, C400, 9
+vf2in.t     C010, C400, 9
+vf2in.q     C010, C400, 9
+vf2in.s     S010, S400, 10
+vf2in.p     C010, C400, 10
+vf2in.t     C010, C400, 10
+vf2in.q     C010, C400, 10
+vf2in.s     S010, S400, 11
+vf2in.p     C010, C400, 11
+vf2in.t     C010, C400, 11
+vf2in.q     C010, C400, 11
+vf2in.s     S010, S400, 12
+vf2in.p     C010, C400, 12
+vf2in.t     C010, C400, 12
+vf2in.q     C010, C400, 12
+vf2in.s     S010, S400, 13
+vf2in.p     C010, C400, 13
+vf2in.t     C010, C400, 13
+vf2in.q     C010, C400, 13
+vf2in.s     S010, S400, 14
+vf2in.p     C010, C400, 14
+vf2in.t     C010, C400, 14
+vf2in.q     C010, C400, 14
+vf2in.s     S010, S400, 15
+vf2in.p     C010, C400, 15
+vf2in.t     C010, C400, 15
+vf2in.q     C010, C400, 15
+vf2in.s     S010, S400, 16
+vf2in.p     C010, C400, 16
+vf2in.t     C010, C400, 16
+vf2in.q     C010, C400, 16
+vf2in.s     S010, S400, 17
+vf2in.p     C010, C400, 17
+vf2in.t     C010, C400, 17
+vf2in.q     C010, C400, 17
+vf2in.s     S010, S400, 18
+vf2in.p     C010, C400, 18
+vf2in.t     C010, C400, 18
+vf2in.q     C010, C400, 18
+vf2in.s     S010, S400, 19
+vf2in.p     C010, C400, 19
+vf2in.t     C010, C400, 19
+vf2in.q     C010, C400, 19
+vf2in.s     S010, S400, 20
+vf2in.p     C010, C400, 20
+vf2in.t     C010, C400, 20
+vf2in.q     C010, C400, 20
+vf2in.s     S010, S400, 21
+vf2in.p     C010, C400, 21
+vf2in.t     C010, C400, 21
+vf2in.q     C010, C400, 21
+vf2in.s     S010, S400, 22
+vf2in.p     C010, C400, 22
+vf2in.t     C010, C400, 22
+vf2in.q     C010, C400, 22
+vf2in.s     S010, S400, 23
+vf2in.p     C010, C400, 23
+vf2in.t     C010, C400, 23
+vf2in.q     C010, C400, 23
+vf2in.s     S010, S400, 24
+vf2in.p     C010, C400, 24
+vf2in.t     C010, C400, 24
+vf2in.q     C010, C400, 24
+vf2in.s     S010, S400, 25
+vf2in.p     C010, C400, 25
+vf2in.t     C010, C400, 25
+vf2in.q     C010, C400, 25
+vf2in.s     S010, S400, 26
+vf2in.p     C010, C400, 26
+vf2in.t     C010, C400, 26
+vf2in.q     C010, C400, 26
+vf2in.s     S010, S400, 27
+vf2in.p     C010, C400, 27
+vf2in.t     C010, C400, 27
+vf2in.q     C010, C400, 27
+vf2in.s     S010, S400, 28
+vf2in.p     C010, C400, 28
+vf2in.t     C010, C400, 28
+vf2in.q     C010, C400, 28
+vf2in.s     S010, S400, 29
+vf2in.p     C010, C400, 29
+vf2in.t     C010, C400, 29
+vf2in.q     C010, C400, 29
+vf2in.s     S010, S400, 30
+vf2in.p     C010, C400, 30
+vf2in.t     C010, C400, 30
+vf2in.q     C010, C400, 30
+vf2in.s     S010, S400, 31
+vf2in.p     C010, C400, 31
+vf2in.t     C010, C400, 31
+vf2in.q     C010, C400, 31
 vf2iz.s     S010, S400, 0
 vf2iz.p     C010, C400, 0
 vf2iz.t     C010, C400, 0
 vf2iz.q     C010, C400, 0
+vf2iz.s     S010, S400, 1
+vf2iz.p     C010, C400, 1
+vf2iz.t     C010, C400, 1
+vf2iz.q     C010, C400, 1
+vf2iz.s     S010, S400, 2
+vf2iz.p     C010, C400, 2
+vf2iz.t     C010, C400, 2
+vf2iz.q     C010, C400, 2
+vf2iz.s     S010, S400, 3
+vf2iz.p     C010, C400, 3
+vf2iz.t     C010, C400, 3
+vf2iz.q     C010, C400, 3
+vf2iz.s     S010, S400, 4
+vf2iz.p     C010, C400, 4
+vf2iz.t     C010, C400, 4
+vf2iz.q     C010, C400, 4
+vf2iz.s     S010, S400, 5
+vf2iz.p     C010, C400, 5
+vf2iz.t     C010, C400, 5
+vf2iz.q     C010, C400, 5
+vf2iz.s     S010, S400, 6
+vf2iz.p     C010, C400, 6
+vf2iz.t     C010, C400, 6
+vf2iz.q     C010, C400, 6
+vf2iz.s     S010, S400, 7
+vf2iz.p     C010, C400, 7
+vf2iz.t     C010, C400, 7
+vf2iz.q     C010, C400, 7
+vf2iz.s     S010, S400, 8
+vf2iz.p     C010, C400, 8
+vf2iz.t     C010, C400, 8
+vf2iz.q     C010, C400, 8
+vf2iz.s     S010, S400, 9
+vf2iz.p     C010, C400, 9
+vf2iz.t     C010, C400, 9
+vf2iz.q     C010, C400, 9
+vf2iz.s     S010, S400, 10
+vf2iz.p     C010, C400, 10
+vf2iz.t     C010, C400, 10
+vf2iz.q     C010, C400, 10
+vf2iz.s     S010, S400, 11
+vf2iz.p     C010, C400, 11
+vf2iz.t     C010, C400, 11
+vf2iz.q     C010, C400, 11
+vf2iz.s     S010, S400, 12
+vf2iz.p     C010, C400, 12
+vf2iz.t     C010, C400, 12
+vf2iz.q     C010, C400, 12
+vf2iz.s     S010, S400, 13
+vf2iz.p     C010, C400, 13
+vf2iz.t     C010, C400, 13
+vf2iz.q     C010, C400, 13
+vf2iz.s     S010, S400, 14
+vf2iz.p     C010, C400, 14
+vf2iz.t     C010, C400, 14
+vf2iz.q     C010, C400, 14
+vf2iz.s     S010, S400, 15
+vf2iz.p     C010, C400, 15
+vf2iz.t     C010, C400, 15
+vf2iz.q     C010, C400, 15
+vf2iz.s     S010, S400, 16
+vf2iz.p     C010, C400, 16
+vf2iz.t     C010, C400, 16
+vf2iz.q     C010, C400, 16
+vf2iz.s     S010, S400, 17
+vf2iz.p     C010, C400, 17
+vf2iz.t     C010, C400, 17
+vf2iz.q     C010, C400, 17
+vf2iz.s     S010, S400, 18
+vf2iz.p     C010, C400, 18
+vf2iz.t     C010, C400, 18
+vf2iz.q     C010, C400, 18
+vf2iz.s     S010, S400, 19
+vf2iz.p     C010, C400, 19
+vf2iz.t     C010, C400, 19
+vf2iz.q     C010, C400, 19
+vf2iz.s     S010, S400, 20
+vf2iz.p     C010, C400, 20
+vf2iz.t     C010, C400, 20
+vf2iz.q     C010, C400, 20
+vf2iz.s     S010, S400, 21
+vf2iz.p     C010, C400, 21
+vf2iz.t     C010, C400, 21
+vf2iz.q     C010, C400, 21
+vf2iz.s     S010, S400, 22
+vf2iz.p     C010, C400, 22
+vf2iz.t     C010, C400, 22
+vf2iz.q     C010, C400, 22
+vf2iz.s     S010, S400, 23
+vf2iz.p     C010, C400, 23
+vf2iz.t     C010, C400, 23
+vf2iz.q     C010, C400, 23
+vf2iz.s     S010, S400, 24
+vf2iz.p     C010, C400, 24
+vf2iz.t     C010, C400, 24
+vf2iz.q     C010, C400, 24
+vf2iz.s     S010, S400, 25
+vf2iz.p     C010, C400, 25
+vf2iz.t     C010, C400, 25
+vf2iz.q     C010, C400, 25
+vf2iz.s     S010, S400, 26
+vf2iz.p     C010, C400, 26
+vf2iz.t     C010, C400, 26
+vf2iz.q     C010, C400, 26
+vf2iz.s     S010, S400, 27
+vf2iz.p     C010, C400, 27
+vf2iz.t     C010, C400, 27
+vf2iz.q     C010, C400, 27
+vf2iz.s     S010, S400, 28
+vf2iz.p     C010, C400, 28
+vf2iz.t     C010, C400, 28
+vf2iz.q     C010, C400, 28
+vf2iz.s     S010, S400, 29
+vf2iz.p     C010, C400, 29
+vf2iz.t     C010, C400, 29
+vf2iz.q     C010, C400, 29
+vf2iz.s     S010, S400, 30
+vf2iz.p     C010, C400, 30
+vf2iz.t     C010, C400, 30
+vf2iz.q     C010, C400, 30
+vf2iz.s     S010, S400, 31
+vf2iz.p     C010, C400, 31
+vf2iz.t     C010, C400, 31
+vf2iz.q     C010, C400, 31
 vf2iu.s     S010, S400, 0
 vf2iu.p     C010, C400, 0
 vf2iu.t     C010, C400, 0
 vf2iu.q     C010, C400, 0
+vf2iu.s     S010, S400, 1
+vf2iu.p     C010, C400, 1
+vf2iu.t     C010, C400, 1
+vf2iu.q     C010, C400, 1
+vf2iu.s     S010, S400, 2
+vf2iu.p     C010, C400, 2
+vf2iu.t     C010, C400, 2
+vf2iu.q     C010, C400, 2
+vf2iu.s     S010, S400, 3
+vf2iu.p     C010, C400, 3
+vf2iu.t     C010, C400, 3
+vf2iu.q     C010, C400, 3
+vf2iu.s     S010, S400, 4
+vf2iu.p     C010, C400, 4
+vf2iu.t     C010, C400, 4
+vf2iu.q     C010, C400, 4
+vf2iu.s     S010, S400, 5
+vf2iu.p     C010, C400, 5
+vf2iu.t     C010, C400, 5
+vf2iu.q     C010, C400, 5
+vf2iu.s     S010, S400, 6
+vf2iu.p     C010, C400, 6
+vf2iu.t     C010, C400, 6
+vf2iu.q     C010, C400, 6
+vf2iu.s     S010, S400, 7
+vf2iu.p     C010, C400, 7
+vf2iu.t     C010, C400, 7
+vf2iu.q     C010, C400, 7
+vf2iu.s     S010, S400, 8
+vf2iu.p     C010, C400, 8
+vf2iu.t     C010, C400, 8
+vf2iu.q     C010, C400, 8
+vf2iu.s     S010, S400, 9
+vf2iu.p     C010, C400, 9
+vf2iu.t     C010, C400, 9
+vf2iu.q     C010, C400, 9
+vf2iu.s     S010, S400, 10
+vf2iu.p     C010, C400, 10
+vf2iu.t     C010, C400, 10
+vf2iu.q     C010, C400, 10
+vf2iu.s     S010, S400, 11
+vf2iu.p     C010, C400, 11
+vf2iu.t     C010, C400, 11
+vf2iu.q     C010, C400, 11
+vf2iu.s     S010, S400, 12
+vf2iu.p     C010, C400, 12
+vf2iu.t     C010, C400, 12
+vf2iu.q     C010, C400, 12
+vf2iu.s     S010, S400, 13
+vf2iu.p     C010, C400, 13
+vf2iu.t     C010, C400, 13
+vf2iu.q     C010, C400, 13
+vf2iu.s     S010, S400, 14
+vf2iu.p     C010, C400, 14
+vf2iu.t     C010, C400, 14
+vf2iu.q     C010, C400, 14
+vf2iu.s     S010, S400, 15
+vf2iu.p     C010, C400, 15
+vf2iu.t     C010, C400, 15
+vf2iu.q     C010, C400, 15
+vf2iu.s     S010, S400, 16
+vf2iu.p     C010, C400, 16
+vf2iu.t     C010, C400, 16
+vf2iu.q     C010, C400, 16
+vf2iu.s     S010, S400, 17
+vf2iu.p     C010, C400, 17
+vf2iu.t     C010, C400, 17
+vf2iu.q     C010, C400, 17
+vf2iu.s     S010, S400, 18
+vf2iu.p     C010, C400, 18
+vf2iu.t     C010, C400, 18
+vf2iu.q     C010, C400, 18
+vf2iu.s     S010, S400, 19
+vf2iu.p     C010, C400, 19
+vf2iu.t     C010, C400, 19
+vf2iu.q     C010, C400, 19
+vf2iu.s     S010, S400, 20
+vf2iu.p     C010, C400, 20
+vf2iu.t     C010, C400, 20
+vf2iu.q     C010, C400, 20
+vf2iu.s     S010, S400, 21
+vf2iu.p     C010, C400, 21
+vf2iu.t     C010, C400, 21
+vf2iu.q     C010, C400, 21
+vf2iu.s     S010, S400, 22
+vf2iu.p     C010, C400, 22
+vf2iu.t     C010, C400, 22
+vf2iu.q     C010, C400, 22
+vf2iu.s     S010, S400, 23
+vf2iu.p     C010, C400, 23
+vf2iu.t     C010, C400, 23
+vf2iu.q     C010, C400, 23
+vf2iu.s     S010, S400, 24
+vf2iu.p     C010, C400, 24
+vf2iu.t     C010, C400, 24
+vf2iu.q     C010, C400, 24
+vf2iu.s     S010, S400, 25
+vf2iu.p     C010, C400, 25
+vf2iu.t     C010, C400, 25
+vf2iu.q     C010, C400, 25
+vf2iu.s     S010, S400, 26
+vf2iu.p     C010, C400, 26
+vf2iu.t     C010, C400, 26
+vf2iu.q     C010, C400, 26
+vf2iu.s     S010, S400, 27
+vf2iu.p     C010, C400, 27
+vf2iu.t     C010, C400, 27
+vf2iu.q     C010, C400, 27
+vf2iu.s     S010, S400, 28
+vf2iu.p     C010, C400, 28
+vf2iu.t     C010, C400, 28
+vf2iu.q     C010, C400, 28
+vf2iu.s     S010, S400, 29
+vf2iu.p     C010, C400, 29
+vf2iu.t     C010, C400, 29
+vf2iu.q     C010, C400, 29
+vf2iu.s     S010, S400, 30
+vf2iu.p     C010, C400, 30
+vf2iu.t     C010, C400, 30
+vf2iu.q     C010, C400, 30
+vf2iu.s     S010, S400, 31
+vf2iu.p     C010, C400, 31
+vf2iu.t     C010, C400, 31
+vf2iu.q     C010, C400, 31
 vf2id.s     S010, S400, 0
 vf2id.p     C010, C400, 0
 vf2id.t     C010, C400, 0
 vf2id.q     C010, C400, 0
+vf2id.s     S010, S400, 1
+vf2id.p     C010, C400, 1
+vf2id.t     C010, C400, 1
+vf2id.q     C010, C400, 1
+vf2id.s     S010, S400, 2
+vf2id.p     C010, C400, 2
+vf2id.t     C010, C400, 2
+vf2id.q     C010, C400, 2
+vf2id.s     S010, S400, 3
+vf2id.p     C010, C400, 3
+vf2id.t     C010, C400, 3
+vf2id.q     C010, C400, 3
+vf2id.s     S010, S400, 4
+vf2id.p     C010, C400, 4
+vf2id.t     C010, C400, 4
+vf2id.q     C010, C400, 4
+vf2id.s     S010, S400, 5
+vf2id.p     C010, C400, 5
+vf2id.t     C010, C400, 5
+vf2id.q     C010, C400, 5
+vf2id.s     S010, S400, 6
+vf2id.p     C010, C400, 6
+vf2id.t     C010, C400, 6
+vf2id.q     C010, C400, 6
+vf2id.s     S010, S400, 7
+vf2id.p     C010, C400, 7
+vf2id.t     C010, C400, 7
+vf2id.q     C010, C400, 7
+vf2id.s     S010, S400, 8
+vf2id.p     C010, C400, 8
+vf2id.t     C010, C400, 8
+vf2id.q     C010, C400, 8
+vf2id.s     S010, S400, 9
+vf2id.p     C010, C400, 9
+vf2id.t     C010, C400, 9
+vf2id.q     C010, C400, 9
+vf2id.s     S010, S400, 10
+vf2id.p     C010, C400, 10
+vf2id.t     C010, C400, 10
+vf2id.q     C010, C400, 10
+vf2id.s     S010, S400, 11
+vf2id.p     C010, C400, 11
+vf2id.t     C010, C400, 11
+vf2id.q     C010, C400, 11
+vf2id.s     S010, S400, 12
+vf2id.p     C010, C400, 12
+vf2id.t     C010, C400, 12
+vf2id.q     C010, C400, 12
+vf2id.s     S010, S400, 13
+vf2id.p     C010, C400, 13
+vf2id.t     C010, C400, 13
+vf2id.q     C010, C400, 13
+vf2id.s     S010, S400, 14
+vf2id.p     C010, C400, 14
+vf2id.t     C010, C400, 14
+vf2id.q     C010, C400, 14
+vf2id.s     S010, S400, 15
+vf2id.p     C010, C400, 15
+vf2id.t     C010, C400, 15
+vf2id.q     C010, C400, 15
+vf2id.s     S010, S400, 16
+vf2id.p     C010, C400, 16
+vf2id.t     C010, C400, 16
+vf2id.q     C010, C400, 16
+vf2id.s     S010, S400, 17
+vf2id.p     C010, C400, 17
+vf2id.t     C010, C400, 17
+vf2id.q     C010, C400, 17
+vf2id.s     S010, S400, 18
+vf2id.p     C010, C400, 18
+vf2id.t     C010, C400, 18
+vf2id.q     C010, C400, 18
+vf2id.s     S010, S400, 19
+vf2id.p     C010, C400, 19
+vf2id.t     C010, C400, 19
+vf2id.q     C010, C400, 19
+vf2id.s     S010, S400, 20
+vf2id.p     C010, C400, 20
+vf2id.t     C010, C400, 20
+vf2id.q     C010, C400, 20
+vf2id.s     S010, S400, 21
+vf2id.p     C010, C400, 21
+vf2id.t     C010, C400, 21
+vf2id.q     C010, C400, 21
+vf2id.s     S010, S400, 22
+vf2id.p     C010, C400, 22
+vf2id.t     C010, C400, 22
+vf2id.q     C010, C400, 22
+vf2id.s     S010, S400, 23
+vf2id.p     C010, C400, 23
+vf2id.t     C010, C400, 23
+vf2id.q     C010, C400, 23
+vf2id.s     S010, S400, 24
+vf2id.p     C010, C400, 24
+vf2id.t     C010, C400, 24
+vf2id.q     C010, C400, 24
+vf2id.s     S010, S400, 25
+vf2id.p     C010, C400, 25
+vf2id.t     C010, C400, 25
+vf2id.q     C010, C400, 25
+vf2id.s     S010, S400, 26
+vf2id.p     C010, C400, 26
+vf2id.t     C010, C400, 26
+vf2id.q     C010, C400, 26
+vf2id.s     S010, S400, 27
+vf2id.p     C010, C400, 27
+vf2id.t     C010, C400, 27
+vf2id.q     C010, C400, 27
+vf2id.s     S010, S400, 28
+vf2id.p     C010, C400, 28
+vf2id.t     C010, C400, 28
+vf2id.q     C010, C400, 28
+vf2id.s     S010, S400, 29
+vf2id.p     C010, C400, 29
+vf2id.t     C010, C400, 29
+vf2id.q     C010, C400, 29
+vf2id.s     S010, S400, 30
+vf2id.p     C010, C400, 30
+vf2id.t     C010, C400, 30
+vf2id.q     C010, C400, 30
+vf2id.s     S010, S400, 31
+vf2id.p     C010, C400, 31
+vf2id.t     C010, C400, 31
+vf2id.q     C010, C400, 31
 vi2f.s      S010, S400, 0
 vi2f.p      C010, C400, 0
 vi2f.t      C010, C400, 0
 vi2f.q      C010, C400, 0
+vi2f.s      S010, S400, 1
+vi2f.p      C010, C400, 1
+vi2f.t      C010, C400, 1
+vi2f.q      C010, C400, 1
+vi2f.s      S010, S400, 2
+vi2f.p      C010, C400, 2
+vi2f.t      C010, C400, 2
+vi2f.q      C010, C400, 2
+vi2f.s      S010, S400, 3
+vi2f.p      C010, C400, 3
+vi2f.t      C010, C400, 3
+vi2f.q      C010, C400, 3
+vi2f.s      S010, S400, 4
+vi2f.p      C010, C400, 4
+vi2f.t      C010, C400, 4
+vi2f.q      C010, C400, 4
+vi2f.s      S010, S400, 5
+vi2f.p      C010, C400, 5
+vi2f.t      C010, C400, 5
+vi2f.q      C010, C400, 5
+vi2f.s      S010, S400, 6
+vi2f.p      C010, C400, 6
+vi2f.t      C010, C400, 6
+vi2f.q      C010, C400, 6
+vi2f.s      S010, S400, 7
+vi2f.p      C010, C400, 7
+vi2f.t      C010, C400, 7
+vi2f.q      C010, C400, 7
+vi2f.s      S010, S400, 8
+vi2f.p      C010, C400, 8
+vi2f.t      C010, C400, 8
+vi2f.q      C010, C400, 8
+vi2f.s      S010, S400, 9
+vi2f.p      C010, C400, 9
+vi2f.t      C010, C400, 9
+vi2f.q      C010, C400, 9
+vi2f.s      S010, S400, 10
+vi2f.p      C010, C400, 10
+vi2f.t      C010, C400, 10
+vi2f.q      C010, C400, 10
+vi2f.s      S010, S400, 11
+vi2f.p      C010, C400, 11
+vi2f.t      C010, C400, 11
+vi2f.q      C010, C400, 11
+vi2f.s      S010, S400, 12
+vi2f.p      C010, C400, 12
+vi2f.t      C010, C400, 12
+vi2f.q      C010, C400, 12
+vi2f.s      S010, S400, 13
+vi2f.p      C010, C400, 13
+vi2f.t      C010, C400, 13
+vi2f.q      C010, C400, 13
+vi2f.s      S010, S400, 14
+vi2f.p      C010, C400, 14
+vi2f.t      C010, C400, 14
+vi2f.q      C010, C400, 14
+vi2f.s      S010, S400, 15
+vi2f.p      C010, C400, 15
+vi2f.t      C010, C400, 15
+vi2f.q      C010, C400, 15
+vi2f.s      S010, S400, 16
+vi2f.p      C010, C400, 16
+vi2f.t      C010, C400, 16
+vi2f.q      C010, C400, 16
+vi2f.s      S010, S400, 17
+vi2f.p      C010, C400, 17
+vi2f.t      C010, C400, 17
+vi2f.q      C010, C400, 17
+vi2f.s      S010, S400, 18
+vi2f.p      C010, C400, 18
+vi2f.t      C010, C400, 18
+vi2f.q      C010, C400, 18
+vi2f.s      S010, S400, 19
+vi2f.p      C010, C400, 19
+vi2f.t      C010, C400, 19
+vi2f.q      C010, C400, 19
+vi2f.s      S010, S400, 20
+vi2f.p      C010, C400, 20
+vi2f.t      C010, C400, 20
+vi2f.q      C010, C400, 20
+vi2f.s      S010, S400, 21
+vi2f.p      C010, C400, 21
+vi2f.t      C010, C400, 21
+vi2f.q      C010, C400, 21
+vi2f.s      S010, S400, 22
+vi2f.p      C010, C400, 22
+vi2f.t      C010, C400, 22
+vi2f.q      C010, C400, 22
+vi2f.s      S010, S400, 23
+vi2f.p      C010, C400, 23
+vi2f.t      C010, C400, 23
+vi2f.q      C010, C400, 23
+vi2f.s      S010, S400, 24
+vi2f.p      C010, C400, 24
+vi2f.t      C010, C400, 24
+vi2f.q      C010, C400, 24
+vi2f.s      S010, S400, 25
+vi2f.p      C010, C400, 25
+vi2f.t      C010, C400, 25
+vi2f.q      C010, C400, 25
+vi2f.s      S010, S400, 26
+vi2f.p      C010, C400, 26
+vi2f.t      C010, C400, 26
+vi2f.q      C010, C400, 26
+vi2f.s      S010, S400, 27
+vi2f.p      C010, C400, 27
+vi2f.t      C010, C400, 27
+vi2f.q      C010, C400, 27
+vi2f.s      S010, S400, 28
+vi2f.p      C010, C400, 28
+vi2f.t      C010, C400, 28
+vi2f.q      C010, C400, 28
+vi2f.s      S010, S400, 29
+vi2f.p      C010, C400, 29
+vi2f.t      C010, C400, 29
+vi2f.q      C010, C400, 29
+vi2f.s      S010, S400, 30
+vi2f.p      C010, C400, 30
+vi2f.t      C010, C400, 30
+vi2f.q      C010, C400, 30
+vi2f.s      S010, S400, 31
+vi2f.p      C010, C400, 31
+vi2f.t      C010, C400, 31
+vi2f.q      C010, C400, 31
 vcmovt.s    S010, S400, 0
 vcmovt.p    C010, C400, 0
 vcmovt.t    C010, C400, 0
 vcmovt.q    C010, C400, 0
+vcmovt.s    S010, S400, 1
+vcmovt.p    C010, C400, 1
+vcmovt.t    C010, C400, 1
+vcmovt.q    C010, C400, 1
+vcmovt.s    S010, S400, 2
+vcmovt.p    C010, C400, 2
+vcmovt.t    C010, C400, 2
+vcmovt.q    C010, C400, 2
+vcmovt.s    S010, S400, 3
+vcmovt.p    C010, C400, 3
+vcmovt.t    C010, C400, 3
+vcmovt.q    C010, C400, 3
+vcmovt.s    S010, S400, 4
+vcmovt.p    C010, C400, 4
+vcmovt.t    C010, C400, 4
+vcmovt.q    C010, C400, 4
+vcmovt.s    S010, S400, 5
+vcmovt.p    C010, C400, 5
+vcmovt.t    C010, C400, 5
+vcmovt.q    C010, C400, 5
+vcmovt.s    S010, S400, 6
+vcmovt.p    C010, C400, 6
+vcmovt.t    C010, C400, 6
+vcmovt.q    C010, C400, 6
 vcmovf.s    S010, S400, 0
 vcmovf.p    C010, C400, 0
 vcmovf.t    C010, C400, 0
 vcmovf.q    C010, C400, 0
+vcmovf.s    S010, S400, 1
+vcmovf.p    C010, C400, 1
+vcmovf.t    C010, C400, 1
+vcmovf.q    C010, C400, 1
+vcmovf.s    S010, S400, 2
+vcmovf.p    C010, C400, 2
+vcmovf.t    C010, C400, 2
+vcmovf.q    C010, C400, 2
+vcmovf.s    S010, S400, 3
+vcmovf.p    C010, C400, 3
+vcmovf.t    C010, C400, 3
+vcmovf.q    C010, C400, 3
+vcmovf.s    S010, S400, 4
+vcmovf.p    C010, C400, 4
+vcmovf.t    C010, C400, 4
+vcmovf.q    C010, C400, 4
+vcmovf.s    S010, S400, 5
+vcmovf.p    C010, C400, 5
+vcmovf.t    C010, C400, 5
+vcmovf.q    C010, C400, 5
+vcmovf.s    S010, S400, 6
+vcmovf.p    C010, C400, 6
+vcmovf.t    C010, C400, 6
+vcmovf.q    C010, C400, 6
+vcmovt.s    S010, S400, 0
+vcmovt.p    C010, C400, 0
+vcmovt.t    C010, C400, 0
+vcmovt.q    C010, C400, 0
+vcmovt.s    S010, S400, 1
+vcmovt.p    C010, C400, 1
+vcmovt.t    C010, C400, 1
+vcmovt.q    C010, C400, 1
+vcmovt.s    S010, S400, 2
+vcmovt.p    C010, C400, 2
+vcmovt.t    C010, C400, 2
+vcmovt.q    C010, C400, 2
+vcmovt.s    S010, S400, 3
+vcmovt.p    C010, C400, 3
+vcmovt.t    C010, C400, 3
+vcmovt.q    C010, C400, 3
+vcmovt.s    S010, S400, 4
+vcmovt.p    C010, C400, 4
+vcmovt.t    C010, C400, 4
+vcmovt.q    C010, C400, 4
+vcmovt.s    S010, S400, 5
+vcmovt.p    C010, C400, 5
+vcmovt.t    C010, C400, 5
+vcmovt.q    C010, C400, 5
+vcmovt.s    S010, S400, 6
+vcmovt.p    C010, C400, 6
+vcmovt.t    C010, C400, 6
+vcmovt.q    C010, C400, 6
+vcmovf.s    S010, S400, 0
+vcmovf.p    C010, C400, 0
+vcmovf.t    C010, C400, 0
+vcmovf.q    C010, C400, 0
+vcmovf.s    S010, S400, 1
+vcmovf.p    C010, C400, 1
+vcmovf.t    C010, C400, 1
+vcmovf.q    C010, C400, 1
+vcmovf.s    S010, S400, 2
+vcmovf.p    C010, C400, 2
+vcmovf.t    C010, C400, 2
+vcmovf.q    C010, C400, 2
+vcmovf.s    S010, S400, 3
+vcmovf.p    C010, C400, 3
+vcmovf.t    C010, C400, 3
+vcmovf.q    C010, C400, 3
+vcmovf.s    S010, S400, 4
+vcmovf.p    C010, C400, 4
+vcmovf.t    C010, C400, 4
+vcmovf.q    C010, C400, 4
+vcmovf.s    S010, S400, 5
+vcmovf.p    C010, C400, 5
+vcmovf.t    C010, C400, 5
+vcmovf.q    C010, C400, 5
+vcmovf.s    S010, S400, 6
+vcmovf.p    C010, C400, 6
+vcmovf.t    C010, C400, 6
+vcmovf.q    C010, C400, 6
 vwbn.s      S010, S400, 0
+vwbn.s      S010, S400, 1
+vwbn.s      S010, S400, 2
+vwbn.s      S010, S400, 3
+vwbn.s      S010, S400, 4
+vwbn.s      S010, S400, 5
+vwbn.s      S010, S400, 6
+vwbn.s      S010, S400, 7
+vwbn.s      S010, S400, 8
+vwbn.s      S010, S400, 9
+vwbn.s      S010, S400, 10
+vwbn.s      S010, S400, 11
+vwbn.s      S010, S400, 12
+vwbn.s      S010, S400, 13
+vwbn.s      S010, S400, 14
+vwbn.s      S010, S400, 15
+vwbn.s      S010, S400, 16
+vwbn.s      S010, S400, 17
+vwbn.s      S010, S400, 18
+vwbn.s      S010, S400, 19
+vwbn.s      S010, S400, 20
+vwbn.s      S010, S400, 21
+vwbn.s      S010, S400, 22
+vwbn.s      S010, S400, 23
+vwbn.s      S010, S400, 24
+vwbn.s      S010, S400, 25
+vwbn.s      S010, S400, 26
+vwbn.s      S010, S400, 27
+vwbn.s      S010, S400, 28
+vwbn.s      S010, S400, 29
+vwbn.s      S010, S400, 30
+vwbn.s      S010, S400, 31
+vwbn.s      S010, S400, 32
+vwbn.s      S010, S400, 33
+vwbn.s      S010, S400, 34
+vwbn.s      S010, S400, 35
+vwbn.s      S010, S400, 36
+vwbn.s      S010, S400, 37
+vwbn.s      S010, S400, 38
+vwbn.s      S010, S400, 39
+vwbn.s      S010, S400, 40
+vwbn.s      S010, S400, 41
+vwbn.s      S010, S400, 42
+vwbn.s      S010, S400, 43
+vwbn.s      S010, S400, 44
+vwbn.s      S010, S400, 45
+vwbn.s      S010, S400, 46
+vwbn.s      S010, S400, 47
+vwbn.s      S010, S400, 48
+vwbn.s      S010, S400, 49
+vwbn.s      S010, S400, 50
+vwbn.s      S010, S400, 51
+vwbn.s      S010, S400, 52
+vwbn.s      S010, S400, 53
+vwbn.s      S010, S400, 54
+vwbn.s      S010, S400, 55
+vwbn.s      S010, S400, 56
+vwbn.s      S010, S400, 57
+vwbn.s      S010, S400, 58
+vwbn.s      S010, S400, 59
+vwbn.s      S010, S400, 60
+vwbn.s      S010, S400, 61
+vwbn.s      S010, S400, 62
+vwbn.s      S010, S400, 63
+vwbn.s      S010, S400, 64
+vwbn.s      S010, S400, 65
+vwbn.s      S010, S400, 66
+vwbn.s      S010, S400, 67
+vwbn.s      S010, S400, 68
+vwbn.s      S010, S400, 69
+vwbn.s      S010, S400, 70
+vwbn.s      S010, S400, 71
+vwbn.s      S010, S400, 72
+vwbn.s      S010, S400, 73
+vwbn.s      S010, S400, 74
+vwbn.s      S010, S400, 75
+vwbn.s      S010, S400, 76
+vwbn.s      S010, S400, 77
+vwbn.s      S010, S400, 78
+vwbn.s      S010, S400, 79
+vwbn.s      S010, S400, 80
+vwbn.s      S010, S400, 81
+vwbn.s      S010, S400, 82
+vwbn.s      S010, S400, 83
+vwbn.s      S010, S400, 84
+vwbn.s      S010, S400, 85
+vwbn.s      S010, S400, 86
+vwbn.s      S010, S400, 87
+vwbn.s      S010, S400, 88
+vwbn.s      S010, S400, 89
+vwbn.s      S010, S400, 90
+vwbn.s      S010, S400, 91
+vwbn.s      S010, S400, 92
+vwbn.s      S010, S400, 93
+vwbn.s      S010, S400, 94
+vwbn.s      S010, S400, 95
+vwbn.s      S010, S400, 96
+vwbn.s      S010, S400, 97
+vwbn.s      S010, S400, 98
+vwbn.s      S010, S400, 99
+vwbn.s      S010, S400, 100
+vwbn.s      S010, S400, 101
+vwbn.s      S010, S400, 102
+vwbn.s      S010, S400, 103
+vwbn.s      S010, S400, 104
+vwbn.s      S010, S400, 105
+vwbn.s      S010, S400, 106
+vwbn.s      S010, S400, 107
+vwbn.s      S010, S400, 108
+vwbn.s      S010, S400, 109
+vwbn.s      S010, S400, 110
+vwbn.s      S010, S400, 111
+vwbn.s      S010, S400, 112
+vwbn.s      S010, S400, 113
+vwbn.s      S010, S400, 114
+vwbn.s      S010, S400, 115
+vwbn.s      S010, S400, 116
+vwbn.s      S010, S400, 117
+vwbn.s      S010, S400, 118
+vwbn.s      S010, S400, 119
+vwbn.s      S010, S400, 120
+vwbn.s      S010, S400, 121
+vwbn.s      S010, S400, 122
+vwbn.s      S010, S400, 123
+vwbn.s      S010, S400, 124
+vwbn.s      S010, S400, 125
+vwbn.s      S010, S400, 126
+vwbn.s      S010, S400, 127
+vwbn.s      S010, S400, 128
+vwbn.s      S010, S400, 129
+vwbn.s      S010, S400, 130
+vwbn.s      S010, S400, 131
+vwbn.s      S010, S400, 132
+vwbn.s      S010, S400, 133
+vwbn.s      S010, S400, 134
+vwbn.s      S010, S400, 135
+vwbn.s      S010, S400, 136
+vwbn.s      S010, S400, 137
+vwbn.s      S010, S400, 138
+vwbn.s      S010, S400, 139
+vwbn.s      S010, S400, 140
+vwbn.s      S010, S400, 141
+vwbn.s      S010, S400, 142
+vwbn.s      S010, S400, 143
+vwbn.s      S010, S400, 144
+vwbn.s      S010, S400, 145
+vwbn.s      S010, S400, 146
+vwbn.s      S010, S400, 147
+vwbn.s      S010, S400, 148
+vwbn.s      S010, S400, 149
+vwbn.s      S010, S400, 150
+vwbn.s      S010, S400, 151
+vwbn.s      S010, S400, 152
+vwbn.s      S010, S400, 153
+vwbn.s      S010, S400, 154
+vwbn.s      S010, S400, 155
+vwbn.s      S010, S400, 156
+vwbn.s      S010, S400, 157
+vwbn.s      S010, S400, 158
+vwbn.s      S010, S400, 159
+vwbn.s      S010, S400, 160
+vwbn.s      S010, S400, 161
+vwbn.s      S010, S400, 162
+vwbn.s      S010, S400, 163
+vwbn.s      S010, S400, 164
+vwbn.s      S010, S400, 165
+vwbn.s      S010, S400, 166
+vwbn.s      S010, S400, 167
+vwbn.s      S010, S400, 168
+vwbn.s      S010, S400, 169
+vwbn.s      S010, S400, 170
+vwbn.s      S010, S400, 171
+vwbn.s      S010, S400, 172
+vwbn.s      S010, S400, 173
+vwbn.s      S010, S400, 174
+vwbn.s      S010, S400, 175
+vwbn.s      S010, S400, 176
+vwbn.s      S010, S400, 177
+vwbn.s      S010, S400, 178
+vwbn.s      S010, S400, 179
+vwbn.s      S010, S400, 180
+vwbn.s      S010, S400, 181
+vwbn.s      S010, S400, 182
+vwbn.s      S010, S400, 183
+vwbn.s      S010, S400, 184
+vwbn.s      S010, S400, 185
+vwbn.s      S010, S400, 186
+vwbn.s      S010, S400, 187
+vwbn.s      S010, S400, 188
+vwbn.s      S010, S400, 189
+vwbn.s      S010, S400, 190
+vwbn.s      S010, S400, 191
+vwbn.s      S010, S400, 192
+vwbn.s      S010, S400, 193
+vwbn.s      S010, S400, 194
+vwbn.s      S010, S400, 195
+vwbn.s      S010, S400, 196
+vwbn.s      S010, S400, 197
+vwbn.s      S010, S400, 198
+vwbn.s      S010, S400, 199
+vwbn.s      S010, S400, 200
+vwbn.s      S010, S400, 201
+vwbn.s      S010, S400, 202
+vwbn.s      S010, S400, 203
+vwbn.s      S010, S400, 204
+vwbn.s      S010, S400, 205
+vwbn.s      S010, S400, 206
+vwbn.s      S010, S400, 207
+vwbn.s      S010, S400, 208
+vwbn.s      S010, S400, 209
+vwbn.s      S010, S400, 210
+vwbn.s      S010, S400, 211
+vwbn.s      S010, S400, 212
+vwbn.s      S010, S400, 213
+vwbn.s      S010, S400, 214
+vwbn.s      S010, S400, 215
+vwbn.s      S010, S400, 216
+vwbn.s      S010, S400, 217
+vwbn.s      S010, S400, 218
+vwbn.s      S010, S400, 219
+vwbn.s      S010, S400, 220
+vwbn.s      S010, S400, 221
+vwbn.s      S010, S400, 222
+vwbn.s      S010, S400, 223
+vwbn.s      S010, S400, 224
+vwbn.s      S010, S400, 225
+vwbn.s      S010, S400, 226
+vwbn.s      S010, S400, 227
+vwbn.s      S010, S400, 228
+vwbn.s      S010, S400, 229
+vwbn.s      S010, S400, 230
+vwbn.s      S010, S400, 231
+vwbn.s      S010, S400, 232
+vwbn.s      S010, S400, 233
+vwbn.s      S010, S400, 234
+vwbn.s      S010, S400, 235
+vwbn.s      S010, S400, 236
+vwbn.s      S010, S400, 237
+vwbn.s      S010, S400, 238
+vwbn.s      S010, S400, 239
+vwbn.s      S010, S400, 240
+vwbn.s      S010, S400, 241
+vwbn.s      S010, S400, 242
+vwbn.s      S010, S400, 243
+vwbn.s      S010, S400, 244
+vwbn.s      S010, S400, 245
+vwbn.s      S010, S400, 246
+vwbn.s      S010, S400, 247
+vwbn.s      S010, S400, 248
+vwbn.s      S010, S400, 249
+vwbn.s      S010, S400, 250
+vwbn.s      S010, S400, 251
+vwbn.s      S010, S400, 252
+vwbn.s      S010, S400, 253
+vwbn.s      S010, S400, 254
+vwbn.s      S010, S400, 255
+vpfxs       X, X, X, X
+vpfxs       Y, X, X, X
+vpfxs       X, X, Y, X
+vpfxs       |X|, X, X, X
+vpfxs       0, X, X, X
+vpfxs       -X, X, X, X
+vpfxs       X, X, X, X
+vpfxs       X, X, X, X
 vpfxs       X, X, X, X
 vpfxt       X, X, X, X
+vpfxt       Y, X, X, X
+vpfxt       X, X, Y, X
+vpfxt       |X|, X, X, X
+vpfxt       0, X, X, X
+vpfxt       -X, X, X, X
+vpfxt       X, X, X, X
+vpfxt       X, X, X, X
+vpfxt       X, X, X, X
+vpfxd       , , ,
+vpfxd       0, , ,
+vpfxd       , ,0 ,
+vpfxd       M, , ,
+vpfxd       , , ,
+vpfxd       , , ,
+vpfxd       , , ,
+vpfxd       , , ,
 vpfxd       , , ,
 viim.s      S002, 0
+viim.s      S002, 1
+viim.s      S002, 16
+viim.s      S002, 256
+viim.s      S002, 4096
+viim.s      S002, -32768
+viim.s      S002, -4096
 vfim.s      S002, 0.0
+nop # vfim.s      S002, 2.980232238769531e-008
+nop # vfim.s      S002, 4.76837158203125e-007
+nop # vfim.s      S002, 7.62939453125e-006
+vfim.s      S002, 4.8828125e-004
+vfim.s      S002, -0.0
+vfim.s      S002, -8192.0
 vmmul.p     M002, E400, M000
 vmmul.t     M100, E400, M000
 vmmul.q     M002, E400, M000
 vhtfm2.p    C002, M100, C000
 vtfm2.p     C002, M400, C000
+vtfm2.p     C100, M400, C000
+vtfm2.p     C002, M400, C000
+vtfm3.t     C100, M000, C000
 vhtfm3.t    C100, M400, C000
 vtfm3.t     C100, M400, C000
+vtfm4.q     C200, M000, C000
+vtfm4.q     C002, M400, C000
 vhtfm4.q    C002, M400, C000
 vtfm4.q     C002, M400, C000
 vmscl.p     M002, M400, S000
@@ -2427,6 +3597,15 @@ vqmul.q     C002, C400, C000
 vmmov.p     M002, M400
 vmmov.t     M001, M400
 vmmov.q     M002, M400
+vmidt.p     M002
+vmidt.t     M001
+vmidt.q     M002
+vmzero.p    M002
+vmzero.t    M001
+vmzero.q    M002
+vmone.p     M002
+vmone.t     M001
+vmone.q     M002
 vrot.p      C002, S400, [C,S]
 vrot.t      C001, S400, [C,S,S]
 vrot.q      C002, S400, [C,S,S,S]

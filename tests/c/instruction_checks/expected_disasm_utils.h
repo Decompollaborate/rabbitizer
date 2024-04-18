@@ -17,6 +17,7 @@
 #include <assert.h>
 
 #define BOOL_STR(x) ((x) ? "true" : "false")
+#define STR_STARTS_WITH(str, prefix) (strncmp((str), (prefix), strlen((prefix))) == 0)
 
 #define LOG(...)                                \
     do {                                        \
@@ -197,7 +198,7 @@ void print_expected(void) {
         info->init(&instr, entry->word, 0);
         info->processUniqueId(&instr);
 
-        if (RabbitizerInstruction_isValid(&instr)) {
+        if (!STR_STARTS_WITH(entry->expectedStr, ".word       ")) {
             printf("%s\n", entry->expectedStr);
         }
 
