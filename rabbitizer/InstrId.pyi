@@ -656,6 +656,9 @@ class InstrId:
     r4000allegrex_vpfxd: Enum
     r4000allegrex_viim_s: Enum
     r4000allegrex_vfim_s: Enum
+    r4000allegrex_vrot_p: Enum
+    r4000allegrex_vrot_t: Enum
+    r4000allegrex_vrot_q: Enum
     r4000allegrex_vmmov_p: Enum
     r4000allegrex_vmmov_t: Enum
     r4000allegrex_vmmov_q: Enum

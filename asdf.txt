@@ -16239,62 +16239,62 @@ Error on word '0xF3A31040'. Expected 'illegal', got '.word       0xF3A31040     
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A010C0'. Expected 'vrot.p      C002, S400, [C,S]', got '.word       0xF3A010C0                   # INVALID     $sp, $zero, 0x10C0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A010C0'. Expected 'vrot.p      C002, S400, [C,S]', got 'vrot.p      C002, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A110C0'. Expected 'vrot.p      C002, S400, [S,C]', got '.word       0xF3A110C0                   # INVALID     $sp, $at, 0x10C0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A110C0'. Expected 'vrot.p      C002, S400, [S,C]', got '.word       0xF3A110C0                   # vrot.p      C002, S400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A210C0'. Expected 'vrot.p      C002, S400, [S,0]', got '.word       0xF3A210C0                   # INVALID     $sp, $v0, 0x10C0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A210C0'. Expected 'vrot.p      C002, S400, [S,0]', got '.word       0xF3A210C0                   # vrot.p      C002, S400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A310C0'. Expected 'vrot.p      C002, S400, [S,0]', got '.word       0xF3A310C0                   # INVALID     $sp, $v1, 0x10C0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A310C0'. Expected 'vrot.p      C002, S400, [S,0]', got '.word       0xF3A310C0                   # vrot.p      C002, S400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A09040'. Expected 'vrot.t      C001, S400, [C,S,S]', got '.word       0xF3A09040                   # INVALID     $sp, $zero, -0x6FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A09040'. Expected 'vrot.t      C001, S400, [C,S,S]', got 'vrot.t      C001, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A19040'. Expected 'vrot.t      C001, S400, [S,C,0]', got '.word       0xF3A19040                   # INVALID     $sp, $at, -0x6FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A19040'. Expected 'vrot.t      C001, S400, [S,C,0]', got '.word       0xF3A19040                   # vrot.t      C001, S400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A29040'. Expected 'vrot.t      C001, S400, [S,0,C]', got '.word       0xF3A29040                   # INVALID     $sp, $v0, -0x6FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A29040'. Expected 'vrot.t      C001, S400, [S,0,C]', got '.word       0xF3A29040                   # vrot.t      C001, S400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A39040'. Expected 'vrot.t      C001, S400, [S,0,0]', got '.word       0xF3A39040                   # INVALID     $sp, $v1, -0x6FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A39040'. Expected 'vrot.t      C001, S400, [S,0,0]', got '.word       0xF3A39040                   # vrot.t      C001, S400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got '.word       0xF3A090C0                   # INVALID     $sp, $zero, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'vrot.q      C002, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A190C0'. Expected 'vrot.q      C002, S400, [S,C,0,0]', got '.word       0xF3A190C0                   # INVALID     $sp, $at, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A190C0'. Expected 'vrot.q      C002, S400, [S,C,0,0]', got '.word       0xF3A190C0                   # vrot.q      C002, S400 # 00010000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A290C0'. Expected 'vrot.q      C002, S400, [S,0,C,0]', got '.word       0xF3A290C0                   # INVALID     $sp, $v0, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A290C0'. Expected 'vrot.q      C002, S400, [S,0,C,0]', got '.word       0xF3A290C0                   # vrot.q      C002, S400 # 00020000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A390C0'. Expected 'vrot.q      C002, S400, [S,0,0,C]', got '.word       0xF3A390C0                   # INVALID     $sp, $v1, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
+Error on word '0xF3A390C0'. Expected 'vrot.q      C002, S400, [S,0,0,C]', got '.word       0xF3A390C0                   # vrot.q      C002, S400 # 00030000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7>'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
