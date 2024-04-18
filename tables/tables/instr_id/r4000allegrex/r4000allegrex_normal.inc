@@ -27,7 +27,7 @@
      *10 = SPECIAL3
      *11 = VFPU4
      *12 = VFPU5
-     *13 = VFPU6
+     *13 = VFPU6 (Matrix operations)
      *14 = QUADLR
      *15 = VFPU7
 */

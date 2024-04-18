@@ -23,7 +23,7 @@ vmmul.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x1, vmmul_p, vmmul.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mp_vd, RAB_OPERAND_r4000allegrex_mp_vs, RAB_OPERAND_r4000allegrex_mp_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Multiply Pair x Pair Matrix
 
@@ -36,7 +36,7 @@ vmmul.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x2, vmmul_t, vmmul.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mt_vd, RAB_OPERAND_r4000allegrex_mt_vs, RAB_OPERAND_r4000allegrex_mt_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Multiply Triple x Triple Matrix
 
@@ -49,7 +49,7 @@ vmmul.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x3, vmmul_q, vmmul.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mq_vd, RAB_OPERAND_r4000allegrex_mq_vs, RAB_OPERAND_r4000allegrex_mq_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Multiply Quad x Quad Matrix
 
@@ -62,7 +62,7 @@ vhtfm2.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x01 << 2 | 0x0, vhtfm2_p, vhtfm2.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
+        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_mp_vs, RAB_OPERAND_r4000allegrex_p_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Homogeneous Transform 2 Pair Word
 
@@ -88,7 +88,7 @@ vhtfm3.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x1, vhtfm3_t, vhtfm3.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
+        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_mt_vs, RAB_OPERAND_r4000allegrex_t_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Homogeneous Transform 3 Triple Word
 
@@ -101,7 +101,7 @@ vtfm3.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x2, vtfm3_t, vtfm3.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
+        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_mt_vs, RAB_OPERAND_r4000allegrex_t_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Transform 3 Triple Word
 
@@ -114,7 +114,7 @@ vhtfm4.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x03 << 2 | 0x2, vhtfm4_q, vhtfm4.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
+        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_mq_vs, RAB_OPERAND_r4000allegrex_q_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Homogeneous Transform 4 Quad Word
 
@@ -140,7 +140,7 @@ vmscl.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x1, vmscl_p, vmscl.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_p_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mp_vd, RAB_OPERAND_r4000allegrex_mp_vs, RAB_OPERAND_r4000allegrex_s_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Scale Pair x Pair Matrix
 
@@ -153,7 +153,7 @@ vmscl.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x2, vmscl_t, vmscl.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_t_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mt_vd, RAB_OPERAND_r4000allegrex_mt_vs, RAB_OPERAND_r4000allegrex_s_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Scale Triple x Triple Matrix
 
@@ -166,7 +166,7 @@ vmscl.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x3, vmscl_q, vmscl.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_q_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mq_vd, RAB_OPERAND_r4000allegrex_mq_vs, RAB_OPERAND_r4000allegrex_s_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Scale Quad x Quad Matrix
 
