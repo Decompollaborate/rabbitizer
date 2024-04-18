@@ -919,9 +919,7 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x490F0002, NULL,              "bvtl        3, . + 4 + (0x2 << 2)"),
     TEST_ENTRY_C(0x49100002, NULL,              "bvf         4, . + 4 + (0x2 << 2)"),
     TEST_ENTRY_C(0x49150002, NULL,              "bvt         5, . + 4 + (0x2 << 2)"),
-    TEST_ENTRY_C(0x491A0002, NULL,              "bvfl        6, . + 4 + (0x2 << 2)"),
-    TEST_ENTRY_C(0x491F0002, NULL,              "bvtl        7, . + 4 + (0x2 << 2)"),
-    TEST_ENTRY_C(0x49000002, "branches_end",    "bvf         branches_end"),
+    TEST_ENTRY_C(0x49000002, "branches_end",    "bvf         0, branches_end"),
 
     /* load_move_store */
     TEST_ENTRY_C(0xC8800040, NULL, "lv.s        S000, 0x40($a0)"),

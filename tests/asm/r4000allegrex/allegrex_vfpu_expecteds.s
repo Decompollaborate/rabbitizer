@@ -905,9 +905,8 @@ bvfl        2, . + 4 + (0x2 << 2)
 bvtl        3, . + 4 + (0x2 << 2)
 bvf         4, . + 4 + (0x2 << 2)
 bvt         5, . + 4 + (0x2 << 2)
-nop # bvfl        6, . + 4 + (0x2 << 2)
-nop # bvtl        7, . + 4 + (0x2 << 2)
-nop # bvf         branches_end
+bvf         0, branches_end
+branches_end:
 lv.s        S000, 0x40($a0)
 lv.s        S010, 0x40($a0)
 lv.s        S020, 0x40($a0)

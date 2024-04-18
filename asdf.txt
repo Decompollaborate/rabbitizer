@@ -1219,11 +1219,6 @@ Error on word '0xF38680FF'. Expected 'vmzero.q    E723', got 'vmzero.q    INVALI
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0x49000002'. Expected 'bvf         branches_end', got 'bvf         0, branches_end'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_COP2_BC2'
-    gnuMode 'true'
-
 Error on word '0xF2008081'. Expected 'vmscl.q     M010, M000, S000', got 'vmscl.q     INVALID_1, M000, S000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6'
@@ -8419,5 +8414,5 @@ Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'v
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1683 errors out of 4765 entries. 64.68% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 1682 errors out of 4763 entries. 64.69% correct.
 
