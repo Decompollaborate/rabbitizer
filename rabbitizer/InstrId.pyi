@@ -656,6 +656,20 @@ class InstrId:
     r4000allegrex_vpfxd: Enum
     r4000allegrex_viim_s: Enum
     r4000allegrex_vfim_s: Enum
+    r4000allegrex_vmmul_p: Enum
+    r4000allegrex_vmmul_t: Enum
+    r4000allegrex_vmmul_q: Enum
+    r4000allegrex_vhtfm2_p: Enum
+    r4000allegrex_vtfm2_p: Enum
+    r4000allegrex_vhtfm3_t: Enum
+    r4000allegrex_vtfm3_t: Enum
+    r4000allegrex_vhtfm4_q: Enum
+    r4000allegrex_vtfm4_q: Enum
+    r4000allegrex_vmscl_p: Enum
+    r4000allegrex_vmscl_t: Enum
+    r4000allegrex_vmscl_q: Enum
+    r4000allegrex_vcrsp_t: Enum
+    r4000allegrex_vqmul_q: Enum
     r4000allegrex_vrot_p: Enum
     r4000allegrex_vrot_t: Enum
     r4000allegrex_vrot_q: Enum
