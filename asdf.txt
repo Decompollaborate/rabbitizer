@@ -14,1922 +14,1922 @@ Error on word '0xD00680EF'. Expected 'vzero.q     R323', got 'vzero.q     R333'
     InstrIdType: 'R4000ALLEGREX_VFPU4_FMT0_FMT0_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860080'. Expected 'vmzero.p    M000', got '.word       0xF3860080                   # INVALID     $gp, $a2, 0x80 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860080'. Expected 'vmzero.p    M000', got 'vmzero.p    C000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860081'. Expected 'vmzero.p    M010', got '.word       0xF3860081                   # INVALID     $gp, $a2, 0x81 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860081'. Expected 'vmzero.p    M010', got 'vmzero.p    C010'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860082'. Expected 'vmzero.p    M020', got '.word       0xF3860082                   # INVALID     $gp, $a2, 0x82 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860082'. Expected 'vmzero.p    M020', got 'vmzero.p    C020'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860083'. Expected 'vmzero.p    M030', got '.word       0xF3860083                   # INVALID     $gp, $a2, 0x83 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860083'. Expected 'vmzero.p    M030', got 'vmzero.p    C030'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860084'. Expected 'vmzero.p    M100', got '.word       0xF3860084                   # INVALID     $gp, $a2, 0x84 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860084'. Expected 'vmzero.p    M100', got 'vmzero.p    C100'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860085'. Expected 'vmzero.p    M110', got '.word       0xF3860085                   # INVALID     $gp, $a2, 0x85 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860085'. Expected 'vmzero.p    M110', got 'vmzero.p    C110'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860086'. Expected 'vmzero.p    M120', got '.word       0xF3860086                   # INVALID     $gp, $a2, 0x86 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860086'. Expected 'vmzero.p    M120', got 'vmzero.p    C120'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860087'. Expected 'vmzero.p    M130', got '.word       0xF3860087                   # INVALID     $gp, $a2, 0x87 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860087'. Expected 'vmzero.p    M130', got 'vmzero.p    C130'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860088'. Expected 'vmzero.p    M200', got '.word       0xF3860088                   # INVALID     $gp, $a2, 0x88 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860088'. Expected 'vmzero.p    M200', got 'vmzero.p    C200'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860089'. Expected 'vmzero.p    M210', got '.word       0xF3860089                   # INVALID     $gp, $a2, 0x89 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860089'. Expected 'vmzero.p    M210', got 'vmzero.p    C210'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386008A'. Expected 'vmzero.p    M220', got '.word       0xF386008A                   # INVALID     $gp, $a2, 0x8A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386008A'. Expected 'vmzero.p    M220', got 'vmzero.p    C220'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386008B'. Expected 'vmzero.p    M230', got '.word       0xF386008B                   # INVALID     $gp, $a2, 0x8B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386008B'. Expected 'vmzero.p    M230', got 'vmzero.p    C230'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386008C'. Expected 'vmzero.p    M300', got '.word       0xF386008C                   # INVALID     $gp, $a2, 0x8C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386008C'. Expected 'vmzero.p    M300', got 'vmzero.p    C300'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386008D'. Expected 'vmzero.p    M310', got '.word       0xF386008D                   # INVALID     $gp, $a2, 0x8D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386008D'. Expected 'vmzero.p    M310', got 'vmzero.p    C310'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386008E'. Expected 'vmzero.p    M320', got '.word       0xF386008E                   # INVALID     $gp, $a2, 0x8E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386008E'. Expected 'vmzero.p    M320', got 'vmzero.p    C320'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386008F'. Expected 'vmzero.p    M330', got '.word       0xF386008F                   # INVALID     $gp, $a2, 0x8F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386008F'. Expected 'vmzero.p    M330', got 'vmzero.p    C330'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860090'. Expected 'vmzero.p    M400', got '.word       0xF3860090                   # INVALID     $gp, $a2, 0x90 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860090'. Expected 'vmzero.p    M400', got 'vmzero.p    C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860091'. Expected 'vmzero.p    M410', got '.word       0xF3860091                   # INVALID     $gp, $a2, 0x91 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860091'. Expected 'vmzero.p    M410', got 'vmzero.p    C410'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860092'. Expected 'vmzero.p    M420', got '.word       0xF3860092                   # INVALID     $gp, $a2, 0x92 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860092'. Expected 'vmzero.p    M420', got 'vmzero.p    C420'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860093'. Expected 'vmzero.p    M430', got '.word       0xF3860093                   # INVALID     $gp, $a2, 0x93 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860093'. Expected 'vmzero.p    M430', got 'vmzero.p    C430'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860094'. Expected 'vmzero.p    M500', got '.word       0xF3860094                   # INVALID     $gp, $a2, 0x94 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860094'. Expected 'vmzero.p    M500', got 'vmzero.p    C500'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860095'. Expected 'vmzero.p    M510', got '.word       0xF3860095                   # INVALID     $gp, $a2, 0x95 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860095'. Expected 'vmzero.p    M510', got 'vmzero.p    C510'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860096'. Expected 'vmzero.p    M520', got '.word       0xF3860096                   # INVALID     $gp, $a2, 0x96 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860096'. Expected 'vmzero.p    M520', got 'vmzero.p    C520'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860097'. Expected 'vmzero.p    M530', got '.word       0xF3860097                   # INVALID     $gp, $a2, 0x97 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860097'. Expected 'vmzero.p    M530', got 'vmzero.p    C530'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860098'. Expected 'vmzero.p    M600', got '.word       0xF3860098                   # INVALID     $gp, $a2, 0x98 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860098'. Expected 'vmzero.p    M600', got 'vmzero.p    C600'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3860099'. Expected 'vmzero.p    M610', got '.word       0xF3860099                   # INVALID     $gp, $a2, 0x99 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3860099'. Expected 'vmzero.p    M610', got 'vmzero.p    C610'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386009A'. Expected 'vmzero.p    M620', got '.word       0xF386009A                   # INVALID     $gp, $a2, 0x9A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386009A'. Expected 'vmzero.p    M620', got 'vmzero.p    C620'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386009B'. Expected 'vmzero.p    M630', got '.word       0xF386009B                   # INVALID     $gp, $a2, 0x9B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386009B'. Expected 'vmzero.p    M630', got 'vmzero.p    C630'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386009C'. Expected 'vmzero.p    M700', got '.word       0xF386009C                   # INVALID     $gp, $a2, 0x9C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386009C'. Expected 'vmzero.p    M700', got 'vmzero.p    C700'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386009D'. Expected 'vmzero.p    M710', got '.word       0xF386009D                   # INVALID     $gp, $a2, 0x9D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386009D'. Expected 'vmzero.p    M710', got 'vmzero.p    C710'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386009E'. Expected 'vmzero.p    M720', got '.word       0xF386009E                   # INVALID     $gp, $a2, 0x9E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386009E'. Expected 'vmzero.p    M720', got 'vmzero.p    C720'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386009F'. Expected 'vmzero.p    M730', got '.word       0xF386009F                   # INVALID     $gp, $a2, 0x9F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386009F'. Expected 'vmzero.p    M730', got 'vmzero.p    C730'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A0'. Expected 'vmzero.p    E000', got '.word       0xF38600A0                   # INVALID     $gp, $a2, 0xA0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A0'. Expected 'vmzero.p    E000', got 'vmzero.p    R000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A1'. Expected 'vmzero.p    E001', got '.word       0xF38600A1                   # INVALID     $gp, $a2, 0xA1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A1'. Expected 'vmzero.p    E001', got 'vmzero.p    R001'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A2'. Expected 'vmzero.p    E002', got '.word       0xF38600A2                   # INVALID     $gp, $a2, 0xA2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A2'. Expected 'vmzero.p    E002', got 'vmzero.p    R002'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A3'. Expected 'vmzero.p    E003', got '.word       0xF38600A3                   # INVALID     $gp, $a2, 0xA3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A3'. Expected 'vmzero.p    E003', got 'vmzero.p    R003'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A4'. Expected 'vmzero.p    E100', got '.word       0xF38600A4                   # INVALID     $gp, $a2, 0xA4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A4'. Expected 'vmzero.p    E100', got 'vmzero.p    R100'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A5'. Expected 'vmzero.p    E101', got '.word       0xF38600A5                   # INVALID     $gp, $a2, 0xA5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A5'. Expected 'vmzero.p    E101', got 'vmzero.p    R101'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A6'. Expected 'vmzero.p    E102', got '.word       0xF38600A6                   # INVALID     $gp, $a2, 0xA6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A6'. Expected 'vmzero.p    E102', got 'vmzero.p    R102'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A7'. Expected 'vmzero.p    E103', got '.word       0xF38600A7                   # INVALID     $gp, $a2, 0xA7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A7'. Expected 'vmzero.p    E103', got 'vmzero.p    R103'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A8'. Expected 'vmzero.p    E200', got '.word       0xF38600A8                   # INVALID     $gp, $a2, 0xA8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A8'. Expected 'vmzero.p    E200', got 'vmzero.p    R200'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600A9'. Expected 'vmzero.p    E201', got '.word       0xF38600A9                   # INVALID     $gp, $a2, 0xA9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600A9'. Expected 'vmzero.p    E201', got 'vmzero.p    R201'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600AA'. Expected 'vmzero.p    E202', got '.word       0xF38600AA                   # INVALID     $gp, $a2, 0xAA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600AA'. Expected 'vmzero.p    E202', got 'vmzero.p    R202'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600AB'. Expected 'vmzero.p    E203', got '.word       0xF38600AB                   # INVALID     $gp, $a2, 0xAB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600AB'. Expected 'vmzero.p    E203', got 'vmzero.p    R203'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600AC'. Expected 'vmzero.p    E300', got '.word       0xF38600AC                   # INVALID     $gp, $a2, 0xAC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600AC'. Expected 'vmzero.p    E300', got 'vmzero.p    R300'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600AD'. Expected 'vmzero.p    E301', got '.word       0xF38600AD                   # INVALID     $gp, $a2, 0xAD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600AD'. Expected 'vmzero.p    E301', got 'vmzero.p    R301'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600AE'. Expected 'vmzero.p    E302', got '.word       0xF38600AE                   # INVALID     $gp, $a2, 0xAE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600AE'. Expected 'vmzero.p    E302', got 'vmzero.p    R302'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600AF'. Expected 'vmzero.p    E303', got '.word       0xF38600AF                   # INVALID     $gp, $a2, 0xAF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600AF'. Expected 'vmzero.p    E303', got 'vmzero.p    R303'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B0'. Expected 'vmzero.p    E400', got '.word       0xF38600B0                   # INVALID     $gp, $a2, 0xB0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B0'. Expected 'vmzero.p    E400', got 'vmzero.p    R400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B1'. Expected 'vmzero.p    E401', got '.word       0xF38600B1                   # INVALID     $gp, $a2, 0xB1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B1'. Expected 'vmzero.p    E401', got 'vmzero.p    R401'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B2'. Expected 'vmzero.p    E402', got '.word       0xF38600B2                   # INVALID     $gp, $a2, 0xB2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B2'. Expected 'vmzero.p    E402', got 'vmzero.p    R402'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B3'. Expected 'vmzero.p    E403', got '.word       0xF38600B3                   # INVALID     $gp, $a2, 0xB3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B3'. Expected 'vmzero.p    E403', got 'vmzero.p    R403'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B4'. Expected 'vmzero.p    E500', got '.word       0xF38600B4                   # INVALID     $gp, $a2, 0xB4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B4'. Expected 'vmzero.p    E500', got 'vmzero.p    R500'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B5'. Expected 'vmzero.p    E501', got '.word       0xF38600B5                   # INVALID     $gp, $a2, 0xB5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B5'. Expected 'vmzero.p    E501', got 'vmzero.p    R501'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B6'. Expected 'vmzero.p    E502', got '.word       0xF38600B6                   # INVALID     $gp, $a2, 0xB6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B6'. Expected 'vmzero.p    E502', got 'vmzero.p    R502'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B7'. Expected 'vmzero.p    E503', got '.word       0xF38600B7                   # INVALID     $gp, $a2, 0xB7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B7'. Expected 'vmzero.p    E503', got 'vmzero.p    R503'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B8'. Expected 'vmzero.p    E600', got '.word       0xF38600B8                   # INVALID     $gp, $a2, 0xB8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B8'. Expected 'vmzero.p    E600', got 'vmzero.p    R600'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600B9'. Expected 'vmzero.p    E601', got '.word       0xF38600B9                   # INVALID     $gp, $a2, 0xB9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600B9'. Expected 'vmzero.p    E601', got 'vmzero.p    R601'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600BA'. Expected 'vmzero.p    E602', got '.word       0xF38600BA                   # INVALID     $gp, $a2, 0xBA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600BA'. Expected 'vmzero.p    E602', got 'vmzero.p    R602'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600BB'. Expected 'vmzero.p    E603', got '.word       0xF38600BB                   # INVALID     $gp, $a2, 0xBB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600BB'. Expected 'vmzero.p    E603', got 'vmzero.p    R603'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600BC'. Expected 'vmzero.p    E700', got '.word       0xF38600BC                   # INVALID     $gp, $a2, 0xBC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600BC'. Expected 'vmzero.p    E700', got 'vmzero.p    R700'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600BD'. Expected 'vmzero.p    E701', got '.word       0xF38600BD                   # INVALID     $gp, $a2, 0xBD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600BD'. Expected 'vmzero.p    E701', got 'vmzero.p    R701'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600BE'. Expected 'vmzero.p    E702', got '.word       0xF38600BE                   # INVALID     $gp, $a2, 0xBE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600BE'. Expected 'vmzero.p    E702', got 'vmzero.p    R702'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600BF'. Expected 'vmzero.p    E703', got '.word       0xF38600BF                   # INVALID     $gp, $a2, 0xBF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600BF'. Expected 'vmzero.p    E703', got 'vmzero.p    R703'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C0'. Expected 'vmzero.p    M002', got '.word       0xF38600C0                   # INVALID     $gp, $a2, 0xC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C0'. Expected 'vmzero.p    M002', got 'vmzero.p    C002'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C1'. Expected 'vmzero.p    M012', got '.word       0xF38600C1                   # INVALID     $gp, $a2, 0xC1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C1'. Expected 'vmzero.p    M012', got 'vmzero.p    C012'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C2'. Expected 'vmzero.p    M022', got '.word       0xF38600C2                   # INVALID     $gp, $a2, 0xC2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C2'. Expected 'vmzero.p    M022', got 'vmzero.p    C022'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C3'. Expected 'vmzero.p    M032', got '.word       0xF38600C3                   # INVALID     $gp, $a2, 0xC3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C3'. Expected 'vmzero.p    M032', got 'vmzero.p    C032'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C4'. Expected 'vmzero.p    M102', got '.word       0xF38600C4                   # INVALID     $gp, $a2, 0xC4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C4'. Expected 'vmzero.p    M102', got 'vmzero.p    C102'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C5'. Expected 'vmzero.p    M112', got '.word       0xF38600C5                   # INVALID     $gp, $a2, 0xC5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C5'. Expected 'vmzero.p    M112', got 'vmzero.p    C112'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C6'. Expected 'vmzero.p    M122', got '.word       0xF38600C6                   # INVALID     $gp, $a2, 0xC6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C6'. Expected 'vmzero.p    M122', got 'vmzero.p    C122'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C7'. Expected 'vmzero.p    M132', got '.word       0xF38600C7                   # INVALID     $gp, $a2, 0xC7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C7'. Expected 'vmzero.p    M132', got 'vmzero.p    C132'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C8'. Expected 'vmzero.p    M202', got '.word       0xF38600C8                   # INVALID     $gp, $a2, 0xC8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C8'. Expected 'vmzero.p    M202', got 'vmzero.p    C202'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600C9'. Expected 'vmzero.p    M212', got '.word       0xF38600C9                   # INVALID     $gp, $a2, 0xC9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600C9'. Expected 'vmzero.p    M212', got 'vmzero.p    C212'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600CA'. Expected 'vmzero.p    M222', got '.word       0xF38600CA                   # INVALID     $gp, $a2, 0xCA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600CA'. Expected 'vmzero.p    M222', got 'vmzero.p    C222'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600CB'. Expected 'vmzero.p    M232', got '.word       0xF38600CB                   # INVALID     $gp, $a2, 0xCB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600CB'. Expected 'vmzero.p    M232', got 'vmzero.p    C232'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600CC'. Expected 'vmzero.p    M302', got '.word       0xF38600CC                   # INVALID     $gp, $a2, 0xCC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600CC'. Expected 'vmzero.p    M302', got 'vmzero.p    C302'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600CD'. Expected 'vmzero.p    M312', got '.word       0xF38600CD                   # INVALID     $gp, $a2, 0xCD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600CD'. Expected 'vmzero.p    M312', got 'vmzero.p    C312'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600CE'. Expected 'vmzero.p    M322', got '.word       0xF38600CE                   # INVALID     $gp, $a2, 0xCE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600CE'. Expected 'vmzero.p    M322', got 'vmzero.p    C322'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600CF'. Expected 'vmzero.p    M332', got '.word       0xF38600CF                   # INVALID     $gp, $a2, 0xCF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600CF'. Expected 'vmzero.p    M332', got 'vmzero.p    C332'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D0'. Expected 'vmzero.p    M402', got '.word       0xF38600D0                   # INVALID     $gp, $a2, 0xD0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D0'. Expected 'vmzero.p    M402', got 'vmzero.p    C402'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D1'. Expected 'vmzero.p    M412', got '.word       0xF38600D1                   # INVALID     $gp, $a2, 0xD1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D1'. Expected 'vmzero.p    M412', got 'vmzero.p    C412'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D2'. Expected 'vmzero.p    M422', got '.word       0xF38600D2                   # INVALID     $gp, $a2, 0xD2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D2'. Expected 'vmzero.p    M422', got 'vmzero.p    C422'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D3'. Expected 'vmzero.p    M432', got '.word       0xF38600D3                   # INVALID     $gp, $a2, 0xD3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D3'. Expected 'vmzero.p    M432', got 'vmzero.p    C432'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D4'. Expected 'vmzero.p    M502', got '.word       0xF38600D4                   # INVALID     $gp, $a2, 0xD4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D4'. Expected 'vmzero.p    M502', got 'vmzero.p    C502'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D5'. Expected 'vmzero.p    M512', got '.word       0xF38600D5                   # INVALID     $gp, $a2, 0xD5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D5'. Expected 'vmzero.p    M512', got 'vmzero.p    C512'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D6'. Expected 'vmzero.p    M522', got '.word       0xF38600D6                   # INVALID     $gp, $a2, 0xD6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D6'. Expected 'vmzero.p    M522', got 'vmzero.p    C522'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D7'. Expected 'vmzero.p    M532', got '.word       0xF38600D7                   # INVALID     $gp, $a2, 0xD7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D7'. Expected 'vmzero.p    M532', got 'vmzero.p    C532'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D8'. Expected 'vmzero.p    M602', got '.word       0xF38600D8                   # INVALID     $gp, $a2, 0xD8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D8'. Expected 'vmzero.p    M602', got 'vmzero.p    C602'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600D9'. Expected 'vmzero.p    M612', got '.word       0xF38600D9                   # INVALID     $gp, $a2, 0xD9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600D9'. Expected 'vmzero.p    M612', got 'vmzero.p    C612'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600DA'. Expected 'vmzero.p    M622', got '.word       0xF38600DA                   # INVALID     $gp, $a2, 0xDA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600DA'. Expected 'vmzero.p    M622', got 'vmzero.p    C622'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600DB'. Expected 'vmzero.p    M632', got '.word       0xF38600DB                   # INVALID     $gp, $a2, 0xDB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600DB'. Expected 'vmzero.p    M632', got 'vmzero.p    C632'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600DC'. Expected 'vmzero.p    M702', got '.word       0xF38600DC                   # INVALID     $gp, $a2, 0xDC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600DC'. Expected 'vmzero.p    M702', got 'vmzero.p    C702'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600DD'. Expected 'vmzero.p    M712', got '.word       0xF38600DD                   # INVALID     $gp, $a2, 0xDD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600DD'. Expected 'vmzero.p    M712', got 'vmzero.p    C712'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600DE'. Expected 'vmzero.p    M722', got '.word       0xF38600DE                   # INVALID     $gp, $a2, 0xDE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600DE'. Expected 'vmzero.p    M722', got 'vmzero.p    C722'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600DF'. Expected 'vmzero.p    M732', got '.word       0xF38600DF                   # INVALID     $gp, $a2, 0xDF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600DF'. Expected 'vmzero.p    M732', got 'vmzero.p    C732'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E0'. Expected 'vmzero.p    E020', got '.word       0xF38600E0                   # INVALID     $gp, $a2, 0xE0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E0'. Expected 'vmzero.p    E020', got 'vmzero.p    R020'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E1'. Expected 'vmzero.p    E021', got '.word       0xF38600E1                   # INVALID     $gp, $a2, 0xE1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E1'. Expected 'vmzero.p    E021', got 'vmzero.p    R021'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E2'. Expected 'vmzero.p    E022', got '.word       0xF38600E2                   # INVALID     $gp, $a2, 0xE2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E2'. Expected 'vmzero.p    E022', got 'vmzero.p    R022'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E3'. Expected 'vmzero.p    E023', got '.word       0xF38600E3                   # INVALID     $gp, $a2, 0xE3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E3'. Expected 'vmzero.p    E023', got 'vmzero.p    R023'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E4'. Expected 'vmzero.p    E120', got '.word       0xF38600E4                   # INVALID     $gp, $a2, 0xE4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E4'. Expected 'vmzero.p    E120', got 'vmzero.p    R120'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E5'. Expected 'vmzero.p    E121', got '.word       0xF38600E5                   # INVALID     $gp, $a2, 0xE5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E5'. Expected 'vmzero.p    E121', got 'vmzero.p    R121'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E6'. Expected 'vmzero.p    E122', got '.word       0xF38600E6                   # INVALID     $gp, $a2, 0xE6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E6'. Expected 'vmzero.p    E122', got 'vmzero.p    R122'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E7'. Expected 'vmzero.p    E123', got '.word       0xF38600E7                   # INVALID     $gp, $a2, 0xE7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E7'. Expected 'vmzero.p    E123', got 'vmzero.p    R123'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E8'. Expected 'vmzero.p    E220', got '.word       0xF38600E8                   # INVALID     $gp, $a2, 0xE8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E8'. Expected 'vmzero.p    E220', got 'vmzero.p    R220'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600E9'. Expected 'vmzero.p    E221', got '.word       0xF38600E9                   # INVALID     $gp, $a2, 0xE9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600E9'. Expected 'vmzero.p    E221', got 'vmzero.p    R221'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600EA'. Expected 'vmzero.p    E222', got '.word       0xF38600EA                   # INVALID     $gp, $a2, 0xEA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600EA'. Expected 'vmzero.p    E222', got 'vmzero.p    R222'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600EB'. Expected 'vmzero.p    E223', got '.word       0xF38600EB                   # INVALID     $gp, $a2, 0xEB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600EB'. Expected 'vmzero.p    E223', got 'vmzero.p    R223'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600EC'. Expected 'vmzero.p    E320', got '.word       0xF38600EC                   # INVALID     $gp, $a2, 0xEC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600EC'. Expected 'vmzero.p    E320', got 'vmzero.p    R320'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600ED'. Expected 'vmzero.p    E321', got '.word       0xF38600ED                   # INVALID     $gp, $a2, 0xED # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600ED'. Expected 'vmzero.p    E321', got 'vmzero.p    R321'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600EE'. Expected 'vmzero.p    E322', got '.word       0xF38600EE                   # INVALID     $gp, $a2, 0xEE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600EE'. Expected 'vmzero.p    E322', got 'vmzero.p    R322'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600EF'. Expected 'vmzero.p    E323', got '.word       0xF38600EF                   # INVALID     $gp, $a2, 0xEF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600EF'. Expected 'vmzero.p    E323', got 'vmzero.p    R333'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F0'. Expected 'vmzero.p    E420', got '.word       0xF38600F0                   # INVALID     $gp, $a2, 0xF0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F0'. Expected 'vmzero.p    E420', got 'vmzero.p    R420'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F1'. Expected 'vmzero.p    E421', got '.word       0xF38600F1                   # INVALID     $gp, $a2, 0xF1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F1'. Expected 'vmzero.p    E421', got 'vmzero.p    R421'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F2'. Expected 'vmzero.p    E422', got '.word       0xF38600F2                   # INVALID     $gp, $a2, 0xF2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F2'. Expected 'vmzero.p    E422', got 'vmzero.p    R422'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F3'. Expected 'vmzero.p    E423', got '.word       0xF38600F3                   # INVALID     $gp, $a2, 0xF3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F3'. Expected 'vmzero.p    E423', got 'vmzero.p    R423'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F4'. Expected 'vmzero.p    E520', got '.word       0xF38600F4                   # INVALID     $gp, $a2, 0xF4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F4'. Expected 'vmzero.p    E520', got 'vmzero.p    R520'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F5'. Expected 'vmzero.p    E521', got '.word       0xF38600F5                   # INVALID     $gp, $a2, 0xF5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F5'. Expected 'vmzero.p    E521', got 'vmzero.p    R521'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F6'. Expected 'vmzero.p    E522', got '.word       0xF38600F6                   # INVALID     $gp, $a2, 0xF6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F6'. Expected 'vmzero.p    E522', got 'vmzero.p    R522'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F7'. Expected 'vmzero.p    E523', got '.word       0xF38600F7                   # INVALID     $gp, $a2, 0xF7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F7'. Expected 'vmzero.p    E523', got 'vmzero.p    R523'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F8'. Expected 'vmzero.p    E620', got '.word       0xF38600F8                   # INVALID     $gp, $a2, 0xF8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F8'. Expected 'vmzero.p    E620', got 'vmzero.p    R620'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600F9'. Expected 'vmzero.p    E621', got '.word       0xF38600F9                   # INVALID     $gp, $a2, 0xF9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600F9'. Expected 'vmzero.p    E621', got 'vmzero.p    R621'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600FA'. Expected 'vmzero.p    E622', got '.word       0xF38600FA                   # INVALID     $gp, $a2, 0xFA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600FA'. Expected 'vmzero.p    E622', got 'vmzero.p    R622'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600FB'. Expected 'vmzero.p    E623', got '.word       0xF38600FB                   # INVALID     $gp, $a2, 0xFB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600FB'. Expected 'vmzero.p    E623', got 'vmzero.p    R623'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600FC'. Expected 'vmzero.p    E720', got '.word       0xF38600FC                   # INVALID     $gp, $a2, 0xFC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600FC'. Expected 'vmzero.p    E720', got 'vmzero.p    R720'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600FD'. Expected 'vmzero.p    E721', got '.word       0xF38600FD                   # INVALID     $gp, $a2, 0xFD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600FD'. Expected 'vmzero.p    E721', got 'vmzero.p    R721'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600FE'. Expected 'vmzero.p    E722', got '.word       0xF38600FE                   # INVALID     $gp, $a2, 0xFE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600FE'. Expected 'vmzero.p    E722', got 'vmzero.p    R722'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38600FF'. Expected 'vmzero.p    E723', got '.word       0xF38600FF                   # INVALID     $gp, $a2, 0xFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38600FF'. Expected 'vmzero.p    E723', got 'vmzero.p    R723'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868000'. Expected 'vmzero.t    M000', got '.word       0xF3868000                   # INVALID     $gp, $a2, -0x8000 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868000'. Expected 'vmzero.t    M000', got 'vmzero.t    C000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868001'. Expected 'vmzero.t    M010', got '.word       0xF3868001                   # INVALID     $gp, $a2, -0x7FFF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868001'. Expected 'vmzero.t    M010', got 'vmzero.t    C010'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868002'. Expected 'vmzero.t    M020', got '.word       0xF3868002                   # INVALID     $gp, $a2, -0x7FFE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868002'. Expected 'vmzero.t    M020', got 'vmzero.t    C020'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868003'. Expected 'vmzero.t    M030', got '.word       0xF3868003                   # INVALID     $gp, $a2, -0x7FFD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868003'. Expected 'vmzero.t    M030', got 'vmzero.t    C030'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868004'. Expected 'vmzero.t    M100', got '.word       0xF3868004                   # INVALID     $gp, $a2, -0x7FFC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868004'. Expected 'vmzero.t    M100', got 'vmzero.t    C100'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868005'. Expected 'vmzero.t    M110', got '.word       0xF3868005                   # INVALID     $gp, $a2, -0x7FFB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868005'. Expected 'vmzero.t    M110', got 'vmzero.t    C110'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868006'. Expected 'vmzero.t    M120', got '.word       0xF3868006                   # INVALID     $gp, $a2, -0x7FFA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868006'. Expected 'vmzero.t    M120', got 'vmzero.t    C120'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868007'. Expected 'vmzero.t    M130', got '.word       0xF3868007                   # INVALID     $gp, $a2, -0x7FF9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868007'. Expected 'vmzero.t    M130', got 'vmzero.t    C130'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868008'. Expected 'vmzero.t    M200', got '.word       0xF3868008                   # INVALID     $gp, $a2, -0x7FF8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868008'. Expected 'vmzero.t    M200', got 'vmzero.t    C200'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868009'. Expected 'vmzero.t    M210', got '.word       0xF3868009                   # INVALID     $gp, $a2, -0x7FF7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868009'. Expected 'vmzero.t    M210', got 'vmzero.t    C210'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386800A'. Expected 'vmzero.t    M220', got '.word       0xF386800A                   # INVALID     $gp, $a2, -0x7FF6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386800A'. Expected 'vmzero.t    M220', got 'vmzero.t    C220'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386800B'. Expected 'vmzero.t    M230', got '.word       0xF386800B                   # INVALID     $gp, $a2, -0x7FF5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386800B'. Expected 'vmzero.t    M230', got 'vmzero.t    C230'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386800C'. Expected 'vmzero.t    M300', got '.word       0xF386800C                   # INVALID     $gp, $a2, -0x7FF4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386800C'. Expected 'vmzero.t    M300', got 'vmzero.t    C300'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386800D'. Expected 'vmzero.t    M310', got '.word       0xF386800D                   # INVALID     $gp, $a2, -0x7FF3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386800D'. Expected 'vmzero.t    M310', got 'vmzero.t    C310'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386800E'. Expected 'vmzero.t    M320', got '.word       0xF386800E                   # INVALID     $gp, $a2, -0x7FF2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386800E'. Expected 'vmzero.t    M320', got 'vmzero.t    C320'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386800F'. Expected 'vmzero.t    M330', got '.word       0xF386800F                   # INVALID     $gp, $a2, -0x7FF1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386800F'. Expected 'vmzero.t    M330', got 'vmzero.t    C330'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868010'. Expected 'vmzero.t    M400', got '.word       0xF3868010                   # INVALID     $gp, $a2, -0x7FF0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868010'. Expected 'vmzero.t    M400', got 'vmzero.t    C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868011'. Expected 'vmzero.t    M410', got '.word       0xF3868011                   # INVALID     $gp, $a2, -0x7FEF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868011'. Expected 'vmzero.t    M410', got 'vmzero.t    C410'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868012'. Expected 'vmzero.t    M420', got '.word       0xF3868012                   # INVALID     $gp, $a2, -0x7FEE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868012'. Expected 'vmzero.t    M420', got 'vmzero.t    C420'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868013'. Expected 'vmzero.t    M430', got '.word       0xF3868013                   # INVALID     $gp, $a2, -0x7FED # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868013'. Expected 'vmzero.t    M430', got 'vmzero.t    C430'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868014'. Expected 'vmzero.t    M500', got '.word       0xF3868014                   # INVALID     $gp, $a2, -0x7FEC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868014'. Expected 'vmzero.t    M500', got 'vmzero.t    C500'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868015'. Expected 'vmzero.t    M510', got '.word       0xF3868015                   # INVALID     $gp, $a2, -0x7FEB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868015'. Expected 'vmzero.t    M510', got 'vmzero.t    C510'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868016'. Expected 'vmzero.t    M520', got '.word       0xF3868016                   # INVALID     $gp, $a2, -0x7FEA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868016'. Expected 'vmzero.t    M520', got 'vmzero.t    C520'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868017'. Expected 'vmzero.t    M530', got '.word       0xF3868017                   # INVALID     $gp, $a2, -0x7FE9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868017'. Expected 'vmzero.t    M530', got 'vmzero.t    C530'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868018'. Expected 'vmzero.t    M600', got '.word       0xF3868018                   # INVALID     $gp, $a2, -0x7FE8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868018'. Expected 'vmzero.t    M600', got 'vmzero.t    C600'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868019'. Expected 'vmzero.t    M610', got '.word       0xF3868019                   # INVALID     $gp, $a2, -0x7FE7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868019'. Expected 'vmzero.t    M610', got 'vmzero.t    C610'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386801A'. Expected 'vmzero.t    M620', got '.word       0xF386801A                   # INVALID     $gp, $a2, -0x7FE6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386801A'. Expected 'vmzero.t    M620', got 'vmzero.t    C620'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386801B'. Expected 'vmzero.t    M630', got '.word       0xF386801B                   # INVALID     $gp, $a2, -0x7FE5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386801B'. Expected 'vmzero.t    M630', got 'vmzero.t    C630'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386801C'. Expected 'vmzero.t    M700', got '.word       0xF386801C                   # INVALID     $gp, $a2, -0x7FE4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386801C'. Expected 'vmzero.t    M700', got 'vmzero.t    C700'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386801D'. Expected 'vmzero.t    M710', got '.word       0xF386801D                   # INVALID     $gp, $a2, -0x7FE3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386801D'. Expected 'vmzero.t    M710', got 'vmzero.t    C710'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386801E'. Expected 'vmzero.t    M720', got '.word       0xF386801E                   # INVALID     $gp, $a2, -0x7FE2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386801E'. Expected 'vmzero.t    M720', got 'vmzero.t    C720'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386801F'. Expected 'vmzero.t    M730', got '.word       0xF386801F                   # INVALID     $gp, $a2, -0x7FE1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386801F'. Expected 'vmzero.t    M730', got 'vmzero.t    C730'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868020'. Expected 'vmzero.t    E000', got '.word       0xF3868020                   # INVALID     $gp, $a2, -0x7FE0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868020'. Expected 'vmzero.t    E000', got 'vmzero.t    R000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868021'. Expected 'vmzero.t    E001', got '.word       0xF3868021                   # INVALID     $gp, $a2, -0x7FDF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868021'. Expected 'vmzero.t    E001', got 'vmzero.t    R001'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868022'. Expected 'vmzero.t    E002', got '.word       0xF3868022                   # INVALID     $gp, $a2, -0x7FDE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868022'. Expected 'vmzero.t    E002', got 'vmzero.t    R002'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868023'. Expected 'vmzero.t    E003', got '.word       0xF3868023                   # INVALID     $gp, $a2, -0x7FDD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868023'. Expected 'vmzero.t    E003', got 'vmzero.t    R003'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868024'. Expected 'vmzero.t    E100', got '.word       0xF3868024                   # INVALID     $gp, $a2, -0x7FDC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868024'. Expected 'vmzero.t    E100', got 'vmzero.t    R100'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868025'. Expected 'vmzero.t    E101', got '.word       0xF3868025                   # INVALID     $gp, $a2, -0x7FDB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868025'. Expected 'vmzero.t    E101', got 'vmzero.t    R101'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868026'. Expected 'vmzero.t    E102', got '.word       0xF3868026                   # INVALID     $gp, $a2, -0x7FDA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868026'. Expected 'vmzero.t    E102', got 'vmzero.t    R102'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868027'. Expected 'vmzero.t    E103', got '.word       0xF3868027                   # INVALID     $gp, $a2, -0x7FD9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868027'. Expected 'vmzero.t    E103', got 'vmzero.t    R103'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868028'. Expected 'vmzero.t    E200', got '.word       0xF3868028                   # INVALID     $gp, $a2, -0x7FD8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868028'. Expected 'vmzero.t    E200', got 'vmzero.t    R200'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868029'. Expected 'vmzero.t    E201', got '.word       0xF3868029                   # INVALID     $gp, $a2, -0x7FD7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868029'. Expected 'vmzero.t    E201', got 'vmzero.t    R201'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386802A'. Expected 'vmzero.t    E202', got '.word       0xF386802A                   # INVALID     $gp, $a2, -0x7FD6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386802A'. Expected 'vmzero.t    E202', got 'vmzero.t    R202'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386802B'. Expected 'vmzero.t    E203', got '.word       0xF386802B                   # INVALID     $gp, $a2, -0x7FD5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386802B'. Expected 'vmzero.t    E203', got 'vmzero.t    R203'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386802C'. Expected 'vmzero.t    E300', got '.word       0xF386802C                   # INVALID     $gp, $a2, -0x7FD4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386802C'. Expected 'vmzero.t    E300', got 'vmzero.t    R300'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386802D'. Expected 'vmzero.t    E301', got '.word       0xF386802D                   # INVALID     $gp, $a2, -0x7FD3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386802D'. Expected 'vmzero.t    E301', got 'vmzero.t    R301'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386802E'. Expected 'vmzero.t    E302', got '.word       0xF386802E                   # INVALID     $gp, $a2, -0x7FD2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386802E'. Expected 'vmzero.t    E302', got 'vmzero.t    R302'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386802F'. Expected 'vmzero.t    E303', got '.word       0xF386802F                   # INVALID     $gp, $a2, -0x7FD1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386802F'. Expected 'vmzero.t    E303', got 'vmzero.t    R303'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868030'. Expected 'vmzero.t    E400', got '.word       0xF3868030                   # INVALID     $gp, $a2, -0x7FD0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868030'. Expected 'vmzero.t    E400', got 'vmzero.t    R400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868031'. Expected 'vmzero.t    E401', got '.word       0xF3868031                   # INVALID     $gp, $a2, -0x7FCF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868031'. Expected 'vmzero.t    E401', got 'vmzero.t    R401'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868032'. Expected 'vmzero.t    E402', got '.word       0xF3868032                   # INVALID     $gp, $a2, -0x7FCE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868032'. Expected 'vmzero.t    E402', got 'vmzero.t    R402'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868033'. Expected 'vmzero.t    E403', got '.word       0xF3868033                   # INVALID     $gp, $a2, -0x7FCD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868033'. Expected 'vmzero.t    E403', got 'vmzero.t    R403'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868034'. Expected 'vmzero.t    E500', got '.word       0xF3868034                   # INVALID     $gp, $a2, -0x7FCC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868034'. Expected 'vmzero.t    E500', got 'vmzero.t    R500'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868035'. Expected 'vmzero.t    E501', got '.word       0xF3868035                   # INVALID     $gp, $a2, -0x7FCB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868035'. Expected 'vmzero.t    E501', got 'vmzero.t    R501'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868036'. Expected 'vmzero.t    E502', got '.word       0xF3868036                   # INVALID     $gp, $a2, -0x7FCA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868036'. Expected 'vmzero.t    E502', got 'vmzero.t    R502'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868037'. Expected 'vmzero.t    E503', got '.word       0xF3868037                   # INVALID     $gp, $a2, -0x7FC9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868037'. Expected 'vmzero.t    E503', got 'vmzero.t    R503'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868038'. Expected 'vmzero.t    E600', got '.word       0xF3868038                   # INVALID     $gp, $a2, -0x7FC8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868038'. Expected 'vmzero.t    E600', got 'vmzero.t    R600'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868039'. Expected 'vmzero.t    E601', got '.word       0xF3868039                   # INVALID     $gp, $a2, -0x7FC7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868039'. Expected 'vmzero.t    E601', got 'vmzero.t    R601'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386803A'. Expected 'vmzero.t    E602', got '.word       0xF386803A                   # INVALID     $gp, $a2, -0x7FC6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386803A'. Expected 'vmzero.t    E602', got 'vmzero.t    R602'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386803B'. Expected 'vmzero.t    E603', got '.word       0xF386803B                   # INVALID     $gp, $a2, -0x7FC5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386803B'. Expected 'vmzero.t    E603', got 'vmzero.t    R603'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386803C'. Expected 'vmzero.t    E700', got '.word       0xF386803C                   # INVALID     $gp, $a2, -0x7FC4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386803C'. Expected 'vmzero.t    E700', got 'vmzero.t    R700'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386803D'. Expected 'vmzero.t    E701', got '.word       0xF386803D                   # INVALID     $gp, $a2, -0x7FC3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386803D'. Expected 'vmzero.t    E701', got 'vmzero.t    R701'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386803E'. Expected 'vmzero.t    E702', got '.word       0xF386803E                   # INVALID     $gp, $a2, -0x7FC2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386803E'. Expected 'vmzero.t    E702', got 'vmzero.t    R702'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386803F'. Expected 'vmzero.t    E703', got '.word       0xF386803F                   # INVALID     $gp, $a2, -0x7FC1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386803F'. Expected 'vmzero.t    E703', got 'vmzero.t    R703'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868040'. Expected 'vmzero.t    M001', got '.word       0xF3868040                   # INVALID     $gp, $a2, -0x7FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868040'. Expected 'vmzero.t    M001', got 'vmzero.t    C001'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868041'. Expected 'vmzero.t    M011', got '.word       0xF3868041                   # INVALID     $gp, $a2, -0x7FBF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868041'. Expected 'vmzero.t    M011', got 'vmzero.t    C011'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868042'. Expected 'vmzero.t    M021', got '.word       0xF3868042                   # INVALID     $gp, $a2, -0x7FBE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868042'. Expected 'vmzero.t    M021', got 'vmzero.t    C021'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868043'. Expected 'vmzero.t    M031', got '.word       0xF3868043                   # INVALID     $gp, $a2, -0x7FBD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868043'. Expected 'vmzero.t    M031', got 'vmzero.t    C031'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868044'. Expected 'vmzero.t    M101', got '.word       0xF3868044                   # INVALID     $gp, $a2, -0x7FBC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868044'. Expected 'vmzero.t    M101', got 'vmzero.t    C101'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868045'. Expected 'vmzero.t    M111', got '.word       0xF3868045                   # INVALID     $gp, $a2, -0x7FBB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868045'. Expected 'vmzero.t    M111', got 'vmzero.t    C111'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868046'. Expected 'vmzero.t    M121', got '.word       0xF3868046                   # INVALID     $gp, $a2, -0x7FBA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868046'. Expected 'vmzero.t    M121', got 'vmzero.t    C121'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868047'. Expected 'vmzero.t    M131', got '.word       0xF3868047                   # INVALID     $gp, $a2, -0x7FB9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868047'. Expected 'vmzero.t    M131', got 'vmzero.t    C131'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868048'. Expected 'vmzero.t    M201', got '.word       0xF3868048                   # INVALID     $gp, $a2, -0x7FB8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868048'. Expected 'vmzero.t    M201', got 'vmzero.t    C201'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868049'. Expected 'vmzero.t    M211', got '.word       0xF3868049                   # INVALID     $gp, $a2, -0x7FB7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868049'. Expected 'vmzero.t    M211', got 'vmzero.t    C211'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386804A'. Expected 'vmzero.t    M221', got '.word       0xF386804A                   # INVALID     $gp, $a2, -0x7FB6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386804A'. Expected 'vmzero.t    M221', got 'vmzero.t    C221'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386804B'. Expected 'vmzero.t    M231', got '.word       0xF386804B                   # INVALID     $gp, $a2, -0x7FB5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386804B'. Expected 'vmzero.t    M231', got 'vmzero.t    C231'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386804C'. Expected 'vmzero.t    M301', got '.word       0xF386804C                   # INVALID     $gp, $a2, -0x7FB4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386804C'. Expected 'vmzero.t    M301', got 'vmzero.t    C301'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386804D'. Expected 'vmzero.t    M311', got '.word       0xF386804D                   # INVALID     $gp, $a2, -0x7FB3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386804D'. Expected 'vmzero.t    M311', got 'vmzero.t    C311'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386804E'. Expected 'vmzero.t    M321', got '.word       0xF386804E                   # INVALID     $gp, $a2, -0x7FB2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386804E'. Expected 'vmzero.t    M321', got 'vmzero.t    C321'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386804F'. Expected 'vmzero.t    M331', got '.word       0xF386804F                   # INVALID     $gp, $a2, -0x7FB1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386804F'. Expected 'vmzero.t    M331', got 'vmzero.t    C331'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868050'. Expected 'vmzero.t    M401', got '.word       0xF3868050                   # INVALID     $gp, $a2, -0x7FB0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868050'. Expected 'vmzero.t    M401', got 'vmzero.t    C401'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868051'. Expected 'vmzero.t    M411', got '.word       0xF3868051                   # INVALID     $gp, $a2, -0x7FAF # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868051'. Expected 'vmzero.t    M411', got 'vmzero.t    C411'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868052'. Expected 'vmzero.t    M421', got '.word       0xF3868052                   # INVALID     $gp, $a2, -0x7FAE # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868052'. Expected 'vmzero.t    M421', got 'vmzero.t    C421'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868053'. Expected 'vmzero.t    M431', got '.word       0xF3868053                   # INVALID     $gp, $a2, -0x7FAD # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868053'. Expected 'vmzero.t    M431', got 'vmzero.t    C431'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868054'. Expected 'vmzero.t    M501', got '.word       0xF3868054                   # INVALID     $gp, $a2, -0x7FAC # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868054'. Expected 'vmzero.t    M501', got 'vmzero.t    C501'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868055'. Expected 'vmzero.t    M511', got '.word       0xF3868055                   # INVALID     $gp, $a2, -0x7FAB # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868055'. Expected 'vmzero.t    M511', got 'vmzero.t    C511'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868056'. Expected 'vmzero.t    M521', got '.word       0xF3868056                   # INVALID     $gp, $a2, -0x7FAA # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868056'. Expected 'vmzero.t    M521', got 'vmzero.t    C521'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868057'. Expected 'vmzero.t    M531', got '.word       0xF3868057                   # INVALID     $gp, $a2, -0x7FA9 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868057'. Expected 'vmzero.t    M531', got 'vmzero.t    C531'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868058'. Expected 'vmzero.t    M601', got '.word       0xF3868058                   # INVALID     $gp, $a2, -0x7FA8 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868058'. Expected 'vmzero.t    M601', got 'vmzero.t    C601'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868059'. Expected 'vmzero.t    M611', got '.word       0xF3868059                   # INVALID     $gp, $a2, -0x7FA7 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868059'. Expected 'vmzero.t    M611', got 'vmzero.t    C611'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386805A'. Expected 'vmzero.t    M621', got '.word       0xF386805A                   # INVALID     $gp, $a2, -0x7FA6 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386805A'. Expected 'vmzero.t    M621', got 'vmzero.t    C621'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386805B'. Expected 'vmzero.t    M631', got '.word       0xF386805B                   # INVALID     $gp, $a2, -0x7FA5 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386805B'. Expected 'vmzero.t    M631', got 'vmzero.t    C631'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386805C'. Expected 'vmzero.t    M701', got '.word       0xF386805C                   # INVALID     $gp, $a2, -0x7FA4 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386805C'. Expected 'vmzero.t    M701', got 'vmzero.t    C701'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386805D'. Expected 'vmzero.t    M711', got '.word       0xF386805D                   # INVALID     $gp, $a2, -0x7FA3 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386805D'. Expected 'vmzero.t    M711', got 'vmzero.t    C711'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386805E'. Expected 'vmzero.t    M721', got '.word       0xF386805E                   # INVALID     $gp, $a2, -0x7FA2 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386805E'. Expected 'vmzero.t    M721', got 'vmzero.t    C721'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386805F'. Expected 'vmzero.t    M731', got '.word       0xF386805F                   # INVALID     $gp, $a2, -0x7FA1 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386805F'. Expected 'vmzero.t    M731', got 'vmzero.t    C731'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868060'. Expected 'vmzero.t    E010', got '.word       0xF3868060                   # INVALID     $gp, $a2, -0x7FA0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868060'. Expected 'vmzero.t    E010', got 'vmzero.t    R010'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868061'. Expected 'vmzero.t    E011', got '.word       0xF3868061                   # INVALID     $gp, $a2, -0x7F9F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868061'. Expected 'vmzero.t    E011', got 'vmzero.t    R011'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868062'. Expected 'vmzero.t    E012', got '.word       0xF3868062                   # INVALID     $gp, $a2, -0x7F9E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868062'. Expected 'vmzero.t    E012', got 'vmzero.t    R012'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868063'. Expected 'vmzero.t    E013', got '.word       0xF3868063                   # INVALID     $gp, $a2, -0x7F9D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868063'. Expected 'vmzero.t    E013', got 'vmzero.t    R013'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868064'. Expected 'vmzero.t    E110', got '.word       0xF3868064                   # INVALID     $gp, $a2, -0x7F9C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868064'. Expected 'vmzero.t    E110', got 'vmzero.t    R110'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868065'. Expected 'vmzero.t    E111', got '.word       0xF3868065                   # INVALID     $gp, $a2, -0x7F9B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868065'. Expected 'vmzero.t    E111', got 'vmzero.t    R111'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868066'. Expected 'vmzero.t    E112', got '.word       0xF3868066                   # INVALID     $gp, $a2, -0x7F9A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868066'. Expected 'vmzero.t    E112', got 'vmzero.t    R112'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868067'. Expected 'vmzero.t    E113', got '.word       0xF3868067                   # INVALID     $gp, $a2, -0x7F99 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868067'. Expected 'vmzero.t    E113', got 'vmzero.t    R113'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868068'. Expected 'vmzero.t    E210', got '.word       0xF3868068                   # INVALID     $gp, $a2, -0x7F98 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868068'. Expected 'vmzero.t    E210', got 'vmzero.t    R210'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868069'. Expected 'vmzero.t    E211', got '.word       0xF3868069                   # INVALID     $gp, $a2, -0x7F97 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868069'. Expected 'vmzero.t    E211', got 'vmzero.t    R211'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386806A'. Expected 'vmzero.t    E212', got '.word       0xF386806A                   # INVALID     $gp, $a2, -0x7F96 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386806A'. Expected 'vmzero.t    E212', got 'vmzero.t    R212'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386806B'. Expected 'vmzero.t    E213', got '.word       0xF386806B                   # INVALID     $gp, $a2, -0x7F95 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386806B'. Expected 'vmzero.t    E213', got 'vmzero.t    R213'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386806C'. Expected 'vmzero.t    E310', got '.word       0xF386806C                   # INVALID     $gp, $a2, -0x7F94 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386806C'. Expected 'vmzero.t    E310', got 'vmzero.t    R310'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386806D'. Expected 'vmzero.t    E311', got '.word       0xF386806D                   # INVALID     $gp, $a2, -0x7F93 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386806D'. Expected 'vmzero.t    E311', got 'vmzero.t    R311'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386806E'. Expected 'vmzero.t    E312', got '.word       0xF386806E                   # INVALID     $gp, $a2, -0x7F92 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386806E'. Expected 'vmzero.t    E312', got 'vmzero.t    R312'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386806F'. Expected 'vmzero.t    E313', got '.word       0xF386806F                   # INVALID     $gp, $a2, -0x7F91 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386806F'. Expected 'vmzero.t    E313', got 'vmzero.t    R313'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868070'. Expected 'vmzero.t    E410', got '.word       0xF3868070                   # INVALID     $gp, $a2, -0x7F90 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868070'. Expected 'vmzero.t    E410', got 'vmzero.t    R410'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868071'. Expected 'vmzero.t    E411', got '.word       0xF3868071                   # INVALID     $gp, $a2, -0x7F8F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868071'. Expected 'vmzero.t    E411', got 'vmzero.t    R411'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868072'. Expected 'vmzero.t    E412', got '.word       0xF3868072                   # INVALID     $gp, $a2, -0x7F8E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868072'. Expected 'vmzero.t    E412', got 'vmzero.t    R412'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868073'. Expected 'vmzero.t    E413', got '.word       0xF3868073                   # INVALID     $gp, $a2, -0x7F8D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868073'. Expected 'vmzero.t    E413', got 'vmzero.t    R413'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868074'. Expected 'vmzero.t    E510', got '.word       0xF3868074                   # INVALID     $gp, $a2, -0x7F8C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868074'. Expected 'vmzero.t    E510', got 'vmzero.t    R510'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868075'. Expected 'vmzero.t    E511', got '.word       0xF3868075                   # INVALID     $gp, $a2, -0x7F8B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868075'. Expected 'vmzero.t    E511', got 'vmzero.t    R511'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868076'. Expected 'vmzero.t    E512', got '.word       0xF3868076                   # INVALID     $gp, $a2, -0x7F8A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868076'. Expected 'vmzero.t    E512', got 'vmzero.t    R512'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868077'. Expected 'vmzero.t    E513', got '.word       0xF3868077                   # INVALID     $gp, $a2, -0x7F89 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868077'. Expected 'vmzero.t    E513', got 'vmzero.t    R513'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868078'. Expected 'vmzero.t    E610', got '.word       0xF3868078                   # INVALID     $gp, $a2, -0x7F88 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868078'. Expected 'vmzero.t    E610', got 'vmzero.t    R610'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868079'. Expected 'vmzero.t    E611', got '.word       0xF3868079                   # INVALID     $gp, $a2, -0x7F87 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868079'. Expected 'vmzero.t    E611', got 'vmzero.t    R611'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386807A'. Expected 'vmzero.t    E612', got '.word       0xF386807A                   # INVALID     $gp, $a2, -0x7F86 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386807A'. Expected 'vmzero.t    E612', got 'vmzero.t    R612'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386807B'. Expected 'vmzero.t    E613', got '.word       0xF386807B                   # INVALID     $gp, $a2, -0x7F85 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386807B'. Expected 'vmzero.t    E613', got 'vmzero.t    R613'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386807C'. Expected 'vmzero.t    E710', got '.word       0xF386807C                   # INVALID     $gp, $a2, -0x7F84 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386807C'. Expected 'vmzero.t    E710', got 'vmzero.t    R710'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386807D'. Expected 'vmzero.t    E711', got '.word       0xF386807D                   # INVALID     $gp, $a2, -0x7F83 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386807D'. Expected 'vmzero.t    E711', got 'vmzero.t    R711'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386807E'. Expected 'vmzero.t    E712', got '.word       0xF386807E                   # INVALID     $gp, $a2, -0x7F82 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386807E'. Expected 'vmzero.t    E712', got 'vmzero.t    R712'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386807F'. Expected 'vmzero.t    E713', got '.word       0xF386807F                   # INVALID     $gp, $a2, -0x7F81 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386807F'. Expected 'vmzero.t    E713', got 'vmzero.t    R713'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868080'. Expected 'vmzero.q    M000', got '.word       0xF3868080                   # INVALID     $gp, $a2, -0x7F80 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868080'. Expected 'vmzero.q    M000', got 'vmzero.q    C000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868081'. Expected 'vmzero.q    M010', got '.word       0xF3868081                   # INVALID     $gp, $a2, -0x7F7F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868081'. Expected 'vmzero.q    M010', got 'vmzero.q    C010'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868082'. Expected 'vmzero.q    M020', got '.word       0xF3868082                   # INVALID     $gp, $a2, -0x7F7E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868082'. Expected 'vmzero.q    M020', got 'vmzero.q    C020'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868083'. Expected 'vmzero.q    M030', got '.word       0xF3868083                   # INVALID     $gp, $a2, -0x7F7D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868083'. Expected 'vmzero.q    M030', got 'vmzero.q    C030'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868084'. Expected 'vmzero.q    M100', got '.word       0xF3868084                   # INVALID     $gp, $a2, -0x7F7C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868084'. Expected 'vmzero.q    M100', got 'vmzero.q    C100'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868085'. Expected 'vmzero.q    M110', got '.word       0xF3868085                   # INVALID     $gp, $a2, -0x7F7B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868085'. Expected 'vmzero.q    M110', got 'vmzero.q    C110'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868086'. Expected 'vmzero.q    M120', got '.word       0xF3868086                   # INVALID     $gp, $a2, -0x7F7A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868086'. Expected 'vmzero.q    M120', got 'vmzero.q    C120'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868087'. Expected 'vmzero.q    M130', got '.word       0xF3868087                   # INVALID     $gp, $a2, -0x7F79 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868087'. Expected 'vmzero.q    M130', got 'vmzero.q    C130'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868088'. Expected 'vmzero.q    M200', got '.word       0xF3868088                   # INVALID     $gp, $a2, -0x7F78 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868088'. Expected 'vmzero.q    M200', got 'vmzero.q    C200'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868089'. Expected 'vmzero.q    M210', got '.word       0xF3868089                   # INVALID     $gp, $a2, -0x7F77 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868089'. Expected 'vmzero.q    M210', got 'vmzero.q    C210'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386808A'. Expected 'vmzero.q    M220', got '.word       0xF386808A                   # INVALID     $gp, $a2, -0x7F76 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386808A'. Expected 'vmzero.q    M220', got 'vmzero.q    C220'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386808B'. Expected 'vmzero.q    M230', got '.word       0xF386808B                   # INVALID     $gp, $a2, -0x7F75 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386808B'. Expected 'vmzero.q    M230', got 'vmzero.q    C230'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386808C'. Expected 'vmzero.q    M300', got '.word       0xF386808C                   # INVALID     $gp, $a2, -0x7F74 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386808C'. Expected 'vmzero.q    M300', got 'vmzero.q    C300'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386808D'. Expected 'vmzero.q    M310', got '.word       0xF386808D                   # INVALID     $gp, $a2, -0x7F73 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386808D'. Expected 'vmzero.q    M310', got 'vmzero.q    C310'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386808E'. Expected 'vmzero.q    M320', got '.word       0xF386808E                   # INVALID     $gp, $a2, -0x7F72 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386808E'. Expected 'vmzero.q    M320', got 'vmzero.q    C320'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386808F'. Expected 'vmzero.q    M330', got '.word       0xF386808F                   # INVALID     $gp, $a2, -0x7F71 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386808F'. Expected 'vmzero.q    M330', got 'vmzero.q    C330'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868090'. Expected 'vmzero.q    M400', got '.word       0xF3868090                   # INVALID     $gp, $a2, -0x7F70 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868090'. Expected 'vmzero.q    M400', got 'vmzero.q    C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868091'. Expected 'vmzero.q    M410', got '.word       0xF3868091                   # INVALID     $gp, $a2, -0x7F6F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868091'. Expected 'vmzero.q    M410', got 'vmzero.q    C410'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868092'. Expected 'vmzero.q    M420', got '.word       0xF3868092                   # INVALID     $gp, $a2, -0x7F6E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868092'. Expected 'vmzero.q    M420', got 'vmzero.q    C420'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868093'. Expected 'vmzero.q    M430', got '.word       0xF3868093                   # INVALID     $gp, $a2, -0x7F6D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868093'. Expected 'vmzero.q    M430', got 'vmzero.q    C430'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868094'. Expected 'vmzero.q    M500', got '.word       0xF3868094                   # INVALID     $gp, $a2, -0x7F6C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868094'. Expected 'vmzero.q    M500', got 'vmzero.q    C500'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868095'. Expected 'vmzero.q    M510', got '.word       0xF3868095                   # INVALID     $gp, $a2, -0x7F6B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868095'. Expected 'vmzero.q    M510', got 'vmzero.q    C510'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868096'. Expected 'vmzero.q    M520', got '.word       0xF3868096                   # INVALID     $gp, $a2, -0x7F6A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868096'. Expected 'vmzero.q    M520', got 'vmzero.q    C520'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868097'. Expected 'vmzero.q    M530', got '.word       0xF3868097                   # INVALID     $gp, $a2, -0x7F69 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868097'. Expected 'vmzero.q    M530', got 'vmzero.q    C530'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868098'. Expected 'vmzero.q    M600', got '.word       0xF3868098                   # INVALID     $gp, $a2, -0x7F68 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868098'. Expected 'vmzero.q    M600', got 'vmzero.q    C600'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3868099'. Expected 'vmzero.q    M610', got '.word       0xF3868099                   # INVALID     $gp, $a2, -0x7F67 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3868099'. Expected 'vmzero.q    M610', got 'vmzero.q    C610'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386809A'. Expected 'vmzero.q    M620', got '.word       0xF386809A                   # INVALID     $gp, $a2, -0x7F66 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386809A'. Expected 'vmzero.q    M620', got 'vmzero.q    C620'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386809B'. Expected 'vmzero.q    M630', got '.word       0xF386809B                   # INVALID     $gp, $a2, -0x7F65 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386809B'. Expected 'vmzero.q    M630', got 'vmzero.q    C630'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386809C'. Expected 'vmzero.q    M700', got '.word       0xF386809C                   # INVALID     $gp, $a2, -0x7F64 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386809C'. Expected 'vmzero.q    M700', got 'vmzero.q    C700'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386809D'. Expected 'vmzero.q    M710', got '.word       0xF386809D                   # INVALID     $gp, $a2, -0x7F63 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386809D'. Expected 'vmzero.q    M710', got 'vmzero.q    C710'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386809E'. Expected 'vmzero.q    M720', got '.word       0xF386809E                   # INVALID     $gp, $a2, -0x7F62 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386809E'. Expected 'vmzero.q    M720', got 'vmzero.q    C720'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF386809F'. Expected 'vmzero.q    M730', got '.word       0xF386809F                   # INVALID     $gp, $a2, -0x7F61 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF386809F'. Expected 'vmzero.q    M730', got 'vmzero.q    C730'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A0'. Expected 'vmzero.q    E000', got '.word       0xF38680A0                   # INVALID     $gp, $a2, -0x7F60 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A0'. Expected 'vmzero.q    E000', got 'vmzero.q    R000'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A1'. Expected 'vmzero.q    E001', got '.word       0xF38680A1                   # INVALID     $gp, $a2, -0x7F5F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A1'. Expected 'vmzero.q    E001', got 'vmzero.q    R001'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A2'. Expected 'vmzero.q    E002', got '.word       0xF38680A2                   # INVALID     $gp, $a2, -0x7F5E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A2'. Expected 'vmzero.q    E002', got 'vmzero.q    R002'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A3'. Expected 'vmzero.q    E003', got '.word       0xF38680A3                   # INVALID     $gp, $a2, -0x7F5D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A3'. Expected 'vmzero.q    E003', got 'vmzero.q    R003'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A4'. Expected 'vmzero.q    E100', got '.word       0xF38680A4                   # INVALID     $gp, $a2, -0x7F5C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A4'. Expected 'vmzero.q    E100', got 'vmzero.q    R100'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A5'. Expected 'vmzero.q    E101', got '.word       0xF38680A5                   # INVALID     $gp, $a2, -0x7F5B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A5'. Expected 'vmzero.q    E101', got 'vmzero.q    R101'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A6'. Expected 'vmzero.q    E102', got '.word       0xF38680A6                   # INVALID     $gp, $a2, -0x7F5A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A6'. Expected 'vmzero.q    E102', got 'vmzero.q    R102'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A7'. Expected 'vmzero.q    E103', got '.word       0xF38680A7                   # INVALID     $gp, $a2, -0x7F59 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A7'. Expected 'vmzero.q    E103', got 'vmzero.q    R103'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A8'. Expected 'vmzero.q    E200', got '.word       0xF38680A8                   # INVALID     $gp, $a2, -0x7F58 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A8'. Expected 'vmzero.q    E200', got 'vmzero.q    R200'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680A9'. Expected 'vmzero.q    E201', got '.word       0xF38680A9                   # INVALID     $gp, $a2, -0x7F57 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680A9'. Expected 'vmzero.q    E201', got 'vmzero.q    R201'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680AA'. Expected 'vmzero.q    E202', got '.word       0xF38680AA                   # INVALID     $gp, $a2, -0x7F56 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680AA'. Expected 'vmzero.q    E202', got 'vmzero.q    R202'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680AB'. Expected 'vmzero.q    E203', got '.word       0xF38680AB                   # INVALID     $gp, $a2, -0x7F55 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680AB'. Expected 'vmzero.q    E203', got 'vmzero.q    R203'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680AC'. Expected 'vmzero.q    E300', got '.word       0xF38680AC                   # INVALID     $gp, $a2, -0x7F54 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680AC'. Expected 'vmzero.q    E300', got 'vmzero.q    R300'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680AD'. Expected 'vmzero.q    E301', got '.word       0xF38680AD                   # INVALID     $gp, $a2, -0x7F53 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680AD'. Expected 'vmzero.q    E301', got 'vmzero.q    R301'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680AE'. Expected 'vmzero.q    E302', got '.word       0xF38680AE                   # INVALID     $gp, $a2, -0x7F52 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680AE'. Expected 'vmzero.q    E302', got 'vmzero.q    R302'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680AF'. Expected 'vmzero.q    E303', got '.word       0xF38680AF                   # INVALID     $gp, $a2, -0x7F51 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680AF'. Expected 'vmzero.q    E303', got 'vmzero.q    R303'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B0'. Expected 'vmzero.q    E400', got '.word       0xF38680B0                   # INVALID     $gp, $a2, -0x7F50 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B0'. Expected 'vmzero.q    E400', got 'vmzero.q    R400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B1'. Expected 'vmzero.q    E401', got '.word       0xF38680B1                   # INVALID     $gp, $a2, -0x7F4F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B1'. Expected 'vmzero.q    E401', got 'vmzero.q    R401'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B2'. Expected 'vmzero.q    E402', got '.word       0xF38680B2                   # INVALID     $gp, $a2, -0x7F4E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B2'. Expected 'vmzero.q    E402', got 'vmzero.q    R402'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B3'. Expected 'vmzero.q    E403', got '.word       0xF38680B3                   # INVALID     $gp, $a2, -0x7F4D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B3'. Expected 'vmzero.q    E403', got 'vmzero.q    R403'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B4'. Expected 'vmzero.q    E500', got '.word       0xF38680B4                   # INVALID     $gp, $a2, -0x7F4C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B4'. Expected 'vmzero.q    E500', got 'vmzero.q    R500'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B5'. Expected 'vmzero.q    E501', got '.word       0xF38680B5                   # INVALID     $gp, $a2, -0x7F4B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B5'. Expected 'vmzero.q    E501', got 'vmzero.q    R501'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B6'. Expected 'vmzero.q    E502', got '.word       0xF38680B6                   # INVALID     $gp, $a2, -0x7F4A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B6'. Expected 'vmzero.q    E502', got 'vmzero.q    R502'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B7'. Expected 'vmzero.q    E503', got '.word       0xF38680B7                   # INVALID     $gp, $a2, -0x7F49 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B7'. Expected 'vmzero.q    E503', got 'vmzero.q    R503'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B8'. Expected 'vmzero.q    E600', got '.word       0xF38680B8                   # INVALID     $gp, $a2, -0x7F48 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B8'. Expected 'vmzero.q    E600', got 'vmzero.q    R600'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680B9'. Expected 'vmzero.q    E601', got '.word       0xF38680B9                   # INVALID     $gp, $a2, -0x7F47 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680B9'. Expected 'vmzero.q    E601', got 'vmzero.q    R601'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680BA'. Expected 'vmzero.q    E602', got '.word       0xF38680BA                   # INVALID     $gp, $a2, -0x7F46 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680BA'. Expected 'vmzero.q    E602', got 'vmzero.q    R602'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680BB'. Expected 'vmzero.q    E603', got '.word       0xF38680BB                   # INVALID     $gp, $a2, -0x7F45 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680BB'. Expected 'vmzero.q    E603', got 'vmzero.q    R603'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680BC'. Expected 'vmzero.q    E700', got '.word       0xF38680BC                   # INVALID     $gp, $a2, -0x7F44 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680BC'. Expected 'vmzero.q    E700', got 'vmzero.q    R700'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680BD'. Expected 'vmzero.q    E701', got '.word       0xF38680BD                   # INVALID     $gp, $a2, -0x7F43 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680BD'. Expected 'vmzero.q    E701', got 'vmzero.q    R701'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680BE'. Expected 'vmzero.q    E702', got '.word       0xF38680BE                   # INVALID     $gp, $a2, -0x7F42 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680BE'. Expected 'vmzero.q    E702', got 'vmzero.q    R702'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680BF'. Expected 'vmzero.q    E703', got '.word       0xF38680BF                   # INVALID     $gp, $a2, -0x7F41 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680BF'. Expected 'vmzero.q    E703', got 'vmzero.q    R703'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C0'. Expected 'vmzero.q    M002', got '.word       0xF38680C0                   # INVALID     $gp, $a2, -0x7F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C0'. Expected 'vmzero.q    M002', got 'vmzero.q    C002'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C1'. Expected 'vmzero.q    M012', got '.word       0xF38680C1                   # INVALID     $gp, $a2, -0x7F3F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C1'. Expected 'vmzero.q    M012', got 'vmzero.q    C012'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C2'. Expected 'vmzero.q    M022', got '.word       0xF38680C2                   # INVALID     $gp, $a2, -0x7F3E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C2'. Expected 'vmzero.q    M022', got 'vmzero.q    C022'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C3'. Expected 'vmzero.q    M032', got '.word       0xF38680C3                   # INVALID     $gp, $a2, -0x7F3D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C3'. Expected 'vmzero.q    M032', got 'vmzero.q    C032'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C4'. Expected 'vmzero.q    M102', got '.word       0xF38680C4                   # INVALID     $gp, $a2, -0x7F3C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C4'. Expected 'vmzero.q    M102', got 'vmzero.q    C102'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C5'. Expected 'vmzero.q    M112', got '.word       0xF38680C5                   # INVALID     $gp, $a2, -0x7F3B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C5'. Expected 'vmzero.q    M112', got 'vmzero.q    C112'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C6'. Expected 'vmzero.q    M122', got '.word       0xF38680C6                   # INVALID     $gp, $a2, -0x7F3A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C6'. Expected 'vmzero.q    M122', got 'vmzero.q    C122'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C7'. Expected 'vmzero.q    M132', got '.word       0xF38680C7                   # INVALID     $gp, $a2, -0x7F39 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C7'. Expected 'vmzero.q    M132', got 'vmzero.q    C132'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C8'. Expected 'vmzero.q    M202', got '.word       0xF38680C8                   # INVALID     $gp, $a2, -0x7F38 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C8'. Expected 'vmzero.q    M202', got 'vmzero.q    C202'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680C9'. Expected 'vmzero.q    M212', got '.word       0xF38680C9                   # INVALID     $gp, $a2, -0x7F37 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680C9'. Expected 'vmzero.q    M212', got 'vmzero.q    C212'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680CA'. Expected 'vmzero.q    M222', got '.word       0xF38680CA                   # INVALID     $gp, $a2, -0x7F36 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680CA'. Expected 'vmzero.q    M222', got 'vmzero.q    C222'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680CB'. Expected 'vmzero.q    M232', got '.word       0xF38680CB                   # INVALID     $gp, $a2, -0x7F35 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680CB'. Expected 'vmzero.q    M232', got 'vmzero.q    C232'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680CC'. Expected 'vmzero.q    M302', got '.word       0xF38680CC                   # INVALID     $gp, $a2, -0x7F34 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680CC'. Expected 'vmzero.q    M302', got 'vmzero.q    C302'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680CD'. Expected 'vmzero.q    M312', got '.word       0xF38680CD                   # INVALID     $gp, $a2, -0x7F33 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680CD'. Expected 'vmzero.q    M312', got 'vmzero.q    C312'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680CE'. Expected 'vmzero.q    M322', got '.word       0xF38680CE                   # INVALID     $gp, $a2, -0x7F32 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680CE'. Expected 'vmzero.q    M322', got 'vmzero.q    C322'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680CF'. Expected 'vmzero.q    M332', got '.word       0xF38680CF                   # INVALID     $gp, $a2, -0x7F31 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680CF'. Expected 'vmzero.q    M332', got 'vmzero.q    C332'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D0'. Expected 'vmzero.q    M402', got '.word       0xF38680D0                   # INVALID     $gp, $a2, -0x7F30 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D0'. Expected 'vmzero.q    M402', got 'vmzero.q    C402'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D1'. Expected 'vmzero.q    M412', got '.word       0xF38680D1                   # INVALID     $gp, $a2, -0x7F2F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D1'. Expected 'vmzero.q    M412', got 'vmzero.q    C412'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D2'. Expected 'vmzero.q    M422', got '.word       0xF38680D2                   # INVALID     $gp, $a2, -0x7F2E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D2'. Expected 'vmzero.q    M422', got 'vmzero.q    C422'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D3'. Expected 'vmzero.q    M432', got '.word       0xF38680D3                   # INVALID     $gp, $a2, -0x7F2D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D3'. Expected 'vmzero.q    M432', got 'vmzero.q    C432'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D4'. Expected 'vmzero.q    M502', got '.word       0xF38680D4                   # INVALID     $gp, $a2, -0x7F2C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D4'. Expected 'vmzero.q    M502', got 'vmzero.q    C502'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D5'. Expected 'vmzero.q    M512', got '.word       0xF38680D5                   # INVALID     $gp, $a2, -0x7F2B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D5'. Expected 'vmzero.q    M512', got 'vmzero.q    C512'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D6'. Expected 'vmzero.q    M522', got '.word       0xF38680D6                   # INVALID     $gp, $a2, -0x7F2A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D6'. Expected 'vmzero.q    M522', got 'vmzero.q    C522'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D7'. Expected 'vmzero.q    M532', got '.word       0xF38680D7                   # INVALID     $gp, $a2, -0x7F29 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D7'. Expected 'vmzero.q    M532', got 'vmzero.q    C532'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D8'. Expected 'vmzero.q    M602', got '.word       0xF38680D8                   # INVALID     $gp, $a2, -0x7F28 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D8'. Expected 'vmzero.q    M602', got 'vmzero.q    C602'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680D9'. Expected 'vmzero.q    M612', got '.word       0xF38680D9                   # INVALID     $gp, $a2, -0x7F27 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680D9'. Expected 'vmzero.q    M612', got 'vmzero.q    C612'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680DA'. Expected 'vmzero.q    M622', got '.word       0xF38680DA                   # INVALID     $gp, $a2, -0x7F26 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680DA'. Expected 'vmzero.q    M622', got 'vmzero.q    C622'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680DB'. Expected 'vmzero.q    M632', got '.word       0xF38680DB                   # INVALID     $gp, $a2, -0x7F25 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680DB'. Expected 'vmzero.q    M632', got 'vmzero.q    C632'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680DC'. Expected 'vmzero.q    M702', got '.word       0xF38680DC                   # INVALID     $gp, $a2, -0x7F24 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680DC'. Expected 'vmzero.q    M702', got 'vmzero.q    C702'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680DD'. Expected 'vmzero.q    M712', got '.word       0xF38680DD                   # INVALID     $gp, $a2, -0x7F23 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680DD'. Expected 'vmzero.q    M712', got 'vmzero.q    C712'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680DE'. Expected 'vmzero.q    M722', got '.word       0xF38680DE                   # INVALID     $gp, $a2, -0x7F22 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680DE'. Expected 'vmzero.q    M722', got 'vmzero.q    C722'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680DF'. Expected 'vmzero.q    M732', got '.word       0xF38680DF                   # INVALID     $gp, $a2, -0x7F21 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680DF'. Expected 'vmzero.q    M732', got 'vmzero.q    C732'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E0'. Expected 'vmzero.q    E020', got '.word       0xF38680E0                   # INVALID     $gp, $a2, -0x7F20 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E0'. Expected 'vmzero.q    E020', got 'vmzero.q    R020'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E1'. Expected 'vmzero.q    E021', got '.word       0xF38680E1                   # INVALID     $gp, $a2, -0x7F1F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E1'. Expected 'vmzero.q    E021', got 'vmzero.q    R021'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E2'. Expected 'vmzero.q    E022', got '.word       0xF38680E2                   # INVALID     $gp, $a2, -0x7F1E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E2'. Expected 'vmzero.q    E022', got 'vmzero.q    R022'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E3'. Expected 'vmzero.q    E023', got '.word       0xF38680E3                   # INVALID     $gp, $a2, -0x7F1D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E3'. Expected 'vmzero.q    E023', got 'vmzero.q    R023'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E4'. Expected 'vmzero.q    E120', got '.word       0xF38680E4                   # INVALID     $gp, $a2, -0x7F1C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E4'. Expected 'vmzero.q    E120', got 'vmzero.q    R120'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E5'. Expected 'vmzero.q    E121', got '.word       0xF38680E5                   # INVALID     $gp, $a2, -0x7F1B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E5'. Expected 'vmzero.q    E121', got 'vmzero.q    R121'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E6'. Expected 'vmzero.q    E122', got '.word       0xF38680E6                   # INVALID     $gp, $a2, -0x7F1A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E6'. Expected 'vmzero.q    E122', got 'vmzero.q    R122'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E7'. Expected 'vmzero.q    E123', got '.word       0xF38680E7                   # INVALID     $gp, $a2, -0x7F19 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E7'. Expected 'vmzero.q    E123', got 'vmzero.q    R123'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E8'. Expected 'vmzero.q    E220', got '.word       0xF38680E8                   # INVALID     $gp, $a2, -0x7F18 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E8'. Expected 'vmzero.q    E220', got 'vmzero.q    R220'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680E9'. Expected 'vmzero.q    E221', got '.word       0xF38680E9                   # INVALID     $gp, $a2, -0x7F17 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680E9'. Expected 'vmzero.q    E221', got 'vmzero.q    R221'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680EA'. Expected 'vmzero.q    E222', got '.word       0xF38680EA                   # INVALID     $gp, $a2, -0x7F16 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680EA'. Expected 'vmzero.q    E222', got 'vmzero.q    R222'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680EB'. Expected 'vmzero.q    E223', got '.word       0xF38680EB                   # INVALID     $gp, $a2, -0x7F15 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680EB'. Expected 'vmzero.q    E223', got 'vmzero.q    R223'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680EC'. Expected 'vmzero.q    E320', got '.word       0xF38680EC                   # INVALID     $gp, $a2, -0x7F14 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680EC'. Expected 'vmzero.q    E320', got 'vmzero.q    R320'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680ED'. Expected 'vmzero.q    E321', got '.word       0xF38680ED                   # INVALID     $gp, $a2, -0x7F13 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680ED'. Expected 'vmzero.q    E321', got 'vmzero.q    R321'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680EE'. Expected 'vmzero.q    E322', got '.word       0xF38680EE                   # INVALID     $gp, $a2, -0x7F12 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680EE'. Expected 'vmzero.q    E322', got 'vmzero.q    R322'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680EF'. Expected 'vmzero.q    E323', got '.word       0xF38680EF                   # INVALID     $gp, $a2, -0x7F11 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680EF'. Expected 'vmzero.q    E323', got 'vmzero.q    R333'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F0'. Expected 'vmzero.q    E420', got '.word       0xF38680F0                   # INVALID     $gp, $a2, -0x7F10 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F0'. Expected 'vmzero.q    E420', got 'vmzero.q    R420'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F1'. Expected 'vmzero.q    E421', got '.word       0xF38680F1                   # INVALID     $gp, $a2, -0x7F0F # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F1'. Expected 'vmzero.q    E421', got 'vmzero.q    R421'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F2'. Expected 'vmzero.q    E422', got '.word       0xF38680F2                   # INVALID     $gp, $a2, -0x7F0E # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F2'. Expected 'vmzero.q    E422', got 'vmzero.q    R422'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F3'. Expected 'vmzero.q    E423', got '.word       0xF38680F3                   # INVALID     $gp, $a2, -0x7F0D # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F3'. Expected 'vmzero.q    E423', got 'vmzero.q    R423'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F4'. Expected 'vmzero.q    E520', got '.word       0xF38680F4                   # INVALID     $gp, $a2, -0x7F0C # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F4'. Expected 'vmzero.q    E520', got 'vmzero.q    R520'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F5'. Expected 'vmzero.q    E521', got '.word       0xF38680F5                   # INVALID     $gp, $a2, -0x7F0B # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F5'. Expected 'vmzero.q    E521', got 'vmzero.q    R521'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F6'. Expected 'vmzero.q    E522', got '.word       0xF38680F6                   # INVALID     $gp, $a2, -0x7F0A # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F6'. Expected 'vmzero.q    E522', got 'vmzero.q    R522'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F7'. Expected 'vmzero.q    E523', got '.word       0xF38680F7                   # INVALID     $gp, $a2, -0x7F09 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F7'. Expected 'vmzero.q    E523', got 'vmzero.q    R523'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F8'. Expected 'vmzero.q    E620', got '.word       0xF38680F8                   # INVALID     $gp, $a2, -0x7F08 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F8'. Expected 'vmzero.q    E620', got 'vmzero.q    R620'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680F9'. Expected 'vmzero.q    E621', got '.word       0xF38680F9                   # INVALID     $gp, $a2, -0x7F07 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680F9'. Expected 'vmzero.q    E621', got 'vmzero.q    R621'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680FA'. Expected 'vmzero.q    E622', got '.word       0xF38680FA                   # INVALID     $gp, $a2, -0x7F06 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680FA'. Expected 'vmzero.q    E622', got 'vmzero.q    R622'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680FB'. Expected 'vmzero.q    E623', got '.word       0xF38680FB                   # INVALID     $gp, $a2, -0x7F05 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680FB'. Expected 'vmzero.q    E623', got 'vmzero.q    R623'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680FC'. Expected 'vmzero.q    E720', got '.word       0xF38680FC                   # INVALID     $gp, $a2, -0x7F04 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680FC'. Expected 'vmzero.q    E720', got 'vmzero.q    R720'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680FD'. Expected 'vmzero.q    E721', got '.word       0xF38680FD                   # INVALID     $gp, $a2, -0x7F03 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680FD'. Expected 'vmzero.q    E721', got 'vmzero.q    R721'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680FE'. Expected 'vmzero.q    E722', got '.word       0xF38680FE                   # INVALID     $gp, $a2, -0x7F02 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680FE'. Expected 'vmzero.q    E722', got 'vmzero.q    R722'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38680FF'. Expected 'vmzero.q    E723', got '.word       0xF38680FF                   # INVALID     $gp, $a2, -0x7F01 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38680FF'. Expected 'vmzero.q    E723', got 'vmzero.q    R723'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
@@ -16204,17 +16204,17 @@ Error on word '0xF3801040'. Expected 'illegal', got '.word       0xF3801040     
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38010C0'. Expected 'vmmov.p     M002, M400', got '.word       0xF38010C0                   # INVALID     $gp, $zero, 0x10C0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38010C0'. Expected 'vmmov.p     M002, M400', got 'vmmov.p     C002, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF3809040'. Expected 'vmmov.t     M001, M400', got '.word       0xF3809040                   # INVALID     $gp, $zero, -0x6FC0 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF3809040'. Expected 'vmmov.t     M001, M400', got 'vmmov.t     C001, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
 
-Error on word '0xF38090C0'. Expected 'vmmov.q     M002, M400', got '.word       0xF38090C0                   # INVALID     $gp, $zero, -0x6F40 # 00000000 <InstrIdType: R4000ALLEGREX_VFPU6_FMT7_FMT0>'
+Error on word '0xF38090C0'. Expected 'vmmov.q     M002, M400', got 'vmmov.q     C002, C400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7_FMT0'
     gnuMode 'true'
