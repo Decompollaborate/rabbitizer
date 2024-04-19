@@ -434,6 +434,7 @@ class InstrId:
     r4000allegrex_bvtl: Enum
     r4000allegrex_mfv: Enum
     r4000allegrex_mfvc: Enum
+    r4000allegrex_vsync2: Enum
     r4000allegrex_mtv: Enum
     r4000allegrex_mtvc: Enum
     r4000allegrex_vadd_s: Enum

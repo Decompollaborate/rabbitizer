@@ -493,6 +493,7 @@ enum class UniqueId {
     r4000allegrex_bvtl,
     r4000allegrex_mfv,
     r4000allegrex_mfvc,
+    r4000allegrex_vsync2,
     r4000allegrex_mtv,
     r4000allegrex_mtvc,
     r4000allegrex_vadd_s,

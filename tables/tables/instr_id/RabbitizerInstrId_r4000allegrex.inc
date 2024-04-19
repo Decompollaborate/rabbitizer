@@ -33,6 +33,7 @@
     #include "r4000allegrex/r4000allegrex_cop2_bc2.inc"
     #include "r4000allegrex/r4000allegrex_cop2_mfhc2.inc"
     #include "r4000allegrex/r4000allegrex_cop2_mfhc2_p.inc"
+    #include "r4000allegrex/r4000allegrex_cop2_mfhc2_p_s.inc"
     #include "r4000allegrex/r4000allegrex_cop2_mthc2.inc"
 
     #include "r4000allegrex/r4000allegrex_vfpu0.inc"

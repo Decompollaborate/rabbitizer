@@ -493,6 +493,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_r4000allegrex_bvtl] = { .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isBranch=true, .isBranchLikely=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_mfv] = { .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_s_vd}, .instrType=RABBITIZER_INSTR_TYPE_R, .readsRs=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_mfvc] = { .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_cop2cd}, .instrType=RABBITIZER_INSTR_TYPE_R, .readsRs=true },
+    [RABBITIZER_INSTR_ID_r4000allegrex_vsync2] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_R, .readsRs=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_mtv] = { .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_s_vd}, .instrType=RABBITIZER_INSTR_TYPE_R, .readsRs=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_mtvc] = { .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_cop2cd}, .instrType=RABBITIZER_INSTR_TYPE_R, .readsRs=true },
     [RABBITIZER_INSTR_ID_r4000allegrex_vadd_s] = { .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs, RAB_OPERAND_r4000allegrex_s_vt}, .instrType=RABBITIZER_INSTR_TYPE_R },

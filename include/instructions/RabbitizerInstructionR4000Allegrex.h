@@ -31,6 +31,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_bc2_fmt(self)                               (SHIFTR((self)->word, 16,  2))
 #define RAB_INSTR_R4000ALLEGREX_GET_mxhc2(self)                                 (SHIFTR((self)->word,  7,  1))
 #define RAB_INSTR_R4000ALLEGREX_GET_mfhc2_p_fmt(self)                           (SHIFTR((self)->word,  4,  3))
+#define RAB_INSTR_R4000ALLEGREX_GET_mfhc2_p_s_fmt(self)                         (SHIFTR((self)->word,  0,  4))
 
 #define RAB_INSTR_R4000ALLEGREX_GET_imm3(self)                                  (SHIFTR((self)->word, 18,  3))
 #define RAB_INSTR_R4000ALLEGREX_GET_offset14(self)                              (SHIFTR((self)->word,  2, 14))
@@ -72,6 +73,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_PACK_bc2_fmt(word, value)                       (BITREPACK((word), (value), 16,  2))
 #define RAB_INSTR_R4000ALLEGREX_PACK_mxhc2(word, value)                         (BITREPACK((word), (value),  7,  1))
 #define RAB_INSTR_R4000ALLEGREX_PACK_mfhc2_p_fmt(word, value)                   (BITREPACK((word), (value),  4,  3))
+#define RAB_INSTR_R4000ALLEGREX_PACK_mfhc2_p_s_fmt(word, value)                 (BITREPACK((word), (value),  0,  4))
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_imm3(word, value)                          (BITREPACK((word), (value), 18,  3))
 #define RAB_INSTR_R4000ALLEGREX_PACK_offset14(word, value)                      (BITREPACK((word), (value),  2, 14))
@@ -145,6 +147,8 @@ NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2_p(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2_p_s(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MTHC2(RabbitizerInstruction *self);
 

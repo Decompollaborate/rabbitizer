@@ -446,7 +446,29 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2_p(Rab
     // self->_handwrittenCategory = true;
 
     switch (fmt) {
+        case 0x7:
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2_p_s(self);
+            fetchDescriptor = false;
+            break;
+
 #include "tables/instr_id/r4000allegrex/r4000allegrex_cop2_mfhc2_p.inc"
+    }
+
+    if (fetchDescriptor) {
+        self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
+    }
+}
+
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2_p_s(RabbitizerInstruction *self) {
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_mfhc2_p_s_fmt(self);
+    bool fetchDescriptor = true;
+
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_mfhc2_p_s_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_COP2_MFHC2_P_S;
+    // self->_handwrittenCategory = true;
+
+    switch (fmt) {
+#include "tables/instr_id/r4000allegrex/r4000allegrex_cop2_mfhc2_p_s.inc"
     }
 
     if (fetchDescriptor) {

@@ -493,6 +493,7 @@ const char *RabbitizerInstrId_Names[] = {
     [RABBITIZER_INSTR_ID_r4000allegrex_bvtl] = "bvtl",
     [RABBITIZER_INSTR_ID_r4000allegrex_mfv] = "mfv",
     [RABBITIZER_INSTR_ID_r4000allegrex_mfvc] = "mfvc",
+    [RABBITIZER_INSTR_ID_r4000allegrex_vsync2] = "vsync2",
     [RABBITIZER_INSTR_ID_r4000allegrex_mtv] = "mtv",
     [RABBITIZER_INSTR_ID_r4000allegrex_mtvc] = "mtvc",
     [RABBITIZER_INSTR_ID_r4000allegrex_vadd_s] = "vadd.s",
