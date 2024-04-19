@@ -85,6 +85,11 @@ class OperandType:
     r4000allegrex_imm3: Enum
     r4000allegrex_offset14_base: Enum
     r4000allegrex_offset14_base_maybe_wb: Enum
+    r4000allegrex_vcmp_cond: Enum
+    r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt: Enum
+    r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt: Enum
+    r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt: Enum
+    r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt: Enum
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum

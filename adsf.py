@@ -117,6 +117,20 @@ def do_vfp3_vcmp():
             print(f"    .word 0x{VFPU3:08X} | 0x{vfpu0_fmt_tp(i):08X} | 0x{VT:08X} | 0x{VS:08X} | 0x{cond:08X}")
     func_end("vcmp_all")
 
+def do_vfp3_vcmp_zero():
+    func_start("vcmp_zero")
+    print("    # vcmp zero")
+
+    VT = vt(0)
+    VS = vs(0)
+
+    i = 0
+
+    for cond in range(1<<4):
+        for i in range(4):
+            print(f"    .word 0x{VFPU3:08X} | 0x{vfpu0_fmt_tp(i):08X} | 0x{VT:08X} | 0x{VS:08X} | 0x{cond:08X}")
+    func_end("vcmp_zero")
+
 def do_vfp4_fmt0():
     func_start("vfpu4_fmt0_all")
     print("    # VFPU4 FMT0")
@@ -220,4 +234,4 @@ def do_vfpu6():
                     print(f"    .word 0x{VFPU6:08X} | 0x{i << 23:08X} | 0x{VT:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
     func_end("vfpu6_all")
 
-do_vfpu6()
+do_vfp3_vcmp_zero()

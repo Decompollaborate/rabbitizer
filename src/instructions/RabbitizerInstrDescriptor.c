@@ -322,6 +322,69 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
                 return true;
             }
             break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_s_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_s_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_p_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_p_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_t_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_t_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_q_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_q_vt)) {
+                return true;
+            }
+            break;
             /* r4000allegrex */
 
             /* r5900 */

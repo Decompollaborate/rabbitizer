@@ -51,3 +51,9 @@
     // RAB_DEF_OPERAND(r4000allegrex, offset14)
     RAB_DEF_OPERAND(r4000allegrex, offset14_base)
     RAB_DEF_OPERAND(r4000allegrex, offset14_base_maybe_wb)
+
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond)
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_s_maybe_vs_maybe_vt)
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_p_maybe_vs_maybe_vt)
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_t_maybe_vs_maybe_vt)
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_q_maybe_vs_maybe_vt)

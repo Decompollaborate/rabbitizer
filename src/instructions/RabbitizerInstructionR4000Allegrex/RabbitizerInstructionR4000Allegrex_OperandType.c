@@ -443,3 +443,260 @@ size_t RabbitizerOperandType_process_r4000allegrex_offset14_base_maybe_wb(const 
 
     return totalSize;
 }
+
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond(const RabbitizerInstruction *self, char *dst,
+                                                                          UNUSED const char *immOverride,
+                                                                          UNUSED size_t immOverrideLength) {
+    static const char * const condition_mnemonics[16] = {
+        [0] = "fl", // Always false
+        [1] = "eq", // Equal
+        [2] = "lt", // Less than
+        [3] = "le", // Less than or equal
+        [4] = "tr", // Always true
+        [5] = "ne", // Not equal
+        [6] = "ge", // Greater than or equal
+        [7] = "gt", // Greater than
+        [8] = "ez", // Equal to zero
+        [9] = "en", // Equal to NaN
+        [10] = "ei", // Absolute value equal to infinity
+        [11] = "es", // Equal to infinity or NaN
+        [12] = "nz", // Not equal to zero
+        [13] = "nn", // Not equal to NaN
+        [14] = "ni", // Absolute value not equal to infinity
+        [15] = "ns", // Not equal to infinity and not equal to NaN
+    };
+    size_t totalSize = 0;
+    uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, condition_mnemonics[cond]);
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
+    uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
+    uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            // If the other operands are 0 then we can omit them
+
+            if ((vs == 0) && (vt == 0)) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_s_vs(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            break;
+
+        case 1: // eq
+        case 2: // lt
+        case 3: // le
+        case 5: // ne
+        case 6: // ge
+        case 7: // gt
+            break;
+
+        case 8: // ez
+        case 9: // en
+        case 10: // ei
+        case 11: // es
+        case 12: // nz
+        case 13: // nn
+        case 14: // ni
+        case 15: // ns
+            // If the vt operands is 0 then we can omit it
+
+            if (vt == 0) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_s_vt(self, dst, immOverride, immOverrideLength));
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
+    uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
+    uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            // If the other operands are 0 then we can omit them
+
+            if ((vs == 0) && (vt == 0)) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_p_vs(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            break;
+
+        case 1: // eq
+        case 2: // lt
+        case 3: // le
+        case 5: // ne
+        case 6: // ge
+        case 7: // gt
+            break;
+
+        case 8: // ez
+        case 9: // en
+        case 10: // ei
+        case 11: // es
+        case 12: // nz
+        case 13: // nn
+        case 14: // ni
+        case 15: // ns
+            // If the vt operands is 0 then we can omit it
+
+            if (vt == 0) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_p_vt(self, dst, immOverride, immOverrideLength));
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
+    uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
+    uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            // If the other operands are 0 then we can omit them
+
+            if ((vs == 0) && (vt == 0)) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_t_vs(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            break;
+
+        case 1: // eq
+        case 2: // lt
+        case 3: // le
+        case 5: // ne
+        case 6: // ge
+        case 7: // gt
+            break;
+
+        case 8: // ez
+        case 9: // en
+        case 10: // ei
+        case 11: // es
+        case 12: // nz
+        case 13: // nn
+        case 14: // ni
+        case 15: // ns
+            // If the vt operands is 0 then we can omit it
+
+            if (vt == 0) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_t_vt(self, dst, immOverride, immOverrideLength));
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
+    uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
+    uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            // If the other operands are 0 then we can omit them
+
+            if ((vs == 0) && (vt == 0)) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_q_vs(self, dst, immOverride, immOverrideLength));
+
+    switch (cond) {
+        case 0: // fl
+        case 4: // tr
+            break;
+
+        case 1: // eq
+        case 2: // lt
+        case 3: // le
+        case 5: // ne
+        case 6: // ge
+        case 7: // gt
+            break;
+
+        case 8: // ez
+        case 9: // en
+        case 10: // ei
+        case 11: // es
+        case 12: // nz
+        case 13: // nn
+        case 14: // ni
+        case 15: // ns
+            // If the vt operands is 0 then we can omit it
+
+            if (vt == 0) {
+                return totalSize;
+            }
+            break;
+    }
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_q_vt(self, dst, immOverride, immOverrideLength));
+
+    return totalSize;
+}

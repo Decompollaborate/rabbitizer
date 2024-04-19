@@ -1926,10 +1926,10 @@ vslt.s      S010, S400, S002
 vslt.p      C010, C400, C002
 vslt.t      C010, C400, C001
 vslt.q      C010, C400, C002
-vcmp.s      fl
-vcmp.p      fl
-vcmp.t      fl
-vcmp.q      fl
+vcmp.s      fl, S200, S002
+vcmp.p      fl, C200, C002
+vcmp.t      fl, C200, C001
+vcmp.q      fl, C200, C002
 vcmp.s      eq, S200, S002
 vcmp.p      eq, C200, C002
 vcmp.t      eq, C200, C001
@@ -1942,10 +1942,10 @@ vcmp.s      le, S200, S002
 vcmp.p      le, C200, C002
 vcmp.t      le, C200, C001
 vcmp.q      le, C200, C002
-vcmp.s      tr
-vcmp.p      tr
-vcmp.t      tr
-vcmp.q      tr
+vcmp.s      tr, S200, S002
+vcmp.p      tr, C200, C002
+vcmp.t      tr, C200, C001
+vcmp.q      tr, C200, C002
 vcmp.s      ne, S200, S002
 vcmp.p      ne, C200, C002
 vcmp.t      ne, C200, C001
@@ -1958,38 +1958,102 @@ vcmp.s      gt, S200, S002
 vcmp.p      gt, C200, C002
 vcmp.t      gt, C200, C001
 vcmp.q      gt, C200, C002
-vcmp.s      ez, S200
-vcmp.p      ez, C200
-vcmp.t      ez, C200
-vcmp.q      ez, C200
-vcmp.s      en, S200
-vcmp.p      en, C200
-vcmp.t      en, C200
-vcmp.q      en, C200
-vcmp.s      ei, S200
-vcmp.p      ei, C200
-vcmp.t      ei, C200
-vcmp.q      ei, C200
-vcmp.s      es, S200
-vcmp.p      es, C200
-vcmp.t      es, C200
-vcmp.q      es, C200
-vcmp.s      nz, S200
-vcmp.p      nz, C200
-vcmp.t      nz, C200
-vcmp.q      nz, C200
-vcmp.s      nn, S200
-vcmp.p      nn, C200
-vcmp.t      nn, C200
-vcmp.q      nn, C200
-vcmp.s      ni, S200
-vcmp.p      ni, C200
-vcmp.t      ni, C200
-vcmp.q      ni, C200
-vcmp.s      ns, S200
-vcmp.p      ns, C200
-vcmp.t      ns, C200
-vcmp.q      ns, C200
+vcmp.s      ez, S200, S002
+vcmp.p      ez, C200, C002
+vcmp.t      ez, C200, C001
+vcmp.q      ez, C200, C002
+vcmp.s      en, S200, S002
+vcmp.p      en, C200, C002
+vcmp.t      en, C200, C001
+vcmp.q      en, C200, C002
+vcmp.s      ei, S200, S002
+vcmp.p      ei, C200, C002
+vcmp.t      ei, C200, C001
+vcmp.q      ei, C200, C002
+vcmp.s      es, S200, S002
+vcmp.p      es, C200, C002
+vcmp.t      es, C200, C001
+vcmp.q      es, C200, C002
+vcmp.s      nz, S200, S002
+vcmp.p      nz, C200, C002
+vcmp.t      nz, C200, C001
+vcmp.q      nz, C200, C002
+vcmp.s      nn, S200, S002
+vcmp.p      nn, C200, C002
+vcmp.t      nn, C200, C001
+vcmp.q      nn, C200, C002
+vcmp.s      ni, S200, S002
+vcmp.p      ni, C200, C002
+vcmp.t      ni, C200, C001
+vcmp.q      ni, C200, C002
+vcmp.s      ns, S200, S002
+vcmp.p      ns, C200, C002
+vcmp.t      ns, C200, C001
+vcmp.q      ns, C200, C002
+vcmp.s      fl
+vcmp.p      fl
+vcmp.t      fl
+vcmp.q      fl
+vcmp.s      eq, S000, S000
+vcmp.p      eq, C000, C000
+vcmp.t      eq, C000, C000
+vcmp.q      eq, C000, C000
+vcmp.s      lt, S000, S000
+vcmp.p      lt, C000, C000
+vcmp.t      lt, C000, C000
+vcmp.q      lt, C000, C000
+vcmp.s      le, S000, S000
+vcmp.p      le, C000, C000
+vcmp.t      le, C000, C000
+vcmp.q      le, C000, C000
+vcmp.s      tr
+vcmp.p      tr
+vcmp.t      tr
+vcmp.q      tr
+vcmp.s      ne, S000, S000
+vcmp.p      ne, C000, C000
+vcmp.t      ne, C000, C000
+vcmp.q      ne, C000, C000
+vcmp.s      ge, S000, S000
+vcmp.p      ge, C000, C000
+vcmp.t      ge, C000, C000
+vcmp.q      ge, C000, C000
+vcmp.s      gt, S000, S000
+vcmp.p      gt, C000, C000
+vcmp.t      gt, C000, C000
+vcmp.q      gt, C000, C000
+vcmp.s      ez, S000
+vcmp.p      ez, C000
+vcmp.t      ez, C000
+vcmp.q      ez, C000
+vcmp.s      en, S000
+vcmp.p      en, C000
+vcmp.t      en, C000
+vcmp.q      en, C000
+vcmp.s      ei, S000
+vcmp.p      ei, C000
+vcmp.t      ei, C000
+vcmp.q      ei, C000
+vcmp.s      es, S000
+vcmp.p      es, C000
+vcmp.t      es, C000
+vcmp.q      es, C000
+vcmp.s      nz, S000
+vcmp.p      nz, C000
+vcmp.t      nz, C000
+vcmp.q      nz, C000
+vcmp.s      nn, S000
+vcmp.p      nn, C000
+vcmp.t      nn, C000
+vcmp.q      nn, C000
+vcmp.s      ni, S000
+vcmp.p      ni, C000
+vcmp.t      ni, C000
+vcmp.q      ni, C000
+vcmp.s      ns, S000
+vcmp.p      ns, C000
+vcmp.t      ns, C000
+vcmp.q      ns, C000
 mfvc        $a0, $128
 mfvc        $a0, $129
 mfvc        $a0, $130
