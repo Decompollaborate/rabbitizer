@@ -276,8 +276,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_mq_vd(const RabbitizerInstruc
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_cop2cs(const RabbitizerInstruction *self, char *dst,
-                                                              UNUSED const char *immOverride,
-                                                              UNUSED size_t immOverrideLength) {
+                                                          UNUSED const char *immOverride,
+                                                          UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR4000AllegrexVfpuControl(RAB_INSTR_R4000ALLEGREX_GET_cop2cs(self));
 
@@ -287,8 +287,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_cop2cs(const RabbitizerInstru
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_cop2cd(const RabbitizerInstruction *self, char *dst,
-                                                              UNUSED const char *immOverride,
-                                                              UNUSED size_t immOverrideLength) {
+                                                          UNUSED const char *immOverride,
+                                                          UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     const char *reg = RabbitizerRegister_getNameR4000AllegrexVfpuControl(RAB_INSTR_R4000ALLEGREX_GET_cop2cd(self));
 
@@ -445,19 +445,19 @@ size_t RabbitizerOperandType_process_r4000allegrex_offset14_base_maybe_wb(const 
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond(const RabbitizerInstruction *self, char *dst,
-                                                                          UNUSED const char *immOverride,
-                                                                          UNUSED size_t immOverrideLength) {
-    static const char * const condition_mnemonics[16] = {
-        [0] = "fl", // Always false
-        [1] = "eq", // Equal
-        [2] = "lt", // Less than
-        [3] = "le", // Less than or equal
-        [4] = "tr", // Always true
-        [5] = "ne", // Not equal
-        [6] = "ge", // Greater than or equal
-        [7] = "gt", // Greater than
-        [8] = "ez", // Equal to zero
-        [9] = "en", // Equal to NaN
+                                                             UNUSED const char *immOverride,
+                                                             UNUSED size_t immOverrideLength) {
+    static const char *const condition_mnemonics[16] = {
+        [0] = "fl",  // Always false
+        [1] = "eq",  // Equal
+        [2] = "lt",  // Less than
+        [3] = "le",  // Less than or equal
+        [4] = "tr",  // Always true
+        [5] = "ne",  // Not equal
+        [6] = "ge",  // Greater than or equal
+        [7] = "gt",  // Greater than
+        [8] = "ez",  // Equal to zero
+        [9] = "en",  // Equal to NaN
         [10] = "ei", // Absolute value equal to infinity
         [11] = "es", // Equal to infinity or NaN
         [12] = "nz", // Not equal to zero
@@ -473,13 +473,17 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond(const RabbitizerIns
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(const RabbitizerInstruction *self,
+                                                                                 char *dst, const char *immOverride,
+                                                                                 size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
     uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
     uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -493,7 +497,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_s_vs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_s_vs(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -508,8 +513,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt
         case 7: // gt
             break;
 
-        case 8: // ez
-        case 9: // en
+        case 8:  // ez
+        case 9:  // en
         case 10: // ei
         case 11: // es
         case 12: // nz
@@ -525,18 +530,23 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_s_vt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_s_vt(self, dst, immOverride, immOverrideLength));
 
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(const RabbitizerInstruction *self,
+                                                                                 char *dst, const char *immOverride,
+                                                                                 size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
     uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
     uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -550,7 +560,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_p_vs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_p_vs(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -565,8 +576,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt
         case 7: // gt
             break;
 
-        case 8: // ez
-        case 9: // en
+        case 8:  // ez
+        case 9:  // en
         case 10: // ei
         case 11: // es
         case 12: // nz
@@ -582,18 +593,23 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_p_vt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_p_vt(self, dst, immOverride, immOverrideLength));
 
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(const RabbitizerInstruction *self,
+                                                                                 char *dst, const char *immOverride,
+                                                                                 size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
     uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
     uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -607,7 +623,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_t_vs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_t_vs(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -622,8 +639,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt
         case 7: // gt
             break;
 
-        case 8: // ez
-        case 9: // en
+        case 8:  // ez
+        case 9:  // en
         case 10: // ei
         case 11: // es
         case 12: // nz
@@ -639,18 +656,23 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_t_vt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_t_vt(self, dst, immOverride, immOverrideLength));
 
     return totalSize;
 }
 
-size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(const RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength) {
+size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(const RabbitizerInstruction *self,
+                                                                                 char *dst, const char *immOverride,
+                                                                                 size_t immOverrideLength) {
     size_t totalSize = 0;
     uint8_t cond = RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self);
     uint8_t vs = RAB_INSTR_R4000ALLEGREX_GET_vs(self);
     uint8_t vt = RAB_INSTR_R4000ALLEGREX_GET_vt(self);
 
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize,
+        RabbitizerOperandType_process_r4000allegrex_vcmp_cond(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -664,7 +686,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_q_vs(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_q_vs(self, dst, immOverride, immOverrideLength));
 
     switch (cond) {
         case 0: // fl
@@ -679,8 +702,8 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt
         case 7: // gt
             break;
 
-        case 8: // ez
-        case 9: // en
+        case 8:  // ez
+        case 9:  // en
         case 10: // ei
         case 11: // es
         case 12: // nz
@@ -696,7 +719,19 @@ size_t RabbitizerOperandType_process_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt
     }
 
     RABUTILS_BUFFER_CPY(dst, totalSize, ", ");
-    RABUTILS_BUFFER_ADVANCE(dst, totalSize, RabbitizerOperandType_process_r4000allegrex_q_vt(self, dst, immOverride, immOverrideLength));
+    RABUTILS_BUFFER_ADVANCE(
+        dst, totalSize, RabbitizerOperandType_process_r4000allegrex_q_vt(self, dst, immOverride, immOverrideLength));
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r4000allegrex_vconstant(const RabbitizerInstruction *self, char *dst,
+                                                             UNUSED const char *immOverride,
+                                                             UNUSED size_t immOverrideLength) {
+    size_t totalSize = 0;
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexVConstant(RAB_INSTR_R4000ALLEGREX_GET_vconstant(self));
+
+    RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 
     return totalSize;
 }

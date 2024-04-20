@@ -221,6 +221,14 @@ pub mod registers {
 #define RABBITIZER_DEF_REG(prefix, name, numeric, ...) \
     name,
 
+    SPECIAL_RS_TAG(repr(u32))
+    SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
+    SPECIAL_RS_TAG(allow(non_camel_case_types))
+    SPECIAL_RS_TAG(derive(num_enum::TryFromPrimitive, num_enum::IntoPrimitive))
+    pub enum R4000AllegrexVConstant {
+        #include "registers/RabbitizerRegister_R4000AllegrexVConstant.inc"
+    }
+
     /* R4000ALLEGREX */
 
     /* R5900 */

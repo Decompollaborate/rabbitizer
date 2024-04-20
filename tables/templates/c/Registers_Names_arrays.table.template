@@ -102,6 +102,10 @@ const char *RabbitizerRegister_R4000AllegrexVfpuControl_Names[][2] = {
 #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
 };
 
+const char *RabbitizerRegister_R4000AllegrexVConstant_Names[][2] = {
+#include "registers/RabbitizerRegister_R4000AllegrexVConstant.inc"
+};
+
 /* R4000ALLEGREX */
 
 /* R5900 */

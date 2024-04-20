@@ -433,8 +433,8 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
 
             case RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt:
             case RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt:
-            case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
             case RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vs(self->word, 0);
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vt(self->word, 0);
                 FALLTHROUGH;
@@ -442,6 +442,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vcmp_cond(self->word, 0);
                 break;
 
+            case RAB_OPERAND_r4000allegrex_vconstant:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vconstant(self->word, 0);
+                break;
             /* r4000allegrex */
 
             /* r5900 */

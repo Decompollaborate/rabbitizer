@@ -89,6 +89,7 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt,
     RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt,
     RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt,
+    RAB_OPERAND_r4000allegrex_vconstant,
     RAB_OPERAND_r5900_I,
     RAB_OPERAND_r5900_Q,
     RAB_OPERAND_r5900_R,

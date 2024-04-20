@@ -74,6 +74,8 @@ NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR4000AllegrexM4x4(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR4000AllegrexVfpuControl(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexVConstant(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue);
@@ -120,6 +122,8 @@ NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM4x4(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVfpuControl(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVConstant(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue);

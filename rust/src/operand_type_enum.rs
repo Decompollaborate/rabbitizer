@@ -89,6 +89,7 @@ pub enum OperandType {
     r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt,
     r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt,
     r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt,
+    r4000allegrex_vconstant,
     r5900_I,
     r5900_Q,
     r5900_R,

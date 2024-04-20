@@ -101,6 +101,10 @@
         enum class VfpuControl {
             #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
         };
+
+        enum class VConstant {
+            #include "registers/RabbitizerRegister_R4000AllegrexVConstant.inc"
+        };
     };
 
     namespace R5900 {

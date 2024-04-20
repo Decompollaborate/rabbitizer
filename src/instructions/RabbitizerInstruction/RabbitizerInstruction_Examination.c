@@ -479,8 +479,8 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
 
             case RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt:
             case RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt:
-            case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
             case RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_vs(validbits, ~0);
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt(validbits, ~0);
                 FALLTHROUGH;
@@ -488,6 +488,9 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_vcmp_cond(validbits, ~0);
                 break;
 
+            case RAB_OPERAND_r4000allegrex_vconstant:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vconstant(validbits, ~0);
+                break;
             /* r4000allegrex */
 
             /* r5900 */

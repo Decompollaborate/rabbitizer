@@ -103,6 +103,10 @@ typedef enum RabbitizerRegister_R4000AllegrexVfpuControl {
     #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
 } RabbitizerRegister_R4000AllegrexVfpuControl;
 
+typedef enum RabbitizerRegister_R4000AllegrexVConstant {
+    #include "registers/RabbitizerRegister_R4000AllegrexVConstant.inc"
+} RabbitizerRegister_R4000AllegrexVConstant;
+
 /* R4000ALLEGREX */
 
 /* R5900 */
