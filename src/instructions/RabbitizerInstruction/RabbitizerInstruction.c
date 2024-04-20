@@ -445,6 +445,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_vconstant:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vconstant(self->word, 0);
                 break;
+
+            case RAB_OPERAND_r4000allegrex_power_of_two:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_power_of_two(self->word, 0);
+                break;
             /* r4000allegrex */
 
             /* r5900 */

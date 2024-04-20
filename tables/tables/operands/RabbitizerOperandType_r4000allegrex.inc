@@ -59,3 +59,5 @@
     RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_q_maybe_vs_maybe_vt)
 
     RAB_DEF_OPERAND(r4000allegrex, vconstant)
+
+    RAB_DEF_OPERAND(r4000allegrex, power_of_two)
