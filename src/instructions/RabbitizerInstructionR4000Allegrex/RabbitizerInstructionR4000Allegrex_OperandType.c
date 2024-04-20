@@ -773,8 +773,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_vfpu_cc_bit(const RabbitizerI
 }
 
 size_t RabbitizerOperandType_process_r4000allegrex_bn(const RabbitizerInstruction *self, char *dst,
-                                                               UNUSED const char *immOverride,
-                                                               UNUSED size_t immOverrideLength) {
+                                                      UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_bn(self);
 

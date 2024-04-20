@@ -209,16 +209,6 @@ Error on word '0xF00090C0'. Expected 'vmmul.q     M002, E400, M000', got 'vmmul.
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
 
-Error on word '0xF08010C0'. Expected 'vtfm2.p     C002, M400, C000', got 'vtfm2.p     C002, C400, C000'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU6'
-    gnuMode 'true'
-
-Error on word '0xF0801084'. Expected 'vtfm2.p     C100, M400, C000', got 'vtfm2.p     C100, C400, C000'
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU6'
-    gnuMode 'true'
-
 Error on word '0xF3A010C0'. Expected 'vrot.p      C002, S400, [C,S]', got 'vrot.p      C002, S400'
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
@@ -2154,5 +2144,5 @@ Error on word '0xF004FF9F'. Expected 'vmmul.q     M730, M732, M100', got 'vmmul.
     InstrIdType: 'R4000ALLEGREX_VFPU6'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 430 errors out of 5322 entries. 91.92% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 428 errors out of 5322 entries. 91.96% correct.
 
