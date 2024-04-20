@@ -234,4 +234,20 @@ def do_vfpu6():
                     print(f"    .word 0x{VFPU6:08X} | 0x{i << 23:08X} | 0x{VT:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
     func_end("vfpu6_all")
 
-do_vfp3_vcmp_zero()
+def do_vmmul():
+    func_start("vmmul_test")
+    print("    # vmmul")
+
+    VT = vt(4)
+    VD = vd(31)
+
+    i = 0
+
+    for t in range(1 << 1):
+        for p in range(1 << 1):
+            for j in range(1 << 7):
+                VS = vs(j)
+                print(f"    .word 0x{VFPU6:08X} | 0x{i << 23:08X} | 0x{VT:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
+    func_end("vmmul_test")
+
+do_vmmul()

@@ -234,5 +234,1925 @@ Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'v
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 46 errors out of 4811 entries. 99.04% correct.
+Error on word '0xF004009F'. Expected 'vmmul.p     M730, E000, M100', got 'vmmul.p     M730, M000, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004019F'. Expected 'vmmul.p     M730, E001, M100', got 'vmmul.p     M730, M010, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004029F'. Expected 'vmmul.p     M730, E002, M100', got 'vmmul.p     M730, M020, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004039F'. Expected 'vmmul.p     M730, E003, M100', got 'vmmul.p     M730, M030, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004049F'. Expected 'vmmul.p     M730, E100, M100', got 'vmmul.p     M730, M100, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004059F'. Expected 'vmmul.p     M730, E101, M100', got 'vmmul.p     M730, M110, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004069F'. Expected 'vmmul.p     M730, E102, M100', got 'vmmul.p     M730, M120, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004079F'. Expected 'vmmul.p     M730, E103, M100', got 'vmmul.p     M730, M130, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004089F'. Expected 'vmmul.p     M730, E200, M100', got 'vmmul.p     M730, M200, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004099F'. Expected 'vmmul.p     M730, E201, M100', got 'vmmul.p     M730, M210, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0040A9F'. Expected 'vmmul.p     M730, E202, M100', got 'vmmul.p     M730, M220, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0040B9F'. Expected 'vmmul.p     M730, E203, M100', got 'vmmul.p     M730, M230, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0040C9F'. Expected 'vmmul.p     M730, E300, M100', got 'vmmul.p     M730, M300, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0040D9F'. Expected 'vmmul.p     M730, E301, M100', got 'vmmul.p     M730, M310, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0040E9F'. Expected 'vmmul.p     M730, E302, M100', got 'vmmul.p     M730, M320, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0040F9F'. Expected 'vmmul.p     M730, E303, M100', got 'vmmul.p     M730, M330, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004109F'. Expected 'vmmul.p     M730, E400, M100', got 'vmmul.p     M730, M400, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004119F'. Expected 'vmmul.p     M730, E401, M100', got 'vmmul.p     M730, M410, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004129F'. Expected 'vmmul.p     M730, E402, M100', got 'vmmul.p     M730, M420, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004139F'. Expected 'vmmul.p     M730, E403, M100', got 'vmmul.p     M730, M430, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004149F'. Expected 'vmmul.p     M730, E500, M100', got 'vmmul.p     M730, M500, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004159F'. Expected 'vmmul.p     M730, E501, M100', got 'vmmul.p     M730, M510, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004169F'. Expected 'vmmul.p     M730, E502, M100', got 'vmmul.p     M730, M520, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004179F'. Expected 'vmmul.p     M730, E503, M100', got 'vmmul.p     M730, M530, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004189F'. Expected 'vmmul.p     M730, E600, M100', got 'vmmul.p     M730, M600, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004199F'. Expected 'vmmul.p     M730, E601, M100', got 'vmmul.p     M730, M610, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0041A9F'. Expected 'vmmul.p     M730, E602, M100', got 'vmmul.p     M730, M620, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0041B9F'. Expected 'vmmul.p     M730, E603, M100', got 'vmmul.p     M730, M630, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0041C88'. Expected 'vmmul.p     M200, E700, M100', got 'vmmul.p     M200, M700, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0041D88'. Expected 'vmmul.p     M200, E701, M100', got 'vmmul.p     M200, M710, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0041E88'. Expected 'vmmul.p     M200, E702, M100', got 'vmmul.p     M200, M720, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0041F88'. Expected 'vmmul.p     M200, E703, M100', got 'vmmul.p     M200, M730, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004209F'. Expected 'vmmul.p     M730, M000, M100', got 'vmmul.p     M730, E000, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004219F'. Expected 'vmmul.p     M730, M010, M100', got 'vmmul.p     M730, E001, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004229F'. Expected 'vmmul.p     M730, M020, M100', got 'vmmul.p     M730, E002, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004239F'. Expected 'vmmul.p     M730, M030, M100', got 'vmmul.p     M730, E003, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004249F'. Expected 'vmmul.p     M730, M100, M100', got 'vmmul.p     M730, E100, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004259F'. Expected 'vmmul.p     M730, M110, M100', got 'vmmul.p     M730, E101, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004269F'. Expected 'vmmul.p     M730, M120, M100', got 'vmmul.p     M730, E102, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004279F'. Expected 'vmmul.p     M730, M130, M100', got 'vmmul.p     M730, E103, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004289F'. Expected 'vmmul.p     M730, M200, M100', got 'vmmul.p     M730, E200, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004299F'. Expected 'vmmul.p     M730, M210, M100', got 'vmmul.p     M730, E201, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0042A9F'. Expected 'vmmul.p     M730, M220, M100', got 'vmmul.p     M730, E202, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0042B9F'. Expected 'vmmul.p     M730, M230, M100', got 'vmmul.p     M730, E203, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0042C9F'. Expected 'vmmul.p     M730, M300, M100', got 'vmmul.p     M730, E300, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0042D9F'. Expected 'vmmul.p     M730, M310, M100', got 'vmmul.p     M730, E301, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0042E9F'. Expected 'vmmul.p     M730, M320, M100', got 'vmmul.p     M730, E302, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0042F9F'. Expected 'vmmul.p     M730, M330, M100', got 'vmmul.p     M730, E303, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004309F'. Expected 'vmmul.p     M730, M400, M100', got 'vmmul.p     M730, E400, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004319F'. Expected 'vmmul.p     M730, M410, M100', got 'vmmul.p     M730, E401, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004329F'. Expected 'vmmul.p     M730, M420, M100', got 'vmmul.p     M730, E402, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004339F'. Expected 'vmmul.p     M730, M430, M100', got 'vmmul.p     M730, E403, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004349F'. Expected 'vmmul.p     M730, M500, M100', got 'vmmul.p     M730, E500, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004359F'. Expected 'vmmul.p     M730, M510, M100', got 'vmmul.p     M730, E501, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004369F'. Expected 'vmmul.p     M730, M520, M100', got 'vmmul.p     M730, E502, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004379F'. Expected 'vmmul.p     M730, M530, M100', got 'vmmul.p     M730, E503, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004389F'. Expected 'vmmul.p     M730, M600, M100', got 'vmmul.p     M730, E600, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004399F'. Expected 'vmmul.p     M730, M610, M100', got 'vmmul.p     M730, E601, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0043A9F'. Expected 'vmmul.p     M730, M620, M100', got 'vmmul.p     M730, E602, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0043B9F'. Expected 'vmmul.p     M730, M630, M100', got 'vmmul.p     M730, E603, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0043C88'. Expected 'vmmul.p     M200, M700, M100', got 'vmmul.p     M200, E700, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0043D88'. Expected 'vmmul.p     M200, M710, M100', got 'vmmul.p     M200, E701, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0043E88'. Expected 'vmmul.p     M200, M720, M100', got 'vmmul.p     M200, E702, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0043F88'. Expected 'vmmul.p     M200, M730, M100', got 'vmmul.p     M200, E703, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004409F'. Expected 'vmmul.p     M730, E020, M100', got 'vmmul.p     M730, M002, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004419F'. Expected 'vmmul.p     M730, E021, M100', got 'vmmul.p     M730, M012, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004429F'. Expected 'vmmul.p     M730, E022, M100', got 'vmmul.p     M730, M022, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004439F'. Expected 'vmmul.p     M730, E023, M100', got 'vmmul.p     M730, M032, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004449F'. Expected 'vmmul.p     M730, E120, M100', got 'vmmul.p     M730, M102, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004459F'. Expected 'vmmul.p     M730, E121, M100', got 'vmmul.p     M730, M112, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004469F'. Expected 'vmmul.p     M730, E122, M100', got 'vmmul.p     M730, M122, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004479F'. Expected 'vmmul.p     M730, E123, M100', got 'vmmul.p     M730, M132, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004489F'. Expected 'vmmul.p     M730, E220, M100', got 'vmmul.p     M730, M202, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004499F'. Expected 'vmmul.p     M730, E221, M100', got 'vmmul.p     M730, M212, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0044A9F'. Expected 'vmmul.p     M730, E222, M100', got 'vmmul.p     M730, M222, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0044B9F'. Expected 'vmmul.p     M730, E223, M100', got 'vmmul.p     M730, M232, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0044C9F'. Expected 'vmmul.p     M730, E320, M100', got 'vmmul.p     M730, M302, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0044D9F'. Expected 'vmmul.p     M730, E321, M100', got 'vmmul.p     M730, M312, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0044E9F'. Expected 'vmmul.p     M730, E322, M100', got 'vmmul.p     M730, M322, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0044F9F'. Expected 'vmmul.p     M730, E323, M100', got 'vmmul.p     M730, M332, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004509F'. Expected 'vmmul.p     M730, E420, M100', got 'vmmul.p     M730, M402, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004519F'. Expected 'vmmul.p     M730, E421, M100', got 'vmmul.p     M730, M412, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004529F'. Expected 'vmmul.p     M730, E422, M100', got 'vmmul.p     M730, M422, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004539F'. Expected 'vmmul.p     M730, E423, M100', got 'vmmul.p     M730, M432, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004549F'. Expected 'vmmul.p     M730, E520, M100', got 'vmmul.p     M730, M502, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004559F'. Expected 'vmmul.p     M730, E521, M100', got 'vmmul.p     M730, M512, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004569F'. Expected 'vmmul.p     M730, E522, M100', got 'vmmul.p     M730, M522, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004579F'. Expected 'vmmul.p     M730, E523, M100', got 'vmmul.p     M730, M532, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004589F'. Expected 'vmmul.p     M730, E620, M100', got 'vmmul.p     M730, M602, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004599F'. Expected 'vmmul.p     M730, E621, M100', got 'vmmul.p     M730, M612, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0045A9F'. Expected 'vmmul.p     M730, E622, M100', got 'vmmul.p     M730, M622, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0045B9F'. Expected 'vmmul.p     M730, E623, M100', got 'vmmul.p     M730, M632, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0045C88'. Expected 'vmmul.p     M200, E720, M100', got 'vmmul.p     M200, M702, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0045D88'. Expected 'vmmul.p     M200, E721, M100', got 'vmmul.p     M200, M712, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0045E88'. Expected 'vmmul.p     M200, E722, M100', got 'vmmul.p     M200, M722, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0045F88'. Expected 'vmmul.p     M200, E723, M100', got 'vmmul.p     M200, M732, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004609F'. Expected 'vmmul.p     M730, M002, M100', got 'vmmul.p     M730, E020, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004619F'. Expected 'vmmul.p     M730, M012, M100', got 'vmmul.p     M730, E021, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004629F'. Expected 'vmmul.p     M730, M022, M100', got 'vmmul.p     M730, E022, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004639F'. Expected 'vmmul.p     M730, M032, M100', got 'vmmul.p     M730, E023, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004649F'. Expected 'vmmul.p     M730, M102, M100', got 'vmmul.p     M730, E120, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004659F'. Expected 'vmmul.p     M730, M112, M100', got 'vmmul.p     M730, E121, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004669F'. Expected 'vmmul.p     M730, M122, M100', got 'vmmul.p     M730, E122, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004679F'. Expected 'vmmul.p     M730, M132, M100', got 'vmmul.p     M730, E123, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004689F'. Expected 'vmmul.p     M730, M202, M100', got 'vmmul.p     M730, E220, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004699F'. Expected 'vmmul.p     M730, M212, M100', got 'vmmul.p     M730, E221, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0046A9F'. Expected 'vmmul.p     M730, M222, M100', got 'vmmul.p     M730, E222, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0046B9F'. Expected 'vmmul.p     M730, M232, M100', got 'vmmul.p     M730, E223, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0046C9F'. Expected 'vmmul.p     M730, M302, M100', got 'vmmul.p     M730, E320, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0046D9F'. Expected 'vmmul.p     M730, M312, M100', got 'vmmul.p     M730, E321, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0046E9F'. Expected 'vmmul.p     M730, M322, M100', got 'vmmul.p     M730, E322, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0046F9F'. Expected 'vmmul.p     M730, M332, M100', got 'vmmul.p     M730, E323, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004709F'. Expected 'vmmul.p     M730, M402, M100', got 'vmmul.p     M730, E420, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004719F'. Expected 'vmmul.p     M730, M412, M100', got 'vmmul.p     M730, E421, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004729F'. Expected 'vmmul.p     M730, M422, M100', got 'vmmul.p     M730, E422, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004739F'. Expected 'vmmul.p     M730, M432, M100', got 'vmmul.p     M730, E423, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004749F'. Expected 'vmmul.p     M730, M502, M100', got 'vmmul.p     M730, E520, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004759F'. Expected 'vmmul.p     M730, M512, M100', got 'vmmul.p     M730, E521, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004769F'. Expected 'vmmul.p     M730, M522, M100', got 'vmmul.p     M730, E522, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004779F'. Expected 'vmmul.p     M730, M532, M100', got 'vmmul.p     M730, E523, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004789F'. Expected 'vmmul.p     M730, M602, M100', got 'vmmul.p     M730, E620, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004799F'. Expected 'vmmul.p     M730, M612, M100', got 'vmmul.p     M730, E621, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0047A9F'. Expected 'vmmul.p     M730, M622, M100', got 'vmmul.p     M730, E622, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0047B9F'. Expected 'vmmul.p     M730, M632, M100', got 'vmmul.p     M730, E623, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0047C88'. Expected 'vmmul.p     M200, M702, M100', got 'vmmul.p     M200, E720, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0047D88'. Expected 'vmmul.p     M200, M712, M100', got 'vmmul.p     M200, E721, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0047E88'. Expected 'vmmul.p     M200, M722, M100', got 'vmmul.p     M200, E722, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0047F88'. Expected 'vmmul.p     M200, M732, M100', got 'vmmul.p     M200, E723, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004801F'. Expected 'vmmul.t     M730, E000, M100', got 'vmmul.t     M730, M000, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004811F'. Expected 'vmmul.t     M730, E001, M100', got 'vmmul.t     M730, M010, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004821F'. Expected 'vmmul.t     M730, E002, M100', got 'vmmul.t     M730, M020, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004831F'. Expected 'vmmul.t     M730, E003, M100', got 'vmmul.t     M730, M030, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004841F'. Expected 'vmmul.t     M730, E100, M100', got 'vmmul.t     M730, M100, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004851F'. Expected 'vmmul.t     M730, E101, M100', got 'vmmul.t     M730, M110, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004861F'. Expected 'vmmul.t     M730, E102, M100', got 'vmmul.t     M730, M120, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004871F'. Expected 'vmmul.t     M730, E103, M100', got 'vmmul.t     M730, M130, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004881F'. Expected 'vmmul.t     M730, E200, M100', got 'vmmul.t     M730, M200, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004891F'. Expected 'vmmul.t     M730, E201, M100', got 'vmmul.t     M730, M210, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048A1F'. Expected 'vmmul.t     M730, E202, M100', got 'vmmul.t     M730, M220, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048B1F'. Expected 'vmmul.t     M730, E203, M100', got 'vmmul.t     M730, M230, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048C1F'. Expected 'vmmul.t     M730, E300, M100', got 'vmmul.t     M730, M300, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048D1F'. Expected 'vmmul.t     M730, E301, M100', got 'vmmul.t     M730, M310, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048E1F'. Expected 'vmmul.t     M730, E302, M100', got 'vmmul.t     M730, M320, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048F1F'. Expected 'vmmul.t     M730, E303, M100', got 'vmmul.t     M730, M330, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004901F'. Expected 'vmmul.t     M730, E400, M100', got 'vmmul.t     M730, M400, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004911F'. Expected 'vmmul.t     M730, E401, M100', got 'vmmul.t     M730, M410, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004921F'. Expected 'vmmul.t     M730, E402, M100', got 'vmmul.t     M730, M420, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004931F'. Expected 'vmmul.t     M730, E403, M100', got 'vmmul.t     M730, M430, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004941F'. Expected 'vmmul.t     M730, E500, M100', got 'vmmul.t     M730, M500, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004951F'. Expected 'vmmul.t     M730, E501, M100', got 'vmmul.t     M730, M510, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004961F'. Expected 'vmmul.t     M730, E502, M100', got 'vmmul.t     M730, M520, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004971F'. Expected 'vmmul.t     M730, E503, M100', got 'vmmul.t     M730, M530, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004981F'. Expected 'vmmul.t     M730, E600, M100', got 'vmmul.t     M730, M600, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004991F'. Expected 'vmmul.t     M730, E601, M100', got 'vmmul.t     M730, M610, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049A1F'. Expected 'vmmul.t     M730, E602, M100', got 'vmmul.t     M730, M620, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049B1F'. Expected 'vmmul.t     M730, E603, M100', got 'vmmul.t     M730, M630, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049C08'. Expected 'vmmul.t     M200, E700, M100', got 'vmmul.t     M200, M700, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049D08'. Expected 'vmmul.t     M200, E701, M100', got 'vmmul.t     M200, M710, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049E08'. Expected 'vmmul.t     M200, E702, M100', got 'vmmul.t     M200, M720, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049F08'. Expected 'vmmul.t     M200, E703, M100', got 'vmmul.t     M200, M730, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A01F'. Expected 'vmmul.t     M730, M000, M100', got 'vmmul.t     M730, E000, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A11F'. Expected 'vmmul.t     M730, M010, M100', got 'vmmul.t     M730, E001, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A21F'. Expected 'vmmul.t     M730, M020, M100', got 'vmmul.t     M730, E002, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A31F'. Expected 'vmmul.t     M730, M030, M100', got 'vmmul.t     M730, E003, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A41F'. Expected 'vmmul.t     M730, M100, M100', got 'vmmul.t     M730, E100, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A51F'. Expected 'vmmul.t     M730, M110, M100', got 'vmmul.t     M730, E101, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A61F'. Expected 'vmmul.t     M730, M120, M100', got 'vmmul.t     M730, E102, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A71F'. Expected 'vmmul.t     M730, M130, M100', got 'vmmul.t     M730, E103, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A81F'. Expected 'vmmul.t     M730, M200, M100', got 'vmmul.t     M730, E200, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A91F'. Expected 'vmmul.t     M730, M210, M100', got 'vmmul.t     M730, E201, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AA1F'. Expected 'vmmul.t     M730, M220, M100', got 'vmmul.t     M730, E202, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AB1F'. Expected 'vmmul.t     M730, M230, M100', got 'vmmul.t     M730, E203, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AC1F'. Expected 'vmmul.t     M730, M300, M100', got 'vmmul.t     M730, E300, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AD1F'. Expected 'vmmul.t     M730, M310, M100', got 'vmmul.t     M730, E301, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AE1F'. Expected 'vmmul.t     M730, M320, M100', got 'vmmul.t     M730, E302, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AF1F'. Expected 'vmmul.t     M730, M330, M100', got 'vmmul.t     M730, E303, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B01F'. Expected 'vmmul.t     M730, M400, M100', got 'vmmul.t     M730, E400, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B11F'. Expected 'vmmul.t     M730, M410, M100', got 'vmmul.t     M730, E401, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B21F'. Expected 'vmmul.t     M730, M420, M100', got 'vmmul.t     M730, E402, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B31F'. Expected 'vmmul.t     M730, M430, M100', got 'vmmul.t     M730, E403, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B41F'. Expected 'vmmul.t     M730, M500, M100', got 'vmmul.t     M730, E500, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B51F'. Expected 'vmmul.t     M730, M510, M100', got 'vmmul.t     M730, E501, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B61F'. Expected 'vmmul.t     M730, M520, M100', got 'vmmul.t     M730, E502, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B71F'. Expected 'vmmul.t     M730, M530, M100', got 'vmmul.t     M730, E503, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B81F'. Expected 'vmmul.t     M730, M600, M100', got 'vmmul.t     M730, E600, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B91F'. Expected 'vmmul.t     M730, M610, M100', got 'vmmul.t     M730, E601, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BA1F'. Expected 'vmmul.t     M730, M620, M100', got 'vmmul.t     M730, E602, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BB1F'. Expected 'vmmul.t     M730, M630, M100', got 'vmmul.t     M730, E603, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BC08'. Expected 'vmmul.t     M200, M700, M100', got 'vmmul.t     M200, E700, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BD08'. Expected 'vmmul.t     M200, M710, M100', got 'vmmul.t     M200, E701, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BE08'. Expected 'vmmul.t     M200, M720, M100', got 'vmmul.t     M200, E702, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BF08'. Expected 'vmmul.t     M200, M730, M100', got 'vmmul.t     M200, E703, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C01F'. Expected 'vmmul.t     M730, E010, M100', got 'vmmul.t     M730, M001, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C11F'. Expected 'vmmul.t     M730, E011, M100', got 'vmmul.t     M730, M011, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C21F'. Expected 'vmmul.t     M730, E012, M100', got 'vmmul.t     M730, M021, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C31F'. Expected 'vmmul.t     M730, E013, M100', got 'vmmul.t     M730, M031, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C41F'. Expected 'vmmul.t     M730, E110, M100', got 'vmmul.t     M730, M101, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C51F'. Expected 'vmmul.t     M730, E111, M100', got 'vmmul.t     M730, M111, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C61F'. Expected 'vmmul.t     M730, E112, M100', got 'vmmul.t     M730, M121, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C71F'. Expected 'vmmul.t     M730, E113, M100', got 'vmmul.t     M730, M131, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C81F'. Expected 'vmmul.t     M730, E210, M100', got 'vmmul.t     M730, M201, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C91F'. Expected 'vmmul.t     M730, E211, M100', got 'vmmul.t     M730, M211, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CA1F'. Expected 'vmmul.t     M730, E212, M100', got 'vmmul.t     M730, M221, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CB1F'. Expected 'vmmul.t     M730, E213, M100', got 'vmmul.t     M730, M231, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CC1F'. Expected 'vmmul.t     M730, E310, M100', got 'vmmul.t     M730, M301, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CD1F'. Expected 'vmmul.t     M730, E311, M100', got 'vmmul.t     M730, M311, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CE1F'. Expected 'vmmul.t     M730, E312, M100', got 'vmmul.t     M730, M321, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CF1F'. Expected 'vmmul.t     M730, E313, M100', got 'vmmul.t     M730, M331, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D01F'. Expected 'vmmul.t     M730, E410, M100', got 'vmmul.t     M730, M401, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D11F'. Expected 'vmmul.t     M730, E411, M100', got 'vmmul.t     M730, M411, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D21F'. Expected 'vmmul.t     M730, E412, M100', got 'vmmul.t     M730, M421, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D31F'. Expected 'vmmul.t     M730, E413, M100', got 'vmmul.t     M730, M431, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D41F'. Expected 'vmmul.t     M730, E510, M100', got 'vmmul.t     M730, M501, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D51F'. Expected 'vmmul.t     M730, E511, M100', got 'vmmul.t     M730, M511, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D61F'. Expected 'vmmul.t     M730, E512, M100', got 'vmmul.t     M730, M521, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D71F'. Expected 'vmmul.t     M730, E513, M100', got 'vmmul.t     M730, M531, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D81F'. Expected 'vmmul.t     M730, E610, M100', got 'vmmul.t     M730, M601, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D91F'. Expected 'vmmul.t     M730, E611, M100', got 'vmmul.t     M730, M611, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DA1F'. Expected 'vmmul.t     M730, E612, M100', got 'vmmul.t     M730, M621, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DB1F'. Expected 'vmmul.t     M730, E613, M100', got 'vmmul.t     M730, M631, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DC08'. Expected 'vmmul.t     M200, E710, M100', got 'vmmul.t     M200, M701, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DD08'. Expected 'vmmul.t     M200, E711, M100', got 'vmmul.t     M200, M711, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DE08'. Expected 'vmmul.t     M200, E712, M100', got 'vmmul.t     M200, M721, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DF08'. Expected 'vmmul.t     M200, E713, M100', got 'vmmul.t     M200, M731, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E01F'. Expected 'vmmul.t     M730, M001, M100', got 'vmmul.t     M730, E010, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E11F'. Expected 'vmmul.t     M730, M011, M100', got 'vmmul.t     M730, E011, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E21F'. Expected 'vmmul.t     M730, M021, M100', got 'vmmul.t     M730, E012, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E31F'. Expected 'vmmul.t     M730, M031, M100', got 'vmmul.t     M730, E013, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E41F'. Expected 'vmmul.t     M730, M101, M100', got 'vmmul.t     M730, E110, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E51F'. Expected 'vmmul.t     M730, M111, M100', got 'vmmul.t     M730, E111, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E61F'. Expected 'vmmul.t     M730, M121, M100', got 'vmmul.t     M730, E112, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E71F'. Expected 'vmmul.t     M730, M131, M100', got 'vmmul.t     M730, E113, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E81F'. Expected 'vmmul.t     M730, M201, M100', got 'vmmul.t     M730, E210, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E91F'. Expected 'vmmul.t     M730, M211, M100', got 'vmmul.t     M730, E211, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EA1F'. Expected 'vmmul.t     M730, M221, M100', got 'vmmul.t     M730, E212, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EB1F'. Expected 'vmmul.t     M730, M231, M100', got 'vmmul.t     M730, E213, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EC1F'. Expected 'vmmul.t     M730, M301, M100', got 'vmmul.t     M730, E310, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004ED1F'. Expected 'vmmul.t     M730, M311, M100', got 'vmmul.t     M730, E311, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EE1F'. Expected 'vmmul.t     M730, M321, M100', got 'vmmul.t     M730, E312, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EF1F'. Expected 'vmmul.t     M730, M331, M100', got 'vmmul.t     M730, E313, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F01F'. Expected 'vmmul.t     M730, M401, M100', got 'vmmul.t     M730, E410, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F11F'. Expected 'vmmul.t     M730, M411, M100', got 'vmmul.t     M730, E411, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F21F'. Expected 'vmmul.t     M730, M421, M100', got 'vmmul.t     M730, E412, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F31F'. Expected 'vmmul.t     M730, M431, M100', got 'vmmul.t     M730, E413, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F41F'. Expected 'vmmul.t     M730, M501, M100', got 'vmmul.t     M730, E510, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F51F'. Expected 'vmmul.t     M730, M511, M100', got 'vmmul.t     M730, E511, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F61F'. Expected 'vmmul.t     M730, M521, M100', got 'vmmul.t     M730, E512, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F71F'. Expected 'vmmul.t     M730, M531, M100', got 'vmmul.t     M730, E513, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F81F'. Expected 'vmmul.t     M730, M601, M100', got 'vmmul.t     M730, E610, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F91F'. Expected 'vmmul.t     M730, M611, M100', got 'vmmul.t     M730, E611, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FA1F'. Expected 'vmmul.t     M730, M621, M100', got 'vmmul.t     M730, E612, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FB1F'. Expected 'vmmul.t     M730, M631, M100', got 'vmmul.t     M730, E613, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FC08'. Expected 'vmmul.t     M200, M701, M100', got 'vmmul.t     M200, E710, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FD08'. Expected 'vmmul.t     M200, M711, M100', got 'vmmul.t     M200, E711, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FE08'. Expected 'vmmul.t     M200, M721, M100', got 'vmmul.t     M200, E712, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FF08'. Expected 'vmmul.t     M200, M731, M100', got 'vmmul.t     M200, E713, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004809F'. Expected 'vmmul.q     M730, E000, M100', got 'vmmul.q     M730, M000, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004819F'. Expected 'vmmul.q     M730, E001, M100', got 'vmmul.q     M730, M010, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004829F'. Expected 'vmmul.q     M730, E002, M100', got 'vmmul.q     M730, M020, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004839F'. Expected 'vmmul.q     M730, E003, M100', got 'vmmul.q     M730, M030, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004849F'. Expected 'vmmul.q     M730, E100, M100', got 'vmmul.q     M730, M100, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004859F'. Expected 'vmmul.q     M730, E101, M100', got 'vmmul.q     M730, M110, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004869F'. Expected 'vmmul.q     M730, E102, M100', got 'vmmul.q     M730, M120, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004879F'. Expected 'vmmul.q     M730, E103, M100', got 'vmmul.q     M730, M130, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004889F'. Expected 'vmmul.q     M730, E200, M100', got 'vmmul.q     M730, M200, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004899F'. Expected 'vmmul.q     M730, E201, M100', got 'vmmul.q     M730, M210, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048A9F'. Expected 'vmmul.q     M730, E202, M100', got 'vmmul.q     M730, M220, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048B9F'. Expected 'vmmul.q     M730, E203, M100', got 'vmmul.q     M730, M230, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048C9F'. Expected 'vmmul.q     M730, E300, M100', got 'vmmul.q     M730, M300, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048D9F'. Expected 'vmmul.q     M730, E301, M100', got 'vmmul.q     M730, M310, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048E9F'. Expected 'vmmul.q     M730, E302, M100', got 'vmmul.q     M730, M320, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0048F9F'. Expected 'vmmul.q     M730, E303, M100', got 'vmmul.q     M730, M330, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004909F'. Expected 'vmmul.q     M730, E400, M100', got 'vmmul.q     M730, M400, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004919F'. Expected 'vmmul.q     M730, E401, M100', got 'vmmul.q     M730, M410, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004929F'. Expected 'vmmul.q     M730, E402, M100', got 'vmmul.q     M730, M420, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004939F'. Expected 'vmmul.q     M730, E403, M100', got 'vmmul.q     M730, M430, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004949F'. Expected 'vmmul.q     M730, E500, M100', got 'vmmul.q     M730, M500, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004959F'. Expected 'vmmul.q     M730, E501, M100', got 'vmmul.q     M730, M510, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004969F'. Expected 'vmmul.q     M730, E502, M100', got 'vmmul.q     M730, M520, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004979F'. Expected 'vmmul.q     M730, E503, M100', got 'vmmul.q     M730, M530, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004989F'. Expected 'vmmul.q     M730, E600, M100', got 'vmmul.q     M730, M600, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004999F'. Expected 'vmmul.q     M730, E601, M100', got 'vmmul.q     M730, M610, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049A9F'. Expected 'vmmul.q     M730, E602, M100', got 'vmmul.q     M730, M620, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049B9F'. Expected 'vmmul.q     M730, E603, M100', got 'vmmul.q     M730, M630, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049C9F'. Expected 'vmmul.q     M730, E700, M100', got 'vmmul.q     M730, M700, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049D9F'. Expected 'vmmul.q     M730, E701, M100', got 'vmmul.q     M730, M710, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049E9F'. Expected 'vmmul.q     M730, E702, M100', got 'vmmul.q     M730, M720, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF0049F9F'. Expected 'vmmul.q     M730, E703, M100', got 'vmmul.q     M730, M730, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A09F'. Expected 'vmmul.q     M730, M000, M100', got 'vmmul.q     M730, E000, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A19F'. Expected 'vmmul.q     M730, M010, M100', got 'vmmul.q     M730, E001, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A29F'. Expected 'vmmul.q     M730, M020, M100', got 'vmmul.q     M730, E002, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A39F'. Expected 'vmmul.q     M730, M030, M100', got 'vmmul.q     M730, E003, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A49F'. Expected 'vmmul.q     M730, M100, M100', got 'vmmul.q     M730, E100, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A59F'. Expected 'vmmul.q     M730, M110, M100', got 'vmmul.q     M730, E101, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A69F'. Expected 'vmmul.q     M730, M120, M100', got 'vmmul.q     M730, E102, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A79F'. Expected 'vmmul.q     M730, M130, M100', got 'vmmul.q     M730, E103, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A89F'. Expected 'vmmul.q     M730, M200, M100', got 'vmmul.q     M730, E200, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004A99F'. Expected 'vmmul.q     M730, M210, M100', got 'vmmul.q     M730, E201, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AA9F'. Expected 'vmmul.q     M730, M220, M100', got 'vmmul.q     M730, E202, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AB9F'. Expected 'vmmul.q     M730, M230, M100', got 'vmmul.q     M730, E203, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AC9F'. Expected 'vmmul.q     M730, M300, M100', got 'vmmul.q     M730, E300, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AD9F'. Expected 'vmmul.q     M730, M310, M100', got 'vmmul.q     M730, E301, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AE9F'. Expected 'vmmul.q     M730, M320, M100', got 'vmmul.q     M730, E302, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004AF9F'. Expected 'vmmul.q     M730, M330, M100', got 'vmmul.q     M730, E303, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B09F'. Expected 'vmmul.q     M730, M400, M100', got 'vmmul.q     M730, E400, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B19F'. Expected 'vmmul.q     M730, M410, M100', got 'vmmul.q     M730, E401, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B29F'. Expected 'vmmul.q     M730, M420, M100', got 'vmmul.q     M730, E402, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B39F'. Expected 'vmmul.q     M730, M430, M100', got 'vmmul.q     M730, E403, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B49F'. Expected 'vmmul.q     M730, M500, M100', got 'vmmul.q     M730, E500, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B59F'. Expected 'vmmul.q     M730, M510, M100', got 'vmmul.q     M730, E501, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B69F'. Expected 'vmmul.q     M730, M520, M100', got 'vmmul.q     M730, E502, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B79F'. Expected 'vmmul.q     M730, M530, M100', got 'vmmul.q     M730, E503, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B89F'. Expected 'vmmul.q     M730, M600, M100', got 'vmmul.q     M730, E600, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004B99F'. Expected 'vmmul.q     M730, M610, M100', got 'vmmul.q     M730, E601, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BA9F'. Expected 'vmmul.q     M730, M620, M100', got 'vmmul.q     M730, E602, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BB9F'. Expected 'vmmul.q     M730, M630, M100', got 'vmmul.q     M730, E603, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BC9F'. Expected 'vmmul.q     M730, M700, M100', got 'vmmul.q     M730, E700, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BD9F'. Expected 'vmmul.q     M730, M710, M100', got 'vmmul.q     M730, E701, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BE9F'. Expected 'vmmul.q     M730, M720, M100', got 'vmmul.q     M730, E702, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004BF9F'. Expected 'vmmul.q     M730, M730, M100', got 'vmmul.q     M730, E703, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C09F'. Expected 'vmmul.q     M730, E020, M100', got 'vmmul.q     M730, M002, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C19F'. Expected 'vmmul.q     M730, E021, M100', got 'vmmul.q     M730, M012, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C29F'. Expected 'vmmul.q     M730, E022, M100', got 'vmmul.q     M730, M022, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C39F'. Expected 'vmmul.q     M730, E023, M100', got 'vmmul.q     M730, M032, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C49F'. Expected 'vmmul.q     M730, E120, M100', got 'vmmul.q     M730, M102, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C59F'. Expected 'vmmul.q     M730, E121, M100', got 'vmmul.q     M730, M112, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C69F'. Expected 'vmmul.q     M730, E122, M100', got 'vmmul.q     M730, M122, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C79F'. Expected 'vmmul.q     M730, E123, M100', got 'vmmul.q     M730, M132, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C89F'. Expected 'vmmul.q     M730, E220, M100', got 'vmmul.q     M730, M202, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004C99F'. Expected 'vmmul.q     M730, E221, M100', got 'vmmul.q     M730, M212, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CA9F'. Expected 'vmmul.q     M730, E222, M100', got 'vmmul.q     M730, M222, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CB9F'. Expected 'vmmul.q     M730, E223, M100', got 'vmmul.q     M730, M232, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CC9F'. Expected 'vmmul.q     M730, E320, M100', got 'vmmul.q     M730, M302, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CD9F'. Expected 'vmmul.q     M730, E321, M100', got 'vmmul.q     M730, M312, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CE9F'. Expected 'vmmul.q     M730, E322, M100', got 'vmmul.q     M730, M322, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004CF9F'. Expected 'vmmul.q     M730, E323, M100', got 'vmmul.q     M730, M332, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D09F'. Expected 'vmmul.q     M730, E420, M100', got 'vmmul.q     M730, M402, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D19F'. Expected 'vmmul.q     M730, E421, M100', got 'vmmul.q     M730, M412, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D29F'. Expected 'vmmul.q     M730, E422, M100', got 'vmmul.q     M730, M422, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D39F'. Expected 'vmmul.q     M730, E423, M100', got 'vmmul.q     M730, M432, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D49F'. Expected 'vmmul.q     M730, E520, M100', got 'vmmul.q     M730, M502, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D59F'. Expected 'vmmul.q     M730, E521, M100', got 'vmmul.q     M730, M512, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D69F'. Expected 'vmmul.q     M730, E522, M100', got 'vmmul.q     M730, M522, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D79F'. Expected 'vmmul.q     M730, E523, M100', got 'vmmul.q     M730, M532, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D89F'. Expected 'vmmul.q     M730, E620, M100', got 'vmmul.q     M730, M602, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004D99F'. Expected 'vmmul.q     M730, E621, M100', got 'vmmul.q     M730, M612, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DA9F'. Expected 'vmmul.q     M730, E622, M100', got 'vmmul.q     M730, M622, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DB9F'. Expected 'vmmul.q     M730, E623, M100', got 'vmmul.q     M730, M632, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DC9F'. Expected 'vmmul.q     M730, E720, M100', got 'vmmul.q     M730, M702, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DD9F'. Expected 'vmmul.q     M730, E721, M100', got 'vmmul.q     M730, M712, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DE9F'. Expected 'vmmul.q     M730, E722, M100', got 'vmmul.q     M730, M722, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004DF9F'. Expected 'vmmul.q     M730, E723, M100', got 'vmmul.q     M730, M732, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E09F'. Expected 'vmmul.q     M730, M002, M100', got 'vmmul.q     M730, E020, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E19F'. Expected 'vmmul.q     M730, M012, M100', got 'vmmul.q     M730, E021, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E29F'. Expected 'vmmul.q     M730, M022, M100', got 'vmmul.q     M730, E022, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E39F'. Expected 'vmmul.q     M730, M032, M100', got 'vmmul.q     M730, E023, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E49F'. Expected 'vmmul.q     M730, M102, M100', got 'vmmul.q     M730, E120, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E59F'. Expected 'vmmul.q     M730, M112, M100', got 'vmmul.q     M730, E121, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E69F'. Expected 'vmmul.q     M730, M122, M100', got 'vmmul.q     M730, E122, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E79F'. Expected 'vmmul.q     M730, M132, M100', got 'vmmul.q     M730, E123, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E89F'. Expected 'vmmul.q     M730, M202, M100', got 'vmmul.q     M730, E220, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004E99F'. Expected 'vmmul.q     M730, M212, M100', got 'vmmul.q     M730, E221, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EA9F'. Expected 'vmmul.q     M730, M222, M100', got 'vmmul.q     M730, E222, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EB9F'. Expected 'vmmul.q     M730, M232, M100', got 'vmmul.q     M730, E223, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EC9F'. Expected 'vmmul.q     M730, M302, M100', got 'vmmul.q     M730, E320, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004ED9F'. Expected 'vmmul.q     M730, M312, M100', got 'vmmul.q     M730, E321, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EE9F'. Expected 'vmmul.q     M730, M322, M100', got 'vmmul.q     M730, E322, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004EF9F'. Expected 'vmmul.q     M730, M332, M100', got 'vmmul.q     M730, E323, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F09F'. Expected 'vmmul.q     M730, M402, M100', got 'vmmul.q     M730, E420, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F19F'. Expected 'vmmul.q     M730, M412, M100', got 'vmmul.q     M730, E421, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F29F'. Expected 'vmmul.q     M730, M422, M100', got 'vmmul.q     M730, E422, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F39F'. Expected 'vmmul.q     M730, M432, M100', got 'vmmul.q     M730, E423, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F49F'. Expected 'vmmul.q     M730, M502, M100', got 'vmmul.q     M730, E520, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F59F'. Expected 'vmmul.q     M730, M512, M100', got 'vmmul.q     M730, E521, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F69F'. Expected 'vmmul.q     M730, M522, M100', got 'vmmul.q     M730, E522, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F79F'. Expected 'vmmul.q     M730, M532, M100', got 'vmmul.q     M730, E523, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F89F'. Expected 'vmmul.q     M730, M602, M100', got 'vmmul.q     M730, E620, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004F99F'. Expected 'vmmul.q     M730, M612, M100', got 'vmmul.q     M730, E621, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FA9F'. Expected 'vmmul.q     M730, M622, M100', got 'vmmul.q     M730, E622, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FB9F'. Expected 'vmmul.q     M730, M632, M100', got 'vmmul.q     M730, E623, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FC9F'. Expected 'vmmul.q     M730, M702, M100', got 'vmmul.q     M730, E720, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FD9F'. Expected 'vmmul.q     M730, M712, M100', got 'vmmul.q     M730, E721, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FE9F'. Expected 'vmmul.q     M730, M722, M100', got 'vmmul.q     M730, E722, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+Error on word '0xF004FF9F'. Expected 'vmmul.q     M730, M732, M100', got 'vmmul.q     M730, E723, M100'
+    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
+    InstrIdType: 'R4000ALLEGREX_VFPU6'
+    gnuMode 'true'
+
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 430 errors out of 5322 entries. 91.92% correct.
 
