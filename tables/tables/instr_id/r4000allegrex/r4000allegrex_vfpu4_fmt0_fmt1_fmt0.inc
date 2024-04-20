@@ -100,7 +100,7 @@ vrndf1.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x1, vrndf1_p, vrndf1.p,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd},
+        .operands={RAB_OPERAND_r4000allegrex_p_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // RaNDom Floating Pair word
 
@@ -113,7 +113,7 @@ vrndf1.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x2, vrndf1_t, vrndf1.t,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd},
+        .operands={RAB_OPERAND_r4000allegrex_t_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // RaNDom Floating Triple word
 
@@ -126,7 +126,7 @@ vrndf1.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x3, vrndf1_q, vrndf1.q,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd},
+        .operands={RAB_OPERAND_r4000allegrex_q_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // RaNDom Floating Quad word
 
