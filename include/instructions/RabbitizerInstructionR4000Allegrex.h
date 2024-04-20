@@ -54,6 +54,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_vcmp_cond(self)                             (SHIFTR((self)->word,   0,  4))
 #define RAB_INSTR_R4000ALLEGREX_GET_vconstant(self)                             (SHIFTR((self)->word,  16,  5))
 #define RAB_INSTR_R4000ALLEGREX_GET_power_of_two(self)                          (SHIFTR((self)->word,  16,  5))
+#define RAB_INSTR_R4000ALLEGREX_GET_vfpu_cc_bit(self)                           (SHIFTR((self)->word,  16,  3))
 
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_vt(word, value)                            (BITREPACK((word), (value), 16,  7))
@@ -98,6 +99,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_PACK_vcmp_cond(word, value)                     (BITREPACK((word), (value),  0,  4))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vconstant(word, value)                     (BITREPACK((word), (value), 16,  5))
 #define RAB_INSTR_R4000ALLEGREX_PACK_power_of_two(word, value)                  (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu_cc_bit(word, value)                   (BITREPACK((word), (value), 16,  3))
 
 
 NON_NULL(1)

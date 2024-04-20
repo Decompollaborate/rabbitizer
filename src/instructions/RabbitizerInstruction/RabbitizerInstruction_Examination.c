@@ -495,6 +495,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_power_of_two:
                 validbits = RAB_INSTR_R4000ALLEGREX_PACK_power_of_two(validbits, ~0);
                 break;
+
+            case RAB_OPERAND_r4000allegrex_vfpu_cc_bit:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu_cc_bit(validbits, ~0);
+                break;
             /* r4000allegrex */
 
             /* r5900 */
