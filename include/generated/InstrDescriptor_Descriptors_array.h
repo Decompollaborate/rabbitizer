@@ -713,7 +713,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_r4000allegrex_vcmovf_p] = { .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs, RAB_OPERAND_r4000allegrex_vfpu_cc_bit}, .instrType=RABBITIZER_INSTR_TYPE_R },
     [RABBITIZER_INSTR_ID_r4000allegrex_vcmovf_t] = { .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs, RAB_OPERAND_r4000allegrex_vfpu_cc_bit}, .instrType=RABBITIZER_INSTR_TYPE_R },
     [RABBITIZER_INSTR_ID_r4000allegrex_vcmovf_q] = { .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs, RAB_OPERAND_r4000allegrex_vfpu_cc_bit}, .instrType=RABBITIZER_INSTR_TYPE_R },
-    [RABBITIZER_INSTR_ID_r4000allegrex_vwbn_s] = { .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs}, .instrType=RABBITIZER_INSTR_TYPE_R },
+    [RABBITIZER_INSTR_ID_r4000allegrex_vwbn_s] = { .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs, RAB_OPERAND_r4000allegrex_bn}, .instrType=RABBITIZER_INSTR_TYPE_R },
     [RABBITIZER_INSTR_ID_r4000allegrex_vpfxs] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN },
     [RABBITIZER_INSTR_ID_r4000allegrex_vpfxt] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN },
     [RABBITIZER_INSTR_ID_r4000allegrex_vpfxd] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN },

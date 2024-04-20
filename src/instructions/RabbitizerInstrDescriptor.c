@@ -398,6 +398,9 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
 
         case RAB_OPERAND_r4000allegrex_vfpu_cc_bit:
             break;
+
+        case RAB_OPERAND_r4000allegrex_bn:
+            break;
             /* r4000allegrex */
 
             /* r5900 */

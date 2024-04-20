@@ -453,6 +453,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_vfpu_cc_bit:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vfpu_cc_bit(self->word, 0);
                 break;
+
+            case RAB_OPERAND_r4000allegrex_bn:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_bn(self->word, 0);
+                break;
             /* r4000allegrex */
 
             /* r5900 */

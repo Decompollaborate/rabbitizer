@@ -93,6 +93,7 @@ class OperandType:
     r4000allegrex_vconstant: Enum
     r4000allegrex_power_of_two: Enum
     r4000allegrex_vfpu_cc_bit: Enum
+    r4000allegrex_bn: Enum
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum

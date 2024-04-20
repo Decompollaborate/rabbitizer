@@ -92,6 +92,7 @@ pub enum OperandType {
     r4000allegrex_vconstant,
     r4000allegrex_power_of_two,
     r4000allegrex_vfpu_cc_bit,
+    r4000allegrex_bn,
     r5900_I,
     r5900_Q,
     r5900_R,

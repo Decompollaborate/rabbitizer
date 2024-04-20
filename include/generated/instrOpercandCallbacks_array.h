@@ -91,6 +91,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RAB_OPERAND_r4000allegrex_vconstant] = RabbitizerOperandType_process_r4000allegrex_vconstant,
     [RAB_OPERAND_r4000allegrex_power_of_two] = RabbitizerOperandType_process_r4000allegrex_power_of_two,
     [RAB_OPERAND_r4000allegrex_vfpu_cc_bit] = RabbitizerOperandType_process_r4000allegrex_vfpu_cc_bit,
+    [RAB_OPERAND_r4000allegrex_bn] = RabbitizerOperandType_process_r4000allegrex_bn,
     [RAB_OPERAND_r5900_I] = RabbitizerOperandType_process_r5900_I,
     [RAB_OPERAND_r5900_Q] = RabbitizerOperandType_process_r5900_Q,
     [RAB_OPERAND_r5900_R] = RabbitizerOperandType_process_r5900_R,

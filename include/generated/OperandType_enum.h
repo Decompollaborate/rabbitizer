@@ -92,6 +92,7 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_r4000allegrex_vconstant,
     RAB_OPERAND_r4000allegrex_power_of_two,
     RAB_OPERAND_r4000allegrex_vfpu_cc_bit,
+    RAB_OPERAND_r4000allegrex_bn,
     RAB_OPERAND_r5900_I,
     RAB_OPERAND_r5900_Q,
     RAB_OPERAND_r5900_R,
