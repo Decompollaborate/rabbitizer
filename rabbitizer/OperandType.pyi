@@ -71,12 +71,15 @@ class OperandType:
     r4000allegrex_mp_vs: Enum
     r4000allegrex_mp_vt: Enum
     r4000allegrex_mp_vd: Enum
+    r4000allegrex_mp_vs_transpose: Enum
     r4000allegrex_mt_vs: Enum
     r4000allegrex_mt_vt: Enum
     r4000allegrex_mt_vd: Enum
+    r4000allegrex_mt_vs_transpose: Enum
     r4000allegrex_mq_vs: Enum
     r4000allegrex_mq_vt: Enum
     r4000allegrex_mq_vd: Enum
+    r4000allegrex_mq_vs_transpose: Enum
     r4000allegrex_cop2cs: Enum
     r4000allegrex_cop2cd: Enum
     r4000allegrex_pos: Enum

@@ -23,7 +23,7 @@ vmmul.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x1, vmmul_p, vmmul.p,
-        .operands={RAB_OPERAND_r4000allegrex_mp_vd, RAB_OPERAND_r4000allegrex_mp_vs, RAB_OPERAND_r4000allegrex_mp_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mp_vd, RAB_OPERAND_r4000allegrex_mp_vs_transpose, RAB_OPERAND_r4000allegrex_mp_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Multiply Pair x Pair Matrix
 
@@ -36,7 +36,7 @@ vmmul.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x2, vmmul_t, vmmul.t,
-        .operands={RAB_OPERAND_r4000allegrex_mt_vd, RAB_OPERAND_r4000allegrex_mt_vs, RAB_OPERAND_r4000allegrex_mt_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mt_vd, RAB_OPERAND_r4000allegrex_mt_vs_transpose, RAB_OPERAND_r4000allegrex_mt_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Multiply Triple x Triple Matrix
 
@@ -49,7 +49,7 @@ vmmul.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x3, vmmul_q, vmmul.q,
-        .operands={RAB_OPERAND_r4000allegrex_mq_vd, RAB_OPERAND_r4000allegrex_mq_vs, RAB_OPERAND_r4000allegrex_mq_vt},
+        .operands={RAB_OPERAND_r4000allegrex_mq_vd, RAB_OPERAND_r4000allegrex_mq_vs_transpose, RAB_OPERAND_r4000allegrex_mq_vt},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Multiply Quad x Quad Matrix
 

@@ -364,6 +364,9 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_mp_vs:
             case RAB_OPERAND_r4000allegrex_mt_vs:
             case RAB_OPERAND_r4000allegrex_mq_vs:
+            case RAB_OPERAND_r4000allegrex_mp_vs_transpose:
+            case RAB_OPERAND_r4000allegrex_mt_vs_transpose:
+            case RAB_OPERAND_r4000allegrex_mq_vs_transpose:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_vs(self->word, 0);
                 break;
 

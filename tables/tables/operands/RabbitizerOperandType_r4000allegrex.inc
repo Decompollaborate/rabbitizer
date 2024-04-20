@@ -28,16 +28,19 @@
     RAB_DEF_OPERAND(r4000allegrex, mp_vs)
     RAB_DEF_OPERAND(r4000allegrex, mp_vt)
     RAB_DEF_OPERAND(r4000allegrex, mp_vd)
+    RAB_DEF_OPERAND(r4000allegrex, mp_vs_transpose)
 
     // matrix triple
     RAB_DEF_OPERAND(r4000allegrex, mt_vs)
     RAB_DEF_OPERAND(r4000allegrex, mt_vt)
     RAB_DEF_OPERAND(r4000allegrex, mt_vd)
+    RAB_DEF_OPERAND(r4000allegrex, mt_vs_transpose)
 
     // matrix quad
     RAB_DEF_OPERAND(r4000allegrex, mq_vs)
     RAB_DEF_OPERAND(r4000allegrex, mq_vt)
     RAB_DEF_OPERAND(r4000allegrex, mq_vd)
+    RAB_DEF_OPERAND(r4000allegrex, mq_vs_transpose)
 
     RAB_DEF_OPERAND(r4000allegrex, cop2cs)
     RAB_DEF_OPERAND(r4000allegrex, cop2cd)
