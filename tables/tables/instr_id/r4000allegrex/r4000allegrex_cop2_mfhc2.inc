@@ -22,5 +22,5 @@ mfv
         r4000allegrex, 0, mfv,
         .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_s_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true
+        .modifiesRt=true
     ) // Move word From Vfpu

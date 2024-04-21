@@ -21,6 +21,5 @@ vsync2
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0xF, vsync2,
         .operands={0},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true
+        .instrType=RABBITIZER_INSTR_TYPE_R
     ) // SYNChronize2

@@ -21,7 +21,7 @@ mtv
         r4000allegrex, 0x0, mtv,
         .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_s_vd},
         .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true
+        .readsRt=true
     ) // Move word To Vfpu
 
 /*
@@ -35,5 +35,5 @@ mtvc
         r4000allegrex, 0x1, mtvc,
         .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_cop2cd},
         .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true
+        .readsRt=true
     ) // Move word To Vfpu Control
