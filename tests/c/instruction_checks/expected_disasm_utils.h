@@ -34,7 +34,7 @@
 #define LOG_ENTRY_DATA(entry, instr)                                                                  \
     do {                                                                                              \
         fprintf(stderr, "    InstrIdType: '%s'\n", RabInstrIdType_getName((instr)->instrIdType)); \
-        fprintf(stderr, "    gnuMode '%s'\n", BOOL_STR((entry)->gnuMode));                        \
+        fprintf(stderr, "    gnuMode: '%s'\n", BOOL_STR((entry)->gnuMode));                        \
         fprintf(stderr, "\n");                                                                        \
     } while (0)
 

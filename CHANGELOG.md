@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add PSP's ALLEGREX instruction set support.
 - The global `regNames.r4000AllegrexVfpuControlNamedRegisters` option controls
   if named registers should be used for the VFPU control registers of the R4000
   ALLEGREX.
