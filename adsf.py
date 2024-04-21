@@ -260,12 +260,88 @@ def do_vrot():
     i = 7
     k = 1
 
-    for p in range(1 << 1):
-        for t in range(1 << 1):
+    for t in range(1 << 1):
+        for p in range(1 << 1):
             if p == 0 and t == 0:
                 continue
             for j in range(1 << 5):
                 print(f"    .word 0x{VFPU6:08X} | 0x{k<<21:08X} | 0x{i << 23:08X} | 0x{j<<16:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
     func_end("vrot_test")
 
-do_vrot()
+source_target_prefix_instruction_formats = [
+    "X",
+    "Y",
+    "Z",
+    "W",
+    "|X|",
+    "|Y|",
+    "|Z|",
+    "|W|",
+    "0",
+    "1",
+    "2",
+    "1/2",
+    "3",
+    "1/3",
+    "1/4",
+    "1/6",
+    "-X",
+    "-Y",
+    "-Z",
+    "-W",
+    "-|X|",
+    "-|Y|",
+    "-|Z|",
+    "-|W|",
+    "-0",
+    "-1",
+    "-2",
+    "-1/2",
+    "-3",
+    "-1/3",
+    "-1/4",
+    "-1/6",
+]
+
+def do_vpfxs_and_vpfxt():
+    # vpfxs
+    for mnemonic in ["vpfxs", "vpfxt"]:
+        RPX, RPY, RPZ, RPW = source_target_prefix_instruction_formats[0], source_target_prefix_instruction_formats[0], source_target_prefix_instruction_formats[0], source_target_prefix_instruction_formats[0]
+
+        for rpx in source_target_prefix_instruction_formats:
+            print(f"{mnemonic}       {rpx}, {RPY}, {RPZ}, {RPW}")
+
+        for rpy in source_target_prefix_instruction_formats:
+            print(f"{mnemonic}       {RPX}, {rpy}, {RPZ}, {RPW}")
+
+        for rpz in source_target_prefix_instruction_formats:
+            print(f"{mnemonic}       {RPX}, {RPY}, {rpz}, {RPW}")
+
+        for rpw in source_target_prefix_instruction_formats:
+            print(f"{mnemonic}       {RPX}, {RPY}, {RPZ}, {rpw}")
+
+destination_prefix_instruction_formats = [
+    "",
+    "0",
+    "1",
+    "M",
+];
+
+def do_vpfxd():
+    # vpfxs
+    mnemonic = "vpfxd"
+    WPX, WPY, WPZ, WPW = destination_prefix_instruction_formats[0], destination_prefix_instruction_formats[0], destination_prefix_instruction_formats[0], destination_prefix_instruction_formats[0]
+
+    for wpx in destination_prefix_instruction_formats:
+        print(f"{mnemonic}       {wpx}, {WPY}, {WPZ}, {WPW}")
+
+    for wpy in destination_prefix_instruction_formats:
+        print(f"{mnemonic}       {WPX}, {wpy}, {WPZ}, {WPW}")
+
+    for wpz in destination_prefix_instruction_formats:
+        print(f"{mnemonic}       {WPX}, {WPY}, {wpz}, {WPW}")
+
+    for wpw in destination_prefix_instruction_formats:
+        print(f"{mnemonic}       {WPX}, {WPY}, {WPZ}, {wpw}")
+
+do_vpfxd()

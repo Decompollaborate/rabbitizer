@@ -149,5 +149,5 @@ Error on word '0xDFC0F000'. Expected 'vfim.s      S002, -8192.0', got 'vfim.s   
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 29 errors out of 5322 entries. 99.46% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 29 errors out of 5418 entries. 99.46% correct.
 

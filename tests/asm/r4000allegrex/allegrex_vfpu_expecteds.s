@@ -2458,10 +2458,10 @@ vmtvc       $255, S010
 vt4444.q    C010, C400
 vt5551.q    C010, C400
 vt5650.q    C010, C400
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, INVALID_0
+nop # vcst.p      C010, INVALID_0
+nop # vcst.t      C010, INVALID_0
+nop # vcst.q      C010, INVALID_0
 vcst.s      S010, VFPU_HUGE
 vcst.p      C010, VFPU_HUGE
 vcst.t      C010, VFPU_HUGE
@@ -2538,54 +2538,54 @@ vcst.s      S010, VFPU_SQRT3_2
 vcst.p      C010, VFPU_SQRT3_2
 vcst.t      C010, VFPU_SQRT3_2
 vcst.q      C010, VFPU_SQRT3_2
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
-nop # vcst.s      S010, Undefined
-nop # vcst.p      C010, Undefined
-nop # vcst.t      C010, Undefined
-nop # vcst.q      C010, Undefined
+nop # vcst.s      S010, INVALID_20
+nop # vcst.p      C010, INVALID_20
+nop # vcst.t      C010, INVALID_20
+nop # vcst.q      C010, INVALID_20
+nop # vcst.s      S010, INVALID_21
+nop # vcst.p      C010, INVALID_21
+nop # vcst.t      C010, INVALID_21
+nop # vcst.q      C010, INVALID_21
+nop # vcst.s      S010, INVALID_22
+nop # vcst.p      C010, INVALID_22
+nop # vcst.t      C010, INVALID_22
+nop # vcst.q      C010, INVALID_22
+nop # vcst.s      S010, INVALID_23
+nop # vcst.p      C010, INVALID_23
+nop # vcst.t      C010, INVALID_23
+nop # vcst.q      C010, INVALID_23
+nop # vcst.s      S010, INVALID_24
+nop # vcst.p      C010, INVALID_24
+nop # vcst.t      C010, INVALID_24
+nop # vcst.q      C010, INVALID_24
+nop # vcst.s      S010, INVALID_25
+nop # vcst.p      C010, INVALID_25
+nop # vcst.t      C010, INVALID_25
+nop # vcst.q      C010, INVALID_25
+nop # vcst.s      S010, INVALID_26
+nop # vcst.p      C010, INVALID_26
+nop # vcst.t      C010, INVALID_26
+nop # vcst.q      C010, INVALID_26
+nop # vcst.s      S010, INVALID_27
+nop # vcst.p      C010, INVALID_27
+nop # vcst.t      C010, INVALID_27
+nop # vcst.q      C010, INVALID_27
+nop # vcst.s      S010, INVALID_28
+nop # vcst.p      C010, INVALID_28
+nop # vcst.t      C010, INVALID_28
+nop # vcst.q      C010, INVALID_28
+nop # vcst.s      S010, INVALID_29
+nop # vcst.p      C010, INVALID_29
+nop # vcst.t      C010, INVALID_29
+nop # vcst.q      C010, INVALID_29
+nop # vcst.s      S010, INVALID_30
+nop # vcst.p      C010, INVALID_30
+nop # vcst.t      C010, INVALID_30
+nop # vcst.q      C010, INVALID_30
+nop # vcst.s      S010, INVALID_31
+nop # vcst.p      C010, INVALID_31
+nop # vcst.t      C010, INVALID_31
+nop # vcst.q      C010, INVALID_31
 vf2in.s     S010, S400, 0
 vf2in.p     C010, C400, 0
 vf2in.t     C010, C400, 0
@@ -3282,62 +3282,6 @@ vcmovf.s    S010, S400, 6
 vcmovf.p    C010, C400, 6
 vcmovf.t    C010, C400, 6
 vcmovf.q    C010, C400, 6
-vcmovt.s    S010, S400, 0
-vcmovt.p    C010, C400, 0
-vcmovt.t    C010, C400, 0
-vcmovt.q    C010, C400, 0
-vcmovt.s    S010, S400, 1
-vcmovt.p    C010, C400, 1
-vcmovt.t    C010, C400, 1
-vcmovt.q    C010, C400, 1
-vcmovt.s    S010, S400, 2
-vcmovt.p    C010, C400, 2
-vcmovt.t    C010, C400, 2
-vcmovt.q    C010, C400, 2
-vcmovt.s    S010, S400, 3
-vcmovt.p    C010, C400, 3
-vcmovt.t    C010, C400, 3
-vcmovt.q    C010, C400, 3
-vcmovt.s    S010, S400, 4
-vcmovt.p    C010, C400, 4
-vcmovt.t    C010, C400, 4
-vcmovt.q    C010, C400, 4
-vcmovt.s    S010, S400, 5
-vcmovt.p    C010, C400, 5
-vcmovt.t    C010, C400, 5
-vcmovt.q    C010, C400, 5
-vcmovt.s    S010, S400, 6
-vcmovt.p    C010, C400, 6
-vcmovt.t    C010, C400, 6
-vcmovt.q    C010, C400, 6
-vcmovf.s    S010, S400, 0
-vcmovf.p    C010, C400, 0
-vcmovf.t    C010, C400, 0
-vcmovf.q    C010, C400, 0
-vcmovf.s    S010, S400, 1
-vcmovf.p    C010, C400, 1
-vcmovf.t    C010, C400, 1
-vcmovf.q    C010, C400, 1
-vcmovf.s    S010, S400, 2
-vcmovf.p    C010, C400, 2
-vcmovf.t    C010, C400, 2
-vcmovf.q    C010, C400, 2
-vcmovf.s    S010, S400, 3
-vcmovf.p    C010, C400, 3
-vcmovf.t    C010, C400, 3
-vcmovf.q    C010, C400, 3
-vcmovf.s    S010, S400, 4
-vcmovf.p    C010, C400, 4
-vcmovf.t    C010, C400, 4
-vcmovf.q    C010, C400, 4
-vcmovf.s    S010, S400, 5
-vcmovf.p    C010, C400, 5
-vcmovf.t    C010, C400, 5
-vcmovf.q    C010, C400, 5
-vcmovf.s    S010, S400, 6
-vcmovf.p    C010, C400, 6
-vcmovf.t    C010, C400, 6
-vcmovf.q    C010, C400, 6
 vwbn.s      S010, S400, 0
 vwbn.s      S010, S400, 1
 vwbn.s      S010, S400, 2
@@ -3661,391 +3605,758 @@ vrot.q      C002, S400, [C,S,S,S]
 vflush
 vnop
 vsync
-
-vmmul.p  M730,E000,M100
-vmmul.p  M730,E001,M100
-vmmul.p  M730,E002,M100
-vmmul.p  M730,E003,M100
-vmmul.p  M730,E100,M100
-vmmul.p  M730,E101,M100
-vmmul.p  M730,E102,M100
-vmmul.p  M730,E103,M100
-vmmul.p  M730,E200,M100
-vmmul.p  M730,E201,M100
-vmmul.p  M730,E202,M100
-vmmul.p  M730,E203,M100
-vmmul.p  M730,E300,M100
-vmmul.p  M730,E301,M100
-vmmul.p  M730,E302,M100
-vmmul.p  M730,E303,M100
-vmmul.p  M730,E400,M100
-vmmul.p  M730,E401,M100
-vmmul.p  M730,E402,M100
-vmmul.p  M730,E403,M100
-vmmul.p  M730,E500,M100
-vmmul.p  M730,E501,M100
-vmmul.p  M730,E502,M100
-vmmul.p  M730,E503,M100
-vmmul.p  M730,E600,M100
-vmmul.p  M730,E601,M100
-vmmul.p  M730,E602,M100
-vmmul.p  M730,E603,M100
-vmmul.p  M200,E700,M100
-vmmul.p  M200,E701,M100
-vmmul.p  M200,E702,M100
-vmmul.p  M200,E703,M100
-vmmul.p  M730,M000,M100
-vmmul.p  M730,M010,M100
-vmmul.p  M730,M020,M100
-vmmul.p  M730,M030,M100
-vmmul.p  M730,M100,M100
-vmmul.p  M730,M110,M100
-vmmul.p  M730,M120,M100
-vmmul.p  M730,M130,M100
-vmmul.p  M730,M200,M100
-vmmul.p  M730,M210,M100
-vmmul.p  M730,M220,M100
-vmmul.p  M730,M230,M100
-vmmul.p  M730,M300,M100
-vmmul.p  M730,M310,M100
-vmmul.p  M730,M320,M100
-vmmul.p  M730,M330,M100
-vmmul.p  M730,M400,M100
-vmmul.p  M730,M410,M100
-vmmul.p  M730,M420,M100
-vmmul.p  M730,M430,M100
-vmmul.p  M730,M500,M100
-vmmul.p  M730,M510,M100
-vmmul.p  M730,M520,M100
-vmmul.p  M730,M530,M100
-vmmul.p  M730,M600,M100
-vmmul.p  M730,M610,M100
-vmmul.p  M730,M620,M100
-vmmul.p  M730,M630,M100
-vmmul.p  M200,M700,M100
-vmmul.p  M200,M710,M100
-vmmul.p  M200,M720,M100
-vmmul.p  M200,M730,M100
-vmmul.p  M730,E020,M100
-vmmul.p  M730,E021,M100
-vmmul.p  M730,E022,M100
-vmmul.p  M730,E023,M100
-vmmul.p  M730,E120,M100
-vmmul.p  M730,E121,M100
-vmmul.p  M730,E122,M100
-vmmul.p  M730,E123,M100
-vmmul.p  M730,E220,M100
-vmmul.p  M730,E221,M100
-vmmul.p  M730,E222,M100
-vmmul.p  M730,E223,M100
-vmmul.p  M730,E320,M100
-vmmul.p  M730,E321,M100
-vmmul.p  M730,E322,M100
-vmmul.p  M730,E323,M100
-vmmul.p  M730,E420,M100
-vmmul.p  M730,E421,M100
-vmmul.p  M730,E422,M100
-vmmul.p  M730,E423,M100
-vmmul.p  M730,E520,M100
-vmmul.p  M730,E521,M100
-vmmul.p  M730,E522,M100
-vmmul.p  M730,E523,M100
-vmmul.p  M730,E620,M100
-vmmul.p  M730,E621,M100
-vmmul.p  M730,E622,M100
-vmmul.p  M730,E623,M100
-vmmul.p  M200,E720,M100
-vmmul.p  M200,E721,M100
-vmmul.p  M200,E722,M100
-vmmul.p  M200,E723,M100
-vmmul.p  M730,M002,M100
-vmmul.p  M730,M012,M100
-vmmul.p  M730,M022,M100
-vmmul.p  M730,M032,M100
-vmmul.p  M730,M102,M100
-vmmul.p  M730,M112,M100
-vmmul.p  M730,M122,M100
-vmmul.p  M730,M132,M100
-vmmul.p  M730,M202,M100
-vmmul.p  M730,M212,M100
-vmmul.p  M730,M222,M100
-vmmul.p  M730,M232,M100
-vmmul.p  M730,M302,M100
-vmmul.p  M730,M312,M100
-vmmul.p  M730,M322,M100
-vmmul.p  M730,M332,M100
-vmmul.p  M730,M402,M100
-vmmul.p  M730,M412,M100
-vmmul.p  M730,M422,M100
-vmmul.p  M730,M432,M100
-vmmul.p  M730,M502,M100
-vmmul.p  M730,M512,M100
-vmmul.p  M730,M522,M100
-vmmul.p  M730,M532,M100
-vmmul.p  M730,M602,M100
-vmmul.p  M730,M612,M100
-vmmul.p  M730,M622,M100
-vmmul.p  M730,M632,M100
-vmmul.p  M200,M702,M100
-vmmul.p  M200,M712,M100
-vmmul.p  M200,M722,M100
-vmmul.p  M200,M732,M100
-vmmul.t  M730,E000,M100
-vmmul.t  M730,E001,M100
-vmmul.t  M730,E002,M100
-vmmul.t  M730,E003,M100
-vmmul.t  M730,E100,M100
-vmmul.t  M730,E101,M100
-vmmul.t  M730,E102,M100
-vmmul.t  M730,E103,M100
-vmmul.t  M730,E200,M100
-vmmul.t  M730,E201,M100
-vmmul.t  M730,E202,M100
-vmmul.t  M730,E203,M100
-vmmul.t  M730,E300,M100
-vmmul.t  M730,E301,M100
-vmmul.t  M730,E302,M100
-vmmul.t  M730,E303,M100
-vmmul.t  M730,E400,M100
-vmmul.t  M730,E401,M100
-vmmul.t  M730,E402,M100
-vmmul.t  M730,E403,M100
-vmmul.t  M730,E500,M100
-vmmul.t  M730,E501,M100
-vmmul.t  M730,E502,M100
-vmmul.t  M730,E503,M100
-vmmul.t  M730,E600,M100
-vmmul.t  M730,E601,M100
-vmmul.t  M730,E602,M100
-vmmul.t  M730,E603,M100
-vmmul.t  M200,E700,M100
-vmmul.t  M200,E701,M100
-vmmul.t  M200,E702,M100
-vmmul.t  M200,E703,M100
-vmmul.t  M730,M000,M100
-vmmul.t  M730,M010,M100
-vmmul.t  M730,M020,M100
-vmmul.t  M730,M030,M100
-vmmul.t  M730,M100,M100
-vmmul.t  M730,M110,M100
-vmmul.t  M730,M120,M100
-vmmul.t  M730,M130,M100
-vmmul.t  M730,M200,M100
-vmmul.t  M730,M210,M100
-vmmul.t  M730,M220,M100
-vmmul.t  M730,M230,M100
-vmmul.t  M730,M300,M100
-vmmul.t  M730,M310,M100
-vmmul.t  M730,M320,M100
-vmmul.t  M730,M330,M100
-vmmul.t  M730,M400,M100
-vmmul.t  M730,M410,M100
-vmmul.t  M730,M420,M100
-vmmul.t  M730,M430,M100
-vmmul.t  M730,M500,M100
-vmmul.t  M730,M510,M100
-vmmul.t  M730,M520,M100
-vmmul.t  M730,M530,M100
-vmmul.t  M730,M600,M100
-vmmul.t  M730,M610,M100
-vmmul.t  M730,M620,M100
-vmmul.t  M730,M630,M100
-vmmul.t  M200,M700,M100
-vmmul.t  M200,M710,M100
-vmmul.t  M200,M720,M100
-vmmul.t  M200,M730,M100
-vmmul.t  M730,E010,M100
-vmmul.t  M730,E011,M100
-vmmul.t  M730,E012,M100
-vmmul.t  M730,E013,M100
-vmmul.t  M730,E110,M100
-vmmul.t  M730,E111,M100
-vmmul.t  M730,E112,M100
-vmmul.t  M730,E113,M100
-vmmul.t  M730,E210,M100
-vmmul.t  M730,E211,M100
-vmmul.t  M730,E212,M100
-vmmul.t  M730,E213,M100
-vmmul.t  M730,E310,M100
-vmmul.t  M730,E311,M100
-vmmul.t  M730,E312,M100
-vmmul.t  M730,E313,M100
-vmmul.t  M730,E410,M100
-vmmul.t  M730,E411,M100
-vmmul.t  M730,E412,M100
-vmmul.t  M730,E413,M100
-vmmul.t  M730,E510,M100
-vmmul.t  M730,E511,M100
-vmmul.t  M730,E512,M100
-vmmul.t  M730,E513,M100
-vmmul.t  M730,E610,M100
-vmmul.t  M730,E611,M100
-vmmul.t  M730,E612,M100
-vmmul.t  M730,E613,M100
-vmmul.t  M200,E710,M100
-vmmul.t  M200,E711,M100
-vmmul.t  M200,E712,M100
-vmmul.t  M200,E713,M100
-vmmul.t  M730,M001,M100
-vmmul.t  M730,M011,M100
-vmmul.t  M730,M021,M100
-vmmul.t  M730,M031,M100
-vmmul.t  M730,M101,M100
-vmmul.t  M730,M111,M100
-vmmul.t  M730,M121,M100
-vmmul.t  M730,M131,M100
-vmmul.t  M730,M201,M100
-vmmul.t  M730,M211,M100
-vmmul.t  M730,M221,M100
-vmmul.t  M730,M231,M100
-vmmul.t  M730,M301,M100
-vmmul.t  M730,M311,M100
-vmmul.t  M730,M321,M100
-vmmul.t  M730,M331,M100
-vmmul.t  M730,M401,M100
-vmmul.t  M730,M411,M100
-vmmul.t  M730,M421,M100
-vmmul.t  M730,M431,M100
-vmmul.t  M730,M501,M100
-vmmul.t  M730,M511,M100
-vmmul.t  M730,M521,M100
-vmmul.t  M730,M531,M100
-vmmul.t  M730,M601,M100
-vmmul.t  M730,M611,M100
-vmmul.t  M730,M621,M100
-vmmul.t  M730,M631,M100
-vmmul.t  M200,M701,M100
-vmmul.t  M200,M711,M100
-vmmul.t  M200,M721,M100
-vmmul.t  M200,M731,M100
-vmmul.q  M730,E000,M100
-vmmul.q  M730,E001,M100
-vmmul.q  M730,E002,M100
-vmmul.q  M730,E003,M100
-vmmul.q  M730,E100,M100
-vmmul.q  M730,E101,M100
-vmmul.q  M730,E102,M100
-vmmul.q  M730,E103,M100
-vmmul.q  M730,E200,M100
-vmmul.q  M730,E201,M100
-vmmul.q  M730,E202,M100
-vmmul.q  M730,E203,M100
-vmmul.q  M730,E300,M100
-vmmul.q  M730,E301,M100
-vmmul.q  M730,E302,M100
-vmmul.q  M730,E303,M100
-vmmul.q  M730,E400,M100
-vmmul.q  M730,E401,M100
-vmmul.q  M730,E402,M100
-vmmul.q  M730,E403,M100
-vmmul.q  M730,E500,M100
-vmmul.q  M730,E501,M100
-vmmul.q  M730,E502,M100
-vmmul.q  M730,E503,M100
-vmmul.q  M730,E600,M100
-vmmul.q  M730,E601,M100
-vmmul.q  M730,E602,M100
-vmmul.q  M730,E603,M100
-vmmul.q  M730,E700,M100
-vmmul.q  M730,E701,M100
-vmmul.q  M730,E702,M100
-vmmul.q  M730,E703,M100
-vmmul.q  M730,M000,M100
-vmmul.q  M730,M010,M100
-vmmul.q  M730,M020,M100
-vmmul.q  M730,M030,M100
-vmmul.q  M730,M100,M100
-vmmul.q  M730,M110,M100
-vmmul.q  M730,M120,M100
-vmmul.q  M730,M130,M100
-vmmul.q  M730,M200,M100
-vmmul.q  M730,M210,M100
-vmmul.q  M730,M220,M100
-vmmul.q  M730,M230,M100
-vmmul.q  M730,M300,M100
-vmmul.q  M730,M310,M100
-vmmul.q  M730,M320,M100
-vmmul.q  M730,M330,M100
-vmmul.q  M730,M400,M100
-vmmul.q  M730,M410,M100
-vmmul.q  M730,M420,M100
-vmmul.q  M730,M430,M100
-vmmul.q  M730,M500,M100
-vmmul.q  M730,M510,M100
-vmmul.q  M730,M520,M100
-vmmul.q  M730,M530,M100
-vmmul.q  M730,M600,M100
-vmmul.q  M730,M610,M100
-vmmul.q  M730,M620,M100
-vmmul.q  M730,M630,M100
-vmmul.q  M730,M700,M100
-vmmul.q  M730,M710,M100
-vmmul.q  M730,M720,M100
-vmmul.q  M730,M730,M100
-vmmul.q  M730,E020,M100
-vmmul.q  M730,E021,M100
-vmmul.q  M730,E022,M100
-vmmul.q  M730,E023,M100
-vmmul.q  M730,E120,M100
-vmmul.q  M730,E121,M100
-vmmul.q  M730,E122,M100
-vmmul.q  M730,E123,M100
-vmmul.q  M730,E220,M100
-vmmul.q  M730,E221,M100
-vmmul.q  M730,E222,M100
-vmmul.q  M730,E223,M100
-vmmul.q  M730,E320,M100
-vmmul.q  M730,E321,M100
-vmmul.q  M730,E322,M100
-vmmul.q  M730,E323,M100
-vmmul.q  M730,E420,M100
-vmmul.q  M730,E421,M100
-vmmul.q  M730,E422,M100
-vmmul.q  M730,E423,M100
-vmmul.q  M730,E520,M100
-vmmul.q  M730,E521,M100
-vmmul.q  M730,E522,M100
-vmmul.q  M730,E523,M100
-vmmul.q  M730,E620,M100
-vmmul.q  M730,E621,M100
-vmmul.q  M730,E622,M100
-vmmul.q  M730,E623,M100
-vmmul.q  M730,E720,M100
-vmmul.q  M730,E721,M100
-vmmul.q  M730,E722,M100
-vmmul.q  M730,E723,M100
-vmmul.q  M730,M002,M100
-vmmul.q  M730,M012,M100
-vmmul.q  M730,M022,M100
-vmmul.q  M730,M032,M100
-vmmul.q  M730,M102,M100
-vmmul.q  M730,M112,M100
-vmmul.q  M730,M122,M100
-vmmul.q  M730,M132,M100
-vmmul.q  M730,M202,M100
-vmmul.q  M730,M212,M100
-vmmul.q  M730,M222,M100
-vmmul.q  M730,M232,M100
-vmmul.q  M730,M302,M100
-vmmul.q  M730,M312,M100
-vmmul.q  M730,M322,M100
-vmmul.q  M730,M332,M100
-vmmul.q  M730,M402,M100
-vmmul.q  M730,M412,M100
-vmmul.q  M730,M422,M100
-vmmul.q  M730,M432,M100
-vmmul.q  M730,M502,M100
-vmmul.q  M730,M512,M100
-vmmul.q  M730,M522,M100
-vmmul.q  M730,M532,M100
-vmmul.q  M730,M602,M100
-vmmul.q  M730,M612,M100
-vmmul.q  M730,M622,M100
-vmmul.q  M730,M632,M100
-vmmul.q  M730,M702,M100
-vmmul.q  M730,M712,M100
-vmmul.q  M730,M722,M100
-vmmul.q  M730,M732,M100
+vmmul.p     M730, E000, M100
+vmmul.p     M730, E001, M100
+vmmul.p     M730, E002, M100
+vmmul.p     M730, E003, M100
+vmmul.p     M730, E100, M100
+vmmul.p     M730, E101, M100
+vmmul.p     M730, E102, M100
+vmmul.p     M730, E103, M100
+vmmul.p     M730, E200, M100
+vmmul.p     M730, E201, M100
+vmmul.p     M730, E202, M100
+vmmul.p     M730, E203, M100
+vmmul.p     M730, E300, M100
+vmmul.p     M730, E301, M100
+vmmul.p     M730, E302, M100
+vmmul.p     M730, E303, M100
+vmmul.p     M730, E400, M100
+vmmul.p     M730, E401, M100
+vmmul.p     M730, E402, M100
+vmmul.p     M730, E403, M100
+vmmul.p     M730, E500, M100
+vmmul.p     M730, E501, M100
+vmmul.p     M730, E502, M100
+vmmul.p     M730, E503, M100
+vmmul.p     M730, E600, M100
+vmmul.p     M730, E601, M100
+vmmul.p     M730, E602, M100
+vmmul.p     M730, E603, M100
+vmmul.p     M200, E700, M100
+vmmul.p     M200, E701, M100
+vmmul.p     M200, E702, M100
+vmmul.p     M200, E703, M100
+vmmul.p     M730, M000, M100
+vmmul.p     M730, M010, M100
+vmmul.p     M730, M020, M100
+vmmul.p     M730, M030, M100
+vmmul.p     M730, M100, M100
+vmmul.p     M730, M110, M100
+vmmul.p     M730, M120, M100
+vmmul.p     M730, M130, M100
+vmmul.p     M730, M200, M100
+vmmul.p     M730, M210, M100
+vmmul.p     M730, M220, M100
+vmmul.p     M730, M230, M100
+vmmul.p     M730, M300, M100
+vmmul.p     M730, M310, M100
+vmmul.p     M730, M320, M100
+vmmul.p     M730, M330, M100
+vmmul.p     M730, M400, M100
+vmmul.p     M730, M410, M100
+vmmul.p     M730, M420, M100
+vmmul.p     M730, M430, M100
+vmmul.p     M730, M500, M100
+vmmul.p     M730, M510, M100
+vmmul.p     M730, M520, M100
+vmmul.p     M730, M530, M100
+vmmul.p     M730, M600, M100
+vmmul.p     M730, M610, M100
+vmmul.p     M730, M620, M100
+vmmul.p     M730, M630, M100
+vmmul.p     M200, M700, M100
+vmmul.p     M200, M710, M100
+vmmul.p     M200, M720, M100
+vmmul.p     M200, M730, M100
+vmmul.p     M730, E020, M100
+vmmul.p     M730, E021, M100
+vmmul.p     M730, E022, M100
+vmmul.p     M730, E023, M100
+vmmul.p     M730, E120, M100
+vmmul.p     M730, E121, M100
+vmmul.p     M730, E122, M100
+vmmul.p     M730, E123, M100
+vmmul.p     M730, E220, M100
+vmmul.p     M730, E221, M100
+vmmul.p     M730, E222, M100
+vmmul.p     M730, E223, M100
+vmmul.p     M730, E320, M100
+vmmul.p     M730, E321, M100
+vmmul.p     M730, E322, M100
+vmmul.p     M730, E323, M100
+vmmul.p     M730, E420, M100
+vmmul.p     M730, E421, M100
+vmmul.p     M730, E422, M100
+vmmul.p     M730, E423, M100
+vmmul.p     M730, E520, M100
+vmmul.p     M730, E521, M100
+vmmul.p     M730, E522, M100
+vmmul.p     M730, E523, M100
+vmmul.p     M730, E620, M100
+vmmul.p     M730, E621, M100
+vmmul.p     M730, E622, M100
+vmmul.p     M730, E623, M100
+vmmul.p     M200, E720, M100
+vmmul.p     M200, E721, M100
+vmmul.p     M200, E722, M100
+vmmul.p     M200, E723, M100
+vmmul.p     M730, M002, M100
+vmmul.p     M730, M012, M100
+vmmul.p     M730, M022, M100
+vmmul.p     M730, M032, M100
+vmmul.p     M730, M102, M100
+vmmul.p     M730, M112, M100
+vmmul.p     M730, M122, M100
+vmmul.p     M730, M132, M100
+vmmul.p     M730, M202, M100
+vmmul.p     M730, M212, M100
+vmmul.p     M730, M222, M100
+vmmul.p     M730, M232, M100
+vmmul.p     M730, M302, M100
+vmmul.p     M730, M312, M100
+vmmul.p     M730, M322, M100
+vmmul.p     M730, M332, M100
+vmmul.p     M730, M402, M100
+vmmul.p     M730, M412, M100
+vmmul.p     M730, M422, M100
+vmmul.p     M730, M432, M100
+vmmul.p     M730, M502, M100
+vmmul.p     M730, M512, M100
+vmmul.p     M730, M522, M100
+vmmul.p     M730, M532, M100
+vmmul.p     M730, M602, M100
+vmmul.p     M730, M612, M100
+vmmul.p     M730, M622, M100
+vmmul.p     M730, M632, M100
+vmmul.p     M200, M702, M100
+vmmul.p     M200, M712, M100
+vmmul.p     M200, M722, M100
+vmmul.p     M200, M732, M100
+vmmul.t     M730, E000, M100
+vmmul.t     M730, E001, M100
+vmmul.t     M730, E002, M100
+vmmul.t     M730, E003, M100
+vmmul.t     M730, E100, M100
+vmmul.t     M730, E101, M100
+vmmul.t     M730, E102, M100
+vmmul.t     M730, E103, M100
+vmmul.t     M730, E200, M100
+vmmul.t     M730, E201, M100
+vmmul.t     M730, E202, M100
+vmmul.t     M730, E203, M100
+vmmul.t     M730, E300, M100
+vmmul.t     M730, E301, M100
+vmmul.t     M730, E302, M100
+vmmul.t     M730, E303, M100
+vmmul.t     M730, E400, M100
+vmmul.t     M730, E401, M100
+vmmul.t     M730, E402, M100
+vmmul.t     M730, E403, M100
+vmmul.t     M730, E500, M100
+vmmul.t     M730, E501, M100
+vmmul.t     M730, E502, M100
+vmmul.t     M730, E503, M100
+vmmul.t     M730, E600, M100
+vmmul.t     M730, E601, M100
+vmmul.t     M730, E602, M100
+vmmul.t     M730, E603, M100
+vmmul.t     M200, E700, M100
+vmmul.t     M200, E701, M100
+vmmul.t     M200, E702, M100
+vmmul.t     M200, E703, M100
+vmmul.t     M730, M000, M100
+vmmul.t     M730, M010, M100
+vmmul.t     M730, M020, M100
+vmmul.t     M730, M030, M100
+vmmul.t     M730, M100, M100
+vmmul.t     M730, M110, M100
+vmmul.t     M730, M120, M100
+vmmul.t     M730, M130, M100
+vmmul.t     M730, M200, M100
+vmmul.t     M730, M210, M100
+vmmul.t     M730, M220, M100
+vmmul.t     M730, M230, M100
+vmmul.t     M730, M300, M100
+vmmul.t     M730, M310, M100
+vmmul.t     M730, M320, M100
+vmmul.t     M730, M330, M100
+vmmul.t     M730, M400, M100
+vmmul.t     M730, M410, M100
+vmmul.t     M730, M420, M100
+vmmul.t     M730, M430, M100
+vmmul.t     M730, M500, M100
+vmmul.t     M730, M510, M100
+vmmul.t     M730, M520, M100
+vmmul.t     M730, M530, M100
+vmmul.t     M730, M600, M100
+vmmul.t     M730, M610, M100
+vmmul.t     M730, M620, M100
+vmmul.t     M730, M630, M100
+vmmul.t     M200, M700, M100
+vmmul.t     M200, M710, M100
+vmmul.t     M200, M720, M100
+vmmul.t     M200, M730, M100
+vmmul.t     M730, E010, M100
+vmmul.t     M730, E011, M100
+vmmul.t     M730, E012, M100
+vmmul.t     M730, E013, M100
+vmmul.t     M730, E110, M100
+vmmul.t     M730, E111, M100
+vmmul.t     M730, E112, M100
+vmmul.t     M730, E113, M100
+vmmul.t     M730, E210, M100
+vmmul.t     M730, E211, M100
+vmmul.t     M730, E212, M100
+vmmul.t     M730, E213, M100
+vmmul.t     M730, E310, M100
+vmmul.t     M730, E311, M100
+vmmul.t     M730, E312, M100
+vmmul.t     M730, E313, M100
+vmmul.t     M730, E410, M100
+vmmul.t     M730, E411, M100
+vmmul.t     M730, E412, M100
+vmmul.t     M730, E413, M100
+vmmul.t     M730, E510, M100
+vmmul.t     M730, E511, M100
+vmmul.t     M730, E512, M100
+vmmul.t     M730, E513, M100
+vmmul.t     M730, E610, M100
+vmmul.t     M730, E611, M100
+vmmul.t     M730, E612, M100
+vmmul.t     M730, E613, M100
+vmmul.t     M200, E710, M100
+vmmul.t     M200, E711, M100
+vmmul.t     M200, E712, M100
+vmmul.t     M200, E713, M100
+vmmul.t     M730, M001, M100
+vmmul.t     M730, M011, M100
+vmmul.t     M730, M021, M100
+vmmul.t     M730, M031, M100
+vmmul.t     M730, M101, M100
+vmmul.t     M730, M111, M100
+vmmul.t     M730, M121, M100
+vmmul.t     M730, M131, M100
+vmmul.t     M730, M201, M100
+vmmul.t     M730, M211, M100
+vmmul.t     M730, M221, M100
+vmmul.t     M730, M231, M100
+vmmul.t     M730, M301, M100
+vmmul.t     M730, M311, M100
+vmmul.t     M730, M321, M100
+vmmul.t     M730, M331, M100
+vmmul.t     M730, M401, M100
+vmmul.t     M730, M411, M100
+vmmul.t     M730, M421, M100
+vmmul.t     M730, M431, M100
+vmmul.t     M730, M501, M100
+vmmul.t     M730, M511, M100
+vmmul.t     M730, M521, M100
+vmmul.t     M730, M531, M100
+vmmul.t     M730, M601, M100
+vmmul.t     M730, M611, M100
+vmmul.t     M730, M621, M100
+vmmul.t     M730, M631, M100
+vmmul.t     M200, M701, M100
+vmmul.t     M200, M711, M100
+vmmul.t     M200, M721, M100
+vmmul.t     M200, M731, M100
+vmmul.q     M730, E000, M100
+vmmul.q     M730, E001, M100
+vmmul.q     M730, E002, M100
+vmmul.q     M730, E003, M100
+vmmul.q     M730, E100, M100
+vmmul.q     M730, E101, M100
+vmmul.q     M730, E102, M100
+vmmul.q     M730, E103, M100
+vmmul.q     M730, E200, M100
+vmmul.q     M730, E201, M100
+vmmul.q     M730, E202, M100
+vmmul.q     M730, E203, M100
+vmmul.q     M730, E300, M100
+vmmul.q     M730, E301, M100
+vmmul.q     M730, E302, M100
+vmmul.q     M730, E303, M100
+vmmul.q     M730, E400, M100
+vmmul.q     M730, E401, M100
+vmmul.q     M730, E402, M100
+vmmul.q     M730, E403, M100
+vmmul.q     M730, E500, M100
+vmmul.q     M730, E501, M100
+vmmul.q     M730, E502, M100
+vmmul.q     M730, E503, M100
+vmmul.q     M730, E600, M100
+vmmul.q     M730, E601, M100
+vmmul.q     M730, E602, M100
+vmmul.q     M730, E603, M100
+vmmul.q     M730, E700, M100
+vmmul.q     M730, E701, M100
+vmmul.q     M730, E702, M100
+vmmul.q     M730, E703, M100
+vmmul.q     M730, M000, M100
+vmmul.q     M730, M010, M100
+vmmul.q     M730, M020, M100
+vmmul.q     M730, M030, M100
+vmmul.q     M730, M100, M100
+vmmul.q     M730, M110, M100
+vmmul.q     M730, M120, M100
+vmmul.q     M730, M130, M100
+vmmul.q     M730, M200, M100
+vmmul.q     M730, M210, M100
+vmmul.q     M730, M220, M100
+vmmul.q     M730, M230, M100
+vmmul.q     M730, M300, M100
+vmmul.q     M730, M310, M100
+vmmul.q     M730, M320, M100
+vmmul.q     M730, M330, M100
+vmmul.q     M730, M400, M100
+vmmul.q     M730, M410, M100
+vmmul.q     M730, M420, M100
+vmmul.q     M730, M430, M100
+vmmul.q     M730, M500, M100
+vmmul.q     M730, M510, M100
+vmmul.q     M730, M520, M100
+vmmul.q     M730, M530, M100
+vmmul.q     M730, M600, M100
+vmmul.q     M730, M610, M100
+vmmul.q     M730, M620, M100
+vmmul.q     M730, M630, M100
+vmmul.q     M730, M700, M100
+vmmul.q     M730, M710, M100
+vmmul.q     M730, M720, M100
+vmmul.q     M730, M730, M100
+vmmul.q     M730, E020, M100
+vmmul.q     M730, E021, M100
+vmmul.q     M730, E022, M100
+vmmul.q     M730, E023, M100
+vmmul.q     M730, E120, M100
+vmmul.q     M730, E121, M100
+vmmul.q     M730, E122, M100
+vmmul.q     M730, E123, M100
+vmmul.q     M730, E220, M100
+vmmul.q     M730, E221, M100
+vmmul.q     M730, E222, M100
+vmmul.q     M730, E223, M100
+vmmul.q     M730, E320, M100
+vmmul.q     M730, E321, M100
+vmmul.q     M730, E322, M100
+vmmul.q     M730, E323, M100
+vmmul.q     M730, E420, M100
+vmmul.q     M730, E421, M100
+vmmul.q     M730, E422, M100
+vmmul.q     M730, E423, M100
+vmmul.q     M730, E520, M100
+vmmul.q     M730, E521, M100
+vmmul.q     M730, E522, M100
+vmmul.q     M730, E523, M100
+vmmul.q     M730, E620, M100
+vmmul.q     M730, E621, M100
+vmmul.q     M730, E622, M100
+vmmul.q     M730, E623, M100
+vmmul.q     M730, E720, M100
+vmmul.q     M730, E721, M100
+vmmul.q     M730, E722, M100
+vmmul.q     M730, E723, M100
+vmmul.q     M730, M002, M100
+vmmul.q     M730, M012, M100
+vmmul.q     M730, M022, M100
+vmmul.q     M730, M032, M100
+vmmul.q     M730, M102, M100
+vmmul.q     M730, M112, M100
+vmmul.q     M730, M122, M100
+vmmul.q     M730, M132, M100
+vmmul.q     M730, M202, M100
+vmmul.q     M730, M212, M100
+vmmul.q     M730, M222, M100
+vmmul.q     M730, M232, M100
+vmmul.q     M730, M302, M100
+vmmul.q     M730, M312, M100
+vmmul.q     M730, M322, M100
+vmmul.q     M730, M332, M100
+vmmul.q     M730, M402, M100
+vmmul.q     M730, M412, M100
+vmmul.q     M730, M422, M100
+vmmul.q     M730, M432, M100
+vmmul.q     M730, M502, M100
+vmmul.q     M730, M512, M100
+vmmul.q     M730, M522, M100
+vmmul.q     M730, M532, M100
+vmmul.q     M730, M602, M100
+vmmul.q     M730, M612, M100
+vmmul.q     M730, M622, M100
+vmmul.q     M730, M632, M100
+vmmul.q     M730, M702, M100
+vmmul.q     M730, M712, M100
+vmmul.q     M730, M722, M100
+vmmul.q     M730, M732, M100
+vrot.p      C730, S000, [C,S]
+vrot.p      C730, S000, [S,C]
+vrot.p      C730, S000, [S,0]
+vrot.p      C730, S000, [S,0]
+vrot.p      C730, S000, [C,S]
+vrot.p      C730, S000, [S,C]
+vrot.p      C730, S000, [0,S]
+vrot.p      C730, S000, [0,S]
+vrot.p      C730, S000, [C,0]
+vrot.p      C730, S000, [0,C]
+vrot.p      C730, S000, [S,S]
+vrot.p      C730, S000, [0,0]
+vrot.p      C730, S000, [C,0]
+vrot.p      C730, S000, [0,C]
+vrot.p      C730, S000, [0,0]
+vrot.p      C730, S000, [S,S]
+vrot.p      C730, S000, [C,-S]
+vrot.p      C730, S000, [-S,C]
+vrot.p      C730, S000, [-S,0]
+vrot.p      C730, S000, [-S,0]
+vrot.p      C730, S000, [C,-S]
+vrot.p      C730, S000, [-S,C]
+vrot.p      C730, S000, [0,-S]
+vrot.p      C730, S000, [0,-S]
+vrot.p      C730, S000, [C,0]
+vrot.p      C730, S000, [0,C]
+vrot.p      C730, S000, [-S,-S]
+vrot.p      C730, S000, [0,0]
+vrot.p      C730, S000, [C,0]
+vrot.p      C730, S000, [0,C]
+vrot.p      C730, S000, [0,0]
+vrot.p      C730, S000, [-S,-S]
+vrot.t      C730, S000, [C,S,S]
+vrot.t      C730, S000, [S,C,0]
+vrot.t      C730, S000, [S,0,C]
+vrot.t      C730, S000, [S,0,0]
+vrot.t      C730, S000, [C,S,0]
+vrot.t      C730, S000, [S,C,S]
+vrot.t      C730, S000, [0,S,C]
+vrot.t      C730, S000, [0,S,0]
+vrot.t      C730, S000, [C,0,S]
+vrot.t      C730, S000, [0,C,S]
+vrot.t      C730, S000, [S,S,C]
+vrot.t      C730, S000, [0,0,S]
+vrot.t      C730, S000, [C,0,0]
+vrot.t      C730, S000, [0,C,0]
+vrot.t      C730, S000, [0,0,C]
+vrot.t      C730, S000, [S,S,S]
+vrot.t      C730, S000, [C,-S,-S]
+vrot.t      C730, S000, [-S,C,0]
+vrot.t      C730, S000, [-S,0,C]
+vrot.t      C730, S000, [-S,0,0]
+vrot.t      C730, S000, [C,-S,0]
+vrot.t      C730, S000, [-S,C,-S]
+vrot.t      C730, S000, [0,-S,C]
+vrot.t      C730, S000, [0,-S,0]
+vrot.t      C730, S000, [C,0,-S]
+vrot.t      C730, S000, [0,C,-S]
+vrot.t      C730, S000, [-S,-S,C]
+vrot.t      C730, S000, [0,0,-S]
+vrot.t      C730, S000, [C,0,0]
+vrot.t      C730, S000, [0,C,0]
+vrot.t      C730, S000, [0,0,C]
+vrot.t      C730, S000, [-S,-S,-S]
+vrot.q      C730, S000, [C,S,S,S]
+vrot.q      C730, S000, [S,C,0,0]
+vrot.q      C730, S000, [S,0,C,0]
+vrot.q      C730, S000, [S,0,0,C]
+vrot.q      C730, S000, [C,S,0,0]
+vrot.q      C730, S000, [S,C,S,S]
+vrot.q      C730, S000, [0,S,C,0]
+vrot.q      C730, S000, [0,S,0,C]
+vrot.q      C730, S000, [C,0,S,0]
+vrot.q      C730, S000, [0,C,S,0]
+vrot.q      C730, S000, [S,S,C,S]
+vrot.q      C730, S000, [0,0,S,C]
+vrot.q      C730, S000, [C,0,0,S]
+vrot.q      C730, S000, [0,C,0,S]
+vrot.q      C730, S000, [0,0,C,S]
+vrot.q      C730, S000, [S,S,S,C]
+vrot.q      C730, S000, [C,-S,-S,-S]
+vrot.q      C730, S000, [-S,C,0,0]
+vrot.q      C730, S000, [-S,0,C,0]
+vrot.q      C730, S000, [-S,0,0,C]
+vrot.q      C730, S000, [C,-S,0,0]
+vrot.q      C730, S000, [-S,C,-S,-S]
+vrot.q      C730, S000, [0,-S,C,0]
+vrot.q      C730, S000, [0,-S,0,C]
+vrot.q      C730, S000, [C,0,-S,0]
+vrot.q      C730, S000, [0,C,-S,0]
+vrot.q      C730, S000, [-S,-S,C,-S]
+vrot.q      C730, S000, [0,0,-S,C]
+vrot.q      C730, S000, [C,0,0,-S]
+vrot.q      C730, S000, [0,C,0,-S]
+vrot.q      C730, S000, [0,0,C,-S]
+vrot.q      C730, S000, [-S,-S,-S,C]
+vpfxs       X, X, X, X
+vpfxs       Y, X, X, X
+vpfxs       Z, X, X, X
+vpfxs       W, X, X, X
+vpfxs       |X|, X, X, X
+vpfxs       |Y|, X, X, X
+vpfxs       |Z|, X, X, X
+vpfxs       |W|, X, X, X
+vpfxs       0, X, X, X
+vpfxs       1, X, X, X
+vpfxs       2, X, X, X
+vpfxs       1/2, X, X, X
+vpfxs       3, X, X, X
+vpfxs       1/3, X, X, X
+vpfxs       1/4, X, X, X
+vpfxs       1/6, X, X, X
+vpfxs       -X, X, X, X
+vpfxs       -Y, X, X, X
+vpfxs       -Z, X, X, X
+vpfxs       -W, X, X, X
+vpfxs       -|X|, X, X, X
+vpfxs       -|Y|, X, X, X
+vpfxs       -|Z|, X, X, X
+vpfxs       -|W|, X, X, X
+vpfxs       -0, X, X, X
+vpfxs       -1, X, X, X
+vpfxs       -2, X, X, X
+vpfxs       -1/2, X, X, X
+vpfxs       -3, X, X, X
+vpfxs       -1/3, X, X, X
+vpfxs       -1/4, X, X, X
+vpfxs       -1/6, X, X, X
+vpfxs       X, X, X, X
+vpfxs       X, Y, X, X
+vpfxs       X, Z, X, X
+vpfxs       X, W, X, X
+vpfxs       X, |X|, X, X
+vpfxs       X, |Y|, X, X
+vpfxs       X, |Z|, X, X
+vpfxs       X, |W|, X, X
+vpfxs       X, 0, X, X
+vpfxs       X, 1, X, X
+vpfxs       X, 2, X, X
+vpfxs       X, 1/2, X, X
+vpfxs       X, 3, X, X
+vpfxs       X, 1/3, X, X
+vpfxs       X, 1/4, X, X
+vpfxs       X, 1/6, X, X
+vpfxs       X, -X, X, X
+vpfxs       X, -Y, X, X
+vpfxs       X, -Z, X, X
+vpfxs       X, -W, X, X
+vpfxs       X, -|X|, X, X
+vpfxs       X, -|Y|, X, X
+vpfxs       X, -|Z|, X, X
+vpfxs       X, -|W|, X, X
+vpfxs       X, -0, X, X
+vpfxs       X, -1, X, X
+vpfxs       X, -2, X, X
+vpfxs       X, -1/2, X, X
+vpfxs       X, -3, X, X
+vpfxs       X, -1/3, X, X
+vpfxs       X, -1/4, X, X
+vpfxs       X, -1/6, X, X
+vpfxs       X, X, X, X
+vpfxs       X, X, Y, X
+vpfxs       X, X, Z, X
+vpfxs       X, X, W, X
+vpfxs       X, X, |X|, X
+vpfxs       X, X, |Y|, X
+vpfxs       X, X, |Z|, X
+vpfxs       X, X, |W|, X
+vpfxs       X, X, 0, X
+vpfxs       X, X, 1, X
+vpfxs       X, X, 2, X
+vpfxs       X, X, 1/2, X
+vpfxs       X, X, 3, X
+vpfxs       X, X, 1/3, X
+vpfxs       X, X, 1/4, X
+vpfxs       X, X, 1/6, X
+vpfxs       X, X, -X, X
+vpfxs       X, X, -Y, X
+vpfxs       X, X, -Z, X
+vpfxs       X, X, -W, X
+vpfxs       X, X, -|X|, X
+vpfxs       X, X, -|Y|, X
+vpfxs       X, X, -|Z|, X
+vpfxs       X, X, -|W|, X
+vpfxs       X, X, -0, X
+vpfxs       X, X, -1, X
+vpfxs       X, X, -2, X
+vpfxs       X, X, -1/2, X
+vpfxs       X, X, -3, X
+vpfxs       X, X, -1/3, X
+vpfxs       X, X, -1/4, X
+vpfxs       X, X, -1/6, X
+vpfxs       X, X, X, X
+vpfxs       X, X, X, Y
+vpfxs       X, X, X, Z
+vpfxs       X, X, X, W
+vpfxs       X, X, X, |X|
+vpfxs       X, X, X, |Y|
+vpfxs       X, X, X, |Z|
+vpfxs       X, X, X, |W|
+vpfxs       X, X, X, 0
+vpfxs       X, X, X, 1
+vpfxs       X, X, X, 2
+vpfxs       X, X, X, 1/2
+vpfxs       X, X, X, 3
+vpfxs       X, X, X, 1/3
+vpfxs       X, X, X, 1/4
+vpfxs       X, X, X, 1/6
+vpfxs       X, X, X, -X
+vpfxs       X, X, X, -Y
+vpfxs       X, X, X, -Z
+vpfxs       X, X, X, -W
+vpfxs       X, X, X, -|X|
+vpfxs       X, X, X, -|Y|
+vpfxs       X, X, X, -|Z|
+vpfxs       X, X, X, -|W|
+vpfxs       X, X, X, -0
+vpfxs       X, X, X, -1
+vpfxs       X, X, X, -2
+vpfxs       X, X, X, -1/2
+vpfxs       X, X, X, -3
+vpfxs       X, X, X, -1/3
+vpfxs       X, X, X, -1/4
+vpfxs       X, X, X, -1/6
+vpfxt       X, X, X, X
+vpfxt       Y, X, X, X
+vpfxt       Z, X, X, X
+vpfxt       W, X, X, X
+vpfxt       |X|, X, X, X
+vpfxt       |Y|, X, X, X
+vpfxt       |Z|, X, X, X
+vpfxt       |W|, X, X, X
+vpfxt       0, X, X, X
+vpfxt       1, X, X, X
+vpfxt       2, X, X, X
+vpfxt       1/2, X, X, X
+vpfxt       3, X, X, X
+vpfxt       1/3, X, X, X
+vpfxt       1/4, X, X, X
+vpfxt       1/6, X, X, X
+vpfxt       -X, X, X, X
+vpfxt       -Y, X, X, X
+vpfxt       -Z, X, X, X
+vpfxt       -W, X, X, X
+vpfxt       -|X|, X, X, X
+vpfxt       -|Y|, X, X, X
+vpfxt       -|Z|, X, X, X
+vpfxt       -|W|, X, X, X
+vpfxt       -0, X, X, X
+vpfxt       -1, X, X, X
+vpfxt       -2, X, X, X
+vpfxt       -1/2, X, X, X
+vpfxt       -3, X, X, X
+vpfxt       -1/3, X, X, X
+vpfxt       -1/4, X, X, X
+vpfxt       -1/6, X, X, X
+vpfxt       X, X, X, X
+vpfxt       X, Y, X, X
+vpfxt       X, Z, X, X
+vpfxt       X, W, X, X
+vpfxt       X, |X|, X, X
+vpfxt       X, |Y|, X, X
+vpfxt       X, |Z|, X, X
+vpfxt       X, |W|, X, X
+vpfxt       X, 0, X, X
+vpfxt       X, 1, X, X
+vpfxt       X, 2, X, X
+vpfxt       X, 1/2, X, X
+vpfxt       X, 3, X, X
+vpfxt       X, 1/3, X, X
+vpfxt       X, 1/4, X, X
+vpfxt       X, 1/6, X, X
+vpfxt       X, -X, X, X
+vpfxt       X, -Y, X, X
+vpfxt       X, -Z, X, X
+vpfxt       X, -W, X, X
+vpfxt       X, -|X|, X, X
+vpfxt       X, -|Y|, X, X
+vpfxt       X, -|Z|, X, X
+vpfxt       X, -|W|, X, X
+vpfxt       X, -0, X, X
+vpfxt       X, -1, X, X
+vpfxt       X, -2, X, X
+vpfxt       X, -1/2, X, X
+vpfxt       X, -3, X, X
+vpfxt       X, -1/3, X, X
+vpfxt       X, -1/4, X, X
+vpfxt       X, -1/6, X, X
+vpfxt       X, X, X, X
+vpfxt       X, X, Y, X
+vpfxt       X, X, Z, X
+vpfxt       X, X, W, X
+vpfxt       X, X, |X|, X
+vpfxt       X, X, |Y|, X
+vpfxt       X, X, |Z|, X
+vpfxt       X, X, |W|, X
+vpfxt       X, X, 0, X
+vpfxt       X, X, 1, X
+vpfxt       X, X, 2, X
+vpfxt       X, X, 1/2, X
+vpfxt       X, X, 3, X
+vpfxt       X, X, 1/3, X
+vpfxt       X, X, 1/4, X
+vpfxt       X, X, 1/6, X
+vpfxt       X, X, -X, X
+vpfxt       X, X, -Y, X
+vpfxt       X, X, -Z, X
+vpfxt       X, X, -W, X
+vpfxt       X, X, -|X|, X
+vpfxt       X, X, -|Y|, X
+vpfxt       X, X, -|Z|, X
+vpfxt       X, X, -|W|, X
+vpfxt       X, X, -0, X
+vpfxt       X, X, -1, X
+vpfxt       X, X, -2, X
+vpfxt       X, X, -1/2, X
+vpfxt       X, X, -3, X
+vpfxt       X, X, -1/3, X
+vpfxt       X, X, -1/4, X
+vpfxt       X, X, -1/6, X
+vpfxt       X, X, X, X
+vpfxt       X, X, X, Y
+vpfxt       X, X, X, Z
+vpfxt       X, X, X, W
+vpfxt       X, X, X, |X|
+vpfxt       X, X, X, |Y|
+vpfxt       X, X, X, |Z|
+vpfxt       X, X, X, |W|
+vpfxt       X, X, X, 0
+vpfxt       X, X, X, 1
+vpfxt       X, X, X, 2
+vpfxt       X, X, X, 1/2
+vpfxt       X, X, X, 3
+vpfxt       X, X, X, 1/3
+vpfxt       X, X, X, 1/4
+vpfxt       X, X, X, 1/6
+vpfxt       X, X, X, -X
+vpfxt       X, X, X, -Y
+vpfxt       X, X, X, -Z
+vpfxt       X, X, X, -W
+vpfxt       X, X, X, -|X|
+vpfxt       X, X, X, -|Y|
+vpfxt       X, X, X, -|Z|
+vpfxt       X, X, X, -|W|
+vpfxt       X, X, X, -0
+vpfxt       X, X, X, -1
+vpfxt       X, X, X, -2
+vpfxt       X, X, X, -1/2
+vpfxt       X, X, X, -3
+vpfxt       X, X, X, -1/3
+vpfxt       X, X, X, -1/4
+vpfxt       X, X, X, -1/6
+vpfxd       , , , 
+vpfxd       0, , , 
+vpfxd       1, , , 
+vpfxd       M, , , 
+vpfxd       , , , 
+vpfxd       , 0, , 
+vpfxd       , 1, , 
+vpfxd       , M, , 
+vpfxd       , , , 
+vpfxd       , , 0, 
+vpfxd       , , 1, 
+vpfxd       , , M, 
+vpfxd       , , , 
+vpfxd       , , , 0
+vpfxd       , , , 1
+vpfxd       , , , M
 
     jr $ra
 .size test, . - test
