@@ -250,4 +250,22 @@ def do_vmmul():
                 print(f"    .word 0x{VFPU6:08X} | 0x{i << 23:08X} | 0x{VT:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
     func_end("vmmul_test")
 
-do_vmmul()
+def do_vrot():
+    func_start("vrot_test")
+    print("    # vrot")
+
+    VS = vs(0)
+    VD = vd(31)
+
+    i = 7
+    k = 1
+
+    for p in range(1 << 1):
+        for t in range(1 << 1):
+            if p == 0 and t == 0:
+                continue
+            for j in range(1 << 5):
+                print(f"    .word 0x{VFPU6:08X} | 0x{k<<21:08X} | 0x{i << 23:08X} | 0x{j<<16:08X} | 0x{t << 15:08X} | 0x{VS:08X} | 0x{p << 7:08X} | 0x{VD:08X}")
+    func_end("vrot_test")
+
+do_vrot()

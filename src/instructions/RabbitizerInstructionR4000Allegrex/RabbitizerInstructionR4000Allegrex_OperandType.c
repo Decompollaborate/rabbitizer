@@ -869,10 +869,44 @@ size_t RabbitizerOperandType_process_r4000allegrex_float16(const RabbitizerInstr
 size_t RabbitizerOperandType_process_r4000allegrex_p_vrot_code(const RabbitizerInstruction *self, char *dst,
                                                                UNUSED const char *immOverride,
                                                                UNUSED size_t immOverrideLength) {
+    static const char *const mnemonics[32] = {
+        [0] = "[C,S]",    //
+        [1] = "[S,C]",    //
+        [2] = "[S,0]",    //
+        [3] = "[S,0]",    //
+        [4] = "[C,S]",    //
+        [5] = "[S,C]",    //
+        [6] = "[0,S]",    //
+        [7] = "[0,S]",    //
+        [8] = "[C,0]",    //
+        [9] = "[0,C]",    //
+        [10] = "[S,S]",   //
+        [11] = "[0,0]",   //
+        [12] = "[C,0]",   //
+        [13] = "[0,C]",   //
+        [14] = "[0,0]",   //
+        [15] = "[S,S]",   //
+        [16] = "[C,-S]",  //
+        [17] = "[-S,C]",  //
+        [18] = "[-S,0]",  //
+        [19] = "[-S,0]",  //
+        [20] = "[C,-S]",  //
+        [21] = "[-S,C]",  //
+        [22] = "[0,-S]",  //
+        [23] = "[0,-S]",  //
+        [24] = "[C,0]",   //
+        [25] = "[0,C]",   //
+        [26] = "[-S,-S]", //
+        [27] = "[0,0]",   //
+        [28] = "[C,0]",   //
+        [29] = "[0,C]",   //
+        [30] = "[0,0]",   //
+        [31] = "[-S,-S]", //
+    };
     size_t totalSize = 0;
+    uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_vrot_code(self);
 
-    (void)self;
-    (void)dst;
+    RABUTILS_BUFFER_CPY(dst, totalSize, mnemonics[temp]);
 
     return totalSize;
 }
@@ -880,10 +914,44 @@ size_t RabbitizerOperandType_process_r4000allegrex_p_vrot_code(const RabbitizerI
 size_t RabbitizerOperandType_process_r4000allegrex_t_vrot_code(const RabbitizerInstruction *self, char *dst,
                                                                UNUSED const char *immOverride,
                                                                UNUSED size_t immOverrideLength) {
+    static const char *const mnemonics[32] = {
+        [0] = "[C,S,S]",     //
+        [1] = "[S,C,0]",     //
+        [2] = "[S,0,C]",     //
+        [3] = "[S,0,0]",     //
+        [4] = "[C,S,0]",     //
+        [5] = "[S,C,S]",     //
+        [6] = "[0,S,C]",     //
+        [7] = "[0,S,0]",     //
+        [8] = "[C,0,S]",     //
+        [9] = "[0,C,S]",     //
+        [10] = "[S,S,C]",    //
+        [11] = "[0,0,S]",    //
+        [12] = "[C,0,0]",    //
+        [13] = "[0,C,0]",    //
+        [14] = "[0,0,C]",    //
+        [15] = "[S,S,S]",    //
+        [16] = "[C,-S,-S]",  //
+        [17] = "[-S,C,0]",   //
+        [18] = "[-S,0,C]",   //
+        [19] = "[-S,0,0]",   //
+        [20] = "[C,-S,0]",   //
+        [21] = "[-S,C,-S]",  //
+        [22] = "[0,-S,C]",   //
+        [23] = "[0,-S,0]",   //
+        [24] = "[C,0,-S]",   //
+        [25] = "[0,C,-S]",   //
+        [26] = "[-S,-S,C]",  //
+        [27] = "[0,0,-S]",   //
+        [28] = "[C,0,0]",    //
+        [29] = "[0,C,0]",    //
+        [30] = "[0,0,C]",    //
+        [31] = "[-S,-S,-S]", //
+    };
     size_t totalSize = 0;
+    uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_vrot_code(self);
 
-    (void)self;
-    (void)dst;
+    RABUTILS_BUFFER_CPY(dst, totalSize, mnemonics[temp]);
 
     return totalSize;
 }
@@ -891,10 +959,44 @@ size_t RabbitizerOperandType_process_r4000allegrex_t_vrot_code(const RabbitizerI
 size_t RabbitizerOperandType_process_r4000allegrex_q_vrot_code(const RabbitizerInstruction *self, char *dst,
                                                                UNUSED const char *immOverride,
                                                                UNUSED size_t immOverrideLength) {
+    static const char *const mnemonics[32] = {
+        [0] = "[C,S,S,S]",     //
+        [1] = "[S,C,0,0]",     //
+        [2] = "[S,0,C,0]",     //
+        [3] = "[S,0,0,C]",     //
+        [4] = "[C,S,0,0]",     //
+        [5] = "[S,C,S,S]",     //
+        [6] = "[0,S,C,0]",     //
+        [7] = "[0,S,0,C]",     //
+        [8] = "[C,0,S,0]",     //
+        [9] = "[0,C,S,0]",     //
+        [10] = "[S,S,C,S]",    //
+        [11] = "[0,0,S,C]",    //
+        [12] = "[C,0,0,S]",    //
+        [13] = "[0,C,0,S]",    //
+        [14] = "[0,0,C,S]",    //
+        [15] = "[S,S,S,C]",    //
+        [16] = "[C,-S,-S,-S]", //
+        [17] = "[-S,C,0,0]",   //
+        [18] = "[-S,0,C,0]",   //
+        [19] = "[-S,0,0,C]",   //
+        [20] = "[C,-S,0,0]",   //
+        [21] = "[-S,C,-S,-S]", //
+        [22] = "[0,-S,C,0]",   //
+        [23] = "[0,-S,0,C]",   //
+        [24] = "[C,0,-S,0]",   //
+        [25] = "[0,C,-S,0]",   //
+        [26] = "[-S,-S,C,-S]", //
+        [27] = "[0,0,-S,C]",   //
+        [28] = "[C,0,0,-S]",   //
+        [29] = "[0,C,0,-S]",   //
+        [30] = "[0,0,C,-S]",   //
+        [31] = "[-S,-S,-S,C]", //
+    };
     size_t totalSize = 0;
+    uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_vrot_code(self);
 
-    (void)self;
-    (void)dst;
+    RABUTILS_BUFFER_CPY(dst, totalSize, mnemonics[temp]);
 
     return totalSize;
 }
