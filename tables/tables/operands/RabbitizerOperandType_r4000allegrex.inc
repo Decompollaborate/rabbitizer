@@ -68,3 +68,20 @@
     RAB_DEF_OPERAND(r4000allegrex, vfpu_cc_bit)
 
     RAB_DEF_OPERAND(r4000allegrex, bn)
+
+    RAB_DEF_OPERAND(r4000allegrex, int16)
+    RAB_DEF_OPERAND(r4000allegrex, float16)
+
+    RAB_DEF_OPERAND(r4000allegrex, p_vrot_code)
+    RAB_DEF_OPERAND(r4000allegrex, t_vrot_code)
+    RAB_DEF_OPERAND(r4000allegrex, q_vrot_code)
+
+    RAB_DEF_OPERAND(r4000allegrex, rpx)
+    RAB_DEF_OPERAND(r4000allegrex, rpy)
+    RAB_DEF_OPERAND(r4000allegrex, rpz)
+    RAB_DEF_OPERAND(r4000allegrex, rpw)
+
+    RAB_DEF_OPERAND(r4000allegrex, wpx)
+    RAB_DEF_OPERAND(r4000allegrex, wpy)
+    RAB_DEF_OPERAND(r4000allegrex, wpz)
+    RAB_DEF_OPERAND(r4000allegrex, wpw)

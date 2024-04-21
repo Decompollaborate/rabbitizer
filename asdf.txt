@@ -4,207 +4,207 @@ tests/c/instruction_checks/r3000gte_disasm.c: 0 errors out of 65 entries. 100.00
 
 tests/c/instruction_checks/r4000allegrex_disasm.c: 0 errors out of 73 entries. 100.00% correct.
 
-Error on word '0xDC000000'. Expected 'vpfxs       X, X, X, X', got 'vpfxs'
+Error on word '0xDC000000'. Expected 'vpfxs       X, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDC000001'. Expected 'vpfxs       Y, X, X, X', got '.word       0xDC000001                   # vpfxs # 00000001 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDC000001'. Expected 'vpfxs       Y, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDC000010'. Expected 'vpfxs       X, X, Y, X', got '.word       0xDC000010                   # vpfxs # 00000010 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDC000010'. Expected 'vpfxs       X, X, Y, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDC000100'. Expected 'vpfxs       |X|, X, X, X', got '.word       0xDC000100                   # vpfxs # 00000100 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDC000100'. Expected 'vpfxs       |X|, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDC001000'. Expected 'vpfxs       0, X, X, X', got '.word       0xDC001000                   # vpfxs # 00001000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDC001000'. Expected 'vpfxs       0, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDC010000'. Expected 'vpfxs       -X, X, X, X', got '.word       0xDC010000                   # vpfxs # 00010000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDC010000'. Expected 'vpfxs       -X, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDC100000'. Expected 'vpfxs       X, X, X, X', got '.word       0xDC100000                   # vpfxs # 00100000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDC100000'. Expected 'vpfxs       X, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDC800000'. Expected 'vpfxs       X, X, X, X', got '.word       0xDC800000                   # vpfxs # 00800000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDC800000'. Expected 'vpfxs       X, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDCF00000'. Expected 'vpfxs       X, X, X, X', got '.word       0xDCF00000                   # vpfxs # 00F00000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDCF00000'. Expected 'vpfxs       X, X, X, X', got 'vpfxs       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD000000'. Expected 'vpfxt       X, X, X, X', got 'vpfxt'
+Error on word '0xDD000000'. Expected 'vpfxt       X, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD000001'. Expected 'vpfxt       Y, X, X, X', got '.word       0xDD000001                   # vpfxt # 00000001 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDD000001'. Expected 'vpfxt       Y, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD000010'. Expected 'vpfxt       X, X, Y, X', got '.word       0xDD000010                   # vpfxt # 00000010 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDD000010'. Expected 'vpfxt       X, X, Y, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD000100'. Expected 'vpfxt       |X|, X, X, X', got '.word       0xDD000100                   # vpfxt # 00000100 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDD000100'. Expected 'vpfxt       |X|, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD001000'. Expected 'vpfxt       0, X, X, X', got '.word       0xDD001000                   # vpfxt # 00001000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDD001000'. Expected 'vpfxt       0, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD010000'. Expected 'vpfxt       -X, X, X, X', got '.word       0xDD010000                   # vpfxt # 00010000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDD010000'. Expected 'vpfxt       -X, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD100000'. Expected 'vpfxt       X, X, X, X', got '.word       0xDD100000                   # vpfxt # 00100000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDD100000'. Expected 'vpfxt       X, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDD800000'. Expected 'vpfxt       X, X, X, X', got '.word       0xDD800000                   # vpfxt # 00800000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDD800000'. Expected 'vpfxt       X, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDDF00000'. Expected 'vpfxt       X, X, X, X', got '.word       0xDDF00000                   # vpfxt # 00F00000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDDF00000'. Expected 'vpfxt       X, X, X, X', got 'vpfxt       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE000000'. Expected 'vpfxd       , , ,', got 'vpfxd'
+Error on word '0xDE000000'. Expected 'vpfxd       , , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE000001'. Expected 'vpfxd       0, , ,', got '.word       0xDE000001                   # vpfxd # 00000001 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDE000001'. Expected 'vpfxd       0, , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE000010'. Expected 'vpfxd       , ,0 ,', got '.word       0xDE000010                   # vpfxd # 00000010 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDE000010'. Expected 'vpfxd       , ,0 ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE000100'. Expected 'vpfxd       M, , ,', got '.word       0xDE000100                   # vpfxd # 00000100 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDE000100'. Expected 'vpfxd       M, , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE001000'. Expected 'vpfxd       , , ,', got '.word       0xDE001000                   # vpfxd # 00001000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDE001000'. Expected 'vpfxd       , , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE010000'. Expected 'vpfxd       , , ,', got '.word       0xDE010000                   # vpfxd # 00010000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDE010000'. Expected 'vpfxd       , , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE100000'. Expected 'vpfxd       , , ,', got '.word       0xDE100000                   # vpfxd # 00100000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDE100000'. Expected 'vpfxd       , , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDE800000'. Expected 'vpfxd       , , ,', got '.word       0xDE800000                   # vpfxd # 00800000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDE800000'. Expected 'vpfxd       , , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDEF00000'. Expected 'vpfxd       , , ,', got '.word       0xDEF00000                   # vpfxd # 00F00000 <InstrIdType: R4000ALLEGREX_VFPU5>'
+Error on word '0xDEF00000'. Expected 'vpfxd       , , ,', got 'vpfxd       , , , '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDF400000'. Expected 'viim.s      S002, 0', got 'viim.s      S002'
+Error on word '0xDF400000'. Expected 'viim.s      S002, 0', got 'viim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDF400001'. Expected 'viim.s      S002, 1', got '.word       0xDF400001                   # viim.s      S002 # 00000001 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDF400001'. Expected 'viim.s      S002, 1', got 'viim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDF400010'. Expected 'viim.s      S002, 16', got '.word       0xDF400010                   # viim.s      S002 # 00000010 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDF400010'. Expected 'viim.s      S002, 16', got 'viim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDF400100'. Expected 'viim.s      S002, 256', got '.word       0xDF400100                   # viim.s      S002 # 00000100 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDF400100'. Expected 'viim.s      S002, 256', got 'viim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDF401000'. Expected 'viim.s      S002, 4096', got '.word       0xDF401000                   # viim.s      S002 # 00001000 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDF401000'. Expected 'viim.s      S002, 4096', got 'viim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDF408000'. Expected 'viim.s      S002, -32768', got '.word       0xDF408000                   # viim.s      S002 # 00008000 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDF408000'. Expected 'viim.s      S002, -32768', got 'viim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDF40F000'. Expected 'viim.s      S002, -4096', got '.word       0xDF40F000                   # viim.s      S002 # 0000F000 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDF40F000'. Expected 'viim.s      S002, -4096', got 'viim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDFC00000'. Expected 'vfim.s      S002, 0.0', got 'vfim.s      S002'
+Error on word '0xDFC00000'. Expected 'vfim.s      S002, 0.0', got 'vfim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDFC01000'. Expected 'vfim.s      S002, 4.8828125e-004', got '.word       0xDFC01000                   # vfim.s      S002 # 00001000 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDFC01000'. Expected 'vfim.s      S002, 4.8828125e-004', got 'vfim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDFC08000'. Expected 'vfim.s      S002, -0.0', got '.word       0xDFC08000                   # vfim.s      S002 # 00008000 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDFC08000'. Expected 'vfim.s      S002, -0.0', got 'vfim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xDFC0F000'. Expected 'vfim.s      S002, -8192.0', got '.word       0xDFC0F000                   # vfim.s      S002 # 0000F000 <InstrIdType: R4000ALLEGREX_VFPU5_FMT3>'
+Error on word '0xDFC0F000'. Expected 'vfim.s      S002, -8192.0', got 'vfim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
     gnuMode 'true'
 
-Error on word '0xF3A010C0'. Expected 'vrot.p      C002, S400, [C,S]', got 'vrot.p      C002, S400'
+Error on word '0xF3A010C0'. Expected 'vrot.p      C002, S400, [C,S]', got 'vrot.p      C002, S400, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A09040'. Expected 'vrot.t      C001, S400, [C,S,S]', got 'vrot.t      C001, S400'
+Error on word '0xF3A09040'. Expected 'vrot.t      C001, S400, [C,S,S]', got 'vrot.t      C001, S400, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'vrot.q      C002, S400'
+Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'vrot.q      C002, S400, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'

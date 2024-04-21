@@ -20,7 +20,7 @@ viim.s
     // TODO: vt, imm16
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x0, viim_s, viim.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vt, RAB_OPERAND_r4000allegrex_int16},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Convert integer immediate to float Single Word
 
@@ -34,6 +34,6 @@ vfim.s
     // TODO: vt, imm16
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x1, vfim_s, vfim.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vt},
+        .operands={RAB_OPERAND_r4000allegrex_s_vt, RAB_OPERAND_r4000allegrex_float16},
         .instrType=RABBITIZER_INSTR_TYPE_R
     ) // Convert integer immediate to float Single Word

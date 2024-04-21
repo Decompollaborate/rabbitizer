@@ -460,6 +460,49 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             case RAB_OPERAND_r4000allegrex_bn:
                 self->word = RAB_INSTR_R4000ALLEGREX_PACK_bn(self->word, 0);
                 break;
+
+            case RAB_OPERAND_r4000allegrex_int16:
+            case RAB_OPERAND_r4000allegrex_float16:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_intfloat16(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_p_vrot_code:
+            case RAB_OPERAND_r4000allegrex_t_vrot_code:
+            case RAB_OPERAND_r4000allegrex_q_vrot_code:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vrot_code(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpx:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpx(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpy:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpy(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpz:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpz(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpw:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpw(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpx:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpx(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpy:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpy(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpz:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpz(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpw:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpw(self->word, 0);
+                break;
             /* r4000allegrex */
 
             /* r5900 */

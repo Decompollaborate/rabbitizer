@@ -20,7 +20,7 @@ vpfxs
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x00, vpfxs,
-        .operands={0},
+        .operands={RAB_OPERAND_r4000allegrex_rpx, RAB_OPERAND_r4000allegrex_rpy, RAB_OPERAND_r4000allegrex_rpz, RAB_OPERAND_r4000allegrex_rpw},
         .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
     ) // Source Prefix
 
@@ -33,7 +33,7 @@ vpfxt
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x01, vpfxt,
-        .operands={0},
+        .operands={RAB_OPERAND_r4000allegrex_rpx, RAB_OPERAND_r4000allegrex_rpy, RAB_OPERAND_r4000allegrex_rpz, RAB_OPERAND_r4000allegrex_rpw},
         .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
     ) // Target Prefix
 
@@ -46,6 +46,6 @@ vpfxd
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x02, vpfxd,
-        .operands={0},
+        .operands={RAB_OPERAND_r4000allegrex_wpx, RAB_OPERAND_r4000allegrex_wpy, RAB_OPERAND_r4000allegrex_wpz, RAB_OPERAND_r4000allegrex_wpw},
         .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
     ) // Destination Prefix

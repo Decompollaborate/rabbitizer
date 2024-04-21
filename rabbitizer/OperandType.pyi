@@ -97,6 +97,19 @@ class OperandType:
     r4000allegrex_power_of_two: Enum
     r4000allegrex_vfpu_cc_bit: Enum
     r4000allegrex_bn: Enum
+    r4000allegrex_int16: Enum
+    r4000allegrex_float16: Enum
+    r4000allegrex_p_vrot_code: Enum
+    r4000allegrex_t_vrot_code: Enum
+    r4000allegrex_q_vrot_code: Enum
+    r4000allegrex_rpx: Enum
+    r4000allegrex_rpy: Enum
+    r4000allegrex_rpz: Enum
+    r4000allegrex_rpw: Enum
+    r4000allegrex_wpx: Enum
+    r4000allegrex_wpy: Enum
+    r4000allegrex_wpz: Enum
+    r4000allegrex_wpw: Enum
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum

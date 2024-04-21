@@ -394,15 +394,22 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             break;
 
         case RAB_OPERAND_r4000allegrex_vconstant:
-            break;
-
         case RAB_OPERAND_r4000allegrex_power_of_two:
-            break;
-
         case RAB_OPERAND_r4000allegrex_vfpu_cc_bit:
-            break;
-
         case RAB_OPERAND_r4000allegrex_bn:
+        case RAB_OPERAND_r4000allegrex_int16:
+        case RAB_OPERAND_r4000allegrex_float16:
+        case RAB_OPERAND_r4000allegrex_p_vrot_code:
+        case RAB_OPERAND_r4000allegrex_t_vrot_code:
+        case RAB_OPERAND_r4000allegrex_q_vrot_code:
+        case RAB_OPERAND_r4000allegrex_rpx:
+        case RAB_OPERAND_r4000allegrex_rpy:
+        case RAB_OPERAND_r4000allegrex_rpz:
+        case RAB_OPERAND_r4000allegrex_rpw:
+        case RAB_OPERAND_r4000allegrex_wpx:
+        case RAB_OPERAND_r4000allegrex_wpy:
+        case RAB_OPERAND_r4000allegrex_wpz:
+        case RAB_OPERAND_r4000allegrex_wpw:
             break;
             /* r4000allegrex */
 

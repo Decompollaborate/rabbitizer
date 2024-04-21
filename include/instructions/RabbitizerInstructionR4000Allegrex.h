@@ -57,6 +57,17 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu_cc_bit(self)                           (SHIFTR((self)->word,  16,  3))
 #define RAB_INSTR_R4000ALLEGREX_GET_bn(self)                                    (SHIFTR((self)->word,  16,  8))
 
+#define RAB_INSTR_R4000ALLEGREX_GET_intfloat16(self)                            (SHIFTR((self)->word,   0, 16))
+#define RAB_INSTR_R4000ALLEGREX_GET_vrot_code(self)                             (SHIFTR((self)->word,  16,  5))
+#define RAB_INSTR_R4000ALLEGREX_GET_rpx(self)                                   (SHIFTR((self)->word,  18,  6))
+#define RAB_INSTR_R4000ALLEGREX_GET_rpy(self)                                   (SHIFTR((self)->word,  12,  6))
+#define RAB_INSTR_R4000ALLEGREX_GET_rpz(self)                                   (SHIFTR((self)->word,   6,  6))
+#define RAB_INSTR_R4000ALLEGREX_GET_rpw(self)                                   (SHIFTR((self)->word,   0,  6))
+#define RAB_INSTR_R4000ALLEGREX_GET_wpx(self)                                   (SHIFTR((self)->word,  18,  6))
+#define RAB_INSTR_R4000ALLEGREX_GET_wpy(self)                                   (SHIFTR((self)->word,  12,  6))
+#define RAB_INSTR_R4000ALLEGREX_GET_wpz(self)                                   (SHIFTR((self)->word,   6,  6))
+#define RAB_INSTR_R4000ALLEGREX_GET_wpw(self)                                   (SHIFTR((self)->word,   0,  6))
+
 
 #define RAB_INSTR_R4000ALLEGREX_PACK_vt(word, value)                            (BITREPACK((word), (value), 16,  7))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vs(word, value)                            (BITREPACK((word), (value),  8,  7))
@@ -102,6 +113,17 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_PACK_power_of_two(word, value)                  (BITREPACK((word), (value), 16,  5))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu_cc_bit(word, value)                   (BITREPACK((word), (value), 16,  3))
 #define RAB_INSTR_R4000ALLEGREX_PACK_bn(word, value)                            (BITREPACK((word), (value), 16,  8))
+
+#define RAB_INSTR_R4000ALLEGREX_PACK_intfloat16(word, value)                    (BITREPACK((word), (value),  0, 16))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vrot_code(word, value)                     (BITREPACK((word), (value), 16,  5))
+#define RAB_INSTR_R4000ALLEGREX_PACK_rpx(word, value)                           (BITREPACK((word), (value), 18,  6))
+#define RAB_INSTR_R4000ALLEGREX_PACK_rpy(word, value)                           (BITREPACK((word), (value), 12,  6))
+#define RAB_INSTR_R4000ALLEGREX_PACK_rpz(word, value)                           (BITREPACK((word), (value),  6,  6))
+#define RAB_INSTR_R4000ALLEGREX_PACK_rpw(word, value)                           (BITREPACK((word), (value),  0,  6))
+#define RAB_INSTR_R4000ALLEGREX_PACK_wpx(word, value)                           (BITREPACK((word), (value), 18,  6))
+#define RAB_INSTR_R4000ALLEGREX_PACK_wpy(word, value)                           (BITREPACK((word), (value), 12,  6))
+#define RAB_INSTR_R4000ALLEGREX_PACK_wpz(word, value)                           (BITREPACK((word), (value),  6,  6))
+#define RAB_INSTR_R4000ALLEGREX_PACK_wpw(word, value)                           (BITREPACK((word), (value),  0,  6))
 
 
 NON_NULL(1)
