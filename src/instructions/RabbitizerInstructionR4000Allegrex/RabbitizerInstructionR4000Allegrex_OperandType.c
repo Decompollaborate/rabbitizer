@@ -859,9 +859,13 @@ size_t RabbitizerOperandType_process_r4000allegrex_float16(const RabbitizerInstr
                                                            UNUSED const char *immOverride,
                                                            UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
+    union {
+        float f;
+        uint32_t ui;
+    } floatNumber;
+    floatNumber.ui = RabbitizerUtils_floatRepr_32From16(RAB_INSTR_R4000ALLEGREX_GET_intfloat16(self));
 
-    (void)self;
-    (void)dst;
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%.10g", (double)floatNumber.f);
 
     return totalSize;
 }
@@ -1081,14 +1085,14 @@ size_t RabbitizerOperandType_process_r4000allegrex_rpw(const RabbitizerInstructi
 }
 
 static const char *const destination_prefix_instruction_formats[8] = {
-    [0] = "",  //
-    [1] = "0", //
+    [0] = "",          //
+    [1] = "0",         //
     [2] = "INVALID_2", //
-    [3] = "1", //
-    [4] = "M", //
-    [5] = "INVALID_5", // 
-    [6] = "INVALID_6", // 
-    [7] = "INVALID_7", // 
+    [3] = "1",         //
+    [4] = "M",         //
+    [5] = "INVALID_5", //
+    [6] = "INVALID_6", //
+    [7] = "INVALID_7", //
 };
 
 size_t RabbitizerOperandType_process_r4000allegrex_wpx(const RabbitizerInstruction *self, char *dst,

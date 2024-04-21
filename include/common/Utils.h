@@ -125,6 +125,8 @@ NON_NULL(1)
 size_t RabbitizerUtils_CharFill(char *dst, int count, char fillchar);
 NON_NULL(1, 3)
 size_t RabbitizerUtils_escapeString(char *dst, size_t dstSize, const char *src, size_t srcSize);
+CONST NODISCARD
+uint32_t RabbitizerUtils_floatRepr_32From16(uint16_t arg);
 
 
 #ifdef __cplusplus

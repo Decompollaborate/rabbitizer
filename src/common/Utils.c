@@ -76,3 +76,79 @@ size_t RabbitizerUtils_escapeString(char *dst, size_t dstSize, const char *src, 
 
     return dstpos;
 }
+
+uint32_t RabbitizerUtils_floatRepr_32From16(uint16_t arg) {
+    // IEEE754 16-bit floats are encoded in 16 bits as follows:
+    // Sign bit: 1 bit (bit 15)
+    // Encoded exponent: 5 bits (bits 10 ~ 15)
+    // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
+
+    uint32_t ret;
+    int32_t sign;
+    int32_t encodedExponent;
+    int32_t realExponent;
+    bool mantissaIsZero;
+
+    // arg.d = a;
+
+    ret = 0;
+
+    sign = arg >> 15;
+
+    // If parameter is zero, then return zero
+    if ((arg & ~(1ULL << 15)) == 0) {
+        // Preserve the sign
+        ret |= (sign << 31);
+        return ret;
+    }
+
+    // Clear up the sign
+    arg &= ~(1ULL << 15);
+
+    encodedExponent = arg >> 10;
+    // Clear up the encoded exponent
+    arg &= ~0x7C00ULL;
+
+    // Exponent bias: 0xF
+    realExponent = encodedExponent - 0xF;
+
+    mantissaIsZero = (arg == 0);
+
+    if (encodedExponent == 0) {
+        // subnormals
+
+        ret |= ((uint32_t)sign) << 31;
+        // no need to set the exponent part since it was already zero'd
+
+        // Set the mantissa
+        ret |= arg >> (23 - 10);
+
+        return ret;
+    }
+
+    if (encodedExponent == 0x1F) {
+        // Infinity and NaN
+
+        ret |= ((uint32_t)sign) << 31;
+        ret |= 0x7F800000ULL;
+
+        if (!mantissaIsZero) {
+            // NaN
+
+            // Set the mantissa to any non-zero value
+            ret |= arg << (23 - 10);
+        }
+
+        return ret;
+    }
+
+    ret |= ((uint32_t)sign) << 31;
+
+    // re-encode the exponent
+    ret |= ((uint32_t)(realExponent + 0x7F)) << 23;
+
+    // Set the mantissa
+    ret |= arg << (23 - 10);
+
+    return ret;
+}

@@ -49,6 +49,17 @@ static PyObject *rabbitizer_submodule_Utils_escapeString(UNUSED PyObject *self, 
     return ret;
 }
 
+static PyObject *rabbitizer_submodule_Utils_floatRepr_32From16(UNUSED PyObject *self, PyObject *args, PyObject *kwds) {
+    static char *kwlist[] = { "hex_repr", NULL };
+    uint16_t hex_repr = 0;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "H", kwlist, &hex_repr)) {
+        return NULL;
+    }
+
+    return PyLong_FromLong(RabbitizerUtils_floatRepr_32From16(hex_repr));
+}
+
 
 #define METHOD_NO_ARGS(name, docs)  { #name, (PyCFunction) (void *) rabbitizer_submodule_Utils_##name, METH_NOARGS,                  PyDoc_STR(docs) }
 #define METHOD_ARGS(name, docs)     { #name, (PyCFunction) (void *) rabbitizer_submodule_Utils_##name, METH_VARARGS | METH_KEYWORDS, PyDoc_STR(docs) }
@@ -56,6 +67,7 @@ static PyObject *rabbitizer_submodule_Utils_escapeString(UNUSED PyObject *self, 
 static PyMethodDef rabbitizer_submodule_Utils_methods[] = {
     METHOD_ARGS(from2Complement, ""),
     METHOD_ARGS(escapeString, ""),
+    METHOD_ARGS(floatRepr_32From16, ""),
 
     { 0 },
 };

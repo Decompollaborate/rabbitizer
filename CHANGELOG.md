@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The global `regNames.r4000AllegrexVfpuControlNamedRegisters` option controls
   if named registers should be used for the VFPU control registers of the R4000
   ALLEGREX.
+- `Utils.floatRepr_32From16` function.
+  - Converts a half float to a single precision float.
+  - Both the argument and the return value correspond to their hex
+    representation instead of an actual float.
 
 ### Changed
 
