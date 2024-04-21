@@ -827,9 +827,30 @@ size_t RabbitizerOperandType_process_r4000allegrex_int16(const RabbitizerInstruc
                                                          UNUSED const char *immOverride,
                                                          UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
+    int32_t number = RabbitizerUtils_From2Complement(RAB_INSTR_R4000ALLEGREX_GET_intfloat16(self), 16);
 
-    (void)self;
-    (void)dst;
+#if 0
+    if (RabbitizerConfig_Cfg.misc.omit0XOnSmallImm) {
+        if (number > -10 && number < 10) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);
+            return totalSize;
+        }
+    }
+    if (number < 0) {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%X", -number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "-0x%x", -number);
+        }
+    } else {
+        if (RabbitizerConfig_Cfg.misc.upperCaseImm) {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", number);
+        } else {
+            RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%x", number);
+        }
+    }
+#endif
+    RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);
 
     return totalSize;
 }

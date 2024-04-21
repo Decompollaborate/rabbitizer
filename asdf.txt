@@ -139,41 +139,6 @@ Error on word '0xDEF00000'. Expected 'vpfxd       , , ,', got 'vpfxd       , , ,
     InstrIdType: 'R4000ALLEGREX_VFPU5'
     gnuMode 'true'
 
-Error on word '0xDF400000'. Expected 'viim.s      S002, 0', got 'viim.s      S002, '
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
-    gnuMode 'true'
-
-Error on word '0xDF400001'. Expected 'viim.s      S002, 1', got 'viim.s      S002, '
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
-    gnuMode 'true'
-
-Error on word '0xDF400010'. Expected 'viim.s      S002, 16', got 'viim.s      S002, '
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
-    gnuMode 'true'
-
-Error on word '0xDF400100'. Expected 'viim.s      S002, 256', got 'viim.s      S002, '
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
-    gnuMode 'true'
-
-Error on word '0xDF401000'. Expected 'viim.s      S002, 4096', got 'viim.s      S002, '
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
-    gnuMode 'true'
-
-Error on word '0xDF408000'. Expected 'viim.s      S002, -32768', got 'viim.s      S002, '
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
-    gnuMode 'true'
-
-Error on word '0xDF40F000'. Expected 'viim.s      S002, -4096', got 'viim.s      S002, '
-    File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
-    InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
-    gnuMode 'true'
-
 Error on word '0xDFC00000'. Expected 'vfim.s      S002, 0.0', got 'vfim.s      S002, '
     File: tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c
     InstrIdType: 'R4000ALLEGREX_VFPU5_FMT3'
@@ -209,5 +174,5 @@ Error on word '0xF3A090C0'. Expected 'vrot.q      C002, S400, [C,S,S,S]', got 'v
     InstrIdType: 'R4000ALLEGREX_VFPU6_FMT7'
     gnuMode 'true'
 
-tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 41 errors out of 5322 entries. 99.23% correct.
+tests/c/instruction_checks/r4000allegrex_vfpu_disasm.c: 34 errors out of 5322 entries. 99.36% correct.
 
