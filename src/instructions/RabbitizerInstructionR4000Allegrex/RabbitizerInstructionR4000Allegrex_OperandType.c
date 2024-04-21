@@ -1042,13 +1042,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_rpx(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_rpx(self);
 
-    if (temp < ARRAY_COUNT(source_target_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
 
     return totalSize;
 }
@@ -1059,13 +1053,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_rpy(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_rpy(self);
 
-    if (temp < ARRAY_COUNT(source_target_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
 
     return totalSize;
 }
@@ -1076,13 +1064,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_rpz(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_rpz(self);
 
-    if (temp < ARRAY_COUNT(source_target_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
 
     return totalSize;
 }
@@ -1093,13 +1075,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_rpw(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_rpw(self);
 
-    if (temp < ARRAY_COUNT(source_target_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, source_target_prefix_instruction_formats[temp]);
 
     return totalSize;
 }
