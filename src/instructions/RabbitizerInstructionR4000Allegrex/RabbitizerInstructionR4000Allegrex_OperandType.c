@@ -1080,11 +1080,15 @@ size_t RabbitizerOperandType_process_r4000allegrex_rpw(const RabbitizerInstructi
     return totalSize;
 }
 
-static const char *const destination_prefix_instruction_formats[] = {
+static const char *const destination_prefix_instruction_formats[8] = {
     [0] = "",  //
     [1] = "0", //
-    [2] = "1", //
-    [3] = "M", //
+    [2] = "INVALID_2", //
+    [3] = "1", //
+    [4] = "M", //
+    [5] = "INVALID_5", // 
+    [6] = "INVALID_6", // 
+    [7] = "INVALID_7", // 
 };
 
 size_t RabbitizerOperandType_process_r4000allegrex_wpx(const RabbitizerInstruction *self, char *dst,
@@ -1093,13 +1097,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpx(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpx(self);
 
-    if (temp < ARRAY_COUNT(destination_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
 
     return totalSize;
 }
@@ -1110,13 +1108,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpy(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpy(self);
 
-    if (temp < ARRAY_COUNT(destination_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
 
     return totalSize;
 }
@@ -1127,13 +1119,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpz(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpz(self);
 
-    if (temp < ARRAY_COUNT(destination_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
 
     return totalSize;
 }
@@ -1144,13 +1130,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpw(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpw(self);
 
-    if (temp < ARRAY_COUNT(destination_prefix_instruction_formats)) {
-        RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
-    } else {
-        // Workaround to avoid crashing.
-        // TODO: Add some logic to disassemble as a .word if this happens
-        RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", temp);
-    }
+    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
 
     return totalSize;
 }

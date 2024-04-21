@@ -4829,7 +4829,7 @@ const TestEntry test_entries[] = {
     /* VFPU5 */
     TEST_ENTRY_C(0xDC000000, NULL, "vpfxs       X, X, X, X"),
     TEST_ENTRY_C(0xDD000000, NULL, "vpfxt       X, X, X, X"),
-    TEST_ENTRY_C(0xDE000000, NULL, "vpfxd       , , ,"),
+    TEST_ENTRY_C(0xDE000000, NULL, "vpfxd       , , , "),
     TEST_ENTRY_C(0xDF400000, NULL, "viim.s      S002, 0"),
     TEST_ENTRY_C(0xDF400001, NULL, "viim.s      S002, 1"),
     TEST_ENTRY_C(0xDF400010, NULL, "viim.s      S002, 16"),
