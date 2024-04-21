@@ -11,9 +11,6 @@
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     RABBITIZER_DEF_REG(prefix, name, numeric, __VARGS__)
 
-#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
-    RABBITIZER_DEF_REG(prefix, name, numeric, __VARGS__)
-
 RabbitizerEnumMetadata rabbitizer_enum_RegCop1N32_enumvalues[] = {
     #include "tables/registers/RabbitizerRegister_Cop1N32.inc"
 
@@ -22,7 +19,6 @@ RabbitizerEnumMetadata rabbitizer_enum_RegCop1N32_enumvalues[] = {
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
-#undef RABBITIZER_DEF_REG_NONODOLLAR
 
 
 static PyMethodDef rabbitizer_enum_RegCop1N32_methods[] = {

@@ -7,9 +7,6 @@
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     [RABBITIZER_REG_##prefix##_##name] = { "$" #numeric, #name },
 
-#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
-    [RABBITIZER_REG_##prefix##_##name] = { #numeric, #name },
-
 // numeric, named
 
 const char *RabbitizerRegister_GprO32_Names[][2] = {
@@ -122,4 +119,3 @@ const char *RabbitizerRegister_R5900VI_Names[][2] = {
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
-#undef RABBITIZER_DEF_REG_NONODOLLAR

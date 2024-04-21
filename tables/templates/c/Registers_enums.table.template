@@ -7,9 +7,6 @@
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     RABBITIZER_REG_##prefix##_##name,
 
-#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
-    RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
-
 
 typedef enum RabbitizerRegister_GprO32 {
     #include "registers/RabbitizerRegister_GprO32.inc"
@@ -124,4 +121,3 @@ typedef enum RabbitizerRegister_R5900VI {
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
-#undef RABBITIZER_DEF_REG_NONODOLLAR

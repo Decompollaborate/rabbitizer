@@ -11,9 +11,6 @@
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     RABBITIZER_DEF_REG(prefix, name, numeric)
 
-#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
-    RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
-
 pub mod registers {
     SPECIAL_RS_TAG(repr(u32))
     SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq))
@@ -254,4 +251,3 @@ pub mod registers {
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
-#undef RABBITIZER_DEF_REG_NONODOLLAR

@@ -7,9 +7,6 @@
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
     RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
 
-#define RABBITIZER_DEF_REG_NONODOLLAR(prefix, name, numeric, ...) \
-    RABBITIZER_DEF_REG(prefix, name, numeric, __VA_ARGS__)
-
     namespace Cpu {
         enum class GprO32 {
             #include "registers/RabbitizerRegister_GprO32.inc"
@@ -119,4 +116,3 @@
 
 #undef RABBITIZER_DEF_REG
 #undef RABBITIZER_DEF_REG_NODOLLAR
-#undef RABBITIZER_DEF_REG_NONODOLLAR
