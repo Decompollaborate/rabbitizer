@@ -42,15 +42,12 @@
 
     #include "r4000allegrex/r4000allegrex_vfpu4.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0.inc"
-    #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0_fmt0.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0_fmt2.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0_fmt3.inc"
-    #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1_fmt0.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1_fmt2.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt1_fmt3.inc"
-    #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2_fmt0.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2_fmt1.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2_fmt2.inc"
@@ -63,7 +60,6 @@
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt2_fmt3.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt2_fmt4.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt2_fmt5.inc"
-    #include "r4000allegrex/r4000allegrex_vfpu4_fmt3.inc"
 
     #include "r4000allegrex/r4000allegrex_vfpu5.inc"
     #include "r4000allegrex/r4000allegrex_vfpu5_fmt3.inc"
