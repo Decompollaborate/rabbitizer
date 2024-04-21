@@ -40,7 +40,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_GET_tp(self)                                    ((SHIFTR((self)->word, 15,  1) << 1) | (SHIFTR((self)->word, 7,  1)))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu0_fmt_tp(self)                          ((SHIFTR((self)->word, 23,  3) << 2) | RAB_INSTR_R4000ALLEGREX_GET_tp(self))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt(self)                             ((SHIFTR((self)->word, 24,  2) << 2) | RAB_INSTR_R4000ALLEGREX_GET_tp(self))
-#define RAB_INSTR_R4000ALLEGREX_GET_vfpu5_fmt(self)                             (SHIFTR((self)->word, 24,  2))
+#define RAB_INSTR_R4000ALLEGREX_GET_vfpu5_fmt(self)                             (SHIFTR((self)->word, 23,  3))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt(self)                        (SHIFTR((self)->word, 19,  5))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self)                   (SHIFTR((self)->word, 19,  2))
 #define RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt(self)              (SHIFTR((self)->word, 16,  3))
@@ -99,7 +99,7 @@ extern "C" {
 #define RAB_INSTR_R4000ALLEGREX_PACK_tp(word, value)                            (BITREPACK(BITREPACK((word), (value) >> 1, 15,  1), (value),  7,  1))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu0_fmt_tp(word, value)                  (RAB_INSTR_R4000ALLEGREX_PACK_tp(BITREPACK((word), (value) >> 2, 23,  3), (value)))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt(word, value)                     (RAB_INSTR_R4000ALLEGREX_PACK_tp(BITREPACK((word), (value) >> 2, 24,  2), (value)))
-#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu5_fmt(word, value)                     (BITREPACK((word), (value), 24,  2))
+#define RAB_INSTR_R4000ALLEGREX_PACK_vfpu5_fmt(word, value)                     (BITREPACK((word), (value), 23,  3))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt(word, value)                (BITREPACK((word), (value), 19,  5))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(word, value)           (BITREPACK((word), (value), 19,  2))
 #define RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt(word, value)      (BITREPACK((word), (value), 16,  3))
@@ -237,8 +237,6 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt5(Rabbitiz
 
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5_Fmt3(RabbitizerInstruction *self);
 
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(RabbitizerInstruction *self);
