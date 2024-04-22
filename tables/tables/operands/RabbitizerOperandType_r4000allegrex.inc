@@ -64,9 +64,7 @@
     RAB_DEF_OPERAND(r4000allegrex, vconstant)
 
     RAB_DEF_OPERAND(r4000allegrex, power_of_two)
-
     RAB_DEF_OPERAND(r4000allegrex, vfpu_cc_bit)
-
     RAB_DEF_OPERAND(r4000allegrex, bn)
 
     RAB_DEF_OPERAND(r4000allegrex, int16)

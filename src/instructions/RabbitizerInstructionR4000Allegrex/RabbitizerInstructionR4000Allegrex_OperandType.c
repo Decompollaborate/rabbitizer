@@ -213,8 +213,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_mp_vs_transpose(const Rabbiti
                                                                    UNUSED const char *immOverride,
                                                                    UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    // For whatever reason the transpose just toggles bit 5, no clue why.
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexM2x2(RAB_INSTR_R4000ALLEGREX_GET_vs(self) ^ 0x20);
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM2x2(RAB_INSTR_R4000ALLEGREX_GET_vs_transpose(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 
@@ -258,7 +257,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_mt_vs_transpose(const Rabbiti
                                                                    UNUSED const char *immOverride,
                                                                    UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexM3x3(RAB_INSTR_R4000ALLEGREX_GET_vs(self) ^ 0x20);
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM3x3(RAB_INSTR_R4000ALLEGREX_GET_vs_transpose(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 
@@ -302,7 +301,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_mq_vs_transpose(const Rabbiti
                                                                    UNUSED const char *immOverride,
                                                                    UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
-    const char *reg = RabbitizerRegister_getNameR4000AllegrexM4x4(RAB_INSTR_R4000ALLEGREX_GET_vs(self) ^ 0x20);
+    const char *reg = RabbitizerRegister_getNameR4000AllegrexM4x4(RAB_INSTR_R4000ALLEGREX_GET_vs_transpose(self));
 
     RABUTILS_BUFFER_CPY(dst, totalSize, reg);
 
