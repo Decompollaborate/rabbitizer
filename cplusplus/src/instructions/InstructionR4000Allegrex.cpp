@@ -460,7 +460,9 @@ uint16_t InstructionR4000Allegrex::GetR4000Allegrex_intfloat16() const {
 
 uint8_t InstructionR4000Allegrex::GetR4000Allegrex_vrot_code() const {
 #ifdef RAB_SANITY_CHECKS
-    if (!hasOperandAlias(OperandType::r4000allegrex_p_vrot_code) && !hasOperandAlias(OperandType::r4000allegrex_t_vrot_code) && !hasOperandAlias(OperandType::r4000allegrex_q_vrot_code)) {
+    if (!hasOperandAlias(OperandType::r4000allegrex_p_vrot_code) &&
+        !hasOperandAlias(OperandType::r4000allegrex_t_vrot_code) &&
+        !hasOperandAlias(OperandType::r4000allegrex_q_vrot_code)) {
         // TODO: make a rabbitizer exception class
         throw std::runtime_error("Instruction '" + getOpcodeName() + "' does not have 'vrot_code' operand.");
     }
