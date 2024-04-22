@@ -11,15 +11,15 @@
  10 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
  11 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
-     *1 = See FMT0 FMT0 FMT0 table
-     *2 = See FMT0 FMT0 FMT2 table
-     *3 = See FMT0 FMT0 FMT3 table
-     *4 = See FMT0 FMT1 FMT0 table
-     *5 = See FMT0 FMT1 FMT2 table
-     *6 = See FMT0 FMT1 FMT3 table
-     *7 = See FMT0 FMT2 FMT0 table
-     *8 = See FMT0 FMT2 FMT1 table
-     *9 = See FMT0 FMT2 FMT2 table
-     *10 = See FMT0 FMT2 FMT3 table
-     *11 = See FMT0 FMT3 table
+     *1 = See FMT0 table
+     *2 = See FMT2 table
+     *3 = See FMT3 table
+     *4 = See RND table
+     *5 = See CVTFLT table
+     *6 = See CVTINT table
+     *7 = See FMT8 table
+     *8 = See FMT9 table
+     *9 = See CONTROL table
+     *10 = See COLOR table
+     *11 = See CST table
 */

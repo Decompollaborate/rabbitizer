@@ -198,27 +198,27 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4(RabbitizerInstruct
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0(RabbitizerInstruction *self);
 NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt0(RabbitizerInstruction *self);
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0(RabbitizerInstruction *self);
 NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt2(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0_Fmt3(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt0(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt2(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt1_Fmt3(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt0(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt1(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt2(RabbitizerInstruction *self);
-NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2_Fmt3(RabbitizerInstruction *self);
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2(RabbitizerInstruction *self);
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt3(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Rnd(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtFlt(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtInt(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt8(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt9(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Control(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Color(RabbitizerInstruction *self);
+NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Cst(RabbitizerInstruction *self);
 
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerInstruction *self);
