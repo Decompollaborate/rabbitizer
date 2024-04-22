@@ -219,7 +219,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Cst(Rabbitize
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerInstruction *self);
 NON_NULL(1)
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt5(RabbitizerInstruction *self);
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_CndMove(RabbitizerInstruction *self);
 
 NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5(RabbitizerInstruction *self);

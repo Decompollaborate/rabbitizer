@@ -54,7 +54,7 @@
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_color.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt0_cst.inc"
     #include "r4000allegrex/r4000allegrex_vfpu4_fmt2.inc"
-    #include "r4000allegrex/r4000allegrex_vfpu4_fmt2_fmt5.inc"
+    #include "r4000allegrex/r4000allegrex_vfpu4_fmt2_cndmove.inc"
 
     #include "r4000allegrex/r4000allegrex_vfpu5.inc"
 

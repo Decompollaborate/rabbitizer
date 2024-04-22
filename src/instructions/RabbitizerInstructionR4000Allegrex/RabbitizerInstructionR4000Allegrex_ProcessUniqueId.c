@@ -837,7 +837,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerIns
         case 0x15:
         case 0x16:
         case 0x17:
-            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt5(self);
+            RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_CndMove(self);
             fetchDescriptor = false;
             break;
     }
@@ -847,15 +847,15 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerIns
     }
 }
 
-void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_Fmt5(RabbitizerInstruction *self) {
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_CndMove(RabbitizerInstruction *self) {
     uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt2_fmt5_fmt_tp(self);
     bool fetchDescriptor = true;
 
     self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt2_fmt5_fmt_tp(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT2_FMT5;
+    self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT2_CNDMOVE;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt2_fmt5.inc"
+#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt2_cndmove.inc"
     }
 
     if (fetchDescriptor) {

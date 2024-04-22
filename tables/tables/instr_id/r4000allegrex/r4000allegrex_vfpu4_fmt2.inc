@@ -11,7 +11,7 @@
  10 |vf2in.t|vf2iz.t|vf2iu.t|vf2id.t| vi2f.t| *1    | ---   | ---   |
  11 |vf2in.q|vf2iz.q|vf2iu.q|vf2id.q| vi2f.q| *1    | ---   | ---   |
  tp |-------|-------|-------|-------|-------|-------|-------|-------|
-     *1 = See FMT5 table
+     *1 = See CNDMOVE table
 */
 
 /*
