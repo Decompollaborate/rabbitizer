@@ -72,7 +72,7 @@ CXX_FILES       := $(foreach dir,$(SRCXX_DIRS),$(wildcard $(dir)/*.cpp))
 HXX_FILES       := $(foreach dir,$(IINC_XX),$(wildcard $(dir)/**/*.hpp))
 OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
-TESTS_DIRS      := $(shell find tests -type d)
+TESTS_DIRS      := $(shell find tests -mindepth 1 -type d -not -path "tests/asm*")
 TESTS_C         := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.c))
 TESTS_CXX       := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.cpp))
 TESTS_ELFS      := $(foreach f,$(TESTS_C:.c=.elf) $(TESTS_CXX:.cpp=.elf),build/$f)

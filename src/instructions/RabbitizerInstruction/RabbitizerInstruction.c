@@ -9,6 +9,7 @@
 #include "instructions/RabbitizerRegister.h"
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR3000GTE.h"
+#include "instructions/RabbitizerInstructionR4000Allegrex.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 
 void RabbitizerInstruction_init(RabbitizerInstruction *self, uint32_t word, uint32_t vram) {
@@ -354,6 +355,155 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_R3000GTE_PACK_lm(self->word, 0);
                 break;
             /* r3000gte */
+
+            /* r4000allegrex */
+            case RAB_OPERAND_r4000allegrex_s_vs:
+            case RAB_OPERAND_r4000allegrex_p_vs:
+            case RAB_OPERAND_r4000allegrex_t_vs:
+            case RAB_OPERAND_r4000allegrex_q_vs:
+            case RAB_OPERAND_r4000allegrex_mp_vs:
+            case RAB_OPERAND_r4000allegrex_mt_vs:
+            case RAB_OPERAND_r4000allegrex_mq_vs:
+            case RAB_OPERAND_r4000allegrex_mp_vs_transpose:
+            case RAB_OPERAND_r4000allegrex_mt_vs_transpose:
+            case RAB_OPERAND_r4000allegrex_mq_vs_transpose:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vs(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vt:
+            case RAB_OPERAND_r4000allegrex_p_vt:
+            case RAB_OPERAND_r4000allegrex_t_vt:
+            case RAB_OPERAND_r4000allegrex_q_vt:
+            case RAB_OPERAND_r4000allegrex_mp_vt:
+            case RAB_OPERAND_r4000allegrex_mt_vt:
+            case RAB_OPERAND_r4000allegrex_mq_vt:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vt(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vd:
+            case RAB_OPERAND_r4000allegrex_p_vd:
+            case RAB_OPERAND_r4000allegrex_t_vd:
+            case RAB_OPERAND_r4000allegrex_q_vd:
+            case RAB_OPERAND_r4000allegrex_mp_vd:
+            case RAB_OPERAND_r4000allegrex_mt_vd:
+            case RAB_OPERAND_r4000allegrex_mq_vd:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vd(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vt_imm:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vt_imm(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vd_imm:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vd_imm(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_q_vt_imm:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vt_6_imm(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_cop2cd:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_cop2cd(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_cop2cs:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_cop2cs(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_pos:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_pos(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_size:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_size(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_size_plus_pos:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_size_plus_pos(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_imm3:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_imm3(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wb(self->word, 0);
+                FALLTHROUGH;
+            case RAB_OPERAND_r4000allegrex_offset14_base:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_offset14(self->word, 0);
+                self->word = RAB_INSTR_PACK_rs(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vs(self->word, 0);
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vt(self->word, 0);
+                FALLTHROUGH;
+            case RAB_OPERAND_r4000allegrex_vcmp_cond:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vcmp_cond(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vconstant:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vconstant(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_power_of_two:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_power_of_two(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vfpu_cc_bit:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vfpu_cc_bit(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_bn:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_bn(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_int16:
+            case RAB_OPERAND_r4000allegrex_float16:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_intfloat16(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_p_vrot_code:
+            case RAB_OPERAND_r4000allegrex_t_vrot_code:
+            case RAB_OPERAND_r4000allegrex_q_vrot_code:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_vrot_code(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpx:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpx(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpy:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpy(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpz:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpz(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpw:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_rpw(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpx:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpx(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpy:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpy(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpz:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpz(self->word, 0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpw:
+                self->word = RAB_INSTR_R4000ALLEGREX_PACK_wpw(self->word, 0);
+                break;
+            /* r4000allegrex */
 
             /* r5900 */
             case RAB_OPERAND_r5900_I:

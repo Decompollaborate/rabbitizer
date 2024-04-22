@@ -11,8 +11,10 @@
  10 | *2    | *3    | ---   | ---   | *4    | *5    | ---   | ---   |
  11 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
-     *1 = BC instructions, see BC1 list   *2 = S instr, see FPU S list
-     *3 = D instr, see FPU D list         *4 = W instr, see FPU W list
+     *1 = BC instructions, see BC1 list
+     *2 = S instr, see FPU S list
+     *3 = D instr, see FPU D list
+     *4 = W instr, see FPU W list
      *5 = L instr, see FPU L list
 */
 

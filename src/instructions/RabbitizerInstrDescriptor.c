@@ -43,6 +43,12 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_rsp_maybe_rd_rs)) {
                 return true;
             }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb)) {
+                return true;
+            }
             break;
 
         case RAB_OPERAND_cpu_immediate:
@@ -263,6 +269,149 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
         case RAB_OPERAND_r3000gte_lm:
             break;
             /* r3000gte */
+
+            /* r4000allegrex */
+        case RAB_OPERAND_r4000allegrex_s_vs:
+        case RAB_OPERAND_r4000allegrex_s_vt:
+        case RAB_OPERAND_r4000allegrex_s_vd:
+        case RAB_OPERAND_r4000allegrex_s_vt_imm:
+        case RAB_OPERAND_r4000allegrex_s_vd_imm:
+        case RAB_OPERAND_r4000allegrex_p_vs:
+        case RAB_OPERAND_r4000allegrex_p_vt:
+        case RAB_OPERAND_r4000allegrex_p_vd:
+        case RAB_OPERAND_r4000allegrex_t_vs:
+        case RAB_OPERAND_r4000allegrex_t_vt:
+        case RAB_OPERAND_r4000allegrex_t_vd:
+        case RAB_OPERAND_r4000allegrex_q_vs:
+        case RAB_OPERAND_r4000allegrex_q_vt:
+        case RAB_OPERAND_r4000allegrex_q_vd:
+        case RAB_OPERAND_r4000allegrex_q_vt_imm:
+        case RAB_OPERAND_r4000allegrex_mp_vs:
+        case RAB_OPERAND_r4000allegrex_mp_vt:
+        case RAB_OPERAND_r4000allegrex_mp_vd:
+        case RAB_OPERAND_r4000allegrex_mp_vs_transpose:
+        case RAB_OPERAND_r4000allegrex_mt_vs:
+        case RAB_OPERAND_r4000allegrex_mt_vt:
+        case RAB_OPERAND_r4000allegrex_mt_vd:
+        case RAB_OPERAND_r4000allegrex_mt_vs_transpose:
+        case RAB_OPERAND_r4000allegrex_mq_vs:
+        case RAB_OPERAND_r4000allegrex_mq_vt:
+        case RAB_OPERAND_r4000allegrex_mq_vd:
+        case RAB_OPERAND_r4000allegrex_mq_vs_transpose:
+        case RAB_OPERAND_r4000allegrex_cop2cs:
+        case RAB_OPERAND_r4000allegrex_cop2cd:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_pos:
+        case RAB_OPERAND_r4000allegrex_size:
+        case RAB_OPERAND_r4000allegrex_size_plus_pos:
+        case RAB_OPERAND_r4000allegrex_imm3:
+            break;
+
+        case RAB_OPERAND_r4000allegrex_offset14_base:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_cpu_rs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_offset14_base)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self,
+                                                             RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self,
+                                                             RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self,
+                                                             RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self,
+                                                             RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_s_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_s_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_p_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_p_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_t_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_t_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_vcmp_cond)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_q_vs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r4000allegrex_q_vt)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r4000allegrex_vconstant:
+        case RAB_OPERAND_r4000allegrex_power_of_two:
+        case RAB_OPERAND_r4000allegrex_vfpu_cc_bit:
+        case RAB_OPERAND_r4000allegrex_bn:
+        case RAB_OPERAND_r4000allegrex_int16:
+        case RAB_OPERAND_r4000allegrex_float16:
+        case RAB_OPERAND_r4000allegrex_p_vrot_code:
+        case RAB_OPERAND_r4000allegrex_t_vrot_code:
+        case RAB_OPERAND_r4000allegrex_q_vrot_code:
+        case RAB_OPERAND_r4000allegrex_rpx:
+        case RAB_OPERAND_r4000allegrex_rpy:
+        case RAB_OPERAND_r4000allegrex_rpz:
+        case RAB_OPERAND_r4000allegrex_rpw:
+        case RAB_OPERAND_r4000allegrex_wpx:
+        case RAB_OPERAND_r4000allegrex_wpy:
+        case RAB_OPERAND_r4000allegrex_wpz:
+        case RAB_OPERAND_r4000allegrex_wpw:
+            break;
+            /* r4000allegrex */
 
             /* r5900 */
         case RAB_OPERAND_r5900_I:

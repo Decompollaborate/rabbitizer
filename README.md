@@ -41,6 +41,8 @@ MIPS instruction decoder API.
   - Main focus on MIPS I, II and III architectures. Partial support for MIPS IV too.
   - N64 RSP instruction decoding support.
     - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
+  - R3000 GTE (PSX's CPU) decoding support.
+  - R4000 ALLEGREX (PSP's CPU) decoding support.
   - R5900 (PS2's Emotion Engine processor) decoding support.
 
 ## Non-features
@@ -63,7 +65,7 @@ If you use a `requirements.txt` file in your repository, then you can add this
 library with the following line:
 
 ```txt
-rabbitizer>=1.9.5,<2.0.0
+rabbitizer>=1.10.0,<2.0.0
 ```
 
 ### Development version
@@ -71,6 +73,13 @@ rabbitizer>=1.9.5,<2.0.0
 The unstable development version is located at the
 [develop](https://github.com/Decompollaborate/rabbitizer/tree/develop)
 branch. PRs should be made into that branch instead of the main one.
+
+Note that building the Python bindings from source require the Python
+development package. Under Ubuntu/Debian based distros it can be installed with:
+
+```bash
+apt install python3-dev
+```
 
 In case you want to mess with the latest development version without wanting to
 clone the repository, then you could use the following command:
@@ -96,7 +105,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.9.5"
+rabbitizer = "1.10.0"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
@@ -117,6 +126,15 @@ See this crate at <https://crates.io/crates/rabbitizer>.
   - no$psx documentation: <https://problemkaputt.de/psxspx-gte-opcode-summary.htm>
   - no$psx documentation: <http://problemkaputt.de/psx-spx.htm#geometrytransformationenginegte>
   - <http://www.raphnet.net/electronique/psx_adaptor/Playstation.txt>
+
+- R4000 ALLEGREX:
+  - ALLEGREX-Instruction_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/11356332/ALLEGREX-Instruction_Manual-English.pdf>
+  - FPU-Instruction_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/14950191/FPU-Instruction_Manual-English.pdf>
+  - VFPU-Instruction_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/11356335/VFPU-Instruction_Manual-English.pdf>
+  - VFPU-Users_Manual-English <https://github.com/Decompollaborate/rabbitizer/files/11356333/VFPU-Users_Manual-English.pdf>
+  - yet another PlayStationPortable Documentation <http://hitmen.c02.at/files/yapspd/psp_doc/frames.html>
+    - Chapter "4.8  Allegrex Instructions" <http://hitmen.c02.at/files/yapspd/psp_doc/chap4.html#sec4.8>
+  - GNU binutils: <https://github.com/bminor/binutils-gdb/compare/011365b...a0176d8>
 
 - R5900:
   - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>

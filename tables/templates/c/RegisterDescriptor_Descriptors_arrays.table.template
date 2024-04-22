@@ -63,6 +63,46 @@ const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descriptors[] = 
 
 /* RSP */
 
+/* R4000ALLEGREX */
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexS_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexS.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexV2D_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexV2D.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexV3D_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexV3D.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexV4D_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexV4D.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM2x2_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexM2x2.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM3x3_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexM3x3.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM4x4_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexM4x4.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
+};
+
+const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVConstant_Descriptors[] = {
+#include "registers/RabbitizerRegister_R4000AllegrexVConstant.inc"
+};
+
+/* R4000ALLEGREX */
+
 /* R5900 */
 
 const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VF_Descriptors[] = {

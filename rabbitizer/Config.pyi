@@ -15,6 +15,7 @@ class _RabbitizerConfig:
     regNames_userFpcCsr: bool = True
     regNames_vr4300Cop0NamedRegisters: bool = True
     regNames_vr4300RspCop0NamedRegisters: bool = True
+    regNames_r4000AllegrexVfpuControlNamedRegisters: bool = False
 
     pseudos_enablePseudos: bool = True
     pseudos_pseudoBeqz: bool = True

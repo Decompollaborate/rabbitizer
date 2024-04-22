@@ -16,10 +16,12 @@ bool RabbitizerInstrId_isValid(RabbitizerInstrId uniqueId) {
         case RABBITIZER_INSTR_ID_rsp_INVALID:
         case RABBITIZER_INSTR_ID_r3000gte_INVALID:
         case RABBITIZER_INSTR_ID_r5900_INVALID:
+        case RABBITIZER_INSTR_ID_r4000allegrex_INVALID:
         case RABBITIZER_INSTR_ID_cpu_MAX:
         case RABBITIZER_INSTR_ID_rsp_MAX:
         case RABBITIZER_INSTR_ID_r3000gte_MAX:
         case RABBITIZER_INSTR_ID_r5900_MAX:
+        case RABBITIZER_INSTR_ID_r4000allegrex_MAX:
             // case RABBITIZER_INSTR_ID_ALL_MAX: Same as last MAX
             return false;
 

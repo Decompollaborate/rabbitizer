@@ -66,6 +66,46 @@ typedef enum RabbitizerRegister_RspVector {
 
 /* RSP */
 
+/* R4000ALLEGREX */
+
+typedef enum RabbitizerRegister_R4000AllegrexS {
+    #include "registers/RabbitizerRegister_R4000AllegrexS.inc"
+} RabbitizerRegister_R4000AllegrexS;
+
+typedef enum RabbitizerRegister_R4000AllegrexV2D {
+    #include "registers/RabbitizerRegister_R4000AllegrexV2D.inc"
+} RabbitizerRegister_R4000AllegrexV2D;
+
+typedef enum RabbitizerRegister_R4000AllegrexV3D {
+    #include "registers/RabbitizerRegister_R4000AllegrexV3D.inc"
+} RabbitizerRegister_R4000AllegrexV3D;
+
+typedef enum RabbitizerRegister_R4000AllegrexV4D {
+    #include "registers/RabbitizerRegister_R4000AllegrexV4D.inc"
+} RabbitizerRegister_R4000AllegrexV4D;
+
+typedef enum RabbitizerRegister_R4000AllegrexM2x2 {
+    #include "registers/RabbitizerRegister_R4000AllegrexM2x2.inc"
+} RabbitizerRegister_R4000AllegrexM2x2;
+
+typedef enum RabbitizerRegister_R4000AllegrexM3x3 {
+    #include "registers/RabbitizerRegister_R4000AllegrexM3x3.inc"
+} RabbitizerRegister_R4000AllegrexM3x3;
+
+typedef enum RabbitizerRegister_R4000AllegrexM4x4 {
+    #include "registers/RabbitizerRegister_R4000AllegrexM4x4.inc"
+} RabbitizerRegister_R4000AllegrexM4x4;
+
+typedef enum RabbitizerRegister_R4000AllegrexVfpuControl {
+    #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
+} RabbitizerRegister_R4000AllegrexVfpuControl;
+
+typedef enum RabbitizerRegister_R4000AllegrexVConstant {
+    #include "registers/RabbitizerRegister_R4000AllegrexVConstant.inc"
+} RabbitizerRegister_R4000AllegrexVConstant;
+
+/* R4000ALLEGREX */
+
 /* R5900 */
 
 typedef enum RabbitizerRegister_R5900VF {

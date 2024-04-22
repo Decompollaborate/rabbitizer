@@ -9,7 +9,7 @@
     { "RegCop1N64", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
-    { "RegCop1N64", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
+    RABBITIZER_DEF_REG(prefix, name, numeric, __VARGS__)
 
 RabbitizerEnumMetadata rabbitizer_enum_RegCop1N64_enumvalues[] = {
     #include "tables/registers/RabbitizerRegister_Cop1N64.inc"

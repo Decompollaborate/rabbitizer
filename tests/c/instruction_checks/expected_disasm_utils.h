@@ -17,8 +17,15 @@
 #include <assert.h>
 
 #define BOOL_STR(x) ((x) ? "true" : "false")
+#define STR_STARTS_WITH(str, prefix) (strncmp((str), (prefix), strlen((prefix))) == 0)
 
 #define LOG(...)                                \
+    do {                                        \
+        fprintf(stderr, __VA_ARGS__);           \
+        fprintf(stderr, "    File: %s\n", __BASE_FILE__); \
+    } while (0)
+
+#define LOG_END(...)                                \
     do {                                        \
         fprintf(stderr, "%s: ", __BASE_FILE__); \
         fprintf(stderr, __VA_ARGS__);           \
@@ -26,8 +33,8 @@
 
 #define LOG_ENTRY_DATA(entry, instr)                                                                  \
     do {                                                                                              \
-        fprintf(stderr, "        InstrIdType: '%s'\n", RabInstrIdType_getName((instr)->instrIdType)); \
-        fprintf(stderr, "        gnuMode '%s'\n", BOOL_STR((entry)->gnuMode));                        \
+        fprintf(stderr, "    InstrIdType: '%s'\n", RabInstrIdType_getName((instr)->instrIdType)); \
+        fprintf(stderr, "    gnuMode: '%s'\n", BOOL_STR((entry)->gnuMode));                        \
         fprintf(stderr, "\n");                                                                        \
     } while (0)
 
@@ -65,6 +72,10 @@ typedef struct TestEntry {
 #define TEST_ENTRY(cat, w, imm, expected, ...) \
     { .category = cat, .word = w, .immOverride = imm, .expectedStr = expected, .gnuMode = true, __VA_ARGS__ }
 
+// Must be defined by the test
+const TestEntry test_entries[];
+size_t test_entries_len;
+
 typedef struct InstrInitInfo {
     void (*init)(RabbitizerInstruction *self, uint32_t word, uint32_t vram);
     void (*processUniqueId)(RabbitizerInstruction *self);
@@ -82,6 +93,7 @@ const InstrInitInfo initInfos[] = {
     INIT_INFOS(CPU, ),
     INIT_INFOS(RSP, Rsp),
     INIT_INFOS(R3000GTE, R3000GTE),
+    INIT_INFOS(R4000ALLEGREX, R4000Allegrex),
     INIT_INFOS(R5900, R5900),
 };
 
@@ -124,6 +136,14 @@ int check_duplicated_entries(size_t entries_len, const TestEntry entries_arr[]) 
                     errorCount++;
                 }
             }
+
+#if 0
+            if (strcmp_null(entries_arr[i].expectedStr, entries_arr[j].expectedStr) == 0) {
+                LOG("Duplicated expected entry. Word: '0x%08X'. immOverride: '%s'. expectedStr: '%s'\n", entries_arr[i].word,
+                    entries_arr[i].immOverride, entries_arr[i].expectedStr);
+                errorCount++;
+            }
+#endif
         }
     }
 
@@ -170,14 +190,65 @@ bool check_expected_output(const TestEntry *entry) {
     return expected;
 }
 
-// Must be defined by the test
-const TestEntry test_entries[];
-size_t test_entries_len;
+void print_expected(void) {
+    size_t i;
+
+    for (i = 0; i < test_entries_len; i++) {
+        const TestEntry *entry = &test_entries[i];
+
+        RabbitizerInstruction instr;
+        const InstrInitInfo *info = &initInfos[entry->category];
+
+        assert(entry->category < RABBITIZER_INSTRCAT_MAX);
+
+        RabbitizerConfig_Cfg.toolchainTweaks.gnuMode = entry->gnuMode;
+
+        info->init(&instr, entry->word, 0);
+        info->processUniqueId(&instr);
+
+        if (!STR_STARTS_WITH(entry->expectedStr, ".word       ")) {
+            printf("%s\n", entry->expectedStr);
+        }
+
+        info->destroy(&instr);
+    }
+}
+
+bool process_argv(int argc, char *argv[]) {
+    bool ret = false;
+    int i;
+
+    for (i = 1; i < argc; i++) {
+        const char *opt = argv[i];
+
+        if (strcmp(opt, "--print-expected") == 0) {
+            print_expected();
+            ret = true;
+        } else {
+            LOG_END("Unknown option: '%s'\n", opt);
+            ret = true;
+        }
+    }
+
+    return ret;
+}
 
 #ifndef AVOID_DEF_MAIN
-int main() {
-    int errorCount = check_duplicated_entries(test_entries_len, test_entries);
+int main(int argc, char *argv[]) {
+    int errorCount;
     size_t i;
+
+    if (process_argv(argc, argv)) {
+        return 0;
+    }
+
+    errorCount = check_duplicated_entries(test_entries_len, test_entries);
+
+    if (errorCount != 0) {
+        LOG_END("Found %i duplicated entries. Stopping\n", errorCount);
+
+        return errorCount;
+    }
 
     for (i = 0; i < test_entries_len; i++) {
         if (!check_expected_output(&test_entries[i])) {
@@ -185,7 +256,7 @@ int main() {
         }
     }
 
-    LOG("%i errors out of %zu entries\n", errorCount, test_entries_len);
+    LOG_END("%i errors out of %zu entries. %.2f%% correct.\n\n", errorCount, test_entries_len, (double)((test_entries_len - errorCount) / (float)test_entries_len * 100.0f));
 
     return errorCount;
 }
