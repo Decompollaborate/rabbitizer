@@ -229,3 +229,5 @@ Cargo.lock
 # Added by cargo
 
 /target
+
+.make_options

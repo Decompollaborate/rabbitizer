@@ -51,6 +51,20 @@ extern const RabbitizerRegisterDescriptor RabbitizerRegister_RspVector_Descripto
 
 /* RSP */
 
+/* R4000ALLEGREX */
+
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexS_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexV2D_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexV3D_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexV4D_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM2x2_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM3x3_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexM4x4_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors[];
+extern const RabbitizerRegisterDescriptor RabbitizerRegister_R4000AllegrexVConstant_Descriptors[];
+
+/* R4000ALLEGREX */
+
 /* R5900 */
 
 extern const RabbitizerRegisterDescriptor RabbitizerRegister_R5900VF_Descriptors[];

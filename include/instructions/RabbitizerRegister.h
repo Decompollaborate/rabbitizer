@@ -31,6 +31,7 @@ extern const char *RabbitizerRegister_RspCop0_Names[][2];
 extern const char *RabbitizerRegister_RspCop2_Names[][2];
 extern const char *RabbitizerRegister_RspCop2Control_Names[][2];
 extern const char *RabbitizerRegister_RspVector_Names[][2];
+extern const char *RabbitizerRegister_R4000AllegrexS_Names[][2];
 extern const char *RabbitizerRegister_R5900VF_Names[][2];
 extern const char *RabbitizerRegister_R5900VI_Names[][2];
 
@@ -56,6 +57,25 @@ NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspCop2Control(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameRspVector(uint8_t regValue);
+
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexS(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexV2D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexV3D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexV4D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexM2x2(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexM3x3(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexM4x4(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexVfpuControl(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const char *RabbitizerRegister_getNameR4000AllegrexVConstant(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const char *RabbitizerRegister_getNameR5900VF(uint8_t regValue);
@@ -85,6 +105,25 @@ NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspCop2Control(uint8_t regValue);
 NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_RspVector(uint8_t regValue);
+
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexS(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV2D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV3D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexV4D(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM2x2(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM3x3(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexM4x4(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVfpuControl(uint8_t regValue);
+NODISCARD PURE RETURNS_NON_NULL
+const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R4000AllegrexVConstant(uint8_t regValue);
 
 NODISCARD PURE RETURNS_NON_NULL
 const RabbitizerRegisterDescriptor *RabbitizerRegister_getDescriptor_R5900VF(uint8_t regValue);

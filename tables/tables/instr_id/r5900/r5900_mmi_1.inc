@@ -6,14 +6,14 @@
     |           |                               |function  |  MMI1  |
     ------6----------------------------------------------------6-----
     |---00--|---01--|---10--|---11--| lo
-000 |  ---  | PABSW | PCEQW | PMINW |
+000 | ---   | PABSW | PCEQW | PMINW |
 001 |PADSBH | PABSH | PCEQH | PMINH |
-010 |  ---  |  ---  | PCEQB |  ---  |
-011 |  ---  |  ---  |  ---  |  ---  |
-100 |PADDUW |PSUBUW |PEXTUW |  ---  |
-101 |PADDUH |PSUBUH |PEXTUH |  ---  |
+010 | ---   | ---   | PCEQB | ---   |
+011 | ---   | ---   | ---   | ---   |
+100 |PADDUW |PSUBUW |PEXTUW | ---   |
+101 |PADDUH |PSUBUH |PEXTUH | ---   |
 110 |PADDUB |PSUBUB |PEXTUB | QFSRV |
-111 |  ---  |  ---  |  ---  |  ---  |
+111 | ---   | ---   | ---   | ---   |
  hi |-------|-------|-------|-------|
 */
 

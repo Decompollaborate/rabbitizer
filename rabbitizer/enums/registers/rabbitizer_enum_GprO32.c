@@ -9,7 +9,7 @@
     { "RegGprO32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, numeric, ...) \
-    { "RegGprO32", #name, RABBITIZER_REG_##prefix##_##name, false, NULL },
+    RABBITIZER_DEF_REG(prefix, name, numeric, __VARGS__)
 
 RabbitizerEnumMetadata rabbitizer_enum_RegGprO32_enumvalues[] = {
     #include "tables/registers/RabbitizerRegister_GprO32.inc"

@@ -1,6 +1,25 @@
 /* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+/*
+    31---------26---------------------------------------------------0
+    |  opcode   |                                                   |
+    ------6----------------------------------------------------------
+    |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| lo
+000 | *1    | *2    | J     | JAL   | BEQ   | BNE   | BLEZ  | BGTZ  |
+001 | ADDI  | ADDIU | SLTI  | SLTIU | ANDI  | ORI   | XORI  | LUI   |
+010 | *3    | *4    |  *5   | ---   | BEQL  | BNEL  | BLEZL | BGTZL |
+011 | DADDI | DADDIU| LDL   | LDR   | ---   | ---   | ---   | ---   |
+100 | LB    | LH    | LWL   | LW    | LBU   | LHU   | LWR   | LWU   |
+101 | SB    | SH    | SWL   | SW    | SDL   | SDR   | SWR   | CACHE |
+110 | LL    | LWC1  | LWC2  | PREF  | LLD   | LDC1  | LDC2  | LD    |
+111 | SC    | SWC1  | SWC2  | ---   | SCD   | SDC1  | SDC2  | SD    |
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
+     *1 = SPECIAL, see SPECIAL list    *2 = REGIMM, see REGIMM list
+     *3 = COP0                         *4 = COP1
+     *5 = COP2
+*/
+
     // OP LABEL
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x02, j,

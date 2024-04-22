@@ -166,6 +166,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(RabbitizerInstructio
     switch (fmt) {
 #include "tables/instr_id/cpu/cpu_cop0_bc0.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(RabbitizerInstruction *self) {
@@ -177,6 +179,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(RabbitizerInstructio
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop0_tlb.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *self) {
@@ -210,6 +214,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(RabbitizerInstructio
     switch (fmt) {
 #include "tables/instr_id/cpu/cpu_cop1_bc1.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(RabbitizerInstruction *self) {
@@ -221,6 +227,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(RabbitizerInstructi
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_s.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuD(RabbitizerInstruction *self) {
@@ -232,6 +240,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuD(RabbitizerInstructi
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_d.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(RabbitizerInstruction *self) {
@@ -243,6 +253,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(RabbitizerInstructi
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_w.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuL(RabbitizerInstruction *self) {
@@ -254,6 +266,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuL(RabbitizerInstructi
     switch (function) {
 #include "tables/instr_id/cpu/cpu_cop1_fpu_l.inc"
     }
+
+    self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
 void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *self) {

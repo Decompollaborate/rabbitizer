@@ -8,12 +8,12 @@
     |---00--|---01--|---10--|---11--| lo
 000 |PADDW  | PSUBW | PCGTW | PMAXW |
 001 |PADDH  | PSUBH | PCGTH | PMAXH |
-010 |PADDB  | PSUBB | PCGTB |  ---  |
-011 | ---   | ---   |  ---  |  ---  |
+010 |PADDB  | PSUBB | PCGTB | ---   |
+011 | ---   | ---   | ---   | ---   |
 100 |PADDSW |PSUBSW |PEXTLW | PPACW |
 101 |PADDSH |PSUBSH |PEXTLH | PPACH |
 110 |PADDSB |PSUBSB |PEXTLB | PPACB |
-111 | ---   |  ---  | PEXT5 | PPAC5 |
+111 | ---   | ---   | PEXT5 | PPAC5 |
  hi |-------|-------|-------|-------|
 */
 

@@ -1,4 +1,8 @@
 # Build options can be changed by modifying the makefile or by building with 'make SETTING=value'.
+# It is also possible to override the settings in Defaults in a file called .make_options as 'SETTING=value'.
+
+-include .make_options
+
 DEBUG           ?= 0
 WERROR          ?= 0
 ASAN            ?= 0
@@ -24,6 +28,7 @@ WARNINGS        += -Werror=unused-parameter -Werror=shadow -Werror=switch -Werro
 WARNINGS_C      := -Werror=implicit-function-declaration -Werror=incompatible-pointer-types
 WARNINGS        += -Werror=type-limits
 WARNINGS_CXX    :=
+WARNINGS_ELFS   := -Wno-override-init
 
 ifeq ($(CC),gcc)
     WARNINGS    += -Wno-cast-function-type -Wformat-truncation -Wformat-overflow -Wno-nonnull-compare
@@ -67,12 +72,12 @@ CXX_FILES       := $(foreach dir,$(SRCXX_DIRS),$(wildcard $(dir)/*.cpp))
 HXX_FILES       := $(foreach dir,$(IINC_XX),$(wildcard $(dir)/**/*.hpp))
 OXX_FILES       := $(foreach f,$(CXX_FILES:.cpp=.o),build/$f)
 
-DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d)
-
-TESTS_DIRS      := $(shell find tests -type d)
+TESTS_DIRS      := $(shell find tests -mindepth 1 -type d -not -path "tests/asm*")
 TESTS_C         := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.c))
 TESTS_CXX       := $(foreach dir,$(TESTS_DIRS),$(wildcard $(dir)/*.cpp))
 TESTS_ELFS      := $(foreach f,$(TESTS_C:.c=.elf) $(TESTS_CXX:.cpp=.elf),build/$f)
+
+DEP_FILES       := $(O_FILES:%.o=%.d) $(OXX_FILES:%.o=%.d) $(TESTS_ELFS:%.elf=%.d)
 
 STATIC_LIB      := build/librabbitizer.a
 DYNAMIC_LIB     := build/librabbitizer.so
@@ -132,10 +137,10 @@ tests: $(TESTS_ELFS)
 #### Various Recipes ####
 
 build/%.elf: %.c $(STATIC_LIB)
-	$(CC) -MMD -MP $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(CFLAGS) -o $@ $< $(LDFLAGS)
+	$(CC) -MMD -MP $(CSTD) $(OPTFLAGS) $(IINC) $(WARNINGS) $(WARNINGS_C) $(WARNINGS_ELFS) $(CFLAGS) -o $@ $< $(LDFLAGS)
 
 build/%.elf: %.cpp $(STATIC_LIB_XX)
-	$(CXX) -MMD -MP $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(CXXFLAGS) -o $@ $< $(LDXXFLAGS)
+	$(CXX) -MMD -MP $(CXXSTD) $(OPTFLAGS) $(IINC_XX) $(WARNINGS) $(WARNINGS_CXX) $(WARNINGS_ELFS) $(CXXFLAGS) -o $@ $< $(LDXXFLAGS)
 
 build/%.a:
 	$(AR) rcs $@ $^

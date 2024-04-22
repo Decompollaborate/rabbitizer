@@ -63,6 +63,13 @@ extern "C" {
 }
 
 extern "C" {
+    fn RabbitizerInstructionR4000Allegrex_init(self_: *mut Instruction, word: u32, vram: u32);
+    fn RabbitizerInstructionR4000Allegrex_destroy(self_: *mut Instruction);
+
+    fn RabbitizerInstructionR4000Allegrex_processUniqueId(self_: *mut Instruction);
+}
+
+extern "C" {
     fn RabbitizerInstruction_getRaw(self_: *const Instruction) -> u32;
     fn RabbitizerInstruction_getProcessedImmediate(self_: *const Instruction) -> i32;
     fn RabbitizerInstruction_getInstrIndexAsVram(self_: *const Instruction) -> u32;
@@ -209,6 +216,9 @@ impl Drop for Instruction {
                 instr_category_enum::InstrCategory::R5900 => {
                     RabbitizerInstructionR5900_destroy(self);
                 }
+                instr_category_enum::InstrCategory::R4000ALLEGREX => {
+                    RabbitizerInstructionR4000Allegrex_destroy(self);
+                }
                 instr_category_enum::InstrCategory::MAX => {
                     core::panic!();
                 }
@@ -237,6 +247,10 @@ impl Instruction {
                 instr_category_enum::InstrCategory::R5900 => {
                     RabbitizerInstructionR5900_init(instr.as_mut_ptr(), word, vram);
                     RabbitizerInstructionR5900_processUniqueId(instr.as_mut_ptr());
+                }
+                instr_category_enum::InstrCategory::R4000ALLEGREX => {
+                    RabbitizerInstructionR4000Allegrex_init(instr.as_mut_ptr(), word, vram);
+                    RabbitizerInstructionR4000Allegrex_processUniqueId(instr.as_mut_ptr());
                 }
                 instr_category_enum::InstrCategory::MAX => {
                     core::panic!();

@@ -17,6 +17,19 @@ int main() {
     size_t rs;
     int errorCount = 0;
 
+    /**
+     * Generates and checks all possible jalr combinations.
+     *
+     * jalr has 2 syntaxes, one for an explicit return address and another for an implicit one
+     * (implicit assumes $ra).
+     * Both syntaxes use an explicit register to jump to.
+     *
+     * Since I didn't want to make a TestEntry array with all the 1024 combinations then I'm
+     * manually checking each part of the disassembled instruction to match what I expect.
+     *
+     * Checking all the possible combinations is overkill, but the test is already written, so meh.
+     */
+
     for (rs = 0; rs < RAB_REGISTERS_COUNT; rs++) {
         uint32_t shifted_rs = RAB_INSTR_PACK_rs(0, rs);
         size_t rd;
@@ -42,6 +55,8 @@ int main() {
                 bufferPtr += strlen(INSTR_OPCODE_PREFIX);
 
                 if (rd == RABBITIZER_REG_GPR_O32_ra) {
+                    /* Implicit return address */
+
                     if (!STR_STARTS_WITH(bufferPtr, rsName)) {
                         fprintf(stderr, "Error in word 0x%08X. Expected '%s', got '%s'\n", new_word, rsName, bufferPtr);
                         errorCount++;
@@ -54,6 +69,8 @@ int main() {
                         }
                     }
                 } else {
+                    /* Explicit return address */
+
                     const char *rdName = RabbitizerRegister_getNameGpr(rd);
 
                     if (!STR_STARTS_WITH(bufferPtr, rdName)) {

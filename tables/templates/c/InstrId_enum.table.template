@@ -10,7 +10,8 @@
 typedef enum RabbitizerInstrId {
     #include "InstrIds.inc"
 
-    RABBITIZER_INSTR_ID_ALL_MAX = RABBITIZER_DEF_INSTR_ID(r5900, , MAX, )
+    RABBITIZER_INSTR_ID_ALL_LAST,
+    RABBITIZER_INSTR_ID_ALL_MAX = RABBITIZER_INSTR_ID_ALL_LAST - 1
 } RabbitizerInstrId;
 
 #undef RABBITIZER_DEF_INSTR_ID

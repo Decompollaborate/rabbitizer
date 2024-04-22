@@ -53,6 +53,63 @@ class OperandType:
     r3000gte_v: Enum
     r3000gte_cv: Enum
     r3000gte_lm: Enum
+    r4000allegrex_s_vs: Enum
+    r4000allegrex_s_vt: Enum
+    r4000allegrex_s_vd: Enum
+    r4000allegrex_s_vt_imm: Enum
+    r4000allegrex_s_vd_imm: Enum
+    r4000allegrex_p_vs: Enum
+    r4000allegrex_p_vt: Enum
+    r4000allegrex_p_vd: Enum
+    r4000allegrex_t_vs: Enum
+    r4000allegrex_t_vt: Enum
+    r4000allegrex_t_vd: Enum
+    r4000allegrex_q_vs: Enum
+    r4000allegrex_q_vt: Enum
+    r4000allegrex_q_vd: Enum
+    r4000allegrex_q_vt_imm: Enum
+    r4000allegrex_mp_vs: Enum
+    r4000allegrex_mp_vt: Enum
+    r4000allegrex_mp_vd: Enum
+    r4000allegrex_mp_vs_transpose: Enum
+    r4000allegrex_mt_vs: Enum
+    r4000allegrex_mt_vt: Enum
+    r4000allegrex_mt_vd: Enum
+    r4000allegrex_mt_vs_transpose: Enum
+    r4000allegrex_mq_vs: Enum
+    r4000allegrex_mq_vt: Enum
+    r4000allegrex_mq_vd: Enum
+    r4000allegrex_mq_vs_transpose: Enum
+    r4000allegrex_cop2cs: Enum
+    r4000allegrex_cop2cd: Enum
+    r4000allegrex_pos: Enum
+    r4000allegrex_size: Enum
+    r4000allegrex_size_plus_pos: Enum
+    r4000allegrex_imm3: Enum
+    r4000allegrex_offset14_base: Enum
+    r4000allegrex_offset14_base_maybe_wb: Enum
+    r4000allegrex_vcmp_cond: Enum
+    r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt: Enum
+    r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt: Enum
+    r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt: Enum
+    r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt: Enum
+    r4000allegrex_vconstant: Enum
+    r4000allegrex_power_of_two: Enum
+    r4000allegrex_vfpu_cc_bit: Enum
+    r4000allegrex_bn: Enum
+    r4000allegrex_int16: Enum
+    r4000allegrex_float16: Enum
+    r4000allegrex_p_vrot_code: Enum
+    r4000allegrex_t_vrot_code: Enum
+    r4000allegrex_q_vrot_code: Enum
+    r4000allegrex_rpx: Enum
+    r4000allegrex_rpy: Enum
+    r4000allegrex_rpz: Enum
+    r4000allegrex_rpw: Enum
+    r4000allegrex_wpx: Enum
+    r4000allegrex_wpy: Enum
+    r4000allegrex_wpz: Enum
+    r4000allegrex_wpw: Enum
     r5900_I: Enum
     r5900_Q: Enum
     r5900_R: Enum

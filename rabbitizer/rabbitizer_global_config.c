@@ -106,6 +106,7 @@ DEF_MEMBER_GET_SET_ABI(regNames, fprAbiNames)
 DEF_MEMBER_GET_SET_BOOL(regNames, userFpcCsr)
 DEF_MEMBER_GET_SET_BOOL(regNames, vr4300Cop0NamedRegisters)
 DEF_MEMBER_GET_SET_BOOL(regNames, vr4300RspCop0NamedRegisters)
+DEF_MEMBER_GET_SET_BOOL(regNames, r4000AllegrexVfpuControlNamedRegisters)
 
 DEF_MEMBER_GET_SET_BOOL(pseudos, enablePseudos)
 DEF_MEMBER_GET_SET_BOOL(pseudos, pseudoBeqz)
@@ -134,6 +135,7 @@ static PyGetSetDef rabbitizer_global_config_GetSets[] = {
     MEMBER_GET_SET(regNames, userFpcCsr, "", NULL),
     MEMBER_GET_SET(regNames, vr4300Cop0NamedRegisters, "", NULL),
     MEMBER_GET_SET(regNames, vr4300RspCop0NamedRegisters, "", NULL),
+    MEMBER_GET_SET(regNames, r4000AllegrexVfpuControlNamedRegisters, "", NULL),
 
     MEMBER_GET_SET(pseudos, enablePseudos, "", NULL),
     MEMBER_GET_SET(pseudos, pseudoBeqz, "", NULL),

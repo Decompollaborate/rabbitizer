@@ -8,6 +8,7 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerInstructionRsp.h"
 #include "instructions/RabbitizerInstructionR3000GTE.h"
+#include "instructions/RabbitizerInstructionR4000Allegrex.h"
 #include "instructions/RabbitizerInstructionR5900.h"
 #include "instructions/RabbitizerRegister.h"
 
@@ -400,6 +401,155 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
                 validbits = RAB_INSTR_R3000GTE_PACK_lm(validbits, ~0);
                 break;
             /* r3000gte */
+
+            /* r4000allegrex */
+            case RAB_OPERAND_r4000allegrex_s_vs:
+            case RAB_OPERAND_r4000allegrex_p_vs:
+            case RAB_OPERAND_r4000allegrex_t_vs:
+            case RAB_OPERAND_r4000allegrex_q_vs:
+            case RAB_OPERAND_r4000allegrex_mp_vs:
+            case RAB_OPERAND_r4000allegrex_mt_vs:
+            case RAB_OPERAND_r4000allegrex_mq_vs:
+            case RAB_OPERAND_r4000allegrex_mp_vs_transpose:
+            case RAB_OPERAND_r4000allegrex_mt_vs_transpose:
+            case RAB_OPERAND_r4000allegrex_mq_vs_transpose:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vs(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vt:
+            case RAB_OPERAND_r4000allegrex_p_vt:
+            case RAB_OPERAND_r4000allegrex_t_vt:
+            case RAB_OPERAND_r4000allegrex_q_vt:
+            case RAB_OPERAND_r4000allegrex_mp_vt:
+            case RAB_OPERAND_r4000allegrex_mt_vt:
+            case RAB_OPERAND_r4000allegrex_mq_vt:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vd:
+            case RAB_OPERAND_r4000allegrex_p_vd:
+            case RAB_OPERAND_r4000allegrex_t_vd:
+            case RAB_OPERAND_r4000allegrex_q_vd:
+            case RAB_OPERAND_r4000allegrex_mp_vd:
+            case RAB_OPERAND_r4000allegrex_mt_vd:
+            case RAB_OPERAND_r4000allegrex_mq_vd:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vd(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vt_imm:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt_imm(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_s_vd_imm:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vd_imm(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_q_vt_imm:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt_6_imm(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_cop2cs:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_cop2cs(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_cop2cd:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_cop2cd(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_pos:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_pos(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_size:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_size(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_size_plus_pos:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_size_plus_pos(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_imm3:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_imm3(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_wb(validbits, ~0);
+                FALLTHROUGH;
+            case RAB_OPERAND_r4000allegrex_offset14_base:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_offset14(validbits, ~0);
+                validbits = RAB_INSTR_PACK_rs(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt:
+            case RAB_OPERAND_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vs(validbits, ~0);
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vt(validbits, ~0);
+                FALLTHROUGH;
+            case RAB_OPERAND_r4000allegrex_vcmp_cond:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vcmp_cond(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vconstant:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vconstant(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_power_of_two:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_power_of_two(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_vfpu_cc_bit:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu_cc_bit(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_bn:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_bn(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_int16:
+            case RAB_OPERAND_r4000allegrex_float16:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_intfloat16(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_p_vrot_code:
+            case RAB_OPERAND_r4000allegrex_t_vrot_code:
+            case RAB_OPERAND_r4000allegrex_q_vrot_code:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_vrot_code(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpx:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_rpx(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpy:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_rpy(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpz:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_rpz(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_rpw:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_rpw(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpx:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_wpx(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpy:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_wpy(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpz:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_wpz(validbits, ~0);
+                break;
+
+            case RAB_OPERAND_r4000allegrex_wpw:
+                validbits = RAB_INSTR_R4000ALLEGREX_PACK_wpw(validbits, ~0);
+                break;
+            /* r4000allegrex */
 
             /* r5900 */
             case RAB_OPERAND_r5900_I:
