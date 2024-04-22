@@ -494,10 +494,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MTHC2(Rabbi
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu0(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU0;
 
     switch (fmt) {
@@ -510,10 +510,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu0(RabbitizerInstruct
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu1(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU1;
 
     switch (fmt) {
@@ -526,10 +526,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu1(RabbitizerInstruct
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu3(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU3;
 
     switch (fmt) {
@@ -648,10 +648,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0(RabbitizerIns
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT0;
 
     switch (fmt) {
@@ -664,10 +664,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0(Rabbitiz
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2;
 
     switch (fmt) {
@@ -680,10 +680,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2(Rabbitiz
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt3(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT3;
 
     switch (fmt) {
@@ -696,10 +696,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt3(Rabbitiz
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Rnd(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_RND;
 
     switch (fmt) {
@@ -712,10 +712,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Rnd(Rabbitize
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtFlt(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_CVTFLT;
 
     switch (fmt) {
@@ -728,10 +728,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtFlt(Rabbit
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtInt(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_CVTINT;
 
     switch (fmt) {
@@ -744,10 +744,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtInt(Rabbit
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt8(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT8;
 
     switch (fmt) {
@@ -760,10 +760,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt8(Rabbitiz
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt9(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT9;
 
     switch (fmt) {
@@ -776,10 +776,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt9(Rabbitiz
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Control(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_CONTROL;
 
     switch (fmt) {
@@ -792,10 +792,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Control(Rabbi
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Color(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt0_fmt0_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt0_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt0_fmt0_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_COLOR;
 
     switch (fmt) {
@@ -848,10 +848,10 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerIns
 }
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_CndMove(RabbitizerInstruction *self) {
-    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt2_fmt5_fmt_tp(self);
+    uint32_t fmt = RAB_INSTR_R4000ALLEGREX_GET_vfpu4_fmt2_cndmove_fmt(self);
     bool fetchDescriptor = true;
 
-    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt2_fmt5_fmt_tp(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R4000ALLEGREX_PACK_vfpu4_fmt2_cndmove_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT2_CNDMOVE;
 
     switch (fmt) {
