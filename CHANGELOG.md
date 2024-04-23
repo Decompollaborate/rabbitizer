@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- New global configuration:
+  - `misc_expandJalr`: If `True` then `jalr` instructions will be always emitted
+    with two operands. Otherwise the `rd` register will be omitted if it is
+    `$ra` and will be used explicitly if it isn't `$ra`. Defaults to `False`.
+
 ## [1.10.0] - 2024-04-22
 
 ### Added
@@ -565,8 +572,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Many cleanups and formats
 
 ## [1.0.0] - 2022-07-07
-
-### Uncategorized
 
 ### Added
 

@@ -291,7 +291,7 @@ size_t RabbitizerOperandType_process_cpu_maybe_rd_rs(const RabbitizerInstruction
     uint8_t rd = RAB_INSTR_GET_rd(self);
     const RabbitizerRegisterDescriptor *regDescriptor = RabbitizerRegister_getDescriptor_Gpr(rd);
 
-    if (!RabbitizerRegisterDescriptor_isRa(regDescriptor)) {
+    if (!RabbitizerRegisterDescriptor_isRa(regDescriptor) || RabbitizerConfig_Cfg.misc.expandJalr) {
         RABUTILS_BUFFER_ADVANCE(dst, totalSize,
                                 RabbitizerOperandType_process_cpu_rd(self, dst, immOverride, immOverrideLength));
 
