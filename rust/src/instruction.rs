@@ -709,7 +709,7 @@ impl Instruction {
             let buffer_size =
                 RabbitizerInstruction_getSizeForBuffer(self, imm_override_len, extra_l_just);
 
-            let mut buffer: Vec<u8> = vec![0; buffer_size];
+            let mut buffer: Vec<u8> = vec![0; buffer_size + 1];
             let disassembled_size = RabbitizerInstruction_disassemble(
                 self,
                 buffer.as_mut_ptr() as *mut core::ffi::c_char,
