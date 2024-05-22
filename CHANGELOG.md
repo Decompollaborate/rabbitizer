@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     with two operands. Otherwise the `rd` register will be omitted if it is
     `$ra` and will be used explicitly if it isn't `$ra`. Defaults to `False`.
 
+### Fixed
+
+- Fix crash in Rust bindings for to Rust 1.78.
+  - This happens because `slice.get_unchecked` now performs OoB checks in debug
+    builds, which is is triggered when trying to dereference unsized C arrays.
+
 ## [1.10.0] - 2024-04-22
 
 ### Added

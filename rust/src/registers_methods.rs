@@ -110,7 +110,11 @@ impl registers_enum::registers::GprO32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_GprO32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_GprO32_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -128,7 +132,11 @@ impl registers_enum::registers::GprN32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_GprN32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_GprN32_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -146,7 +154,11 @@ impl registers_enum::registers::Cop0 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_Cop0_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_Cop0_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -164,7 +176,11 @@ impl registers_enum::registers::Cop1O32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_Cop1O32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_Cop1O32_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -182,7 +198,11 @@ impl registers_enum::registers::Cop1N32 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_Cop1N32_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_Cop1N32_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -200,7 +220,11 @@ impl registers_enum::registers::Cop1N64 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_Cop1N64_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_Cop1N64_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -218,7 +242,11 @@ impl registers_enum::registers::Cop1Control {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_Cop1Control_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_Cop1Control_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -236,7 +264,11 @@ impl registers_enum::registers::Cop2 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_Cop2_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_Cop2_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -254,7 +286,11 @@ impl registers_enum::registers::RspGpr {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_RspGpr_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_RspGpr_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -272,7 +308,11 @@ impl registers_enum::registers::RspCop0 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_RspCop0_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_RspCop0_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -290,7 +330,11 @@ impl registers_enum::registers::RspCop2 {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_RspCop2_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_RspCop2_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -308,7 +352,11 @@ impl registers_enum::registers::RspCop2Control {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_RspCop2Control_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_RspCop2Control_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -326,7 +374,11 @@ impl registers_enum::registers::RspVector {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_RspVector_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_RspVector_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -344,7 +396,11 @@ impl registers_enum::registers::R4000AllegrexS {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_R4000AllegrexS_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_R4000AllegrexS_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -364,7 +420,11 @@ impl registers_enum::registers::R4000AllegrexV2D {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_R4000AllegrexV2D_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_R4000AllegrexV2D_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -384,7 +444,11 @@ impl registers_enum::registers::R4000AllegrexV3D {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_R4000AllegrexV3D_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_R4000AllegrexV3D_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -404,7 +468,11 @@ impl registers_enum::registers::R4000AllegrexV4D {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_R4000AllegrexV4D_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_R4000AllegrexV4D_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -425,7 +493,9 @@ impl registers_enum::registers::R4000AllegrexM2x2 {
         let reg_value: u32 = (*self).into();
 
         unsafe {
-            RabbitizerRegister_R4000AllegrexM2x2_Descriptors.get_unchecked(reg_value as usize)
+            &*RabbitizerRegister_R4000AllegrexM2x2_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
         }
     }
 }
@@ -447,7 +517,9 @@ impl registers_enum::registers::R4000AllegrexM3x3 {
         let reg_value: u32 = (*self).into();
 
         unsafe {
-            RabbitizerRegister_R4000AllegrexM3x3_Descriptors.get_unchecked(reg_value as usize)
+            &*RabbitizerRegister_R4000AllegrexM3x3_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
         }
     }
 }
@@ -469,7 +541,9 @@ impl registers_enum::registers::R4000AllegrexM4x4 {
         let reg_value: u32 = (*self).into();
 
         unsafe {
-            RabbitizerRegister_R4000AllegrexM4x4_Descriptors.get_unchecked(reg_value as usize)
+            &*RabbitizerRegister_R4000AllegrexM4x4_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
         }
     }
 }
@@ -491,8 +565,9 @@ impl registers_enum::registers::R4000AllegrexVfpuControl {
         let reg_value: u32 = (*self).into();
 
         unsafe {
-            RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors
-                .get_unchecked(reg_value as usize)
+            &*RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
         }
     }
 }
@@ -514,7 +589,9 @@ impl registers_enum::registers::R4000AllegrexVConstant {
         let reg_value: u32 = (*self).into();
 
         unsafe {
-            RabbitizerRegister_R4000AllegrexVConstant_Descriptors.get_unchecked(reg_value as usize)
+            &*RabbitizerRegister_R4000AllegrexVConstant_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
         }
     }
 }
@@ -533,7 +610,11 @@ impl registers_enum::registers::R5900VF {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_R5900VF_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_R5900VF_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
 
@@ -549,6 +630,10 @@ impl registers_enum::registers::R5900VI {
     pub fn descriptor(&self) -> &RegisterDescriptor {
         let reg_value: u32 = (*self).into();
 
-        unsafe { RabbitizerRegister_R5900VI_Descriptors.get_unchecked(reg_value as usize) }
+        unsafe {
+            &*RabbitizerRegister_R5900VI_Descriptors
+                .as_ptr()
+                .offset(reg_value as isize)
+        }
     }
 }
