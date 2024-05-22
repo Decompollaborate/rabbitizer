@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.0] - 2024-05-22
+
+### Added
+
+- New global configuration:
+  - `misc_expandJalr`: If `True` then `jalr` instructions will be always emitted
+    with two operands. Otherwise the `rd` register will be omitted if it is
+    `$ra` and will be used explicitly if it isn't `$ra`. Defaults to `False`.
+
+### Fixed
+
+- Fix crash in Rust bindings for to Rust 1.78.
+  - This happens because `slice.get_unchecked` now performs OoB checks in debug
+    builds, which is is triggered when trying to dereference unsized C arrays.
+- Fix heap corruption in Rust bindings (#62)
+  - The C API was returning string sizes without accounting for the null
+    terminator, which produced issues on the Rust size which was not manually
+    including it.
+
 ## [1.10.0] - 2024-04-22
 
 ### Added
@@ -566,8 +585,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2022-07-07
 
-### Uncategorized
-
 ### Added
 
 - New classes:
@@ -601,6 +618,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.11.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.10.0...1.11.0
 [1.10.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.5...1.10.0
 [1.9.5]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.4...1.9.5
 [1.9.4]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.3...1.9.4

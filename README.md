@@ -17,12 +17,13 @@ MIPS instruction decoder API.
   doesn't allocate in anything in the heap by itself.
 - Other language bindings supported in this repo:
   - Python bindings
-    - The minimal Python version is 3.7, older versions are not guaranteed to work.
+    - The minimal Python version is 3.7, older versions are not guaranteed to
+      work.
   - C++ bindings
   - Rust bindings
 - Simple per-word instruction decoding.
   - The library doesn't try to be too smart by processing multiple instructions
-  at a time.
+    at a time.
 - Can perform validation checks for instructions.
 - Provides many examination/grouping functions for instructions, allowing to
   simplify checking characteristics of an instruction and minimizing the need to
@@ -30,6 +31,9 @@ MIPS instruction decoder API.
 - Includes some minor tools to build your own pointer/symbol detection.
 - Configurable, many features can be turned on and off.
 - MIPS instructions features:
+  - Configurable behavior for the `jalr` instruction, allowing to disassemble
+    that instruction using an implicit or explicit `rd` register depending if
+    that register is `$ra` or not.
   - Named registers for MIPS VR4300's coprocessors.
   - Support for many pseudo-instructions.
   - Properly handle move to/from coprocessor instructions.
@@ -65,7 +69,7 @@ If you use a `requirements.txt` file in your repository, then you can add this
 library with the following line:
 
 ```txt
-rabbitizer>=1.10.0,<2.0.0
+rabbitizer>=1.11.0,<2.0.0
 ```
 
 ### Development version
@@ -105,7 +109,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.10.0"
+rabbitizer = "1.11.0"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.

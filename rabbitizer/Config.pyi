@@ -35,5 +35,6 @@ class _RabbitizerConfig:
     misc_unknownInstrComment: bool = True
     misc_omit0XOnSmallImm: bool = False
     misc_upperCaseImm: bool = True
+    misc_expandJalr: bool = False
 
 config: _RabbitizerConfig

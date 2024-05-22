@@ -49,5 +49,6 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
         .unknownInstrComment = true,
         .omit0XOnSmallImm = false,
         .upperCaseImm = true,
+        .expandJalr = false,
     }
 };

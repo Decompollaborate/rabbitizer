@@ -63,6 +63,7 @@ typedef struct RabbitizerConfig_Misc {
     bool unknownInstrComment; // Generate a pseudo-disassembly comment when disassembling non implemented instructions
     bool omit0XOnSmallImm;
     bool upperCaseImm;
+    bool expandJalr;
 } RabbitizerConfig_Misc;
 
 typedef struct RabbitizerConfig {
