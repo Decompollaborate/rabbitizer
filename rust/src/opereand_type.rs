@@ -30,7 +30,7 @@ impl operand_type_enum::OperandType {
         unsafe {
             let buffer_size = RabbitizerOperandType_getBufferSize(*self, instr, imm_override_len);
 
-            let mut buffer: Vec<u8> = vec![0; buffer_size];
+            let mut buffer: Vec<u8> = vec![0; buffer_size + 1];
             let disassembled_size = RabbitizerOperandType_disassemble(
                 *self,
                 instr,
