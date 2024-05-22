@@ -21,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix crash in Rust bindings for to Rust 1.78.
   - This happens because `slice.get_unchecked` now performs OoB checks in debug
     builds, which is is triggered when trying to dereference unsized C arrays.
+- Fix heap corruption in Rust bindings (#62)
+  - The C API was returning string sizes without accounting for the null
+    terminator, which produced issues on the Rust size which was not manually
+    including it.
 
 ## [1.10.0] - 2024-04-22
 
