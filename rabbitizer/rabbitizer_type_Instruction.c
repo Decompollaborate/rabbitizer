@@ -386,6 +386,7 @@ DEF_METHOD_BOOL(isImplemented)
 DEF_METHOD_BOOL(isLikelyHandwritten)
 DEF_METHOD_BOOL(isNop)
 DEF_METHOD_BOOL(isUnconditionalBranch)
+DEF_METHOD_BOOL(isFunctionCall)
 
 DEF_METHOD_BOOL(isReturn)
 DEF_METHOD_BOOL(isJumptableJump)
@@ -650,6 +651,7 @@ static PyMethodDef rabbitizer_type_Instruction_methods[] = {
     METHOD_NO_ARGS(isLikelyHandwritten, ""),
     METHOD_NO_ARGS(isNop, ""),
     METHOD_NO_ARGS(isUnconditionalBranch, ""),
+    METHOD_NO_ARGS(isFunctionCall, ""),
 
     METHOD_NO_ARGS(isReturn, ""),
     METHOD_NO_ARGS(isJumptableJump, ""),

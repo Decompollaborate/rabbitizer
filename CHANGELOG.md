@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.1] - 2024-07-12
+
+### Added
+
+- `Instruction.isFunctionCall`: Checks if the given instruciton is a function
+  call.
+  - If `config.toolchainTweaks_treatJAsUnconditionalBranch` is turned off then
+    `j` instructions will be considered as function calls too. Useful for tail
+    call optimizations.
+
+### Fixed
+
+- Fix registers not being cleared after a `j` tail call, which was messing with
+  the pointer pairing logic.
+
 ## [1.11.0] - 2024-05-22
 
 ### Added
@@ -618,6 +633,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.11.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.0...1.11.1
 [1.11.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.10.0...1.11.0
 [1.10.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.5...1.10.0
 [1.9.5]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.4...1.9.5

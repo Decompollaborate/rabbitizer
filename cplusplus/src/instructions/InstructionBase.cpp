@@ -787,6 +787,9 @@ bool InstructionBase::isNop() const {
 bool InstructionBase::isUnconditionalBranch() const {
     return RabbitizerInstruction_isUnconditionalBranch(&this->instr);
 }
+bool InstructionBase::isFunctionCall() const {
+    return RabbitizerInstruction_isFunctionCall(&this->instr);
+}
 
 bool InstructionBase::isReturn() const {
     return RabbitizerInstruction_isReturn(&this->instr);

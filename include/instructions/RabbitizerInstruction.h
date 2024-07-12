@@ -241,6 +241,8 @@ NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self);
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *self);
+NODISCARD NON_NULL(1) PURE
+bool RabbitizerInstruction_isFunctionCall(const RabbitizerInstruction *self);
 
 NODISCARD NON_NULL(1) PURE
 bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self);
