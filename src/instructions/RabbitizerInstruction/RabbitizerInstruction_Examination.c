@@ -52,7 +52,7 @@ bool RabbitizerInstruction_isNop(const RabbitizerInstruction *self) {
 }
 
 /**
- * Check if the instruction is an instruction that will always (unconditionally).
+ * Check if the instruction is an instruction that will always branch unconditionally.
  *
  * This is always true for the `b` instruction.
  *
@@ -75,6 +75,32 @@ bool RabbitizerInstruction_isUnconditionalBranch(const RabbitizerInstruction *se
         case RABBITIZER_INSTR_ID_cpu_j:
         case RABBITIZER_INSTR_ID_rsp_j:
             return RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch;
+
+        default:
+            return false;
+    }
+}
+
+/**
+ * Check if this is an instruction used for function calls.
+ *
+ * This is always true for "and link" instructions.
+ *
+ * Some compilers use the `j` instruction for tail call optimizations, meaning
+ * we may require to give special treatment to this instruction if we are
+ * analyzing code emitted by one of those compilers, like clearing registers
+ * after a tail call. This can be configured by turning off the
+ * `config.toolchainTweaks_treatJAsUnconditionalBranch` option.
+ */
+bool RabbitizerInstruction_isFunctionCall(const RabbitizerInstruction *self) {
+    if (RabbitizerInstrDescriptor_doesLink(self->descriptor)) {
+        return true;
+    }
+
+    switch (self->uniqueId) {
+        case RABBITIZER_INSTR_ID_cpu_j:
+        case RABBITIZER_INSTR_ID_rsp_j:
+            return !RabbitizerConfig_Cfg.toolchainTweaks.treatJAsUnconditionalBranch;
 
         default:
             return false;

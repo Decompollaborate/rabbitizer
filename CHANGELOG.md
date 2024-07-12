@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `Instruction.isFunctionCall`: Checks if the given instruciton is a function
+  call.
+  - If `config.toolchainTweaks_treatJAsUnconditionalBranch` is turned off then
+    `j` instructions will be considered as function calls too. Useful for tail
+    call optimizations.
+
+### Fixed
+
+- Fix registers not being cleared after a `j` tail call, which was messing with
+  the pointer pairing logic.
+
 ## [1.11.0] - 2024-05-22
 
 ### Added

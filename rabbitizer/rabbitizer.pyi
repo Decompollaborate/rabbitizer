@@ -181,7 +181,7 @@ class Instruction:
     def isNop(self) -> bool:
         """Check if the instruction is literally the `nop` instruction."""
     def isUnconditionalBranch(self) -> bool:
-        """Check if the instruction is an instruction that will always (unconditionally).
+        """Check if the instruction is an instruction that will always branch unconditionally.
 
         This is always true for the `b` instruction.
 
@@ -189,6 +189,17 @@ class Instruction:
         of the `b` instruction. Treating this instruction as an unconditional branch
         can be configured with the `config.toolchainTweaks_treatJAsUnconditionalBranch`
         option.
+        """
+    def isFunctionCall(self) -> bool:
+        """Check if this is an instruction used for function calls.
+
+        This is always true for "and link" instructions.
+
+        Some compilers use the `j` instruction for tail call optimizations, meaning
+        we may require to give special treatment to this instruction if we are
+        analyzing code emitted by one of those compilers, like clearing registers
+        after a tail call. This can be configured by turning off the
+        `config.toolchainTweaks_treatJAsUnconditionalBranch` option.
         """
 
     def isReturn(self) -> bool:

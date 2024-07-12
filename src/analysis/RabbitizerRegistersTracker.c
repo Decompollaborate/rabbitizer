@@ -147,7 +147,7 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
 void RabbitizerRegistersTracker_unsetRegistersAfterFuncCall(RabbitizerRegistersTracker *self,
                                                             UNUSED const RabbitizerInstruction *instr,
                                                             const RabbitizerInstruction *prevInstr) {
-    if (!RabbitizerInstrDescriptor_doesLink(prevInstr->descriptor)) {
+    if (!RabbitizerInstruction_isFunctionCall(prevInstr)) {
         return;
     }
 

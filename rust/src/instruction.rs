@@ -84,6 +84,7 @@ extern "C" {
     fn RabbitizerInstruction_isLikelyHandwritten(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isNop(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isUnconditionalBranch(self_: *const Instruction) -> bool;
+    fn RabbitizerInstruction_isFunctionCall(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isReturn(self_: *const Instruction) -> bool;
     fn RabbitizerInstruction_isJumptableJump(self_: *const Instruction) -> bool;
 
@@ -545,6 +546,9 @@ impl Instruction {
     }
     pub fn is_unconditional_branch(&self) -> bool {
         unsafe { RabbitizerInstruction_isUnconditionalBranch(self) }
+    }
+    pub fn is_function_call(&self) -> bool {
+        unsafe { RabbitizerInstruction_isFunctionCall(self) }
     }
 
     pub fn is_return(&self) -> bool {

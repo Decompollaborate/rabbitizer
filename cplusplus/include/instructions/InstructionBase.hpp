@@ -198,6 +198,7 @@ namespace rabbitizer {
         bool isLikelyHandwritten() const;
         bool isNop() const;
         bool isUnconditionalBranch() const;
+        bool isFunctionCall() const;
 
         bool isReturn() const;
         bool isJumptableJump() const;
