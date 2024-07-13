@@ -154,6 +154,7 @@ const char *RabbitizerInstrId_Names[] = {
     [RABBITIZER_INSTR_ID_cpu_tlbwi] = "tlbwi",
     [RABBITIZER_INSTR_ID_cpu_tlbwr] = "tlbwr",
     [RABBITIZER_INSTR_ID_cpu_tlbp] = "tlbp",
+    [RABBITIZER_INSTR_ID_cpu_rfe] = "rfe",
     [RABBITIZER_INSTR_ID_cpu_eret] = "eret",
     [RABBITIZER_INSTR_ID_cpu_mfc1] = "mfc1",
     [RABBITIZER_INSTR_ID_cpu_dmfc1] = "dmfc1",

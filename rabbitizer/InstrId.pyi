@@ -155,6 +155,7 @@ class InstrId:
     cpu_tlbwi: Enum
     cpu_tlbwr: Enum
     cpu_tlbp: Enum
+    cpu_rfe: Enum
     cpu_eret: Enum
     cpu_mfc1: Enum
     cpu_dmfc1: Enum

@@ -8,7 +8,7 @@
     |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| lo
 000 | ---   | TLBR  | TLBWI | ---   | ---   | ---   | TLBWR | ---   |
 001 | TLBP  | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
-010 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+010 | RFE   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
 011 | ERET  | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
 100 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
 101 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
@@ -43,6 +43,13 @@
         .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
         .notEmittedByCompilers=true
     ) // Probe TLB for Matching Entry
+
+    RABBITIZER_DEF_INSTR_ID(
+        cpu, 0x10, rfe,
+        .operands={0},
+        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
+        .notEmittedByCompilers=true
+    ) // Restore From Exception
 
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x18, eret,

@@ -154,6 +154,7 @@ typedef enum RabbitizerInstrId {
     RABBITIZER_INSTR_ID_cpu_tlbwi,
     RABBITIZER_INSTR_ID_cpu_tlbwr,
     RABBITIZER_INSTR_ID_cpu_tlbp,
+    RABBITIZER_INSTR_ID_cpu_rfe,
     RABBITIZER_INSTR_ID_cpu_eret,
     RABBITIZER_INSTR_ID_cpu_mfc1,
     RABBITIZER_INSTR_ID_cpu_dmfc1,

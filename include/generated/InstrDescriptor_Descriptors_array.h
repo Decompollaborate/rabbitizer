@@ -154,6 +154,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_cpu_tlbwi] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmittedByCompilers=true },
     [RABBITIZER_INSTR_ID_cpu_tlbwr] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN },
     [RABBITIZER_INSTR_ID_cpu_tlbp] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmittedByCompilers=true },
+    [RABBITIZER_INSTR_ID_cpu_rfe] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmittedByCompilers=true },
     [RABBITIZER_INSTR_ID_cpu_eret] = { .operands={0}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .notEmittedByCompilers=true },
     [RABBITIZER_INSTR_ID_cpu_mfc1] = { .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .modifiesRt=true, .readsFs=true },
     [RABBITIZER_INSTR_ID_cpu_dmfc1] = { .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_fs}, .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN, .isFloat=true, .modifiesRt=true, .readsFs=true },

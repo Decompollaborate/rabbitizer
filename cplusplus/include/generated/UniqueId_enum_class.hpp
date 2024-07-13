@@ -154,6 +154,7 @@ enum class UniqueId {
     cpu_tlbwi,
     cpu_tlbwr,
     cpu_tlbp,
+    cpu_rfe,
     cpu_eret,
     cpu_mfc1,
     cpu_dmfc1,

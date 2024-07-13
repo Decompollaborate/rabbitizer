@@ -50,6 +50,8 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x00E41823, NULL,                  "subu        $v1, $a3, $a0"),
     TEST_ENTRY_C(0x00041823, NULL,                  "negu        $v1, $a0"),
 
+    TEST_ENTRY_C(0x42000010, NULL,                  "rfe"),
+
     // Invalid instructions
     TEST_ENTRY_C(0x44444444, NULL,                  ".word       0x44444444                   # cfc1        $a0, $8 # 00000444 <InstrIdType: CPU_COP1>"),
     TEST_ENTRY_C(0x77777777, NULL,                  ".word       0x77777777                   # INVALID     $k1, $s7, 0x7777 # 00000000 <InstrIdType: CPU_NORMAL>"),
