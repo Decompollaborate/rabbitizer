@@ -286,6 +286,28 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_3(RabbitizerInstruction *sel
     }
 }
 
+void RabbitizerInstructionR5900_processUniqueId_MMI_PMFHL(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_PMFHL;
+
+    switch (function) {
+#include "tables/instr_id/r5900/r5900_mmi_pmfhl.inc"
+    }
+}
+
+void RabbitizerInstructionR5900_processUniqueId_MMI_PMTHL(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_PMTHL;
+
+    switch (function) {
+#include "tables/instr_id/r5900/r5900_mmi_pmthl.inc"
+    }
+}
+
 void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
 
@@ -306,6 +328,13 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
             break;
         case 0x29:
             RabbitizerInstructionR5900_processUniqueId_MMI_3(self);
+            break;
+
+        case 0x30:
+            RabbitizerInstructionR5900_processUniqueId_MMI_PMFHL(self);
+            break;
+        case 0x31:
+            RabbitizerInstructionR5900_processUniqueId_MMI_PMTHL(self);
             break;
     }
 

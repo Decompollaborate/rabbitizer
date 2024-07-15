@@ -720,8 +720,6 @@ class InstrId:
     r5900_divu1: Enum
     r5900_madd1: Enum
     r5900_maddu1: Enum
-    r5900_pmfhl: Enum
-    r5900_pmthl: Enum
     r5900_psllh: Enum
     r5900_psrlh: Enum
     r5900_psrah: Enum
@@ -806,6 +804,12 @@ class InstrId:
     r5900_pexch: Enum
     r5900_pcpyh: Enum
     r5900_pexcw: Enum
+    r5900_pmfhl_lw: Enum
+    r5900_pmfhl_uw: Enum
+    r5900_pmfhl_slw: Enum
+    r5900_pmfhl_lh: Enum
+    r5900_pmfhl_sh: Enum
+    r5900_pmthl_lw: Enum
     r5900_ei: Enum
     r5900_di: Enum
     r5900_c1__sqrt_s: Enum

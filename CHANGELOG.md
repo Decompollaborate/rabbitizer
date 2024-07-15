@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Implement the `rfe` ("Restore From Exception") instruction.
 
+### Fixed
+
+- Fix `pmfhl` and `pmthl` missing the `.fmt` specifier.
+
 ## [1.11.1] - 2024-07-12
 
 ### Added

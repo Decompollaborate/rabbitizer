@@ -104,4 +104,6 @@ class InstrIdType:
     R5900_MMI_1: Enum
     R5900_MMI_2: Enum
     R5900_MMI_3: Enum
+    R5900_MMI_PMFHL: Enum
+    R5900_MMI_PMTHL: Enum
     ALL_MAX: Enum

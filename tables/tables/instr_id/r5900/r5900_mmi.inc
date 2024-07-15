@@ -12,11 +12,15 @@
 011 | MULT1 | MULTU1| DIV1  | DIVU1 | ---   | ---   | ---   | ---   |
 100 | MADD1 | MADDU1| ---   | ---   | ---   | ---   | ---   | ---   |
 101 |  *3   |  *4   | ---   | ---   | ---   | ---   | ---   | ---   |
-110 | PMFHL | PMTHL | ---   | ---   | PSLLH | ---   | PSRLH | PSRAH |
+110 |  *5   |  *6   | ---   | ---   | PSLLH | ---   | PSRLH | PSRAH |
 111 | ---   | ---   | ---   | ---   | PSLLW | ---   | PSRLW | PSRAW |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
-     *1 = MMI0 list                    *2 = MMI2 list
-     *3 = MMI1 list                    *4 = MMI3 list
+     *1 = MMI0 list
+     *2 = MMI2 list
+     *3 = MMI1 list
+     *4 = MMI3 list
+     *5 = PMFHL list
+     *6 = PMTHL list
 */
 
     RABBITIZER_DEF_INSTR_ID(
@@ -102,18 +106,6 @@
         .readsRs=true,
         .readsRt=true
     ) // Multiply-ADD Unsigned word pipeline 1
-
-    // TODO: check this two instruction, it is supposed to have an extra .fmt
-    RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x30, pmfhl,
-        .operands={RAB_OPERAND_cpu_rd},
-        .modifiesRd=true
-    ) // Parallel Move From Hi/Lo register
-    RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x31, pmthl,
-        .operands={RAB_OPERAND_cpu_rs},
-        .readsRs=true
-    ) // Parallel Move To Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x34, psllh,

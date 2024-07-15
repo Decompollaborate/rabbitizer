@@ -103,5 +103,7 @@ pub enum InstrIdType {
     R5900_MMI_1,
     R5900_MMI_2,
     R5900_MMI_3,
+    R5900_MMI_PMFHL,
+    R5900_MMI_PMTHL,
     ALL_MAX,
 }

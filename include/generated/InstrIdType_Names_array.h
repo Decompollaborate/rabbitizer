@@ -103,6 +103,8 @@ const char *RabInstrIdType_Names[] = {
     [RAB_INSTR_ID_TYPE_R5900_MMI_1] = "R5900" "_" "MMI_1",
     [RAB_INSTR_ID_TYPE_R5900_MMI_2] = "R5900" "_" "MMI_2",
     [RAB_INSTR_ID_TYPE_R5900_MMI_3] = "R5900" "_" "MMI_3",
+    [RAB_INSTR_ID_TYPE_R5900_MMI_PMFHL] = "R5900" "_" "MMI_PMFHL",
+    [RAB_INSTR_ID_TYPE_R5900_MMI_PMTHL] = "R5900" "_" "MMI_PMTHL",
     [RAB_INSTR_ID_TYPE_ALL_MAX] = "ALL" "_" "MAX",
 };
 
