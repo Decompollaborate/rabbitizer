@@ -212,8 +212,8 @@ jobs:
       - name: Run instruction check - r5900_trunc_cvt
         run: ./build/tests/c/instruction_checks/r5900_trunc_cvt.elf
 
-  instruction_checks_r5900_vcallms:
-    name: Test - instruction_checks_r5900_vcallms
+  instruction_checks_r5900_disasm:
+    name: Test - instruction_checks_r5900_disasm
     needs: [build_repo]
     runs-on: ubuntu-latest
 
@@ -230,5 +230,5 @@ jobs:
       - name: Make tests executable
         run: chmod --recursive +x build/
 
-      - name: Run instruction check - r5900_vcallms
-        run: ./build/tests/c/instruction_checks/r5900_vcallms.elf
+      - name: Run instruction check - r5900_disasm
+        run: ./build/tests/c/instruction_checks/r5900_disasm.elf
