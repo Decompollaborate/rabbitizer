@@ -138,6 +138,7 @@ enum class OperandType {
     r5900_vis_postincr,
     r5900_vit_postincr,
     r5900_vid_postincr,
+    r5900_vis_parenthesis,
     r5900_immediate5,
     r5900_immediate15,
     ALL_MAX,

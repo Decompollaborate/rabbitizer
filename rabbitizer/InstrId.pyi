@@ -947,11 +947,17 @@ class InstrId:
     r5900_vwaitq: Enum
     r5900_vmtir: Enum
     r5900_vmfir: Enum
-    r5900_vilwr: Enum
-    r5900_viswr: Enum
     r5900_vrnext: Enum
     r5900_vrget: Enum
     r5900_vrinit: Enum
     r5900_vrxor: Enum
+    r5900_vilwr_w: Enum
+    r5900_vilwr_z: Enum
+    r5900_vilwr_y: Enum
+    r5900_vilwr_x: Enum
+    r5900_viswr_w: Enum
+    r5900_viswr_z: Enum
+    r5900_viswr_y: Enum
+    r5900_viswr_x: Enum
     r5900_MAX: Enum
     ALL_MAX: Enum

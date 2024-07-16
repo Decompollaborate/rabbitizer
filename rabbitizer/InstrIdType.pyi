@@ -96,9 +96,11 @@ class InstrIdType:
     R5900_COP1: Enum
     R5900_COP1_FPUS: Enum
     R5900_COP2: Enum
+    R5900_COP2_NOHIGHBIT: Enum
     R5900_COP2_BC2: Enum
     R5900_COP2_SPECIAL1: Enum
     R5900_COP2_SPECIAL2: Enum
+    R5900_COP2_VIWR: Enum
     R5900_MMI: Enum
     R5900_MMI_0: Enum
     R5900_MMI_1: Enum

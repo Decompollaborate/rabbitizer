@@ -2,12 +2,9 @@
 /* SPDX-License-Identifier: MIT */
 
 /*
-    31---------26-25-----21-20------------------11-10------6-5-2-1--0
-    |  =COP2   | Special2 |                        |  fhi  |1111|flo|
-    ------6----------5-----------------------------------------------
-Note: opcode is flo | (
-    fhi * 4
-).
+     31--------26-25----------------------------10------6-5-----2-1--0
+     |    COP2   |1|                           |   fhi   |1 1 1 1|flo|
+     ------6------1---------------------------------5--------4-----2--
      |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| lo
 0000 |VADDAx |VADDAy |VADDAz |VADDAw |VSUBAx |VSUBAy |VSUBAz |VSUBAw |
 0001 |VMADDAx|VMADDAy|VMADDAz|VMADDAw|VMSUBAx|VMSUBAy|VMSUBAz|VMSUBAw|
@@ -16,7 +13,7 @@ Note: opcode is flo | (
 0100 |VADDAq |VMADDAq|VADDAi |VMADDAi|VSUBAq |VMSUBAq|VSUBAi |VMSUBAi|
 0101 |VADDA  |VMADDA |VMULA  | ---   |VSUBA  |VMSUBA |VOPMULA|VNOP   |
 0110 |VMOVE  |VMR32  | ---   | ---   |VLQI   |VSQI   |VLQD   |VSQD   |
-0111 |VDIV   |VSQRT  |VRSQRT |VWAITQ |VMTIR  |VMFIR  |VILWR  |VISWR  |
+0111 |VDIV   |VSQRT  |VRSQRT |VWAITQ |VMTIR  |VMFIR  | *1    | *1    |
 1000 |VRNEXT |VRGET  |VRINIT |VRXOR  | ---   | ---   | ---   | ---   |
 1001 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
 1010 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
@@ -26,6 +23,7 @@ Note: opcode is flo | (
 1110 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
 1111 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
  hi  |-------|-------|-------|-------|-------|-------|-------|-------|
+     *1 = VIWR list
 */
 
     // TODO: operands and properties
@@ -377,47 +375,6 @@ Note: opcode is flo | (
         .instrSuffix=RABINSTRSUFFIX_R5900_xyzw,
         .isFloat=true
     ) // Move from integer register
-
-    RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x3E, vilwr,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
-    ) // Integer load word register
-    RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x3F, viswr,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesStore=true
-    ) // Integer store word register
-    /*
-    "vilwr.w",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    "vilwr.x",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    "vilwr.y",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    "vilwr.z",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    "viswr.w",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    "viswr.x",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    "viswr.y",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    "viswr.z",		RAB_OPERAND_r5900_vit,(
-        RAB_OPERAND_r5900_vis
-    )
-    */
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x40, vrnext,

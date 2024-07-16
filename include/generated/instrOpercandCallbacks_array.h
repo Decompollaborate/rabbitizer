@@ -137,6 +137,7 @@ const OperandCallback instrOpercandCallbacks[] = {
     [RAB_OPERAND_r5900_vis_postincr] = RabbitizerOperandType_process_r5900_vis_postincr,
     [RAB_OPERAND_r5900_vit_postincr] = RabbitizerOperandType_process_r5900_vit_postincr,
     [RAB_OPERAND_r5900_vid_postincr] = RabbitizerOperandType_process_r5900_vid_postincr,
+    [RAB_OPERAND_r5900_vis_parenthesis] = RabbitizerOperandType_process_r5900_vis_parenthesis,
     [RAB_OPERAND_r5900_immediate5] = RabbitizerOperandType_process_r5900_immediate5,
     [RAB_OPERAND_r5900_immediate15] = RabbitizerOperandType_process_r5900_immediate15,
 };

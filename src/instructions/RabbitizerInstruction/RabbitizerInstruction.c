@@ -637,6 +637,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
                 self->word = RAB_INSTR_R5900_PACK_vid(self->word, 0);
                 break;
 
+            case RAB_OPERAND_r5900_vis_parenthesis:
+                self->word = RAB_INSTR_R5900_PACK_vis(self->word, 0);
+                break;
+
             case RAB_OPERAND_r5900_immediate5:
                 self->word = RAB_INSTR_R5900_PACK_imm5(self->word, 0);
                 break;
