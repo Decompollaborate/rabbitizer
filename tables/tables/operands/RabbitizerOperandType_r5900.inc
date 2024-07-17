@@ -30,5 +30,6 @@
     RAB_DEF_OPERAND(r5900, vis_postincr)
     RAB_DEF_OPERAND(r5900, vit_postincr)
     RAB_DEF_OPERAND(r5900, vid_postincr)
+    RAB_DEF_OPERAND(r5900, vis_parenthesis)
     RAB_DEF_OPERAND(r5900, immediate5)
     RAB_DEF_OPERAND(r5900, immediate15)

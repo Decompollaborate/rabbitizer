@@ -573,6 +573,9 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vis_postincr)) {
                 return true;
             }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vis_parenthesis)) {
+                return true;
+            }
             break;
 
         case RAB_OPERAND_r5900_vit:
@@ -625,6 +628,12 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
 
         case RAB_OPERAND_r5900_vid_postincr:
             if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_r5900_vid)) {
+                return true;
+            }
+            break;
+
+        case RAB_OPERAND_r5900_vis_parenthesis:
+            if (RabbitizerInstrDescriptor_hasOperandAlias(self, RAB_OPERAND_r5900_vis)) {
                 return true;
             }
             break;

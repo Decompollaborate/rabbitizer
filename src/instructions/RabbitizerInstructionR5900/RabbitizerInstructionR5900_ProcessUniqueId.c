@@ -177,6 +177,17 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(RabbitizerInstructio
     }
 }
 
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_viwr(RabbitizerInstruction *self) {
+    uint32_t fhiflo = RAB_INSTR_R5900_GET_viwr_fhilo(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_viwr_fhilo(self->_mandatorybits, fhiflo);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_VIWR;
+
+    switch (fhiflo) {
+#include "tables/instr_id/r5900/r5900_cop2_viwr.inc"
+    }
+}
+
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(RabbitizerInstruction *self) {
     uint32_t fhiflo = RAB_INSTR_R5900_GET_fhi_flo(self);
 
@@ -185,6 +196,11 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(Rabbitizer
 
     switch (fhiflo) {
 #include "tables/instr_id/r5900/r5900_cop2_special2.inc"
+
+        case 0x3E:
+        case 0x3F:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor2_viwr(self);
+            break;
     }
 }
 
@@ -206,11 +222,11 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(Rabbitizer
     }
 }
 
-void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
-    uint8_t fmt = RAB_INSTR_GET_fmt(self);
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_nohighbit(RabbitizerInstruction *self) {
+    uint8_t fmt = RAB_INSTR_R5900_GET_cop2_nohighbit_fmt(self);
 
-    self->_mandatorybits = RAB_INSTR_PACK_fmt(self->_mandatorybits, fmt);
-    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2;
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_cop2_nohighbit_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_NOHIGHBIT;
 
     switch (fmt) {
 #include "tables/instr_id/r5900/r5900_cop2.inc"
@@ -218,23 +234,21 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstructi
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(self);
             break;
+    }
+}
 
-        case 0x10:
-        case 0x11:
-        case 0x12:
-        case 0x13:
-        case 0x14:
-        case 0x15:
-        case 0x16:
-        case 0x17:
-        case 0x18:
-        case 0x19:
-        case 0x1A:
-        case 0x1B:
-        case 0x1C:
-        case 0x1D:
-        case 0x1E:
-        case 0x1F:
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
+    uint8_t fmt = RAB_INSTR_R5900_GET_cop2_highbit(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_cop2_highbit(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2;
+
+    switch (fmt) {
+        case 0x00:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor2_nohighbit(self);
+            break;
+
+        case 0x01:
             RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(self);
             break;
     }
@@ -286,6 +300,28 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_3(RabbitizerInstruction *sel
     }
 }
 
+void RabbitizerInstructionR5900_processUniqueId_MMI_PMFHL(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_PMFHL;
+
+    switch (function) {
+#include "tables/instr_id/r5900/r5900_mmi_pmfhl.inc"
+    }
+}
+
+void RabbitizerInstructionR5900_processUniqueId_MMI_PMTHL(RabbitizerInstruction *self) {
+    uint32_t function = RAB_INSTR_R5900_GET_mmi_function(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_mmi_function(self->_mandatorybits, function);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_PMTHL;
+
+    switch (function) {
+#include "tables/instr_id/r5900/r5900_mmi_pmthl.inc"
+    }
+}
+
 void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self) {
     uint32_t function = RAB_INSTR_GET_function(self);
 
@@ -306,6 +342,13 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
             break;
         case 0x29:
             RabbitizerInstructionR5900_processUniqueId_MMI_3(self);
+            break;
+
+        case 0x30:
+            RabbitizerInstructionR5900_processUniqueId_MMI_PMFHL(self);
+            break;
+        case 0x31:
+            RabbitizerInstructionR5900_processUniqueId_MMI_PMTHL(self);
             break;
     }
 

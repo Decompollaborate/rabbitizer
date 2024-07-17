@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.11.2] - 2024-07-16
+
+### Added
+
+- Implement the `rfe` ("Restore From Exception") instruction.
+
+### Fixed
+
+- Fix `pmfhl`, `pmthl`, `vilwr` and `viswr` missing the `.fmt` specifier.
+
 ## [1.11.1] - 2024-07-12
 
 ### Added
@@ -633,6 +643,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.11.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.1...1.11.2
 [1.11.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.0...1.11.1
 [1.11.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.10.0...1.11.0
 [1.10.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.9.5...1.10.0

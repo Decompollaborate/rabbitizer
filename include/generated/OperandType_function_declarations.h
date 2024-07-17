@@ -136,6 +136,7 @@
     size_t RabbitizerOperandType_process_r5900_vis_postincr (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r5900_vit_postincr (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r5900_vid_postincr (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+    size_t RabbitizerOperandType_process_r5900_vis_parenthesis (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r5900_immediate5 (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r5900_immediate15 (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
 

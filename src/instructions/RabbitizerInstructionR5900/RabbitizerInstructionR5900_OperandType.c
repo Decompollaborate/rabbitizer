@@ -487,6 +487,20 @@ size_t RabbitizerOperandType_process_r5900_vid_postincr(const RabbitizerInstruct
     return totalSize;
 }
 
+size_t RabbitizerOperandType_process_r5900_vis_parenthesis(const RabbitizerInstruction *self, char *dst,
+                                                           const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, '(');
+
+    RABUTILS_BUFFER_ADVANCE(dst, totalSize,
+                            RabbitizerOperandType_process_r5900_vis(self, dst, immOverride, immOverrideLength));
+
+    RABUTILS_BUFFER_WRITE_CHAR(dst, totalSize, ')');
+
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_process_r5900_immediate5(const RabbitizerInstruction *self, char *dst,
                                                       const char *immOverride, size_t immOverrideLength) {
     size_t totalSize = 0;

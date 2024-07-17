@@ -69,7 +69,7 @@ If you use a `requirements.txt` file in your repository, then you can add this
 library with the following line:
 
 ```txt
-rabbitizer>=1.11.1,<2.0.0
+rabbitizer>=1.11.2,<2.0.0
 ```
 
 ### Development version
@@ -109,7 +109,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.11.1"
+rabbitizer = "1.11.2"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
@@ -120,6 +120,7 @@ See this crate at <https://crates.io/crates/rabbitizer>.
   - MIPS IV Instruction Set (Revision 3.2): <https://www.cs.cmu.edu/afs/cs/academic/class/15740-f97/public/doc/mips-isa.pdf>
   - MIPS Calling Convention Summary: <https://courses.cs.washington.edu/courses/cse410/09sp/examples/MIPSCallingConventionsSummary.pdf>
   - mipt-mips pseudo instructions: <https://github.com/MIPT-ILab/mipt-mips/wiki/MIPS-pseudo-instructions>
+  - IDT R30xx Family Software Reference Manual, page 325 (for `rfe`): <https://psx.arthus.net/docs/R3000.pdf>
 
 - N64's RSP (Reality Signal Processor):
   - Nintendo Ultra64 RSP Programmer’s Guide: <https://ultra64.ca/files/documentation/silicon-graphics/SGI_Nintendo_64_RSP_Programmers_Guide.pdf>

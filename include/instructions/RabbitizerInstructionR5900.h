@@ -12,8 +12,12 @@ extern "C" {
 #endif
 
 
+#define RAB_INSTR_R5900_GET_cop2_highbit(self)          (SHIFTR((self)->word, 25,  1))
+#define RAB_INSTR_R5900_GET_cop2_nohighbit_fmt(self)    (SHIFTR((self)->word, 21,  4))
+
 #define RAB_INSTR_R5900_GET_mmi_function(self)          (SHIFTR((self)->word,  6,  5))
 #define RAB_INSTR_R5900_GET_fhi_flo(self)               ((SHIFTR((self)->word,  6,  5) << 2) | SHIFTR((self)->word,  0,  2))
+#define RAB_INSTR_R5900_GET_viwr_fhilo(self)            ((SHIFTR((self)->word, 21,  4) << 2) | SHIFTR((self)->word,  0,  2))
 
 #define RAB_INSTR_R5900_GET_vfs(self)                   (SHIFTR((self)->word, 11,  5))
 #define RAB_INSTR_R5900_GET_vft(self)                   (SHIFTR((self)->word, 16,  5))
@@ -35,8 +39,12 @@ extern "C" {
 #define RAB_INSTR_R5900_GET_imm15(self)                 (SHIFTR((self)->word,  6, 15))
 
 
+#define RAB_INSTR_R5900_PACK_cop2_highbit(word, value)  (BITREPACK((word), (value), 25,  1))
+#define RAB_INSTR_R5900_PACK_cop2_nohighbit_fmt(word, value)    (BITREPACK((word), (value), 21,  4))
+
 #define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), (value),  6,  5))
 #define RAB_INSTR_R5900_PACK_fhi_flo(word, value)       (BITREPACK(BITREPACK((word), (value) >> 2,  6,  5), (value),  0,  2))
+#define RAB_INSTR_R5900_PACK_viwr_fhilo(word, value)    (BITREPACK(BITREPACK((word), (value) >> 2, 21,  4), (value),  0,  2))
 
 #define RAB_INSTR_R5900_PACK_vfs(word, value)           (BITREPACK((word), (value), 11,  5))
 #define RAB_INSTR_R5900_PACK_vft(word, value)           (BITREPACK((word), (value), 16,  5))

@@ -155,6 +155,7 @@ class InstrId:
     cpu_tlbwi: Enum
     cpu_tlbwr: Enum
     cpu_tlbp: Enum
+    cpu_rfe: Enum
     cpu_eret: Enum
     cpu_mfc1: Enum
     cpu_dmfc1: Enum
@@ -719,8 +720,6 @@ class InstrId:
     r5900_divu1: Enum
     r5900_madd1: Enum
     r5900_maddu1: Enum
-    r5900_pmfhl: Enum
-    r5900_pmthl: Enum
     r5900_psllh: Enum
     r5900_psrlh: Enum
     r5900_psrah: Enum
@@ -805,6 +804,12 @@ class InstrId:
     r5900_pexch: Enum
     r5900_pcpyh: Enum
     r5900_pexcw: Enum
+    r5900_pmfhl_lw: Enum
+    r5900_pmfhl_uw: Enum
+    r5900_pmfhl_slw: Enum
+    r5900_pmfhl_lh: Enum
+    r5900_pmfhl_sh: Enum
+    r5900_pmthl_lw: Enum
     r5900_ei: Enum
     r5900_di: Enum
     r5900_c1__sqrt_s: Enum
@@ -942,11 +947,17 @@ class InstrId:
     r5900_vwaitq: Enum
     r5900_vmtir: Enum
     r5900_vmfir: Enum
-    r5900_vilwr: Enum
-    r5900_viswr: Enum
     r5900_vrnext: Enum
     r5900_vrget: Enum
     r5900_vrinit: Enum
     r5900_vrxor: Enum
+    r5900_vilwr_w: Enum
+    r5900_vilwr_z: Enum
+    r5900_vilwr_y: Enum
+    r5900_vilwr_x: Enum
+    r5900_viswr_w: Enum
+    r5900_viswr_z: Enum
+    r5900_viswr_y: Enum
+    r5900_viswr_x: Enum
     r5900_MAX: Enum
     ALL_MAX: Enum
