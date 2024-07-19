@@ -1,0 +1,54 @@
+name: Frug Report
+description: File a frug report
+title: "[Frug]: "
+labels: ["frug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for filing a frug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Explain the problem.
+      description: What happened? What did you expect to happen?
+      placeholder: What went wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Reproducer
+      description: Please provide instructions to reproduce the problem.
+      placeholder: |
+        Use the following file (attach it please) and run IJK with parameters ABC.
+        Clone the repo on github.com/example/example and do XYZ
+    validations:
+      required: true
+  - type: input
+    id: rabbitizer-version
+    attributes:
+      label: rabbitizer version
+      description: What version of rabbitizer are you running? (`pip show rabbitizer` if installed via `pip` or check `include/common/RabbitizerVersion.h` if used as a C or C++ library)
+    validations:
+      required: true
+  - type: input
+    id: splat/spimdisasm-version
+    attributes:
+      label: "Optional: splat/spimdisasm version"
+      description: Were you running rabbitizer through splat or spimdisasm? What are their versions?
+    validations:
+      required: false
+  - type: textarea
+    id: other-version
+    attributes:
+      label: "Optional: Version of other stuff"
+      description: Here you can put the version of whatever other software you think may be relevant, like Python, rabbitizer, binutils, OS, etc.
+      placeholder: |
+        - Python: 4.18
+        - clang: 17.½
+        - binutils: 2.π
+        - Wine on WSL2 on Windows 11 on VirtualBox on OpenBSD on Minecraft command blocks.
+        - Etc
+    validations:
+      required: false

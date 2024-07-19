@@ -1,0 +1,45 @@
+name: Feature suggestion
+description: Suggest a new feature
+title: "[Suggestion]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature!
+  - type: textarea
+    id: the-feature
+    attributes:
+      label: Explain the feature
+      description: What does this new feature do? How it would be done?
+      placeholder: |
+        - Print capybara ascii art on each run
+        - Introduce achievements
+        - Play the Oof sound on errors
+    validations:
+      required: true
+  - type: textarea
+    id: advantage
+    attributes:
+      label: Advantage
+      description: What are the pros of this new feature?
+      placeholder: |
+        - XYZ is a common case.
+        - The produced assembly would be more correct because...
+        - Would fix Windows builds.
+  - type: textarea
+    id: disadvantage
+    attributes:
+      label: Disadvantage
+      description: What could be any drawback of the new feature?
+      placeholder: |
+        - Slower runtime.
+        - Harder to debug.
+        - Would fix Windows builds.
+  - type: textarea
+    id: example
+    attributes:
+      label: Example(s)
+      description: Include examples on how this feature would look like or related info.
+    validations:
+      required: true
