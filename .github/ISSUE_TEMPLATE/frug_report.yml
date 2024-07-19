@@ -1,5 +1,5 @@
 name: Frug Report
-description: File a frug report
+description: File a frug report (because something isn't working as it should)
 title: "[Frug]: "
 labels: ["frug"]
 body:
@@ -23,6 +23,21 @@ body:
       placeholder: |
         Use the following file (attach it please) and run IJK with parameters ABC.
         Clone the repo on github.com/example/example and do XYZ
+    validations:
+      required: true
+  - type: dropdown
+    id: instruction-set-flavor
+    attributes:
+      label: Is this issue related to an specific MIPS extension?
+      description: rabbitizer supports many MIPS flavors, which one were you using specifically?
+      options:
+        - I don't know / Does not apply
+        - Normal MIPS CPU (without any extensions)
+        - RSP (Reality Signal Processor, the Nintendo 64 vector coprocessor)
+        - R3000 GTE (Geometry Transformation Engine, a Sony PlayStation 1 extension)
+        - R4000 ALLEGREX (A Sony PlayStation Portable extension)
+        - R5900 EE (Emotion Engine, A Sony PlayStation 2 extension)
+      default: 0
     validations:
       required: true
   - type: input
@@ -50,5 +65,14 @@ body:
         - binutils: 2.π
         - Wine on WSL2 on Windows 11 on VirtualBox on OpenBSD on Minecraft command blocks.
         - Etc
+    validations:
+      required: false
+  - type: textarea
+    id: user-comments
+    attributes:
+      label: "Extra comments?"
+      description: Here you can mention any other additional comments or info you may want to say.
+      placeholder: |
+        There's no problem leaving this.
     validations:
       required: false
