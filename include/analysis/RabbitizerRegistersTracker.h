@@ -8,6 +8,7 @@
 #include "common/Utils.h"
 #include "RabbitizerTrackedRegisterState.h"
 #include "RabbitizerLoPairingInfo.h"
+#include "RabbitizerJrRegData.h"
 #include "instructions/RabbitizerInstruction.h"
 
 #ifdef __cplusplus
@@ -36,8 +37,12 @@ NON_NULL(1, 2, 3)
 void RabbitizerRegistersTracker_unsetRegistersAfterFuncCall(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, const RabbitizerInstruction *prevInstr);
 NON_NULL(1, 2, 4)
 bool RabbitizerRegistersTracker_getAddressIfCanSetType(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset, uint32_t *dstAddress);
+
 NON_NULL(1, 2, 3, 4)
+//! @deprecated: use `RabbitizerRegistersTracker_getJrRegData` instead
 bool RabbitizerRegistersTracker_getJrInfo(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int *dstOffset, uint32_t *dstAddress);
+NON_NULL(1, 2)
+RabbitizerJrRegData RabbitizerRegistersTracker_getJrRegData(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr);
 
 // prevInstr can be NULL
 NON_NULL(1, 2)
@@ -54,6 +59,8 @@ NODISCARD NON_NULL(1, 2)
 RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset);
 NON_NULL(1, 2)
 void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, uint32_t value, int offset);
+NON_NULL(1, 2)
+void RabbitizerRegistersTracker_processBranch(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr, int instrOffset);
 NON_NULL(1, 2)
 bool RabbitizerRegistersTracker_hasLoButNoHi(const RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr);
 

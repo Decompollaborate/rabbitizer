@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `RegistersTracker.getJrRegData`.
+  - Does what the old `RegistersTracker.getJrInfo` method does, but it returns
+    an actual object instead of an nullable tuple and offers extra information.
+- `RegistersTracker.processBranch`.
+  - Allows tracking which registers has been used to decide branching.
+
+### Deprecated
+
+- `RegistersTracker.getJrInfo`.
+  - Use `RegistersTracker.getJrRegData` instead.
+
 ## [1.11.2] - 2024-07-16
 
 ### Added

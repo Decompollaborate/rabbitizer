@@ -8,6 +8,7 @@
 #include "analysis/RabbitizerRegistersTracker.h"
 
 #include "analysis/LoPairingInfo.hpp"
+#include "analysis/JrRegData.hpp"
 #include "instructions/InstructionBase.hpp"
 
 
@@ -32,7 +33,9 @@ namespace rabbitizer {
         void overwriteRegisters(const InstructionBase &instr, int instrOffset);
         void unsetRegistersAfterFuncCall(const InstructionBase &instr, const InstructionBase &prevInstr);
         bool getAddressIfCanSetType(const InstructionBase &instr, int instrOffset, uint32_t *dstAddress) const;
+        //! @deprecated: use getJrRegData instead
         bool getJrInfo(const InstructionBase &instr, int *dstOffset, uint32_t *dstAddress) const;
+        JrRegData getJrRegData(const InstructionBase &instr) const;
 
         void processLui(const InstructionBase &instr, int instrOffset);
         void processLui(const InstructionBase &instr, int instrOffset, const InstructionBase &prevInstr);
@@ -41,6 +44,7 @@ namespace rabbitizer {
         void processConstant(const InstructionBase &instr, uint32_t value, int offset);
         LoPairingInfo preprocessLoAndGetInfo(const InstructionBase &instr, int instrOffset);
         void processLo(const InstructionBase &instr, uint32_t value, int offset);
+        void processBranch(const InstructionBase &instr, int offset);
         bool hasLoButNoHi(const InstructionBase &instr) const;
     };
 };

@@ -135,8 +135,8 @@ bool RabbitizerInstruction_isReturn(const RabbitizerInstruction *self) {
  * Check if the instruction and its register is the one usually used for
  * jumping with jumptables.
  *
- * Specfically, this checks if the instruction is a `jr` but not its register
- * is not `$ra`.
+ * Specfically, this checks if the instruction is a `jr` but its register is
+ * not `$ra`.
  *
  * Returns `False` if the instruction is not a `jr` or if it is a `jr` but
  * the register is `$ra`.
