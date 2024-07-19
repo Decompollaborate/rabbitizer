@@ -6,7 +6,7 @@ name = "rabbitizer"
 # Version should be synced with include/common/RabbitizerVersion.h
 version = "1.11.3"
 description = "MIPS instruction decoder"
-license = "MIT"
+# license = "MIT"
 readme = "README.md"
 requires-python = ">=3.7"
 authors = [

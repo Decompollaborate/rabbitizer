@@ -33,7 +33,7 @@ body:
     validations:
       required: true
   - type: input
-    id: splat/spimdisasm-version
+    id: splat-spimdisasm-version
     attributes:
       label: "Optional: splat/spimdisasm version"
       description: Were you running rabbitizer through splat or spimdisasm? What are their versions?
