@@ -38,6 +38,9 @@ bool RegistersTracker::getAddressIfCanSetType(const InstructionBase &instr, int 
 bool RegistersTracker::getJrInfo(const InstructionBase &instr, int *dstOffset, uint32_t *dstAddress) const {
     return RabbitizerRegistersTracker_getJrInfo(&this->tracker, instr.getCPtr(), dstOffset, dstAddress);
 }
+JrRegData RegistersTracker::getJrRegData(const InstructionBase &instr) const {
+    return JrRegData(RabbitizerRegistersTracker_getJrRegData(&this->tracker, instr.getCPtr()));
+}
 
 void RegistersTracker::processLui(const InstructionBase &instr, int instrOffset) {
     RabbitizerRegistersTracker_processLui(&this->tracker, instr.getCPtr(), instrOffset, NULL);
@@ -59,6 +62,9 @@ LoPairingInfo RegistersTracker::preprocessLoAndGetInfo(const InstructionBase &in
 }
 void RegistersTracker::processLo(const InstructionBase &instr, uint32_t value, int offset) {
     RabbitizerRegistersTracker_processLo(&this->tracker, instr.getCPtr(), value, offset);
+}
+void RegistersTracker::processBranch(const InstructionBase &instr, int offset) {
+    RabbitizerRegistersTracker_processBranch(&this->tracker, instr.getCPtr(), offset);
 }
 bool RegistersTracker::hasLoButNoHi(const InstructionBase &instr) const {
     return RabbitizerRegistersTracker_hasLoButNoHi(&this->tracker, instr.getCPtr());

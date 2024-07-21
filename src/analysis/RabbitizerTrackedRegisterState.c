@@ -23,6 +23,9 @@ void RabbitizerTrackedRegisterState_init(RabbitizerTrackedRegisterState *self, i
     self->dereferenced = false;
     self->dereferenceOffset = 0;
 
+    self->checkedForBranching = false;
+    self->lastBranchOffset = 0;
+
     self->value = 0;
 }
 
@@ -41,6 +44,10 @@ void RabbitizerTrackedRegisterState_clear(RabbitizerTrackedRegisterState *self) 
     self->loOffset = 0;
     self->dereferenced = false;
     self->dereferenceOffset = 0;
+
+    self->checkedForBranching = false;
+    self->lastBranchOffset = false;
+
     self->value = 0;
 }
 
@@ -62,6 +69,11 @@ void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self
     self->dereferenceOffset = 0;
 }
 
+void RabbitizerTrackedRegisterState_clearBranch(RabbitizerTrackedRegisterState *self) {
+    self->checkedForBranching = 0;
+    self->lastBranchOffset = 0;
+}
+
 void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self,
                                               const RabbitizerTrackedRegisterState *other) {
     self->hasLuiValue = other->hasLuiValue;
@@ -75,6 +87,9 @@ void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *se
     self->loOffset = other->loOffset;
     self->dereferenced = other->dereferenced;
     self->dereferenceOffset = other->dereferenceOffset;
+
+    self->checkedForBranching = other->checkedForBranching;
+    self->lastBranchOffset = other->lastBranchOffset;
 
     self->value = other->value;
 }
@@ -101,6 +116,11 @@ void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, 
     self->hasLoValue = true;
     self->dereferenced = false;
     self->dereferenceOffset = 0;
+}
+
+void RabbitizerTrackedRegisterState_setBranching(RabbitizerTrackedRegisterState *self, int offset) {
+    self->checkedForBranching = true;
+    self->lastBranchOffset = offset;
 }
 
 void RabbitizerTrackedRegisterState_deref(RabbitizerTrackedRegisterState *self, int offset) {

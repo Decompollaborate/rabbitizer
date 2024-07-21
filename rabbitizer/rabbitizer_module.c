@@ -58,6 +58,7 @@ static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_TYPE(LoPairingInfo),
     MODULE_ATTRIBUTE_TYPE(TrackedRegisterState),
     MODULE_ATTRIBUTE_TYPE(RegistersTracker),
+    MODULE_ATTRIBUTE_TYPE(JrRegData),
 };
 
 static int rabbitizer_module_attributes_Ready(void) {

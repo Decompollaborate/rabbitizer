@@ -31,6 +31,9 @@ typedef struct RabbitizerTrackedRegisterState {
     bool dereferenced;
     int dereferenceOffset;
 
+    bool checkedForBranching;
+    int lastBranchOffset;
+
     uint32_t value;
 } RabbitizerTrackedRegisterState;
 
@@ -48,6 +51,8 @@ NON_NULL(1)
 void RabbitizerTrackedRegisterState_clearGp(RabbitizerTrackedRegisterState *self);
 NON_NULL(1)
 void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self);
+NON_NULL(1)
+void RabbitizerTrackedRegisterState_clearBranch(RabbitizerTrackedRegisterState *self);
 
 NON_NULL(1, 2)
 void RabbitizerTrackedRegisterState_copyState(RabbitizerTrackedRegisterState *self, const RabbitizerTrackedRegisterState *other);
@@ -58,6 +63,8 @@ NON_NULL(1)
 void RabbitizerTrackedRegisterState_setGpLoad(RabbitizerTrackedRegisterState *self, uint32_t value, int offset);
 NON_NULL(1)
 void RabbitizerTrackedRegisterState_setLo(RabbitizerTrackedRegisterState *self, uint32_t value, int offset);
+NON_NULL(1)
+void RabbitizerTrackedRegisterState_setBranching(RabbitizerTrackedRegisterState *self, int offset);
 
 NON_NULL(1)
 void RabbitizerTrackedRegisterState_deref(RabbitizerTrackedRegisterState *self, int offset);

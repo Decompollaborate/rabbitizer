@@ -56,6 +56,9 @@ DEF_MEMBER_GET_INT(loOffset)
 DEF_MEMBER_GET_BOOL(dereferenced)
 DEF_MEMBER_GET_INT(dereferenceOffset)
 
+DEF_MEMBER_GET_BOOL(checkedForBranching)
+DEF_MEMBER_GET_INT(lastBranchOffset)
+
 DEF_MEMBER_GET_UINT(value)
 
 
@@ -78,6 +81,9 @@ static PyGetSetDef rabbitizer_type_TrackedRegisterState_getsetters[] = {
     MEMBER_GET(loOffset, "", NULL),
     MEMBER_GET(dereferenced, "", NULL),
     MEMBER_GET(dereferenceOffset, "", NULL),
+
+    MEMBER_GET(checkedForBranching, "", NULL),
+    MEMBER_GET(lastBranchOffset, "", NULL),
 
     MEMBER_GET(value, "", NULL),
 

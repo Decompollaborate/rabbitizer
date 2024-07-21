@@ -33,4 +33,5 @@ from .Config import *
 
 from .rabbitizer import *
 
+from .JrRegData import *
 from .RegistersTracker import *

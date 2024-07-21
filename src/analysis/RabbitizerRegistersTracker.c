@@ -73,6 +73,7 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
 
         srcState = &self->registers[reg];
         RabbitizerTrackedRegisterState_copyState(&self->registers[rd], srcState);
+        RabbitizerTrackedRegisterState_clearBranch(&self->registers[rd]);
         return true;
     }
 
@@ -81,6 +82,7 @@ bool RabbitizerRegistersTracker_moveRegisters(RabbitizerRegistersTracker *self, 
 
     if (RabbitizerTrackedRegisterState_hasAnyValue(srcState)) {
         RabbitizerTrackedRegisterState_copyState(dstState, srcState);
+        RabbitizerTrackedRegisterState_clearBranch(&self->registers[rd]);
         return true;
     }
 
@@ -141,6 +143,7 @@ void RabbitizerRegistersTracker_overwriteRegisters(RabbitizerRegistersTracker *s
             RabbitizerTrackedRegisterState_clearGp(state);
             RabbitizerTrackedRegisterState_clearLo(state);
         }
+        RabbitizerTrackedRegisterState_clearBranch(state);
     }
 }
 
@@ -190,6 +193,16 @@ bool RabbitizerRegistersTracker_getJrInfo(const RabbitizerRegistersTracker *self
     *dstOffset = state->loOffset;
     *dstAddress = state->value;
     return true;
+}
+
+RabbitizerJrRegData RabbitizerRegistersTracker_getJrRegData(const RabbitizerRegistersTracker *self,
+                                                            const RabbitizerInstruction *instr) {
+    const RabbitizerTrackedRegisterState *state = &self->registers[RAB_INSTR_GET_rs(instr)];
+    RabbitizerJrRegData jrRegData;
+
+    RabbitizerJrRegData_initFromRegisterState(&jrRegData, state);
+
+    return jrRegData;
 }
 
 // prevInstr can be NULL
@@ -267,6 +280,7 @@ bool RabbitizerRegistersTracker_getLuiOffsetForLo(RabbitizerRegistersTracker *se
             // Simulate a dereference
             RabbitizerTrackedRegisterState_dereferenceState(&self->registers[RAB_INSTR_GET_rt(instr)], state,
                                                             instrOffset);
+            RabbitizerTrackedRegisterState_clearBranch(&self->registers[RAB_INSTR_GET_rt(instr)]);
         }
     }
 
@@ -311,6 +325,7 @@ RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(Rabbit
             // Simulate a dereference
             RabbitizerTrackedRegisterState_dereferenceState(&self->registers[RAB_INSTR_GET_rt(instr)], state,
                                                             instrOffset);
+            RabbitizerTrackedRegisterState_clearBranch(&self->registers[RAB_INSTR_GET_rt(instr)]);
         }
     }
 
@@ -333,6 +348,34 @@ void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, cons
     if (RAB_INSTR_GET_rt(instr) == RAB_INSTR_GET_rs(instr)) {
         RabbitizerTrackedRegisterState_clearHi(stateDst);
         RabbitizerTrackedRegisterState_clearGp(stateDst);
+    }
+    RabbitizerTrackedRegisterState_clearBranch(stateDst);
+}
+
+void RabbitizerRegistersTracker_processBranch(RabbitizerRegistersTracker *self, const RabbitizerInstruction *instr,
+                                              int instrOffset) {
+    RabbitizerTrackedRegisterState *state = NULL;
+    bool isBranch =
+        RabbitizerInstrDescriptor_isBranch(instr->descriptor) || RabbitizerInstruction_isUnconditionalBranch(instr);
+
+    assert(isBranch);
+    if (!isBranch) {
+        return;
+    }
+
+    if (RabbitizerInstrDescriptor_readsRs(instr->descriptor)) {
+        state = &self->registers[RAB_INSTR_GET_rs(instr)];
+        RabbitizerTrackedRegisterState_setBranching(state, instrOffset);
+    }
+
+    if (RabbitizerInstrDescriptor_readsRt(instr->descriptor)) {
+        state = &self->registers[RAB_INSTR_GET_rt(instr)];
+        RabbitizerTrackedRegisterState_setBranching(state, instrOffset);
+    }
+
+    if (RabbitizerInstrDescriptor_readsRd(instr->descriptor)) {
+        state = &self->registers[RAB_INSTR_GET_rd(instr)];
+        RabbitizerTrackedRegisterState_setBranching(state, instrOffset);
     }
 }
 

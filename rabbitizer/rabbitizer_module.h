@@ -33,6 +33,7 @@ DECL_RAB_TYPE(Instruction, instr)
 DECL_RAB_TYPE(LoPairingInfo, pairingInfo)
 DECL_RAB_TYPE(TrackedRegisterState, registerState)
 DECL_RAB_TYPE(RegistersTracker, tracker)
+DECL_RAB_TYPE(JrRegData, jrRegData)
 
 
 DECL_ENUM(Abi)
