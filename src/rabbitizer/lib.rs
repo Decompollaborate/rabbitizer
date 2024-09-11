@@ -3,99 +3,31 @@
 
 use std::ops::Index;
 
+mod opcode;
+mod opcode_descriptor;
 
-#[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash)]
-pub enum Opcode {
-    J = 0,
-}
+pub use opcode::Opcode;
+pub use opcode_descriptor::OpcodeDescriptor;
+pub use opcode_descriptor::OpcodeDescriptorBuilder;
 
-impl Opcode {
-    pub fn get_descriptor(&self) -> &'static OpcodeDescriptor {
-        &OPCODES[*self]
-    }
-}
 
-#[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
-pub struct OpcodeDescriptor<'a> {
-    pub name: &'a str,
+pub mod opcodes {
+    use super::*;
 
-    /**
-     * Local branch with "restricted" range, usually it doesn't jump outside the current function
-     */
-    pub is_branch: bool,
-    pub is_branch_likely: bool,
+    pub static OPCODE_J: OpcodeDescriptor = OpcodeDescriptorBuilder::new("J").is_jump().is_jump_with_address().build();
 
-    /**
-     * The instruction can jump inside or outside its current function
-     */
-    pub is_jump: bool,
+    pub static OPCODES: [&OpcodeDescriptor; Opcode::MAX as usize] = {
+        let mut a: [&OpcodeDescriptor; Opcode::MAX as usize] = [&OpcodeDescriptor::new_uinit(); Opcode::MAX as usize];
+        a[Opcode::J as usize] = &OPCODE_J;
+        a
+    };
 
-    /**
-     * The target address of this jump is encoded in the instruction (MIPS: J and JAL)
-     */
-    pub is_jump_with_address: bool,
-}
+    impl Index<Opcode> for [&'static OpcodeDescriptor<'static>] {
+        type Output = &'static OpcodeDescriptor<'static>;
 
-impl<'a> OpcodeDescriptor<'a> {
-    pub const fn new(name: &'a str) -> Self {
-        Self {
-            name,
-            is_branch: false,
-            is_branch_likely: false,
-            is_jump: false,
-            is_jump_with_address: false,
+        fn index(&self, index: Opcode) -> &Self::Output {
+            &self[index as usize]
         }
-    }
-}
-
-
-pub struct OpcodeDescriptorBuilder<'a> {
-    inner: OpcodeDescriptor<'a>,
-}
-
-impl<'a> OpcodeDescriptorBuilder<'a> {
-    pub const fn new(name: &'a str) -> Self {
-        Self {
-            inner: OpcodeDescriptor::new(name),
-        }
-    }
-
-    pub const fn build(self) -> OpcodeDescriptor<'a> {
-        self.inner
-    }
-
-    pub const fn is_branch(mut self) -> Self {
-        self.inner.is_branch = true;
-        self
-    }
-
-    pub const fn is_branch_likely(mut self) -> Self {
-        self.inner.is_branch_likely = true;
-        self
-    }
-
-    pub const fn is_jump(mut self) -> Self {
-        self.inner.is_jump = true;
-        self
-    }
-
-    pub const fn is_jump_with_address(mut self) -> Self {
-        self.inner.is_jump_with_address = true;
-        self
-    }
-}
-
-pub static OPCODE_J: OpcodeDescriptor = OpcodeDescriptorBuilder::new("J").is_jump().is_jump_with_address().build();
-
-pub static OPCODES: &[&OpcodeDescriptor] = &[
-    &OPCODE_J
-];
-
-impl Index<Opcode> for [&'static OpcodeDescriptor<'static>] {
-    type Output = &'static OpcodeDescriptor<'static>;
-
-    fn index(&self, index: Opcode) -> &Self::Output {
-        &self[index as usize]
     }
 }
 
@@ -105,12 +37,12 @@ mod tests {
 
     #[test]
     fn test_j() {
-        assert_eq!(OPCODES[0], &OPCODE_J);
-        assert_eq!(OPCODES[Opcode::J], &OPCODE_J);
-        assert_eq!(Opcode::J.get_descriptor(), &OPCODE_J);
+        assert_eq!(opcodes::OPCODES[0], &opcodes::OPCODE_J);
+        assert_eq!(opcodes::OPCODES[Opcode::J], &opcodes::OPCODE_J);
+        assert_eq!(Opcode::J.get_descriptor(), &opcodes::OPCODE_J);
 
-        assert_eq!(*OPCODES[0], OPCODE_J);
-        assert_eq!(*OPCODES[Opcode::J], OPCODE_J);
-        assert_eq!(*Opcode::J.get_descriptor(), OPCODE_J);
+        assert_eq!(*opcodes::OPCODES[0], opcodes::OPCODE_J);
+        assert_eq!(*opcodes::OPCODES[Opcode::J], opcodes::OPCODE_J);
+        assert_eq!(*Opcode::J.get_descriptor(), opcodes::OPCODE_J);
     }
 }
