@@ -3,7 +3,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         cpu, , INVALID,
-        .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate}
+        operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_immediate)
     )
 
     #include "cpu/cpu_normal.inc"
@@ -26,87 +26,87 @@
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_00,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_01,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_02,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_03,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_04,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_05,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_06,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_07,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_08,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_09,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_10,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_11,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_12,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_13,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_14,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_15,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_16,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_17,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_18,
-        .operands={0}
+        operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
         cpu, , USERDEF_19,
-        .operands={0}
+        operands: Operand::arr0()
     )
 #endif
 
     RABBITIZER_DEF_INSTR_ID(
         cpu, , MAX,
-        .operands={0}
+        operands: Operand::arr0()
     )

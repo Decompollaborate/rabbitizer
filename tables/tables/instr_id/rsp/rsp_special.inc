@@ -4,176 +4,176 @@
     // OP rd, rt, sa
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x00, sll,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt, RAB_OPERAND_cpu_sa},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rt: true
     ) // Shift word Left Logical
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x02, srl,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt, RAB_OPERAND_cpu_sa},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rt: true
     ) // Shift word Right Logical
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x03, sra,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt, RAB_OPERAND_cpu_sa},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rt: true
     ) // Shift word Right Arithmetic
 
     // OP rd, rt, rs
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x04, sllv,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::rsp_rs),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // Shift word Left Logical Variable
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x06, srlv,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::rsp_rs),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // Shift word Right Logical Variable
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x07, srav,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt, RAB_OPERAND_rsp_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::rsp_rs),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // Shift word Right Arithmetic Variable
 
     // OP rs
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x08, jr,
-        .operands={RAB_OPERAND_rsp_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true,
-        .isJump=true
+        operands: Operand::arr1(Operand::rsp_rs),
+        instr_type: InstrType::R,
+        reads_rs: true,
+        is_jump: true
     ) // Jump Register
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x09, jalr,
-        .operands={RAB_OPERAND_rsp_maybe_rd_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .isJump=true,
-        .modifiesRd=true,
-        .readsRs=true,
-        .doesLink=true
+        operands: Operand::arr1(Operand::rsp_maybe_rd_rs),
+        instr_type: InstrType::R,
+        is_jump: true,
+        modifies_rd: true,
+        reads_rs: true,
+        does_link: true
     ) // Jump And Link Register
 
     // OP rd, rs, rt
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x0A, movz,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // MOVe conditional on Zero
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x0B, movn,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // MOVe conditional on Not zero
 
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x20, add,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true,
-        .notEmittedByCompilers=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true,
+        not_emitted_by_compilers: true
     ) // ADD word
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x21, addu,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // ADD Unsigned word
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x22, sub,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .notEmittedByCompilers=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        not_emitted_by_compilers: true,
+        reads_rs: true,
+        reads_rt: true
     ) // Subtract word
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x23, subu,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // SUBtract Unsigned word
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x24, and,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // AND
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x25, or,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // OR
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x26, xor,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // eXclusive OR
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x27, nor,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // Not OR
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x2A, slt,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // Set on Less Than
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x2B, sltu,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rs, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // Set on Less Than Unsigned
 
     // OP code
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x0D, break,
-        .operands={RAB_OPERAND_cpu_code},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr1(Operand::cpu_code),
+        instr_type: InstrType::R
     ) // Break
 
 
@@ -181,47 +181,47 @@
     // OP
     RABBITIZER_DEF_INSTR_ID(
         rsp, -0x01, nop,
-        .operands={0},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .isPseudo=true
+        operands: Operand::arr0(),
+        instr_type: InstrType::R,
+        is_pseudo: true
     ) // No OPeration
 
     // OP rd, rs
     RABBITIZER_DEF_INSTR_ID(
         rsp, -0x25, move,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .maybeIsMove=true,
-        .isPseudo=true
+        operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rs),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        maybe_is_move: true,
+        is_pseudo: true
     ) // Move
     RABBITIZER_DEF_INSTR_ID(
         rsp, -0x27, not,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .isPseudo=true
+        operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rs),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        is_pseudo: true
     ) // Not
 
     // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(
         rsp, -0x22, neg,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .notEmittedByCompilers=true,
-        .modifiesRd=true,
-        .readsRt=true,
-        .isPseudo=true
+        operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        not_emitted_by_compilers: true,
+        modifies_rd: true,
+        reads_rt: true,
+        is_pseudo: true
     )
 
     // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(
         rsp, -0x23, negu,
-        .operands={RAB_OPERAND_rsp_rd, RAB_OPERAND_rsp_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRt=true,
-        .isPseudo=true
+        operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rt: true,
+        is_pseudo: true
     )

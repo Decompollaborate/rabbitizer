@@ -10,28 +10,28 @@ impl Operand {
         Self::ALL_EMPTY
     }
 
-    pub const fn arr_0() -> [Self; OPERAND_COUNT_MAX] {
+    pub const fn arr0() -> [Self; OPERAND_COUNT_MAX] {
         [Self::default(); OPERAND_COUNT_MAX]
     }
-    pub const fn arr_1(op0: Operand) -> [Self; OPERAND_COUNT_MAX] {
+    pub const fn arr1(op0: Operand) -> [Self; OPERAND_COUNT_MAX] {
         let mut arr = [Self::default(); OPERAND_COUNT_MAX];
         arr[0] = op0;
         arr
     }
-    pub const fn arr_2(op0: Operand, op1: Operand) -> [Self; OPERAND_COUNT_MAX] {
+    pub const fn arr2(op0: Operand, op1: Operand) -> [Self; OPERAND_COUNT_MAX] {
         let mut arr = [Self::default(); OPERAND_COUNT_MAX];
         arr[0] = op0;
         arr[1] = op1;
         arr
     }
-    pub const fn arr_3(op0: Operand, op1: Operand, op2: Operand) -> [Self; OPERAND_COUNT_MAX] {
+    pub const fn arr3(op0: Operand, op1: Operand, op2: Operand) -> [Self; OPERAND_COUNT_MAX] {
         let mut arr = [Self::default(); OPERAND_COUNT_MAX];
         arr[0] = op0;
         arr[1] = op1;
         arr[2] = op2;
         arr
     }
-    pub const fn arr_4(
+    pub const fn arr4(
         op0: Operand,
         op1: Operand,
         op2: Operand,
@@ -44,7 +44,7 @@ impl Operand {
         arr[3] = op3;
         arr
     }
-    pub const fn arr_5(
+    pub const fn arr5(
         op0: Operand,
         op1: Operand,
         op2: Operand,

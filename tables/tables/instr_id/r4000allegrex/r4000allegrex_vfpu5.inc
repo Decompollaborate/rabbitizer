@@ -20,8 +20,8 @@ vpfxs
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x00, vpfxs,
-        .operands={RAB_OPERAND_r4000allegrex_rpx, RAB_OPERAND_r4000allegrex_rpy, RAB_OPERAND_r4000allegrex_rpz, RAB_OPERAND_r4000allegrex_rpw},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+        operands: Operand::arr4(Operand::r4000allegrex_rpx, Operand::r4000allegrex_rpy, Operand::r4000allegrex_rpz, Operand::r4000allegrex_rpw),
+        instr_type: InstrType::UNKNOWN
     ) // Source Prefix
 
 /*
@@ -33,8 +33,8 @@ vpfxt
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x02, vpfxt,
-        .operands={RAB_OPERAND_r4000allegrex_rpx, RAB_OPERAND_r4000allegrex_rpy, RAB_OPERAND_r4000allegrex_rpz, RAB_OPERAND_r4000allegrex_rpw},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+        operands: Operand::arr4(Operand::r4000allegrex_rpx, Operand::r4000allegrex_rpy, Operand::r4000allegrex_rpz, Operand::r4000allegrex_rpw),
+        instr_type: InstrType::UNKNOWN
     ) // Target Prefix
 
 /*
@@ -46,8 +46,8 @@ vpfxd
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x04, vpfxd,
-        .operands={RAB_OPERAND_r4000allegrex_wpx, RAB_OPERAND_r4000allegrex_wpy, RAB_OPERAND_r4000allegrex_wpz, RAB_OPERAND_r4000allegrex_wpw},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+        operands: Operand::arr4(Operand::r4000allegrex_wpx, Operand::r4000allegrex_wpy, Operand::r4000allegrex_wpz, Operand::r4000allegrex_wpw),
+        instr_type: InstrType::UNKNOWN
     ) // Destination Prefix
 
 /*
@@ -59,8 +59,8 @@ viim.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x6, viim_s, viim.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vt, RAB_OPERAND_r4000allegrex_int16},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_int16),
+        instr_type: InstrType::R
     ) // Convert integer immediate to float Single Word
 
 /*
@@ -72,6 +72,6 @@ vfim.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x7, vfim_s, vfim.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vt, RAB_OPERAND_r4000allegrex_float16},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_float16),
+        instr_type: InstrType::R
     ) // Convert integer immediate to float Single Word

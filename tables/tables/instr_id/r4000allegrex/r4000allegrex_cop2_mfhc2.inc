@@ -20,7 +20,7 @@ mfv
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0, mfv,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_s_vd},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRt=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_s_vd),
+        instr_type: InstrType::R,
+        modifies_rt: true
     ) // Move word From Vfpu

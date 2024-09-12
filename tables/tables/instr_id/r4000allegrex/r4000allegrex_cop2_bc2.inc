@@ -14,27 +14,27 @@
     // OP IMM
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x00, bvf,
-        .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true
+        operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true
     ) // Branch on Vfpu False
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x01, bvt,
-        .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true
+        operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true
     ) // Branch on Vfpu True
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x02, bvfl,
-        .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true,
-        .isBranchLikely=true
+        operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true,
+        is_branch_likely: true
     ) // Branch on Vfpu False Likely
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x03, bvtl,
-        .operands={RAB_OPERAND_r4000allegrex_imm3, RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true,
-        .isBranchLikely=true
+        operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true,
+        is_branch_likely: true
     ) // Branch on Vfpu True Likely

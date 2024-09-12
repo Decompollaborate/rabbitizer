@@ -15,16 +15,16 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x00, srl,
-        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rt: true
     ) // Shift word Right Logical
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x01, rotr,
-        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_sa},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rt: true
     ) // ROTate word Right

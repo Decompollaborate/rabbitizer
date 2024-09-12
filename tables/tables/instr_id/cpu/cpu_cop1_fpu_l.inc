@@ -20,18 +20,18 @@
     // OP fd, fs
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         cpu, 0x20, cvt_s_l, cvt.s.l,
-        .operands={RAB_OPERAND_cpu_fd, RAB_OPERAND_cpu_fs},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isFloat=true,
-        .modifiesFd=true,
-        .readsFs=true
+        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+        instr_type: InstrType::UNKNOWN,
+        is_float: true,
+        modifies_fd: true,
+        reads_fs: true
     )
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         cpu, 0x21, cvt_d_l, cvt.d.l,
-        .operands={RAB_OPERAND_cpu_fd, RAB_OPERAND_cpu_fs},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isFloat=true,
-        .isDouble=true,
-        .modifiesFd=true,
-        .readsFs=true
+        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+        instr_type: InstrType::UNKNOWN,
+        is_float: true,
+        is_double: true,
+        modifies_fd: true,
+        reads_fs: true
     )

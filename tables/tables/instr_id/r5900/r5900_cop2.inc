@@ -17,21 +17,21 @@
     // TODO: properties
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x01, qmfc2,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vfs},
-        .modifiesRt=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vfs),
+        modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x02, cfc2,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vis},
-        .modifiesRt=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vis),
+        modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x05, qmtc2,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vfs},
-        .readsRt=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vfs),
+        reads_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x06, ctc2,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r5900_vis},
-        .readsRt=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vis),
+        reads_rt: true
     )

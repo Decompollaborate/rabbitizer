@@ -10,8 +10,8 @@ vnop
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x3FF0000, vnop,
-        .operands={0},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+        operands: Operand::arr0(),
+        instr_type: InstrType::UNKNOWN
     ) // Nop
 
 /*
@@ -23,8 +23,8 @@ vsync
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x3FF0320, vsync,
-        .operands={0},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+        operands: Operand::arr0(),
+        instr_type: InstrType::UNKNOWN
     ) // Synchronize
 
 /*
@@ -36,6 +36,6 @@ vflush
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x3FF040D, vflush,
-        .operands={0},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN
+        operands: Operand::arr0(),
+        instr_type: InstrType::UNKNOWN
     ) // Flush Write Buffer

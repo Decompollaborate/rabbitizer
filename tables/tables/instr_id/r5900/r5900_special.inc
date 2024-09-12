@@ -21,26 +21,26 @@
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, -0x0F, sync_p, sync.p,
-        .operands={0},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr0(),
+        instr_type: InstrType::R
     ) // Sync
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x18, mult,
-        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // MULTtiply word
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x28, mfsa,
-        .operands={RAB_OPERAND_cpu_rd},
-        .modifiesRd=true
+        operands: Operand::arr1(Operand::cpu_rd),
+        modifies_rd: true
     ) // Move From Shift Amount register
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x29, mtsa,
-        .operands={RAB_OPERAND_cpu_rs},
-        .readsRs=true
+        operands: Operand::arr1(Operand::cpu_rs),
+        reads_rs: true
     ) // Move To Shift Amount register

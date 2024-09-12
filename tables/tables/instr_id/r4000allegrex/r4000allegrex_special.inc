@@ -25,78 +25,78 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x16, clz,
-        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true
+        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true
     ) // Count Leading Zero
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x17, clo,
-        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true
+        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true
     ) // Count Leading One
 
     // OP rs, rt
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x1C, madd,
-        .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true,
-        .readsRt=true,
-        .modifiesHI=true,
-        .modifiesLO=true
+        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        instr_type: InstrType::R,
+        reads_rs: true,
+        reads_rt: true,
+        modifies_hi: true,
+        modifies_lo: true
     ) // Multiply ADD
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x1D, maddu,
-        .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true,
-        .readsRt=true,
-        .modifiesHI=true,
-        .modifiesLO=true
+        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        instr_type: InstrType::R,
+        reads_rs: true,
+        reads_rt: true,
+        modifies_hi: true,
+        modifies_lo: true
     ) // Multiply ADD Unsigned
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x2E, msub,
-        .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true,
-        .readsRt=true,
-        .modifiesHI=true,
-        .modifiesLO=true
+        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        instr_type: InstrType::R,
+        reads_rs: true,
+        reads_rt: true,
+        modifies_hi: true,
+        modifies_lo: true
     ) // Multiply SUBtract
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x2F, msubu,
-        .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRs=true,
-        .readsRt=true,
-        .modifiesHI=true,
-        .modifiesLO=true
+        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        instr_type: InstrType::R,
+        reads_rs: true,
+        reads_rt: true,
+        modifies_hi: true,
+        modifies_lo: true
     ) // Multiply SUBtract Unsigned
 
     // OP rd, rs, rt
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x2C, max,
-        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // select MAX
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x2D, min,
-        .operands={RAB_OPERAND_cpu_rd, RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_rt},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRd=true,
-        .readsRs=true,
-        .readsRt=true
+        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
     ) // select MIN

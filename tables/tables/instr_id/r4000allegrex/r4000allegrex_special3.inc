@@ -20,16 +20,16 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x00, ext,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_r4000allegrex_pos, RAB_OPERAND_r4000allegrex_size},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRt=true,
-        .readsRs=true
+        operands: Operand::arr4(Operand::cpu_rt, Operand::cpu_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size),
+        instr_type: InstrType::R,
+        modifies_rt: true,
+        reads_rs: true
     ) // EXTract bit field
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x04, ins,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_rs, RAB_OPERAND_r4000allegrex_pos, RAB_OPERAND_r4000allegrex_size_plus_pos},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .modifiesRt=true,
-        .readsRs=true
+        operands: Operand::arr4(Operand::cpu_rt, Operand::cpu_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size_plus_pos),
+        instr_type: InstrType::R,
+        modifies_rt: true,
+        reads_rs: true
     ) // INSert bit field

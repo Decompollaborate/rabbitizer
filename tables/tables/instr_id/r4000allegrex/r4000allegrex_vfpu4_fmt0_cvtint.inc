@@ -22,8 +22,8 @@ vuc2ifs.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x0, vuc2ifs_s, vuc2ifs.s,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // convert Unsigned Char single word to Integer
 
 /*
@@ -35,8 +35,8 @@ vc2i.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x01 << 2 | 0x0, vc2i_s, vc2i.s,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // Convert signed char single word to integer
 
 /*
@@ -48,8 +48,8 @@ vus2i.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x0, vus2i_s, vus2i.s,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // Convert unsigned short to integer Single Word
 
 /*
@@ -61,8 +61,8 @@ vus2i.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x1, vus2i_p, vus2i.p,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_p_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
+        instr_type: InstrType::R
     ) // Convert unsigned short to integer Pair Word
 
 /*
@@ -74,8 +74,8 @@ vs2i.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x03 << 2 | 0x0, vs2i_s, vs2i.s,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // Convert signed short to integer Single Word
 
 /*
@@ -87,8 +87,8 @@ vs2i.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x03 << 2 | 0x1, vs2i_p, vs2i.p,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_p_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
+        instr_type: InstrType::R
     ) // Convert signed short to integer Single Word
 
 /*
@@ -100,8 +100,8 @@ vi2uc.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x3, vi2uc_q, vi2uc.q,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Convert integer to unsigned char Quad Word
 
 /*
@@ -113,8 +113,8 @@ vi2c.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x05 << 2 | 0x3, vi2c_q, vi2c.q,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Convert integer to signed char Quad Word
 
 /*
@@ -126,8 +126,8 @@ vi2us.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x06 << 2 | 0x1, vi2us_p, vi2us.p,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_p_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
+        instr_type: InstrType::R
     ) // Convert integer to unsigned short Pair Word
 
 /*
@@ -139,8 +139,8 @@ vi2us.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x06 << 2 | 0x3, vi2us_q, vi2us.q,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Convert integer to unsigned short Quad Word
 
 /*
@@ -152,8 +152,8 @@ vi2s.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x07 << 2 | 0x1, vi2s_p, vi2s.p,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_p_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
+        instr_type: InstrType::R
     ) // Convert integer to signed short Pair Word
 
 /*
@@ -165,6 +165,6 @@ vi2s.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x07 << 2 | 0x3, vi2s_q, vi2s.q,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Convert integer to signed short Quad Word

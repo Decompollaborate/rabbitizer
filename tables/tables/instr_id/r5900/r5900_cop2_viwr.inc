@@ -27,58 +27,58 @@
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x01 << 2) | 0x02, vilwr_w, vilwr.w,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer load word register
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x02 << 2) | 0x02, vilwr_z, vilwr.z,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer load word register
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x04 << 2) | 0x02, vilwr_y, vilwr.y,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer load word register
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x08 << 2) | 0x02, vilwr_x, vilwr.x,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer load word register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x01 << 2) | 0x03, viswr_w, viswr.w,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer store word register
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x02 << 2) | 0x03, viswr_z, viswr.z,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer store word register
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x04 << 2) | 0x03, viswr_y, viswr.y,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer store word register
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, (0x08 << 2) | 0x03, viswr_x, viswr.x,
-        .operands={RAB_OPERAND_r5900_vit, RAB_OPERAND_r5900_vis_parenthesis},
-        .isFloat=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+        is_float: true,
+        does_dereference: true,
+        does_load: true
     ) // Integer store word register

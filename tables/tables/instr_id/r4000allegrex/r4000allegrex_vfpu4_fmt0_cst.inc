@@ -22,8 +22,8 @@ vcst.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x0, vcst_s, vcst.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_vconstant},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_vconstant),
+        instr_type: InstrType::R
     ) // Set ConsTant Single word
 
 /*
@@ -35,8 +35,8 @@ vcst.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x1, vcst_p, vcst.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_vconstant},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_vconstant),
+        instr_type: InstrType::R
     ) // Set ConsTant Pair word
 
 /*
@@ -48,8 +48,8 @@ vcst.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x2, vcst_t, vcst.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_vconstant},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_vconstant),
+        instr_type: InstrType::R
     ) // Set ConsTant Triple word
 
 /*
@@ -61,6 +61,6 @@ vcst.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x3, vcst_q, vcst.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_vconstant},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_vconstant),
+        instr_type: InstrType::R
     ) // Set ConsTant Quad word

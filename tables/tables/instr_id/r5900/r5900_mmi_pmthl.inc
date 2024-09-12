@@ -19,6 +19,6 @@
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, 0x00, pmthl_lw, pmthl.lw,
-        .operands={RAB_OPERAND_cpu_rs},
-        .readsRs=true
+        operands: Operand::arr1(Operand::cpu_rs),
+        reads_rs: true
     ) // Parallel Move To Hi/Lo register

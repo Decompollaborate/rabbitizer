@@ -22,8 +22,8 @@ vt4444.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x01 << 2 | 0x3, vt4444_q, vt4444.q,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Convert to color4444 from packed unsigned chars Quad Word
 
 /*
@@ -35,8 +35,8 @@ vt5551.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x3, vt5551_q, vt5551.q,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Convert to color5551 from packed unsigned chars Quad Word
 
 /*
@@ -48,6 +48,6 @@ vt5650.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x03 << 2 | 0x3, vt5650_q, vt5650.q,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Convert to color5650 from packed unsigned chars Quad Word

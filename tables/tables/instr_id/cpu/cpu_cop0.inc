@@ -17,43 +17,43 @@
     // OP rt, cop0d
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x00, mfc0,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .modifiesRt=true,
-        .notEmittedByCompilers=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+        instr_type: InstrType::UNKNOWN,
+        modifies_rt: true,
+        not_emitted_by_compilers: true
     ) // Move word From CP0
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x01, dmfc0,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .modifiesRt=true,
-        .notEmittedByCompilers=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+        instr_type: InstrType::UNKNOWN,
+        modifies_rt: true,
+        not_emitted_by_compilers: true
     ) // Doubleword Move From CP0
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x02, cfc0,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .modifiesRt=true,
-        .notEmittedByCompilers=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+        instr_type: InstrType::UNKNOWN,
+        modifies_rt: true,
+        not_emitted_by_compilers: true
     ) // Move control word From CP0
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x04, mtc0,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .readsRt=true,
-        .notEmittedByCompilers=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+        instr_type: InstrType::UNKNOWN,
+        reads_rt: true,
+        not_emitted_by_compilers: true
     ) // Move word to CP0
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x05, dmtc0,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .readsRt=true,
-        .notEmittedByCompilers=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+        instr_type: InstrType::UNKNOWN,
+        reads_rt: true,
+        not_emitted_by_compilers: true
     ) // Doubleword Move To CP0
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x06, ctc0,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_cop0d},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .readsRt=true,
-        .notEmittedByCompilers=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+        instr_type: InstrType::UNKNOWN,
+        reads_rt: true,
+        not_emitted_by_compilers: true
     ) // Move control word To CP0

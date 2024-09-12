@@ -3,9 +3,9 @@
 
 use core::ops::Index;
 
-use crate::{AccessType, InstrSuffix};
 #[allow(deprecated)]
 use crate::{operand::OPERAND_COUNT_MAX, InstrType, Opcode, Operand};
+use crate::{AccessType, InstrSuffix};
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 pub struct OpcodeDescriptor<'a> {
@@ -96,10 +96,10 @@ pub struct OpcodeDescriptor<'a> {
 }
 
 impl<'a> OpcodeDescriptor<'a> {
-    pub const fn new(name: &'a str, operands: [Operand; OPERAND_COUNT_MAX]) -> Self {
+    pub const fn new(name: &'a str) -> Self {
         Self {
             name,
-            operands,
+            operands: Operand::arr0(),
             #[allow(deprecated)]
             instr_type: InstrType::default(),
             instr_suffix: InstrSuffix::default(),

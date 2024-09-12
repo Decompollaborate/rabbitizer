@@ -6,13 +6,15 @@
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
 #define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
-    table[ prefix##_##name as usize] = OpcodeDescriptor { \
-        __VA_ARGS__ \
+    table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
+        __VA_ARGS__, \
         ..OpcodeDescriptor::new( #name ) \
     } .check_panic_chain();
 
 #define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
     RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+
+use crate::{OpcodeDescriptor, opcode, Operand, Opcode, InstrType, AccessType, InstrSuffix};
 
 pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT as usize];

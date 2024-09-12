@@ -22,8 +22,8 @@ vmfvc
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x00 << 2 | 0x2, vmfvc,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_cop2cs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_cop2cs),
+        instr_type: InstrType::R
     ) // VFPU Move Word from VFPU Control
 
 /*
@@ -35,6 +35,6 @@ vmtvc
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x01 << 2 | 0x1, vmtvc,
-        .operands={RAB_OPERAND_r4000allegrex_cop2cd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_cop2cd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // VFPU Move Word to VFPU Control

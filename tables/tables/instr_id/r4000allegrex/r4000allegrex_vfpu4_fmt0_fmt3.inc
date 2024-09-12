@@ -22,8 +22,8 @@ vnrcp.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x0, vnrcp_s, vnrcp.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // Negative ReCiProcal Single word
 
 /*
@@ -35,8 +35,8 @@ vnrcp.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x1, vnrcp_p, vnrcp.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
+        instr_type: InstrType::R
     ) // Negative ReCiProcal Pair word
 
 /*
@@ -48,8 +48,8 @@ vnrcp.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x2, vnrcp_t, vnrcp.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
+        instr_type: InstrType::R
     ) // Negative ReCiProcal Triple word
 
 /*
@@ -61,8 +61,8 @@ vnrcp.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x00 << 2 | 0x3, vnrcp_q, vnrcp.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Negative ReCiProcal Quad word
 
 /*
@@ -74,8 +74,8 @@ vnsin.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x0, vnsin_s, vnsin.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // Negative SINe Single word
 
 /*
@@ -87,8 +87,8 @@ vnsin.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x1, vnsin_p, vnsin.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
+        instr_type: InstrType::R
     ) // Negative SINe Pair word
 
 /*
@@ -100,8 +100,8 @@ vnsin.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x2, vnsin_t, vnsin.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
+        instr_type: InstrType::R
     ) // Negative SINe Triple word
 
 /*
@@ -113,8 +113,8 @@ vnsin.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x02 << 2 | 0x3, vnsin_q, vnsin.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Negative SINe Quad word
 
 /*
@@ -126,8 +126,8 @@ vrexp2.s
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x0, vrexp2_s, vrexp2.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vd, RAB_OPERAND_r4000allegrex_s_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
+        instr_type: InstrType::R
     ) // Reciprocal EXPonential base 2 Single word
 
 /*
@@ -139,8 +139,8 @@ vrexp2.p
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x1, vrexp2_p, vrexp2.p,
-        .operands={RAB_OPERAND_r4000allegrex_p_vd, RAB_OPERAND_r4000allegrex_p_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
+        instr_type: InstrType::R
     ) // Reciprocal EXPonential base 2 Pair word
 
 /*
@@ -152,8 +152,8 @@ vrexp2.t
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x2, vrexp2_t, vrexp2.t,
-        .operands={RAB_OPERAND_r4000allegrex_t_vd, RAB_OPERAND_r4000allegrex_t_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
+        instr_type: InstrType::R
     ) // Reciprocal EXPonential base 2 Triple word
 
 /*
@@ -165,6 +165,6 @@ vrexp2.q
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x04 << 2 | 0x3, vrexp2_q, vrexp2.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vd, RAB_OPERAND_r4000allegrex_q_vs},
-        .instrType=RABBITIZER_INSTR_TYPE_R
+        operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
+        instr_type: InstrType::R
     ) // Reciprocal EXPonential base 2 Quad word

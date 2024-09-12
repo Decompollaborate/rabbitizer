@@ -19,30 +19,30 @@
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, 0x00, pmfhl_lw, pmfhl.lw,
-        .operands={RAB_OPERAND_cpu_rd},
-        .modifiesRd=true
+        operands: Operand::arr1(Operand::cpu_rd),
+        modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, 0x01, pmfhl_uw, pmfhl.uw,
-        .operands={RAB_OPERAND_cpu_rd},
-        .modifiesRd=true
+        operands: Operand::arr1(Operand::cpu_rd),
+        modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, 0x02, pmfhl_slw, pmfhl.slw,
-        .operands={RAB_OPERAND_cpu_rd},
-        .modifiesRd=true
+        operands: Operand::arr1(Operand::cpu_rd),
+        modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, 0x03, pmfhl_lh, pmfhl.lh,
-        .operands={RAB_OPERAND_cpu_rd},
-        .modifiesRd=true
+        operands: Operand::arr1(Operand::cpu_rd),
+        modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, 0x04, pmfhl_sh, pmfhl.sh,
-        .operands={RAB_OPERAND_cpu_rd},
-        .modifiesRd=true
+        operands: Operand::arr1(Operand::cpu_rd),
+        modifies_rd: true
     ) // Parallel Move From Hi/Lo register

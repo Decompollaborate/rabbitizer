@@ -19,9 +19,9 @@ mtv
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x0, mtv,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_s_vd},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRt=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_s_vd),
+        instr_type: InstrType::R,
+        reads_rt: true
     ) // Move word To Vfpu
 
 /*
@@ -33,7 +33,7 @@ mtvc
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x1, mtvc,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_r4000allegrex_cop2cd},
-        .instrType=RABBITIZER_INSTR_TYPE_R,
-        .readsRt=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_cop2cd),
+        instr_type: InstrType::R,
+        reads_rt: true
     ) // Move word To Vfpu Control

@@ -38,30 +38,30 @@
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x32, lv_s, lv.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vt_imm, RAB_OPERAND_r4000allegrex_offset14_base},
-        .instrType=RABBITIZER_INSTR_TYPE_I,
-        .readsRs=true
+        operands: Operand::arr2(Operand::r4000allegrex_s_vt_imm, Operand::r4000allegrex_offset14_base),
+        instr_type: InstrType::I,
+        reads_rs: true
     ) // Load Single word to Vfpu
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x3A, sv_s, sv.s,
-        .operands={RAB_OPERAND_r4000allegrex_s_vt_imm, RAB_OPERAND_r4000allegrex_offset14_base},
-        .instrType=RABBITIZER_INSTR_TYPE_I,
-        .modifiesRs=true
+        operands: Operand::arr2(Operand::r4000allegrex_s_vt_imm, Operand::r4000allegrex_offset14_base),
+        instr_type: InstrType::I,
+        modifies_rs: true
     ) // Store Single word to Vfpu
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x36, lv_q, lv.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vt_imm, RAB_OPERAND_r4000allegrex_offset14_base},
-        .instrType=RABBITIZER_INSTR_TYPE_I,
-        .readsRs=true
+        operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base),
+        instr_type: InstrType::I,
+        reads_rs: true
     ) // Load Single word to Vfpu
 
     // OP vt, offset_14(base), maybe_wb
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r4000allegrex, 0x3E, sv_q, sv.q,
-        .operands={RAB_OPERAND_r4000allegrex_q_vt_imm, RAB_OPERAND_r4000allegrex_offset14_base_maybe_wb},
-        .instrType=RABBITIZER_INSTR_TYPE_I,
-        .modifiesRs=true
+        operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base_maybe_wb),
+        instr_type: InstrType::I,
+        modifies_rs: true
     ) // Store Single word to Vfpu

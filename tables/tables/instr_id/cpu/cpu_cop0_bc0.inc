@@ -16,27 +16,27 @@
     // OP IMM
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x00, bc0f,
-        .operands={RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true
+        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true
     ) // Branch on FP False
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x01, bc0t,
-        .operands={RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true
+        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true
     ) // Branch on FP True
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x02, bc0fl,
-        .operands={RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true,
-        .isBranchLikely=true
+        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true,
+        is_branch_likely: true
     ) // Branch on FP False Likely
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x03, bc0tl,
-        .operands={RAB_OPERAND_cpu_branch_target_label},
-        .instrType=RABBITIZER_INSTR_TYPE_UNKNOWN,
-        .isBranch=true,
-        .isBranchLikely=true
+        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        instr_type: InstrType::UNKNOWN,
+        is_branch: true,
+        is_branch_likely: true
     ) // Branch on FP True Likely

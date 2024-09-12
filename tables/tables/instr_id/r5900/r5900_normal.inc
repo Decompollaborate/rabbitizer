@@ -25,39 +25,39 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1E, lq,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
-        .instrType=RABBITIZER_INSTR_TYPE_I,
-        .modifiesRt=true,
-        .readsRs=true,
-        .canBeLo=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+        instr_type: InstrType::I,
+        modifies_rt: true,
+        reads_rs: true,
+        can_be_lo: true,
+        does_dereference: true,
+        does_load: true
     ) // Load Quadword
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1F, sq,
-        .operands={RAB_OPERAND_cpu_rt, RAB_OPERAND_cpu_immediate_base},
-        .instrType=RABBITIZER_INSTR_TYPE_I,
-        .readsRs=true,
-        .readsRt=true,
-        .canBeLo=true,
-        .doesDereference=true,
-        .doesStore=true
+        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+        instr_type: InstrType::I,
+        reads_rs: true,
+        reads_rt: true,
+        can_be_lo: true,
+        does_dereference: true,
+        does_store: true
     ) // Store Quadword
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x36, lqc2,
-        .operands={RAB_OPERAND_r5900_vft, RAB_OPERAND_cpu_immediate_base},
-        .readsRs=true,
-        .canBeLo=true,
-        .doesDereference=true,
-        .doesLoad=true
+        operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
+        reads_rs: true,
+        can_be_lo: true,
+        does_dereference: true,
+        does_load: true
     )
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x3E, sqc2,
-        .operands={RAB_OPERAND_r5900_vft, RAB_OPERAND_cpu_immediate_base},
-        .readsRs=true,
-        .canBeLo=true,
-        .doesDereference=true,
-        .doesStore=true
+        operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
+        reads_rs: true,
+        can_be_lo: true,
+        does_dereference: true,
+        does_store: true
     )

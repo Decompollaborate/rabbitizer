@@ -18,13 +18,13 @@
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x18, mtsab,
-        .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
-        .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
-        .readsRs=true
+        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+        instr_type: InstrType::REGIMM,
+        reads_rs: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x19, mtsah,
-        .operands={RAB_OPERAND_cpu_rs, RAB_OPERAND_cpu_immediate},
-        .instrType=RABBITIZER_INSTR_TYPE_REGIMM,
-        .readsRs=true
+        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+        instr_type: InstrType::REGIMM,
+        reads_rs: true
     )
