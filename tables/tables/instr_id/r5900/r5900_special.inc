@@ -20,7 +20,7 @@
     // The other instructions are implemented using the main CPU table
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, -0x0F, sync_p, sync.p,
+        r5900, 0x0F, sync_p, sync.p,
         operands: Operand::arr0(),
         instr_type: InstrType::R
     ) // Sync

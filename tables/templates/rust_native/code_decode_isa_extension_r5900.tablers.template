@@ -1,0 +1,92 @@
+/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
+    caseBits => opcode = Opcode::prefix##_##name,
+
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+
+use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+
+impl OpcodeDecoder {
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r5900_normal(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::opcode;
+        let opcode;
+        let opcode_category = OpcodeCategory::R5900_NORMAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/r5900/r5900_normal.inc"
+            _ => return Self::decode_isa_extension_none_normal(word, mandatory_bits, isa_version, flags),
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r5900_special(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let opcode;
+        let opcode_category = OpcodeCategory::R5900_SPECIAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/r5900/r5900_special.inc"
+            _ => return Self::decode_isa_extension_none_special(word, mandatory_bits, isa_version, flags),
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }.fixups_decode_isa_extension_r5900_special(word, isa_version, flags)
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r5900_regimm(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::rt;
+        let opcode;
+        let opcode_category = OpcodeCategory::R5900_REGIMM;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/r5900/r5900_regimm.inc"
+            _ => return Self::decode_isa_extension_none_regimm(word, mandatory_bits, isa_version, flags),
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+}
+
+#undef RABBITIZER_DEF_INSTR_ID
+#undef RABBITIZER_DEF_INSTR_ID_ALTNAME

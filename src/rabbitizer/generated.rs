@@ -3,6 +3,7 @@
 
 mod array_opcodes;
 mod code_decode_isa_extension_none;
+mod code_decode_isa_extension_r5900;
 mod enum_access_type;
 mod enum_instr_suffix;
 mod enum_isa_extension;
