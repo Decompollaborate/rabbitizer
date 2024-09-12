@@ -1,23 +1,25 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#![no_std]
+#![cfg_attr(not(feature = "std"), no_std)]
 
 mod generated;
 
+mod instr_suffix;
 mod instr_type;
 mod opcode;
 mod opcode_descriptor;
 mod operand;
-mod instr_suffix;
+mod access_type;
 
 mod utils;
 
+pub use generated::AccessType;
+pub use generated::InstrSuffix;
 pub use generated::Opcode;
 pub use generated::Operand;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
-pub use generated::InstrSuffix;
 
 pub use opcode_descriptor::OpcodeDescriptor;
 

@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-    RAB_DEF_ACCESSTYPE(INVALID)
+    RAB_DEF_ACCESSTYPE(NONE)
 
     RAB_DEF_ACCESSTYPE(BYTE)
     RAB_DEF_ACCESSTYPE(SHORT)
