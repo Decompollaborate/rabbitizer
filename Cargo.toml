@@ -20,8 +20,8 @@ keywords = ["MIPS", "decoder"]
 [lib]
 path = "src/rabbitizer/lib.rs"
 
-[dependencies]
-num_enum = "0.5.7"
+# [dependencies]
+# num_enum = "0.5.7"
 
 # [build-dependencies]
 # cc = "1.0.78"

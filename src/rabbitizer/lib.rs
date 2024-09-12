@@ -1,29 +1,38 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use std::ops::Index;
+#![no_std]
+
+use core::ops::Index;
 
 mod opcode;
 mod opcode_descriptor;
 
+mod utils;
+
 pub use opcode::Opcode;
 pub use opcode_descriptor::OpcodeDescriptor;
-pub use opcode_descriptor::OpcodeDescriptorBuilder;
 
 
 pub mod opcodes {
     use super::*;
 
-    pub static OPCODE_J: OpcodeDescriptor = OpcodeDescriptorBuilder::new("J").is_jump().is_jump_with_address().build();
+    pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
+        let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT as usize];
 
-    pub static OPCODES: [&OpcodeDescriptor; Opcode::MAX as usize] = {
-        let mut a: [&OpcodeDescriptor; Opcode::MAX as usize] = [&OpcodeDescriptor::new_uinit(); Opcode::MAX as usize];
-        a[Opcode::J as usize] = &OPCODE_J;
-        a
+        table[Opcode::core_j as usize] = OpcodeDescriptor{is_jump:true, is_jump_with_address:true, ..OpcodeDescriptor::new("J")}.check_panic_chain();
+
+        let mut i = 0;
+        while i < opcode::OPCODE_COUNT {
+            table[i].check_panic();
+            i += 1;
+        }
+
+        table
     };
 
-    impl Index<Opcode> for [&'static OpcodeDescriptor<'static>] {
-        type Output = &'static OpcodeDescriptor<'static>;
+    impl Index<Opcode> for [OpcodeDescriptor<'static>] {
+        type Output = OpcodeDescriptor<'static>;
 
         fn index(&self, index: Opcode) -> &Self::Output {
             &self[index as usize]
@@ -37,12 +46,14 @@ mod tests {
 
     #[test]
     fn test_j() {
-        assert_eq!(opcodes::OPCODES[0], &opcodes::OPCODE_J);
-        assert_eq!(opcodes::OPCODES[Opcode::J], &opcodes::OPCODE_J);
-        assert_eq!(Opcode::J.get_descriptor(), &opcodes::OPCODE_J);
-
-        assert_eq!(*opcodes::OPCODES[0], opcodes::OPCODE_J);
-        assert_eq!(*opcodes::OPCODES[Opcode::J], opcodes::OPCODE_J);
-        assert_eq!(*Opcode::J.get_descriptor(), opcodes::OPCODE_J);
+        assert!(opcodes::OPCODES[0].is_jump);
+        assert!(opcodes::OPCODES[Opcode::core_j].is_jump);
+        assert!(Opcode::core_j.get_descriptor().is_jump);
+        assert!(opcodes::OPCODES[0].is_jump_with_address);
+        assert!(opcodes::OPCODES[Opcode::core_j].is_jump_with_address);
+        assert!(Opcode::core_j.get_descriptor().is_jump_with_address);
+        assert!(!opcodes::OPCODES[0].is_branch);
+        assert!(!opcodes::OPCODES[Opcode::core_j].is_branch);
+        assert!(!Opcode::core_j.get_descriptor().is_branch);
     }
 }
