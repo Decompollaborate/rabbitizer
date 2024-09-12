@@ -20,6 +20,11 @@ keywords = ["MIPS", "decoder"]
 [lib]
 path = "src/rabbitizer/lib.rs"
 
+[[bin]]
+# Just for testing
+name = "test"
+path = "src/rabbitizer/bin.rs"
+
 # [dependencies]
 # num_enum = "0.5.7"
 

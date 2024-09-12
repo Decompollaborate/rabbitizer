@@ -4,8 +4,10 @@
 use core::ops::Index;
 
 #[allow(deprecated)]
-use crate::{operand::OPERAND_COUNT_MAX, InstrType, Opcode, Operand};
-use crate::{AccessType, InstrSuffix};
+use crate::InstrType;
+use crate::{
+    operand::OperandIterator, operand::OPERAND_COUNT_MAX, AccessType, InstrSuffix, Opcode, Operand,
+};
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 pub struct OpcodeDescriptor<'a> {
@@ -96,7 +98,7 @@ pub struct OpcodeDescriptor<'a> {
 }
 
 impl<'a> OpcodeDescriptor<'a> {
-    pub const fn new(name: &'a str) -> Self {
+    pub(crate) const fn new(name: &'a str) -> Self {
         Self {
             name,
             operands: Operand::arr0(),
@@ -145,7 +147,7 @@ impl<'a> OpcodeDescriptor<'a> {
         // TODO: the rest of checks
 
         assert!(
-            self.name.len() != 0,
+            !self.name.is_empty(),
             "An opcode should not have an empty name"
         );
         assert!(
@@ -162,6 +164,14 @@ impl<'a> OpcodeDescriptor<'a> {
 
 impl<'a> OpcodeDescriptor<'a> {
     // getters and setters
+
+    pub fn operands(&self) -> &[Operand; OPERAND_COUNT_MAX] {
+        &self.operands
+    }
+
+    pub fn operands_iter(&self) -> OperandIterator {
+        OperandIterator::new(&self.operands)
+    }
 }
 
 impl Index<Opcode> for [OpcodeDescriptor<'static>] {

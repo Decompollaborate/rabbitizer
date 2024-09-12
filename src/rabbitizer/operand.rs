@@ -66,3 +66,32 @@ impl Default for Operand {
         Self::ALL_EMPTY
     }
 }
+
+pub struct OperandIterator<'a> {
+    operands: &'a [Operand; OPERAND_COUNT_MAX],
+    index: usize,
+}
+
+impl<'a> OperandIterator<'a> {
+    pub(crate) const fn new(operands: &'a [Operand; OPERAND_COUNT_MAX]) -> Self {
+        Self { operands, index: 0 }
+    }
+}
+
+impl<'a> Iterator for OperandIterator<'a> {
+    type Item = &'a Operand;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.index >= self.operands.len() {
+            return None;
+        }
+
+        let val = &self.operands[self.index];
+        if *val == Operand::default() {
+            return None;
+        }
+
+        self.index += 1;
+        Some(val)
+    }
+}

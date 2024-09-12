@@ -17,7 +17,7 @@
 use crate::{OpcodeDescriptor, opcode, Operand, Opcode, InstrType, AccessType, InstrSuffix};
 
 pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
-    let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT as usize];
+    let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT];
 
     #include "InstrIds.inc"
 

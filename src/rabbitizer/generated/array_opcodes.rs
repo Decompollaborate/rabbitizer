@@ -5,7 +5,7 @@
 
 use crate::{opcode, AccessType, InstrSuffix, InstrType, Opcode, OpcodeDescriptor, Operand};
 pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
-    let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT as usize];
+    let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT];
     table[Opcode::cpu_INVALID as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_immediate),
         ..OpcodeDescriptor::new("INVALID")
