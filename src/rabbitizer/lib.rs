@@ -3,16 +3,16 @@
 
 #![no_std]
 
-use core::ops::Index;
-
 mod generated;
 
 mod opcode;
 mod opcode_descriptor;
+mod operand;
 
 mod utils;
 
 pub use generated::Opcode;
+pub use generated::Operand;
 
 pub use opcode_descriptor::OpcodeDescriptor;
 
@@ -20,16 +20,16 @@ pub mod opcodes {
     use super::*;
 
     pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
-        let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT as usize];
+        let mut table = [OpcodeDescriptor::new("", Operand::arr_0()); opcode::OPCODE_COUNT as usize];
 
         table[Opcode::cpu_INVALID as usize] = OpcodeDescriptor {
-            ..OpcodeDescriptor::new("INVALID")
+            ..OpcodeDescriptor::new("INVALID", Operand::arr_0())
         }
         .check_panic_chain();
         table[Opcode::cpu_j as usize] = OpcodeDescriptor {
             is_jump: true,
             is_jump_with_address: true,
-            ..OpcodeDescriptor::new("j")
+            ..OpcodeDescriptor::new("j", Operand::arr_1(Operand::cpu_label))
         }
         .check_panic_chain();
 
@@ -41,14 +41,6 @@ pub mod opcodes {
 
         table
     };
-
-    impl Index<Opcode> for [OpcodeDescriptor<'static>] {
-        type Output = OpcodeDescriptor<'static>;
-
-        fn index(&self, index: Opcode) -> &Self::Output {
-            &self[index as usize]
-        }
-    }
 }
 
 #[cfg(test)]

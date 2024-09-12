@@ -1,6 +1,10 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-mod opcode_enum;
+mod enum_opcode;
+mod enum_operand;
+// mod array_opcodes;
 
-pub use opcode_enum::Opcode;
+pub use enum_opcode::Opcode;
+pub use enum_operand::Operand;
+// pub use array_opcodes::OPCODES;

@@ -13,3 +13,9 @@ impl Opcode {
         &opcodes::OPCODES[*self]
     }
 }
+
+impl Default for Opcode {
+    fn default() -> Self {
+        Self::cpu_INVALID
+    }
+}

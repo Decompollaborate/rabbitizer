@@ -9,11 +9,11 @@ TEMPLATE_FOLDER     := templates
 $(shell mkdir -p ../include/generated/ ../cplusplus/include/generated/)
 
 
-TABLE_C_TEMPLATES           := $(wildcard $(TEMPLATE_FOLDER)/c/*.table.template)
-TABLE_C_GENERATED           := $(TABLE_C_TEMPLATES:$(TEMPLATE_FOLDER)/c/%.table.template=../include/generated/%.h)
+# TABLE_C_TEMPLATES           := $(wildcard $(TEMPLATE_FOLDER)/c/*.table.template)
+# TABLE_C_GENERATED           := $(TABLE_C_TEMPLATES:$(TEMPLATE_FOLDER)/c/%.table.template=../include/generated/%.h)
 
-TABLE_CPLUSPLUS_TEMPLATES   := $(wildcard $(TEMPLATE_FOLDER)/cplusplus/*.table.template)
-TABLE_CPLUSPLUS_GENERATED   := $(TABLE_CPLUSPLUS_TEMPLATES:$(TEMPLATE_FOLDER)/cplusplus/%.table.template=../cplusplus/include/generated/%.hpp)
+# TABLE_CPLUSPLUS_TEMPLATES   := $(wildcard $(TEMPLATE_FOLDER)/cplusplus/*.table.template)
+# TABLE_CPLUSPLUS_GENERATED   := $(TABLE_CPLUSPLUS_TEMPLATES:$(TEMPLATE_FOLDER)/cplusplus/%.table.template=../cplusplus/include/generated/%.hpp)
 
 # TABLE_RS_TEMPLATES          := $(wildcard $(TEMPLATE_FOLDER)/rust/*.tablers.template)
 # TABLE_RS_GENERATED          := $(TABLE_RS_TEMPLATES:$(TEMPLATE_FOLDER)/rust/%.tablers.template=../rust/src/%.rs)
@@ -21,15 +21,15 @@ TABLE_CPLUSPLUS_GENERATED   := $(TABLE_CPLUSPLUS_TEMPLATES:$(TEMPLATE_FOLDER)/cp
 TABLE_RUST_TEMPLATES        := $(wildcard $(TEMPLATE_FOLDER)/rust_native/*.tablers.template)
 TABLE_RUST_GENERATED        := $(TABLE_RUST_TEMPLATES:$(TEMPLATE_FOLDER)/rust_native/%.tablers.template=../src/rabbitizer/generated/%.rs)
 
-TABLE_PYI_TEMPLATES         := $(wildcard $(TEMPLATE_FOLDER)/python/*.tablepyi.template)
-TABLE_PYI_GENERATED         := $(TABLE_PYI_TEMPLATES:$(TEMPLATE_FOLDER)/python/%.tablepyi.template=../rabbitizer/%.pyi)
+# TABLE_PYI_TEMPLATES         := $(wildcard $(TEMPLATE_FOLDER)/python/*.tablepyi.template)
+# TABLE_PYI_GENERATED         := $(TABLE_PYI_TEMPLATES:$(TEMPLATE_FOLDER)/python/%.tablepyi.template=../rabbitizer/%.pyi)
 
 
-TABLE_DEP_FILES     += $(TABLE_C_GENERATED:%.h=%.d)
-TABLE_DEP_FILES     += $(TABLE_CPLUSPLUS_GENERATED:%.hpp=%.d)
-TABLE_DEP_FILES     += $(TABLE_RS_TEMPLATES:%.template=%.d)
+#TABLE_DEP_FILES     += $(TABLE_C_GENERATED:%.h=%.d)
+#TABLE_DEP_FILES     += $(TABLE_CPLUSPLUS_GENERATED:%.hpp=%.d)
+#TABLE_DEP_FILES     += $(TABLE_RS_TEMPLATES:%.template=%.d)
 TABLE_DEP_FILES     += $(TABLE_RUST_TEMPLATES:%.template=%.d)
-TABLE_DEP_FILES     += $(TABLE_PYI_TEMPLATES:%.template=%.d)
+#TABLE_DEP_FILES     += $(TABLE_PYI_TEMPLATES:%.template=%.d)
 
 
 all: tables
@@ -38,11 +38,11 @@ tables: $(TABLE_C_GENERATED) $(TABLE_CPLUSPLUS_GENERATED) $(TABLE_RS_GENERATED) 
 	cargo fmt
 
 clean:
-	$(RM) -rf $(TABLE_C_GENERATED)
-	$(RM) -rf $(TABLE_CPLUSPLUS_GENERATED)
+#	$(RM) -rf $(TABLE_C_GENERATED)
+#	$(RM) -rf $(TABLE_CPLUSPLUS_GENERATED)
 #	$(RM) -rf $(TABLE_RS_GENERATED)
 	$(RM) -rf $(TABLE_RUST_GENERATED)
-	$(RM) -rf $(TABLE_PYI_GENERATED)
+#	$(RM) -rf $(TABLE_PYI_GENERATED)
 
 distclean: clean
 	$(RM) -rf $(TABLE_DEP_FILES)
