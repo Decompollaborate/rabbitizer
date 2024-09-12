@@ -5,14 +5,16 @@
 
 use core::ops::Index;
 
+mod generated;
+
 mod opcode;
 mod opcode_descriptor;
 
 mod utils;
 
-pub use opcode::Opcode;
-pub use opcode_descriptor::OpcodeDescriptor;
+pub use generated::Opcode;
 
+pub use opcode_descriptor::OpcodeDescriptor;
 
 pub mod opcodes {
     use super::*;
@@ -20,7 +22,16 @@ pub mod opcodes {
     pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         let mut table = [OpcodeDescriptor::new(""); opcode::OPCODE_COUNT as usize];
 
-        table[Opcode::core_j as usize] = OpcodeDescriptor{is_jump:true, is_jump_with_address:true, ..OpcodeDescriptor::new("J")}.check_panic_chain();
+        table[Opcode::cpu_INVALID as usize] = OpcodeDescriptor {
+            ..OpcodeDescriptor::new("INVALID")
+        }
+        .check_panic_chain();
+        table[Opcode::cpu_j as usize] = OpcodeDescriptor {
+            is_jump: true,
+            is_jump_with_address: true,
+            ..OpcodeDescriptor::new("j")
+        }
+        .check_panic_chain();
 
         let mut i = 0;
         while i < opcode::OPCODE_COUNT {
@@ -46,14 +57,11 @@ mod tests {
 
     #[test]
     fn test_j() {
-        assert!(opcodes::OPCODES[0].is_jump);
-        assert!(opcodes::OPCODES[Opcode::core_j].is_jump);
-        assert!(Opcode::core_j.get_descriptor().is_jump);
-        assert!(opcodes::OPCODES[0].is_jump_with_address);
-        assert!(opcodes::OPCODES[Opcode::core_j].is_jump_with_address);
-        assert!(Opcode::core_j.get_descriptor().is_jump_with_address);
-        assert!(!opcodes::OPCODES[0].is_branch);
-        assert!(!opcodes::OPCODES[Opcode::core_j].is_branch);
-        assert!(!Opcode::core_j.get_descriptor().is_branch);
+        assert!(opcodes::OPCODES[Opcode::cpu_j].is_jump);
+        assert!(Opcode::cpu_j.get_descriptor().is_jump);
+        assert!(opcodes::OPCODES[Opcode::cpu_j].is_jump_with_address);
+        assert!(Opcode::cpu_j.get_descriptor().is_jump_with_address);
+        assert!(!opcodes::OPCODES[Opcode::cpu_j].is_branch);
+        assert!(!Opcode::cpu_j.get_descriptor().is_branch);
     }
 }

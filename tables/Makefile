@@ -15,8 +15,11 @@ TABLE_C_GENERATED           := $(TABLE_C_TEMPLATES:$(TEMPLATE_FOLDER)/c/%.table.
 TABLE_CPLUSPLUS_TEMPLATES   := $(wildcard $(TEMPLATE_FOLDER)/cplusplus/*.table.template)
 TABLE_CPLUSPLUS_GENERATED   := $(TABLE_CPLUSPLUS_TEMPLATES:$(TEMPLATE_FOLDER)/cplusplus/%.table.template=../cplusplus/include/generated/%.hpp)
 
-TABLE_RS_TEMPLATES          := $(wildcard $(TEMPLATE_FOLDER)/rust/*.tablers.template)
-TABLE_RS_GENERATED          := $(TABLE_RS_TEMPLATES:$(TEMPLATE_FOLDER)/rust/%.tablers.template=../rust/src/%.rs)
+# TABLE_RS_TEMPLATES          := $(wildcard $(TEMPLATE_FOLDER)/rust/*.tablers.template)
+# TABLE_RS_GENERATED          := $(TABLE_RS_TEMPLATES:$(TEMPLATE_FOLDER)/rust/%.tablers.template=../rust/src/%.rs)
+
+TABLE_RUST_TEMPLATES        := $(wildcard $(TEMPLATE_FOLDER)/rust_native/*.tablers.template)
+TABLE_RUST_GENERATED        := $(TABLE_RUST_TEMPLATES:$(TEMPLATE_FOLDER)/rust_native/%.tablers.template=../src/rabbitizer/generated/%.rs)
 
 TABLE_PYI_TEMPLATES         := $(wildcard $(TEMPLATE_FOLDER)/python/*.tablepyi.template)
 TABLE_PYI_GENERATED         := $(TABLE_PYI_TEMPLATES:$(TEMPLATE_FOLDER)/python/%.tablepyi.template=../rabbitizer/%.pyi)
@@ -25,18 +28,20 @@ TABLE_PYI_GENERATED         := $(TABLE_PYI_TEMPLATES:$(TEMPLATE_FOLDER)/python/%
 TABLE_DEP_FILES     += $(TABLE_C_GENERATED:%.h=%.d)
 TABLE_DEP_FILES     += $(TABLE_CPLUSPLUS_GENERATED:%.hpp=%.d)
 TABLE_DEP_FILES     += $(TABLE_RS_TEMPLATES:%.template=%.d)
+TABLE_DEP_FILES     += $(TABLE_RUST_TEMPLATES:%.template=%.d)
 TABLE_DEP_FILES     += $(TABLE_PYI_TEMPLATES:%.template=%.d)
 
 
 all: tables
 
-tables: $(TABLE_C_GENERATED) $(TABLE_CPLUSPLUS_GENERATED) $(TABLE_RS_GENERATED) $(TABLE_PYI_GENERATED)
+tables: $(TABLE_C_GENERATED) $(TABLE_CPLUSPLUS_GENERATED) $(TABLE_RS_GENERATED) $(TABLE_RUST_GENERATED) $(TABLE_PYI_GENERATED)
 	cargo fmt
 
 clean:
 	$(RM) -rf $(TABLE_C_GENERATED)
 	$(RM) -rf $(TABLE_CPLUSPLUS_GENERATED)
-	$(RM) -rf $(TABLE_RS_GENERATED)
+#	$(RM) -rf $(TABLE_RS_GENERATED)
+	$(RM) -rf $(TABLE_RUST_GENERATED)
 	$(RM) -rf $(TABLE_PYI_GENERATED)
 
 distclean: clean
@@ -57,6 +62,10 @@ distclean: clean
 	$(C_TABLE_GEN) $< $@ $(@F) || rm -rf $@
 
 ../rust/src/%.rs: $(TEMPLATE_FOLDER)/rust/%.tablers.template
+	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
+	$(RS_TABLE_GEN) $< $@ || rm -rf $@
+
+../src/rabbitizer/generated/%.rs: $(TEMPLATE_FOLDER)/rust_native/%.tablers.template
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
 	$(RS_TABLE_GEN) $< $@ || rm -rf $@
 

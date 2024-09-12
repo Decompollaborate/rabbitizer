@@ -28,8 +28,14 @@ impl<'a> OpcodeDescriptor<'a> {
     }
 
     pub const fn check_panic(&self) {
-        assert!(self.name.len() != 0, "An opcode should not have an empty name");
-        assert!(!(self.is_branch && self.is_jump), "An opcode should be either branch or jump, not both");
+        assert!(
+            self.name.len() != 0,
+            "An opcode should not have an empty name"
+        );
+        assert!(
+            !(self.is_branch && self.is_jump),
+            "An opcode should be either branch or jump, not both"
+        );
     }
 
     pub(crate) const fn check_panic_chain(self) -> Self {
