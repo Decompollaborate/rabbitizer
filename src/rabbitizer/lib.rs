@@ -3,18 +3,23 @@
 
 #![cfg_attr(not(feature = "std"), no_std)]
 
+#[cfg(test)]
+#[macro_use]
+extern crate std;
+
 mod generated;
 
 mod access_type;
+mod encoded_field_mask;
 mod instr_suffix;
 mod instr_type;
+mod instruction;
 mod isa_extension;
 mod isa_version;
 mod opcode;
+mod opcode_decoder;
 mod opcode_descriptor;
 mod operand;
-mod instruction;
-mod opcode_decoder;
 
 mod utils;
 
@@ -30,10 +35,10 @@ pub use instr_type::InstrType;
 
 pub use generated::OPCODES;
 
-pub use opcode_descriptor::OpcodeDescriptor;
+pub use encoded_field_mask::EncodedFieldMask;
 pub use instruction::Instruction;
-pub use opcode_decoder::OpcodeDecoder;
-
+pub(crate) use opcode_decoder::OpcodeDecoder;
+pub use opcode_descriptor::OpcodeDescriptor;
 
 #[cfg(test)]
 mod tests {
