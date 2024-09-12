@@ -219,7 +219,7 @@
     ) // DIVide Unsigned word
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        cpu, -0x1A, sn64_div, div,
+        cpu, 0xFFFFFF1A, sn64_div, div,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -228,7 +228,7 @@
         modifies_lo: true
     ) // DIVide word
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        cpu, -0x1B, sn64_divu, divu,
+        cpu, 0xFFFFFF1B, sn64_divu, divu,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -515,7 +515,7 @@
 
     // OP
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x01, nop,
+        cpu, 0xFFFFFF00, nop,
         operands: Operand::arr0(),
         instr_type: InstrType::R,
         is_pseudo: true
@@ -523,7 +523,7 @@
 
     // OP rd, rs
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x25, move,
+        cpu, 0xFFFFFF25, move,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -532,7 +532,7 @@
         is_pseudo: true
     ) // Move
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x27, not,
+        cpu, 0xFFFFFF27, not,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -540,9 +540,9 @@
         is_pseudo: true
     ) // Not
 
-    // OP rd, rt
+    // OP rd, rtf
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x22, neg,
+        cpu, 0xFFFFFF22, neg,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         instr_type: InstrType::R,
         not_emitted_by_compilers: true,
@@ -553,7 +553,7 @@
 
     // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x23, negu,
+        cpu, 0xFFFFFF23, negu,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,

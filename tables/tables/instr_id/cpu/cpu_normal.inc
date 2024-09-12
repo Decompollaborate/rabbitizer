@@ -549,7 +549,7 @@
 
     // OP IMM
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x03, b,
+        cpu, 0xFFFFFF03, b,
         operands: Operand::arr1(Operand::cpu_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
@@ -558,7 +558,7 @@
 
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x04, beqz,
+        cpu, 0xFFFFFF04, beqz,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -566,7 +566,7 @@
         is_pseudo: true
     ) // Branch on EQual Zero
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x05, bnez,
+        cpu, 0xFFFFFF05, bnez,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,

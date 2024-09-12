@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{IsaExtension, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::{InstructionFlags, IsaExtension, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Instruction {
@@ -25,9 +25,11 @@ impl Instruction {
         word: u32,
         vram: u32,
         isa_version: IsaVersion,
-        isa_extension: IsaExtension
+        isa_extension: IsaExtension,
+        flags: InstructionFlags,
     ) -> Self {
-        let opcode_decoder = OpcodeDecoder::decode(word, isa_version, isa_extension);
+        let opcode_decoder =
+            OpcodeDecoder::decode(word, isa_version, isa_extension, flags.decoding_flags());
 
         Self {
             word,
@@ -75,6 +77,12 @@ impl Instruction {
     }
 }
 
+impl Instruction {
+    pub const fn is_nop(&self) -> bool {
+        OpcodeDecoder::is_nop(self.word)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -86,6 +94,7 @@ mod tests {
             0x80000000,
             IsaVersion::MIPS_III,
             IsaExtension::NONE,
+            InstructionFlags::default(),
         );
         assert_eq!(instr.opcode_category(), OpcodeCategory::CPU_NORMAL);
         assert_eq!(instr.opcode(), Opcode::cpu_j);
@@ -94,10 +103,23 @@ mod tests {
                 0x08000000,
                 0x80000000,
                 IsaVersion::MIPS_III,
-                IsaExtension::NONE
+                IsaExtension::NONE,
+                InstructionFlags::default(),
             )
             .opcode(),
             Opcode::cpu_j
         );
+    }
+
+    #[test]
+    fn check_jal() {
+        let instr = Instruction::new(
+            0x0C000004,
+            0x80000000,
+            IsaVersion::MIPS_III,
+            IsaExtension::NONE,
+            InstructionFlags::default(),
+        );
+        assert_eq!(instr.opcode(), Opcode::cpu_jal);
     }
 }

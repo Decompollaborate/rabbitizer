@@ -1,22 +1,26 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{EncodedFieldMask, IsaExtension, IsaVersion, Opcode, OpcodeCategory};
+use crate::{DecodingFlags, EncodedFieldMask, IsaExtension, IsaVersion, Opcode, OpcodeCategory};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub(crate) struct OpcodeDecoder {
-    opcode: Opcode,
-    opcode_category: OpcodeCategory,
-
-    mandatory_bits: EncodedFieldMask,
+    pub(crate) opcode: Opcode,
+    pub(crate) opcode_category: OpcodeCategory,
+    pub(crate) mandatory_bits: EncodedFieldMask,
 }
 
 impl OpcodeDecoder {
     #[must_use]
-    pub const fn decode(word: u32, _isa_version: IsaVersion, isa_extension: IsaExtension) -> Self {
+    pub const fn decode(
+        word: u32,
+        isa_version: IsaVersion,
+        isa_extension: IsaExtension,
+        flags: &DecodingFlags,
+    ) -> Self {
         // TODO
         match isa_extension {
-            IsaExtension::NONE => Self::decode_isa_extension_none(word),
+            IsaExtension::NONE => Self::decode_isa_extension_none(word, isa_version, flags),
             _ => Self {
                 opcode: Opcode::cpu_INVALID,
                 opcode_category: OpcodeCategory::ALL_INVALID,
@@ -45,50 +49,182 @@ impl OpcodeDecoder {
     }
 }
 
+impl OpcodeDecoder {
+    #[must_use]
+    pub const fn is_nop(word: u32) -> bool {
+        word == 0
+    }
+}
+
 // IsaExtension::NONE
 impl OpcodeDecoder {
     #[must_use]
-    const fn decode_isa_extension_none(word: u32) -> Self {
+    pub(crate) const fn decode_isa_extension_none(
+        word: u32,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags,
+    ) -> Self {
         let mask = EncodedFieldMask::opcode;
         let mandatory_bits = mask.mask_value(word);
 
         match mask.get_shifted(word) {
-            0x00 | 0x01 | 0x10 | 0x11 | 0x12 => Self {
-                opcode: Opcode::cpu_INVALID,
-                opcode_category: OpcodeCategory::CPU_INVALID,
+            0x00 => {
+                Self::decode_isa_extension_none_special(word, mandatory_bits, isa_version, flags)
+            }
+            0x01 => {
+                Self::decode_isa_extension_none_regimm(word, mandatory_bits, isa_version, flags)
+            }
+            0x10 => Self::decode_isa_extension_none_coprocessor0(
+                word,
                 mandatory_bits,
-            },
-            _ => Self::decode_isa_extension_none_normal(word, mandatory_bits),
+                isa_version,
+                flags,
+            ),
+            0x11 => Self::decode_isa_extension_none_coprocessor1(
+                word,
+                mandatory_bits,
+                isa_version,
+                flags,
+            ),
+            0x12 => Self::decode_isa_extension_none_coprocessor2(
+                word,
+                mandatory_bits,
+                isa_version,
+                flags,
+            ),
+            _ => Self::decode_isa_extension_none_normal(word, mandatory_bits, isa_version, flags),
         }
     }
 
     #[must_use]
-    const fn decode_isa_extension_none_normal(
+    pub(crate) const fn fixups_decode_isa_extension_none_normal(
         word: u32,
-        mut mandatory_bits: EncodedFieldMask,
-    ) -> Self {
-        let mask = EncodedFieldMask::opcode;
-        let mut opcode = Opcode::cpu_INVALID;
-        let opcode_category = OpcodeCategory::CPU_NORMAL;
-
-        mandatory_bits = mandatory_bits.union(EncodedFieldMask::opcode.mask_value(word));
-
-        match mask.get_shifted(word) {
-            0x02 => {
-                opcode = Opcode::cpu_j;
+        mut opcode: Opcode,
+        _isa_version: IsaVersion,
+        flags: &DecodingFlags,
+    ) -> Opcode {
+        match opcode {
+            Opcode::cpu_beq => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0 {
+                    if EncodedFieldMask::rs.get_shifted(word) == 0 {
+                        if flags
+                            .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_b))
+                        {
+                            opcode = Opcode::cpu_b;
+                        }
+                    } else {
+                        if flags.contains(
+                            DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqz),
+                        ) {
+                            opcode = Opcode::cpu_beqz;
+                        }
+                    }
+                }
+            }
+            Opcode::cpu_bne => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0 {
+                    if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnez))
+                    {
+                        opcode = Opcode::cpu_bnez;
+                    }
+                }
             }
             _ => {}
         }
-        opcode = Self::pseudos_decode_isa_extension_none_normal(word, opcode);
-        Self {
-            opcode,
-            opcode_category,
-            mandatory_bits,
-        }
+
+        opcode
     }
 
     #[must_use]
-    const fn pseudos_decode_isa_extension_none_normal(_word: u32, opcode: Opcode) -> Opcode {
+    pub(crate) const fn fixups_decode_isa_extension_none_special(
+        word: u32,
+        mut opcode: Opcode,
+        _isa_version: IsaVersion,
+        flags: &DecodingFlags,
+    ) -> Opcode {
+        if Self::is_nop(word) {
+            // NOP is special enough, so we don't provide a way to disable it.
+            return Opcode::cpu_nop;
+        }
+
+        match opcode {
+            Opcode::cpu_or => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0 {
+                    if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_move))
+                    {
+                        opcode = Opcode::cpu_move;
+                    }
+                }
+            }
+            Opcode::cpu_nor => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0 {
+                    if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_not))
+                    {
+                        opcode = Opcode::cpu_not;
+                    }
+                }
+            }
+            Opcode::cpu_sub => {
+                if EncodedFieldMask::rs.get_shifted(word) == 0 {
+                    if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_neg))
+                    {
+                        opcode = Opcode::cpu_neg;
+                    }
+                }
+            }
+            Opcode::cpu_subu => {
+                if EncodedFieldMask::rs.get_shifted(word) == 0 {
+                    if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_negu))
+                    {
+                        opcode = Opcode::cpu_negu;
+                    }
+                }
+            }
+            Opcode::cpu_div => {
+                if !flags.contains(DecodingFlags::gnu_mode)
+                    || flags.contains(DecodingFlags::sn64_div_fix)
+                {
+                    opcode = Opcode::cpu_sn64_div;
+                }
+            }
+            Opcode::cpu_divu => {
+                if !flags.contains(DecodingFlags::gnu_mode)
+                    || flags.contains(DecodingFlags::sn64_div_fix)
+                {
+                    opcode = Opcode::cpu_sn64_divu;
+                }
+            }
+            _ => {}
+        }
+
+        opcode
+    }
+
+    #[must_use]
+    pub(crate) const fn fixups_decode_isa_extension_none_regimm(
+        word: u32,
+        mut opcode: Opcode,
+        _isa_version: IsaVersion,
+        flags: &DecodingFlags,
+    ) -> Opcode {
+        match opcode {
+            Opcode::cpu_bgezal => {
+                if EncodedFieldMask::rs.get_shifted(word) == 0 {
+                    if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bal))
+                    {
+                        opcode = Opcode::cpu_bal;
+                    }
+                }
+            }
+            _ => {}
+        }
+
         opcode
     }
 }

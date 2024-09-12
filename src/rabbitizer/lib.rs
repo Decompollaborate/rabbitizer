@@ -11,6 +11,7 @@ mod generated;
 
 mod access_type;
 mod encoded_field_mask;
+mod flags;
 mod instr_suffix;
 mod instr_type;
 mod instruction;
@@ -39,6 +40,9 @@ pub use encoded_field_mask::EncodedFieldMask;
 pub use instruction::Instruction;
 pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
+
+pub use flags::DecodingFlags;
+pub use flags::InstructionFlags;
 
 #[cfg(test)]
 mod tests {

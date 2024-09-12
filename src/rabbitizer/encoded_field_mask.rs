@@ -57,7 +57,7 @@ impl EncodedFieldMask {
     pub const fn get_shifted(&self, value: u32) -> u32 {
         let bits = self.bits();
 
-        value >> bits.trailing_zeros()
+        (value & bits) >> bits.trailing_zeros()
     }
 
     #[must_use]

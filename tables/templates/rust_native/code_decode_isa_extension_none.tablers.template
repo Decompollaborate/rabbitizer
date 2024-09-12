@@ -1,0 +1,290 @@
+/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
+    caseBits => opcode = Opcode::prefix##_##name,
+
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+
+use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+
+impl OpcodeDecoder {
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_normal(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::opcode;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_NORMAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_normal.inc"
+            _ => {}
+        }
+        Self {
+            opcode: Self::fixups_decode_isa_extension_none_normal(word, opcode, isa_version, flags),
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_special(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_SPECIAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_special.inc"
+            _ => {}
+        }
+        Self {
+            opcode: Self::fixups_decode_isa_extension_none_special(word, opcode, isa_version, flags),
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_regimm(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::rt;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_REGIMM;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_regimm.inc"
+            _ => {}
+        }
+        Self {
+            opcode: Self::fixups_decode_isa_extension_none_regimm(word, opcode, isa_version, flags),
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor0(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP0;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop0.inc"
+            // TODO
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor1_bc1(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::bc_fmt;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP1_BC1;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop1_bc1.inc"
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_s(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP1_FPUS;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop1_fpu_s.inc"
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_d(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP1_FPUD;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop1_fpu_d.inc"
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_w(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP1_FPUW;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop1_fpu_w.inc"
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_l(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP1_FPUL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop1_fpu_l.inc"
+            // TODO
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor1(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP1;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop1.inc"
+            0x08 => return Self::decode_isa_extension_none_coprocessor1_bc1(word, mandatory_bits, isa_version, flags),
+            0x10 => return Self::decode_isa_extension_none_coprocessor1_fpu_s(word, mandatory_bits, isa_version, flags),
+            0x11 => return Self::decode_isa_extension_none_coprocessor1_fpu_d(word, mandatory_bits, isa_version, flags),
+            0x14 => return Self::decode_isa_extension_none_coprocessor1_fpu_w(word, mandatory_bits, isa_version, flags),
+            0x15 => return Self::decode_isa_extension_none_coprocessor1_fpu_l(word, mandatory_bits, isa_version, flags),
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_none_coprocessor2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP2;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/cpu/cpu_cop2.inc"
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+}
+
+#undef RABBITIZER_DEF_INSTR_ID
+#undef RABBITIZER_DEF_INSTR_ID_ALTNAME

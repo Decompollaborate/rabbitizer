@@ -2,6 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 mod array_opcodes;
+mod code_decode_isa_extension_none;
 mod enum_access_type;
 mod enum_instr_suffix;
 mod enum_isa_extension;

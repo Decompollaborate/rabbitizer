@@ -134,7 +134,7 @@
     // Pseudo-Instruction Unique IDs
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, -0x11, bal,
+        cpu, 0xFFFFFF11, bal,
         operands: Operand::arr1(Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
