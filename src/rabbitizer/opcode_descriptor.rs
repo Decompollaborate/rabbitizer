@@ -3,13 +3,20 @@
 
 use core::ops::Index;
 
-use crate::{operand::OPERAND_COUNT_MAX, Opcode, Operand};
+use crate::InstrSuffix;
+#[allow(deprecated)]
+use crate::{operand::OPERAND_COUNT_MAX, InstrType, Opcode, Operand};
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 pub struct OpcodeDescriptor<'a> {
     pub(crate) name: &'a str,
 
     pub(crate) operands: [Operand; OPERAND_COUNT_MAX],
+
+    #[allow(deprecated)]
+    pub(crate) instr_type: InstrType,
+
+    pub(crate) instr_suffix: InstrSuffix,
 
     /// Local branch which has a "restricted" range, usually it doesn't jump outside the current function
     pub(crate) is_branch: bool,
@@ -27,6 +34,9 @@ impl<'a> OpcodeDescriptor<'a> {
         Self {
             name,
             operands,
+            #[allow(deprecated)]
+            instr_type: InstrType::default(),
+            instr_suffix: InstrSuffix::default(),
             is_branch: false,
             is_branch_likely: false,
             is_jump: false,

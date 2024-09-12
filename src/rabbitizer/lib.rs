@@ -5,14 +5,19 @@
 
 mod generated;
 
+mod instr_type;
 mod opcode;
 mod opcode_descriptor;
 mod operand;
+mod instr_suffix;
 
 mod utils;
 
 pub use generated::Opcode;
 pub use generated::Operand;
+#[allow(deprecated)]
+pub use instr_type::InstrType;
+pub use generated::InstrSuffix;
 
 pub use opcode_descriptor::OpcodeDescriptor;
 
@@ -20,7 +25,8 @@ pub mod opcodes {
     use super::*;
 
     pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
-        let mut table = [OpcodeDescriptor::new("", Operand::arr_0()); opcode::OPCODE_COUNT as usize];
+        let mut table =
+            [OpcodeDescriptor::new("", Operand::arr_0()); opcode::OPCODE_COUNT as usize];
 
         table[Opcode::cpu_INVALID as usize] = OpcodeDescriptor {
             ..OpcodeDescriptor::new("INVALID", Operand::arr_0())
