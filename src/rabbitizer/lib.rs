@@ -8,6 +8,8 @@ mod generated;
 mod access_type;
 mod instr_suffix;
 mod instr_type;
+mod isa_extension;
+mod isa_version;
 mod opcode;
 mod opcode_descriptor;
 mod operand;
@@ -16,7 +18,10 @@ mod utils;
 
 pub use generated::AccessType;
 pub use generated::InstrSuffix;
+pub use generated::IsaExtension;
+pub use generated::IsaVersion;
 pub use generated::Opcode;
+pub use generated::OpcodeCategory;
 pub use generated::Operand;
 #[allow(deprecated)]
 pub use instr_type::InstrType;

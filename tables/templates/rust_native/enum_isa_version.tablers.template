@@ -1,0 +1,17 @@
+/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define RAB_DEF_ISAVERSION_CATEGORY(name) \
+    name,
+
+SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
+SPECIAL_RS_TAG(allow(non_camel_case_types))
+pub enum IsaVersion {
+    #include "IsaVersion.inc"
+}
+
+#undef RAB_DEF_ISAVERSION_CATEGORY

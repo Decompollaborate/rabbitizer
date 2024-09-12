@@ -6,12 +6,16 @@ use core::ops::Index;
 #[allow(deprecated)]
 use crate::InstrType;
 use crate::{
-    operand::OperandIterator, operand::OPERAND_COUNT_MAX, AccessType, InstrSuffix, Opcode, Operand,
+    operand::{OperandIterator, OPERAND_COUNT_MAX},
+    AccessType, InstrSuffix, IsaExtension, IsaVersion, Opcode, Operand,
 };
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 pub struct OpcodeDescriptor<'a> {
     pub(crate) name: &'a str,
+
+    pub(crate) isa_version: IsaVersion,
+    pub(crate) isa_extension: IsaExtension,
 
     pub(crate) operands: [Operand; OPERAND_COUNT_MAX],
 
@@ -101,6 +105,8 @@ impl<'a> OpcodeDescriptor<'a> {
     pub(crate) const fn new(name: &'a str) -> Self {
         Self {
             name,
+            isa_version: IsaVersion::default(), // TODO: require this to be passed as parameter
+            isa_extension: IsaExtension::default(), // TODO: require this to be passed as parameter
             operands: Operand::arr0(),
             #[allow(deprecated)]
             instr_type: InstrType::default(),
