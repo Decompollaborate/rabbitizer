@@ -13,6 +13,8 @@ mod isa_version;
 mod opcode;
 mod opcode_descriptor;
 mod operand;
+mod instruction;
+mod opcode_decoder;
 
 mod utils;
 
@@ -26,9 +28,12 @@ pub use generated::Operand;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 
-pub use opcode_descriptor::OpcodeDescriptor;
-
 pub use generated::OPCODES;
+
+pub use opcode_descriptor::OpcodeDescriptor;
+pub use instruction::Instruction;
+pub use opcode_decoder::OpcodeDecoder;
+
 
 #[cfg(test)]
 mod tests {
