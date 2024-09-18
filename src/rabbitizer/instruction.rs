@@ -123,4 +123,27 @@ mod tests {
         );
         assert_eq!(instr.opcode(), Opcode::cpu_jal);
     }
+
+    #[test]
+    fn check_lwu() {
+        // lwu was introduced in MIPS III
+
+        let instr = Instruction::new(
+            0x9C000000,
+            0x80000000,
+            IsaVersion::MIPS_III,
+            IsaExtension::NONE,
+            InstructionFlags::default(),
+        );
+        assert_eq!(instr.opcode(), Opcode::cpu_lwu);
+
+        let instr = Instruction::new(
+            0x9C000000,
+            0x80000000,
+            IsaVersion::MIPS_II,
+            IsaExtension::NONE,
+            InstructionFlags::default(),
+        );
+        assert_eq!(instr.opcode(), Opcode::cpu_INVALID);
+    }
 }

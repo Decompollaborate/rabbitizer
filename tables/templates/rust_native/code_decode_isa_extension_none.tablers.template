@@ -5,11 +5,11 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version, isa_extension, ...) \
-    case_bits => opcode = Opcode::prefix##_##name,
+#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
+    case_bits if isa_version as u32 >= isa_version_min as u32 => opcode = Opcode::prefix##_##name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version, isa_extension, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version, isa_extension, __VA_ARGS__)
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
@@ -116,7 +116,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor0_bc0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
@@ -140,7 +140,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor0_tlb(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::function;
@@ -193,7 +193,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_bc1(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
@@ -217,7 +217,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_s(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::function;
@@ -241,7 +241,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_d(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::function;
@@ -265,7 +265,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_w(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::function;
@@ -289,7 +289,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_l(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::function;
@@ -313,7 +313,7 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
+        isa_version: IsaVersion,
         _flags: &DecodingFlags
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
