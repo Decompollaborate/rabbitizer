@@ -9,8 +9,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_normal(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::opcode;
         let mut opcode = Opcode::cpu_INVALID;
@@ -82,7 +82,7 @@ impl OpcodeDecoder {
             _ => {}
         }
         Self {
-            opcode: Self::fixups_decode_isa_extension_none_normal(word, opcode, isa_version, flags),
+            opcode: Self::fixups_decode_isa_extension_none_normal(word, opcode, flags, isa_version),
             opcode_category,
             mandatory_bits,
         }
@@ -91,8 +91,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_special(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let mut opcode = Opcode::cpu_INVALID;
@@ -188,8 +188,8 @@ impl OpcodeDecoder {
             opcode: Self::fixups_decode_isa_extension_none_special(
                 word,
                 opcode,
-                isa_version,
                 flags,
+                isa_version,
             ),
             opcode_category,
             mandatory_bits,
@@ -199,8 +199,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_regimm(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rt;
         let mut opcode = Opcode::cpu_INVALID;
@@ -231,7 +231,7 @@ impl OpcodeDecoder {
             _ => {}
         }
         Self {
-            opcode: Self::fixups_decode_isa_extension_none_regimm(word, opcode, isa_version, flags),
+            opcode: Self::fixups_decode_isa_extension_none_regimm(word, opcode, flags, isa_version),
             opcode_category,
             mandatory_bits,
         }
@@ -240,8 +240,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
         let mut opcode = Opcode::cpu_INVALID;
@@ -258,16 +258,16 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_none_coprocessor0_bc0(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x10 => {
                 return Self::decode_isa_extension_none_coprocessor0_tlb(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             _ => {}
@@ -282,8 +282,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor0_bc0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
         let mut opcode = Opcode::cpu_INVALID;
@@ -306,8 +306,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor0_tlb(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let mut opcode = Opcode::cpu_INVALID;
@@ -332,8 +332,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
         let mut opcode = Opcode::cpu_INVALID;
@@ -350,40 +350,40 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_none_coprocessor1_bc1(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x10 => {
                 return Self::decode_isa_extension_none_coprocessor1_fpu_s(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x11 => {
                 return Self::decode_isa_extension_none_coprocessor1_fpu_d(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x14 => {
                 return Self::decode_isa_extension_none_coprocessor1_fpu_w(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x15 => {
                 return Self::decode_isa_extension_none_coprocessor1_fpu_l(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             _ => {}
@@ -398,8 +398,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_bc1(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
         let mut opcode = Opcode::cpu_INVALID;
@@ -422,8 +422,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_s(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let mut opcode = Opcode::cpu_INVALID;
@@ -497,8 +497,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_d(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let mut opcode = Opcode::cpu_INVALID;
@@ -572,8 +572,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_w(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let mut opcode = Opcode::cpu_INVALID;
@@ -594,8 +594,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor1_fpu_l(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let mut opcode = Opcode::cpu_INVALID;
@@ -620,8 +620,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
         let mut opcode = Opcode::cpu_INVALID;

@@ -9,8 +9,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r3000gte_coprocessor2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -19,14 +19,14 @@ impl OpcodeDecoder {
             | 0x1C | 0x1D => Self::decode_isa_extension_r3000gte_coprocessor2_gte(
                 word,
                 mandatory_bits,
-                isa_version,
                 flags,
+                isa_version,
             ),
             _ => Self::decode_isa_extension_none_coprocessor2(
                 word,
                 mandatory_bits,
-                isa_version,
                 flags,
+                isa_version,
             ),
         }
     }
@@ -34,8 +34,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r3000gte_coprocessor2_gte(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode;

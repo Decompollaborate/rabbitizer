@@ -9,8 +9,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_normal(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::opcode;
         let opcode;
@@ -25,8 +25,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_none_normal(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
         }
@@ -40,8 +40,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_special(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode;
@@ -56,8 +56,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_none_special(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
         }
@@ -66,14 +66,14 @@ impl OpcodeDecoder {
             opcode_category,
             mandatory_bits,
         }
-        .fixups_decode_isa_extension_r5900_special(word, isa_version, flags)
+        .fixups_decode_isa_extension_r5900_special(word, flags, isa_version)
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_r5900_regimm(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rt;
         let opcode;
@@ -86,8 +86,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_none_regimm(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
         }
@@ -101,8 +101,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
         let _opcode_category = OpcodeCategory::R5900_COP0;
@@ -111,14 +111,14 @@ impl OpcodeDecoder {
             0x10 => Self::decode_isa_extension_r5900_coprocessor0_tlb(
                 word,
                 mandatory_bits,
-                isa_version,
                 flags,
+                isa_version,
             ),
             _ => Self::decode_isa_extension_none_coprocessor0(
                 word,
                 mandatory_bits,
-                isa_version,
                 flags,
+                isa_version,
             ),
         }
     }
@@ -126,8 +126,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor0_tlb(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode;
@@ -140,8 +140,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_none_coprocessor0_tlb(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
         }
@@ -155,8 +155,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor1(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
         let _opcode_category = OpcodeCategory::R5900_COP1;
@@ -165,14 +165,14 @@ impl OpcodeDecoder {
             0x10 => Self::decode_isa_extension_r5900_coprocessor1_fpu_s(
                 word,
                 mandatory_bits,
-                isa_version,
                 flags,
+                isa_version,
             ),
             _ => Self::decode_isa_extension_none_coprocessor1(
                 word,
                 mandatory_bits,
-                isa_version,
                 flags,
+                isa_version,
             ),
         }
     }
@@ -180,8 +180,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor1_fpu_s(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode;
@@ -205,8 +205,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_none_coprocessor1_fpu_s(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
         }
@@ -220,8 +220,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_highbit;
         let opcode = Opcode::r5900_INVALID;
@@ -232,16 +232,16 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_r5900_coprocessor2_nohighbit(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x01 => {
                 return Self::decode_isa_extension_r5900_coprocessor2_special1(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             _ => {}
@@ -256,8 +256,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor2_nohighbit(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_nohighbit_fmt;
         let mut opcode = Opcode::r5900_INVALID;
@@ -272,8 +272,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_r5900_coprocessor2_bc2(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             _ => {}
@@ -288,8 +288,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor2_bc2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
         let mut opcode = Opcode::r5900_INVALID;
@@ -312,8 +312,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor2_special1(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let mut opcode = Opcode::r5900_INVALID;
@@ -379,8 +379,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_r5900_coprocessor2_special2(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             _ => {}
@@ -395,8 +395,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor2_special2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_fhi_flo;
         let mut opcode = Opcode::r5900_INVALID;
@@ -470,8 +470,8 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_r5900_coprocessor2_viwr(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             _ => {}
@@ -486,8 +486,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_coprocessor2_viwr(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_viwr_fhilo;
         let mut opcode = Opcode::r5900_INVALID;
@@ -514,8 +514,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_mmi(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
         flags: &DecodingFlags,
+        isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode;
@@ -545,48 +545,48 @@ impl OpcodeDecoder {
                 return Self::decode_isa_extension_r5900_mmi_0(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x09 => {
                 return Self::decode_isa_extension_r5900_mmi_2(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x28 => {
                 return Self::decode_isa_extension_r5900_mmi_1(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x29 => {
                 return Self::decode_isa_extension_r5900_mmi_3(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x30 => {
                 return Self::decode_isa_extension_r5900_mmi_pmfhl(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             0x31 => {
                 return Self::decode_isa_extension_r5900_mmi_pmthl(
                     word,
                     mandatory_bits,
-                    isa_version,
                     flags,
+                    isa_version,
                 )
             }
             _ => opcode = Opcode::r5900_INVALID,
@@ -601,8 +601,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_mmi_0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
         let opcode;
@@ -646,8 +646,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_mmi_1(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
         let opcode;
@@ -684,8 +684,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_mmi_2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
         let opcode;
@@ -726,8 +726,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_mmi_3(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
         let opcode;
@@ -759,8 +759,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_mmi_pmfhl(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
         let opcode;
@@ -784,8 +784,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r5900_mmi_pmthl(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
         _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
         let opcode;
