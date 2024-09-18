@@ -6,9 +6,9 @@
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 pub enum IsaVersion {
-    NONE,
     MIPS_I,
     MIPS_II,
     MIPS_III,
     MIPS_IV,
+    EXTENSION,
 }

@@ -5,12 +5,12 @@ use crate::IsaVersion;
 
 impl IsaVersion {
     pub const fn default() -> Self {
-        Self::NONE
+        Self::MIPS_I
     }
 }
 
 impl Default for IsaVersion {
     fn default() -> Self {
-        Self::NONE
+        Self::default()
     }
 }

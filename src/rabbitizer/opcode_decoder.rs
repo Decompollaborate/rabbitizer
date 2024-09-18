@@ -22,7 +22,7 @@ impl OpcodeDecoder {
         match isa_extension {
             IsaExtension::NONE => Self::decode_isa_extension_none(word, isa_version, flags),
             // IsaExtension::RSP => Self::decode_isa_extension_rsp(word, isa_version, flags),
-            // IsaExtension::R3000GTE => Self::decode_isa_extension_r3000gte(word, isa_version, flags),
+            IsaExtension::R3000GTE => Self::decode_isa_extension_r3000gte(word, isa_version, flags),
             // IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex(word, isa_version, flags),
             IsaExtension::R5900 => Self::decode_isa_extension_r5900(word, isa_version, flags),
             _ => Self {
@@ -231,6 +231,47 @@ impl OpcodeDecoder {
         }
 
         opcode
+    }
+}
+
+// IsaExtension::R3000GTE
+impl OpcodeDecoder {
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r3000gte(
+        word: u32,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags,
+    ) -> Self {
+        let mask = EncodedFieldMask::opcode;
+        let mandatory_bits = mask.mask_value(word);
+
+        match mask.get_shifted(word) {
+            0x00 => {
+                Self::decode_isa_extension_none_special(word, mandatory_bits, isa_version, flags)
+            }
+            0x01 => {
+                Self::decode_isa_extension_none_regimm(word, mandatory_bits, isa_version, flags)
+            }
+            0x10 => Self::decode_isa_extension_none_coprocessor0(
+                word,
+                mandatory_bits,
+                isa_version,
+                flags,
+            ),
+            0x11 => Self::decode_isa_extension_none_coprocessor1(
+                word,
+                mandatory_bits,
+                isa_version,
+                flags,
+            ),
+            0x12 => Self::decode_isa_extension_r3000gte_coprocessor2(
+                word,
+                mandatory_bits,
+                isa_version,
+                flags,
+            ),
+            _ => Self::decode_isa_extension_none_normal(word, mandatory_bits, isa_version, flags),
+        }
     }
 }
 

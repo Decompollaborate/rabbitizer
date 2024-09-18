@@ -1,0 +1,69 @@
+/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
+    caseBits => opcode = Opcode::prefix##_##name,
+
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+
+use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+
+impl OpcodeDecoder {
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r3000gte_coprocessor2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+            0x10 | 0x11 | 0x12 | 0x13 | 0x14 | 0x15 | 0x16 | 0x17 | 0x18 | 0x19 | 0x1A | 0x1B | 0x1C | 0x1D => Self::decode_isa_extension_r3000gte_coprocessor2_gte(word, mandatory_bits, isa_version, flags),
+            _ => Self::decode_isa_extension_none_coprocessor2(word, mandatory_bits, isa_version, flags),
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r3000gte_coprocessor2_gte(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let opcode;
+        let opcode_category = OpcodeCategory::R3000GTE_COP2_GTE;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        // GTE instructions are weird
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_fake_opcode.mask_value(word));
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_sf.mask_value(word));
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_mx.mask_value(word));
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_v.mask_value(word));
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_cv.mask_value(word));
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_lm.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/r3000gte/r3000gte_cop2_gte.inc"
+            _ => opcode = Opcode::r3000gte_INVALID,
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+}
+
+#undef RABBITIZER_DEF_INSTR_ID
+#undef RABBITIZER_DEF_INSTR_ID_ALTNAME

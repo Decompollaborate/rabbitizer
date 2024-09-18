@@ -48,6 +48,17 @@ bitflags! {
 
         const stype = utils::bitmask(  6,  5);
 
+        /* r3000gte */
+
+        const r3000gte_fake_opcode = utils::bitmask( 20,  5);
+        const r3000gte_sf = utils::bitmask( 19,  1);
+        const r3000gte_mx = utils::bitmask( 17,  2);
+        const r3000gte_v = utils::bitmask( 15,  2);
+        const r3000gte_cv = utils::bitmask( 13,  2);
+        const r3000gte_lm = utils::bitmask( 10,  1);
+
+        /* r5000 */
+
         const r5900_cop2_highbit = utils::bitmask(25,  1);
         const r5900_cop2_nohighbit_fmt = utils::bitmask(21,  4);
 
