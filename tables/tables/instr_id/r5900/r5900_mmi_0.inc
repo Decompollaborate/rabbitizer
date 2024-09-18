@@ -18,28 +18,28 @@
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x00, paddw,
+        r5900, 0x00, paddw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x01, psubw,
+        r5900, 0x01, psubw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x02, pcgtw,
+        r5900, 0x02, pcgtw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Compare for Greater Than Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x03, pmaxw,
+        r5900, 0x03, pmaxw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -47,28 +47,28 @@
     ) // Parallel MAXimum Word
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x04, paddh,
+        r5900, 0x04, paddh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x05, psubh,
+        r5900, 0x05, psubh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x06, pcgth,
+        r5900, 0x06, pcgth, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Compare for Greater Than Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x07, pmaxh,
+        r5900, 0x07, pmaxh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -76,21 +76,21 @@
     ) // Parallel MAXimum Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x08, paddb,
+        r5900, 0x08, paddb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD Byte
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x09, psubb,
+        r5900, 0x09, psubb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract Byte
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0A, pcgtb,
+        r5900, 0x0A, pcgtb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -98,28 +98,28 @@
     ) // Parallel Compare for Greater Than Byte
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x10, paddsw,
+        r5900, 0x10, paddsw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD with Signed saturation Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x11, psubsw,
+        r5900, 0x11, psubsw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract with Signed saturation Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x12, pextlw,
+        r5900, 0x12, pextlw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel EXTend Lower from Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x13, ppacw,
+        r5900, 0x13, ppacw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -127,28 +127,28 @@
     ) // Parallel PACk to Word
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x14, paddsh,
+        r5900, 0x14, paddsh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD with Signed saturation Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x15, psubsh,
+        r5900, 0x15, psubsh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract with Signed saturation Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x16, pextlh,
+        r5900, 0x16, pextlh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel EXTend Lower from Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x17, ppach,
+        r5900, 0x17, ppach, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -156,28 +156,28 @@
     ) // Parallel PACk to Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x18, paddsb,
+        r5900, 0x18, paddsb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD with Signed saturation Bytes
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x19, psubsb,
+        r5900, 0x19, psubsb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract with Signed saturation Bytes
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1A, pextlb,
+        r5900, 0x1A, pextlb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel EXTend Lower from Bytes
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1B, ppacb,
+        r5900, 0x1B, ppacb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -185,13 +185,13 @@
     ) // Parallel PACk to Bytes
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1E, pext5,
+        r5900, 0x1E, pext5, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel EXTend from 5-bits
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1F, ppac5,
+        r5900, 0x1F, ppac5, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true

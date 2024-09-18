@@ -5,11 +5,11 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
+#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version, isa_extension, ...) \
     prefix##_##name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version, isa_extension, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version, isa_extension, __VA_ARGS__)
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))

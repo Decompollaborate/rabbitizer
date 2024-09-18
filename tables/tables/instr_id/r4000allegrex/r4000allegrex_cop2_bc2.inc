@@ -13,26 +13,26 @@
 
     // OP IMM
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x00, bvf,
+        r4000allegrex, 0x00, bvf, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true
     ) // Branch on Vfpu False
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x01, bvt,
+        r4000allegrex, 0x01, bvt, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true
     ) // Branch on Vfpu True
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x02, bvfl,
+        r4000allegrex, 0x02, bvfl, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         is_branch_likely: true
     ) // Branch on Vfpu False Likely
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x03, bvtl,
+        r4000allegrex, 0x03, bvtl, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_imm3, Operand::cpu_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,

@@ -3,14 +3,14 @@
 
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x00, bltz,
+        rsp, 0x00, bltz, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true
     ) // Branch on Less Than Zero
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x01, bgez,
+        rsp, 0x01, bgez, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
@@ -18,7 +18,7 @@
     ) // Branch on Greater than or Equal to Zero
 
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x10, bltzal,
+        rsp, 0x10, bltzal, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
@@ -26,7 +26,7 @@
         does_link: true
     ) // Branch on Less Than Zero and Link
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x11, bgezal,
+        rsp, 0x11, bgezal, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
@@ -39,7 +39,7 @@
     // Pseudo-Instruction Unique IDs
 
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x11, bal,
+        rsp, -0x11, bal, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr1(Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,

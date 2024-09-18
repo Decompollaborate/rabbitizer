@@ -22,7 +22,7 @@ vrot.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x1, vrot_p, vrot.p,
+        r4000allegrex, 0x01 << 2 | 0x1, vrot_p, vrot.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_p_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Pair word
@@ -35,7 +35,7 @@ vrot.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x2, vrot_t, vrot.t,
+        r4000allegrex, 0x01 << 2 | 0x2, vrot_t, vrot.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_t_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Triple word
@@ -48,7 +48,7 @@ vrot.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x3, vrot_q, vrot.q,
+        r4000allegrex, 0x01 << 2 | 0x3, vrot_q, vrot.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_q_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Quad word

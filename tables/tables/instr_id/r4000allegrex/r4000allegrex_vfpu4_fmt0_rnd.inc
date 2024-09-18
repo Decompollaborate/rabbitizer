@@ -21,7 +21,7 @@ vrnds.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x0, vrnds_s, vrnds.s,
+        r4000allegrex, 0x00 << 2 | 0x0, vrnds_s, vrnds.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // RaNDom Seed Single word
@@ -34,7 +34,7 @@ vrndi.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x0, vrndi_s, vrndi.s,
+        r4000allegrex, 0x01 << 2 | 0x0, vrndi_s, vrndi.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R
     ) // RaNDom Integer Single word
@@ -47,7 +47,7 @@ vrndi.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x1, vrndi_p, vrndi.p,
+        r4000allegrex, 0x01 << 2 | 0x1, vrndi_p, vrndi.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R
     ) // RaNDom Integer Pair word
@@ -60,7 +60,7 @@ vrndi.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x2, vrndi_t, vrndi.t,
+        r4000allegrex, 0x01 << 2 | 0x2, vrndi_t, vrndi.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R
     ) // RaNDom Integer Triple word
@@ -73,7 +73,7 @@ vrndi.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x3, vrndi_q, vrndi.q,
+        r4000allegrex, 0x01 << 2 | 0x3, vrndi_q, vrndi.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R
     ) // RaNDom Integer Quad word
@@ -86,7 +86,7 @@ vrndf1.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x0, vrndf1_s, vrndf1.s,
+        r4000allegrex, 0x02 << 2 | 0x0, vrndf1_s, vrndf1.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Single word
@@ -99,7 +99,7 @@ vrndf1.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x1, vrndf1_p, vrndf1.p,
+        r4000allegrex, 0x02 << 2 | 0x1, vrndf1_p, vrndf1.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Pair word
@@ -112,7 +112,7 @@ vrndf1.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x2, vrndf1_t, vrndf1.t,
+        r4000allegrex, 0x02 << 2 | 0x2, vrndf1_t, vrndf1.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Triple word
@@ -125,7 +125,7 @@ vrndf1.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x3, vrndf1_q, vrndf1.q,
+        r4000allegrex, 0x02 << 2 | 0x3, vrndf1_q, vrndf1.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Quad word
@@ -138,7 +138,7 @@ vrndf2.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x0, vrndf2_s, vrndf2.s,
+        r4000allegrex, 0x03 << 2 | 0x0, vrndf2_s, vrndf2.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Pair word
@@ -151,7 +151,7 @@ vrndf2.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x1, vrndf2_p, vrndf2.p,
+        r4000allegrex, 0x03 << 2 | 0x1, vrndf2_p, vrndf2.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Pair word
@@ -164,7 +164,7 @@ vrndf2.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x2, vrndf2_t, vrndf2.t,
+        r4000allegrex, 0x03 << 2 | 0x2, vrndf2_t, vrndf2.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Quad word
@@ -177,7 +177,7 @@ vrndf2.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x3, vrndf2_q, vrndf2.q,
+        r4000allegrex, 0x03 << 2 | 0x3, vrndf2_q, vrndf2.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R
     ) // RaNDom Floating Quad word

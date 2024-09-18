@@ -20,13 +20,13 @@
     // The other instructions are implemented using the main CPU table
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x0F, sync_p, sync.p,
+        r5900, 0x0F, sync_p, sync.p, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0(),
         instr_type: InstrType::R
     ) // Sync
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x18, mult,
+        r5900, 0x18, mult, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -35,12 +35,12 @@
     ) // MULTtiply word
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x28, mfsa,
+        r5900, 0x28, mfsa, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Move From Shift Amount register
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x29, mtsa,
+        r5900, 0x29, mtsa, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rs),
         reads_rs: true
     ) // Move To Shift Amount register

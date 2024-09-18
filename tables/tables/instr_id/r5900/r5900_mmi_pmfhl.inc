@@ -18,31 +18,31 @@
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x00, pmfhl_lw, pmfhl.lw,
+        r5900, 0x00, pmfhl_lw, pmfhl.lw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x01, pmfhl_uw, pmfhl.uw,
+        r5900, 0x01, pmfhl_uw, pmfhl.uw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x02, pmfhl_slw, pmfhl.slw,
+        r5900, 0x02, pmfhl_slw, pmfhl.slw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x03, pmfhl_lh, pmfhl.lh,
+        r5900, 0x03, pmfhl_lh, pmfhl.lh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x04, pmfhl_sh, pmfhl.sh,
+        r5900, 0x04, pmfhl_sh, pmfhl.sh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register

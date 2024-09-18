@@ -20,20 +20,20 @@
     // OP
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x00, sleep,
+        r4000allegrex, 0x00, sleep, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::R
     )
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x24, mfie,
+        r4000allegrex, 0x24, mfie, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rt: true
     )
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x26, mtie,
+        r4000allegrex, 0x26, mtie, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::cpu_rt),
         instr_type: InstrType::R,
         reads_rt: true

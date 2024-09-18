@@ -19,20 +19,20 @@
 
     // TODO: operands and properties
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x01, pabsw,
+        r5900, 0x01, pabsw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel ABSolute Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x02, pceqw,
+        r5900, 0x02, pceqw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Compare for EQual Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x03, pminw,
+        r5900, 0x03, pminw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -40,27 +40,27 @@
     ) // Parallel MINimum Word
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x04, padsbh,
+        r5900, 0x04, padsbh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADd/SuBtract Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x05, pabsh,
+        r5900, 0x05, pabsh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel ABSolute Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x06, pceqh,
+        r5900, 0x06, pceqh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Compare for EQual Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x07, pminh,
+        r5900, 0x07, pminh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -68,7 +68,7 @@
     ) // Parallel MINimum Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0A, pceqb,
+        r5900, 0x0A, pceqb, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -76,21 +76,21 @@
     ) // Parallel Compare for EQual Byte
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x10, padduw,
+        r5900, 0x10, padduw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD Unsigned saturation Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x11, psubuw,
+        r5900, 0x11, psubuw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract Unsigned saturation Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x12, pextuw,
+        r5900, 0x12, pextuw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -98,21 +98,21 @@
     ) // Parallel EXTend Upper from Word
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x14, padduh,
+        r5900, 0x14, padduh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel ADD Unsigned saturation Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x15, psubuh,
+        r5900, 0x15, psubuh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract Unsigned saturation Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x16, pextuh,
+        r5900, 0x16, pextuh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -120,7 +120,7 @@
     ) // Parallel EXTend Upper from Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x18, paddub,
+        r5900, 0x18, paddub, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -128,21 +128,21 @@
         maybe_is_move: true
     ) // Parallel ADD Unsigned saturation Byte
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x19, psubub,
+        r5900, 0x19, psubub, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel SUBtract Unsigned saturation Byte
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1A, pextub,
+        r5900, 0x1A, pextub, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel EXTend Upper from Byte
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1B, qfsrv,
+        r5900, 0x1B, qfsrv, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,

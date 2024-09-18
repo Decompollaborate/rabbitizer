@@ -5,11 +5,11 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...) \
-    caseBits => opcode = Opcode::prefix##_##name,
+#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version, isa_extension, ...) \
+    case_bits => opcode = Opcode::prefix##_##name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version, isa_extension, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version, isa_extension, __VA_ARGS__)
 
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 

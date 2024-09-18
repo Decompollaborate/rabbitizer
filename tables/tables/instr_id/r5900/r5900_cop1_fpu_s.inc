@@ -20,12 +20,12 @@
     // The other instructions are implemented using the main CPU table
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x04, c1__sqrt_s, c1,
+        r5900, 0x04, c1__sqrt_s, c1, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_copraw)
     )
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x16, rsqrt_s, rsqrt.s,
+        r5900, 0x16, rsqrt_s, rsqrt.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fd: true,
@@ -34,21 +34,21 @@
     ) // floating point Reciprocal SQuare RooT
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x18, adda_s, adda.s,
+        r5900, 0x18, adda_s, adda.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true
     ) // floating point ADD to Accumulator
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x19, suba_s, suba.s,
+        r5900, 0x19, suba_s, suba.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true
     ) // floating point SUBtract to Accumulator
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x1A, mula_s, mula.s,
+        r5900, 0x1A, mula_s, mula.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fs: true,
@@ -56,7 +56,7 @@
     ) // floating point MULtiply to Accumulator
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x1C, madd_s, madd.s,
+        r5900, 0x1C, madd_s, madd.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fd: true,
@@ -64,7 +64,7 @@
         reads_ft: true
     ) // floating point Multiply-ADD
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x1D, msub_s, msub.s,
+        r5900, 0x1D, msub_s, msub.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fd: true,
@@ -72,14 +72,14 @@
         reads_ft: true
     ) // floating point Multiply abd SUBtract
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x1E, madda_s, madda.s,
+        r5900, 0x1E, madda_s, madda.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true
     ) // floating point Multiply-ADD Accumulator
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x1F, msuba_s, msuba.s,
+        r5900, 0x1F, msuba_s, msuba.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         reads_fs: true,
@@ -87,7 +87,7 @@
     ) // floating point Multiply SUBtract from Accumulator
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x28, max_s, max.s,
+        r5900, 0x28, max_s, max.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fd: true,
@@ -95,7 +95,7 @@
         reads_ft: true
     ) // floating point MAXimum
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x29, min_s, min.s,
+        r5900, 0x29, min_s, min.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         modifies_fd: true,
@@ -104,14 +104,14 @@
     ) // floating point MINimum
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x34, c_lt_s, c.lt.s,
+        r5900, 0x34, c_lt_s, c.lt.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x36, c_le_s, c.le.s,
+        r5900, 0x36, c_le_s, c.le.s, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
         is_float: true,
         reads_fs: true,

@@ -20,7 +20,7 @@
 
     // OP rt, fs
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x00, mfc1,
+        cpu, 0x00, mfc1, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -28,7 +28,7 @@
         reads_fs: true
     ) // Move Word From Floating-Point
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x01, dmfc1,
+        cpu, 0x01, dmfc1, IsaVersion::MIPS_III, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -36,7 +36,7 @@
         reads_fs: true
     ) // Doubleword Move From Floating-Point
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x04, mtc1,
+        cpu, 0x04, mtc1, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -44,7 +44,7 @@
         modifies_fs: true
     ) // Move Word to Floating-Point
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x05, dmtc1,
+        cpu, 0x05, dmtc1, IsaVersion::MIPS_III, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -54,14 +54,14 @@
 
     // OP rt, cop1cs
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x02, cfc1,
+        cpu, 0x02, cfc1, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop1cs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_rt: true
     ) // Move Control Word from Floating-Point
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x06, ctc1,
+        cpu, 0x06, ctc1, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop1cs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,

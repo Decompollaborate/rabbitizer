@@ -102,11 +102,11 @@ pub struct OpcodeDescriptor<'a> {
 }
 
 impl<'a> OpcodeDescriptor<'a> {
-    pub(crate) const fn new(name: &'a str) -> Self {
+    pub(crate) const fn default() -> Self {
         Self {
-            name,
-            isa_version: IsaVersion::default(), // TODO: require this to be passed as parameter
-            isa_extension: IsaExtension::default(), // TODO: require this to be passed as parameter
+            name: "",
+            isa_version: IsaVersion::default(),
+            isa_extension: IsaExtension::default(),
             operands: Operand::arr0(),
             #[allow(deprecated)]
             instr_type: InstrType::default(),
@@ -149,6 +149,20 @@ impl<'a> OpcodeDescriptor<'a> {
         }
     }
 
+    pub(crate) const fn new(
+        name: &'a str,
+        isa_version: IsaVersion,
+        isa_extension: IsaExtension,
+    ) -> Self {
+        Self {
+            name,
+            isa_version,
+            isa_extension,
+
+            ..Self::default()
+        }
+    }
+
     pub const fn check_panic(&self) {
         // TODO: the rest of checks
 
@@ -156,6 +170,13 @@ impl<'a> OpcodeDescriptor<'a> {
             !self.name.is_empty(),
             "An opcode should not have an empty name"
         );
+
+        if self.isa_version as u32 != IsaVersion::EXTENSION as u32 {
+            assert!(self.isa_extension as u32 == IsaExtension::NONE as u32);
+        } else {
+            assert!(self.isa_extension as u32 != IsaExtension::NONE as u32);
+        }
+
         assert!(
             !(self.is_branch && self.is_jump),
             "An opcode should be either branch or jump, not both"

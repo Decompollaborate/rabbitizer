@@ -21,7 +21,7 @@ vsrt1.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x3, vsrt1_q, vsrt1.q,
+        r4000allegrex, 0x00 << 2 | 0x3, vsrt1_q, vsrt1.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SoRT 1 Quad word
@@ -34,7 +34,7 @@ vsrt2.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x3, vsrt2_q, vsrt2.q,
+        r4000allegrex, 0x01 << 2 | 0x3, vsrt2_q, vsrt2.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SoRT 2 Quad word
@@ -47,7 +47,7 @@ vbfy1.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x1, vbfy1_p, vbfy1.p,
+        r4000allegrex, 0x02 << 2 | 0x1, vbfy1_p, vbfy1.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // ButterFlY 1 Pair word
@@ -60,7 +60,7 @@ vbfy1.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x3, vbfy1_q, vbfy1.q,
+        r4000allegrex, 0x02 << 2 | 0x3, vbfy1_q, vbfy1.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // ButterFlY 1 Quad word
@@ -73,7 +73,7 @@ vbfy2.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x3, vbfy2_q, vbfy2.q,
+        r4000allegrex, 0x03 << 2 | 0x3, vbfy2_q, vbfy2.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // ButterFlY 2 Quad word
@@ -86,7 +86,7 @@ vocp.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x0, vocp_s, vocp.s,
+        r4000allegrex, 0x04 << 2 | 0x0, vocp_s, vocp.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // One's Complement Single word
@@ -99,7 +99,7 @@ vocp.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x1, vocp_p, vocp.p,
+        r4000allegrex, 0x04 << 2 | 0x1, vocp_p, vocp.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // One's Complement Pair word
@@ -112,7 +112,7 @@ vocp.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x2, vocp_t, vocp.t,
+        r4000allegrex, 0x04 << 2 | 0x2, vocp_t, vocp.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // One's Complement Triple word
@@ -125,7 +125,7 @@ vocp.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x3, vocp_q, vocp.q,
+        r4000allegrex, 0x04 << 2 | 0x3, vocp_q, vocp.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // One's Complement Quad word
@@ -138,7 +138,7 @@ vsocp.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x05 << 2 | 0x0, vsocp_s, vsocp.s,
+        r4000allegrex, 0x05 << 2 | 0x0, vsocp_s, vsocp.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Saturate and One's Complement Single word
@@ -151,7 +151,7 @@ vsocp.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x05 << 2 | 0x1, vsocp_p, vsocp.p,
+        r4000allegrex, 0x05 << 2 | 0x1, vsocp_p, vsocp.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Saturate and One's Complement Pair word
@@ -164,7 +164,7 @@ vfad.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x1, vfad_p, vfad.p,
+        r4000allegrex, 0x06 << 2 | 0x1, vfad_p, vfad.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Funnel Add Pair word
@@ -178,7 +178,7 @@ vfad.t
 
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x2, vfad_t, vfad.t,
+        r4000allegrex, 0x06 << 2 | 0x2, vfad_t, vfad.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Funnel Add Triple word
@@ -191,7 +191,7 @@ vfad.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x3, vfad_q, vfad.q,
+        r4000allegrex, 0x06 << 2 | 0x3, vfad_q, vfad.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Funnel Add Quad word
@@ -204,7 +204,7 @@ vavg.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x1, vavg_p, vavg.p,
+        r4000allegrex, 0x07 << 2 | 0x1, vavg_p, vavg.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Average Pair word
@@ -217,7 +217,7 @@ vavg.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x2, vavg_t, vavg.t,
+        r4000allegrex, 0x07 << 2 | 0x2, vavg_t, vavg.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Average Triple word
@@ -230,7 +230,7 @@ vavg.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x3, vavg_q, vavg.q,
+        r4000allegrex, 0x07 << 2 | 0x3, vavg_q, vavg.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Average Quad word

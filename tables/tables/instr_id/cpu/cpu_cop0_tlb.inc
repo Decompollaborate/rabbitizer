@@ -19,40 +19,40 @@
 
     // OP
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x01, tlbr,
+        cpu, 0x01, tlbr, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Read Indexed TLB Entry
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x02, tlbwi,
+        cpu, 0x02, tlbwi, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Write Indexed TLB Entry
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x06, tlbwr,
+        cpu, 0x06, tlbwr, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Write Random TLB Entry
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x08, tlbp,
+        cpu, 0x08, tlbp, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Probe TLB for Matching Entry
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x10, rfe,
+        cpu, 0x10, rfe, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Restore From Exception
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x18, eret,
+        cpu, 0x18, eret, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true

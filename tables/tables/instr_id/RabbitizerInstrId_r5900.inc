@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , INVALID,
+        r5900, , INVALID, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_immediate),
         instr_type: InstrType::UNKNOWN
     )
@@ -31,88 +31,88 @@
 
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_00,
+        r5900, , USERDEF_00, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_01,
+        r5900, , USERDEF_01, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_02,
+        r5900, , USERDEF_02, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_03,
+        r5900, , USERDEF_03, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_04,
+        r5900, , USERDEF_04, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_05,
+        r5900, , USERDEF_05, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_06,
+        r5900, , USERDEF_06, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_07,
+        r5900, , USERDEF_07, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_08,
+        r5900, , USERDEF_08, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_09,
+        r5900, , USERDEF_09, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_10,
+        r5900, , USERDEF_10, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_11,
+        r5900, , USERDEF_11, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_12,
+        r5900, , USERDEF_12, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_13,
+        r5900, , USERDEF_13, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_14,
+        r5900, , USERDEF_14, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_15,
+        r5900, , USERDEF_15, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_16,
+        r5900, , USERDEF_16, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_17,
+        r5900, , USERDEF_17, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_18,
+        r5900, , USERDEF_18, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , USERDEF_19,
+        r5900, , USERDEF_19, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
 #endif
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, , MAX,
+        r5900, , MAX, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )

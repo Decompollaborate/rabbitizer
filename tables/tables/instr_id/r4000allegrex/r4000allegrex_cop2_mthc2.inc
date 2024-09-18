@@ -18,7 +18,7 @@ mtv
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x0, mtv,
+        r4000allegrex, 0x0, mtv, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         reads_rt: true
@@ -32,7 +32,7 @@ mtvc
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x1, mtvc,
+        r4000allegrex, 0x1, mtvc, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_cop2cd),
         instr_type: InstrType::R,
         reads_rt: true

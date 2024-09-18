@@ -4,7 +4,7 @@
     // RSP instructions
 
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , INVALID,
+        rsp, , INVALID, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
 
@@ -23,88 +23,88 @@
 
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_00,
+        rsp, , USERDEF_00, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_01,
+        rsp, , USERDEF_01, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_02,
+        rsp, , USERDEF_02, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_03,
+        rsp, , USERDEF_03, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_04,
+        rsp, , USERDEF_04, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_05,
+        rsp, , USERDEF_05, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_06,
+        rsp, , USERDEF_06, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_07,
+        rsp, , USERDEF_07, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_08,
+        rsp, , USERDEF_08, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_09,
+        rsp, , USERDEF_09, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_10,
+        rsp, , USERDEF_10, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_11,
+        rsp, , USERDEF_11, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_12,
+        rsp, , USERDEF_12, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_13,
+        rsp, , USERDEF_13, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_14,
+        rsp, , USERDEF_14, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_15,
+        rsp, , USERDEF_15, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_16,
+        rsp, , USERDEF_16, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_17,
+        rsp, , USERDEF_17, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_18,
+        rsp, , USERDEF_18, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , USERDEF_19,
+        rsp, , USERDEF_19, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )
 #endif
 
     RABBITIZER_DEF_INSTR_ID(
-        rsp, , MAX,
+        rsp, , MAX, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )

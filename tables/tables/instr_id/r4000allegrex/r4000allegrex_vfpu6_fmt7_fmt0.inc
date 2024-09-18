@@ -21,7 +21,7 @@ vmmov.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x1, vmmov_p, vmmov.p,
+        r4000allegrex, 0x00 << 2 | 0x1, vmmov_p, vmmov.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_mp_vd, Operand::r4000allegrex_mp_vs),
         instr_type: InstrType::R
     ) // Move Pair x Pair Matrix
@@ -34,7 +34,7 @@ vmmov.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x2, vmmov_t, vmmov.t,
+        r4000allegrex, 0x00 << 2 | 0x2, vmmov_t, vmmov.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_mt_vd, Operand::r4000allegrex_mt_vs),
         instr_type: InstrType::R
     ) // Move Triple x Triple Matrix
@@ -48,7 +48,7 @@ vmmov.q
 
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x3, vmmov_q, vmmov.q,
+        r4000allegrex, 0x00 << 2 | 0x3, vmmov_q, vmmov.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_mq_vd, Operand::r4000allegrex_mq_vs),
         instr_type: InstrType::R
     ) // Move Quad x Quad Matrix
@@ -61,7 +61,7 @@ vmidt.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x1, vmidt_p, vmidt.p,
+        r4000allegrex, 0x03 << 2 | 0x1, vmidt_p, vmidt.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mp_vd),
         instr_type: InstrType::R
     ) // Identity Pair x Pair Matrix
@@ -74,7 +74,7 @@ vmidt.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x2, vmidt_t, vmidt.t,
+        r4000allegrex, 0x03 << 2 | 0x2, vmidt_t, vmidt.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mt_vd),
         instr_type: InstrType::R
     ) // Identity Triple x Triple Matrix
@@ -87,7 +87,7 @@ vmidt.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x3, vmidt_q, vmidt.q,
+        r4000allegrex, 0x03 << 2 | 0x3, vmidt_q, vmidt.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mq_vd),
         instr_type: InstrType::R
     ) // Identity Quad x Quad Matrix
@@ -100,7 +100,7 @@ vmzero.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x1, vmzero_p, vmzero.p,
+        r4000allegrex, 0x06 << 2 | 0x1, vmzero_p, vmzero.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mp_vd),
         instr_type: InstrType::R
     ) // Zero Pair x Pair Matrix
@@ -113,7 +113,7 @@ vmzero.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x2, vmzero_t, vmzero.t,
+        r4000allegrex, 0x06 << 2 | 0x2, vmzero_t, vmzero.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mt_vd),
         instr_type: InstrType::R
     ) // Zero Triple x Triple Matrix
@@ -126,7 +126,7 @@ vmzero.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x3, vmzero_q, vmzero.q,
+        r4000allegrex, 0x06 << 2 | 0x3, vmzero_q, vmzero.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mq_vd),
         instr_type: InstrType::R
     ) // Zero Quad x Quad Matrix
@@ -139,7 +139,7 @@ vmone.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x1, vmone_p, vmone.p,
+        r4000allegrex, 0x07 << 2 | 0x1, vmone_p, vmone.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mp_vd),
         instr_type: InstrType::R
     ) // One Pair x Pair Matrix
@@ -152,7 +152,7 @@ vmone.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x2, vmone_t, vmone.t,
+        r4000allegrex, 0x07 << 2 | 0x2, vmone_t, vmone.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mt_vd),
         instr_type: InstrType::R
     ) // One Triple x Triple Matrix
@@ -165,7 +165,7 @@ vmone.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x3, vmone_q, vmone.q,
+        r4000allegrex, 0x07 << 2 | 0x3, vmone_q, vmone.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_mq_vd),
         instr_type: InstrType::R
     ) // One Quad x Quad Matrix

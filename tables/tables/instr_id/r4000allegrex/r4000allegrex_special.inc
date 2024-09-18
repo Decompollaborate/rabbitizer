@@ -24,7 +24,7 @@
     // OP rd, rs
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x16, clz,
+        r4000allegrex, 0x16, clz, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -32,7 +32,7 @@
     ) // Count Leading Zero
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x17, clo,
+        r4000allegrex, 0x17, clo, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -42,7 +42,7 @@
     // OP rs, rt
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x1C, madd,
+        r4000allegrex, 0x1C, madd, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -52,7 +52,7 @@
     ) // Multiply ADD
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x1D, maddu,
+        r4000allegrex, 0x1D, maddu, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -62,7 +62,7 @@
     ) // Multiply ADD Unsigned
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x2E, msub,
+        r4000allegrex, 0x2E, msub, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -72,7 +72,7 @@
     ) // Multiply SUBtract
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x2F, msubu,
+        r4000allegrex, 0x2F, msubu, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -84,7 +84,7 @@
     // OP rd, rs, rt
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x2C, max,
+        r4000allegrex, 0x2C, max, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -93,7 +93,7 @@
     ) // select MAX
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x2D, min,
+        r4000allegrex, 0x2D, min, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,

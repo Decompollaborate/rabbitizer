@@ -23,7 +23,7 @@ vadd.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x0, vadd_s, vadd.s,
+        r4000allegrex, 0x00 << 2 | 0x0, vadd_s, vadd.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // ADD Single word
@@ -36,7 +36,7 @@ vadd.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x1, vadd_p, vadd.p,
+        r4000allegrex, 0x00 << 2 | 0x1, vadd_p, vadd.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // ADD Pair word
@@ -49,7 +49,7 @@ vadd.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x2, vadd_t, vadd.t,
+        r4000allegrex, 0x00 << 2 | 0x2, vadd_t, vadd.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // ADD Triple word
@@ -62,7 +62,7 @@ vadd.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x3, vadd_q, vadd.q,
+        r4000allegrex, 0x00 << 2 | 0x3, vadd_q, vadd.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // ADD Quad word
@@ -75,7 +75,7 @@ vsub.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x0, vsub_s, vsub.s,
+        r4000allegrex, 0x01 << 2 | 0x0, vsub_s, vsub.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // SUBtract Single word
@@ -88,7 +88,7 @@ vsub.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x1, vsub_p, vsub.p,
+        r4000allegrex, 0x01 << 2 | 0x1, vsub_p, vsub.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // ADD Pair word
@@ -101,7 +101,7 @@ vsub.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x2, vsub_t, vsub.t,
+        r4000allegrex, 0x01 << 2 | 0x2, vsub_t, vsub.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // ADD Triple word
@@ -114,7 +114,7 @@ vsub.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x3, vsub_q, vsub.q,
+        r4000allegrex, 0x01 << 2 | 0x3, vsub_q, vsub.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // ADD Quad word
@@ -127,7 +127,7 @@ vsbn.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x0, vsbn_s, vsbn.s,
+        r4000allegrex, 0x02 << 2 | 0x0, vsbn_s, vsbn.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // ScaleBN Single word
@@ -140,7 +140,7 @@ vdiv.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x0, vdiv_s, vdiv.s,
+        r4000allegrex, 0x07 << 2 | 0x0, vdiv_s, vdiv.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // DIVide Single word
@@ -153,7 +153,7 @@ vdiv.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x1, vdiv_p, vdiv.p,
+        r4000allegrex, 0x07 << 2 | 0x1, vdiv_p, vdiv.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // DIVide Single word
@@ -166,7 +166,7 @@ vdiv.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x2, vdiv_t, vdiv.t,
+        r4000allegrex, 0x07 << 2 | 0x2, vdiv_t, vdiv.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // DIVide Single word
@@ -179,7 +179,7 @@ vdiv.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x3, vdiv_q, vdiv.q,
+        r4000allegrex, 0x07 << 2 | 0x3, vdiv_q, vdiv.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // DIVide Single word

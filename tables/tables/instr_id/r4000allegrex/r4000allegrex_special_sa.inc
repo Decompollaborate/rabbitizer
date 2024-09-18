@@ -14,7 +14,7 @@
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x00, srlv,
+        r4000allegrex, 0x00, srlv, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -23,7 +23,7 @@
     ) // Shift word Right Logical Variable
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x01, rotrv,
+        r4000allegrex, 0x01, rotrv, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
         instr_type: InstrType::R,
         modifies_rd: true,

@@ -19,7 +19,7 @@
 
     // OP fd, fs
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        cpu, 0x20, cvt_s_l, cvt.s.l,
+        cpu, 0x20, cvt_s_l, cvt.s.l, IsaVersion::MIPS_III, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -27,7 +27,7 @@
         reads_fs: true
     )
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        cpu, 0x21, cvt_d_l, cvt.d.l,
+        cpu, 0x21, cvt_d_l, cvt.d.l, IsaVersion::MIPS_III, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,

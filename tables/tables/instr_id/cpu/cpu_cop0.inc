@@ -16,42 +16,42 @@
 
     // OP rt, cop0d
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x00, mfc0,
+        cpu, 0x00, mfc0, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Move word From CP0
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x01, dmfc0,
+        cpu, 0x01, dmfc0, IsaVersion::MIPS_III, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Doubleword Move From CP0
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x02, cfc0,
+        cpu, 0x02, cfc0, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Move control word From CP0
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x04, mtc0,
+        cpu, 0x04, mtc0, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // Move word to CP0
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x05, dmtc0,
+        cpu, 0x05, dmtc0, IsaVersion::MIPS_III, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // Doubleword Move To CP0
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x06, ctc0,
+        cpu, 0x06, ctc0, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,

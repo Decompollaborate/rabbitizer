@@ -24,7 +24,7 @@
 
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1E, lq,
+        r5900, 0x1E, lq, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -34,7 +34,7 @@
         does_load: true
     ) // Load Quadword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1F, sq,
+        r5900, 0x1F, sq, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -45,7 +45,7 @@
     ) // Store Quadword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x36, lqc2,
+        r5900, 0x36, lqc2, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
         reads_rs: true,
         can_be_lo: true,
@@ -54,7 +54,7 @@
     )
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x3E, sqc2,
+        r5900, 0x3E, sqc2, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
         reads_rs: true,
         can_be_lo: true,

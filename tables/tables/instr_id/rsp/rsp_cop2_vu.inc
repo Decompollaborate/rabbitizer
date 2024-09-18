@@ -3,183 +3,183 @@
 
     // OP vd, vs, vt[elementhigh]
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x00, vmulf,
+        rsp, 0x00, vmulf, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x01, vmulu,
+        rsp, 0x01, vmulu, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x02, vrndp,
+        rsp, 0x02, vrndp, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x03, vmulq,
+        rsp, 0x03, vmulq, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x04, vmudl,
+        rsp, 0x04, vmudl, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x05, vmudm,
+        rsp, 0x05, vmudm, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x06, vmudn,
+        rsp, 0x06, vmudn, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x07, vmudh,
+        rsp, 0x07, vmudh, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x08, vmacf,
+        rsp, 0x08, vmacf, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x09, vmacu,
+        rsp, 0x09, vmacu, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x0A, vrndn,
+        rsp, 0x0A, vrndn, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x0B, vmacq,
+        rsp, 0x0B, vmacq, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x0C, vmadl,
+        rsp, 0x0C, vmadl, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x0D, vmadm,
+        rsp, 0x0D, vmadm, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x0E, vmadn,
+        rsp, 0x0E, vmadn, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x0F, vmadh,
+        rsp, 0x0F, vmadh, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x10, vadd,
+        rsp, 0x10, vadd, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x11, vsub,
+        rsp, 0x11, vsub, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x13, vabs,
+        rsp, 0x13, vabs, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x14, vaddc,
+        rsp, 0x14, vaddc, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x15, vsubc,
+        rsp, 0x15, vsubc, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x1D, vsar,
+        rsp, 0x1D, vsar, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x28, vand,
+        rsp, 0x28, vand, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x29, vnand,
+        rsp, 0x29, vnand, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x2A, vor,
+        rsp, 0x2A, vor, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x2B, vnor,
+        rsp, 0x2B, vnor, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x2C, vxor,
+        rsp, 0x2C, vxor, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x2D, vnxor,
+        rsp, 0x2D, vnxor, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
 
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x20, vlt,
+        rsp, 0x20, vlt, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x21, veq,
+        rsp, 0x21, veq, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x22, vne,
+        rsp, 0x22, vne, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x23, vge,
+        rsp, 0x23, vge, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x24, vcl,
+        rsp, 0x24, vcl, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x25, vch,
+        rsp, 0x25, vch, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x26, vcr,
+        rsp, 0x26, vcr, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x27, vmrg,
+        rsp, 0x27, vmrg, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr3(Operand::rsp_vd, Operand::rsp_vs, Operand::rsp_vt_elementhigh)
     )
 
     // OP vd[de], vt[elementhigh]
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x30, vrcp,
+        rsp, 0x30, vrcp, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x31, vrcpl,
+        rsp, 0x31, vrcpl, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh)
     ) // operands may be wrong
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x32, vrcph,
+        rsp, 0x32, vrcph, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x33, vmov,
+        rsp, 0x33, vmov, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x34, vrsq,
+        rsp, 0x34, vrsq, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x35, vrsql,
+        rsp, 0x35, vrsql, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh)
     )
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x36, vrsqh,
+        rsp, 0x36, vrsqh, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh)
     )
 
     // OP
     RABBITIZER_DEF_INSTR_ID(
-        rsp, 0x37, vnop,
+        rsp, 0x37, vnop, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0()
     )

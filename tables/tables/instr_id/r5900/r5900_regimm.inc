@@ -17,13 +17,13 @@
 
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x18, mtsab,
+        r5900, 0x18, mtsab, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x19, mtsah,
+        r5900, 0x19, mtsah, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true

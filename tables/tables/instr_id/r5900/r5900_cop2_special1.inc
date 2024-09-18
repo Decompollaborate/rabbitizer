@@ -21,322 +21,322 @@
     // TODO: properties
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x00, vaddx,
+        r5900, 0x00, vaddx, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x01, vaddy,
+        r5900, 0x01, vaddy, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x02, vaddz,
+        r5900, 0x02, vaddz, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x03, vaddw,
+        r5900, 0x03, vaddw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x04, vsubx,
+        r5900, 0x04, vsubx, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // SUBtract broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x05, vsuby,
+        r5900, 0x05, vsuby, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // SUBtract broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x06, vsubz,
+        r5900, 0x06, vsubz, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // SUBtract broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x07, vsubw,
+        r5900, 0x07, vsubw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // SUBtract broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x08, vmaddx,
+        r5900, 0x08, vmaddx, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x09, vmaddy,
+        r5900, 0x09, vmaddy, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0A, vmaddz,
+        r5900, 0x0A, vmaddz, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0B, vmaddw,
+        r5900, 0x0B, vmaddw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-ADD broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0C, vmsubx,
+        r5900, 0x0C, vmsubx, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-SUBtract broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0D, vmsuby,
+        r5900, 0x0D, vmsuby, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-SUBtract broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0E, vmsubz,
+        r5900, 0x0E, vmsubz, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-SUBtract broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0F, vmsubw,
+        r5900, 0x0F, vmsubw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-SUBtract broadcast
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x10, vmaxx,
+        r5900, 0x10, vmaxx, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MAXimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x11, vmaxy,
+        r5900, 0x11, vmaxy, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MAXimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x12, vmaxz,
+        r5900, 0x12, vmaxz, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MAXimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x13, vmaxw,
+        r5900, 0x13, vmaxw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MAXimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x14, vminix,
+        r5900, 0x14, vminix, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MINimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x15, vminiy,
+        r5900, 0x15, vminiy, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MINimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x16, vminiz,
+        r5900, 0x16, vminiz, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MINimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x17, vminiw,
+        r5900, 0x17, vminiw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MINimum broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x18, vmulx,
+        r5900, 0x18, vmulx, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MULtiply broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x19, vmuly,
+        r5900, 0x19, vmuly, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MULtiply broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1A, vmulz,
+        r5900, 0x1A, vmulz, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MULtiply broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1B, vmulw,
+        r5900, 0x1B, vmulw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftn),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MULtiply broadcast
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1C, vmulq,
+        r5900, 0x1C, vmulq, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_Q),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MULtiply Q
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1D, vmaxi,
+        r5900, 0x1D, vmaxi, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_I),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MAXimum I
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1E, vmuli,
+        r5900, 0x1E, vmuli, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_I),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MULtiply I
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1F, vminii,
+        r5900, 0x1F, vminii, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_I),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MINImum I
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x20, vaddq,
+        r5900, 0x20, vaddq, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_Q),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // ADD Q
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x21, vmaddq,
+        r5900, 0x21, vmaddq, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_Q),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-ADD Q
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x22, vaddi,
+        r5900, 0x22, vaddi, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_I),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // ADD I
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x23, vmaddi,
+        r5900, 0x23, vmaddi, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_I),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-ADD I
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x24, vsubq,
+        r5900, 0x24, vsubq, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_Q),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // SUBtract Q
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x25, vmsubq,
+        r5900, 0x25, vmsubq, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_Q),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-SUBtract Q
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x26, vsubi,
+        r5900, 0x26, vsubi, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_I),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // SUBtract I
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x27, vmsubi,
+        r5900, 0x27, vmsubi, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_I),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-SUBtract I
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x28, vadd,
+        r5900, 0x28, vadd, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // ADD
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x29, vmadd,
+        r5900, 0x29, vmadd, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-ADD
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x2A, vmul,
+        r5900, 0x2A, vmul, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MULtiply
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x2B, vmax,
+        r5900, 0x2B, vmax, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MAXimum
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x2C, vsub,
+        r5900, 0x2C, vsub, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // SUBtract
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x2D, vmsub,
+        r5900, 0x2D, vmsub, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Multiply-SUBtract
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x2E, vopmsub,
+        r5900, 0x2E, vopmsub, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // Outer product post decrement
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x2F, vmini,
+        r5900, 0x2F, vmini, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vfdxyzw, Operand::r5900_vfsxyzw, Operand::r5900_vftxyzw),
         instr_suffix: InstrSuffix::R5900_xyzw,
         is_float: true
     ) // MINImum
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x30, viadd,
+        r5900, 0x30, viadd, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit)
     ) // Integer ADD
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x31, visub,
+        r5900, 0x31, visub, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit)
     ) // Integer SUBtract
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x32, viaddi,
+        r5900, 0x32, viaddi, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vit, Operand::r5900_vis, Operand::r5900_immediate5)
     ) // Integer ADD Immediate
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x34, viand,
+        r5900, 0x34, viand, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit)
     ) // Integer AND
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x35, vior,
+        r5900, 0x35, vior, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit)
     ) // Integer OR
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x38, vcallms,
+        r5900, 0x38, vcallms, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::r5900_immediate15)
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x39, vcallmsr,
+        r5900, 0x39, vcallmsr, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::r5900_vis)
     )

@@ -9,7 +9,7 @@ vnop
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x3FF0000, vnop,
+        r4000allegrex, 0x3FF0000, vnop, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Nop
@@ -22,7 +22,7 @@ vsync
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x3FF0320, vsync,
+        r4000allegrex, 0x3FF0320, vsync, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Synchronize
@@ -35,7 +35,7 @@ vflush
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x3FF040D, vflush,
+        r4000allegrex, 0x3FF040D, vflush, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Flush Write Buffer

@@ -21,7 +21,7 @@ vrcp.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x0, vrcp_s, vrcp.s,
+        r4000allegrex, 0x00 << 2 | 0x0, vrcp_s, vrcp.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Single word
@@ -34,7 +34,7 @@ vrcp.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x1, vrcp_p, vrcp.p,
+        r4000allegrex, 0x00 << 2 | 0x1, vrcp_p, vrcp.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Pair word
@@ -47,7 +47,7 @@ vrcp.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x2, vrcp_t, vrcp.t,
+        r4000allegrex, 0x00 << 2 | 0x2, vrcp_t, vrcp.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Triple word
@@ -60,7 +60,7 @@ vrcp.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x3, vrcp_q, vrcp.q,
+        r4000allegrex, 0x00 << 2 | 0x3, vrcp_q, vrcp.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Quad word
@@ -73,7 +73,7 @@ vrsq.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x0, vrsq_s, vrsq.s,
+        r4000allegrex, 0x01 << 2 | 0x0, vrsq_s, vrsq.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Single word
@@ -86,7 +86,7 @@ vrsq.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x1, vrsq_p, vrsq.p,
+        r4000allegrex, 0x01 << 2 | 0x1, vrsq_p, vrsq.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Pair word
@@ -99,7 +99,7 @@ vrsq.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x2, vrsq_t, vrsq.t,
+        r4000allegrex, 0x01 << 2 | 0x2, vrsq_t, vrsq.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Triple word
@@ -112,7 +112,7 @@ vrsq.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x3, vrsq_q, vrsq.q,
+        r4000allegrex, 0x01 << 2 | 0x3, vrsq_q, vrsq.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Quad word
@@ -127,7 +127,7 @@ vsin.s
 
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x0, vsin_s, vsin.s,
+        r4000allegrex, 0x02 << 2 | 0x0, vsin_s, vsin.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // SINe Single word
@@ -140,7 +140,7 @@ vsin.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x1, vsin_p, vsin.p,
+        r4000allegrex, 0x02 << 2 | 0x1, vsin_p, vsin.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // SINe Pair word
@@ -153,7 +153,7 @@ vsin.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x2, vsin_t, vsin.t,
+        r4000allegrex, 0x02 << 2 | 0x2, vsin_t, vsin.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // SINe Triple word
@@ -166,7 +166,7 @@ vsin.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x3, vsin_q, vsin.q,
+        r4000allegrex, 0x02 << 2 | 0x3, vsin_q, vsin.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SINe Quad word
@@ -179,7 +179,7 @@ vcos.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x0, vcos_s, vcos.s,
+        r4000allegrex, 0x03 << 2 | 0x0, vcos_s, vcos.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // COSine Pair word
@@ -192,7 +192,7 @@ vcos.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x1, vcos_p, vcos.p,
+        r4000allegrex, 0x03 << 2 | 0x1, vcos_p, vcos.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // COSine Pair word
@@ -205,7 +205,7 @@ vcos.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x2, vcos_t, vcos.t,
+        r4000allegrex, 0x03 << 2 | 0x2, vcos_t, vcos.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // COSine Quad word
@@ -218,7 +218,7 @@ vcos.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x3, vcos_q, vcos.q,
+        r4000allegrex, 0x03 << 2 | 0x3, vcos_q, vcos.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // COSine Quad word
@@ -231,7 +231,7 @@ vexp2.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x0, vexp2_s, vexp2.s,
+        r4000allegrex, 0x04 << 2 | 0x0, vexp2_s, vexp2.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Single word
@@ -244,7 +244,7 @@ vexp2.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x1, vexp2_p, vexp2.p,
+        r4000allegrex, 0x04 << 2 | 0x1, vexp2_p, vexp2.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Pair word
@@ -257,7 +257,7 @@ vexp2.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x2, vexp2_t, vexp2.t,
+        r4000allegrex, 0x04 << 2 | 0x2, vexp2_t, vexp2.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Triple word
@@ -270,7 +270,7 @@ vexp2.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x04 << 2 | 0x3, vexp2_q, vexp2.q,
+        r4000allegrex, 0x04 << 2 | 0x3, vexp2_q, vexp2.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Quad word
@@ -283,7 +283,7 @@ vlog2.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x05 << 2 | 0x0, vlog2_s, vlog2.s,
+        r4000allegrex, 0x05 << 2 | 0x0, vlog2_s, vlog2.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Single word
@@ -296,7 +296,7 @@ vlog2.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x05 << 2 | 0x1, vlog2_p, vlog2.p,
+        r4000allegrex, 0x05 << 2 | 0x1, vlog2_p, vlog2.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Pair word
@@ -309,7 +309,7 @@ vlog2.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x05 << 2 | 0x2, vlog2_t, vlog2.t,
+        r4000allegrex, 0x05 << 2 | 0x2, vlog2_t, vlog2.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Triple word
@@ -322,7 +322,7 @@ vlog2.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x05 << 2 | 0x3, vlog2_q, vlog2.q,
+        r4000allegrex, 0x05 << 2 | 0x3, vlog2_q, vlog2.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Quad word
@@ -335,7 +335,7 @@ vsqrt.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x0, vsqrt_s, vsqrt.s,
+        r4000allegrex, 0x06 << 2 | 0x0, vsqrt_s, vsqrt.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Single word
@@ -348,7 +348,7 @@ vsqrt.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x1, vsqrt_p, vsqrt.p,
+        r4000allegrex, 0x06 << 2 | 0x1, vsqrt_p, vsqrt.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Pair word
@@ -361,7 +361,7 @@ vsqrt.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x2, vsqrt_t, vsqrt.t,
+        r4000allegrex, 0x06 << 2 | 0x2, vsqrt_t, vsqrt.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Triple word
@@ -374,7 +374,7 @@ vsqrt.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x3, vsqrt_q, vsqrt.q,
+        r4000allegrex, 0x06 << 2 | 0x3, vsqrt_q, vsqrt.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Quad word
@@ -387,7 +387,7 @@ vasin.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x0, vasin_s, vasin.s,
+        r4000allegrex, 0x07 << 2 | 0x0, vasin_s, vasin.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Arc SINe Single word
@@ -400,7 +400,7 @@ vasin.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x1, vasin_p, vasin.p,
+        r4000allegrex, 0x07 << 2 | 0x1, vasin_p, vasin.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Arc SINe Pair word
@@ -413,7 +413,7 @@ vasin.t
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x2, vasin_t, vasin.t,
+        r4000allegrex, 0x07 << 2 | 0x2, vasin_t, vasin.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Arc SINe Triple word
@@ -426,7 +426,7 @@ vasin.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x3, vasin_q, vasin.q,
+        r4000allegrex, 0x07 << 2 | 0x3, vasin_q, vasin.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Arc SINe Quad word

@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , INVALID,
+        cpu, , INVALID, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_immediate)
     )
 
@@ -25,88 +25,88 @@
 
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_00,
+        cpu, , USERDEF_00, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_01,
+        cpu, , USERDEF_01, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_02,
+        cpu, , USERDEF_02, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_03,
+        cpu, , USERDEF_03, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_04,
+        cpu, , USERDEF_04, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_05,
+        cpu, , USERDEF_05, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_06,
+        cpu, , USERDEF_06, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_07,
+        cpu, , USERDEF_07, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_08,
+        cpu, , USERDEF_08, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_09,
+        cpu, , USERDEF_09, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_10,
+        cpu, , USERDEF_10, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_11,
+        cpu, , USERDEF_11, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_12,
+        cpu, , USERDEF_12, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_13,
+        cpu, , USERDEF_13, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_14,
+        cpu, , USERDEF_14, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_15,
+        cpu, , USERDEF_15, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_16,
+        cpu, , USERDEF_16, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_17,
+        cpu, , USERDEF_17, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_18,
+        cpu, , USERDEF_18, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , USERDEF_19,
+        cpu, , USERDEF_19, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )
 #endif
 
     RABBITIZER_DEF_INSTR_ID(
-        cpu, , MAX,
+        cpu, , MAX, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0()
     )

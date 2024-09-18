@@ -19,7 +19,7 @@ vsync2
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0xF, vsync2,
+        r4000allegrex, 0xF, vsync2, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::R
     ) // SYNChronize2

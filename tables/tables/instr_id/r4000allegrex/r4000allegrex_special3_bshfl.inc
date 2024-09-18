@@ -16,7 +16,7 @@
     // OP rd, rt
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x02, wsbh,
+        r4000allegrex, 0x02, wsbh, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -24,7 +24,7 @@
     ) // Word Swap Bytes within Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x03, wsbw,
+        r4000allegrex, 0x03, wsbw, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -32,7 +32,7 @@
     ) // Word Swap Bytes within Word
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x10, seb,
+        r4000allegrex, 0x10, seb, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -40,7 +40,7 @@
     ) // Sign-Extend Byte
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x18, seh,
+        r4000allegrex, 0x18, seh, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -48,7 +48,7 @@
     ) // Sign-Extend Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x14, bitrev,
+        r4000allegrex, 0x14, bitrev, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         instr_type: InstrType::R,
         modifies_rd: true,

@@ -19,7 +19,7 @@
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x00, ext,
+        r4000allegrex, 0x00, ext, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr4(Operand::cpu_rt, Operand::cpu_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size),
         instr_type: InstrType::R,
         modifies_rt: true,
@@ -27,7 +27,7 @@
     ) // EXTract bit field
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, 0x04, ins,
+        r4000allegrex, 0x04, ins, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr4(Operand::cpu_rt, Operand::cpu_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size_plus_pos),
         instr_type: InstrType::R,
         modifies_rt: true,

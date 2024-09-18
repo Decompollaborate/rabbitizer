@@ -18,21 +18,21 @@
 */
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x00, pmaddw,
+        r5900, 0x00, pmaddw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Multiply-ADD Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x02, psllvw,
+        r5900, 0x02, psllvw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Shift Left Logical Variable Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x03, psrlvw,
+        r5900, 0x03, psrlvw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
         modifies_rd: true,
         reads_rs: true,
@@ -40,7 +40,7 @@
     ) // Parallel Shift Right Logical Variable Word
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x04, pmsubw,
+        r5900, 0x04, pmsubw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -48,17 +48,17 @@
     ) // Parallel Multiply-SUBtract Word
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x08, pmfhi,
+        r5900, 0x08, pmfhi, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Parallel Move From HI register
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x09, pmflo,
+        r5900, 0x09, pmflo, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true
     ) // Parallel Move From LO register
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0A, pinth,
+        r5900, 0x0A, pinth, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -66,20 +66,20 @@
     ) // Parallel INTerleave Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0C, pmultw,
+        r5900, 0x0C, pmultw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel MULTiply Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0D, pdivw,
+        r5900, 0x0D, pdivw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         reads_rs: true,
         reads_rt: true
     ) // Parallel DIVide Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x0E, pcpyld,
+        r5900, 0x0E, pcpyld, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -87,28 +87,28 @@
     ) // Parallel CoPY Lower Doubleword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x10, pmaddh,
+        r5900, 0x10, pmaddh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Multiply-ADD Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x11, phmadh,
+        r5900, 0x11, phmadh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Horizontal Multiply-ADd Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x12, pand,
+        r5900, 0x12, pand, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel AND
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x13, pxor,
+        r5900, 0x13, pxor, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -116,14 +116,14 @@
     ) // Parallel eXclusive OR
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x14, pmsubh,
+        r5900, 0x14, pmsubh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Multiply-SUBtract Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x15, phmsbh,
+        r5900, 0x15, phmsbh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -131,39 +131,39 @@
     ) // Parallel Horizontal Multiply-Subtract Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1A, pexeh,
+        r5900, 0x1A, pexeh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel EXchange Even Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1B, prevh,
+        r5900, 0x1B, prevh, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel REVerse Halfword
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1C, pmulth,
+        r5900, 0x1C, pmulth, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Multiply Halfword
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1D, pdivbw,
+        r5900, 0x1D, pdivbw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
         reads_rs: true,
         reads_rt: true
     ) // Parallel DIVide Broadcast Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1E, pexew,
+        r5900, 0x1E, pexew, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel EXchange Even Word
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x1F, prot3w,
+        r5900, 0x1F, prot3w, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
         modifies_rd: true,
         reads_rt: true

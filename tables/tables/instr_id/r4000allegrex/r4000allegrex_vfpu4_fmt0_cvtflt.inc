@@ -21,7 +21,7 @@ vf2h.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x1, vf2h_p, vf2h.p,
+        r4000allegrex, 0x02 << 2 | 0x1, vf2h_p, vf2h.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Convert float to float16 Pair word
@@ -34,7 +34,7 @@ vf2h.q
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x3, vf2h_q, vf2h.q,
+        r4000allegrex, 0x02 << 2 | 0x3, vf2h_q, vf2h.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Convert float to float16 Quad word
@@ -47,7 +47,7 @@ vh2f.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x0, vh2f_s, vh2f.s,
+        r4000allegrex, 0x03 << 2 | 0x0, vh2f_s, vh2f.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Convert float16 to float Pair word
@@ -60,7 +60,7 @@ vh2f.p
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x1, vh2f_p, vh2f.p,
+        r4000allegrex, 0x03 << 2 | 0x1, vh2f_p, vh2f.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Convert float16 to float Pair word
@@ -73,7 +73,7 @@ vsbz.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x0, vsbz_s, vsbz.s,
+        r4000allegrex, 0x06 << 2 | 0x0, vsbz_s, vsbz.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // ScaleBZ Pair word
@@ -86,7 +86,7 @@ vlgb.s
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x0, vlgb_s, vlgb.s,
+        r4000allegrex, 0x07 << 2 | 0x0, vlgb_s, vlgb.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // LoGB Pair word

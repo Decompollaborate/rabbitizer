@@ -15,24 +15,24 @@
 
     // OP rt, cop2cd
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x00, mfc2,
+        cpu, 0x00, mfc2, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
         modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x04, mtc2,
+        cpu, 0x04, mtc2, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
         reads_rt: true
     )
 
     // OP rt, cop2cd
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x02, cfc2,
+        cpu, 0x02, cfc2, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
         modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
-        cpu, 0x06, ctc2,
+        cpu, 0x06, ctc2, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
         reads_rt: true
     )

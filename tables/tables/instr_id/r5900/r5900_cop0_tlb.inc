@@ -20,10 +20,10 @@
     // The other instructions are implemented using the main CPU table
 
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x38, ei,
+        r5900, 0x38, ei, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r5900, 0x39, di,
+        r5900, 0x39, di, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )

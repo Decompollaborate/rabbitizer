@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , INVALID,
+        r4000allegrex, , INVALID, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_immediate),
         instr_type: InstrType::UNKNOWN
     )
@@ -68,88 +68,88 @@
 
 #ifndef INSTRID_AVOID_USERDEF
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_00,
+        r4000allegrex, , USERDEF_00, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_01,
+        r4000allegrex, , USERDEF_01, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_02,
+        r4000allegrex, , USERDEF_02, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_03,
+        r4000allegrex, , USERDEF_03, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_04,
+        r4000allegrex, , USERDEF_04, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_05,
+        r4000allegrex, , USERDEF_05, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_06,
+        r4000allegrex, , USERDEF_06, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_07,
+        r4000allegrex, , USERDEF_07, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_08,
+        r4000allegrex, , USERDEF_08, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_09,
+        r4000allegrex, , USERDEF_09, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_10,
+        r4000allegrex, , USERDEF_10, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_11,
+        r4000allegrex, , USERDEF_11, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_12,
+        r4000allegrex, , USERDEF_12, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_13,
+        r4000allegrex, , USERDEF_13, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_14,
+        r4000allegrex, , USERDEF_14, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_15,
+        r4000allegrex, , USERDEF_15, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_16,
+        r4000allegrex, , USERDEF_16, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_17,
+        r4000allegrex, , USERDEF_17, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_18,
+        r4000allegrex, , USERDEF_18, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , USERDEF_19,
+        r4000allegrex, , USERDEF_19, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )
 #endif
 
     RABBITIZER_DEF_INSTR_ID(
-        r4000allegrex, , MAX,
+        r4000allegrex, , MAX, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr0()
     )

@@ -18,7 +18,7 @@
 */
 
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        r5900, 0x00, pmthl_lw, pmthl.lw,
+        r5900, 0x00, pmthl_lw, pmthl.lw, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::cpu_rs),
         reads_rs: true
     ) // Parallel Move To Hi/Lo register
