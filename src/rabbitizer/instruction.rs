@@ -78,6 +78,7 @@ impl Instruction {
 }
 
 impl Instruction {
+    #[must_use]
     pub const fn is_nop(&self) -> bool {
         OpcodeDecoder::is_nop(self.word)
     }

@@ -48,6 +48,7 @@ impl OpcodeDecoder {
     }
 
     #[must_use]
+    #[allow(dead_code)]
     pub const fn mandatory_bits(&self) -> EncodedFieldMask {
         self.mandatory_bits
     }
@@ -251,7 +252,6 @@ impl OpcodeDecoder {
             0x01 => {
                 Self::decode_isa_extension_r5900_regimm(word, mandatory_bits, isa_version, flags)
             }
-            /*
             0x10 => Self::decode_isa_extension_r5900_coprocessor0(
                 word,
                 mandatory_bits,
@@ -270,13 +270,7 @@ impl OpcodeDecoder {
                 isa_version,
                 flags,
             ),
-            0x1C => Self::decode_isa_extension_r5900_mmi(
-                word,
-                mandatory_bits,
-                isa_version,
-                flags,
-            ),
-            */
+            0x1C => Self::decode_isa_extension_r5900_mmi(word, mandatory_bits, isa_version, flags),
             _ => Self::decode_isa_extension_r5900_normal(word, mandatory_bits, isa_version, flags),
         }
     }

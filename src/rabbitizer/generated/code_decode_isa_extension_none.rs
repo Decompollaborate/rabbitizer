@@ -206,8 +206,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_none_coprocessor0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        _isa_version: IsaVersion,
-        _flags: &DecodingFlags,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
         let mut opcode = Opcode::cpu_INVALID;
@@ -220,6 +220,138 @@ impl OpcodeDecoder {
             0x04 => opcode = Opcode::cpu_mtc0,
             0x05 => opcode = Opcode::cpu_dmtc0,
             0x06 => opcode = Opcode::cpu_ctc0,
+            0x08 => {
+                return Self::decode_isa_extension_none_coprocessor0_bc0(
+                    word,
+                    mandatory_bits,
+                    isa_version,
+                    flags,
+                )
+            }
+            0x10 => {
+                return Self::decode_isa_extension_none_coprocessor0_tlb(
+                    word,
+                    mandatory_bits,
+                    isa_version,
+                    flags,
+                )
+            }
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_none_coprocessor0_bc0(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+    ) -> Self {
+        let mask = EncodedFieldMask::bc_fmt;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP0_BC0;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        match mask.get_shifted(word) {
+            0x00 => opcode = Opcode::cpu_bc0f,
+            0x01 => opcode = Opcode::cpu_bc0t,
+            0x02 => opcode = Opcode::cpu_bc0fl,
+            0x03 => opcode = Opcode::cpu_bc0tl,
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_none_coprocessor0_tlb(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP0_TLB;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        match mask.get_shifted(word) {
+            0x01 => opcode = Opcode::cpu_tlbr,
+            0x02 => opcode = Opcode::cpu_tlbwi,
+            0x06 => opcode = Opcode::cpu_tlbwr,
+            0x08 => opcode = Opcode::cpu_tlbp,
+            0x10 => opcode = Opcode::cpu_rfe,
+            0x18 => opcode = Opcode::cpu_eret,
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_none_coprocessor1(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        isa_version: IsaVersion,
+        flags: &DecodingFlags,
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let mut opcode = Opcode::cpu_INVALID;
+        let opcode_category = OpcodeCategory::CPU_COP1;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        match mask.get_shifted(word) {
+            0x00 => opcode = Opcode::cpu_mfc1,
+            0x01 => opcode = Opcode::cpu_dmfc1,
+            0x04 => opcode = Opcode::cpu_mtc1,
+            0x05 => opcode = Opcode::cpu_dmtc1,
+            0x02 => opcode = Opcode::cpu_cfc1,
+            0x06 => opcode = Opcode::cpu_ctc1,
+            0x08 => {
+                return Self::decode_isa_extension_none_coprocessor1_bc1(
+                    word,
+                    mandatory_bits,
+                    isa_version,
+                    flags,
+                )
+            }
+            0x10 => {
+                return Self::decode_isa_extension_none_coprocessor1_fpu_s(
+                    word,
+                    mandatory_bits,
+                    isa_version,
+                    flags,
+                )
+            }
+            0x11 => {
+                return Self::decode_isa_extension_none_coprocessor1_fpu_d(
+                    word,
+                    mandatory_bits,
+                    isa_version,
+                    flags,
+                )
+            }
+            0x14 => {
+                return Self::decode_isa_extension_none_coprocessor1_fpu_w(
+                    word,
+                    mandatory_bits,
+                    isa_version,
+                    flags,
+                )
+            }
+            0x15 => {
+                return Self::decode_isa_extension_none_coprocessor1_fpu_l(
+                    word,
+                    mandatory_bits,
+                    isa_version,
+                    flags,
+                )
+            }
             _ => {}
         }
         Self {
@@ -398,72 +530,6 @@ impl OpcodeDecoder {
         match mask.get_shifted(word) {
             0x20 => opcode = Opcode::cpu_cvt_s_l,
             0x21 => opcode = Opcode::cpu_cvt_d_l,
-            _ => {}
-        }
-        Self {
-            opcode,
-            opcode_category,
-            mandatory_bits,
-        }
-    }
-    #[must_use]
-    pub(crate) const fn decode_isa_extension_none_coprocessor1(
-        word: u32,
-        mut mandatory_bits: EncodedFieldMask,
-        isa_version: IsaVersion,
-        flags: &DecodingFlags,
-    ) -> Self {
-        let mask = EncodedFieldMask::fmt;
-        let mut opcode = Opcode::cpu_INVALID;
-        let opcode_category = OpcodeCategory::CPU_COP1;
-        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-        match mask.get_shifted(word) {
-            0x00 => opcode = Opcode::cpu_mfc1,
-            0x01 => opcode = Opcode::cpu_dmfc1,
-            0x04 => opcode = Opcode::cpu_mtc1,
-            0x05 => opcode = Opcode::cpu_dmtc1,
-            0x02 => opcode = Opcode::cpu_cfc1,
-            0x06 => opcode = Opcode::cpu_ctc1,
-            0x08 => {
-                return Self::decode_isa_extension_none_coprocessor1_bc1(
-                    word,
-                    mandatory_bits,
-                    isa_version,
-                    flags,
-                )
-            }
-            0x10 => {
-                return Self::decode_isa_extension_none_coprocessor1_fpu_s(
-                    word,
-                    mandatory_bits,
-                    isa_version,
-                    flags,
-                )
-            }
-            0x11 => {
-                return Self::decode_isa_extension_none_coprocessor1_fpu_d(
-                    word,
-                    mandatory_bits,
-                    isa_version,
-                    flags,
-                )
-            }
-            0x14 => {
-                return Self::decode_isa_extension_none_coprocessor1_fpu_w(
-                    word,
-                    mandatory_bits,
-                    isa_version,
-                    flags,
-                )
-            }
-            0x15 => {
-                return Self::decode_isa_extension_none_coprocessor1_fpu_l(
-                    word,
-                    mandatory_bits,
-                    isa_version,
-                    flags,
-                )
-            }
             _ => {}
         }
         Self {
