@@ -178,7 +178,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_highbit;
-        let opcode = Opcode::r5900_INVALID;
+        let opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -203,7 +203,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_nohighbit_fmt;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_NOHIGHBIT;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -228,7 +228,7 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_BC2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -252,7 +252,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_SPECIAL1;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -277,7 +277,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_fhi_flo;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_SPECIAL2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -302,7 +302,7 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_viwr_fhilo;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_VIWR;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -342,7 +342,7 @@ impl OpcodeDecoder {
             0x30 => return Self::decode_isa_extension_r5900_mmi_pmfhl(word, mandatory_bits, flags, isa_version),
             0x31 => return Self::decode_isa_extension_r5900_mmi_pmthl(word, mandatory_bits, flags, isa_version),
 
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -366,7 +366,7 @@ impl OpcodeDecoder {
 
         match mask.get_shifted(word) {
 #include "instr_id/r5900/r5900_mmi_0.inc"
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -390,7 +390,7 @@ impl OpcodeDecoder {
 
         match mask.get_shifted(word) {
 #include "instr_id/r5900/r5900_mmi_1.inc"
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -414,7 +414,7 @@ impl OpcodeDecoder {
 
         match mask.get_shifted(word) {
 #include "instr_id/r5900/r5900_mmi_2.inc"
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -438,7 +438,7 @@ impl OpcodeDecoder {
 
         match mask.get_shifted(word) {
 #include "instr_id/r5900/r5900_mmi_3.inc"
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -462,7 +462,7 @@ impl OpcodeDecoder {
 
         match mask.get_shifted(word) {
 #include "instr_id/r5900/r5900_mmi_pmfhl.inc"
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -486,7 +486,7 @@ impl OpcodeDecoder {
 
         match mask.get_shifted(word) {
 #include "instr_id/r5900/r5900_mmi_pmthl.inc"
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,

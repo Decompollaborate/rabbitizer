@@ -71,7 +71,7 @@ impl OpcodeDecoder {
             0x0C => opcode = Opcode::r3000gte_OP,
             0x3D => opcode = Opcode::r3000gte_GPF,
             0x3E => opcode = Opcode::r3000gte_GPL,
-            _ => opcode = Opcode::r3000gte_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,

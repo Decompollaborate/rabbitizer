@@ -26,7 +26,7 @@ impl OpcodeDecoder {
             // IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex(word, flags, isa_version),
             IsaExtension::R5900 => Self::decode_isa_extension_r5900(word, flags, isa_version),
             _ => Self {
-                opcode: Opcode::cpu_INVALID,
+                opcode: Opcode::ALL_INVALID,
                 opcode_category: OpcodeCategory::ALL_INVALID,
                 mandatory_bits: EncodedFieldMask::empty(),
             },

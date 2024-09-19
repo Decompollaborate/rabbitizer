@@ -16,10 +16,9 @@ pub struct Instruction {
 
     opcode_decoder: OpcodeDecoder,
 
-    _handwritten_category: bool, // TODO: remove in favour of checking the OpcodeCategory instead
-    _in_handwritten_function: bool, // TODO: maybe remove?
+    flags: InstructionFlags,
 
-                                 // flags: u32,
+    _handwritten_category: bool, // TODO: remove in favour of checking the OpcodeCategory instead
 }
 
 impl Instruction {
@@ -40,8 +39,8 @@ impl Instruction {
             isa_version,
             isa_extension,
             opcode_decoder,
+            flags,
             _handwritten_category: false,
-            _in_handwritten_function: false,
         }
     }
 
@@ -204,7 +203,7 @@ mod tests {
             IsaVersion::MIPS_II,
         );
         assert!(!instr.is_valid());
-        assert_eq!(instr.opcode(), Opcode::cpu_INVALID);
+        assert_eq!(instr.opcode(), Opcode::ALL_INVALID);
     }
 
     #[test]

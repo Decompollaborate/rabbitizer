@@ -11,6 +11,6 @@ impl AccessType {
 
 impl Default for AccessType {
     fn default() -> Self {
-        Self::NONE
+        Self::default()
     }
 }

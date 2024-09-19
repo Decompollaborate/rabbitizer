@@ -13,7 +13,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::opcode;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_NORMAL;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -95,7 +95,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_SPECIAL;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -203,7 +203,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rt;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_REGIMM;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -244,7 +244,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP0;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -286,7 +286,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP0_BC0;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -310,7 +310,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP0_TLB;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -336,7 +336,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP1;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -402,7 +402,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP1_BC1;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -426,7 +426,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP1_FPUS;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -501,7 +501,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP1_FPUD;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -576,7 +576,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP1_FPUW;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -598,7 +598,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP1_FPUL;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -624,7 +624,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
-        let mut opcode = Opcode::cpu_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::CPU_COP2;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {

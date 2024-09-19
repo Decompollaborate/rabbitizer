@@ -192,11 +192,11 @@ impl<'a> OpcodeDescriptor<'a> {
 impl<'a> OpcodeDescriptor<'a> {
     // getters and setters
 
-    pub fn operands(&self) -> &[Operand; OPERAND_COUNT_MAX] {
+    pub const fn operands(&self) -> &[Operand; OPERAND_COUNT_MAX] {
         &self.operands
     }
 
-    pub fn operands_iter(&self) -> OperandIterator {
+    pub const fn operands_iter(&self) -> OperandIterator {
         OperandIterator::new(&self.operands)
     }
 }

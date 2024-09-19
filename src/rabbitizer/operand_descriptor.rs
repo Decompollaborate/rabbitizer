@@ -29,7 +29,7 @@ impl<'a> OperandDescriptor<'a> {
 impl<'a> OperandDescriptor<'a> {
     #[must_use]
     pub const fn name(&self) -> &'a str {
-        &self.name
+        self.name
     }
 
     #[must_use]

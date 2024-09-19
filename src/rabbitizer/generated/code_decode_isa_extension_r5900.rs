@@ -224,7 +224,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_highbit;
-        let opcode = Opcode::r5900_INVALID;
+        let opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -260,7 +260,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_nohighbit_fmt;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_NOHIGHBIT;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -292,7 +292,7 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_BC2;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -316,7 +316,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_SPECIAL1;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -399,7 +399,7 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_fhi_flo;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_SPECIAL2;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -490,7 +490,7 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_viwr_fhilo;
-        let mut opcode = Opcode::r5900_INVALID;
+        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_VIWR;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
@@ -589,7 +589,7 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -634,7 +634,7 @@ impl OpcodeDecoder {
             0x1B => opcode = Opcode::r5900_ppacb,
             0x1E => opcode = Opcode::r5900_pext5,
             0x1F => opcode = Opcode::r5900_ppac5,
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -672,7 +672,7 @@ impl OpcodeDecoder {
             0x19 => opcode = Opcode::r5900_psubub,
             0x1A => opcode = Opcode::r5900_pextub,
             0x1B => opcode = Opcode::r5900_qfsrv,
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -714,7 +714,7 @@ impl OpcodeDecoder {
             0x1D => opcode = Opcode::r5900_pdivbw,
             0x1E => opcode = Opcode::r5900_pexew,
             0x1F => opcode = Opcode::r5900_prot3w,
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -747,7 +747,7 @@ impl OpcodeDecoder {
             0x1A => opcode = Opcode::r5900_pexch,
             0x1B => opcode = Opcode::r5900_pcpyh,
             0x1E => opcode = Opcode::r5900_pexcw,
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -772,7 +772,7 @@ impl OpcodeDecoder {
             0x02 => opcode = Opcode::r5900_pmfhl_slw,
             0x03 => opcode = Opcode::r5900_pmfhl_lh,
             0x04 => opcode = Opcode::r5900_pmfhl_sh,
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,
@@ -793,7 +793,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         match mask.get_shifted(word) {
             0x00 => opcode = Opcode::r5900_pmthl_lw,
-            _ => opcode = Opcode::r5900_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,

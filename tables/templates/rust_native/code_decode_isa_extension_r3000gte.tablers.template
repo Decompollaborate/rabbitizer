@@ -54,7 +54,7 @@ impl OpcodeDecoder {
 
         match mask.get_shifted(word) {
 #include "instr_id/r3000gte/r3000gte_cop2_gte.inc"
-            _ => opcode = Opcode::r3000gte_INVALID,
+            _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
             opcode,

@@ -1,6 +1,12 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+// Avoid linting generated code
+#![allow(clippy::all)]
+#![allow(clippy::pedantic)]
+#![allow(clippy::restriction)]
+#![allow(clippy::nursery)]
+
 mod array_opcodes;
 mod array_operands;
 mod code_decode_isa_extension_none;
