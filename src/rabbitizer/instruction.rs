@@ -56,34 +56,54 @@ impl Instruction {
 
     #[must_use]
     pub const fn new_rsp(word: u32, vram: u32, flags: InstructionFlags) -> Self {
-        Self::new(word, vram, flags, IsaVersion::MIPS_III, IsaExtension::RSP)
-    }
+        let isa_extension = IsaExtension::RSP;
 
-    #[must_use]
-    pub const fn new_r3000gte(word: u32, vram: u32, flags: InstructionFlags) -> Self {
         Self::new(
             word,
             vram,
             flags,
-            IsaVersion::MIPS_I,
-            IsaExtension::R3000GTE,
+            isa_extension.isa_version(),
+            isa_extension,
+        )
+    }
+
+    #[must_use]
+    pub const fn new_r3000gte(word: u32, vram: u32, flags: InstructionFlags) -> Self {
+        let isa_extension = IsaExtension::R3000GTE;
+
+        Self::new(
+            word,
+            vram,
+            flags,
+            isa_extension.isa_version(),
+            isa_extension,
         )
     }
 
     #[must_use]
     pub const fn new_r4000allegrex(word: u32, vram: u32, flags: InstructionFlags) -> Self {
+        let isa_extension = IsaExtension::R4000ALLEGREX;
+
         Self::new(
             word,
             vram,
             flags,
-            IsaVersion::MIPS_III,
-            IsaExtension::R4000ALLEGREX,
+            isa_extension.isa_version(),
+            isa_extension,
         )
     }
 
     #[must_use]
     pub const fn new_r5900(word: u32, vram: u32, flags: InstructionFlags) -> Self {
-        Self::new(word, vram, flags, IsaVersion::MIPS_IV, IsaExtension::R5900)
+        let isa_extension = IsaExtension::R5900;
+
+        Self::new(
+            word,
+            vram,
+            flags,
+            isa_extension.isa_version(),
+            isa_extension,
+        )
     }
 }
 
