@@ -11,12 +11,12 @@ impl IsaExtension {
 
     #[must_use]
     pub const fn isa_version(&self) -> IsaVersion {
-        match self {
-            IsaExtension::NONE => IsaVersion::MIPS_III,
-            IsaExtension::RSP => IsaVersion::MIPS_III,
-            IsaExtension::R3000GTE => IsaVersion::MIPS_I,
-            IsaExtension::R4000ALLEGREX => IsaVersion::MIPS_III,
-            IsaExtension::R5900 => IsaVersion::MIPS_IV,
+        match *self {
+            Self::NONE => IsaVersion::MIPS_III,
+            Self::RSP => IsaVersion::MIPS_III,
+            Self::R3000GTE => IsaVersion::MIPS_I,
+            Self::R4000ALLEGREX => IsaVersion::MIPS_III,
+            Self::R5900 => IsaVersion::MIPS_IV,
         }
     }
 }

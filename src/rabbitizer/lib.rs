@@ -30,6 +30,9 @@ mod opcode_decoder;
 mod opcode_descriptor;
 mod operand;
 mod operand_descriptor;
+mod register_cop1;
+mod register_descriptor;
+mod register_gpr;
 
 mod utils;
 
@@ -41,6 +44,10 @@ pub use generated::IsaVersion;
 pub use generated::Opcode;
 pub use generated::OpcodeCategory;
 pub use generated::Operand;
+pub use generated::RegisterCop1;
+pub use generated::RegisterGpr;
+pub use generated::COP1_REGISTERS;
+pub use generated::GPR_REGISTERS;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 
@@ -52,6 +59,7 @@ pub use instruction::Instruction;
 pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
 pub use operand_descriptor::OperandDescriptor;
+pub use register_descriptor::RegisterDescriptor;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;
