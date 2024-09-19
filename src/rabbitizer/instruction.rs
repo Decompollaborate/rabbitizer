@@ -146,6 +146,8 @@ impl Instruction {
 
 #[cfg(test)]
 mod tests {
+    use crate::Abi;
+
     use super::*;
 
     #[test]
@@ -159,6 +161,8 @@ mod tests {
         assert!(instr.is_valid());
         assert_eq!(instr.opcode_category(), OpcodeCategory::CPU_NORMAL);
         assert_eq!(instr.opcode(), Opcode::cpu_j);
+        assert!(instr.opcode().get_descriptor().is_jump());
+
         assert_eq!(
             Instruction::new_no_extension(
                 0x08000000,
@@ -186,22 +190,17 @@ mod tests {
     #[test]
     fn check_lwu() {
         // lwu was introduced in MIPS III
+        let mut flags = InstructionFlags::default();
 
-        let instr = Instruction::new_no_extension(
-            0x9C000000,
-            0x80000000,
-            InstructionFlags::default(),
-            IsaVersion::MIPS_III,
-        );
+        *flags.abi_gpr_mut() = Abi::NUMERIC;
+
+        let instr =
+            Instruction::new_no_extension(0x9C000000, 0x80000000, flags, IsaVersion::MIPS_III);
         assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::cpu_lwu);
 
-        let instr = Instruction::new_no_extension(
-            0x9C000000,
-            0x80000000,
-            InstructionFlags::default(),
-            IsaVersion::MIPS_II,
-        );
+        let instr =
+            Instruction::new_no_extension(0x9C000000, 0x80000000, flags, IsaVersion::MIPS_II);
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::ALL_INVALID);
     }

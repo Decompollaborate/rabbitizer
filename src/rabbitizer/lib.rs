@@ -16,6 +16,7 @@ extern crate std;
 
 mod generated;
 
+mod abi;
 mod access_type;
 mod encoded_field_mask;
 mod flags;
@@ -32,6 +33,7 @@ mod operand_descriptor;
 
 mod utils;
 
+pub use generated::Abi;
 pub use generated::AccessType;
 pub use generated::InstrSuffix;
 pub use generated::IsaExtension;

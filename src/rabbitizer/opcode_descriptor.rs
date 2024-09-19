@@ -208,6 +208,11 @@ impl<'a> OpcodeDescriptor<'a> {
     pub const fn operands_iter(&self) -> OperandIterator {
         OperandIterator::new(&self.operands)
     }
+
+    #[must_use]
+    pub const fn is_jump(&self) -> bool {
+        self.is_jump
+    }
 }
 
 impl<'a> OpcodeDescriptor<'a> {
