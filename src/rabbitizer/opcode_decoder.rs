@@ -48,7 +48,6 @@ impl OpcodeDecoder {
     }
 
     #[must_use]
-    #[allow(dead_code)]
     pub const fn mandatory_bits(&self) -> EncodedFieldMask {
         self.mandatory_bits
     }

@@ -1,7 +1,10 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{InstructionFlags, IsaExtension, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::{
+    EncodedFieldMask, InstructionFlags, IsaExtension, IsaVersion, Opcode, OpcodeCategory,
+    OpcodeDecoder,
+};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Instruction {
@@ -124,6 +127,22 @@ impl Instruction {
     pub const fn is_nop(&self) -> bool {
         OpcodeDecoder::is_nop(self.word)
     }
+
+    #[must_use]
+    pub fn valid_bits(&self) -> EncodedFieldMask {
+        self.opcode_decoder.mandatory_bits() | self.opcode().get_descriptor().valid_bits()
+    }
+
+    #[must_use]
+    pub fn is_valid(&self) -> bool {
+        if !self.opcode().is_valid() {
+            return false;
+        }
+
+        let valid_bits = self.valid_bits().bits();
+
+        ((!valid_bits) & self.word()) == 0
+    }
 }
 
 #[cfg(test)]
@@ -138,6 +157,7 @@ mod tests {
             InstructionFlags::default(),
             IsaVersion::MIPS_III,
         );
+        assert!(instr.is_valid());
         assert_eq!(instr.opcode_category(), OpcodeCategory::CPU_NORMAL);
         assert_eq!(instr.opcode(), Opcode::cpu_j);
         assert_eq!(
@@ -160,6 +180,7 @@ mod tests {
             InstructionFlags::default(),
             IsaVersion::MIPS_III,
         );
+        assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::cpu_jal);
     }
 
@@ -173,6 +194,7 @@ mod tests {
             InstructionFlags::default(),
             IsaVersion::MIPS_III,
         );
+        assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::cpu_lwu);
 
         let instr = Instruction::new_no_extension(
@@ -181,6 +203,19 @@ mod tests {
             InstructionFlags::default(),
             IsaVersion::MIPS_II,
         );
+        assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::cpu_INVALID);
+    }
+
+    #[test]
+    fn check_invalid() {
+        let instr = Instruction::new_no_extension(
+            0x0000072E,
+            0x80000000,
+            InstructionFlags::default(),
+            IsaVersion::MIPS_III,
+        );
+        assert!(!instr.is_valid());
+        assert_eq!(instr.opcode(), Opcode::cpu_dsub);
     }
 }

@@ -21,6 +21,7 @@ mod opcode;
 mod opcode_decoder;
 mod opcode_descriptor;
 mod operand;
+mod operand_descriptor;
 
 mod utils;
 
@@ -35,11 +36,13 @@ pub use generated::Operand;
 pub use instr_type::InstrType;
 
 pub use generated::OPCODES;
+pub use generated::OPERANDS;
 
 pub use encoded_field_mask::EncodedFieldMask;
 pub use instruction::Instruction;
 pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
+pub use operand_descriptor::OperandDescriptor;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;

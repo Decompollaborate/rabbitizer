@@ -7,7 +7,7 @@ use core::ops::Index;
 use crate::InstrType;
 use crate::{
     operand::{OperandIterator, OPERAND_COUNT_MAX},
-    AccessType, InstrSuffix, IsaExtension, IsaVersion, Opcode, Operand,
+    AccessType, EncodedFieldMask, InstrSuffix, IsaExtension, IsaVersion, Opcode, Operand,
 };
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
@@ -198,6 +198,18 @@ impl<'a> OpcodeDescriptor<'a> {
 
     pub fn operands_iter(&self) -> OperandIterator {
         OperandIterator::new(&self.operands)
+    }
+}
+
+impl<'a> OpcodeDescriptor<'a> {
+    pub fn valid_bits(&self) -> EncodedFieldMask {
+        let mut bits = EncodedFieldMask::empty();
+
+        for x in self.operands_iter() {
+            bits.insert(*x.get_descriptor().mask());
+        }
+
+        bits
     }
 }
 

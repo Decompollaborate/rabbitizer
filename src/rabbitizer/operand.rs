@@ -1,9 +1,20 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::Operand;
+use crate::{Operand, OperandDescriptor, OPERANDS};
+
+// Rust doesn't have a way to automatically get the larger value of an enum and
+// I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
+// this constant.
+pub(crate) const OPERAND_COUNT: usize = 134;
 
 pub(crate) const OPERAND_COUNT_MAX: usize = 5;
+
+impl<'a> Operand {
+    pub fn get_descriptor(&self) -> &'a OperandDescriptor {
+        &OPERANDS[*self]
+    }
+}
 
 impl Operand {
     pub const fn default() -> Self {
@@ -63,7 +74,7 @@ impl Operand {
 
 impl Default for Operand {
     fn default() -> Self {
-        Self::ALL_EMPTY
+        Self::default()
     }
 }
 
