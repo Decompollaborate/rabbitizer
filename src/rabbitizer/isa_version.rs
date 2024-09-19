@@ -4,6 +4,7 @@
 use crate::IsaVersion;
 
 impl IsaVersion {
+    #[must_use]
     pub const fn default() -> Self {
         Self::MIPS_I
     }

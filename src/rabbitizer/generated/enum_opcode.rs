@@ -5,6 +5,7 @@
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
+#[non_exhaustive]
 pub enum Opcode {
     ALL_INVALID,
     cpu_j,

@@ -4,6 +4,8 @@
 // #[deprecated(since="1.3.0")]
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
+#[allow(clippy::min_ident_chars)]
+#[non_exhaustive]
 pub enum InstrType {
     UNKNOWN,
     J,
@@ -14,6 +16,7 @@ pub enum InstrType {
 
 #[allow(deprecated)]
 impl InstrType {
+    #[must_use]
     pub const fn default() -> Self {
         Self::UNKNOWN
     }
@@ -22,6 +25,6 @@ impl InstrType {
 #[allow(deprecated)]
 impl Default for InstrType {
     fn default() -> Self {
-        Self::UNKNOWN
+        Self::default()
     }
 }

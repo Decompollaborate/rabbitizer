@@ -1,6 +1,13 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#![warn(clippy::exhaustive_enums)]
+#![warn(clippy::use_self)]
+#![warn(clippy::must_use_candidate)]
+#![warn(clippy::missing_const_for_fn)]
+#![warn(clippy::missing_assert_message)]
+#![warn(clippy::pattern_type_mismatch)]
+// TODO: consider adding clippy::missing_inline_in_public_items
 #![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg(test)]

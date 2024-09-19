@@ -1,6 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#![allow(clippy::wildcard_enum_match_arm)]
+
 use crate::{DecodingFlags, EncodedFieldMask, IsaExtension, IsaVersion, Opcode, OpcodeCategory};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -116,22 +118,19 @@ impl OpcodeDecoder {
                         {
                             opcode = Opcode::cpu_b;
                         }
-                    } else {
-                        if flags.contains(
-                            DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqz),
-                        ) {
-                            opcode = Opcode::cpu_beqz;
-                        }
+                    } else if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqz))
+                    {
+                        opcode = Opcode::cpu_beqz;
                     }
                 }
             }
             Opcode::cpu_bne => {
-                if EncodedFieldMask::rt.get_shifted(word) == 0 {
-                    if flags
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnez))
-                    {
-                        opcode = Opcode::cpu_bnez;
-                    }
+                {
+                    opcode = Opcode::cpu_bnez;
                 }
             }
             _ => {}
@@ -154,39 +153,35 @@ impl OpcodeDecoder {
 
         match opcode {
             Opcode::cpu_or => {
-                if EncodedFieldMask::rt.get_shifted(word) == 0 {
-                    if flags
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_move))
-                    {
-                        opcode = Opcode::cpu_move;
-                    }
+                {
+                    opcode = Opcode::cpu_move;
                 }
             }
             Opcode::cpu_nor => {
-                if EncodedFieldMask::rt.get_shifted(word) == 0 {
-                    if flags
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_not))
-                    {
-                        opcode = Opcode::cpu_not;
-                    }
+                {
+                    opcode = Opcode::cpu_not;
                 }
             }
             Opcode::cpu_sub => {
-                if EncodedFieldMask::rs.get_shifted(word) == 0 {
-                    if flags
+                if EncodedFieldMask::rs.get_shifted(word) == 0
+                    && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_neg))
-                    {
-                        opcode = Opcode::cpu_neg;
-                    }
+                {
+                    opcode = Opcode::cpu_neg;
                 }
             }
             Opcode::cpu_subu => {
-                if EncodedFieldMask::rs.get_shifted(word) == 0 {
-                    if flags
+                if EncodedFieldMask::rs.get_shifted(word) == 0
+                    && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_negu))
-                    {
-                        opcode = Opcode::cpu_negu;
-                    }
+                {
+                    opcode = Opcode::cpu_negu;
                 }
             }
             Opcode::cpu_div => {
@@ -212,24 +207,23 @@ impl OpcodeDecoder {
     #[must_use]
     pub(crate) const fn fixups_decode_isa_extension_none_regimm(
         word: u32,
-        mut opcode: Opcode,
+        opcode: Opcode,
         flags: &DecodingFlags,
         _isa_version: IsaVersion,
     ) -> Opcode {
         match opcode {
             Opcode::cpu_bgezal => {
-                if EncodedFieldMask::rs.get_shifted(word) == 0 {
-                    if flags
+                if EncodedFieldMask::rs.get_shifted(word) == 0
+                    && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bal))
-                    {
-                        opcode = Opcode::cpu_bal;
-                    }
+                {
+                    Opcode::cpu_bal
+                } else {
+                    opcode
                 }
             }
-            _ => {}
+            _ => opcode,
         }
-
-        opcode
     }
 }
 

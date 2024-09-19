@@ -9,21 +9,21 @@ use crate::{Opcode, OpcodeDescriptor, OPCODES};
 pub(crate) const OPCODE_COUNT: usize = 943;
 
 impl<'a> Opcode {
+    #[must_use]
     pub fn get_descriptor(&self) -> &'a OpcodeDescriptor {
         &OPCODES[*self]
     }
 }
 
 impl Opcode {
+    #[must_use]
     pub const fn default() -> Self {
         Self::ALL_INVALID
     }
 
+    #[must_use]
     pub const fn is_valid(&self) -> bool {
-        match self {
-            Self::ALL_INVALID => false,
-            _ => true,
-        }
+        !matches!(*self, Self::ALL_INVALID)
     }
 }
 

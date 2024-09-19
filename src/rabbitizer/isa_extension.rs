@@ -4,6 +4,7 @@
 use crate::IsaExtension;
 
 impl IsaExtension {
+    #[must_use]
     pub const fn default() -> Self {
         Self::NONE
     }
@@ -11,6 +12,6 @@ impl IsaExtension {
 
 impl Default for IsaExtension {
     fn default() -> Self {
-        Self::NONE
+        Self::default()
     }
 }

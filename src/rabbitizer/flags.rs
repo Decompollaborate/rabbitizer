@@ -25,6 +25,7 @@ bitflags! {
 }
 
 impl DecodingFlags {
+    #[must_use]
     pub const fn default() -> Self {
         Self::enable_pseudos
             .union(Self::pseudo_beqz)
@@ -50,6 +51,7 @@ pub struct InstructionFlags {
 }
 
 impl InstructionFlags {
+    #[must_use]
     pub const fn default() -> Self {
         Self {
             decoding_flags: DecodingFlags::default(),
@@ -58,6 +60,7 @@ impl InstructionFlags {
 }
 
 impl InstructionFlags {
+    #[must_use]
     pub const fn decoding_flags(&self) -> &DecodingFlags {
         &self.decoding_flags
     }

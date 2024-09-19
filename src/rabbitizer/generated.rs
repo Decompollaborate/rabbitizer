@@ -2,10 +2,13 @@
 /* SPDX-License-Identifier: MIT */
 
 // Avoid linting generated code
-#![allow(clippy::all)]
-#![allow(clippy::pedantic)]
-#![allow(clippy::restriction)]
-#![allow(clippy::nursery)]
+// #![allow(clippy::all)]
+// #![allow(clippy::pedantic)]
+// #![allow(clippy::restriction)]
+// #![allow(clippy::nursery)]
+#![allow(clippy::manual_range_patterns)]
+#![allow(clippy::needless_late_init)]
+#![warn(clippy::exhaustive_enums)]
 
 mod array_opcodes;
 mod array_operands;

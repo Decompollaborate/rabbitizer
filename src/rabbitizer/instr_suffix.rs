@@ -4,6 +4,7 @@
 use crate::InstrSuffix;
 
 impl InstrSuffix {
+    #[must_use]
     pub const fn default() -> Self {
         Self::ALL_NONE
     }

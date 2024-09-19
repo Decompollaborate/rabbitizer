@@ -11,6 +11,7 @@ use crate::{
 };
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
+#[allow(clippy::struct_excessive_bools)]
 pub struct OpcodeDescriptor<'a> {
     pub(crate) name: &'a str,
 
@@ -171,10 +172,16 @@ impl<'a> OpcodeDescriptor<'a> {
             "An opcode should not have an empty name"
         );
 
-        if self.isa_version as u32 != IsaVersion::EXTENSION as u32 {
-            assert!(self.isa_extension as u32 == IsaExtension::NONE as u32);
+        if self.isa_version as u32 == IsaVersion::EXTENSION as u32 {
+            assert!(
+                self.isa_extension as u32 != IsaExtension::NONE as u32,
+                "Opcode was marked as isa EXTENSION, but the extension type is NONE"
+            );
         } else {
-            assert!(self.isa_extension as u32 != IsaExtension::NONE as u32);
+            assert!(
+                self.isa_extension as u32 == IsaExtension::NONE as u32,
+                "Opcode was not marked as isa EXTENSION, but it has a non-NONE extension type"
+            );
         }
 
         assert!(
@@ -192,16 +199,19 @@ impl<'a> OpcodeDescriptor<'a> {
 impl<'a> OpcodeDescriptor<'a> {
     // getters and setters
 
+    #[must_use]
     pub const fn operands(&self) -> &[Operand; OPERAND_COUNT_MAX] {
         &self.operands
     }
 
+    #[must_use]
     pub const fn operands_iter(&self) -> OperandIterator {
         OperandIterator::new(&self.operands)
     }
 }
 
 impl<'a> OpcodeDescriptor<'a> {
+    #[must_use]
     pub fn valid_bits(&self) -> EncodedFieldMask {
         let mut bits = EncodedFieldMask::empty();
 

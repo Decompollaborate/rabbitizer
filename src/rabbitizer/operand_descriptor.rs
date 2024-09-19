@@ -5,9 +5,8 @@ use core::ops::Index;
 
 use crate::{EncodedFieldMask, Operand};
 
-// OperandDescriptor
-
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
+#[allow(clippy::struct_excessive_bools)]
 pub struct OperandDescriptor<'a> {
     pub(crate) name: &'a str,
     pub(crate) mask: EncodedFieldMask,
