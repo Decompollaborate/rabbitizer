@@ -12,7 +12,10 @@
 
 mod array_opcodes;
 mod array_operands;
+mod array_register_cop0;
 mod array_register_cop1;
+mod array_register_cop1control;
+mod array_register_cop2;
 mod array_register_gpr;
 mod code_decode_isa_extension_none;
 mod code_decode_isa_extension_r3000gte;
@@ -25,12 +28,18 @@ mod enum_isa_version;
 mod enum_opcode;
 mod enum_opcode_category;
 mod enum_operand;
+mod enum_register_cop0;
 mod enum_register_cop1;
+mod enum_register_cop1control;
+mod enum_register_cop2;
 mod enum_register_gpr;
 
 pub use array_opcodes::OPCODES;
 pub use array_operands::OPERANDS;
+pub use array_register_cop0::COP0_REGISTERS;
 pub use array_register_cop1::COP1_REGISTERS;
+pub use array_register_cop1control::COP1CONTROL_REGISTERS;
+pub use array_register_cop2::COP2_REGISTERS;
 pub use array_register_gpr::GPR_REGISTERS;
 pub use enum_abi::Abi;
 pub use enum_access_type::AccessType;
@@ -40,5 +49,8 @@ pub use enum_isa_version::IsaVersion;
 pub use enum_opcode::Opcode;
 pub use enum_opcode_category::OpcodeCategory;
 pub use enum_operand::Operand;
+pub use enum_register_cop0::RegisterCop0;
 pub use enum_register_cop1::RegisterCop1;
+pub use enum_register_cop1control::RegisterCop1Control;
+pub use enum_register_cop2::RegisterCop2;
 pub use enum_register_gpr::RegisterGpr;

@@ -200,5 +200,10 @@ pub static GPR_REGISTERS: [RegisterDescriptor; 32] = {
         ..RegisterDescriptor::new(concat!("$", "ra"), 31, concat!("$", "31"))
     }
     .check_panic_chain();
+    let mut i = 0;
+    while i < 32 {
+        assert!(table[i].value as usize == i);
+        i += 1;
+    }
     table
 };

@@ -198,5 +198,10 @@ pub static COP1_REGISTERS: [RegisterDescriptor; 32] = {
         ..RegisterDescriptor::new(concat!("$", "fs5f"), 31, concat!("$f", "31"))
     }
     .check_panic_chain();
+    let mut i = 0;
+    while i < 32 {
+        assert!(table[i].value as usize == i);
+        i += 1;
+    }
     table
 };

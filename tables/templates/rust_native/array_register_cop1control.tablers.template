@@ -6,19 +6,19 @@
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
-    table[ RegisterGpr::name as usize] = RegisterDescriptor { \
+    table[ RegisterCop1Control::r ## name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
         ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$", #value) ) \
     } .check_panic_chain();
 
-use crate::{RegisterGpr, RegisterDescriptor};
+use crate::{RegisterCop1Control, RegisterDescriptor};
 
 #define REGISTER_COUNT 32
 
-pub static GPR_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
+pub static COP1CONTROL_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
     let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
 
-    #include "registers/RabbitizerRegister_Gpr.inc"
+    #include "registers/RabbitizerRegister_Cop1Control.inc"
 
     let mut i = 0;
     while i < REGISTER_COUNT {
@@ -29,5 +29,5 @@ pub static GPR_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
 
     table
 };
-
+ 
 #undef RABBITIZER_DEF_REG
