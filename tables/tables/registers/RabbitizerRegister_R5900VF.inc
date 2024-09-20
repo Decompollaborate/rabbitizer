@@ -2,98 +2,98 @@
 /* SPDX-License-Identifier: MIT */
 
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf0,  vf0,
+        R5900_VF,  vf0,  0,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf1,  vf1,
+        R5900_VF,  vf1,  1,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf2,  vf2,
+        R5900_VF,  vf2,  2,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf3,  vf3,
+        R5900_VF,  vf3,  3,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf4,  vf4,
+        R5900_VF,  vf4,  4,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf5,  vf5,
+        R5900_VF,  vf5,  5,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf6,  vf6,
+        R5900_VF,  vf6,  6,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf7,  vf7,
+        R5900_VF,  vf7,  7,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf8,  vf8,
+        R5900_VF,  vf8,  8,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF,  vf9,  vf9,
+        R5900_VF,  vf9,  9,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf10, vf10,
+        R5900_VF, vf10, 10,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf11, vf11,
+        R5900_VF, vf11, 11,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf12, vf12,
+        R5900_VF, vf12, 12,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf13, vf13,
+        R5900_VF, vf13, 13,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf14, vf14,
+        R5900_VF, vf14, 14,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf15, vf15,
+        R5900_VF, vf15, 15,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf16, vf16,
+        R5900_VF, vf16, 16,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf17, vf17,
+        R5900_VF, vf17, 17,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf18, vf18,
+        R5900_VF, vf18, 18,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf19, vf19,
+        R5900_VF, vf19, 19,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf20, vf20,
+        R5900_VF, vf20, 20,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf21, vf21,
+        R5900_VF, vf21, 21,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf22, vf22,
+        R5900_VF, vf22, 22,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf23, vf23,
+        R5900_VF, vf23, 23,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf24, vf24,
+        R5900_VF, vf24, 24,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf25, vf25,
+        R5900_VF, vf25, 25,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf26, vf26,
+        R5900_VF, vf26, 26,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf27, vf27,
+        R5900_VF, vf27, 27,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf28, vf28,
+        R5900_VF, vf28, 28,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf29, vf29,
+        R5900_VF, vf29, 29,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf30, vf30,
+        R5900_VF, vf30, 30,
     )
     RABBITIZER_DEF_REG(
-        R5900_VF, vf31, vf31,
+        R5900_VF, vf31, 31,
     )

@@ -36,6 +36,17 @@ mod register_cop1control;
 mod register_cop2;
 mod register_descriptor;
 mod register_gpr;
+mod register_r4000allegrex_m2x2;
+mod register_r4000allegrex_m3x3;
+mod register_r4000allegrex_m4x4;
+mod register_r4000allegrex_s;
+mod register_r4000allegrex_v2d;
+mod register_r4000allegrex_v3d;
+mod register_r4000allegrex_v4d;
+mod register_r4000allegrex_vconstant;
+mod register_r4000allegrex_vfpucontrol;
+mod register_r5900allegrex_vf;
+mod register_r5900allegrex_vi;
 
 mod utils;
 
@@ -61,6 +72,8 @@ pub use generated::RegisterR4000AllegrexV3D;
 pub use generated::RegisterR4000AllegrexV4D;
 pub use generated::RegisterR4000AllegrexVConstant;
 pub use generated::RegisterR4000AllegrexVfpuControl;
+pub use generated::RegisterR5900VF;
+pub use generated::RegisterR5900VI;
 pub use generated::COP0_REGISTERS;
 pub use generated::COP1CONTROL_REGISTERS;
 pub use generated::COP1_REGISTERS;
@@ -75,6 +88,8 @@ pub use generated::R4000ALLEGREX_V3D_REGISTERS;
 pub use generated::R4000ALLEGREX_V4D_REGISTERS;
 pub use generated::R4000ALLEGREX_VCONSTANT_REGISTERS;
 pub use generated::R4000ALLEGREX_VFPUCONTROL_REGISTERS;
+pub use generated::R5900_VF_REGISTERS;
+pub use generated::R5900_VI_REGISTERS;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 

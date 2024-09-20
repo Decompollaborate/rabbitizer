@@ -2,98 +2,98 @@
 /* SPDX-License-Identifier: MIT */
 
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi0,  vi0,
+        R5900_VI,  vi0,  0,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi1,  vi1,
+        R5900_VI,  vi1,  1,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi2,  vi2,
+        R5900_VI,  vi2,  2,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi3,  vi3,
+        R5900_VI,  vi3,  3,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi4,  vi4,
+        R5900_VI,  vi4,  4,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi5,  vi5,
+        R5900_VI,  vi5,  5,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi6,  vi6,
+        R5900_VI,  vi6,  6,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi7,  vi7,
+        R5900_VI,  vi7,  7,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi8,  vi8,
+        R5900_VI,  vi8,  8,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI,  vi9,  vi9,
+        R5900_VI,  vi9,  9,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi10, vi10,
+        R5900_VI, vi10, 10,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi11, vi11,
+        R5900_VI, vi11, 11,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi12, vi12,
+        R5900_VI, vi12, 12,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi13, vi13,
+        R5900_VI, vi13, 13,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi14, vi14,
+        R5900_VI, vi14, 14,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi15, vi15,
+        R5900_VI, vi15, 15,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi16, vi16,
+        R5900_VI, vi16, 16,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi17, vi17,
+        R5900_VI, vi17, 17,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi18, vi18,
+        R5900_VI, vi18, 18,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi19, vi19,
+        R5900_VI, vi19, 19,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi20, vi20,
+        R5900_VI, vi20, 20,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi21, vi21,
+        R5900_VI, vi21, 21,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi22, vi22,
+        R5900_VI, vi22, 22,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi23, vi23,
+        R5900_VI, vi23, 23,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi24, vi24,
+        R5900_VI, vi24, 24,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi25, vi25,
+        R5900_VI, vi25, 25,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi26, vi26,
+        R5900_VI, vi26, 26,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi27, vi27,
+        R5900_VI, vi27, 27,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi28, vi28,
+        R5900_VI, vi28, 28,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi29, vi29,
+        R5900_VI, vi29, 29,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi30, vi30,
+        R5900_VI, vi30, 30,
     )
     RABBITIZER_DEF_REG(
-        R5900_VI, vi31, vi31,
+        R5900_VI, vi31, 31,
     )

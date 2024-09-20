@@ -520,7 +520,7 @@ pub static R4000ALLEGREX_VFPUCONTROL_REGISTERS: [RegisterDescriptor; 128] = {
     .check_panic_chain();
     let mut i = 0;
     while i < 128 {
-        assert!(table[i].value as usize - 128 == i);
+        assert!(table[i].value as usize - 128 == i, "Broken register index?");
         i += 1;
     }
     table

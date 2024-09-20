@@ -143,7 +143,7 @@ pub static COP0_REGISTERS: [RegisterDescriptor; 32] = {
     .check_panic_chain();
     let mut i = 0;
     while i < 32 {
-        assert!(table[i].value as usize == i);
+        assert!(table[i].value as usize == i, "Broken register index?");
         i += 1;
     }
     table

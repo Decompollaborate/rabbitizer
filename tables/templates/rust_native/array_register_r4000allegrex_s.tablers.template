@@ -22,7 +22,7 @@ pub static R4000ALLEGREX_S_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
 
     let mut i = 0;
     while i < REGISTER_COUNT {
-        assert!(table[i].value as usize == i);
+        assert!(table[i].value as usize == i, "Broken register index?");
 
         i += 1;
     }

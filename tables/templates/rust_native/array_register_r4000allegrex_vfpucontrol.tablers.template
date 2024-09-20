@@ -30,7 +30,7 @@ pub static R4000ALLEGREX_VFPUCONTROL_REGISTERS: [RegisterDescriptor; REGISTER_CO
 
     let mut i = 0;
     while i < REGISTER_COUNT {
-        assert!(table[i].value as usize - REGISTER_OFFSET == i);
+        assert!(table[i].value as usize - REGISTER_OFFSET == i, "Broken register index?");
 
         i += 1;
     }

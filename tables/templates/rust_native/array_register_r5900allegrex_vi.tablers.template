@@ -5,20 +5,20 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
-    table[ RegisterCop0::name as usize] = RegisterDescriptor { \
+#define RABBITIZER_DEF_REG(prefix, name, value, ...) \
+    table[ RegisterR5900VI::name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
-        ..RegisterDescriptor::new( #name, value, concat!("$", #value) ) \
+        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$vi", #value) ) \
     } .check_panic_chain();
 
-use crate::{RegisterCop0, RegisterDescriptor};
+use crate::{RegisterR5900VI, RegisterDescriptor};
 
 #define REGISTER_COUNT 32
 
-pub static COP0_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
+pub static R5900_VI_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
     let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
 
-    #include "registers/RabbitizerRegister_Cop0.inc"
+    #include "registers/RabbitizerRegister_R5900VI.inc"
 
     let mut i = 0;
     while i < REGISTER_COUNT {
@@ -30,4 +30,4 @@ pub static COP0_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
     table
 };
 
-#undef RABBITIZER_DEF_REG_NODOLLAR
+#undef RABBITIZER_DEF_REG
