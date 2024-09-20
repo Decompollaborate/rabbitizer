@@ -1,0 +1,18 @@
+/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
+    name = value,
+
+SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
+SPECIAL_RS_TAG(allow(non_camel_case_types))
+SPECIAL_RS_TAG(allow(clippy::exhaustive_enums))
+pub enum RegisterR4000AllegrexM3x3 {
+    #include "registers/RabbitizerRegister_R4000AllegrexM3x3.inc"
+}
+
+#undef RABBITIZER_DEF_REG_NODOLLAR
