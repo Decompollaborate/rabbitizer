@@ -3,33 +3,35 @@
 
 use core::ops::Index;
 
-use crate::{traits::Register, RegisterDescriptor,  };
-use crate::registers::{RegisterR5900VF, R5900_VF_REGISTERS};
+use crate::register_descriptors;
+use crate::registers::R5900VF;
+use crate::traits::Register;
+use crate::RegisterDescriptor;
 
-impl RegisterR5900VF {
+impl R5900VF {
     #[must_use]
     pub const fn default() -> Self {
         Self::vf0
     }
 }
 
-impl Register for RegisterR5900VF {
+impl Register for R5900VF {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &R5900_VF_REGISTERS[*self]
+        &register_descriptors::R5900_VF[*self]
     }
 }
 
-impl Default for RegisterR5900VF {
+impl Default for R5900VF {
     fn default() -> Self {
         Self::default()
     }
 }
 
-impl Index<RegisterR5900VF> for [RegisterDescriptor] {
+impl Index<R5900VF> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
 
-    fn index(&self, index: RegisterR5900VF) -> &Self::Output {
+    fn index(&self, index: R5900VF) -> &Self::Output {
         &self[index as usize]
     }
 }

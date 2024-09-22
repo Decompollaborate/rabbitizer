@@ -8,5 +8,5 @@ fn main() {
         println!("{x:?}");
     }
 
-    println!("{:?}", rabbitizer::registers::RegisterGpr::v0);
+    println!("{:?}", rabbitizer::registers::Gpr::v0);
 }

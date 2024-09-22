@@ -3,20 +3,23 @@
 
 use core::ops::Index;
 
-use crate::{Abi, traits::Register, RegisterDescriptor};
-use crate::registers::{RegisterGpr, GPR_REGISTERS};
+use crate::register_descriptors;
+use crate::registers::Gpr;
+use crate::traits::Register;
+use crate::Abi;
+use crate::RegisterDescriptor;
 
-impl RegisterGpr {
+impl Gpr {
     #[must_use]
     pub const fn default() -> Self {
         Self::zero
     }
 }
 
-impl Register for RegisterGpr {
+impl Register for Gpr {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &GPR_REGISTERS[*self]
+        &register_descriptors::GPR[*self]
     }
 
     #[must_use]
@@ -47,16 +50,16 @@ impl Register for RegisterGpr {
     }
 }
 
-impl Default for RegisterGpr {
+impl Default for Gpr {
     fn default() -> Self {
         Self::default()
     }
 }
 
-impl Index<RegisterGpr> for [RegisterDescriptor] {
+impl Index<Gpr> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
 
-    fn index(&self, index: RegisterGpr) -> &Self::Output {
+    fn index(&self, index: Gpr) -> &Self::Output {
         &self[index as usize]
     }
 }

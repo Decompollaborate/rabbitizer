@@ -83,50 +83,53 @@ pub use flags::InstructionFlags;
 pub mod registers {
     use crate::generated;
 
-    pub use generated::RegisterCop0;
-    pub use generated::RegisterCop1;
-    pub use generated::RegisterCop1Control;
-    pub use generated::RegisterCop2;
-    pub use generated::RegisterGpr;
-    pub use generated::RegisterR4000AllegrexM2x2;
-    pub use generated::RegisterR4000AllegrexM3x3;
-    pub use generated::RegisterR4000AllegrexM4x4;
-    pub use generated::RegisterR4000AllegrexS;
-    pub use generated::RegisterR4000AllegrexV2D;
-    pub use generated::RegisterR4000AllegrexV3D;
-    pub use generated::RegisterR4000AllegrexV4D;
-    pub use generated::RegisterR4000AllegrexVConstant;
-    pub use generated::RegisterR4000AllegrexVfpuControl;
-    pub use generated::RegisterR5900VF;
-    pub use generated::RegisterR5900VI;
-    pub use generated::RegisterRspCop0;
-    pub use generated::RegisterRspCop2;
-    pub use generated::RegisterRspCop2Control;
-    pub use generated::RegisterRspGpr;
-    pub use generated::RegisterRspVector;
+    pub use generated::Cop0;
+    pub use generated::Cop1;
+    pub use generated::Cop1Control;
+    pub use generated::Cop2;
+    pub use generated::Gpr;
+    pub use generated::R4000AllegrexM2x2;
+    pub use generated::R4000AllegrexM3x3;
+    pub use generated::R4000AllegrexM4x4;
+    pub use generated::R4000AllegrexS;
+    pub use generated::R4000AllegrexV2D;
+    pub use generated::R4000AllegrexV3D;
+    pub use generated::R4000AllegrexV4D;
+    pub use generated::R4000AllegrexVConstant;
+    pub use generated::R4000AllegrexVfpuControl;
+    pub use generated::RspCop0;
+    pub use generated::RspCop2;
+    pub use generated::RspCop2Control;
+    pub use generated::RspGpr;
+    pub use generated::RspVector;
+    pub use generated::R5900VF;
+    pub use generated::R5900VI;
+}
 
+pub mod register_descriptors {
+    use crate::generated;
 
-    pub use generated::COP0_REGISTERS;
-    pub use generated::COP1CONTROL_REGISTERS;
-    pub use generated::COP1_REGISTERS;
-    pub use generated::COP2_REGISTERS;
-    pub use generated::GPR_REGISTERS;
-    pub use generated::R4000ALLEGREX_M2X2_REGISTERS;
-    pub use generated::R4000ALLEGREX_M3X3_REGISTERS;
-    pub use generated::R4000ALLEGREX_M4X4_REGISTERS;
-    pub use generated::R4000ALLEGREX_S_REGISTERS;
-    pub use generated::R4000ALLEGREX_V2D_REGISTERS;
-    pub use generated::R4000ALLEGREX_V3D_REGISTERS;
-    pub use generated::R4000ALLEGREX_V4D_REGISTERS;
-    pub use generated::R4000ALLEGREX_VCONSTANT_REGISTERS;
-    pub use generated::R4000ALLEGREX_VFPUCONTROL_REGISTERS;
-    pub use generated::R5900_VF_REGISTERS;
-    pub use generated::R5900_VI_REGISTERS;
-    pub use generated::RSP_COP0_REGISTERS;
-    pub use generated::RSP_COP2_CONTROL_REGISTERS;
-    pub use generated::RSP_COP2_REGISTERS;
-    pub use generated::RSP_GPR_REGISTERS;
-    pub use generated::RSP_VECTOR_REGISTERS;
+    pub use generated::COP0;
+    pub use generated::COP1;
+    pub use generated::COP1CONTROL;
+    pub use generated::COP2;
+    pub use generated::GPR;
+    pub use generated::R4000ALLEGREX_M2X2;
+    pub use generated::R4000ALLEGREX_M3X3;
+    pub use generated::R4000ALLEGREX_M4X4;
+    pub use generated::R4000ALLEGREX_S;
+    pub use generated::R4000ALLEGREX_V2D;
+    pub use generated::R4000ALLEGREX_V3D;
+    pub use generated::R4000ALLEGREX_V4D;
+    pub use generated::R4000ALLEGREX_VCONSTANT;
+    pub use generated::R4000ALLEGREX_VFPUCONTROL;
+    pub use generated::R5900_VF;
+    pub use generated::R5900_VI;
+    pub use generated::RSP_COP0;
+    pub use generated::RSP_COP2;
+    pub use generated::RSP_COP2_CONTROL;
+    pub use generated::RSP_GPR;
+    pub use generated::RSP_VECTOR;
 }
 
 #[cfg(test)]

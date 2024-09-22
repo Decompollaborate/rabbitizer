@@ -3,34 +3,35 @@
 
 use core::ops::Index;
 
-use crate::{traits::Register, RegisterDescriptor
-};
-use crate::registers::{RegisterR4000AllegrexM3x3, R4000ALLEGREX_M3X3_REGISTERS};
+use crate::register_descriptors;
+use crate::registers::R4000AllegrexM3x3;
+use crate::traits::Register;
+use crate::RegisterDescriptor;
 
-impl RegisterR4000AllegrexM3x3 {
+impl R4000AllegrexM3x3 {
     #[must_use]
     pub const fn default() -> Self {
         Self::M000
     }
 }
 
-impl Register for RegisterR4000AllegrexM3x3 {
+impl Register for R4000AllegrexM3x3 {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &R4000ALLEGREX_M3X3_REGISTERS[*self]
+        &register_descriptors::R4000ALLEGREX_M3X3[*self]
     }
 }
 
-impl Default for RegisterR4000AllegrexM3x3 {
+impl Default for R4000AllegrexM3x3 {
     fn default() -> Self {
         Self::default()
     }
 }
 
-impl Index<RegisterR4000AllegrexM3x3> for [RegisterDescriptor] {
+impl Index<R4000AllegrexM3x3> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
 
-    fn index(&self, index: RegisterR4000AllegrexM3x3) -> &Self::Output {
+    fn index(&self, index: R4000AllegrexM3x3) -> &Self::Output {
         &self[index as usize]
     }
 }

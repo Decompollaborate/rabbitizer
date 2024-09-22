@@ -3,33 +3,35 @@
 
 use core::ops::Index;
 
-use crate::{traits::Register, RegisterDescriptor , };
-use crate::registers::{RegisterRspVector, RSP_VECTOR_REGISTERS};
+use crate::register_descriptors;
+use crate::registers::RspVector;
+use crate::traits::Register;
+use crate::RegisterDescriptor;
 
-impl RegisterRspVector {
+impl RspVector {
     #[must_use]
     pub const fn default() -> Self {
         Self::v0
     }
 }
 
-impl Register for RegisterRspVector {
+impl Register for RspVector {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &RSP_VECTOR_REGISTERS[*self]
+        &register_descriptors::RSP_VECTOR[*self]
     }
 }
 
-impl Default for RegisterRspVector {
+impl Default for RspVector {
     fn default() -> Self {
         Self::default()
     }
 }
 
-impl Index<RegisterRspVector> for [RegisterDescriptor] {
+impl Index<RspVector> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
 
-    fn index(&self, index: RegisterRspVector) -> &Self::Output {
+    fn index(&self, index: RspVector) -> &Self::Output {
         &self[index as usize]
     }
 }

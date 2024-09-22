@@ -3,33 +3,35 @@
 
 use core::ops::Index;
 
-use crate::{traits::Register, RegisterDescriptor, };
-use crate::registers::{RegisterRspCop0, RSP_COP0_REGISTERS};
+use crate::register_descriptors;
+use crate::registers::RspCop0;
+use crate::traits::Register;
+use crate::RegisterDescriptor;
 
-impl RegisterRspCop0 {
+impl RspCop0 {
     #[must_use]
     pub const fn default() -> Self {
         Self::SP_MEM_ADDR
     }
 }
 
-impl Register for RegisterRspCop0 {
+impl Register for RspCop0 {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &RSP_COP0_REGISTERS[*self]
+        &register_descriptors::RSP_COP0[*self]
     }
 }
 
-impl Default for RegisterRspCop0 {
+impl Default for RspCop0 {
     fn default() -> Self {
         Self::default()
     }
 }
 
-impl Index<RegisterRspCop0> for [RegisterDescriptor] {
+impl Index<RspCop0> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
 
-    fn index(&self, index: RegisterRspCop0) -> &Self::Output {
+    fn index(&self, index: RspCop0) -> &Self::Output {
         &self[index as usize]
     }
 }

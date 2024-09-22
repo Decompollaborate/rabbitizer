@@ -3,33 +3,35 @@
 
 use core::ops::Index;
 
-use crate::{traits::Register, RegisterDescriptor};
-use crate::registers::{RegisterCop1, COP1_REGISTERS};
+use crate::register_descriptors;
+use crate::registers::Cop1;
+use crate::traits::Register;
+use crate::RegisterDescriptor;
 
-impl RegisterCop1 {
+impl Cop1 {
     #[must_use]
     pub const fn default() -> Self {
         Self::fv0
     }
 }
 
-impl Register for RegisterCop1 {
+impl Register for Cop1 {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &COP1_REGISTERS[*self]
+        &register_descriptors::COP1[*self]
     }
 }
 
-impl Default for RegisterCop1 {
+impl Default for Cop1 {
     fn default() -> Self {
         Self::default()
     }
 }
 
-impl Index<RegisterCop1> for [RegisterDescriptor] {
+impl Index<Cop1> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
 
-    fn index(&self, index: RegisterCop1) -> &Self::Output {
+    fn index(&self, index: Cop1) -> &Self::Output {
         &self[index as usize]
     }
 }
