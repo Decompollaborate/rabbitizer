@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{Register, RegisterDescriptor, RegisterR5900VF, R5900_VF_REGISTERS};
+use crate::{traits::Register, RegisterDescriptor,  };
+use crate::registers::{RegisterR5900VF, R5900_VF_REGISTERS};
 
 impl RegisterR5900VF {
     #[must_use]

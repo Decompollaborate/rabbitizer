@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{Register, RegisterDescriptor, RegisterR4000AllegrexV2D, R4000ALLEGREX_V2D_REGISTERS};
+use crate::{traits::Register, RegisterDescriptor};
+use crate::registers::{RegisterR4000AllegrexV2D, R4000ALLEGREX_V2D_REGISTERS};
 
 impl RegisterR4000AllegrexV2D {
     #[must_use]

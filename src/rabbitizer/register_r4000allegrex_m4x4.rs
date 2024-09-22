@@ -3,9 +3,9 @@
 
 use core::ops::Index;
 
-use crate::{
-    Register, RegisterDescriptor, RegisterR4000AllegrexM4x4, R4000ALLEGREX_M4X4_REGISTERS,
+use crate::{traits::Register, RegisterDescriptor
 };
+use crate::registers::{RegisterR4000AllegrexM4x4, R4000ALLEGREX_M4X4_REGISTERS};
 
 impl RegisterR4000AllegrexM4x4 {
     #[must_use]

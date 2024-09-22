@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{Register, RegisterDescriptor, RegisterR5900VI, R5900_VI_REGISTERS};
+use crate::{traits::Register, RegisterDescriptor , };
+use crate::registers::{RegisterR5900VI, R5900_VI_REGISTERS};
 
 impl RegisterR5900VI {
     #[must_use]

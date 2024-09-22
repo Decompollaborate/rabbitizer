@@ -52,7 +52,7 @@ mod register_rsp_cop2;
 mod register_rsp_cop2_control;
 mod register_rsp_gpr;
 mod register_rsp_vector;
-mod traits;
+pub mod traits;
 
 mod utils;
 
@@ -64,48 +64,6 @@ pub use generated::IsaVersion;
 pub use generated::Opcode;
 pub use generated::OpcodeCategory;
 pub use generated::Operand;
-pub use generated::RegisterCop0;
-pub use generated::RegisterCop1;
-pub use generated::RegisterCop1Control;
-pub use generated::RegisterCop2;
-pub use generated::RegisterGpr;
-pub use generated::RegisterR4000AllegrexM2x2;
-pub use generated::RegisterR4000AllegrexM3x3;
-pub use generated::RegisterR4000AllegrexM4x4;
-pub use generated::RegisterR4000AllegrexS;
-pub use generated::RegisterR4000AllegrexV2D;
-pub use generated::RegisterR4000AllegrexV3D;
-pub use generated::RegisterR4000AllegrexV4D;
-pub use generated::RegisterR4000AllegrexVConstant;
-pub use generated::RegisterR4000AllegrexVfpuControl;
-pub use generated::RegisterR5900VF;
-pub use generated::RegisterR5900VI;
-pub use generated::RegisterRspCop0;
-pub use generated::RegisterRspCop2;
-pub use generated::RegisterRspCop2Control;
-pub use generated::RegisterRspGpr;
-pub use generated::RegisterRspVector;
-pub use generated::COP0_REGISTERS;
-pub use generated::COP1CONTROL_REGISTERS;
-pub use generated::COP1_REGISTERS;
-pub use generated::COP2_REGISTERS;
-pub use generated::GPR_REGISTERS;
-pub use generated::R4000ALLEGREX_M2X2_REGISTERS;
-pub use generated::R4000ALLEGREX_M3X3_REGISTERS;
-pub use generated::R4000ALLEGREX_M4X4_REGISTERS;
-pub use generated::R4000ALLEGREX_S_REGISTERS;
-pub use generated::R4000ALLEGREX_V2D_REGISTERS;
-pub use generated::R4000ALLEGREX_V3D_REGISTERS;
-pub use generated::R4000ALLEGREX_V4D_REGISTERS;
-pub use generated::R4000ALLEGREX_VCONSTANT_REGISTERS;
-pub use generated::R4000ALLEGREX_VFPUCONTROL_REGISTERS;
-pub use generated::R5900_VF_REGISTERS;
-pub use generated::R5900_VI_REGISTERS;
-pub use generated::RSP_COP0_REGISTERS;
-pub use generated::RSP_COP2_CONTROL_REGISTERS;
-pub use generated::RSP_COP2_REGISTERS;
-pub use generated::RSP_GPR_REGISTERS;
-pub use generated::RSP_VECTOR_REGISTERS;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 
@@ -118,10 +76,58 @@ pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
 pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
-pub use traits::Register;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;
+
+pub mod registers {
+    use crate::generated;
+
+    pub use generated::RegisterCop0;
+    pub use generated::RegisterCop1;
+    pub use generated::RegisterCop1Control;
+    pub use generated::RegisterCop2;
+    pub use generated::RegisterGpr;
+    pub use generated::RegisterR4000AllegrexM2x2;
+    pub use generated::RegisterR4000AllegrexM3x3;
+    pub use generated::RegisterR4000AllegrexM4x4;
+    pub use generated::RegisterR4000AllegrexS;
+    pub use generated::RegisterR4000AllegrexV2D;
+    pub use generated::RegisterR4000AllegrexV3D;
+    pub use generated::RegisterR4000AllegrexV4D;
+    pub use generated::RegisterR4000AllegrexVConstant;
+    pub use generated::RegisterR4000AllegrexVfpuControl;
+    pub use generated::RegisterR5900VF;
+    pub use generated::RegisterR5900VI;
+    pub use generated::RegisterRspCop0;
+    pub use generated::RegisterRspCop2;
+    pub use generated::RegisterRspCop2Control;
+    pub use generated::RegisterRspGpr;
+    pub use generated::RegisterRspVector;
+
+
+    pub use generated::COP0_REGISTERS;
+    pub use generated::COP1CONTROL_REGISTERS;
+    pub use generated::COP1_REGISTERS;
+    pub use generated::COP2_REGISTERS;
+    pub use generated::GPR_REGISTERS;
+    pub use generated::R4000ALLEGREX_M2X2_REGISTERS;
+    pub use generated::R4000ALLEGREX_M3X3_REGISTERS;
+    pub use generated::R4000ALLEGREX_M4X4_REGISTERS;
+    pub use generated::R4000ALLEGREX_S_REGISTERS;
+    pub use generated::R4000ALLEGREX_V2D_REGISTERS;
+    pub use generated::R4000ALLEGREX_V3D_REGISTERS;
+    pub use generated::R4000ALLEGREX_V4D_REGISTERS;
+    pub use generated::R4000ALLEGREX_VCONSTANT_REGISTERS;
+    pub use generated::R4000ALLEGREX_VFPUCONTROL_REGISTERS;
+    pub use generated::R5900_VF_REGISTERS;
+    pub use generated::R5900_VI_REGISTERS;
+    pub use generated::RSP_COP0_REGISTERS;
+    pub use generated::RSP_COP2_CONTROL_REGISTERS;
+    pub use generated::RSP_COP2_REGISTERS;
+    pub use generated::RSP_GPR_REGISTERS;
+    pub use generated::RSP_VECTOR_REGISTERS;
+}
 
 #[cfg(test)]
 mod tests {

@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{Register, RegisterCop2, RegisterDescriptor, COP2_REGISTERS};
+use crate::{traits::Register, RegisterDescriptor};
+use crate::registers::{RegisterCop2, COP2_REGISTERS};
 
 impl RegisterCop2 {
     #[must_use]

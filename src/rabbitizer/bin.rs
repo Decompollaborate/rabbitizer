@@ -7,4 +7,6 @@ fn main() {
     for x in Opcode::cpu_lw.get_descriptor().operands_iter() {
         println!("{x:?}");
     }
+
+    println!("{:?}", rabbitizer::registers::RegisterGpr::v0);
 }

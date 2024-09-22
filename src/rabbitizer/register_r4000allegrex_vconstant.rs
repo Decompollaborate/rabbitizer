@@ -3,9 +3,9 @@
 
 use core::ops::Index;
 
-use crate::{
-    Register, RegisterDescriptor, RegisterR4000AllegrexVConstant, R4000ALLEGREX_VCONSTANT_REGISTERS,
+use crate::{traits::Register, RegisterDescriptor, 
 };
+use crate::registers::{RegisterR4000AllegrexVConstant, R4000ALLEGREX_VCONSTANT_REGISTERS};
 
 impl RegisterR4000AllegrexVConstant {
     #[must_use]

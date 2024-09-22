@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{Abi, Register, RegisterDescriptor, RegisterGpr, GPR_REGISTERS};
+use crate::{Abi, traits::Register, RegisterDescriptor};
+use crate::registers::{RegisterGpr, GPR_REGISTERS};
 
 impl RegisterGpr {
     #[must_use]

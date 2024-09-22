@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{Register, RegisterDescriptor, RegisterRspGpr, RSP_GPR_REGISTERS};
+use crate::{traits::Register, RegisterDescriptor, };
+use crate::registers::{RegisterRspGpr, RSP_GPR_REGISTERS};
 
 impl RegisterRspGpr {
     #[must_use]

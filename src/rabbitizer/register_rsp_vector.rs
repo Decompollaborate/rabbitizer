@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{Register, RegisterDescriptor, RegisterRspVector, RSP_VECTOR_REGISTERS};
+use crate::{traits::Register, RegisterDescriptor , };
+use crate::registers::{RegisterRspVector, RSP_VECTOR_REGISTERS};
 
 impl RegisterRspVector {
     #[must_use]
