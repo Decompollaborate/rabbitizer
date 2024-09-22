@@ -52,6 +52,7 @@ mod register_rsp_cop2;
 mod register_rsp_cop2_control;
 mod register_rsp_gpr;
 mod register_rsp_vector;
+mod traits;
 
 mod utils;
 
@@ -117,6 +118,7 @@ pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
 pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
+pub use traits::Register;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;

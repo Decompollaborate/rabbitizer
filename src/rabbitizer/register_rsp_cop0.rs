@@ -3,27 +3,19 @@
 
 use core::ops::Index;
 
-use crate::{Abi, RegisterDescriptor, RegisterRspCop0, RSP_COP0_REGISTERS};
+use crate::{Register, RegisterDescriptor, RegisterRspCop0, RSP_COP0_REGISTERS};
 
 impl RegisterRspCop0 {
     #[must_use]
     pub const fn default() -> Self {
         Self::SP_MEM_ADDR
     }
+}
 
+impl Register for RegisterRspCop0 {
     #[must_use]
-    pub fn get_descriptor(&self) -> &'static RegisterDescriptor {
+    fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &RSP_COP0_REGISTERS[*self]
-    }
-
-    #[must_use]
-    pub fn numeric_reg(&self) -> &'static str {
-        self.get_descriptor().numeric_reg()
-    }
-
-    #[must_use]
-    pub fn named_reg(&self, abi: Abi) -> &'static str {
-        self.get_descriptor().named_reg(abi)
     }
 }
 
