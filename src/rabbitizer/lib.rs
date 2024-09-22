@@ -47,6 +47,11 @@ mod register_r4000allegrex_vconstant;
 mod register_r4000allegrex_vfpucontrol;
 mod register_r5900allegrex_vf;
 mod register_r5900allegrex_vi;
+mod register_rsp_cop0;
+mod register_rsp_cop2;
+mod register_rsp_cop2_control;
+mod register_rsp_gpr;
+mod register_rsp_vector;
 
 mod utils;
 
@@ -74,6 +79,11 @@ pub use generated::RegisterR4000AllegrexVConstant;
 pub use generated::RegisterR4000AllegrexVfpuControl;
 pub use generated::RegisterR5900VF;
 pub use generated::RegisterR5900VI;
+pub use generated::RegisterRspCop0;
+pub use generated::RegisterRspCop2;
+pub use generated::RegisterRspCop2Control;
+pub use generated::RegisterRspGpr;
+pub use generated::RegisterRspVector;
 pub use generated::COP0_REGISTERS;
 pub use generated::COP1CONTROL_REGISTERS;
 pub use generated::COP1_REGISTERS;
@@ -90,6 +100,11 @@ pub use generated::R4000ALLEGREX_VCONSTANT_REGISTERS;
 pub use generated::R4000ALLEGREX_VFPUCONTROL_REGISTERS;
 pub use generated::R5900_VF_REGISTERS;
 pub use generated::R5900_VI_REGISTERS;
+pub use generated::RSP_COP0_REGISTERS;
+pub use generated::RSP_COP2_CONTROL_REGISTERS;
+pub use generated::RSP_COP2_REGISTERS;
+pub use generated::RSP_GPR_REGISTERS;
+pub use generated::RSP_VECTOR_REGISTERS;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 

@@ -10,27 +10,37 @@ use crate::RegisterDescriptor;
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
     name = value,
 
+#define RABBITIZER_DEF_REG_NUM(prefix, name, value, ...) \
+    r ## name = value,
+
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 SPECIAL_RS_TAG(allow(clippy::exhaustive_enums))
-pub enum RegisterCop1 {
-    #include "registers/RabbitizerRegister_Cop1.inc"
+pub enum RegisterRspGpr {
+    #include "registers/RabbitizerRegister_RspGpr.inc"
 }
 
 #undef RABBITIZER_DEF_REG
+#undef RABBITIZER_DEF_REG_NUM
 
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
-    table[ RegisterCop1::name as usize] = RegisterDescriptor { \
+    table[ RegisterRspGpr:: name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
-        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$f", #value) ) \
+        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$", #value) ) \
+    } .check_panic_chain();
+
+#define RABBITIZER_DEF_REG_NUM(prefix, name, value, ...) \
+    table[ RegisterRspGpr:: r ## name as usize] = RegisterDescriptor { \
+        __VA_ARGS__ \
+        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$", #value) ) \
     } .check_panic_chain();
 
 #define REGISTER_COUNT 32
 
-pub static COP1_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
+pub static RSP_GPR_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
     let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
 
-    #include "registers/RabbitizerRegister_Cop1.inc"
+    #include "registers/RabbitizerRegister_RspGpr.inc"
 
     let mut i = 0;
     while i < REGISTER_COUNT {
@@ -43,3 +53,4 @@ pub static COP1_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
 };
 
 #undef RABBITIZER_DEF_REG
+#undef RABBITIZER_DEF_REG_NUM

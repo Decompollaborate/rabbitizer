@@ -8,7 +8,7 @@
 use crate::RegisterDescriptor;
 
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
-    r ## name,
+    r ## name = value,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
