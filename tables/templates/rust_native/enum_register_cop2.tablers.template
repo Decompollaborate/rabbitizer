@@ -5,6 +5,8 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use crate::RegisterDescriptor;
+
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
     r ## name,
 
@@ -14,5 +16,30 @@ SPECIAL_RS_TAG(allow(clippy::exhaustive_enums))
 pub enum RegisterCop2 {
     #include "registers/RabbitizerRegister_Cop2.inc"
 }
+
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, value, ...) \
+    table[ RegisterCop2:: r ## name as usize] = RegisterDescriptor { \
+        __VA_ARGS__ \
+        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$", #value) ) \
+    } .check_panic_chain();
+
+#define REGISTER_COUNT 32
+
+pub static COP2_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
+    let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
+
+    #include "registers/RabbitizerRegister_Cop2.inc"
+
+    let mut i = 0;
+    while i < REGISTER_COUNT {
+        assert!(table[i].value as usize == i, "Broken register index?");
+
+        i += 1;
+    }
+
+    table
+};
 
 #undef RABBITIZER_DEF_REG

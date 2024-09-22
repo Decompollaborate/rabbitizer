@@ -5,6 +5,8 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use crate::RegisterDescriptor;
+
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
     name = value,
 
@@ -14,5 +16,30 @@ SPECIAL_RS_TAG(allow(clippy::exhaustive_enums))
 pub enum RegisterR4000AllegrexS {
     #include "registers/RabbitizerRegister_R4000AllegrexS.inc"
 }
+
+#undef RABBITIZER_DEF_REG_NODOLLAR
+
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
+    table[ RegisterR4000AllegrexS::name as usize] = RegisterDescriptor { \
+        __VA_ARGS__ \
+        ..RegisterDescriptor::new( #name, value, concat!("$", #value) ) \
+    } .check_panic_chain();
+
+#define REGISTER_COUNT 128
+
+pub static R4000ALLEGREX_S_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
+    let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
+
+    #include "registers/RabbitizerRegister_R4000AllegrexS.inc"
+
+    let mut i = 0;
+    while i < REGISTER_COUNT {
+        assert!(table[i].value as usize == i, "Broken register index?");
+
+        i += 1;
+    }
+
+    table
+};
 
 #undef RABBITIZER_DEF_REG_NODOLLAR

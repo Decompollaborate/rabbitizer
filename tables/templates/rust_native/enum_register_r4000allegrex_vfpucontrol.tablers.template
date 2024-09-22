@@ -5,6 +5,8 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use crate::RegisterDescriptor;
+
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
     name = value,
 
@@ -17,6 +19,40 @@ SPECIAL_RS_TAG(allow(clippy::exhaustive_enums))
 pub enum RegisterR4000AllegrexVfpuControl {
     #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
 }
+
+#undef RABBITIZER_DEF_REG_NODOLLAR
+#undef RABBITIZER_DEF_REG
+
+#define REGISTER_OFFSET 128
+
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
+    table[ RegisterR4000AllegrexVfpuControl::name as usize - REGISTER_OFFSET] = RegisterDescriptor { \
+        __VA_ARGS__ \
+        ..RegisterDescriptor::new( #name, value, concat!("$", #value) ) \
+    } .check_panic_chain();
+
+#define RABBITIZER_DEF_REG(prefix, name, value, ...) \
+    table[ RegisterR4000AllegrexVfpuControl:: r ## name as usize - REGISTER_OFFSET] = RegisterDescriptor { \
+        __VA_ARGS__ \
+        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$", #value) ) \
+    } .check_panic_chain();
+
+#define REGISTER_COUNT 128
+
+pub static R4000ALLEGREX_VFPUCONTROL_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
+    let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
+
+    #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
+
+    let mut i = 0;
+    while i < REGISTER_COUNT {
+        assert!(table[i].value as usize - REGISTER_OFFSET == i, "Broken register index?");
+
+        i += 1;
+    }
+
+    table
+};
 
 #undef RABBITIZER_DEF_REG_NODOLLAR
 #undef RABBITIZER_DEF_REG
