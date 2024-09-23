@@ -12,8 +12,8 @@ use crate::{
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]
-pub struct OpcodeDescriptor<'a> {
-    pub(crate) name: &'a str,
+pub struct OpcodeDescriptor {
+    pub(crate) name: &'static str,
 
     pub(crate) isa_version: IsaVersion,
     pub(crate) isa_extension: IsaExtension,
@@ -102,7 +102,7 @@ pub struct OpcodeDescriptor<'a> {
     pub(crate) does_unsigned_memory_access: bool,
 }
 
-impl<'a> OpcodeDescriptor<'a> {
+impl OpcodeDescriptor {
     pub(crate) const fn default() -> Self {
         Self {
             name: "",
@@ -151,7 +151,7 @@ impl<'a> OpcodeDescriptor<'a> {
     }
 
     pub(crate) const fn new(
-        name: &'a str,
+        name: &'static str,
         isa_version: IsaVersion,
         isa_extension: IsaExtension,
     ) -> Self {
@@ -196,8 +196,12 @@ impl<'a> OpcodeDescriptor<'a> {
     }
 }
 
-impl<'a> OpcodeDescriptor<'a> {
-    // getters and setters
+/// getters and setters
+impl OpcodeDescriptor {
+    #[must_use]
+    pub const fn name(&self) -> &'static str {
+        self.name
+    }
 
     #[must_use]
     pub const fn operands(&self) -> &[Operand; OPERAND_COUNT_MAX] {
@@ -215,7 +219,7 @@ impl<'a> OpcodeDescriptor<'a> {
     }
 }
 
-impl<'a> OpcodeDescriptor<'a> {
+impl OpcodeDescriptor {
     #[must_use]
     pub fn valid_bits(&self) -> EncodedFieldMask {
         let mut bits = EncodedFieldMask::empty();
@@ -228,8 +232,8 @@ impl<'a> OpcodeDescriptor<'a> {
     }
 }
 
-impl Index<Opcode> for [OpcodeDescriptor<'static>] {
-    type Output = OpcodeDescriptor<'static>;
+impl Index<Opcode> for [OpcodeDescriptor] {
+    type Output = OpcodeDescriptor;
 
     fn index(&self, index: Opcode) -> &Self::Output {
         &self[index as usize]

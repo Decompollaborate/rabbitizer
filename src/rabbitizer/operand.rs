@@ -109,3 +109,20 @@ impl<'a> Iterator for OperandIterator<'a> {
         Some(val)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::Opcode;
+
+    use super::*;
+
+    #[test]
+    fn test_addiu_operands() {
+        let mut operands = Opcode::cpu_addiu.get_descriptor().operands_iter();
+
+        assert_eq!(operands.next(), Some(Operand::cpu_rt).as_ref());
+        assert_eq!(operands.next(), Some(Operand::cpu_rs).as_ref());
+        assert_eq!(operands.next(), Some(Operand::cpu_immediate).as_ref());
+        assert_eq!(operands.next(), None);
+    }
+}

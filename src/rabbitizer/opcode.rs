@@ -8,10 +8,17 @@ use crate::{Opcode, OpcodeDescriptor, OPCODES};
 // this constant.
 pub(crate) const OPCODE_COUNT: usize = 943;
 
-impl<'a> Opcode {
+impl Opcode {
     #[must_use]
-    pub fn get_descriptor(&self) -> &'a OpcodeDescriptor {
+    pub fn get_descriptor(&self) -> &'static OpcodeDescriptor {
         &OPCODES[*self]
+    }
+}
+
+impl Opcode {
+    #[must_use]
+    pub fn name(&self) -> &'static str {
+        self.get_descriptor().name()
     }
 }
 
@@ -30,5 +37,20 @@ impl Opcode {
 impl Default for Opcode {
     fn default() -> Self {
         Self::default()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_j() {
+        assert!(OPCODES[Opcode::cpu_j].is_jump);
+        assert!(Opcode::cpu_j.get_descriptor().is_jump);
+        assert!(OPCODES[Opcode::cpu_j].is_jump_with_address);
+        assert!(Opcode::cpu_j.get_descriptor().is_jump_with_address);
+        assert!(!OPCODES[Opcode::cpu_j].is_branch);
+        assert!(!Opcode::cpu_j.get_descriptor().is_branch);
     }
 }

@@ -540,7 +540,7 @@
         is_pseudo: true
     ) // Not
 
-    // OP rd, rtf
+    // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0xFFFFFF22, neg, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
