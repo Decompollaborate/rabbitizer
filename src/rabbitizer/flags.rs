@@ -49,9 +49,9 @@ impl Default for DecodingFlags {
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct InstructionFlags {
-    abi_gpr: Abi,
-    abi_fpr: Abi,
-    decoding_flags: DecodingFlags,
+    pub(crate) abi_gpr: Abi,
+    pub(crate) abi_fpr: Abi,
+    pub(crate) decoding_flags: DecodingFlags,
 }
 
 impl InstructionFlags {
