@@ -15,6 +15,7 @@ mod array_operands;
 mod code_decode_isa_extension_none;
 mod code_decode_isa_extension_r3000gte;
 mod code_decode_isa_extension_r5900;
+mod code_decode_isa_extension_rsp;
 mod enum_abi;
 mod enum_access_type;
 mod enum_instr_suffix;

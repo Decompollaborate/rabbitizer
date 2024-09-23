@@ -23,7 +23,7 @@ impl OpcodeDecoder {
         // TODO
         match isa_extension {
             IsaExtension::NONE => Self::decode_isa_extension_none(word, flags, isa_version),
-            // IsaExtension::RSP => Self::decode_isa_extension_rsp(word, flags, isa_version),
+            IsaExtension::RSP => Self::decode_isa_extension_rsp(word, flags, isa_version),
             IsaExtension::R3000GTE => Self::decode_isa_extension_r3000gte(word, flags, isa_version),
             // IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex(word, flags, isa_version),
             IsaExtension::R5900 => Self::decode_isa_extension_r5900(word, flags, isa_version),
@@ -223,6 +223,115 @@ impl OpcodeDecoder {
                 }
             }
             _ => opcode,
+        }
+    }
+}
+
+/// IsaExtension::RSP
+impl OpcodeDecoder {
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_rsp(
+        word: u32,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::opcode;
+        let mandatory_bits = mask.mask_value(word);
+
+        match mask.get_shifted(word) {
+            /*
+            0x00 => {
+                Self::decode_isa_extension_rsp_special(word, mandatory_bits, flags, isa_version)
+            }
+            0x01 => {
+                Self::decode_isa_extension_rsp_regimm(word, mandatory_bits, flags, isa_version)
+            }
+            0x10 => Self::decode_isa_extension_rsp_coprocessor0(
+                word,
+                mandatory_bits,
+                flags,
+                isa_version,
+            ),
+            0x11 => Self::decode_isa_extension_rsp_coprocessor1(
+                word,
+                mandatory_bits,
+                flags,
+                isa_version,
+            ),
+            0x12 => Self::decode_isa_extension_rsp_coprocessor2(
+                word,
+                mandatory_bits,
+                flags,
+                isa_version,
+            ),
+            */
+            _ => Self::decode_isa_extension_rsp_normal(word, mandatory_bits, flags, isa_version),
+        }
+    }
+
+    #[must_use]
+    pub(crate) const fn fixups_decode_isa_extension_rsp_normal(
+        word: u32,
+        mut opcode: Opcode,
+        flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Opcode {
+        match opcode {
+            Opcode::cpu_beq => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0 {
+                    if EncodedFieldMask::rs.get_shifted(word) == 0 {
+                        if flags
+                            .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_b))
+                        {
+                            opcode = Opcode::rsp_b;
+                        }
+                    } else if flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqz))
+                    {
+                        opcode = Opcode::rsp_beqz;
+                    }
+                }
+            }
+            Opcode::cpu_bne => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnez))
+                {
+                    opcode = Opcode::rsp_bnez;
+                }
+            }
+            _ => {}
+        }
+
+        opcode
+    }
+
+    #[must_use]
+    pub(crate) const fn fixups_decode_isa_extension_rsp_swc2(
+        self,
+        word: u32,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        match self.opcode {
+            Opcode::rsp_suv => {
+                let mask = EncodedFieldMask::rsp_elementlow;
+                let mandatory_bits = self.mandatory_bits.union(mask.mask_value(word));
+                if mask.get_shifted(word) != 0x00 {
+                    Self {
+                        opcode: Opcode::rsp_swv,
+                        opcode_category: self.opcode_category,
+                        mandatory_bits,
+                    }
+                } else {
+                    Self {
+                        opcode: self.opcode,
+                        opcode_category: self.opcode_category,
+                        mandatory_bits,
+                    }
+                }
+            }
+            _ => self,
         }
     }
 }

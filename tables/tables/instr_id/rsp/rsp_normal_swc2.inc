@@ -59,7 +59,7 @@
     )
 
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x07, swv, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF07, swv, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     )

@@ -21,6 +21,7 @@ pub struct Instruction {
     _handwritten_category: bool, // TODO: remove in favour of checking the OpcodeCategory instead
 }
 
+/// Constructors
 impl Instruction {
     #[must_use]
     pub const fn new(
@@ -107,9 +108,8 @@ impl Instruction {
     }
 }
 
+/// Getters and setters
 impl Instruction {
-    // getters and setters
-
     #[must_use]
     pub const fn word(&self) -> u32 {
         self.word
@@ -141,6 +141,7 @@ impl Instruction {
     }
 }
 
+/// Instruction examination
 impl Instruction {
     #[must_use]
     pub const fn is_nop(&self) -> bool {
@@ -235,5 +236,22 @@ mod tests {
         );
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::cpu_dsub);
+    }
+
+    struct TestEntry {
+        pub instr: Instruction,
+        pub valid: bool,
+    }
+
+    #[test]
+    fn check_rsp_instructions() {
+        const ENTRIES: [TestEntry; 1] = [
+            TestEntry {instr: Instruction::new_rsp(0x09000419, 0x80000000, InstructionFlags::default()), valid: true}
+        ];
+
+        for entry in &ENTRIES {
+            println!("{:?}", entry.instr);
+            assert_eq!(entry.instr.is_valid(), entry.valid);
+        }
     }
 }

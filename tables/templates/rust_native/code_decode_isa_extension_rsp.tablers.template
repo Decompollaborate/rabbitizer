@@ -1,0 +1,93 @@
+/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
+    case_bits => opcode = Opcode::prefix##_##name,
+
+#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
+    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+
+use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+
+impl OpcodeDecoder {
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_normal(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::opcode;
+        let mut opcode = Opcode::ALL_INVALID;
+        let opcode_category = OpcodeCategory::RSP_NORMAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_normal.inc"
+            0x32 => return Self::decode_isa_extension_rsp_lwc2(word, mandatory_bits, flags, isa_version),
+            0x3A => return Self::decode_isa_extension_rsp_swc2(word, mandatory_bits, flags, isa_version),
+            _ => {}
+        }
+        Self {
+            opcode: Self::fixups_decode_isa_extension_rsp_normal(word, opcode, flags, isa_version),
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_lwc2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::rd;
+        let opcode;
+        let opcode_category = OpcodeCategory::RSP_NORMAL_LWC2;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_normal_lwc2.inc"
+            _ => opcode = Opcode::ALL_INVALID,
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_swc2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::rd;
+        let opcode;
+        let opcode_category = OpcodeCategory::RSP_NORMAL_SWC2;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_normal_swc2.inc"
+            _ => opcode = Opcode::ALL_INVALID,
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }.fixups_decode_isa_extension_rsp_swc2(word, flags, isa_version)
+    }
+}
+
+#undef RABBITIZER_DEF_INSTR_ID
+#undef RABBITIZER_DEF_INSTR_ID_ALTNAME

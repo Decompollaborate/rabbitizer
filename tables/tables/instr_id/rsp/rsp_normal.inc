@@ -223,7 +223,7 @@
 
     // OP IMM
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x03, b, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF03, b, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr1(Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true
@@ -231,14 +231,14 @@
 
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x04, beqz, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF04, beqz, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true
     ) // Branch on EQual Zero
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x05, bnez, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF05, bnez, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
