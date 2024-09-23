@@ -30,8 +30,9 @@ mod tests {
         for entry in entries {
             if entry.instr.is_valid() != entry.valid {
                 println!(
-                    "'{}' has incorrect validity. Expected '{}', got '{}'",
+                    "'{}' ({:08X}) has incorrect validity. Expected '{}', got '{}'",
                     entry.opcode_str,
+                    entry.instr.word(),
                     entry.valid,
                     entry.instr.is_valid()
                 );
@@ -41,8 +42,9 @@ mod tests {
             }
             if entry.instr.opcode() != entry.expected_opcode {
                 println!(
-                    "'{}' has incorrect decoded opcode. Expected '{:?}', got '{:?}'",
+                    "'{}' ({:08X}) has incorrect decoded opcode. Expected '{:?}', got '{:?}'",
                     entry.opcode_str,
+                    entry.instr.word(),
                     entry.expected_opcode,
                     entry.instr.opcode()
                 );
@@ -50,15 +52,15 @@ mod tests {
             }
             if entry.instr.opcode().name() != entry.opcode_str {
                 println!(
-                    "'{}' has incorrect opcode name. Expected '{}', got '{}'",
+                    "'{}' ({:08X}) has incorrect opcode name. Expected '{}', got '{}'",
                     entry.opcode_str,
+                    entry.instr.word(),
                     entry.opcode_str,
                     entry.instr.opcode().name()
                 );
                 errors += 1;
             }
             // TODO: expected
-            // TODO: opcode_str
             // TODO: operands_str
         }
 

@@ -239,13 +239,10 @@ impl OpcodeDecoder {
         let mandatory_bits = mask.mask_value(word);
 
         match mask.get_shifted(word) {
-            /*
             0x00 => {
                 Self::decode_isa_extension_rsp_special(word, mandatory_bits, flags, isa_version)
             }
-            0x01 => {
-                Self::decode_isa_extension_rsp_regimm(word, mandatory_bits, flags, isa_version)
-            }
+            0x01 => Self::decode_isa_extension_rsp_regimm(word, mandatory_bits, flags, isa_version),
             0x10 => Self::decode_isa_extension_rsp_coprocessor0(
                 word,
                 mandatory_bits,
@@ -264,7 +261,6 @@ impl OpcodeDecoder {
                 flags,
                 isa_version,
             ),
-            */
             _ => Self::decode_isa_extension_rsp_normal(word, mandatory_bits, flags, isa_version),
         }
     }
@@ -277,7 +273,7 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Opcode {
         match opcode {
-            Opcode::cpu_beq => {
+            Opcode::rsp_beq => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0 {
                     if EncodedFieldMask::rs.get_shifted(word) == 0 {
                         if flags
@@ -292,7 +288,7 @@ impl OpcodeDecoder {
                     }
                 }
             }
-            Opcode::cpu_bne => {
+            Opcode::rsp_bne => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0
                     && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnez))
@@ -329,6 +325,109 @@ impl OpcodeDecoder {
                         opcode_category: self.opcode_category,
                         mandatory_bits,
                     }
+                }
+            }
+            _ => self,
+        }
+    }
+
+    #[must_use]
+    pub(crate) const fn fixups_decode_isa_extension_rsp_special(
+        self,
+        word: u32,
+        flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        if Self::is_nop(word) {
+            // NOP is special enough, so we don't provide a way to disable it.
+            return Self {
+                opcode: Opcode::rsp_nop,
+                opcode_category: self.opcode_category,
+                mandatory_bits: self.mandatory_bits,
+            };
+        }
+
+        match self.opcode {
+            Opcode::rsp_or => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_move))
+                {
+                    Self {
+                        opcode: Opcode::rsp_move,
+                        opcode_category: self.opcode_category,
+                        mandatory_bits: self.mandatory_bits,
+                    }
+                } else {
+                    self
+                }
+            }
+            Opcode::rsp_nor => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_not))
+                {
+                    Self {
+                        opcode: Opcode::rsp_not,
+                        opcode_category: self.opcode_category,
+                        mandatory_bits: self.mandatory_bits,
+                    }
+                } else {
+                    self
+                }
+            }
+            Opcode::rsp_sub => {
+                if EncodedFieldMask::rs.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_neg))
+                {
+                    Self {
+                        opcode: Opcode::rsp_neg,
+                        opcode_category: self.opcode_category,
+                        mandatory_bits: self.mandatory_bits,
+                    }
+                } else {
+                    self
+                }
+            }
+            Opcode::rsp_subu => {
+                if EncodedFieldMask::rs.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_negu))
+                {
+                    Self {
+                        opcode: Opcode::rsp_negu,
+                        opcode_category: self.opcode_category,
+                        mandatory_bits: self.mandatory_bits,
+                    }
+                } else {
+                    self
+                }
+            }
+            _ => self,
+        }
+    }
+
+    #[must_use]
+    pub(crate) const fn fixups_decode_isa_extension_rsp_regimm(
+        self,
+        word: u32,
+        flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        match self.opcode {
+            Opcode::rsp_bgezal => {
+                if EncodedFieldMask::rs.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bal))
+                {
+                    Self {
+                        opcode: Opcode::rsp_bal,
+                        opcode_category: self.opcode_category,
+                        mandatory_bits: self.mandatory_bits,
+                    }
+                } else {
+                    self
                 }
             }
             _ => self,

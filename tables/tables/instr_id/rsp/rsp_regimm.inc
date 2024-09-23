@@ -39,7 +39,7 @@
     // Pseudo-Instruction Unique IDs
 
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x11, bal, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF11, bal, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr1(Operand::cpu_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,

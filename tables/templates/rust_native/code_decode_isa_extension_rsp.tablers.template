@@ -87,6 +87,152 @@ impl OpcodeDecoder {
             mandatory_bits,
         }.fixups_decode_isa_extension_rsp_swc2(word, flags, isa_version)
     }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_special(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let mut opcode = Opcode::ALL_INVALID;
+        let opcode_category = OpcodeCategory::RSP_SPECIAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_special.inc"
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }.fixups_decode_isa_extension_rsp_special(word, flags, isa_version)
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_regimm(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::rt;
+        let mut opcode = Opcode::ALL_INVALID;
+        let opcode_category = OpcodeCategory::RSP_REGIMM;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_regimm.inc"
+            _ => {}
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }.fixups_decode_isa_extension_rsp_regimm(word, flags, isa_version)
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_coprocessor0(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let opcode;
+        let opcode_category = OpcodeCategory::RSP_COP0;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_cop0.inc"
+            _ => opcode = Opcode::ALL_INVALID,
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_coprocessor1(
+        _word: u32,
+        mandatory_bits: EncodedFieldMask,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        let opcode = Opcode::ALL_INVALID;
+        let opcode_category = OpcodeCategory::RSP_COP1;
+
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_coprocessor2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let opcode;
+        let opcode_category = OpcodeCategory::RSP_COP2;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_cop2.inc"
+            _ => return Self::decode_isa_extension_rsp_coprocessor2_vu(word, mandatory_bits, flags, isa_version),
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_rsp_coprocessor2_vu(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let opcode;
+        let opcode_category = OpcodeCategory::RSP_COP2_VU;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::rsp_vu.mask_value(word));
+        if EncodedFieldMask::rsp_vu.get_shifted(word) != 1 {
+            return Self {
+                opcode: Opcode::ALL_INVALID,
+                opcode_category,
+                mandatory_bits,
+            };
+        }
+
+        match mask.get_shifted(word) {
+#include "instr_id/rsp/rsp_cop2_vu.inc"
+            _ => opcode = Opcode::ALL_INVALID,
+        }
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
 }
 
 #undef RABBITIZER_DEF_INSTR_ID

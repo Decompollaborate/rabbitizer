@@ -64,6 +64,8 @@ bitflags! {
         const rsp_offset = utils::bitmask(  0,  7);
         const rsp_de = utils::bitmask( 11,  5);
 
+        const rsp_vu = utils::bitmask( 25,  1);
+
 
         /* r3000gte */
 

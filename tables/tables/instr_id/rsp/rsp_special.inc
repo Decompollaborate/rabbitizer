@@ -180,7 +180,7 @@
     // Pseudo-Instruction Unique IDs
     // OP
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x01, nop, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF01, nop, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr0(),
         instr_type: InstrType::R,
         is_pseudo: true
@@ -188,7 +188,7 @@
 
     // OP rd, rs
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x25, move, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF25, move, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -197,7 +197,7 @@
         is_pseudo: true
     ) // Move
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x27, not, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF27, not, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -207,7 +207,7 @@
 
     // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x22, neg, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF22, neg, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rt),
         instr_type: InstrType::R,
         not_emitted_by_compilers: true,
@@ -218,7 +218,7 @@
 
     // OP rd, rt
     RABBITIZER_DEF_INSTR_ID(
-        rsp, -0x23, negu, IsaVersion::EXTENSION, IsaExtension::RSP,
+        rsp, 0xFFFFFF23, negu, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rd, Operand::rsp_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
