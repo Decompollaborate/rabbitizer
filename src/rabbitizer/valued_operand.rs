@@ -3,7 +3,7 @@
 
 use core::num::NonZero;
 
-use crate::{registers::*, Operand};
+use crate::{operand, registers::*, Instruction, Operand};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub enum IU16 {
@@ -167,6 +167,13 @@ pub enum ValuedOperand {
     r5900_immediate15(u32),
 }
 
+impl ValuedOperand {
+    #[must_use]
+    pub const fn default() -> Self {
+        Self::ALL_EMPTY()
+    }
+}
+
 impl Operand {
     #[must_use]
     pub const fn from_valued_operand(op: ValuedOperand) -> Self {
@@ -319,8 +326,44 @@ impl Operand {
     }
 }
 
+impl Default for ValuedOperand {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+
 impl From<ValuedOperand> for Operand {
     fn from(val: ValuedOperand) -> Self {
         Self::from_valued_operand(val)
+    }
+}
+
+pub struct ValuedOperandIterator<'a> {
+    instr: &'a Instruction,
+    operands: &'a [Operand; operand::OPERAND_COUNT_MAX],
+    index: usize,
+}
+
+impl<'a> ValuedOperandIterator<'a> {
+    pub(crate) fn new(instr: &'a Instruction) -> Self {
+        Self { instr, operands: instr.opcode().get_descriptor().operands(), index: 0}
+    }
+}
+
+impl<'a> Iterator for ValuedOperandIterator<'a> {
+    type Item = ValuedOperand;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.index >= self.operands.len() {
+            return None;
+        }
+
+        let val = &self.operands[self.index];
+        if *val == Operand::default() {
+            return None;
+        }
+
+        self.index += 1;
+        Some(val.to_valued_operand(&self.instr))
     }
 }

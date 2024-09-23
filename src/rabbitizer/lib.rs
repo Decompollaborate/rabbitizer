@@ -78,6 +78,7 @@ pub use opcode_descriptor::OpcodeDescriptor;
 pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
 pub use valued_operand::ValuedOperand;
+pub use valued_operand::ValuedOperandIterator;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;

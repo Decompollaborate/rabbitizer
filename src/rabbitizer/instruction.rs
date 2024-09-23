@@ -3,7 +3,7 @@
 
 use crate::{
     Abi, DecodingFlags, EncodedFieldMask, InstructionFlags, IsaExtension, IsaVersion, Opcode,
-    OpcodeCategory, OpcodeDecoder,
+    OpcodeCategory, OpcodeDecoder, ValuedOperandIterator,
 };
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -198,6 +198,14 @@ impl Instruction {
         let valid_bits = self.valid_bits().bits();
 
         ((!valid_bits) & self.word()) == 0
+    }
+}
+
+/// Opcode examination
+impl Instruction {
+    #[must_use]
+    pub fn valued_operands_iter(&self) -> ValuedOperandIterator {
+        ValuedOperandIterator::new(self)
     }
 }
 
