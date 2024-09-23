@@ -279,7 +279,7 @@ impl OpcodeDecoder {
         _flags: &DecodingFlags,
         _isa_version: IsaVersion,
     ) -> Self {
-        let mask = EncodedFieldMask::fmt;
+        let mask = EncodedFieldMask::function;
         let opcode;
         let opcode_category = OpcodeCategory::RSP_COP2_VU;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));

@@ -3,7 +3,7 @@
 
 #[cfg(test)]
 mod tests {
-    use crate::{operand, Instruction, Opcode};
+    use crate::{operand, Instruction, InstructionFlags, Opcode};
 
     struct TestEntry {
         pub instr: Instruction,
@@ -12,6 +12,19 @@ mod tests {
         pub expected_opcode: Opcode,
         pub opcode_str: &'static str,
         pub operands_str: [Option<&'static str>; operand::OPERAND_COUNT_MAX],
+    }
+
+    impl TestEntry {
+        pub const fn new_rsp_invalid(word: u32, flags: Option<InstructionFlags>) -> Self {
+            Self {
+                instr: Instruction::new_rsp(word, 0xA4000000, flags),
+                valid: false,
+                expected: "INVALID",
+                expected_opcode: Opcode::ALL_INVALID,
+                opcode_str: "INVALID",
+                operands_str: [None, None, None, None, None],
+            }
+        }
     }
 
     fn entries_sanity_check(entries: &[TestEntry]) {
@@ -308,13 +321,7 @@ mod tests {
                 expected: "lui         $7, (0xF5100000 >> 16)",
                 expected_opcode: Opcode::rsp_lui,
                 opcode_str: "lui",
-                operands_str: [
-                    Some("$7"),
-                    Some("(0xF5100000"),
-                    Some(">>"),
-                    Some("16)"),
-                    None,
-                ],
+                operands_str: [Some("$7"), Some("(0xF5100000 >> 16)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00611824, 0xA4000000, None),
@@ -901,647 +908,87 @@ mod tests {
                 operands_str: [Some("$11"), Some("$3"), None, None, None],
             },
             // removed rsp instructions
-            TestEntry {
-                instr: Instruction::new_rsp(0x50740008, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // beql
-            TestEntry {
-                instr: Instruction::new_rsp(0x56E1FFF8, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // bnel
-            TestEntry {
-                instr: Instruction::new_rsp(0x59C00007, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // blezl
-            TestEntry {
-                instr: Instruction::new_rsp(0x5D000001, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // bgtzl
-            TestEntry {
-                instr: Instruction::new_rsp(0x60840001, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // daddi
-            TestEntry {
-                instr: Instruction::new_rsp(0x64840001, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // daddiu
-            TestEntry {
-                instr: Instruction::new_rsp(0x69220007, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ldl
-            TestEntry {
-                instr: Instruction::new_rsp(0x6D240008, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ldr
-            TestEntry {
-                instr: Instruction::new_rsp(0x88EE000D, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // lwl
-            TestEntry {
-                instr: Instruction::new_rsp(0x98EE0010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // lwr
-            TestEntry {
-                instr: Instruction::new_rsp(0x9FA30010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // lwu
-            TestEntry {
-                instr: Instruction::new_rsp(0xA8C20000, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // swl
-            TestEntry {
-                instr: Instruction::new_rsp(0xB0C20007, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // sdl
-            TestEntry {
-                instr: Instruction::new_rsp(0xB4C20000, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // sdr
-            TestEntry {
-                instr: Instruction::new_rsp(0xB9C1000E, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // swr
-            TestEntry {
-                instr: Instruction::new_rsp(0xC0850000, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ll
-            TestEntry {
-                instr: Instruction::new_rsp(0xD0850000, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // lld
-            TestEntry {
-                instr: Instruction::new_rsp(0xDFBF0020, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ld
-            TestEntry {
-                instr: Instruction::new_rsp(0xE0BF0020, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // sc
-            TestEntry {
-                instr: Instruction::new_rsp(0xF0BF0020, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // scd
-            TestEntry {
-                instr: Instruction::new_rsp(0xFFA00038, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // sd
-            TestEntry {
-                instr: Instruction::new_rsp(0xBCD00000, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // cache
-            TestEntry {
-                instr: Instruction::new_rsp(0xC4D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // lwc1
-            TestEntry {
-                instr: Instruction::new_rsp(0xD4D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ldc1
-            TestEntry {
-                instr: Instruction::new_rsp(0xE4D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // swc1
-            TestEntry {
-                instr: Instruction::new_rsp(0xF4D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // sdc1
-            TestEntry {
-                instr: Instruction::new_rsp(0xC8D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // lwc2
-            TestEntry {
-                instr: Instruction::new_rsp(0xD8D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ldc2
-            TestEntry {
-                instr: Instruction::new_rsp(0xE8D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // swc2
-            TestEntry {
-                instr: Instruction::new_rsp(0xF8D00010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // sdc2
-            TestEntry {
-                instr: Instruction::new_rsp(0x05020031, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // bltzl
-            TestEntry {
-                instr: Instruction::new_rsp(0x04630005, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // bgezl
-            TestEntry {
-                instr: Instruction::new_rsp(0x04A80010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tgei
-            TestEntry {
-                instr: Instruction::new_rsp(0x04A90010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tgeiu
-            TestEntry {
-                instr: Instruction::new_rsp(0x04AA0010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tlti
-            TestEntry {
-                instr: Instruction::new_rsp(0x04AB0010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tltiu
-            TestEntry {
-                instr: Instruction::new_rsp(0x04AC0010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // teqi
-            TestEntry {
-                instr: Instruction::new_rsp(0x04AE0010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tnei
-            TestEntry {
-                instr: Instruction::new_rsp(0x04B20010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // bltzall
-            TestEntry {
-                instr: Instruction::new_rsp(0x04B30010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // bgezall
-            TestEntry {
-                instr: Instruction::new_rsp(0x00042FF8, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsll
-            TestEntry {
-                instr: Instruction::new_rsp(0x000637FA, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsrl
-            TestEntry {
-                instr: Instruction::new_rsp(0x0002137B, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsra
-            TestEntry {
-                instr: Instruction::new_rsp(0x000437FC, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsll32
-            TestEntry {
-                instr: Instruction::new_rsp(0x0005283E, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsrl32
-            TestEntry {
-                instr: Instruction::new_rsp(0x0002103F, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsra32
-            TestEntry {
-                instr: Instruction::new_rsp(0x01EE1014, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsllv
-            TestEntry {
-                instr: Instruction::new_rsp(0x01EE1016, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsrlv
-            TestEntry {
-                instr: Instruction::new_rsp(0x01EE1017, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsrav
-            TestEntry {
-                instr: Instruction::new_rsp(0x03600011, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // mthi
-            TestEntry {
-                instr: Instruction::new_rsp(0x03600013, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // mtlo
-            TestEntry {
-                instr: Instruction::new_rsp(0x00004010, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // mfhi
-            TestEntry {
-                instr: Instruction::new_rsp(0x00004012, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // mflo
-            TestEntry {
-                instr: Instruction::new_rsp(0x01AC001A, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // div
-            TestEntry {
-                instr: Instruction::new_rsp(0x0101001B, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // divu
-            TestEntry {
-                instr: Instruction::new_rsp(0x01CF001E, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ddiv
-            TestEntry {
-                instr: Instruction::new_rsp(0x01CF001F, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ddivu
-            TestEntry {
-                instr: Instruction::new_rsp(0x0162582C, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dadd
-            TestEntry {
-                instr: Instruction::new_rsp(0x012A582D, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // daddu
-            TestEntry {
-                instr: Instruction::new_rsp(0x0162582E, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsub
-            TestEntry {
-                instr: Instruction::new_rsp(0x0162582F, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dsubu
-            TestEntry {
-                instr: Instruction::new_rsp(0x0000000C, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // syscall
-            TestEntry {
-                instr: Instruction::new_rsp(0x0000000F, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // sync
-            TestEntry {
-                instr: Instruction::new_rsp(0x00870018, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // mult
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E20019, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // multu
-            TestEntry {
-                instr: Instruction::new_rsp(0x0087001C, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dmult
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E2001D, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dmultu
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E200B0, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tge
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E200B1, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tgeu
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E200B2, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tlt
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E200B3, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tltu
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E200B4, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // teq
-            TestEntry {
-                instr: Instruction::new_rsp(0x00E200B6, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // tne
-            TestEntry {
-                instr: Instruction::new_rsp(0x40220800, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dmfc0
-            TestEntry {
-                instr: Instruction::new_rsp(0x40420800, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // cfc0
-            TestEntry {
-                instr: Instruction::new_rsp(0x40A20800, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // dmtc0
-            TestEntry {
-                instr: Instruction::new_rsp(0x40C20800, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }, // ctc0
+            TestEntry::new_rsp_invalid(0x50740008, None), // beql
+            TestEntry::new_rsp_invalid(0x56E1FFF8, None), // bnel
+            TestEntry::new_rsp_invalid(0x59C00007, None), // blezl
+            TestEntry::new_rsp_invalid(0x5D000001, None), // bgtzl
+            TestEntry::new_rsp_invalid(0x60840001, None), // daddi
+            TestEntry::new_rsp_invalid(0x64840001, None), // daddiu
+            TestEntry::new_rsp_invalid(0x69220007, None), // ldl
+            TestEntry::new_rsp_invalid(0x6D240008, None), // ldr
+            TestEntry::new_rsp_invalid(0x88EE000D, None), // lwl
+            TestEntry::new_rsp_invalid(0x98EE0010, None), // lwr
+            TestEntry::new_rsp_invalid(0x9FA30010, None), // lwu
+            TestEntry::new_rsp_invalid(0xA8C20000, None), // swl
+            TestEntry::new_rsp_invalid(0xB0C20007, None), // sdl
+            TestEntry::new_rsp_invalid(0xB4C20000, None), // sdr
+            TestEntry::new_rsp_invalid(0xB9C1000E, None), // swr
+            TestEntry::new_rsp_invalid(0xC0850000, None), // ll
+            TestEntry::new_rsp_invalid(0xD0850000, None), // lld
+            TestEntry::new_rsp_invalid(0xDFBF0020, None), // ld
+            TestEntry::new_rsp_invalid(0xE0BF0020, None), // sc
+            TestEntry::new_rsp_invalid(0xF0BF0020, None), // scd
+            TestEntry::new_rsp_invalid(0xFFA00038, None), // sd
+            TestEntry::new_rsp_invalid(0xBCD00000, None), // cache
+            TestEntry::new_rsp_invalid(0xC4D00010, None), // lwc1
+            TestEntry::new_rsp_invalid(0xD4D00010, None), // ldc1
+            TestEntry::new_rsp_invalid(0xE4D00010, None), // swc1
+            TestEntry::new_rsp_invalid(0xF4D00010, None), // sdc1
+            // TestEntry::new_rsp_invalid(0xC8D00010, None), // lwc2
+            TestEntry::new_rsp_invalid(0xD8D00010, None), // ldc2
+            // TestEntry::new_rsp_invalid(0xE8D00010, None), // swc2
+            TestEntry::new_rsp_invalid(0xF8D00010, None), // sdc2
+            TestEntry::new_rsp_invalid(0x05020031, None), // bltzl
+            TestEntry::new_rsp_invalid(0x04630005, None), // bgezl
+            TestEntry::new_rsp_invalid(0x04A80010, None), // tgei
+            TestEntry::new_rsp_invalid(0x04A90010, None), // tgeiu
+            TestEntry::new_rsp_invalid(0x04AA0010, None), // tlti
+            TestEntry::new_rsp_invalid(0x04AB0010, None), // tltiu
+            TestEntry::new_rsp_invalid(0x04AC0010, None), // teqi
+            TestEntry::new_rsp_invalid(0x04AE0010, None), // tnei
+            TestEntry::new_rsp_invalid(0x04B20010, None), // bltzall
+            TestEntry::new_rsp_invalid(0x04B30010, None), // bgezall
+            TestEntry::new_rsp_invalid(0x00042FF8, None), // dsll
+            TestEntry::new_rsp_invalid(0x000637FA, None), // dsrl
+            TestEntry::new_rsp_invalid(0x0002137B, None), // dsra
+            TestEntry::new_rsp_invalid(0x000437FC, None), // dsll32
+            TestEntry::new_rsp_invalid(0x0005283E, None), // dsrl32
+            TestEntry::new_rsp_invalid(0x0002103F, None), // dsra32
+            TestEntry::new_rsp_invalid(0x01EE1014, None), // dsllv
+            TestEntry::new_rsp_invalid(0x01EE1016, None), // dsrlv
+            TestEntry::new_rsp_invalid(0x01EE1017, None), // dsrav
+            TestEntry::new_rsp_invalid(0x03600011, None), // mthi
+            TestEntry::new_rsp_invalid(0x03600013, None), // mtlo
+            TestEntry::new_rsp_invalid(0x00004010, None), // mfhi
+            TestEntry::new_rsp_invalid(0x00004012, None), // mflo
+            TestEntry::new_rsp_invalid(0x01AC001A, None), // div
+            TestEntry::new_rsp_invalid(0x0101001B, None), // divu
+            TestEntry::new_rsp_invalid(0x01CF001E, None), // ddiv
+            TestEntry::new_rsp_invalid(0x01CF001F, None), // ddivu
+            TestEntry::new_rsp_invalid(0x0162582C, None), // dadd
+            TestEntry::new_rsp_invalid(0x012A582D, None), // daddu
+            TestEntry::new_rsp_invalid(0x0162582E, None), // dsub
+            TestEntry::new_rsp_invalid(0x0162582F, None), // dsubu
+            TestEntry::new_rsp_invalid(0x0000000C, None), // syscall
+            TestEntry::new_rsp_invalid(0x0000000F, None), // sync
+            TestEntry::new_rsp_invalid(0x00870018, None), // mult
+            TestEntry::new_rsp_invalid(0x00E20019, None), // multu
+            TestEntry::new_rsp_invalid(0x0087001C, None), // dmult
+            TestEntry::new_rsp_invalid(0x00E2001D, None), // dmultu
+            TestEntry::new_rsp_invalid(0x00E200B0, None), // tge
+            TestEntry::new_rsp_invalid(0x00E200B1, None), // tgeu
+            TestEntry::new_rsp_invalid(0x00E200B2, None), // tlt
+            TestEntry::new_rsp_invalid(0x00E200B3, None), // tltu
+            TestEntry::new_rsp_invalid(0x00E200B4, None), // teq
+            TestEntry::new_rsp_invalid(0x00E200B6, None), // tne
+            TestEntry::new_rsp_invalid(0x40220800, None), // dmfc0
+            TestEntry::new_rsp_invalid(0x40420800, None), // cfc0
+            TestEntry::new_rsp_invalid(0x40A20800, None), // dmtc0
+            TestEntry::new_rsp_invalid(0x40C20800, None), // ctc0
             // Invalid instructions
-            TestEntry {
-                instr: Instruction::new_rsp(0x44444444, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            },
-            TestEntry {
-                instr: Instruction::new_rsp(0x77777777, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            },
-            TestEntry {
-                instr: Instruction::new_rsp(0xEEEEEEEE, 0xA4000000, None),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            },
+            TestEntry::new_rsp_invalid(0x44444444, None),
+            TestEntry::new_rsp_invalid(0x77777777, None),
+            TestEntry::new_rsp_invalid(0xEEEEEEEE, None),
         ];
 
         assert_eq!(check_test_entries(ENTRIES), 0);
