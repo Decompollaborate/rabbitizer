@@ -29,7 +29,7 @@ mod tests {
 
     fn entries_sanity_check(entries: &[TestEntry]) {
         for (i, x) in entries.iter().enumerate() {
-            for (_j, y) in entries[i + 1..].iter().enumerate() {
+            for y in entries[i + 1..].iter() {
                 assert_ne!(x.instr.word(), y.instr.word());
             }
         }

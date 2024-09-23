@@ -53,6 +53,7 @@ mod register_rsp_cop2_control;
 mod register_rsp_gpr;
 mod register_rsp_vector;
 pub mod traits;
+mod valued_operand;
 
 mod utils;
 
@@ -76,6 +77,7 @@ pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
 pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
+pub use valued_operand::ValuedOperand;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;
