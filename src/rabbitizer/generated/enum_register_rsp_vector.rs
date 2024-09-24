@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -178,3 +179,63 @@ pub static RSP_VECTOR: [RegisterDescriptor; 32] = {
     }
     table
 };
+impl RspVector {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::v0),
+            1 => Ok(Self::v1),
+            2 => Ok(Self::v2),
+            3 => Ok(Self::v3),
+            4 => Ok(Self::v4),
+            5 => Ok(Self::v5),
+            6 => Ok(Self::v6),
+            7 => Ok(Self::v7),
+            8 => Ok(Self::v8),
+            9 => Ok(Self::v9),
+            10 => Ok(Self::v10),
+            11 => Ok(Self::v11),
+            12 => Ok(Self::v12),
+            13 => Ok(Self::v13),
+            14 => Ok(Self::v14),
+            15 => Ok(Self::v15),
+            16 => Ok(Self::v16),
+            17 => Ok(Self::v17),
+            18 => Ok(Self::v18),
+            19 => Ok(Self::v19),
+            20 => Ok(Self::v20),
+            21 => Ok(Self::v21),
+            22 => Ok(Self::v22),
+            23 => Ok(Self::v23),
+            24 => Ok(Self::v24),
+            25 => Ok(Self::v25),
+            26 => Ok(Self::v26),
+            27 => Ok(Self::v27),
+            28 => Ok(Self::v28),
+            29 => Ok(Self::v29),
+            30 => Ok(Self::v30),
+            31 => Ok(Self::v31),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 32,
+                register_kind: "RspVector",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for RspVector {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for RspVector {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<RspVector> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: RspVector) -> &Self::Output {
+        &self[index as usize]
+    }
+}

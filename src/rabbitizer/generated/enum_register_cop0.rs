@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -185,3 +186,63 @@ pub static COP0: [RegisterDescriptor; 32] = {
     }
     table
 };
+impl Cop0 {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::Index),
+            1 => Ok(Self::Random),
+            2 => Ok(Self::EntryLo0),
+            3 => Ok(Self::EntryLo1),
+            4 => Ok(Self::Context),
+            5 => Ok(Self::PageMask),
+            6 => Ok(Self::Wired),
+            7 => Ok(Self::Reserved07),
+            8 => Ok(Self::BadVaddr),
+            9 => Ok(Self::Count),
+            10 => Ok(Self::EntryHi),
+            11 => Ok(Self::Compare),
+            12 => Ok(Self::Status),
+            13 => Ok(Self::Cause),
+            14 => Ok(Self::EPC),
+            15 => Ok(Self::PRevID),
+            16 => Ok(Self::Config),
+            17 => Ok(Self::LLAddr),
+            18 => Ok(Self::WatchLo),
+            19 => Ok(Self::WatchHi),
+            20 => Ok(Self::XContext),
+            21 => Ok(Self::Reserved21),
+            22 => Ok(Self::Reserved22),
+            23 => Ok(Self::Reserved23),
+            24 => Ok(Self::Reserved24),
+            25 => Ok(Self::Reserved25),
+            26 => Ok(Self::PErr),
+            27 => Ok(Self::CacheErr),
+            28 => Ok(Self::TagLo),
+            29 => Ok(Self::TagHi),
+            30 => Ok(Self::ErrorEPC),
+            31 => Ok(Self::Reserved31),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 32,
+                register_kind: "Cop0",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for Cop0 {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for Cop0 {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<Cop0> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: Cop0) -> &Self::Output {
+        &self[index as usize]
+    }
+}

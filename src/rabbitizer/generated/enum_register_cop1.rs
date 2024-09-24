@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -242,3 +243,63 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     table
 };
+impl Cop1 {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::fv0),
+            1 => Ok(Self::fv0f),
+            2 => Ok(Self::fv1),
+            3 => Ok(Self::fv1f),
+            4 => Ok(Self::ft0),
+            5 => Ok(Self::ft0f),
+            6 => Ok(Self::ft1),
+            7 => Ok(Self::ft1f),
+            8 => Ok(Self::ft2),
+            9 => Ok(Self::ft2f),
+            10 => Ok(Self::ft3),
+            11 => Ok(Self::ft3f),
+            12 => Ok(Self::fa0),
+            13 => Ok(Self::fa0f),
+            14 => Ok(Self::fa1),
+            15 => Ok(Self::fa1f),
+            16 => Ok(Self::ft4),
+            17 => Ok(Self::ft4f),
+            18 => Ok(Self::ft5),
+            19 => Ok(Self::ft5f),
+            20 => Ok(Self::fs0),
+            21 => Ok(Self::fs0f),
+            22 => Ok(Self::fs1),
+            23 => Ok(Self::fs1f),
+            24 => Ok(Self::fs2),
+            25 => Ok(Self::fs2f),
+            26 => Ok(Self::fs3),
+            27 => Ok(Self::fs3f),
+            28 => Ok(Self::fs4),
+            29 => Ok(Self::fs4f),
+            30 => Ok(Self::fs5),
+            31 => Ok(Self::fs5f),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 32,
+                register_kind: "Cop1",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for Cop1 {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for Cop1 {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<Cop1> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: Cop1) -> &Self::Output {
+        &self[index as usize]
+    }
+}

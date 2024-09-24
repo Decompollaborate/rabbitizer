@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -98,3 +99,47 @@ pub static RSP_COP0: [RegisterDescriptor; 16] = {
     }
     table
 };
+impl RspCop0 {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::SP_MEM_ADDR),
+            1 => Ok(Self::SP_DRAM_ADDR),
+            2 => Ok(Self::SP_RD_LEN),
+            3 => Ok(Self::SP_WR_LEN),
+            4 => Ok(Self::SP_STATUS),
+            5 => Ok(Self::SP_DMA_FULL),
+            6 => Ok(Self::SP_DMA_BUSY),
+            7 => Ok(Self::SP_SEMAPHORE),
+            8 => Ok(Self::DPC_START),
+            9 => Ok(Self::DPC_END),
+            10 => Ok(Self::DPC_CURRENT),
+            11 => Ok(Self::DPC_STATUS),
+            12 => Ok(Self::DPC_CLOCK),
+            13 => Ok(Self::DPC_BUFBUSY),
+            14 => Ok(Self::DPC_PIPEBUSY),
+            15 => Ok(Self::DPC_TMEM),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 16,
+                register_kind: "RspCop0",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for RspCop0 {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for RspCop0 {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<RspCop0> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: RspCop0) -> &Self::Output {
+        &self[index as usize]
+    }
+}

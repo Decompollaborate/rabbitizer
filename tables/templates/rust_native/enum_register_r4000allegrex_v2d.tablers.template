@@ -5,29 +5,37 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+#define STR_EXPAND2(x) # x
+#define STR_EXPAND(x) STR_EXPAND2(x)
+#define STR(x) STR_EXPAND(x)
+
 use crate::RegisterDescriptor;
+use core::ops::Index;
+
+#define REGISTER_ENUM_NAME R4000AllegrexV2D
+#define REG_NAME(name) name
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
-    name = value,
+    REG_NAME(name) = value,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 SPECIAL_RS_TAG(allow(clippy::exhaustive_enums))
-pub enum RegisterR4000AllegrexV2D {
+pub enum REGISTER_ENUM_NAME {
     #include "registers/RabbitizerRegister_R4000AllegrexV2D.inc"
 }
 
 #undef RABBITIZER_DEF_REG_NODOLLAR
 
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
-    table[ RegisterR4000AllegrexV2D::name as usize] = RegisterDescriptor { \
+    table[ REGISTER_ENUM_NAME :: REG_NAME(name) as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
         ..RegisterDescriptor::new( #name, value, concat!("$", #value) ) \
     } .check_panic_chain();
 
 #define REGISTER_COUNT 128
 
-pub static R4000ALLEGREX_V2D_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
+pub static R4000ALLEGREX_V2D: [RegisterDescriptor; REGISTER_COUNT] = {
     let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
 
     #include "registers/RabbitizerRegister_R4000AllegrexV2D.inc"
@@ -43,3 +51,43 @@ pub static R4000ALLEGREX_V2D_REGISTERS: [RegisterDescriptor; REGISTER_COUNT] = {
 };
 
 #undef RABBITIZER_DEF_REG_NODOLLAR
+
+#define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
+    value => Ok(Self:: REG_NAME(name)),
+
+impl REGISTER_ENUM_NAME {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            #include "registers/RabbitizerRegister_R4000AllegrexV2D.inc"
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: REGISTER_COUNT,
+                register_kind: STR(REGISTER_ENUM_NAME),
+            }),
+        }
+    }
+}
+
+#undef RABBITIZER_DEF_REG_NODOLLAR
+
+impl TryFrom<u32> for REGISTER_ENUM_NAME {
+    type Error = crate::Error;
+
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+
+impl Default for REGISTER_ENUM_NAME {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+
+impl Index<REGISTER_ENUM_NAME> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+
+    fn index(&self, index: REGISTER_ENUM_NAME) -> &Self::Output {
+        &self[index as usize]
+    }
+}

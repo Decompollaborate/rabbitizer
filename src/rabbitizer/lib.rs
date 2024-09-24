@@ -19,6 +19,7 @@ mod generated;
 mod abi;
 mod access_type;
 mod encoded_field_mask;
+mod error;
 mod flags;
 mod instr_suffix;
 mod instr_type;
@@ -62,6 +63,8 @@ pub use valued_operand::ValuedOperandIterator;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;
+
+pub use error::Error;
 
 pub mod registers {
     use crate::generated;

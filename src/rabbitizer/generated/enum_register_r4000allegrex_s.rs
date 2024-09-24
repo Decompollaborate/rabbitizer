@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -658,3 +659,159 @@ pub static R4000ALLEGREX_S: [RegisterDescriptor; 128] = {
     }
     table
 };
+impl R4000AllegrexS {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::S000),
+            1 => Ok(Self::S010),
+            2 => Ok(Self::S020),
+            3 => Ok(Self::S030),
+            4 => Ok(Self::S100),
+            5 => Ok(Self::S110),
+            6 => Ok(Self::S120),
+            7 => Ok(Self::S130),
+            8 => Ok(Self::S200),
+            9 => Ok(Self::S210),
+            10 => Ok(Self::S220),
+            11 => Ok(Self::S230),
+            12 => Ok(Self::S300),
+            13 => Ok(Self::S310),
+            14 => Ok(Self::S320),
+            15 => Ok(Self::S330),
+            16 => Ok(Self::S400),
+            17 => Ok(Self::S410),
+            18 => Ok(Self::S420),
+            19 => Ok(Self::S430),
+            20 => Ok(Self::S500),
+            21 => Ok(Self::S510),
+            22 => Ok(Self::S520),
+            23 => Ok(Self::S530),
+            24 => Ok(Self::S600),
+            25 => Ok(Self::S610),
+            26 => Ok(Self::S620),
+            27 => Ok(Self::S630),
+            28 => Ok(Self::S700),
+            29 => Ok(Self::S710),
+            30 => Ok(Self::S720),
+            31 => Ok(Self::S730),
+            32 => Ok(Self::S001),
+            33 => Ok(Self::S011),
+            34 => Ok(Self::S021),
+            35 => Ok(Self::S031),
+            36 => Ok(Self::S101),
+            37 => Ok(Self::S111),
+            38 => Ok(Self::S121),
+            39 => Ok(Self::S131),
+            40 => Ok(Self::S201),
+            41 => Ok(Self::S211),
+            42 => Ok(Self::S221),
+            43 => Ok(Self::S231),
+            44 => Ok(Self::S301),
+            45 => Ok(Self::S311),
+            46 => Ok(Self::S321),
+            47 => Ok(Self::S331),
+            48 => Ok(Self::S401),
+            49 => Ok(Self::S411),
+            50 => Ok(Self::S421),
+            51 => Ok(Self::S431),
+            52 => Ok(Self::S501),
+            53 => Ok(Self::S511),
+            54 => Ok(Self::S521),
+            55 => Ok(Self::S531),
+            56 => Ok(Self::S601),
+            57 => Ok(Self::S611),
+            58 => Ok(Self::S621),
+            59 => Ok(Self::S631),
+            60 => Ok(Self::S701),
+            61 => Ok(Self::S711),
+            62 => Ok(Self::S721),
+            63 => Ok(Self::S731),
+            64 => Ok(Self::S002),
+            65 => Ok(Self::S012),
+            66 => Ok(Self::S022),
+            67 => Ok(Self::S032),
+            68 => Ok(Self::S102),
+            69 => Ok(Self::S112),
+            70 => Ok(Self::S122),
+            71 => Ok(Self::S132),
+            72 => Ok(Self::S202),
+            73 => Ok(Self::S212),
+            74 => Ok(Self::S222),
+            75 => Ok(Self::S232),
+            76 => Ok(Self::S302),
+            77 => Ok(Self::S312),
+            78 => Ok(Self::S322),
+            79 => Ok(Self::S332),
+            80 => Ok(Self::S402),
+            81 => Ok(Self::S412),
+            82 => Ok(Self::S422),
+            83 => Ok(Self::S432),
+            84 => Ok(Self::S502),
+            85 => Ok(Self::S512),
+            86 => Ok(Self::S522),
+            87 => Ok(Self::S532),
+            88 => Ok(Self::S602),
+            89 => Ok(Self::S612),
+            90 => Ok(Self::S622),
+            91 => Ok(Self::S632),
+            92 => Ok(Self::S702),
+            93 => Ok(Self::S712),
+            94 => Ok(Self::S722),
+            95 => Ok(Self::S732),
+            96 => Ok(Self::S003),
+            97 => Ok(Self::S013),
+            98 => Ok(Self::S023),
+            99 => Ok(Self::S033),
+            100 => Ok(Self::S103),
+            101 => Ok(Self::S113),
+            102 => Ok(Self::S123),
+            103 => Ok(Self::S133),
+            104 => Ok(Self::S203),
+            105 => Ok(Self::S213),
+            106 => Ok(Self::S223),
+            107 => Ok(Self::S233),
+            108 => Ok(Self::S303),
+            109 => Ok(Self::S313),
+            110 => Ok(Self::S323),
+            111 => Ok(Self::S333),
+            112 => Ok(Self::S403),
+            113 => Ok(Self::S413),
+            114 => Ok(Self::S423),
+            115 => Ok(Self::S433),
+            116 => Ok(Self::S503),
+            117 => Ok(Self::S513),
+            118 => Ok(Self::S523),
+            119 => Ok(Self::S533),
+            120 => Ok(Self::S603),
+            121 => Ok(Self::S613),
+            122 => Ok(Self::S623),
+            123 => Ok(Self::S633),
+            124 => Ok(Self::S703),
+            125 => Ok(Self::S713),
+            126 => Ok(Self::S723),
+            127 => Ok(Self::S733),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 128,
+                register_kind: "R4000AllegrexS",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for R4000AllegrexS {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for R4000AllegrexS {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<R4000AllegrexS> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: R4000AllegrexS) -> &Self::Output {
+        &self[index as usize]
+    }
+}

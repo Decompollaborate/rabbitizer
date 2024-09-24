@@ -17,4 +17,6 @@ fn main() {
         rabbitizer::IsaVersion::MIPS_III,
     );
     println!("{:?}", instr.reg_rs());
+
+    println!("{}", rabbitizer::registers::Gpr::try_from(32).unwrap_err());
 }

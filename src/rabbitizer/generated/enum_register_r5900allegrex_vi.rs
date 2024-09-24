@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -178,3 +179,63 @@ pub static R5900_VI: [RegisterDescriptor; 32] = {
     }
     table
 };
+impl R5900VI {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::vi0),
+            1 => Ok(Self::vi1),
+            2 => Ok(Self::vi2),
+            3 => Ok(Self::vi3),
+            4 => Ok(Self::vi4),
+            5 => Ok(Self::vi5),
+            6 => Ok(Self::vi6),
+            7 => Ok(Self::vi7),
+            8 => Ok(Self::vi8),
+            9 => Ok(Self::vi9),
+            10 => Ok(Self::vi10),
+            11 => Ok(Self::vi11),
+            12 => Ok(Self::vi12),
+            13 => Ok(Self::vi13),
+            14 => Ok(Self::vi14),
+            15 => Ok(Self::vi15),
+            16 => Ok(Self::vi16),
+            17 => Ok(Self::vi17),
+            18 => Ok(Self::vi18),
+            19 => Ok(Self::vi19),
+            20 => Ok(Self::vi20),
+            21 => Ok(Self::vi21),
+            22 => Ok(Self::vi22),
+            23 => Ok(Self::vi23),
+            24 => Ok(Self::vi24),
+            25 => Ok(Self::vi25),
+            26 => Ok(Self::vi26),
+            27 => Ok(Self::vi27),
+            28 => Ok(Self::vi28),
+            29 => Ok(Self::vi29),
+            30 => Ok(Self::vi30),
+            31 => Ok(Self::vi31),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 32,
+                register_kind: "R5900VI",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for R5900VI {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for R5900VI {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<R5900VI> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: R5900VI) -> &Self::Output {
+        &self[index as usize]
+    }
+}

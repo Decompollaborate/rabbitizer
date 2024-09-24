@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -244,3 +245,63 @@ pub static GPR: [RegisterDescriptor; 32] = {
     }
     table
 };
+impl Gpr {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::zero),
+            1 => Ok(Self::at),
+            2 => Ok(Self::v0),
+            3 => Ok(Self::v1),
+            4 => Ok(Self::a0),
+            5 => Ok(Self::a1),
+            6 => Ok(Self::a2),
+            7 => Ok(Self::a3),
+            8 => Ok(Self::t0),
+            9 => Ok(Self::t1),
+            10 => Ok(Self::t2),
+            11 => Ok(Self::t3),
+            12 => Ok(Self::t4),
+            13 => Ok(Self::t5),
+            14 => Ok(Self::t6),
+            15 => Ok(Self::t7),
+            16 => Ok(Self::s0),
+            17 => Ok(Self::s1),
+            18 => Ok(Self::s2),
+            19 => Ok(Self::s3),
+            20 => Ok(Self::s4),
+            21 => Ok(Self::s5),
+            22 => Ok(Self::s6),
+            23 => Ok(Self::s7),
+            24 => Ok(Self::t8),
+            25 => Ok(Self::t9),
+            26 => Ok(Self::k0),
+            27 => Ok(Self::k1),
+            28 => Ok(Self::gp),
+            29 => Ok(Self::sp),
+            30 => Ok(Self::s8),
+            31 => Ok(Self::ra),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 32,
+                register_kind: "Gpr",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for Gpr {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for Gpr {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<Gpr> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: Gpr) -> &Self::Output {
+        &self[index as usize]
+    }
+}

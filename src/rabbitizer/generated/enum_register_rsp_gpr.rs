@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -181,3 +182,63 @@ pub static RSP_GPR: [RegisterDescriptor; 32] = {
     }
     table
 };
+impl RspGpr {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::zero),
+            1 => Ok(Self::r1),
+            2 => Ok(Self::r2),
+            3 => Ok(Self::r3),
+            4 => Ok(Self::r4),
+            5 => Ok(Self::r5),
+            6 => Ok(Self::r6),
+            7 => Ok(Self::r7),
+            8 => Ok(Self::r8),
+            9 => Ok(Self::r9),
+            10 => Ok(Self::r10),
+            11 => Ok(Self::r11),
+            12 => Ok(Self::r12),
+            13 => Ok(Self::r13),
+            14 => Ok(Self::r14),
+            15 => Ok(Self::r15),
+            16 => Ok(Self::r16),
+            17 => Ok(Self::r17),
+            18 => Ok(Self::r18),
+            19 => Ok(Self::r19),
+            20 => Ok(Self::r20),
+            21 => Ok(Self::r21),
+            22 => Ok(Self::r22),
+            23 => Ok(Self::r23),
+            24 => Ok(Self::r24),
+            25 => Ok(Self::r25),
+            26 => Ok(Self::r26),
+            27 => Ok(Self::r27),
+            28 => Ok(Self::r28),
+            29 => Ok(Self::r29),
+            30 => Ok(Self::r30),
+            31 => Ok(Self::ra),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 32,
+                register_kind: "RspGpr",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for RspGpr {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for RspGpr {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<RspGpr> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: RspGpr) -> &Self::Output {
+        &self[index as usize]
+    }
+}

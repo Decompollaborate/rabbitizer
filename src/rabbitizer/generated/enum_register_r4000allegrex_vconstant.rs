@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::RegisterDescriptor;
+use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[allow(clippy::exhaustive_enums)]
@@ -178,3 +179,63 @@ pub static R4000ALLEGREX_VCONSTANT: [RegisterDescriptor; 32] = {
     }
     table
 };
+impl R4000AllegrexVConstant {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            0 => Ok(Self::INVALID_0),
+            1 => Ok(Self::VFPU_HUGE),
+            2 => Ok(Self::VFPU_SQRT2),
+            3 => Ok(Self::VFPU_SQRT1_2),
+            4 => Ok(Self::VFPU_2_SQRTPI),
+            5 => Ok(Self::VFPU_2_PI),
+            6 => Ok(Self::VFPU_1_PI),
+            7 => Ok(Self::VFPU_PI_4),
+            8 => Ok(Self::VFPU_PI_2),
+            9 => Ok(Self::VFPU_PI),
+            10 => Ok(Self::VFPU_E),
+            11 => Ok(Self::VFPU_LOG2E),
+            12 => Ok(Self::VFPU_LOG10E),
+            13 => Ok(Self::VFPU_LN2),
+            14 => Ok(Self::VFPU_LN10),
+            15 => Ok(Self::VFPU_2PI),
+            16 => Ok(Self::VFPU_PI_6),
+            17 => Ok(Self::VFPU_LOG10TWO),
+            18 => Ok(Self::VFPU_LOG2TEN),
+            19 => Ok(Self::VFPU_SQRT3_2),
+            20 => Ok(Self::INVALID_20),
+            21 => Ok(Self::INVALID_21),
+            22 => Ok(Self::INVALID_22),
+            23 => Ok(Self::INVALID_23),
+            24 => Ok(Self::INVALID_24),
+            25 => Ok(Self::INVALID_25),
+            26 => Ok(Self::INVALID_26),
+            27 => Ok(Self::INVALID_27),
+            28 => Ok(Self::INVALID_28),
+            29 => Ok(Self::INVALID_29),
+            30 => Ok(Self::INVALID_30),
+            31 => Ok(Self::INVALID_31),
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: 32,
+                register_kind: "R4000AllegrexVConstant",
+            }),
+        }
+    }
+}
+impl TryFrom<u32> for R4000AllegrexVConstant {
+    type Error = crate::Error;
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+impl Default for R4000AllegrexVConstant {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+impl Index<R4000AllegrexVConstant> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+    fn index(&self, index: R4000AllegrexVConstant) -> &Self::Output {
+        &self[index as usize]
+    }
+}
