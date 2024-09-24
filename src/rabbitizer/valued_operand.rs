@@ -346,7 +346,11 @@ pub struct ValuedOperandIterator<'a> {
 
 impl<'a> ValuedOperandIterator<'a> {
     pub(crate) fn new(instr: &'a Instruction) -> Self {
-        Self { instr, operands: instr.opcode().get_descriptor().operands(), index: 0}
+        Self {
+            instr,
+            operands: instr.opcode().get_descriptor().operands(),
+            index: 0,
+        }
     }
 }
 
@@ -364,6 +368,6 @@ impl<'a> Iterator for ValuedOperandIterator<'a> {
         }
 
         self.index += 1;
-        Some(val.to_valued_operand(&self.instr))
+        Some(val.to_valued_operand(self.instr))
     }
 }

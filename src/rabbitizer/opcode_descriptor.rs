@@ -6,7 +6,8 @@ use core::ops::Index;
 #[allow(deprecated)]
 use crate::InstrType;
 use crate::{
-    operand::{OperandIterator, OPERAND_COUNT_MAX}, AccessType, EncodedFieldMask, InstrSuffix, IsaExtension, IsaVersion, Opcode, Operand
+    operand::{OperandIterator, OPERAND_COUNT_MAX},
+    AccessType, EncodedFieldMask, InstrSuffix, IsaExtension, IsaVersion, Opcode, Operand,
 };
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
