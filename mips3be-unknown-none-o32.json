@@ -1,0 +1,26 @@
+{
+  "arch": "mips",
+  "cpu": "mips3",
+  "crt-objects-fallback": "false",
+  "data-layout": "E-m:m-p:32:32-i8:8:32-i16:16:32-i64:64-n32-S64",
+  "target-endian": "big",
+  "features": "+mips3,+noabicalls,-soft-float",
+  "linker": "rust-lld",
+  "linker-flavor": "gnu-lld",
+  "llvm-abiname": "o32",
+  "abi": "o32",
+  "llvm-args": [
+    "-mno-check-zero-division"
+  ],
+  "llvm-target": "mips-unknown-linux-gnu",
+  "max-atomic-width": 0,
+  "metadata": {
+    "description": "MIPS III (BE)",
+    "host_tools": false,
+    "std": false,
+    "tier": 3
+  },
+  "panic-strategy": "abort",
+  "relocation-model": "static",
+  "target-pointer-width": "32"
+}

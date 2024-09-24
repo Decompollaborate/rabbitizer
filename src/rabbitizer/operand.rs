@@ -18,12 +18,12 @@ impl<'a> Operand {
 }
 
 impl Operand {
-    pub(crate) const fn to_valued_operand(self, _instr: &Instruction) -> ValuedOperand {
+    pub(crate) fn to_valued_operand(self, instr: &Instruction) -> ValuedOperand {
         match self {
             Self::ALL_EMPTY => ValuedOperand::ALL_EMPTY(),
-            Self::cpu_rs => todo!(),
-            Self::cpu_rt => todo!(),
-            Self::cpu_rd => todo!(),
+            Self::cpu_rs => ValuedOperand::cpu_rs(instr.reg_rs_unchecked()),
+            Self::cpu_rt => ValuedOperand::cpu_rt(instr.reg_rt_unchecked()),
+            Self::cpu_rd => ValuedOperand::cpu_rd(instr.reg_rd_unchecked()),
             Self::cpu_sa => todo!(),
             Self::cpu_zero => ValuedOperand::cpu_zero(),
             Self::cpu_cop0d => todo!(),

@@ -2,8 +2,8 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::{
-    Abi, DecodingFlags, EncodedFieldMask, InstructionFlags, IsaExtension, IsaVersion, Opcode,
-    OpcodeCategory, OpcodeDecoder, ValuedOperandIterator,
+    generated::Gpr, Abi, DecodingFlags, EncodedFieldMask, InstructionFlags, IsaExtension,
+    IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder, ValuedOperandIterator,
 };
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -206,6 +206,99 @@ impl Instruction {
     #[must_use]
     pub fn valued_operands_iter(&self) -> ValuedOperandIterator {
         ValuedOperandIterator::new(self)
+    }
+}
+
+/// Registers
+impl Instruction {
+    /// Returns either the [`Gpr`] register embedded on the `rs` field of the
+    /// word of this instruction or [`None`] if this instruction does not have
+    /// an `rs` operand.
+    ///
+    /// [`Gpr`]: crate::registers::Gpr
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn reg_rs(&self) -> Option<Gpr> {
+        // TODO: actually check if the function has the operand
+        Some(self.reg_rs_unchecked())
+    }
+
+    /// Returns either the [`Gpr`] register embedded on the `rt` field of the
+    /// word of this instruction or [`None`] if this instruction does not have
+    /// an `rt` operand.
+    ///
+    /// [`Gpr`]: crate::registers::Gpr
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn reg_rt(&self) -> Option<Gpr> {
+        // TODO: actually check if the function has the operand
+        Some(self.reg_rt_unchecked())
+    }
+
+    /// Returns either the [`Gpr`] register embedded on the `rd` field of the
+    /// word of this instruction or [`None`] if this instruction does not have
+    /// an `rd` operand.
+    ///
+    /// [`Gpr`]: crate::registers::Gpr
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn reg_rd(&self) -> Option<Gpr> {
+        // TODO: actually check if the function has the operand
+        Some(self.reg_rd_unchecked())
+    }
+}
+
+/// Unchecked registers
+impl Instruction {
+    // Should be safe to use `.unwrap()` on all the `_unchecked` functions that
+    // return an enum because using the correct `EncodedFieldMask` should yield
+    // a bit of range that should not escape the range of the given enum.
+    // If the unwrap ends up panicking then we have an internal library error
+    // somewhere.
+
+    /// Returns the [`Gpr`] register embedded on the `rs` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has an `rs` field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Gpr`] register. It is recommended to use [`reg_rs`] instead.
+    ///
+    /// [`Gpr`]: crate::registers::Gpr
+    /// [`reg_rs`]: Instruction::reg_rs
+    #[must_use]
+    pub fn reg_rs_unchecked(&self) -> Gpr {
+        Gpr::try_from(EncodedFieldMask::rs.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the [`Gpr`] register embedded on the `rt` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has an `rt` field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Gpr`] register. It is recommended to use [`reg_rt`] instead.
+    ///
+    /// [`Gpr`]: crate::registers::Gpr
+    /// [`reg_rt`]: Instruction::reg_rt
+    #[must_use]
+    pub fn reg_rt_unchecked(&self) -> Gpr {
+        Gpr::try_from(EncodedFieldMask::rt.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the [`Gpr`] register embedded on the `rd` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has an `rd` field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Gpr`] register. It is recommended to use [`reg_rd`] instead.
+    ///
+    /// [`Gpr`]: crate::registers::Gpr
+    /// [`reg_rd`]: Instruction::reg_rd
+    #[must_use]
+    pub fn reg_rd_unchecked(&self) -> Gpr {
+        Gpr::try_from(EncodedFieldMask::rd.get_shifted(self.word())).unwrap()
     }
 }
 

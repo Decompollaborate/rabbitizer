@@ -1,0 +1,9 @@
+rustup override set nightly
+cargo rustc --lib --release --target mips-unknown-linux-musl -Zbuild-std -- --emit asm
+rustup override set stable
+
+
+
+
+rustc +nightly -Z unstable-options --target=mips-unknown-linux-musl --print target-spec-json
+cargo rustc --lib --release --target mips3be-unknown-none-o32.json -Z build-std=core -- --emit asm
