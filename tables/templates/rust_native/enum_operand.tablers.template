@@ -5,6 +5,8 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use crate::ValuedOperand;
+
 #define RAB_DEF_OPERAND(prefix, operand, mask) \
     prefix##_##operand,
 
@@ -13,6 +15,20 @@ SPECIAL_RS_TAG(allow(non_camel_case_types))
 SPECIAL_RS_TAG(non_exhaustive)
 pub enum Operand {
     #include "OperandTypes.inc"
+}
+
+#undef RAB_DEF_OPERAND
+
+#define RAB_DEF_OPERAND(prefix, operand, mask) \
+    ValuedOperand:: prefix##_##operand (..) => Self:: prefix##_##operand,
+
+impl Operand {
+    SPECIAL_RS_TAG(must_use)
+    pub const fn from_valued_operand(value: ValuedOperand) -> Self {
+        match value {
+            #include "OperandTypes.inc"
+        }
+    }
 }
 
 #undef RAB_DEF_OPERAND
