@@ -196,7 +196,7 @@ impl OpcodeDescriptor {
     }
 }
 
-/// getters and setters
+/// Getters
 impl OpcodeDescriptor {
     #[must_use]
     pub const fn name(&self) -> &'static str {
@@ -204,18 +204,170 @@ impl OpcodeDescriptor {
     }
 
     #[must_use]
+    pub const fn isa_version(&self) -> IsaVersion {
+        self.isa_version
+    }
+    #[must_use]
+    pub const fn isa_extension(&self) -> IsaExtension {
+        self.isa_extension
+    }
+
+    #[must_use]
     pub const fn operands(&self) -> &[Operand; OPERAND_COUNT_MAX] {
         &self.operands
     }
-
     #[must_use]
     pub const fn operands_iter(&self) -> OperandIterator {
         OperandIterator::new(&self.operands)
     }
 
     #[must_use]
+    pub const fn instr_type(&self) -> InstrType {
+        self.instr_type
+    }
+    // #[must_use]
+    // pub const fn instr_suffix(&self) -> InstrSuffix {
+    //     self.instr_suffix
+    // }
+    #[must_use]
+    pub const fn is_branch(&self) -> bool {
+        self.is_branch
+    }
+    #[must_use]
+    pub const fn is_branch_likely(&self) -> bool {
+        self.is_branch_likely
+    }
+    #[must_use]
     pub const fn is_jump(&self) -> bool {
         self.is_jump
+    }
+    #[must_use]
+    pub const fn is_jump_with_address(&self) -> bool {
+        self.is_jump_with_address
+    }
+    #[must_use]
+    pub const fn is_trap(&self) -> bool {
+        self.is_trap
+    }
+    #[must_use]
+    pub const fn is_float(&self) -> bool {
+        self.is_float
+    }
+    #[must_use]
+    pub const fn is_double(&self) -> bool {
+        self.is_double
+    }
+    #[must_use]
+    pub const fn is_unsigned(&self) -> bool {
+        self.is_unsigned
+    }
+    #[must_use]
+    pub const fn modifies_rs(&self) -> bool {
+        self.modifies_rs
+    }
+    #[must_use]
+    pub const fn modifies_rt(&self) -> bool {
+        self.modifies_rt
+    }
+    #[must_use]
+    pub const fn modifies_rd(&self) -> bool {
+        self.modifies_rd
+    }
+    #[must_use]
+    pub const fn reads_rs(&self) -> bool {
+        self.reads_rs
+    }
+    #[must_use]
+    pub const fn reads_rt(&self) -> bool {
+        self.reads_rt
+    }
+    #[must_use]
+    pub const fn reads_rd(&self) -> bool {
+        self.reads_rd
+    }
+    #[must_use]
+    pub const fn reads_hi(&self) -> bool {
+        self.reads_hi
+    }
+    #[must_use]
+    pub const fn reads_lo(&self) -> bool {
+        self.reads_lo
+    }
+    #[must_use]
+    pub const fn modifies_hi(&self) -> bool {
+        self.modifies_hi
+    }
+    #[must_use]
+    pub const fn modifies_lo(&self) -> bool {
+        self.modifies_lo
+    }
+    #[must_use]
+    pub const fn modifies_fs(&self) -> bool {
+        self.modifies_fs
+    }
+    #[must_use]
+    pub const fn modifies_ft(&self) -> bool {
+        self.modifies_ft
+    }
+    #[must_use]
+    pub const fn modifies_fd(&self) -> bool {
+        self.modifies_fd
+    }
+    #[must_use]
+    pub const fn reads_fs(&self) -> bool {
+        self.reads_fs
+    }
+    #[must_use]
+    pub const fn reads_ft(&self) -> bool {
+        self.reads_ft
+    }
+    #[must_use]
+    pub const fn reads_fd(&self) -> bool {
+        self.reads_fd
+    }
+    #[must_use]
+    pub const fn not_emitted_by_compilers(&self) -> bool {
+        self.not_emitted_by_compilers
+    }
+    #[must_use]
+    pub const fn can_be_hi(&self) -> bool {
+        self.can_be_hi
+    }
+    #[must_use]
+    pub const fn can_be_lo(&self) -> bool {
+        self.can_be_lo
+    }
+    #[must_use]
+    pub const fn does_link(&self) -> bool {
+        self.does_link
+    }
+    #[must_use]
+    pub const fn does_dereference(&self) -> bool {
+        self.does_dereference
+    }
+    #[must_use]
+    pub const fn does_load(&self) -> bool {
+        self.does_load
+    }
+    #[must_use]
+    pub const fn does_store(&self) -> bool {
+        self.does_store
+    }
+    #[must_use]
+    pub const fn maybe_is_move(&self) -> bool {
+        self.maybe_is_move
+    }
+    #[must_use]
+    pub const fn is_pseudo(&self) -> bool {
+        self.is_pseudo
+    }
+    #[must_use]
+    pub const fn access_type(&self) -> AccessType {
+        self.access_type
+    }
+    #[must_use]
+    pub const fn does_unsigned_memory_access(&self) -> bool {
+        self.does_unsigned_memory_access
     }
 }
 
@@ -225,10 +377,635 @@ impl OpcodeDescriptor {
         let mut bits = EncodedFieldMask::empty();
 
         for x in self.operands_iter() {
-            bits.insert(*x.get_descriptor().mask());
+            bits.insert(x.get_descriptor().mask());
         }
 
         bits
+    }
+
+    #[must_use]
+    pub fn has_specific_operand(&self, operand: Operand) -> bool {
+        for op in self.operands_iter() {
+            if *op == operand {
+                return true;
+            }
+        }
+        false
+    }
+
+    #[must_use]
+    pub fn has_operand_alias(&self, operand: Operand) -> bool {
+        if self.has_specific_operand(operand) {
+            return true;
+        }
+
+        match operand {
+            Operand::cpu_rs => {
+                if self.has_specific_operand(Operand::cpu_immediate_base) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_offset_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_immediate_base) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::cpu_maybe_rd_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_offset14_base) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_offset14_base_maybe_wb) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_immediate => {
+                if self.has_specific_operand(Operand::cpu_immediate_base) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::cpu_branch_target_label) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_immediate_base) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_rt => {
+                if self.has_specific_operand(Operand::rsp_rt) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_rd => {
+                if self.has_specific_operand(Operand::rsp_rd) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::cpu_maybe_rd_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_sa => {}
+            Operand::cpu_zero => {}
+            // Operand::cpu_function => {},
+            Operand::cpu_cop0d => {
+                if self.has_specific_operand(Operand::rsp_cop0d) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_fs => {}
+            Operand::cpu_ft => {}
+            Operand::cpu_fd => {}
+            Operand::cpu_cop1cs => {}
+            Operand::cpu_cop2t => {}
+            Operand::cpu_cop2cd => {}
+            Operand::cpu_op => {}
+            Operand::cpu_hint => {}
+
+            Operand::cpu_code => {
+                if self.has_specific_operand(Operand::cpu_code_lower) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_code_lower => {
+                if self.has_operand_alias(Operand::cpu_code) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_copraw => {}
+            Operand::cpu_label => {}
+
+            Operand::cpu_branch_target_label => {
+                if self.has_operand_alias(Operand::cpu_immediate) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_immediate_base => {
+                if self.has_operand_alias(Operand::cpu_rs) {
+                    return true;
+                }
+                if self.has_operand_alias(Operand::cpu_immediate) {
+                    return true;
+                }
+            }
+
+            Operand::cpu_maybe_rd_rs => {
+                if self.has_operand_alias(Operand::cpu_rd) {
+                    return true;
+                }
+                if self.has_operand_alias(Operand::cpu_rs) {
+                    return true;
+                }
+            }
+
+            /* rsp */
+            Operand::rsp_rs => {
+                if self.has_operand_alias(Operand::cpu_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_offset_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_rt => {
+                if self.has_specific_operand(Operand::cpu_rt) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_rd => {
+                if self.has_operand_alias(Operand::cpu_rd) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_cop0d => {
+                if self.has_specific_operand(Operand::cpu_cop0d) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_cop2t => {}
+            Operand::rsp_cop2cd => {}
+
+            Operand::rsp_hint => {}
+
+            // Operand::rsp_elementhigh => {},
+            // Operand::rsp_elementlow => {},
+            // Operand::rsp_index => {},
+            // Operand::rsp_offset => {},
+            Operand::rsp_vs => {
+                if self.has_specific_operand(Operand::rsp_vs_index) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_vt => {
+                if self.has_specific_operand(Operand::rsp_vt_elementhigh) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::rsp_vt_elementlow) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_vd => {
+                if self.has_specific_operand(Operand::rsp_vd_de) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_vt_elementhigh => {
+                if self.has_operand_alias(Operand::rsp_vt) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_vt_elementlow => {
+                if self.has_operand_alias(Operand::rsp_vt) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_vd_de => {
+                if self.has_operand_alias(Operand::rsp_vd) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_vs_index => {
+                if self.has_operand_alias(Operand::rsp_vs) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_offset_rs => {
+                if self.has_operand_alias(Operand::rsp_rs) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_immediate_base => {
+                if self.has_operand_alias(Operand::rsp_rs) {
+                    return true;
+                }
+                if self.has_operand_alias(Operand::cpu_rs) {
+                    return true;
+                }
+                if self.has_operand_alias(Operand::cpu_immediate) {
+                    return true;
+                }
+            }
+
+            Operand::rsp_maybe_rd_rs => {
+                if self.has_operand_alias(Operand::rsp_rd) {
+                    return true;
+                }
+                if self.has_operand_alias(Operand::rsp_rs) {
+                    return true;
+                }
+            }
+            /* rsp */
+
+            /* r3000gte */
+            Operand::r3000gte_sf => {}
+            Operand::r3000gte_mx => {}
+            Operand::r3000gte_v => {}
+            Operand::r3000gte_cv => {}
+            Operand::r3000gte_lm => {}
+            /* r3000gte */
+
+            /* r4000allegrex */
+            Operand::r4000allegrex_s_vs => {}
+            Operand::r4000allegrex_s_vt => {}
+            Operand::r4000allegrex_s_vd => {}
+            Operand::r4000allegrex_s_vt_imm => {}
+            Operand::r4000allegrex_s_vd_imm => {}
+            Operand::r4000allegrex_p_vs => {}
+            Operand::r4000allegrex_p_vt => {}
+            Operand::r4000allegrex_p_vd => {}
+            Operand::r4000allegrex_t_vs => {}
+            Operand::r4000allegrex_t_vt => {}
+            Operand::r4000allegrex_t_vd => {}
+            Operand::r4000allegrex_q_vs => {}
+            Operand::r4000allegrex_q_vt => {}
+            Operand::r4000allegrex_q_vd => {}
+            Operand::r4000allegrex_q_vt_imm => {}
+            Operand::r4000allegrex_mp_vs => {}
+            Operand::r4000allegrex_mp_vt => {}
+            Operand::r4000allegrex_mp_vd => {}
+            Operand::r4000allegrex_mp_vs_transpose => {}
+            Operand::r4000allegrex_mt_vs => {}
+            Operand::r4000allegrex_mt_vt => {}
+            Operand::r4000allegrex_mt_vd => {}
+            Operand::r4000allegrex_mt_vs_transpose => {}
+            Operand::r4000allegrex_mq_vs => {}
+            Operand::r4000allegrex_mq_vt => {}
+            Operand::r4000allegrex_mq_vd => {}
+            Operand::r4000allegrex_mq_vs_transpose => {}
+            Operand::r4000allegrex_cop2cs => {}
+            Operand::r4000allegrex_cop2cd => {}
+
+            Operand::r4000allegrex_pos => {}
+            Operand::r4000allegrex_size => {}
+            Operand::r4000allegrex_size_plus_pos => {}
+            Operand::r4000allegrex_imm3 => {}
+
+            Operand::r4000allegrex_offset14_base => {
+                if self.has_operand_alias(Operand::cpu_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_offset14_base_maybe_wb) {
+                    return true;
+                }
+            }
+
+            Operand::r4000allegrex_offset14_base_maybe_wb => {
+                if self.has_operand_alias(Operand::cpu_rs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_offset14_base) {
+                    return true;
+                }
+            }
+
+            Operand::r4000allegrex_vcmp_cond => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
+
+            Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_s_vs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_s_vt) {
+                    return true;
+                }
+            }
+
+            Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_p_vs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_p_vt) {
+                    return true;
+                }
+            }
+
+            Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_t_vs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_t_vt) {
+                    return true;
+                }
+            }
+
+            Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_q_vs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r4000allegrex_q_vt) {
+                    return true;
+                }
+            }
+
+            Operand::r4000allegrex_vconstant => {}
+            Operand::r4000allegrex_power_of_two => {}
+            Operand::r4000allegrex_vfpu_cc_bit => {}
+            Operand::r4000allegrex_bn => {}
+            Operand::r4000allegrex_int16 => {}
+            Operand::r4000allegrex_float16 => {}
+            Operand::r4000allegrex_p_vrot_code => {}
+            Operand::r4000allegrex_t_vrot_code => {}
+            Operand::r4000allegrex_q_vrot_code => {}
+            Operand::r4000allegrex_rpx => {}
+            Operand::r4000allegrex_rpy => {}
+            Operand::r4000allegrex_rpz => {}
+            Operand::r4000allegrex_rpw => {}
+            Operand::r4000allegrex_wpx => {}
+            Operand::r4000allegrex_wpy => {}
+            Operand::r4000allegrex_wpz => {}
+            Operand::r4000allegrex_wpw => {}
+            /* r4000allegrex */
+
+            /* r5900 */
+            Operand::r5900_I => {}
+            Operand::r5900_Q => {}
+            Operand::r5900_R => {}
+
+            Operand::r5900_ACC => {
+                if self.has_specific_operand(Operand::r5900_ACCxyzw) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_ACCxyzw => {
+                if self.has_specific_operand(Operand::r5900_ACC) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfs => {
+                if self.has_specific_operand(Operand::r5900_vfsxyzw) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfsn) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfsl) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfsm) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vft => {
+                if self.has_specific_operand(Operand::r5900_vftxyzw) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vftn) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vftl) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vftm) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfd => {
+                if self.has_specific_operand(Operand::r5900_vfdxyzw) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfdn) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfdl) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfdm) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfsxyzw => {
+                if self.has_specific_operand(Operand::r5900_vfs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfsn) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vftxyzw => {
+                if self.has_specific_operand(Operand::r5900_vft) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vftn) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfdxyzw => {
+                if self.has_specific_operand(Operand::r5900_vfd) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfdn) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfsn => {
+                if self.has_specific_operand(Operand::r5900_vfs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfsxyzw) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vftn => {
+                if self.has_specific_operand(Operand::r5900_vft) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vftxyzw) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfdn => {
+                if self.has_specific_operand(Operand::r5900_vfd) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vfdxyzw) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfsl => {
+                if self.has_operand_alias(Operand::r5900_vfs) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vftl => {
+                if self.has_operand_alias(Operand::r5900_vft) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfdl => {
+                if self.has_operand_alias(Operand::r5900_vfd) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfsm => {
+                if self.has_operand_alias(Operand::r5900_vfs) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vftm => {
+                if self.has_operand_alias(Operand::r5900_vft) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vfdm => {
+                if self.has_operand_alias(Operand::r5900_vfd) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vis => {
+                if self.has_specific_operand(Operand::r5900_vis_predecr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vis_postincr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vis_parenthesis) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vit => {
+                if self.has_specific_operand(Operand::r5900_vit_predecr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vit_postincr) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vid => {
+                if self.has_specific_operand(Operand::r5900_vid_predecr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vid_postincr) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vis_predecr => {
+                if self.has_operand_alias(Operand::r5900_vis) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vit_predecr => {
+                if self.has_operand_alias(Operand::r5900_vit) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vid_predecr => {
+                if self.has_operand_alias(Operand::r5900_vid) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vis_postincr => {
+                if self.has_operand_alias(Operand::r5900_vis) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vit_postincr => {
+                if self.has_operand_alias(Operand::r5900_vit) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vid_postincr => {
+                if self.has_operand_alias(Operand::r5900_vid) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vis_parenthesis => {
+                if self.has_operand_alias(Operand::r5900_vis) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_immediate5 => {}
+
+            Operand::r5900_immediate15 => {}
+            /* r5900 */
+            Operand::ALL_EMPTY => {}
+        }
+
+        false
     }
 }
 

@@ -3,7 +3,7 @@
 
 use crate::{
     generated::Gpr, Abi, DecodingFlags, EncodedFieldMask, InstructionFlags, IsaExtension,
-    IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder, ValuedOperandIterator,
+    IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder, Operand, ValuedOperandIterator,
 };
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -186,7 +186,7 @@ impl Instruction {
 
     #[must_use]
     pub fn valid_bits(&self) -> EncodedFieldMask {
-        self.opcode_decoder.mandatory_bits() | self.opcode().get_descriptor().valid_bits()
+        self.opcode_decoder.mandatory_bits() | self.opcode().valid_bits()
     }
 
     #[must_use]
@@ -209,7 +209,7 @@ impl Instruction {
     }
 }
 
-/// Registers
+/// Opcode fields
 impl Instruction {
     /// Returns either the [`Gpr`] register embedded on the `rs` field of the
     /// word of this instruction or [`None`] if this instruction does not have
@@ -219,7 +219,9 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn reg_rs(&self) -> Option<Gpr> {
-        // TODO: actually check if the function has the operand
+        if !self.opcode().has_operand_alias(Operand::cpu_rs) {
+            return None;
+        }
         Some(self.reg_rs_unchecked())
     }
 
@@ -231,7 +233,9 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn reg_rt(&self) -> Option<Gpr> {
-        // TODO: actually check if the function has the operand
+        if !self.opcode().has_operand_alias(Operand::cpu_rt) {
+            return None;
+        }
         Some(self.reg_rt_unchecked())
     }
 
@@ -243,12 +247,14 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn reg_rd(&self) -> Option<Gpr> {
-        // TODO: actually check if the function has the operand
+        if !self.opcode().has_operand_alias(Operand::cpu_rd) {
+            return None;
+        }
         Some(self.reg_rd_unchecked())
     }
 }
 
-/// Unchecked registers
+/// Unchecked opcode fields
 impl Instruction {
     // Should be safe to use `.unwrap()` on all the `_unchecked` functions that
     // return an enum because using the correct `EncodedFieldMask` should yield
@@ -315,7 +321,7 @@ mod tests {
         assert!(instr.is_valid());
         assert_eq!(instr.opcode_category(), OpcodeCategory::CPU_NORMAL);
         assert_eq!(instr.opcode(), Opcode::cpu_j);
-        assert!(instr.opcode().get_descriptor().is_jump());
+        assert!(instr.opcode().is_jump());
 
         assert_eq!(
             Instruction::new_no_extension(0x08000000, 0x80000000, None, IsaVersion::MIPS_III)

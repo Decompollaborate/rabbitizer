@@ -32,8 +32,8 @@ impl<'a> OperandDescriptor<'a> {
     }
 
     #[must_use]
-    pub const fn mask(&self) -> &EncodedFieldMask {
-        &self.mask
+    pub const fn mask(&self) -> EncodedFieldMask {
+        self.mask
     }
 }
 
