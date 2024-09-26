@@ -124,6 +124,9 @@ pub struct DisplayFlags {
     omit_0x_on_small_imm: bool,
     // upper_case_imm: bool,
     expand_jalr: bool,
+
+    r5900_modern_gas_instrs_workarounds: bool,
+    r5900_use_dollar: bool,
 }
 
 impl DisplayFlags {
@@ -142,6 +145,9 @@ impl DisplayFlags {
             omit_0x_on_small_imm: false,
             // upper_case_imm: true,
             expand_jalr: false,
+
+            r5900_modern_gas_instrs_workarounds: false,
+            r5900_use_dollar: false,
         }
     }
 
@@ -238,6 +244,22 @@ impl DisplayFlags {
     }
     pub const fn expand_jalr_mut(&mut self) -> &mut bool {
         &mut self.expand_jalr
+    }
+
+    #[must_use]
+    pub const fn r5900_modern_gas_instrs_workarounds(&self) -> bool {
+        self.r5900_modern_gas_instrs_workarounds
+    }
+    pub const fn r5900_modern_gas_instrs_workarounds_mut(&mut self) -> &mut bool {
+        &mut self.r5900_modern_gas_instrs_workarounds
+    }
+
+    #[must_use]
+    pub const fn r5900_use_dollar(&self) -> bool {
+        self.r5900_use_dollar
+    }
+    pub const fn r5900_use_dollar_mut(&mut self) -> &mut bool {
+        &mut self.r5900_use_dollar
     }
 }
 

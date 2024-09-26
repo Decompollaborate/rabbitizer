@@ -5,20 +5,20 @@ use core::fmt::{self, UpperHex};
 
 use crate::{DisplayFlags, Instruction, Operand, DISPLAY_OPERAND_CALLBACKS};
 
-pub(crate) mod display_operand_none;
-pub(crate) mod display_operand_r3000gte;
-pub(crate) mod display_operand_r4000allegrex;
-pub(crate) mod display_operand_r5900;
-pub(crate) mod display_operand_rsp;
+pub(crate) mod operand_display_none;
+pub(crate) mod operand_display_r3000gte;
+pub(crate) mod operand_display_r4000allegrex;
+pub(crate) mod operand_display_r5900;
+pub(crate) mod operand_display_rsp;
 
-pub struct DisplayOperand<'ins, 'imm> {
+pub struct OperandDisplay<'ins, 'imm> {
     operand: Operand,
     instr: &'ins Instruction,
     imm_override: Option<&'imm str>,
     display_flags: DisplayFlags,
 }
 
-impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
+impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
     pub(crate) const fn new(
         operand: Operand,
         instr: &'ins Instruction,
@@ -34,20 +34,20 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
     }
 }
 
-impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
+impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
     #[allow(non_snake_case)]
     pub(crate) fn display_ALL_EMPTY(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Err(fmt::Error)
     }
 }
 
-pub(crate) type DisplayOperandCallback =
-    for<'a, 'b, 'c> fn(&'a DisplayOperand, &'b mut fmt::Formatter<'c>) -> fmt::Result;
+pub(crate) type OperandDisplayCallback =
+    for<'a, 'b, 'c> fn(&'a OperandDisplay, &'b mut fmt::Formatter<'c>) -> fmt::Result;
 
-impl fmt::Display for DisplayOperand<'_, '_> {
+impl fmt::Display for OperandDisplay<'_, '_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         DISPLAY_OPERAND_CALLBACKS[self.operand as usize](self, f)
     }
@@ -100,11 +100,11 @@ mod stuff {
         }
     }
 
-    fn test(a: &super::DisplayOperand, buf: &mut Buffer) -> fmt::Result {
+    fn test(a: &super::OperandDisplay, buf: &mut Buffer) -> fmt::Result {
         write!(buf, "{}", a)
     }
 
-    fn test2(a: &super::DisplayOperand, buf: &mut Counter) -> fmt::Result {
+    fn test2(a: &super::OperandDisplay, buf: &mut Counter) -> fmt::Result {
         write!(buf, "{}", a)
     }
 }

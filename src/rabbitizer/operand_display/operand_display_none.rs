@@ -3,11 +3,11 @@
 
 use core::fmt;
 
-use crate::{display_operand, traits::Register, DisplayOperand};
+use crate::{operand_display, traits::Register, OperandDisplay};
 
-impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
+impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
     pub(crate) fn display_cpu_rs(
-        myself: &DisplayOperand,
+        myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -22,7 +22,7 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
     }
 
     pub(crate) fn display_cpu_rt(
-        myself: &DisplayOperand,
+        myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -37,7 +37,7 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
     }
 
     pub(crate) fn display_cpu_rd(
-        myself: &DisplayOperand,
+        myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -51,97 +51,97 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_cpu_sa(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_zero(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_cop0d(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_fs(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_ft(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_fd(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_cop1cs(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_cop2t(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_cop2cd(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_op(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_hint(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_code(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_code_lower(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_copraw(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_label(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_immediate(
-        myself: &DisplayOperand,
+        myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if let Some(imm_override) = myself.imm_override {
@@ -150,23 +150,23 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
             let instr = myself.instr;
             let s = instr.get_processed_immediate_unchecked();
 
-            display_operand::display_hex(s, f)
+            operand_display::display_hex(s, f)
         }
     }
     pub(crate) fn display_cpu_branch_target_label(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_immediate_base(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_cpu_maybe_rd_rs(
-        _myself: &DisplayOperand,
+        _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()

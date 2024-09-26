@@ -328,13 +328,26 @@ impl Instruction {
 impl Instruction {
     #[must_use]
     pub fn get_processed_immediate(&self) -> Option<i32> {
-        self.field_immediate()
-            .map(|x| utils::from_2s_complement(x as u32, 16))
+        if let Some(imm) = self.field_immediate() {
+            if self.opcode().is_unsigned() {
+                Some(imm as i32)
+            } else {
+                Some(utils::from_2s_complement(imm as u32, 16))
+            }
+        } else {
+            None
+        }
     }
 
     #[must_use]
     pub fn get_processed_immediate_unchecked(&self) -> i32 {
-        utils::from_2s_complement(self.field_immediate_unchecked() as u32, 16)
+        let imm = self.field_immediate_unchecked();
+
+        if self.opcode().is_unsigned() {
+            imm as i32
+        } else {
+            utils::from_2s_complement(imm as u32, 16)
+        }
     }
 }
 

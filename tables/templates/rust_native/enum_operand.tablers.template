@@ -7,7 +7,7 @@
 
 use crate::EncodedFieldMask;
 use crate::{OperandDescriptor, operand::OPERAND_COUNT, ValuedOperand};
-use crate::{DisplayOperand, display_operand::DisplayOperandCallback};
+use crate::{OperandDisplay, operand_display::OperandDisplayCallback};
 
 #define RAB_DEF_OPERAND(prefix, operand, mask) \
     prefix##_##operand,
@@ -38,11 +38,11 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
 
 #define RAB_DEF_OPERAND(prefix, operand, mask) \
     table[ Operand::prefix##_##operand as usize] = \
-        DisplayOperand::display_ ## prefix ## _ ## operand \
+        OperandDisplay::display_ ## prefix ## _ ## operand \
     ;
 
-pub(crate) static DISPLAY_OPERAND_CALLBACKS: [DisplayOperandCallback; OPERAND_COUNT] = {
-    let mut table: [DisplayOperandCallback; OPERAND_COUNT] = [DisplayOperand::display_ALL_EMPTY; OPERAND_COUNT];
+pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_COUNT] = {
+    let mut table: [OperandDisplayCallback; OPERAND_COUNT] = [OperandDisplay::display_ALL_EMPTY; OPERAND_COUNT];
 
     #include "OperandTypes.inc"
 

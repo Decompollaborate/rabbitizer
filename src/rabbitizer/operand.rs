@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::{
-    DisplayFlags, DisplayOperand, Instruction, Operand, OperandDescriptor, ValuedOperand, OPERANDS,
+    DisplayFlags, Instruction, Operand, OperandDescriptor, OperandDisplay, ValuedOperand, OPERANDS,
 };
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
@@ -26,8 +26,8 @@ impl Operand {
         instr: &'ins Instruction,
         imm_override: Option<&'imm str>,
         display_flags: DisplayFlags,
-    ) -> DisplayOperand<'ins, 'imm> {
-        DisplayOperand::new(*self, instr, imm_override, display_flags)
+    ) -> OperandDisplay<'ins, 'imm> {
+        OperandDisplay::new(*self, instr, imm_override, display_flags)
     }
 }
 

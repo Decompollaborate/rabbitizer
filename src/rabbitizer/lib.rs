@@ -18,7 +18,6 @@ mod generated;
 
 mod abi;
 mod access_type;
-mod display_operand;
 mod encoded_field_mask;
 mod error;
 mod flags;
@@ -32,6 +31,7 @@ mod opcode_decoder;
 mod opcode_descriptor;
 mod operand;
 mod operand_descriptor;
+mod operand_display;
 mod register_descriptor;
 mod register_impls;
 pub mod traits;
@@ -64,7 +64,7 @@ pub use valued_operand::ValuedOperand;
 pub use valued_operand::ValuedOperandIterator;
 
 // TODO: maybe not make public?
-pub use display_operand::DisplayOperand;
+pub use operand_display::OperandDisplay;
 
 pub use flags::DecodingFlags;
 pub use flags::DisplayFlags;

@@ -24,11 +24,13 @@ fn main() {
     println!("{:?}", instr.reg_rs());
     // println!("0x{:X}", instr.field_immediate_unchecked());
 
+    let display_flags = rabbitizer::DisplayFlags::default();
+
     for operand in instr.opcode().operands_iter() {
         println!(
             "{:?}: {}",
             operand,
-            operand.display(&instr, None, rabbitizer::DisplayFlags::default())
+            operand.display(&instr, None, display_flags)
         );
     }
 }
