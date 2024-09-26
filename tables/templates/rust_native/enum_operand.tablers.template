@@ -5,7 +5,9 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-use crate::ValuedOperand;
+use crate::EncodedFieldMask;
+use crate::{OperandDescriptor, operand::OPERAND_COUNT, ValuedOperand};
+use crate::{DisplayOperand, display_operand::DisplayOperandCallback};
 
 #define RAB_DEF_OPERAND(prefix, operand, mask) \
     prefix##_##operand,
@@ -16,6 +18,36 @@ SPECIAL_RS_TAG(non_exhaustive)
 pub enum Operand {
     #include "OperandTypes.inc"
 }
+
+#undef RAB_DEF_OPERAND
+
+#define RAB_DEF_OPERAND(prefix, operand, mask) \
+    table[ Operand::prefix##_##operand as usize] = \
+        OperandDescriptor::new(concat!( #prefix, "_", #operand ), mask) \
+    ;
+
+pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
+    let mut table = [OperandDescriptor::default(); OPERAND_COUNT];
+
+    #include "OperandTypes.inc"
+
+    table
+};
+
+#undef RAB_DEF_OPERAND
+
+#define RAB_DEF_OPERAND(prefix, operand, mask) \
+    table[ Operand::prefix##_##operand as usize] = \
+        DisplayOperand::display_ ## prefix ## _ ## operand \
+    ;
+
+pub(crate) static DISPLAY_OPERAND_CALLBACKS: [DisplayOperandCallback; OPERAND_COUNT] = {
+    let mut table: [DisplayOperandCallback; OPERAND_COUNT] = [DisplayOperand::display_ALL_EMPTY; OPERAND_COUNT];
+
+    #include "OperandTypes.inc"
+
+    table
+};
 
 #undef RAB_DEF_OPERAND
 

@@ -72,16 +72,16 @@ impl InstructionFlags {
 
 impl InstructionFlags {
     #[must_use]
-    pub const fn abi_gpr(&self) -> &Abi {
-        &self.abi_gpr
+    pub const fn abi_gpr(&self) -> Abi {
+        self.abi_gpr
     }
     pub fn abi_gpr_mut(&mut self) -> &mut Abi {
         &mut self.abi_gpr
     }
 
     #[must_use]
-    pub const fn abi_fpr(&self) -> &Abi {
-        &self.abi_fpr
+    pub const fn abi_fpr(&self) -> Abi {
+        self.abi_fpr
     }
     pub fn abi_fpr_mut(&mut self) -> &mut Abi {
         &mut self.abi_fpr

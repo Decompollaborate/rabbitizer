@@ -18,6 +18,7 @@ mod generated;
 
 mod abi;
 mod access_type;
+mod display_operand;
 mod encoded_field_mask;
 mod error;
 mod flags;
@@ -49,6 +50,7 @@ pub use generated::Operand;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 
+pub(crate) use generated::DISPLAY_OPERAND_CALLBACKS;
 pub use generated::OPCODES;
 pub use generated::OPERANDS;
 
@@ -60,6 +62,9 @@ pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
 pub use valued_operand::ValuedOperand;
 pub use valued_operand::ValuedOperandIterator;
+
+// TODO: maybe not make public?
+pub use display_operand::DisplayOperand;
 
 pub use flags::DecodingFlags;
 pub use flags::InstructionFlags;

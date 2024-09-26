@@ -35,6 +35,8 @@ path = "src/rabbitizer/bin.rs"
 [features]
 default = []
 std = []
+bindings_c = []
+bindings_python = []
 
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }

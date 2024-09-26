@@ -11,7 +11,6 @@
 #![warn(clippy::exhaustive_enums)]
 
 mod array_opcodes;
-mod array_operands;
 mod code_decode_isa_extension_none;
 mod code_decode_isa_extension_r3000gte;
 mod code_decode_isa_extension_r5900;
@@ -47,7 +46,6 @@ mod enum_register_rsp_gpr;
 mod enum_register_rsp_vector;
 
 pub use array_opcodes::OPCODES;
-pub use array_operands::OPERANDS;
 pub use enum_abi::Abi;
 pub use enum_access_type::AccessType;
 pub use enum_instr_suffix::InstrSuffix;
@@ -56,6 +54,8 @@ pub use enum_isa_version::IsaVersion;
 pub use enum_opcode::Opcode;
 pub use enum_opcode_category::OpcodeCategory;
 pub use enum_operand::Operand;
+pub(crate) use enum_operand::DISPLAY_OPERAND_CALLBACKS;
+pub use enum_operand::OPERANDS;
 pub use enum_register_cop0::Cop0;
 pub use enum_register_cop0::COP0;
 pub use enum_register_cop1::Cop1;

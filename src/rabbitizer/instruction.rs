@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::{
-    generated::Gpr, Abi, DecodingFlags, EncodedFieldMask, InstructionFlags, IsaExtension,
+    generated::Gpr, utils, Abi, DecodingFlags, EncodedFieldMask, InstructionFlags, IsaExtension,
     IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder, Operand, ValuedOperandIterator,
 };
 
@@ -175,6 +175,11 @@ impl Instruction {
     pub const fn opcode_category(&self) -> OpcodeCategory {
         self.opcode_decoder.opcode_category()
     }
+
+    #[must_use]
+    pub const fn flags(&self) -> &InstructionFlags {
+        &self.flags
+    }
 }
 
 /// Instruction examination
@@ -252,6 +257,14 @@ impl Instruction {
         }
         Some(self.reg_rd_unchecked())
     }
+
+    #[must_use]
+    pub fn field_immediate(&self) -> Option<u16> {
+        if !self.opcode().has_operand_alias(Operand::cpu_immediate) {
+            return None;
+        }
+        Some(self.field_immediate_unchecked())
+    }
 }
 
 /// Unchecked opcode fields
@@ -305,6 +318,27 @@ impl Instruction {
     #[must_use]
     pub fn reg_rd_unchecked(&self) -> Gpr {
         Gpr::try_from(EncodedFieldMask::rd.get_shifted(self.word())).unwrap()
+    }
+
+    #[must_use]
+    pub fn field_immediate_unchecked(&self) -> u16 {
+        EncodedFieldMask::immediate
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+}
+
+impl Instruction {
+    #[must_use]
+    pub fn get_processed_immediate(&self) -> Option<i32> {
+        self.field_immediate()
+            .map(|x| utils::from_2s_complement(x as u32, 16))
+    }
+
+    #[must_use]
+    pub fn get_processed_immediate_unchecked(&self) -> i32 {
+        utils::from_2s_complement(self.field_immediate_unchecked() as u32, 16)
     }
 }
 

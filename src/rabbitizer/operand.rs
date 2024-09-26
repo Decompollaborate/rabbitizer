@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{Instruction, Operand, OperandDescriptor, ValuedOperand, OPERANDS};
+use crate::{DisplayOperand, Instruction, Operand, OperandDescriptor, ValuedOperand, OPERANDS};
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
@@ -14,6 +14,17 @@ impl<'a> Operand {
     #[must_use]
     pub fn get_descriptor(&self) -> &'a OperandDescriptor {
         &OPERANDS[*self]
+    }
+}
+
+impl Operand {
+    #[must_use]
+    pub const fn display<'ins, 'imm>(
+        &self,
+        instr: &'ins Instruction,
+        imm_override: Option<&'imm str>,
+    ) -> DisplayOperand<'ins, 'imm> {
+        DisplayOperand::new(*self, instr, imm_override)
     }
 }
 
