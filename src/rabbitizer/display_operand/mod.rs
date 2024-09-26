@@ -3,7 +3,7 @@
 
 use core::fmt::{self, UpperHex};
 
-use crate::{Instruction, Operand, DISPLAY_OPERAND_CALLBACKS};
+use crate::{DisplayFlags, Instruction, Operand, DISPLAY_OPERAND_CALLBACKS};
 
 pub(crate) mod display_operand_none;
 pub(crate) mod display_operand_r3000gte;
@@ -15,7 +15,7 @@ pub struct DisplayOperand<'ins, 'imm> {
     operand: Operand,
     instr: &'ins Instruction,
     imm_override: Option<&'imm str>,
-    // display_settings?
+    display_flags: DisplayFlags,
 }
 
 impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
@@ -23,11 +23,13 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
         operand: Operand,
         instr: &'ins Instruction,
         imm_override: Option<&'imm str>,
+        display_flags: DisplayFlags,
     ) -> Self {
         Self {
             operand,
             instr,
             imm_override,
+            display_flags,
         }
     }
 }

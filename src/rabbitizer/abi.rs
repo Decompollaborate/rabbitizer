@@ -22,7 +22,7 @@ impl From<&str> for Abi {
             "32" | "o32" | "O32" => Self::O32,
             "n32" | "N32" => Self::N32,
             "64" | "n64" | "N64" => Self::N64,
-            _ => Self::NUMERIC,
+            _ => Self::O32,
         }
     }
 }

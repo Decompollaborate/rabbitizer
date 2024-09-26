@@ -3,10 +3,9 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
-use crate::{
-    display_operand::DisplayOperandCallback, operand, DisplayOperand, EncodedFieldMask,
-    OperandDescriptor, ValuedOperand,
-};
+use crate::EncodedFieldMask;
+use crate::{display_operand::DisplayOperandCallback, DisplayOperand};
+use crate::{operand::OPERAND_COUNT, OperandDescriptor, ValuedOperand};
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
@@ -146,8 +145,8 @@ pub enum Operand {
     r5900_immediate5,
     r5900_immediate15,
 }
-pub static OPERANDS: [OperandDescriptor; operand::OPERAND_COUNT] = {
-    let mut table = [OperandDescriptor::default(); operand::OPERAND_COUNT];
+pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
+    let mut table = [OperandDescriptor::default(); OPERAND_COUNT];
     table[Operand::ALL_EMPTY as usize] =
         OperandDescriptor::new(concat!("ALL", "_", "EMPTY"), EncodedFieldMask::empty());
     table[Operand::cpu_rs as usize] =
@@ -618,9 +617,9 @@ pub static OPERANDS: [OperandDescriptor; operand::OPERAND_COUNT] = {
     );
     table
 };
-pub(crate) static DISPLAY_OPERAND_CALLBACKS: [DisplayOperandCallback; operand::OPERAND_COUNT] = {
-    let mut table: [DisplayOperandCallback; operand::OPERAND_COUNT] =
-        [DisplayOperand::display_ALL_EMPTY; operand::OPERAND_COUNT];
+pub(crate) static DISPLAY_OPERAND_CALLBACKS: [DisplayOperandCallback; OPERAND_COUNT] = {
+    let mut table: [DisplayOperandCallback; OPERAND_COUNT] =
+        [DisplayOperand::display_ALL_EMPTY; OPERAND_COUNT];
     table[Operand::ALL_EMPTY as usize] = DisplayOperand::display_ALL_EMPTY;
     table[Operand::cpu_rs as usize] = DisplayOperand::display_cpu_rs;
     table[Operand::cpu_rt as usize] = DisplayOperand::display_cpu_rt;

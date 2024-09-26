@@ -67,6 +67,7 @@ pub use valued_operand::ValuedOperandIterator;
 pub use display_operand::DisplayOperand;
 
 pub use flags::DecodingFlags;
+pub use flags::DisplayFlags;
 pub use flags::InstructionFlags;
 
 pub use error::Error;

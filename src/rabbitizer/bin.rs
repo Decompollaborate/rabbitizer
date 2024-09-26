@@ -25,6 +25,10 @@ fn main() {
     // println!("0x{:X}", instr.field_immediate_unchecked());
 
     for operand in instr.opcode().operands_iter() {
-        println!("{:?}: {}", operand, operand.display(&instr, None));
+        println!(
+            "{:?}: {}",
+            operand,
+            operand.display(&instr, None, rabbitizer::DisplayFlags::default())
+        );
     }
 }

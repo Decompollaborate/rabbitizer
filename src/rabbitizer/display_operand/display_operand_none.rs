@@ -11,7 +11,12 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.reg_rs_unchecked().named_reg(instr.flags().abi_gpr());
+        let reg = instr.reg_rs_unchecked();
+        let s = if myself.display_flags.named_gpr() {
+            reg.name_abi(instr.flags().abi())
+        } else {
+            reg.name_numeric()
+        };
 
         write!(f, "{}", s)
     }
@@ -21,7 +26,12 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.reg_rt_unchecked().named_reg(instr.flags().abi_gpr());
+        let reg = instr.reg_rt_unchecked();
+        let s = if myself.display_flags.named_gpr() {
+            reg.name_abi(instr.flags().abi())
+        } else {
+            reg.name_numeric()
+        };
 
         write!(f, "{}", s)
     }
@@ -31,7 +41,12 @@ impl<'ins, 'imm> DisplayOperand<'ins, 'imm> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.reg_rd_unchecked().named_reg(instr.flags().abi_gpr());
+        let reg = instr.reg_rd_unchecked();
+        let s = if myself.display_flags.named_gpr() {
+            reg.name_abi(instr.flags().abi())
+        } else {
+            reg.name_numeric()
+        };
 
         write!(f, "{}", s)
     }

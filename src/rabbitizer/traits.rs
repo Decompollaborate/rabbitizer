@@ -8,13 +8,12 @@ pub trait Register {
     fn get_descriptor(&self) -> &'static RegisterDescriptor;
 
     #[must_use]
-    fn numeric_reg(&self) -> &'static str {
-        self.get_descriptor().numeric_reg()
+    fn name_numeric(&self) -> &'static str {
+        self.get_descriptor().name_numeric()
     }
-
     #[must_use]
-    fn named_reg(&self, abi: Abi) -> &'static str {
-        self.get_descriptor().named_reg(abi)
+    fn name_abi(&self, abi: Abi) -> &'static str {
+        self.get_descriptor().name_abi(abi)
     }
 
     #[must_use]

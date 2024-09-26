@@ -2,8 +2,8 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::{
-    generated::Gpr, utils, Abi, DecodingFlags, EncodedFieldMask, InstructionFlags, IsaExtension,
-    IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder, Operand, ValuedOperandIterator,
+    generated::Gpr, utils, EncodedFieldMask, InstructionFlags, IsaExtension, IsaVersion, Opcode,
+    OpcodeCategory, OpcodeDecoder, Operand, ValuedOperandIterator,
 };
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -72,11 +72,7 @@ impl Instruction {
         let f = if let Some(f) = flags {
             f
         } else {
-            InstructionFlags {
-                abi_gpr: Abi::NUMERIC,
-                abi_fpr: Abi::NUMERIC,
-                decoding_flags: DecodingFlags::default(),
-            }
+            InstructionFlags::default()
         };
         let isa_extension = IsaExtension::RSP;
 
@@ -344,8 +340,6 @@ impl Instruction {
 
 #[cfg(test)]
 mod tests {
-    use crate::Abi;
-
     use super::*;
 
     #[test]
@@ -375,9 +369,7 @@ mod tests {
     #[test]
     fn check_lwu() {
         // lwu was introduced in MIPS III
-        let mut flags = InstructionFlags::default();
-
-        *flags.abi_gpr_mut() = Abi::NUMERIC;
+        let flags = InstructionFlags::default();
 
         let instr = Instruction::new_no_extension(
             0x9C000000,

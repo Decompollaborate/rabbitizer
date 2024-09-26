@@ -269,14 +269,13 @@ impl RegisterDescriptor {
 
 impl RegisterDescriptor {
     #[must_use]
-    pub const fn numeric_reg(&self) -> &'static str {
+    pub const fn name_numeric(&self) -> &'static str {
         self.name_numeric
     }
 
     #[must_use]
-    pub const fn named_reg(&self, abi: Abi) -> &'static str {
+    pub const fn name_abi(&self, abi: Abi) -> &'static str {
         match abi {
-            Abi::NUMERIC => self.name_numeric,
             Abi::O32 => {
                 if let Some(x) = self.name_o32 {
                     x

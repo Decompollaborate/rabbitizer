@@ -7,7 +7,6 @@
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum Abi {
-    NUMERIC,
     O32,
     N32,
     N64,

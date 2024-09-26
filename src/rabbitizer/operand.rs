@@ -1,7 +1,9 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{DisplayOperand, Instruction, Operand, OperandDescriptor, ValuedOperand, OPERANDS};
+use crate::{
+    DisplayFlags, DisplayOperand, Instruction, Operand, OperandDescriptor, ValuedOperand, OPERANDS,
+};
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
@@ -23,8 +25,9 @@ impl Operand {
         &self,
         instr: &'ins Instruction,
         imm_override: Option<&'imm str>,
+        display_flags: DisplayFlags,
     ) -> DisplayOperand<'ins, 'imm> {
-        DisplayOperand::new(*self, instr, imm_override)
+        DisplayOperand::new(*self, instr, imm_override, display_flags)
     }
 }
 
