@@ -838,7 +838,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         reads_rt: true,
         modifies_hi: true,
         modifies_lo: true,
-        ..OpcodeDescriptor::new("sn64_div", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("div", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_sn64_divu as usize] = OpcodeDescriptor {
@@ -848,7 +848,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         reads_rt: true,
         modifies_hi: true,
         modifies_lo: true,
-        ..OpcodeDescriptor::new("sn64_divu", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("divu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_ddiv as usize] = OpcodeDescriptor {
@@ -1513,7 +1513,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("add_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("add.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_sub_s as usize] = OpcodeDescriptor {
@@ -1523,7 +1523,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("sub_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("sub.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_mul_s as usize] = OpcodeDescriptor {
@@ -1533,7 +1533,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("mul_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("mul.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_div_s as usize] = OpcodeDescriptor {
@@ -1543,7 +1543,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("div_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("div.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_sqrt_s as usize] = OpcodeDescriptor {
@@ -1552,7 +1552,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("sqrt_s", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("sqrt.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_abs_s as usize] = OpcodeDescriptor {
@@ -1561,7 +1561,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("abs_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("abs.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_mov_s as usize] = OpcodeDescriptor {
@@ -1570,7 +1570,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("mov_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("mov.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_neg_s as usize] = OpcodeDescriptor {
@@ -1579,7 +1579,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("neg_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("neg.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_round_l_s as usize] = OpcodeDescriptor {
@@ -1588,7 +1588,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("round_l_s", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("round.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_trunc_l_s as usize] = OpcodeDescriptor {
@@ -1597,7 +1597,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("trunc_l_s", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("trunc.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_ceil_l_s as usize] = OpcodeDescriptor {
@@ -1606,7 +1606,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("ceil_l_s", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("ceil.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_floor_l_s as usize] = OpcodeDescriptor {
@@ -1615,7 +1615,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("floor_l_s", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("floor.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_round_w_s as usize] = OpcodeDescriptor {
@@ -1624,7 +1624,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("round_w_s", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("round.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_trunc_w_s as usize] = OpcodeDescriptor {
@@ -1633,7 +1633,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("trunc_w_s", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("trunc.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_ceil_w_s as usize] = OpcodeDescriptor {
@@ -1642,7 +1642,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("ceil_w_s", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("ceil.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_floor_w_s as usize] = OpcodeDescriptor {
@@ -1651,7 +1651,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("floor_w_s", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("floor.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_d_s as usize] = OpcodeDescriptor {
@@ -1661,7 +1661,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_double: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_d_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.d.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_w_s as usize] = OpcodeDescriptor {
@@ -1670,7 +1670,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_w_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.w.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_l_s as usize] = OpcodeDescriptor {
@@ -1679,7 +1679,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_l_s", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_f_s as usize] = OpcodeDescriptor {
@@ -1688,7 +1688,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_f_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.f.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_un_s as usize] = OpcodeDescriptor {
@@ -1697,7 +1697,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_un_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.un.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_eq_s as usize] = OpcodeDescriptor {
@@ -1706,7 +1706,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_eq_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.eq.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ueq_s as usize] = OpcodeDescriptor {
@@ -1715,7 +1715,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ueq_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ueq.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_olt_s as usize] = OpcodeDescriptor {
@@ -1724,7 +1724,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_olt_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.olt.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ult_s as usize] = OpcodeDescriptor {
@@ -1733,7 +1733,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ult_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ult.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ole_s as usize] = OpcodeDescriptor {
@@ -1742,7 +1742,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ole_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ole.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ule_s as usize] = OpcodeDescriptor {
@@ -1751,7 +1751,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ule_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ule.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_sf_s as usize] = OpcodeDescriptor {
@@ -1760,7 +1760,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_sf_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.sf.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ngle_s as usize] = OpcodeDescriptor {
@@ -1769,7 +1769,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ngle_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ngle.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_seq_s as usize] = OpcodeDescriptor {
@@ -1778,7 +1778,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_seq_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.seq.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ngl_s as usize] = OpcodeDescriptor {
@@ -1787,7 +1787,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ngl_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ngl.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_lt_s as usize] = OpcodeDescriptor {
@@ -1796,7 +1796,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_lt_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.lt.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_nge_s as usize] = OpcodeDescriptor {
@@ -1805,7 +1805,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_nge_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.nge.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_le_s as usize] = OpcodeDescriptor {
@@ -1814,7 +1814,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_le_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.le.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ngt_s as usize] = OpcodeDescriptor {
@@ -1823,7 +1823,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ngt_s", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ngt.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_add_d as usize] = OpcodeDescriptor {
@@ -1833,7 +1833,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("add_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("add.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_sub_d as usize] = OpcodeDescriptor {
@@ -1843,7 +1843,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("sub_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("sub.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_mul_d as usize] = OpcodeDescriptor {
@@ -1853,7 +1853,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("mul_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("mul.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_div_d as usize] = OpcodeDescriptor {
@@ -1863,7 +1863,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("div_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("div.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_sqrt_d as usize] = OpcodeDescriptor {
@@ -1872,7 +1872,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("sqrt_d", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("sqrt.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_abs_d as usize] = OpcodeDescriptor {
@@ -1881,7 +1881,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("abs_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("abs.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_mov_d as usize] = OpcodeDescriptor {
@@ -1890,7 +1890,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("mov_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("mov.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_neg_d as usize] = OpcodeDescriptor {
@@ -1899,7 +1899,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("neg_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("neg.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_round_l_d as usize] = OpcodeDescriptor {
@@ -1908,7 +1908,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("round_l_d", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("round.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_trunc_l_d as usize] = OpcodeDescriptor {
@@ -1917,7 +1917,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("trunc_l_d", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("trunc.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_ceil_l_d as usize] = OpcodeDescriptor {
@@ -1926,7 +1926,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("ceil_l_d", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("ceil.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_floor_l_d as usize] = OpcodeDescriptor {
@@ -1935,7 +1935,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("floor_l_d", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("floor.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_round_w_d as usize] = OpcodeDescriptor {
@@ -1944,7 +1944,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("round_w_d", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("round.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_trunc_w_d as usize] = OpcodeDescriptor {
@@ -1953,7 +1953,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("trunc_w_d", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("trunc.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_ceil_w_d as usize] = OpcodeDescriptor {
@@ -1962,7 +1962,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("ceil_w_d", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("ceil.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_floor_w_d as usize] = OpcodeDescriptor {
@@ -1971,7 +1971,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("floor_w_d", IsaVersion::MIPS_II, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("floor.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_s_d as usize] = OpcodeDescriptor {
@@ -1981,7 +1981,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_double: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_s_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.s.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_w_d as usize] = OpcodeDescriptor {
@@ -1991,7 +1991,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_double: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_w_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.w.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_l_d as usize] = OpcodeDescriptor {
@@ -2001,7 +2001,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_double: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_l_d", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_f_d as usize] = OpcodeDescriptor {
@@ -2010,7 +2010,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_f_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.f.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_un_d as usize] = OpcodeDescriptor {
@@ -2019,7 +2019,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_un_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.un.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_eq_d as usize] = OpcodeDescriptor {
@@ -2028,7 +2028,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_eq_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.eq.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ueq_d as usize] = OpcodeDescriptor {
@@ -2037,7 +2037,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ueq_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ueq.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_olt_d as usize] = OpcodeDescriptor {
@@ -2046,7 +2046,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_olt_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.olt.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ult_d as usize] = OpcodeDescriptor {
@@ -2055,7 +2055,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ult_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ult.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ole_d as usize] = OpcodeDescriptor {
@@ -2064,7 +2064,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ole_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ole.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ule_d as usize] = OpcodeDescriptor {
@@ -2073,7 +2073,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ule_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ule.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_df_d as usize] = OpcodeDescriptor {
@@ -2082,7 +2082,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_df_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.df.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ngle_d as usize] = OpcodeDescriptor {
@@ -2091,7 +2091,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ngle_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ngle.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_seq_d as usize] = OpcodeDescriptor {
@@ -2100,7 +2100,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_seq_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.seq.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ngl_d as usize] = OpcodeDescriptor {
@@ -2109,7 +2109,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ngl_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ngl.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_lt_d as usize] = OpcodeDescriptor {
@@ -2118,7 +2118,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_lt_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.lt.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_nge_d as usize] = OpcodeDescriptor {
@@ -2127,7 +2127,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_nge_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.nge.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_le_d as usize] = OpcodeDescriptor {
@@ -2136,7 +2136,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_le_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.le.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_c_ngt_d as usize] = OpcodeDescriptor {
@@ -2145,7 +2145,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_ngt_d", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("c.ngt.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_s_w as usize] = OpcodeDescriptor {
@@ -2154,7 +2154,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_s_w", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.s.w", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_d_w as usize] = OpcodeDescriptor {
@@ -2164,7 +2164,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_double: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_d_w", IsaVersion::MIPS_I, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.d.w", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_s_l as usize] = OpcodeDescriptor {
@@ -2173,7 +2173,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_s_l", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.s.l", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_cvt_d_l as usize] = OpcodeDescriptor {
@@ -2183,7 +2183,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_double: true,
         modifies_fd: true,
         reads_fs: true,
-        ..OpcodeDescriptor::new("cvt_d_l", IsaVersion::MIPS_III, IsaExtension::NONE)
+        ..OpcodeDescriptor::new("cvt.d.l", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::cpu_mfc2 as usize] = OpcodeDescriptor {
@@ -3407,7 +3407,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::I,
         reads_rs: true,
-        ..OpcodeDescriptor::new("lv_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("lv.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_sv_s as usize] = OpcodeDescriptor {
@@ -3417,7 +3417,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::I,
         modifies_rs: true,
-        ..OpcodeDescriptor::new("sv_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("sv.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_lv_q as usize] = OpcodeDescriptor {
@@ -3427,7 +3427,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::I,
         reads_rs: true,
-        ..OpcodeDescriptor::new("lv_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("lv.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_sv_q as usize] = OpcodeDescriptor {
@@ -3437,7 +3437,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::I,
         modifies_rs: true,
-        ..OpcodeDescriptor::new("sv_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("sv.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_clz as usize] = OpcodeDescriptor {
@@ -3717,7 +3717,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vadd_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vadd.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vadd_p as usize] = OpcodeDescriptor {
@@ -3727,7 +3727,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vadd_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vadd.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vadd_t as usize] = OpcodeDescriptor {
@@ -3737,7 +3737,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vadd_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vadd.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vadd_q as usize] = OpcodeDescriptor {
@@ -3747,7 +3747,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vadd_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vadd.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsub_s as usize] = OpcodeDescriptor {
@@ -3757,7 +3757,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsub_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsub.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsub_p as usize] = OpcodeDescriptor {
@@ -3767,7 +3767,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsub_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsub.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsub_t as usize] = OpcodeDescriptor {
@@ -3777,7 +3777,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsub_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsub.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsub_q as usize] = OpcodeDescriptor {
@@ -3787,7 +3787,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsub_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsub.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsbn_s as usize] = OpcodeDescriptor {
@@ -3797,7 +3797,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsbn_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsbn.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdiv_s as usize] = OpcodeDescriptor {
@@ -3807,7 +3807,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdiv_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdiv.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdiv_p as usize] = OpcodeDescriptor {
@@ -3817,7 +3817,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdiv_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdiv.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdiv_t as usize] = OpcodeDescriptor {
@@ -3827,7 +3827,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdiv_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdiv.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdiv_q as usize] = OpcodeDescriptor {
@@ -3837,7 +3837,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdiv_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdiv.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmul_s as usize] = OpcodeDescriptor {
@@ -3847,7 +3847,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmul_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmul.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmul_p as usize] = OpcodeDescriptor {
@@ -3857,7 +3857,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmul_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmul.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmul_t as usize] = OpcodeDescriptor {
@@ -3867,7 +3867,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmul_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmul.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmul_q as usize] = OpcodeDescriptor {
@@ -3877,7 +3877,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmul_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmul.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdot_p as usize] = OpcodeDescriptor {
@@ -3887,7 +3887,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdot_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdot.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdot_t as usize] = OpcodeDescriptor {
@@ -3897,7 +3897,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdot_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdot.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdot_q as usize] = OpcodeDescriptor {
@@ -3907,7 +3907,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdot_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdot.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vscl_p as usize] = OpcodeDescriptor {
@@ -3917,7 +3917,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vscl_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vscl.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vscl_t as usize] = OpcodeDescriptor {
@@ -3927,7 +3927,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vscl_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vscl.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vscl_q as usize] = OpcodeDescriptor {
@@ -3937,7 +3937,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vscl_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vscl.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vhdp_p as usize] = OpcodeDescriptor {
@@ -3947,7 +3947,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vhdp_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vhdp.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vhdp_t as usize] = OpcodeDescriptor {
@@ -3957,7 +3957,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vhdp_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vhdp.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vhdp_q as usize] = OpcodeDescriptor {
@@ -3967,7 +3967,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vhdp_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vhdp.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcrs_t as usize] = OpcodeDescriptor {
@@ -3977,7 +3977,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcrs_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcrs.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vdet_p as usize] = OpcodeDescriptor {
@@ -3987,31 +3987,31 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vdet_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vdet.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcmp_s as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcmp_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcmp.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcmp_p as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcmp_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcmp.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcmp_t as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcmp_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcmp.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcmp_q as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcmp_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcmp.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmin_s as usize] = OpcodeDescriptor {
@@ -4021,7 +4021,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmin_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmin.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmin_p as usize] = OpcodeDescriptor {
@@ -4031,7 +4031,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmin_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmin.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmin_t as usize] = OpcodeDescriptor {
@@ -4041,7 +4041,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmin_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmin.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmin_q as usize] = OpcodeDescriptor {
@@ -4051,7 +4051,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmin_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmin.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmax_s as usize] = OpcodeDescriptor {
@@ -4061,7 +4061,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmax_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmax.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmax_p as usize] = OpcodeDescriptor {
@@ -4071,7 +4071,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmax_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmax.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmax_t as usize] = OpcodeDescriptor {
@@ -4081,7 +4081,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmax_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmax.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmax_q as usize] = OpcodeDescriptor {
@@ -4091,7 +4091,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmax_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmax.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vscmp_s as usize] = OpcodeDescriptor {
@@ -4102,7 +4102,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vscmp_s",
+            "vscmp.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4116,7 +4116,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vscmp_p",
+            "vscmp.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4130,7 +4130,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vscmp_t",
+            "vscmp.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4144,7 +4144,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vscmp_q",
+            "vscmp.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4157,7 +4157,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsge_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsge.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsge_p as usize] = OpcodeDescriptor {
@@ -4167,7 +4167,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsge_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsge.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsge_t as usize] = OpcodeDescriptor {
@@ -4177,7 +4177,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsge_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsge.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsge_q as usize] = OpcodeDescriptor {
@@ -4187,7 +4187,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsge_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsge.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vslt_s as usize] = OpcodeDescriptor {
@@ -4197,7 +4197,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_s_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vslt_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vslt.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vslt_p as usize] = OpcodeDescriptor {
@@ -4207,7 +4207,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vslt_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vslt.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vslt_t as usize] = OpcodeDescriptor {
@@ -4217,7 +4217,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vslt_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vslt.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vslt_q as usize] = OpcodeDescriptor {
@@ -4227,7 +4227,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vt,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vslt_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vslt.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vwbn_s as usize] = OpcodeDescriptor {
@@ -4237,98 +4237,98 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_bn,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vwbn_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vwbn.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmov_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmov_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmov.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmov_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmov_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmov.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmov_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmov_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmov.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmov_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vmov_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vmov.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vabs_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vabs_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vabs.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vabs_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vabs_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vabs.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vabs_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vabs_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vabs.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vabs_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vabs_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vabs.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vneg_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vneg_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vneg.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vneg_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vneg_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vneg.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vneg_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vneg_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vneg.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vneg_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vneg_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vneg.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vidt_p as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vidt_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vidt.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vidt_q as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vidt_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vidt.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsat0_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat0_s",
+            "vsat0.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4338,7 +4338,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat0_p",
+            "vsat0.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4348,7 +4348,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat0_t",
+            "vsat0.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4358,7 +4358,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat0_q",
+            "vsat0.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4368,7 +4368,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat1_s",
+            "vsat1.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4378,7 +4378,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat1_p",
+            "vsat1.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4388,7 +4388,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat1_t",
+            "vsat1.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4398,7 +4398,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsat1_q",
+            "vsat1.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4408,7 +4408,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vzero_s",
+            "vzero.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4418,7 +4418,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vzero_p",
+            "vzero.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4428,7 +4428,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vzero_t",
+            "vzero.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4438,7 +4438,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vzero_q",
+            "vzero.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4447,128 +4447,128 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vone_s as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vone_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vone.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vone_p as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vone_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vone.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vone_t as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vone_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vone.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vone_q as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vone_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vone.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrcp_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrcp_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrcp.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrcp_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrcp_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrcp.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrcp_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrcp_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrcp.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrcp_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrcp_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrcp.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrsq_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrsq_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrsq.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrsq_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrsq_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrsq.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrsq_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrsq_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrsq.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrsq_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrsq_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrsq.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsin_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsin_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsin.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsin_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsin_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsin.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsin_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsin_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsin.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsin_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsin_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsin.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcos_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcos_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcos.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcos_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcos_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcos.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcos_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcos_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcos.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcos_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcos_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcos.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vexp2_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vexp2_s",
+            "vexp2.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4578,7 +4578,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vexp2_p",
+            "vexp2.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4588,7 +4588,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vexp2_t",
+            "vexp2.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4598,7 +4598,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vexp2_q",
+            "vexp2.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4608,7 +4608,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vlog2_s",
+            "vlog2.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4618,7 +4618,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vlog2_p",
+            "vlog2.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4628,7 +4628,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vlog2_t",
+            "vlog2.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4638,7 +4638,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vlog2_q",
+            "vlog2.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4648,7 +4648,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsqrt_s",
+            "vsqrt.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4658,7 +4658,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsqrt_p",
+            "vsqrt.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4668,7 +4668,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsqrt_t",
+            "vsqrt.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4678,7 +4678,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsqrt_q",
+            "vsqrt.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4688,7 +4688,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vasin_s",
+            "vasin.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4698,7 +4698,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vasin_p",
+            "vasin.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4708,7 +4708,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vasin_t",
+            "vasin.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4718,7 +4718,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vasin_q",
+            "vasin.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4728,7 +4728,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnrcp_s",
+            "vnrcp.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4738,7 +4738,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnrcp_p",
+            "vnrcp.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4748,7 +4748,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnrcp_t",
+            "vnrcp.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4758,7 +4758,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnrcp_q",
+            "vnrcp.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4768,7 +4768,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnsin_s",
+            "vnsin.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4778,7 +4778,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnsin_p",
+            "vnsin.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4788,7 +4788,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnsin_t",
+            "vnsin.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4798,7 +4798,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vnsin_q",
+            "vnsin.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4808,7 +4808,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrexp2_s",
+            "vrexp2.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4818,7 +4818,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrexp2_p",
+            "vrexp2.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4828,7 +4828,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrexp2_t",
+            "vrexp2.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4838,7 +4838,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrexp2_q",
+            "vrexp2.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4848,7 +4848,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrnds_s",
+            "vrnds.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4858,7 +4858,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndi_s",
+            "vrndi.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4868,7 +4868,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndi_p",
+            "vrndi.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4878,7 +4878,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndi_t",
+            "vrndi.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4888,7 +4888,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndi_q",
+            "vrndi.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4898,7 +4898,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf1_s",
+            "vrndf1.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4908,7 +4908,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf1_p",
+            "vrndf1.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4918,7 +4918,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf1_t",
+            "vrndf1.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4928,7 +4928,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf1_q",
+            "vrndf1.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4938,7 +4938,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf2_s",
+            "vrndf2.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4948,7 +4948,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf2_p",
+            "vrndf2.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4958,7 +4958,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf2_t",
+            "vrndf2.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4968,7 +4968,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vrndf2_q",
+            "vrndf2.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -4977,44 +4977,44 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vf2h_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vf2h_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vf2h.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vf2h_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vf2h_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vf2h.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vh2f_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vh2f_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vh2f.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vh2f_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vh2f_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vh2f.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsbz_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsbz_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsbz.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vlgb_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vlgb_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vlgb.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vuc2ifs_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vuc2ifs_s",
+            "vuc2ifs.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5023,14 +5023,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vc2i_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vc2i_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vc2i.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vus2i_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vus2i_s",
+            "vus2i.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5040,7 +5040,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vus2i_p",
+            "vus2i.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5049,20 +5049,20 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vs2i_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vs2i_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vs2i.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vs2i_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vs2i_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vs2i.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vi2uc_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vi2uc_q",
+            "vi2uc.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5071,14 +5071,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vi2c_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vi2c_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vi2c.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vi2us_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vi2us_p",
+            "vi2us.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5088,7 +5088,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vi2us_q",
+            "vi2us.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5097,20 +5097,20 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vi2s_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vi2s_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vi2s.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vi2s_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vi2s_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vi2s.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsrt1_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsrt1_q",
+            "vsrt1.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5120,7 +5120,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsrt2_q",
+            "vsrt2.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5130,7 +5130,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vbfy1_p",
+            "vbfy1.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5140,7 +5140,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vbfy1_q",
+            "vbfy1.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5150,7 +5150,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vbfy2_q",
+            "vbfy2.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5159,32 +5159,32 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vocp_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vocp_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vocp.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vocp_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vocp_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vocp.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vocp_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vocp_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vocp.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vocp_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vocp_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vocp.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsocp_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsocp_s",
+            "vsocp.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5194,7 +5194,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsocp_p",
+            "vsocp.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5203,44 +5203,44 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vfad_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vfad_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vfad.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vfad_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vfad_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vfad.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vfad_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vfad_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vfad.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vavg_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vavg_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vavg.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vavg_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vavg_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vavg.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vavg_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vavg_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vavg.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsrt3_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsrt3_q",
+            "vsrt3.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5250,7 +5250,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vsrt4_q",
+            "vsrt4.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5259,25 +5259,25 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_vsgn_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsgn_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsgn.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsgn_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsgn_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsgn.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsgn_t as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsgn_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsgn.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vsgn_q as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vsgn_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vsgn.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmfvc as usize] = OpcodeDescriptor {
@@ -5296,7 +5296,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vt4444_q",
+            "vt4444.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5306,7 +5306,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vt5551_q",
+            "vt5551.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5316,7 +5316,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vt5650_q",
+            "vt5650.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5328,7 +5328,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_vconstant,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcst_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcst.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcst_p as usize] = OpcodeDescriptor {
@@ -5337,7 +5337,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_vconstant,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcst_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcst.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcst_t as usize] = OpcodeDescriptor {
@@ -5346,7 +5346,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_vconstant,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcst_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcst.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcst_q as usize] = OpcodeDescriptor {
@@ -5355,7 +5355,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_vconstant,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vcst_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vcst.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vf2in_s as usize] = OpcodeDescriptor {
@@ -5366,7 +5366,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2in_s",
+            "vf2in.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5380,7 +5380,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2in_p",
+            "vf2in.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5394,7 +5394,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2in_t",
+            "vf2in.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5408,7 +5408,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2in_q",
+            "vf2in.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5422,7 +5422,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iz_s",
+            "vf2iz.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5436,7 +5436,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iz_p",
+            "vf2iz.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5450,7 +5450,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iz_t",
+            "vf2iz.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5464,7 +5464,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iz_q",
+            "vf2iz.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5478,7 +5478,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iu_s",
+            "vf2iu.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5492,7 +5492,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iu_p",
+            "vf2iu.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5506,7 +5506,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iu_t",
+            "vf2iu.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5520,7 +5520,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2iu_q",
+            "vf2iu.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5534,7 +5534,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2id_s",
+            "vf2id.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5548,7 +5548,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2id_p",
+            "vf2id.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5562,7 +5562,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2id_t",
+            "vf2id.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5576,7 +5576,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vf2id_q",
+            "vf2id.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5589,7 +5589,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_power_of_two,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vi2f_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vi2f.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vi2f_p as usize] = OpcodeDescriptor {
@@ -5599,7 +5599,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_power_of_two,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vi2f_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vi2f.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vi2f_t as usize] = OpcodeDescriptor {
@@ -5609,7 +5609,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_power_of_two,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vi2f_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vi2f.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vi2f_q as usize] = OpcodeDescriptor {
@@ -5619,7 +5619,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_power_of_two,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vi2f_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vi2f.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vcmovt_s as usize] = OpcodeDescriptor {
@@ -5630,7 +5630,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovt_s",
+            "vcmovt.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5644,7 +5644,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovt_p",
+            "vcmovt.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5658,7 +5658,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovt_t",
+            "vcmovt.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5672,7 +5672,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovt_q",
+            "vcmovt.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5686,7 +5686,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovf_s",
+            "vcmovf.s",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5700,7 +5700,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovf_p",
+            "vcmovf.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5714,7 +5714,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovf_t",
+            "vcmovf.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5728,7 +5728,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcmovf_q",
+            "vcmovf.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5770,13 +5770,13 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_viim_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_int16),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("viim_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("viim.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vfim_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_float16),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vfim_s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vfim.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmmul_p as usize] = OpcodeDescriptor {
@@ -5787,7 +5787,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmmul_p",
+            "vmmul.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5801,7 +5801,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmmul_t",
+            "vmmul.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5815,7 +5815,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmmul_q",
+            "vmmul.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5829,7 +5829,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vhtfm2_p",
+            "vhtfm2.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5843,7 +5843,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vtfm2_p",
+            "vtfm2.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5857,7 +5857,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vhtfm3_t",
+            "vhtfm3.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5871,7 +5871,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vtfm3_t",
+            "vtfm3.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5885,7 +5885,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vhtfm4_q",
+            "vhtfm4.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5899,7 +5899,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vtfm4_q",
+            "vtfm4.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5913,7 +5913,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmscl_p",
+            "vmscl.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5927,7 +5927,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmscl_t",
+            "vmscl.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5941,7 +5941,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmscl_q",
+            "vmscl.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5955,7 +5955,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vcrsp_t",
+            "vcrsp.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5969,7 +5969,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vqmul_q",
+            "vqmul.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -5982,7 +5982,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_p_vrot_code,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrot_p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrot.p", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrot_t as usize] = OpcodeDescriptor {
@@ -5992,7 +5992,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_t_vrot_code,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrot_t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrot.t", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vrot_q as usize] = OpcodeDescriptor {
@@ -6002,14 +6002,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_q_vrot_code,
         ),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("vrot_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("vrot.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_vmmov_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_mp_vd, Operand::r4000allegrex_mp_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmmov_p",
+            "vmmov.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6019,7 +6019,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_mt_vd, Operand::r4000allegrex_mt_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmmov_t",
+            "vmmov.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6029,7 +6029,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::r4000allegrex_mq_vd, Operand::r4000allegrex_mq_vs),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmmov_q",
+            "vmmov.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6039,7 +6039,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mp_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmidt_p",
+            "vmidt.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6049,7 +6049,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mt_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmidt_t",
+            "vmidt.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6059,7 +6059,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mq_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmidt_q",
+            "vmidt.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6069,7 +6069,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mp_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmzero_p",
+            "vmzero.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6079,7 +6079,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mt_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmzero_t",
+            "vmzero.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6089,7 +6089,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mq_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmzero_q",
+            "vmzero.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6099,7 +6099,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mp_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmone_p",
+            "vmone.p",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6109,7 +6109,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mt_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmone_t",
+            "vmone.t",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6119,7 +6119,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::r4000allegrex_mq_vd),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new(
-            "vmone_q",
+            "vmone.q",
             IsaVersion::EXTENSION,
             IsaExtension::R4000ALLEGREX,
         )
@@ -6150,7 +6150,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::I,
         reads_rs: true,
-        ..OpcodeDescriptor::new("svl_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("svl.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_svr_q as usize] = OpcodeDescriptor {
@@ -6160,7 +6160,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ),
         instr_type: InstrType::I,
         reads_rs: true,
-        ..OpcodeDescriptor::new("svr_q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+        ..OpcodeDescriptor::new("svr.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r5900_lq as usize] = OpcodeDescriptor {
@@ -6206,7 +6206,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r5900_sync_p as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("sync_p", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("sync.p", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mult as usize] = OpcodeDescriptor {
@@ -6985,37 +6985,37 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r5900_pmfhl_lw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl_lw", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("pmfhl.lw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_uw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl_uw", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("pmfhl.uw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_slw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl_slw", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("pmfhl.slw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_lh as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl_lh", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("pmfhl.lh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_sh as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::cpu_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl_sh", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("pmfhl.sh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmthl_lw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::cpu_rs),
         reads_rs: true,
-        ..OpcodeDescriptor::new("pmthl_lw", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("pmthl.lw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_ei as usize] = OpcodeDescriptor {
@@ -7030,7 +7030,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     .check_panic_chain();
     table[Opcode::r5900_c1__sqrt_s as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::cpu_copraw),
-        ..OpcodeDescriptor::new("c1__sqrt_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("c1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_rsqrt_s as usize] = OpcodeDescriptor {
@@ -7039,7 +7039,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("rsqrt_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("rsqrt.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_adda_s as usize] = OpcodeDescriptor {
@@ -7047,7 +7047,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("adda_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("adda.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_suba_s as usize] = OpcodeDescriptor {
@@ -7055,7 +7055,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("suba_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("suba.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mula_s as usize] = OpcodeDescriptor {
@@ -7063,7 +7063,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("mula_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("mula.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_madd_s as usize] = OpcodeDescriptor {
@@ -7072,7 +7072,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("madd_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("madd.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_msub_s as usize] = OpcodeDescriptor {
@@ -7081,7 +7081,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("msub_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("msub.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_madda_s as usize] = OpcodeDescriptor {
@@ -7089,7 +7089,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("madda_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("madda.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_msuba_s as usize] = OpcodeDescriptor {
@@ -7097,7 +7097,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("msuba_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("msuba.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_max_s as usize] = OpcodeDescriptor {
@@ -7106,7 +7106,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("max_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("max.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_min_s as usize] = OpcodeDescriptor {
@@ -7115,7 +7115,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("min_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("min.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_c_lt_s as usize] = OpcodeDescriptor {
@@ -7123,7 +7123,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_lt_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("c.lt.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_c_le_s as usize] = OpcodeDescriptor {
@@ -7131,7 +7131,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c_le_s", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("c.le.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_qmfc2 as usize] = OpcodeDescriptor {
@@ -8314,7 +8314,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("vilwr_w", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("vilwr.w", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_vilwr_z as usize] = OpcodeDescriptor {
@@ -8322,7 +8322,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("vilwr_z", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("vilwr.z", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_vilwr_y as usize] = OpcodeDescriptor {
@@ -8330,7 +8330,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("vilwr_y", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("vilwr.y", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_vilwr_x as usize] = OpcodeDescriptor {
@@ -8338,7 +8338,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("vilwr_x", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("vilwr.x", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_viswr_w as usize] = OpcodeDescriptor {
@@ -8346,7 +8346,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("viswr_w", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("viswr.w", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_viswr_z as usize] = OpcodeDescriptor {
@@ -8354,7 +8354,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("viswr_z", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("viswr.z", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_viswr_y as usize] = OpcodeDescriptor {
@@ -8362,7 +8362,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("viswr_y", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("viswr.y", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_viswr_x as usize] = OpcodeDescriptor {
@@ -8370,7 +8370,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
-        ..OpcodeDescriptor::new("viswr_x", IsaVersion::EXTENSION, IsaExtension::R5900)
+        ..OpcodeDescriptor::new("viswr.x", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     let mut i = 0;

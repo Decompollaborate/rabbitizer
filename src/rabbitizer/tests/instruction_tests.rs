@@ -3,21 +3,30 @@
 
 #[cfg(test)]
 mod tests {
-    use crate::{operand, Instruction, InstructionFlags, Opcode};
+    use crate::{operand, DisplayFlags, Instruction, InstructionFlags, IsaVersion, Opcode};
 
     struct TestEntry {
         pub instr: Instruction,
+        pub imm_override: Option<&'static str>,
+        pub display_flags: DisplayFlags,
+
         pub valid: bool,
+
+        #[allow(dead_code)] // TODO: remove
         pub expected: &'static str,
         pub expected_opcode: Opcode,
         pub opcode_str: &'static str,
+        #[allow(dead_code)] // TODO: remove
         pub operands_str: [Option<&'static str>; operand::OPERAND_COUNT_MAX],
     }
 
     impl TestEntry {
-        pub const fn new_rsp_invalid(word: u32, flags: Option<InstructionFlags>) -> Self {
+        #[allow(dead_code)]
+        pub const fn new_none_invalid(word: u32, flags: Option<InstructionFlags>) -> Self {
             Self {
-                instr: Instruction::new_rsp(word, 0xA4000000, flags),
+                instr: Instruction::new_no_extension(word, 0x80000000, flags, IsaVersion::MIPS_III),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: false,
                 expected: "INVALID",
                 expected_opcode: Opcode::ALL_INVALID,
@@ -25,12 +34,137 @@ mod tests {
                 operands_str: [None, None, None, None, None],
             }
         }
+
+        pub const fn new_rsp_invalid(word: u32, flags: Option<InstructionFlags>) -> Self {
+            Self {
+                instr: Instruction::new_rsp(word, 0xA4000000, flags),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: false,
+                expected: "INVALID",
+                expected_opcode: Opcode::ALL_INVALID,
+                opcode_str: "INVALID",
+                operands_str: [None, None, None, None, None],
+            }
+        }
+
+        pub fn compare_source_info(&self, other: &Self) -> bool {
+            if self.instr.word() != other.instr.word() {
+                false
+            } else if self.imm_override != other.imm_override {
+                false
+            } else if self.display_flags != other.display_flags {
+                false
+            } else {
+                true
+            }
+        }
+
+        pub fn check_validity(&self) -> u32 {
+            let mut errors = 0;
+
+            if self.instr.is_valid() != self.valid {
+                println!(
+                    "'{}' ({:08X}) has incorrect validity. Expected '{}', got '{}'",
+                    self.opcode_str,
+                    self.instr.word(),
+                    self.valid,
+                    self.instr.is_valid()
+                );
+                errors += 1;
+            }
+            if self.instr.opcode() != self.expected_opcode {
+                println!(
+                    "'{}' ({:08X}) has incorrect decoded opcode. Expected '{:?}', got '{:?}'",
+                    self.opcode_str,
+                    self.instr.word(),
+                    self.expected_opcode,
+                    self.instr.opcode()
+                );
+                errors += 1;
+            }
+            if self.instr.opcode().name() != self.opcode_str {
+                println!(
+                    "'{}' ({:08X}) has incorrect opcode name. Expected '{}', got '{}'",
+                    self.opcode_str,
+                    self.instr.word(),
+                    self.opcode_str,
+                    self.instr.opcode().name()
+                );
+                errors += 1;
+            }
+
+            // TODO: expected
+            /*
+            let disasm = self.instr.display(self.imm_override, &self.display_flags).to_string();
+            if disasm != self.expected {
+                println!(
+                    "'{}' ({:08X}) did not match the expected string. Expected '{}', got '{}'",
+                    self.opcode_str,
+                    self.instr.word(),
+                    self.expected,
+                    disasm
+                );
+                errors += 1;
+            }
+            */
+
+            // TODO: operands_str
+            /*
+            {
+                let mut j = 0;
+                for (i, operand) in self.instr.operands_iter().enumerate() {
+                    let operand_str = operand.display(&self.instr, self.imm_override, &self.display_flags).to_string();
+                    let maybe_expected_str = self.operands_str[i];
+
+                    if let Some(expected_str) = maybe_expected_str {
+                        if operand_str != expected_str {
+                            println!(
+                                "'{}' ({:08X}) has incorrect disassembled operand. Expected '{}', got '{}'",
+                                self.opcode_str,
+                                self.instr.word(),
+                                expected_str,
+                                operand_str
+                            );
+                        }
+                    } else {
+                        println!(
+                            "'{}' ({:08X}) has an unexpected operand at index {}. Got: '{}'",
+                            self.opcode_str,
+                            self.instr.word(),
+                            i,
+                            operand_str,
+                        );
+                        errors += 1;
+                    }
+                    j = i;
+                }
+
+                if !self.operands_str[j..].iter().all(|x| *x == None) {
+                    println!(
+                        "'{}' ({:08X}) has unhandled expected operands. Values: '{:?}'",
+                        self.opcode_str,
+                        self.instr.word(),
+                        &self.operands_str[j..]
+                    );
+                    errors += 1;
+                }
+            }
+            */
+
+            errors
+        }
     }
 
     fn entries_sanity_check(entries: &[TestEntry]) {
         for (i, x) in entries.iter().enumerate() {
             for y in entries[i + 1..].iter() {
-                assert_ne!(x.instr.word(), y.instr.word());
+                assert!(
+                    !x.compare_source_info(y),
+                    "Duplicated entry. Word: '0x{:08X}'. imm_override: '{:?}'",
+                    x.instr.word(),
+                    x.imm_override
+                );
             }
         }
     }
@@ -41,43 +175,540 @@ mod tests {
         entries_sanity_check(entries);
 
         for entry in entries {
-            if entry.instr.is_valid() != entry.valid {
-                println!(
-                    "'{}' ({:08X}) has incorrect validity. Expected '{}', got '{}'",
-                    entry.opcode_str,
-                    entry.instr.word(),
-                    entry.valid,
-                    entry.instr.is_valid()
-                );
-                println!("  {}", entry.expected);
-                println!("  {:?}", entry.operands_str);
-                errors += 1;
-            }
-            if entry.instr.opcode() != entry.expected_opcode {
-                println!(
-                    "'{}' ({:08X}) has incorrect decoded opcode. Expected '{:?}', got '{:?}'",
-                    entry.opcode_str,
-                    entry.instr.word(),
-                    entry.expected_opcode,
-                    entry.instr.opcode()
-                );
-                errors += 1;
-            }
-            if entry.instr.opcode().name() != entry.opcode_str {
-                println!(
-                    "'{}' ({:08X}) has incorrect opcode name. Expected '{}', got '{}'",
-                    entry.opcode_str,
-                    entry.instr.word(),
-                    entry.opcode_str,
-                    entry.instr.opcode().name()
-                );
-                errors += 1;
-            }
-            // TODO: expected
-            // TODO: operands_str
+            // println!("{}", entry.expected);
+
+            errors += entry.check_validity();
         }
 
         errors
+    }
+
+    #[test]
+    fn check_none_instructions() {
+        const ENTRIES: &[TestEntry] = &[
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x3C088001,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lui         $t0, 0x8001",
+                expected_opcode: Opcode::cpu_lui,
+                opcode_str: "lui",
+                operands_str: [Some("$t0"), Some("0x8001"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x25080E60,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "addiu       $t0, $t0, 0xE60",
+                expected_opcode: Opcode::cpu_addiu,
+                opcode_str: "addiu",
+                operands_str: [Some("$t0"), Some("$t0"), Some("0xE60"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x3C090002,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lui         $t1, 0x2",
+                expected_opcode: Opcode::cpu_lui,
+                opcode_str: "lui",
+                operands_str: [Some("$t1"), Some("0x2"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x25298DE0,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "addiu       $t1, $t1, -0x7220",
+                expected_opcode: Opcode::cpu_addiu,
+                opcode_str: "addiu",
+                operands_str: [Some("$t1"), Some("$t1"), Some("-0x7220"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0xAD000000,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "sw          $zero, 0x0($t0)",
+                expected_opcode: Opcode::cpu_sw,
+                opcode_str: "sw",
+                operands_str: [Some("$zero"), Some("0x0($t0)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0xAD000004,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "sw          $zero, 0x4($t0)",
+                expected_opcode: Opcode::cpu_sw,
+                opcode_str: "sw",
+                operands_str: [Some("$zero"), Some("0x4($t0)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x21080008,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "addi        $t0, $t0, 0x8",
+                expected_opcode: Opcode::cpu_addi,
+                opcode_str: "addi",
+                operands_str: [Some("$t0"), Some("$t0"), Some("0x8"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x2129FFF8,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "addi        $t1, $t1, -0x8",
+                expected_opcode: Opcode::cpu_addi,
+                opcode_str: "addi",
+                operands_str: [Some("$t1"), Some("$t1"), Some("-0x8"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x1520FFFB,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "bnez        $t1, . + 4 + (-0x5 << 2)",
+                expected_opcode: Opcode::cpu_bnez,
+                opcode_str: "bnez",
+                operands_str: [Some("$t1"), Some(". + 4 + (-0x5 << 2)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x00000000,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "nop",
+                expected_opcode: Opcode::cpu_nop,
+                opcode_str: "nop",
+                operands_str: [None, None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x3C0A8000,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lui         $t2, 0x8000",
+                expected_opcode: Opcode::cpu_lui,
+                opcode_str: "lui",
+                operands_str: [Some("$t2"), Some("0x8000"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x254A0494,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "addiu       $t2, $t2, 0x494",
+                expected_opcode: Opcode::cpu_addiu,
+                opcode_str: "addiu",
+                operands_str: [Some("$t2"), Some("$t2"), Some("0x494"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x3C1D8002,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lui         $sp, 0x8002",
+                expected_opcode: Opcode::cpu_lui,
+                opcode_str: "lui",
+                operands_str: [Some("$sp"), Some("0x8002"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x01400008,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "jr          $t2",
+                expected_opcode: Opcode::cpu_jr,
+                opcode_str: "jr",
+                operands_str: [Some("$t2"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x27BDF8C0,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "addiu       $sp, $sp, -0x740",
+                expected_opcode: Opcode::cpu_addiu,
+                opcode_str: "addiu",
+                operands_str: [Some("$sp"), Some("$sp"), Some("-0x740"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x3C018001,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lui         $at, 0x8001",
+                expected_opcode: Opcode::cpu_lui,
+                opcode_str: "lui",
+                operands_str: [Some("$at"), Some("0x8001"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x03E00008,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "jr          $ra",
+                expected_opcode: Opcode::cpu_jr,
+                opcode_str: "jr",
+                operands_str: [Some("$ra"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0xAC24E190,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "sw          $a0, -0x1E70($at)",
+                expected_opcode: Opcode::cpu_sw,
+                opcode_str: "sw",
+                operands_str: [Some("$a0"), Some("-0x1E70($at)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x3C018001,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: Some("%hi(D_8000E190)"),
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lui         $at, %hi(D_8000E190)",
+                expected_opcode: Opcode::cpu_lui,
+                opcode_str: "lui",
+                operands_str: [Some("$at"), Some("%hi(D_8000E190)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0xAC24E190,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: Some("%lo(D_8000E190)"),
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "sw          $a0, %lo(D_8000E190)($at)",
+                expected_opcode: Opcode::cpu_sw,
+                opcode_str: "sw",
+                operands_str: [Some("$a0"), Some("%lo(D_8000E190)($at)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0C001F24,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "jal         func_80007C90",
+                expected_opcode: Opcode::cpu_jal,
+                opcode_str: "jal",
+                operands_str: [Some("func_80007C90"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0C001F24,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: Some("some_func"),
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "jal         some_func",
+                expected_opcode: Opcode::cpu_jal,
+                opcode_str: "jal",
+                operands_str: [Some("some_func"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x8F99805C,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lw          $t9, -0x7FA4($gp)",
+                expected_opcode: Opcode::cpu_lw,
+                opcode_str: "lw",
+                operands_str: [Some("$t9"), Some("-0x7FA4($gp)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x8F99805C,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: Some("%call16(strcmp)"),
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lw          $t9, %call16(strcmp)($gp)",
+                expected_opcode: Opcode::cpu_lw,
+                opcode_str: "lw",
+                operands_str: [Some("$t9"), Some("%call16(strcmp)($gp)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x8F858028,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lw          $a1, -0x7FD8($gp)",
+                expected_opcode: Opcode::cpu_lw,
+                opcode_str: "lw",
+                operands_str: [Some("$a1"), Some("-0x7FD8($gp)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x8F858028,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: Some("%got(STR_10007C90)"),
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "lw          $a1, %got(STR_10007C90)($gp)",
+                expected_opcode: Opcode::cpu_lw,
+                opcode_str: "lw",
+                operands_str: [
+                    Some("$a1"),
+                    Some("%got(STR_10007C90)($gp)"),
+                    None,
+                    None,
+                    None,
+                ],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x00435022,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "sub         $t2, $v0, $v1",
+                expected_opcode: Opcode::cpu_sub,
+                opcode_str: "sub",
+                operands_str: [Some("$t2"), Some("$v0"), Some("$v1"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x00025022,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "neg         $t2, $v0",
+                expected_opcode: Opcode::cpu_neg,
+                opcode_str: "neg",
+                operands_str: [Some("$t2"), Some("$v0"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x00E41823,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "subu        $v1, $a3, $a0",
+                expected_opcode: Opcode::cpu_subu,
+                opcode_str: "subu",
+                operands_str: [Some("$v1"), Some("$a3"), Some("$a0"), None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x00041823,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "negu        $v1, $a0",
+                expected_opcode: Opcode::cpu_negu,
+                opcode_str: "negu",
+                operands_str: [Some("$v1"), Some("$a0"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x42000010,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "rfe",
+                expected_opcode: Opcode::cpu_rfe,
+                opcode_str: "rfe",
+                operands_str: [None, None, None, None, None],
+            },
+
+            // Invalid instructions
+            // TestEntry::new_none_invalid(0x44444444, None),
+
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x44444444,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: false,
+                expected: ".word       0x44444444                   # cfc1        $a0, $8 # 00000444 <InstrIdType: CPU_COP1>",
+                expected_opcode: Opcode::cpu_cfc1,
+                opcode_str: "cfc1",
+                operands_str: [Some("$a0"), Some("$8"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x77777777,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: false,
+                expected: ".word       0x77777777                   # INVALID # 00000000 <InstrIdType: CPU_NORMAL>",
+                expected_opcode: Opcode::ALL_INVALID,
+                opcode_str: "INVALID",
+                operands_str: [None, None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0xEEEEEEEE,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: false,
+                expected: ".word       0xEEEEEEEE                   # INVALID # 00000000 <InstrIdType: CPU_NORMAL>",
+                expected_opcode: Opcode::ALL_INVALID,
+                opcode_str: "INVALID",
+                operands_str: [None, None, None, None, None],
+            },
+        ];
+
+        assert_eq!(check_test_entries(ENTRIES), 0);
     }
 
     #[test]
@@ -85,6 +716,8 @@ mod tests {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
                 instr: Instruction::new_rsp(0x09000419, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "j           func_A4001064",
                 expected_opcode: Opcode::rsp_j,
@@ -93,6 +726,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x21490000, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "addi        $9, $10, 0x0",
                 expected_opcode: Opcode::rsp_addi,
@@ -101,6 +736,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x8C060578, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lw          $6, 0x578($zero)",
                 expected_opcode: Opcode::rsp_lw,
@@ -109,6 +746,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x400B2800, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "mfc0        $11, SP_DMA_FULL",
                 expected_opcode: Opcode::rsp_mfc0,
@@ -117,6 +756,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x304203FF, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "andi        $2, $2, 0x3FF",
                 expected_opcode: Opcode::rsp_andi,
@@ -125,6 +766,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x10400003, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "beqz        $2, .L800B38E8",
                 expected_opcode: Opcode::rsp_beqz,
@@ -133,6 +776,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00000000, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "nop",
                 expected_opcode: Opcode::rsp_nop,
@@ -141,6 +786,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1C600033, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "bgtz        $3, .L800B3A74",
                 expected_opcode: Opcode::rsp_bgtz,
@@ -149,6 +796,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x0D00077A, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "jal         func_84001DE8",
                 expected_opcode: Opcode::rsp_jal,
@@ -157,6 +806,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xAEEB000C, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sw          $11, 0xC($23)",
                 expected_opcode: Opcode::rsp_sw,
@@ -165,6 +816,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1560FB8D, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "bnez        $11, .L800B2288",
                 expected_opcode: Opcode::rsp_bnez,
@@ -173,6 +826,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x40921800, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "mtc0        $18, SP_WR_LEN",
                 expected_opcode: Opcode::rsp_mtc0,
@@ -181,6 +836,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00026A82, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "srl         $13, $2, 10",
                 expected_opcode: Opcode::rsp_srl,
@@ -189,6 +846,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x004F1020, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "add         $2, $2, $15",
                 expected_opcode: Opcode::rsp_add,
@@ -197,6 +856,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x84040572, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lh          $4, 0x572($zero)",
                 expected_opcode: Opcode::rsp_lh,
@@ -205,6 +866,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x03E00008, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "jr          $ra",
                 expected_opcode: Opcode::rsp_jr,
@@ -213,6 +876,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x0000000D, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "break       0",
                 expected_opcode: Opcode::rsp_break,
@@ -221,6 +886,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x19C0FA06, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "blez        $14, .L800B2288",
                 expected_opcode: Opcode::rsp_blez,
@@ -229,6 +896,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x09000A19, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "j           func_84002864",
                 expected_opcode: Opcode::rsp_j,
@@ -237,6 +906,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x37120000, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "ori         $18, $24, 0x0",
                 expected_opcode: Opcode::rsp_ori,
@@ -245,6 +916,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1000FE72, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "b           .L800B1A78",
                 expected_opcode: Opcode::rsp_b,
@@ -253,6 +926,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4A0318EC, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vxor        $v3, $v3, $v3",
                 expected_opcode: Opcode::rsp_vxor,
@@ -261,6 +936,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xEAF11B0B, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sdv         $v17[6], 0x58($23)",
                 expected_opcode: Opcode::rsp_sdv,
@@ -269,6 +946,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x940C0572, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lhu         $12, 0x572($zero)",
                 expected_opcode: Opcode::rsp_lhu,
@@ -277,6 +956,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00095880, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sll         $11, $9, 2",
                 expected_opcode: Opcode::rsp_sll,
@@ -285,6 +966,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xA403057C, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sh          $3, 0x57C($zero)",
                 expected_opcode: Opcode::rsp_sh,
@@ -293,6 +976,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xCA832000, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lqv         $v3[0], 0x0($20)",
                 expected_opcode: Opcode::rsp_lqv,
@@ -301,6 +986,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xEAE40C0B, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "ssv         $v4[8], 0x16($23)",
                 expected_opcode: Opcode::rsp_ssv,
@@ -309,6 +996,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xCBC41807, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "ldv         $v4[0], 0x38($30)",
                 expected_opcode: Opcode::rsp_ldv,
@@ -317,6 +1006,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x3C07F510, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lui         $7, (0xF5100000 >> 16)",
                 expected_opcode: Opcode::rsp_lui,
@@ -325,6 +1016,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00611824, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "and         $3, $3, $1",
                 expected_opcode: Opcode::rsp_and,
@@ -333,6 +1026,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xEBC62000, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sqv         $v6[0], 0x0($30)",
                 expected_opcode: Opcode::rsp_sqv,
@@ -341,6 +1036,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1193FFFE, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "beq         $12, $19, .L800B304C",
                 expected_opcode: Opcode::rsp_beq,
@@ -349,6 +1046,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x900B0539, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lbu         $11, 0x539($zero)",
                 expected_opcode: Opcode::rsp_lbu,
@@ -357,6 +1056,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B0C58A8, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vand        $v2, $v11, $v12[0]",
                 expected_opcode: Opcode::rsp_vand,
@@ -365,6 +1066,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x008C5822, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sub         $11, $4, $12",
                 expected_opcode: Opcode::rsp_sub,
@@ -373,6 +1076,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00432006, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "srlv        $4, $3, $2",
                 expected_opcode: Opcode::rsp_srlv,
@@ -381,6 +1086,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x488ED800, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "mtc2        $14, $v27[0]",
                 expected_opcode: Opcode::rsp_mtc2,
@@ -389,6 +1096,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xC9B12802, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lrv         $v17[0], 0x20($13)",
                 expected_opcode: Opcode::rsp_lrv,
@@ -397,6 +1106,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B1B21C6, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmudn       $v7, $v4, $v27[0]",
                 expected_opcode: Opcode::rsp_vmudn,
@@ -405,6 +1116,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B7F488E, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmadn       $v2, $v9, $v31[3]",
                 expected_opcode: Opcode::rsp_vmadn,
@@ -413,6 +1126,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B2A3A05, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmudm       $v8, $v7, $v10[1]",
                 expected_opcode: Opcode::rsp_vmudm,
@@ -421,6 +1136,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B3D1EC7, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmudh       $v27, $v3, $v29[1]",
                 expected_opcode: Opcode::rsp_vmudh,
@@ -429,6 +1146,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B7DFA0F, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmadh       $v8, $v31, $v29[3]",
                 expected_opcode: Opcode::rsp_vmadh,
@@ -437,6 +1156,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B0A529D, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vsar        $v10, $v10, $v10[0]",
                 expected_opcode: Opcode::rsp_vsar,
@@ -445,6 +1166,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xEAFD1204, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "slv         $v29[4], 0x10($23)",
                 expected_opcode: Opcode::rsp_slv,
@@ -453,6 +1176,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xC827080F, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lsv         $v7[0], 0x1E($1)",
                 expected_opcode: Opcode::rsp_lsv,
@@ -461,6 +1186,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4BAA4351, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vsub        $v13, $v8, $v10[5]",
                 expected_opcode: Opcode::rsp_vsub,
@@ -469,6 +1196,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B1F8ECD, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmadm       $v27, $v17, $v31[0]",
                 expected_opcode: Opcode::rsp_vmadm,
@@ -477,6 +1206,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B3F7384, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmudl       $v14, $v14, $v31[1]",
                 expected_opcode: Opcode::rsp_vmudl,
@@ -485,6 +1216,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B9F2940, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmulf       $v5, $v5, $v31[4]",
                 expected_opcode: Opcode::rsp_vmulf,
@@ -493,6 +1226,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4BAA4390, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vadd        $v14, $v8, $v10[5]",
                 expected_opcode: Opcode::rsp_vadd,
@@ -501,6 +1236,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4813D900, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "mfc2        $19, $v27[2]",
                 expected_opcode: Opcode::rsp_mfc2,
@@ -509,6 +1246,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4A1174D5, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vsubc       $v19, $v14, $v17",
                 expected_opcode: Opcode::rsp_vsubc,
@@ -517,6 +1256,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B7D6EE3, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vge         $v27, $v13, $v29[3]",
                 expected_opcode: Opcode::rsp_vge,
@@ -525,6 +1266,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4AF4E0E4, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vcl         $v3, $v28, $v20[3h]",
                 expected_opcode: Opcode::rsp_vcl,
@@ -533,6 +1276,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4AC550C8, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmacf       $v3, $v10, $v5[2h]",
                 expected_opcode: Opcode::rsp_vmacf,
@@ -541,6 +1286,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x15610003, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "bne         $11, $1, .L800B2F4C",
                 expected_opcode: Opcode::rsp_bne,
@@ -549,6 +1296,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x05C1000F, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "bgez        $14, .L800B3A2C",
                 expected_opcode: Opcode::rsp_bgez,
@@ -557,6 +1306,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xEAFD0688, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sbv         $v29[13], 0x8($23)",
                 expected_opcode: Opcode::rsp_sbv,
@@ -565,6 +1316,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x01675825, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "or          $11, $11, $7",
                 expected_opcode: Opcode::rsp_or,
@@ -573,6 +1326,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x03241804, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sllv        $3, $4, $25",
                 expected_opcode: Opcode::rsp_sllv,
@@ -581,6 +1336,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00601827, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "not         $3, $3",
                 expected_opcode: Opcode::rsp_not,
@@ -589,6 +1346,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x83790500, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lb          $25, 0x500($27)",
                 expected_opcode: Opcode::rsp_lb,
@@ -597,6 +1356,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x05600002, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "bltz        $11, .L800B3A2C",
                 expected_opcode: Opcode::rsp_bltz,
@@ -605,6 +1366,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xA2EB0009, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sb          $11, 0x9($23)",
                 expected_opcode: Opcode::rsp_sb,
@@ -613,6 +1376,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x000B5A83, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "sra         $11, $11, 10",
                 expected_opcode: Opcode::rsp_sra,
@@ -621,6 +1386,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xC98C1000, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "llv         $v12[0], 0x0($12)",
                 expected_opcode: Opcode::rsp_llv,
@@ -629,6 +1396,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4AF5E8E5, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vch         $v3, $v29, $v21[3h]",
                 expected_opcode: Opcode::rsp_vch,
@@ -637,6 +1406,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x484B0800, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "cfc2        $t3, $1",
                 expected_opcode: Opcode::rsp_cfc2,
@@ -645,6 +1416,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4A086A27, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmrg        $v8, $v13, $v8",
                 expected_opcode: Opcode::rsp_vmrg,
@@ -653,6 +1426,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B7D7EE0, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vlt         $v27, $v15, $v29[3]",
                 expected_opcode: Opcode::rsp_vlt,
@@ -661,6 +1436,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x26F70018, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "addiu       $23, $23, 0x18",
                 expected_opcode: Opcode::rsp_addiu,
@@ -669,6 +1446,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00812021, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "addu        $4, $4, $1",
                 expected_opcode: Opcode::rsp_addu,
@@ -677,6 +1456,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B1F6A0C, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmadl       $v8, $v13, $v31[0]",
                 expected_opcode: Opcode::rsp_vmadl,
@@ -685,6 +1466,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x0185602A, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "slt         $12, $12, $5",
                 expected_opcode: Opcode::rsp_slt,
@@ -693,6 +1476,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B224AF3, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vmov        $v11[1], $v2[1]",
                 expected_opcode: Opcode::rsp_vmov,
@@ -701,6 +1486,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B0343F0, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vrcp        $v15[0], $v3[0]",
                 expected_opcode: Opcode::rsp_vrcp,
@@ -709,6 +1496,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B7D4232, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vrcph       $v8[0], $v29[3]",
                 expected_opcode: Opcode::rsp_vrcph,
@@ -717,6 +1506,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4BDE0026, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vcr         $v0, $v0, $v30[6]",
                 expected_opcode: Opcode::rsp_vcr,
@@ -725,6 +1516,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4A0A56D3, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vabs        $v27, $v10, $v10",
                 expected_opcode: Opcode::rsp_vabs,
@@ -733,6 +1526,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xC9513800, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "luv         $v17[0], 0x0($10)",
                 expected_opcode: Opcode::rsp_luv,
@@ -741,6 +1536,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B0D41F1, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vrcpl       $v7[0], $v13[0]",
                 expected_opcode: Opcode::rsp_vrcpl,
@@ -749,6 +1546,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x398C0001, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "xori        $12, $12, 0x1",
                 expected_opcode: Opcode::rsp_xori,
@@ -757,6 +1556,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00641826, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "xor         $3, $3, $4",
                 expected_opcode: Opcode::rsp_xor,
@@ -765,6 +1566,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4ACB36D4, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vaddc       $v27, $v6, $v11[2h]",
                 expected_opcode: Opcode::rsp_vaddc,
@@ -773,6 +1576,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B1F4221, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "veq         $v8, $v8, $v31[0]",
                 expected_opcode: Opcode::rsp_veq,
@@ -781,6 +1586,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B1F7BE2, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vne         $v15, $v15, $v31[0]",
                 expected_opcode: Opcode::rsp_vne,
@@ -789,6 +1596,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B1F7A2D, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vnxor       $v8, $v15, $v31[0]",
                 expected_opcode: Opcode::rsp_vnxor,
@@ -797,6 +1606,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xE8FB3800, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "suv         $v27[0], 0x0($7)",
                 expected_opcode: Opcode::rsp_suv,
@@ -805,6 +1616,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x03C0F809, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "jalr        $30",
                 expected_opcode: Opcode::rsp_jalr,
@@ -813,6 +1626,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xC86F3000, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lpv         $v15[0], 0x0($3)",
                 expected_opcode: Opcode::rsp_lpv,
@@ -821,6 +1636,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4A1FEF6A, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vor         $v29, $v29, $v31",
                 expected_opcode: Opcode::rsp_vor,
@@ -829,6 +1646,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xE9085F04, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "stv         $v8[14], 0x40($8)",
                 expected_opcode: Opcode::rsp_stv,
@@ -837,6 +1656,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xC9085904, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "ltv         $v8[2], 0x40($8)",
                 expected_opcode: Opcode::rsp_ltv,
@@ -845,6 +1666,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B1F42F6, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vrsqh       $v11[0], $v31[0]",
                 expected_opcode: Opcode::rsp_vrsqh,
@@ -853,6 +1676,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B4743F5, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vrsql       $v15[0], $v7[2]",
                 expected_opcode: Opcode::rsp_vrsql,
@@ -861,6 +1686,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xE8273038, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "spv         $v7[0], 0x1C0($1)",
                 expected_opcode: Opcode::rsp_spv,
@@ -869,6 +1696,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xC94F0786, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "lbv         $v15[15], 0x6($10)",
                 expected_opcode: Opcode::rsp_lbv,
@@ -877,6 +1706,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x48CB0800, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "ctc2        $t3, $1",
                 expected_opcode: Opcode::rsp_ctc2,
@@ -885,6 +1716,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4B3E01EB, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "vnor        $v7, $v0, $v30[1]",
                 expected_opcode: Opcode::rsp_vnor,
@@ -893,6 +1726,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x04D1FF9D, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "bgezal      $6, .L800B3020",
                 expected_opcode: Opcode::rsp_bgezal,
@@ -901,6 +1736,8 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00035822, 0xA4000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "neg         $11, $3",
                 expected_opcode: Opcode::rsp_neg,
@@ -989,6 +1826,949 @@ mod tests {
             TestEntry::new_rsp_invalid(0x44444444, None),
             TestEntry::new_rsp_invalid(0x77777777, None),
             TestEntry::new_rsp_invalid(0xEEEEEEEE, None),
+        ];
+
+        assert_eq!(check_test_entries(ENTRIES), 0);
+    }
+
+    #[test]
+    fn check_r3000gte_instructions() {
+        const ENTRIES: &[TestEntry] = &[
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A180001, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "RTPS",
+                expected_opcode: Opcode::r3000gte_RTPS,
+                opcode_str: "RTPS",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A280030, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "RTPT",
+                expected_opcode: Opcode::r3000gte_RTPT,
+                opcode_str: "RTPT",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A680029, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "DPCL",
+                expected_opcode: Opcode::r3000gte_DPCL,
+                opcode_str: "DPCL",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A780010, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "DPCS",
+                expected_opcode: Opcode::r3000gte_DPCS,
+                opcode_str: "DPCS",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4AF8002A, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "DPCT",
+                expected_opcode: Opcode::r3000gte_DPCT,
+                opcode_str: "DPCT",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A980011, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "INTPL",
+                expected_opcode: Opcode::r3000gte_INTPL,
+                opcode_str: "INTPL",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4AC8041E, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "NCS",
+                expected_opcode: Opcode::r3000gte_NCS,
+                opcode_str: "NCS",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4AD80420, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "NCT",
+                expected_opcode: Opcode::r3000gte_NCT,
+                opcode_str: "NCT",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4AE80413, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "NCDS",
+                expected_opcode: Opcode::r3000gte_NCDS,
+                opcode_str: "NCDS",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4AF80416, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "NCDT",
+                expected_opcode: Opcode::r3000gte_NCDT,
+                opcode_str: "NCDT",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B08041B, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "NCCS",
+                expected_opcode: Opcode::r3000gte_NCCS,
+                opcode_str: "NCCS",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B18043F, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "NCCT",
+                expected_opcode: Opcode::r3000gte_NCCT,
+                opcode_str: "NCCT",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B280414, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "CDP",
+                expected_opcode: Opcode::r3000gte_CDP,
+                opcode_str: "CDP",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B38041C, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "CC",
+                expected_opcode: Opcode::r3000gte_CC,
+                opcode_str: "CC",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B400006, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "NCLIP",
+                expected_opcode: Opcode::r3000gte_NCLIP,
+                opcode_str: "NCLIP",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B58002D, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "AVSZ3",
+                expected_opcode: Opcode::r3000gte_AVSZ3,
+                opcode_str: "AVSZ3",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B68002E, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "AVSZ4",
+                expected_opcode: Opcode::r3000gte_AVSZ4,
+                opcode_str: "AVSZ4",
+                operands_str: [Some(""), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A400012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       0, 0, 0, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("0"), Some("0"), Some("0"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4AA00428, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "SQR         0",
+                expected_opcode: Opcode::r3000gte_SQR,
+                opcode_str: "SQR",
+                operands_str: [Some("0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B70000C, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "OP          0",
+                expected_opcode: Opcode::r3000gte_OP,
+                opcode_str: "OP",
+                operands_str: [Some("0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B90003D, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "GPF         0",
+                expected_opcode: Opcode::r3000gte_GPF,
+                opcode_str: "GPF",
+                operands_str: [Some("0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4BA0003E, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "GPL         0",
+                expected_opcode: Opcode::r3000gte_GPL,
+                opcode_str: "GPL",
+                operands_str: [Some("0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A486012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 0, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("0"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A48E012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 1, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("1"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A496012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 2, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("2"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A49E012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 3, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("3"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A41E012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       0, 0, 3, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("0"), Some("0"), Some("3"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A480012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 0, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("0"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A488012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 1, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("1"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A490012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 2, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("2"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A498012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 3, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("3"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A482012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 0, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("0"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A48A012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 1, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("1"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A492012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 2, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("2"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A49A012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 0, 3, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("0"), Some("3"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4A6412, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 0, 3, 1",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("0"), Some("3"), Some("1")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4A6012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 0, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("0"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4AE012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 1, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("1"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4B6012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 2, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("2"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4BE012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 3, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("3"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4A0012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 0, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("0"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4A8012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 1, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("1"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4B0012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 2, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("2"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4B8012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 3, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("3"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4A2012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 0, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("0"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4AA012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 1, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("1"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4B2012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 2, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("2"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4BA012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 1, 3, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("1"), Some("3"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4DA412, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 3, 1, 1",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("3"), Some("1"), Some("1")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4C6012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 0, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("0"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4CE012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 1, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("1"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4D6012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 2, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("2"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4DE012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 3, 3, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("3"), Some("3"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4C0012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 0, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("0"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4C8012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 1, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("1"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4D0012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 2, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("2"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4D8012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 3, 0, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("3"), Some("0"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4C2012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 0, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("0"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4CA012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 1, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("1"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4D2012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 2, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("2"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4A4DA012, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "MVMVA       1, 2, 3, 1, 0",
+                expected_opcode: Opcode::r3000gte_MVMVA,
+                opcode_str: "MVMVA",
+                operands_str: [Some("1"), Some("2"), Some("3"), Some("1"), Some("0")],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4AA80428, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "SQR         1",
+                expected_opcode: Opcode::r3000gte_SQR,
+                opcode_str: "SQR",
+                operands_str: [Some("1"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B78000C, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "OP          1",
+                expected_opcode: Opcode::r3000gte_OP,
+                opcode_str: "OP",
+                operands_str: [Some("1"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4B98003D, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "GPF         1",
+                expected_opcode: Opcode::r3000gte_GPF,
+                opcode_str: "GPF",
+                operands_str: [Some("1"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r3000gte(0x4BA8003E, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "GPL         1",
+                expected_opcode: Opcode::r3000gte_GPL,
+                opcode_str: "GPL",
+                operands_str: [Some("1"), None, None, None, None],
+            },
+        ];
+
+        assert_eq!(check_test_entries(ENTRIES), 0);
+    }
+
+    #[test]
+    fn check_r4000allegrex_instructions() {
+        const ENTRIES: &[TestEntry] = &[
+            // todo
+        ];
+
+        assert_eq!(check_test_entries(ENTRIES), 0);
+    }
+
+    #[test]
+    fn check_r4000allegrex_vfpu_instructions() {
+        const ENTRIES: &[TestEntry] = &[
+            // todo
+        ];
+
+        assert_eq!(check_test_entries(ENTRIES), 0);
+    }
+
+    #[test]
+    fn check_r5900_instructions() {
+        const ENTRIES: &[TestEntry] = &[
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A000038, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x0",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A004038, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x800",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x800"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A008038, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x1000",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x1000"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A008838, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x1100",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x1100"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A009038, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x1200",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x1200"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A009838, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x1300",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x1300"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A00A038, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x1400",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x1400"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A07FFF8, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0xFFF8",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0xFFF8"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A080038, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x10000",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x10000"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A1F8038, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x3F000",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x3F000"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A1FFFB8, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vcallms     0x3FFF0",
+                expected_opcode: Opcode::r5900_vcallms,
+                opcode_str: "vcallms",
+                operands_str: [Some("0x3FFF0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x70001030, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "pmfhl.lw    $v0",
+                expected_opcode: Opcode::r5900_pmfhl_lw,
+                opcode_str: "pmfhl.lw",
+                operands_str: [Some("$v0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x70001070, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "pmfhl.uw    $v0",
+                expected_opcode: Opcode::r5900_pmfhl_uw,
+                opcode_str: "pmfhl.uw",
+                operands_str: [Some("$v0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x700010B0, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "pmfhl.slw   $v0",
+                expected_opcode: Opcode::r5900_pmfhl_slw,
+                opcode_str: "pmfhl.slw",
+                operands_str: [Some("$v0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x700010F0, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "pmfhl.lh    $v0",
+                expected_opcode: Opcode::r5900_pmfhl_lh,
+                opcode_str: "pmfhl.lh",
+                operands_str: [Some("$v0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x70001130, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "pmfhl.sh    $v0",
+                expected_opcode: Opcode::r5900_pmfhl_sh,
+                opcode_str: "pmfhl.sh",
+                operands_str: [Some("$v0"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x70000031, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "pmthl.lw    $zero",
+                expected_opcode: Opcode::r5900_pmthl_lw,
+                opcode_str: "pmthl.lw",
+                operands_str: [Some("$zero"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4B020BFE, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vilwr.x     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_vilwr_x,
+                opcode_str: "vilwr.x",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A820BFE, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vilwr.y     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_vilwr_y,
+                opcode_str: "vilwr.y",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A420BFE, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vilwr.z     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_vilwr_z,
+                opcode_str: "vilwr.z",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A220BFE, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "vilwr.w     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_vilwr_w,
+                opcode_str: "vilwr.w",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4B020BFF, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "viswr.x     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_viswr_x,
+                opcode_str: "viswr.x",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A820BFF, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "viswr.y     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_viswr_y,
+                opcode_str: "viswr.y",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A420BFF, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "viswr.z     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_viswr_z,
+                opcode_str: "viswr.z",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4A220BFF, 0x80000000, None),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "viswr.w     $vi2, ($vi1)",
+                expected_opcode: Opcode::r5900_viswr_w,
+                opcode_str: "viswr.w",
+                operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
+            },
+        ];
+
+        assert_eq!(check_test_entries(ENTRIES), 0);
+    }
+
+    #[test]
+    fn check_r5900_trunc_cvt_instructions() {
+        const ENTRIES: &[TestEntry] = &[
+            // todo
         ];
 
         assert_eq!(check_test_entries(ENTRIES), 0);
