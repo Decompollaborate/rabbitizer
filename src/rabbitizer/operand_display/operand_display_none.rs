@@ -175,9 +175,17 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, ")")
     }
     pub(crate) fn display_cpu_maybe_rd_rs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.reg_rd_unchecked();
+
+        if !reg.holds_return_address(instr.flags().abi()) || myself.display_flags.expand_jalr() {
+            Self::display_cpu_rd(myself, f)?;
+            write!(f, ", ")?;
+        }
+
+        Self::display_cpu_rs(myself, f)
     }
 }

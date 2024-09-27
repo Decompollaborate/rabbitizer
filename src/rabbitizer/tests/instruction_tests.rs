@@ -3,7 +3,7 @@
 
 #[cfg(test)]
 mod tests {
-    // use std::string::ToString;
+    use std::string::ToString;
 
     use crate::{operand, DisplayFlags, Instruction, InstructionFlags, IsaVersion, Opcode};
 
@@ -52,21 +52,13 @@ mod tests {
         }
 
         pub fn compare_source_info(&self, other: &Self) -> bool {
-            if self.instr.word() != other.instr.word() {
-                false
-            } else if self.imm_override != other.imm_override {
-                false
-            } else if self.display_flags != other.display_flags {
-                false
-            } else {
-                true
-            }
+            self.instr.word() == other.instr.word()
+                && self.imm_override == other.imm_override
+                && self.display_flags == other.display_flags
         }
 
         pub fn check_validity(&self) -> u32 {
             let mut errors = 0;
-
-            // println!("{}", self.expected);
 
             if self.instr.is_valid() != self.valid {
                 println!(
@@ -99,8 +91,12 @@ mod tests {
                 errors += 1;
             }
 
-            /*
-            // TODO: expected
+            errors
+        }
+
+        pub fn check_disassembly(&self) -> u32 {
+            let mut errors = 0;
+
             let disasm = self
                 .instr
                 .display(self.imm_override, &self.display_flags)
@@ -117,11 +113,12 @@ mod tests {
                 errors += 1;
             }
 
-            // TODO: operands_str
             {
                 let mut j = 0;
                 for (i, operand) in self.instr.operands_iter().enumerate() {
-                    let operand_str = operand.display(&self.instr, self.imm_override, &self.display_flags).to_string();
+                    let operand_str = operand
+                        .display(&self.instr, self.imm_override, &self.display_flags)
+                        .to_string();
                     let maybe_expected_str = self.operands_str[i];
 
                     if let Some(expected_str) = maybe_expected_str {
@@ -147,7 +144,7 @@ mod tests {
                     j = i;
                 }
 
-                if !self.operands_str[j+1..].iter().all(|x| *x == None) {
+                if !self.operands_str[j + 1..].iter().all(|x| *x == None) {
                     println!(
                         "'{}' ({:08X}) has unhandled expected operands. Values: '{:?}'",
                         self.opcode_str,
@@ -157,7 +154,6 @@ mod tests {
                     errors += 1;
                 }
             }
-            */
 
             errors
         }
@@ -176,13 +172,16 @@ mod tests {
         }
     }
 
-    fn check_test_entries(entries: &[TestEntry]) -> u32 {
+    fn check_test_entries(entries: &[TestEntry], thingy: bool) -> u32 {
         let mut errors = 0;
 
         entries_sanity_check(entries);
 
         for entry in entries {
             errors += entry.check_validity();
+            if thingy {
+                errors += entry.check_disassembly();
+            }
         }
 
         errors
@@ -662,9 +661,53 @@ mod tests {
                 opcode_str: "rfe",
                 operands_str: [None, None, None, None, None],
             },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0260F809,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "jalr        $s3",
+                expected_opcode: Opcode::cpu_jalr,
+                opcode_str: "jalr",
+                operands_str: [Some("$s3"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0260F809,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_expand_jalr(true),
+                valid: true,
+                expected: "jalr        $ra, $s3",
+                expected_opcode: Opcode::cpu_jalr,
+                opcode_str: "jalr",
+                operands_str: [Some("$ra, $s3"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x02602009,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "jalr        $a0, $s3",
+                expected_opcode: Opcode::cpu_jalr,
+                opcode_str: "jalr",
+                operands_str: [Some("$a0, $s3"), None, None, None, None],
+            },
 
             // Invalid instructions
-            // TestEntry::new_none_invalid(0x44444444, None),
 
             TestEntry {
                 instr: Instruction::new_no_extension(
@@ -713,7 +756,7 @@ mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), 0);
     }
 
     #[test]
@@ -1833,7 +1876,7 @@ mod tests {
             TestEntry::new_rsp_invalid(0xEEEEEEEE, None),
         ];
 
-        assert_eq!(check_test_entries(ENTRIES), 0);
+        assert_eq!(check_test_entries(ENTRIES, false), 0);
     }
 
     #[test]
@@ -2491,7 +2534,7 @@ mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES), 0);
+        assert_eq!(check_test_entries(ENTRIES, false), 0);
     }
 
     #[test]
@@ -2500,7 +2543,7 @@ mod tests {
             // todo
         ];
 
-        assert_eq!(check_test_entries(ENTRIES), 0);
+        assert_eq!(check_test_entries(ENTRIES, false), 0);
     }
 
     #[test]
@@ -2509,7 +2552,7 @@ mod tests {
             // todo
         ];
 
-        assert_eq!(check_test_entries(ENTRIES), 0);
+        assert_eq!(check_test_entries(ENTRIES, false), 0);
     }
 
     #[test]
@@ -2767,7 +2810,7 @@ mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES), 0);
+        assert_eq!(check_test_entries(ENTRIES, false), 0);
     }
 
     #[test]
@@ -2776,6 +2819,6 @@ mod tests {
             // todo
         ];
 
-        assert_eq!(check_test_entries(ENTRIES), 0);
+        assert_eq!(check_test_entries(ENTRIES, false), 0);
     }
 }

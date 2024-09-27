@@ -78,6 +78,7 @@ where
 }
 
 #[cfg(feature = "bindings_c")]
+#[allow(dead_code)]
 mod stuff {
     use core::fmt;
     use core::fmt::Write;

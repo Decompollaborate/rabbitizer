@@ -245,6 +245,13 @@ impl DisplayFlags {
     pub fn expand_jalr_mut(&mut self) -> &mut bool {
         &mut self.expand_jalr
     }
+    #[must_use]
+    pub const fn with_expand_jalr(self, expand_jalr: bool) -> Self {
+        Self {
+            expand_jalr,
+            ..self
+        }
+    }
 
     #[must_use]
     pub const fn r5900_modern_gas_instrs_workarounds(&self) -> bool {
