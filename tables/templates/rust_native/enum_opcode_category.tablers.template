@@ -5,6 +5,8 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use crate::{opcode_category::OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
+
 #define RABBITIZER_DEF_INSTR_ID_TYPE(prefix, name) \
     prefix##_##name,
 
@@ -14,5 +16,19 @@ SPECIAL_RS_TAG(non_exhaustive)
 pub enum OpcodeCategory {
     #include "InstrIdType.inc"
 }
+
+#undef RABBITIZER_DEF_INSTR_ID_TYPE
+
+#define RABBITIZER_DEF_INSTR_ID_TYPE(prefix, name) \
+    table[ OpcodeCategory::prefix##_##name as usize] = \
+        OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name));
+
+pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] = {
+    let mut table = [OpcodeCategoryDescriptor::default(); OPCODE_CATEGORY_COUNT];
+
+    #include "InstrIdType.inc"
+
+    table
+};
 
 #undef RABBITIZER_DEF_INSTR_ID_TYPE

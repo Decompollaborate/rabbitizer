@@ -42,6 +42,18 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         Err(fmt::Error)
     }
+
+    pub(crate) fn display_imm_override_or(
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
+        callback: fn(&OperandDisplay, &mut fmt::Formatter<'_>) -> fmt::Result,
+    ) -> fmt::Result {
+        if let Some(imm_override) = myself.imm_override {
+            write!(f, "{}", imm_override)
+        } else {
+            callback(myself, f)
+        }
+    }
 }
 
 pub(crate) type OperandDisplayCallback =

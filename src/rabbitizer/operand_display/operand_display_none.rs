@@ -12,11 +12,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.reg_rs_unchecked();
-        let s = if myself.display_flags.named_gpr() {
-            reg.name_abi(instr.flags().abi())
-        } else {
-            reg.name_numeric()
-        };
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
     }
@@ -27,11 +23,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.reg_rt_unchecked();
-        let s = if myself.display_flags.named_gpr() {
-            reg.name_abi(instr.flags().abi())
-        } else {
-            reg.name_numeric()
-        };
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
     }
@@ -42,11 +34,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.reg_rd_unchecked();
-        let s = if myself.display_flags.named_gpr() {
-            reg.name_abi(instr.flags().abi())
-        } else {
-            reg.name_numeric()
-        };
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
     }
@@ -87,10 +75,14 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         todo!()
     }
     pub(crate) fn display_cpu_cop1cs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_cop1cs_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_cpu_cop2t(
         _myself: &OperandDisplay,
@@ -135,35 +127,52 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         todo!()
     }
     pub(crate) fn display_cpu_label(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        Self::display_imm_override_or(myself, f, |myself, f| {
+            let instr = myself.instr;
+            let s = instr.get_instr_index_as_vram_unchecked();
+
+            write!(f, "func_{:08X}", s)
+        })
     }
     pub(crate) fn display_cpu_immediate(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        if let Some(imm_override) = myself.imm_override {
-            write!(f, "{}", imm_override)
-        } else {
+        Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
             let s = instr.get_processed_immediate_unchecked();
 
             operand_display::display_hex(s, f)
-        }
+        })
     }
     pub(crate) fn display_cpu_branch_target_label(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        Self::display_imm_override_or(myself, f, |myself, f| {
+            write!(f, ". + 4 + (")?;
+            Self::display_cpu_immediate(myself, f)?;
+            write!(f, " << 2)")
+        })
     }
     pub(crate) fn display_cpu_immediate_base(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        if false {
+            if myself.imm_override.is_some() || myself.instr.field_immediate_unchecked() != 0 {
+                Self::display_cpu_immediate(myself, f)?;
+            }
+        } else {
+            Self::display_cpu_immediate(myself, f)?;
+        }
+
+        write!(f, "(")?;
+        Self::display_cpu_rs(myself, f)?;
+        write!(f, ")")
     }
     pub(crate) fn display_cpu_maybe_rd_rs(
         _myself: &OperandDisplay,

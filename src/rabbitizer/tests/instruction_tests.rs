@@ -3,6 +3,8 @@
 
 #[cfg(test)]
 mod tests {
+    // use std::string::ToString;
+
     use crate::{operand, DisplayFlags, Instruction, InstructionFlags, IsaVersion, Opcode};
 
     struct TestEntry {
@@ -35,6 +37,7 @@ mod tests {
             }
         }
 
+        #[allow(dead_code)]
         pub const fn new_rsp_invalid(word: u32, flags: Option<InstructionFlags>) -> Self {
             Self {
                 instr: Instruction::new_rsp(word, 0xA4000000, flags),
@@ -62,6 +65,8 @@ mod tests {
 
         pub fn check_validity(&self) -> u32 {
             let mut errors = 0;
+
+            // println!("{}", self.expected);
 
             if self.instr.is_valid() != self.valid {
                 println!(
@@ -94,23 +99,25 @@ mod tests {
                 errors += 1;
             }
 
-            // TODO: expected
             /*
-            let disasm = self.instr.display(self.imm_override, &self.display_flags).to_string();
+            // TODO: expected
+            let disasm = self
+                .instr
+                .display(self.imm_override, &self.display_flags)
+                .to_string();
+            // println!("    {}", disasm);
             if disasm != self.expected {
                 println!(
-                    "'{}' ({:08X}) did not match the expected string. Expected '{}', got '{}'",
+                    "'{}' ({:08X}) did not match the expected string.",
                     self.opcode_str,
                     self.instr.word(),
-                    self.expected,
-                    disasm
                 );
+                println!("    Expected: '{}'", self.expected,);
+                println!("    Got:      '{}'", disasm,);
                 errors += 1;
             }
-            */
 
             // TODO: operands_str
-            /*
             {
                 let mut j = 0;
                 for (i, operand) in self.instr.operands_iter().enumerate() {
@@ -140,7 +147,7 @@ mod tests {
                     j = i;
                 }
 
-                if !self.operands_str[j..].iter().all(|x| *x == None) {
+                if !self.operands_str[j+1..].iter().all(|x| *x == None) {
                     println!(
                         "'{}' ({:08X}) has unhandled expected operands. Values: '{:?}'",
                         self.opcode_str,
@@ -175,8 +182,6 @@ mod tests {
         entries_sanity_check(entries);
 
         for entry in entries {
-            // println!("{}", entry.expected);
-
             errors += entry.check_validity();
         }
 
@@ -671,7 +676,7 @@ mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0x44444444                   # cfc1        $a0, $8 # 00000444 <InstrIdType: CPU_COP1>",
+                expected: ".word       0x44444444                   /* cfc1        $a0, $8 / 00000444 <OpcodeCategory: CPU_COP1> */",
                 expected_opcode: Opcode::cpu_cfc1,
                 opcode_str: "cfc1",
                 operands_str: [Some("$a0"), Some("$8"), None, None, None],
@@ -686,7 +691,7 @@ mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0x77777777                   # INVALID # 00000000 <InstrIdType: CPU_NORMAL>",
+                expected: ".word       0x77777777                   /* INVALID / 03777777 <OpcodeCategory: CPU_NORMAL> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -701,7 +706,7 @@ mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xEEEEEEEE                   # INVALID # 00000000 <InstrIdType: CPU_NORMAL>",
+                expected: ".word       0xEEEEEEEE                   /* INVALID / 02EEEEEE <OpcodeCategory: CPU_NORMAL> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],

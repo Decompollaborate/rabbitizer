@@ -15,6 +15,14 @@ pub trait Register {
     fn name_abi(&self, abi: Abi) -> &'static str {
         self.get_descriptor().name_abi(abi)
     }
+    #[must_use]
+    fn either_name(&self, abi: Abi, use_named: bool) -> &'static str {
+        if use_named {
+            self.get_descriptor().name_abi(abi)
+        } else {
+            self.name_numeric()
+        }
+    }
 
     #[must_use]
     fn is_clobbered_by_func_call(&self, _abi: Abi) -> bool {

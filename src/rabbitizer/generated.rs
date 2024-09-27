@@ -53,6 +53,7 @@ pub use enum_isa_extension::IsaExtension;
 pub use enum_isa_version::IsaVersion;
 pub use enum_opcode::Opcode;
 pub use enum_opcode_category::OpcodeCategory;
+pub use enum_opcode_category::OPCODE_CATEGORIES;
 pub use enum_operand::Operand;
 pub(crate) use enum_operand::DISPLAY_OPERAND_CALLBACKS;
 pub use enum_operand::OPERANDS;

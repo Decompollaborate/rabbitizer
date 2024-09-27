@@ -181,7 +181,7 @@ impl DisplayFlags {
         self.named_registers && self.named_fpr
     }
     /// Use the ABI names for the floating point registers when disassembling the floating point (coprocessor 1) instructions
-    pub const fn named_fpr_mut(&mut self) -> &mut bool {
+    pub fn named_fpr_mut(&mut self) -> &mut bool {
         &mut self.named_fpr
     }
 
@@ -190,7 +190,7 @@ impl DisplayFlags {
         self.named_registers && self.named_vr4300_cop0
     }
     /// Use named registers for VR4300's coprocessor 0 registers
-    pub const fn named_vr4300_cop0_mut(&mut self) -> &mut bool {
+    pub fn named_vr4300_cop0_mut(&mut self) -> &mut bool {
         &mut self.named_vr4300_cop0
     }
 
@@ -199,7 +199,7 @@ impl DisplayFlags {
         self.named_registers && self.named_rsp_cop0
     }
     /// Use named registers for VR4300's RSP's coprocessor 0 registers
-    pub const fn named_rsp_cop0_mut(&mut self) -> &mut bool {
+    pub fn named_rsp_cop0_mut(&mut self) -> &mut bool {
         &mut self.named_rsp_cop0
     }
 
@@ -208,7 +208,7 @@ impl DisplayFlags {
         self.named_registers && self.named_r4000allegrex_vfpucontrol
     }
     /// Use named registers for R4000 Allegrex's VFPU control registers
-    pub const fn named_r4000allegrex_vfpucontrol_mut(&mut self) -> &mut bool {
+    pub fn named_r4000allegrex_vfpucontrol_mut(&mut self) -> &mut bool {
         &mut self.named_r4000allegrex_vfpucontrol
     }
 
@@ -217,7 +217,7 @@ impl DisplayFlags {
         self.opcode_ljust
     }
     /// The minimal number of characters to left-align the opcode name
-    pub const fn opcode_ljust_mut(&mut self) -> &mut u32 {
+    pub fn opcode_ljust_mut(&mut self) -> &mut u32 {
         &mut self.opcode_ljust
     }
 
@@ -226,7 +226,7 @@ impl DisplayFlags {
         self.unknown_instr_comment
     }
     /// Generate a pseudo-disassembly comment when disassembling non implemented instructions
-    pub const fn unknown_instr_comment_mut(&mut self) -> &mut bool {
+    pub fn unknown_instr_comment_mut(&mut self) -> &mut bool {
         &mut self.unknown_instr_comment
     }
 
@@ -234,7 +234,7 @@ impl DisplayFlags {
     pub const fn omit_0x_on_small_imm(&self) -> bool {
         self.omit_0x_on_small_imm
     }
-    pub const fn omit_0x_on_small_imm_mut(&mut self) -> &mut bool {
+    pub fn omit_0x_on_small_imm_mut(&mut self) -> &mut bool {
         &mut self.omit_0x_on_small_imm
     }
 
@@ -242,7 +242,7 @@ impl DisplayFlags {
     pub const fn expand_jalr(&self) -> bool {
         self.expand_jalr
     }
-    pub const fn expand_jalr_mut(&mut self) -> &mut bool {
+    pub fn expand_jalr_mut(&mut self) -> &mut bool {
         &mut self.expand_jalr
     }
 
@@ -250,7 +250,7 @@ impl DisplayFlags {
     pub const fn r5900_modern_gas_instrs_workarounds(&self) -> bool {
         self.r5900_modern_gas_instrs_workarounds
     }
-    pub const fn r5900_modern_gas_instrs_workarounds_mut(&mut self) -> &mut bool {
+    pub fn r5900_modern_gas_instrs_workarounds_mut(&mut self) -> &mut bool {
         &mut self.r5900_modern_gas_instrs_workarounds
     }
 
@@ -258,7 +258,7 @@ impl DisplayFlags {
     pub const fn r5900_use_dollar(&self) -> bool {
         self.r5900_use_dollar
     }
-    pub const fn r5900_use_dollar_mut(&mut self) -> &mut bool {
+    pub fn r5900_use_dollar_mut(&mut self) -> &mut bool {
         &mut self.r5900_use_dollar
     }
 }
