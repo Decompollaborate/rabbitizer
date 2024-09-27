@@ -5,7 +5,7 @@ use core::fmt;
 
 use crate::OperandDisplay;
 
-impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
+impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     pub(crate) fn display_r3000gte_sf(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,

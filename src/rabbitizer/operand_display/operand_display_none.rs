@@ -5,7 +5,7 @@ use core::fmt;
 
 use crate::{operand_display, traits::Register, OperandDisplay};
 
-impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
+impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     pub(crate) fn display_cpu_rs(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,

@@ -384,6 +384,11 @@ impl OpcodeDescriptor {
     }
 
     #[must_use]
+    pub fn has_any_operands(&self) -> bool {
+        self.operands[0] != Operand::ALL_EMPTY
+    }
+
+    #[must_use]
     pub fn has_specific_operand(&self, operand: Operand) -> bool {
         for op in self.operands_iter() {
             if *op == operand {

@@ -3,7 +3,7 @@
 
 use core::num::NonZero;
 
-use crate::{operand, registers::*, Instruction, Operand};
+use crate::{operand, registers::*, DisplayFlags, Instruction, Operand, OperandDisplay};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub enum IU16 {
@@ -171,6 +171,21 @@ impl ValuedOperand {
     #[must_use]
     pub const fn default() -> Self {
         Self::ALL_EMPTY()
+    }
+
+    #[must_use]
+    pub const fn display<'ins, 'imm, 'flg>(
+        &self,
+        instr: &'ins Instruction,
+        imm_override: Option<&'imm str>,
+        display_flags: &'flg DisplayFlags,
+    ) -> OperandDisplay<'ins, 'imm, 'flg> {
+        OperandDisplay::new(
+            Operand::from_valued_operand(*self),
+            instr,
+            imm_override,
+            display_flags,
+        )
     }
 }
 

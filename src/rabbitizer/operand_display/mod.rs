@@ -11,19 +11,19 @@ pub(crate) mod operand_display_r4000allegrex;
 pub(crate) mod operand_display_r5900;
 pub(crate) mod operand_display_rsp;
 
-pub struct OperandDisplay<'ins, 'imm> {
+pub struct OperandDisplay<'ins, 'imm, 'flg> {
     operand: Operand,
     instr: &'ins Instruction,
     imm_override: Option<&'imm str>,
-    display_flags: DisplayFlags,
+    display_flags: &'flg DisplayFlags,
 }
 
-impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
+impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     pub(crate) const fn new(
         operand: Operand,
         instr: &'ins Instruction,
         imm_override: Option<&'imm str>,
-        display_flags: DisplayFlags,
+        display_flags: &'flg DisplayFlags,
     ) -> Self {
         Self {
             operand,
@@ -34,7 +34,7 @@ impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
     }
 }
 
-impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
+impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     #[allow(non_snake_case)]
     pub(crate) fn display_ALL_EMPTY(
         _myself: &OperandDisplay,
@@ -47,7 +47,7 @@ impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
 pub(crate) type OperandDisplayCallback =
     for<'a, 'b, 'c> fn(&'a OperandDisplay, &'b mut fmt::Formatter<'c>) -> fmt::Result;
 
-impl fmt::Display for OperandDisplay<'_, '_> {
+impl fmt::Display for OperandDisplay<'_, '_, '_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         DISPLAY_OPERAND_CALLBACKS[self.operand as usize](self, f)
     }

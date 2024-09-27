@@ -21,12 +21,12 @@ impl<'a> Operand {
 
 impl Operand {
     #[must_use]
-    pub const fn display<'ins, 'imm>(
+    pub const fn display<'ins, 'imm, 'flg>(
         &self,
         instr: &'ins Instruction,
         imm_override: Option<&'imm str>,
-        display_flags: DisplayFlags,
-    ) -> OperandDisplay<'ins, 'imm> {
+        display_flags: &'flg DisplayFlags,
+    ) -> OperandDisplay<'ins, 'imm, 'flg> {
         OperandDisplay::new(*self, instr, imm_override, display_flags)
     }
 }

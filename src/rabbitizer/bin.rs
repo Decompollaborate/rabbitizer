@@ -1,6 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+/*
 use rabbitizer::Opcode;
 
 fn main() {
@@ -30,7 +31,29 @@ fn main() {
         println!(
             "{:?}: {}",
             operand,
-            operand.display(&instr, None, display_flags)
+            operand.display(&instr, None, &display_flags)
         );
     }
+
+    println!("{}", instr.display(None, &display_flags));
+}
+*/
+
+fn main() {
+    let instr = rabbitizer::Instruction::new(
+        0x26F7FFF0,
+        0x80000000,
+        Some(rabbitizer::InstructionFlags::default()),
+        rabbitizer::IsaVersion::MIPS_III,
+        rabbitizer::IsaExtension::NONE,
+    );
+
+    println!(
+        "{}",
+        instr.display(None, &rabbitizer::DisplayFlags::default())
+    );
+    println!(
+        "{}",
+        instr.display(Some("%lo(test)"), &rabbitizer::DisplayFlags::default())
+    );
 }

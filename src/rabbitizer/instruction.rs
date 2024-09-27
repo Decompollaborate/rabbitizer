@@ -2,8 +2,9 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::{
-    generated::Gpr, utils, EncodedFieldMask, InstructionFlags, IsaExtension, IsaVersion, Opcode,
-    OpcodeCategory, OpcodeDecoder, Operand, ValuedOperandIterator,
+    generated::Gpr, operand::OperandIterator, utils, DisplayFlags, EncodedFieldMask,
+    InstructionDisplay, InstructionFlags, IsaExtension, IsaVersion, Opcode, OpcodeCategory,
+    OpcodeDecoder, Operand, ValuedOperandIterator,
 };
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -205,6 +206,11 @@ impl Instruction {
 /// Opcode examination
 impl Instruction {
     #[must_use]
+    pub fn operands_iter(&self) -> OperandIterator {
+        self.opcode_decoder.opcode.operands_iter()
+    }
+
+    #[must_use]
     pub fn valued_operands_iter(&self) -> ValuedOperandIterator {
         ValuedOperandIterator::new(self)
     }
@@ -348,6 +354,17 @@ impl Instruction {
         } else {
             utils::from_2s_complement(imm as u32, 16)
         }
+    }
+}
+
+impl Instruction {
+    #[must_use]
+    pub const fn display<'ins, 'imm, 'flg>(
+        &'ins self,
+        imm_override: Option<&'imm str>,
+        display_flags: &'flg DisplayFlags,
+    ) -> InstructionDisplay<'ins, 'imm, 'flg> {
+        InstructionDisplay::new(self, imm_override, display_flags)
     }
 }
 

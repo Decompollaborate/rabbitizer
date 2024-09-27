@@ -201,6 +201,11 @@ impl Opcode {
     }
 
     #[must_use]
+    pub fn has_any_operands(&self) -> bool {
+        self.get_descriptor().has_any_operands()
+    }
+
+    #[must_use]
     pub fn has_specific_operand(&self, operand: Operand) -> bool {
         self.get_descriptor().has_specific_operand(operand)
     }

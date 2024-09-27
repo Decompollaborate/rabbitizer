@@ -24,6 +24,7 @@ mod flags;
 mod instr_suffix;
 mod instr_type;
 mod instruction;
+mod instruction_display;
 mod isa_extension;
 mod isa_version;
 mod opcode;
@@ -64,6 +65,7 @@ pub use valued_operand::ValuedOperand;
 pub use valued_operand::ValuedOperandIterator;
 
 // TODO: maybe not make public?
+pub use instruction_display::InstructionDisplay;
 pub use operand_display::OperandDisplay;
 
 pub use flags::DecodingFlags;

@@ -5,7 +5,7 @@ use core::fmt;
 
 use crate::OperandDisplay;
 
-impl<'ins, 'imm> OperandDisplay<'ins, 'imm> {
+impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_I(
         _myself: &OperandDisplay,
