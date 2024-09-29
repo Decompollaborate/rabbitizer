@@ -22,7 +22,7 @@ fn main() {
         rabbitizer::IsaVersion::MIPS_III,
     );
     println!("{}", instr.opcode().name());
-    println!("{:?}", instr.reg_rs());
+    println!("{:?}", instr.field_rs());
     // println!("0x{:X}", instr.field_immediate_unchecked());
 
     let display_flags = rabbitizer::DisplayFlags::default();

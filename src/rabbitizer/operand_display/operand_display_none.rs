@@ -11,7 +11,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.reg_rs_unchecked();
+        let reg = instr.field_rs_unchecked();
         let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
@@ -22,7 +22,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.reg_rt_unchecked();
+        let reg = instr.field_rt_unchecked();
         let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
@@ -33,7 +33,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.reg_rd_unchecked();
+        let reg = instr.field_rd_unchecked();
         let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
@@ -145,7 +145,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             let instr = myself.instr;
             let s = instr.get_processed_immediate_unchecked();
 
-            operand_display::display_hex(s, f)
+            operand_display::display_signed_imm(s, f, myself.display_flags)
         })
     }
     pub(crate) fn display_core_branch_target_label(
@@ -179,7 +179,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.reg_rd_unchecked();
+        let reg = instr.field_rd_unchecked();
 
         if !reg.holds_return_address(instr.flags().abi()) || myself.display_flags.expand_jalr() {
             Self::display_core_rd(myself, f)?;

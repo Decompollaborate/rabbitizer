@@ -35,9 +35,9 @@ impl Operand {
     pub(crate) fn to_valued_operand(self, instr: &Instruction) -> ValuedOperand {
         match self {
             Self::ALL_EMPTY => ValuedOperand::ALL_EMPTY(),
-            Self::core_rs => ValuedOperand::core_rs(instr.reg_rs_unchecked()),
-            Self::core_rt => ValuedOperand::core_rt(instr.reg_rt_unchecked()),
-            Self::core_rd => ValuedOperand::core_rd(instr.reg_rd_unchecked()),
+            Self::core_rs => ValuedOperand::core_rs(instr.field_rs_unchecked()),
+            Self::core_rt => ValuedOperand::core_rt(instr.field_rt_unchecked()),
+            Self::core_rd => ValuedOperand::core_rd(instr.field_rd_unchecked()),
             Self::core_sa => todo!(),
             Self::core_zero => ValuedOperand::core_zero(),
             Self::core_cop0d => todo!(),

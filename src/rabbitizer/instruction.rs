@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::registers::{Cop1Control, Gpr};
+use crate::registers::{Cop1Control, Gpr, Cop0, Cop1};
 use crate::utils;
 use crate::{DisplayFlags, EncodedFieldMask, InstructionDisplay, InstructionFlags};
 use crate::{IsaExtension, IsaVersion};
@@ -226,11 +226,11 @@ impl Instruction {
     /// [`Gpr`]: crate::registers::Gpr
     /// [`None`]: Option::None
     #[must_use]
-    pub fn reg_rs(&self) -> Option<Gpr> {
+    pub fn field_rs(&self) -> Option<Gpr> {
         if !self.opcode().has_operand_alias(Operand::core_rs) {
             return None;
         }
-        Some(self.reg_rs_unchecked())
+        Some(self.field_rs_unchecked())
     }
 
     /// Returns either the [`Gpr`] register embedded on the `rt` field of the
@@ -240,11 +240,11 @@ impl Instruction {
     /// [`Gpr`]: crate::registers::Gpr
     /// [`None`]: Option::None
     #[must_use]
-    pub fn reg_rt(&self) -> Option<Gpr> {
+    pub fn field_rt(&self) -> Option<Gpr> {
         if !self.opcode().has_operand_alias(Operand::core_rt) {
             return None;
         }
-        Some(self.reg_rt_unchecked())
+        Some(self.field_rt_unchecked())
     }
 
     /// Returns either the [`Gpr`] register embedded on the `rd` field of the
@@ -254,11 +254,11 @@ impl Instruction {
     /// [`Gpr`]: crate::registers::Gpr
     /// [`None`]: Option::None
     #[must_use]
-    pub fn reg_rd(&self) -> Option<Gpr> {
+    pub fn field_rd(&self) -> Option<Gpr> {
         if !self.opcode().has_operand_alias(Operand::core_rd) {
             return None;
         }
-        Some(self.reg_rd_unchecked())
+        Some(self.field_rd_unchecked())
     }
 
     /// Returns either the `instr_index` value embedded on the `instr_index`
@@ -318,13 +318,13 @@ impl Instruction {
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as a [`Gpr`] register. It is recommended to use the [`reg_rs`] function
+    /// as a [`Gpr`] register. It is recommended to use the [`field_rs`] function
     /// instead.
     ///
     /// [`Gpr`]: crate::registers::Gpr
-    /// [`reg_rs`]: Instruction::reg_rs
+    /// [`field_rs`]: Instruction::field_rs
     #[must_use]
-    pub fn reg_rs_unchecked(&self) -> Gpr {
+    pub fn field_rs_unchecked(&self) -> Gpr {
         Gpr::try_from(EncodedFieldMask::rs.get_shifted(self.word())).unwrap()
     }
 
@@ -334,13 +334,13 @@ impl Instruction {
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as a [`Gpr`] register. It is recommended to use the [`reg_rt`] function
+    /// as a [`Gpr`] register. It is recommended to use the [`field_rt`] function
     /// instead.
     ///
     /// [`Gpr`]: crate::registers::Gpr
-    /// [`reg_rt`]: Instruction::reg_rt
+    /// [`field_rt`]: Instruction::field_rt
     #[must_use]
-    pub fn reg_rt_unchecked(&self) -> Gpr {
+    pub fn field_rt_unchecked(&self) -> Gpr {
         Gpr::try_from(EncodedFieldMask::rt.get_shifted(self.word())).unwrap()
     }
 
@@ -350,14 +350,45 @@ impl Instruction {
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as a [`Gpr`] register. It is recommended to use the [`reg_rd`] function
+    /// as a [`Gpr`] register. It is recommended to use the [`field_rd`] function
     /// instead.
     ///
     /// [`Gpr`]: crate::registers::Gpr
-    /// [`reg_rd`]: Instruction::reg_rd
+    /// [`field_rd`]: Instruction::field_rd
     #[must_use]
-    pub fn reg_rd_unchecked(&self) -> Gpr {
+    pub fn field_rd_unchecked(&self) -> Gpr {
         Gpr::try_from(EncodedFieldMask::rd.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the `sa` value embedded on the `sa` field of the word of this
+    /// instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_sa`] function
+    /// instead.
+    ///
+    /// [`field_sa`]: Instruction::field_sa
+    #[must_use]
+    pub const fn field_sa_unchecked(&self) -> u32 {
+        EncodedFieldMask::instr_index.get_shifted(self.word())
+    }
+
+    /// Returns the [`Cop0`] register embedded on the `rd` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Cop0`] register. It is recommended to use the [`field_cop0d`]
+    /// function instead.
+    ///
+    /// [`Cop0`]: crate::registers::Cop0
+    /// [`field_cop0d`]: Instruction::field_cop0d
+    #[must_use]
+    pub fn field_cop0d_unchecked(&self) -> Cop0 {
+        Cop0::try_from(EncodedFieldMask::cop0d.get_shifted(self.word())).unwrap()
     }
 
     /// Returns the `instr_index` value embedded on the `instr_index` field of
@@ -391,6 +422,54 @@ impl Instruction {
             .get_shifted(self.word())
             .try_into()
             .unwrap()
+    }
+
+    /// Returns the [`Cop1`] register embedded on the `fs` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Cop1`] register. It is recommended to use the [`field_fs`] function
+    /// instead.
+    ///
+    /// [`Cop1`]: crate::registers::Cop1
+    /// [`field_fs`]: Instruction::field_fs
+    #[must_use]
+    pub fn field_fs_unchecked(&self) -> Cop1 {
+        Cop1::try_from(EncodedFieldMask::fs.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the [`Cop1`] register embedded on the `ft` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Cop1`] register. It is recommended to use the [`field_ft`] function
+    /// instead.
+    ///
+    /// [`Cop1`]: crate::registers::Cop1
+    /// [`field_ft`]: Instruction::field_ft
+    #[must_use]
+    pub fn field_ft_unchecked(&self) -> Cop1 {
+        Cop1::try_from(EncodedFieldMask::ft.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the [`Cop1`] register embedded on the `fd` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Cop1`] register. It is recommended to use the [`field_fd`] function
+    /// instead.
+    ///
+    /// [`Cop1`]: crate::registers::Cop1
+    /// [`field_fd`]: Instruction::field_fd
+    #[must_use]
+    pub fn field_fd_unchecked(&self) -> Cop1 {
+        Cop1::try_from(EncodedFieldMask::fd.get_shifted(self.word())).unwrap()
     }
 
     /// Returns the [`Cop1Control`] register embedded on the `cop1cs` field of

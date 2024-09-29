@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use core::fmt::{self, UpperHex};
+use core::fmt;
 
 use crate::{DisplayFlags, Instruction, Operand, DISPLAY_OPERAND_CALLBACKS};
 
@@ -65,12 +65,15 @@ impl fmt::Display for OperandDisplay<'_, '_, '_> {
     }
 }
 
-pub(crate) fn display_hex<T>(number: T, f: &mut fmt::Formatter<'_>) -> fmt::Result
-where
-    T: PartialOrd + UpperHex + Default + core::ops::Neg,
-    <T as core::ops::Neg>::Output: UpperHex,
+pub(crate) fn display_signed_imm(number: i32, f: &mut fmt::Formatter<'_>, display_flags: &DisplayFlags) -> fmt::Result
 {
-    if number < T::default() {
+    if display_flags.omit_0x_on_small_imm() {
+        if number > -10 && number < 10 {
+            return write!(f, "{}", number);
+        }
+    }
+
+    if number < 0 {
         write!(f, "-0x{:X}", -number)
     } else {
         write!(f, "0x{:X}", number)

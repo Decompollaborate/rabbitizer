@@ -121,7 +121,8 @@ pub struct DisplayFlags {
     opcode_ljust: u32,
     /// Generate a pseudo-disassembly comment when disassembling non implemented instructions
     unknown_instr_comment: bool,
-    omit_0x_on_small_imm: bool,
+    /// Omit the `0x` prefix on small immediates (values on the \[-9, 9\] inclusive range).
+    omit_0x_on_small_imm: bool, // TODO: maybe remove?
     // upper_case_imm: bool,
     expand_jalr: bool,
 
@@ -234,6 +235,7 @@ impl DisplayFlags {
     pub const fn omit_0x_on_small_imm(&self) -> bool {
         self.omit_0x_on_small_imm
     }
+    /// Omit the `0x` prefix on small immediates (values on the \[-9, 9\] inclusive range).
     pub fn omit_0x_on_small_imm_mut(&mut self) -> &mut bool {
         &mut self.omit_0x_on_small_imm
     }
