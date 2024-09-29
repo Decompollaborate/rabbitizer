@@ -208,7 +208,7 @@ impl Instruction {
 impl Instruction {
     #[must_use]
     pub fn operands_iter(&self) -> OperandIterator {
-        self.opcode_decoder.opcode.operands_iter()
+        self.opcode().operands_iter()
     }
 
     #[must_use]

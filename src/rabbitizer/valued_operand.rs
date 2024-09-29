@@ -201,14 +201,14 @@ impl From<ValuedOperand> for Operand {
     }
 }
 
-pub struct ValuedOperandIterator<'a> {
-    instr: &'a Instruction,
-    operands: &'a [Operand; operand::OPERAND_COUNT_MAX],
+pub struct ValuedOperandIterator<'ins> {
+    instr: &'ins Instruction,
+    operands: &'ins [Operand; operand::OPERAND_COUNT_MAX],
     index: usize,
 }
 
-impl<'a> ValuedOperandIterator<'a> {
-    pub(crate) fn new(instr: &'a Instruction) -> Self {
+impl<'ins> ValuedOperandIterator<'ins> {
+    pub(crate) fn new(instr: &'ins Instruction) -> Self {
         Self {
             instr,
             operands: instr.opcode().get_descriptor().operands(),
@@ -217,7 +217,7 @@ impl<'a> ValuedOperandIterator<'a> {
     }
 }
 
-impl<'a> Iterator for ValuedOperandIterator<'a> {
+impl<'ins> Iterator for ValuedOperandIterator<'ins> {
     type Item = ValuedOperand;
 
     fn next(&mut self) -> Option<Self::Item> {

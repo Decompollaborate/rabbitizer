@@ -40,7 +40,7 @@ impl Opcode {
         self.get_descriptor().operands()
     }
     #[must_use]
-    pub fn operands_iter(&self) -> OperandIterator {
+    pub fn operands_iter(&self) -> OperandIterator<'static> {
         self.get_descriptor().operands_iter()
     }
 

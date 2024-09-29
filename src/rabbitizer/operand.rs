@@ -12,9 +12,9 @@ pub(crate) const OPERAND_COUNT: usize = 134;
 
 pub(crate) const OPERAND_COUNT_MAX: usize = 5;
 
-impl<'a> Operand {
+impl Operand {
     #[must_use]
-    pub fn get_descriptor(&self) -> &'a OperandDescriptor {
+    pub fn get_descriptor(&self) -> &'static OperandDescriptor {
         &OPERANDS[*self]
     }
 }
@@ -236,19 +236,19 @@ impl Default for Operand {
     }
 }
 
-pub struct OperandIterator<'a> {
-    operands: &'a [Operand; OPERAND_COUNT_MAX],
+pub struct OperandIterator<'ins> {
+    operands: &'ins [Operand; OPERAND_COUNT_MAX],
     index: usize,
 }
 
-impl<'a> OperandIterator<'a> {
-    pub(crate) const fn new(operands: &'a [Operand; OPERAND_COUNT_MAX]) -> Self {
+impl<'ins> OperandIterator<'ins> {
+    pub(crate) const fn new(operands: &'ins [Operand; OPERAND_COUNT_MAX]) -> Self {
         Self { operands, index: 0 }
     }
 }
 
-impl<'a> Iterator for OperandIterator<'a> {
-    type Item = &'a Operand;
+impl<'ins> Iterator for OperandIterator<'ins> {
+    type Item = &'ins Operand;
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.index >= self.operands.len() {

@@ -7,12 +7,12 @@ use crate::{EncodedFieldMask, Operand};
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]
-pub struct OperandDescriptor<'a> {
-    pub(crate) name: &'a str,
+pub struct OperandDescriptor {
+    pub(crate) name: &'static str,
     pub(crate) mask: EncodedFieldMask,
 }
 
-impl<'a> OperandDescriptor<'a> {
+impl OperandDescriptor {
     pub(crate) const fn default() -> Self {
         Self {
             name: "",
@@ -20,14 +20,14 @@ impl<'a> OperandDescriptor<'a> {
         }
     }
 
-    pub(crate) const fn new(name: &'a str, mask: EncodedFieldMask) -> Self {
+    pub(crate) const fn new(name: &'static str, mask: EncodedFieldMask) -> Self {
         Self { name, mask }
     }
 }
 
-impl<'a> OperandDescriptor<'a> {
+impl OperandDescriptor {
     #[must_use]
-    pub const fn name(&self) -> &'a str {
+    pub const fn name(&self) -> &'static str {
         self.name
     }
 
@@ -37,8 +37,8 @@ impl<'a> OperandDescriptor<'a> {
     }
 }
 
-impl Index<Operand> for [OperandDescriptor<'static>] {
-    type Output = OperandDescriptor<'static>;
+impl Index<Operand> for [OperandDescriptor] {
+    type Output = OperandDescriptor;
 
     fn index(&self, index: Operand) -> &Self::Output {
         &self[index as usize]
