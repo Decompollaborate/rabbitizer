@@ -17,4 +17,4 @@
  hi |-------|-------|-------|-------|-------|-------|-------|-------| 
 */
 
-    // The other instructions are implemented using the main CPU table
+    // The other instructions are implemented using the main CORE table

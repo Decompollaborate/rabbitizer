@@ -25,83 +25,83 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x00, madd, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Multiply-ADD word
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x01, maddu, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Multiply-ADD Unsigned word
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x04, plzcw, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true
     ) // Parallel Leading Zero or one Count Word
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x10, mfhi1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Move From HI1 register
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x11, mthi1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Move To HI1 register
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x12, mflo1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         reads_rd: true
     ) // Move From LO1 register
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x13, mtlo1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Move To LO1 register
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x18, mult1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // MULTiply word pipeline 1
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x19, multu1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // MULTiply Unsigned word pipeline 1
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1A, div1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_zero, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true
     ) // DIVide word pipeline 1
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1B, divu1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_zero, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true
     ) // DIVide Unsigned word pipeline 1
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x20, madd1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Multiply-ADD word pipeline 1
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x21, maddu1, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
@@ -109,38 +109,38 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x34, psllh, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Left Logical Halfword
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x36, psrlh, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Logical Halfword
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x37, psrah, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Arithmetic Halfword
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x3C, psllw, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Left Logical Word
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x3E, psrlw, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Logical Word
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x3F, psraw, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Arithmetic Word

@@ -110,27 +110,27 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Opcode {
         match opcode {
-            Opcode::cpu_beq => {
+            Opcode::core_beq => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0 {
                     if EncodedFieldMask::rs.get_shifted(word) == 0 {
                         if flags
                             .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_b))
                         {
-                            opcode = Opcode::cpu_b;
+                            opcode = Opcode::core_b;
                         }
                     } else if flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqz))
                     {
-                        opcode = Opcode::cpu_beqz;
+                        opcode = Opcode::core_beqz;
                     }
                 }
             }
-            Opcode::cpu_bne => {
+            Opcode::core_bne => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0
                     && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnez))
                 {
-                    opcode = Opcode::cpu_bnez;
+                    opcode = Opcode::core_bnez;
                 }
             }
             _ => {}
@@ -148,54 +148,54 @@ impl OpcodeDecoder {
     ) -> Opcode {
         if Self::is_nop(word) {
             // NOP is special enough, so we don't provide a way to disable it.
-            return Opcode::cpu_nop;
+            return Opcode::core_nop;
         }
 
         match opcode {
-            Opcode::cpu_or => {
+            Opcode::core_or => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0
                     && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_move))
                 {
-                    opcode = Opcode::cpu_move;
+                    opcode = Opcode::core_move;
                 }
             }
-            Opcode::cpu_nor => {
+            Opcode::core_nor => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0
                     && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_not))
                 {
-                    opcode = Opcode::cpu_not;
+                    opcode = Opcode::core_not;
                 }
             }
-            Opcode::cpu_sub => {
+            Opcode::core_sub => {
                 if EncodedFieldMask::rs.get_shifted(word) == 0
                     && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_neg))
                 {
-                    opcode = Opcode::cpu_neg;
+                    opcode = Opcode::core_neg;
                 }
             }
-            Opcode::cpu_subu => {
+            Opcode::core_subu => {
                 if EncodedFieldMask::rs.get_shifted(word) == 0
                     && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_negu))
                 {
-                    opcode = Opcode::cpu_negu;
+                    opcode = Opcode::core_negu;
                 }
             }
-            Opcode::cpu_div => {
+            Opcode::core_div => {
                 if !flags.contains(DecodingFlags::gnu_mode)
                     || flags.contains(DecodingFlags::sn64_div_fix)
                 {
-                    opcode = Opcode::cpu_sn64_div;
+                    opcode = Opcode::core_sn64_div;
                 }
             }
-            Opcode::cpu_divu => {
+            Opcode::core_divu => {
                 if !flags.contains(DecodingFlags::gnu_mode)
                     || flags.contains(DecodingFlags::sn64_div_fix)
                 {
-                    opcode = Opcode::cpu_sn64_divu;
+                    opcode = Opcode::core_sn64_divu;
                 }
             }
             _ => {}
@@ -212,12 +212,12 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Opcode {
         match opcode {
-            Opcode::cpu_bgezal => {
+            Opcode::core_bgezal => {
                 if EncodedFieldMask::rs.get_shifted(word) == 0
                     && flags
                         .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bal))
                 {
-                    Opcode::cpu_bal
+                    Opcode::core_bal
                 } else {
                     opcode
                 }
@@ -525,7 +525,7 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         match self.opcode {
-            Opcode::cpu_sync | Opcode::r5900_sync_p => {
+            Opcode::core_sync | Opcode::r5900_sync_p => {
                 let mask = EncodedFieldMask::stype;
                 let mandatory_bits = self.mandatory_bits.union(mask.mask_value(word));
                 if (mask.get_shifted(word) & 0x10) == 0x10 {
@@ -536,7 +536,7 @@ impl OpcodeDecoder {
                     }
                 } else {
                     Self {
-                        opcode: Opcode::cpu_sync,
+                        opcode: Opcode::core_sync,
                         opcode_category: self.opcode_category,
                         mandatory_bits,
                     }

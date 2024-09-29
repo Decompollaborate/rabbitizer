@@ -5,7 +5,7 @@
 use rabbitizer::Opcode;
 
 fn main() {
-    for x in Opcode::cpu_lw.get_descriptor().operands_iter() {
+    for x in Opcode::core_lw.get_descriptor().operands_iter() {
         println!("{x:?}");
     }
 

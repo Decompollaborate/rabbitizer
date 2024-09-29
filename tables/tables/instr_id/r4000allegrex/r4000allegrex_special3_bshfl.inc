@@ -17,7 +17,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x02, wsbh, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
@@ -25,7 +25,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x03, wsbw, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
@@ -33,7 +33,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x10, seb, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
@@ -41,7 +41,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x18, seh, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
@@ -49,7 +49,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x14, bitrev, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true

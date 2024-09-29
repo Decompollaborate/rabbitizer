@@ -14,11 +14,11 @@
     // OP rt, cop2cd
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x02, cfc2, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::rsp_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::rsp_cop2cd),
         modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x06, ctc2, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::rsp_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::rsp_cop2cd),
         reads_rt: true
     )

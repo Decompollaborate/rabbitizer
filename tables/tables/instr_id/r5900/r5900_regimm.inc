@@ -13,18 +13,18 @@
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
 */
 
-    // The other instructions are implemented using the main CPU table
+    // The other instructions are implemented using the main CORE table
 
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x18, mtsab, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x19, mtsah, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true
     )

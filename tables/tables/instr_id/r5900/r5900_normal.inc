@@ -20,12 +20,12 @@
      *5 = COP2                         *6 = MMI table
 */
 
-    // The other instructions are implemented using the main CPU table
+    // The other instructions are implemented using the main CORE table
 
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1E, lq, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -35,7 +35,7 @@
     ) // Load Quadword
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1F, sq, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -46,7 +46,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x36, lqc2, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::r5900_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
@@ -55,7 +55,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x3E, sqc2, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::r5900_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,

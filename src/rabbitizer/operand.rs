@@ -35,28 +35,28 @@ impl Operand {
     pub(crate) fn to_valued_operand(self, instr: &Instruction) -> ValuedOperand {
         match self {
             Self::ALL_EMPTY => ValuedOperand::ALL_EMPTY(),
-            Self::cpu_rs => ValuedOperand::cpu_rs(instr.reg_rs_unchecked()),
-            Self::cpu_rt => ValuedOperand::cpu_rt(instr.reg_rt_unchecked()),
-            Self::cpu_rd => ValuedOperand::cpu_rd(instr.reg_rd_unchecked()),
-            Self::cpu_sa => todo!(),
-            Self::cpu_zero => ValuedOperand::cpu_zero(),
-            Self::cpu_cop0d => todo!(),
-            Self::cpu_fs => todo!(),
-            Self::cpu_ft => todo!(),
-            Self::cpu_fd => todo!(),
-            Self::cpu_cop1cs => todo!(),
-            Self::cpu_cop2t => todo!(),
-            Self::cpu_cop2cd => todo!(),
-            Self::cpu_op => todo!(),
-            Self::cpu_hint => todo!(),
-            Self::cpu_code => todo!(),
-            Self::cpu_code_lower => todo!(),
-            Self::cpu_copraw => todo!(),
-            Self::cpu_label => todo!(),
-            Self::cpu_immediate => todo!(),
-            Self::cpu_branch_target_label => todo!(),
-            Self::cpu_immediate_base => todo!(),
-            Self::cpu_maybe_rd_rs => todo!(),
+            Self::core_rs => ValuedOperand::core_rs(instr.reg_rs_unchecked()),
+            Self::core_rt => ValuedOperand::core_rt(instr.reg_rt_unchecked()),
+            Self::core_rd => ValuedOperand::core_rd(instr.reg_rd_unchecked()),
+            Self::core_sa => todo!(),
+            Self::core_zero => ValuedOperand::core_zero(),
+            Self::core_cop0d => todo!(),
+            Self::core_fs => todo!(),
+            Self::core_ft => todo!(),
+            Self::core_fd => todo!(),
+            Self::core_cop1cs => todo!(),
+            Self::core_cop2t => todo!(),
+            Self::core_cop2cd => todo!(),
+            Self::core_op => todo!(),
+            Self::core_hint => todo!(),
+            Self::core_code => todo!(),
+            Self::core_code_lower => todo!(),
+            Self::core_copraw => todo!(),
+            Self::core_label => todo!(),
+            Self::core_immediate => todo!(),
+            Self::core_branch_target_label => todo!(),
+            Self::core_immediate_base => todo!(),
+            Self::core_maybe_rd_rs => todo!(),
             Self::rsp_rs => todo!(),
             Self::rsp_rt => todo!(),
             Self::rsp_rd => todo!(),
@@ -273,11 +273,11 @@ mod tests {
 
     #[test]
     fn test_addiu_operands() {
-        let mut operands = Opcode::cpu_addiu.get_descriptor().operands_iter();
+        let mut operands = Opcode::core_addiu.get_descriptor().operands_iter();
 
-        assert_eq!(operands.next(), Some(Operand::cpu_rt).as_ref());
-        assert_eq!(operands.next(), Some(Operand::cpu_rs).as_ref());
-        assert_eq!(operands.next(), Some(Operand::cpu_immediate).as_ref());
+        assert_eq!(operands.next(), Some(Operand::core_rt).as_ref());
+        assert_eq!(operands.next(), Some(Operand::core_rs).as_ref());
+        assert_eq!(operands.next(), Some(Operand::core_immediate).as_ref());
         assert_eq!(operands.next(), None);
     }
 }

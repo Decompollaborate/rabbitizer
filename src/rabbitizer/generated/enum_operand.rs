@@ -11,28 +11,28 @@ use crate::{operand_display::OperandDisplayCallback, OperandDisplay};
 #[non_exhaustive]
 pub enum Operand {
     ALL_EMPTY,
-    cpu_rs,
-    cpu_rt,
-    cpu_rd,
-    cpu_sa,
-    cpu_zero,
-    cpu_cop0d,
-    cpu_fs,
-    cpu_ft,
-    cpu_fd,
-    cpu_cop1cs,
-    cpu_cop2t,
-    cpu_cop2cd,
-    cpu_op,
-    cpu_hint,
-    cpu_code,
-    cpu_code_lower,
-    cpu_copraw,
-    cpu_label,
-    cpu_immediate,
-    cpu_branch_target_label,
-    cpu_immediate_base,
-    cpu_maybe_rd_rs,
+    core_rs,
+    core_rt,
+    core_rd,
+    core_sa,
+    core_zero,
+    core_cop0d,
+    core_fs,
+    core_ft,
+    core_fd,
+    core_cop1cs,
+    core_cop2t,
+    core_cop2cd,
+    core_op,
+    core_hint,
+    core_code,
+    core_code_lower,
+    core_copraw,
+    core_label,
+    core_immediate,
+    core_branch_target_label,
+    core_immediate_base,
+    core_maybe_rd_rs,
     rsp_rs,
     rsp_rt,
     rsp_rd,
@@ -149,58 +149,58 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     let mut table = [OperandDescriptor::default(); OPERAND_COUNT];
     table[Operand::ALL_EMPTY as usize] =
         OperandDescriptor::new(concat!("ALL", "_", "EMPTY"), EncodedFieldMask::empty());
-    table[Operand::cpu_rs as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "rs"), EncodedFieldMask::rs);
-    table[Operand::cpu_rt as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "rt"), EncodedFieldMask::rt);
-    table[Operand::cpu_rd as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "rd"), EncodedFieldMask::rd);
-    table[Operand::cpu_sa as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "sa"), EncodedFieldMask::sa);
-    table[Operand::cpu_zero as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "zero"), EncodedFieldMask::empty());
-    table[Operand::cpu_cop0d as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "cop0d"), EncodedFieldMask::cop0d);
-    table[Operand::cpu_fs as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "fs"), EncodedFieldMask::fs);
-    table[Operand::cpu_ft as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "ft"), EncodedFieldMask::ft);
-    table[Operand::cpu_fd as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "fd"), EncodedFieldMask::fd);
-    table[Operand::cpu_cop1cs as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "cop1cs"), EncodedFieldMask::cop1cs);
-    table[Operand::cpu_cop2t as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "cop2t"), EncodedFieldMask::cop2t);
-    table[Operand::cpu_cop2cd as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "cop2cd"), EncodedFieldMask::cop2cd);
-    table[Operand::cpu_op as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "op"), EncodedFieldMask::op);
-    table[Operand::cpu_hint as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "hint"), EncodedFieldMask::hint);
-    table[Operand::cpu_code as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "code"), EncodedFieldMask::code);
-    table[Operand::cpu_code_lower as usize] = OperandDescriptor::new(
-        concat!("cpu", "_", "code_lower"),
+    table[Operand::core_rs as usize] =
+        OperandDescriptor::new(concat!("core", "_", "rs"), EncodedFieldMask::rs);
+    table[Operand::core_rt as usize] =
+        OperandDescriptor::new(concat!("core", "_", "rt"), EncodedFieldMask::rt);
+    table[Operand::core_rd as usize] =
+        OperandDescriptor::new(concat!("core", "_", "rd"), EncodedFieldMask::rd);
+    table[Operand::core_sa as usize] =
+        OperandDescriptor::new(concat!("core", "_", "sa"), EncodedFieldMask::sa);
+    table[Operand::core_zero as usize] =
+        OperandDescriptor::new(concat!("core", "_", "zero"), EncodedFieldMask::empty());
+    table[Operand::core_cop0d as usize] =
+        OperandDescriptor::new(concat!("core", "_", "cop0d"), EncodedFieldMask::cop0d);
+    table[Operand::core_fs as usize] =
+        OperandDescriptor::new(concat!("core", "_", "fs"), EncodedFieldMask::fs);
+    table[Operand::core_ft as usize] =
+        OperandDescriptor::new(concat!("core", "_", "ft"), EncodedFieldMask::ft);
+    table[Operand::core_fd as usize] =
+        OperandDescriptor::new(concat!("core", "_", "fd"), EncodedFieldMask::fd);
+    table[Operand::core_cop1cs as usize] =
+        OperandDescriptor::new(concat!("core", "_", "cop1cs"), EncodedFieldMask::cop1cs);
+    table[Operand::core_cop2t as usize] =
+        OperandDescriptor::new(concat!("core", "_", "cop2t"), EncodedFieldMask::cop2t);
+    table[Operand::core_cop2cd as usize] =
+        OperandDescriptor::new(concat!("core", "_", "cop2cd"), EncodedFieldMask::cop2cd);
+    table[Operand::core_op as usize] =
+        OperandDescriptor::new(concat!("core", "_", "op"), EncodedFieldMask::op);
+    table[Operand::core_hint as usize] =
+        OperandDescriptor::new(concat!("core", "_", "hint"), EncodedFieldMask::hint);
+    table[Operand::core_code as usize] =
+        OperandDescriptor::new(concat!("core", "_", "code"), EncodedFieldMask::code);
+    table[Operand::core_code_lower as usize] = OperandDescriptor::new(
+        concat!("core", "_", "code_lower"),
         EncodedFieldMask::code_lower,
     );
-    table[Operand::cpu_copraw as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "copraw"), EncodedFieldMask::copraw);
-    table[Operand::cpu_label as usize] =
-        OperandDescriptor::new(concat!("cpu", "_", "label"), EncodedFieldMask::instr_index);
-    table[Operand::cpu_immediate as usize] = OperandDescriptor::new(
-        concat!("cpu", "_", "immediate"),
+    table[Operand::core_copraw as usize] =
+        OperandDescriptor::new(concat!("core", "_", "copraw"), EncodedFieldMask::copraw);
+    table[Operand::core_label as usize] =
+        OperandDescriptor::new(concat!("core", "_", "label"), EncodedFieldMask::instr_index);
+    table[Operand::core_immediate as usize] = OperandDescriptor::new(
+        concat!("core", "_", "immediate"),
         EncodedFieldMask::immediate,
     );
-    table[Operand::cpu_branch_target_label as usize] = OperandDescriptor::new(
-        concat!("cpu", "_", "branch_target_label"),
+    table[Operand::core_branch_target_label as usize] = OperandDescriptor::new(
+        concat!("core", "_", "branch_target_label"),
         EncodedFieldMask::immediate,
     );
-    table[Operand::cpu_immediate_base as usize] = OperandDescriptor::new(
-        concat!("cpu", "_", "immediate_base"),
+    table[Operand::core_immediate_base as usize] = OperandDescriptor::new(
+        concat!("core", "_", "immediate_base"),
         EncodedFieldMask::immediate.union(EncodedFieldMask::rs),
     );
-    table[Operand::cpu_maybe_rd_rs as usize] = OperandDescriptor::new(
-        concat!("cpu", "_", "maybe_rd_rs"),
+    table[Operand::core_maybe_rd_rs as usize] = OperandDescriptor::new(
+        concat!("core", "_", "maybe_rd_rs"),
         EncodedFieldMask::rd.union(EncodedFieldMask::rs),
     );
     table[Operand::rsp_rs as usize] =
@@ -621,29 +621,29 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     let mut table: [OperandDisplayCallback; OPERAND_COUNT] =
         [OperandDisplay::display_ALL_EMPTY; OPERAND_COUNT];
     table[Operand::ALL_EMPTY as usize] = OperandDisplay::display_ALL_EMPTY;
-    table[Operand::cpu_rs as usize] = OperandDisplay::display_cpu_rs;
-    table[Operand::cpu_rt as usize] = OperandDisplay::display_cpu_rt;
-    table[Operand::cpu_rd as usize] = OperandDisplay::display_cpu_rd;
-    table[Operand::cpu_sa as usize] = OperandDisplay::display_cpu_sa;
-    table[Operand::cpu_zero as usize] = OperandDisplay::display_cpu_zero;
-    table[Operand::cpu_cop0d as usize] = OperandDisplay::display_cpu_cop0d;
-    table[Operand::cpu_fs as usize] = OperandDisplay::display_cpu_fs;
-    table[Operand::cpu_ft as usize] = OperandDisplay::display_cpu_ft;
-    table[Operand::cpu_fd as usize] = OperandDisplay::display_cpu_fd;
-    table[Operand::cpu_cop1cs as usize] = OperandDisplay::display_cpu_cop1cs;
-    table[Operand::cpu_cop2t as usize] = OperandDisplay::display_cpu_cop2t;
-    table[Operand::cpu_cop2cd as usize] = OperandDisplay::display_cpu_cop2cd;
-    table[Operand::cpu_op as usize] = OperandDisplay::display_cpu_op;
-    table[Operand::cpu_hint as usize] = OperandDisplay::display_cpu_hint;
-    table[Operand::cpu_code as usize] = OperandDisplay::display_cpu_code;
-    table[Operand::cpu_code_lower as usize] = OperandDisplay::display_cpu_code_lower;
-    table[Operand::cpu_copraw as usize] = OperandDisplay::display_cpu_copraw;
-    table[Operand::cpu_label as usize] = OperandDisplay::display_cpu_label;
-    table[Operand::cpu_immediate as usize] = OperandDisplay::display_cpu_immediate;
-    table[Operand::cpu_branch_target_label as usize] =
-        OperandDisplay::display_cpu_branch_target_label;
-    table[Operand::cpu_immediate_base as usize] = OperandDisplay::display_cpu_immediate_base;
-    table[Operand::cpu_maybe_rd_rs as usize] = OperandDisplay::display_cpu_maybe_rd_rs;
+    table[Operand::core_rs as usize] = OperandDisplay::display_core_rs;
+    table[Operand::core_rt as usize] = OperandDisplay::display_core_rt;
+    table[Operand::core_rd as usize] = OperandDisplay::display_core_rd;
+    table[Operand::core_sa as usize] = OperandDisplay::display_core_sa;
+    table[Operand::core_zero as usize] = OperandDisplay::display_core_zero;
+    table[Operand::core_cop0d as usize] = OperandDisplay::display_core_cop0d;
+    table[Operand::core_fs as usize] = OperandDisplay::display_core_fs;
+    table[Operand::core_ft as usize] = OperandDisplay::display_core_ft;
+    table[Operand::core_fd as usize] = OperandDisplay::display_core_fd;
+    table[Operand::core_cop1cs as usize] = OperandDisplay::display_core_cop1cs;
+    table[Operand::core_cop2t as usize] = OperandDisplay::display_core_cop2t;
+    table[Operand::core_cop2cd as usize] = OperandDisplay::display_core_cop2cd;
+    table[Operand::core_op as usize] = OperandDisplay::display_core_op;
+    table[Operand::core_hint as usize] = OperandDisplay::display_core_hint;
+    table[Operand::core_code as usize] = OperandDisplay::display_core_code;
+    table[Operand::core_code_lower as usize] = OperandDisplay::display_core_code_lower;
+    table[Operand::core_copraw as usize] = OperandDisplay::display_core_copraw;
+    table[Operand::core_label as usize] = OperandDisplay::display_core_label;
+    table[Operand::core_immediate as usize] = OperandDisplay::display_core_immediate;
+    table[Operand::core_branch_target_label as usize] =
+        OperandDisplay::display_core_branch_target_label;
+    table[Operand::core_immediate_base as usize] = OperandDisplay::display_core_immediate_base;
+    table[Operand::core_maybe_rd_rs as usize] = OperandDisplay::display_core_maybe_rd_rs;
     table[Operand::rsp_rs as usize] = OperandDisplay::display_rsp_rs;
     table[Operand::rsp_rt as usize] = OperandDisplay::display_rsp_rt;
     table[Operand::rsp_rd as usize] = OperandDisplay::display_rsp_rd;
@@ -782,28 +782,28 @@ impl Operand {
     pub const fn from_valued_operand(value: ValuedOperand) -> Self {
         match value {
             ValuedOperand::ALL_EMPTY(..) => Self::ALL_EMPTY,
-            ValuedOperand::cpu_rs(..) => Self::cpu_rs,
-            ValuedOperand::cpu_rt(..) => Self::cpu_rt,
-            ValuedOperand::cpu_rd(..) => Self::cpu_rd,
-            ValuedOperand::cpu_sa(..) => Self::cpu_sa,
-            ValuedOperand::cpu_zero(..) => Self::cpu_zero,
-            ValuedOperand::cpu_cop0d(..) => Self::cpu_cop0d,
-            ValuedOperand::cpu_fs(..) => Self::cpu_fs,
-            ValuedOperand::cpu_ft(..) => Self::cpu_ft,
-            ValuedOperand::cpu_fd(..) => Self::cpu_fd,
-            ValuedOperand::cpu_cop1cs(..) => Self::cpu_cop1cs,
-            ValuedOperand::cpu_cop2t(..) => Self::cpu_cop2t,
-            ValuedOperand::cpu_cop2cd(..) => Self::cpu_cop2cd,
-            ValuedOperand::cpu_op(..) => Self::cpu_op,
-            ValuedOperand::cpu_hint(..) => Self::cpu_hint,
-            ValuedOperand::cpu_code(..) => Self::cpu_code,
-            ValuedOperand::cpu_code_lower(..) => Self::cpu_code_lower,
-            ValuedOperand::cpu_copraw(..) => Self::cpu_copraw,
-            ValuedOperand::cpu_label(..) => Self::cpu_label,
-            ValuedOperand::cpu_immediate(..) => Self::cpu_immediate,
-            ValuedOperand::cpu_branch_target_label(..) => Self::cpu_branch_target_label,
-            ValuedOperand::cpu_immediate_base(..) => Self::cpu_immediate_base,
-            ValuedOperand::cpu_maybe_rd_rs(..) => Self::cpu_maybe_rd_rs,
+            ValuedOperand::core_rs(..) => Self::core_rs,
+            ValuedOperand::core_rt(..) => Self::core_rt,
+            ValuedOperand::core_rd(..) => Self::core_rd,
+            ValuedOperand::core_sa(..) => Self::core_sa,
+            ValuedOperand::core_zero(..) => Self::core_zero,
+            ValuedOperand::core_cop0d(..) => Self::core_cop0d,
+            ValuedOperand::core_fs(..) => Self::core_fs,
+            ValuedOperand::core_ft(..) => Self::core_ft,
+            ValuedOperand::core_fd(..) => Self::core_fd,
+            ValuedOperand::core_cop1cs(..) => Self::core_cop1cs,
+            ValuedOperand::core_cop2t(..) => Self::core_cop2t,
+            ValuedOperand::core_cop2cd(..) => Self::core_cop2cd,
+            ValuedOperand::core_op(..) => Self::core_op,
+            ValuedOperand::core_hint(..) => Self::core_hint,
+            ValuedOperand::core_code(..) => Self::core_code,
+            ValuedOperand::core_code_lower(..) => Self::core_code_lower,
+            ValuedOperand::core_copraw(..) => Self::core_copraw,
+            ValuedOperand::core_label(..) => Self::core_label,
+            ValuedOperand::core_immediate(..) => Self::core_immediate,
+            ValuedOperand::core_branch_target_label(..) => Self::core_branch_target_label,
+            ValuedOperand::core_immediate_base(..) => Self::core_immediate_base,
+            ValuedOperand::core_maybe_rd_rs(..) => Self::core_maybe_rd_rs,
             ValuedOperand::rsp_rs(..) => Self::rsp_rs,
             ValuedOperand::rsp_rt(..) => Self::rsp_rt,
             ValuedOperand::rsp_rd(..) => Self::rsp_rd,

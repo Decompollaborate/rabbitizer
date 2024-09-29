@@ -17,21 +17,21 @@
     // TODO: properties
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x01, qmfc2, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vfs),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
         modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x02, cfc2, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vis),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
         modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x05, qmtc2, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vfs),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
         reads_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x06, ctc2, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vis),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
         reads_rt: true
     )

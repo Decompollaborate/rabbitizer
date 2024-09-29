@@ -55,23 +55,28 @@ distclean: clean
 
 ../include/generated/%.h: $(TEMPLATE_FOLDER)/c/%.table.template
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.h=.d) $<
-	$(C_TABLE_GEN) $< $@ $(@F) || rm -rf $@
+	$(C_TABLE_GEN) $< $@ $(@F) || (rm -rf $@ && false)
 
 ../cplusplus/include/generated/%.hpp: $(TEMPLATE_FOLDER)/cplusplus/%.table.template
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.hpp=.d) $<
-	$(C_TABLE_GEN) $< $@ $(@F) || rm -rf $@
+	$(C_TABLE_GEN) $< $@ $(@F) || (rm -rf $@ && false)
 
 ../rust/src/%.rs: $(TEMPLATE_FOLDER)/rust/%.tablers.template
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
-	$(RS_TABLE_GEN) $< $@ || rm -rf $@
+	$(RS_TABLE_GEN) $< $@ || (rm -rf $@ && false)
 
-../src/rabbitizer/generated/%.rs: $(TEMPLATE_FOLDER)/rust_native/%.tablers.template
+../src/rabbitizer/generated/%.rs: $(TEMPLATE_FOLDER)/rust_native/%.tablers.template | ../src/rabbitizer/generated
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
-	$(RS_TABLE_GEN) $< $@ || rm -rf $@
+	$(RS_TABLE_GEN) $< $@ || (rm -rf $@ && false)
 
 ../rabbitizer/%.pyi: $(TEMPLATE_FOLDER)/python/%.tablepyi.template
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
-	$(PYI_TABLE_GEN) $< $@ || rm -rf $@
+	$(PYI_TABLE_GEN) $< $@ || (rm -rf $@ && false)
+
+
+../src/rabbitizer/generated:
+	mkdir -p $@
+
 
 -include $(TABLE_DEP_FILES)
 

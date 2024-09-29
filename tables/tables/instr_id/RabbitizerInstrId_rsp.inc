@@ -9,7 +9,7 @@
     #include "rsp/rsp_normal_lwc2.inc"
     #include "rsp/rsp_normal_swc2.inc"
 
-    // CPU instructions but with rsp registers
+    // CORE instructions but with rsp registers
 
     #include "rsp/rsp_normal.inc"
     #include "rsp/rsp_special.inc"

@@ -14,16 +14,16 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("INVALID", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_j as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_label),
+    table[Opcode::core_j as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_label),
         instr_type: InstrType::J,
         is_jump: true,
         is_jump_with_address: true,
         ..OpcodeDescriptor::new("j", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_jal as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_label),
+    table[Opcode::core_jal as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_label),
         instr_type: InstrType::J,
         is_jump: true,
         is_jump_with_address: true,
@@ -31,11 +31,11 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("jal", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_beq as usize] = OpcodeDescriptor {
+    table[Opcode::core_beq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::cpu_rs,
-            Operand::cpu_rt,
-            Operand::cpu_branch_target_label,
+            Operand::core_rs,
+            Operand::core_rt,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::I,
         is_branch: true,
@@ -44,11 +44,11 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("beq", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bne as usize] = OpcodeDescriptor {
+    table[Opcode::core_bne as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::cpu_rs,
-            Operand::cpu_rt,
-            Operand::cpu_branch_target_label,
+            Operand::core_rs,
+            Operand::core_rt,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::I,
         is_branch: true,
@@ -57,11 +57,11 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bne", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_beql as usize] = OpcodeDescriptor {
+    table[Opcode::core_beql as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::cpu_rs,
-            Operand::cpu_rt,
-            Operand::cpu_branch_target_label,
+            Operand::core_rs,
+            Operand::core_rt,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::I,
         is_branch: true,
@@ -71,11 +71,11 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("beql", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bnel as usize] = OpcodeDescriptor {
+    table[Opcode::core_bnel as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::cpu_rs,
-            Operand::cpu_rt,
-            Operand::cpu_branch_target_label,
+            Operand::core_rs,
+            Operand::core_rt,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::I,
         is_branch: true,
@@ -85,16 +85,16 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bnel", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_blez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_blez as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
         reads_rs: true,
         ..OpcodeDescriptor::new("blez", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_blezl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_blezl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
         is_branch_likely: true,
@@ -102,16 +102,16 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("blezl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bgtz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bgtz as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
         reads_rs: true,
         ..OpcodeDescriptor::new("bgtz", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bgtzl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bgtzl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
         is_branch_likely: true,
@@ -119,8 +119,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bgtzl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_addi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_addi as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -129,8 +129,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("addi", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_addiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_addiu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -138,24 +138,24 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("addiu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_slti as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_slti as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
         ..OpcodeDescriptor::new("slti", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sltiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_sltiu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
         ..OpcodeDescriptor::new("sltiu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_andi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_andi as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -163,8 +163,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("andi", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ori as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_ori as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -173,8 +173,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ori", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_xori as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_xori as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -182,8 +182,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("xori", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_daddi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_daddi as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -191,8 +191,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("daddi", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_daddiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rt, Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_daddiu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -200,8 +200,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("daddiu", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lui as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate),
+    table[Opcode::core_lui as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -209,8 +209,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lui", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ldl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_ldl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -220,8 +220,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ldl", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ldr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_ldr as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -231,8 +231,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ldr", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lb as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lb as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -243,8 +243,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lb", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lh as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -255,8 +255,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lh", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lwl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lwl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -266,8 +266,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lwl", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lw as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -278,8 +278,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lw", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lbu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lbu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -291,8 +291,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lbu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lhu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lhu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -304,8 +304,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lhu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lwr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lwr as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -315,8 +315,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lwr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lwu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lwu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -328,8 +328,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lwu", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sb as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_sb as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -340,8 +340,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sb", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_sh as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -352,8 +352,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sh", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_swl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_swl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -363,8 +363,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("swl", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_sw as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -375,8 +375,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sw", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sdl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_sdl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -386,8 +386,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sdl", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sdr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_sdr as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -397,8 +397,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sdr", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_swr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_swr as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -408,8 +408,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("swr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ll as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_ll as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -420,15 +420,15 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ll", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_pref as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_hint, Operand::cpu_immediate_base),
+    table[Opcode::core_pref as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_hint, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         ..OpcodeDescriptor::new("pref", IsaVersion::MIPS_IV, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lld as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_lld as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -439,8 +439,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lld", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ld as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_ld as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -451,8 +451,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ld", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sc as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_sc as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -463,8 +463,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sc", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_scd as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_scd as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -475,8 +475,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("scd", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sd as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+    table[Opcode::core_sd as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -487,16 +487,16 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sd", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cache as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_op, Operand::cpu_immediate_base),
+    table[Opcode::core_cache as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_op, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("cache", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lwc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_ft, Operand::cpu_immediate_base),
+    table[Opcode::core_lwc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
         instr_type: InstrType::I,
         is_float: true,
         reads_rs: true,
@@ -508,8 +508,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lwc1", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ldc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_ft, Operand::cpu_immediate_base),
+    table[Opcode::core_ldc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
         instr_type: InstrType::I,
         is_float: true,
         is_double: true,
@@ -522,8 +522,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ldc1", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_swc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_ft, Operand::cpu_immediate_base),
+    table[Opcode::core_swc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
         instr_type: InstrType::I,
         is_float: true,
         reads_rs: true,
@@ -535,8 +535,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("swc1", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sdc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_ft, Operand::cpu_immediate_base),
+    table[Opcode::core_sdc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
         instr_type: InstrType::I,
         is_float: true,
         is_double: true,
@@ -549,8 +549,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sdc1", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_lwc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_cop2t, Operand::cpu_immediate_base),
+    table[Opcode::core_lwc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         can_be_lo: true,
@@ -559,8 +559,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("lwc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ldc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_cop2t, Operand::cpu_immediate_base),
+    table[Opcode::core_ldc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         can_be_lo: true,
@@ -569,8 +569,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ldc2", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_swc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_cop2t, Operand::cpu_immediate_base),
+    table[Opcode::core_swc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         can_be_lo: true,
@@ -579,8 +579,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("swc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sdc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_cop2t, Operand::cpu_immediate_base),
+    table[Opcode::core_sdc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         can_be_lo: true,
@@ -589,16 +589,16 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sdc2", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_b as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_b as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
         is_pseudo: true,
         ..OpcodeDescriptor::new("b", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_beqz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_beqz as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,
         is_branch: true,
@@ -606,8 +606,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("beqz", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bnez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bnez as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,
         is_branch: true,
@@ -615,80 +615,80 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bnez", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sll as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_sll as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("sll", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_srl as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_srl as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("srl", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sra as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_sra as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("sra", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsll as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_dsll as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("dsll", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsrl as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_dsrl as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("dsrl", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsra as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_dsra as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("dsra", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsll32 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_dsll32 as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("dsll32", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsrl32 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_dsrl32 as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("dsrl32", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsra32 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+    table[Opcode::core_dsra32 as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("dsra32", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsllv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+    table[Opcode::core_dsllv as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -696,8 +696,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dsllv", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsrlv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+    table[Opcode::core_dsrlv as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -705,8 +705,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dsrlv", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsrav as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+    table[Opcode::core_dsrav as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -714,8 +714,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dsrav", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sllv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+    table[Opcode::core_sllv as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -723,8 +723,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sllv", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_srlv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+    table[Opcode::core_srlv as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -732,8 +732,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("srlv", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_srav as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+    table[Opcode::core_srav as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -741,32 +741,32 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("srav", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mthi as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+    table[Opcode::core_mthi as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_rs),
         instr_type: InstrType::R,
         reads_rs: true,
         modifies_hi: true,
         ..OpcodeDescriptor::new("mthi", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mtlo as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+    table[Opcode::core_mtlo as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_rs),
         instr_type: InstrType::R,
         reads_rs: true,
         modifies_lo: true,
         ..OpcodeDescriptor::new("mtlo", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_jr as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+    table[Opcode::core_jr as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_rs),
         instr_type: InstrType::R,
         reads_rs: true,
         is_jump: true,
         ..OpcodeDescriptor::new("jr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_jalr as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_maybe_rd_rs),
+    table[Opcode::core_jalr as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_maybe_rd_rs),
         instr_type: InstrType::R,
         is_jump: true,
         modifies_rd: true,
@@ -775,24 +775,24 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("jalr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mfhi as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+    table[Opcode::core_mfhi as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_rd),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_hi: true,
         ..OpcodeDescriptor::new("mfhi", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mflo as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+    table[Opcode::core_mflo as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_rd),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_lo: true,
         ..OpcodeDescriptor::new("mflo", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_movz as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_movz as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -800,8 +800,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("movz", IsaVersion::MIPS_IV, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_movn as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_movn as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -809,8 +809,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("movn", IsaVersion::MIPS_IV, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_div as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_div as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -820,8 +820,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("div", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_divu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_divu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -831,8 +831,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("divu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sn64_div as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_sn64_div as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -841,8 +841,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("div", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sn64_divu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_sn64_divu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -851,8 +851,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("divu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ddiv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_ddiv as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -862,8 +862,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ddiv", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ddivu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_ddivu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -873,8 +873,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ddivu", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_add as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_add as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -883,8 +883,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("add", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_addu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_addu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -893,8 +893,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("addu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_sub as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         not_emitted_by_compilers: true,
@@ -903,8 +903,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sub", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_subu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_subu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -912,8 +912,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("subu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_and as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_and as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -921,8 +921,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("and", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_or as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_or as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         maybe_is_move: true,
@@ -931,8 +931,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("or", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_xor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_xor as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -940,8 +940,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("xor", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_nor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_nor as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -949,8 +949,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("nor", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_slt as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_slt as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -958,8 +958,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("slt", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sltu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_sltu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -967,8 +967,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sltu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dadd as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_dadd as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -976,8 +976,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dadd", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_daddu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_daddu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -986,8 +986,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("daddu", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_dsub as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -995,8 +995,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dsub", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dsubu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_dsubu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -1004,27 +1004,27 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dsubu", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_syscall as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_code_lower),
+    table[Opcode::core_syscall as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_code_lower),
         instr_type: InstrType::R,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("syscall", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_break as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_code),
+    table[Opcode::core_break as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_code),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new("break", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sync as usize] = OpcodeDescriptor {
+    table[Opcode::core_sync as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new("sync", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mult as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_mult as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1033,8 +1033,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mult", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_multu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_multu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1043,8 +1043,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("multu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dmult as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_dmult as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1053,8 +1053,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dmult", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dmultu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+    table[Opcode::core_dmultu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1063,8 +1063,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dmultu", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tge as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_code_lower),
+    table[Opcode::core_tge as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1073,8 +1073,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tge", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tgeu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_code_lower),
+    table[Opcode::core_tgeu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1083,8 +1083,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tgeu", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tlt as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_code_lower),
+    table[Opcode::core_tlt as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1093,8 +1093,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tlt", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tltu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_code_lower),
+    table[Opcode::core_tltu as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1103,8 +1103,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tltu", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_teq as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_code_lower),
+    table[Opcode::core_teq as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1113,8 +1113,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("teq", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tne as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rs, Operand::cpu_rt, Operand::cpu_code_lower),
+    table[Opcode::core_tne as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -1123,15 +1123,15 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tne", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_nop as usize] = OpcodeDescriptor {
+    table[Opcode::core_nop as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::R,
         is_pseudo: true,
         ..OpcodeDescriptor::new("nop", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_move as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+    table[Opcode::core_move as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -1140,8 +1140,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("move", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_not as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+    table[Opcode::core_not as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -1149,8 +1149,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("not", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_neg as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+    table[Opcode::core_neg as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         not_emitted_by_compilers: true,
         modifies_rd: true,
@@ -1159,8 +1159,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("neg", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_negu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+    table[Opcode::core_negu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -1168,24 +1168,24 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("negu", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bltz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bltz as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true,
         ..OpcodeDescriptor::new("bltz", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bgez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bgez as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true,
         ..OpcodeDescriptor::new("bgez", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bltzl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bltzl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         is_branch_likely: true,
@@ -1193,8 +1193,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bltzl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bgezl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bgezl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         is_branch_likely: true,
@@ -1202,8 +1202,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bgezl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tgei as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_tgei as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         reads_rs: true,
@@ -1211,8 +1211,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tgei", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tgeiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_tgeiu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         reads_rs: true,
@@ -1220,8 +1220,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tgeiu", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tlti as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_tlti as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         reads_rs: true,
@@ -1229,8 +1229,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tlti", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tltiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_tltiu as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         reads_rs: true,
@@ -1238,8 +1238,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tltiu", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_teqi as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_teqi as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         reads_rs: true,
@@ -1247,8 +1247,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("teqi", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tnei as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+    table[Opcode::core_tnei as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         reads_rs: true,
@@ -1256,8 +1256,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("tnei", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bltzal as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bltzal as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true,
@@ -1265,8 +1265,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bltzal", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bgezal as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bgezal as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true,
@@ -1274,8 +1274,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bgezal", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bltzall as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bltzall as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         is_branch_likely: true,
@@ -1284,8 +1284,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bltzall", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bgezall as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_branch_target_label),
+    table[Opcode::core_bgezall as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         is_branch_likely: true,
@@ -1295,8 +1295,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bgezall", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bal as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bal as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         not_emitted_by_compilers: true,
@@ -1305,127 +1305,127 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bal", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mfc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+    table[Opcode::core_mfc0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("mfc0", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dmfc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+    table[Opcode::core_dmfc0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("dmfc0", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cfc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+    table[Opcode::core_cfc0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("cfc0", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mtc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+    table[Opcode::core_mtc0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("mtc0", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dmtc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+    table[Opcode::core_dmtc0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("dmtc0", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ctc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop0d),
+    table[Opcode::core_ctc0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("ctc0", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc0f as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc0f as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         ..OpcodeDescriptor::new("bc0f", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc0t as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc0t as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         ..OpcodeDescriptor::new("bc0t", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc0fl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc0fl as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         is_branch_likely: true,
         ..OpcodeDescriptor::new("bc0fl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc0tl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc0tl as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         is_branch_likely: true,
         ..OpcodeDescriptor::new("bc0tl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tlbr as usize] = OpcodeDescriptor {
+    table[Opcode::core_tlbr as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("tlbr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tlbwi as usize] = OpcodeDescriptor {
+    table[Opcode::core_tlbwi as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("tlbwi", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tlbwr as usize] = OpcodeDescriptor {
+    table[Opcode::core_tlbwr as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         ..OpcodeDescriptor::new("tlbwr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_tlbp as usize] = OpcodeDescriptor {
+    table[Opcode::core_tlbp as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("tlbp", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_rfe as usize] = OpcodeDescriptor {
+    table[Opcode::core_rfe as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("rfe", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_eret as usize] = OpcodeDescriptor {
+    table[Opcode::core_eret as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true,
         ..OpcodeDescriptor::new("eret", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mfc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
+    table[Opcode::core_mfc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_rt: true,
@@ -1433,8 +1433,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mfc1", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dmfc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
+    table[Opcode::core_dmfc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_rt: true,
@@ -1442,8 +1442,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dmfc1", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mtc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
+    table[Opcode::core_mtc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_rt: true,
@@ -1451,8 +1451,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mtc1", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_dmtc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_fs),
+    table[Opcode::core_dmtc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_rt: true,
@@ -1460,54 +1460,54 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("dmtc1", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cfc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop1cs),
+    table[Opcode::core_cfc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_rt: true,
         ..OpcodeDescriptor::new("cfc1", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ctc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop1cs),
+    table[Opcode::core_ctc1 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("ctc1", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc1f as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc1f as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         ..OpcodeDescriptor::new("bc1f", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc1t as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc1t as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         ..OpcodeDescriptor::new("bc1t", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc1fl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc1fl as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         is_branch_likely: true,
         ..OpcodeDescriptor::new("bc1fl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_bc1tl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+    table[Opcode::core_bc1tl as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         is_branch_likely: true,
         ..OpcodeDescriptor::new("bc1tl", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_add_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_add_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1516,8 +1516,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("add.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sub_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_sub_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1526,8 +1526,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sub.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mul_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_mul_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1536,8 +1536,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mul.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_div_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_div_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1546,8 +1546,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("div.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sqrt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_sqrt_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1555,8 +1555,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sqrt.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_abs_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_abs_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1564,8 +1564,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("abs.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mov_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_mov_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1573,8 +1573,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mov.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_neg_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_neg_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1582,8 +1582,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("neg.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_round_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_round_l_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1591,8 +1591,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("round.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_trunc_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_trunc_l_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1600,8 +1600,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("trunc.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ceil_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_ceil_l_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1609,8 +1609,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ceil.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_floor_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_floor_l_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1618,8 +1618,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("floor.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_round_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_round_w_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1627,8 +1627,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("round.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_trunc_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_trunc_w_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1636,8 +1636,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("trunc.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ceil_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_ceil_w_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1645,8 +1645,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ceil.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_floor_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_floor_w_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1654,8 +1654,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("floor.w.s", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_d_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_d_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         is_double: true,
@@ -1664,8 +1664,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.d.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_w_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1673,8 +1673,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.w.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_l_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1682,8 +1682,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.l.s", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_f_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_f_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1691,8 +1691,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.f.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_un_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_un_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1700,8 +1700,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.un.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_eq_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_eq_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1709,8 +1709,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.eq.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ueq_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ueq_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1718,8 +1718,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ueq.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_olt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_olt_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1727,8 +1727,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.olt.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ult_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ult_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1736,8 +1736,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ult.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ole_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ole_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1745,8 +1745,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ole.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ule_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ule_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1754,8 +1754,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ule.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_sf_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_sf_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1763,8 +1763,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.sf.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ngle_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ngle_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1772,8 +1772,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ngle.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_seq_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_seq_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1781,8 +1781,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.seq.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ngl_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ngl_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1790,8 +1790,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ngl.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_lt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_lt_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1799,8 +1799,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.lt.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_nge_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_nge_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1808,8 +1808,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.nge.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_le_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_le_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1817,8 +1817,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.le.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ngt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ngt_s as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -1826,8 +1826,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ngt.s", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_add_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_add_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1836,8 +1836,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("add.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sub_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_sub_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1846,8 +1846,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sub.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mul_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_mul_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1856,8 +1856,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mul.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_div_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_div_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1866,8 +1866,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("div.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_sqrt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_sqrt_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1875,8 +1875,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sqrt.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_abs_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_abs_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1884,8 +1884,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("abs.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mov_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_mov_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1893,8 +1893,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mov.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_neg_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_neg_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1902,8 +1902,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("neg.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_round_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_round_l_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1911,8 +1911,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("round.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_trunc_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_trunc_l_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1920,8 +1920,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("trunc.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ceil_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_ceil_l_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1929,8 +1929,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ceil.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_floor_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_floor_l_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1938,8 +1938,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("floor.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_round_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_round_w_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1947,8 +1947,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("round.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_trunc_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_trunc_w_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1956,8 +1956,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("trunc.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ceil_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_ceil_w_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1965,8 +1965,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ceil.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_floor_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_floor_w_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -1974,8 +1974,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("floor.w.d", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_s_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_s_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         is_double: true,
@@ -1984,8 +1984,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.s.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_w_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         is_double: true,
@@ -1994,8 +1994,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.w.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_l_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         is_double: true,
@@ -2004,8 +2004,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.l.d", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_f_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_f_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2013,8 +2013,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.f.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_un_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_un_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2022,8 +2022,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.un.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_eq_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_eq_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2031,8 +2031,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.eq.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ueq_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ueq_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2040,8 +2040,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ueq.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_olt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_olt_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2049,8 +2049,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.olt.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ult_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ult_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2058,8 +2058,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ult.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ole_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ole_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2067,8 +2067,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ole.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ule_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ule_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2076,8 +2076,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ule.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_df_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_df_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2085,8 +2085,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.df.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ngle_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ngle_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2094,8 +2094,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ngle.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_seq_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_seq_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2103,8 +2103,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.seq.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ngl_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ngl_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2112,8 +2112,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ngl.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_lt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_lt_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2121,8 +2121,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.lt.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_nge_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_nge_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2130,8 +2130,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.nge.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_le_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_le_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2139,8 +2139,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.le.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_c_ngt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+    table[Opcode::core_c_ngt_d as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
@@ -2148,8 +2148,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.ngt.d", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_s_w as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_s_w as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -2157,8 +2157,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.s.w", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_d_w as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_d_w as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         is_double: true,
@@ -2167,8 +2167,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.d.w", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_s_l as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_s_l as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
@@ -2176,8 +2176,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.s.l", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cvt_d_l as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fd, Operand::cpu_fs),
+    table[Opcode::core_cvt_d_l as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         is_double: true,
@@ -2186,26 +2186,26 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("cvt.d.l", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
+    table[Opcode::core_mfc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
         modifies_rt: true,
         ..OpcodeDescriptor::new("mfc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_mtc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
+    table[Opcode::core_mtc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
         reads_rt: true,
         ..OpcodeDescriptor::new("mtc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_cfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
+    table[Opcode::core_cfc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
         modifies_rt: true,
         ..OpcodeDescriptor::new("cfc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
-    table[Opcode::cpu_ctc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_cop2cd),
+    table[Opcode::core_ctc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
         reads_rt: true,
         ..OpcodeDescriptor::new("ctc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
@@ -2221,13 +2221,13 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_cfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::rsp_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::rsp_cop2cd),
         modifies_rt: true,
         ..OpcodeDescriptor::new("cfc2", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();
     table[Opcode::rsp_ctc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::rsp_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::rsp_cop2cd),
         reads_rt: true,
         ..OpcodeDescriptor::new("ctc2", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
@@ -2735,7 +2735,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_j as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_label),
+        operands: Operand::arr1(Operand::core_label),
         instr_type: InstrType::J,
         is_jump: true,
         is_jump_with_address: true,
@@ -2743,7 +2743,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_jal as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_label),
+        operands: Operand::arr1(Operand::core_label),
         instr_type: InstrType::J,
         is_jump: true,
         is_jump_with_address: true,
@@ -2755,7 +2755,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr3(
             Operand::rsp_rs,
             Operand::rsp_rt,
-            Operand::cpu_branch_target_label,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
@@ -2768,7 +2768,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr3(
             Operand::rsp_rs,
             Operand::rsp_rt,
-            Operand::cpu_branch_target_label,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
@@ -2778,7 +2778,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_blez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -2786,7 +2786,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_bgtz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -2794,7 +2794,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_addi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::cpu_immediate),
+        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -2804,7 +2804,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_addiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::cpu_immediate),
+        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -2813,7 +2813,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_slti as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::cpu_immediate),
+        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -2821,7 +2821,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_sltiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::cpu_immediate),
+        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -2829,7 +2829,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_andi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::cpu_immediate),
+        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -2838,7 +2838,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_ori as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::cpu_immediate),
+        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -2848,7 +2848,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_xori as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::cpu_immediate),
+        operands: Operand::arr3(Operand::rsp_rt, Operand::rsp_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -2857,7 +2857,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_lui as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rt, Operand::cpu_immediate),
+        operands: Operand::arr2(Operand::rsp_rt, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
@@ -2971,14 +2971,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_b as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         ..OpcodeDescriptor::new("b", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();
     table[Opcode::rsp_beqz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -2986,7 +2986,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_bnez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -2994,7 +2994,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_sll as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3002,7 +3002,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_srl as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3010,7 +3010,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_sra as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3173,7 +3173,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_break as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_code),
+        operands: Operand::arr1(Operand::core_code),
         instr_type: InstrType::R,
         ..OpcodeDescriptor::new("break", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
@@ -3224,7 +3224,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_bltz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -3232,7 +3232,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_bgez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -3240,7 +3240,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_bltzal as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -3249,7 +3249,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_bgezal as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -3259,7 +3259,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_bal as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         not_emitted_by_compilers: true,
@@ -3441,7 +3441,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_clz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -3449,7 +3449,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_clo as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -3457,7 +3457,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_madd as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -3467,7 +3467,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_maddu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -3477,7 +3477,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_msub as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -3487,7 +3487,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_msubu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -3497,7 +3497,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_max as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -3506,7 +3506,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_min as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -3515,7 +3515,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_srl as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3523,7 +3523,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_rotr as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3531,7 +3531,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_srlv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -3540,7 +3540,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_rotrv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -3555,14 +3555,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_mfie as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rt),
+        operands: Operand::arr1(Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rt: true,
         ..OpcodeDescriptor::new("mfie", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_mtie as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rt),
+        operands: Operand::arr1(Operand::core_rt),
         instr_type: InstrType::R,
         reads_rt: true,
         ..OpcodeDescriptor::new("mtie", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
@@ -3570,8 +3570,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     .check_panic_chain();
     table[Opcode::r4000allegrex_ext as usize] = OpcodeDescriptor {
         operands: Operand::arr4(
-            Operand::cpu_rt,
-            Operand::cpu_rs,
+            Operand::core_rt,
+            Operand::core_rs,
             Operand::r4000allegrex_pos,
             Operand::r4000allegrex_size,
         ),
@@ -3583,8 +3583,8 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     .check_panic_chain();
     table[Opcode::r4000allegrex_ins as usize] = OpcodeDescriptor {
         operands: Operand::arr4(
-            Operand::cpu_rt,
-            Operand::cpu_rs,
+            Operand::core_rt,
+            Operand::core_rs,
             Operand::r4000allegrex_pos,
             Operand::r4000allegrex_size_plus_pos,
         ),
@@ -3595,7 +3595,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_wsbh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3603,7 +3603,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_wsbw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3611,7 +3611,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_seb as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3619,7 +3619,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_seh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3627,7 +3627,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_bitrev as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true,
@@ -3637,7 +3637,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_bvf as usize] = OpcodeDescriptor {
         operands: Operand::arr2(
             Operand::r4000allegrex_imm3,
-            Operand::cpu_branch_target_label,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
@@ -3647,7 +3647,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_bvt as usize] = OpcodeDescriptor {
         operands: Operand::arr2(
             Operand::r4000allegrex_imm3,
-            Operand::cpu_branch_target_label,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
@@ -3657,7 +3657,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_bvfl as usize] = OpcodeDescriptor {
         operands: Operand::arr2(
             Operand::r4000allegrex_imm3,
-            Operand::cpu_branch_target_label,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
@@ -3668,7 +3668,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table[Opcode::r4000allegrex_bvtl as usize] = OpcodeDescriptor {
         operands: Operand::arr2(
             Operand::r4000allegrex_imm3,
-            Operand::cpu_branch_target_label,
+            Operand::core_branch_target_label,
         ),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
@@ -3677,14 +3677,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_mfv as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_s_vd),
+        operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         modifies_rt: true,
         ..OpcodeDescriptor::new("mfv", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_mfvc as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_cop2cd),
         instr_type: InstrType::R,
         modifies_rt: true,
         ..OpcodeDescriptor::new("mfvc", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
@@ -3697,14 +3697,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_mtv as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_s_vd),
+        operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         reads_rt: true,
         ..OpcodeDescriptor::new("mtv", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
     table[Opcode::r4000allegrex_mtvc as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_cop2cd),
         instr_type: InstrType::R,
         reads_rt: true,
         ..OpcodeDescriptor::new("mtvc", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
@@ -6164,7 +6164,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_lq as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -6175,7 +6175,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_sq as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -6186,7 +6186,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_lqc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::r5900_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
@@ -6195,7 +6195,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_sqc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vft, Operand::cpu_immediate_base),
+        operands: Operand::arr2(Operand::r5900_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
@@ -6210,7 +6210,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_mult as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
@@ -6219,33 +6219,33 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_mfsa as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("mfsa", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mtsa as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("mtsa", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mtsab as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         ..OpcodeDescriptor::new("mtsab", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mtsah as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         ..OpcodeDescriptor::new("mtsah", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_madd as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6253,7 +6253,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_maddu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6261,38 +6261,38 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_plzcw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rs),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
         ..OpcodeDescriptor::new("plzcw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mfhi1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("mfhi1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mthi1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("mthi1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mflo1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         reads_rd: true,
         ..OpcodeDescriptor::new("mflo1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mtlo1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("mtlo1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_mult1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6300,7 +6300,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_multu1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6308,21 +6308,21 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_div1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_zero, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("div1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_divu1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_zero, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("divu1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_madd1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6330,7 +6330,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_maddu1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6338,49 +6338,49 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psllh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("psllh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_psrlh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("psrlh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_psrah as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("psrah", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_psllw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("psllw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_psrlw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("psrlw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_psraw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("psraw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_paddw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6388,7 +6388,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6396,7 +6396,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pcgtw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6404,7 +6404,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmaxw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6412,7 +6412,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_paddh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6420,7 +6420,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6428,7 +6428,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pcgth as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6436,7 +6436,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmaxh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6444,7 +6444,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_paddb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6452,7 +6452,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6460,7 +6460,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pcgtb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6468,7 +6468,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_paddsw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6476,7 +6476,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubsw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6484,7 +6484,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pextlw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6492,7 +6492,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_ppacw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6500,7 +6500,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_paddsh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6508,7 +6508,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubsh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6516,7 +6516,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pextlh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6524,7 +6524,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_ppach as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6532,7 +6532,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_paddsb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6540,7 +6540,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubsb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6548,7 +6548,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pextlb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6556,7 +6556,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_ppacb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6564,28 +6564,28 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pext5 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pext5", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_ppac5 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("ppac5", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pabsw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pabsw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pceqw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6593,7 +6593,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pminw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6601,7 +6601,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_padsbh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6609,14 +6609,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pabsh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pabsh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pceqh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6624,7 +6624,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pminh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6632,7 +6632,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pceqb as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6640,7 +6640,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_padduw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6648,7 +6648,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubuw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6656,7 +6656,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pextuw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6664,7 +6664,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_padduh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6672,7 +6672,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubuh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6680,7 +6680,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pextuh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6688,7 +6688,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_paddub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6697,7 +6697,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psubub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6705,7 +6705,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pextub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6713,7 +6713,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_qfsrv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6721,7 +6721,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmaddw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6729,7 +6729,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psllvw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6737,7 +6737,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psrlvw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6745,7 +6745,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmsubw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6753,19 +6753,19 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhi as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("pmfhi", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmflo as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("pmflo", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pinth as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6773,7 +6773,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmultw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6781,14 +6781,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pdivw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pdivw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pcpyld as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6796,7 +6796,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmaddh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6804,7 +6804,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_phmadh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6812,7 +6812,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pand as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6820,7 +6820,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pxor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6828,7 +6828,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmsubh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6836,7 +6836,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_phmsbh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6844,21 +6844,21 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pexeh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pexeh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_prevh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("prevh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmulth as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6866,28 +6866,28 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pdivbw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pdivbw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pexew as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pexew", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_prot3w as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("prot3w", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmadduw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6895,7 +6895,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_psravw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_rs),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6903,19 +6903,19 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmthi as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("pmthi", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmtlo as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("pmtlo", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pinteh as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6923,7 +6923,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pmultuw as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6931,14 +6931,14 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pdivuw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pdivuw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pcpyud as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6946,7 +6946,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_por as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6954,7 +6954,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pnor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rs, Operand::cpu_rt),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
@@ -6962,58 +6962,58 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_pexch as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pexch", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pcpyh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pcpyh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pexcw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rd, Operand::cpu_rt),
+        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
         ..OpcodeDescriptor::new("pexcw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_lw as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("pmfhl.lw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_uw as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("pmfhl.uw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_slw as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("pmfhl.slw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_lh as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("pmfhl.lh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmfhl_sh as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rd),
+        operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new("pmfhl.sh", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_pmthl_lw as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_rs),
+        operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("pmthl.lw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
@@ -7029,12 +7029,12 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_c1__sqrt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_copraw),
+        operands: Operand::arr1(Operand::core_copraw),
         ..OpcodeDescriptor::new("c1", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_rsqrt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
@@ -7043,7 +7043,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_adda_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
@@ -7051,7 +7051,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_suba_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
@@ -7059,7 +7059,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_mula_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
@@ -7067,7 +7067,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_madd_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
@@ -7076,7 +7076,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_msub_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
@@ -7085,7 +7085,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_madda_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
@@ -7093,7 +7093,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_msuba_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
@@ -7101,7 +7101,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_max_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
@@ -7110,7 +7110,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_min_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::cpu_fd, Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
@@ -7119,7 +7119,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_c_lt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
@@ -7127,7 +7127,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_c_le_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_fs, Operand::cpu_ft),
+        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
@@ -7135,50 +7135,50 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::r5900_qmfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vfs),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
         modifies_rt: true,
         ..OpcodeDescriptor::new("qmfc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_cfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vis),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
         modifies_rt: true,
         ..OpcodeDescriptor::new("cfc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_qmtc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vfs),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
         reads_rt: true,
         ..OpcodeDescriptor::new("qmtc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_ctc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r5900_vis),
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
         reads_rt: true,
         ..OpcodeDescriptor::new("ctc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_bc2f as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         ..OpcodeDescriptor::new("bc2f", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_bc2t as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         ..OpcodeDescriptor::new("bc2t", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_bc2fl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true,
         ..OpcodeDescriptor::new("bc2fl", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
     table[Opcode::r5900_bc2tl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true,
         ..OpcodeDescriptor::new("bc2tl", IsaVersion::EXTENSION, IsaExtension::R5900)

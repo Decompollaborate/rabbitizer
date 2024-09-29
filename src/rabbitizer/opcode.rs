@@ -240,11 +240,11 @@ mod tests {
 
     #[test]
     fn test_j() {
-        assert!(OPCODES[Opcode::cpu_j].is_jump);
-        assert!(Opcode::cpu_j.get_descriptor().is_jump);
-        assert!(OPCODES[Opcode::cpu_j].is_jump_with_address);
-        assert!(Opcode::cpu_j.get_descriptor().is_jump_with_address);
-        assert!(!OPCODES[Opcode::cpu_j].is_branch);
-        assert!(!Opcode::cpu_j.get_descriptor().is_branch);
+        assert!(OPCODES[Opcode::core_j].is_jump);
+        assert!(Opcode::core_j.get_descriptor().is_jump);
+        assert!(OPCODES[Opcode::core_j].is_jump_with_address);
+        assert!(Opcode::core_j.get_descriptor().is_jump_with_address);
+        assert!(!OPCODES[Opcode::core_j].is_branch);
+        assert!(!Opcode::core_j.get_descriptor().is_branch);
     }
 }

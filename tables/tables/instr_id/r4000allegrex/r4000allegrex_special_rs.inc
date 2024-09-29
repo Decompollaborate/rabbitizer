@@ -15,7 +15,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x00, srl, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
@@ -23,7 +23,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x01, rotr, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr3(Operand::cpu_rd, Operand::cpu_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true

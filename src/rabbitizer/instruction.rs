@@ -227,7 +227,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn reg_rs(&self) -> Option<Gpr> {
-        if !self.opcode().has_operand_alias(Operand::cpu_rs) {
+        if !self.opcode().has_operand_alias(Operand::core_rs) {
             return None;
         }
         Some(self.reg_rs_unchecked())
@@ -241,7 +241,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn reg_rt(&self) -> Option<Gpr> {
-        if !self.opcode().has_operand_alias(Operand::cpu_rt) {
+        if !self.opcode().has_operand_alias(Operand::core_rt) {
             return None;
         }
         Some(self.reg_rt_unchecked())
@@ -255,7 +255,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn reg_rd(&self) -> Option<Gpr> {
-        if !self.opcode().has_operand_alias(Operand::cpu_rd) {
+        if !self.opcode().has_operand_alias(Operand::core_rd) {
             return None;
         }
         Some(self.reg_rd_unchecked())
@@ -268,7 +268,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_instr_index(&self) -> Option<u32> {
-        if self.opcode().has_operand_alias(Operand::cpu_label) {
+        if self.opcode().has_operand_alias(Operand::core_label) {
             Some(self.field_instr_index_unchecked())
         } else {
             None
@@ -282,7 +282,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_immediate(&self) -> Option<u16> {
-        if !self.opcode().has_operand_alias(Operand::cpu_immediate) {
+        if !self.opcode().has_operand_alias(Operand::core_immediate) {
             return None;
         }
         Some(self.field_immediate_unchecked())
@@ -296,7 +296,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_cop1cs(&self) -> Option<Cop1Control> {
-        if self.opcode().has_operand_alias(Operand::cpu_cop1cs) {
+        if self.opcode().has_operand_alias(Operand::core_cop1cs) {
             Some(self.field_cop1cs_unchecked())
         } else {
             None
@@ -486,14 +486,14 @@ mod tests {
         let instr =
             Instruction::new_no_extension(0x08000004, 0x80000000, None, IsaVersion::MIPS_III);
         assert!(instr.is_valid());
-        assert_eq!(instr.opcode_category(), OpcodeCategory::CPU_NORMAL);
-        assert_eq!(instr.opcode(), Opcode::cpu_j);
+        assert_eq!(instr.opcode_category(), OpcodeCategory::CORE_NORMAL);
+        assert_eq!(instr.opcode(), Opcode::core_j);
         assert!(instr.opcode().is_jump());
 
         assert_eq!(
             Instruction::new_no_extension(0x08000000, 0x80000000, None, IsaVersion::MIPS_III)
                 .opcode(),
-            Opcode::cpu_j
+            Opcode::core_j
         );
     }
 
@@ -502,7 +502,7 @@ mod tests {
         let instr =
             Instruction::new_no_extension(0x0C000004, 0x80000000, None, IsaVersion::MIPS_III);
         assert!(instr.is_valid());
-        assert_eq!(instr.opcode(), Opcode::cpu_jal);
+        assert_eq!(instr.opcode(), Opcode::core_jal);
     }
 
     #[test]
@@ -517,7 +517,7 @@ mod tests {
             IsaVersion::MIPS_III,
         );
         assert!(instr.is_valid());
-        assert_eq!(instr.opcode(), Opcode::cpu_lwu);
+        assert_eq!(instr.opcode(), Opcode::core_lwu);
 
         let instr =
             Instruction::new_no_extension(0x9C000000, 0x80000000, Some(flags), IsaVersion::MIPS_II);
@@ -530,6 +530,6 @@ mod tests {
         let instr =
             Instruction::new_no_extension(0x0000072E, 0x80000000, None, IsaVersion::MIPS_III);
         assert!(!instr.is_valid());
-        assert_eq!(instr.opcode(), Opcode::cpu_dsub);
+        assert_eq!(instr.opcode(), Opcode::core_dsub);
     }
 }

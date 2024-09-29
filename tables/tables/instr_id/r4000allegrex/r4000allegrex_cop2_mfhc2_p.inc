@@ -20,7 +20,7 @@ mfvc
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x0, mfvc, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr2(Operand::cpu_rt, Operand::r4000allegrex_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_cop2cd),
         instr_type: InstrType::R,
         modifies_rt: true
     ) // Move word From Vfpu Control

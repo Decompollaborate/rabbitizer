@@ -4,14 +4,14 @@
     // OP rs, IMM
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x00, bltz, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true
     ) // Branch on Less Than Zero
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x01, bgez, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true
@@ -19,7 +19,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x10, bltzal, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -27,7 +27,7 @@
     ) // Branch on Less Than Zero and Link
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x11, bgezal, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::cpu_branch_target_label),
+        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
@@ -40,7 +40,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0xFFFFFF11, bal, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         not_emitted_by_compilers: true,

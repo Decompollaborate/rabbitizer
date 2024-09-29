@@ -9,20 +9,20 @@ use crate::{opcode_category::OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
 #[non_exhaustive]
 pub enum OpcodeCategory {
     ALL_INVALID,
-    CPU_INVALID,
-    CPU_NORMAL,
-    CPU_SPECIAL,
-    CPU_REGIMM,
-    CPU_COP0,
-    CPU_COP0_BC0,
-    CPU_COP0_TLB,
-    CPU_COP1,
-    CPU_COP1_BC1,
-    CPU_COP1_FPUS,
-    CPU_COP1_FPUD,
-    CPU_COP1_FPUW,
-    CPU_COP1_FPUL,
-    CPU_COP2,
+    CORE_INVALID,
+    CORE_NORMAL,
+    CORE_SPECIAL,
+    CORE_REGIMM,
+    CORE_COP0,
+    CORE_COP0_BC0,
+    CORE_COP0_TLB,
+    CORE_COP1,
+    CORE_COP1_BC1,
+    CORE_COP1_FPUS,
+    CORE_COP1_FPUD,
+    CORE_COP1_FPUW,
+    CORE_COP1_FPUL,
+    CORE_COP2,
     RSP_INVALID,
     RSP_NORMAL,
     RSP_NORMAL_LWC2,
@@ -113,34 +113,34 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     let mut table = [OpcodeCategoryDescriptor::default(); OPCODE_CATEGORY_COUNT];
     table[OpcodeCategory::ALL_INVALID as usize] =
         OpcodeCategoryDescriptor::new(concat!("ALL", "_", "INVALID"));
-    table[OpcodeCategory::CPU_INVALID as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "INVALID"));
-    table[OpcodeCategory::CPU_NORMAL as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "NORMAL"));
-    table[OpcodeCategory::CPU_SPECIAL as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "SPECIAL"));
-    table[OpcodeCategory::CPU_REGIMM as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "REGIMM"));
-    table[OpcodeCategory::CPU_COP0 as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP0"));
-    table[OpcodeCategory::CPU_COP0_BC0 as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP0_BC0"));
-    table[OpcodeCategory::CPU_COP0_TLB as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP0_TLB"));
-    table[OpcodeCategory::CPU_COP1 as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP1"));
-    table[OpcodeCategory::CPU_COP1_BC1 as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP1_BC1"));
-    table[OpcodeCategory::CPU_COP1_FPUS as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP1_FPUS"));
-    table[OpcodeCategory::CPU_COP1_FPUD as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP1_FPUD"));
-    table[OpcodeCategory::CPU_COP1_FPUW as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP1_FPUW"));
-    table[OpcodeCategory::CPU_COP1_FPUL as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP1_FPUL"));
-    table[OpcodeCategory::CPU_COP2 as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CPU", "_", "COP2"));
+    table[OpcodeCategory::CORE_INVALID as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "INVALID"));
+    table[OpcodeCategory::CORE_NORMAL as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "NORMAL"));
+    table[OpcodeCategory::CORE_SPECIAL as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "SPECIAL"));
+    table[OpcodeCategory::CORE_REGIMM as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "REGIMM"));
+    table[OpcodeCategory::CORE_COP0 as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP0"));
+    table[OpcodeCategory::CORE_COP0_BC0 as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP0_BC0"));
+    table[OpcodeCategory::CORE_COP0_TLB as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP0_TLB"));
+    table[OpcodeCategory::CORE_COP1 as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1"));
+    table[OpcodeCategory::CORE_COP1_BC1 as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_BC1"));
+    table[OpcodeCategory::CORE_COP1_FPUS as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUS"));
+    table[OpcodeCategory::CORE_COP1_FPUD as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUD"));
+    table[OpcodeCategory::CORE_COP1_FPUW as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUW"));
+    table[OpcodeCategory::CORE_COP1_FPUL as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUL"));
+    table[OpcodeCategory::CORE_COP2 as usize] =
+        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP2"));
     table[OpcodeCategory::RSP_INVALID as usize] =
         OpcodeCategoryDescriptor::new(concat!("RSP", "_", "INVALID"));
     table[OpcodeCategory::RSP_NORMAL as usize] =

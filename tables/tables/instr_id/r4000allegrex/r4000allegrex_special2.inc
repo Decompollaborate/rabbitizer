@@ -27,14 +27,14 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x24, mfie, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr1(Operand::cpu_rt),
+        operands: Operand::arr1(Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rt: true
     )
 
     RABBITIZER_DEF_INSTR_ID(
         r4000allegrex, 0x26, mtie, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
-        operands: Operand::arr1(Operand::cpu_rt),
+        operands: Operand::arr1(Operand::core_rt),
         instr_type: InstrType::R,
         reads_rt: true
     )

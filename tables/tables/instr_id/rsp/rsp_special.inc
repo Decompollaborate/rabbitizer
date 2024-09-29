@@ -4,21 +4,21 @@
     // OP rd, rt, sa
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x00, sll, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
     ) // Shift word Left Logical
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x02, srl, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
     ) // Shift word Right Logical
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x03, sra, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::cpu_sa),
+        operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
@@ -172,7 +172,7 @@
     // OP code
     RABBITIZER_DEF_INSTR_ID(
         rsp, 0x0D, break, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr1(Operand::cpu_code),
+        operands: Operand::arr1(Operand::core_code),
         instr_type: InstrType::R
     ) // Break
 

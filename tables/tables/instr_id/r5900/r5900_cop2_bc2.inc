@@ -17,23 +17,23 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x00, bc2f, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x01, bc2t, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x02, bc2fl, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x03, bc2tl, IsaVersion::EXTENSION, IsaExtension::R5900,
-        operands: Operand::arr1(Operand::cpu_branch_target_label),
+        operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true
     )

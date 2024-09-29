@@ -6,7 +6,7 @@ use core::fmt;
 use crate::{operand_display, traits::Register, OperandDisplay};
 
 impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
-    pub(crate) fn display_cpu_rs(
+    pub(crate) fn display_core_rs(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -17,7 +17,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
 
-    pub(crate) fn display_cpu_rt(
+    pub(crate) fn display_core_rt(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -28,7 +28,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
 
-    pub(crate) fn display_cpu_rd(
+    pub(crate) fn display_core_rd(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -38,43 +38,43 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
 
         write!(f, "{}", s)
     }
-    pub(crate) fn display_cpu_sa(
+    pub(crate) fn display_core_sa(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_zero(
+    pub(crate) fn display_core_zero(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_cop0d(
+    pub(crate) fn display_core_cop0d(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_fs(
+    pub(crate) fn display_core_fs(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_ft(
+    pub(crate) fn display_core_ft(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_fd(
+    pub(crate) fn display_core_fd(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_cop1cs(
+    pub(crate) fn display_core_cop1cs(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -84,49 +84,49 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
 
         write!(f, "{}", s)
     }
-    pub(crate) fn display_cpu_cop2t(
+    pub(crate) fn display_core_cop2t(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_cop2cd(
+    pub(crate) fn display_core_cop2cd(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_op(
+    pub(crate) fn display_core_op(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_hint(
+    pub(crate) fn display_core_hint(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_code(
+    pub(crate) fn display_core_code(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_code_lower(
+    pub(crate) fn display_core_code_lower(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_copraw(
+    pub(crate) fn display_core_copraw(
         _myself: &OperandDisplay,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
-    pub(crate) fn display_cpu_label(
+    pub(crate) fn display_core_label(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -137,7 +137,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             write!(f, "func_{:08X}", s)
         })
     }
-    pub(crate) fn display_cpu_immediate(
+    pub(crate) fn display_core_immediate(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -148,33 +148,33 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             operand_display::display_hex(s, f)
         })
     }
-    pub(crate) fn display_cpu_branch_target_label(
+    pub(crate) fn display_core_branch_target_label(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             write!(f, ". + 4 + (")?;
-            Self::display_cpu_immediate(myself, f)?;
+            Self::display_core_immediate(myself, f)?;
             write!(f, " << 2)")
         })
     }
-    pub(crate) fn display_cpu_immediate_base(
+    pub(crate) fn display_core_immediate_base(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if false {
             if myself.imm_override.is_some() || myself.instr.field_immediate_unchecked() != 0 {
-                Self::display_cpu_immediate(myself, f)?;
+                Self::display_core_immediate(myself, f)?;
             }
         } else {
-            Self::display_cpu_immediate(myself, f)?;
+            Self::display_core_immediate(myself, f)?;
         }
 
         write!(f, "(")?;
-        Self::display_cpu_rs(myself, f)?;
+        Self::display_core_rs(myself, f)?;
         write!(f, ")")
     }
-    pub(crate) fn display_cpu_maybe_rd_rs(
+    pub(crate) fn display_core_maybe_rd_rs(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -182,10 +182,10 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         let reg = instr.reg_rd_unchecked();
 
         if !reg.holds_return_address(instr.flags().abi()) || myself.display_flags.expand_jalr() {
-            Self::display_cpu_rd(myself, f)?;
+            Self::display_core_rd(myself, f)?;
             write!(f, ", ")?;
         }
 
-        Self::display_cpu_rs(myself, f)
+        Self::display_core_rs(myself, f)
     }
 }

@@ -405,8 +405,8 @@ impl OpcodeDescriptor {
         }
 
         match operand {
-            Operand::cpu_rs => {
-                if self.has_specific_operand(Operand::cpu_immediate_base) {
+            Operand::core_rs => {
+                if self.has_specific_operand(Operand::core_immediate_base) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::rsp_rs) {
@@ -418,7 +418,7 @@ impl OpcodeDescriptor {
                 if self.has_specific_operand(Operand::rsp_immediate_base) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::cpu_maybe_rd_rs) {
+                if self.has_specific_operand(Operand::core_maybe_rd_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
@@ -432,11 +432,11 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::cpu_immediate => {
-                if self.has_specific_operand(Operand::cpu_immediate_base) {
+            Operand::core_immediate => {
+                if self.has_specific_operand(Operand::core_immediate_base) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::cpu_branch_target_label) {
+                if self.has_specific_operand(Operand::core_branch_target_label) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::rsp_immediate_base) {
@@ -444,17 +444,17 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::cpu_rt => {
+            Operand::core_rt => {
                 if self.has_specific_operand(Operand::rsp_rt) {
                     return true;
                 }
             }
 
-            Operand::cpu_rd => {
+            Operand::core_rd => {
                 if self.has_specific_operand(Operand::rsp_rd) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::cpu_maybe_rd_rs) {
+                if self.has_specific_operand(Operand::core_maybe_rd_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
@@ -462,66 +462,66 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::cpu_sa => {}
-            Operand::cpu_zero => {}
-            // Operand::cpu_function => {},
-            Operand::cpu_cop0d => {
+            Operand::core_sa => {}
+            Operand::core_zero => {}
+            // Operand::core_function => {},
+            Operand::core_cop0d => {
                 if self.has_specific_operand(Operand::rsp_cop0d) {
                     return true;
                 }
             }
 
-            Operand::cpu_fs => {}
-            Operand::cpu_ft => {}
-            Operand::cpu_fd => {}
-            Operand::cpu_cop1cs => {}
-            Operand::cpu_cop2t => {}
-            Operand::cpu_cop2cd => {}
-            Operand::cpu_op => {}
-            Operand::cpu_hint => {}
+            Operand::core_fs => {}
+            Operand::core_ft => {}
+            Operand::core_fd => {}
+            Operand::core_cop1cs => {}
+            Operand::core_cop2t => {}
+            Operand::core_cop2cd => {}
+            Operand::core_op => {}
+            Operand::core_hint => {}
 
-            Operand::cpu_code => {
-                if self.has_specific_operand(Operand::cpu_code_lower) {
+            Operand::core_code => {
+                if self.has_specific_operand(Operand::core_code_lower) {
                     return true;
                 }
             }
 
-            Operand::cpu_code_lower => {
-                if self.has_operand_alias(Operand::cpu_code) {
+            Operand::core_code_lower => {
+                if self.has_operand_alias(Operand::core_code) {
                     return true;
                 }
             }
 
-            Operand::cpu_copraw => {}
-            Operand::cpu_label => {}
+            Operand::core_copraw => {}
+            Operand::core_label => {}
 
-            Operand::cpu_branch_target_label => {
-                if self.has_operand_alias(Operand::cpu_immediate) {
+            Operand::core_branch_target_label => {
+                if self.has_operand_alias(Operand::core_immediate) {
                     return true;
                 }
             }
 
-            Operand::cpu_immediate_base => {
-                if self.has_operand_alias(Operand::cpu_rs) {
+            Operand::core_immediate_base => {
+                if self.has_operand_alias(Operand::core_rs) {
                     return true;
                 }
-                if self.has_operand_alias(Operand::cpu_immediate) {
+                if self.has_operand_alias(Operand::core_immediate) {
                     return true;
                 }
             }
 
-            Operand::cpu_maybe_rd_rs => {
-                if self.has_operand_alias(Operand::cpu_rd) {
+            Operand::core_maybe_rd_rs => {
+                if self.has_operand_alias(Operand::core_rd) {
                     return true;
                 }
-                if self.has_operand_alias(Operand::cpu_rs) {
+                if self.has_operand_alias(Operand::core_rs) {
                     return true;
                 }
             }
 
             /* rsp */
             Operand::rsp_rs => {
-                if self.has_operand_alias(Operand::cpu_rs) {
+                if self.has_operand_alias(Operand::core_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::rsp_offset_rs) {
@@ -533,13 +533,13 @@ impl OpcodeDescriptor {
             }
 
             Operand::rsp_rt => {
-                if self.has_specific_operand(Operand::cpu_rt) {
+                if self.has_specific_operand(Operand::core_rt) {
                     return true;
                 }
             }
 
             Operand::rsp_rd => {
-                if self.has_operand_alias(Operand::cpu_rd) {
+                if self.has_operand_alias(Operand::core_rd) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
@@ -548,7 +548,7 @@ impl OpcodeDescriptor {
             }
 
             Operand::rsp_cop0d => {
-                if self.has_specific_operand(Operand::cpu_cop0d) {
+                if self.has_specific_operand(Operand::core_cop0d) {
                     return true;
                 }
             }
@@ -617,10 +617,10 @@ impl OpcodeDescriptor {
                 if self.has_operand_alias(Operand::rsp_rs) {
                     return true;
                 }
-                if self.has_operand_alias(Operand::cpu_rs) {
+                if self.has_operand_alias(Operand::core_rs) {
                     return true;
                 }
-                if self.has_operand_alias(Operand::cpu_immediate) {
+                if self.has_operand_alias(Operand::core_immediate) {
                     return true;
                 }
             }
@@ -680,7 +680,7 @@ impl OpcodeDescriptor {
             Operand::r4000allegrex_imm3 => {}
 
             Operand::r4000allegrex_offset14_base => {
-                if self.has_operand_alias(Operand::cpu_rs) {
+                if self.has_operand_alias(Operand::core_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::r4000allegrex_offset14_base_maybe_wb) {
@@ -689,7 +689,7 @@ impl OpcodeDescriptor {
             }
 
             Operand::r4000allegrex_offset14_base_maybe_wb => {
-                if self.has_operand_alias(Operand::cpu_rs) {
+                if self.has_operand_alias(Operand::core_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::r4000allegrex_offset14_base) {
