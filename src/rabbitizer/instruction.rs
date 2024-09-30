@@ -596,6 +596,172 @@ impl Instruction {
     }
 }
 
+/// R3000GTE opcode fields
+impl Instruction {
+    /// Returns either the `r3000gte_sf` value embedded on the `r3000gte_sf`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r3000gte_sf(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r3000gte_sf) {
+            Some(self.field_r3000gte_sf_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r3000gte_mx` value embedded on the `r3000gte_mx`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r3000gte_mx(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r3000gte_mx) {
+            Some(self.field_r3000gte_mx_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r3000gte_v` value embedded on the `r3000gte_v`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r3000gte_v(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r3000gte_v) {
+            Some(self.field_r3000gte_v_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r3000gte_cv` value embedded on the `r3000gte_cv`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r3000gte_cv(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r3000gte_cv) {
+            Some(self.field_r3000gte_cv_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r3000gte_lm` value embedded on the `r3000gte_lm`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r3000gte_lm(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r3000gte_lm) {
+            Some(self.field_r3000gte_lm_unchecked())
+        } else {
+            None
+        }
+    }
+}
+
+/// Unchecked R3000GTE opcode fields
+impl Instruction {
+    /// Returns the `r3000gte_sf` value embedded on the `r3000gte_sf` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r3000gte_sf`]
+    /// function instead.
+    ///
+    /// [`field_r3000gte_sf`]: Instruction::field_r3000gte_sf
+    #[must_use]
+    pub fn field_r3000gte_sf_unchecked(&self) -> u8 {
+        EncodedFieldMask::r3000gte_sf
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r3000gte_mx` value embedded on the `r3000gte_mx` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r3000gte_mx`]
+    /// function instead.
+    ///
+    /// [`field_r3000gte_mx`]: Instruction::field_r3000gte_mx
+    #[must_use]
+    pub fn field_r3000gte_mx_unchecked(&self) -> u8 {
+        EncodedFieldMask::r3000gte_mx
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r3000gte_v` value embedded on the `r3000gte_v` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r3000gte_v`]
+    /// function instead.
+    ///
+    /// [`field_r3000gte_v`]: Instruction::field_r3000gte_v
+    #[must_use]
+    pub fn field_r3000gte_v_unchecked(&self) -> u8 {
+        EncodedFieldMask::r3000gte_v
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r3000gte_cv` value embedded on the `r3000gte_cv` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r3000gte_cv`]
+    /// function instead.
+    ///
+    /// [`field_r3000gte_cv`]: Instruction::field_r3000gte_cv
+    #[must_use]
+    pub fn field_r3000gte_cv_unchecked(&self) -> u8 {
+        EncodedFieldMask::r3000gte_cv
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r3000gte_lm` value embedded on the `r3000gte_lm` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r3000gte_lm`]
+    /// function instead.
+    ///
+    /// [`field_r3000gte_lm`]: Instruction::field_r3000gte_lm
+    #[must_use]
+    pub fn field_r3000gte_lm_unchecked(&self) -> u8 {
+        EncodedFieldMask::r3000gte_lm
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+}
+
 impl Instruction {
     /// Get the (possibly signed) immediate value for this instruction.
     #[must_use]

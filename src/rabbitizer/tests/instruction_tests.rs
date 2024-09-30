@@ -56,7 +56,7 @@ pub(crate) mod tests {
             opcode_str: &'static str,
             operands_str: [Option<&'static str>; operand::OPERAND_COUNT_MAX],
         ) -> Self {
-            TestEntry {
+            Self {
                 instr: Instruction::new_r4000allegrex(
                     word,
                     0x80000000,
@@ -3569,7 +3569,7 @@ pub(crate) mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES, false), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), 0);
     }
 
     #[test]
