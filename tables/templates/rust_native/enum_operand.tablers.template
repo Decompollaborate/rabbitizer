@@ -5,11 +5,14 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use core::num::NonZero;
+
 use crate::EncodedFieldMask;
-use crate::{OperandDescriptor, operand::OPERAND_COUNT, ValuedOperand};
+use crate::registers::*;
+use crate::{OperandDescriptor, operand::OPERAND_COUNT, IU16};
 use crate::{OperandDisplay, operand_display::OperandDisplayCallback};
 
-#define RAB_DEF_OPERAND(prefix, operand, mask) \
+#define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     prefix##_##operand,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
@@ -21,7 +24,7 @@ pub enum Operand {
 
 #undef RAB_DEF_OPERAND
 
-#define RAB_DEF_OPERAND(prefix, operand, mask) \
+#define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     table[ Operand::prefix##_##operand as usize] = \
         OperandDescriptor::new(concat!( #prefix, "_", #operand ), mask) \
     ;
@@ -36,7 +39,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
 
 #undef RAB_DEF_OPERAND
 
-#define RAB_DEF_OPERAND(prefix, operand, mask) \
+#define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     table[ Operand::prefix##_##operand as usize] = \
         OperandDisplay::display_ ## prefix ## _ ## operand \
     ;
@@ -51,7 +54,19 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
 
 #undef RAB_DEF_OPERAND
 
-#define RAB_DEF_OPERAND(prefix, operand, mask) \
+#define RAB_DEF_OPERAND(prefix, operand, mask, values) \
+    prefix##_##operand values,
+
+SPECIAL_RS_TAG(derive(Debug, Copy, Clone, PartialEq, PartialOrd))
+SPECIAL_RS_TAG(allow(non_camel_case_types))
+SPECIAL_RS_TAG(non_exhaustive)
+pub enum ValuedOperand {
+    #include "OperandTypes.inc"
+}
+
+#undef RAB_DEF_OPERAND
+
+#define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     ValuedOperand:: prefix##_##operand (..) => Self:: prefix##_##operand,
 
 impl Operand {

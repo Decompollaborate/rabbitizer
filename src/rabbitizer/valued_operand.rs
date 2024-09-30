@@ -3,171 +3,14 @@
 
 use core::num::NonZero;
 
-use crate::{operand, registers::*, DisplayFlags, Instruction, Operand, OperandDisplay};
+use crate::{operand::OPERAND_COUNT_MAX, Operand, OperandDisplay, ValuedOperand};
+use crate::{traits::Register, DisplayFlags, Instruction};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[allow(clippy::exhaustive_enums)]
 pub enum IU16 {
     Integer(i16),
     Unsigned(u16),
-}
-
-#[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
-#[allow(non_camel_case_types)]
-#[non_exhaustive]
-pub enum ValuedOperand {
-    ALL_EMPTY(),
-    core_rs(Gpr),
-    core_rt(Gpr),
-    core_rd(Gpr),
-    core_sa(u8),
-    core_zero(),
-    core_cop0d(Cop0),
-    core_cop0cd(Cop0Control),
-    core_fs(Cop1),
-    core_ft(Cop1),
-    core_fd(Cop1),
-    core_cop1cs(Cop1Control),
-    core_cop2t(Cop2),
-    core_cop2d(Cop2),
-    core_cop2cd(Cop2Control),
-    core_op(u8),
-    core_hint(u8),
-    core_code(u16, Option<NonZero<u16>>),
-    core_code_lower(u16),
-    core_copraw(u32),
-    core_label(u32),
-    core_immediate(IU16),
-    core_branch_target_label(i16),
-    core_immediate_base(IU16, Gpr),
-    core_maybe_rd_rs(Option<Gpr>, Gpr),
-    core_maybe_zero_rs((), Gpr),
-    rsp_rs(RspGpr),
-    rsp_rt(RspGpr),
-    rsp_rd(RspGpr),
-    rsp_cop0d(RspCop0),
-    rsp_cop2t(RspCop2),
-    rsp_cop2cd(RspCop2),
-    rsp_vs(RspVector),
-    rsp_vt(RspVector),
-    rsp_vd(RspVector),
-    rsp_hint(u8),
-    rsp_vt_elementhigh(RspVector, u8),
-    rsp_vt_elementlow(RspVector, u8),
-    rsp_vd_de(RspVector, u8),
-    rsp_vs_index(RspVector, u8),
-    rsp_offset_rs(u16, RspGpr),
-    rsp_immediate_base(IU16, Gpr),
-    rsp_maybe_rd_rs(Option<Gpr>, Gpr),
-    r3000gte_sf(u8),
-    r3000gte_mx(u8),
-    r3000gte_v(u8),
-    r3000gte_cv(u8),
-    r3000gte_lm(u8),
-    r4000allegrex_s_vs(R4000AllegrexS),
-    r4000allegrex_s_vt(R4000AllegrexS),
-    r4000allegrex_s_vd(R4000AllegrexS),
-    r4000allegrex_s_vt_imm(R4000AllegrexS),
-    r4000allegrex_s_vd_imm(R4000AllegrexS),
-    r4000allegrex_p_vs(R4000AllegrexV2D),
-    r4000allegrex_p_vt(R4000AllegrexV2D),
-    r4000allegrex_p_vd(R4000AllegrexV2D),
-    r4000allegrex_t_vs(R4000AllegrexV3D),
-    r4000allegrex_t_vt(R4000AllegrexV3D),
-    r4000allegrex_t_vd(R4000AllegrexV3D),
-    r4000allegrex_q_vs(R4000AllegrexV4D),
-    r4000allegrex_q_vt(R4000AllegrexV4D),
-    r4000allegrex_q_vd(R4000AllegrexV4D),
-    r4000allegrex_q_vt_imm(R4000AllegrexV4D),
-    r4000allegrex_mp_vs(R4000AllegrexM2x2),
-    r4000allegrex_mp_vt(R4000AllegrexM2x2),
-    r4000allegrex_mp_vd(R4000AllegrexM2x2),
-    r4000allegrex_mp_vs_transpose(R4000AllegrexM2x2),
-    r4000allegrex_mt_vs(R4000AllegrexM3x3),
-    r4000allegrex_mt_vt(R4000AllegrexM3x3),
-    r4000allegrex_mt_vd(R4000AllegrexM3x3),
-    r4000allegrex_mt_vs_transpose(R4000AllegrexM3x3),
-    r4000allegrex_mq_vs(R4000AllegrexM4x4),
-    r4000allegrex_mq_vt(R4000AllegrexM4x4),
-    r4000allegrex_mq_vd(R4000AllegrexM4x4),
-    r4000allegrex_mq_vs_transpose(R4000AllegrexM4x4),
-    r4000allegrex_cop2cs(R4000AllegrexVfpuControl),
-    r4000allegrex_cop2cd(R4000AllegrexVfpuControl),
-    r4000allegrex_pos(u8),
-    r4000allegrex_size(u8),
-    r4000allegrex_size_plus_pos(i8),
-    r4000allegrex_imm3(u8),
-    r4000allegrex_offset14_base(u16, Gpr),
-    r4000allegrex_offset14_base_maybe_wb(u16, Gpr, bool),
-    r4000allegrex_vcmp_cond(&'static str),
-    r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(
-        &'static str,
-        Option<R4000AllegrexS>,
-        Option<R4000AllegrexS>,
-    ),
-    r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(
-        &'static str,
-        Option<R4000AllegrexS>,
-        Option<R4000AllegrexS>,
-    ),
-    r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(
-        &'static str,
-        Option<R4000AllegrexS>,
-        Option<R4000AllegrexS>,
-    ),
-    r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(
-        &'static str,
-        Option<R4000AllegrexS>,
-        Option<R4000AllegrexS>,
-    ),
-    r4000allegrex_vconstant(R4000AllegrexVConstant),
-    r4000allegrex_power_of_two(u8),
-    r4000allegrex_vfpu_cc_bit(u8),
-    r4000allegrex_bn(u8),
-    r4000allegrex_int16(i16),
-    r4000allegrex_float16(f32),
-    r4000allegrex_p_vrot_code(&'static str),
-    r4000allegrex_t_vrot_code(&'static str),
-    r4000allegrex_q_vrot_code(&'static str),
-    r4000allegrex_rpx(&'static str),
-    r4000allegrex_rpy(&'static str),
-    r4000allegrex_rpz(&'static str),
-    r4000allegrex_rpw(&'static str),
-    r4000allegrex_wpx(&'static str),
-    r4000allegrex_wpy(&'static str),
-    r4000allegrex_wpz(&'static str),
-    r4000allegrex_wpw(&'static str),
-    r5900_I(),
-    r5900_Q(),
-    r5900_R(),
-    r5900_ACC(),
-    r5900_ACCxyzw(bool, bool, bool, bool),
-    r5900_vfs(R5900VF),
-    r5900_vft(R5900VF),
-    r5900_vfd(R5900VF),
-    r5900_vfsxyzw(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vftxyzw(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vfdxyzw(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vfsn(R5900VF, u8),
-    r5900_vftn(R5900VF, u8),
-    r5900_vfdn(R5900VF, u8),
-    r5900_vfsl(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vftl(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vfdl(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vfsm(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vftm(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vfdm(R5900VF, bool, bool, bool, bool), // TODO: change to enum or something
-    r5900_vis(R5900VI),
-    r5900_vit(R5900VI),
-    r5900_vid(R5900VI),
-    r5900_vis_predecr(R5900VI),
-    r5900_vit_predecr(R5900VI),
-    r5900_vid_predecr(R5900VI),
-    r5900_vis_postincr(R5900VI),
-    r5900_vit_postincr(R5900VI),
-    r5900_vid_postincr(R5900VI),
-    r5900_vis_parenthesis(R5900VI),
-    r5900_immediate5(u8),
-    r5900_immediate15(u32),
 }
 
 impl ValuedOperand {
@@ -192,6 +35,177 @@ impl ValuedOperand {
     }
 }
 
+impl ValuedOperand {
+    pub(crate) fn from_operand(operand: Operand, instr: &Instruction) -> Self {
+        match operand {
+            Operand::ALL_EMPTY => Self::ALL_EMPTY(),
+            Operand::core_rs => Self::core_rs(instr.field_rs_unchecked()),
+            Operand::core_rt => Self::core_rt(instr.field_rt_unchecked()),
+            Operand::core_rd => Self::core_rd(instr.field_rd_unchecked()),
+            Operand::core_sa => Self::core_sa(instr.field_sa_unchecked()),
+            Operand::core_zero => Self::core_zero(),
+            Operand::core_cop0d => Self::core_cop0d(instr.field_cop0d_unchecked()),
+            Operand::core_cop0cd => Self::core_cop0cd(instr.field_cop0cd_unchecked()),
+            Operand::core_fs => Self::core_fs(instr.field_fs_unchecked()),
+            Operand::core_ft => Self::core_ft(instr.field_ft_unchecked()),
+            Operand::core_fd => Self::core_fd(instr.field_fd_unchecked()),
+            Operand::core_cop1cs => Self::core_cop1cs(instr.field_cop1cs_unchecked()),
+            Operand::core_cop2t => Self::core_cop2t(instr.field_cop2t_unchecked()),
+            Operand::core_cop2d => Self::core_cop2d(instr.field_cop2d_unchecked()),
+            Operand::core_cop2cd => Self::core_cop2cd(instr.field_cop2cd_unchecked()),
+            Operand::core_op => Self::core_op(instr.field_op_unchecked()),
+            Operand::core_hint => Self::core_hint(instr.field_hint_unchecked()),
+            Operand::core_code => Self::core_code(
+                instr.field_code_upper_unchecked(),
+                NonZero::new(instr.field_code_lower_unchecked()),
+            ),
+            Operand::core_code_lower => Self::core_code_lower(instr.field_code_lower_unchecked()),
+            Operand::core_copraw => todo!(),
+            Operand::core_label => Self::core_label(instr.get_instr_index_as_vram_unchecked()),
+            Operand::core_immediate => {
+                let imm = if instr.opcode().is_unsigned() {
+                    IU16::Unsigned(instr.field_immediate_unchecked())
+                } else {
+                    IU16::Integer(instr.get_processed_immediate_unchecked() as i16)
+                };
+                Self::core_immediate(imm)
+            }
+            Operand::core_branch_target_label => {
+                Self::core_branch_target_label(instr.get_processed_immediate_unchecked() as i16)
+            }
+            Operand::core_immediate_base => {
+                let imm = if instr.opcode().is_unsigned() {
+                    IU16::Unsigned(instr.field_immediate_unchecked())
+                } else {
+                    IU16::Integer(instr.get_processed_immediate_unchecked() as i16)
+                };
+                Self::core_immediate_base(imm, instr.field_rs_unchecked())
+            }
+            Operand::core_maybe_rd_rs => {
+                let rd = instr.field_rd_unchecked();
+                let reg = if rd.holds_return_address(instr.flags().abi()) {
+                    None
+                } else {
+                    Some(rd)
+                };
+                Self::core_maybe_rd_rs(reg, instr.field_rs_unchecked())
+            }
+            Operand::core_maybe_zero_rs => Self::core_maybe_zero_rs((), instr.field_rs_unchecked()),
+            Operand::rsp_rs => todo!(),
+            Operand::rsp_rt => todo!(),
+            Operand::rsp_rd => todo!(),
+            Operand::rsp_cop0d => todo!(),
+            Operand::rsp_cop2t => todo!(),
+            Operand::rsp_cop2cd => todo!(),
+            Operand::rsp_vs => todo!(),
+            Operand::rsp_vt => todo!(),
+            Operand::rsp_vd => todo!(),
+            Operand::rsp_hint => todo!(),
+            Operand::rsp_vt_elementhigh => todo!(),
+            Operand::rsp_vt_elementlow => todo!(),
+            Operand::rsp_vd_de => todo!(),
+            Operand::rsp_vs_index => todo!(),
+            Operand::rsp_offset_rs => todo!(),
+            Operand::rsp_immediate_base => todo!(),
+            Operand::rsp_maybe_rd_rs => todo!(),
+            Operand::r3000gte_sf => Self::r3000gte_sf(instr.field_r3000gte_sf_unchecked()),
+            Operand::r3000gte_mx => Self::r3000gte_mx(instr.field_r3000gte_mx_unchecked()),
+            Operand::r3000gte_v => Self::r3000gte_v(instr.field_r3000gte_v_unchecked()),
+            Operand::r3000gte_cv => Self::r3000gte_cv(instr.field_r3000gte_cv_unchecked()),
+            Operand::r3000gte_lm => Self::r3000gte_lm(instr.field_r3000gte_lm_unchecked()),
+            Operand::r4000allegrex_s_vs => todo!(),
+            Operand::r4000allegrex_s_vt => todo!(),
+            Operand::r4000allegrex_s_vd => todo!(),
+            Operand::r4000allegrex_s_vt_imm => todo!(),
+            Operand::r4000allegrex_s_vd_imm => todo!(),
+            Operand::r4000allegrex_p_vs => todo!(),
+            Operand::r4000allegrex_p_vt => todo!(),
+            Operand::r4000allegrex_p_vd => todo!(),
+            Operand::r4000allegrex_t_vs => todo!(),
+            Operand::r4000allegrex_t_vt => todo!(),
+            Operand::r4000allegrex_t_vd => todo!(),
+            Operand::r4000allegrex_q_vs => todo!(),
+            Operand::r4000allegrex_q_vt => todo!(),
+            Operand::r4000allegrex_q_vd => todo!(),
+            Operand::r4000allegrex_q_vt_imm => todo!(),
+            Operand::r4000allegrex_mp_vs => todo!(),
+            Operand::r4000allegrex_mp_vt => todo!(),
+            Operand::r4000allegrex_mp_vd => todo!(),
+            Operand::r4000allegrex_mp_vs_transpose => todo!(),
+            Operand::r4000allegrex_mt_vs => todo!(),
+            Operand::r4000allegrex_mt_vt => todo!(),
+            Operand::r4000allegrex_mt_vd => todo!(),
+            Operand::r4000allegrex_mt_vs_transpose => todo!(),
+            Operand::r4000allegrex_mq_vs => todo!(),
+            Operand::r4000allegrex_mq_vt => todo!(),
+            Operand::r4000allegrex_mq_vd => todo!(),
+            Operand::r4000allegrex_mq_vs_transpose => todo!(),
+            Operand::r4000allegrex_cop2cs => todo!(),
+            Operand::r4000allegrex_cop2cd => todo!(),
+            Operand::r4000allegrex_pos => todo!(),
+            Operand::r4000allegrex_size => todo!(),
+            Operand::r4000allegrex_size_plus_pos => todo!(),
+            Operand::r4000allegrex_imm3 => todo!(),
+            Operand::r4000allegrex_offset14_base => todo!(),
+            Operand::r4000allegrex_offset14_base_maybe_wb => todo!(),
+            Operand::r4000allegrex_vcmp_cond => todo!(),
+            Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => todo!(),
+            Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => todo!(),
+            Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => todo!(),
+            Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => todo!(),
+            Operand::r4000allegrex_vconstant => todo!(),
+            Operand::r4000allegrex_power_of_two => todo!(),
+            Operand::r4000allegrex_vfpu_cc_bit => todo!(),
+            Operand::r4000allegrex_bn => todo!(),
+            Operand::r4000allegrex_int16 => todo!(),
+            Operand::r4000allegrex_float16 => todo!(),
+            Operand::r4000allegrex_p_vrot_code => todo!(),
+            Operand::r4000allegrex_t_vrot_code => todo!(),
+            Operand::r4000allegrex_q_vrot_code => todo!(),
+            Operand::r4000allegrex_rpx => todo!(),
+            Operand::r4000allegrex_rpy => todo!(),
+            Operand::r4000allegrex_rpz => todo!(),
+            Operand::r4000allegrex_rpw => todo!(),
+            Operand::r4000allegrex_wpx => todo!(),
+            Operand::r4000allegrex_wpy => todo!(),
+            Operand::r4000allegrex_wpz => todo!(),
+            Operand::r4000allegrex_wpw => todo!(),
+            Operand::r5900_I => Self::r5900_I(),
+            Operand::r5900_Q => Self::r5900_Q(),
+            Operand::r5900_R => Self::r5900_R(),
+            Operand::r5900_ACC => Self::r5900_ACC(),
+            Operand::r5900_ACCxyzw => todo!(),
+            Operand::r5900_vfs => todo!(),
+            Operand::r5900_vft => todo!(),
+            Operand::r5900_vfd => todo!(),
+            Operand::r5900_vfsxyzw => todo!(),
+            Operand::r5900_vftxyzw => todo!(),
+            Operand::r5900_vfdxyzw => todo!(),
+            Operand::r5900_vfsn => todo!(),
+            Operand::r5900_vftn => todo!(),
+            Operand::r5900_vfdn => todo!(),
+            Operand::r5900_vfsl => todo!(),
+            Operand::r5900_vftl => todo!(),
+            Operand::r5900_vfdl => todo!(),
+            Operand::r5900_vfsm => todo!(),
+            Operand::r5900_vftm => todo!(),
+            Operand::r5900_vfdm => todo!(),
+            Operand::r5900_vis => todo!(),
+            Operand::r5900_vit => todo!(),
+            Operand::r5900_vid => todo!(),
+            Operand::r5900_vis_predecr => todo!(),
+            Operand::r5900_vit_predecr => todo!(),
+            Operand::r5900_vid_predecr => todo!(),
+            Operand::r5900_vis_postincr => todo!(),
+            Operand::r5900_vit_postincr => todo!(),
+            Operand::r5900_vid_postincr => todo!(),
+            Operand::r5900_vis_parenthesis => todo!(),
+            Operand::r5900_immediate5 => todo!(),
+            Operand::r5900_immediate15 => todo!(),
+        }
+    }
+}
+
 impl Default for ValuedOperand {
     fn default() -> Self {
         Self::default()
@@ -206,7 +220,7 @@ impl From<ValuedOperand> for Operand {
 
 pub struct ValuedOperandIterator<'ins> {
     instr: &'ins Instruction,
-    operands: &'ins [Operand; operand::OPERAND_COUNT_MAX],
+    operands: &'ins [Operand; OPERAND_COUNT_MAX],
     index: usize,
 }
 

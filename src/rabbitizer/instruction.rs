@@ -229,6 +229,155 @@ impl Instruction {
         Some(self.field_rd_unchecked())
     }
 
+    /// Returns either the `sa` value embedded on the `sa`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not have this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_sa(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::core_sa) {
+            Some(self.field_sa_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop0`] register embedded on the `cop0d` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop0`]: crate::registers::Cop0
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_cop0d(&self) -> Option<Cop0> {
+        if self.opcode().has_operand_alias(Operand::core_cop0d) {
+            Some(self.field_cop0d_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop0Control`] register embedded on the `cop0cd` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop0Control`]: crate::registers::Cop0Control
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_cop0cd(&self) -> Option<Cop0Control> {
+        if self.opcode().has_operand_alias(Operand::core_cop0cd) {
+            Some(self.field_cop0cd_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop1`] register embedded on the `fs` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop1`]: crate::registers::Cop1
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_fs(&self) -> Option<Cop1> {
+        if self.opcode().has_operand_alias(Operand::core_fs) {
+            Some(self.field_fs_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop1`] register embedded on the `ft` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop1`]: crate::registers::Cop1
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_ft(&self) -> Option<Cop1> {
+        if self.opcode().has_operand_alias(Operand::core_ft) {
+            Some(self.field_ft_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop1`] register embedded on the `fd` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop1`]: crate::registers::Cop1
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_fd(&self) -> Option<Cop1> {
+        if self.opcode().has_operand_alias(Operand::core_fd) {
+            Some(self.field_fd_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop1Control`] register embedded on the `cop1cs`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not have this field.
+    ///
+    /// [`Cop1Control`]: crate::registers::Cop1Control
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_cop1cs(&self) -> Option<Cop1Control> {
+        if self.opcode().has_operand_alias(Operand::core_cop1cs) {
+            Some(self.field_cop1cs_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop2`] register embedded on the `cop2t` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop2`]: crate::registers::Cop2
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_cop2t(&self) -> Option<Cop2> {
+        if self.opcode().has_operand_alias(Operand::core_cop2t) {
+            Some(self.field_cop2d_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop2`] register embedded on the `cop2d` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop2`]: crate::registers::Cop2
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_cop2d(&self) -> Option<Cop2> {
+        if self.opcode().has_operand_alias(Operand::core_cop2d) {
+            Some(self.field_cop2d_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`Cop2Control`] register embedded on the `cop2cd` field of the
+    /// word of this instruction, or [`None`] if this instruction does not have
+    /// this field.
+    ///
+    /// [`Cop2Control`]: crate::registers::Cop2Control
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_cop2cd(&self) -> Option<Cop2Control> {
+        if self.opcode().has_operand_alias(Operand::core_cop2cd) {
+            Some(self.field_cop2cd_unchecked())
+        } else {
+            None
+        }
+    }
+
     /// Returns either the `instr_index` value embedded on the `instr_index`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not have an `instr_index` operand.
@@ -247,7 +396,13 @@ impl Instruction {
     /// of the word of this instruction, or [`None`] if this instruction does
     /// not have an `immediate` operand.
     ///
+    /// Note this method returns the immediate as unsigned, but some
+    /// instructions use this value as signed and others as unsigned. To get
+    /// an immediate with proper signedness use [`get_processed_immediate`]
+    /// instead.
+    ///
     /// [`None`]: Option::None
+    /// [`get_processed_immediate`]: Instruction::get_processed_immediate
     #[must_use]
     pub fn field_immediate(&self) -> Option<u16> {
         if !self.opcode().has_operand_alias(Operand::core_immediate) {
@@ -256,16 +411,57 @@ impl Instruction {
         Some(self.field_immediate_unchecked())
     }
 
-    /// Returns either the [`Cop1Control`] register embedded on the `cop1cs`
+    /// Returns either the `op` value embedded on the `op`
     /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not have an `cop1cs` operand.
+    /// does not have an `op` operand.
     ///
-    /// [`Cop1Control`]: crate::registers::Cop1Control
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_cop1cs(&self) -> Option<Cop1Control> {
-        if self.opcode().has_operand_alias(Operand::core_cop1cs) {
-            Some(self.field_cop1cs_unchecked())
+    pub fn field_op(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::core_label) {
+            Some(self.field_op_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `hint` value embedded on the `hint`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not have an `hint` operand.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_hint(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::core_label) {
+            Some(self.field_hint_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `code_upper` value embedded on the `code_upper`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not have an `code_upper` operand.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_code_upper(&self) -> Option<u16> {
+        if self.opcode().has_operand_alias(Operand::core_label) {
+            Some(self.field_code_upper_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `code_lower` value embedded on the `code_lower`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not have an `code_lower` operand.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_code_lower(&self) -> Option<u16> {
+        if self.opcode().has_operand_alias(Operand::core_label) {
+            Some(self.field_code_lower_unchecked())
         } else {
             None
         }

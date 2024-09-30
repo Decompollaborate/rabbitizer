@@ -50,6 +50,7 @@ pub use generated::IsaVersion;
 pub use generated::Opcode;
 pub use generated::OpcodeCategory;
 pub use generated::Operand;
+pub use generated::ValuedOperand;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 
@@ -65,8 +66,8 @@ pub use opcode_descriptor::OpcodeDescriptor;
 pub use operand::OperandIterator;
 pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
-pub use valued_operand::ValuedOperand;
 pub use valued_operand::ValuedOperandIterator;
+pub use valued_operand::IU16;
 
 // TODO: maybe not make public?
 pub use instruction_display::InstructionDisplay;

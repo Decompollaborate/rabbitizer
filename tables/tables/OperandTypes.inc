@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2023-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-    RAB_DEF_OPERAND(ALL, EMPTY, EncodedFieldMask::empty())
+    RAB_DEF_OPERAND(ALL, EMPTY, EncodedFieldMask::empty(), ())
 
     #include "operands/RabbitizerOperandType_core.inc"
     #include "operands/RabbitizerOperandType_rsp.inc"
