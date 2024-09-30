@@ -332,9 +332,7 @@ pub struct DisplayFlags {
     unknown_instr_comment: bool,
     /// Omit the `0x` prefix on small immediates (values on the \[-9, 9\] inclusive range).
     omit_0x_on_small_imm: bool, // TODO: maybe remove?
-    // upper_case_imm: bool,
 
-    ///
     expand_jalr: bool,
     gnu_div: bool,
     sn64_break_fix: bool,

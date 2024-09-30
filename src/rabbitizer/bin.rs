@@ -18,7 +18,7 @@ fn main() {
     let instr = rabbitizer::Instruction::new_no_extension(
         0x26F7FFF0,
         0x80000000,
-        None,
+        rabbitizer::InstructionFlags::default(),
         rabbitizer::IsaVersion::MIPS_III,
     );
     println!("{}", instr.opcode().name());
@@ -43,7 +43,7 @@ fn main() {
     let instr = rabbitizer::Instruction::new(
         0x26F7FFF0,
         0x80000000,
-        Some(rabbitizer::InstructionFlags::default()),
+        rabbitizer::InstructionFlags::default(),
         rabbitizer::IsaVersion::MIPS_III,
         rabbitizer::IsaExtension::NONE,
     );

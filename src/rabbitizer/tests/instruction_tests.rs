@@ -24,7 +24,7 @@ mod tests {
 
     impl TestEntry {
         #[allow(dead_code)]
-        pub const fn new_none_invalid(word: u32, flags: Option<InstructionFlags>) -> Self {
+        pub const fn new_none_invalid(word: u32, flags: InstructionFlags) -> Self {
             Self {
                 instr: Instruction::new_no_extension(word, 0x80000000, flags, IsaVersion::MIPS_III),
                 imm_override: None,
@@ -38,7 +38,7 @@ mod tests {
         }
 
         #[allow(dead_code)]
-        pub const fn new_rsp_invalid(word: u32, flags: Option<InstructionFlags>) -> Self {
+        pub const fn new_rsp_invalid(word: u32, flags: InstructionFlags) -> Self {
             Self {
                 instr: Instruction::new_rsp(word, 0xA4000000, flags),
                 imm_override: None,
@@ -197,7 +197,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x3C088001,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -212,7 +212,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x25080E60,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -227,7 +227,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x3C090002,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -242,7 +242,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x25298DE0,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -257,7 +257,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xAD000000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -272,7 +272,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xAD000004,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -287,7 +287,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x21080008,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -302,7 +302,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x2129FFF8,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -317,7 +317,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x1520FFFB,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -332,7 +332,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00000000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -347,7 +347,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x3C0A8000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -362,7 +362,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x254A0494,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -377,7 +377,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x3C1D8002,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -392,7 +392,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x01400008,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -407,7 +407,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x27BDF8C0,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -422,7 +422,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x3C018001,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -437,7 +437,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x03E00008,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -452,7 +452,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xAC24E190,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -467,7 +467,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x3C018001,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: Some("%hi(D_8000E190)"),
@@ -482,7 +482,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xAC24E190,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: Some("%lo(D_8000E190)"),
@@ -497,7 +497,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0C001F24,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -512,7 +512,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0C001F24,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: Some("some_func"),
@@ -527,7 +527,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x8F99805C,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -542,7 +542,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x8F99805C,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: Some("%call16(strcmp)"),
@@ -557,7 +557,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x8F858028,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -572,7 +572,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x8F858028,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: Some("%got(STR_10007C90)"),
@@ -593,7 +593,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00435022,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -608,7 +608,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00025022,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -623,7 +623,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00E41823,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -638,7 +638,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00041823,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -653,7 +653,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x42000010,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -668,7 +668,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0260F809,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -683,7 +683,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0260F809,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -698,7 +698,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x02602009,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -713,7 +713,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00042100,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -728,7 +728,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00021882,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -743,7 +743,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00017443,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -758,7 +758,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00042FF8,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -773,7 +773,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x000637FA,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -788,7 +788,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0002137B,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -803,7 +803,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x000437FC,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -818,7 +818,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0005283E,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -833,7 +833,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0002103F,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -848,7 +848,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x40086800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -863,7 +863,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x40286800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -878,7 +878,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x40486800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -893,7 +893,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x40886800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -908,7 +908,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x40A86800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -923,7 +923,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x40C86800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -938,7 +938,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x46168200,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -953,7 +953,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x46168200,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -968,7 +968,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x44C2F800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -983,7 +983,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xBD150000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -998,7 +998,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xCD150018,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1013,7 +1013,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xCD150008,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_IV,
                 ),
                 imm_override: None,
@@ -1028,7 +1028,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0001008D,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1043,7 +1043,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0001008D,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1058,7 +1058,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0007000D,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1073,7 +1073,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0007000D,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1088,7 +1088,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0000000C,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1103,7 +1103,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00E200B0,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1118,7 +1118,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00E200B1,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1133,7 +1133,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00E200B2,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1148,7 +1148,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00E200B3,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1163,7 +1163,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00E200B4,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1178,7 +1178,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x00E200B6,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1193,7 +1193,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xC8621800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1208,7 +1208,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xD8621800,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1223,7 +1223,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xE8810878,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1238,7 +1238,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xF8810878,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1253,7 +1253,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x4802E000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1268,7 +1268,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x4882E000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1283,7 +1283,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x4842E000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1298,7 +1298,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x48C2E000,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1313,7 +1313,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001A,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1328,7 +1328,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001A,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1343,7 +1343,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001B,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1358,7 +1358,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001B,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1373,7 +1373,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001E,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1388,7 +1388,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001E,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1403,7 +1403,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001F,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1418,7 +1418,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x0085001F,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1437,7 +1437,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x44444444,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1452,7 +1452,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0x77777777,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1467,7 +1467,7 @@ mod tests {
                 instr: Instruction::new_no_extension(
                     0xEEEEEEEE,
                     0x80000000,
-                    None,
+                    InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
                 imm_override: None,
@@ -1487,7 +1487,7 @@ mod tests {
     fn check_rsp_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
-                instr: Instruction::new_rsp(0x09000419, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x09000419, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1497,7 +1497,7 @@ mod tests {
                 operands_str: [Some("func_A4001064"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x21490000, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x21490000, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1507,7 +1507,7 @@ mod tests {
                 operands_str: [Some("$9"), Some("$10"), Some("0x0"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x8C060578, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x8C060578, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1517,7 +1517,7 @@ mod tests {
                 operands_str: [Some("$6"), Some("0x578($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x400B2800, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x400B2800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1527,7 +1527,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("SP_DMA_FULL"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x304203FF, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x304203FF, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1537,7 +1537,7 @@ mod tests {
                 operands_str: [Some("$2"), Some("$2"), Some("0x3FF"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x10400003, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x10400003, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1547,7 +1547,7 @@ mod tests {
                 operands_str: [Some("$2"), Some(".L800B38E8"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00000000, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00000000, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1557,7 +1557,7 @@ mod tests {
                 operands_str: [None, None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1C600033, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x1C600033, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1567,7 +1567,7 @@ mod tests {
                 operands_str: [Some("$3"), Some(".L800B3A74"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x0D00077A, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x0D00077A, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1577,7 +1577,7 @@ mod tests {
                 operands_str: [Some("func_84001DE8"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xAEEB000C, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xAEEB000C, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1587,7 +1587,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("0xC($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1560FB8D, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x1560FB8D, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1597,7 +1597,7 @@ mod tests {
                 operands_str: [Some("$11"), Some(".L800B2288"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x40921800, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x40921800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1607,7 +1607,7 @@ mod tests {
                 operands_str: [Some("$18"), Some("SP_WR_LEN"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00026A82, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00026A82, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1617,7 +1617,7 @@ mod tests {
                 operands_str: [Some("$13"), Some("$2"), Some("10"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x004F1020, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x004F1020, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1627,7 +1627,7 @@ mod tests {
                 operands_str: [Some("$2"), Some("$2"), Some("$15"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x84040572, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x84040572, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1637,7 +1637,7 @@ mod tests {
                 operands_str: [Some("$4"), Some("0x572($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x03E00008, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x03E00008, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1647,7 +1647,7 @@ mod tests {
                 operands_str: [Some("$ra"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x0000000D, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x0000000D, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1657,7 +1657,7 @@ mod tests {
                 operands_str: [Some("0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x19C0FA06, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x19C0FA06, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1667,7 +1667,7 @@ mod tests {
                 operands_str: [Some("$14"), Some(".L800B2288"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x09000A19, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x09000A19, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1677,7 +1677,7 @@ mod tests {
                 operands_str: [Some("func_84002864"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x37120000, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x37120000, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1687,7 +1687,7 @@ mod tests {
                 operands_str: [Some("$18"), Some("$24"), Some("0x0"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1000FE72, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x1000FE72, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1697,7 +1697,7 @@ mod tests {
                 operands_str: [Some(".L800B1A78"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A0318EC, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4A0318EC, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1707,7 +1707,7 @@ mod tests {
                 operands_str: [Some("$v3"), Some("$v3"), Some("$v3"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAF11B0B, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xEAF11B0B, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1717,7 +1717,7 @@ mod tests {
                 operands_str: [Some("$v17[6]"), Some("0x58($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x940C0572, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x940C0572, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1727,7 +1727,7 @@ mod tests {
                 operands_str: [Some("$12"), Some("0x572($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00095880, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00095880, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1737,7 +1737,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("$9"), Some("2"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xA403057C, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xA403057C, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1747,7 +1747,7 @@ mod tests {
                 operands_str: [Some("$3"), Some("0x57C($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xCA832000, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xCA832000, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1757,7 +1757,7 @@ mod tests {
                 operands_str: [Some("$v3[0]"), Some("0x0($20)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAE40C0B, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xEAE40C0B, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1767,7 +1767,7 @@ mod tests {
                 operands_str: [Some("$v4[8]"), Some("0x16($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xCBC41807, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xCBC41807, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1777,7 +1777,7 @@ mod tests {
                 operands_str: [Some("$v4[0]"), Some("0x38($30)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x3C07F510, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x3C07F510, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1787,7 +1787,7 @@ mod tests {
                 operands_str: [Some("$7"), Some("(0xF5100000 >> 16)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00611824, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00611824, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1797,7 +1797,7 @@ mod tests {
                 operands_str: [Some("$3"), Some("$3"), Some("$1"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEBC62000, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xEBC62000, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1807,7 +1807,7 @@ mod tests {
                 operands_str: [Some("$v6[0]"), Some("0x0($30)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1193FFFE, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x1193FFFE, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1817,7 +1817,7 @@ mod tests {
                 operands_str: [Some("$12"), Some("$19"), Some(".L800B304C"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x900B0539, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x900B0539, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1827,7 +1827,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("0x539($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0C58A8, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B0C58A8, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1837,7 +1837,7 @@ mod tests {
                 operands_str: [Some("$v2"), Some("$v11"), Some("$v12[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x008C5822, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x008C5822, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1847,7 +1847,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("$4"), Some("$12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00432006, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00432006, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1857,7 +1857,7 @@ mod tests {
                 operands_str: [Some("$4"), Some("$3"), Some("$2"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x488ED800, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x488ED800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1867,7 +1867,7 @@ mod tests {
                 operands_str: [Some("$14"), Some("$v27[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC9B12802, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xC9B12802, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1877,7 +1877,7 @@ mod tests {
                 operands_str: [Some("$v17[0]"), Some("0x20($13)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1B21C6, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B1B21C6, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1887,7 +1887,7 @@ mod tests {
                 operands_str: [Some("$v7"), Some("$v4"), Some("$v27[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7F488E, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B7F488E, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1897,7 +1897,7 @@ mod tests {
                 operands_str: [Some("$v2"), Some("$v9"), Some("$v31[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B2A3A05, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B2A3A05, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1907,7 +1907,7 @@ mod tests {
                 operands_str: [Some("$v8"), Some("$v7"), Some("$v10[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B3D1EC7, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B3D1EC7, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1917,7 +1917,7 @@ mod tests {
                 operands_str: [Some("$v27"), Some("$v3"), Some("$v29[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7DFA0F, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B7DFA0F, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1927,7 +1927,7 @@ mod tests {
                 operands_str: [Some("$v8"), Some("$v31"), Some("$v29[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0A529D, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B0A529D, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1937,7 +1937,7 @@ mod tests {
                 operands_str: [Some("$v10"), Some("$v10"), Some("$v10[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAFD1204, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xEAFD1204, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1947,7 +1947,7 @@ mod tests {
                 operands_str: [Some("$v29[4]"), Some("0x10($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC827080F, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xC827080F, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1957,7 +1957,7 @@ mod tests {
                 operands_str: [Some("$v7[0]"), Some("0x1E($1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4BAA4351, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4BAA4351, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1967,7 +1967,7 @@ mod tests {
                 operands_str: [Some("$v13"), Some("$v8"), Some("$v10[5]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F8ECD, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B1F8ECD, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1977,7 +1977,7 @@ mod tests {
                 operands_str: [Some("$v27"), Some("$v17"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B3F7384, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B3F7384, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1987,7 +1987,7 @@ mod tests {
                 operands_str: [Some("$v14"), Some("$v14"), Some("$v31[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B9F2940, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B9F2940, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -1997,7 +1997,7 @@ mod tests {
                 operands_str: [Some("$v5"), Some("$v5"), Some("$v31[4]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4BAA4390, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4BAA4390, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2007,7 +2007,7 @@ mod tests {
                 operands_str: [Some("$v14"), Some("$v8"), Some("$v10[5]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4813D900, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4813D900, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2017,7 +2017,7 @@ mod tests {
                 operands_str: [Some("$19"), Some("$v27[2]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A1174D5, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4A1174D5, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2027,7 +2027,7 @@ mod tests {
                 operands_str: [Some("$v19"), Some("$v14"), Some("$v17"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7D6EE3, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B7D6EE3, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2037,7 +2037,7 @@ mod tests {
                 operands_str: [Some("$v27"), Some("$v13"), Some("$v29[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4AF4E0E4, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4AF4E0E4, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2047,7 +2047,7 @@ mod tests {
                 operands_str: [Some("$v3"), Some("$v28"), Some("$v20[3h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4AC550C8, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4AC550C8, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2057,7 +2057,7 @@ mod tests {
                 operands_str: [Some("$v3"), Some("$v10"), Some("$v5[2h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x15610003, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x15610003, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2067,7 +2067,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("$1"), Some(".L800B2F4C"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x05C1000F, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x05C1000F, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2077,7 +2077,7 @@ mod tests {
                 operands_str: [Some("$14"), Some(".L800B3A2C"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAFD0688, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xEAFD0688, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2087,7 +2087,7 @@ mod tests {
                 operands_str: [Some("$v29[13]"), Some("0x8($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x01675825, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x01675825, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2097,7 +2097,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("$11"), Some("$7"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x03241804, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x03241804, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2107,7 +2107,7 @@ mod tests {
                 operands_str: [Some("$3"), Some("$4"), Some("$25"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00601827, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00601827, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2117,7 +2117,7 @@ mod tests {
                 operands_str: [Some("$3"), Some("$3"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x83790500, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x83790500, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2127,7 +2127,7 @@ mod tests {
                 operands_str: [Some("$25"), Some("0x500($27)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x05600002, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x05600002, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2137,7 +2137,7 @@ mod tests {
                 operands_str: [Some("$11"), Some(".L800B3A2C"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xA2EB0009, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xA2EB0009, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2147,7 +2147,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("0x9($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x000B5A83, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x000B5A83, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2157,7 +2157,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("$11"), Some("10"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC98C1000, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xC98C1000, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2167,7 +2167,7 @@ mod tests {
                 operands_str: [Some("$v12[0]"), Some("0x0($12)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4AF5E8E5, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4AF5E8E5, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2177,7 +2177,7 @@ mod tests {
                 operands_str: [Some("$v3"), Some("$v29"), Some("$v21[3h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x484B0800, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x484B0800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2187,7 +2187,7 @@ mod tests {
                 operands_str: [Some("$t3"), Some("$1"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A086A27, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4A086A27, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2197,7 +2197,7 @@ mod tests {
                 operands_str: [Some("$v8"), Some("$v13"), Some("$v8"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7D7EE0, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B7D7EE0, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2207,7 +2207,7 @@ mod tests {
                 operands_str: [Some("$v27"), Some("$v15"), Some("$v29[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x26F70018, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x26F70018, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2217,7 +2217,7 @@ mod tests {
                 operands_str: [Some("$23"), Some("$23"), Some("0x18"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00812021, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00812021, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2227,7 +2227,7 @@ mod tests {
                 operands_str: [Some("$4"), Some("$4"), Some("$1"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F6A0C, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B1F6A0C, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2237,7 +2237,7 @@ mod tests {
                 operands_str: [Some("$v8"), Some("$v13"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x0185602A, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x0185602A, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2247,7 +2247,7 @@ mod tests {
                 operands_str: [Some("$12"), Some("$12"), Some("$5"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B224AF3, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B224AF3, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2257,7 +2257,7 @@ mod tests {
                 operands_str: [Some("$v11[1]"), Some("$v2[1]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0343F0, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B0343F0, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2267,7 +2267,7 @@ mod tests {
                 operands_str: [Some("$v15[0]"), Some("$v3[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7D4232, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B7D4232, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2277,7 +2277,7 @@ mod tests {
                 operands_str: [Some("$v8[0]"), Some("$v29[3]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4BDE0026, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4BDE0026, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2287,7 +2287,7 @@ mod tests {
                 operands_str: [Some("$v0"), Some("$v0"), Some("$v30[6]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A0A56D3, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4A0A56D3, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2297,7 +2297,7 @@ mod tests {
                 operands_str: [Some("$v27"), Some("$v10"), Some("$v10"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC9513800, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xC9513800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2307,7 +2307,7 @@ mod tests {
                 operands_str: [Some("$v17[0]"), Some("0x0($10)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0D41F1, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B0D41F1, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2317,7 +2317,7 @@ mod tests {
                 operands_str: [Some("$v7[0]"), Some("$v13[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x398C0001, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x398C0001, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2327,7 +2327,7 @@ mod tests {
                 operands_str: [Some("$12"), Some("$12"), Some("0x1"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00641826, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00641826, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2337,7 +2337,7 @@ mod tests {
                 operands_str: [Some("$3"), Some("$3"), Some("$4"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4ACB36D4, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4ACB36D4, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2347,7 +2347,7 @@ mod tests {
                 operands_str: [Some("$v27"), Some("$v6"), Some("$v11[2h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F4221, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B1F4221, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2357,7 +2357,7 @@ mod tests {
                 operands_str: [Some("$v8"), Some("$v8"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F7BE2, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B1F7BE2, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2367,7 +2367,7 @@ mod tests {
                 operands_str: [Some("$v15"), Some("$v15"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F7A2D, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B1F7A2D, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2377,7 +2377,7 @@ mod tests {
                 operands_str: [Some("$v8"), Some("$v15"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xE8FB3800, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xE8FB3800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2387,7 +2387,7 @@ mod tests {
                 operands_str: [Some("$v27[0]"), Some("0x0($7)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x03C0F809, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x03C0F809, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2397,7 +2397,7 @@ mod tests {
                 operands_str: [Some("$30"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC86F3000, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xC86F3000, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2407,7 +2407,7 @@ mod tests {
                 operands_str: [Some("$v15[0]"), Some("0x0($3)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A1FEF6A, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4A1FEF6A, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2417,7 +2417,7 @@ mod tests {
                 operands_str: [Some("$v29"), Some("$v29"), Some("$v31"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xE9085F04, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xE9085F04, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2427,7 +2427,7 @@ mod tests {
                 operands_str: [Some("$v8[14]"), Some("0x40($8)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC9085904, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xC9085904, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2437,7 +2437,7 @@ mod tests {
                 operands_str: [Some("$v8[2]"), Some("0x40($8)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F42F6, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B1F42F6, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2447,7 +2447,7 @@ mod tests {
                 operands_str: [Some("$v11[0]"), Some("$v31[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B4743F5, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B4743F5, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2457,7 +2457,7 @@ mod tests {
                 operands_str: [Some("$v15[0]"), Some("$v7[2]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xE8273038, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xE8273038, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2467,7 +2467,7 @@ mod tests {
                 operands_str: [Some("$v7[0]"), Some("0x1C0($1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC94F0786, 0xA4000000, None),
+                instr: Instruction::new_rsp(0xC94F0786, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2477,7 +2477,7 @@ mod tests {
                 operands_str: [Some("$v15[15]"), Some("0x6($10)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x48CB0800, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x48CB0800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2487,7 +2487,7 @@ mod tests {
                 operands_str: [Some("$t3"), Some("$1"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B3E01EB, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x4B3E01EB, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2497,7 +2497,7 @@ mod tests {
                 operands_str: [Some("$v7"), Some("$v0"), Some("$v30[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x04D1FF9D, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x04D1FF9D, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2507,7 +2507,7 @@ mod tests {
                 operands_str: [Some("$6"), Some(".L800B3020"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00035822, 0xA4000000, None),
+                instr: Instruction::new_rsp(0x00035822, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2517,7 +2517,7 @@ mod tests {
                 operands_str: [Some("$11"), Some("$3"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00042100, 0x80000000, None),
+                instr: Instruction::new_rsp(0x00042100, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2527,7 +2527,7 @@ mod tests {
                 operands_str: [Some("$a0"), Some("$a0"), Some("4"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00021882, 0x80000000, None),
+                instr: Instruction::new_rsp(0x00021882, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2537,7 +2537,7 @@ mod tests {
                 operands_str: [Some("$v1"), Some("$v0"), Some("2"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00017443, 0x80000000, None),
+                instr: Instruction::new_rsp(0x00017443, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2547,87 +2547,87 @@ mod tests {
                 operands_str: [Some("$t6"), Some("$at"), Some("17"), None, None],
             },
             // removed rsp instructions
-            TestEntry::new_rsp_invalid(0x50740008, None), // beql
-            TestEntry::new_rsp_invalid(0x56E1FFF8, None), // bnel
-            TestEntry::new_rsp_invalid(0x59C00007, None), // blezl
-            TestEntry::new_rsp_invalid(0x5D000001, None), // bgtzl
-            TestEntry::new_rsp_invalid(0x60840001, None), // daddi
-            TestEntry::new_rsp_invalid(0x64840001, None), // daddiu
-            TestEntry::new_rsp_invalid(0x69220007, None), // ldl
-            TestEntry::new_rsp_invalid(0x6D240008, None), // ldr
-            TestEntry::new_rsp_invalid(0x88EE000D, None), // lwl
-            TestEntry::new_rsp_invalid(0x98EE0010, None), // lwr
-            TestEntry::new_rsp_invalid(0x9FA30010, None), // lwu
-            TestEntry::new_rsp_invalid(0xA8C20000, None), // swl
-            TestEntry::new_rsp_invalid(0xB0C20007, None), // sdl
-            TestEntry::new_rsp_invalid(0xB4C20000, None), // sdr
-            TestEntry::new_rsp_invalid(0xB9C1000E, None), // swr
-            TestEntry::new_rsp_invalid(0xC0850000, None), // ll
-            TestEntry::new_rsp_invalid(0xD0850000, None), // lld
-            TestEntry::new_rsp_invalid(0xDFBF0020, None), // ld
-            TestEntry::new_rsp_invalid(0xE0BF0020, None), // sc
-            TestEntry::new_rsp_invalid(0xF0BF0020, None), // scd
-            TestEntry::new_rsp_invalid(0xFFA00038, None), // sd
-            TestEntry::new_rsp_invalid(0xBCD00000, None), // cache
-            TestEntry::new_rsp_invalid(0xC4D00010, None), // lwc1
-            TestEntry::new_rsp_invalid(0xD4D00010, None), // ldc1
-            TestEntry::new_rsp_invalid(0xE4D00010, None), // swc1
-            TestEntry::new_rsp_invalid(0xF4D00010, None), // sdc1
-            // TestEntry::new_rsp_invalid(0xC8D00010, None), // lwc2
-            TestEntry::new_rsp_invalid(0xD8D00010, None), // ldc2
-            // TestEntry::new_rsp_invalid(0xE8D00010, None), // swc2
-            TestEntry::new_rsp_invalid(0xF8D00010, None), // sdc2
-            TestEntry::new_rsp_invalid(0x05020031, None), // bltzl
-            TestEntry::new_rsp_invalid(0x04630005, None), // bgezl
-            TestEntry::new_rsp_invalid(0x04A80010, None), // tgei
-            TestEntry::new_rsp_invalid(0x04A90010, None), // tgeiu
-            TestEntry::new_rsp_invalid(0x04AA0010, None), // tlti
-            TestEntry::new_rsp_invalid(0x04AB0010, None), // tltiu
-            TestEntry::new_rsp_invalid(0x04AC0010, None), // teqi
-            TestEntry::new_rsp_invalid(0x04AE0010, None), // tnei
-            TestEntry::new_rsp_invalid(0x04B20010, None), // bltzall
-            TestEntry::new_rsp_invalid(0x04B30010, None), // bgezall
-            TestEntry::new_rsp_invalid(0x00042FF8, None), // dsll
-            TestEntry::new_rsp_invalid(0x000637FA, None), // dsrl
-            TestEntry::new_rsp_invalid(0x0002137B, None), // dsra
-            TestEntry::new_rsp_invalid(0x000437FC, None), // dsll32
-            TestEntry::new_rsp_invalid(0x0005283E, None), // dsrl32
-            TestEntry::new_rsp_invalid(0x0002103F, None), // dsra32
-            TestEntry::new_rsp_invalid(0x01EE1014, None), // dsllv
-            TestEntry::new_rsp_invalid(0x01EE1016, None), // dsrlv
-            TestEntry::new_rsp_invalid(0x01EE1017, None), // dsrav
-            TestEntry::new_rsp_invalid(0x03600011, None), // mthi
-            TestEntry::new_rsp_invalid(0x03600013, None), // mtlo
-            TestEntry::new_rsp_invalid(0x00004010, None), // mfhi
-            TestEntry::new_rsp_invalid(0x00004012, None), // mflo
-            TestEntry::new_rsp_invalid(0x01AC001A, None), // div
-            TestEntry::new_rsp_invalid(0x0101001B, None), // divu
-            TestEntry::new_rsp_invalid(0x01CF001E, None), // ddiv
-            TestEntry::new_rsp_invalid(0x01CF001F, None), // ddivu
-            TestEntry::new_rsp_invalid(0x0162582C, None), // dadd
-            TestEntry::new_rsp_invalid(0x012A582D, None), // daddu
-            TestEntry::new_rsp_invalid(0x0162582E, None), // dsub
-            TestEntry::new_rsp_invalid(0x0162582F, None), // dsubu
-            TestEntry::new_rsp_invalid(0x0000000C, None), // syscall
-            TestEntry::new_rsp_invalid(0x0000000F, None), // sync
-            TestEntry::new_rsp_invalid(0x00870018, None), // mult
-            TestEntry::new_rsp_invalid(0x00E20019, None), // multu
-            TestEntry::new_rsp_invalid(0x0087001C, None), // dmult
-            TestEntry::new_rsp_invalid(0x00E2001D, None), // dmultu
-            TestEntry::new_rsp_invalid(0x00E200B0, None), // tge
-            TestEntry::new_rsp_invalid(0x00E200B1, None), // tgeu
-            TestEntry::new_rsp_invalid(0x00E200B2, None), // tlt
-            TestEntry::new_rsp_invalid(0x00E200B3, None), // tltu
-            TestEntry::new_rsp_invalid(0x00E200B4, None), // teq
-            TestEntry::new_rsp_invalid(0x00E200B6, None), // tne
-            TestEntry::new_rsp_invalid(0x40220800, None), // dmfc0
-            TestEntry::new_rsp_invalid(0x40420800, None), // cfc0
-            TestEntry::new_rsp_invalid(0x40A20800, None), // dmtc0
-            TestEntry::new_rsp_invalid(0x40C20800, None), // ctc0
+            TestEntry::new_rsp_invalid(0x50740008, InstructionFlags::default()), // beql
+            TestEntry::new_rsp_invalid(0x56E1FFF8, InstructionFlags::default()), // bnel
+            TestEntry::new_rsp_invalid(0x59C00007, InstructionFlags::default()), // blezl
+            TestEntry::new_rsp_invalid(0x5D000001, InstructionFlags::default()), // bgtzl
+            TestEntry::new_rsp_invalid(0x60840001, InstructionFlags::default()), // daddi
+            TestEntry::new_rsp_invalid(0x64840001, InstructionFlags::default()), // daddiu
+            TestEntry::new_rsp_invalid(0x69220007, InstructionFlags::default()), // ldl
+            TestEntry::new_rsp_invalid(0x6D240008, InstructionFlags::default()), // ldr
+            TestEntry::new_rsp_invalid(0x88EE000D, InstructionFlags::default()), // lwl
+            TestEntry::new_rsp_invalid(0x98EE0010, InstructionFlags::default()), // lwr
+            TestEntry::new_rsp_invalid(0x9FA30010, InstructionFlags::default()), // lwu
+            TestEntry::new_rsp_invalid(0xA8C20000, InstructionFlags::default()), // swl
+            TestEntry::new_rsp_invalid(0xB0C20007, InstructionFlags::default()), // sdl
+            TestEntry::new_rsp_invalid(0xB4C20000, InstructionFlags::default()), // sdr
+            TestEntry::new_rsp_invalid(0xB9C1000E, InstructionFlags::default()), // swr
+            TestEntry::new_rsp_invalid(0xC0850000, InstructionFlags::default()), // ll
+            TestEntry::new_rsp_invalid(0xD0850000, InstructionFlags::default()), // lld
+            TestEntry::new_rsp_invalid(0xDFBF0020, InstructionFlags::default()), // ld
+            TestEntry::new_rsp_invalid(0xE0BF0020, InstructionFlags::default()), // sc
+            TestEntry::new_rsp_invalid(0xF0BF0020, InstructionFlags::default()), // scd
+            TestEntry::new_rsp_invalid(0xFFA00038, InstructionFlags::default()), // sd
+            TestEntry::new_rsp_invalid(0xBCD00000, InstructionFlags::default()), // cache
+            TestEntry::new_rsp_invalid(0xC4D00010, InstructionFlags::default()), // lwc1
+            TestEntry::new_rsp_invalid(0xD4D00010, InstructionFlags::default()), // ldc1
+            TestEntry::new_rsp_invalid(0xE4D00010, InstructionFlags::default()), // swc1
+            TestEntry::new_rsp_invalid(0xF4D00010, InstructionFlags::default()), // sdc1
+            // TestEntry::new_rsp_invalid(0xC8D00010, InstructionFlags::default()), // lwc2
+            TestEntry::new_rsp_invalid(0xD8D00010, InstructionFlags::default()), // ldc2
+            // TestEntry::new_rsp_invalid(0xE8D00010, InstructionFlags::default()), // swc2
+            TestEntry::new_rsp_invalid(0xF8D00010, InstructionFlags::default()), // sdc2
+            TestEntry::new_rsp_invalid(0x05020031, InstructionFlags::default()), // bltzl
+            TestEntry::new_rsp_invalid(0x04630005, InstructionFlags::default()), // bgezl
+            TestEntry::new_rsp_invalid(0x04A80010, InstructionFlags::default()), // tgei
+            TestEntry::new_rsp_invalid(0x04A90010, InstructionFlags::default()), // tgeiu
+            TestEntry::new_rsp_invalid(0x04AA0010, InstructionFlags::default()), // tlti
+            TestEntry::new_rsp_invalid(0x04AB0010, InstructionFlags::default()), // tltiu
+            TestEntry::new_rsp_invalid(0x04AC0010, InstructionFlags::default()), // teqi
+            TestEntry::new_rsp_invalid(0x04AE0010, InstructionFlags::default()), // tnei
+            TestEntry::new_rsp_invalid(0x04B20010, InstructionFlags::default()), // bltzall
+            TestEntry::new_rsp_invalid(0x04B30010, InstructionFlags::default()), // bgezall
+            TestEntry::new_rsp_invalid(0x00042FF8, InstructionFlags::default()), // dsll
+            TestEntry::new_rsp_invalid(0x000637FA, InstructionFlags::default()), // dsrl
+            TestEntry::new_rsp_invalid(0x0002137B, InstructionFlags::default()), // dsra
+            TestEntry::new_rsp_invalid(0x000437FC, InstructionFlags::default()), // dsll32
+            TestEntry::new_rsp_invalid(0x0005283E, InstructionFlags::default()), // dsrl32
+            TestEntry::new_rsp_invalid(0x0002103F, InstructionFlags::default()), // dsra32
+            TestEntry::new_rsp_invalid(0x01EE1014, InstructionFlags::default()), // dsllv
+            TestEntry::new_rsp_invalid(0x01EE1016, InstructionFlags::default()), // dsrlv
+            TestEntry::new_rsp_invalid(0x01EE1017, InstructionFlags::default()), // dsrav
+            TestEntry::new_rsp_invalid(0x03600011, InstructionFlags::default()), // mthi
+            TestEntry::new_rsp_invalid(0x03600013, InstructionFlags::default()), // mtlo
+            TestEntry::new_rsp_invalid(0x00004010, InstructionFlags::default()), // mfhi
+            TestEntry::new_rsp_invalid(0x00004012, InstructionFlags::default()), // mflo
+            TestEntry::new_rsp_invalid(0x01AC001A, InstructionFlags::default()), // div
+            TestEntry::new_rsp_invalid(0x0101001B, InstructionFlags::default()), // divu
+            TestEntry::new_rsp_invalid(0x01CF001E, InstructionFlags::default()), // ddiv
+            TestEntry::new_rsp_invalid(0x01CF001F, InstructionFlags::default()), // ddivu
+            TestEntry::new_rsp_invalid(0x0162582C, InstructionFlags::default()), // dadd
+            TestEntry::new_rsp_invalid(0x012A582D, InstructionFlags::default()), // daddu
+            TestEntry::new_rsp_invalid(0x0162582E, InstructionFlags::default()), // dsub
+            TestEntry::new_rsp_invalid(0x0162582F, InstructionFlags::default()), // dsubu
+            TestEntry::new_rsp_invalid(0x0000000C, InstructionFlags::default()), // syscall
+            TestEntry::new_rsp_invalid(0x0000000F, InstructionFlags::default()), // sync
+            TestEntry::new_rsp_invalid(0x00870018, InstructionFlags::default()), // mult
+            TestEntry::new_rsp_invalid(0x00E20019, InstructionFlags::default()), // multu
+            TestEntry::new_rsp_invalid(0x0087001C, InstructionFlags::default()), // dmult
+            TestEntry::new_rsp_invalid(0x00E2001D, InstructionFlags::default()), // dmultu
+            TestEntry::new_rsp_invalid(0x00E200B0, InstructionFlags::default()), // tge
+            TestEntry::new_rsp_invalid(0x00E200B1, InstructionFlags::default()), // tgeu
+            TestEntry::new_rsp_invalid(0x00E200B2, InstructionFlags::default()), // tlt
+            TestEntry::new_rsp_invalid(0x00E200B3, InstructionFlags::default()), // tltu
+            TestEntry::new_rsp_invalid(0x00E200B4, InstructionFlags::default()), // teq
+            TestEntry::new_rsp_invalid(0x00E200B6, InstructionFlags::default()), // tne
+            TestEntry::new_rsp_invalid(0x40220800, InstructionFlags::default()), // dmfc0
+            TestEntry::new_rsp_invalid(0x40420800, InstructionFlags::default()), // cfc0
+            TestEntry::new_rsp_invalid(0x40A20800, InstructionFlags::default()), // dmtc0
+            TestEntry::new_rsp_invalid(0x40C20800, InstructionFlags::default()), // ctc0
             // Invalid instructions
-            TestEntry::new_rsp_invalid(0x44444444, None),
-            TestEntry::new_rsp_invalid(0x77777777, None),
-            TestEntry::new_rsp_invalid(0xEEEEEEEE, None),
+            TestEntry::new_rsp_invalid(0x44444444, InstructionFlags::default()),
+            TestEntry::new_rsp_invalid(0x77777777, InstructionFlags::default()),
+            TestEntry::new_rsp_invalid(0xEEEEEEEE, InstructionFlags::default()),
         ];
 
         assert_eq!(check_test_entries(ENTRIES, false), 0);
@@ -2637,7 +2637,11 @@ mod tests {
     fn check_r3000gte_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A180001, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A180001,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2647,7 +2651,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A280030, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A280030,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2657,7 +2665,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A680029, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A680029,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2667,7 +2679,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A780010, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A780010,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2677,7 +2693,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4AF8002A, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4AF8002A,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2687,7 +2707,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A980011, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A980011,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2697,7 +2721,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4AC8041E, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4AC8041E,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2707,7 +2735,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4AD80420, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4AD80420,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2717,7 +2749,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4AE80413, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4AE80413,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2727,7 +2763,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4AF80416, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4AF80416,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2737,7 +2777,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B08041B, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B08041B,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2747,7 +2791,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B18043F, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B18043F,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2757,7 +2805,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B280414, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B280414,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2767,7 +2819,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B38041C, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B38041C,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2777,7 +2833,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B400006, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B400006,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2787,7 +2847,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B58002D, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B58002D,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2797,7 +2861,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B68002E, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B68002E,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2807,7 +2875,11 @@ mod tests {
                 operands_str: [Some(""), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A400012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A400012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2817,7 +2889,11 @@ mod tests {
                 operands_str: [Some("0"), Some("0"), Some("0"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4AA00428, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4AA00428,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2827,7 +2903,11 @@ mod tests {
                 operands_str: [Some("0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B70000C, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B70000C,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2837,7 +2917,11 @@ mod tests {
                 operands_str: [Some("0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B90003D, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B90003D,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2847,7 +2931,11 @@ mod tests {
                 operands_str: [Some("0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4BA0003E, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4BA0003E,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2857,7 +2945,11 @@ mod tests {
                 operands_str: [Some("0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A486012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A486012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2867,7 +2959,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("0"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A48E012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A48E012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2877,7 +2973,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("1"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A496012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A496012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2887,7 +2987,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("2"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A49E012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A49E012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2897,7 +3001,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("3"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A41E012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A41E012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2907,7 +3015,11 @@ mod tests {
                 operands_str: [Some("0"), Some("0"), Some("3"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A480012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A480012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2917,7 +3029,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("0"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A488012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A488012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2927,7 +3043,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("1"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A490012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A490012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2937,7 +3057,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("2"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A498012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A498012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2947,7 +3071,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("3"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A482012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A482012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2957,7 +3085,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("0"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A48A012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A48A012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2967,7 +3099,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("1"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A492012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A492012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2977,7 +3113,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("2"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A49A012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A49A012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2987,7 +3127,11 @@ mod tests {
                 operands_str: [Some("1"), Some("0"), Some("3"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4A6412, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4A6412,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -2997,7 +3141,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("0"), Some("3"), Some("1")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4A6012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4A6012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3007,7 +3155,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("0"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4AE012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4AE012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3017,7 +3169,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("1"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4B6012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4B6012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3027,7 +3183,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("2"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4BE012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4BE012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3037,7 +3197,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("3"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4A0012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4A0012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3047,7 +3211,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("0"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4A8012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4A8012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3057,7 +3225,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("1"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4B0012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4B0012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3067,7 +3239,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("2"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4B8012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4B8012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3077,7 +3253,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("3"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4A2012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4A2012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3087,7 +3267,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("0"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4AA012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4AA012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3097,7 +3281,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("1"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4B2012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4B2012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3107,7 +3295,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("2"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4BA012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4BA012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3117,7 +3309,11 @@ mod tests {
                 operands_str: [Some("1"), Some("1"), Some("3"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4DA412, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4DA412,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3127,7 +3323,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("3"), Some("1"), Some("1")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4C6012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4C6012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3137,7 +3337,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("0"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4CE012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4CE012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3147,7 +3351,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("1"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4D6012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4D6012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3157,7 +3365,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("2"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4DE012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4DE012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3167,7 +3379,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("3"), Some("3"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4C0012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4C0012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3177,7 +3393,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("0"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4C8012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4C8012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3187,7 +3407,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("1"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4D0012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4D0012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3197,7 +3421,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("2"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4D8012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4D8012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3207,7 +3435,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("3"), Some("0"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4C2012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4C2012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3217,7 +3449,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("0"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4CA012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4CA012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3227,7 +3463,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("1"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4D2012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4D2012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3237,7 +3477,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("2"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4A4DA012, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4A4DA012,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3247,7 +3491,11 @@ mod tests {
                 operands_str: [Some("1"), Some("2"), Some("3"), Some("1"), Some("0")],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4AA80428, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4AA80428,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3257,7 +3505,11 @@ mod tests {
                 operands_str: [Some("1"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B78000C, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B78000C,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3267,7 +3519,11 @@ mod tests {
                 operands_str: [Some("1"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4B98003D, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4B98003D,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3277,7 +3533,11 @@ mod tests {
                 operands_str: [Some("1"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r3000gte(0x4BA8003E, 0x80000000, None),
+                instr: Instruction::new_r3000gte(
+                    0x4BA8003E,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3314,7 +3574,7 @@ mod tests {
     fn check_r5900_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
-                instr: Instruction::new_r5900(0x4A000038, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A000038, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3324,7 +3584,7 @@ mod tests {
                 operands_str: [Some("0x0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A004038, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A004038, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3334,7 +3594,7 @@ mod tests {
                 operands_str: [Some("0x800"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A008038, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A008038, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3344,7 +3604,7 @@ mod tests {
                 operands_str: [Some("0x1000"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A008838, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A008838, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3354,7 +3614,7 @@ mod tests {
                 operands_str: [Some("0x1100"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A009038, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A009038, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3364,7 +3624,7 @@ mod tests {
                 operands_str: [Some("0x1200"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A009838, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A009838, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3374,7 +3634,7 @@ mod tests {
                 operands_str: [Some("0x1300"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A00A038, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A00A038, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3384,7 +3644,7 @@ mod tests {
                 operands_str: [Some("0x1400"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A07FFF8, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A07FFF8, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3394,7 +3654,7 @@ mod tests {
                 operands_str: [Some("0xFFF8"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A080038, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A080038, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3404,7 +3664,7 @@ mod tests {
                 operands_str: [Some("0x10000"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A1F8038, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A1F8038, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3414,7 +3674,7 @@ mod tests {
                 operands_str: [Some("0x3F000"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A1FFFB8, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A1FFFB8, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3424,7 +3684,7 @@ mod tests {
                 operands_str: [Some("0x3FFF0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70001030, 0x80000000, None),
+                instr: Instruction::new_r5900(0x70001030, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3434,7 +3694,7 @@ mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70001070, 0x80000000, None),
+                instr: Instruction::new_r5900(0x70001070, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3444,7 +3704,7 @@ mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x700010B0, 0x80000000, None),
+                instr: Instruction::new_r5900(0x700010B0, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3454,7 +3714,7 @@ mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x700010F0, 0x80000000, None),
+                instr: Instruction::new_r5900(0x700010F0, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3464,7 +3724,7 @@ mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70001130, 0x80000000, None),
+                instr: Instruction::new_r5900(0x70001130, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3474,7 +3734,7 @@ mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70000031, 0x80000000, None),
+                instr: Instruction::new_r5900(0x70000031, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3484,7 +3744,7 @@ mod tests {
                 operands_str: [Some("$zero"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4B020BFE, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4B020BFE, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3494,7 +3754,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A820BFE, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A820BFE, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3504,7 +3764,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A420BFE, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A420BFE, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3514,7 +3774,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A220BFE, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A220BFE, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3524,7 +3784,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4B020BFF, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4B020BFF, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3534,7 +3794,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A820BFF, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A820BFF, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3544,7 +3804,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A420BFF, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A420BFF, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3554,7 +3814,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A220BFF, 0x80000000, None),
+                instr: Instruction::new_r5900(0x4A220BFF, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3564,7 +3824,7 @@ mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70111334, 0x80000000, None),
+                instr: Instruction::new_r5900(0x70111334, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3574,7 +3834,7 @@ mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70111336, 0x80000000, None),
+                instr: Instruction::new_r5900(0x70111336, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3584,7 +3844,7 @@ mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70111337, 0x80000000, None),
+                instr: Instruction::new_r5900(0x70111337, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3594,7 +3854,7 @@ mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x7011133C, 0x80000000, None),
+                instr: Instruction::new_r5900(0x7011133C, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3604,7 +3864,7 @@ mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x7011133E, 0x80000000, None),
+                instr: Instruction::new_r5900(0x7011133E, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3614,7 +3874,7 @@ mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x7011133F, 0x80000000, None),
+                instr: Instruction::new_r5900(0x7011133F, 0x80000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
