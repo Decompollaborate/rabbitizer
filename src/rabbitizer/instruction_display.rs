@@ -3,7 +3,7 @@
 
 use core::fmt;
 
-use crate::{DisplayFlags, Instruction, Opcode};
+use crate::{DisplayFlags, Instruction, IsaExtension, Opcode};
 
 pub struct InstructionDisplay<'ins, 'imm, 'flg> {
     instr: &'ins Instruction,
@@ -29,10 +29,51 @@ impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
             return true;
         }
 
-        // TODO: remove
-        #[allow(clippy::match_like_matches_macro)]
         match self.instr.opcode() {
             Opcode::core_break if self.display_flags.sn64_break_fix() => true,
+            Opcode::core_trunc_w_s | Opcode::core_cvt_w_s
+                if self.instr.isa_extension() == IsaExtension::R5900 =>
+            {
+                /*
+                 * Due to the R5900's FPU (floating point unit) not being
+                 * properly complaint, the instruction `cvt.w.s` always behaves
+                 * as `trunc.w.s`, because EE can only do round-to-zero.
+                 *
+                 * Assemblers like modern GAS implemented a workaround for this
+                 * issue by decoding `cvt.w.s` as `trunc.w.s`, but other
+                 * assemblers just use `trunc.w.s` and `cvt.w.s` as-is.
+                 *
+                 * Here's some reading about the binutils rationale:
+                 * - https://sourceware.org/legacy-ml/binutils/2012-11/msg00360.html
+                 * - https://sourceware.org/pipermail/binutils/2013-January/079863.html
+                 *
+                 * Because of this, building using GAS with the `-march=r5900`
+                 * flag produces:
+                 * - `trunc.w.s` is built as the cvt.w.s instruction.
+                 * - `cvt.w.s` emits an error, complaining as not being
+                 *   supported by the processor.
+                 *
+                 * To ensure the produced disassembly will still match when it
+                 * is built with GAS, we decode thse two instructions as
+                 * `.word`s.
+                 */
+                self.display_flags.r5900_modern_gas_instrs_workarounds()
+            }
+            Opcode::r5900_vclipw => {
+                /*
+                 * The `vclipw` instruction has variants that are undocumented
+                 * (i.e. `vclipw.xy`, `vclipw.z`) and won't assembly assemble
+                 * when using GAS.
+                 */
+                self.display_flags.r5900_modern_gas_instrs_workarounds()
+            }
+            Opcode::r5900_vsqrt => {
+                /*
+                 * The `vsqrt` instruction seems to be representable in
+                 * multiple ways, but we only disassemble one of them.
+                 */
+                self.display_flags.r5900_modern_gas_instrs_workarounds()
+            }
             _ => false,
         }
     }

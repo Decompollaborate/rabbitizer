@@ -2,3 +2,4 @@
 /* SPDX-License-Identifier: MIT */
 
 mod instruction_tests;
+mod instruction_tests_r4000allegrex;

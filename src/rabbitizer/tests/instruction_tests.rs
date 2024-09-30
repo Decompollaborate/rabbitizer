@@ -2,23 +2,21 @@
 /* SPDX-License-Identifier: MIT */
 
 #[cfg(test)]
-mod tests {
+pub(crate) mod tests {
     use std::string::ToString;
 
     use crate::{operand, DisplayFlags, Instruction, InstructionFlags, IsaVersion, Opcode};
 
-    struct TestEntry {
+    pub(crate) struct TestEntry {
         pub instr: Instruction,
         pub imm_override: Option<&'static str>,
         pub display_flags: DisplayFlags,
 
         pub valid: bool,
 
-        #[allow(dead_code)] // TODO: remove
         pub expected: &'static str,
         pub expected_opcode: Opcode,
         pub opcode_str: &'static str,
-        #[allow(dead_code)] // TODO: remove
         pub operands_str: [Option<&'static str>; operand::OPERAND_COUNT_MAX],
     }
 
@@ -48,6 +46,29 @@ mod tests {
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
+            }
+        }
+
+        pub const fn new_r4000allegrex(
+            word: u32,
+            expected: &'static str,
+            expected_opcode: Opcode,
+            opcode_str: &'static str,
+            operands_str: [Option<&'static str>; operand::OPERAND_COUNT_MAX],
+        ) -> Self {
+            TestEntry {
+                instr: Instruction::new_r4000allegrex(
+                    word,
+                    0x80000000,
+                    InstructionFlags::default(),
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected,
+                expected_opcode,
+                opcode_str,
+                operands_str,
             }
         }
 
@@ -162,7 +183,7 @@ mod tests {
         }
     }
 
-    fn entries_sanity_check(entries: &[TestEntry]) {
+    pub(crate) fn entries_sanity_check(entries: &[TestEntry]) {
         for (i, x) in entries.iter().enumerate() {
             for y in entries[i + 1..].iter() {
                 assert!(
@@ -175,7 +196,7 @@ mod tests {
         }
     }
 
-    fn check_test_entries(entries: &[TestEntry], thingy: bool) -> u32 {
+    pub(crate) fn check_test_entries(entries: &[TestEntry], thingy: bool) -> u32 {
         let mut errors = 0;
 
         entries_sanity_check(entries);
@@ -3552,25 +3573,6 @@ mod tests {
     }
 
     #[test]
-    fn check_r4000allegrex_instructions() {
-        const ENTRIES: &[TestEntry] = &[
-            // todo
-            // 0x00041182 -> "srl         $v0, $a0, 6"
-        ];
-
-        assert_eq!(check_test_entries(ENTRIES, false), 0);
-    }
-
-    #[test]
-    fn check_r4000allegrex_vfpu_instructions() {
-        const ENTRIES: &[TestEntry] = &[
-            // todo
-        ];
-
-        assert_eq!(check_test_entries(ENTRIES, false), 0);
-    }
-
-    #[test]
     fn check_r5900_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
@@ -3891,9 +3893,48 @@ mod tests {
     #[test]
     fn check_r5900_trunc_cvt_instructions() {
         const ENTRIES: &[TestEntry] = &[
-            // todo
+            TestEntry {
+                instr: Instruction::new_r5900(0x4600600D, 0x80000000, InstructionFlags::default()),
+                imm_override: None,
+                display_flags: DisplayFlags::new_gnu_as(),
+                valid: true,
+                expected: ".word       0x4600600D                   /* trunc.w.s   $f0, $f12 / 00000000 <OpcodeCategory: CORE_COP1_FPUS> */",
+                expected_opcode: Opcode::core_trunc_w_s,
+                opcode_str: "trunc.w.s",
+                operands_str: [Some("$f0"), Some("$f12"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x46006024, 0x80000000, InstructionFlags::default()),
+                imm_override: None,
+                display_flags: DisplayFlags::new_gnu_as(),
+                valid: true,
+                expected: ".word       0x46006024                   /* cvt.w.s     $f0, $f12 / 00000000 <OpcodeCategory: CORE_COP1_FPUS> */",
+                expected_opcode: Opcode::core_cvt_w_s,
+                opcode_str: "cvt.w.s",
+                operands_str: [Some("$f0"), Some("$f12"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x4600600D, 0x80000000, InstructionFlags::default()),
+                imm_override: None,
+                display_flags: DisplayFlags::new_legacy_as(),
+                valid: true,
+                expected: "trunc.w.s   $f0, $f12",
+                expected_opcode: Opcode::core_trunc_w_s,
+                opcode_str: "trunc.w.s",
+                operands_str: [Some("$f0"), Some("$f12"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_r5900(0x46006024, 0x80000000, InstructionFlags::default()),
+                imm_override: None,
+                display_flags: DisplayFlags::new_legacy_as(),
+                valid: true,
+                expected: "cvt.w.s     $f0, $f12",
+                expected_opcode: Opcode::core_cvt_w_s,
+                opcode_str: "cvt.w.s",
+                operands_str: [Some("$f0"), Some("$f12"), None, None, None],
+            },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES, false), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), 0);
     }
 }

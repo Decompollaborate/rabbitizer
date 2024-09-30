@@ -134,4 +134,4 @@ pub mod register_descriptors {
     pub use generated::RSP_VECTOR;
 }
 
-mod tests;
+pub(crate) mod tests;
