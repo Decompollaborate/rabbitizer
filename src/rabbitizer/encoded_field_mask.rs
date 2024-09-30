@@ -16,14 +16,19 @@ bitflags! {
         const function = utils::bitmask( 0,  6);
 
         const cop0d = utils::bitmask(11,  5);
-
-        const instr_index = utils::bitmask(  0, 26);
-        const immediate = utils::bitmask(  0, 16);
+        const cop0cd = utils::bitmask(11,  5);
 
         const fs = utils::bitmask( 11,  5);
         const ft = utils::bitmask( 16,  5);
         const fd = utils::bitmask(  6,  5);
         const cop1cs = utils::bitmask( 11,  5);
+
+        const cop2t = utils::bitmask( 16,  5);
+        const cop2d = utils::bitmask( 11,  5);
+        const cop2cd = utils::bitmask( 11,  5);
+
+        const instr_index = utils::bitmask(  0, 26);
+        const immediate = utils::bitmask(  0, 16);
 
         const op = utils::bitmask( 16,  5);
         const hint = utils::bitmask( 16,  5);
@@ -37,9 +42,6 @@ bitflags! {
         const fmt = utils::bitmask( 21,  5);
         const fc = utils::bitmask(  4,  2);
         const cond = utils::bitmask(  0,  4);
-
-        const cop2t = utils::bitmask( 16,  5);
-        const cop2cd = utils::bitmask( 11,  5);
 
         const tf = utils::bitmask( 16,  1);
         const nd = utils::bitmask( 17,  1);

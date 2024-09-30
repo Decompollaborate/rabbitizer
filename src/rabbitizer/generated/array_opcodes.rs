@@ -1322,7 +1322,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::core_cfc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true,
@@ -1346,7 +1346,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::core_ctc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true,
@@ -2187,13 +2187,13 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::core_mfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
         modifies_rt: true,
         ..OpcodeDescriptor::new("mfc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::core_mtc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
         reads_rt: true,
         ..OpcodeDescriptor::new("mtc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }

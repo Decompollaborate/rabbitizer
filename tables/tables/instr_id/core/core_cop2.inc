@@ -16,12 +16,12 @@
     // OP rt, cop2cd
     RABBITIZER_DEF_INSTR_ID(
         core, 0x00, mfc2, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
         modifies_rt: true
     )
     RABBITIZER_DEF_INSTR_ID(
         core, 0x04, mtc2, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
         reads_rt: true
     )
 

@@ -470,12 +470,14 @@ impl OpcodeDescriptor {
                     return true;
                 }
             }
+            Operand::core_cop0cd => {}
 
             Operand::core_fs => {}
             Operand::core_ft => {}
             Operand::core_fd => {}
             Operand::core_cop1cs => {}
             Operand::core_cop2t => {}
+            Operand::core_cop2d => {}
             Operand::core_cop2cd => {}
             Operand::core_op => {}
             Operand::core_hint => {}

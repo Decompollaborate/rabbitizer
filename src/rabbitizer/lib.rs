@@ -82,9 +82,11 @@ pub mod registers {
     use crate::generated;
 
     pub use generated::Cop0;
+    pub use generated::Cop0Control;
     pub use generated::Cop1;
     pub use generated::Cop1Control;
     pub use generated::Cop2;
+    pub use generated::Cop2Control;
     pub use generated::Gpr;
     pub use generated::R4000AllegrexM2x2;
     pub use generated::R4000AllegrexM3x3;
@@ -108,9 +110,11 @@ pub mod register_descriptors {
     use crate::generated;
 
     pub use generated::COP0;
+    pub use generated::COP0_CONTROL;
     pub use generated::COP1;
-    pub use generated::COP1CONTROL;
+    pub use generated::COP1_CONTROL;
     pub use generated::COP2;
+    pub use generated::COP2_CONTROL;
     pub use generated::GPR;
     pub use generated::R4000ALLEGREX_M2X2;
     pub use generated::R4000ALLEGREX_M3X3;

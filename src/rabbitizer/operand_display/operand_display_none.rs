@@ -66,6 +66,16 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
 
         write!(f, "{}", s)
     }
+    pub(crate) fn display_core_cop0cd(
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        let instr = myself.instr;
+        let reg = instr.field_cop0cd_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
+    }
     pub(crate) fn display_core_fs(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
@@ -107,16 +117,34 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop2t(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_cop2t_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
+    }
+    pub(crate) fn display_core_cop2d(
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        let instr = myself.instr;
+        let reg = instr.field_cop2d_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop2cd(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_cop2cd_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_op(
         myself: &OperandDisplay,

@@ -17,11 +17,13 @@ pub enum Operand {
     core_sa,
     core_zero,
     core_cop0d,
+    core_cop0cd,
     core_fs,
     core_ft,
     core_fd,
     core_cop1cs,
     core_cop2t,
+    core_cop2d,
     core_cop2cd,
     core_op,
     core_hint,
@@ -161,6 +163,8 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         OperandDescriptor::new(concat!("core", "_", "zero"), EncodedFieldMask::empty());
     table[Operand::core_cop0d as usize] =
         OperandDescriptor::new(concat!("core", "_", "cop0d"), EncodedFieldMask::cop0d);
+    table[Operand::core_cop0cd as usize] =
+        OperandDescriptor::new(concat!("core", "_", "cop0cd"), EncodedFieldMask::cop0cd);
     table[Operand::core_fs as usize] =
         OperandDescriptor::new(concat!("core", "_", "fs"), EncodedFieldMask::fs);
     table[Operand::core_ft as usize] =
@@ -171,6 +175,8 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         OperandDescriptor::new(concat!("core", "_", "cop1cs"), EncodedFieldMask::cop1cs);
     table[Operand::core_cop2t as usize] =
         OperandDescriptor::new(concat!("core", "_", "cop2t"), EncodedFieldMask::cop2t);
+    table[Operand::core_cop2d as usize] =
+        OperandDescriptor::new(concat!("core", "_", "cop2d"), EncodedFieldMask::cop2d);
     table[Operand::core_cop2cd as usize] =
         OperandDescriptor::new(concat!("core", "_", "cop2cd"), EncodedFieldMask::cop2cd);
     table[Operand::core_op as usize] =
@@ -627,11 +633,13 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     table[Operand::core_sa as usize] = OperandDisplay::display_core_sa;
     table[Operand::core_zero as usize] = OperandDisplay::display_core_zero;
     table[Operand::core_cop0d as usize] = OperandDisplay::display_core_cop0d;
+    table[Operand::core_cop0cd as usize] = OperandDisplay::display_core_cop0cd;
     table[Operand::core_fs as usize] = OperandDisplay::display_core_fs;
     table[Operand::core_ft as usize] = OperandDisplay::display_core_ft;
     table[Operand::core_fd as usize] = OperandDisplay::display_core_fd;
     table[Operand::core_cop1cs as usize] = OperandDisplay::display_core_cop1cs;
     table[Operand::core_cop2t as usize] = OperandDisplay::display_core_cop2t;
+    table[Operand::core_cop2d as usize] = OperandDisplay::display_core_cop2d;
     table[Operand::core_cop2cd as usize] = OperandDisplay::display_core_cop2cd;
     table[Operand::core_op as usize] = OperandDisplay::display_core_op;
     table[Operand::core_hint as usize] = OperandDisplay::display_core_hint;
@@ -788,11 +796,13 @@ impl Operand {
             ValuedOperand::core_sa(..) => Self::core_sa,
             ValuedOperand::core_zero(..) => Self::core_zero,
             ValuedOperand::core_cop0d(..) => Self::core_cop0d,
+            ValuedOperand::core_cop0cd(..) => Self::core_cop0cd,
             ValuedOperand::core_fs(..) => Self::core_fs,
             ValuedOperand::core_ft(..) => Self::core_ft,
             ValuedOperand::core_fd(..) => Self::core_fd,
             ValuedOperand::core_cop1cs(..) => Self::core_cop1cs,
             ValuedOperand::core_cop2t(..) => Self::core_cop2t,
+            ValuedOperand::core_cop2d(..) => Self::core_cop2d,
             ValuedOperand::core_cop2cd(..) => Self::core_cop2cd,
             ValuedOperand::core_op(..) => Self::core_op,
             ValuedOperand::core_hint(..) => Self::core_hint,

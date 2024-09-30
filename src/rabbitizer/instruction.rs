@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::registers::{Cop0, Cop1, Cop1Control, Gpr};
+use crate::registers::{Cop0, Cop0Control, Cop1, Cop1Control, Cop2, Cop2Control, Gpr};
 use crate::utils;
 use crate::{DisplayFlags, EncodedFieldMask, InstructionDisplay, InstructionFlags};
 use crate::{IsaExtension, IsaVersion};
@@ -378,8 +378,8 @@ impl Instruction {
             .unwrap()
     }
 
-    /// Returns the [`Cop0`] register embedded on the `rd` field of the word of
-    /// this instruction.
+    /// Returns the [`Cop0`] register embedded on the `cop0d` field of the word
+    /// of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
@@ -394,37 +394,20 @@ impl Instruction {
         Cop0::try_from(EncodedFieldMask::cop0d.get_shifted(self.word())).unwrap()
     }
 
-    /// Returns the `instr_index` value embedded on the `instr_index` field of
+    /// Returns the [`Cop0Control`] register embedded on the `cop0cd` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as the return value. It is recommended to use the
-    /// [`field_instr_index`] function instead.
+    /// as a [`Cop0Control`] register. It is recommended to use the
+    /// [`field_cop0cd`] function instead.
     ///
-    /// [`field_instr_index`]: Instruction::field_instr_index
+    /// [`Cop0Control`]: crate::registers::Cop0Control
+    /// [`field_cop0cd`]: Instruction::field_cop0cd
     #[must_use]
-    pub const fn field_instr_index_unchecked(&self) -> u32 {
-        EncodedFieldMask::instr_index.get_shifted(self.word())
-    }
-
-    /// Returns the `immediate` value embedded on the `immediate` field of the
-    /// word of this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has this field, meaning that calling this function on an
-    /// instruction that does not have this field will interpret garbage data
-    /// as an `immediate` value. It is recommended to use the
-    /// [`field_immediate`] function instead.
-    ///
-    /// [`field_immediate`]: Instruction::field_immediate
-    #[must_use]
-    pub fn field_immediate_unchecked(&self) -> u16 {
-        EncodedFieldMask::immediate
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
+    pub fn field_cop0cd_unchecked(&self) -> Cop0Control {
+        Cop0Control::try_from(EncodedFieldMask::cop0cd.get_shifted(self.word())).unwrap()
     }
 
     /// Returns the [`Cop1`] register embedded on the `fs` field of the word of
@@ -489,6 +472,87 @@ impl Instruction {
     #[must_use]
     pub fn field_cop1cs_unchecked(&self) -> Cop1Control {
         Cop1Control::try_from(EncodedFieldMask::cop1cs.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the [`Cop2`] register embedded on the `cop2t` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Cop2`] register. It is recommended to use the [`field_cop2t`]
+    /// function instead.
+    ///
+    /// [`Cop2`]: crate::registers::Cop2
+    /// [`field_cop2t`]: Instruction::field_cop2t
+    #[must_use]
+    pub fn field_cop2t_unchecked(&self) -> Cop2 {
+        Cop2::try_from(EncodedFieldMask::cop2t.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the [`Cop2`] register embedded on the `cop2d` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Cop2`] register. It is recommended to use the [`field_cop2d`]
+    /// function instead.
+    ///
+    /// [`Cop2`]: crate::registers::Cop2
+    /// [`field_cop2d`]: Instruction::field_cop2d
+    #[must_use]
+    pub fn field_cop2d_unchecked(&self) -> Cop2 {
+        Cop2::try_from(EncodedFieldMask::cop2d.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the [`Cop2Control`] register embedded on the `cop2cd` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as a [`Cop2Control`] register. It is recommended to use the
+    /// [`field_cop2cd`] function instead.
+    ///
+    /// [`Cop2Control`]: crate::registers::Cop2Control
+    /// [`field_cop2cd`]: Instruction::field_cop2cd
+    #[must_use]
+    pub fn field_cop2cd_unchecked(&self) -> Cop2Control {
+        Cop2Control::try_from(EncodedFieldMask::cop2cd.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the `instr_index` value embedded on the `instr_index` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the
+    /// [`field_instr_index`] function instead.
+    ///
+    /// [`field_instr_index`]: Instruction::field_instr_index
+    #[must_use]
+    pub const fn field_instr_index_unchecked(&self) -> u32 {
+        EncodedFieldMask::instr_index.get_shifted(self.word())
+    }
+
+    /// Returns the `immediate` value embedded on the `immediate` field of the
+    /// word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `immediate` value. It is recommended to use the
+    /// [`field_immediate`] function instead.
+    ///
+    /// [`field_immediate`]: Instruction::field_immediate
+    #[must_use]
+    pub fn field_immediate_unchecked(&self) -> u16 {
+        EncodedFieldMask::immediate
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
     }
 
     /// Returns the `op` value embedded on the `op` field of the word of this

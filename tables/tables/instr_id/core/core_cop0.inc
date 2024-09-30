@@ -31,7 +31,7 @@
     ) // Doubleword Move From CP0
     RABBITIZER_DEF_INSTR_ID(
         core, 0x02, cfc0, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
@@ -52,7 +52,7 @@
     ) // Doubleword Move To CP0
     RABBITIZER_DEF_INSTR_ID(
         core, 0x06, ctc0, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true

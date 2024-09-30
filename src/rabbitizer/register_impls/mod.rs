@@ -2,9 +2,11 @@
 /* SPDX-License-Identifier: MIT */
 
 mod register_cop0;
+mod register_cop0control;
 mod register_cop1;
 mod register_cop1control;
 mod register_cop2;
+mod register_cop2control;
 mod register_gpr;
 mod register_r4000allegrex_m2x2;
 mod register_r4000allegrex_m3x3;
