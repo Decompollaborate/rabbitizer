@@ -21,8 +21,7 @@ bitflags! {
         const pseudo_neg = 1 << 7;
         const pseudo_negu = 1 << 8;
 
-        const sn64_div_fix = 1 << 9; // TODO: rework (?)
-        const gnu_mode = 1 << 10;
+        const gnu_mode = 1 << 9;
     }
 }
 
@@ -49,8 +48,8 @@ impl Default for DecodingFlags {
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct InstructionFlags {
-    pub(crate) abi: Abi,
     pub(crate) decoding_flags: DecodingFlags,
+    pub(crate) abi: Abi,
     pub(crate) treat_j_as_unconditional_branch: bool,
 }
 
@@ -58,8 +57,8 @@ impl InstructionFlags {
     #[must_use]
     pub const fn default() -> Self {
         Self {
-            abi: Abi::O32,
             decoding_flags: DecodingFlags::default(),
+            abi: Abi::O32,
             treat_j_as_unconditional_branch: true,
         }
     }
@@ -72,19 +71,219 @@ impl InstructionFlags {
 
 impl InstructionFlags {
     #[must_use]
+    pub const fn decoding_flags(&self) -> &DecodingFlags {
+        &self.decoding_flags
+    }
+    pub fn decoding_flags_mut(&mut self) -> &mut DecodingFlags {
+        &mut self.decoding_flags
+    }
+    #[must_use]
+    pub const fn with_decoding_flags(self, decoding_flags: DecodingFlags) -> Self {
+        Self {
+            decoding_flags,
+            ..self
+        }
+    }
+
+    #[must_use]
+    pub const fn enable_pseudos(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::enable_pseudos)
+    }
+    pub fn set_enable_pseudos(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::enable_pseudos);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::enable_pseudos);
+        }
+    }
+    #[must_use]
+    pub const fn with_enable_pseudos(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::enable_pseudos
+        } else {
+            DecodingFlags::enable_pseudos.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_move(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_move)
+    }
+    pub fn set_pseudo_move(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_move);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_move);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_move(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_move
+        } else {
+            DecodingFlags::pseudo_move.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_beqz(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_beqz)
+    }
+    pub fn set_pseudo_beqz(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_beqz);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_beqz);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_beqz(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_beqz
+        } else {
+            DecodingFlags::pseudo_beqz.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_bnez(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_bnez)
+    }
+    pub fn set_pseudo_bnez(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_bnez);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_bnez);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_bnez(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_bnez
+        } else {
+            DecodingFlags::pseudo_bnez.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_b(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_b)
+    }
+    pub fn set_pseudo_b(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_b);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_b);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_b(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_b
+        } else {
+            DecodingFlags::pseudo_b.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_bal(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_bal)
+    }
+    pub fn set_pseudo_bal(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_bal);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_bal);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_bal(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_bal
+        } else {
+            DecodingFlags::pseudo_bal.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_not(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_not)
+    }
+    pub fn set_pseudo_not(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_not);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_not);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_not(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_not
+        } else {
+            DecodingFlags::pseudo_not.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_neg(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_neg)
+    }
+    pub fn set_pseudo_neg(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_neg);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_neg);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_neg(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_neg
+        } else {
+            DecodingFlags::pseudo_neg.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
+    pub const fn pseudo_negu(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_negu)
+    }
+    pub fn set_pseudo_negu(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_negu);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_negu);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_negu(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            DecodingFlags::pseudo_negu
+        } else {
+            DecodingFlags::pseudo_negu.complement()
+        };
+        self.with_decoding_flags(self.decoding_flags.intersection(other))
+    }
+
+    #[must_use]
     pub const fn abi(&self) -> Abi {
         self.abi
     }
     pub fn abi_mut(&mut self) -> &mut Abi {
         &mut self.abi
     }
-
     #[must_use]
-    pub const fn decoding_flags(&self) -> &DecodingFlags {
-        &self.decoding_flags
-    }
-    pub fn decoding_flags_mut(&mut self) -> &mut DecodingFlags {
-        &mut self.decoding_flags
+    pub const fn with_abi(self, abi: Abi) -> Self {
+        Self { abi, ..self }
     }
 
     #[must_use]
@@ -93,6 +292,16 @@ impl InstructionFlags {
     }
     pub fn treat_j_as_unconditional_branch_mut(&mut self) -> &mut bool {
         &mut self.treat_j_as_unconditional_branch
+    }
+    #[must_use]
+    pub const fn with_treat_j_as_unconditional_branch(
+        self,
+        treat_j_as_unconditional_branch: bool,
+    ) -> Self {
+        Self {
+            treat_j_as_unconditional_branch,
+            ..self
+        }
     }
 }
 
@@ -124,7 +333,11 @@ pub struct DisplayFlags {
     /// Omit the `0x` prefix on small immediates (values on the \[-9, 9\] inclusive range).
     omit_0x_on_small_imm: bool, // TODO: maybe remove?
     // upper_case_imm: bool,
+
+    ///
     expand_jalr: bool,
+    gnu_div: bool,
+    sn64_break_fix: bool,
 
     r5900_modern_gas_instrs_workarounds: bool,
     r5900_use_dollar: bool,
@@ -144,8 +357,10 @@ impl DisplayFlags {
             opcode_ljust: 7 + 4,
             unknown_instr_comment: true,
             omit_0x_on_small_imm: false,
-            // upper_case_imm: true,
+
             expand_jalr: false,
+            gnu_div: true,
+            sn64_break_fix: false,
 
             r5900_modern_gas_instrs_workarounds: false,
             r5900_use_dollar: false,
@@ -156,8 +371,35 @@ impl DisplayFlags {
     pub const fn new() -> Self {
         Self::default()
     }
+
+    #[must_use]
+    pub const fn new_gnu_as() -> Self {
+        Self {
+            gnu_div: true,
+            sn64_break_fix: false,
+
+            r5900_modern_gas_instrs_workarounds: true,
+            r5900_use_dollar: true,
+            ..Self::new()
+        }
+    }
+
+    #[must_use]
+    pub const fn new_legacy_as() -> Self {
+        Self {
+            named_fpr: false,
+
+            gnu_div: false,
+            sn64_break_fix: false,
+
+            r5900_modern_gas_instrs_workarounds: false,
+            r5900_use_dollar: false,
+            ..Self::new()
+        }
+    }
 }
 
+/// Getters and setters
 impl DisplayFlags {
     #[must_use]
     pub const fn named_registers(&self) -> bool {
@@ -311,6 +553,33 @@ impl DisplayFlags {
     pub const fn with_expand_jalr(self, expand_jalr: bool) -> Self {
         Self {
             expand_jalr,
+            ..self
+        }
+    }
+
+    #[must_use]
+    pub const fn gnu_div(&self) -> bool {
+        self.gnu_div
+    }
+    pub fn gnu_div_mut(&mut self) -> &mut bool {
+        &mut self.gnu_div
+    }
+    #[must_use]
+    pub const fn with_gnu_div(self, gnu_div: bool) -> Self {
+        Self { gnu_div, ..self }
+    }
+
+    #[must_use]
+    pub const fn sn64_break_fix(&self) -> bool {
+        self.sn64_break_fix
+    }
+    pub fn sn64_break_fix_mut(&mut self) -> &mut bool {
+        &mut self.sn64_break_fix
+    }
+    #[must_use]
+    pub const fn with_sn64_break_fix(self, sn64_break_fix: bool) -> Self {
+        Self {
+            sn64_break_fix,
             ..self
         }
     }

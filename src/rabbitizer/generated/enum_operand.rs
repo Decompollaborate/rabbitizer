@@ -35,6 +35,7 @@ pub enum Operand {
     core_branch_target_label,
     core_immediate_base,
     core_maybe_rd_rs,
+    core_maybe_zero_rs,
     rsp_rs,
     rsp_rt,
     rsp_rd,
@@ -208,6 +209,10 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     table[Operand::core_maybe_rd_rs as usize] = OperandDescriptor::new(
         concat!("core", "_", "maybe_rd_rs"),
         EncodedFieldMask::rd.union(EncodedFieldMask::rs),
+    );
+    table[Operand::core_maybe_zero_rs as usize] = OperandDescriptor::new(
+        concat!("core", "_", "maybe_zero_rs"),
+        EncodedFieldMask::empty().union(EncodedFieldMask::rs),
     );
     table[Operand::rsp_rs as usize] =
         OperandDescriptor::new(concat!("rsp", "_", "rs"), EncodedFieldMask::rs);
@@ -652,6 +657,7 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
         OperandDisplay::display_core_branch_target_label;
     table[Operand::core_immediate_base as usize] = OperandDisplay::display_core_immediate_base;
     table[Operand::core_maybe_rd_rs as usize] = OperandDisplay::display_core_maybe_rd_rs;
+    table[Operand::core_maybe_zero_rs as usize] = OperandDisplay::display_core_maybe_zero_rs;
     table[Operand::rsp_rs as usize] = OperandDisplay::display_rsp_rs;
     table[Operand::rsp_rt as usize] = OperandDisplay::display_rsp_rt;
     table[Operand::rsp_rd as usize] = OperandDisplay::display_rsp_rd;
@@ -814,6 +820,7 @@ impl Operand {
             ValuedOperand::core_branch_target_label(..) => Self::core_branch_target_label,
             ValuedOperand::core_immediate_base(..) => Self::core_immediate_base,
             ValuedOperand::core_maybe_rd_rs(..) => Self::core_maybe_rd_rs,
+            ValuedOperand::core_maybe_zero_rs(..) => Self::core_maybe_zero_rs,
             ValuedOperand::rsp_rs(..) => Self::rsp_rs,
             ValuedOperand::rsp_rt(..) => Self::rsp_rt,
             ValuedOperand::rsp_rd(..) => Self::rsp_rd,

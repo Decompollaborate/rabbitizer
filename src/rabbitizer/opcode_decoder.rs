@@ -184,20 +184,6 @@ impl OpcodeDecoder {
                     opcode = Opcode::core_negu;
                 }
             }
-            Opcode::core_div => {
-                if !flags.contains(DecodingFlags::gnu_mode)
-                    || flags.contains(DecodingFlags::sn64_div_fix)
-                {
-                    opcode = Opcode::core_sn64_div;
-                }
-            }
-            Opcode::core_divu => {
-                if !flags.contains(DecodingFlags::gnu_mode)
-                    || flags.contains(DecodingFlags::sn64_div_fix)
-                {
-                    opcode = Opcode::core_sn64_divu;
-                }
-            }
             _ => {}
         }
 

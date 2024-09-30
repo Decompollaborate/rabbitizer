@@ -199,37 +199,16 @@
     ) // MOVe conditional on Not zero
     RABBITIZER_DEF_INSTR_ID(
         core, 0x1A, div, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
-        reads_rd: true,
         modifies_hi: true,
         modifies_lo: true
     ) // DIVide word
     RABBITIZER_DEF_INSTR_ID(
         core, 0x1B, divu, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        reads_rd: true,
-        modifies_hi: true,
-        modifies_lo: true
-    ) // DIVide Unsigned word
-
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        core, 0xFFFFFF1A, sn64_div, div, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true
-    ) // DIVide word
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(
-        core, 0xFFFFFF1B, sn64_divu, divu, IsaVersion::MIPS_I, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -239,47 +218,22 @@
 
     RABBITIZER_DEF_INSTR_ID(
         core, 0x1E, ddiv, IsaVersion::MIPS_III, IsaExtension::NONE,
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
-        reads_rd: true,
         modifies_hi: true,
         modifies_lo: true
     ) // Doubleword DIVide
     RABBITIZER_DEF_INSTR_ID(
         core, 0x1F, ddivu, IsaVersion::MIPS_III, IsaExtension::NONE,
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
-        reads_rd: true,
         modifies_hi: true,
         modifies_lo: true
     ) // Doubleword DIVide Unsigned
-
-    /*
-    RABBITIZER_DEF_INSTR_ID(
-        core, , ddiv, IsaVersion::MIPS_III, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true
-    )
-    */
-    /*
-    RABBITIZER_DEF_INSTR_ID(
-        core, , ddivu, IsaVersion::MIPS_III, IsaExtension::NONE,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true
-    )
-    */
 
     RABBITIZER_DEF_INSTR_ID(
         core, 0x20, add, IsaVersion::MIPS_I, IsaExtension::NONE,

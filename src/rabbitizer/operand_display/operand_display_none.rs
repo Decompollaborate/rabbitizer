@@ -3,7 +3,7 @@
 
 use core::fmt;
 
-use crate::{operand_display, traits::Register, OperandDisplay};
+use crate::{generated::Gpr, operand_display, traits::Register, OperandDisplay};
 
 impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     pub(crate) fn display_core_rs(
@@ -48,10 +48,14 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_zero(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = Gpr::zero;
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop0d(
         myself: &OperandDisplay,
@@ -250,6 +254,17 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
 
         if !reg.holds_return_address(instr.flags().abi()) || myself.display_flags.expand_jalr() {
             Self::display_core_rd(myself, f)?;
+            write!(f, ", ")?;
+        }
+
+        Self::display_core_rs(myself, f)
+    }
+    pub(crate) fn display_core_maybe_zero_rs(
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        if myself.display_flags.gnu_div() {
+            Self::display_core_zero(myself, f)?;
             write!(f, ", ")?;
         }
 

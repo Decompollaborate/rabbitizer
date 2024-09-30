@@ -40,6 +40,7 @@ pub enum ValuedOperand {
     core_branch_target_label(i16),
     core_immediate_base(IU16, Gpr),
     core_maybe_rd_rs(Option<Gpr>, Gpr),
+    core_maybe_zero_rs((), Gpr),
     rsp_rs(RspGpr),
     rsp_rt(RspGpr),
     rsp_rd(RspGpr),

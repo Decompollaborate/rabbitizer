@@ -140,12 +140,6 @@ impl OpcodeDecoder {
             0x0B if isa_version as u32 >= IsaVersion::MIPS_IV as u32 => opcode = Opcode::core_movn,
             0x1A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => opcode = Opcode::core_div,
             0x1B if isa_version as u32 >= IsaVersion::MIPS_I as u32 => opcode = Opcode::core_divu,
-            0xFFFFFF1A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_sn64_div
-            }
-            0xFFFFFF1B if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_sn64_divu
-            }
             0x1E if isa_version as u32 >= IsaVersion::MIPS_III as u32 => opcode = Opcode::core_ddiv,
             0x1F if isa_version as u32 >= IsaVersion::MIPS_III as u32 => {
                 opcode = Opcode::core_ddivu

@@ -28,3 +28,4 @@
     // composed/aliased operands
     RAB_DEF_OPERAND(core, immediate_base, EncodedFieldMask::immediate.union(EncodedFieldMask::rs))
     RAB_DEF_OPERAND(core, maybe_rd_rs, EncodedFieldMask::rd.union(EncodedFieldMask::rs)) // $rd is omitted if it is $ra
+    RAB_DEF_OPERAND(core, maybe_zero_rs, EncodedFieldMask::empty().union(EncodedFieldMask::rs)) // This operand may have an extra prefixed `$zero, ` depending on the display flags.

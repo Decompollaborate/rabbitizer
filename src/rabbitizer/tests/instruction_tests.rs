@@ -53,6 +53,7 @@ mod tests {
 
         pub fn compare_source_info(&self, other: &Self) -> bool {
             self.instr.word() == other.instr.word()
+                && self.instr.flags() == other.instr.flags()
                 && self.imm_override == other.imm_override
                 && self.display_flags == other.display_flags
                 && self.valid == other.valid
@@ -131,6 +132,7 @@ mod tests {
                                 expected_str,
                                 operand_str
                             );
+                            errors += 1;
                         }
                     } else {
                         println!(
@@ -1039,6 +1041,21 @@ mod tests {
             },
             TestEntry {
                 instr: Instruction::new_no_extension(
+                    0x0001008D,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_sn64_break_fix(true),
+                valid: true,
+                expected: ".word       0x0001008D                   /* break       1, 2 / 00000000 <OpcodeCategory: CORE_SPECIAL> */",
+                expected_opcode: Opcode::core_break,
+                opcode_str: "break",
+                operands_str: [Some("1, 2"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
                     0x0007000D,
                     0x80000000,
                     None,
@@ -1048,6 +1065,21 @@ mod tests {
                 display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "break       7",
+                expected_opcode: Opcode::core_break,
+                opcode_str: "break",
+                operands_str: [Some("7"), None, None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0007000D,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_sn64_break_fix(true),
+                valid: true,
+                expected: ".word       0x0007000D                   /* break       7 / 00000000 <OpcodeCategory: CORE_SPECIAL> */",
                 expected_opcode: Opcode::core_break,
                 opcode_str: "break",
                 operands_str: [Some("7"), None, None, None, None],
@@ -1276,6 +1308,126 @@ mod tests {
                 expected_opcode: Opcode::core_ctc2,
                 opcode_str: "ctc2",
                 operands_str: [Some("$v0"), Some("$28"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001A,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(true),
+                valid: true,
+                expected: "div         $zero, $a0, $a1",
+                expected_opcode: Opcode::core_div,
+                opcode_str: "div",
+                operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001A,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(false),
+                valid: true,
+                expected: "div         $a0, $a1",
+                expected_opcode: Opcode::core_div,
+                opcode_str: "div",
+                operands_str: [Some("$a0"), Some("$a1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001B,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(true),
+                valid: true,
+                expected: "divu        $zero, $a0, $a1",
+                expected_opcode: Opcode::core_divu,
+                opcode_str: "divu",
+                operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001B,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(false),
+                valid: true,
+                expected: "divu        $a0, $a1",
+                expected_opcode: Opcode::core_divu,
+                opcode_str: "divu",
+                operands_str: [Some("$a0"), Some("$a1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001E,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(true),
+                valid: true,
+                expected: "ddiv        $zero, $a0, $a1",
+                expected_opcode: Opcode::core_ddiv,
+                opcode_str: "ddiv",
+                operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001E,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(false),
+                valid: true,
+                expected: "ddiv        $a0, $a1",
+                expected_opcode: Opcode::core_ddiv,
+                opcode_str: "ddiv",
+                operands_str: [Some("$a0"), Some("$a1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001F,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(true),
+                valid: true,
+                expected: "ddivu       $zero, $a0, $a1",
+                expected_opcode: Opcode::core_ddivu,
+                opcode_str: "ddivu",
+                operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_no_extension(
+                    0x0085001F,
+                    0x80000000,
+                    None,
+                    IsaVersion::MIPS_III,
+                ),
+                imm_override: None,
+                display_flags: DisplayFlags::default().with_gnu_div(false),
+                valid: true,
+                expected: "ddivu       $a0, $a1",
+                expected_opcode: Opcode::core_ddivu,
+                opcode_str: "ddivu",
+                operands_str: [Some("$a0"), Some("$a1"), None, None, None],
             },
 
 

@@ -810,39 +810,17 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::core_div as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
-        reads_rd: true,
         modifies_hi: true,
         modifies_lo: true,
         ..OpcodeDescriptor::new("div", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::core_divu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        reads_rd: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("divu", IsaVersion::MIPS_I, IsaExtension::NONE)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sn64_div as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("div", IsaVersion::MIPS_I, IsaExtension::NONE)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sn64_divu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
@@ -852,22 +830,20 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::core_ddiv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
-        reads_rd: true,
         modifies_hi: true,
         modifies_lo: true,
         ..OpcodeDescriptor::new("ddiv", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
     table[Opcode::core_ddivu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
         reads_rt: true,
-        reads_rd: true,
         modifies_hi: true,
         modifies_lo: true,
         ..OpcodeDescriptor::new("ddivu", IsaVersion::MIPS_III, IsaExtension::NONE)

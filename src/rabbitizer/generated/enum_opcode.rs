@@ -89,8 +89,6 @@ pub enum Opcode {
     core_movn,
     core_div,
     core_divu,
-    core_sn64_div,
-    core_sn64_divu,
     core_ddiv,
     core_ddivu,
     core_add,

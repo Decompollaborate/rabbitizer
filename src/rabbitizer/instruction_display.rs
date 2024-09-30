@@ -3,7 +3,7 @@
 
 use core::fmt;
 
-use crate::{DisplayFlags, Instruction};
+use crate::{DisplayFlags, Instruction, Opcode};
 
 pub struct InstructionDisplay<'ins, 'imm, 'flg> {
     instr: &'ins Instruction,
@@ -29,9 +29,12 @@ impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
             return true;
         }
 
-        // TODO
-
-        false
+        // TODO: remove
+        #[allow(clippy::match_like_matches_macro)]
+        match self.instr.opcode() {
+            Opcode::core_break if self.display_flags.sn64_break_fix() => true,
+            _ => false,
+        }
     }
 }
 

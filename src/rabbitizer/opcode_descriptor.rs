@@ -421,6 +421,9 @@ impl OpcodeDescriptor {
                 if self.has_specific_operand(Operand::core_maybe_rd_rs) {
                     return true;
                 }
+                if self.has_specific_operand(Operand::core_maybe_zero_rs) {
+                    return true;
+                }
                 if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
                     return true;
                 }
@@ -516,6 +519,12 @@ impl OpcodeDescriptor {
                 if self.has_operand_alias(Operand::core_rd) {
                     return true;
                 }
+                if self.has_operand_alias(Operand::core_rs) {
+                    return true;
+                }
+            }
+
+            Operand::core_maybe_zero_rs => {
                 if self.has_operand_alias(Operand::core_rs) {
                     return true;
                 }
