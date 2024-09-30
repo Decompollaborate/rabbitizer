@@ -167,6 +167,13 @@ impl DisplayFlags {
     pub fn named_registers_mut(&mut self) -> &mut bool {
         &mut self.named_registers
     }
+    #[must_use]
+    pub const fn with_named_registers(self, named_registers: bool) -> Self {
+        Self {
+            named_registers,
+            ..self
+        }
+    }
 
     #[must_use]
     pub const fn named_gpr(&self) -> bool {
@@ -175,6 +182,10 @@ impl DisplayFlags {
     /// Use the ABI names for the general purpose registers when disassembling the main processor's instructions
     pub fn named_gpr_mut(&mut self) -> &mut bool {
         &mut self.named_gpr
+    }
+    #[must_use]
+    pub const fn with_named_gpr(self, named_gpr: bool) -> Self {
+        Self { named_gpr, ..self }
     }
 
     #[must_use]
@@ -185,6 +196,10 @@ impl DisplayFlags {
     pub fn named_fpr_mut(&mut self) -> &mut bool {
         &mut self.named_fpr
     }
+    #[must_use]
+    pub const fn with_named_fpr(self, named_fpr: bool) -> Self {
+        Self { named_fpr, ..self }
+    }
 
     #[must_use]
     pub const fn named_vr4300_cop0(&self) -> bool {
@@ -193,6 +208,13 @@ impl DisplayFlags {
     /// Use named registers for VR4300's coprocessor 0 registers
     pub fn named_vr4300_cop0_mut(&mut self) -> &mut bool {
         &mut self.named_vr4300_cop0
+    }
+    #[must_use]
+    pub const fn with_named_vr4300_cop0(self, named_vr4300_cop0: bool) -> Self {
+        Self {
+            named_vr4300_cop0,
+            ..self
+        }
     }
 
     #[must_use]
@@ -203,6 +225,13 @@ impl DisplayFlags {
     pub fn named_rsp_cop0_mut(&mut self) -> &mut bool {
         &mut self.named_rsp_cop0
     }
+    #[must_use]
+    pub const fn with_named_rsp_cop0(self, named_rsp_cop0: bool) -> Self {
+        Self {
+            named_rsp_cop0,
+            ..self
+        }
+    }
 
     #[must_use]
     pub const fn named_r4000allegrex_vfpucontrol(&self) -> bool {
@@ -211,6 +240,16 @@ impl DisplayFlags {
     /// Use named registers for R4000 Allegrex's VFPU control registers
     pub fn named_r4000allegrex_vfpucontrol_mut(&mut self) -> &mut bool {
         &mut self.named_r4000allegrex_vfpucontrol
+    }
+    #[must_use]
+    pub const fn with_named_r4000allegrex_vfpucontrol(
+        self,
+        named_r4000allegrex_vfpucontrol: bool,
+    ) -> Self {
+        Self {
+            named_r4000allegrex_vfpucontrol,
+            ..self
+        }
     }
 
     #[must_use]
@@ -221,6 +260,13 @@ impl DisplayFlags {
     pub fn opcode_ljust_mut(&mut self) -> &mut u32 {
         &mut self.opcode_ljust
     }
+    #[must_use]
+    pub const fn with_opcode_ljust(self, opcode_ljust: u32) -> Self {
+        Self {
+            opcode_ljust,
+            ..self
+        }
+    }
 
     #[must_use]
     pub const fn unknown_instr_comment(&self) -> bool {
@@ -230,6 +276,13 @@ impl DisplayFlags {
     pub fn unknown_instr_comment_mut(&mut self) -> &mut bool {
         &mut self.unknown_instr_comment
     }
+    #[must_use]
+    pub const fn with_unknown_instr_comment(self, unknown_instr_comment: bool) -> Self {
+        Self {
+            unknown_instr_comment,
+            ..self
+        }
+    }
 
     #[must_use]
     pub const fn omit_0x_on_small_imm(&self) -> bool {
@@ -238,6 +291,13 @@ impl DisplayFlags {
     /// Omit the `0x` prefix on small immediates (values on the \[-9, 9\] inclusive range).
     pub fn omit_0x_on_small_imm_mut(&mut self) -> &mut bool {
         &mut self.omit_0x_on_small_imm
+    }
+    #[must_use]
+    pub const fn with_omit_0x_on_small_imm(self, omit_0x_on_small_imm: bool) -> Self {
+        Self {
+            omit_0x_on_small_imm,
+            ..self
+        }
     }
 
     #[must_use]
@@ -262,6 +322,16 @@ impl DisplayFlags {
     pub fn r5900_modern_gas_instrs_workarounds_mut(&mut self) -> &mut bool {
         &mut self.r5900_modern_gas_instrs_workarounds
     }
+    #[must_use]
+    pub const fn with_r5900_modern_gas_instrs_workarounds(
+        self,
+        r5900_modern_gas_instrs_workarounds: bool,
+    ) -> Self {
+        Self {
+            r5900_modern_gas_instrs_workarounds,
+            ..self
+        }
+    }
 
     #[must_use]
     pub const fn r5900_use_dollar(&self) -> bool {
@@ -269,6 +339,13 @@ impl DisplayFlags {
     }
     pub fn r5900_use_dollar_mut(&mut self) -> &mut bool {
         &mut self.r5900_use_dollar
+    }
+    #[must_use]
+    pub const fn with_r5900_use_dollar(self, r5900_use_dollar: bool) -> Self {
+        Self {
+            r5900_use_dollar,
+            ..self
+        }
     }
 }
 

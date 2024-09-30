@@ -39,10 +39,13 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_sa(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let s = instr.field_sa_unchecked();
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_zero(
         _myself: &OperandDisplay,
@@ -51,28 +54,47 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         todo!()
     }
     pub(crate) fn display_core_cop0d(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_cop0d_unchecked();
+        let s = reg.either_name(
+            instr.flags().abi(),
+            myself.display_flags.named_vr4300_cop0(),
+        );
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_fs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_fs_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_fpr());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_ft(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_ft_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_fpr());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_fd(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_fd_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_fpr());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop1cs(
         myself: &OperandDisplay,
@@ -97,28 +119,45 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         todo!()
     }
     pub(crate) fn display_core_op(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let s = instr.field_op_unchecked();
+
+        write!(f, "0x{:02X}", s)
     }
     pub(crate) fn display_core_hint(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let s = instr.field_hint_unchecked();
+
+        write!(f, "0x{:02X}", s)
     }
     pub(crate) fn display_core_code(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let code_upper = instr.field_code_upper_unchecked();
+        let code_lower = instr.field_code_lower_unchecked();
+
+        write!(f, "{}", code_upper)?;
+        if code_lower != 0 {
+            write!(f, ", {}", code_lower)?;
+        }
+        Ok(())
     }
     pub(crate) fn display_core_code_lower(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let code_lower = instr.field_code_lower_unchecked();
+
+        write!(f, "{}", code_lower)
     }
     pub(crate) fn display_core_copraw(
         _myself: &OperandDisplay,

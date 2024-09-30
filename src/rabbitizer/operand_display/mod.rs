@@ -65,12 +65,13 @@ impl fmt::Display for OperandDisplay<'_, '_, '_> {
     }
 }
 
-pub(crate) fn display_signed_imm(number: i32, f: &mut fmt::Formatter<'_>, display_flags: &DisplayFlags) -> fmt::Result
-{
-    if display_flags.omit_0x_on_small_imm() {
-        if number > -10 && number < 10 {
-            return write!(f, "{}", number);
-        }
+pub(crate) fn display_signed_imm(
+    number: i32,
+    f: &mut fmt::Formatter<'_>,
+    display_flags: &DisplayFlags,
+) -> fmt::Result {
+    if display_flags.omit_0x_on_small_imm() && number > -10 && number < 10 {
+        return write!(f, "{}", number);
     }
 
     if number < 0 {

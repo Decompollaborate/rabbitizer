@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::registers::{Cop1Control, Gpr, Cop0, Cop1};
+use crate::registers::{Cop0, Cop1, Cop1Control, Gpr};
 use crate::utils;
 use crate::{DisplayFlags, EncodedFieldMask, InstructionDisplay, InstructionFlags};
 use crate::{IsaExtension, IsaVersion};
@@ -371,8 +371,11 @@ impl Instruction {
     ///
     /// [`field_sa`]: Instruction::field_sa
     #[must_use]
-    pub const fn field_sa_unchecked(&self) -> u32 {
-        EncodedFieldMask::instr_index.get_shifted(self.word())
+    pub fn field_sa_unchecked(&self) -> u8 {
+        EncodedFieldMask::sa
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
     }
 
     /// Returns the [`Cop0`] register embedded on the `rd` field of the word of
@@ -486,6 +489,78 @@ impl Instruction {
     #[must_use]
     pub fn field_cop1cs_unchecked(&self) -> Cop1Control {
         Cop1Control::try_from(EncodedFieldMask::cop1cs.get_shifted(self.word())).unwrap()
+    }
+
+    /// Returns the `op` value embedded on the `op` field of the word of this
+    /// instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `op` value. It is recommended to use the
+    /// [`field_op`] function instead.
+    ///
+    /// [`field_op`]: Instruction::field_op
+    #[must_use]
+    pub fn field_op_unchecked(&self) -> u8 {
+        EncodedFieldMask::op
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `hint` value embedded on the `hint` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `hint` value. It is recommended to use the
+    /// [`field_hint`] function instead.
+    ///
+    /// [`field_hint`]: Instruction::field_hint
+    #[must_use]
+    pub fn field_hint_unchecked(&self) -> u8 {
+        EncodedFieldMask::hint
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `code_upper` value embedded on the `code_upper` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `code_upper` value. It is recommended to use the
+    /// [`field_code_upper`] function instead.
+    ///
+    /// [`field_code_upper`]: Instruction::field_code_upper
+    #[must_use]
+    pub fn field_code_upper_unchecked(&self) -> u16 {
+        EncodedFieldMask::code_upper
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `code_lower` value embedded on the `code_lower` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `code_lower` value. It is recommended to use the
+    /// [`field_code_lower`] function instead.
+    ///
+    /// [`field_code_lower`]: Instruction::field_code_lower
+    #[must_use]
+    pub fn field_code_lower_unchecked(&self) -> u16 {
+        EncodedFieldMask::code_lower
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
     }
 }
 

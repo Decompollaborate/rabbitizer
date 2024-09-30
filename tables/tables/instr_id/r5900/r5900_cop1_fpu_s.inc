@@ -19,6 +19,7 @@
 
     // The other instructions are implemented using the main CORE table
 
+    // TODO: we do we have this here instead of just not decoding the word?
     RABBITIZER_DEF_INSTR_ID_ALTNAME(
         r5900, 0x04, c1__sqrt_s, c1, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::core_copraw)
