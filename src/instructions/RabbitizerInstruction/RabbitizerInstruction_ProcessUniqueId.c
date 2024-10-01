@@ -6,12 +6,12 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
+#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
         break;
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
@@ -20,7 +20,7 @@ void RabbitizerInstruction_processUniqueId_Normal(RabbitizerInstruction *self) {
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_NORMAL;
 
     switch (opcode) {
-#include "tables/instr_id/cpu/cpu_normal.inc"
+#include "tables/opcodes/cpu/cpu_normal.inc"
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -62,7 +62,7 @@ void RabbitizerInstruction_processUniqueId_Special(RabbitizerInstruction *self) 
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_SPECIAL;
 
     switch (function) {
-#include "tables/instr_id/cpu/cpu_special.inc"
+#include "tables/opcodes/cpu/cpu_special.inc"
     }
 
     if (RabbitizerInstruction_isNop(self)) {
@@ -136,7 +136,7 @@ void RabbitizerInstruction_processUniqueId_Regimm(RabbitizerInstruction *self) {
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_REGIMM;
 
     switch (rt) {
-#include "tables/instr_id/cpu/cpu_regimm.inc"
+#include "tables/opcodes/cpu/cpu_regimm.inc"
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -164,7 +164,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(RabbitizerInstructio
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP0_BC0;
 
     switch (fmt) {
-#include "tables/instr_id/cpu/cpu_cop0_bc0.inc"
+#include "tables/opcodes/cpu/cpu_cop0_bc0.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -177,7 +177,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(RabbitizerInstructio
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP0_TLB;
 
     switch (function) {
-#include "tables/instr_id/cpu/cpu_cop0_tlb.inc"
+#include "tables/opcodes/cpu/cpu_cop0_tlb.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -191,7 +191,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor0(RabbitizerInstruction *s
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/cpu/cpu_cop0.inc"
+#include "tables/opcodes/cpu/cpu_cop0.inc"
 
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(self);
@@ -212,7 +212,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(RabbitizerInstructio
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_BC1;
 
     switch (fmt) {
-#include "tables/instr_id/cpu/cpu_cop1_bc1.inc"
+#include "tables/opcodes/cpu/cpu_cop1_bc1.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -225,7 +225,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(RabbitizerInstructi
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUS;
 
     switch (function) {
-#include "tables/instr_id/cpu/cpu_cop1_fpu_s.inc"
+#include "tables/opcodes/cpu/cpu_cop1_fpu_s.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -238,7 +238,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuD(RabbitizerInstructi
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUD;
 
     switch (function) {
-#include "tables/instr_id/cpu/cpu_cop1_fpu_d.inc"
+#include "tables/opcodes/cpu/cpu_cop1_fpu_d.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -251,7 +251,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuW(RabbitizerInstructi
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUW;
 
     switch (function) {
-#include "tables/instr_id/cpu/cpu_cop1_fpu_w.inc"
+#include "tables/opcodes/cpu/cpu_cop1_fpu_w.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -264,7 +264,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1_FpuL(RabbitizerInstructi
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1_FPUL;
 
     switch (function) {
-#include "tables/instr_id/cpu/cpu_cop1_fpu_l.inc"
+#include "tables/opcodes/cpu/cpu_cop1_fpu_l.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -277,7 +277,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor1(RabbitizerInstruction *s
     self->instrIdType = RAB_INSTR_ID_TYPE_CPU_COP1;
 
     switch (fmt) {
-#include "tables/instr_id/cpu/cpu_cop1.inc"
+#include "tables/opcodes/cpu/cpu_cop1.inc"
 
         case 0x08: // fmt = BC
             RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(self);
@@ -312,7 +312,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *s
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/cpu/cpu_cop2.inc"
+#include "tables/opcodes/cpu/cpu_cop2.inc"
 
         default:
             break;
@@ -321,8 +321,8 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2(RabbitizerInstruction *s
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME
 
 void RabbitizerInstruction_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);

@@ -5,15 +5,15 @@
 #include "instructions/RabbitizerInstrIdType.h"
 
 
-#define RABBITIZER_DEF_INSTR_ID_TYPE(prefix, name) \
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name) \
     { "InstrIdType", #prefix "_" #name, RAB_INSTR_ID_TYPE_##prefix##_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrIdType_enumvalues[] = {
-    #include "tables/InstrIdType.inc"
+    #include "tables/OpcodeCategory.inc"
     { 0 },
 };
 
-#undef RABBITIZER_DEF_INSTR_ID_TYPE
+#undef RAB_DEF_OPCODE_CATEGORY
 
 static PyMethodDef rabbitizer_enum_InstrIdType_methods[] = {
     { 0 },

@@ -7,28 +7,28 @@
 
 use crate::{opcode_category::OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
 
-#define RABBITIZER_DEF_INSTR_ID_TYPE(prefix, name) \
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name) \
     prefix##_##name,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 SPECIAL_RS_TAG(non_exhaustive)
 pub enum OpcodeCategory {
-    #include "InstrIdType.inc"
+    #include "OpcodeCategory.inc"
 }
 
-#undef RABBITIZER_DEF_INSTR_ID_TYPE
+#undef RAB_DEF_OPCODE_CATEGORY
 
-#define RABBITIZER_DEF_INSTR_ID_TYPE(prefix, name) \
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name) \
     table[ OpcodeCategory::prefix##_##name as usize] = \
         OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name));
 
 pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] = {
     let mut table = [OpcodeCategoryDescriptor::default(); OPCODE_CATEGORY_COUNT];
 
-    #include "InstrIdType.inc"
+    #include "OpcodeCategory.inc"
 
     table
 };
 
-#undef RABBITIZER_DEF_INSTR_ID_TYPE
+#undef RAB_DEF_OPCODE_CATEGORY

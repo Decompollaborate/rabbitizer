@@ -1,11 +1,11 @@
 /* SPDX-FileCopyrightText: © 2023-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#define RABBITIZER_DEF_INSTR_ID_TYPE(prefix, name) \
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name) \
     RAB_INSTR_ID_TYPE_##prefix##_##name,
 
 typedef enum RabInstrIdType {
-    #include "InstrIdType.inc"
+    #include "OpcodeCategory.inc"
 } RabInstrIdType;
 
-#undef RABBITIZER_DEF_INSTR_ID_TYPE
+#undef RAB_DEF_OPCODE_CATEGORY

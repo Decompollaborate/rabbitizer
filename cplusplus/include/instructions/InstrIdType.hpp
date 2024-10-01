@@ -10,7 +10,7 @@
 
 namespace rabbitizer {
     namespace InstrIdType {
-#include "generated/InstrIdType_enum_class.hpp"
+#include "generated/opcode_category_enum_class.hpp"
 
         std::string getName(IdType idType);
     };

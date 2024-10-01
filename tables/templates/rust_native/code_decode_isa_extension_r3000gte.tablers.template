@@ -5,11 +5,11 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
+#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
     case_bits => opcode = Opcode::prefix##_##name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, isa_version_min, isa_exten, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, isa_version_min, isa_exten, altname, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
@@ -53,7 +53,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_lm.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r3000gte/r3000gte_cop2_gte.inc"
+#include "opcodes/r3000gte/r3000gte_cop2_gte.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -65,5 +65,5 @@ impl OpcodeDecoder {
 
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME

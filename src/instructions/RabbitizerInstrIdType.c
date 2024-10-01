@@ -5,7 +5,7 @@
 
 #include <assert.h>
 
-#include "generated/InstrIdType_Names_array.h"
+#include "generated/opcode_category_Names_array.h"
 
 const char *RabInstrIdType_getName(RabInstrIdType idType) {
     const char *name;

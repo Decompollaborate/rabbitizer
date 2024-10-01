@@ -5,11 +5,11 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
+#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
     case_bits => opcode = Opcode::prefix##_##name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
@@ -28,7 +28,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_normal.inc"
+#include "opcodes/r5900/r5900_normal.inc"
             _ => return Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version),
         }
         Self {
@@ -52,7 +52,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_special.inc"
+#include "opcodes/r5900/r5900_special.inc"
             _ => return Self::decode_isa_extension_none_special(word, mandatory_bits, flags, isa_version),
         }
         Self {
@@ -76,7 +76,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_regimm.inc"
+#include "opcodes/r5900/r5900_regimm.inc"
             _ => return Self::decode_isa_extension_none_regimm(word, mandatory_bits, flags, isa_version),
         }
         Self {
@@ -118,7 +118,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_cop0_tlb.inc"
+#include "opcodes/r5900/r5900_cop0_tlb.inc"
             _ => return Self::decode_isa_extension_none_coprocessor0_tlb(word, mandatory_bits, flags, isa_version),
         }
         Self {
@@ -160,7 +160,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_cop1_fpu_s.inc"
+#include "opcodes/r5900/r5900_cop1_fpu_s.inc"
             _ => return Self::decode_isa_extension_none_coprocessor1_fpu_s(word, mandatory_bits, flags, isa_version),
         }
         Self {
@@ -209,7 +209,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_cop2.inc"
+#include "opcodes/r5900/r5900_cop2.inc"
             0x08 => return Self::decode_isa_extension_r5900_coprocessor2_bc2(word, mandatory_bits, flags, isa_version),
             _ => {},
         }
@@ -234,7 +234,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_cop2_bc2.inc"
+#include "opcodes/r5900/r5900_cop2_bc2.inc"
             _ => {},
         }
         Self {
@@ -258,7 +258,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_cop2_special1.inc"
+#include "opcodes/r5900/r5900_cop2_special1.inc"
             0x3C | 0x3D | 0x3E | 0x3F => return Self::decode_isa_extension_r5900_coprocessor2_special2(word, mandatory_bits, flags, isa_version),
             _ => {},
         }
@@ -283,7 +283,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_cop2_special2.inc"
+#include "opcodes/r5900/r5900_cop2_special2.inc"
             0x3C2 | 0x3C3 => return Self::decode_isa_extension_r5900_coprocessor2_viwr(word, mandatory_bits, flags, isa_version),
             _ => {},
         }
@@ -308,7 +308,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_cop2_viwr.inc"
+#include "opcodes/r5900/r5900_cop2_viwr.inc"
             _ => {},
         }
         Self {
@@ -332,7 +332,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_mmi.inc"
+#include "opcodes/r5900/r5900_mmi.inc"
 
             0x08 => return Self::decode_isa_extension_r5900_mmi_0(word, mandatory_bits, flags, isa_version),
             0x09 => return Self::decode_isa_extension_r5900_mmi_2(word, mandatory_bits, flags, isa_version),
@@ -365,7 +365,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_mmi_0.inc"
+#include "opcodes/r5900/r5900_mmi_0.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -389,7 +389,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_mmi_1.inc"
+#include "opcodes/r5900/r5900_mmi_1.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -413,7 +413,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_mmi_2.inc"
+#include "opcodes/r5900/r5900_mmi_2.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -437,7 +437,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_mmi_3.inc"
+#include "opcodes/r5900/r5900_mmi_3.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -461,7 +461,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_mmi_pmfhl.inc"
+#include "opcodes/r5900/r5900_mmi_pmfhl.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -485,7 +485,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/r5900/r5900_mmi_pmthl.inc"
+#include "opcodes/r5900/r5900_mmi_pmthl.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -497,5 +497,5 @@ impl OpcodeDecoder {
 
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME

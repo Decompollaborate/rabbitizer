@@ -11,7 +11,7 @@
 extern "C" {
 #endif
 
-#include "generated/InstrIdType_enum.h"
+#include "generated/opcode_category_enum.h"
 
 extern const char *RabInstrIdType_Names[];
 

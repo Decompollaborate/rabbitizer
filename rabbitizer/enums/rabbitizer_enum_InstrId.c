@@ -5,18 +5,18 @@
 #include "instructions/RabbitizerInstrId.h"
 
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)                   { "InstrId", #prefix "_" #name, RABBITIZER_INSTR_ID_##prefix##_##name, false, NULL },
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...)  RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)                   { "InstrId", #prefix "_" #name, RABBITIZER_INSTR_ID_##prefix##_##name, false, NULL },
+#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...)  RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[] = {
-    #include "tables/InstrIds.inc"
+    #include "tables/Opcode.inc"
 
-    RABBITIZER_DEF_INSTR_ID(ALL, , MAX, )
+    RAB_DEF_OPCODE(ALL, , MAX, )
     { 0 },
 };
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME
 
 static PyMethodDef rabbitizer_enum_InstrId_methods[] = {
     { 0 },

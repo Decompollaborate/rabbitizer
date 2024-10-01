@@ -4,12 +4,12 @@
 #include "instructions/RabbitizerInstructionR5900.h"
 #include "common/RabbitizerConfig.h"
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
+#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
         break;
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
@@ -19,7 +19,7 @@ void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *se
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_NORMAL;
 
     switch (opcode) {
-#include "tables/instr_id/r5900/r5900_normal.inc"
+#include "tables/opcodes/r5900/r5900_normal.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Normal(self);
@@ -41,7 +41,7 @@ void RabbitizerInstructionR5900_processUniqueId_Special(RabbitizerInstruction *s
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_SPECIAL;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_special.inc"
+#include "tables/opcodes/r5900/r5900_special.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Special(self);
@@ -76,7 +76,7 @@ void RabbitizerInstructionR5900_processUniqueId_Regimm(RabbitizerInstruction *se
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_REGIMM;
 
     switch (rt) {
-#include "tables/instr_id/r5900/r5900_regimm.inc"
+#include "tables/opcodes/r5900/r5900_regimm.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Regimm(self);
@@ -96,7 +96,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0_Tlb(RabbitizerInstr
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP0_TLB;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_cop0_tlb.inc"
+#include "tables/opcodes/r5900/r5900_cop0_tlb.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(self);
@@ -112,7 +112,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor0(RabbitizerInstructi
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/cpu/cpu_cop0.inc"
+#include "tables/opcodes/cpu/cpu_cop0.inc"
 
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(self);
@@ -133,7 +133,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1_FpuS(RabbitizerInst
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP1_FPUS;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_cop1_fpu_s.inc"
+#include "tables/opcodes/r5900/r5900_cop1_fpu_s.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor1_FpuS(self);
@@ -148,7 +148,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor1(RabbitizerInstructi
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP1;
 
     switch (fmt) {
-#include "tables/instr_id/cpu/cpu_cop1.inc"
+#include "tables/opcodes/cpu/cpu_cop1.inc"
 
         case 0x08: // fmt = BC
             RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(self);
@@ -173,7 +173,7 @@ void RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(RabbitizerInstructio
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_BC2;
 
     switch (fmt) {
-#include "tables/instr_id/r5900/r5900_cop2_bc2.inc"
+#include "tables/opcodes/r5900/r5900_cop2_bc2.inc"
     }
 }
 
@@ -184,7 +184,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_viwr(RabbitizerInst
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_VIWR;
 
     switch (fhiflo) {
-#include "tables/instr_id/r5900/r5900_cop2_viwr.inc"
+#include "tables/opcodes/r5900/r5900_cop2_viwr.inc"
     }
 }
 
@@ -195,7 +195,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special2(Rabbitizer
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_SPECIAL2;
 
     switch (fhiflo) {
-#include "tables/instr_id/r5900/r5900_cop2_special2.inc"
+#include "tables/opcodes/r5900/r5900_cop2_special2.inc"
 
         case 0x3E:
         case 0x3F:
@@ -211,7 +211,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(Rabbitizer
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_SPECIAL1;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_cop2_special1.inc"
+#include "tables/opcodes/r5900/r5900_cop2_special1.inc"
 
         case 0x3C:
         case 0x3D:
@@ -229,7 +229,7 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_nohighbit(Rabbitize
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_NOHIGHBIT;
 
     switch (fmt) {
-#include "tables/instr_id/r5900/r5900_cop2.inc"
+#include "tables/opcodes/r5900/r5900_cop2.inc"
 
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(self);
@@ -263,7 +263,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_0(RabbitizerInstruction *sel
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_0;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_mmi_0.inc"
+#include "tables/opcodes/r5900/r5900_mmi_0.inc"
     }
 }
 
@@ -274,7 +274,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_1(RabbitizerInstruction *sel
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_1;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_mmi_1.inc"
+#include "tables/opcodes/r5900/r5900_mmi_1.inc"
     }
 }
 
@@ -285,7 +285,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_2(RabbitizerInstruction *sel
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_2;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_mmi_2.inc"
+#include "tables/opcodes/r5900/r5900_mmi_2.inc"
     }
 }
 
@@ -296,7 +296,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_3(RabbitizerInstruction *sel
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_3;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_mmi_3.inc"
+#include "tables/opcodes/r5900/r5900_mmi_3.inc"
     }
 }
 
@@ -307,7 +307,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_PMFHL(RabbitizerInstruction 
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_PMFHL;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_mmi_pmfhl.inc"
+#include "tables/opcodes/r5900/r5900_mmi_pmfhl.inc"
     }
 }
 
@@ -318,7 +318,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI_PMTHL(RabbitizerInstruction 
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI_PMTHL;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_mmi_pmthl.inc"
+#include "tables/opcodes/r5900/r5900_mmi_pmthl.inc"
     }
 }
 
@@ -329,7 +329,7 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_MMI;
 
     switch (function) {
-#include "tables/instr_id/r5900/r5900_mmi.inc"
+#include "tables/opcodes/r5900/r5900_mmi.inc"
 
         case 0x08:
             RabbitizerInstructionR5900_processUniqueId_MMI_0(self);
@@ -355,8 +355,8 @@ void RabbitizerInstructionR5900_processUniqueId_MMI(RabbitizerInstruction *self)
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME
 
 void RabbitizerInstructionR5900_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);

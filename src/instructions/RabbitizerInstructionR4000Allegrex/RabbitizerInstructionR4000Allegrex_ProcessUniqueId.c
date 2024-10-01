@@ -4,12 +4,12 @@
 #include "instructions/RabbitizerInstructionR4000Allegrex.h"
 #include "common/RabbitizerConfig.h"
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
+#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
         break;
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Normal(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
@@ -19,7 +19,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Normal(RabbitizerInstruc
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_NORMAL;
 
     switch (opcode) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_normal.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_normal.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Normal(self);
@@ -40,7 +40,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Special(RabbitizerInstru
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_SPECIAL;
 
     switch (function) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_special.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_special.inc"
 
         case 0x02:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Special_Rs(self);
@@ -71,7 +71,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Special_Rs(RabbitizerIns
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_SPECIAL_RS;
 
     switch (rs) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_special_rs.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_special_rs.inc"
     }
 
     if (fetchDescriptor) {
@@ -87,7 +87,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Special_Sa(RabbitizerIns
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_SPECIAL_SA;
 
     switch (sa) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_special_sa.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_special_sa.inc"
     }
 
     if (fetchDescriptor) {
@@ -103,7 +103,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Regimm(RabbitizerInstruc
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_REGIMM;
 
     switch (rt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_regimm.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_regimm.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Regimm(self);
@@ -124,7 +124,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Special2(RabbitizerInstr
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_SPECIAL2;
 
     switch (function) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_special2.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_special2.inc"
     }
 
     if (fetchDescriptor) {
@@ -140,7 +140,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Special3(RabbitizerInstr
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_SPECIAL3;
 
     switch (function) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_special3.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_special3.inc"
 
         case 0x20:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Special3_Bshfl(self);
@@ -161,7 +161,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Special3_Bshfl(Rabbitize
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_SPECIAL3_BSHFL;
 
     switch (sa) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_special3_bshfl.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_special3_bshfl.inc"
     }
 
     if (fetchDescriptor) {
@@ -178,7 +178,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor0(RabbitizerI
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop0.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop0.inc"
 
         case 0x08:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor0_BC0(self);
@@ -210,7 +210,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor0_BC0(Rabbiti
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop0_bc0.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop0_bc0.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor0_BC0(self);
@@ -232,7 +232,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor0_Tlb(Rabbiti
     self->_handwrittenCategory = true;
 
     switch (function) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop0_tlb.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop0_tlb.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor0_Tlb(self);
@@ -253,7 +253,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1(RabbitizerI
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_COP1;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop1.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop1.inc"
 
         case 0x08:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_BC1(self);
@@ -295,7 +295,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_BC1(Rabbiti
     self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop1_bc1.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop1_bc1.inc"
 
         default:
             RabbitizerInstruction_processUniqueId_Coprocessor1_BC1(self);
@@ -316,7 +316,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_FpuS(Rabbit
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_COP1_FPUS;
 
     switch (function) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop1_fpu_s.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop1_fpu_s.inc"
 
         case 0x08:
         case 0x09:
@@ -345,7 +345,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor1_FpuW(Rabbit
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_COP1_FPUW;
 
     switch (function) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop1_fpu_w.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop1_fpu_w.inc"
 
         case 0x21:
             break;
@@ -370,7 +370,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2(RabbitizerI
     // self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop2.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop2.inc"
 
         case 0x08:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_BC2(self);
@@ -407,7 +407,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_BC2(Rabbiti
     // self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop2_bc2.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop2_bc2.inc"
     }
 
     if (fetchDescriptor) {
@@ -424,7 +424,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2(Rabbi
     // self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop2_mfhc2.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop2_mfhc2.inc"
 
         case 0x1:
             fetchDescriptor = false;
@@ -451,7 +451,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2_p(Rab
             fetchDescriptor = false;
             break;
 
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop2_mfhc2_p.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop2_mfhc2_p.inc"
     }
 
     if (fetchDescriptor) {
@@ -468,7 +468,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MFHC2_p_s(R
     // self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop2_mfhc2_p_s.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop2_mfhc2_p_s.inc"
     }
 
     if (fetchDescriptor) {
@@ -485,7 +485,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Coprocessor2_MTHC2(Rabbi
     // self->_handwrittenCategory = true;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_cop2_mthc2.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_cop2_mthc2.inc"
     }
 
     if (fetchDescriptor) {
@@ -501,7 +501,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu0(RabbitizerInstruct
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU0;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu0.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu0.inc"
     }
 
     if (fetchDescriptor) {
@@ -517,7 +517,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu1(RabbitizerInstruct
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU1;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu1.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu1.inc"
     }
 
     if (fetchDescriptor) {
@@ -533,7 +533,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu3(RabbitizerInstruct
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU3;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu3.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu3.inc"
     }
 
     if (fetchDescriptor) {
@@ -549,7 +549,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4(RabbitizerInstruct
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4.inc"
 
         case 0x0:
         case 0x1:
@@ -581,7 +581,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0(RabbitizerIns
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0.inc"
 
         case 0x0:
             RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0(self);
@@ -655,7 +655,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt0(Rabbitiz
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT0;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt0.inc"
     }
 
     if (fetchDescriptor) {
@@ -671,7 +671,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt2(Rabbitiz
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT2;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt2.inc"
     }
 
     if (fetchDescriptor) {
@@ -687,7 +687,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt3(Rabbitiz
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT3;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt3.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt3.inc"
     }
 
     if (fetchDescriptor) {
@@ -703,7 +703,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Rnd(Rabbitize
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_RND;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_rnd.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_rnd.inc"
     }
 
     if (fetchDescriptor) {
@@ -719,7 +719,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtFlt(Rabbit
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_CVTFLT;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_cvtflt.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_cvtflt.inc"
     }
 
     if (fetchDescriptor) {
@@ -735,7 +735,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_CvtInt(Rabbit
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_CVTINT;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_cvtint.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_cvtint.inc"
     }
 
     if (fetchDescriptor) {
@@ -751,7 +751,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt8(Rabbitiz
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT8;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt8.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt8.inc"
     }
 
     if (fetchDescriptor) {
@@ -767,7 +767,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Fmt9(Rabbitiz
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_FMT9;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt9.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_fmt9.inc"
     }
 
     if (fetchDescriptor) {
@@ -783,7 +783,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Control(Rabbi
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_CONTROL;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_control.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_control.inc"
     }
 
     if (fetchDescriptor) {
@@ -799,7 +799,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Color(Rabbiti
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_COLOR;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_color.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_color.inc"
     }
 
     if (fetchDescriptor) {
@@ -815,7 +815,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt0_Cst(Rabbitize
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT0_CST;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt0_cst.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_cst.inc"
     }
 
     if (fetchDescriptor) {
@@ -831,7 +831,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2(RabbitizerIns
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT2;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt2.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt2.inc"
 
         case 0x14:
         case 0x15:
@@ -855,7 +855,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_CndMove(Rabbi
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU4_FMT2_CNDMOVE;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu4_fmt2_cndmove.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt2_cndmove.inc"
     }
 
     if (fetchDescriptor) {
@@ -871,7 +871,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5(RabbitizerInstruct
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU5;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu5.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu5.inc"
     }
 
     if (fetchDescriptor) {
@@ -887,7 +887,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6(RabbitizerInstruct
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU6;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu6.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu6.inc"
 
         case 0x1C:
         case 0x1D:
@@ -911,7 +911,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6_Fmt7(RabbitizerIns
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU6_FMT7;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu6_fmt7.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu6_fmt7.inc"
 
         case 0x0:
         case 0x1:
@@ -935,7 +935,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu6_Fmt7_Fmt0(Rabbitiz
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU6_FMT7_FMT0;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu6_fmt7_fmt0.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu6_fmt7_fmt0.inc"
     }
 
     if (fetchDescriptor) {
@@ -951,7 +951,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu7(RabbitizerInstruct
     self->instrIdType = RAB_INSTR_ID_TYPE_R4000ALLEGREX_VFPU7;
 
     switch (fmt) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_vfpu7.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_vfpu7.inc"
     }
 
     if (fetchDescriptor) {
@@ -968,7 +968,7 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Quadlr(RabbitizerInstruc
     self->_handwrittenCategory = true;
 
     switch (temp) {
-#include "tables/instr_id/r4000allegrex/r4000allegrex_quadlr.inc"
+#include "tables/opcodes/r4000allegrex/r4000allegrex_quadlr.inc"
     }
 
     if (fetchDescriptor) {
@@ -976,8 +976,8 @@ void RabbitizerInstructionR4000Allegrex_processUniqueId_Quadlr(RabbitizerInstruc
     }
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME
 
 void RabbitizerInstructionR4000Allegrex_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);

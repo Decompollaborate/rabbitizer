@@ -5,21 +5,21 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
     table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
         __VA_ARGS__, \
         ..OpcodeDescriptor::new( #altname, isa_version_min, isa_exten ) \
     } .check_panic_chain();
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
-    RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, name, isa_version_min, isa_exten, __VA_ARGS__)
+#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
+    RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 use crate::{OpcodeDescriptor, opcode, Operand, Opcode, InstrType, AccessType, InstrSuffix, IsaVersion, IsaExtension};
 
 pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); opcode::OPCODE_COUNT];
 
-    #include "InstrIds.inc"
+    #include "Opcode.inc"
 
     let mut i = 0;
     while i < opcode::OPCODE_COUNT {
@@ -30,5 +30,5 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     table
 };
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME

@@ -5,11 +5,11 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
+#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
     case_bits => opcode = Opcode::prefix##_##name,
 
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
@@ -28,7 +28,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_normal.inc"
+#include "opcodes/rsp/rsp_normal.inc"
             0x32 => return Self::decode_isa_extension_rsp_lwc2(word, mandatory_bits, flags, isa_version),
             0x3A => return Self::decode_isa_extension_rsp_swc2(word, mandatory_bits, flags, isa_version),
             _ => {}
@@ -54,7 +54,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_normal_lwc2.inc"
+#include "opcodes/rsp/rsp_normal_lwc2.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -78,7 +78,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_normal_swc2.inc"
+#include "opcodes/rsp/rsp_normal_swc2.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -102,7 +102,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_special.inc"
+#include "opcodes/rsp/rsp_special.inc"
             _ => {}
         }
         Self {
@@ -126,7 +126,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_regimm.inc"
+#include "opcodes/rsp/rsp_regimm.inc"
             _ => {}
         }
         Self {
@@ -150,7 +150,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_cop0.inc"
+#include "opcodes/rsp/rsp_cop0.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -191,7 +191,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_cop2.inc"
+#include "opcodes/rsp/rsp_cop2.inc"
             _ => return Self::decode_isa_extension_rsp_coprocessor2_vu(word, mandatory_bits, flags, isa_version),
         }
         Self {
@@ -224,7 +224,7 @@ impl OpcodeDecoder {
         }
 
         match mask.get_shifted(word) {
-#include "instr_id/rsp/rsp_cop2_vu.inc"
+#include "opcodes/rsp/rsp_cop2_vu.inc"
             _ => opcode = Opcode::ALL_INVALID,
         }
         Self {
@@ -235,5 +235,5 @@ impl OpcodeDecoder {
     }
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME

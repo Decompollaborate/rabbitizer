@@ -5,12 +5,12 @@
 #include "common/RabbitizerConfig.h"
 #include "stdio.h"
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
+#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
         break;
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionR3000GTE_processUniqueId_Normal(RabbitizerInstruction *self) {
     self->instrIdType = RAB_INSTR_ID_TYPE_R3000GTE_NORMAL;
@@ -58,7 +58,7 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerIn
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_lm(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_lm(self));
 
     switch (function) {
-#include "tables/instr_id/r3000gte/r3000gte_cop2_gte.inc"
+#include "tables/opcodes/r3000gte/r3000gte_cop2_gte.inc"
     }
 }
 
@@ -98,8 +98,8 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2(RabbitizerInstru
     }
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME
 
 void RabbitizerInstructionR3000GTE_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);

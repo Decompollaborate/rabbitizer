@@ -6,12 +6,12 @@
 #include "common/RabbitizerConfig.h"
 #include "instructions/RabbitizerRegister.h"
 
-#define RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, ...)    \
+#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)    \
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
         break;
-#define RABBITIZER_DEF_INSTR_ID_ALTNAME(prefix, caseBits, name, altname, ...) \
-    RABBITIZER_DEF_INSTR_ID(prefix, caseBits, name, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+    RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionRsp_processUniqueId_Normal_Lwc2(RabbitizerInstruction *self) {
     uint32_t rd = RAB_INSTR_GET_rd(self);
@@ -20,7 +20,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal_Lwc2(RabbitizerInstruction 
     self->instrIdType = RAB_INSTR_ID_TYPE_RSP_NORMAL_LWC2;
 
     switch (rd) {
-#include "tables/instr_id/rsp/rsp_normal_lwc2.inc"
+#include "tables/opcodes/rsp/rsp_normal_lwc2.inc"
     }
 }
 
@@ -32,7 +32,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal_Swc2(RabbitizerInstruction 
     self->instrIdType = RAB_INSTR_ID_TYPE_RSP_NORMAL_SWC2;
 
     switch (rd) {
-#include "tables/instr_id/rsp/rsp_normal_swc2.inc"
+#include "tables/opcodes/rsp/rsp_normal_swc2.inc"
     }
 
     switch (self->uniqueId) {
@@ -56,7 +56,7 @@ void RabbitizerInstructionRsp_processUniqueId_Normal(RabbitizerInstruction *self
     self->instrIdType = RAB_INSTR_ID_TYPE_RSP_NORMAL;
 
     switch (opcode) {
-#include "tables/instr_id/rsp/rsp_normal.inc"
+#include "tables/opcodes/rsp/rsp_normal.inc"
 
         // new rsp stuff
         case 0x32:
@@ -98,7 +98,7 @@ void RabbitizerInstructionRsp_processUniqueId_Special(RabbitizerInstruction *sel
     self->instrIdType = RAB_INSTR_ID_TYPE_RSP_SPECIAL;
 
     switch (function) {
-#include "tables/instr_id/rsp/rsp_special.inc"
+#include "tables/opcodes/rsp/rsp_special.inc"
     }
 
     if (RabbitizerInstruction_isNop(self)) {
@@ -140,7 +140,7 @@ void RabbitizerInstructionRsp_processUniqueId_Regimm(RabbitizerInstruction *self
     self->instrIdType = RAB_INSTR_ID_TYPE_RSP_REGIMM;
 
     switch (rt) {
-#include "tables/instr_id/rsp/rsp_regimm.inc"
+#include "tables/opcodes/rsp/rsp_regimm.inc"
     }
 
     if (RabbitizerConfig_Cfg.pseudos.enablePseudos) {
@@ -168,7 +168,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor0(RabbitizerInstruction
     self->instrIdType = RAB_INSTR_ID_TYPE_RSP_COP0;
 
     switch (fmt) {
-#include "tables/instr_id/rsp/rsp_cop0.inc"
+#include "tables/opcodes/rsp/rsp_cop0.inc"
     }
 
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
@@ -195,7 +195,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2_Vu(RabbitizerInstruct
     self->_mandatorybits = RAB_INSTR_PACK_function(self->_mandatorybits, function);
 
     switch (function) {
-#include "tables/instr_id/rsp/rsp_cop2_vu.inc"
+#include "tables/opcodes/rsp/rsp_cop2_vu.inc"
     }
 }
 
@@ -206,7 +206,7 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
     self->instrIdType = RAB_INSTR_ID_TYPE_RSP_COP2;
 
     switch (fmt) {
-#include "tables/instr_id/rsp/rsp_cop2.inc"
+#include "tables/opcodes/rsp/rsp_cop2.inc"
 
         default:
             RabbitizerInstructionRsp_processUniqueId_Coprocessor2_Vu(self);
@@ -216,8 +216,8 @@ void RabbitizerInstructionRsp_processUniqueId_Coprocessor2(RabbitizerInstruction
     self->descriptor = &RabbitizerInstrDescriptor_Descriptors[self->uniqueId];
 }
 
-#undef RABBITIZER_DEF_INSTR_ID
-#undef RABBITIZER_DEF_INSTR_ID_ALTNAME
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME
 
 void RabbitizerInstructionRsp_processUniqueId(RabbitizerInstruction *self) {
     uint32_t opcode = RAB_INSTR_GET_opcode(self);
