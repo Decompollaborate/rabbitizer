@@ -548,28 +548,25 @@
     // Pseudo-Instruction Unique IDs
 
     // OP IMM
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF03, b, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, b, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::I,
-        is_branch: true,
-        is_pseudo: true
+        is_branch: true
     ) // Branch (unconditional)
 
     // OP rs, IMM
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF04, beqz, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, beqz, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,
-        is_branch: true,
-        is_pseudo: true
+        is_branch: true
     ) // Branch on EQual Zero
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF05, bnez, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, bnez, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,
-        is_branch: true,
-        is_pseudo: true
+        is_branch: true
     ) // Branch on Not Equal Zero

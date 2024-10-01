@@ -1,12 +1,6 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-/*
-use core::ops::Index;
-
-use crate::{EncodedFieldMask, Operand};
-*/
-
 use crate::Abi;
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]

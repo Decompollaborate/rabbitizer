@@ -468,49 +468,44 @@
     // Pseudo-Instruction Unique IDs
 
     // OP
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF00, nop, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, nop, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr0(),
-        instr_type: InstrType::R,
-        is_pseudo: true
+        instr_type: InstrType::R
     ) // No OPeration
 
     // OP rd, rs
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF25, move, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, move, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
-        maybe_is_move: true,
-        is_pseudo: true
+        maybe_is_move: true
     ) // Move
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF27, not, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, not, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
-        reads_rs: true,
-        is_pseudo: true
+        reads_rs: true
     ) // Not
 
     // OP rd, rt
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF22, neg, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, neg, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         not_emitted_by_compilers: true,
         modifies_rd: true,
-        reads_rt: true,
-        is_pseudo: true
+        reads_rt: true
     )
 
     // OP rd, rt
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF23, negu, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, negu, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
-        reads_rt: true,
-        is_pseudo: true
+        reads_rt: true
     )

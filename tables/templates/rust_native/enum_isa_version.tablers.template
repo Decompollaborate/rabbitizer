@@ -5,7 +5,7 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RAB_DEF_ISAVERSION_CATEGORY(name) \
+#define RAB_DEF_ISA_VERSION(name) \
     name,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
@@ -15,4 +15,4 @@ pub enum IsaVersion {
     #include "IsaVersion.inc"
 }
 
-#undef RAB_DEF_ISAVERSION_CATEGORY
+#undef RAB_DEF_ISA_VERSION

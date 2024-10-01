@@ -38,12 +38,11 @@
 
     // Pseudo-Instruction Unique IDs
 
-    RAB_DEF_OPCODE(
-        rsp, 0xFFFFFF11, bal, IsaVersion::EXTENSION, IsaExtension::RSP,
+    RAB_DEF_OPCODE_PSEUDO(
+        rsp, bal, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         not_emitted_by_compilers: true,
-        does_link: true,
-        is_pseudo: true
+        does_link: true
     ) // Branch and Link

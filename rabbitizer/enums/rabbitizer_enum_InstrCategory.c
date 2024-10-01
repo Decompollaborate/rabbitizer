@@ -5,16 +5,16 @@
 #include "instructions/RabbitizerInstruction.h"
 
 
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) { "InstrCategory", #name, RABBITIZER_INSTRCAT_##name, false, NULL },
+#define RAB_DEF_ISA_EXTENSION(name) { "InstrCategory", #name, RABBITIZER_INSTRCAT_##name, false, NULL },
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrCategory_enumvalues[] = {
-    #include "tables/InstrCategory.inc"
-    RABBITIZER_DEF_INSTR_CATEGORY(MAX)
+    #include "tables/IsaExtension.inc"
+    RAB_DEF_ISA_EXTENSION(MAX)
 
     { 0 },
 };
 
-#undef RABBITIZER_DEF_INSTR_CATEGORY
+#undef RAB_DEF_ISA_EXTENSION
 
 
 static PyObject *rabbitizer_enum_InstrCategory_fromStr(UNUSED PyObject *self, PyObject *args, PyObject *kwds) {

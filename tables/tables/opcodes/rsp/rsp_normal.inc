@@ -222,23 +222,23 @@
     // Pseudo-Instruction Unique IDs
 
     // OP IMM
-    RAB_DEF_OPCODE(
-        rsp, 0xFFFFFF03, b, IsaVersion::EXTENSION, IsaExtension::RSP,
+    RAB_DEF_OPCODE_PSEUDO(
+        rsp, b, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true
     ) // Branch (unconditional)
 
     // OP rs, IMM
-    RAB_DEF_OPCODE(
-        rsp, 0xFFFFFF04, beqz, IsaVersion::EXTENSION, IsaExtension::RSP,
+    RAB_DEF_OPCODE_PSEUDO(
+        rsp, beqz, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true
     ) // Branch on EQual Zero
-    RAB_DEF_OPCODE(
-        rsp, 0xFFFFFF05, bnez, IsaVersion::EXTENSION, IsaExtension::RSP,
+    RAB_DEF_OPCODE_PSEUDO(
+        rsp, bnez, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         reads_rs: true,

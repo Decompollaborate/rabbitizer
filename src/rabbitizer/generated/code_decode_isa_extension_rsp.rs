@@ -40,9 +40,7 @@ impl OpcodeDecoder {
             0x29 => opcode = Opcode::rsp_sh,
             0x2B => opcode = Opcode::rsp_sw,
             0x33 => opcode = Opcode::rsp_pref,
-            0xFFFFFF03 => opcode = Opcode::rsp_b,
-            0xFFFFFF04 => opcode = Opcode::rsp_beqz,
-            0xFFFFFF05 => opcode = Opcode::rsp_bnez,
+
             0x32 => {
                 return Self::decode_isa_extension_rsp_lwc2(
                     word,
@@ -164,11 +162,7 @@ impl OpcodeDecoder {
             0x2A => opcode = Opcode::rsp_slt,
             0x2B => opcode = Opcode::rsp_sltu,
             0x0D => opcode = Opcode::rsp_break,
-            0xFFFFFF01 => opcode = Opcode::rsp_nop,
-            0xFFFFFF25 => opcode = Opcode::rsp_move,
-            0xFFFFFF27 => opcode = Opcode::rsp_not,
-            0xFFFFFF22 => opcode = Opcode::rsp_neg,
-            0xFFFFFF23 => opcode = Opcode::rsp_negu,
+
             _ => {}
         }
         Self {
@@ -194,7 +188,7 @@ impl OpcodeDecoder {
             0x01 => opcode = Opcode::rsp_bgez,
             0x10 => opcode = Opcode::rsp_bltzal,
             0x11 => opcode = Opcode::rsp_bgezal,
-            0xFFFFFF11 => opcode = Opcode::rsp_bal,
+
             _ => {}
         }
         Self {

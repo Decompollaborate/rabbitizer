@@ -133,12 +133,11 @@
 
     // Pseudo-Instruction Unique IDs
 
-    RAB_DEF_OPCODE(
-        core, 0xFFFFFF11, bal, IsaVersion::MIPS_I, IsaExtension::NONE,
+    RAB_DEF_OPCODE_PSEUDO(
+        core, bal, IsaVersion::MIPS_I, IsaExtension::NONE,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         not_emitted_by_compilers: true,
-        does_link: true,
-        is_pseudo: true
+        does_link: true
     ) // Branch and Link

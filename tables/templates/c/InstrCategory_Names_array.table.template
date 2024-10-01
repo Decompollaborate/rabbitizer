@@ -1,10 +1,10 @@
 /* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) [RABBITIZER_INSTRCAT_##name] = #name,
+#define RAB_DEF_ISA_EXTENSION(name) [RABBITIZER_INSTRCAT_##name] = #name,
 
 const char *const RabbitizerInstrCategory_Names[] = {
-#include "InstrCategory.inc"
+#include "IsaExtension.inc"
 };
 
-#undef RABBITIZER_DEF_INSTR_CATEGORY
+#undef RAB_DEF_ISA_EXTENSION

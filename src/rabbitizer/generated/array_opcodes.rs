@@ -2950,6 +2950,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
+        is_pseudo: true,
         ..OpcodeDescriptor::new("b", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();
@@ -2958,6 +2959,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
+        is_pseudo: true,
         ..OpcodeDescriptor::new("beqz", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();
@@ -2966,6 +2968,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         instr_type: InstrType::REGIMM,
         reads_rs: true,
         is_branch: true,
+        is_pseudo: true,
         ..OpcodeDescriptor::new("bnez", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();

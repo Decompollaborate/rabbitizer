@@ -1,12 +1,12 @@
 /* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) RABBITIZER_INSTRCAT_##name,
+#define RAB_DEF_ISA_EXTENSION(name) RABBITIZER_INSTRCAT_##name,
 
 typedef enum RabbitizerInstrCategory {
-    #include "InstrCategory.inc"
+    #include "IsaExtension.inc"
 
-    RABBITIZER_DEF_INSTR_CATEGORY(MAX)
+    RAB_DEF_ISA_EXTENSION(MAX)
 } RabbitizerInstrCategory;
 
-#undef RABBITIZER_DEF_INSTR_CATEGORY
+#undef RAB_DEF_ISA_EXTENSION

@@ -5,13 +5,13 @@ from __future__ import annotations
 
 from .Enum import Enum
 
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) name: Enum
+#define RAB_DEF_ISA_EXTENSION(name) name: Enum
 
 class InstrCategory:
-    #include "InstrCategory.inc"
+    #include "IsaExtension.inc"
     MAX: Enum
 
     @staticmethod
     def fromStr(name: str | None) -> Enum|None: ...
 
-#undef RABBITIZER_DEF_INSTR_CATEGORY
+#undef RAB_DEF_ISA_EXTENSION

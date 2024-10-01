@@ -11,6 +11,9 @@
 #define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
     RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
+#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, , name, isa_version_min, isa_exten, __VA_ARGS__)
+
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 SPECIAL_RS_TAG(non_exhaustive)
@@ -20,3 +23,4 @@ pub enum Opcode {
 
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
+#undef RAB_DEF_OPCODE_PSEUDO

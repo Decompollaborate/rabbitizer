@@ -74,15 +74,7 @@ impl OpcodeDecoder {
             0x36 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => opcode = Opcode::core_ldc2,
             0x3A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => opcode = Opcode::core_swc2,
             0x3E if isa_version as u32 >= IsaVersion::MIPS_II as u32 => opcode = Opcode::core_sdc2,
-            0xFFFFFF03 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_b
-            }
-            0xFFFFFF04 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_beqz
-            }
-            0xFFFFFF05 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_bnez
-            }
+
             _ => {}
         }
         Self {
@@ -181,21 +173,7 @@ impl OpcodeDecoder {
             0x33 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => opcode = Opcode::core_tltu,
             0x34 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => opcode = Opcode::core_teq,
             0x36 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => opcode = Opcode::core_tne,
-            0xFFFFFF00 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_nop
-            }
-            0xFFFFFF25 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_move
-            }
-            0xFFFFFF27 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_not
-            }
-            0xFFFFFF22 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_neg
-            }
-            0xFFFFFF23 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_negu
-            }
+
             _ => {}
         }
         Self {
@@ -239,9 +217,7 @@ impl OpcodeDecoder {
             0x13 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => {
                 opcode = Opcode::core_bgezall
             }
-            0xFFFFFF11 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => {
-                opcode = Opcode::core_bal
-            }
+
             _ => {}
         }
         Self {

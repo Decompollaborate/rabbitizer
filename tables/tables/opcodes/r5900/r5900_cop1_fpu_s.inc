@@ -19,7 +19,7 @@
 
     // The other instructions are implemented using the main CORE table
 
-    // TODO: we do we have this here instead of just not decoding the word?
+    // TODO: why do we have this here instead of just refusng to decode the word?
     RAB_DEF_OPCODE_ALTNAME(
         r5900, 0x04, c1__sqrt_s, c1, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::core_copraw)

@@ -5,14 +5,14 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RABBITIZER_DEF_INSTR_CATEGORY(name) \
+#define RAB_DEF_ISA_EXTENSION(name) \
     name,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 SPECIAL_RS_TAG(non_exhaustive)
 pub enum IsaExtension {
-    #include "InstrCategory.inc"
+    #include "IsaExtension.inc"
 }
 
-#undef RABBITIZER_DEF_INSTR_CATEGORY
+#undef RAB_DEF_ISA_EXTENSION
