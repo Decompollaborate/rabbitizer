@@ -41,13 +41,16 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     table[ Operand::prefix##_##operand as usize] = \
-        OperandDisplay::display_ ## prefix ## _ ## operand \
-    ;
+        OperandDisplay::display_ ## prefix ## _ ## operand; \
+    count += 1;
 
 pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_COUNT] = {
     let mut table: [OperandDisplayCallback; OPERAND_COUNT] = [OperandDisplay::display_ALL_EMPTY; OPERAND_COUNT];
+    let mut count = 0;
 
     #include "OperandTypes.inc"
+
+    assert!(count == OPERAND_COUNT, "The OPERAND_COUNT constant and the actual count of operands doesn't match.");
 
     table
 };

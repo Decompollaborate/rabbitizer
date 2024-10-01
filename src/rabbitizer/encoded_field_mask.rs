@@ -164,8 +164,8 @@ bitflags! {
         const r5900_vit = utils::bitmask( 16,  5);
         const r5900_vid = utils::bitmask(  6,  5);
 
-        const r5900_imm5 = utils::bitmask(  6,  5);
-        const r5900_imm15 = utils::bitmask(  6, 15);
+        const r5900_immediate5 = utils::bitmask(  6,  5);
+        const r5900_immediate15 = utils::bitmask(  6, 15);
 
         const _ = !0;
     }

@@ -3,204 +3,300 @@
 
 use core::fmt;
 
-use crate::OperandDisplay;
+use crate::{operand_display, traits::Register, OperandDisplay};
 
 impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_I(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        if myself.display_flags.r5900_use_dollar() {
+            write!(f, "$I")
+        } else {
+            write!(f, "I")
+        }
     }
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_Q(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        if myself.display_flags.r5900_use_dollar() {
+            write!(f, "$Q")
+        } else {
+            write!(f, "Q")
+        }
     }
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_R(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        if myself.display_flags.r5900_use_dollar() {
+            write!(f, "$R")
+        } else {
+            write!(f, "R")
+        }
     }
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_ACC(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        if myself.display_flags.r5900_use_dollar() {
+            write!(f, "$ACC")
+        } else {
+            write!(f, "ACC")
+        }
     }
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_ACCxyzw(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        Self::display_r5900_ACC(myself, f)?;
+
+        /*
+        let instr = myself.instr;
+        if instr.field_r5900_xyzw_x_unchecked() {
+            write!(f, "x")?;
+        }
+        if instr.field_r5900_xyzw_y_unchecked() {
+            write!(f, "y")?;
+        }
+        if instr.field_r5900_xyzw_z_unchecked() {
+            write!(f, "z")?;
+        }
+        if instr.field_r5900_xyzw_w_unchecked() {
+            write!(f, "w")?;
+        }
+        */
+
+        Ok(())
     }
     pub(crate) fn display_r5900_vfs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r5900_vfs_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vft(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r5900_vft_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vfd(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r5900_vfd_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vfsxyzw(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        Self::display_r5900_vfs(myself, f)?;
+
+        /*
+        let instr = myself.instr;
+        if instr.field_r5900_xyzw_x_unchecked() {
+            write!(f, "x")?;
+        }
+        if instr.field_r5900_xyzw_y_unchecked() {
+            write!(f, "y")?;
+        }
+        if instr.field_r5900_xyzw_z_unchecked() {
+            write!(f, "z")?;
+        }
+        if instr.field_r5900_xyzw_w_unchecked() {
+            write!(f, "w")?;
+        }
+        */
+
+        Ok(())
     }
     pub(crate) fn display_r5900_vftxyzw(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        Self::display_r5900_vft(myself, f)?;
+
+        /*
+        let instr = myself.instr;
+        if instr.field_r5900_xyzw_x_unchecked() {
+            write!(f, "x")?;
+        }
+        if instr.field_r5900_xyzw_y_unchecked() {
+            write!(f, "y")?;
+        }
+        if instr.field_r5900_xyzw_z_unchecked() {
+            write!(f, "z")?;
+        }
+        if instr.field_r5900_xyzw_w_unchecked() {
+            write!(f, "w")?;
+        }
+        */
+
+        Ok(())
     }
     pub(crate) fn display_r5900_vfdxyzw(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vfsn(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
+        Self::display_r5900_vfd(myself, f)?;
+
+        /*
+        let instr = myself.instr;
+        if instr.field_r5900_xyzw_x_unchecked() {
+            write!(f, "x")?;
+        }
+        if instr.field_r5900_xyzw_y_unchecked() {
+            write!(f, "y")?;
+        }
+        if instr.field_r5900_xyzw_z_unchecked() {
+            write!(f, "z")?;
+        }
+        if instr.field_r5900_xyzw_w_unchecked() {
+            write!(f, "w")?;
+        }
+        */
+
+        Ok(())
     }
     pub(crate) fn display_r5900_vftn(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vfdn(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let n = instr.field_r5900_n_unchecked();
+
+        Self::display_r5900_vft(myself, f)?;
+        write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])
     }
     pub(crate) fn display_r5900_vfsl(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vftl(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vfdl(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vfsm(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let n = instr.field_r5900_l_unchecked();
+
+        Self::display_r5900_vfs(myself, f)?;
+        write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])
     }
     pub(crate) fn display_r5900_vftm(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vfdm(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let n = instr.field_r5900_m_unchecked();
+
+        Self::display_r5900_vft(myself, f)?;
+        write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])
     }
     pub(crate) fn display_r5900_vis(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r5900_vis_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vit(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r5900_vit_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vid(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r5900_vid_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vis_predecr(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        write!(f, "(--")?;
+        Self::display_r5900_vis(myself, f)?;
+        write!(f, ")")
     }
     pub(crate) fn display_r5900_vit_predecr(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vid_predecr(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
+        write!(f, "(--")?;
+        Self::display_r5900_vit(myself, f)?;
+        write!(f, ")")
     }
     pub(crate) fn display_r5900_vis_postincr(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        write!(f, "(")?;
+        Self::display_r5900_vis(myself, f)?;
+        write!(f, "++)")
     }
     pub(crate) fn display_r5900_vit_postincr(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
-    }
-    pub(crate) fn display_r5900_vid_postincr(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        todo!()
+        write!(f, "(")?;
+        Self::display_r5900_vit(myself, f)?;
+        write!(f, "++)")
     }
     pub(crate) fn display_r5900_vis_parenthesis(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        write!(f, "(")?;
+        Self::display_r5900_vis(myself, f)?;
+        write!(f, ")")
     }
     pub(crate) fn display_r5900_immediate5(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        Self::display_imm_override_or(myself, f, |myself, f| {
+            let instr = myself.instr;
+            let s = instr.field_r5900_immediate5_unchecked() as i32;
+
+            operand_display::display_signed_imm(s, f, myself.display_flags)
+        })
     }
     pub(crate) fn display_r5900_immediate15(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        Self::display_imm_override_or(myself, f, |myself, f| {
+            let instr = myself.instr;
+            let s = instr.field_r5900_immediate15_unchecked() as i32 * 8;
+
+            operand_display::display_signed_imm(s, f, myself.display_flags)
+        })
     }
 }

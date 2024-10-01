@@ -16,6 +16,7 @@ vcallms_test:
     vcallms 0x10000
     vcallms 0x3F000
     vcallms 0x3FFF0
+    vcallms 0x3FFF8
     jr $ra
     nop
 
