@@ -147,9 +147,16 @@ bitflags! {
         const r5900_fhi_flo = utils::bitmask(  6,  5) | utils::bitmask(  0,  2);
         const r5900_viwr_fhilo = utils::bitmask( 21,  4) | utils::bitmask(  0,  2);
 
+        const r5900_immediate5 = utils::bitmask(  6,  5);
+        const r5900_immediate15 = utils::bitmask(  6, 15);
+
         const r5900_vfs = utils::bitmask( 11,  5);
         const r5900_vft = utils::bitmask( 16,  5);
         const r5900_vfd = utils::bitmask(  6,  5);
+
+        const r5900_vis = utils::bitmask( 11,  5);
+        const r5900_vit = utils::bitmask( 16,  5);
+        const r5900_vid = utils::bitmask(  6,  5);
 
         const r5900_xyzw_x = utils::bitmask( 24,  1);
         const r5900_xyzw_y = utils::bitmask( 23,  1);
@@ -159,13 +166,6 @@ bitflags! {
         const r5900_n = utils::bitmask(  0,  2);
         const r5900_l = utils::bitmask( 21,  2);
         const r5900_m = utils::bitmask( 23,  2);
-
-        const r5900_vis = utils::bitmask( 11,  5);
-        const r5900_vit = utils::bitmask( 16,  5);
-        const r5900_vid = utils::bitmask(  6,  5);
-
-        const r5900_immediate5 = utils::bitmask(  6,  5);
-        const r5900_immediate15 = utils::bitmask(  6, 15);
 
         const _ = !0;
     }

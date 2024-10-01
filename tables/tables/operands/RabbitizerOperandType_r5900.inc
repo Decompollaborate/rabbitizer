@@ -5,23 +5,29 @@
     RAB_DEF_OPERAND(r5900, Q, EncodedFieldMask::empty(), ())
     RAB_DEF_OPERAND(r5900, R, EncodedFieldMask::empty(), ())
     RAB_DEF_OPERAND(r5900, ACC, EncodedFieldMask::empty(), ())
-    RAB_DEF_OPERAND(r5900, ACCxyzw, EncodedFieldMask::r5900_xyzw_xyzw, (bool, bool, bool, bool))
+
+    RAB_DEF_OPERAND(r5900, immediate5, EncodedFieldMask::r5900_immediate5, (u8))
+    RAB_DEF_OPERAND(r5900, immediate15, EncodedFieldMask::r5900_immediate15, (u16))
+
     RAB_DEF_OPERAND(r5900, vfs, EncodedFieldMask::r5900_vfs, (R5900VF))
     RAB_DEF_OPERAND(r5900, vft, EncodedFieldMask::r5900_vft, (R5900VF))
     RAB_DEF_OPERAND(r5900, vfd, EncodedFieldMask::r5900_vfd, (R5900VF))
+
+    RAB_DEF_OPERAND(r5900, vis, EncodedFieldMask::r5900_vis, (R5900VI))
+    RAB_DEF_OPERAND(r5900, vit, EncodedFieldMask::r5900_vit, (R5900VI))
+    RAB_DEF_OPERAND(r5900, vid, EncodedFieldMask::r5900_vid, (R5900VI))
+
+    RAB_DEF_OPERAND(r5900, ACCxyzw, EncodedFieldMask::r5900_xyzw_xyzw, (bool, bool, bool, bool))
+
     RAB_DEF_OPERAND(r5900, vfsxyzw, EncodedFieldMask::r5900_vfs.union(EncodedFieldMask::r5900_xyzw_xyzw), (R5900VF, bool, bool, bool, bool))
     RAB_DEF_OPERAND(r5900, vftxyzw, EncodedFieldMask::r5900_vft.union(EncodedFieldMask::r5900_xyzw_xyzw), (R5900VF, bool, bool, bool, bool))
     RAB_DEF_OPERAND(r5900, vfdxyzw, EncodedFieldMask::r5900_vfd.union(EncodedFieldMask::r5900_xyzw_xyzw), (R5900VF, bool, bool, bool, bool))
     RAB_DEF_OPERAND(r5900, vftn, EncodedFieldMask::r5900_vft.union(EncodedFieldMask::r5900_n), (R5900VF, u8))
     RAB_DEF_OPERAND(r5900, vfsl, EncodedFieldMask::r5900_vfs.union(EncodedFieldMask::r5900_l), (R5900VF, u8))
     RAB_DEF_OPERAND(r5900, vftm, EncodedFieldMask::r5900_vft.union(EncodedFieldMask::r5900_m), (R5900VF, u8))
-    RAB_DEF_OPERAND(r5900, vis, EncodedFieldMask::r5900_vis, (R5900VI))
-    RAB_DEF_OPERAND(r5900, vit, EncodedFieldMask::r5900_vit, (R5900VI))
-    RAB_DEF_OPERAND(r5900, vid, EncodedFieldMask::r5900_vid, (R5900VI))
+
     RAB_DEF_OPERAND(r5900, vis_predecr, EncodedFieldMask::r5900_vis, ((), R5900VI))
     RAB_DEF_OPERAND(r5900, vit_predecr, EncodedFieldMask::r5900_vit, ((), R5900VI))
     RAB_DEF_OPERAND(r5900, vis_postincr, EncodedFieldMask::r5900_vis, (R5900VI, ()))
     RAB_DEF_OPERAND(r5900, vit_postincr, EncodedFieldMask::r5900_vit, (R5900VI, ()))
     RAB_DEF_OPERAND(r5900, vis_parenthesis, EncodedFieldMask::r5900_vis, (R5900VI))
-    RAB_DEF_OPERAND(r5900, immediate5, EncodedFieldMask::r5900_immediate5, (u8))
-    RAB_DEF_OPERAND(r5900, immediate15, EncodedFieldMask::r5900_immediate15, (u16))

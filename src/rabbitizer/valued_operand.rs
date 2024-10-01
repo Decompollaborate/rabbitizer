@@ -174,15 +174,24 @@ impl ValuedOperand {
             Operand::r5900_Q => Self::r5900_Q(),
             Operand::r5900_R => Self::r5900_R(),
             Operand::r5900_ACC => Self::r5900_ACC(),
+            Operand::r5900_immediate5 => {
+                Self::r5900_immediate5(instr.field_r5900_immediate5_unchecked())
+            }
+            Operand::r5900_immediate15 => {
+                Self::r5900_immediate15(instr.field_r5900_immediate15_unchecked())
+            }
+            Operand::r5900_vfs => Self::r5900_vfs(instr.field_r5900_vfs_unchecked()),
+            Operand::r5900_vft => Self::r5900_vft(instr.field_r5900_vft_unchecked()),
+            Operand::r5900_vfd => Self::r5900_vfd(instr.field_r5900_vfd_unchecked()),
+            Operand::r5900_vis => Self::r5900_vis(instr.field_r5900_vis_unchecked()),
+            Operand::r5900_vit => Self::r5900_vit(instr.field_r5900_vit_unchecked()),
+            Operand::r5900_vid => Self::r5900_vid(instr.field_r5900_vid_unchecked()),
             Operand::r5900_ACCxyzw => Self::r5900_ACCxyzw(
                 instr.field_r5900_xyzw_x_unchecked(),
                 instr.field_r5900_xyzw_y_unchecked(),
                 instr.field_r5900_xyzw_z_unchecked(),
                 instr.field_r5900_xyzw_w_unchecked(),
             ),
-            Operand::r5900_vfs => Self::r5900_vfs(instr.field_r5900_vfs_unchecked()),
-            Operand::r5900_vft => Self::r5900_vft(instr.field_r5900_vft_unchecked()),
-            Operand::r5900_vfd => Self::r5900_vfd(instr.field_r5900_vfd_unchecked()),
             Operand::r5900_vfsxyzw => Self::r5900_vfsxyzw(
                 instr.field_r5900_vfs_unchecked(),
                 instr.field_r5900_xyzw_x_unchecked(),
@@ -216,9 +225,6 @@ impl ValuedOperand {
                 instr.field_r5900_vft_unchecked(),
                 instr.field_r5900_m_unchecked(),
             ),
-            Operand::r5900_vis => Self::r5900_vis(instr.field_r5900_vis_unchecked()),
-            Operand::r5900_vit => Self::r5900_vit(instr.field_r5900_vit_unchecked()),
-            Operand::r5900_vid => Self::r5900_vid(instr.field_r5900_vid_unchecked()),
             Operand::r5900_vis_predecr => {
                 Self::r5900_vis_predecr((), instr.field_r5900_vis_unchecked())
             }
@@ -233,12 +239,6 @@ impl ValuedOperand {
             }
             Operand::r5900_vis_parenthesis => {
                 Self::r5900_vis_parenthesis(instr.field_r5900_vis_unchecked())
-            }
-            Operand::r5900_immediate5 => {
-                Self::r5900_immediate5(instr.field_r5900_immediate5_unchecked())
-            }
-            Operand::r5900_immediate15 => {
-                Self::r5900_immediate15(instr.field_r5900_immediate15_unchecked())
             }
         }
     }

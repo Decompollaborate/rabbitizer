@@ -801,11 +801,8 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::r5900_ACCxyzw => {
-                if self.has_specific_operand(Operand::r5900_ACC) {
-                    return true;
-                }
-            }
+            Operand::r5900_immediate5 => {}
+            Operand::r5900_immediate15 => {}
 
             Operand::r5900_vfs => {
                 if self.has_specific_operand(Operand::r5900_vfsxyzw) {
@@ -830,6 +827,35 @@ impl OpcodeDescriptor {
 
             Operand::r5900_vfd => {
                 if self.has_specific_operand(Operand::r5900_vfdxyzw) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vis => {
+                if self.has_specific_operand(Operand::r5900_vis_predecr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vis_postincr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vis_parenthesis) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vit => {
+                if self.has_specific_operand(Operand::r5900_vit_predecr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900_vit_postincr) {
+                    return true;
+                }
+            }
+
+            Operand::r5900_vid => {}
+
+            Operand::r5900_ACCxyzw => {
+                if self.has_specific_operand(Operand::r5900_ACC) {
                     return true;
                 }
             }
@@ -876,29 +902,6 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::r5900_vis => {
-                if self.has_specific_operand(Operand::r5900_vis_predecr) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r5900_vis_postincr) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r5900_vis_parenthesis) {
-                    return true;
-                }
-            }
-
-            Operand::r5900_vit => {
-                if self.has_specific_operand(Operand::r5900_vit_predecr) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r5900_vit_postincr) {
-                    return true;
-                }
-            }
-
-            Operand::r5900_vid => {}
-
             Operand::r5900_vis_predecr => {
                 if self.has_operand_alias(Operand::r5900_vis) {
                     return true;
@@ -929,9 +932,6 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::r5900_immediate5 => {}
-
-            Operand::r5900_immediate15 => {}
             /* r5900 */
             Operand::ALL_EMPTY => {}
         }

@@ -960,6 +960,42 @@ impl Instruction {
 
 /// Unchecked R5900 opcode fields
 impl Instruction {
+    /// Returns the `r5900_immediate5` value embedded on the `r5900_immediate5` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `r5900_immediate5` value. It is recommended to use the
+    /// [`field_r5900_immediate5`] function instead.
+    ///
+    /// [`field_r5900_immediate5`]: Instruction::field_r5900_immediate5
+    #[must_use]
+    pub fn field_r5900_immediate5_unchecked(&self) -> u8 {
+        EncodedFieldMask::r5900_immediate5
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r5900_immediate15` value embedded on the `r5900_immediate15` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `r5900_immediate15` value. It is recommended to use the
+    /// [`field_r5900_immediate15`] function instead.
+    ///
+    /// [`field_r5900_immediate15`]: Instruction::field_r5900_immediate15
+    #[must_use]
+    pub fn field_r5900_immediate15_unchecked(&self) -> u16 {
+        EncodedFieldMask::r5900_immediate15
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
     /// Returns the [`R5900VF`] register embedded on the `r5900_vfs` field of the word
     /// of this instruction.
     ///
@@ -1012,6 +1048,63 @@ impl Instruction {
     #[must_use]
     pub fn field_r5900_vfd_unchecked(&self) -> R5900VF {
         EncodedFieldMask::r5900_vfd
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R5900VI`] register embedded on the `r5900_vis` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r5900_vis`]
+    /// function instead.
+    ///
+    /// [`R5900VI`]: crate::registers::R5900VI
+    /// [`field_r5900_vis`]: Instruction::field_r5900_vis
+    #[must_use]
+    pub fn field_r5900_vis_unchecked(&self) -> R5900VI {
+        EncodedFieldMask::r5900_vis
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R5900VI`] register embedded on the `r5900_vit` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r5900_vit`]
+    /// function instead.
+    ///
+    /// [`R5900VI`]: crate::registers::R5900VI
+    /// [`field_r5900_vit`]: Instruction::field_r5900_vit
+    #[must_use]
+    pub fn field_r5900_vit_unchecked(&self) -> R5900VI {
+        EncodedFieldMask::r5900_vit
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R5900VI`] register embedded on the `r5900_vid` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r5900_vid`]
+    /// function instead.
+    ///
+    /// [`R5900VI`]: crate::registers::R5900VI
+    /// [`field_r5900_vid`]: Instruction::field_r5900_vid
+    #[must_use]
+    pub fn field_r5900_vid_unchecked(&self) -> R5900VI {
+        EncodedFieldMask::r5900_vid
             .get_shifted(self.word())
             .try_into()
             .unwrap()
@@ -1126,99 +1219,6 @@ impl Instruction {
     #[must_use]
     pub fn field_r5900_m_unchecked(&self) -> u8 {
         EncodedFieldMask::r5900_m
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
-    }
-
-    /// Returns the [`R5900VI`] register embedded on the `r5900_vis` field of the word
-    /// of this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has this field, meaning that calling this function on an
-    /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vis`]
-    /// function instead.
-    ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`field_r5900_vis`]: Instruction::field_r5900_vis
-    #[must_use]
-    pub fn field_r5900_vis_unchecked(&self) -> R5900VI {
-        EncodedFieldMask::r5900_vis
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
-    }
-
-    /// Returns the [`R5900VI`] register embedded on the `r5900_vit` field of the word
-    /// of this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has this field, meaning that calling this function on an
-    /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vit`]
-    /// function instead.
-    ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`field_r5900_vit`]: Instruction::field_r5900_vit
-    #[must_use]
-    pub fn field_r5900_vit_unchecked(&self) -> R5900VI {
-        EncodedFieldMask::r5900_vit
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
-    }
-
-    /// Returns the [`R5900VI`] register embedded on the `r5900_vid` field of the word
-    /// of this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has this field, meaning that calling this function on an
-    /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vid`]
-    /// function instead.
-    ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`field_r5900_vid`]: Instruction::field_r5900_vid
-    #[must_use]
-    pub fn field_r5900_vid_unchecked(&self) -> R5900VI {
-        EncodedFieldMask::r5900_vid
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
-    }
-
-    /// Returns the `r5900_immediate5` value embedded on the `r5900_immediate5` field of
-    /// the word of this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has this field, meaning that calling this function on an
-    /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_immediate5` value. It is recommended to use the
-    /// [`field_r5900_immediate5`] function instead.
-    ///
-    /// [`field_r5900_immediate5`]: Instruction::field_r5900_immediate5
-    #[must_use]
-    pub fn field_r5900_immediate5_unchecked(&self) -> u8 {
-        EncodedFieldMask::r5900_immediate5
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
-    }
-
-    /// Returns the `r5900_immediate15` value embedded on the `r5900_immediate15` field of
-    /// the word of this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has this field, meaning that calling this function on an
-    /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_immediate15` value. It is recommended to use the
-    /// [`field_r5900_immediate15`] function instead.
-    ///
-    /// [`field_r5900_immediate15`]: Instruction::field_r5900_immediate15
-    #[must_use]
-    pub fn field_r5900_immediate15_unchecked(&self) -> u16 {
-        EncodedFieldMask::r5900_immediate15
             .get_shifted(self.word())
             .try_into()
             .unwrap()
