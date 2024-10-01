@@ -28,3 +28,5 @@
         instr_type: InstrType::REGIMM,
         reads_rs: true
     )
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, regimm)

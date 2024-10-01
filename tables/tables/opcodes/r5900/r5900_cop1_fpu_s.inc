@@ -118,3 +118,5 @@
         reads_fs: true,
         reads_ft: true
     )
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor1_fpu_s)

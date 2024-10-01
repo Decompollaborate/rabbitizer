@@ -35,3 +35,5 @@
         operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
         reads_rt: true
     )
+
+    RAB_DEF_OPCODE_REDIRECT(0x08, r5900, coprocessor2_bc2)

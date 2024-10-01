@@ -64,6 +64,7 @@ pub enum Opcode {
     core_b,
     core_beqz,
     core_bnez,
+
     core_sll,
     core_srl,
     core_sra,
@@ -144,6 +145,7 @@ pub enum Opcode {
     core_mtc0,
     core_dmtc0,
     core_ctc0,
+
     core_bc0f,
     core_bc0t,
     core_bc0fl,
@@ -160,6 +162,7 @@ pub enum Opcode {
     core_dmtc1,
     core_cfc1,
     core_ctc1,
+
     core_bc1f,
     core_bc1t,
     core_bc1fl,
@@ -246,6 +249,7 @@ pub enum Opcode {
     rsp_mtc2,
     rsp_cfc2,
     rsp_ctc2,
+
     rsp_vmulf,
     rsp_vmulu,
     rsp_vrndp,
@@ -339,6 +343,7 @@ pub enum Opcode {
     rsp_b,
     rsp_beqz,
     rsp_bnez,
+
     rsp_sll,
     rsp_srl,
     rsp_sra,
@@ -372,6 +377,7 @@ pub enum Opcode {
     rsp_bal,
     rsp_mfc0,
     rsp_mtc0,
+
     r3000gte_RTPS,
     r3000gte_RTPT,
     r3000gte_DPCL,
@@ -690,12 +696,15 @@ pub enum Opcode {
     r5900_sq,
     r5900_lqc2,
     r5900_sqc2,
+
     r5900_sync_p,
     r5900_mult,
     r5900_mfsa,
     r5900_mtsa,
+
     r5900_mtsab,
     r5900_mtsah,
+
     r5900_madd,
     r5900_maddu,
     r5900_plzcw,
@@ -715,6 +724,7 @@ pub enum Opcode {
     r5900_psllw,
     r5900_psrlw,
     r5900_psraw,
+
     r5900_paddw,
     r5900_psubw,
     r5900_pcgtw,
@@ -799,8 +809,10 @@ pub enum Opcode {
     r5900_pmfhl_lh,
     r5900_pmfhl_sh,
     r5900_pmthl_lw,
+
     r5900_ei,
     r5900_di,
+
     r5900_c1__sqrt_s,
     r5900_rsqrt_s,
     r5900_adda_s,
@@ -814,10 +826,12 @@ pub enum Opcode {
     r5900_min_s,
     r5900_c_lt_s,
     r5900_c_le_s,
+
     r5900_qmfc2,
     r5900_cfc2,
     r5900_qmtc2,
     r5900_ctc2,
+
     r5900_bc2f,
     r5900_bc2t,
     r5900_bc2fl,
@@ -877,6 +891,7 @@ pub enum Opcode {
     r5900_vior,
     r5900_vcallms,
     r5900_vcallmsr,
+
     r5900_vaddax,
     r5900_vadday,
     r5900_vaddaz,
@@ -940,6 +955,7 @@ pub enum Opcode {
     r5900_vrget,
     r5900_vrinit,
     r5900_vrxor,
+
     r5900_vilwr_w,
     r5900_vilwr_z,
     r5900_vilwr_y,

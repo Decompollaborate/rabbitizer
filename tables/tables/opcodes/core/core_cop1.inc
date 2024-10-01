@@ -67,3 +67,9 @@
         is_float: true,
         reads_rt: true
     ) // Move Control Word to Floating-Point
+
+    RAB_DEF_OPCODE_REDIRECT(0x08, none, coprocessor1_bc1)
+    RAB_DEF_OPCODE_REDIRECT(0x10, none, coprocessor1_fpu_s)
+    RAB_DEF_OPCODE_REDIRECT(0x11, none, coprocessor1_fpu_d)
+    RAB_DEF_OPCODE_REDIRECT(0x14, none, coprocessor1_fpu_w)
+    RAB_DEF_OPCODE_REDIRECT(0x15, none, coprocessor1_fpu_l)

@@ -44,3 +44,5 @@
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Move To Shift Amount register
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, special)

@@ -27,3 +27,5 @@
         r5900, 0x39, di, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr0()
     )
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor0_tlb)

@@ -398,3 +398,6 @@
         r5900, 0x403, vrxor, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr2(Operand::r5900_R, Operand::r5900_vfsl)
     )
+
+    RAB_DEF_OPCODE_REDIRECT(0x3C2, r5900, coprocessor2_viwr)
+    RAB_DEF_OPCODE_REDIRECT(0x3C3, r5900, coprocessor2_viwr)

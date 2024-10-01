@@ -244,3 +244,11 @@
         reads_rs: true,
         is_branch: true
     ) // Branch on Not Equal Zero
+
+    RAB_DEF_OPCODE_REDIRECT(0x00, rsp, special)
+    RAB_DEF_OPCODE_REDIRECT(0x01, rsp, regimm)
+    RAB_DEF_OPCODE_REDIRECT(0x10, rsp, coprocessor0)
+    RAB_DEF_OPCODE_REDIRECT(0x11, rsp, coprocessor1)
+    RAB_DEF_OPCODE_REDIRECT(0x12, rsp, coprocessor2)
+    RAB_DEF_OPCODE_REDIRECT(0x32, rsp, lwc2)
+    RAB_DEF_OPCODE_REDIRECT(0x3A, rsp, swc2)

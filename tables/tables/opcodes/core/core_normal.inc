@@ -15,8 +15,10 @@
 110 | LL    | LWC1  | LWC2  | PREF  | LLD   | LDC1  | LDC2  | LD    |
 111 | SC    | SWC1  | SWC2  | ---   | SCD   | SDC1  | SDC2  | SD    |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
-     *1 = SPECIAL, see SPECIAL list    *2 = REGIMM, see REGIMM list
-     *3 = COP0                         *4 = COP1
+     *1 = SPECIAL, see SPECIAL list
+     *2 = REGIMM, see REGIMM list
+     *3 = COP0
+     *4 = COP1
      *5 = COP2
 */
 
@@ -570,3 +572,9 @@
         reads_rs: true,
         is_branch: true
     ) // Branch on Not Equal Zero
+
+    RAB_DEF_OPCODE_REDIRECT(0x00, none, special)
+    RAB_DEF_OPCODE_REDIRECT(0x01, none, regimm)
+    RAB_DEF_OPCODE_REDIRECT(0x10, none, coprocessor0)
+    RAB_DEF_OPCODE_REDIRECT(0x11, none, coprocessor1)
+    RAB_DEF_OPCODE_REDIRECT(0x12, none, coprocessor2)

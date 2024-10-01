@@ -20,13 +20,23 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
         isa_extension: IsaExtension,
     ) -> Self {
+        let mandatory_bits = EncodedFieldMask::empty();
+
         // TODO
         match isa_extension {
-            IsaExtension::NONE => Self::decode_isa_extension_none(word, flags, isa_version),
-            IsaExtension::RSP => Self::decode_isa_extension_rsp(word, flags, isa_version),
-            IsaExtension::R3000GTE => Self::decode_isa_extension_r3000gte(word, flags, isa_version),
-            // IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex(word, flags, isa_version),
-            IsaExtension::R5900 => Self::decode_isa_extension_r5900(word, flags, isa_version),
+            IsaExtension::NONE => {
+                Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version)
+            }
+            IsaExtension::RSP => {
+                Self::decode_isa_extension_rsp_normal(word, mandatory_bits, flags, isa_version)
+            }
+            IsaExtension::R3000GTE => {
+                Self::decode_isa_extension_r3000gte_normal(word, mandatory_bits, flags, isa_version)
+            }
+            // IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex_normal(word, mandatory_bits, flags, isa_version),
+            IsaExtension::R5900 => {
+                Self::decode_isa_extension_r5900_normal(word, mandatory_bits, flags, isa_version)
+            }
             _ => Self {
                 opcode: Opcode::ALL_INVALID,
                 opcode_category: OpcodeCategory::ALL_INVALID,
@@ -64,44 +74,6 @@ impl OpcodeDecoder {
 
 // IsaExtension::NONE
 impl OpcodeDecoder {
-    #[must_use]
-    pub(crate) const fn decode_isa_extension_none(
-        word: u32,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
-    ) -> Self {
-        let mask = EncodedFieldMask::opcode;
-        let mandatory_bits = mask.mask_value(word);
-
-        match mask.get_shifted(word) {
-            0x00 => {
-                Self::decode_isa_extension_none_special(word, mandatory_bits, flags, isa_version)
-            }
-            0x01 => {
-                Self::decode_isa_extension_none_regimm(word, mandatory_bits, flags, isa_version)
-            }
-            0x10 => Self::decode_isa_extension_none_coprocessor0(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x11 => Self::decode_isa_extension_none_coprocessor1(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x12 => Self::decode_isa_extension_none_coprocessor2(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            _ => Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version),
-        }
-    }
-
     #[must_use]
     pub(crate) const fn fixups_decode_isa_extension_none_normal(
         word: u32,
@@ -215,42 +187,6 @@ impl OpcodeDecoder {
 
 /// IsaExtension::RSP
 impl OpcodeDecoder {
-    #[must_use]
-    pub(crate) const fn decode_isa_extension_rsp(
-        word: u32,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
-    ) -> Self {
-        let mask = EncodedFieldMask::opcode;
-        let mandatory_bits = mask.mask_value(word);
-
-        match mask.get_shifted(word) {
-            0x00 => {
-                Self::decode_isa_extension_rsp_special(word, mandatory_bits, flags, isa_version)
-            }
-            0x01 => Self::decode_isa_extension_rsp_regimm(word, mandatory_bits, flags, isa_version),
-            0x10 => Self::decode_isa_extension_rsp_coprocessor0(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x11 => Self::decode_isa_extension_rsp_coprocessor1(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x12 => Self::decode_isa_extension_rsp_coprocessor2(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            _ => Self::decode_isa_extension_rsp_normal(word, mandatory_bits, flags, isa_version),
-        }
-    }
-
     #[must_use]
     pub(crate) const fn fixups_decode_isa_extension_rsp_normal(
         word: u32,
@@ -422,87 +358,10 @@ impl OpcodeDecoder {
 }
 
 // IsaExtension::R3000GTE
-impl OpcodeDecoder {
-    #[must_use]
-    pub(crate) const fn decode_isa_extension_r3000gte(
-        word: u32,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
-    ) -> Self {
-        let mask = EncodedFieldMask::opcode;
-        let mandatory_bits = mask.mask_value(word);
-
-        match mask.get_shifted(word) {
-            0x00 => {
-                Self::decode_isa_extension_none_special(word, mandatory_bits, flags, isa_version)
-            }
-            0x01 => {
-                Self::decode_isa_extension_none_regimm(word, mandatory_bits, flags, isa_version)
-            }
-            0x10 => Self::decode_isa_extension_none_coprocessor0(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x11 => Self::decode_isa_extension_none_coprocessor1(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x12 => Self::decode_isa_extension_r3000gte_coprocessor2(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            _ => Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version),
-        }
-    }
-}
+impl OpcodeDecoder {}
 
 // IsaExtension::R5900
 impl OpcodeDecoder {
-    #[must_use]
-    pub(crate) const fn decode_isa_extension_r5900(
-        word: u32,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
-    ) -> Self {
-        let mask = EncodedFieldMask::opcode;
-        let mandatory_bits = mask.mask_value(word);
-
-        match mask.get_shifted(word) {
-            0x00 => {
-                Self::decode_isa_extension_r5900_special(word, mandatory_bits, flags, isa_version)
-            }
-            0x01 => {
-                Self::decode_isa_extension_r5900_regimm(word, mandatory_bits, flags, isa_version)
-            }
-            0x10 => Self::decode_isa_extension_r5900_coprocessor0(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x11 => Self::decode_isa_extension_r5900_coprocessor1(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x12 => Self::decode_isa_extension_r5900_coprocessor2(
-                word,
-                mandatory_bits,
-                flags,
-                isa_version,
-            ),
-            0x1C => Self::decode_isa_extension_r5900_mmi(word, mandatory_bits, flags, isa_version),
-            _ => Self::decode_isa_extension_r5900_normal(word, mandatory_bits, flags, isa_version),
-        }
-    }
-
     #[must_use]
     pub(crate) const fn fixups_decode_isa_extension_r5900_special(
         self,

@@ -57,3 +57,6 @@
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // Move control word To CP0
+
+    RAB_DEF_OPCODE_REDIRECT(0x08, none, coprocessor0_bc0)
+    RAB_DEF_OPCODE_REDIRECT(0x10, none, coprocessor0_tlb)

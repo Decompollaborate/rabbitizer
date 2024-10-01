@@ -61,3 +61,11 @@
         does_dereference: true,
         does_store: true
     )
+
+    RAB_DEF_OPCODE_REDIRECT(0x00, r5900, special)
+    RAB_DEF_OPCODE_REDIRECT(0x01, r5900, regimm)
+    RAB_DEF_OPCODE_REDIRECT(0x10, r5900, coprocessor0)
+    RAB_DEF_OPCODE_REDIRECT(0x11, r5900, coprocessor1)
+    RAB_DEF_OPCODE_REDIRECT(0x12, r5900, coprocessor2)
+    RAB_DEF_OPCODE_REDIRECT(0x1C, r5900, mmi)
+    RAB_DEF_OPCODE_REDIRECT(_, none, normal)

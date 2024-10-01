@@ -7,7 +7,7 @@
 // #![allow(clippy::restriction)]
 // #![allow(clippy::nursery)]
 #![allow(clippy::manual_range_patterns)]
-#![allow(clippy::needless_late_init)]
+#![allow(clippy::needless_return)]
 #![warn(clippy::exhaustive_enums)]
 
 mod array_opcodes;

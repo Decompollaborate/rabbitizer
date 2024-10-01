@@ -6,12 +6,15 @@
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
 #define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
-    case_bits => opcode = Opcode::prefix##_##name,
+    case_bits => Opcode::prefix##_##name,
 
 #define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
     RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...)
+
+#define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind) \
+    case_bits => return Self::decode_isa_extension_## prefix ##_## kind (word, mandatory_bits, flags, isa_version),
 
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
@@ -24,15 +27,13 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::opcode;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_NORMAL;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_normal.inc"
-            _ => return Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version),
-        }
+        };
         Self {
             opcode,
             opcode_category,
@@ -48,15 +49,13 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_SPECIAL;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_special.inc"
-            _ => return Self::decode_isa_extension_none_special(word, mandatory_bits, flags, isa_version),
-        }
+        };
         Self {
             opcode,
             opcode_category,
@@ -72,15 +71,13 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rt;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_REGIMM;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_regimm.inc"
-            _ => return Self::decode_isa_extension_none_regimm(word, mandatory_bits, flags, isa_version),
-        }
+        };
         Self {
             opcode,
             opcode_category,
@@ -101,8 +98,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-            0x10 => Self::decode_isa_extension_r5900_coprocessor0_tlb(word, mandatory_bits, flags, isa_version),
-            _ => Self::decode_isa_extension_none_coprocessor0(word, mandatory_bits, flags, isa_version),
+#include "opcodes/r5900/r5900_cop0.inc"
         }
     }
 
@@ -114,15 +110,13 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_COP0_TLB;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_cop0_tlb.inc"
-            _ => return Self::decode_isa_extension_none_coprocessor0_tlb(word, mandatory_bits, flags, isa_version),
-        }
+        };
         Self {
             opcode,
             opcode_category,
@@ -143,8 +137,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-            0x10 => Self::decode_isa_extension_r5900_coprocessor1_fpu_s(word, mandatory_bits, flags, isa_version),
-            _ => Self::decode_isa_extension_none_coprocessor1(word, mandatory_bits, flags, isa_version),
+#include "opcodes/r5900/r5900_cop1.inc"
         }
     }
 
@@ -156,15 +149,13 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_COP1_FPUS;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_cop1_fpu_s.inc"
-            _ => return Self::decode_isa_extension_none_coprocessor1_fpu_s(word, mandatory_bits, flags, isa_version),
-        }
+        };
         Self {
             opcode,
             opcode_category,
@@ -180,16 +171,15 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_highbit;
-        let opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
-            0x00 => return Self::decode_isa_extension_r5900_coprocessor2_nohighbit(word, mandatory_bits, flags, isa_version),
-            0x01 => return Self::decode_isa_extension_r5900_coprocessor2_special1(word, mandatory_bits, flags, isa_version),
-            _ => {},
-        }
+        let opcode = match mask.get_shifted(word) {
+            RAB_DEF_OPCODE_REDIRECT(0x0, r5900, coprocessor2_nohighbit)
+            RAB_DEF_OPCODE_REDIRECT(0x1, r5900, coprocessor2_special1)
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -205,16 +195,14 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_cop2_nohighbit_fmt;
-        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_NOHIGHBIT;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_cop2.inc"
-            0x08 => return Self::decode_isa_extension_r5900_coprocessor2_bc2(word, mandatory_bits, flags, isa_version),
-            _ => {},
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -230,15 +218,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
-        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_BC2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_cop2_bc2.inc"
-            _ => {},
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -254,16 +241,14 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_SPECIAL1;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_cop2_special1.inc"
-            0x3C | 0x3D | 0x3E | 0x3F => return Self::decode_isa_extension_r5900_coprocessor2_special2(word, mandatory_bits, flags, isa_version),
-            _ => {},
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -279,16 +264,14 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_fhi_flo;
-        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_SPECIAL2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_cop2_special2.inc"
-            0x3C2 | 0x3C3 => return Self::decode_isa_extension_r5900_coprocessor2_viwr(word, mandatory_bits, flags, isa_version),
-            _ => {},
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -304,15 +287,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_viwr_fhilo;
-        let mut opcode = Opcode::ALL_INVALID;
         let opcode_category = OpcodeCategory::R5900_COP2_VIWR;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_cop2_viwr.inc"
-            _ => {},
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -328,24 +310,14 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_MMI;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_mmi.inc"
-
-            0x08 => return Self::decode_isa_extension_r5900_mmi_0(word, mandatory_bits, flags, isa_version),
-            0x09 => return Self::decode_isa_extension_r5900_mmi_2(word, mandatory_bits, flags, isa_version),
-            0x28 => return Self::decode_isa_extension_r5900_mmi_1(word, mandatory_bits, flags, isa_version),
-            0x29 => return Self::decode_isa_extension_r5900_mmi_3(word, mandatory_bits, flags, isa_version),
-
-            0x30 => return Self::decode_isa_extension_r5900_mmi_pmfhl(word, mandatory_bits, flags, isa_version),
-            0x31 => return Self::decode_isa_extension_r5900_mmi_pmthl(word, mandatory_bits, flags, isa_version),
-
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -361,15 +333,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_MMI_0;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_mmi_0.inc"
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -385,15 +356,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_MMI_1;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_mmi_1.inc"
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -409,15 +379,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_MMI_2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_mmi_2.inc"
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -433,15 +402,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_MMI_3;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_mmi_3.inc"
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -457,15 +425,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_MMI_PMFHL;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_mmi_pmfhl.inc"
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -481,15 +448,14 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r5900_mmi_function;
-        let opcode;
         let opcode_category = OpcodeCategory::R5900_MMI_PMTHL;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r5900/r5900_mmi_pmthl.inc"
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -502,3 +468,4 @@ impl OpcodeDecoder {
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
+#undef RAB_DEF_OPCODE_REDIRECT

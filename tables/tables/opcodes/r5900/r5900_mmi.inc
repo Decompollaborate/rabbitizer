@@ -144,3 +144,10 @@
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Arithmetic Word
+
+    RAB_DEF_OPCODE_REDIRECT(0x08, r5900, mmi_0)
+    RAB_DEF_OPCODE_REDIRECT(0x09, r5900, mmi_2)
+    RAB_DEF_OPCODE_REDIRECT(0x28, r5900, mmi_1)
+    RAB_DEF_OPCODE_REDIRECT(0x29, r5900, mmi_3)
+    RAB_DEF_OPCODE_REDIRECT(0x30, r5900, mmi_pmfhl)
+    RAB_DEF_OPCODE_REDIRECT(0x31, r5900, mmi_pmthl)

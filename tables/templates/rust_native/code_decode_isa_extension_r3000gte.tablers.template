@@ -6,16 +6,36 @@
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
 #define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
-    case_bits => opcode = Opcode::prefix##_##name,
+    case_bits => Opcode::prefix##_##name,
 
 #define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, isa_version_min, isa_exten, altname, ...) \
     RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...)
 
+#define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind) \
+    case_bits => return Self::decode_isa_extension_## prefix ##_## kind (word, mandatory_bits, flags, isa_version),
+
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
 impl OpcodeDecoder {
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r3000gte_normal(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::opcode;
+        let _opcode_category = OpcodeCategory::CORE_NORMAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        match mask.get_shifted(word) {
+#include "opcodes/r3000gte/r3000gte_normal.inc"
+        }
+    }
+
     SPECIAL_RS_TAG(must_use)
     pub(crate) const fn decode_isa_extension_r3000gte_coprocessor2(
         word: u32,
@@ -28,8 +48,7 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         match mask.get_shifted(word) {
-            0x10 | 0x11 | 0x12 | 0x13 | 0x14 | 0x15 | 0x16 | 0x17 | 0x18 | 0x19 | 0x1A | 0x1B | 0x1C | 0x1D => Self::decode_isa_extension_r3000gte_coprocessor2_gte(word, mandatory_bits, flags, isa_version),
-            _ => Self::decode_isa_extension_none_coprocessor2(word, mandatory_bits, flags, isa_version),
+#include "opcodes/r3000gte/r3000gte_cop2.inc"
         }
     }
 
@@ -41,7 +60,6 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let opcode;
         let opcode_category = OpcodeCategory::R3000GTE_COP2_GTE;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
@@ -54,10 +72,10 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_cv.mask_value(word));
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_lm.mask_value(word));
 
-        match mask.get_shifted(word) {
+        let opcode = match mask.get_shifted(word) {
 #include "opcodes/r3000gte/r3000gte_cop2_gte.inc"
-            _ => opcode = Opcode::ALL_INVALID,
-        }
+            _ => Opcode::ALL_INVALID,
+        };
         Self {
             opcode,
             opcode_category,
@@ -70,3 +88,4 @@ impl OpcodeDecoder {
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
+#undef RAB_DEF_OPCODE_REDIRECT

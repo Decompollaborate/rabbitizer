@@ -615,6 +615,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bnez", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
+
     table[Opcode::core_sll as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
@@ -1329,6 +1330,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ctc0", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
+
     table[Opcode::core_bc0f as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
@@ -1452,6 +1454,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ctc1", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
+
     table[Opcode::core_bc1f as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
@@ -2208,6 +2211,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ctc2", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();
+
     table[Opcode::rsp_vmulf as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::rsp_vd,
@@ -2972,6 +2976,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bnez", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();
+
     table[Opcode::rsp_sll as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::rsp_rd, Operand::rsp_rt, Operand::core_sa),
         instr_type: InstrType::R,
@@ -3263,6 +3268,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mtc0", IsaVersion::EXTENSION, IsaExtension::RSP)
     }
     .check_panic_chain();
+
     table[Opcode::r3000gte_RTPS as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         ..OpcodeDescriptor::new("RTPS", IsaVersion::EXTENSION, IsaExtension::R3000GTE)
@@ -6182,6 +6188,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sqc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_sync_p as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::R,
@@ -6209,6 +6216,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mtsa", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_mtsab as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
@@ -6223,6 +6231,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mtsah", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_madd as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
@@ -6358,6 +6367,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("psraw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_paddw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
@@ -6997,6 +7007,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("pmthl.lw", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_ei as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         ..OpcodeDescriptor::new("ei", IsaVersion::EXTENSION, IsaExtension::R5900)
@@ -7007,6 +7018,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("di", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_c1__sqrt_s as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_copraw),
         ..OpcodeDescriptor::new("c1", IsaVersion::EXTENSION, IsaExtension::R5900)
@@ -7113,6 +7125,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("c.le.s", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_qmfc2 as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
         modifies_rt: true,
@@ -7137,6 +7150,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ctc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_bc2f as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
@@ -7730,6 +7744,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vcallmsr", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_vaddax as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::r5900_ACCxyzw,
@@ -8288,6 +8303,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vrxor", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
+
     table[Opcode::r5900_vilwr_w as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
         is_float: true,

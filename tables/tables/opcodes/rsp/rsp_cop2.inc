@@ -22,3 +22,5 @@
         operands: Operand::arr2(Operand::core_rt, Operand::rsp_cop2cd),
         reads_rt: true
     )
+
+    RAB_DEF_OPCODE_REDIRECT(_, rsp, coprocessor2_vu)

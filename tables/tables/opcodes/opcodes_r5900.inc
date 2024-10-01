@@ -13,8 +13,10 @@
     #include "r5900/r5900_mmi_pmfhl.inc"
     #include "r5900/r5900_mmi_pmthl.inc"
 
+    #include "r5900/r5900_cop0.inc"
     #include "r5900/r5900_cop0_tlb.inc"
 
+    #include "r5900/r5900_cop1.inc"
     #include "r5900/r5900_cop1_fpu_s.inc"
 
     #include "r5900/r5900_cop2.inc"

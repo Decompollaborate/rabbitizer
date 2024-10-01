@@ -340,3 +340,8 @@
         r5900, 0x39, vcallmsr, IsaVersion::EXTENSION, IsaExtension::R5900,
         operands: Operand::arr1(Operand::r5900_vis)
     )
+
+    RAB_DEF_OPCODE_REDIRECT(0x3C, r5900, coprocessor2_special2)
+    RAB_DEF_OPCODE_REDIRECT(0x3D, r5900, coprocessor2_special2)
+    RAB_DEF_OPCODE_REDIRECT(0x3E, r5900, coprocessor2_special2)
+    RAB_DEF_OPCODE_REDIRECT(0x3F, r5900, coprocessor2_special2)
