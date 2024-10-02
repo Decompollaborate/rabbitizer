@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-    // OP cop2t, vd[index]
+    // OP cop2t, vs[index]
     RAB_DEF_OPCODE(
         rsp, 0x00, mfc2, IsaVersion::EXTENSION, IsaExtension::RSP,
         operands: Operand::arr2(Operand::rsp_cop2t, Operand::rsp_vs_index)

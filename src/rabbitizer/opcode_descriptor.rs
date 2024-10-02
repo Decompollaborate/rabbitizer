@@ -524,32 +524,14 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::rsp_vt => {
-                if self.has_specific_operand(Operand::rsp_vt_elementhigh) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::rsp_vt_elementlow) {
-                    return true;
-                }
-            }
-
             Operand::rsp_vd => {
                 if self.has_specific_operand(Operand::rsp_vd_de) {
                     return true;
                 }
             }
 
-            Operand::rsp_vt_elementhigh => {
-                if self.has_operand_alias(Operand::rsp_vt) {
-                    return true;
-                }
-            }
-
-            Operand::rsp_vt_elementlow => {
-                if self.has_operand_alias(Operand::rsp_vt) {
-                    return true;
-                }
-            }
+            Operand::rsp_vt_elementhigh => {}
+            Operand::rsp_vt_elementlow => {}
 
             Operand::rsp_vd_de => {
                 if self.has_operand_alias(Operand::rsp_vd) {

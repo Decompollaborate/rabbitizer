@@ -792,6 +792,213 @@ impl Instruction {
     }
 }
 
+/// Unchecked RSP opcode fields
+impl Instruction {
+    /// Returns the [`RspCop0`] register embedded on the `rsp_cop0d` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_rsp_cop0d`]
+    /// function instead.
+    ///
+    /// [`RspCop0`]: crate::registers::RspCop0
+    /// [`field_rsp_cop0d`]: Instruction::field_rsp_cop0d
+    #[must_use]
+    pub fn field_rsp_cop0d_unchecked(&self) -> RspCop0 {
+        EncodedFieldMask::cop0d
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`RspCop2`] register embedded on the `rsp_cop2t` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_rsp_cop2t`]
+    /// function instead.
+    ///
+    /// [`RspCop2`]: crate::registers::RspCop2
+    /// [`field_rsp_cop2t`]: Instruction::field_rsp_cop2t
+    #[must_use]
+    pub fn field_rsp_cop2t_unchecked(&self) -> RspCop2 {
+        EncodedFieldMask::cop2t
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`RspCop2`] register embedded on the `rsp_cop2cd` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_rsp_cop2cd`]
+    /// function instead.
+    ///
+    /// [`RspCop2`]: crate::registers::RspCop2
+    /// [`field_rsp_cop2cd`]: Instruction::field_rsp_cop2cd
+    #[must_use]
+    pub fn field_rsp_cop2cd_unchecked(&self) -> RspCop2 {
+        EncodedFieldMask::cop2cd
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`RspVector`] register embedded on the `rsp_vs` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_rsp_vs`]
+    /// function instead.
+    ///
+    /// [`RspVector`]: crate::registers::RspVector
+    /// [`field_rsp_vs`]: Instruction::field_rsp_vs
+    #[must_use]
+    pub fn field_rsp_vs_unchecked(&self) -> RspVector {
+        EncodedFieldMask::rsp_vs
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`RspVector`] register embedded on the `rsp_vt` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_rsp_vs`]
+    /// function instead.
+    ///
+    /// [`RspVector`]: crate::registers::RspVector
+    /// [`field_rsp_vt`]: Instruction::field_rsp_vt
+    #[must_use]
+    pub fn field_rsp_vt_unchecked(&self) -> RspVector {
+        EncodedFieldMask::rsp_vt
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`RspVector`] register embedded on the `rsp_vd` field of the word
+    /// of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_rsp_vd`]
+    /// function instead.
+    ///
+    /// [`RspVector`]: crate::registers::RspVector
+    /// [`field_rsp_vd`]: Instruction::field_rsp_vd
+    #[must_use]
+    pub fn field_rsp_vd_unchecked(&self) -> RspVector {
+        EncodedFieldMask::rsp_vd
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `rsp_elementhigh` value embedded on the `rsp_elementhigh`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`field_rsp_elementhigh`] function instead.
+    ///
+    /// [`field_rsp_elementhigh`]: Instruction::field_rsp_elementhigh
+    #[must_use]
+    pub fn field_rsp_elementhigh_unchecked(&self) -> u8 {
+        EncodedFieldMask::rsp_elementhigh
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `rsp_elementlow` value embedded on the `rsp_elementlow` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`field_rsp_elementlow`] function instead.
+    ///
+    /// [`field_rsp_elementlow`]: Instruction::field_rsp_elementlow
+    #[must_use]
+    pub fn field_rsp_elementlow_unchecked(&self) -> u8 {
+        EncodedFieldMask::rsp_elementlow
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `rsp_index` value embedded on the `rsp_index` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`field_rsp_index`] function instead.
+    ///
+    /// [`field_rsp_index`]: Instruction::field_rsp_index
+    #[must_use]
+    pub fn field_rsp_index_unchecked(&self) -> u8 {
+        EncodedFieldMask::rsp_index
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `rsp_offset` value embedded on the `rsp_offset` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`field_rsp_offset`] function instead.
+    ///
+    /// [`field_rsp_offset`]: Instruction::field_rsp_offset
+    #[must_use]
+    pub fn field_rsp_offset_unchecked(&self) -> u8 {
+        EncodedFieldMask::rsp_offset
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `rsp_de` value embedded on the `rsp_de` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`field_rsp_de`] function instead.
+    ///
+    /// [`field_rsp_de`]: Instruction::field_rsp_de
+    #[must_use]
+    pub fn field_rsp_de_unchecked(&self) -> u8 {
+        EncodedFieldMask::rsp_de
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+}
+
 /// R3000GTE opcode fields
 impl Instruction {
     /// Returns either the `r3000gte_sf` value embedded on the `r3000gte_sf`
@@ -1278,6 +1485,39 @@ impl Instruction {
     #[must_use]
     pub const fn get_instr_index_as_vram_unchecked(&self) -> u32 {
         self.vram_from_instr_index(self.field_instr_index_unchecked())
+    }
+
+    #[must_use]
+    pub fn get_processed_rsp_offset_unchecked(&self) -> u16 {
+        let offset: u16 = self.field_rsp_offset_unchecked().into();
+
+        // TODO: do not depend on the opcode to process the offset itself.
+        match self.opcode() {
+            Opcode::rsp_lsv | Opcode::rsp_ssv => offset << 1,
+
+            Opcode::rsp_llv | Opcode::rsp_slv => offset << 2,
+
+            Opcode::rsp_ldv
+            | Opcode::rsp_sdv
+            | Opcode::rsp_lpv
+            | Opcode::rsp_spv
+            | Opcode::rsp_luv
+            | Opcode::rsp_suv => offset << 3,
+
+            Opcode::rsp_lqv
+            | Opcode::rsp_sqv
+            | Opcode::rsp_lrv
+            | Opcode::rsp_srv
+            | Opcode::rsp_lhv
+            | Opcode::rsp_shv
+            | Opcode::rsp_lfv
+            | Opcode::rsp_sfv
+            | Opcode::rsp_ltv
+            | Opcode::rsp_stv
+            | Opcode::rsp_swv => offset << 4,
+
+            _ => offset,
+        }
     }
 }
 

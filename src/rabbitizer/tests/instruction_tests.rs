@@ -1548,12 +1548,26 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
-                    .with_named_fpr(false),
+                    .with_named_fpr(false)
+                    .with_named_rsp_cop0(true),
                 valid: true,
                 expected: "mfc0        $11, SP_DMA_FULL",
                 expected_opcode: Opcode::rsp_mfc0,
                 opcode_str: "mfc0",
                 operands_str: [Some("$11"), Some("SP_DMA_FULL"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_rsp(0x400B2800, 0xA4000000, InstructionFlags::default()),
+                imm_override: None,
+                display_flags: DisplayFlags::default()
+                    .with_named_gpr(false)
+                    .with_named_fpr(false)
+                    .with_named_rsp_cop0(false),
+                valid: true,
+                expected: "mfc0        $11, $5",
+                expected_opcode: Opcode::rsp_mfc0,
+                opcode_str: "mfc0",
+                operands_str: [Some("$11"), Some("$5"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x304203FF, 0xA4000000, InstructionFlags::default()),
@@ -1574,10 +1588,22 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "beqz        $2, .L800B38E8",
+                expected: "beqz        $2, . + 4 + (0x3 << 2)",
                 expected_opcode: Opcode::core_beqz,
                 opcode_str: "beqz",
-                operands_str: [Some("$2"), Some(".L800B38E8"), None, None, None],
+                operands_str: [Some("$2"), Some(". + 4 + (0x3 << 2)"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_rsp(0x10400003, 0xA4000000, InstructionFlags::default()),
+                imm_override: Some(".LA00B38E8"),
+                display_flags: DisplayFlags::default()
+                    .with_named_gpr(false)
+                    .with_named_fpr(false),
+                valid: true,
+                expected: "beqz        $2, .LA00B38E8",
+                expected_opcode: Opcode::core_beqz,
+                opcode_str: "beqz",
+                operands_str: [Some("$2"), Some(".LA00B38E8"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00000000, 0xA4000000, InstructionFlags::default()),
@@ -1610,10 +1636,10 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "jal         func_84001DE8",
+                expected: "jal         func_A4001DE8",
                 expected_opcode: Opcode::core_jal,
                 opcode_str: "jal",
-                operands_str: [Some("func_84001DE8"), None, None, None, None],
+                operands_str: [Some("func_A4001DE8"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xAEEB000C, 0xA4000000, InstructionFlags::default()),
@@ -1629,22 +1655,23 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1560FB8D, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B2288"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "bnez        $11, .L800B2288",
+                expected: "bnez        $11, .LA00B2288",
                 expected_opcode: Opcode::core_bnez,
                 opcode_str: "bnez",
-                operands_str: [Some("$11"), Some(".L800B2288"), None, None, None],
+                operands_str: [Some("$11"), Some(".LA00B2288"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x40921800, 0xA4000000, InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
-                    .with_named_fpr(false),
+                    .with_named_fpr(false)
+                    .with_named_rsp_cop0(true),
                 valid: true,
                 expected: "mtc0        $18, SP_WR_LEN",
                 expected_opcode: Opcode::rsp_mtc0,
@@ -1730,10 +1757,10 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "j           func_84002864",
+                expected: "j           func_A4002864",
                 expected_opcode: Opcode::core_j,
                 opcode_str: "j",
-                operands_str: [Some("func_84002864"), None, None, None, None],
+                operands_str: [Some("func_A4002864"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x37120000, 0xA4000000, InstructionFlags::default()),
@@ -1754,10 +1781,10 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "b           .L800B1A78",
+                expected: "b           .LA00B1A78",
                 expected_opcode: Opcode::core_b,
                 opcode_str: "b",
-                operands_str: [Some(".L800B1A78"), None, None, None, None],
+                operands_str: [Some(".LA00B1A78"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4A0318EC, 0xA4000000, InstructionFlags::default()),

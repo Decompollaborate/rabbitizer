@@ -52,9 +52,6 @@ bitflags! {
 
         /* rsp */
 
-        const rsp_cop2t = utils::bitmask( 16,  5);
-        const rsp_cop2cd = utils::bitmask( 11,  5);
-
         const rsp_vs = utils::bitmask( 11,  5);
         const rsp_vt = utils::bitmask( 16,  5);
         const rsp_vd = utils::bitmask(  6,  5);

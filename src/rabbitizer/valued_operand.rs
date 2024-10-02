@@ -95,7 +95,6 @@ impl ValuedOperand {
             Operand::rsp_cop2t => todo!(),
             Operand::rsp_cop2cd => todo!(),
             Operand::rsp_vs => todo!(),
-            Operand::rsp_vt => todo!(),
             Operand::rsp_vd => todo!(),
             Operand::rsp_vt_elementhigh => todo!(),
             Operand::rsp_vt_elementlow => todo!(),

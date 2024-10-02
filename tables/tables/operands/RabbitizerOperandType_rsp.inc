@@ -5,7 +5,6 @@
     RAB_DEF_OPERAND(rsp, cop2t, EncodedFieldMask::cop2t, (RspCop2))
     RAB_DEF_OPERAND(rsp, cop2cd, EncodedFieldMask::cop2cd, (RspCop2)) // Coprocessor 2 control rd
     RAB_DEF_OPERAND(rsp, vs, EncodedFieldMask::rsp_vs, (RspVector))
-    RAB_DEF_OPERAND(rsp, vt, EncodedFieldMask::rsp_vt, (RspVector))
     RAB_DEF_OPERAND(rsp, vd, EncodedFieldMask::rsp_vd, (RspVector))
 
     // composed/aliased operands

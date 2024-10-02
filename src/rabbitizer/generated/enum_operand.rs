@@ -42,7 +42,6 @@ pub enum Operand {
     rsp_cop2t,
     rsp_cop2cd,
     rsp_vs,
-    rsp_vt,
     rsp_vd,
     rsp_vt_elementhigh,
     rsp_vt_elementlow,
@@ -210,8 +209,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         OperandDescriptor::new(concat!("rsp", "_", "cop2cd"), EncodedFieldMask::cop2cd);
     table[Operand::rsp_vs as usize] =
         OperandDescriptor::new(concat!("rsp", "_", "vs"), EncodedFieldMask::rsp_vs);
-    table[Operand::rsp_vt as usize] =
-        OperandDescriptor::new(concat!("rsp", "_", "vt"), EncodedFieldMask::rsp_vt);
     table[Operand::rsp_vd as usize] =
         OperandDescriptor::new(concat!("rsp", "_", "vd"), EncodedFieldMask::rsp_vd);
     table[Operand::rsp_vt_elementhigh as usize] = OperandDescriptor::new(
@@ -633,8 +630,6 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     count += 1;
     table[Operand::rsp_vs as usize] = OperandDisplay::display_rsp_vs;
     count += 1;
-    table[Operand::rsp_vt as usize] = OperandDisplay::display_rsp_vt;
-    count += 1;
     table[Operand::rsp_vd as usize] = OperandDisplay::display_rsp_vd;
     count += 1;
     table[Operand::rsp_vt_elementhigh as usize] = OperandDisplay::display_rsp_vt_elementhigh;
@@ -879,7 +874,6 @@ pub enum ValuedOperand {
     rsp_cop2t(RspCop2),
     rsp_cop2cd(RspCop2),
     rsp_vs(RspVector),
-    rsp_vt(RspVector),
     rsp_vd(RspVector),
     rsp_vt_elementhigh(RspVector, u8),
     rsp_vt_elementlow(RspVector, u8),
@@ -1007,7 +1001,6 @@ impl Operand {
             ValuedOperand::rsp_cop2t(..) => Self::rsp_cop2t,
             ValuedOperand::rsp_cop2cd(..) => Self::rsp_cop2cd,
             ValuedOperand::rsp_vs(..) => Self::rsp_vs,
-            ValuedOperand::rsp_vt(..) => Self::rsp_vt,
             ValuedOperand::rsp_vd(..) => Self::rsp_vd,
             ValuedOperand::rsp_vt_elementhigh(..) => Self::rsp_vt_elementhigh,
             ValuedOperand::rsp_vt_elementlow(..) => Self::rsp_vt_elementlow,
