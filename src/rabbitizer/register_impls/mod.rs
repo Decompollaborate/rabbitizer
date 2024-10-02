@@ -22,5 +22,4 @@ mod register_r5900allegrex_vi;
 mod register_rsp_cop0;
 mod register_rsp_cop2;
 mod register_rsp_cop2_control;
-mod register_rsp_gpr;
 mod register_rsp_vector;

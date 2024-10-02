@@ -16,30 +16,34 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::RSP_NORMAL;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x02 => Opcode::rsp_j,
-            0x03 => Opcode::rsp_jal,
-            0x04 => Opcode::rsp_beq,
-            0x05 => Opcode::rsp_bne,
-            0x06 => Opcode::rsp_blez,
-            0x07 => Opcode::rsp_bgtz,
-            0x08 => Opcode::rsp_addi,
-            0x09 => Opcode::rsp_addiu,
-            0x0A => Opcode::rsp_slti,
-            0x0B => Opcode::rsp_sltiu,
-            0x0C => Opcode::rsp_andi,
-            0x0D => Opcode::rsp_ori,
-            0x0E => Opcode::rsp_xori,
-            0x0F => Opcode::rsp_lui,
-            0x20 => Opcode::rsp_lb,
-            0x21 => Opcode::rsp_lh,
-            0x23 => Opcode::rsp_lw,
-            0x24 => Opcode::rsp_lbu,
-            0x25 => Opcode::rsp_lhu,
-            0x28 => Opcode::rsp_sb,
-            0x29 => Opcode::rsp_sh,
-            0x2B => Opcode::rsp_sw,
-            0x33 => Opcode::rsp_pref,
-
+            0x14 => Opcode::ALL_INVALID,
+            0x15 => Opcode::ALL_INVALID,
+            0x16 => Opcode::ALL_INVALID,
+            0x17 => Opcode::ALL_INVALID,
+            0x18 => Opcode::ALL_INVALID,
+            0x19 => Opcode::ALL_INVALID,
+            0x1A => Opcode::ALL_INVALID,
+            0x1B => Opcode::ALL_INVALID,
+            0x22 => Opcode::ALL_INVALID,
+            0x26 => Opcode::ALL_INVALID,
+            0x27 => Opcode::ALL_INVALID,
+            0x2A => Opcode::ALL_INVALID,
+            0x2C => Opcode::ALL_INVALID,
+            0x2D => Opcode::ALL_INVALID,
+            0x2E => Opcode::ALL_INVALID,
+            0x30 => Opcode::ALL_INVALID,
+            0x34 => Opcode::ALL_INVALID,
+            0x37 => Opcode::ALL_INVALID,
+            0x38 => Opcode::ALL_INVALID,
+            0x3C => Opcode::ALL_INVALID,
+            0x3F => Opcode::ALL_INVALID,
+            0x2F => Opcode::ALL_INVALID,
+            0x31 => Opcode::ALL_INVALID,
+            0x35 => Opcode::ALL_INVALID,
+            0x39 => Opcode::ALL_INVALID,
+            0x3D => Opcode::ALL_INVALID,
+            0x36 => Opcode::ALL_INVALID,
+            0x3E => Opcode::ALL_INVALID,
             0x00 => {
                 return Self::decode_isa_extension_rsp_special(
                     word,
@@ -96,10 +100,17 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => Opcode::ALL_INVALID,
+            _ => {
+                return Self::decode_isa_extension_none_normal(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
         };
         Self {
-            opcode: Self::fixups_decode_isa_extension_rsp_normal(word, opcode, flags, isa_version),
+            opcode,
             opcode_category,
             mandatory_bits,
         }
@@ -177,36 +188,53 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::RSP_SPECIAL;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00 => Opcode::rsp_sll,
-            0x02 => Opcode::rsp_srl,
-            0x03 => Opcode::rsp_sra,
-            0x04 => Opcode::rsp_sllv,
-            0x06 => Opcode::rsp_srlv,
-            0x07 => Opcode::rsp_srav,
-            0x08 => Opcode::rsp_jr,
-            0x09 => Opcode::rsp_jalr,
-            0x0A => Opcode::rsp_movz,
-            0x0B => Opcode::rsp_movn,
-            0x20 => Opcode::rsp_add,
-            0x21 => Opcode::rsp_addu,
-            0x22 => Opcode::rsp_sub,
-            0x23 => Opcode::rsp_subu,
-            0x24 => Opcode::rsp_and,
-            0x25 => Opcode::rsp_or,
-            0x26 => Opcode::rsp_xor,
-            0x27 => Opcode::rsp_nor,
-            0x2A => Opcode::rsp_slt,
-            0x2B => Opcode::rsp_sltu,
-            0x0D => Opcode::rsp_break,
-
-            _ => Opcode::ALL_INVALID,
+            0x38 => Opcode::ALL_INVALID,
+            0x3A => Opcode::ALL_INVALID,
+            0x3B => Opcode::ALL_INVALID,
+            0x3C => Opcode::ALL_INVALID,
+            0x3E => Opcode::ALL_INVALID,
+            0x3F => Opcode::ALL_INVALID,
+            0x14 => Opcode::ALL_INVALID,
+            0x16 => Opcode::ALL_INVALID,
+            0x17 => Opcode::ALL_INVALID,
+            0x11 => Opcode::ALL_INVALID,
+            0x13 => Opcode::ALL_INVALID,
+            0x10 => Opcode::ALL_INVALID,
+            0x12 => Opcode::ALL_INVALID,
+            0x1A => Opcode::ALL_INVALID,
+            0x1B => Opcode::ALL_INVALID,
+            0x1E => Opcode::ALL_INVALID,
+            0x1F => Opcode::ALL_INVALID,
+            0x2C => Opcode::ALL_INVALID,
+            0x2D => Opcode::ALL_INVALID,
+            0x2E => Opcode::ALL_INVALID,
+            0x2F => Opcode::ALL_INVALID,
+            0x0C => Opcode::ALL_INVALID,
+            0x0F => Opcode::ALL_INVALID,
+            0x18 => Opcode::ALL_INVALID,
+            0x19 => Opcode::ALL_INVALID,
+            0x1C => Opcode::ALL_INVALID,
+            0x1D => Opcode::ALL_INVALID,
+            0x30 => Opcode::ALL_INVALID,
+            0x31 => Opcode::ALL_INVALID,
+            0x32 => Opcode::ALL_INVALID,
+            0x33 => Opcode::ALL_INVALID,
+            0x34 => Opcode::ALL_INVALID,
+            0x36 => Opcode::ALL_INVALID,
+            _ => {
+                return Self::decode_isa_extension_none_special(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
         }
-        .fixups_decode_isa_extension_rsp_special(word, flags, isa_version)
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_rsp_regimm(
@@ -219,19 +247,30 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::RSP_REGIMM;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00 => Opcode::rsp_bltz,
-            0x01 => Opcode::rsp_bgez,
-            0x10 => Opcode::rsp_bltzal,
-            0x11 => Opcode::rsp_bgezal,
-
-            _ => Opcode::ALL_INVALID,
+            0x02 => Opcode::ALL_INVALID,
+            0x03 => Opcode::ALL_INVALID,
+            0x08 => Opcode::ALL_INVALID,
+            0x09 => Opcode::ALL_INVALID,
+            0x0A => Opcode::ALL_INVALID,
+            0x0B => Opcode::ALL_INVALID,
+            0x0C => Opcode::ALL_INVALID,
+            0x0E => Opcode::ALL_INVALID,
+            0x12 => Opcode::ALL_INVALID,
+            0x13 => Opcode::ALL_INVALID,
+            _ => {
+                return Self::decode_isa_extension_none_regimm(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
         }
-        .fixups_decode_isa_extension_rsp_regimm(word, flags, isa_version)
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_rsp_coprocessor0(

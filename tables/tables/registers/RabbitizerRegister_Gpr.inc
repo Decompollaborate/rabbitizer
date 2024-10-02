@@ -3,6 +3,7 @@
 
     RABBITIZER_DEF_REG(
         GPR, zero,  0,
+        name_numeric: "$zero",
         is_zero: true,
     )
     RABBITIZER_DEF_REG(
@@ -160,6 +161,7 @@
     )
     RABBITIZER_DEF_REG(
         GPR, ra,   31,
+        name_numeric: "$ra",
         is_clobbered_by_func_call: true,
         holds_return_address: true,
     )

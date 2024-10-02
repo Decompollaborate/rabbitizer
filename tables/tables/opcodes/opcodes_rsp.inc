@@ -9,8 +9,6 @@
     #include "rsp/rsp_normal_lwc2.inc"
     #include "rsp/rsp_normal_swc2.inc"
 
-    // CORE instructions but with rsp registers
-
     #include "rsp/rsp_normal.inc"
     #include "rsp/rsp_special.inc"
     #include "rsp/rsp_regimm.inc"

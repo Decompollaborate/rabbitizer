@@ -16,6 +16,9 @@
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind) \
     case_bits => return Self::decode_isa_extension_## prefix ##_## kind (word, mandatory_bits, flags, isa_version),
 
+#define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten) \
+    case_bits => Opcode::ALL_INVALID,
+
 use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
 
 impl OpcodeDecoder {
@@ -33,10 +36,9 @@ impl OpcodeDecoder {
 
         let opcode = match mask.get_shifted(word) {
 #include "opcodes/rsp/rsp_normal.inc"
-            _ => Opcode::ALL_INVALID,
         };
         Self {
-            opcode: Self::fixups_decode_isa_extension_rsp_normal(word, opcode, flags, isa_version),
+            opcode,
             opcode_category,
             mandatory_bits,
         }
@@ -102,13 +104,12 @@ impl OpcodeDecoder {
 
         let opcode = match mask.get_shifted(word) {
 #include "opcodes/rsp/rsp_special.inc"
-            _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
-        }.fixups_decode_isa_extension_rsp_special(word, flags, isa_version)
+        }
     }
 
     SPECIAL_RS_TAG(must_use)
@@ -125,13 +126,12 @@ impl OpcodeDecoder {
 
         let opcode = match mask.get_shifted(word) {
 #include "opcodes/rsp/rsp_regimm.inc"
-            _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
-        }.fixups_decode_isa_extension_rsp_regimm(word, flags, isa_version)
+        }
     }
 
     SPECIAL_RS_TAG(must_use)
@@ -233,3 +233,4 @@ impl OpcodeDecoder {
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
 #undef RAB_DEF_OPCODE_REDIRECT
+#undef RAB_DEF_OPCODE_REMOVED

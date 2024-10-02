@@ -409,22 +409,13 @@ impl OpcodeDescriptor {
                 if self.has_specific_operand(Operand::core_immediate_base) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::rsp_rs) {
-                    return true;
-                }
                 if self.has_specific_operand(Operand::rsp_offset_rs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::rsp_immediate_base) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::core_maybe_rd_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::core_maybe_zero_rs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::r4000allegrex_offset14_base) {
@@ -442,25 +433,12 @@ impl OpcodeDescriptor {
                 if self.has_specific_operand(Operand::core_branch_target_label) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::rsp_immediate_base) {
-                    return true;
-                }
             }
 
-            Operand::core_rt => {
-                if self.has_specific_operand(Operand::rsp_rt) {
-                    return true;
-                }
-            }
+            Operand::core_rt => {}
 
             Operand::core_rd => {
-                if self.has_specific_operand(Operand::rsp_rd) {
-                    return true;
-                }
                 if self.has_specific_operand(Operand::core_maybe_rd_rs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
                     return true;
                 }
             }
@@ -531,33 +509,6 @@ impl OpcodeDescriptor {
             }
 
             /* rsp */
-            Operand::rsp_rs => {
-                if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::rsp_offset_rs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
-                    return true;
-                }
-            }
-
-            Operand::rsp_rt => {
-                if self.has_specific_operand(Operand::core_rt) {
-                    return true;
-                }
-            }
-
-            Operand::rsp_rd => {
-                if self.has_operand_alias(Operand::core_rd) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::rsp_maybe_rd_rs) {
-                    return true;
-                }
-            }
-
             Operand::rsp_cop0d => {
                 if self.has_specific_operand(Operand::core_cop0d) {
                     return true;
@@ -567,12 +518,6 @@ impl OpcodeDescriptor {
             Operand::rsp_cop2t => {}
             Operand::rsp_cop2cd => {}
 
-            Operand::rsp_hint => {}
-
-            // Operand::rsp_elementhigh => {},
-            // Operand::rsp_elementlow => {},
-            // Operand::rsp_index => {},
-            // Operand::rsp_offset => {},
             Operand::rsp_vs => {
                 if self.has_specific_operand(Operand::rsp_vs_index) {
                     return true;
@@ -619,28 +564,7 @@ impl OpcodeDescriptor {
             }
 
             Operand::rsp_offset_rs => {
-                if self.has_operand_alias(Operand::rsp_rs) {
-                    return true;
-                }
-            }
-
-            Operand::rsp_immediate_base => {
-                if self.has_operand_alias(Operand::rsp_rs) {
-                    return true;
-                }
                 if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-                if self.has_operand_alias(Operand::core_immediate) {
-                    return true;
-                }
-            }
-
-            Operand::rsp_maybe_rd_rs => {
-                if self.has_operand_alias(Operand::rsp_rd) {
-                    return true;
-                }
-                if self.has_operand_alias(Operand::rsp_rs) {
                     return true;
                 }
             }

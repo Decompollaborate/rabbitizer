@@ -11,6 +11,11 @@ The macros for defining an opcode use the following syntax:
     Useful for instructions with dots on their mnemonics.
 - RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...)
   - Defines a pseudo instruction.
+- RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
+  - Indicates a redirection is needed to decode the word.
+  - This table will redirect to table `kind` from extension `prefix`.
+- RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
+  - The opcode was removed by the given isa/extension combo.
 
 Arguments:
 - prefix: The name of the extension group.
@@ -21,6 +26,7 @@ Arguments:
   the macro contains an `altname` argument.
 - altname: Used as mnemonic for the instruction in case the `name` argument was
   modified to be a valid token.
+- kind: The table name to redirect to when decoding the instruction.
 - isa_version_min: The ISA version that introduced this instruction. Should be
   EXTENSION if `isa_exten` is not NONE, or non-EXTENSION if `isa_exten` is NONE.
 - isa_exten: The extension instruction set that this instruction belongs to.

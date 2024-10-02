@@ -45,6 +45,7 @@ pub enum Gpr {
 pub static GPR: [RegisterDescriptor; 32] = {
     let mut table = [RegisterDescriptor::default(); 32];
     table[Gpr::zero as usize] = RegisterDescriptor {
+        name_numeric: "$zero",
         is_zero: true,
         ..RegisterDescriptor::new(concat!("$", "zero"), 0, concat!("$", "0"))
     }
@@ -233,6 +234,7 @@ pub static GPR: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Gpr::ra as usize] = RegisterDescriptor {
+        name_numeric: "$ra",
         is_clobbered_by_func_call: true,
         holds_return_address: true,
         ..RegisterDescriptor::new(concat!("$", "ra"), 31, concat!("$", "31"))

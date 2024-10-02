@@ -44,7 +44,6 @@ mod enum_register_r5900allegrex_vi;
 mod enum_register_rsp_cop0;
 mod enum_register_rsp_cop2;
 mod enum_register_rsp_cop2_control;
-mod enum_register_rsp_gpr;
 mod enum_register_rsp_vector;
 
 pub use array_opcodes::OPCODES;
@@ -81,5 +80,4 @@ pub use enum_register_r5900allegrex_vi::{R5900VI, R5900_VI};
 pub use enum_register_rsp_cop0::{RspCop0, RSP_COP0};
 pub use enum_register_rsp_cop2::{RspCop2, RSP_COP2};
 pub use enum_register_rsp_cop2_control::{RspCop2Control, RSP_COP2_CONTROL};
-pub use enum_register_rsp_gpr::{RspGpr, RSP_GPR};
 pub use enum_register_rsp_vector::{RspVector, RSP_VECTOR};

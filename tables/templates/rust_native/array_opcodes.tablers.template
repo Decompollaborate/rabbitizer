@@ -18,6 +18,7 @@
     RAB_DEF_OPCODE_ALTNAME(prefix, , name, name, isa_version_min, isa_exten, __VA_ARGS__, is_pseudo: true)
 
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
+#define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
 
 use crate::{OpcodeDescriptor, opcode, Operand, Opcode, InstrType, AccessType, InstrSuffix, IsaVersion, IsaExtension};
 
@@ -39,3 +40,4 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
 #undef RAB_DEF_OPCODE_REDIRECT
+#undef RAB_DEF_OPCODE_REMOVED

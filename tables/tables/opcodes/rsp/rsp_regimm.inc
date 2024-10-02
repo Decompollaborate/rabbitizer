@@ -1,48 +1,15 @@
 /* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-    // OP rs, IMM
-    RAB_DEF_OPCODE(
-        rsp, 0x00, bltz, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        reads_rs: true,
-        is_branch: true
-    ) // Branch on Less Than Zero
-    RAB_DEF_OPCODE(
-        rsp, 0x01, bgez, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        reads_rs: true,
-        is_branch: true
-    ) // Branch on Greater than or Equal to Zero
+    RAB_DEF_OPCODE_REMOVED(0x02, core, bltzl, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x03, core, bgezl, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x08, core, tgei, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x09, core, tgeiu, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x0A, core, tlti, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x0B, core, tltiu, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x0C, core, teqi, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x0E, core, tnei, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x12, core, bltzall, IsaVersion::EXTENSION, IsaExtension::RSP)
+    RAB_DEF_OPCODE_REMOVED(0x13, core, bgezall, IsaVersion::EXTENSION, IsaExtension::RSP)
 
-    RAB_DEF_OPCODE(
-        rsp, 0x10, bltzal, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        reads_rs: true,
-        is_branch: true,
-        does_link: true
-    ) // Branch on Less Than Zero and Link
-    RAB_DEF_OPCODE(
-        rsp, 0x11, bgezal, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr2(Operand::rsp_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        reads_rs: true,
-        is_branch: true,
-        not_emitted_by_compilers: true,
-        does_link: true
-    ) // Branch on Greater Than or Equal to Zero and Link
-
-
-    // Pseudo-Instruction Unique IDs
-
-    RAB_DEF_OPCODE_PSEUDO(
-        rsp, bal, IsaVersion::EXTENSION, IsaExtension::RSP,
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        not_emitted_by_compilers: true,
-        does_link: true
-    ) // Branch and Link
+    RAB_DEF_OPCODE_REDIRECT(_, none, regimm)

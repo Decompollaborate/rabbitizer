@@ -38,23 +38,17 @@ pub enum Operand {
     core_immediate_base,
     core_maybe_rd_rs,
     core_maybe_zero_rs,
-    rsp_rs,
-    rsp_rt,
-    rsp_rd,
     rsp_cop0d,
     rsp_cop2t,
     rsp_cop2cd,
     rsp_vs,
     rsp_vt,
     rsp_vd,
-    rsp_hint,
     rsp_vt_elementhigh,
     rsp_vt_elementlow,
     rsp_vd_de,
     rsp_vs_index,
     rsp_offset_rs,
-    rsp_immediate_base,
-    rsp_maybe_rd_rs,
     r3000gte_sf,
     r3000gte_mx,
     r3000gte_v,
@@ -208,12 +202,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         concat!("core", "_", "maybe_zero_rs"),
         EncodedFieldMask::empty().union(EncodedFieldMask::rs),
     );
-    table[Operand::rsp_rs as usize] =
-        OperandDescriptor::new(concat!("rsp", "_", "rs"), EncodedFieldMask::rs);
-    table[Operand::rsp_rt as usize] =
-        OperandDescriptor::new(concat!("rsp", "_", "rt"), EncodedFieldMask::rt);
-    table[Operand::rsp_rd as usize] =
-        OperandDescriptor::new(concat!("rsp", "_", "rd"), EncodedFieldMask::rd);
     table[Operand::rsp_cop0d as usize] =
         OperandDescriptor::new(concat!("rsp", "_", "cop0d"), EncodedFieldMask::cop0d);
     table[Operand::rsp_cop2t as usize] =
@@ -226,8 +214,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         OperandDescriptor::new(concat!("rsp", "_", "vt"), EncodedFieldMask::rsp_vt);
     table[Operand::rsp_vd as usize] =
         OperandDescriptor::new(concat!("rsp", "_", "vd"), EncodedFieldMask::rsp_vd);
-    table[Operand::rsp_hint as usize] =
-        OperandDescriptor::new(concat!("rsp", "_", "hint"), EncodedFieldMask::hint);
     table[Operand::rsp_vt_elementhigh as usize] = OperandDescriptor::new(
         concat!("rsp", "_", "vt_elementhigh"),
         EncodedFieldMask::rsp_vt.union(EncodedFieldMask::rsp_elementhigh),
@@ -247,14 +233,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     table[Operand::rsp_offset_rs as usize] = OperandDescriptor::new(
         concat!("rsp", "_", "offset_rs"),
         EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
-    );
-    table[Operand::rsp_immediate_base as usize] = OperandDescriptor::new(
-        concat!("rsp", "_", "immediate_base"),
-        EncodedFieldMask::immediate.union(EncodedFieldMask::rs),
-    );
-    table[Operand::rsp_maybe_rd_rs as usize] = OperandDescriptor::new(
-        concat!("rsp", "_", "maybe_rd_rs"),
-        EncodedFieldMask::rd.union(EncodedFieldMask::rs),
     );
     table[Operand::r3000gte_sf as usize] = OperandDescriptor::new(
         concat!("r3000gte", "_", "sf"),
@@ -647,12 +625,6 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     count += 1;
     table[Operand::core_maybe_zero_rs as usize] = OperandDisplay::display_core_maybe_zero_rs;
     count += 1;
-    table[Operand::rsp_rs as usize] = OperandDisplay::display_rsp_rs;
-    count += 1;
-    table[Operand::rsp_rt as usize] = OperandDisplay::display_rsp_rt;
-    count += 1;
-    table[Operand::rsp_rd as usize] = OperandDisplay::display_rsp_rd;
-    count += 1;
     table[Operand::rsp_cop0d as usize] = OperandDisplay::display_rsp_cop0d;
     count += 1;
     table[Operand::rsp_cop2t as usize] = OperandDisplay::display_rsp_cop2t;
@@ -665,8 +637,6 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     count += 1;
     table[Operand::rsp_vd as usize] = OperandDisplay::display_rsp_vd;
     count += 1;
-    table[Operand::rsp_hint as usize] = OperandDisplay::display_rsp_hint;
-    count += 1;
     table[Operand::rsp_vt_elementhigh as usize] = OperandDisplay::display_rsp_vt_elementhigh;
     count += 1;
     table[Operand::rsp_vt_elementlow as usize] = OperandDisplay::display_rsp_vt_elementlow;
@@ -676,10 +646,6 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     table[Operand::rsp_vs_index as usize] = OperandDisplay::display_rsp_vs_index;
     count += 1;
     table[Operand::rsp_offset_rs as usize] = OperandDisplay::display_rsp_offset_rs;
-    count += 1;
-    table[Operand::rsp_immediate_base as usize] = OperandDisplay::display_rsp_immediate_base;
-    count += 1;
-    table[Operand::rsp_maybe_rd_rs as usize] = OperandDisplay::display_rsp_maybe_rd_rs;
     count += 1;
     table[Operand::r3000gte_sf as usize] = OperandDisplay::display_r3000gte_sf;
     count += 1;
@@ -909,23 +875,17 @@ pub enum ValuedOperand {
     core_immediate_base(IU16, Gpr),
     core_maybe_rd_rs(Option<Gpr>, Gpr),
     core_maybe_zero_rs((), Gpr),
-    rsp_rs(RspGpr),
-    rsp_rt(RspGpr),
-    rsp_rd(RspGpr),
     rsp_cop0d(RspCop0),
     rsp_cop2t(RspCop2),
     rsp_cop2cd(RspCop2),
     rsp_vs(RspVector),
     rsp_vt(RspVector),
     rsp_vd(RspVector),
-    rsp_hint(u8),
     rsp_vt_elementhigh(RspVector, u8),
     rsp_vt_elementlow(RspVector, u8),
     rsp_vd_de(RspVector, u8),
     rsp_vs_index(RspVector, u8),
-    rsp_offset_rs(u16, RspGpr),
-    rsp_immediate_base(IU16, Gpr),
-    rsp_maybe_rd_rs(Option<Gpr>, Gpr),
+    rsp_offset_rs(u16, Gpr),
     r3000gte_sf(u8),
     r3000gte_mx(u8),
     r3000gte_v(u8),
@@ -1043,23 +1003,17 @@ impl Operand {
             ValuedOperand::core_immediate_base(..) => Self::core_immediate_base,
             ValuedOperand::core_maybe_rd_rs(..) => Self::core_maybe_rd_rs,
             ValuedOperand::core_maybe_zero_rs(..) => Self::core_maybe_zero_rs,
-            ValuedOperand::rsp_rs(..) => Self::rsp_rs,
-            ValuedOperand::rsp_rt(..) => Self::rsp_rt,
-            ValuedOperand::rsp_rd(..) => Self::rsp_rd,
             ValuedOperand::rsp_cop0d(..) => Self::rsp_cop0d,
             ValuedOperand::rsp_cop2t(..) => Self::rsp_cop2t,
             ValuedOperand::rsp_cop2cd(..) => Self::rsp_cop2cd,
             ValuedOperand::rsp_vs(..) => Self::rsp_vs,
             ValuedOperand::rsp_vt(..) => Self::rsp_vt,
             ValuedOperand::rsp_vd(..) => Self::rsp_vd,
-            ValuedOperand::rsp_hint(..) => Self::rsp_hint,
             ValuedOperand::rsp_vt_elementhigh(..) => Self::rsp_vt_elementhigh,
             ValuedOperand::rsp_vt_elementlow(..) => Self::rsp_vt_elementlow,
             ValuedOperand::rsp_vd_de(..) => Self::rsp_vd_de,
             ValuedOperand::rsp_vs_index(..) => Self::rsp_vs_index,
             ValuedOperand::rsp_offset_rs(..) => Self::rsp_offset_rs,
-            ValuedOperand::rsp_immediate_base(..) => Self::rsp_immediate_base,
-            ValuedOperand::rsp_maybe_rd_rs(..) => Self::rsp_maybe_rd_rs,
             ValuedOperand::r3000gte_sf(..) => Self::r3000gte_sf,
             ValuedOperand::r3000gte_mx(..) => Self::r3000gte_mx,
             ValuedOperand::r3000gte_v(..) => Self::r3000gte_v,

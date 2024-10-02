@@ -101,7 +101,6 @@ pub mod registers {
     pub use generated::RspCop0;
     pub use generated::RspCop2;
     pub use generated::RspCop2Control;
-    pub use generated::RspGpr;
     pub use generated::RspVector;
     pub use generated::R5900VF;
     pub use generated::R5900VI;
@@ -131,7 +130,6 @@ pub mod register_descriptors {
     pub use generated::RSP_COP0;
     pub use generated::RSP_COP2;
     pub use generated::RSP_COP2_CONTROL;
-    pub use generated::RSP_GPR;
     pub use generated::RSP_VECTOR;
 }
 
