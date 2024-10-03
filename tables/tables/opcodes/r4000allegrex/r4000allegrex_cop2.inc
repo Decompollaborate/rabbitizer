@@ -17,3 +17,9 @@
 */
 
     // The other instructions are implemented using the main CORE table
+
+    RAB_DEF_OPCODE_REDIRECT(0x08, r4000allegrex, coprocessor2_bc2)
+    RAB_DEF_OPCODE_REDIRECT(0x03, r4000allegrex, coprocessor2_mfhc2)
+    RAB_DEF_OPCODE_REDIRECT(0x07, r4000allegrex, coprocessor2_mthc2)
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor2)

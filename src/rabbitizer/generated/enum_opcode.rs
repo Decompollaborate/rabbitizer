@@ -379,7 +379,9 @@ pub enum Opcode {
     r4000allegrex_bvfl,
     r4000allegrex_bvtl,
     r4000allegrex_mfv,
+
     r4000allegrex_mfvc,
+
     r4000allegrex_vsync2,
     r4000allegrex_mtv,
     r4000allegrex_mtvc,

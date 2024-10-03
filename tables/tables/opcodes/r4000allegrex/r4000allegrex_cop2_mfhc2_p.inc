@@ -24,3 +24,5 @@ mfvc
         instr_type: InstrType::R,
         modifies_rt: true
     ) // Move word From Vfpu Control
+
+    RAB_DEF_OPCODE_REDIRECT(0x07, r4000allegrex, coprocessor2_mfhc2_p_s)

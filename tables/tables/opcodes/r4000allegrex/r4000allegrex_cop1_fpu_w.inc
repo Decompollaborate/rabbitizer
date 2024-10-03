@@ -18,3 +18,7 @@
 */
 
     // The other instructions are implemented using the main CORE table
+
+    RAB_DEF_OPCODE_REMOVED(0x21, core, cvt_d_w, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor1_fpu_w)

@@ -73,13 +73,13 @@
     RAB_DEF_OPCODE_REDIRECT(0x1F, r4000allegrex, special3)
 
     RAB_DEF_OPCODE_REDIRECT(0x10, r4000allegrex, coprocessor0)
-/*
     RAB_DEF_OPCODE_REDIRECT(0x11, r4000allegrex, coprocessor1)
     RAB_DEF_OPCODE_REDIRECT(0x12, r4000allegrex, coprocessor2)
 
     RAB_DEF_OPCODE_REDIRECT(0x18, r4000allegrex, vfpu0)
     RAB_DEF_OPCODE_REDIRECT(0x19, r4000allegrex, vfpu1)
     RAB_DEF_OPCODE_REDIRECT(0x1B, r4000allegrex, vfpu3)
+/*
     RAB_DEF_OPCODE_REDIRECT(0x34, r4000allegrex, vfpu4)
     RAB_DEF_OPCODE_REDIRECT(0x37, r4000allegrex, vfpu5)
     RAB_DEF_OPCODE_REDIRECT(0x3C, r4000allegrex, vfpu6)

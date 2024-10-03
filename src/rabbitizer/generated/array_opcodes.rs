@@ -3136,6 +3136,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mfv", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_mfvc as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_cop2cd),
         instr_type: InstrType::R,
@@ -3143,6 +3144,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("mfvc", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_vsync2 as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::R,

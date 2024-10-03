@@ -14,3 +14,5 @@
 */
 
     // The other instructions are implemented using the main CORE table
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor1_bc1)

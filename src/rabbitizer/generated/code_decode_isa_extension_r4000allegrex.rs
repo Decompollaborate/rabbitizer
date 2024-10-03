@@ -60,6 +60,46 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
+            0x11 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor1(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x12 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor2(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x18 => {
+                return Self::decode_isa_extension_r4000allegrex_vfpu0(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x19 => {
+                return Self::decode_isa_extension_r4000allegrex_vfpu1(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x1B => {
+                return Self::decode_isa_extension_r4000allegrex_vfpu3(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
             _ => {
                 return Self::decode_isa_extension_none_normal(
                     word,
@@ -361,6 +401,425 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor1(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP1;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x08 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor1_bc1(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x10 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor1_fpu_s(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x14 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor1_fpu_w(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x11 => Opcode::ALL_INVALID,
+            0x15 => Opcode::ALL_INVALID,
+            _ => {
+                return Self::decode_isa_extension_none_coprocessor1(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor1_bc1(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::bc_fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP1_BC1;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            _ => {
+                return Self::decode_isa_extension_none_coprocessor1_bc1(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor1_fpu_s(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP1_FPUS;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x08 => Opcode::ALL_INVALID,
+            0x09 => Opcode::ALL_INVALID,
+            0x0A => Opcode::ALL_INVALID,
+            0x0B => Opcode::ALL_INVALID,
+            0x21 => Opcode::ALL_INVALID,
+            0x25 => Opcode::ALL_INVALID,
+            _ => {
+                return Self::decode_isa_extension_none_coprocessor1_fpu_s(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor1_fpu_w(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP1_FPUW;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x21 => Opcode::ALL_INVALID,
+            _ => {
+                return Self::decode_isa_extension_none_coprocessor1_fpu_w(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x08 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor2_bc2(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x03 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor2_mfhc2(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x07 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor2_mthc2(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            _ => {
+                return Self::decode_isa_extension_none_coprocessor2(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_bc2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::bc_fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_BC2;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x00 => Opcode::r4000allegrex_bvf,
+            0x01 => Opcode::r4000allegrex_bvt,
+            0x02 => Opcode::r4000allegrex_bvfl,
+            0x03 => Opcode::r4000allegrex_bvtl,
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_mfhc2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_mxhc2;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_MFHC2;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x0 => Opcode::r4000allegrex_mfv,
+            0x01 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor2_mfhc2_p(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_mfhc2_p(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_mfhc2_p_fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_MFHC2_P;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x0 => Opcode::r4000allegrex_mfvc,
+            0x07 => {
+                return Self::decode_isa_extension_r4000allegrex_coprocessor2_mfhc2_p_s(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_mfhc2_p_s(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_mfhc2_p_s_fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_MFHC2_P_S;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0xF => Opcode::r4000allegrex_vsync2,
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_mthc2(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_mxhc2;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_MTHC2;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x0 => Opcode::r4000allegrex_mtv,
+            0x1 => Opcode::r4000allegrex_mtvc,
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu0(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_vfpu0_fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU0;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x00000 => Opcode::r4000allegrex_vadd_s,
+            0x00001 => Opcode::r4000allegrex_vadd_p,
+            0x00100 => Opcode::r4000allegrex_vadd_t,
+            0x00101 => Opcode::r4000allegrex_vadd_q,
+            0x10000 => Opcode::r4000allegrex_vsub_s,
+            0x10001 => Opcode::r4000allegrex_vsub_p,
+            0x10100 => Opcode::r4000allegrex_vsub_t,
+            0x10101 => Opcode::r4000allegrex_vsub_q,
+            0x20000 => Opcode::r4000allegrex_vsbn_s,
+            0x70000 => Opcode::r4000allegrex_vdiv_s,
+            0x70001 => Opcode::r4000allegrex_vdiv_p,
+            0x70100 => Opcode::r4000allegrex_vdiv_t,
+            0x70101 => Opcode::r4000allegrex_vdiv_q,
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu1(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_vfpu0_fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU1;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x00000 => Opcode::r4000allegrex_vmul_s,
+            0x00001 => Opcode::r4000allegrex_vmul_p,
+            0x00100 => Opcode::r4000allegrex_vmul_t,
+            0x00101 => Opcode::r4000allegrex_vmul_q,
+            0x10001 => Opcode::r4000allegrex_vdot_p,
+            0x10100 => Opcode::r4000allegrex_vdot_t,
+            0x10101 => Opcode::r4000allegrex_vdot_q,
+            0x20001 => Opcode::r4000allegrex_vscl_p,
+            0x20100 => Opcode::r4000allegrex_vscl_t,
+            0x20101 => Opcode::r4000allegrex_vscl_q,
+            0x40001 => Opcode::r4000allegrex_vhdp_p,
+            0x40100 => Opcode::r4000allegrex_vhdp_t,
+            0x40101 => Opcode::r4000allegrex_vhdp_q,
+            0x50100 => Opcode::r4000allegrex_vcrs_t,
+            0x60001 => Opcode::r4000allegrex_vdet_p,
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu3(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_vfpu0_fmt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU3;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x00000 => Opcode::r4000allegrex_vcmp_s,
+            0x00001 => Opcode::r4000allegrex_vcmp_p,
+            0x00100 => Opcode::r4000allegrex_vcmp_t,
+            0x00101 => Opcode::r4000allegrex_vcmp_q,
+            0x20000 => Opcode::r4000allegrex_vmin_s,
+            0x20001 => Opcode::r4000allegrex_vmin_p,
+            0x20100 => Opcode::r4000allegrex_vmin_t,
+            0x20101 => Opcode::r4000allegrex_vmin_q,
+            0x30000 => Opcode::r4000allegrex_vmax_s,
+            0x30001 => Opcode::r4000allegrex_vmax_p,
+            0x30100 => Opcode::r4000allegrex_vmax_t,
+            0x30101 => Opcode::r4000allegrex_vmax_q,
+            0x50000 => Opcode::r4000allegrex_vscmp_s,
+            0x50001 => Opcode::r4000allegrex_vscmp_p,
+            0x50100 => Opcode::r4000allegrex_vscmp_t,
+            0x50101 => Opcode::r4000allegrex_vscmp_q,
+            0x60000 => Opcode::r4000allegrex_vsge_s,
+            0x60001 => Opcode::r4000allegrex_vsge_p,
+            0x60100 => Opcode::r4000allegrex_vsge_t,
+            0x60101 => Opcode::r4000allegrex_vsge_q,
+            0x70000 => Opcode::r4000allegrex_vslt_s,
+            0x70001 => Opcode::r4000allegrex_vslt_p,
+            0x70100 => Opcode::r4000allegrex_vslt_t,
+            0x70101 => Opcode::r4000allegrex_vslt_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {
