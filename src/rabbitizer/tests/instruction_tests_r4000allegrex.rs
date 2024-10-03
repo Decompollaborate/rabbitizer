@@ -1041,8 +1041,7 @@ pub(crate) mod tests {
             },
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -4635,8 +4634,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -7333,8 +7331,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -7399,8 +7396,7 @@ pub(crate) mod tests {
             },
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -8101,8 +8097,7 @@ pub(crate) mod tests {
 
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -9896,8 +9891,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -13490,8 +13484,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -13780,8 +13773,7 @@ pub(crate) mod tests {
             TestEntry::new_r4000allegrex(0x63809084, "vdiv.q      C100, C400, C000", Opcode::r4000allegrex_vdiv_q, "vdiv.q", [Some("C100"), Some("C400"), Some("C000"), None, None]),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -14045,8 +14037,7 @@ pub(crate) mod tests {
 
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -14192,8 +14183,7 @@ pub(crate) mod tests {
             TestEntry::new_r4000allegrex(0x6FC09081, "vslt.q      C010, C400, C002", Opcode::r4000allegrex_vslt_q, "vslt.q", [Some("C010"), Some("C400"), Some("C002"), None, None]),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -14650,8 +14640,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -15108,8 +15097,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -15182,8 +15170,7 @@ pub(crate) mod tests {
             TestEntry::new_r4000allegrex(0x48E50081, "mtvc        $a1, $129", Opcode::r4000allegrex_mtvc, "mtvc", [Some("$a1"), Some("$129"), None, None, None]),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -26568,8 +26555,7 @@ pub(crate) mod tests {
             },
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -31643,8 +31629,7 @@ pub(crate) mod tests {
             },
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -33446,8 +33431,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -33625,8 +33609,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -34264,8 +34247,7 @@ pub(crate) mod tests {
             },
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[allow(non_snake_case)]
@@ -34296,8 +34278,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -36468,8 +36449,7 @@ pub(crate) mod tests {
             TestEntry::new_r4000allegrex(0xF004FF9F, "vmmul.q     M730, M732, M100", Opcode::r4000allegrex_vmmul_q, "vmmul.q", [Some("M730"), Some("M732"), Some("M100"), None, None]),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -37150,8 +37130,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -38028,8 +38007,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -38906,8 +38884,7 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -39000,7 +38977,6 @@ pub(crate) mod tests {
             ),
         ];
 
-        check_test_entries(ENTRIES, false);
-        // assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 }
