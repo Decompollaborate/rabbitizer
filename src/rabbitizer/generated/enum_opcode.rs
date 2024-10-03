@@ -622,9 +622,11 @@ pub enum Opcode {
     r4000allegrex_vmscl_q,
     r4000allegrex_vcrsp_t,
     r4000allegrex_vqmul_q,
+
     r4000allegrex_vrot_p,
     r4000allegrex_vrot_t,
     r4000allegrex_vrot_q,
+
     r4000allegrex_vmmov_p,
     r4000allegrex_vmmov_t,
     r4000allegrex_vmmov_q,

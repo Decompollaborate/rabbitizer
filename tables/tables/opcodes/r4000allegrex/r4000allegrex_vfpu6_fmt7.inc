@@ -22,7 +22,7 @@ vrot.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x1, vrot_p, vrot.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x04001, vrot_p, vrot.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_p_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Pair word
@@ -35,7 +35,7 @@ vrot.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x2, vrot_t, vrot.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x04100, vrot_t, vrot.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_t_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Triple word
@@ -48,7 +48,12 @@ vrot.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x3, vrot_q, vrot.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x04101, vrot_q, vrot.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_q_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Quad word
+
+    RAB_DEF_OPCODE_REDIRECT(0x000, r4000allegrex, vfpu6_fmt7_fmt0)
+    RAB_DEF_OPCODE_REDIRECT(0x001, r4000allegrex, vfpu6_fmt7_fmt0)
+    RAB_DEF_OPCODE_REDIRECT(0x100, r4000allegrex, vfpu6_fmt7_fmt0)
+    RAB_DEF_OPCODE_REDIRECT(0x101, r4000allegrex, vfpu6_fmt7_fmt0)

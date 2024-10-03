@@ -5430,6 +5430,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         )
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_vrot_p as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::r4000allegrex_p_vd,
@@ -5460,6 +5461,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vrot.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_vmmov_p as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_mp_vd, Operand::r4000allegrex_mp_vs),
         instr_type: InstrType::R,
