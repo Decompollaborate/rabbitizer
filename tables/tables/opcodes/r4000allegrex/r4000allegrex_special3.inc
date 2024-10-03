@@ -33,3 +33,5 @@
         modifies_rt: true,
         reads_rs: true
     ) // INSert bit field
+
+    RAB_DEF_OPCODE_REDIRECT(0x20, r4000allegrex, special3_bshfl)

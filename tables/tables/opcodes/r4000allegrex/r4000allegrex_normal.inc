@@ -69,11 +69,11 @@
     RAB_DEF_OPCODE_REDIRECT(0x00, r4000allegrex, special)
     RAB_DEF_OPCODE_REDIRECT(0x01, r4000allegrex, regimm)
 
-/*
     RAB_DEF_OPCODE_REDIRECT(0x1C, r4000allegrex, special2)
     RAB_DEF_OPCODE_REDIRECT(0x1F, r4000allegrex, special3)
 
     RAB_DEF_OPCODE_REDIRECT(0x10, r4000allegrex, coprocessor0)
+/*
     RAB_DEF_OPCODE_REDIRECT(0x11, r4000allegrex, coprocessor1)
     RAB_DEF_OPCODE_REDIRECT(0x12, r4000allegrex, coprocessor2)
 

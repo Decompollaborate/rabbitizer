@@ -367,11 +367,13 @@ pub enum Opcode {
     r4000allegrex_mtie,
     r4000allegrex_ext,
     r4000allegrex_ins,
+
     r4000allegrex_wsbh,
     r4000allegrex_wsbw,
     r4000allegrex_seb,
     r4000allegrex_seh,
     r4000allegrex_bitrev,
+
     r4000allegrex_bvf,
     r4000allegrex_bvt,
     r4000allegrex_bvfl,

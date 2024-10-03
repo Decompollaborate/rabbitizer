@@ -1,5 +1,5 @@
 thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_instructions' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:1044:9:
-  left: (23, 124)
+  left: (13, 71)
 --
 thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_COP2' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:15173:9:
   left: (24, 110)

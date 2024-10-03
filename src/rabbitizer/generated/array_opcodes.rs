@@ -3045,6 +3045,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("ins", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_wsbh as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
@@ -3085,6 +3086,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bitrev", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_bvf as usize] = OpcodeDescriptor {
         operands: Operand::arr2(
             Operand::r4000allegrex_imm3,
