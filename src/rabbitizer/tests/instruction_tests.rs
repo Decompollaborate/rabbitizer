@@ -21,28 +21,17 @@ pub(crate) mod tests {
     }
 
     impl TestEntry {
-        #[allow(dead_code)]
-        pub const fn new_none_invalid(word: u32, flags: InstructionFlags) -> Self {
-            Self {
-                instr: Instruction::new_no_extension(word, 0x80000000, flags, IsaVersion::MIPS_III),
-                imm_override: None,
-                display_flags: DisplayFlags::default(),
-                valid: false,
-                expected: "INVALID",
-                expected_opcode: Opcode::ALL_INVALID,
-                opcode_str: "INVALID",
-                operands_str: [None, None, None, None, None],
-            }
-        }
-
-        #[allow(dead_code)]
-        pub const fn new_rsp_invalid(word: u32, flags: InstructionFlags) -> Self {
+        pub const fn new_rsp_invalid(
+            word: u32,
+            flags: InstructionFlags,
+            expected: &'static str,
+        ) -> Self {
             Self {
                 instr: Instruction::new_rsp(word, 0xA4000000, flags),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: "INVALID",
+                expected,
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -196,19 +185,25 @@ pub(crate) mod tests {
         }
     }
 
-    pub(crate) fn check_test_entries(entries: &[TestEntry], thingy: bool) -> u32 {
-        let mut errors = 0;
+    pub(crate) fn check_test_entries(entries: &[TestEntry], thingy: bool) -> (u32, u32) {
+        let mut instructions_with_errors = 0;
+        let mut individual_errors = 0;
 
         entries_sanity_check(entries);
 
         for entry in entries {
-            errors += entry.check_validity();
+            let mut errors = entry.check_validity();
             if thingy {
                 errors += entry.check_disassembly();
             }
+
+            individual_errors += errors;
+            if errors != 0 {
+                instructions_with_errors += 1;
+            }
         }
 
-        errors
+        (instructions_with_errors, individual_errors)
     }
 
     #[test]
@@ -1501,7 +1496,7 @@ pub(crate) mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES, true), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -1619,15 +1614,15 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1C600033, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B3A74"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "bgtz        $3, .L800B3A74",
+                expected: "bgtz        $3, .LA00B3A74",
                 expected_opcode: Opcode::core_bgtz,
                 opcode_str: "bgtz",
-                operands_str: [Some("$3"), Some(".L800B3A74"), None, None, None],
+                operands_str: [Some("$3"), Some(".LA00B3A74"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x0D00077A, 0xA4000000, InstructionFlags::default()),
@@ -1740,15 +1735,15 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x19C0FA06, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B2288"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "blez        $14, .L800B2288",
+                expected: "blez        $14, .LA00B2288",
                 expected_opcode: Opcode::core_blez,
                 opcode_str: "blez",
-                operands_str: [Some("$14"), Some(".L800B2288"), None, None, None],
+                operands_str: [Some("$14"), Some(".LA00B2288"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x09000A19, 0xA4000000, InstructionFlags::default()),
@@ -1776,7 +1771,7 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1000FE72, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B1A78"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
@@ -1889,10 +1884,10 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "lui         $7, (0xF5100000 >> 16)",
+                expected: "lui         $7, 0xF510",
                 expected_opcode: Opcode::core_lui,
                 opcode_str: "lui",
-                operands_str: [Some("$7"), Some("(0xF5100000 >> 16)"), None, None, None],
+                operands_str: [Some("$7"), Some("0xF510"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00611824, 0xA4000000, InstructionFlags::default()),
@@ -1920,15 +1915,15 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x1193FFFE, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B304C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "beq         $12, $19, .L800B304C",
+                expected: "beq         $12, $19, .LA00B304C",
                 expected_opcode: Opcode::core_beq,
                 opcode_str: "beq",
-                operands_str: [Some("$12"), Some("$19"), Some(".L800B304C"), None, None],
+                operands_str: [Some("$12"), Some("$19"), Some(".LA00B304C"), None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x900B0539, 0xA4000000, InstructionFlags::default()),
@@ -2220,27 +2215,27 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x15610003, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B2F4C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "bne         $11, $1, .L800B2F4C",
+                expected: "bne         $11, $1, .LA00B2F4C",
                 expected_opcode: Opcode::core_bne,
                 opcode_str: "bne",
-                operands_str: [Some("$11"), Some("$1"), Some(".L800B2F4C"), None, None],
+                operands_str: [Some("$11"), Some("$1"), Some(".LA00B2F4C"), None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x05C1000F, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B3A2C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "bgez        $14, .L800B3A2C",
+                expected: "bgez        $14, .LA00B3A2C",
                 expected_opcode: Opcode::core_bgez,
                 opcode_str: "bgez",
-                operands_str: [Some("$14"), Some(".L800B3A2C"), None, None, None],
+                operands_str: [Some("$14"), Some(".LA00B3A2C"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xEAFD0688, 0xA4000000, InstructionFlags::default()),
@@ -2304,15 +2299,15 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x05600002, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B3A2C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "bltz        $11, .L800B3A2C",
+                expected: "bltz        $11, .LA00B3A2C",
                 expected_opcode: Opcode::core_bltz,
                 opcode_str: "bltz",
-                operands_str: [Some("$11"), Some(".L800B3A2C"), None, None, None],
+                operands_str: [Some("$11"), Some(".LA00B3A2C"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0xA2EB0009, 0xA4000000, InstructionFlags::default()),
@@ -2369,10 +2364,10 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "cfc2        $t3, $1",
+                expected: "cfc2        $11, $1",
                 expected_opcode: Opcode::rsp_cfc2,
                 opcode_str: "cfc2",
-                operands_str: [Some("$t3"), Some("$1"), None, None, None],
+                operands_str: [Some("$11"), Some("$1"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x4A086A27, 0xA4000000, InstructionFlags::default()),
@@ -2729,6 +2724,18 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
+                expected: "ctc2        $11, $1",
+                expected_opcode: Opcode::rsp_ctc2,
+                opcode_str: "ctc2",
+                operands_str: [Some("$11"), Some("$1"), None, None, None],
+            },
+            TestEntry {
+                instr: Instruction::new_rsp(0x48CB0800, 0xA4000000, InstructionFlags::default()),
+                imm_override: None,
+                display_flags: DisplayFlags::default()
+                    .with_named_gpr(true)
+                    .with_named_fpr(true),
+                valid: true,
                 expected: "ctc2        $t3, $1",
                 expected_opcode: Opcode::rsp_ctc2,
                 opcode_str: "ctc2",
@@ -2748,15 +2755,15 @@ pub(crate) mod tests {
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x04D1FF9D, 0xA4000000, InstructionFlags::default()),
-                imm_override: None,
+                imm_override: Some(".LA00B3020"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "bgezal      $6, .L800B3020",
+                expected: "bgezal      $6, .LA00B3020",
                 expected_opcode: Opcode::core_bgezal,
                 opcode_str: "bgezal",
-                operands_str: [Some("$6"), Some(".L800B3020"), None, None, None],
+                operands_str: [Some("$6"), Some(".LA00B3020"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00035822, 0xA4000000, InstructionFlags::default()),
@@ -2777,10 +2784,10 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "sll         $a0, $a0, 4",
+                expected: "sll         $4, $4, 4",
                 expected_opcode: Opcode::core_sll,
                 opcode_str: "sll",
-                operands_str: [Some("$a0"), Some("$a0"), Some("4"), None, None],
+                operands_str: [Some("$4"), Some("$4"), Some("4"), None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00021882, 0xA4000000, InstructionFlags::default()),
@@ -2789,10 +2796,10 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "srl        $v1, $v0, 2",
+                expected: "srl         $3, $2, 2",
                 expected_opcode: Opcode::core_srl,
                 opcode_str: "srl",
-                operands_str: [Some("$v1"), Some("$v0"), Some("2"), None, None],
+                operands_str: [Some("$3"), Some("$2"), Some("2"), None, None],
             },
             TestEntry {
                 instr: Instruction::new_rsp(0x00017443, 0xA4000000, InstructionFlags::default()),
@@ -2801,96 +2808,96 @@ pub(crate) mod tests {
                     .with_named_gpr(false)
                     .with_named_fpr(false),
                 valid: true,
-                expected: "sra        $t6, $at, 17",
+                expected: "sra         $14, $1, 17",
                 expected_opcode: Opcode::core_sra,
                 opcode_str: "sra",
-                operands_str: [Some("$t6"), Some("$at"), Some("17"), None, None],
+                operands_str: [Some("$14"), Some("$1"), Some("17"), None, None],
             },
             // removed rsp instructions
-            TestEntry::new_rsp_invalid(0x50740008, InstructionFlags::default()), // beql
-            TestEntry::new_rsp_invalid(0x56E1FFF8, InstructionFlags::default()), // bnel
-            TestEntry::new_rsp_invalid(0x59C00007, InstructionFlags::default()), // blezl
-            TestEntry::new_rsp_invalid(0x5D000001, InstructionFlags::default()), // bgtzl
-            TestEntry::new_rsp_invalid(0x60840001, InstructionFlags::default()), // daddi
-            TestEntry::new_rsp_invalid(0x64840001, InstructionFlags::default()), // daddiu
-            TestEntry::new_rsp_invalid(0x69220007, InstructionFlags::default()), // ldl
-            TestEntry::new_rsp_invalid(0x6D240008, InstructionFlags::default()), // ldr
-            TestEntry::new_rsp_invalid(0x88EE000D, InstructionFlags::default()), // lwl
-            TestEntry::new_rsp_invalid(0x98EE0010, InstructionFlags::default()), // lwr
-            TestEntry::new_rsp_invalid(0x9FA30010, InstructionFlags::default()), // lwu
-            TestEntry::new_rsp_invalid(0xA8C20000, InstructionFlags::default()), // swl
-            TestEntry::new_rsp_invalid(0xB0C20007, InstructionFlags::default()), // sdl
-            TestEntry::new_rsp_invalid(0xB4C20000, InstructionFlags::default()), // sdr
-            TestEntry::new_rsp_invalid(0xB9C1000E, InstructionFlags::default()), // swr
-            TestEntry::new_rsp_invalid(0xC0850000, InstructionFlags::default()), // ll
-            TestEntry::new_rsp_invalid(0xD0850000, InstructionFlags::default()), // lld
-            TestEntry::new_rsp_invalid(0xDFBF0020, InstructionFlags::default()), // ld
-            TestEntry::new_rsp_invalid(0xE0BF0020, InstructionFlags::default()), // sc
-            TestEntry::new_rsp_invalid(0xF0BF0020, InstructionFlags::default()), // scd
-            TestEntry::new_rsp_invalid(0xFFA00038, InstructionFlags::default()), // sd
-            TestEntry::new_rsp_invalid(0xBCD00000, InstructionFlags::default()), // cache
-            TestEntry::new_rsp_invalid(0xC4D00010, InstructionFlags::default()), // lwc1
-            TestEntry::new_rsp_invalid(0xD4D00010, InstructionFlags::default()), // ldc1
-            TestEntry::new_rsp_invalid(0xE4D00010, InstructionFlags::default()), // swc1
-            TestEntry::new_rsp_invalid(0xF4D00010, InstructionFlags::default()), // sdc1
-            // TestEntry::new_rsp_invalid(0xC8D00010, InstructionFlags::default()), // lwc2
-            TestEntry::new_rsp_invalid(0xD8D00010, InstructionFlags::default()), // ldc2
-            // TestEntry::new_rsp_invalid(0xE8D00010, InstructionFlags::default()), // swc2
-            TestEntry::new_rsp_invalid(0xF8D00010, InstructionFlags::default()), // sdc2
-            TestEntry::new_rsp_invalid(0x05020031, InstructionFlags::default()), // bltzl
-            TestEntry::new_rsp_invalid(0x04630005, InstructionFlags::default()), // bgezl
-            TestEntry::new_rsp_invalid(0x04A80010, InstructionFlags::default()), // tgei
-            TestEntry::new_rsp_invalid(0x04A90010, InstructionFlags::default()), // tgeiu
-            TestEntry::new_rsp_invalid(0x04AA0010, InstructionFlags::default()), // tlti
-            TestEntry::new_rsp_invalid(0x04AB0010, InstructionFlags::default()), // tltiu
-            TestEntry::new_rsp_invalid(0x04AC0010, InstructionFlags::default()), // teqi
-            TestEntry::new_rsp_invalid(0x04AE0010, InstructionFlags::default()), // tnei
-            TestEntry::new_rsp_invalid(0x04B20010, InstructionFlags::default()), // bltzall
-            TestEntry::new_rsp_invalid(0x04B30010, InstructionFlags::default()), // bgezall
-            TestEntry::new_rsp_invalid(0x00042FF8, InstructionFlags::default()), // dsll
-            TestEntry::new_rsp_invalid(0x000637FA, InstructionFlags::default()), // dsrl
-            TestEntry::new_rsp_invalid(0x0002137B, InstructionFlags::default()), // dsra
-            TestEntry::new_rsp_invalid(0x000437FC, InstructionFlags::default()), // dsll32
-            TestEntry::new_rsp_invalid(0x0005283E, InstructionFlags::default()), // dsrl32
-            TestEntry::new_rsp_invalid(0x0002103F, InstructionFlags::default()), // dsra32
-            TestEntry::new_rsp_invalid(0x01EE1014, InstructionFlags::default()), // dsllv
-            TestEntry::new_rsp_invalid(0x01EE1016, InstructionFlags::default()), // dsrlv
-            TestEntry::new_rsp_invalid(0x01EE1017, InstructionFlags::default()), // dsrav
-            TestEntry::new_rsp_invalid(0x03600011, InstructionFlags::default()), // mthi
-            TestEntry::new_rsp_invalid(0x03600013, InstructionFlags::default()), // mtlo
-            TestEntry::new_rsp_invalid(0x00004010, InstructionFlags::default()), // mfhi
-            TestEntry::new_rsp_invalid(0x00004012, InstructionFlags::default()), // mflo
-            TestEntry::new_rsp_invalid(0x01AC001A, InstructionFlags::default()), // div
-            TestEntry::new_rsp_invalid(0x0101001B, InstructionFlags::default()), // divu
-            TestEntry::new_rsp_invalid(0x01CF001E, InstructionFlags::default()), // ddiv
-            TestEntry::new_rsp_invalid(0x01CF001F, InstructionFlags::default()), // ddivu
-            TestEntry::new_rsp_invalid(0x0162582C, InstructionFlags::default()), // dadd
-            TestEntry::new_rsp_invalid(0x012A582D, InstructionFlags::default()), // daddu
-            TestEntry::new_rsp_invalid(0x0162582E, InstructionFlags::default()), // dsub
-            TestEntry::new_rsp_invalid(0x0162582F, InstructionFlags::default()), // dsubu
-            TestEntry::new_rsp_invalid(0x0000000C, InstructionFlags::default()), // syscall
-            TestEntry::new_rsp_invalid(0x0000000F, InstructionFlags::default()), // sync
-            TestEntry::new_rsp_invalid(0x00870018, InstructionFlags::default()), // mult
-            TestEntry::new_rsp_invalid(0x00E20019, InstructionFlags::default()), // multu
-            TestEntry::new_rsp_invalid(0x0087001C, InstructionFlags::default()), // dmult
-            TestEntry::new_rsp_invalid(0x00E2001D, InstructionFlags::default()), // dmultu
-            TestEntry::new_rsp_invalid(0x00E200B0, InstructionFlags::default()), // tge
-            TestEntry::new_rsp_invalid(0x00E200B1, InstructionFlags::default()), // tgeu
-            TestEntry::new_rsp_invalid(0x00E200B2, InstructionFlags::default()), // tlt
-            TestEntry::new_rsp_invalid(0x00E200B3, InstructionFlags::default()), // tltu
-            TestEntry::new_rsp_invalid(0x00E200B4, InstructionFlags::default()), // teq
-            TestEntry::new_rsp_invalid(0x00E200B6, InstructionFlags::default()), // tne
-            TestEntry::new_rsp_invalid(0x40220800, InstructionFlags::default()), // dmfc0
-            TestEntry::new_rsp_invalid(0x40420800, InstructionFlags::default()), // cfc0
-            TestEntry::new_rsp_invalid(0x40A20800, InstructionFlags::default()), // dmtc0
-            TestEntry::new_rsp_invalid(0x40C20800, InstructionFlags::default()), // ctc0
+            TestEntry::new_rsp_invalid(0x50740008, InstructionFlags::default(), ".word       0x50740008                   /* INVALID / 00740008 <OpcodeCategory: RSP_NORMAL> */"), // beql
+            TestEntry::new_rsp_invalid(0x56E1FFF8, InstructionFlags::default(), ".word       0x56E1FFF8                   /* INVALID / 02E1FFF8 <OpcodeCategory: RSP_NORMAL> */"), // bnel
+            TestEntry::new_rsp_invalid(0x59C00007, InstructionFlags::default(), ".word       0x59C00007                   /* INVALID / 01C00007 <OpcodeCategory: RSP_NORMAL> */"), // blezl
+            TestEntry::new_rsp_invalid(0x5D000001, InstructionFlags::default(), ".word       0x5D000001                   /* INVALID / 01000001 <OpcodeCategory: RSP_NORMAL> */"), // bgtzl
+            TestEntry::new_rsp_invalid(0x60840001, InstructionFlags::default(), ".word       0x60840001                   /* INVALID / 00840001 <OpcodeCategory: RSP_NORMAL> */"), // daddi
+            TestEntry::new_rsp_invalid(0x64840001, InstructionFlags::default(), ".word       0x64840001                   /* INVALID / 00840001 <OpcodeCategory: RSP_NORMAL> */"), // daddiu
+            TestEntry::new_rsp_invalid(0x69220007, InstructionFlags::default(), ".word       0x69220007                   /* INVALID / 01220007 <OpcodeCategory: RSP_NORMAL> */"), // ldl
+            TestEntry::new_rsp_invalid(0x6D240008, InstructionFlags::default(), ".word       0x6D240008                   /* INVALID / 01240008 <OpcodeCategory: RSP_NORMAL> */"), // ldr
+            TestEntry::new_rsp_invalid(0x88EE000D, InstructionFlags::default(), ".word       0x88EE000D                   /* INVALID / 00EE000D <OpcodeCategory: RSP_NORMAL> */"), // lwl
+            TestEntry::new_rsp_invalid(0x98EE0010, InstructionFlags::default(), ".word       0x98EE0010                   /* INVALID / 00EE0010 <OpcodeCategory: RSP_NORMAL> */"), // lwr
+            TestEntry::new_rsp_invalid(0x9FA30010, InstructionFlags::default(), ".word       0x9FA30010                   /* INVALID / 03A30010 <OpcodeCategory: RSP_NORMAL> */"), // lwu
+            TestEntry::new_rsp_invalid(0xA8C20000, InstructionFlags::default(), ".word       0xA8C20000                   /* INVALID / 00C20000 <OpcodeCategory: RSP_NORMAL> */"), // swl
+            TestEntry::new_rsp_invalid(0xB0C20007, InstructionFlags::default(), ".word       0xB0C20007                   /* INVALID / 00C20007 <OpcodeCategory: RSP_NORMAL> */"), // sdl
+            TestEntry::new_rsp_invalid(0xB4C20000, InstructionFlags::default(), ".word       0xB4C20000                   /* INVALID / 00C20000 <OpcodeCategory: RSP_NORMAL> */"), // sdr
+            TestEntry::new_rsp_invalid(0xB9C1000E, InstructionFlags::default(), ".word       0xB9C1000E                   /* INVALID / 01C1000E <OpcodeCategory: RSP_NORMAL> */"), // swr
+            TestEntry::new_rsp_invalid(0xC0850000, InstructionFlags::default(), ".word       0xC0850000                   /* INVALID / 00850000 <OpcodeCategory: RSP_NORMAL> */"), // ll
+            TestEntry::new_rsp_invalid(0xD0850000, InstructionFlags::default(), ".word       0xD0850000                   /* INVALID / 00850000 <OpcodeCategory: RSP_NORMAL> */"), // lld
+            TestEntry::new_rsp_invalid(0xDFBF0020, InstructionFlags::default(), ".word       0xDFBF0020                   /* INVALID / 03BF0020 <OpcodeCategory: RSP_NORMAL> */"), // ld
+            TestEntry::new_rsp_invalid(0xE0BF0020, InstructionFlags::default(), ".word       0xE0BF0020                   /* INVALID / 00BF0020 <OpcodeCategory: RSP_NORMAL> */"), // sc
+            TestEntry::new_rsp_invalid(0xF0BF0020, InstructionFlags::default(), ".word       0xF0BF0020                   /* INVALID / 00BF0020 <OpcodeCategory: RSP_NORMAL> */"), // scd
+            TestEntry::new_rsp_invalid(0xFFA00038, InstructionFlags::default(), ".word       0xFFA00038                   /* INVALID / 03A00038 <OpcodeCategory: RSP_NORMAL> */"), // sd
+            TestEntry::new_rsp_invalid(0xBCD00000, InstructionFlags::default(), ".word       0xBCD00000                   /* INVALID / 00D00000 <OpcodeCategory: RSP_NORMAL> */"), // cache
+            TestEntry::new_rsp_invalid(0xC4D00010, InstructionFlags::default(), ".word       0xC4D00010                   /* INVALID / 00D00010 <OpcodeCategory: RSP_NORMAL> */"), // lwc1
+            TestEntry::new_rsp_invalid(0xD4D00010, InstructionFlags::default(), ".word       0xD4D00010                   /* INVALID / 00D00010 <OpcodeCategory: RSP_NORMAL> */"), // ldc1
+            TestEntry::new_rsp_invalid(0xE4D00010, InstructionFlags::default(), ".word       0xE4D00010                   /* INVALID / 00D00010 <OpcodeCategory: RSP_NORMAL> */"), // swc1
+            TestEntry::new_rsp_invalid(0xF4D00010, InstructionFlags::default(), ".word       0xF4D00010                   /* INVALID / 00D00010 <OpcodeCategory: RSP_NORMAL> */"), // sdc1
+            // TestEntry::new_rsp_invalid(0xC8D00010, InstructionFlags::default(), ""), // lwc2
+            TestEntry::new_rsp_invalid(0xD8D00010, InstructionFlags::default(), ".word       0xD8D00010                   /* INVALID / 00D00010 <OpcodeCategory: RSP_NORMAL> */"), // ldc2
+            // TestEntry::new_rsp_invalid(0xE8D00010, InstructionFlags::default(), ""), // swc2
+            TestEntry::new_rsp_invalid(0xF8D00010, InstructionFlags::default(), ".word       0xF8D00010                   /* INVALID / 00D00010 <OpcodeCategory: RSP_NORMAL> */"), // sdc2
+            TestEntry::new_rsp_invalid(0x05020031, InstructionFlags::default(), ".word       0x05020031                   /* INVALID / 01000031 <OpcodeCategory: RSP_REGIMM> */"), // bltzl
+            TestEntry::new_rsp_invalid(0x04630005, InstructionFlags::default(), ".word       0x04630005                   /* INVALID / 00600005 <OpcodeCategory: RSP_REGIMM> */"), // bgezl
+            TestEntry::new_rsp_invalid(0x04A80010, InstructionFlags::default(), ".word       0x04A80010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // tgei
+            TestEntry::new_rsp_invalid(0x04A90010, InstructionFlags::default(), ".word       0x04A90010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // tgeiu
+            TestEntry::new_rsp_invalid(0x04AA0010, InstructionFlags::default(), ".word       0x04AA0010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // tlti
+            TestEntry::new_rsp_invalid(0x04AB0010, InstructionFlags::default(), ".word       0x04AB0010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // tltiu
+            TestEntry::new_rsp_invalid(0x04AC0010, InstructionFlags::default(), ".word       0x04AC0010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // teqi
+            TestEntry::new_rsp_invalid(0x04AE0010, InstructionFlags::default(), ".word       0x04AE0010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // tnei
+            TestEntry::new_rsp_invalid(0x04B20010, InstructionFlags::default(), ".word       0x04B20010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // bltzall
+            TestEntry::new_rsp_invalid(0x04B30010, InstructionFlags::default(), ".word       0x04B30010                   /* INVALID / 00A00010 <OpcodeCategory: RSP_REGIMM> */"), // bgezall
+            TestEntry::new_rsp_invalid(0x00042FF8, InstructionFlags::default(), ".word       0x00042FF8                   /* INVALID / 00042FC0 <OpcodeCategory: RSP_SPECIAL> */"), // dsll
+            TestEntry::new_rsp_invalid(0x000637FA, InstructionFlags::default(), ".word       0x000637FA                   /* INVALID / 000637C0 <OpcodeCategory: RSP_SPECIAL> */"), // dsrl
+            TestEntry::new_rsp_invalid(0x0002137B, InstructionFlags::default(), ".word       0x0002137B                   /* INVALID / 00021340 <OpcodeCategory: RSP_SPECIAL> */"), // dsra
+            TestEntry::new_rsp_invalid(0x000437FC, InstructionFlags::default(), ".word       0x000437FC                   /* INVALID / 000437C0 <OpcodeCategory: RSP_SPECIAL> */"), // dsll32
+            TestEntry::new_rsp_invalid(0x0005283E, InstructionFlags::default(), ".word       0x0005283E                   /* INVALID / 00052800 <OpcodeCategory: RSP_SPECIAL> */"), // dsrl32
+            TestEntry::new_rsp_invalid(0x0002103F, InstructionFlags::default(), ".word       0x0002103F                   /* INVALID / 00021000 <OpcodeCategory: RSP_SPECIAL> */"), // dsra32
+            TestEntry::new_rsp_invalid(0x01EE1014, InstructionFlags::default(), ".word       0x01EE1014                   /* INVALID / 01EE1000 <OpcodeCategory: RSP_SPECIAL> */"), // dsllv
+            TestEntry::new_rsp_invalid(0x01EE1016, InstructionFlags::default(), ".word       0x01EE1016                   /* INVALID / 01EE1000 <OpcodeCategory: RSP_SPECIAL> */"), // dsrlv
+            TestEntry::new_rsp_invalid(0x01EE1017, InstructionFlags::default(), ".word       0x01EE1017                   /* INVALID / 01EE1000 <OpcodeCategory: RSP_SPECIAL> */"), // dsrav
+            TestEntry::new_rsp_invalid(0x03600011, InstructionFlags::default(), ".word       0x03600011                   /* INVALID / 03600000 <OpcodeCategory: RSP_SPECIAL> */"), // mthi
+            TestEntry::new_rsp_invalid(0x03600013, InstructionFlags::default(), ".word       0x03600013                   /* INVALID / 03600000 <OpcodeCategory: RSP_SPECIAL> */"), // mtlo
+            TestEntry::new_rsp_invalid(0x00004010, InstructionFlags::default(), ".word       0x00004010                   /* INVALID / 00004000 <OpcodeCategory: RSP_SPECIAL> */"), // mfhi
+            TestEntry::new_rsp_invalid(0x00004012, InstructionFlags::default(), ".word       0x00004012                   /* INVALID / 00004000 <OpcodeCategory: RSP_SPECIAL> */"), // mflo
+            TestEntry::new_rsp_invalid(0x01AC001A, InstructionFlags::default(), ".word       0x01AC001A                   /* INVALID / 01AC0000 <OpcodeCategory: RSP_SPECIAL> */"), // div
+            TestEntry::new_rsp_invalid(0x0101001B, InstructionFlags::default(), ".word       0x0101001B                   /* INVALID / 01010000 <OpcodeCategory: RSP_SPECIAL> */"), // divu
+            TestEntry::new_rsp_invalid(0x01CF001E, InstructionFlags::default(), ".word       0x01CF001E                   /* INVALID / 01CF0000 <OpcodeCategory: RSP_SPECIAL> */"), // ddiv
+            TestEntry::new_rsp_invalid(0x01CF001F, InstructionFlags::default(), ".word       0x01CF001F                   /* INVALID / 01CF0000 <OpcodeCategory: RSP_SPECIAL> */"), // ddivu
+            TestEntry::new_rsp_invalid(0x0162582C, InstructionFlags::default(), ".word       0x0162582C                   /* INVALID / 01625800 <OpcodeCategory: RSP_SPECIAL> */"), // dadd
+            TestEntry::new_rsp_invalid(0x012A582D, InstructionFlags::default(), ".word       0x012A582D                   /* INVALID / 012A5800 <OpcodeCategory: RSP_SPECIAL> */"), // daddu
+            TestEntry::new_rsp_invalid(0x0162582E, InstructionFlags::default(), ".word       0x0162582E                   /* INVALID / 01625800 <OpcodeCategory: RSP_SPECIAL> */"), // dsub
+            TestEntry::new_rsp_invalid(0x0162582F, InstructionFlags::default(), ".word       0x0162582F                   /* INVALID / 01625800 <OpcodeCategory: RSP_SPECIAL> */"), // dsubu
+            TestEntry::new_rsp_invalid(0x0000000C, InstructionFlags::default(), ".word       0x0000000C                   /* INVALID / 00000000 <OpcodeCategory: RSP_SPECIAL> */"), // syscall
+            TestEntry::new_rsp_invalid(0x0000000F, InstructionFlags::default(), ".word       0x0000000F                   /* INVALID / 00000000 <OpcodeCategory: RSP_SPECIAL> */"), // sync
+            TestEntry::new_rsp_invalid(0x00870018, InstructionFlags::default(), ".word       0x00870018                   /* INVALID / 00870000 <OpcodeCategory: RSP_SPECIAL> */"), // mult
+            TestEntry::new_rsp_invalid(0x00E20019, InstructionFlags::default(), ".word       0x00E20019                   /* INVALID / 00E20000 <OpcodeCategory: RSP_SPECIAL> */"), // multu
+            TestEntry::new_rsp_invalid(0x0087001C, InstructionFlags::default(), ".word       0x0087001C                   /* INVALID / 00870000 <OpcodeCategory: RSP_SPECIAL> */"), // dmult
+            TestEntry::new_rsp_invalid(0x00E2001D, InstructionFlags::default(), ".word       0x00E2001D                   /* INVALID / 00E20000 <OpcodeCategory: RSP_SPECIAL> */"), // dmultu
+            TestEntry::new_rsp_invalid(0x00E200B0, InstructionFlags::default(), ".word       0x00E200B0                   /* INVALID / 00E20080 <OpcodeCategory: RSP_SPECIAL> */"), // tge
+            TestEntry::new_rsp_invalid(0x00E200B1, InstructionFlags::default(), ".word       0x00E200B1                   /* INVALID / 00E20080 <OpcodeCategory: RSP_SPECIAL> */"), // tgeu
+            TestEntry::new_rsp_invalid(0x00E200B2, InstructionFlags::default(), ".word       0x00E200B2                   /* INVALID / 00E20080 <OpcodeCategory: RSP_SPECIAL> */"), // tlt
+            TestEntry::new_rsp_invalid(0x00E200B3, InstructionFlags::default(), ".word       0x00E200B3                   /* INVALID / 00E20080 <OpcodeCategory: RSP_SPECIAL> */"), // tltu
+            TestEntry::new_rsp_invalid(0x00E200B4, InstructionFlags::default(), ".word       0x00E200B4                   /* INVALID / 00E20080 <OpcodeCategory: RSP_SPECIAL> */"), // teq
+            TestEntry::new_rsp_invalid(0x00E200B6, InstructionFlags::default(), ".word       0x00E200B6                   /* INVALID / 00E20080 <OpcodeCategory: RSP_SPECIAL> */"), // tne
+            TestEntry::new_rsp_invalid(0x40220800, InstructionFlags::default(), ".word       0x40220800                   /* INVALID / 00020800 <OpcodeCategory: RSP_COP0> */"), // dmfc0
+            TestEntry::new_rsp_invalid(0x40420800, InstructionFlags::default(), ".word       0x40420800                   /* INVALID / 00020800 <OpcodeCategory: RSP_COP0> */"), // cfc0
+            TestEntry::new_rsp_invalid(0x40A20800, InstructionFlags::default(), ".word       0x40A20800                   /* INVALID / 00020800 <OpcodeCategory: RSP_COP0> */"), // dmtc0
+            TestEntry::new_rsp_invalid(0x40C20800, InstructionFlags::default(), ".word       0x40C20800                   /* INVALID / 00020800 <OpcodeCategory: RSP_COP0> */"), // ctc0
             // Invalid instructions
-            TestEntry::new_rsp_invalid(0x44444444, InstructionFlags::default()),
-            TestEntry::new_rsp_invalid(0x77777777, InstructionFlags::default()),
-            TestEntry::new_rsp_invalid(0xEEEEEEEE, InstructionFlags::default()),
+            TestEntry::new_rsp_invalid(0x44444444, InstructionFlags::default(), ".word       0x44444444                   /* INVALID / 00444444 <OpcodeCategory: RSP_COP1> */"),
+            TestEntry::new_rsp_invalid(0x77777777, InstructionFlags::default(), ".word       0x77777777                   /* INVALID / 03777777 <OpcodeCategory: CORE_NORMAL> */"),
+            TestEntry::new_rsp_invalid(0xEEEEEEEE, InstructionFlags::default(), ".word       0xEEEEEEEE                   /* INVALID / 02EEEEEE <OpcodeCategory: CORE_NORMAL> */"),
         ];
 
-        assert_eq!(check_test_entries(ENTRIES, true), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -3808,7 +3815,7 @@ pub(crate) mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES, true), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -4286,7 +4293,7 @@ pub(crate) mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES, true), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 
     #[test]
@@ -4334,6 +4341,6 @@ pub(crate) mod tests {
             },
         ];
 
-        assert_eq!(check_test_entries(ENTRIES, true), 0);
+        assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
     }
 }
