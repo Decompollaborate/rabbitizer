@@ -23,3 +23,28 @@
      *10 = See COLOR table
      *11 = See CST table
 */
+
+    RAB_DEF_OPCODE_REDIRECT(0x0, r4000allegrex, vfpu4_fmt0_fmt0)
+
+    RAB_DEF_OPCODE_REDIRECT(0x2, r4000allegrex, vfpu4_fmt0_fmt2)
+
+    RAB_DEF_OPCODE_REDIRECT(0x3, r4000allegrex, vfpu4_fmt0_fmt3)
+
+    RAB_DEF_OPCODE_REDIRECT(0x4, r4000allegrex, vfpu4_fmt0_rnd)
+
+    RAB_DEF_OPCODE_REDIRECT(0x6, r4000allegrex, vfpu4_fmt0_cvtflt)
+
+    RAB_DEF_OPCODE_REDIRECT(0x7, r4000allegrex, vfpu4_fmt0_cvtint)
+
+    RAB_DEF_OPCODE_REDIRECT(0x8, r4000allegrex, vfpu4_fmt0_fmt8)
+
+    RAB_DEF_OPCODE_REDIRECT(0x9, r4000allegrex, vfpu4_fmt0_fmt9)
+
+    RAB_DEF_OPCODE_REDIRECT(0xA, r4000allegrex, vfpu4_fmt0_control)
+
+    RAB_DEF_OPCODE_REDIRECT(0xB, r4000allegrex, vfpu4_fmt0_color)
+
+    RAB_DEF_OPCODE_REDIRECT(0xC, r4000allegrex, vfpu4_fmt0_cst)
+    RAB_DEF_OPCODE_REDIRECT(0xD, r4000allegrex, vfpu4_fmt0_cst)
+    RAB_DEF_OPCODE_REDIRECT(0xE, r4000allegrex, vfpu4_fmt0_cst)
+    RAB_DEF_OPCODE_REDIRECT(0xF, r4000allegrex, vfpu4_fmt0_cst)

@@ -3695,6 +3695,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vwbn.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_vmov_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R,
@@ -5077,6 +5078,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vi2f.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_vcmovt_s as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::r4000allegrex_s_vd,

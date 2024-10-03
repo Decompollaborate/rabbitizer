@@ -21,7 +21,7 @@ vf2h.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x1, vf2h_p, vf2h.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00801, vf2h_p, vf2h.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Convert float to float16 Pair word
@@ -34,7 +34,7 @@ vf2h.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x3, vf2h_q, vf2h.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00901, vf2h_q, vf2h.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Convert float to float16 Quad word
@@ -47,7 +47,7 @@ vh2f.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x0, vh2f_s, vh2f.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00C00, vh2f_s, vh2f.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Convert float16 to float Pair word
@@ -60,7 +60,7 @@ vh2f.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x03 << 2 | 0x1, vh2f_p, vh2f.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00C01, vh2f_p, vh2f.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Convert float16 to float Pair word
@@ -73,7 +73,7 @@ vsbz.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x06 << 2 | 0x0, vsbz_s, vsbz.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x01800, vsbz_s, vsbz.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // ScaleBZ Pair word
@@ -86,7 +86,7 @@ vlgb.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x07 << 2 | 0x0, vlgb_s, vlgb.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x01C00, vlgb_s, vlgb.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // LoGB Pair word

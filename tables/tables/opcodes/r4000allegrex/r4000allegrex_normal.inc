@@ -79,9 +79,7 @@
     RAB_DEF_OPCODE_REDIRECT(0x18, r4000allegrex, vfpu0)
     RAB_DEF_OPCODE_REDIRECT(0x19, r4000allegrex, vfpu1)
     RAB_DEF_OPCODE_REDIRECT(0x1B, r4000allegrex, vfpu3)
-/*
     RAB_DEF_OPCODE_REDIRECT(0x34, r4000allegrex, vfpu4)
-*/
     RAB_DEF_OPCODE_REDIRECT(0x37, r4000allegrex, vfpu5)
     RAB_DEF_OPCODE_REDIRECT(0x3C, r4000allegrex, vfpu6)
 

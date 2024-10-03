@@ -23,7 +23,17 @@ vwbn.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x3 << 2 | 0x0, vwbn_s, vwbn.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x60000, vwbn_s, vwbn.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_bn),
         instr_type: InstrType::R
     ) // WrapBN Single word
+
+    RAB_DEF_OPCODE_REDIRECT(0x00000, r4000allegrex, vfpu4_fmt0)
+    RAB_DEF_OPCODE_REDIRECT(0x00001, r4000allegrex, vfpu4_fmt0)
+    RAB_DEF_OPCODE_REDIRECT(0x00100, r4000allegrex, vfpu4_fmt0)
+    RAB_DEF_OPCODE_REDIRECT(0x00101, r4000allegrex, vfpu4_fmt0)
+
+    RAB_DEF_OPCODE_REDIRECT(0x40000, r4000allegrex, vfpu4_fmt2)
+    RAB_DEF_OPCODE_REDIRECT(0x40001, r4000allegrex, vfpu4_fmt2)
+    RAB_DEF_OPCODE_REDIRECT(0x40100, r4000allegrex, vfpu4_fmt2)
+    RAB_DEF_OPCODE_REDIRECT(0x40101, r4000allegrex, vfpu4_fmt2)

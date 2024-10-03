@@ -21,7 +21,7 @@ vsrt3.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00 << 2 | 0x3, vsrt3_q, vsrt3.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00101, vsrt3_q, vsrt3.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SoRT 3 Quad word
@@ -34,7 +34,7 @@ vsrt4.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01 << 2 | 0x3, vsrt4_q, vsrt4.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00501, vsrt4_q, vsrt4.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SoRT 4 Quad word
@@ -47,7 +47,7 @@ vsgn.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x0, vsgn_s, vsgn.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00800, vsgn_s, vsgn.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // SiGN Single word
@@ -60,7 +60,7 @@ vsgn.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x1, vsgn_p, vsgn.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00801, vsgn_p, vsgn.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // SiGN Pair word
@@ -73,7 +73,7 @@ vsgn.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x2, vsgn_t, vsgn.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00900, vsgn_t, vsgn.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // SiGN Triple word
@@ -86,7 +86,7 @@ vsgn.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x02 << 2 | 0x3, vsgn_q, vsgn.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00901, vsgn_q, vsgn.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SiGN Quad word

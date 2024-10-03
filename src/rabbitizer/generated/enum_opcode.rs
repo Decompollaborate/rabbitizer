@@ -438,6 +438,7 @@ pub enum Opcode {
     r4000allegrex_vslt_t,
     r4000allegrex_vslt_q,
     r4000allegrex_vwbn_s,
+
     r4000allegrex_vmov_s,
     r4000allegrex_vmov_p,
     r4000allegrex_vmov_t,
@@ -595,6 +596,7 @@ pub enum Opcode {
     r4000allegrex_vi2f_p,
     r4000allegrex_vi2f_t,
     r4000allegrex_vi2f_q,
+
     r4000allegrex_vcmovt_s,
     r4000allegrex_vcmovt_p,
     r4000allegrex_vcmovt_t,
