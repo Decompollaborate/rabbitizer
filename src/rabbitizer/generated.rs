@@ -13,6 +13,7 @@
 mod array_opcodes;
 mod code_decode_isa_extension_none;
 mod code_decode_isa_extension_r3000gte;
+mod code_decode_isa_extension_r4000allegrex;
 mod code_decode_isa_extension_r5900;
 mod code_decode_isa_extension_rsp;
 mod enum_abi;

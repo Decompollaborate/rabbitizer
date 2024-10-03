@@ -100,3 +100,8 @@
         reads_rs: true,
         reads_rt: true
     ) // select MIN
+
+    RAB_DEF_OPCODE_REDIRECT(0x02, r4000allegrex, special_rs)
+    RAB_DEF_OPCODE_REDIRECT(0x06, r4000allegrex, special_sa)
+
+    RAB_DEF_OPCODE_REDIRECT(_, none, special)

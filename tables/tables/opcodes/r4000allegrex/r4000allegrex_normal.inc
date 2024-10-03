@@ -65,3 +65,27 @@
         instr_type: InstrType::I,
         modifies_rs: true
     ) // Store Single word to Vfpu
+
+    RAB_DEF_OPCODE_REDIRECT(0x00, r4000allegrex, special)
+    RAB_DEF_OPCODE_REDIRECT(0x01, r4000allegrex, regimm)
+
+/*
+    RAB_DEF_OPCODE_REDIRECT(0x1C, r4000allegrex, special2)
+    RAB_DEF_OPCODE_REDIRECT(0x1F, r4000allegrex, special3)
+
+    RAB_DEF_OPCODE_REDIRECT(0x10, r4000allegrex, coprocessor0)
+    RAB_DEF_OPCODE_REDIRECT(0x11, r4000allegrex, coprocessor1)
+    RAB_DEF_OPCODE_REDIRECT(0x12, r4000allegrex, coprocessor2)
+
+    RAB_DEF_OPCODE_REDIRECT(0x18, r4000allegrex, vfpu0)
+    RAB_DEF_OPCODE_REDIRECT(0x19, r4000allegrex, vfpu1)
+    RAB_DEF_OPCODE_REDIRECT(0x1B, r4000allegrex, vfpu3)
+    RAB_DEF_OPCODE_REDIRECT(0x34, r4000allegrex, vfpu4)
+    RAB_DEF_OPCODE_REDIRECT(0x37, r4000allegrex, vfpu5)
+    RAB_DEF_OPCODE_REDIRECT(0x3C, r4000allegrex, vfpu6)
+
+    RAB_DEF_OPCODE_REDIRECT(0x3D, r4000allegrex, quadlr)
+
+    RAB_DEF_OPCODE_REDIRECT(0x3F, r4000allegrex, vfpu7)
+*/
+    RAB_DEF_OPCODE_REDIRECT(_, none, normal)

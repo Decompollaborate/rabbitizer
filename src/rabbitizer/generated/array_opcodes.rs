@@ -2888,6 +2888,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sv.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_clz as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
@@ -2962,6 +2963,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("min", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_srl as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
@@ -2996,6 +2998,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("rotrv", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+
     table[Opcode::r4000allegrex_sleep as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::R,

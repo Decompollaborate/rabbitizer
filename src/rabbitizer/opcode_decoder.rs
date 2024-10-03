@@ -22,7 +22,6 @@ impl OpcodeDecoder {
     ) -> Self {
         let mandatory_bits = EncodedFieldMask::empty();
 
-        // TODO
         match isa_extension {
             IsaExtension::NONE => {
                 Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version)
@@ -33,15 +32,15 @@ impl OpcodeDecoder {
             IsaExtension::R3000GTE => {
                 Self::decode_isa_extension_r3000gte_normal(word, mandatory_bits, flags, isa_version)
             }
-            // IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex_normal(word, mandatory_bits, flags, isa_version),
+            IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex_normal(
+                word,
+                mandatory_bits,
+                flags,
+                isa_version,
+            ),
             IsaExtension::R5900 => {
                 Self::decode_isa_extension_r5900_normal(word, mandatory_bits, flags, isa_version)
             }
-            _ => Self {
-                opcode: Opcode::ALL_INVALID,
-                opcode_category: OpcodeCategory::ALL_INVALID,
-                mandatory_bits: EncodedFieldMask::empty(),
-            },
         }
     }
 }
@@ -218,6 +217,9 @@ impl OpcodeDecoder {
 }
 
 // IsaExtension::R3000GTE
+impl OpcodeDecoder {}
+
+// IsaExtension::R4000ALLEGREX
 impl OpcodeDecoder {}
 
 // IsaExtension::R5900

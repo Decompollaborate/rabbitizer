@@ -347,6 +347,7 @@ pub enum Opcode {
     r4000allegrex_sv_s,
     r4000allegrex_lv_q,
     r4000allegrex_sv_q,
+
     r4000allegrex_clz,
     r4000allegrex_clo,
     r4000allegrex_madd,
@@ -355,10 +356,12 @@ pub enum Opcode {
     r4000allegrex_msubu,
     r4000allegrex_max,
     r4000allegrex_min,
+
     r4000allegrex_srl,
     r4000allegrex_rotr,
     r4000allegrex_srlv,
     r4000allegrex_rotrv,
+
     r4000allegrex_sleep,
     r4000allegrex_mfie,
     r4000allegrex_mtie,

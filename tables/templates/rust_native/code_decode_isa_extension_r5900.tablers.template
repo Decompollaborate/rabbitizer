@@ -465,7 +465,6 @@ impl OpcodeDecoder {
             mandatory_bits,
         }
     }
-
 }
 
 #undef RAB_DEF_OPCODE

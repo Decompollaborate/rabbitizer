@@ -1,0 +1,143 @@
+/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
+    case_bits => Opcode::prefix##_##name,
+
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...)
+
+#define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind) \
+    case_bits => return Self::decode_isa_extension_## prefix ##_## kind (word, mandatory_bits, flags, isa_version),
+
+#define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten) \
+    case_bits => Opcode::ALL_INVALID,
+
+use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+
+impl OpcodeDecoder {
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r4000allegrex_normal(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::opcode;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_NORMAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        let opcode = match mask.get_shifted(word) {
+#include "opcodes/r4000allegrex/r4000allegrex_normal.inc"
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r4000allegrex_special(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::function;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_SPECIAL;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        let opcode = match mask.get_shifted(word) {
+#include "opcodes/r4000allegrex/r4000allegrex_special.inc"
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r4000allegrex_special_rs(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::rs;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_SPECIAL_RS;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        let opcode = match mask.get_shifted(word) {
+#include "opcodes/r4000allegrex/r4000allegrex_special_rs.inc"
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r4000allegrex_special_sa(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::sa;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_SPECIAL_SA;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        let opcode = match mask.get_shifted(word) {
+#include "opcodes/r4000allegrex/r4000allegrex_special_sa.inc"
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r4000allegrex_regimm(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::rt;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_REGIMM;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        let opcode = match mask.get_shifted(word) {
+#include "opcodes/r4000allegrex/r4000allegrex_regimm.inc"
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+        }
+    }
+
+}
+
+#undef RAB_DEF_OPCODE
+#undef RAB_DEF_OPCODE_ALTNAME
+#undef RAB_DEF_OPCODE_PSEUDO
+#undef RAB_DEF_OPCODE_REDIRECT
+#undef RAB_DEF_OPCODE_REMOVED
