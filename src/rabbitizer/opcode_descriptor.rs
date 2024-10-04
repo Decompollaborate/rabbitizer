@@ -659,14 +659,14 @@ impl OpcodeDescriptor {
             Operand::r4000allegrex_p_vrot_code => {}
             Operand::r4000allegrex_t_vrot_code => {}
             Operand::r4000allegrex_q_vrot_code => {}
-            Operand::r4000allegrex_rpx => {}
-            Operand::r4000allegrex_rpy => {}
-            Operand::r4000allegrex_rpz => {}
-            Operand::r4000allegrex_rpw => {}
             Operand::r4000allegrex_wpx => {}
             Operand::r4000allegrex_wpy => {}
             Operand::r4000allegrex_wpz => {}
             Operand::r4000allegrex_wpw => {}
+            Operand::r4000allegrex_rpx => {}
+            Operand::r4000allegrex_rpy => {}
+            Operand::r4000allegrex_rpz => {}
+            Operand::r4000allegrex_rpw => {}
             /* r4000allegrex */
 
             /* r5900 */

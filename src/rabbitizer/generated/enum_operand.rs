@@ -101,14 +101,14 @@ pub enum Operand {
     r4000allegrex_p_vrot_code,
     r4000allegrex_t_vrot_code,
     r4000allegrex_q_vrot_code,
-    r4000allegrex_rpx,
-    r4000allegrex_rpy,
-    r4000allegrex_rpz,
-    r4000allegrex_rpw,
     r4000allegrex_wpx,
     r4000allegrex_wpy,
     r4000allegrex_wpz,
     r4000allegrex_wpw,
+    r4000allegrex_rpx,
+    r4000allegrex_rpy,
+    r4000allegrex_rpz,
+    r4000allegrex_rpw,
     r5900_I,
     r5900_Q,
     r5900_R,
@@ -450,22 +450,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         concat!("r4000allegrex", "_", "q_vrot_code"),
         EncodedFieldMask::r4000allegrex_vrot_code,
     );
-    table[Operand::r4000allegrex_rpx as usize] = OperandDescriptor::new(
-        concat!("r4000allegrex", "_", "rpx"),
-        EncodedFieldMask::r4000allegrex_rpx,
-    );
-    table[Operand::r4000allegrex_rpy as usize] = OperandDescriptor::new(
-        concat!("r4000allegrex", "_", "rpy"),
-        EncodedFieldMask::r4000allegrex_rpy,
-    );
-    table[Operand::r4000allegrex_rpz as usize] = OperandDescriptor::new(
-        concat!("r4000allegrex", "_", "rpz"),
-        EncodedFieldMask::r4000allegrex_rpz,
-    );
-    table[Operand::r4000allegrex_rpw as usize] = OperandDescriptor::new(
-        concat!("r4000allegrex", "_", "rpw"),
-        EncodedFieldMask::r4000allegrex_rpw,
-    );
     table[Operand::r4000allegrex_wpx as usize] = OperandDescriptor::new(
         concat!("r4000allegrex", "_", "wpx"),
         EncodedFieldMask::r4000allegrex_wpx,
@@ -481,6 +465,22 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     table[Operand::r4000allegrex_wpw as usize] = OperandDescriptor::new(
         concat!("r4000allegrex", "_", "wpw"),
         EncodedFieldMask::r4000allegrex_wpw,
+    );
+    table[Operand::r4000allegrex_rpx as usize] = OperandDescriptor::new(
+        concat!("r4000allegrex", "_", "rpx"),
+        EncodedFieldMask::r4000allegrex_rpx,
+    );
+    table[Operand::r4000allegrex_rpy as usize] = OperandDescriptor::new(
+        concat!("r4000allegrex", "_", "rpy"),
+        EncodedFieldMask::r4000allegrex_rpy,
+    );
+    table[Operand::r4000allegrex_rpz as usize] = OperandDescriptor::new(
+        concat!("r4000allegrex", "_", "rpz"),
+        EncodedFieldMask::r4000allegrex_rpz,
+    );
+    table[Operand::r4000allegrex_rpw as usize] = OperandDescriptor::new(
+        concat!("r4000allegrex", "_", "rpw"),
+        EncodedFieldMask::r4000allegrex_rpw,
     );
     table[Operand::r5900_I as usize] =
         OperandDescriptor::new(concat!("r5900", "_", "I"), EncodedFieldMask::empty());
@@ -762,14 +762,6 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     table[Operand::r4000allegrex_q_vrot_code as usize] =
         OperandDisplay::display_r4000allegrex_q_vrot_code;
     count += 1;
-    table[Operand::r4000allegrex_rpx as usize] = OperandDisplay::display_r4000allegrex_rpx;
-    count += 1;
-    table[Operand::r4000allegrex_rpy as usize] = OperandDisplay::display_r4000allegrex_rpy;
-    count += 1;
-    table[Operand::r4000allegrex_rpz as usize] = OperandDisplay::display_r4000allegrex_rpz;
-    count += 1;
-    table[Operand::r4000allegrex_rpw as usize] = OperandDisplay::display_r4000allegrex_rpw;
-    count += 1;
     table[Operand::r4000allegrex_wpx as usize] = OperandDisplay::display_r4000allegrex_wpx;
     count += 1;
     table[Operand::r4000allegrex_wpy as usize] = OperandDisplay::display_r4000allegrex_wpy;
@@ -777,6 +769,14 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     table[Operand::r4000allegrex_wpz as usize] = OperandDisplay::display_r4000allegrex_wpz;
     count += 1;
     table[Operand::r4000allegrex_wpw as usize] = OperandDisplay::display_r4000allegrex_wpw;
+    count += 1;
+    table[Operand::r4000allegrex_rpx as usize] = OperandDisplay::display_r4000allegrex_rpx;
+    count += 1;
+    table[Operand::r4000allegrex_rpy as usize] = OperandDisplay::display_r4000allegrex_rpy;
+    count += 1;
+    table[Operand::r4000allegrex_rpz as usize] = OperandDisplay::display_r4000allegrex_rpz;
+    count += 1;
+    table[Operand::r4000allegrex_rpw as usize] = OperandDisplay::display_r4000allegrex_rpw;
     count += 1;
     table[Operand::r5900_I as usize] = OperandDisplay::display_r5900_I;
     count += 1;
@@ -925,14 +925,14 @@ pub enum ValuedOperand {
     r4000allegrex_p_vrot_code(u8),
     r4000allegrex_t_vrot_code(u8),
     r4000allegrex_q_vrot_code(u8),
-    r4000allegrex_rpx(u8),
-    r4000allegrex_rpy(u8),
-    r4000allegrex_rpz(u8),
-    r4000allegrex_rpw(u8),
     r4000allegrex_wpx(u8),
     r4000allegrex_wpy(u8),
     r4000allegrex_wpz(u8),
     r4000allegrex_wpw(u8),
+    r4000allegrex_rpx(u8),
+    r4000allegrex_rpy(u8),
+    r4000allegrex_rpz(u8),
+    r4000allegrex_rpw(u8),
     r5900_I(),
     r5900_Q(),
     r5900_R(),
@@ -1061,14 +1061,14 @@ impl Operand {
             ValuedOperand::r4000allegrex_p_vrot_code(..) => Self::r4000allegrex_p_vrot_code,
             ValuedOperand::r4000allegrex_t_vrot_code(..) => Self::r4000allegrex_t_vrot_code,
             ValuedOperand::r4000allegrex_q_vrot_code(..) => Self::r4000allegrex_q_vrot_code,
-            ValuedOperand::r4000allegrex_rpx(..) => Self::r4000allegrex_rpx,
-            ValuedOperand::r4000allegrex_rpy(..) => Self::r4000allegrex_rpy,
-            ValuedOperand::r4000allegrex_rpz(..) => Self::r4000allegrex_rpz,
-            ValuedOperand::r4000allegrex_rpw(..) => Self::r4000allegrex_rpw,
             ValuedOperand::r4000allegrex_wpx(..) => Self::r4000allegrex_wpx,
             ValuedOperand::r4000allegrex_wpy(..) => Self::r4000allegrex_wpy,
             ValuedOperand::r4000allegrex_wpz(..) => Self::r4000allegrex_wpz,
             ValuedOperand::r4000allegrex_wpw(..) => Self::r4000allegrex_wpw,
+            ValuedOperand::r4000allegrex_rpx(..) => Self::r4000allegrex_rpx,
+            ValuedOperand::r4000allegrex_rpy(..) => Self::r4000allegrex_rpy,
+            ValuedOperand::r4000allegrex_rpz(..) => Self::r4000allegrex_rpz,
+            ValuedOperand::r4000allegrex_rpw(..) => Self::r4000allegrex_rpw,
             ValuedOperand::r5900_I(..) => Self::r5900_I,
             ValuedOperand::r5900_Q(..) => Self::r5900_Q,
             ValuedOperand::r5900_R(..) => Self::r5900_R,

@@ -1983,6 +1983,158 @@ impl Instruction {
             .try_into()
             .unwrap()
     }
+
+    /// Returns the `r4000allegrex_wpx` value embedded on the `r4000allegrex_wpx` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_wpx`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_wpx`]: Instruction::field_r4000allegrex_wpx
+    #[must_use]
+    pub fn field_r4000allegrex_wpx_unchecked(&self) -> u8 {
+        let c = (self.word() & utils::bitmask(8, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(0, 2) >> 0) as u8;
+
+        (c << 2) | (d << 0)
+    }
+
+    /// Returns the `r4000allegrex_wpy` value embedded on the `r4000allegrex_wpy` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_wpy`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_wpy`]: Instruction::field_r4000allegrex_wpy
+    #[must_use]
+    pub fn field_r4000allegrex_wpy_unchecked(&self) -> u8 {
+        let c = (self.word() & utils::bitmask(9, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(2, 2) >> 0) as u8;
+
+        (c << 2) | (d << 0)
+    }
+
+    /// Returns the `r4000allegrex_wpz` value embedded on the `r4000allegrex_wpz` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_wpz`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_wpz`]: Instruction::field_r4000allegrex_wpz
+    #[must_use]
+    pub fn field_r4000allegrex_wpz_unchecked(&self) -> u8 {
+        let c = (self.word() & utils::bitmask(10, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(4, 2) >> 0) as u8;
+
+        (c << 2) | (d << 0)
+    }
+
+    /// Returns the `r4000allegrex_wpw` value embedded on the `r4000allegrex_wpw` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_wpw`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_wpw`]: Instruction::field_r4000allegrex_wpw
+    #[must_use]
+    pub fn field_r4000allegrex_wpw_unchecked(&self) -> u8 {
+        let c = (self.word() & utils::bitmask(11, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(6, 2) >> 0) as u8;
+
+        (c << 2) | (d << 0)
+    }
+
+    /// Returns the `r4000allegrex_rpx` value embedded on the `r4000allegrex_rpx` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_rpx`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_rpx`]: Instruction::field_r4000allegrex_rpx
+    #[must_use]
+    pub fn field_r4000allegrex_rpx_unchecked(&self) -> u8 {
+        let a = (self.word() & utils::bitmask(16, 1) >> 16) as u8;
+        let b = (self.word() & utils::bitmask(12, 1) >> 12) as u8;
+        let c = (self.word() & utils::bitmask(8, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(0, 2) >> 0) as u8;
+
+        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+    }
+
+    /// Returns the `r4000allegrex_rpy` value embedded on the `r4000allegrex_rpy` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_rpy`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_rpy`]: Instruction::field_r4000allegrex_rpy
+    #[must_use]
+    pub fn field_r4000allegrex_rpy_unchecked(&self) -> u8 {
+        let a = (self.word() & utils::bitmask(17, 1) >> 17) as u8;
+        let b = (self.word() & utils::bitmask(13, 1) >> 13) as u8;
+        let c = (self.word() & utils::bitmask(9, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(2, 2) >> 0) as u8;
+
+        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+    }
+
+    /// Returns the `r4000allegrex_rpz` value embedded on the `r4000allegrex_rpz` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_rpz`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_rpz`]: Instruction::field_r4000allegrex_rpz
+    #[must_use]
+    pub fn field_r4000allegrex_rpz_unchecked(&self) -> u8 {
+        let a = (self.word() & utils::bitmask(18, 1) >> 18) as u8;
+        let b = (self.word() & utils::bitmask(14, 1) >> 14) as u8;
+        let c = (self.word() & utils::bitmask(10, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(4, 2) >> 0) as u8;
+
+        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+    }
+
+    /// Returns the `r4000allegrex_rpw` value embedded on the `r4000allegrex_rpw` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_rpw`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_rpw`]: Instruction::field_r4000allegrex_rpw
+    #[must_use]
+    pub fn field_r4000allegrex_rpw_unchecked(&self) -> u8 {
+        let a = (self.word() & utils::bitmask(19, 1) >> 19) as u8;
+        let b = (self.word() & utils::bitmask(15, 1) >> 15) as u8;
+        let c = (self.word() & utils::bitmask(11, 1) >> 8) as u8;
+        let d = (self.word() & utils::bitmask(6, 2) >> 0) as u8;
+
+        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+    }
 }
 
 /// Unchecked R5900 opcode fields

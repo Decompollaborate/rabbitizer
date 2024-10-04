@@ -130,14 +130,14 @@ bitflags! {
 
         const r4000allegrex_intfloat16 = utils::bitmask(  0, 16);
         const r4000allegrex_vrot_code = utils::bitmask( 16,  5);
-        const r4000allegrex_rpx = utils::bitmask( 16,  1) | utils::bitmask( 12,  1) | utils::bitmask(  8,  1) | utils::bitmask(  0,  2);
-        const r4000allegrex_rpy = utils::bitmask( 17,  1) | utils::bitmask( 13,  1) | utils::bitmask(  9,  1) | utils::bitmask(  2,  2);
-        const r4000allegrex_rpz = utils::bitmask( 18,  1) | utils::bitmask( 14,  1) | utils::bitmask( 10,  1) | utils::bitmask(  4,  2);
-        const r4000allegrex_rpw = utils::bitmask( 19,  1) | utils::bitmask( 15,  1) | utils::bitmask( 11,  1) | utils::bitmask(  6,  2);
         const r4000allegrex_wpx = utils::bitmask(  8,  1) | utils::bitmask(  0,  2);
         const r4000allegrex_wpy = utils::bitmask(  9,  1) | utils::bitmask(  2,  2);
         const r4000allegrex_wpz = utils::bitmask( 10,  1) | utils::bitmask(  4,  2);
         const r4000allegrex_wpw = utils::bitmask( 11,  1) | utils::bitmask(  6,  2);
+        const r4000allegrex_rpx = utils::bitmask( 16,  1) | utils::bitmask( 12,  1) | utils::bitmask(  8,  1) | utils::bitmask(  0,  2);
+        const r4000allegrex_rpy = utils::bitmask( 17,  1) | utils::bitmask( 13,  1) | utils::bitmask(  9,  1) | utils::bitmask(  2,  2);
+        const r4000allegrex_rpz = utils::bitmask( 18,  1) | utils::bitmask( 14,  1) | utils::bitmask( 10,  1) | utils::bitmask(  4,  2);
+        const r4000allegrex_rpw = utils::bitmask( 19,  1) | utils::bitmask( 15,  1) | utils::bitmask( 11,  1) | utils::bitmask(  6,  2);
 
 
         /* r5000 */
