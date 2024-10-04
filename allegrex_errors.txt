@@ -1,17 +1,11 @@
 thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_instructions' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:1044:9:
-  left: (13, 36)
---
-thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_VFPU0' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:13776:9:
-  left: (19, 38)
---
-thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_VFPU1' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:14040:9:
-  left: (17, 34)
+  left: (6, 22)
 --
 thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_VFPU3' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:14186:9:
-  left: (12, 28)
+  left: (4, 12)
 --
 thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_VFPU4_FMT2' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:31632:9:
-  left: (1008, 2016)
+  left: (696, 1392)
 --
 thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_VFPU4_FMT3' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:33434:9:
   left: (256, 512)
