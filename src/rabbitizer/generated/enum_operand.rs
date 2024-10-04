@@ -88,7 +88,6 @@ pub enum Operand {
     r4000allegrex_imm3,
     r4000allegrex_offset14_base,
     r4000allegrex_offset14_base_maybe_wb,
-    r4000allegrex_vcmp_cond,
     r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt,
     r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt,
     r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt,
@@ -390,10 +389,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         EncodedFieldMask::r4000allegrex_offset14
             .union(EncodedFieldMask::rs)
             .union(EncodedFieldMask::r4000allegrex_wb),
-    );
-    table[Operand::r4000allegrex_vcmp_cond as usize] = OperandDescriptor::new(
-        concat!("r4000allegrex", "_", "vcmp_cond"),
-        EncodedFieldMask::r4000allegrex_vcmp_cond,
     );
     table[Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt as usize] = OperandDescriptor::new(
         concat!("r4000allegrex", "_", "vcmp_cond_s_maybe_vs_maybe_vt"),
@@ -731,9 +726,6 @@ pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_CO
     table[Operand::r4000allegrex_offset14_base_maybe_wb as usize] =
         OperandDisplay::display_r4000allegrex_offset14_base_maybe_wb;
     count += 1;
-    table[Operand::r4000allegrex_vcmp_cond as usize] =
-        OperandDisplay::display_r4000allegrex_vcmp_cond;
-    count += 1;
     table[Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt as usize] =
         OperandDisplay::display_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt;
     count += 1;
@@ -920,7 +912,6 @@ pub enum ValuedOperand {
     r4000allegrex_imm3(u8),
     r4000allegrex_offset14_base(u16, Gpr),
     r4000allegrex_offset14_base_maybe_wb(u16, Gpr, bool),
-    r4000allegrex_vcmp_cond(u8),
     r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>),
     r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>),
     r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>),
@@ -1049,7 +1040,6 @@ impl Operand {
             ValuedOperand::r4000allegrex_offset14_base_maybe_wb(..) => {
                 Self::r4000allegrex_offset14_base_maybe_wb
             }
-            ValuedOperand::r4000allegrex_vcmp_cond(..) => Self::r4000allegrex_vcmp_cond,
             ValuedOperand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(..) => {
                 Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt
             }

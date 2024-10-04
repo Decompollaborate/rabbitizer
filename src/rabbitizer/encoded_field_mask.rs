@@ -98,7 +98,7 @@ bitflags! {
 
         const r4000allegrex_pos = utils::bitmask(  6,  5);
         const r4000allegrex_size = utils::bitmask( 11,  5);
-        const r4000allegrex_size_plus_pos = utils::bitmask( 11,  5);
+        const r4000allegrex_size_plus_pos = Self::r4000allegrex_size.bits();
 
         const r4000allegrex_bc2_fmt = utils::bitmask( 16,  2);
         const r4000allegrex_mxhc2 = utils::bitmask(  7,  1);

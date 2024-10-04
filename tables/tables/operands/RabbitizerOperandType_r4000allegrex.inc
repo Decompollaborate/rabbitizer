@@ -55,7 +55,6 @@
     RAB_DEF_OPERAND(r4000allegrex, offset14_base, EncodedFieldMask::r4000allegrex_offset14.union(EncodedFieldMask::rs), (u16, Gpr))
     RAB_DEF_OPERAND(r4000allegrex, offset14_base_maybe_wb, EncodedFieldMask::r4000allegrex_offset14.union(EncodedFieldMask::rs).union(EncodedFieldMask::r4000allegrex_wb), (u16, Gpr, bool))
 
-    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond, EncodedFieldMask::r4000allegrex_vcmp_cond, (u8))
     RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_s_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>))
     RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_p_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>))
     RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_t_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>))

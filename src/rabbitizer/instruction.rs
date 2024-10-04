@@ -1717,6 +1717,129 @@ impl Instruction {
             .try_into()
             .unwrap()
     }
+
+    /// Returns the `r4000allegrex_pos` value embedded on the `r4000allegrex_pos` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_pos`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_pos`]: Instruction::field_r4000allegrex_pos
+    #[must_use]
+    pub fn field_r4000allegrex_pos_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_pos
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_size` value embedded on the `r4000allegrex_size` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_size`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_size`]: Instruction::field_r4000allegrex_size
+    #[must_use]
+    pub fn field_r4000allegrex_size_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_size
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_size_plus_pos` value embedded on the `r4000allegrex_size_plus_pos` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_size_plus_pos`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_size_plus_pos`]: Instruction::field_r4000allegrex_size_plus_pos
+    #[must_use]
+    pub fn field_r4000allegrex_size_plus_pos_unchecked(&self) -> i8 {
+        EncodedFieldMask::r4000allegrex_size_plus_pos
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_imm3` value embedded on the `r4000allegrex_imm3` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_imm3`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_imm3`]: Instruction::field_r4000allegrex_imm3
+    #[must_use]
+    pub fn field_r4000allegrex_imm3_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_imm3
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_offset14` value embedded on the `r4000allegrex_offset14` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_offset14`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_offset14`]: Instruction::field_r4000allegrex_offset14
+    #[must_use]
+    pub fn field_r4000allegrex_offset14_unchecked(&self) -> u16 {
+        EncodedFieldMask::r4000allegrex_offset14
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_wb` value embedded on the `r4000allegrex_wb` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_wb`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_wb`]: Instruction::field_r4000allegrex_wb
+    #[must_use]
+    pub fn field_r4000allegrex_wb_unchecked(&self) -> bool {
+        EncodedFieldMask::r4000allegrex_wb.get_shifted(self.word()) != 0
+    }
+
+    /// Returns the `r4000allegrex_vcmp_cond` value embedded on the `r4000allegrex_vcmp_cond` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_vcmp_cond`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_vcmp_cond`]: Instruction::field_r4000allegrex_vcmp_cond
+    #[must_use]
+    pub fn field_r4000allegrex_vcmp_cond_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_vcmp_cond
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
 }
 
 /// Unchecked R5900 opcode fields

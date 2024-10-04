@@ -141,7 +141,6 @@ impl ValuedOperand {
             Operand::r4000allegrex_imm3 => todo!(),
             Operand::r4000allegrex_offset14_base => todo!(),
             Operand::r4000allegrex_offset14_base_maybe_wb => todo!(),
-            Operand::r4000allegrex_vcmp_cond => todo!(),
             Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => todo!(),
             Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => todo!(),
             Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => todo!(),

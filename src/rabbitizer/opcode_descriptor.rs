@@ -614,25 +614,7 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::r4000allegrex_vcmp_cond => {
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt) {
-                    return true;
-                }
-            }
-
             Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
-                    return true;
-                }
                 if self.has_specific_operand(Operand::r4000allegrex_s_vs) {
                     return true;
                 }
@@ -642,9 +624,6 @@ impl OpcodeDescriptor {
             }
 
             Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
-                    return true;
-                }
                 if self.has_specific_operand(Operand::r4000allegrex_p_vs) {
                     return true;
                 }
@@ -654,9 +633,6 @@ impl OpcodeDescriptor {
             }
 
             Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
-                    return true;
-                }
                 if self.has_specific_operand(Operand::r4000allegrex_t_vs) {
                     return true;
                 }
@@ -666,9 +642,6 @@ impl OpcodeDescriptor {
             }
 
             Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond) {
-                    return true;
-                }
                 if self.has_specific_operand(Operand::r4000allegrex_q_vs) {
                     return true;
                 }
