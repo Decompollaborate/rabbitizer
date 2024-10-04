@@ -284,16 +284,30 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_cop2cs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_cop2cs_unchecked();
+        let s = reg.either_name(
+            instr.flags().abi(),
+            myself.display_flags.named_r4000allegrex_vfpucontrol(),
+        );
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_cop2cd(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_cop2cd_unchecked();
+        let s = reg.either_name(
+            instr.flags().abi(),
+            myself.display_flags.named_r4000allegrex_vfpucontrol(),
+        );
+
+        write!(f, "{}", s)
     }
 
     pub(crate) fn display_r4000allegrex_pos(

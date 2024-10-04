@@ -1679,6 +1679,44 @@ impl Instruction {
             .try_into()
             .unwrap()
     }
+
+    /// Returns the [`R4000AllegrexVfpuControl`] register embedded on the `r4000allegrex_cop2cs`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_cop2cs`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexVfpuControl`]: crate::registers::R4000AllegrexVfpuControl
+    /// [`field_r4000allegrex_cop2cs`]: Instruction::field_r4000allegrex_cop2cs
+    #[must_use]
+    pub fn field_r4000allegrex_cop2cs_unchecked(&self) -> R4000AllegrexVfpuControl {
+        EncodedFieldMask::r4000allegrex_cop2cs
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexVfpuControl`] register embedded on the `r4000allegrex_cop2cd`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_cop2cd`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexVfpuControl`]: crate::registers::R4000AllegrexVfpuControl
+    /// [`field_r4000allegrex_cop2cd`]: Instruction::field_r4000allegrex_cop2cd
+    #[must_use]
+    pub fn field_r4000allegrex_cop2cd_unchecked(&self) -> R4000AllegrexVfpuControl {
+        EncodedFieldMask::r4000allegrex_cop2cd
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
 }
 
 /// Unchecked R5900 opcode fields
