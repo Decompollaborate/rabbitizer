@@ -18,3 +18,73 @@ pub const fn from_2s_complement(number: u32, width: u32) -> i32 {
         number as i32
     }
 }
+
+pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
+    // IEEE754 16-bit floats are encoded in 16 bits as follows:
+    // Sign bit: 1 bit (bit 15)
+    // Encoded exponent: 5 bits (bits 10 ~ 15)
+    // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
+
+    let mut ret: u32 = 0;
+    let sign: i32 = (arg as i32) >> 15;
+    let encoded_exponent: i32;
+    let real_exponent: i32;
+    let mantissa_is_zero: bool;
+
+    // If parameter is zero, then return zero
+    if (arg & !(1 << 15)) == 0 {
+        // Preserve the sign
+        ret |= (sign as u32) << 31;
+        return ret;
+    }
+
+    // Clear up the sign
+    arg &= !(1 << 15);
+
+    encoded_exponent = arg as i32 >> 10;
+    // Clear up the encoded exponent
+    arg &= !0x7C00;
+
+    // Exponent bias: 0xF
+    real_exponent = encoded_exponent - 0xF;
+
+    mantissa_is_zero = arg == 0;
+
+    if encoded_exponent == 0 {
+        // subnormals
+
+        ret |= (sign as u32) << 31;
+        // no need to set the exponent part since it was already zero'd
+
+        // Set the mantissa
+        ret |= (arg as u32) >> (23 - 10);
+
+        return ret;
+    }
+
+    if encoded_exponent == 0x1F {
+        // Infinity and NaN
+
+        ret |= (sign as u32) << 31;
+        ret |= 0x7F800000;
+
+        if !mantissa_is_zero {
+            // NaN
+
+            // Set the mantissa to any non-zero value
+            ret |= (arg as u32) << (23 - 10);
+        }
+
+        return ret;
+    }
+
+    ret |= (sign as u32) << 31;
+
+    // re-encode the exponent
+    ret |= ((real_exponent + 0x7F) as u32) << 23;
+
+    // Set the mantissa
+    ret |= (arg as u32) << (23 - 10);
+
+    ret
+}

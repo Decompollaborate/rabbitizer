@@ -656,16 +656,22 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_int16(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_int16_unchecked();
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_float16(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_float16_unchecked();
+
+        write!(f, "{}", s)
     }
 
     pub(crate) fn display_r4000allegrex_p_vrot_code(

@@ -1913,6 +1913,58 @@ impl Instruction {
             .try_into()
             .unwrap()
     }
+
+    /// Returns the `r4000allegrex_intfloat16` value embedded on the `r4000allegrex_intfloat16` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_intfloat16`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_intfloat16`]: Instruction::field_r4000allegrex_intfloat16
+    #[must_use]
+    pub fn field_r4000allegrex_intfloat16_unchecked(&self) -> u16 {
+        EncodedFieldMask::r4000allegrex_intfloat16
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the value embedded on the `r4000allegrex_intfloat16` field of
+    /// the word of this instruction, but interpreted as a 16 bits signed value.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the
+    /// [`field_r4000allegrex_int16`] function instead.
+    ///
+    /// [`field_r4000allegrex_int16`]: Instruction::field_r4000allegrex_int16
+    #[must_use]
+    pub fn field_r4000allegrex_int16_unchecked(&self) -> i16 {
+        utils::from_2s_complement(self.field_r4000allegrex_intfloat16_unchecked() as u32, 16) as i16
+    }
+
+    /// Returns the value embedded on the `r4000allegrex_intfloat16` field of
+    /// the word of this instruction, but interpreted as a 16 bits float.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the
+    /// [`field_r4000allegrex_float16`] function instead.
+    ///
+    /// [`field_r4000allegrex_float16`]: Instruction::field_r4000allegrex_float16
+    #[must_use]
+    pub fn field_r4000allegrex_float16_unchecked(&self) -> f32 {
+        // Ideally this function would return a f16, but that type is not stable yet.
+
+        let hex = utils::floatrepr_32_from_16(self.field_r4000allegrex_intfloat16_unchecked());
+
+        f32::from_bits(hex)
+    }
 }
 
 /// Unchecked R5900 opcode fields
