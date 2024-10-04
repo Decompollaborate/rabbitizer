@@ -3,7 +3,8 @@ Add these pseudos:
 - bnezl
 Remove:
 - move
-
+rsp:
+- lwv
 
 
 bleh:

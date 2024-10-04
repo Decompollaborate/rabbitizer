@@ -77,13 +77,15 @@ bitflags! {
 
         /* r4000allegrex */
 
-        const r4000allegrex_vt = utils::bitmask( 16,  7);
         const r4000allegrex_vs = utils::bitmask(  8,  7);
+        const r4000allegrex_vt = utils::bitmask( 16,  7);
         const r4000allegrex_vd = utils::bitmask(  0,  7);
         // For whatever reason the transpose just toggles bit 5, no clue why.
         const r4000allegrex_vs_transpose = utils::bitmask(  8,  7) ^ 0x20;
 
-        const r4000allegrex_vt_imm = utils::bitmask( 16,  5) | utils::bitmask(  0,  2);
+        const r4000allegrex_vt_imm_upper = utils::bitmask( 16,  5);
+        const r4000allegrex_vt_imm_lower = utils::bitmask(  0,  2);
+        const r4000allegrex_vt_imm = Self::r4000allegrex_vt_imm_upper.bits() | Self::r4000allegrex_vt_imm_lower.bits();
         const r4000allegrex_vd_imm = utils::bitmask( 16,  7);
 
         const r4000allegrex_vt_6_imm = utils::bitmask( 16,  5) | utils::bitmask(  0,  1);
