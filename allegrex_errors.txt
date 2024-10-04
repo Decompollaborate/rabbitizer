@@ -33,6 +33,3 @@ thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_
 --
 thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_vpfxt' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:38887:9:
   left: (124, 620)
---
-thread 'tests::instruction_tests_r4000allegrex::tests::check_r4000allegrex_vfpu_instructions_vrot' panicked at src/rabbitizer/tests/instruction_tests_r4000allegrex.rs:37133:9:
-  left: (96, 192)

@@ -1965,6 +1965,24 @@ impl Instruction {
 
         f32::from_bits(hex)
     }
+
+    /// Returns the `r4000allegrex_vrot_code` value embedded on the `r4000allegrex_vrot_code` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_vrot_code`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_vrot_code`]: Instruction::field_r4000allegrex_vrot_code
+    #[must_use]
+    pub fn field_r4000allegrex_vrot_code_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_vrot_code
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
 }
 
 /// Unchecked R5900 opcode fields

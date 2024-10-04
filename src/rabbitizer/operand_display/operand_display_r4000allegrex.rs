@@ -675,22 +675,133 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_p_vrot_code(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        const MNEMONICS: [&'static str; 32] = [
+            "[C,S]",   // [0]
+            "[S,C]",   // [1]
+            "[S,0]",   // [2]
+            "[S,0]",   // [3]
+            "[C,S]",   // [4]
+            "[S,C]",   // [5]
+            "[0,S]",   // [6]
+            "[0,S]",   // [7]
+            "[C,0]",   // [8]
+            "[0,C]",   // [9]
+            "[S,S]",   // [10]
+            "[0,0]",   // [11]
+            "[C,0]",   // [12]
+            "[0,C]",   // [13]
+            "[0,0]",   // [14]
+            "[S,S]",   // [15]
+            "[C,-S]",  // [16]
+            "[-S,C]",  // [17]
+            "[-S,0]",  // [18]
+            "[-S,0]",  // [19]
+            "[C,-S]",  // [20]
+            "[-S,C]",  // [21]
+            "[0,-S]",  // [22]
+            "[0,-S]",  // [23]
+            "[C,0]",   // [24]
+            "[0,C]",   // [25]
+            "[-S,-S]", // [26]
+            "[0,0]",   // [27]
+            "[C,0]",   // [28]
+            "[0,C]",   // [29]
+            "[0,0]",   // [30]
+            "[-S,-S]", // [31]
+        ];
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_vrot_code_unchecked();
+
+        write!(f, "{}", MNEMONICS[s as usize])
     }
     pub(crate) fn display_r4000allegrex_t_vrot_code(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        const MNEMONICS: [&'static str; 32] = [
+            "[C,S,S]",    // [0]
+            "[S,C,0]",    // [1]
+            "[S,0,C]",    // [2]
+            "[S,0,0]",    // [3]
+            "[C,S,0]",    // [4]
+            "[S,C,S]",    // [5]
+            "[0,S,C]",    // [6]
+            "[0,S,0]",    // [7]
+            "[C,0,S]",    // [8]
+            "[0,C,S]",    // [9]
+            "[S,S,C]",    // [10]
+            "[0,0,S]",    // [11]
+            "[C,0,0]",    // [12]
+            "[0,C,0]",    // [13]
+            "[0,0,C]",    // [14]
+            "[S,S,S]",    // [15]
+            "[C,-S,-S]",  // [16]
+            "[-S,C,0]",   // [17]
+            "[-S,0,C]",   // [18]
+            "[-S,0,0]",   // [19]
+            "[C,-S,0]",   // [20]
+            "[-S,C,-S]",  // [21]
+            "[0,-S,C]",   // [22]
+            "[0,-S,0]",   // [23]
+            "[C,0,-S]",   // [24]
+            "[0,C,-S]",   // [25]
+            "[-S,-S,C]",  // [26]
+            "[0,0,-S]",   // [27]
+            "[C,0,0]",    // [28]
+            "[0,C,0]",    // [29]
+            "[0,0,C]",    // [30]
+            "[-S,-S,-S]", // [31]
+        ];
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_vrot_code_unchecked();
+
+        write!(f, "{}", MNEMONICS[s as usize])
     }
     pub(crate) fn display_r4000allegrex_q_vrot_code(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        const MNEMONICS: [&'static str; 32] = [
+            "[C,S,S,S]",    // [0]
+            "[S,C,0,0]",    // [1]
+            "[S,0,C,0]",    // [2]
+            "[S,0,0,C]",    // [3]
+            "[C,S,0,0]",    // [4]
+            "[S,C,S,S]",    // [5]
+            "[0,S,C,0]",    // [6]
+            "[0,S,0,C]",    // [7]
+            "[C,0,S,0]",    // [8]
+            "[0,C,S,0]",    // [9]
+            "[S,S,C,S]",    // [10]
+            "[0,0,S,C]",    // [11]
+            "[C,0,0,S]",    // [12]
+            "[0,C,0,S]",    // [13]
+            "[0,0,C,S]",    // [14]
+            "[S,S,S,C]",    // [15]
+            "[C,-S,-S,-S]", // [16]
+            "[-S,C,0,0]",   // [17]
+            "[-S,0,C,0]",   // [18]
+            "[-S,0,0,C]",   // [19]
+            "[C,-S,0,0]",   // [20]
+            "[-S,C,-S,-S]", // [21]
+            "[0,-S,C,0]",   // [22]
+            "[0,-S,0,C]",   // [23]
+            "[C,0,-S,0]",   // [24]
+            "[0,C,-S,0]",   // [25]
+            "[-S,-S,C,-S]", // [26]
+            "[0,0,-S,C]",   // [27]
+            "[C,0,0,-S]",   // [28]
+            "[0,C,0,-S]",   // [29]
+            "[0,0,C,-S]",   // [30]
+            "[-S,-S,-S,C]", // [31]
+        ];
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_vrot_code_unchecked();
+
+        write!(f, "{}", MNEMONICS[s as usize])
     }
 
     pub(crate) fn display_r4000allegrex_rpx(
