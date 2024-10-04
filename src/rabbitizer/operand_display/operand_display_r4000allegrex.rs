@@ -161,78 +161,126 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_mp_vs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mp_vs_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mp_vt(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mp_vt_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mp_vd(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mp_vd_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mp_vs_transpose(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mp_vs_transpose_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
 
     pub(crate) fn display_r4000allegrex_mt_vs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mt_vs_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mt_vt(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mt_vt_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mt_vd(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mt_vd_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mt_vs_transpose(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mt_vs_transpose_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
 
     pub(crate) fn display_r4000allegrex_mq_vs(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mq_vs_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mq_vt(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mq_vt_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mq_vd(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mq_vd_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mq_vs_transpose(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_mq_vs_transpose_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
 
     pub(crate) fn display_r4000allegrex_cop2cs(

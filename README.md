@@ -7,7 +7,7 @@
 ![crate.io](https://img.shields.io/crates/dv/rabbitizer)
 ![GitHub contributors](https://img.shields.io/github/contributors/Decompollaborate/rabbitizer?logo=purple)
 
-MIPS instruction decoder API.
+rabbitizer (whole name is lowercase) is a MIPS instruction decoder API.
 
 ## Features
 
