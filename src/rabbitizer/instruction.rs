@@ -1840,6 +1840,79 @@ impl Instruction {
             .try_into()
             .unwrap()
     }
+
+    /// Returns the [`R4000AllegrexVConstant`] register embedded on the `r4000allegrex_vconstant`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_vconstant`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexVConstant`]: crate::registers::R4000AllegrexVConstant
+    /// [`field_r4000allegrex_vconstant`]: Instruction::field_r4000allegrex_vconstant
+    #[must_use]
+    pub fn field_r4000allegrex_vconstant_unchecked(&self) -> R4000AllegrexVConstant {
+        EncodedFieldMask::r4000allegrex_vconstant
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_power_of_two` value embedded on the `r4000allegrex_power_of_two` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_power_of_two`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_power_of_two`]: Instruction::field_r4000allegrex_power_of_two
+    #[must_use]
+    pub fn field_r4000allegrex_power_of_two_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_power_of_two
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_vfpu_cc_bit` value embedded on the `r4000allegrex_vfpu_cc_bit` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_vfpu_cc_bit`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_vfpu_cc_bit`]: Instruction::field_r4000allegrex_vfpu_cc_bit
+    #[must_use]
+    pub fn field_r4000allegrex_vfpu_cc_bit_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_vfpu_cc_bit
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the `r4000allegrex_bn` value embedded on the `r4000allegrex_bn` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`field_r4000allegrex_bn`]
+    /// function instead.
+    ///
+    /// [`field_r4000allegrex_bn`]: Instruction::field_r4000allegrex_bn
+    #[must_use]
+    pub fn field_r4000allegrex_bn_unchecked(&self) -> u8 {
+        EncodedFieldMask::r4000allegrex_bn
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
 }
 
 /// Unchecked R5900 opcode fields

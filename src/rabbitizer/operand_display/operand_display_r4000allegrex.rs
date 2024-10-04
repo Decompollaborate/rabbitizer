@@ -617,29 +617,42 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_vconstant(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let reg = instr.field_r4000allegrex_vconstant_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+
+        write!(f, "{}", s)
     }
 
     pub(crate) fn display_r4000allegrex_power_of_two(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_power_of_two_unchecked();
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_vfpu_cc_bit(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_vfpu_cc_bit_unchecked();
+
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_bn(
-        _myself: &OperandDisplay,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Ok(()) // todo!()
+        let instr = myself.instr;
+        let s = instr.field_r4000allegrex_bn_unchecked();
+
+        write!(f, "{}", s)
     }
 
     pub(crate) fn display_r4000allegrex_int16(
