@@ -1240,7 +1240,7 @@ impl Instruction {
         let upper = EncodedFieldMask::r4000allegrex_vt_imm_upper.get_shifted(self.word());
         let lower = EncodedFieldMask::r4000allegrex_vt_imm_lower.get_shifted(self.word());
 
-        ((upper << 2) | lower).try_into().unwrap()
+        ((upper << 5) | lower).try_into().unwrap()
     }
 
     /// Returns the [`R4000AllegrexS`] register embedded on the `r4000allegrex_vd_imm`
@@ -1260,6 +1260,196 @@ impl Instruction {
             .get_shifted(self.word())
             .try_into()
             .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV2D`] register embedded on the `r4000allegrex_vs`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_p_vs`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV2D`]: crate::registers::R4000AllegrexV2D
+    /// [`field_r4000allegrex_p_vs`]: Instruction::field_r4000allegrex_p_vs
+    #[must_use]
+    pub fn field_r4000allegrex_p_vs_unchecked(&self) -> R4000AllegrexV2D {
+        EncodedFieldMask::r4000allegrex_vs
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV2D`] register embedded on the `r4000allegrex_vt`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_p_vt`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV2D`]: crate::registers::R4000AllegrexV2D
+    /// [`field_r4000allegrex_p_vt`]: Instruction::field_r4000allegrex_p_vt
+    #[must_use]
+    pub fn field_r4000allegrex_p_vt_unchecked(&self) -> R4000AllegrexV2D {
+        EncodedFieldMask::r4000allegrex_vt
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV2D`] register embedded on the `r4000allegrex_vd`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_p_vd`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV2D`]: crate::registers::R4000AllegrexV2D
+    /// [`field_r4000allegrex_p_vd`]: Instruction::field_r4000allegrex_p_vd
+    #[must_use]
+    pub fn field_r4000allegrex_p_vd_unchecked(&self) -> R4000AllegrexV2D {
+        EncodedFieldMask::r4000allegrex_vd
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV3D`] register embedded on the `r4000allegrex_vs`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_t_vs`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV3D`]: crate::registers::R4000AllegrexV3D
+    /// [`field_r4000allegrex_t_vs`]: Instruction::field_r4000allegrex_t_vs
+    #[must_use]
+    pub fn field_r4000allegrex_t_vs_unchecked(&self) -> R4000AllegrexV3D {
+        EncodedFieldMask::r4000allegrex_vs
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV3D`] register embedded on the `r4000allegrex_vt`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_t_vt`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV3D`]: crate::registers::R4000AllegrexV3D
+    /// [`field_r4000allegrex_t_vt`]: Instruction::field_r4000allegrex_t_vt
+    #[must_use]
+    pub fn field_r4000allegrex_t_vt_unchecked(&self) -> R4000AllegrexV3D {
+        EncodedFieldMask::r4000allegrex_vt
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV3D`] register embedded on the `r4000allegrex_vd`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_t_vd`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV3D`]: crate::registers::R4000AllegrexV3D
+    /// [`field_r4000allegrex_t_vd`]: Instruction::field_r4000allegrex_t_vd
+    #[must_use]
+    pub fn field_r4000allegrex_t_vd_unchecked(&self) -> R4000AllegrexV3D {
+        EncodedFieldMask::r4000allegrex_vd
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV4D`] register embedded on the `r4000allegrex_vs`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_q_vs`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV4D`]: crate::registers::R4000AllegrexV4D
+    /// [`field_r4000allegrex_q_vs`]: Instruction::field_r4000allegrex_q_vs
+    #[must_use]
+    pub fn field_r4000allegrex_q_vs_unchecked(&self) -> R4000AllegrexV4D {
+        EncodedFieldMask::r4000allegrex_vs
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV4D`] register embedded on the `r4000allegrex_vt`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_q_vt`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV4D`]: crate::registers::R4000AllegrexV4D
+    /// [`field_r4000allegrex_q_vt`]: Instruction::field_r4000allegrex_q_vt
+    #[must_use]
+    pub fn field_r4000allegrex_q_vt_unchecked(&self) -> R4000AllegrexV4D {
+        EncodedFieldMask::r4000allegrex_vt
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV4D`] register embedded on the `r4000allegrex_vd`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_q_vd`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV4D`]: crate::registers::R4000AllegrexV4D
+    /// [`field_r4000allegrex_q_vd`]: Instruction::field_r4000allegrex_q_vd
+    #[must_use]
+    pub fn field_r4000allegrex_q_vd_unchecked(&self) -> R4000AllegrexV4D {
+        EncodedFieldMask::r4000allegrex_vd
+            .get_shifted(self.word())
+            .try_into()
+            .unwrap()
+    }
+
+    /// Returns the [`R4000AllegrexV4D`] register embedded on the `r4000allegrex_vt_imm`
+    /// field of the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the [`field_r4000allegrex_q_vt_imm`]
+    /// function instead.
+    ///
+    /// [`R4000AllegrexV4D`]: crate::registers::R4000AllegrexV4D
+    /// [`field_r4000allegrex_q_vt_imm`]: Instruction::field_r4000allegrex_q_vt_imm
+    #[must_use]
+    pub fn field_r4000allegrex_q_vt_imm_unchecked(&self) -> R4000AllegrexV4D {
+        let upper = EncodedFieldMask::r4000allegrex_vt_6_imm_upper.get_shifted(self.word());
+        let lower = EncodedFieldMask::r4000allegrex_vt_imm_lower.get_shifted(self.word());
+
+        ((upper << 5) | lower).try_into().unwrap()
     }
 }
 
