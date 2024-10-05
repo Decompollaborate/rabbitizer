@@ -47,7 +47,7 @@
         r4000allegrex, 0x3A, sv_s, sv.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vt_imm, Operand::r4000allegrex_offset14_base),
         instr_type: InstrType::I,
-        modifies_rs: true
+        reads_rs: true
     ) // Store Single word to Vfpu
 
     RAB_DEF_OPCODE_ALTNAME(
@@ -63,7 +63,7 @@
         r4000allegrex, 0x3E, sv_q, sv.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base_maybe_wb),
         instr_type: InstrType::I,
-        modifies_rs: true
+        reads_rs: true
     ) // Store Single word to Vfpu
 
     RAB_DEF_OPCODE_REDIRECT(0x00, r4000allegrex, special)

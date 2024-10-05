@@ -384,6 +384,11 @@ impl OpcodeDescriptor {
     }
 
     #[must_use]
+    pub const fn has_delay_slot(&self) -> bool {
+        self.is_branch() || self.is_jump()
+    }
+
+    #[must_use]
     pub fn has_any_operands(&self) -> bool {
         self.operands[0] != Operand::ALL_EMPTY
     }

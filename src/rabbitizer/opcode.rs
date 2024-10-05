@@ -203,6 +203,11 @@ impl Opcode {
     }
 
     #[must_use]
+    pub fn has_delay_slot(&self) -> bool {
+        self.get_descriptor().has_delay_slot()
+    }
+
+    #[must_use]
     pub fn has_any_operands(&self) -> bool {
         self.get_descriptor().has_any_operands()
     }

@@ -10,7 +10,7 @@ use crate::{
 // this constant.
 pub(crate) const OPERAND_COUNT: usize = 121;
 
-pub(crate) const OPERAND_COUNT_MAX: usize = 5;
+pub const OPERAND_COUNT_MAX: usize = 5;
 
 impl Operand {
     #[must_use]

@@ -2864,7 +2864,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_offset14_base,
         ),
         instr_type: InstrType::I,
-        modifies_rs: true,
+        reads_rs: true,
         ..OpcodeDescriptor::new("sv.s", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
@@ -2884,7 +2884,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
             Operand::r4000allegrex_offset14_base_maybe_wb,
         ),
         instr_type: InstrType::I,
-        modifies_rs: true,
+        reads_rs: true,
         ..OpcodeDescriptor::new("sv.q", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
