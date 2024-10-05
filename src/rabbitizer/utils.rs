@@ -27,9 +27,6 @@ pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
 
     let mut ret: u32 = 0;
     let sign: i32 = (arg as i32) >> 15;
-    let encoded_exponent: i32;
-    let real_exponent: i32;
-    let mantissa_is_zero: bool;
 
     // If parameter is zero, then return zero
     if (arg & !(1 << 15)) == 0 {
@@ -41,14 +38,14 @@ pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
     // Clear up the sign
     arg &= !(1 << 15);
 
-    encoded_exponent = arg as i32 >> 10;
+    let encoded_exponent: i32 = arg as i32 >> 10;
     // Clear up the encoded exponent
     arg &= !0x7C00;
 
     // Exponent bias: 0xF
-    real_exponent = encoded_exponent - 0xF;
+    let real_exponent: i32 = encoded_exponent - 0xF;
 
-    mantissa_is_zero = arg == 0;
+    let mantissa_is_zero: bool = arg == 0;
 
     if encoded_exponent == 0 {
         // subnormals

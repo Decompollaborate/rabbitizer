@@ -209,8 +209,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_special_rs(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rs;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_SPECIAL_RS;
@@ -230,8 +230,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_special_sa(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::sa;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_SPECIAL_SA;
@@ -255,9 +255,9 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rt;
-        let opcode_category = OpcodeCategory::R4000ALLEGREX_REGIMM;
+        let _opcode_category = OpcodeCategory::R4000ALLEGREX_REGIMM;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-        let opcode = match mask.get_shifted(word) {
+        let _opcode = match mask.get_shifted(word) {
             _ => {
                 return Self::decode_isa_extension_none_regimm(
                     word,
@@ -267,18 +267,13 @@ impl OpcodeDecoder {
                 )
             }
         };
-        Self {
-            opcode,
-            opcode_category,
-            mandatory_bits,
-        }
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_r4000allegrex_special2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_SPECIAL2;
@@ -328,8 +323,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_special3_bshfl(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::sa;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_SPECIAL3_BSHFL;
@@ -387,7 +382,6 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
@@ -403,9 +397,9 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
-        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP0_BC0;
+        let _opcode_category = OpcodeCategory::R4000ALLEGREX_COP0_BC0;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-        let opcode = match mask.get_shifted(word) {
+        let _opcode = match mask.get_shifted(word) {
             _ => {
                 return Self::decode_isa_extension_none_coprocessor0_bc0(
                     word,
@@ -414,13 +408,7 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => Opcode::ALL_INVALID,
         };
-        Self {
-            opcode,
-            opcode_category,
-            mandatory_bits,
-        }
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor0_tlb(
@@ -430,9 +418,9 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::function;
-        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP0_TLB;
+        let _opcode_category = OpcodeCategory::R4000ALLEGREX_COP0_TLB;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-        let opcode = match mask.get_shifted(word) {
+        let _opcode = match mask.get_shifted(word) {
             _ => {
                 return Self::decode_isa_extension_none_coprocessor0_tlb(
                     word,
@@ -441,13 +429,7 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => Opcode::ALL_INVALID,
         };
-        Self {
-            opcode,
-            opcode_category,
-            mandatory_bits,
-        }
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor1(
@@ -509,9 +491,9 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
-        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP1_BC1;
+        let _opcode_category = OpcodeCategory::R4000ALLEGREX_COP1_BC1;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-        let opcode = match mask.get_shifted(word) {
+        let _opcode = match mask.get_shifted(word) {
             _ => {
                 return Self::decode_isa_extension_none_coprocessor1_bc1(
                     word,
@@ -520,13 +502,7 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => Opcode::ALL_INVALID,
         };
-        Self {
-            opcode,
-            opcode_category,
-            mandatory_bits,
-        }
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor1_fpu_s(
@@ -553,7 +529,6 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
@@ -581,7 +556,6 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
-            _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
@@ -597,9 +571,9 @@ impl OpcodeDecoder {
         isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::fmt;
-        let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2;
+        let _opcode_category = OpcodeCategory::R4000ALLEGREX_COP2;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-        let opcode = match mask.get_shifted(word) {
+        let _opcode = match mask.get_shifted(word) {
             0x08 => {
                 return Self::decode_isa_extension_r4000allegrex_coprocessor2_bc2(
                     word,
@@ -633,18 +607,13 @@ impl OpcodeDecoder {
                 )
             }
         };
-        Self {
-            opcode,
-            opcode_category,
-            mandatory_bits,
-        }
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_bc2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::bc_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_BC2;
@@ -722,8 +691,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_mfhc2_p_s(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_mfhc2_p_s_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_MFHC2_P_S;
@@ -742,8 +711,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_coprocessor2_mthc2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_mxhc2;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_MTHC2;
@@ -763,8 +732,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU0;
@@ -795,8 +764,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu1(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU1;
@@ -829,8 +798,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu3(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU3;
@@ -1087,8 +1056,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_fmt0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT0;
@@ -1136,8 +1105,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_fmt2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT2;
@@ -1187,8 +1156,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_fmt3(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT3;
@@ -1218,8 +1187,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_rnd(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_RND;
@@ -1250,8 +1219,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_cvtflt(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CVTFLT;
@@ -1275,8 +1244,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_cvtint(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CVTINT;
@@ -1306,8 +1275,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_fmt8(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT8;
@@ -1342,8 +1311,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_fmt9(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT9;
@@ -1367,8 +1336,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_control(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CONTROL;
@@ -1388,8 +1357,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_color(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_COLOR;
@@ -1410,8 +1379,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt0_cst(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_tp;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CST;
@@ -1504,8 +1473,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu4_fmt2_cndmove(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu4_fmt2_cndmove_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT2_CNDMOVE;
@@ -1531,8 +1500,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu5(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu5_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU5;
@@ -1674,8 +1643,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu6_fmt7_fmt0(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu6_fmt7_fmt0_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU6_FMT7_FMT0;
@@ -1705,8 +1674,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_quadlr(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_wb;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_QUADLR;
@@ -1726,8 +1695,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_r4000allegrex_vfpu7(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::r4000allegrex_vfpu7_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU7;

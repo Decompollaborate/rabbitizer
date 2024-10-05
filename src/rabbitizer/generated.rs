@@ -8,6 +8,8 @@
 // #![allow(clippy::nursery)]
 #![allow(clippy::manual_range_patterns)]
 #![allow(clippy::needless_return)]
+#![allow(clippy::let_unit_value)]
+#![allow(clippy::match_single_binding)]
 #![warn(clippy::exhaustive_enums)]
 
 mod array_opcodes;

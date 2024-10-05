@@ -396,7 +396,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        const CONDITION_MNEMONICS: [&'static str; 16] = [
+        const CONDITION_MNEMONICS: [&str; 16] = [
             "fl", // [0] Always false
             "eq", // [1] Equal
             "lt", // [2] Less than
@@ -456,7 +456,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             7 => {} // gt
 
             // ez | en | ei | es | nz | nn | ni | ns
-            8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 => {
+            8..=15 => {
                 // If the vt operands is 0 then we can omit it
                 if vt == R4000AllegrexS::default() {
                     return Ok(());
@@ -505,7 +505,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             7 => {} // gt
 
             // ez | en | ei | es | nz | nn | ni | ns
-            8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 => {
+            8..=15 => {
                 // If the vt operands is 0 then we can omit it
                 if vt == R4000AllegrexV2D::default() {
                     return Ok(());
@@ -554,7 +554,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             7 => {} // gt
 
             // ez | en | ei | es | nz | nn | ni | ns
-            8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 => {
+            8..=15 => {
                 // If the vt operands is 0 then we can omit it
                 if vt == R4000AllegrexV3D::default() {
                     return Ok(());
@@ -603,7 +603,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             7 => {} // gt
 
             // ez | en | ei | es | nz | nn | ni | ns
-            8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 => {
+            8..=15 => {
                 // If the vt operands is 0 then we can omit it
                 if vt == R4000AllegrexV4D::default() {
                     return Ok(());
@@ -678,7 +678,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        const MNEMONICS: [&'static str; 32] = [
+        const MNEMONICS: [&str; 32] = [
             "[C,S]",   // [0]
             "[S,C]",   // [1]
             "[S,0]",   // [2]
@@ -721,7 +721,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        const MNEMONICS: [&'static str; 32] = [
+        const MNEMONICS: [&str; 32] = [
             "[C,S,S]",    // [0]
             "[S,C,0]",    // [1]
             "[S,0,C]",    // [2]
@@ -764,7 +764,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        const MNEMONICS: [&'static str; 32] = [
+        const MNEMONICS: [&str; 32] = [
             "[C,S,S,S]",    // [0]
             "[S,C,0,0]",    // [1]
             "[S,0,C,0]",    // [2]

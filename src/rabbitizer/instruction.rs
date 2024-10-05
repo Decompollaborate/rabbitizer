@@ -1819,7 +1819,7 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_wb`]: Instruction::field_r4000allegrex_wb
     #[must_use]
-    pub fn field_r4000allegrex_wb_unchecked(&self) -> bool {
+    pub const fn field_r4000allegrex_wb_unchecked(&self) -> bool {
         EncodedFieldMask::r4000allegrex_wb.get_shifted(self.word()) != 0
     }
 
@@ -1995,11 +1995,11 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_wpx`]: Instruction::field_r4000allegrex_wpx
     #[must_use]
-    pub fn field_r4000allegrex_wpx_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_wpx_unchecked(&self) -> u8 {
         let c = (self.word() & utils::bitmask(8, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(0, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(0, 2)) as u8;
 
-        (c << 2) | (d << 0)
+        (c << 2) | d
     }
 
     /// Returns the `r4000allegrex_wpy` value embedded on the `r4000allegrex_wpy` field of
@@ -2013,11 +2013,11 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_wpy`]: Instruction::field_r4000allegrex_wpy
     #[must_use]
-    pub fn field_r4000allegrex_wpy_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_wpy_unchecked(&self) -> u8 {
         let c = (self.word() & utils::bitmask(9, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(2, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(2, 2)) as u8;
 
-        (c << 2) | (d << 0)
+        (c << 2) | d
     }
 
     /// Returns the `r4000allegrex_wpz` value embedded on the `r4000allegrex_wpz` field of
@@ -2031,11 +2031,11 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_wpz`]: Instruction::field_r4000allegrex_wpz
     #[must_use]
-    pub fn field_r4000allegrex_wpz_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_wpz_unchecked(&self) -> u8 {
         let c = (self.word() & utils::bitmask(10, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(4, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(4, 2)) as u8;
 
-        (c << 2) | (d << 0)
+        (c << 2) | d
     }
 
     /// Returns the `r4000allegrex_wpw` value embedded on the `r4000allegrex_wpw` field of
@@ -2049,11 +2049,11 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_wpw`]: Instruction::field_r4000allegrex_wpw
     #[must_use]
-    pub fn field_r4000allegrex_wpw_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_wpw_unchecked(&self) -> u8 {
         let c = (self.word() & utils::bitmask(11, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(6, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(6, 2)) as u8;
 
-        (c << 2) | (d << 0)
+        (c << 2) | d
     }
 
     /// Returns the `r4000allegrex_rpx` value embedded on the `r4000allegrex_rpx` field of
@@ -2067,13 +2067,13 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_rpx`]: Instruction::field_r4000allegrex_rpx
     #[must_use]
-    pub fn field_r4000allegrex_rpx_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_rpx_unchecked(&self) -> u8 {
         let a = (self.word() & utils::bitmask(16, 1) >> 16) as u8;
         let b = (self.word() & utils::bitmask(12, 1) >> 12) as u8;
         let c = (self.word() & utils::bitmask(8, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(0, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(0, 2)) as u8;
 
-        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+        (a << 4) | (b << 3) | (c << 2) | d
     }
 
     /// Returns the `r4000allegrex_rpy` value embedded on the `r4000allegrex_rpy` field of
@@ -2087,13 +2087,13 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_rpy`]: Instruction::field_r4000allegrex_rpy
     #[must_use]
-    pub fn field_r4000allegrex_rpy_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_rpy_unchecked(&self) -> u8 {
         let a = (self.word() & utils::bitmask(17, 1) >> 17) as u8;
         let b = (self.word() & utils::bitmask(13, 1) >> 13) as u8;
         let c = (self.word() & utils::bitmask(9, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(2, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(2, 2)) as u8;
 
-        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+        (a << 4) | (b << 3) | (c << 2) | d
     }
 
     /// Returns the `r4000allegrex_rpz` value embedded on the `r4000allegrex_rpz` field of
@@ -2107,13 +2107,13 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_rpz`]: Instruction::field_r4000allegrex_rpz
     #[must_use]
-    pub fn field_r4000allegrex_rpz_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_rpz_unchecked(&self) -> u8 {
         let a = (self.word() & utils::bitmask(18, 1) >> 18) as u8;
         let b = (self.word() & utils::bitmask(14, 1) >> 14) as u8;
         let c = (self.word() & utils::bitmask(10, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(4, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(4, 2)) as u8;
 
-        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+        (a << 4) | (b << 3) | (c << 2) | d
     }
 
     /// Returns the `r4000allegrex_rpw` value embedded on the `r4000allegrex_rpw` field of
@@ -2127,13 +2127,13 @@ impl Instruction {
     ///
     /// [`field_r4000allegrex_rpw`]: Instruction::field_r4000allegrex_rpw
     #[must_use]
-    pub fn field_r4000allegrex_rpw_unchecked(&self) -> u8 {
+    pub const fn field_r4000allegrex_rpw_unchecked(&self) -> u8 {
         let a = (self.word() & utils::bitmask(19, 1) >> 19) as u8;
         let b = (self.word() & utils::bitmask(15, 1) >> 15) as u8;
         let c = (self.word() & utils::bitmask(11, 1) >> 8) as u8;
-        let d = (self.word() & utils::bitmask(6, 2) >> 0) as u8;
+        let d = (self.word() & utils::bitmask(6, 2)) as u8;
 
-        (a << 4) | (b << 3) | (c << 2) | (d << 0)
+        (a << 4) | (b << 3) | (c << 2) | d
     }
 }
 
