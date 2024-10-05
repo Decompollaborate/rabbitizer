@@ -10,6 +10,7 @@
 #![allow(clippy::needless_return)]
 #![allow(clippy::let_unit_value)]
 #![allow(clippy::match_single_binding)]
+#![allow(clippy::eq_op)]
 #![warn(clippy::exhaustive_enums)]
 
 mod array_opcodes;

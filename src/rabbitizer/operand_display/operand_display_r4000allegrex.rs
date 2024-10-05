@@ -358,7 +358,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             let instr = myself.instr;
             let s = instr.field_r4000allegrex_offset14_unchecked();
 
-            write!(f, "{}", s)
+            write!(f, "0x{:X}", s)
         })
     }
     pub(crate) fn display_r4000allegrex_offset14_base(

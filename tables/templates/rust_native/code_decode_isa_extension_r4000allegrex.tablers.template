@@ -361,7 +361,7 @@ impl OpcodeDecoder {
         _flags: &DecodingFlags,
         _isa_version: IsaVersion,
     ) -> Self {
-        let mask = EncodedFieldMask::bc_fmt;
+        let mask = EncodedFieldMask::r4000allegrex_bc2_fmt;
         let opcode_category = OpcodeCategory::R4000ALLEGREX_COP2_BC2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));

@@ -22,7 +22,7 @@
     RAB_DEF_OPERAND(r4000allegrex, q_vs, EncodedFieldMask::r4000allegrex_vs, (R4000AllegrexV4D))
     RAB_DEF_OPERAND(r4000allegrex, q_vt, EncodedFieldMask::r4000allegrex_vt, (R4000AllegrexV4D))
     RAB_DEF_OPERAND(r4000allegrex, q_vd, EncodedFieldMask::r4000allegrex_vd, (R4000AllegrexV4D))
-    RAB_DEF_OPERAND(r4000allegrex, q_vt_imm, EncodedFieldMask::r4000allegrex_vt_imm, (R4000AllegrexV4D))
+    RAB_DEF_OPERAND(r4000allegrex, q_vt_imm, EncodedFieldMask::r4000allegrex_vt_6_imm, (R4000AllegrexV4D))
 
     // matrix pair
     RAB_DEF_OPERAND(r4000allegrex, mp_vs, EncodedFieldMask::r4000allegrex_vs, (R4000AllegrexM2x2))

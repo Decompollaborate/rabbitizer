@@ -80,8 +80,6 @@ bitflags! {
         const r4000allegrex_vs = utils::bitmask(  8,  7);
         const r4000allegrex_vt = utils::bitmask( 16,  7);
         const r4000allegrex_vd = utils::bitmask(  0,  7);
-        // For whatever reason the transpose just toggles bit 5, no clue why.
-        const r4000allegrex_vs_transpose = Self::r4000allegrex_vs.bits() ^ 0x20;
 
         // Upper and lower bits the other way around for some reason
         const r4000allegrex_vt_imm_upper = utils::bitmask(  0,  2);

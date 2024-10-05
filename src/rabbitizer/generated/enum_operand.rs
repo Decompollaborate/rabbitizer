@@ -306,7 +306,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     );
     table[Operand::r4000allegrex_q_vt_imm as usize] = OperandDescriptor::new(
         concat!("r4000allegrex", "_", "q_vt_imm"),
-        EncodedFieldMask::r4000allegrex_vt_imm,
+        EncodedFieldMask::r4000allegrex_vt_6_imm,
     );
     table[Operand::r4000allegrex_mp_vs as usize] = OperandDescriptor::new(
         concat!("r4000allegrex", "_", "mp_vs"),

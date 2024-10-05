@@ -14,11 +14,13 @@ use core::ops::Index;
 
 #define REGISTER_ENUM_NAME R4000AllegrexVfpuControl
 
+#define REGISTER_OFFSET 128
+
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
-    name = value,
+    name = value - REGISTER_OFFSET,
 
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
-    r ## name = value,
+    r ## name = value - REGISTER_OFFSET,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
@@ -30,16 +32,14 @@ pub enum REGISTER_ENUM_NAME {
 #undef RABBITIZER_DEF_REG_NODOLLAR
 #undef RABBITIZER_DEF_REG
 
-#define REGISTER_OFFSET 128
-
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
-    table[ REGISTER_ENUM_NAME :: name as usize - REGISTER_OFFSET] = RegisterDescriptor { \
+    table[ REGISTER_ENUM_NAME :: name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
         ..RegisterDescriptor::new( #name, value, concat!("$", #value) ) \
     } .check_panic_chain();
 
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
-    table[ REGISTER_ENUM_NAME :: r ## name as usize - REGISTER_OFFSET] = RegisterDescriptor { \
+    table[ REGISTER_ENUM_NAME :: r ## name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
         ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$", #value) ) \
     } .check_panic_chain();
@@ -72,7 +72,7 @@ pub static R4000ALLEGREX_VFPUCONTROL: [RegisterDescriptor; REGISTER_COUNT] = {
 
 impl REGISTER_ENUM_NAME {
     pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
-        match value {
+        match value + REGISTER_OFFSET {
             #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
             x => Err(crate::Error::OutOfRangeRegisterIndex {
                 index: x,
