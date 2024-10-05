@@ -3,14 +3,16 @@
 
 use crate::{
     operand::{OperandIterator, OPERAND_COUNT_MAX},
-    AccessType, EncodedFieldMask, InstrType, IsaExtension, IsaVersion, Opcode, OpcodeDescriptor,
-    Operand, OPCODES,
+    Operand,
 };
+use crate::{AccessType, EncodedFieldMask, InstrType};
+use crate::{IsaExtension, IsaVersion};
+use crate::{Opcode, OpcodeDescriptor, OPCODES};
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
 // this constant.
-pub(crate) const OPCODE_COUNT: usize = 884;
+pub(crate) const OPCODE_COUNT: usize = 886;
 
 impl Opcode {
     #[must_use]

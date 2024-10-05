@@ -134,7 +134,7 @@ pub(crate) mod tests {
                 display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "movn        $v0, $a0, $a1",
-                expected_opcode: Opcode::core_movn, // expected_opcode: Opcode::r4000allegrex_movn,
+                expected_opcode: Opcode::r4000allegrex_movn,
                 opcode_str: "movn",
                 operands_str: [Some("$v0"), Some("$a0"), Some("$a1"), None, None],
             },
@@ -148,7 +148,7 @@ pub(crate) mod tests {
                 display_flags: DisplayFlags::default(),
                 valid: true,
                 expected: "movz        $v0, $a0, $a1",
-                expected_opcode: Opcode::core_movz, // expected_opcode: Opcode::r4000allegrex_movz,
+                expected_opcode: Opcode::r4000allegrex_movz,
                 opcode_str: "movz",
                 operands_str: [Some("$v0"), Some("$a0"), Some("$a1"), None, None],
             },
@@ -7641,10 +7641,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8800042                   # lv.q        C000, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8800042                   /* lv.q        C000, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C000"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C000"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7655,10 +7655,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8810042                   # lv.q        C010, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8810042                   /* lv.q        C010, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C010"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C010"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7669,10 +7669,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8820042                   # lv.q        C020, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8820042                   /* lv.q        C020, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C020"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C020"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7683,10 +7683,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8830042                   # lv.q        C030, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8830042                   /* lv.q        C030, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C030"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C030"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7697,10 +7697,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8840042                   # lv.q        C100, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8840042                   /* lv.q        C100, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C100"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C100"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7711,10 +7711,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8850042                   # lv.q        C110, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8850042                   /* lv.q        C110, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C110"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C110"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7725,10 +7725,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8860042                   # lv.q        C120, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8860042                   /* lv.q        C120, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C120"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C120"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7739,10 +7739,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8870042                   # lv.q        C130, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8870042                   /* lv.q        C130, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C130"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C130"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7753,10 +7753,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8880042                   # lv.q        C200, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8880042                   /* lv.q        C200, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C200"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C200"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7767,10 +7767,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8890042                   # lv.q        C210, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8890042                   /* lv.q        C210, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C210"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C210"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7781,10 +7781,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD88A0042                   # lv.q        C220, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD88A0042                   /* lv.q        C220, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C220"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C220"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7795,10 +7795,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD88B0042                   # lv.q        C230, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD88B0042                   /* lv.q        C230, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C230"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C230"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7809,10 +7809,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD88C0042                   # lv.q        C300, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD88C0042                   /* lv.q        C300, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C300"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C300"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7823,10 +7823,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD88D0042                   # lv.q        C310, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD88D0042                   /* lv.q        C310, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C310"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C310"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7837,10 +7837,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD88E0042                   # lv.q        C320, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD88E0042                   /* lv.q        C320, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C320"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C320"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7851,10 +7851,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD88F0042                   # lv.q        C330, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD88F0042                   /* lv.q        C330, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C330"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C330"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7865,10 +7865,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8900042                   # lv.q        C400, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8900042                   /* lv.q        C400, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C400"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C400"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7879,10 +7879,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8910042                   # lv.q        C410, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8910042                   /* lv.q        C410, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C410"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C410"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7893,10 +7893,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8920042                   # lv.q        C420, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8920042                   /* lv.q        C420, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C420"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C420"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7907,10 +7907,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8930042                   # lv.q        C430, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8930042                   /* lv.q        C430, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C430"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C430"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7921,10 +7921,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8940042                   # lv.q        C500, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8940042                   /* lv.q        C500, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C500"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C500"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7935,10 +7935,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8950042                   # lv.q        C510, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8950042                   /* lv.q        C510, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C510"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C510"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7949,10 +7949,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8960042                   # lv.q        C520, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8960042                   /* lv.q        C520, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C520"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C520"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7963,10 +7963,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8970042                   # lv.q        C530, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8970042                   /* lv.q        C530, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C530"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C530"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7977,10 +7977,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8980042                   # lv.q        C600, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8980042                   /* lv.q        C600, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C600"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C600"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -7991,10 +7991,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD8990042                   # lv.q        C610, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD8990042                   /* lv.q        C610, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C610"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C610"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -8005,10 +8005,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD89A0042                   # lv.q        C620, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD89A0042                   /* lv.q        C620, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C620"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C620"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -8019,10 +8019,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD89B0042                   # lv.q        C630, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD89B0042                   /* lv.q        C630, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C630"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C630"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -8033,10 +8033,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD89C0042                   # lv.q        C700, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD89C0042                   /* lv.q        C700, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C700"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C700"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -8047,10 +8047,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD89D0042                   # lv.q        C710, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD89D0042                   /* lv.q        C710, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C710"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C710"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -8061,10 +8061,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD89E0042                   # lv.q        C720, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD89E0042                   /* lv.q        C720, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C720"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C720"), Some("0x40($a0)"), None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -8075,10 +8075,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD89F0042                   # lv.q        C730, 0x40($a0) # 00000002 <InstrIdType: R4000ALLEGREX_NORMAL>",
+                expected: ".word       0xD89F0042                   /* lv.q        C730, 0x40($a0) / 00000002 <OpcodeCategory: R4000ALLEGREX_NORMAL> */",
                 expected_opcode: Opcode::r4000allegrex_lv_q,
                 opcode_str: "lv.q",
-                operands_str: [Some("C730"), Some("0x40($a0"), None, None, None],
+                operands_str: [Some("C730"), Some("0x40($a0)"), None, None, None],
             },
 
             TestEntry::new_r4000allegrex(0x48640004, "mfv         $a0, S100", Opcode::r4000allegrex_mfv, "mfv", [Some("$a0"), Some("S100"), None, None, None]),
@@ -8091,7 +8091,7 @@ pub(crate) mod tests {
             // TestEntry::new_r4000allegrex(0x48E40084, "mtvc        $a0, VFPU_INF4", Opcode::r4000allegrex_mtvc, "mtvc", [Some("$a0"), Some("VFPU_INF4"), None, None, None]),
             TestEntry::new_r4000allegrex(0xE8800040, "sv.s        S000, 0x40($a0)", Opcode::r4000allegrex_sv_s, "sv.s", [Some("S000"), Some("0x40($a0)"), None, None, None]),
             TestEntry::new_r4000allegrex(0xF8800040, "sv.q        C000, 0x40($a0)", Opcode::r4000allegrex_sv_q, "sv.q", [Some("C000"), Some("0x40($a0)"), None, None, None]),
-            TestEntry::new_r4000allegrex(0xF8800042, "sv.q        C000, 0x40($a0), wb", Opcode::r4000allegrex_sv_q, "sv.q", [Some("C000"), Some("0x40($a0)"), Some("wb"), None, None]),
+            TestEntry::new_r4000allegrex(0xF8800042, "sv.q        C000, 0x40($a0), wb", Opcode::r4000allegrex_sv_q, "sv.q", [Some("C000"), Some("0x40($a0), wb"), None, None, None]),
             TestEntry::new_r4000allegrex(0xF4800040, "svl.q       C000, 0x40($a0)", Opcode::r4000allegrex_svl_q, "svl.q", [Some("C000"), Some("0x40($a0)"), None, None, None]),
             TestEntry::new_r4000allegrex(0xF4800042, "svr.q       C000, 0x40($a0)", Opcode::r4000allegrex_svr_q, "svr.q", [Some("C000"), Some("0x40($a0)"), None, None, None]),
 
@@ -15216,7 +15216,7 @@ pub(crate) mod tests {
                 expected: ".word       0xD0031081                   /* vidt.p      C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vidt_p,
                 opcode_str: "vidt.p",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry::new_r4000allegrex(0xD0030081, "vidt.p      C010", Opcode::r4000allegrex_vidt_p, "vidt.p", [Some("C010"), None, None, None, None]),
             TestEntry {
@@ -15245,7 +15245,7 @@ pub(crate) mod tests {
                 expected: ".word       0xD0039081                   /* vidt.q      C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vidt_q,
                 opcode_str: "vidt.q",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry::new_r4000allegrex(0xD0038081, "vidt.q      C010", Opcode::r4000allegrex_vidt_q, "vidt.q", [Some("C010"), None, None, None, None]),
             TestEntry::new_r4000allegrex(0xD0041001, "vsat0.s     S010, S400", Opcode::r4000allegrex_vsat0_s, "vsat0.s", [Some("S010"), Some("S400"), None, None, None]),
@@ -15268,7 +15268,7 @@ pub(crate) mod tests {
                 expected: ".word       0xD0061001                   /* vzero.s     S010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vzero_s,
                 opcode_str: "vzero.s",
-                operands_str: [Some("S01"), None, None, None, None],
+                operands_str: [Some("S010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -15282,7 +15282,7 @@ pub(crate) mod tests {
                 expected: ".word       0xD0061081                   /* vzero.p     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vzero_p,
                 opcode_str: "vzero.p",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -15296,7 +15296,7 @@ pub(crate) mod tests {
                 expected: ".word       0xD0069001                   /* vzero.t     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vzero_t,
                 opcode_str: "vzero.t",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -15310,7 +15310,7 @@ pub(crate) mod tests {
                 expected: ".word       0xD0069081                   /* vzero.q     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vzero_q,
                 opcode_str: "vzero.q",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry::new_r4000allegrex(0xD0070001, "vone.s      S010", Opcode::r4000allegrex_vone_s, "vone.s", [Some("S010"), None, None, None, None]),
             TestEntry::new_r4000allegrex(0xD0070081, "vone.p      C010", Opcode::r4000allegrex_vone_p, "vone.p", [Some("C010"), None, None, None, None]),
@@ -16101,7 +16101,7 @@ pub(crate) mod tests {
                 expected: ".word       0xD0201001                   /* vrnds.s     S400 / 00000001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrnds_s,
                 opcode_str: "vrnds.s",
-                operands_str: [Some("S40"), None, None, None, None],
+                operands_str: [Some("S400"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16158,10 +16158,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0211001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0211001                   /* vrndi.s     S010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndi_s,
                 opcode_str: "vrndi.s",
-                operands_str: [Some("S01"), None, None, None, None],
+                operands_str: [Some("S010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16172,10 +16172,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0211081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0211081                   /* vrndi.p     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndi_p,
                 opcode_str: "vrndi.p",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16186,10 +16186,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0219001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0219001                   /* vrndi.t     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndi_t,
                 opcode_str: "vrndi.t",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16200,10 +16200,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0219081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0219081                   /* vrndi.q     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndi_q,
                 opcode_str: "vrndi.q",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry::new_r4000allegrex(0xD0220001, "vrndf1.s    S010", Opcode::r4000allegrex_vrndf1_s, "vrndf1.s", [Some("S010"), None, None, None, None]),
             TestEntry::new_r4000allegrex(0xD0220081, "vrndf1.p    C010", Opcode::r4000allegrex_vrndf1_p, "vrndf1.p", [Some("C010"), None, None, None, None]),
@@ -16218,10 +16218,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0221001                   /* vrndi.s     S010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0221001                   /* vrndf1.s    S010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf1_s,
                 opcode_str: "vrndf1.s",
-                operands_str: [Some("S01"), None, None, None, None],
+                operands_str: [Some("S010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16232,10 +16232,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0221081                   /* vrndi.p     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0221081                   /* vrndf1.p    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf1_p,
                 opcode_str: "vrndf1.p",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16246,10 +16246,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0229001                   /* vrndi.t     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0229001                   /* vrndf1.t    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf1_t,
                 opcode_str: "vrndf1.t",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16260,10 +16260,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0229081                   /* vrndi.q     C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0229081                   /* vrndf1.q    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf1_q,
                 opcode_str: "vrndf1.q",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry::new_r4000allegrex(0xD0230001, "vrndf2.s    S010", Opcode::r4000allegrex_vrndf2_s, "vrndf2.s", [Some("S010"), None, None, None, None]),
             TestEntry::new_r4000allegrex(0xD0230081, "vrndf2.p    C010", Opcode::r4000allegrex_vrndf2_p, "vrndf2.p", [Some("C010"), None, None, None, None]),
@@ -16278,10 +16278,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0231001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0231001                   /* vrndf2.s    S010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf2_s,
                 opcode_str: "vrndf2.s",
-                operands_str: [Some("S01"), None, None, None, None],
+                operands_str: [Some("S010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16292,10 +16292,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0231081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0231081                   /* vrndf2.p    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf2_p,
                 opcode_str: "vrndf2.p",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16306,10 +16306,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0239001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0239001                   /* vrndf2.t    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf2_t,
                 opcode_str: "vrndf2.t",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16320,10 +16320,10 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0239081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0239081                   /* vrndf2.q    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::r4000allegrex_vrndf2_q,
                 opcode_str: "vrndf2.q",
-                operands_str: [Some("C01"), None, None, None, None],
+                operands_str: [Some("C010"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -16334,7 +16334,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0241001                   /* vrndf1.s    S010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0241001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -16348,7 +16348,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0241081                   /* vrndf1.p    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0241081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -16362,7 +16362,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0249001                   /* vrndf1.t    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0249001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -16376,7 +16376,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0249081                   /* vrndf1.q    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0249081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -16446,7 +16446,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0261001                   /* vrndf2.s    S010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0261001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -16460,7 +16460,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0261081                   /* vrndf2.p    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0261081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -16474,7 +16474,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0269001                   /* vrndf2.t    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0269001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -16488,7 +16488,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0269081                   /* vrndf2.q    C010 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
+                expected: ".word       0xD0269081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_RND> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -17192,7 +17192,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0341081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTFLT>",
+                expected: ".word       0xD0341081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTFLT> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -17220,7 +17220,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0349081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTFLT>",
+                expected: ".word       0xD0349081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTFLT> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -17291,7 +17291,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0361081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTFLT>",
+                expected: ".word       0xD0361081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTFLT> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -17522,7 +17522,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD03C1001                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTINT>",
+                expected: ".word       0xD03C1001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTINT> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -17536,7 +17536,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD03C1081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTINT>",
+                expected: ".word       0xD03C1081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTINT> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -17608,7 +17608,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD03E1001                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTINT>",
+                expected: ".word       0xD03E1001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CVTINT> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -18041,7 +18041,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD04C1001                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9>",
+                expected: ".word       0xD04C1001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -18055,7 +18055,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD04C1081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9>",
+                expected: ".word       0xD04C1081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -18069,7 +18069,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD04C9001                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9>",
+                expected: ".word       0xD04C9001                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -18083,7 +18083,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD04C9081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9>",
+                expected: ".word       0xD04C9081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_FMT9> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -18535,7 +18535,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD0521081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CONTROL>",
+                expected: ".word       0xD0521081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_CONTROL> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -19084,7 +19084,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD05C9081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_COLOR>",
+                expected: ".word       0xD05C9081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_COLOR> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -19196,7 +19196,7 @@ pub(crate) mod tests {
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
-                expected: ".word       0xD05E9081                   /* INVALID / 00000000 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_COLOR>",
+                expected: ".word       0xD05E9081                   /* INVALID / 00001001 <OpcodeCategory: R4000ALLEGREX_VFPU4_FMT0_COLOR> */",
                 expected_opcode: Opcode::ALL_INVALID,
                 opcode_str: "INVALID",
                 operands_str: [None, None, None, None, None],
@@ -34030,7 +34030,7 @@ pub(crate) mod tests {
                 expected: ".word       0xF38610C0                   /* vmzero.p    M002 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU6_FMT7_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vmzero_p,
                 opcode_str: "vmzero.p",
-                operands_str: [Some("M00"), None, None, None, None],
+                operands_str: [Some("M002"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -34044,7 +34044,7 @@ pub(crate) mod tests {
                 expected: ".word       0xF3869040                   /* vmzero.t    M001 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU6_FMT7_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vmzero_t,
                 opcode_str: "vmzero.t",
-                operands_str: [Some("M00"), None, None, None, None],
+                operands_str: [Some("M001"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -34058,7 +34058,7 @@ pub(crate) mod tests {
                 expected: ".word       0xF38690C0                   /* vmzero.q    M002 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU6_FMT7_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vmzero_q,
                 opcode_str: "vmzero.q",
-                operands_str: [Some("M00"), None, None, None, None],
+                operands_str: [Some("M002"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -34086,7 +34086,7 @@ pub(crate) mod tests {
                 expected: ".word       0xF38710C0                   /* vmone.p     M002 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU6_FMT7_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vmone_p,
                 opcode_str: "vmone.p",
-                operands_str: [Some("M00"), None, None, None, None],
+                operands_str: [Some("M002"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -34100,7 +34100,7 @@ pub(crate) mod tests {
                 expected: ".word       0xF3879040                   /* vmone.t     M001 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU6_FMT7_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vmone_t,
                 opcode_str: "vmone.t",
-                operands_str: [Some("M00"), None, None, None, None],
+                operands_str: [Some("M001"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(
@@ -34114,7 +34114,7 @@ pub(crate) mod tests {
                 expected: ".word       0xF38790C0                   /* vmone.q     M002 / 00001000 <OpcodeCategory: R4000ALLEGREX_VFPU6_FMT7_FMT0> */",
                 expected_opcode: Opcode::r4000allegrex_vmone_q,
                 opcode_str: "vmone.q",
-                operands_str: [Some("M00"), None, None, None, None],
+                operands_str: [Some("M002"), None, None, None, None],
             },
             TestEntry {
                 instr: Instruction::new_r4000allegrex(

@@ -21,7 +21,7 @@ vmfvc
 */
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x00100, vmfvc, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x0100, vmfvc, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_cop2cs),
         instr_type: InstrType::R
     ) // VFPU Move Word from VFPU Control
@@ -34,7 +34,7 @@ vmtvc
 */
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x00401, vmtvc, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x0201, vmtvc, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_cop2cd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // VFPU Move Word to VFPU Control

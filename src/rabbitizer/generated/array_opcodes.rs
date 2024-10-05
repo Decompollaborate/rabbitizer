@@ -2945,6 +2945,24 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("msubu", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
     }
     .check_panic_chain();
+    table[Opcode::r4000allegrex_movz as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true,
+        ..OpcodeDescriptor::new("movz", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+    }
+    .check_panic_chain();
+    table[Opcode::r4000allegrex_movn as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true,
+        ..OpcodeDescriptor::new("movn", IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX)
+    }
+    .check_panic_chain();
     table[Opcode::r4000allegrex_max as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,

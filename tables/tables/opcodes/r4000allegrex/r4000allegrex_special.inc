@@ -84,6 +84,23 @@
     // OP rd, rs, rt
 
     RAB_DEF_OPCODE(
+        r4000allegrex, 0x0A, movz, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
+    ) // MOVe conditional on Zero
+    RAB_DEF_OPCODE(
+        r4000allegrex, 0x0B, movn, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+        instr_type: InstrType::R,
+        modifies_rd: true,
+        reads_rs: true,
+        reads_rt: true
+    ) // MOVe conditional on Not zero
+
+    RAB_DEF_OPCODE(
         r4000allegrex, 0x2C, max, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,

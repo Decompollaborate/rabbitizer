@@ -172,6 +172,8 @@ impl OpcodeDecoder {
             0x1D => Opcode::r4000allegrex_maddu,
             0x2E => Opcode::r4000allegrex_msub,
             0x2F => Opcode::r4000allegrex_msubu,
+            0x0A => Opcode::r4000allegrex_movz,
+            0x0B => Opcode::r4000allegrex_movn,
             0x2C => Opcode::r4000allegrex_max,
             0x2D => Opcode::r4000allegrex_min,
             0x02 => {
@@ -1112,38 +1114,38 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT2;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00000 => Opcode::r4000allegrex_vrcp_s,
-            0x00001 => Opcode::r4000allegrex_vrcp_p,
-            0x00100 => Opcode::r4000allegrex_vrcp_t,
-            0x00101 => Opcode::r4000allegrex_vrcp_q,
-            0x00400 => Opcode::r4000allegrex_vrsq_s,
-            0x00401 => Opcode::r4000allegrex_vrsq_p,
-            0x00500 => Opcode::r4000allegrex_vrsq_t,
-            0x00501 => Opcode::r4000allegrex_vrsq_q,
-            0x00800 => Opcode::r4000allegrex_vsin_s,
-            0x00801 => Opcode::r4000allegrex_vsin_p,
-            0x00900 => Opcode::r4000allegrex_vsin_t,
-            0x00901 => Opcode::r4000allegrex_vsin_q,
-            0x00C00 => Opcode::r4000allegrex_vcos_s,
-            0x00C01 => Opcode::r4000allegrex_vcos_p,
-            0x00D00 => Opcode::r4000allegrex_vcos_t,
-            0x00D01 => Opcode::r4000allegrex_vcos_q,
-            0x01000 => Opcode::r4000allegrex_vexp2_s,
-            0x01001 => Opcode::r4000allegrex_vexp2_p,
-            0x01100 => Opcode::r4000allegrex_vexp2_t,
-            0x01101 => Opcode::r4000allegrex_vexp2_q,
-            0x01400 => Opcode::r4000allegrex_vlog2_s,
-            0x01401 => Opcode::r4000allegrex_vlog2_p,
-            0x01500 => Opcode::r4000allegrex_vlog2_t,
-            0x01501 => Opcode::r4000allegrex_vlog2_q,
-            0x01800 => Opcode::r4000allegrex_vsqrt_s,
-            0x01801 => Opcode::r4000allegrex_vsqrt_p,
-            0x01900 => Opcode::r4000allegrex_vsqrt_t,
-            0x01901 => Opcode::r4000allegrex_vsqrt_q,
-            0x01C00 => Opcode::r4000allegrex_vasin_s,
-            0x01C01 => Opcode::r4000allegrex_vasin_p,
-            0x01D00 => Opcode::r4000allegrex_vasin_t,
-            0x01D01 => Opcode::r4000allegrex_vasin_q,
+            0x0000 => Opcode::r4000allegrex_vrcp_s,
+            0x0001 => Opcode::r4000allegrex_vrcp_p,
+            0x0100 => Opcode::r4000allegrex_vrcp_t,
+            0x0101 => Opcode::r4000allegrex_vrcp_q,
+            0x0200 => Opcode::r4000allegrex_vrsq_s,
+            0x0201 => Opcode::r4000allegrex_vrsq_p,
+            0x0300 => Opcode::r4000allegrex_vrsq_t,
+            0x0301 => Opcode::r4000allegrex_vrsq_q,
+            0x0400 => Opcode::r4000allegrex_vsin_s,
+            0x0401 => Opcode::r4000allegrex_vsin_p,
+            0x0500 => Opcode::r4000allegrex_vsin_t,
+            0x0501 => Opcode::r4000allegrex_vsin_q,
+            0x0600 => Opcode::r4000allegrex_vcos_s,
+            0x0601 => Opcode::r4000allegrex_vcos_p,
+            0x0700 => Opcode::r4000allegrex_vcos_t,
+            0x0701 => Opcode::r4000allegrex_vcos_q,
+            0x0800 => Opcode::r4000allegrex_vexp2_s,
+            0x0801 => Opcode::r4000allegrex_vexp2_p,
+            0x0900 => Opcode::r4000allegrex_vexp2_t,
+            0x0901 => Opcode::r4000allegrex_vexp2_q,
+            0x0A00 => Opcode::r4000allegrex_vlog2_s,
+            0x0A01 => Opcode::r4000allegrex_vlog2_p,
+            0x0B00 => Opcode::r4000allegrex_vlog2_t,
+            0x0B01 => Opcode::r4000allegrex_vlog2_q,
+            0x0C00 => Opcode::r4000allegrex_vsqrt_s,
+            0x0C01 => Opcode::r4000allegrex_vsqrt_p,
+            0x0D00 => Opcode::r4000allegrex_vsqrt_t,
+            0x0D01 => Opcode::r4000allegrex_vsqrt_q,
+            0x0E00 => Opcode::r4000allegrex_vasin_s,
+            0x0E01 => Opcode::r4000allegrex_vasin_p,
+            0x0F00 => Opcode::r4000allegrex_vasin_t,
+            0x0F01 => Opcode::r4000allegrex_vasin_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1163,18 +1165,18 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT3;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00000 => Opcode::r4000allegrex_vnrcp_s,
-            0x00001 => Opcode::r4000allegrex_vnrcp_p,
-            0x00100 => Opcode::r4000allegrex_vnrcp_t,
-            0x00101 => Opcode::r4000allegrex_vnrcp_q,
-            0x00800 => Opcode::r4000allegrex_vnsin_s,
-            0x00801 => Opcode::r4000allegrex_vnsin_p,
-            0x00900 => Opcode::r4000allegrex_vnsin_t,
-            0x00901 => Opcode::r4000allegrex_vnsin_q,
-            0x01000 => Opcode::r4000allegrex_vrexp2_s,
-            0x01001 => Opcode::r4000allegrex_vrexp2_p,
-            0x01100 => Opcode::r4000allegrex_vrexp2_t,
-            0x01101 => Opcode::r4000allegrex_vrexp2_q,
+            0x0000 => Opcode::r4000allegrex_vnrcp_s,
+            0x0001 => Opcode::r4000allegrex_vnrcp_p,
+            0x0100 => Opcode::r4000allegrex_vnrcp_t,
+            0x0101 => Opcode::r4000allegrex_vnrcp_q,
+            0x0400 => Opcode::r4000allegrex_vnsin_s,
+            0x0401 => Opcode::r4000allegrex_vnsin_p,
+            0x0500 => Opcode::r4000allegrex_vnsin_t,
+            0x0501 => Opcode::r4000allegrex_vnsin_q,
+            0x0800 => Opcode::r4000allegrex_vrexp2_s,
+            0x0801 => Opcode::r4000allegrex_vrexp2_p,
+            0x0900 => Opcode::r4000allegrex_vrexp2_t,
+            0x0901 => Opcode::r4000allegrex_vrexp2_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1194,19 +1196,19 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_RND;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00000 => Opcode::r4000allegrex_vrnds_s,
-            0x00400 => Opcode::r4000allegrex_vrndi_s,
-            0x00401 => Opcode::r4000allegrex_vrndi_p,
-            0x00500 => Opcode::r4000allegrex_vrndi_t,
-            0x00501 => Opcode::r4000allegrex_vrndi_q,
-            0x00800 => Opcode::r4000allegrex_vrndf1_s,
-            0x00801 => Opcode::r4000allegrex_vrndf1_p,
-            0x00900 => Opcode::r4000allegrex_vrndf1_t,
-            0x00901 => Opcode::r4000allegrex_vrndf1_q,
-            0x00C00 => Opcode::r4000allegrex_vrndf2_s,
-            0x00C01 => Opcode::r4000allegrex_vrndf2_p,
-            0x00D00 => Opcode::r4000allegrex_vrndf2_t,
-            0x00D01 => Opcode::r4000allegrex_vrndf2_q,
+            0x0000 => Opcode::r4000allegrex_vrnds_s,
+            0x0200 => Opcode::r4000allegrex_vrndi_s,
+            0x0201 => Opcode::r4000allegrex_vrndi_p,
+            0x0300 => Opcode::r4000allegrex_vrndi_t,
+            0x0301 => Opcode::r4000allegrex_vrndi_q,
+            0x0400 => Opcode::r4000allegrex_vrndf1_s,
+            0x0401 => Opcode::r4000allegrex_vrndf1_p,
+            0x0500 => Opcode::r4000allegrex_vrndf1_t,
+            0x0501 => Opcode::r4000allegrex_vrndf1_q,
+            0x0600 => Opcode::r4000allegrex_vrndf2_s,
+            0x0601 => Opcode::r4000allegrex_vrndf2_p,
+            0x0700 => Opcode::r4000allegrex_vrndf2_t,
+            0x0701 => Opcode::r4000allegrex_vrndf2_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1226,12 +1228,12 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CVTFLT;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00801 => Opcode::r4000allegrex_vf2h_p,
-            0x00901 => Opcode::r4000allegrex_vf2h_q,
-            0x00C00 => Opcode::r4000allegrex_vh2f_s,
-            0x00C01 => Opcode::r4000allegrex_vh2f_p,
-            0x01800 => Opcode::r4000allegrex_vsbz_s,
-            0x01C00 => Opcode::r4000allegrex_vlgb_s,
+            0x0401 => Opcode::r4000allegrex_vf2h_p,
+            0x0501 => Opcode::r4000allegrex_vf2h_q,
+            0x0600 => Opcode::r4000allegrex_vh2f_s,
+            0x0601 => Opcode::r4000allegrex_vh2f_p,
+            0x0C00 => Opcode::r4000allegrex_vsbz_s,
+            0x0E00 => Opcode::r4000allegrex_vlgb_s,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1251,18 +1253,18 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CVTINT;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00000 => Opcode::r4000allegrex_vuc2ifs_s,
-            0x00400 => Opcode::r4000allegrex_vc2i_s,
-            0x00800 => Opcode::r4000allegrex_vus2i_s,
-            0x00801 => Opcode::r4000allegrex_vus2i_p,
-            0x00C00 => Opcode::r4000allegrex_vs2i_s,
-            0x00C01 => Opcode::r4000allegrex_vs2i_p,
-            0x01101 => Opcode::r4000allegrex_vi2uc_q,
-            0x01501 => Opcode::r4000allegrex_vi2c_q,
-            0x01801 => Opcode::r4000allegrex_vi2us_p,
-            0x01901 => Opcode::r4000allegrex_vi2us_q,
-            0x01C01 => Opcode::r4000allegrex_vi2s_p,
-            0x01D01 => Opcode::r4000allegrex_vi2s_q,
+            0x0000 => Opcode::r4000allegrex_vuc2ifs_s,
+            0x0200 => Opcode::r4000allegrex_vc2i_s,
+            0x0400 => Opcode::r4000allegrex_vus2i_s,
+            0x0401 => Opcode::r4000allegrex_vus2i_p,
+            0x0600 => Opcode::r4000allegrex_vs2i_s,
+            0x0601 => Opcode::r4000allegrex_vs2i_p,
+            0x0901 => Opcode::r4000allegrex_vi2uc_q,
+            0x0B01 => Opcode::r4000allegrex_vi2c_q,
+            0x0C01 => Opcode::r4000allegrex_vi2us_p,
+            0x0D01 => Opcode::r4000allegrex_vi2us_q,
+            0x0E01 => Opcode::r4000allegrex_vi2s_p,
+            0x0F01 => Opcode::r4000allegrex_vi2s_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1282,23 +1284,23 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT8;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00101 => Opcode::r4000allegrex_vsrt1_q,
-            0x00501 => Opcode::r4000allegrex_vsrt2_q,
-            0x00801 => Opcode::r4000allegrex_vbfy1_p,
-            0x00901 => Opcode::r4000allegrex_vbfy1_q,
-            0x00D01 => Opcode::r4000allegrex_vbfy2_q,
-            0x01000 => Opcode::r4000allegrex_vocp_s,
-            0x01001 => Opcode::r4000allegrex_vocp_p,
-            0x01100 => Opcode::r4000allegrex_vocp_t,
-            0x01101 => Opcode::r4000allegrex_vocp_q,
-            0x01400 => Opcode::r4000allegrex_vsocp_s,
-            0x01401 => Opcode::r4000allegrex_vsocp_p,
-            0x01801 => Opcode::r4000allegrex_vfad_p,
-            0x01900 => Opcode::r4000allegrex_vfad_t,
-            0x01901 => Opcode::r4000allegrex_vfad_q,
-            0x01C01 => Opcode::r4000allegrex_vavg_p,
-            0x01D00 => Opcode::r4000allegrex_vavg_t,
-            0x01D01 => Opcode::r4000allegrex_vavg_q,
+            0x0101 => Opcode::r4000allegrex_vsrt1_q,
+            0x0301 => Opcode::r4000allegrex_vsrt2_q,
+            0x0401 => Opcode::r4000allegrex_vbfy1_p,
+            0x0501 => Opcode::r4000allegrex_vbfy1_q,
+            0x0701 => Opcode::r4000allegrex_vbfy2_q,
+            0x0800 => Opcode::r4000allegrex_vocp_s,
+            0x0801 => Opcode::r4000allegrex_vocp_p,
+            0x0900 => Opcode::r4000allegrex_vocp_t,
+            0x0901 => Opcode::r4000allegrex_vocp_q,
+            0x0A00 => Opcode::r4000allegrex_vsocp_s,
+            0x0A01 => Opcode::r4000allegrex_vsocp_p,
+            0x0C01 => Opcode::r4000allegrex_vfad_p,
+            0x0D00 => Opcode::r4000allegrex_vfad_t,
+            0x0D01 => Opcode::r4000allegrex_vfad_q,
+            0x0E01 => Opcode::r4000allegrex_vavg_p,
+            0x0F00 => Opcode::r4000allegrex_vavg_t,
+            0x0F01 => Opcode::r4000allegrex_vavg_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1318,12 +1320,12 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT9;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00101 => Opcode::r4000allegrex_vsrt3_q,
-            0x00501 => Opcode::r4000allegrex_vsrt4_q,
-            0x00800 => Opcode::r4000allegrex_vsgn_s,
-            0x00801 => Opcode::r4000allegrex_vsgn_p,
-            0x00900 => Opcode::r4000allegrex_vsgn_t,
-            0x00901 => Opcode::r4000allegrex_vsgn_q,
+            0x0101 => Opcode::r4000allegrex_vsrt3_q,
+            0x0301 => Opcode::r4000allegrex_vsrt4_q,
+            0x0400 => Opcode::r4000allegrex_vsgn_s,
+            0x0401 => Opcode::r4000allegrex_vsgn_p,
+            0x0500 => Opcode::r4000allegrex_vsgn_t,
+            0x0501 => Opcode::r4000allegrex_vsgn_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1343,8 +1345,8 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CONTROL;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00100 => Opcode::r4000allegrex_vmfvc,
-            0x00401 => Opcode::r4000allegrex_vmtvc,
+            0x0100 => Opcode::r4000allegrex_vmfvc,
+            0x0201 => Opcode::r4000allegrex_vmtvc,
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -1364,9 +1366,9 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_COLOR;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x00501 => Opcode::r4000allegrex_vt4444_q,
-            0x00901 => Opcode::r4000allegrex_vt5551_q,
-            0x00D01 => Opcode::r4000allegrex_vt5650_q,
+            0x0301 => Opcode::r4000allegrex_vt4444_q,
+            0x0501 => Opcode::r4000allegrex_vt5551_q,
+            0x0701 => Opcode::r4000allegrex_vt5650_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {

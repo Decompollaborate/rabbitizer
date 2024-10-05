@@ -40,20 +40,16 @@ fn main() {
 */
 
 fn main() {
-    let instr = rabbitizer::Instruction::new(
-        0x26F7FFF0,
+    let instr = rabbitizer::Instruction::new_r4000allegrex(
+        0xD0119001,
         0x80000000,
         rabbitizer::InstructionFlags::default(),
-        rabbitizer::IsaVersion::MIPS_III,
-        rabbitizer::IsaExtension::NONE,
     );
 
     println!(
         "{}",
         instr.display(None, &rabbitizer::DisplayFlags::default())
     );
-    println!(
-        "{}",
-        instr.display(Some("%lo(test)"), &rabbitizer::DisplayFlags::default())
-    );
+
+    println!("{:?}", instr);
 }

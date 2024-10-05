@@ -1,6 +1,6 @@
 from pathlib import Path
 
-p = Path("tables/tables/opcodes/r4000allegrex/r4000allegrex_vfpu6_fmt7_fmt0.inc")
+p = Path("tables/tables/opcodes/r4000allegrex/r4000allegrex_vfpu4_fmt0_color.inc")
 
 lines = []
 

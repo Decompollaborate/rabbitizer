@@ -354,6 +354,8 @@ pub enum Opcode {
     r4000allegrex_maddu,
     r4000allegrex_msub,
     r4000allegrex_msubu,
+    r4000allegrex_movz,
+    r4000allegrex_movn,
     r4000allegrex_max,
     r4000allegrex_min,
 
