@@ -91,77 +91,217 @@ impl ValuedOperand {
                 Self::core_maybe_rd_rs(reg, instr.field_rs_unchecked())
             }
             Operand::core_maybe_zero_rs => Self::core_maybe_zero_rs((), instr.field_rs_unchecked()),
-            Operand::rsp_cop0d => todo!(),
-            Operand::rsp_cop2t => todo!(),
-            Operand::rsp_cop2cd => todo!(),
-            Operand::rsp_vs => todo!(),
-            Operand::rsp_vd => todo!(),
-            Operand::rsp_vt_elementhigh => todo!(),
-            Operand::rsp_vt_elementlow => todo!(),
-            Operand::rsp_vd_de => todo!(),
-            Operand::rsp_vs_index => todo!(),
-            Operand::rsp_offset_rs => todo!(),
+            Operand::rsp_cop0d => Self::rsp_cop0d(instr.field_rsp_cop0d_unchecked()),
+            Operand::rsp_cop2t => Self::rsp_cop2t(instr.field_rsp_cop2t_unchecked()),
+            Operand::rsp_cop2cd => Self::rsp_cop2cd(instr.field_rsp_cop2cd_unchecked()),
+            Operand::rsp_vs => Self::rsp_vs(instr.field_rsp_vs_unchecked()),
+            Operand::rsp_vd => Self::rsp_vd(instr.field_rsp_vd_unchecked()),
+            Operand::rsp_vt_elementhigh => Self::rsp_vt_elementhigh(
+                instr.field_rsp_vt_unchecked(),
+                instr.field_rsp_elementhigh_unchecked(),
+            ),
+            Operand::rsp_vt_elementlow => Self::rsp_vt_elementlow(
+                instr.field_rsp_vt_unchecked(),
+                instr.field_rsp_elementlow_unchecked(),
+            ),
+            Operand::rsp_vd_de => Self::rsp_vd_de(
+                instr.field_rsp_vd_unchecked(),
+                instr.field_rsp_de_unchecked(),
+            ),
+            Operand::rsp_vs_index => Self::rsp_vs_index(
+                instr.field_rsp_vs_unchecked(),
+                instr.field_rsp_index_unchecked(),
+            ),
+            Operand::rsp_offset_rs => Self::rsp_offset_rs(
+                instr.get_processed_rsp_offset_unchecked(),
+                instr.field_rs_unchecked(),
+            ),
             Operand::r3000gte_sf => Self::r3000gte_sf(instr.field_r3000gte_sf_unchecked()),
             Operand::r3000gte_mx => Self::r3000gte_mx(instr.field_r3000gte_mx_unchecked()),
             Operand::r3000gte_v => Self::r3000gte_v(instr.field_r3000gte_v_unchecked()),
             Operand::r3000gte_cv => Self::r3000gte_cv(instr.field_r3000gte_cv_unchecked()),
             Operand::r3000gte_lm => Self::r3000gte_lm(instr.field_r3000gte_lm_unchecked()),
-            Operand::r4000allegrex_s_vs => todo!(),
-            Operand::r4000allegrex_s_vt => todo!(),
-            Operand::r4000allegrex_s_vd => todo!(),
-            Operand::r4000allegrex_s_vt_imm => todo!(),
-            Operand::r4000allegrex_s_vd_imm => todo!(),
-            Operand::r4000allegrex_p_vs => todo!(),
-            Operand::r4000allegrex_p_vt => todo!(),
-            Operand::r4000allegrex_p_vd => todo!(),
-            Operand::r4000allegrex_t_vs => todo!(),
-            Operand::r4000allegrex_t_vt => todo!(),
-            Operand::r4000allegrex_t_vd => todo!(),
-            Operand::r4000allegrex_q_vs => todo!(),
-            Operand::r4000allegrex_q_vt => todo!(),
-            Operand::r4000allegrex_q_vd => todo!(),
-            Operand::r4000allegrex_q_vt_imm => todo!(),
-            Operand::r4000allegrex_mp_vs => todo!(),
-            Operand::r4000allegrex_mp_vt => todo!(),
-            Operand::r4000allegrex_mp_vd => todo!(),
-            Operand::r4000allegrex_mp_vs_transpose => todo!(),
-            Operand::r4000allegrex_mt_vs => todo!(),
-            Operand::r4000allegrex_mt_vt => todo!(),
-            Operand::r4000allegrex_mt_vd => todo!(),
-            Operand::r4000allegrex_mt_vs_transpose => todo!(),
-            Operand::r4000allegrex_mq_vs => todo!(),
-            Operand::r4000allegrex_mq_vt => todo!(),
-            Operand::r4000allegrex_mq_vd => todo!(),
-            Operand::r4000allegrex_mq_vs_transpose => todo!(),
-            Operand::r4000allegrex_cop2cs => todo!(),
-            Operand::r4000allegrex_cop2cd => todo!(),
-            Operand::r4000allegrex_pos => todo!(),
-            Operand::r4000allegrex_size => todo!(),
-            Operand::r4000allegrex_size_plus_pos => todo!(),
-            Operand::r4000allegrex_imm3 => todo!(),
-            Operand::r4000allegrex_offset14_base => todo!(),
-            Operand::r4000allegrex_offset14_base_maybe_wb => todo!(),
-            Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => todo!(),
-            Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => todo!(),
-            Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => todo!(),
-            Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => todo!(),
-            Operand::r4000allegrex_vconstant => todo!(),
-            Operand::r4000allegrex_power_of_two => todo!(),
-            Operand::r4000allegrex_vfpu_cc_bit => todo!(),
-            Operand::r4000allegrex_bn => todo!(),
-            Operand::r4000allegrex_int16 => todo!(),
-            Operand::r4000allegrex_float16 => todo!(),
-            Operand::r4000allegrex_p_vrot_code => todo!(),
-            Operand::r4000allegrex_t_vrot_code => todo!(),
-            Operand::r4000allegrex_q_vrot_code => todo!(),
-            Operand::r4000allegrex_wpx => todo!(),
-            Operand::r4000allegrex_wpy => todo!(),
-            Operand::r4000allegrex_wpz => todo!(),
-            Operand::r4000allegrex_wpw => todo!(),
-            Operand::r4000allegrex_rpx => todo!(),
-            Operand::r4000allegrex_rpy => todo!(),
-            Operand::r4000allegrex_rpz => todo!(),
-            Operand::r4000allegrex_rpw => todo!(),
+            Operand::r4000allegrex_s_vs => {
+                Self::r4000allegrex_s_vs(instr.field_r4000allegrex_s_vs_unchecked())
+            }
+            Operand::r4000allegrex_s_vt => {
+                Self::r4000allegrex_s_vt(instr.field_r4000allegrex_s_vt_unchecked())
+            }
+            Operand::r4000allegrex_s_vd => {
+                Self::r4000allegrex_s_vd(instr.field_r4000allegrex_s_vd_unchecked())
+            }
+            Operand::r4000allegrex_s_vt_imm => {
+                Self::r4000allegrex_s_vt_imm(instr.field_r4000allegrex_s_vt_imm_unchecked())
+            }
+            Operand::r4000allegrex_s_vd_imm => {
+                Self::r4000allegrex_s_vd_imm(instr.field_r4000allegrex_s_vd_imm_unchecked())
+            }
+            Operand::r4000allegrex_p_vs => {
+                Self::r4000allegrex_p_vs(instr.field_r4000allegrex_p_vs_unchecked())
+            }
+            Operand::r4000allegrex_p_vt => {
+                Self::r4000allegrex_p_vt(instr.field_r4000allegrex_p_vt_unchecked())
+            }
+            Operand::r4000allegrex_p_vd => {
+                Self::r4000allegrex_p_vd(instr.field_r4000allegrex_p_vd_unchecked())
+            }
+            Operand::r4000allegrex_t_vs => {
+                Self::r4000allegrex_t_vs(instr.field_r4000allegrex_t_vs_unchecked())
+            }
+            Operand::r4000allegrex_t_vt => {
+                Self::r4000allegrex_t_vt(instr.field_r4000allegrex_t_vt_unchecked())
+            }
+            Operand::r4000allegrex_t_vd => {
+                Self::r4000allegrex_t_vd(instr.field_r4000allegrex_t_vd_unchecked())
+            }
+            Operand::r4000allegrex_q_vs => {
+                Self::r4000allegrex_q_vs(instr.field_r4000allegrex_q_vs_unchecked())
+            }
+            Operand::r4000allegrex_q_vt => {
+                Self::r4000allegrex_q_vt(instr.field_r4000allegrex_q_vt_unchecked())
+            }
+            Operand::r4000allegrex_q_vd => {
+                Self::r4000allegrex_q_vd(instr.field_r4000allegrex_q_vd_unchecked())
+            }
+            Operand::r4000allegrex_q_vt_imm => {
+                Self::r4000allegrex_q_vt_imm(instr.field_r4000allegrex_q_vt_imm_unchecked())
+            }
+            Operand::r4000allegrex_mp_vs => {
+                Self::r4000allegrex_mp_vs(instr.field_r4000allegrex_mp_vs_unchecked())
+            }
+            Operand::r4000allegrex_mp_vt => {
+                Self::r4000allegrex_mp_vt(instr.field_r4000allegrex_mp_vt_unchecked())
+            }
+            Operand::r4000allegrex_mp_vd => {
+                Self::r4000allegrex_mp_vd(instr.field_r4000allegrex_mp_vd_unchecked())
+            }
+            Operand::r4000allegrex_mp_vs_transpose => Self::r4000allegrex_mp_vs_transpose(
+                instr.field_r4000allegrex_mp_vs_transpose_unchecked(),
+            ),
+            Operand::r4000allegrex_mt_vs => {
+                Self::r4000allegrex_mt_vs(instr.field_r4000allegrex_mt_vs_unchecked())
+            }
+            Operand::r4000allegrex_mt_vt => {
+                Self::r4000allegrex_mt_vt(instr.field_r4000allegrex_mt_vt_unchecked())
+            }
+            Operand::r4000allegrex_mt_vd => {
+                Self::r4000allegrex_mt_vd(instr.field_r4000allegrex_mt_vd_unchecked())
+            }
+            Operand::r4000allegrex_mt_vs_transpose => Self::r4000allegrex_mt_vs_transpose(
+                instr.field_r4000allegrex_mt_vs_transpose_unchecked(),
+            ),
+            Operand::r4000allegrex_mq_vs => {
+                Self::r4000allegrex_mq_vs(instr.field_r4000allegrex_mq_vs_unchecked())
+            }
+            Operand::r4000allegrex_mq_vt => {
+                Self::r4000allegrex_mq_vt(instr.field_r4000allegrex_mq_vt_unchecked())
+            }
+            Operand::r4000allegrex_mq_vd => {
+                Self::r4000allegrex_mq_vd(instr.field_r4000allegrex_mq_vd_unchecked())
+            }
+            Operand::r4000allegrex_mq_vs_transpose => Self::r4000allegrex_mq_vs_transpose(
+                instr.field_r4000allegrex_mq_vs_transpose_unchecked(),
+            ),
+            Operand::r4000allegrex_cop2cs => {
+                Self::r4000allegrex_cop2cs(instr.field_r4000allegrex_cop2cs_unchecked())
+            }
+            Operand::r4000allegrex_cop2cd => {
+                Self::r4000allegrex_cop2cd(instr.field_r4000allegrex_cop2cd_unchecked())
+            }
+            Operand::r4000allegrex_pos => {
+                Self::r4000allegrex_pos(instr.field_r4000allegrex_pos_unchecked())
+            }
+            Operand::r4000allegrex_size => {
+                Self::r4000allegrex_size(instr.field_r4000allegrex_size_unchecked())
+            }
+            Operand::r4000allegrex_size_plus_pos => Self::r4000allegrex_size_plus_pos(
+                instr.field_r4000allegrex_size_plus_pos_unchecked(),
+            ),
+            Operand::r4000allegrex_imm3 => {
+                Self::r4000allegrex_imm3(instr.field_r4000allegrex_imm3_unchecked())
+            }
+            Operand::r4000allegrex_offset14_base => Self::r4000allegrex_offset14_base(
+                instr.field_r4000allegrex_offset14_unchecked(),
+                instr.field_rs_unchecked(),
+            ),
+            Operand::r4000allegrex_offset14_base_maybe_wb => {
+                Self::r4000allegrex_offset14_base_maybe_wb(
+                    instr.field_r4000allegrex_offset14_unchecked(),
+                    instr.field_rs_unchecked(),
+                    instr.field_r4000allegrex_wb_unchecked(),
+                )
+            }
+            Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
+                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_s_args_unchecked();
+
+                Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(cond, vs, vt)
+            }
+            Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
+                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_p_args_unchecked();
+
+                Self::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(cond, vs, vt)
+            }
+            Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
+                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_t_args_unchecked();
+
+                Self::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(cond, vs, vt)
+            }
+            Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
+                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_q_args_unchecked();
+
+                Self::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(cond, vs, vt)
+            }
+            Operand::r4000allegrex_vconstant => {
+                Self::r4000allegrex_vconstant(instr.field_r4000allegrex_vconstant_unchecked())
+            }
+            Operand::r4000allegrex_power_of_two => {
+                Self::r4000allegrex_power_of_two(instr.field_r4000allegrex_power_of_two_unchecked())
+            }
+            Operand::r4000allegrex_vfpu_cc_bit => {
+                Self::r4000allegrex_vfpu_cc_bit(instr.field_r4000allegrex_vfpu_cc_bit_unchecked())
+            }
+            Operand::r4000allegrex_bn => {
+                Self::r4000allegrex_bn(instr.field_r4000allegrex_bn_unchecked())
+            }
+            Operand::r4000allegrex_int16 => {
+                Self::r4000allegrex_int16(instr.field_r4000allegrex_int16_unchecked())
+            }
+            Operand::r4000allegrex_float16 => {
+                Self::r4000allegrex_float16(instr.field_r4000allegrex_float16_unchecked())
+            }
+            Operand::r4000allegrex_p_vrot_code => {
+                Self::r4000allegrex_p_vrot_code(instr.field_r4000allegrex_vrot_code_unchecked())
+            }
+            Operand::r4000allegrex_t_vrot_code => {
+                Self::r4000allegrex_t_vrot_code(instr.field_r4000allegrex_vrot_code_unchecked())
+            }
+            Operand::r4000allegrex_q_vrot_code => {
+                Self::r4000allegrex_q_vrot_code(instr.field_r4000allegrex_vrot_code_unchecked())
+            }
+            Operand::r4000allegrex_wpx => {
+                Self::r4000allegrex_wpx(instr.field_r4000allegrex_wpx_unchecked())
+            }
+            Operand::r4000allegrex_wpy => {
+                Self::r4000allegrex_wpy(instr.field_r4000allegrex_wpy_unchecked())
+            }
+            Operand::r4000allegrex_wpz => {
+                Self::r4000allegrex_wpz(instr.field_r4000allegrex_wpz_unchecked())
+            }
+            Operand::r4000allegrex_wpw => {
+                Self::r4000allegrex_wpw(instr.field_r4000allegrex_wpw_unchecked())
+            }
+            Operand::r4000allegrex_rpx => {
+                Self::r4000allegrex_rpx(instr.field_r4000allegrex_rpx_unchecked())
+            }
+            Operand::r4000allegrex_rpy => {
+                Self::r4000allegrex_rpy(instr.field_r4000allegrex_rpy_unchecked())
+            }
+            Operand::r4000allegrex_rpz => {
+                Self::r4000allegrex_rpz(instr.field_r4000allegrex_rpz_unchecked())
+            }
+            Operand::r4000allegrex_rpw => {
+                Self::r4000allegrex_rpw(instr.field_r4000allegrex_rpw_unchecked())
+            }
             Operand::r5900_I => Self::r5900_I(),
             Operand::r5900_Q => Self::r5900_Q(),
             Operand::r5900_R => Self::r5900_R(),

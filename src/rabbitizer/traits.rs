@@ -3,7 +3,7 @@
 
 use crate::{Abi, RegisterDescriptor};
 
-pub trait Register {
+pub trait Register: PartialEq + PartialOrd + Default {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor;
 
@@ -73,3 +73,5 @@ pub trait Register {
         self.get_descriptor().is_arg()
     }
 }
+
+pub(crate) trait R4000AllegrexVectorRegister: Register {}

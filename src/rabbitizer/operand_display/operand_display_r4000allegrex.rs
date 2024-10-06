@@ -3,7 +3,6 @@
 
 use core::fmt;
 
-use crate::registers::{R4000AllegrexS, R4000AllegrexV2D, R4000AllegrexV3D, R4000AllegrexV4D};
 use crate::{traits::Register, OperandDisplay};
 
 impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
@@ -424,196 +423,80 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let cond = instr.field_r4000allegrex_vcmp_cond_unchecked();
-        let vs = instr.field_r4000allegrex_s_vs_unchecked();
-        let vt = instr.field_r4000allegrex_s_vs_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_s_args_unchecked();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
-        match cond {
-            // fl | tr
-            0 | 4 => {
-                // If the other operands are 0 then we can omit them
-                if vs == R4000AllegrexS::default() && vt == R4000AllegrexS::default() {
-                    return Ok(());
-                }
+        if vs.is_some() {
+            write!(f, ", ")?;
+            Self::display_r4000allegrex_s_vs(myself, f)?;
+
+            if vt.is_some() {
+                write!(f, ", ")?;
+                Self::display_r4000allegrex_s_vt(myself, f)?;
             }
-            _ => {}
         }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_s_vs(myself, f)?;
-
-        match cond {
-            0 => {} // fl
-            4 => {} // tr
-
-            1 => {} // eq
-            2 => {} // lt
-            3 => {} // le
-            5 => {} // ne
-            6 => {} // ge
-            7 => {} // gt
-
-            // ez | en | ei | es | nz | nn | ni | ns
-            8..=15 => {
-                // If the vt operands is 0 then we can omit it
-                if vt == R4000AllegrexS::default() {
-                    return Ok(());
-                }
-            }
-            _ => {}
-        }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_s_vt(myself, f)
+        Ok(())
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let cond = instr.field_r4000allegrex_vcmp_cond_unchecked();
-        let vs = instr.field_r4000allegrex_p_vs_unchecked();
-        let vt = instr.field_r4000allegrex_p_vs_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_p_args_unchecked();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
-        match cond {
-            // fl | tr
-            0 | 4 => {
-                // If the other operands are 0 then we can omit them
-                if vs == R4000AllegrexV2D::default() && vt == R4000AllegrexV2D::default() {
-                    return Ok(());
-                }
+        if vs.is_some() {
+            write!(f, ", ")?;
+            Self::display_r4000allegrex_p_vs(myself, f)?;
+
+            if vt.is_some() {
+                write!(f, ", ")?;
+                Self::display_r4000allegrex_p_vt(myself, f)?;
             }
-            _ => {}
         }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_p_vs(myself, f)?;
-
-        match cond {
-            0 => {} // fl
-            4 => {} // tr
-
-            1 => {} // eq
-            2 => {} // lt
-            3 => {} // le
-            5 => {} // ne
-            6 => {} // ge
-            7 => {} // gt
-
-            // ez | en | ei | es | nz | nn | ni | ns
-            8..=15 => {
-                // If the vt operands is 0 then we can omit it
-                if vt == R4000AllegrexV2D::default() {
-                    return Ok(());
-                }
-            }
-            _ => {}
-        }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_p_vt(myself, f)
+        Ok(())
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let cond = instr.field_r4000allegrex_vcmp_cond_unchecked();
-        let vs = instr.field_r4000allegrex_t_vs_unchecked();
-        let vt = instr.field_r4000allegrex_t_vs_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_t_args_unchecked();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
-        match cond {
-            // fl | tr
-            0 | 4 => {
-                // If the other operands are 0 then we can omit them
-                if vs == R4000AllegrexV3D::default() && vt == R4000AllegrexV3D::default() {
-                    return Ok(());
-                }
+        if vs.is_some() {
+            write!(f, ", ")?;
+            Self::display_r4000allegrex_t_vs(myself, f)?;
+
+            if vt.is_some() {
+                write!(f, ", ")?;
+                Self::display_r4000allegrex_t_vt(myself, f)?;
             }
-            _ => {}
         }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_t_vs(myself, f)?;
-
-        match cond {
-            0 => {} // fl
-            4 => {} // tr
-
-            1 => {} // eq
-            2 => {} // lt
-            3 => {} // le
-            5 => {} // ne
-            6 => {} // ge
-            7 => {} // gt
-
-            // ez | en | ei | es | nz | nn | ni | ns
-            8..=15 => {
-                // If the vt operands is 0 then we can omit it
-                if vt == R4000AllegrexV3D::default() {
-                    return Ok(());
-                }
-            }
-            _ => {}
-        }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_t_vt(myself, f)
+        Ok(())
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let cond = instr.field_r4000allegrex_vcmp_cond_unchecked();
-        let vs = instr.field_r4000allegrex_q_vs_unchecked();
-        let vt = instr.field_r4000allegrex_q_vs_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_q_args_unchecked();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
-        match cond {
-            // fl | tr
-            0 | 4 => {
-                // If the other operands are 0 then we can omit them
-                if vs == R4000AllegrexV4D::default() && vt == R4000AllegrexV4D::default() {
-                    return Ok(());
-                }
+        if vs.is_some() {
+            write!(f, ", ")?;
+            Self::display_r4000allegrex_q_vs(myself, f)?;
+
+            if vt.is_some() {
+                write!(f, ", ")?;
+                Self::display_r4000allegrex_q_vt(myself, f)?;
             }
-            _ => {}
         }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_q_vs(myself, f)?;
-
-        match cond {
-            0 => {} // fl
-            4 => {} // tr
-
-            1 => {} // eq
-            2 => {} // lt
-            3 => {} // le
-            5 => {} // ne
-            6 => {} // ge
-            7 => {} // gt
-
-            // ez | en | ei | es | nz | nn | ni | ns
-            8..=15 => {
-                // If the vt operands is 0 then we can omit it
-                if vt == R4000AllegrexV4D::default() {
-                    return Ok(());
-                }
-            }
-            _ => {}
-        }
-
-        write!(f, ", ")?;
-        Self::display_r4000allegrex_q_vt(myself, f)
+        Ok(())
     }
 
     pub(crate) fn display_r4000allegrex_vconstant(

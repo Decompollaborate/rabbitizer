@@ -56,9 +56,9 @@
     RAB_DEF_OPERAND(r4000allegrex, offset14_base_maybe_wb, EncodedFieldMask::r4000allegrex_offset14.union(EncodedFieldMask::rs).union(EncodedFieldMask::r4000allegrex_wb), (u16, Gpr, bool))
 
     RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_s_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>))
-    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_p_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>))
-    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_t_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>))
-    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_q_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>))
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_p_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexV2D>, Option<R4000AllegrexV2D>))
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_t_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexV3D>, Option<R4000AllegrexV3D>))
+    RAB_DEF_OPERAND(r4000allegrex, vcmp_cond_q_maybe_vs_maybe_vt, EncodedFieldMask::r4000allegrex_vcmp_cond.union(EncodedFieldMask::r4000allegrex_vs).union(EncodedFieldMask::r4000allegrex_vt), (u8, Option<R4000AllegrexV4D>, Option<R4000AllegrexV4D>))
 
     RAB_DEF_OPERAND(r4000allegrex, vconstant, EncodedFieldMask::r4000allegrex_vconstant, (R4000AllegrexVConstant))
 

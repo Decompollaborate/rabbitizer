@@ -3,7 +3,7 @@
 
 use crate::register_descriptors;
 use crate::registers::R4000AllegrexV3D;
-use crate::traits::Register;
+use crate::traits::{R4000AllegrexVectorRegister, Register};
 use crate::RegisterDescriptor;
 
 impl R4000AllegrexV3D {
@@ -19,3 +19,5 @@ impl Register for R4000AllegrexV3D {
         &register_descriptors::R4000ALLEGREX_V3D[*self]
     }
 }
+
+impl R4000AllegrexVectorRegister for R4000AllegrexV3D {}

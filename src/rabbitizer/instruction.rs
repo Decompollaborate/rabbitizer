@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::registers::*;
-use crate::traits::Register;
+use crate::traits::{R4000AllegrexVectorRegister, Register};
 use crate::utils;
 use crate::Abi;
 use crate::{DisplayFlags, EncodedFieldMask, InstructionDisplay, InstructionFlags};
@@ -2745,6 +2745,141 @@ impl Instruction {
 
             _ => offset,
         }
+    }
+}
+
+impl Instruction {
+    pub(crate) fn process_r4000allegrex_vcmp_operands<T>(
+        cond: u8,
+        vs: T,
+        vt: T,
+    ) -> (u8, Option<T>, Option<T>)
+    where
+        T: R4000AllegrexVectorRegister,
+    {
+        match cond {
+            0 | 4 => {
+                // We can omit those two registers if they both are zero
+                if vs == T::default() && vt == T::default() {
+                    (cond, None, None)
+                } else {
+                    (cond, Some(vs), Some(vt))
+                }
+            }
+            1 | 2 | 3 | 5 | 6 | 7 => (cond, Some(vs), Some(vt)),
+            8..=15 => {
+                // We can omit the vt register if it is zero.
+                if vt == T::default() {
+                    (cond, Some(vs), None)
+                } else {
+                    (cond, Some(vs), Some(vt))
+                }
+            }
+            _ => unreachable!(
+                "Unhandled field_r4000allegrex_vcmp_cond_unchecked value? '{}'",
+                cond
+            ),
+        }
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_s_args(
+        &self,
+    ) -> Option<(u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>)> {
+        if self
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt)
+        {
+            Some(self.get_r4000allegrex_vcmp_s_args_unchecked())
+        } else {
+            None
+        }
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_s_args_unchecked(
+        &self,
+    ) -> (u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>) {
+        let cond = self.field_r4000allegrex_vcmp_cond_unchecked();
+        let vs = self.field_r4000allegrex_s_vs_unchecked();
+        let vt = self.field_r4000allegrex_s_vs_unchecked();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_p_args(
+        &self,
+    ) -> Option<(u8, Option<R4000AllegrexV2D>, Option<R4000AllegrexV2D>)> {
+        if self
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt)
+        {
+            Some(self.get_r4000allegrex_vcmp_p_args_unchecked())
+        } else {
+            None
+        }
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_p_args_unchecked(
+        &self,
+    ) -> (u8, Option<R4000AllegrexV2D>, Option<R4000AllegrexV2D>) {
+        let cond = self.field_r4000allegrex_vcmp_cond_unchecked();
+        let vs = self.field_r4000allegrex_p_vs_unchecked();
+        let vt = self.field_r4000allegrex_p_vs_unchecked();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_t_args(
+        &self,
+    ) -> Option<(u8, Option<R4000AllegrexV3D>, Option<R4000AllegrexV3D>)> {
+        if self
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt)
+        {
+            Some(self.get_r4000allegrex_vcmp_t_args_unchecked())
+        } else {
+            None
+        }
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_t_args_unchecked(
+        &self,
+    ) -> (u8, Option<R4000AllegrexV3D>, Option<R4000AllegrexV3D>) {
+        let cond = self.field_r4000allegrex_vcmp_cond_unchecked();
+        let vs = self.field_r4000allegrex_t_vs_unchecked();
+        let vt = self.field_r4000allegrex_t_vs_unchecked();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_q_args(
+        &self,
+    ) -> Option<(u8, Option<R4000AllegrexV4D>, Option<R4000AllegrexV4D>)> {
+        if self
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt)
+        {
+            Some(self.get_r4000allegrex_vcmp_q_args_unchecked())
+        } else {
+            None
+        }
+    }
+
+    #[must_use]
+    pub fn get_r4000allegrex_vcmp_q_args_unchecked(
+        &self,
+    ) -> (u8, Option<R4000AllegrexV4D>, Option<R4000AllegrexV4D>) {
+        let cond = self.field_r4000allegrex_vcmp_cond_unchecked();
+        let vs = self.field_r4000allegrex_q_vs_unchecked();
+        let vt = self.field_r4000allegrex_q_vs_unchecked();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
     }
 }
 
