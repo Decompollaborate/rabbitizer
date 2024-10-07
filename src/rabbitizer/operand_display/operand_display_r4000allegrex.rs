@@ -395,28 +395,11 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        const CONDITION_MNEMONICS: [&str; 16] = [
-            "fl", // [0] Always false
-            "eq", // [1] Equal
-            "lt", // [2] Less than
-            "le", // [3] Less than or equal
-            "tr", // [4] Always true
-            "ne", // [5] Not equal
-            "ge", // [6] Greater than or equal
-            "gt", // [7] Greater than
-            "ez", // [8] Equal to zero
-            "en", // [9] Equal to NaN
-            "ei", // [10] Absolute value equal to infinity
-            "es", // [11] Equal to infinity or NaN
-            "nz", // [12] Not equal to zero
-            "nn", // [13] Not equal to NaN
-            "ni", // [14] Absolute value not equal to infinity
-            "ns", // [15] Not equal to infinity and not equal to NaN
-        ];
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_vcmp_cond_unchecked();
+        let reg = instr.field_r4000allegrex_vcmp_cond_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(f, "{}", CONDITION_MNEMONICS[s as usize])
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(
         myself: &OperandDisplay,

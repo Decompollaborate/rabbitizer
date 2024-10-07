@@ -1,8 +1,6 @@
 /* SPDX-FileCopyrightText: © 2023-2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-    RAB_DEF_OPCODE_CATEGORY(CORE, INVALID)
-
     RAB_DEF_OPCODE_CATEGORY(CORE, NORMAL)
 
     RAB_DEF_OPCODE_CATEGORY(CORE, SPECIAL)

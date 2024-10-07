@@ -15,6 +15,7 @@ mod register_r4000allegrex_s;
 mod register_r4000allegrex_v2d;
 mod register_r4000allegrex_v3d;
 mod register_r4000allegrex_v4d;
+mod register_r4000allegrex_vcond;
 mod register_r4000allegrex_vconstant;
 mod register_r4000allegrex_vfpucontrol;
 mod register_r5900allegrex_vf;

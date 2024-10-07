@@ -912,19 +912,23 @@ pub enum ValuedOperand {
     r4000allegrex_imm3(u8),
     r4000allegrex_offset14_base(u16, Gpr),
     r4000allegrex_offset14_base_maybe_wb(u16, Gpr, bool),
-    r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(u8, Option<R4000AllegrexS>, Option<R4000AllegrexS>),
+    r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(
+        R4000AllegrexVCond,
+        Option<R4000AllegrexS>,
+        Option<R4000AllegrexS>,
+    ),
     r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(
-        u8,
+        R4000AllegrexVCond,
         Option<R4000AllegrexV2D>,
         Option<R4000AllegrexV2D>,
     ),
     r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(
-        u8,
+        R4000AllegrexVCond,
         Option<R4000AllegrexV3D>,
         Option<R4000AllegrexV3D>,
     ),
     r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(
-        u8,
+        R4000AllegrexVCond,
         Option<R4000AllegrexV4D>,
         Option<R4000AllegrexV4D>,
     ),

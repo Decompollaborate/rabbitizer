@@ -8,8 +8,6 @@ use crate::{opcode_category::OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum OpcodeCategory {
-    ALL_INVALID,
-    CORE_INVALID,
     CORE_NORMAL,
     CORE_SPECIAL,
     CORE_REGIMM,
@@ -23,7 +21,6 @@ pub enum OpcodeCategory {
     CORE_COP1_FPUW,
     CORE_COP1_FPUL,
     CORE_COP2,
-    RSP_INVALID,
     RSP_NORMAL,
     RSP_NORMAL_LWC2,
     RSP_NORMAL_SWC2,
@@ -33,7 +30,6 @@ pub enum OpcodeCategory {
     RSP_COP1,
     RSP_COP2,
     RSP_COP2_VU,
-    R3000GTE_INVALID,
     R3000GTE_NORMAL,
     R3000GTE_SPECIAL,
     R3000GTE_REGIMM,
@@ -41,7 +37,6 @@ pub enum OpcodeCategory {
     R3000GTE_COP1,
     R3000GTE_COP2,
     R3000GTE_COP2_GTE,
-    R4000ALLEGREX_INVALID,
     R4000ALLEGREX_NORMAL,
     R4000ALLEGREX_SPECIAL,
     R4000ALLEGREX_SPECIAL_RS,
@@ -87,7 +82,6 @@ pub enum OpcodeCategory {
     R4000ALLEGREX_VFPU6_FMT7_FMT0,
     R4000ALLEGREX_VFPU7,
     R4000ALLEGREX_QUADLR,
-    R5900_INVALID,
     R5900_NORMAL,
     R5900_SPECIAL,
     R5900_REGIMM,
@@ -111,10 +105,6 @@ pub enum OpcodeCategory {
 }
 pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] = {
     let mut table = [OpcodeCategoryDescriptor::default(); OPCODE_CATEGORY_COUNT];
-    table[OpcodeCategory::ALL_INVALID as usize] =
-        OpcodeCategoryDescriptor::new(concat!("ALL", "_", "INVALID"));
-    table[OpcodeCategory::CORE_INVALID as usize] =
-        OpcodeCategoryDescriptor::new(concat!("CORE", "_", "INVALID"));
     table[OpcodeCategory::CORE_NORMAL as usize] =
         OpcodeCategoryDescriptor::new(concat!("CORE", "_", "NORMAL"));
     table[OpcodeCategory::CORE_SPECIAL as usize] =
@@ -141,8 +131,6 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUL"));
     table[OpcodeCategory::CORE_COP2 as usize] =
         OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP2"));
-    table[OpcodeCategory::RSP_INVALID as usize] =
-        OpcodeCategoryDescriptor::new(concat!("RSP", "_", "INVALID"));
     table[OpcodeCategory::RSP_NORMAL as usize] =
         OpcodeCategoryDescriptor::new(concat!("RSP", "_", "NORMAL"));
     table[OpcodeCategory::RSP_NORMAL_LWC2 as usize] =
@@ -161,8 +149,6 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP2"));
     table[OpcodeCategory::RSP_COP2_VU as usize] =
         OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP2_VU"));
-    table[OpcodeCategory::R3000GTE_INVALID as usize] =
-        OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "INVALID"));
     table[OpcodeCategory::R3000GTE_NORMAL as usize] =
         OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "NORMAL"));
     table[OpcodeCategory::R3000GTE_SPECIAL as usize] =
@@ -177,8 +163,6 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "COP2"));
     table[OpcodeCategory::R3000GTE_COP2_GTE as usize] =
         OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "COP2_GTE"));
-    table[OpcodeCategory::R4000ALLEGREX_INVALID as usize] =
-        OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "INVALID"));
     table[OpcodeCategory::R4000ALLEGREX_NORMAL as usize] =
         OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "NORMAL"));
     table[OpcodeCategory::R4000ALLEGREX_SPECIAL as usize] =
@@ -269,8 +253,6 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU7"));
     table[OpcodeCategory::R4000ALLEGREX_QUADLR as usize] =
         OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "QUADLR"));
-    table[OpcodeCategory::R5900_INVALID as usize] =
-        OpcodeCategoryDescriptor::new(concat!("R5900", "_", "INVALID"));
     table[OpcodeCategory::R5900_NORMAL as usize] =
         OpcodeCategoryDescriptor::new(concat!("R5900", "_", "NORMAL"));
     table[OpcodeCategory::R5900_SPECIAL as usize] =

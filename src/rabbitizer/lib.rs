@@ -96,6 +96,7 @@ pub mod registers {
     pub use generated::R4000AllegrexV2D;
     pub use generated::R4000AllegrexV3D;
     pub use generated::R4000AllegrexV4D;
+    pub use generated::R4000AllegrexVCond;
     pub use generated::R4000AllegrexVConstant;
     pub use generated::R4000AllegrexVfpuControl;
     pub use generated::RspCop0;
@@ -123,6 +124,7 @@ pub mod register_descriptors {
     pub use generated::R4000ALLEGREX_V2D;
     pub use generated::R4000ALLEGREX_V3D;
     pub use generated::R4000ALLEGREX_V4D;
+    pub use generated::R4000ALLEGREX_VCOND;
     pub use generated::R4000ALLEGREX_VCONSTANT;
     pub use generated::R4000ALLEGREX_VFPUCONTROL;
     pub use generated::R5900_VF;

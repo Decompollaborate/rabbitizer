@@ -41,6 +41,7 @@ mod enum_register_r4000allegrex_s;
 mod enum_register_r4000allegrex_v2d;
 mod enum_register_r4000allegrex_v3d;
 mod enum_register_r4000allegrex_v4d;
+mod enum_register_r4000allegrex_vcond;
 mod enum_register_r4000allegrex_vconstant;
 mod enum_register_r4000allegrex_vfpucontrol;
 mod enum_register_r5900allegrex_vf;
@@ -75,6 +76,7 @@ pub use enum_register_r4000allegrex_s::{R4000AllegrexS, R4000ALLEGREX_S};
 pub use enum_register_r4000allegrex_v2d::{R4000AllegrexV2D, R4000ALLEGREX_V2D};
 pub use enum_register_r4000allegrex_v3d::{R4000AllegrexV3D, R4000ALLEGREX_V3D};
 pub use enum_register_r4000allegrex_v4d::{R4000AllegrexV4D, R4000ALLEGREX_V4D};
+pub use enum_register_r4000allegrex_vcond::{R4000AllegrexVCond, R4000ALLEGREX_VCOND};
 pub use enum_register_r4000allegrex_vconstant::{R4000AllegrexVConstant, R4000ALLEGREX_VCONSTANT};
 pub use enum_register_r4000allegrex_vfpucontrol::{
     R4000AllegrexVfpuControl, R4000ALLEGREX_VFPUCONTROL,
