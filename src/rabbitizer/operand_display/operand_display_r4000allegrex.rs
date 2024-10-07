@@ -670,155 +670,85 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", MNEMONICS[s as usize])
     }
 
-    const DESTINATION_PREFIX_INSTRUCTION_FORMATS: [&'static str; 8] = [
-        "",          // [0]
-        "0",         // [1]
-        "INVALID_2", // [2]
-        "1",         // [3]
-        "M",         // [4]
-        "INVALID_5", // [5]
-        "INVALID_6", // [6]
-        "INVALID_7", // [7]
-    ];
-
     pub(crate) fn display_r4000allegrex_wpx(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_wpx_unchecked();
+        let reg = instr.field_r4000allegrex_wpx_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::DESTINATION_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_wpy(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_wpy_unchecked();
+        let reg = instr.field_r4000allegrex_wpy_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::DESTINATION_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_wpz(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_wpz_unchecked();
+        let reg = instr.field_r4000allegrex_wpz_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::DESTINATION_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_wpw(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_wpw_unchecked();
+        let reg = instr.field_r4000allegrex_wpw_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::DESTINATION_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
-
-    const SOURCE_TARGET_PREFIX_INSTRUCTION_FORMATS: [&'static str; 32] = [
-        "X",    // [0]
-        "Y",    // [1]
-        "Z",    // [2]
-        "W",    // [3]
-        "|X|",  // [4]
-        "|Y|",  // [5]
-        "|Z|",  // [6]
-        "|W|",  // [7]
-        "0",    // [8]
-        "1",    // [9]
-        "2",    // [10]
-        "1/2",  // [11]
-        "3",    // [12]
-        "1/3",  // [13]
-        "1/4",  // [14]
-        "1/6",  // [15]
-        "-X",   // [16]
-        "-Y",   // [17]
-        "-Z",   // [18]
-        "-W",   // [19]
-        "-|X|", // [20]
-        "-|Y|", // [21]
-        "-|Z|", // [22]
-        "-|W|", // [23]
-        "-0",   // [24]
-        "-1",   // [25]
-        "-2",   // [26]
-        "-1/2", // [27]
-        "-3",   // [28]
-        "-1/3", // [29]
-        "-1/4", // [30]
-        "-1/6", // [31]
-    ];
 
     pub(crate) fn display_r4000allegrex_rpx(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_rpx_unchecked();
+        let reg = instr.field_r4000allegrex_rpx_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::SOURCE_TARGET_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_rpy(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_rpy_unchecked();
+        let reg = instr.field_r4000allegrex_rpy_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::SOURCE_TARGET_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_rpz(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_rpz_unchecked();
+        let reg = instr.field_r4000allegrex_rpz_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::SOURCE_TARGET_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_rpw(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_rpw_unchecked();
+        let reg = instr.field_r4000allegrex_rpw_unchecked();
+        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
 
-        write!(
-            f,
-            "{}",
-            Self::SOURCE_TARGET_PREFIX_INSTRUCTION_FORMATS[s as usize]
-        )
+        write!(f, "{}", s)
     }
 }

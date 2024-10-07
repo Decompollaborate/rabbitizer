@@ -11,6 +11,8 @@ mod register_gpr;
 mod register_r4000allegrex_m2x2;
 mod register_r4000allegrex_m3x3;
 mod register_r4000allegrex_m4x4;
+mod register_r4000allegrex_prefix_dst;
+mod register_r4000allegrex_prefix_src;
 mod register_r4000allegrex_s;
 mod register_r4000allegrex_v2d;
 mod register_r4000allegrex_v3d;

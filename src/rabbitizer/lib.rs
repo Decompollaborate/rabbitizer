@@ -92,6 +92,8 @@ pub mod registers {
     pub use generated::R4000AllegrexM2x2;
     pub use generated::R4000AllegrexM3x3;
     pub use generated::R4000AllegrexM4x4;
+    pub use generated::R4000AllegrexPrefixDst;
+    pub use generated::R4000AllegrexPrefixSrc;
     pub use generated::R4000AllegrexS;
     pub use generated::R4000AllegrexV2D;
     pub use generated::R4000AllegrexV3D;
@@ -120,6 +122,8 @@ pub mod register_descriptors {
     pub use generated::R4000ALLEGREX_M2X2;
     pub use generated::R4000ALLEGREX_M3X3;
     pub use generated::R4000ALLEGREX_M4X4;
+    pub use generated::R4000ALLEGREX_PREFIX_DST;
+    pub use generated::R4000ALLEGREX_PREFIX_SRC;
     pub use generated::R4000ALLEGREX_S;
     pub use generated::R4000ALLEGREX_V2D;
     pub use generated::R4000ALLEGREX_V3D;

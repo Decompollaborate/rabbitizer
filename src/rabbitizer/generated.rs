@@ -37,6 +37,8 @@ mod enum_register_gpr;
 mod enum_register_r4000allegrex_m2x2;
 mod enum_register_r4000allegrex_m3x3;
 mod enum_register_r4000allegrex_m4x4;
+mod enum_register_r4000allegrex_prefix_dst;
+mod enum_register_r4000allegrex_prefix_src;
 mod enum_register_r4000allegrex_s;
 mod enum_register_r4000allegrex_v2d;
 mod enum_register_r4000allegrex_v3d;
@@ -72,6 +74,12 @@ pub use enum_register_gpr::{Gpr, GPR};
 pub use enum_register_r4000allegrex_m2x2::{R4000AllegrexM2x2, R4000ALLEGREX_M2X2};
 pub use enum_register_r4000allegrex_m3x3::{R4000AllegrexM3x3, R4000ALLEGREX_M3X3};
 pub use enum_register_r4000allegrex_m4x4::{R4000AllegrexM4x4, R4000ALLEGREX_M4X4};
+pub use enum_register_r4000allegrex_prefix_dst::{
+    R4000AllegrexPrefixDst, R4000ALLEGREX_PREFIX_DST,
+};
+pub use enum_register_r4000allegrex_prefix_src::{
+    R4000AllegrexPrefixSrc, R4000ALLEGREX_PREFIX_SRC,
+};
 pub use enum_register_r4000allegrex_s::{R4000AllegrexS, R4000ALLEGREX_S};
 pub use enum_register_r4000allegrex_v2d::{R4000AllegrexV2D, R4000ALLEGREX_V2D};
 pub use enum_register_r4000allegrex_v3d::{R4000AllegrexV3D, R4000ALLEGREX_V3D};
