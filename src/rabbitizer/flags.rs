@@ -50,7 +50,7 @@ impl Default for DecodingFlags {
 pub struct InstructionFlags {
     pub(crate) decoding_flags: DecodingFlags,
     pub(crate) abi: Abi,
-    pub(crate) treat_j_as_unconditional_branch: bool,
+    pub(crate) j_as_branch: bool,
 }
 
 impl InstructionFlags {
@@ -59,7 +59,7 @@ impl InstructionFlags {
         Self {
             decoding_flags: DecodingFlags::default(),
             abi: Abi::O32,
-            treat_j_as_unconditional_branch: true,
+            j_as_branch: true,
         }
     }
 
@@ -287,19 +287,16 @@ impl InstructionFlags {
     }
 
     #[must_use]
-    pub const fn treat_j_as_unconditional_branch(&self) -> bool {
-        self.treat_j_as_unconditional_branch
+    pub const fn j_as_branch(&self) -> bool {
+        self.j_as_branch
     }
-    pub fn treat_j_as_unconditional_branch_mut(&mut self) -> &mut bool {
-        &mut self.treat_j_as_unconditional_branch
+    pub fn j_as_branch_mut(&mut self) -> &mut bool {
+        &mut self.j_as_branch
     }
     #[must_use]
-    pub const fn with_treat_j_as_unconditional_branch(
-        self,
-        treat_j_as_unconditional_branch: bool,
-    ) -> Self {
+    pub const fn with_j_as_branch(self, j_as_branch: bool) -> Self {
         Self {
-            treat_j_as_unconditional_branch,
+            j_as_branch,
             ..self
         }
     }

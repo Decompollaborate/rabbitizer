@@ -204,7 +204,7 @@ impl Instruction {
                 // in case the b pseudo instruction is disabled
                 self.field_rt_unchecked() == Gpr::zero && self.field_rs_unchecked() == Gpr::zero
             }
-            Opcode::core_j => self.flags().treat_j_as_unconditional_branch,
+            Opcode::core_j => self.flags().j_as_branch,
             _ => false,
         }
     }
@@ -217,9 +217,10 @@ impl Instruction {
     /// meaning we may require to give special treatment to this instruction if
     /// we are analyzing code emitted by one of those compilers, like clearing
     /// registers after a tail call. This can be configured by turning off the
-    /// `treat_j_as_unconditional_branch` option on the [`InstructionFlags`].
+    /// [`j_as_branch`] option on the [`InstructionFlags`].
     ///
     /// [`j`]: crate::Opcode::core_j
+    /// [`j_as_branch`]: crate::InstructionFlags::with_j_as_branch
     /// [`InstructionFlags`]: crate::InstructionFlags
     #[must_use]
     pub fn is_function_call(&self) -> bool {
@@ -228,7 +229,7 @@ impl Instruction {
         }
 
         match self.opcode() {
-            Opcode::core_j => !self.flags().treat_j_as_unconditional_branch,
+            Opcode::core_j => !self.flags().j_as_branch,
             _ => false,
         }
     }
