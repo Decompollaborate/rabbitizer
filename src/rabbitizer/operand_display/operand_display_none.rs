@@ -205,7 +205,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             let instr = myself.instr;
             let s = instr.get_instr_index_as_vram_unchecked();
 
-            write!(f, "func_{:08X}", s)
+            write!(f, "func_{}", s)
         })
     }
     pub(crate) fn display_core_immediate(

@@ -21,9 +21,9 @@
     RAB_DEF_OPERAND(core, code, EncodedFieldMask::code, (u16, Option<NonZero<u16>>))
     RAB_DEF_OPERAND(core, code_lower, EncodedFieldMask::code_lower, (u16))
     RAB_DEF_OPERAND(core, copraw, EncodedFieldMask::copraw, (u32)) // TODO: what?
-    RAB_DEF_OPERAND(core, label, EncodedFieldMask::instr_index, (u32))
+    RAB_DEF_OPERAND(core, label, EncodedFieldMask::instr_index, (Vram))
     RAB_DEF_OPERAND(core, immediate, EncodedFieldMask::immediate, (IU16))
-    RAB_DEF_OPERAND(core, branch_target_label, EncodedFieldMask::immediate, (i16))
+    RAB_DEF_OPERAND(core, branch_target_label, EncodedFieldMask::immediate, (VramOffset))
 
     // composed/aliased operands
     RAB_DEF_OPERAND(core, immediate_base, EncodedFieldMask::immediate.union(EncodedFieldMask::rs), (IU16, Gpr))

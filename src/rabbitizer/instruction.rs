@@ -9,11 +9,12 @@ use crate::{DisplayFlags, EncodedFieldMask, InstructionDisplay, InstructionFlags
 use crate::{IsaExtension, IsaVersion};
 use crate::{Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::{Operand, OperandIterator, ValuedOperandIterator};
+use crate::{Vram, VramOffset};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Instruction {
     word: u32,
-    vram: u32, // TODO: maybe make Vram wrapper type?
+    vram: Vram,
 
     isa_version: IsaVersion,
     isa_extension: IsaExtension,
@@ -30,7 +31,7 @@ impl Instruction {
     #[must_use]
     pub const fn new(
         word: u32,
-        vram: u32,
+        vram: Vram,
         flags: InstructionFlags,
         isa_version: IsaVersion,
         isa_extension: IsaExtension,
@@ -52,7 +53,7 @@ impl Instruction {
     #[must_use]
     pub const fn new_no_extension(
         word: u32,
-        vram: u32,
+        vram: Vram,
         flags: InstructionFlags,
         isa_version: IsaVersion,
     ) -> Self {
@@ -60,7 +61,7 @@ impl Instruction {
     }
 
     #[must_use]
-    pub const fn new_rsp(word: u32, vram: u32, flags: InstructionFlags) -> Self {
+    pub const fn new_rsp(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
         let isa_extension = IsaExtension::RSP;
 
         Self::new(
@@ -73,7 +74,7 @@ impl Instruction {
     }
 
     #[must_use]
-    pub const fn new_r3000gte(word: u32, vram: u32, flags: InstructionFlags) -> Self {
+    pub const fn new_r3000gte(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
         let isa_extension = IsaExtension::R3000GTE;
 
         Self::new(
@@ -86,7 +87,7 @@ impl Instruction {
     }
 
     #[must_use]
-    pub const fn new_r4000allegrex(word: u32, vram: u32, flags: InstructionFlags) -> Self {
+    pub const fn new_r4000allegrex(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
         let isa_extension = IsaExtension::R4000ALLEGREX;
 
         Self::new(
@@ -99,7 +100,7 @@ impl Instruction {
     }
 
     #[must_use]
-    pub const fn new_r5900(word: u32, vram: u32, flags: InstructionFlags) -> Self {
+    pub const fn new_r5900(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
         let isa_extension = IsaExtension::R5900;
 
         Self::new(
@@ -120,7 +121,7 @@ impl Instruction {
     }
 
     #[must_use]
-    pub const fn vram(&self) -> u32 {
+    pub const fn vram(&self) -> Vram {
         self.vram
     }
 
@@ -2575,22 +2576,24 @@ impl Instruction {
 
     #[must_use]
     #[inline(always)]
-    const fn vram_from_instr_index(&self, instr_index: u32) -> u32 {
+    const fn vram_from_instr_index(&self, instr_index: u32) -> Vram {
         let vram = instr_index << 2;
 
         // Jumps are PC-region branches. The upper bits are filled with the address in the delay slot
-        vram | (self.vram + 4) & 0xF0000000
+        Vram::new(vram | ((self.vram.inner() + 4) & 0xF0000000))
     }
 
-    /// Get the target vram address this instruction jumps to.
+    /// Get the target [`Vram`] address this instruction jumps to.
     /// This function is intended only for direct jump instructions.
+    ///
+    /// [`Vram`]: crate::Vram
     #[must_use]
-    pub fn get_instr_index_as_vram(&self) -> Option<u32> {
+    pub fn get_instr_index_as_vram(&self) -> Option<Vram> {
         self.field_instr_index()
             .map(|instr_index| self.vram_from_instr_index(instr_index))
     }
 
-    /// Get the target vram address this instruction jumps to.
+    /// Get the target [`Vram`] address this instruction jumps to.
     /// This function is intended only for direct jump instructions.
     ///
     /// Note this function **does not check** if the opcode of this instruction
@@ -2600,14 +2603,15 @@ impl Instruction {
     /// [`get_instr_index_as_vram`] function instead.
     ///
     /// [`get_instr_index_as_vram`]: Instruction::get_instr_index_as_vram
+    /// [`Vram`]: crate::Vram
     #[must_use]
-    pub const fn get_instr_index_as_vram_unchecked(&self) -> u32 {
+    pub const fn get_instr_index_as_vram_unchecked(&self) -> Vram {
         self.vram_from_instr_index(self.field_instr_index_unchecked())
     }
 
     /// Returns the offset (in bytes) that the branch instruction would branch
-    /// to, relative to the instruction itself. This method is intended only
-    /// for branch instructions.
+    /// to, relative to the instruction itself, as a [`VramOffset`] instance.
+    /// This method is intended only for branch instructions.
     ///
     /// The returned value can be negative, meaning the branch instructions
     /// does a backwards branch.
@@ -2616,8 +2620,9 @@ impl Instruction {
     /// use [`get_branch_offset_generic`] instead.
     ///
     /// [`get_branch_offset_generic`]: Instruction::get_branch_offset_generic
+    /// [`VramOffset`]: crate::VramOffset
     #[must_use]
-    pub fn get_branch_offset(&self) -> Option<i32> {
+    pub fn get_branch_offset(&self) -> Option<VramOffset> {
         if self
             .opcode()
             .has_operand_alias(Operand::core_branch_target_label)
@@ -2629,8 +2634,8 @@ impl Instruction {
     }
 
     /// Returns the offset (in bytes) that the branch instruction would branch
-    /// to, relative to the instruction itself. This method is intended only
-    /// for branch instructions.
+    /// to, relative to the instruction itself, as a [`VramOffset`] instance.
+    /// This method is intended only for branch instructions.
     ///
     /// The returned value can be negative, meaning the branch instructions
     /// does a backwards branch.
@@ -2644,43 +2649,45 @@ impl Instruction {
     /// data as the returned value. It is recommended to use the
     /// [`get_branch_offset`] function instead.
     ///
-    /// [`get_branch_offset_generic_unchecked`]: Instruction::get_branch_offset_generic_unchecked
+    /// [`get_branch_offset_generic`]: Instruction::get_branch_offset_generic
     /// [`get_branch_offset`]: Instruction::get_branch_offset
+    /// [`VramOffset`]: crate::VramOffset
     #[must_use]
-    pub fn get_branch_offset_unchecked(&self) -> i32 {
+    pub fn get_branch_offset_unchecked(&self) -> VramOffset {
         let imm = self.field_immediate_unchecked();
         let diff = utils::from_2s_complement(imm as u32, 16);
 
-        (diff + 1) * 4
+        VramOffset::new((diff + 1) << 2)
     }
 
     /// Returns the offset (in bytes) that the instruction would branch,
-    /// relative to the instruction itself. This method is intended for both branch
-    /// and jump with address instructions.
+    /// relative to the instruction itself, as a [`VramOffset`] instance. This
+    /// method is intended for both branch and jump with address instructions.
     ///
     /// The returned value can be either positive or negative.
+    ///
+    /// [`VramOffset`]: crate::VramOffset
     #[must_use]
-    pub fn get_branch_offset_generic(&self) -> Option<i32> {
+    pub fn get_branch_offset_generic(&self) -> Option<VramOffset> {
         if self.opcode().has_operand_alias(Operand::core_label) {
-            Some((self.get_instr_index_as_vram_unchecked() as i32).wrapping_sub(self.vram as i32))
+            Some(self.get_instr_index_as_vram_unchecked() - self.vram)
         } else {
             self.get_branch_offset()
         }
     }
 
-    /// Get the target vram address this instruction jumps to.
+    /// Get the target [`Vram`] address this instruction jumps to.
     /// This method is intended only for branch or direct jump with address
     /// instructions.
+    ///
+    /// [`Vram`]: crate::Vram
     #[must_use]
-    pub fn get_branch_vram_generic(&self) -> Option<u32> {
+    pub fn get_branch_vram_generic(&self) -> Option<Vram> {
         if self
             .opcode()
             .has_operand_alias(Operand::core_branch_target_label)
         {
-            Some(
-                self.get_branch_offset_unchecked()
-                    .wrapping_add(self.vram as i32) as u32,
-            )
+            Some(self.get_branch_offset_unchecked() + self.vram)
         } else {
             self.get_instr_index_as_vram()
         }
@@ -2951,7 +2958,7 @@ mod tests {
     fn check_j() {
         let instr = Instruction::new_no_extension(
             0x08000004,
-            0x80000000,
+            Vram::new(0x80000000),
             InstructionFlags::default(),
             IsaVersion::MIPS_III,
         );
@@ -2963,7 +2970,7 @@ mod tests {
         assert_eq!(
             Instruction::new_no_extension(
                 0x08000000,
-                0x80000000,
+                Vram::new(0x80000000),
                 InstructionFlags::default(),
                 IsaVersion::MIPS_III
             )
@@ -2976,7 +2983,7 @@ mod tests {
     fn check_jal() {
         let instr = Instruction::new_no_extension(
             0x0C000004,
-            0x80000000,
+            Vram::new(0x80000000),
             InstructionFlags::default(),
             IsaVersion::MIPS_III,
         );
@@ -2989,13 +2996,21 @@ mod tests {
         // lwu was introduced in MIPS III
         let flags = InstructionFlags::default();
 
-        let instr =
-            Instruction::new_no_extension(0x9C000000, 0x80000000, flags, IsaVersion::MIPS_III);
+        let instr = Instruction::new_no_extension(
+            0x9C000000,
+            Vram::new(0x80000000),
+            flags,
+            IsaVersion::MIPS_III,
+        );
         assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_lwu);
 
-        let instr =
-            Instruction::new_no_extension(0x9C000000, 0x80000000, flags, IsaVersion::MIPS_II);
+        let instr = Instruction::new_no_extension(
+            0x9C000000,
+            Vram::new(0x80000000),
+            flags,
+            IsaVersion::MIPS_II,
+        );
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::ALL_INVALID);
     }
@@ -3004,7 +3019,7 @@ mod tests {
     fn check_invalid() {
         let instr = Instruction::new_no_extension(
             0x0000072E,
-            0x80000000,
+            Vram::new(0x80000000),
             InstructionFlags::default(),
             IsaVersion::MIPS_III,
         );

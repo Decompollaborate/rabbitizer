@@ -5,7 +5,7 @@
 pub(crate) mod tests {
     use std::string::ToString;
 
-    use crate::{operand, DisplayFlags, Instruction, InstructionFlags, IsaVersion, Opcode};
+    use crate::{operand, DisplayFlags, Instruction, InstructionFlags, IsaVersion, Opcode, Vram};
 
     pub(crate) struct TestEntry {
         pub instr: Instruction,
@@ -27,7 +27,7 @@ pub(crate) mod tests {
             expected: &'static str,
         ) -> Self {
             Self {
-                instr: Instruction::new_rsp(word, 0xA4000000, flags),
+                instr: Instruction::new_rsp(word, Vram::new(0xA4000000), flags),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: false,
@@ -48,7 +48,7 @@ pub(crate) mod tests {
             Self {
                 instr: Instruction::new_r4000allegrex(
                     word,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -229,7 +229,7 @@ pub(crate) mod tests {
     fn check_none_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
-                instr: Instruction::new_no_extension(0x08000419, 0x80001100, InstructionFlags::default(),
+                instr: Instruction::new_no_extension(0x08000419, Vram::new(0x80001100), InstructionFlags::default(),
                 IsaVersion::MIPS_III,),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
@@ -242,7 +242,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x3C088001,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -257,7 +257,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x25080E60,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -272,7 +272,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x3C090002,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -287,7 +287,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x25298DE0,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -302,7 +302,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xAD000000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -317,7 +317,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xAD000004,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -332,7 +332,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x21080008,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -347,7 +347,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x2129FFF8,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -362,7 +362,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x1520FFFB,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -377,7 +377,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00000000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -392,7 +392,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x3C0A8000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -407,7 +407,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x254A0494,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -422,7 +422,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x3C1D8002,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -437,7 +437,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x01400008,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -452,7 +452,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x27BDF8C0,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -467,7 +467,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x3C018001,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -482,7 +482,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x03E00008,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -497,7 +497,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xAC24E190,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -512,7 +512,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x3C018001,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -527,7 +527,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xAC24E190,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -542,7 +542,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0C001F24,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -557,7 +557,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0C001F24,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -572,7 +572,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x8F99805C,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -587,7 +587,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x8F99805C,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -602,7 +602,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x8F858028,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -617,7 +617,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x8F858028,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -638,7 +638,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00435022,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -653,7 +653,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00025022,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -668,7 +668,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00E41823,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -683,7 +683,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00041823,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -698,7 +698,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x42000010,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -713,7 +713,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0260F809,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -728,7 +728,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0260F809,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -743,7 +743,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x02602009,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -758,7 +758,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00042100,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -773,7 +773,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00021882,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -788,7 +788,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00017443,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -803,7 +803,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00042FF8,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -818,7 +818,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x000637FA,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -833,7 +833,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0002137B,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -848,7 +848,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x000437FC,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -863,7 +863,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0005283E,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -878,7 +878,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0002103F,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -893,7 +893,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x40086800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -908,7 +908,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x40286800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -923,7 +923,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x40486800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -938,7 +938,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x40886800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -953,7 +953,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x40A86800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -968,7 +968,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x40C86800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -983,7 +983,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x46168200,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -998,7 +998,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x46168200,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1013,7 +1013,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x44C2F800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1028,7 +1028,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xBD150000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1043,7 +1043,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xCD150018,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1058,7 +1058,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xCD150008,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_IV,
                 ),
@@ -1073,7 +1073,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0001008D,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1088,7 +1088,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0001008D,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1103,7 +1103,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0007000D,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1118,7 +1118,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0007000D,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1133,7 +1133,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0000000C,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1148,7 +1148,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00E200B0,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1163,7 +1163,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00E200B1,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1178,7 +1178,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00E200B2,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1193,7 +1193,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00E200B3,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1208,7 +1208,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00E200B4,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1223,7 +1223,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x00E200B6,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1238,7 +1238,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xC8621800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1253,7 +1253,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xD8621800,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1268,7 +1268,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xE8810878,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1283,7 +1283,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xF8810878,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1298,7 +1298,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x4802E000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1313,7 +1313,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x4882E000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1328,7 +1328,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x4842E000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1343,7 +1343,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x48C2E000,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1358,7 +1358,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001A,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1373,7 +1373,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001A,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1388,7 +1388,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001B,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1403,7 +1403,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001B,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1418,7 +1418,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001E,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1433,7 +1433,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001E,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1448,7 +1448,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001F,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1463,7 +1463,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x0085001F,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1482,7 +1482,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x44444444,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1497,7 +1497,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x77777777,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1512,7 +1512,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0xEEEEEEEE,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                     IsaVersion::MIPS_III,
                 ),
@@ -1533,7 +1533,7 @@ pub(crate) mod tests {
     fn check_rsp_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
-                instr: Instruction::new_rsp(0x09000419, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x09000419, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1545,7 +1545,7 @@ pub(crate) mod tests {
                 operands_str: [Some("func_A4001064"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x21490000, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x21490000, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1557,7 +1557,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$9"), Some("$10"), Some("0x0"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x8C060578, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x8C060578, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1569,7 +1569,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$6"), Some("0x578($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x400B2800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x400B2800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1582,7 +1582,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("SP_DMA_FULL"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x400B2800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x400B2800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1595,7 +1595,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$5"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x304203FF, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x304203FF, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1607,7 +1607,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$2"), Some("$2"), Some("0x3FF"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x10400003, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x10400003, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1619,7 +1619,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$2"), Some(". + 4 + (0x3 << 2)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x10400003, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x10400003, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B38E8"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1631,7 +1631,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$2"), Some(".LA00B38E8"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00000000, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00000000, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1643,7 +1643,7 @@ pub(crate) mod tests {
                 operands_str: [None, None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1C600033, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x1C600033, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B3A74"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1655,7 +1655,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$3"), Some(".LA00B3A74"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x0D00077A, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x0D00077A, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1667,7 +1667,7 @@ pub(crate) mod tests {
                 operands_str: [Some("func_A4001DE8"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xAEEB000C, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xAEEB000C, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1679,7 +1679,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("0xC($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1560FB8D, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x1560FB8D, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B2288"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1691,7 +1691,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some(".LA00B2288"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x40921800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x40921800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1704,7 +1704,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$18"), Some("SP_WR_LEN"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00026A82, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00026A82, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1716,7 +1716,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$13"), Some("$2"), Some("10"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x004F1020, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x004F1020, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1728,7 +1728,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$2"), Some("$2"), Some("$15"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x84040572, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x84040572, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1740,7 +1740,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$4"), Some("0x572($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x03E00008, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x03E00008, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1752,7 +1752,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$ra"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x0000000D, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x0000000D, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1764,7 +1764,7 @@ pub(crate) mod tests {
                 operands_str: [Some("0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x19C0FA06, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x19C0FA06, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B2288"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1776,7 +1776,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$14"), Some(".LA00B2288"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x09000A19, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x09000A19, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1788,7 +1788,7 @@ pub(crate) mod tests {
                 operands_str: [Some("func_A4002864"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x37120000, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x37120000, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1800,7 +1800,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$18"), Some("$24"), Some("0x0"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1000FE72, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x1000FE72, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B1A78"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1812,7 +1812,7 @@ pub(crate) mod tests {
                 operands_str: [Some(".LA00B1A78"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A0318EC, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4A0318EC, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1824,7 +1824,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v3"), Some("$v3"), Some("$v3"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAF11B0B, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xEAF11B0B, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1836,7 +1836,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v17[6]"), Some("0x58($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x940C0572, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x940C0572, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1848,7 +1848,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$12"), Some("0x572($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00095880, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00095880, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1860,7 +1860,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$9"), Some("2"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xA403057C, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xA403057C, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1872,7 +1872,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$3"), Some("0x57C($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xCA832000, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xCA832000, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1884,7 +1884,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v3[0]"), Some("0x0($20)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAE40C0B, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xEAE40C0B, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1896,7 +1896,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v4[8]"), Some("0x16($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xCBC41807, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xCBC41807, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1908,7 +1908,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v4[0]"), Some("0x38($30)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x3C07F510, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x3C07F510, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1920,7 +1920,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$7"), Some("0xF510"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00611824, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00611824, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1932,7 +1932,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$3"), Some("$3"), Some("$1"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEBC62000, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xEBC62000, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1944,7 +1944,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v6[0]"), Some("0x0($30)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x1193FFFE, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x1193FFFE, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B304C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1956,7 +1956,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$12"), Some("$19"), Some(".LA00B304C"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x900B0539, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x900B0539, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1968,7 +1968,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("0x539($zero)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0C58A8, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B0C58A8, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1980,7 +1980,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v2"), Some("$v11"), Some("$v12[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x008C5822, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x008C5822, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -1992,7 +1992,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$4"), Some("$12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00432006, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00432006, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2004,7 +2004,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$4"), Some("$3"), Some("$2"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x488ED800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x488ED800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2016,7 +2016,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$14"), Some("$v27[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC9B12802, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xC9B12802, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2028,7 +2028,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v17[0]"), Some("0x20($13)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1B21C6, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B1B21C6, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2040,7 +2040,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v7"), Some("$v4"), Some("$v27[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7F488E, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B7F488E, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2052,7 +2052,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v2"), Some("$v9"), Some("$v31[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B2A3A05, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B2A3A05, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2064,7 +2064,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8"), Some("$v7"), Some("$v10[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B3D1EC7, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B3D1EC7, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2076,7 +2076,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v27"), Some("$v3"), Some("$v29[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7DFA0F, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B7DFA0F, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2088,7 +2088,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8"), Some("$v31"), Some("$v29[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0A529D, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B0A529D, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2100,7 +2100,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v10"), Some("$v10"), Some("$v10[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAFD1204, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xEAFD1204, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2112,7 +2112,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v29[4]"), Some("0x10($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC827080F, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xC827080F, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2124,7 +2124,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v7[0]"), Some("0x1E($1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4BAA4351, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4BAA4351, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2136,7 +2136,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v13"), Some("$v8"), Some("$v10[5]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F8ECD, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B1F8ECD, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2148,7 +2148,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v27"), Some("$v17"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B3F7384, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B3F7384, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2160,7 +2160,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v14"), Some("$v14"), Some("$v31[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B9F2940, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B9F2940, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2172,7 +2172,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v5"), Some("$v5"), Some("$v31[4]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4BAA4390, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4BAA4390, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2184,7 +2184,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v14"), Some("$v8"), Some("$v10[5]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4813D900, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4813D900, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2196,7 +2196,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$19"), Some("$v27[2]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A1174D5, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4A1174D5, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2208,7 +2208,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v19"), Some("$v14"), Some("$v17"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7D6EE3, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B7D6EE3, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2220,7 +2220,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v27"), Some("$v13"), Some("$v29[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4AF4E0E4, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4AF4E0E4, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2232,7 +2232,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v3"), Some("$v28"), Some("$v20[3h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4AC550C8, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4AC550C8, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2244,7 +2244,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v3"), Some("$v10"), Some("$v5[2h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x15610003, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x15610003, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B2F4C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2256,7 +2256,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$1"), Some(".LA00B2F4C"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x05C1000F, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x05C1000F, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B3A2C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2268,7 +2268,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$14"), Some(".LA00B3A2C"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xEAFD0688, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xEAFD0688, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2280,7 +2280,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v29[13]"), Some("0x8($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x01675825, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x01675825, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2292,7 +2292,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$11"), Some("$7"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x03241804, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x03241804, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2304,7 +2304,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$3"), Some("$4"), Some("$25"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00601827, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00601827, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2316,7 +2316,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$3"), Some("$3"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x83790500, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x83790500, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2328,7 +2328,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$25"), Some("0x500($27)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x05600002, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x05600002, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B3A2C"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2340,7 +2340,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some(".LA00B3A2C"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xA2EB0009, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xA2EB0009, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2352,7 +2352,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("0x9($23)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x000B5A83, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x000B5A83, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2364,7 +2364,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$11"), Some("10"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC98C1000, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xC98C1000, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2376,7 +2376,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v12[0]"), Some("0x0($12)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4AF5E8E5, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4AF5E8E5, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2388,7 +2388,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v3"), Some("$v29"), Some("$v21[3h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x484B0800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x484B0800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2400,7 +2400,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$1"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A086A27, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4A086A27, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2412,7 +2412,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8"), Some("$v13"), Some("$v8"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7D7EE0, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B7D7EE0, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2424,7 +2424,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v27"), Some("$v15"), Some("$v29[3]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x26F70018, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x26F70018, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2436,7 +2436,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$23"), Some("$23"), Some("0x18"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00812021, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00812021, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2448,7 +2448,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$4"), Some("$4"), Some("$1"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F6A0C, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B1F6A0C, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2460,7 +2460,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8"), Some("$v13"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x0185602A, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x0185602A, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2472,7 +2472,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$12"), Some("$12"), Some("$5"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B224AF3, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B224AF3, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2484,7 +2484,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v11[1]"), Some("$v2[1]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0343F0, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B0343F0, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2496,7 +2496,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v15[0]"), Some("$v3[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B7D4232, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B7D4232, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2508,7 +2508,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8[0]"), Some("$v29[3]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4BDE0026, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4BDE0026, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2520,7 +2520,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), Some("$v0"), Some("$v30[6]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A0A56D3, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4A0A56D3, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2532,7 +2532,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v27"), Some("$v10"), Some("$v10"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC9513800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xC9513800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2544,7 +2544,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v17[0]"), Some("0x0($10)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B0D41F1, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B0D41F1, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2556,7 +2556,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v7[0]"), Some("$v13[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x398C0001, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x398C0001, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2568,7 +2568,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$12"), Some("$12"), Some("0x1"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00641826, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00641826, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2580,7 +2580,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$3"), Some("$3"), Some("$4"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4ACB36D4, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4ACB36D4, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2592,7 +2592,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v27"), Some("$v6"), Some("$v11[2h]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F4221, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B1F4221, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2604,7 +2604,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8"), Some("$v8"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F7BE2, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B1F7BE2, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2616,7 +2616,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v15"), Some("$v15"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F7A2D, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B1F7A2D, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2628,7 +2628,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8"), Some("$v15"), Some("$v31[0]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xE8FB3800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xE8FB3800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2640,7 +2640,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v27[0]"), Some("0x0($7)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x03C0F809, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x03C0F809, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2652,7 +2652,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$30"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC86F3000, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xC86F3000, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2664,7 +2664,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v15[0]"), Some("0x0($3)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4A1FEF6A, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4A1FEF6A, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2676,7 +2676,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v29"), Some("$v29"), Some("$v31"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xE9085F04, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xE9085F04, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2688,7 +2688,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8[14]"), Some("0x40($8)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC9085904, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xC9085904, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2700,7 +2700,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v8[2]"), Some("0x40($8)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B1F42F6, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B1F42F6, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2712,7 +2712,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v11[0]"), Some("$v31[0]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B4743F5, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B4743F5, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2724,7 +2724,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v15[0]"), Some("$v7[2]"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xE8273038, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xE8273038, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2736,7 +2736,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v7[0]"), Some("0x1C0($1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0xC94F0786, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0xC94F0786, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2748,7 +2748,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v15[15]"), Some("0x6($10)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x48CB0800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x48CB0800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2760,7 +2760,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$1"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x48CB0800, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x48CB0800, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(true)
@@ -2772,7 +2772,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$t3"), Some("$1"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x4B3E01EB, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x4B3E01EB, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2784,7 +2784,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$v7"), Some("$v0"), Some("$v30[1]"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x04D1FF9D, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x04D1FF9D, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: Some(".LA00B3020"),
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2796,7 +2796,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$6"), Some(".LA00B3020"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00035822, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00035822, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2808,7 +2808,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$11"), Some("$3"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00042100, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00042100, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2820,7 +2820,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$4"), Some("$4"), Some("4"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00021882, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00021882, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2832,7 +2832,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$3"), Some("$2"), Some("2"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_rsp(0x00017443, 0xA4000000, InstructionFlags::default()),
+                instr: Instruction::new_rsp(0x00017443, Vram::new(0xA4000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::default()
                     .with_named_gpr(false)
@@ -2936,7 +2936,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A180001,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -2950,7 +2950,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A280030,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -2964,7 +2964,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A680029,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -2978,7 +2978,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A780010,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -2992,7 +2992,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4AF8002A,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3006,7 +3006,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A980011,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3020,7 +3020,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4AC8041E,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3034,7 +3034,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4AD80420,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3048,7 +3048,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4AE80413,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3062,7 +3062,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4AF80416,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3076,7 +3076,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B08041B,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3090,7 +3090,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B18043F,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3104,7 +3104,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B280414,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3118,7 +3118,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B38041C,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3132,7 +3132,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B400006,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3146,7 +3146,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B58002D,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3160,7 +3160,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B68002E,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3174,7 +3174,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A400012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3188,7 +3188,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4AA00428,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3202,7 +3202,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B70000C,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3216,7 +3216,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B90003D,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3230,7 +3230,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4BA0003E,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3244,7 +3244,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A486012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3258,7 +3258,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A48E012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3272,7 +3272,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A496012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3286,7 +3286,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A49E012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3300,7 +3300,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A41E012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3314,7 +3314,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A480012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3328,7 +3328,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A488012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3342,7 +3342,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A490012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3356,7 +3356,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A498012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3370,7 +3370,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A482012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3384,7 +3384,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A48A012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3398,7 +3398,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A492012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3412,7 +3412,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A49A012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3426,7 +3426,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4A6412,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3440,7 +3440,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4A6012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3454,7 +3454,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4AE012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3468,7 +3468,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4B6012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3482,7 +3482,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4BE012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3496,7 +3496,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4A0012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3510,7 +3510,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4A8012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3524,7 +3524,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4B0012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3538,7 +3538,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4B8012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3552,7 +3552,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4A2012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3566,7 +3566,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4AA012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3580,7 +3580,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4B2012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3594,7 +3594,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4BA012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3608,7 +3608,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4DA412,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3622,7 +3622,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4C6012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3636,7 +3636,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4CE012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3650,7 +3650,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4D6012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3664,7 +3664,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4DE012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3678,7 +3678,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4C0012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3692,7 +3692,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4C8012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3706,7 +3706,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4D0012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3720,7 +3720,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4D8012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3734,7 +3734,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4C2012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3748,7 +3748,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4CA012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3762,7 +3762,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4D2012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3776,7 +3776,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4A4DA012,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3790,7 +3790,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4AA80428,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3804,7 +3804,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B78000C,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3818,7 +3818,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4B98003D,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3832,7 +3832,7 @@ pub(crate) mod tests {
             TestEntry {
                 instr: Instruction::new_r3000gte(
                     0x4BA8003E,
-                    0x80000000,
+                    Vram::new(0x80000000),
                     InstructionFlags::default(),
                 ),
                 imm_override: None,
@@ -3852,7 +3852,11 @@ pub(crate) mod tests {
     fn check_r5900_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
-                instr: Instruction::new_r5900(0x4A000038, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A000038,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3862,7 +3866,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A004038, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A004038,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3872,7 +3880,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x800"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A008038, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A008038,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3882,7 +3894,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x1000"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A008838, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A008838,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3892,7 +3908,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x1100"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A009038, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A009038,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3902,7 +3922,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x1200"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A009838, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A009838,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3912,7 +3936,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x1300"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A00A038, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A00A038,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3922,7 +3950,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x1400"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A07FFF8, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A07FFF8,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3932,7 +3964,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0xFFF8"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A080038, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A080038,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3942,7 +3978,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x10000"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A1F8038, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A1F8038,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3952,7 +3992,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x3F000"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A1FFFB8, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A1FFFB8,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3962,7 +4006,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x3FFF0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A1FFFF8, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A1FFFF8,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3972,7 +4020,11 @@ pub(crate) mod tests {
                 operands_str: [Some("0x3FFF8"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70001030, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x70001030,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3982,7 +4034,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70001070, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x70001070,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -3992,7 +4048,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x700010B0, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x700010B0,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4002,7 +4062,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x700010F0, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x700010F0,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4012,7 +4076,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70001130, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x70001130,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4022,7 +4090,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70000031, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x70000031,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4032,7 +4104,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$zero"), None, None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4B020BFE, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4B020BFE,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4042,7 +4118,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A820BFE, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A820BFE,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4052,7 +4132,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A420BFE, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A420BFE,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4062,7 +4146,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A220BFE, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A220BFE,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4072,7 +4160,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4B020BFF, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4B020BFF,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4082,7 +4174,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A820BFF, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A820BFF,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4092,7 +4188,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A420BFF, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A420BFF,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4102,7 +4202,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A220BFF, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A220BFF,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4112,7 +4216,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi2"), Some("($vi1)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70111334, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x70111334,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4122,7 +4230,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70111336, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x70111336,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4132,7 +4244,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x70111337, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x70111337,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4142,7 +4258,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x7011133C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x7011133C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4152,7 +4272,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x7011133E, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x7011133E,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4162,7 +4286,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x7011133F, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x7011133F,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4172,7 +4300,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$v0"), Some("$s1"), Some("12"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A00551D, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A00551D,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_gnu_as(),
                 valid: true,
@@ -4182,7 +4314,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf20"), Some("$vf10"), Some("$I"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A00551D, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A00551D,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_legacy_as(),
                 valid: true,
@@ -4192,7 +4328,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf20"), Some("$vf10"), Some("I"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A00551C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A00551C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_gnu_as(),
                 valid: true,
@@ -4202,7 +4342,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf20"), Some("$vf10"), Some("$Q"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A00551C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A00551C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_legacy_as(),
                 valid: true,
@@ -4212,7 +4356,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf20"), Some("$vf10"), Some("Q"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06043C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06043C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_gnu_as(),
                 valid: true,
@@ -4222,7 +4370,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf6"), Some("$R"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06043C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06043C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_legacy_as(),
                 valid: true,
@@ -4232,7 +4384,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf6"), Some("R"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06003C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06003C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_gnu_as(),
                 valid: true,
@@ -4242,7 +4398,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$ACC"), Some("$vf0"), Some("$vf6x"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06003C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06003C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::new_legacy_as(),
                 valid: true,
@@ -4252,7 +4412,11 @@ pub(crate) mod tests {
                 operands_str: [Some("ACC"), Some("$vf0"), Some("$vf6x"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A0663BC, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A0663BC,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4262,7 +4426,11 @@ pub(crate) mod tests {
                 operands_str: [Some("Q"), Some("$vf12x"), Some("$vf6x"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A066630, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A066630,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4272,7 +4440,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi24"), Some("$vi12"), Some("$vi6"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A066632, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A066632,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4282,7 +4454,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vi6"), Some("$vi12"), Some("0x18"), None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06637E, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06637E,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4292,7 +4468,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf6"), Some("(--$vi12)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06637F, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06637F,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4302,7 +4482,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf12"), Some("(--$vi6)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06637C, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06637C,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4312,7 +4496,11 @@ pub(crate) mod tests {
                 operands_str: [Some("$vf6"), Some("($vi12++)"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4A06637D, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(
+                    0x4A06637D,
+                    Vram::new(0x80000000),
+                    InstructionFlags::default(),
+                ),
                 imm_override: None,
                 display_flags: DisplayFlags::default(),
                 valid: true,
@@ -4330,7 +4518,7 @@ pub(crate) mod tests {
     fn check_r5900_trunc_cvt_instructions() {
         const ENTRIES: &[TestEntry] = &[
             TestEntry {
-                instr: Instruction::new_r5900(0x4600600D, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(0x4600600D, Vram::new(0x80000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::new_gnu_as(),
                 valid: true,
@@ -4340,7 +4528,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$f0"), Some("$f12"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x46006024, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(0x46006024, Vram::new(0x80000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::new_gnu_as(),
                 valid: true,
@@ -4350,7 +4538,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$f0"), Some("$f12"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x4600600D, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(0x4600600D, Vram::new(0x80000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::new_legacy_as(),
                 valid: true,
@@ -4360,7 +4548,7 @@ pub(crate) mod tests {
                 operands_str: [Some("$f0"), Some("$f12"), None, None, None],
             },
             TestEntry {
-                instr: Instruction::new_r5900(0x46006024, 0x80000000, InstructionFlags::default()),
+                instr: Instruction::new_r5900(0x46006024, Vram::new(0x80000000), InstructionFlags::default()),
                 imm_override: None,
                 display_flags: DisplayFlags::new_legacy_as(),
                 valid: true,

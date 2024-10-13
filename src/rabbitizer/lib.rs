@@ -14,6 +14,9 @@
 #[macro_use]
 extern crate std;
 
+#[cfg(feature = "std")]
+extern crate std;
+
 mod generated;
 
 mod abi;
@@ -39,6 +42,8 @@ mod register_descriptor;
 mod register_impls;
 pub mod traits;
 mod valued_operand;
+mod vram;
+mod vram_offset;
 
 mod utils;
 
@@ -68,6 +73,8 @@ pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
 pub use valued_operand::ValuedOperandIterator;
 pub use valued_operand::IU16;
+pub use vram::Vram;
+pub use vram_offset::VramOffset;
 
 // TODO: maybe not make public?
 pub use instruction_display::InstructionDisplay;

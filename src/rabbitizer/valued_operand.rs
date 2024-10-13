@@ -71,7 +71,7 @@ impl ValuedOperand {
                 Self::core_immediate(imm)
             }
             Operand::core_branch_target_label => {
-                Self::core_branch_target_label(instr.get_processed_immediate_unchecked() as i16)
+                Self::core_branch_target_label(instr.get_branch_offset_unchecked())
             }
             Operand::core_immediate_base => {
                 let imm = if instr.opcode().is_unsigned() {
