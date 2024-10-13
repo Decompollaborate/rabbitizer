@@ -6,7 +6,7 @@ on: [push, pull_request]
 jobs:
   check_format:
     name: Check format
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout reposistory
@@ -31,7 +31,7 @@ jobs:
 
   check_tidy:
     name: Check tidy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout reposistory

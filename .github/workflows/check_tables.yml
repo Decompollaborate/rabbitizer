@@ -6,7 +6,7 @@ on: [push, pull_request]
 jobs:
   check_tables:
     name: Check tables
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout reposistory
