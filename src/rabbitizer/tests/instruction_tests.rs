@@ -103,6 +103,25 @@ pub(crate) mod tests {
                 errors += 1;
             }
 
+            if self.instr.opcode().is_branch() || self.instr.opcode().is_jump_with_address() {
+                if self.instr.get_branch_offset_generic().is_none() {
+                    println!(
+                        "'{}' ({:08X}) is a branch or jump opcode but `get_branch_offset_generic` returned `None`.",
+                        self.opcode_str,
+                        self.instr.word()
+                    );
+                    errors += 1;
+                }
+                if self.instr.get_branch_vram_generic().is_none() {
+                    println!(
+                        "'{}' ({:08X}) is a branch or jump opcode but `get_branch_vram_generic` returned `None`.",
+                        self.opcode_str,
+                        self.instr.word()
+                    );
+                    errors += 1;
+                }
+            }
+
             errors
         }
 
@@ -209,6 +228,17 @@ pub(crate) mod tests {
     #[test]
     fn check_none_instructions() {
         const ENTRIES: &[TestEntry] = &[
+            TestEntry {
+                instr: Instruction::new_no_extension(0x08000419, 0x80001100, InstructionFlags::default(),
+                IsaVersion::MIPS_III,),
+                imm_override: None,
+                display_flags: DisplayFlags::default(),
+                valid: true,
+                expected: "j           func_80001064",
+                expected_opcode: Opcode::core_j,
+                opcode_str: "j",
+                operands_str: [Some("func_80001064"), None, None, None, None],
+            },
             TestEntry {
                 instr: Instruction::new_no_extension(
                     0x3C088001,

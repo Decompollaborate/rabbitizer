@@ -2656,27 +2656,31 @@ impl Instruction {
 
     /// Returns the offset (in bytes) that the instruction would branch,
     /// relative to the instruction itself. This method is intended for both branch
-    /// and jump instructions.
+    /// and jump with address instructions.
     ///
     /// The returned value can be either positive or negative.
     #[must_use]
     pub fn get_branch_offset_generic(&self) -> Option<i32> {
         if self.opcode().has_operand_alias(Operand::core_label) {
-            Some(self.get_instr_index_as_vram_unchecked() as i32 - self.vram as i32)
+            Some((self.get_instr_index_as_vram_unchecked() as i32).wrapping_sub(self.vram as i32))
         } else {
             self.get_branch_offset()
         }
     }
 
     /// Get the target vram address this instruction jumps to.
-    /// This method is intended only for branch or direct jump instructions.
+    /// This method is intended only for branch or direct jump with address
+    /// instructions.
     #[must_use]
     pub fn get_branch_vram_generic(&self) -> Option<u32> {
         if self
             .opcode()
             .has_operand_alias(Operand::core_branch_target_label)
         {
-            Some((self.vram as i32 + self.get_branch_offset_unchecked()) as u32)
+            Some(
+                self.get_branch_offset_unchecked()
+                    .wrapping_add(self.vram as i32) as u32,
+            )
         } else {
             self.get_instr_index_as_vram()
         }
