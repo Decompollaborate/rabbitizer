@@ -200,7 +200,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::DOUBLEWORD_LEFT
     ) // Load Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x1B, ldr, IsaVersion::MIPS_III, IsaExtension::NONE,
@@ -210,7 +211,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::DOUBLEWORD_RIGHT
     ) // Load Doubleword Right
     RAB_DEF_OPCODE(
         core, 0x20, lb, IsaVersion::MIPS_I, IsaExtension::NONE,
@@ -242,7 +244,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::WORD_LEFT
     ) // Load Word Left
     RAB_DEF_OPCODE(
         core, 0x23, lw, IsaVersion::MIPS_I, IsaExtension::NONE,
@@ -287,7 +290,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::WORD_RIGHT
     ) // Load Word Right
     RAB_DEF_OPCODE(
         core, 0x27, lwu, IsaVersion::MIPS_III, IsaExtension::NONE,
@@ -331,7 +335,8 @@
         reads_rt: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::WORD_LEFT
     ) // Store Word Left
     RAB_DEF_OPCODE(
         core, 0x2B, sw, IsaVersion::MIPS_I, IsaExtension::NONE,
@@ -352,7 +357,8 @@
         reads_rt: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::DOUBLEWORD_LEFT
     ) // Store Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x2D, sdr, IsaVersion::MIPS_III, IsaExtension::NONE,
@@ -362,7 +368,8 @@
         reads_rt: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::DOUBLEWORD_RIGHT
     ) // Store Doubleword Right
     RAB_DEF_OPCODE(
         core, 0x2E, swr, IsaVersion::MIPS_I, IsaExtension::NONE,
@@ -372,7 +379,8 @@
         reads_rt: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::WORD_RIGHT
     ) // Store Word Right
     RAB_DEF_OPCODE(
         core, 0x30, ll, IsaVersion::MIPS_II, IsaExtension::NONE,
@@ -383,7 +391,8 @@
         not_emitted_by_compilers: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::WORD
     ) // Load Linked word
     RAB_DEF_OPCODE(
         core, 0x33, pref, IsaVersion::MIPS_IV, IsaExtension::NONE,
@@ -400,7 +409,8 @@
         not_emitted_by_compilers: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::DOUBLEWORD
     ) // Load Linked Doubleword
     RAB_DEF_OPCODE(
         core, 0x37, ld, IsaVersion::MIPS_III, IsaExtension::NONE,
@@ -422,7 +432,8 @@
         not_emitted_by_compilers: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::WORD
     ) // Store Conditional word
     RAB_DEF_OPCODE(
         core, 0x3C, scd, IsaVersion::MIPS_III, IsaExtension::NONE,
@@ -433,7 +444,8 @@
         not_emitted_by_compilers: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::DOUBLEWORD
     ) // Store Conditional Doubleword
     RAB_DEF_OPCODE(
         core, 0x3F, sd, IsaVersion::MIPS_III, IsaExtension::NONE,
@@ -516,7 +528,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::WORD
     ) // Load Word to Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x36, ldc2, IsaVersion::MIPS_II, IsaExtension::NONE,
@@ -525,7 +538,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_load: true
+        does_load: true,
+        access_type: AccessType::DOUBLEWORD
     ) // Load Doubleword to Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x3A, swc2, IsaVersion::MIPS_I, IsaExtension::NONE,
@@ -534,7 +548,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::WORD
     ) // Store Word from Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x3E, sdc2, IsaVersion::MIPS_II, IsaExtension::NONE,
@@ -543,7 +558,8 @@
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
-        does_store: true
+        does_store: true,
+        access_type: AccessType::DOUBLEWORD
     ) // Store Doubleword from Coprocessor z
 
 

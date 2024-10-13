@@ -217,6 +217,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::DOUBLEWORD_LEFT,
         ..OpcodeDescriptor::new("ldl", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -228,6 +229,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::DOUBLEWORD_RIGHT,
         ..OpcodeDescriptor::new("ldr", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -263,6 +265,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD_LEFT,
         ..OpcodeDescriptor::new("lwl", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -312,6 +315,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD_RIGHT,
         ..OpcodeDescriptor::new("lwr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -360,6 +364,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::WORD_LEFT,
         ..OpcodeDescriptor::new("swl", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -383,6 +388,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::DOUBLEWORD_LEFT,
         ..OpcodeDescriptor::new("sdl", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -394,6 +400,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::DOUBLEWORD_RIGHT,
         ..OpcodeDescriptor::new("sdr", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -405,6 +412,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::WORD_RIGHT,
         ..OpcodeDescriptor::new("swr", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -417,6 +425,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("ll", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -436,6 +445,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::DOUBLEWORD,
         ..OpcodeDescriptor::new("lld", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -460,6 +470,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("sc", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -472,6 +483,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::DOUBLEWORD,
         ..OpcodeDescriptor::new("scd", IsaVersion::MIPS_III, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -556,6 +568,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("lwc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -566,6 +579,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::DOUBLEWORD,
         ..OpcodeDescriptor::new("ldc2", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -576,6 +590,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("swc2", IsaVersion::MIPS_I, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -586,6 +601,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::DOUBLEWORD,
         ..OpcodeDescriptor::new("sdc2", IsaVersion::MIPS_II, IsaExtension::NONE)
     }
     .check_panic_chain();
@@ -5648,6 +5664,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::QUADWORD,
         ..OpcodeDescriptor::new("lq", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -5659,6 +5676,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::QUADWORD,
         ..OpcodeDescriptor::new("sq", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -5668,6 +5686,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::QUADWORD,
         ..OpcodeDescriptor::new("lqc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -5677,6 +5696,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
+        access_type: AccessType::QUADWORD,
         ..OpcodeDescriptor::new("sqc2", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7801,6 +7821,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("vilwr.w", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7809,6 +7830,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("vilwr.z", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7817,6 +7839,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("vilwr.y", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7825,6 +7848,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("vilwr.x", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7833,6 +7857,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("viswr.w", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7841,6 +7866,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("viswr.z", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7849,6 +7875,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("viswr.y", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();
@@ -7857,6 +7884,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
         is_float: true,
         does_dereference: true,
         does_load: true,
+        access_type: AccessType::WORD,
         ..OpcodeDescriptor::new("viswr.x", IsaVersion::EXTENSION, IsaExtension::R5900)
     }
     .check_panic_chain();

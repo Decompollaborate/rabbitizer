@@ -66,8 +66,6 @@ impl RegisterDescriptor {
     }
 
     pub const fn check_panic(&self) {
-        // TODO: the rest of checks
-
         if self.is_reserved {
             assert!(
                 !self.is_clobbered_by_func_call,

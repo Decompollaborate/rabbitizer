@@ -7,7 +7,7 @@ use core::ops::Index;
 use crate::InstrType;
 use crate::{
     operand::{OperandIterator, OPERAND_COUNT_MAX},
-    AccessType, EncodedFieldMask, InstrSuffix, IsaExtension, IsaVersion, Opcode, Operand,
+    utils, AccessType, EncodedFieldMask, InstrSuffix, IsaExtension, IsaVersion, Opcode, Operand,
 };
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
@@ -165,11 +165,9 @@ impl OpcodeDescriptor {
     }
 
     pub const fn check_panic(&self) {
-        // TODO: the rest of checks
-
         assert!(
             !self.name.is_empty(),
-            "An opcode should not have an empty name"
+            "An opcode must not have an empty name"
         );
 
         if self.isa_version as u32 == IsaVersion::EXTENSION as u32 {
@@ -185,9 +183,154 @@ impl OpcodeDescriptor {
         }
 
         assert!(
-            !(self.is_branch && self.is_jump),
-            "An opcode should be either branch or jump, not both"
+            utils::truth_a_implies_b(self.is_branch_likely, self.is_branch),
+            "An 'is_branch_likely' opcode must be `is_branch` too"
         );
+
+        assert!(
+            utils::truth_a_implies_b(self.is_jump_with_address, self.is_jump),
+            "An 'is_jump_with_address' opcode must be `is_jump` too"
+        );
+
+        // Opcode must be at max either branch, jump or trap.
+        assert!(
+            !(self.is_branch && self.is_jump),
+            "An opcode must be either branch or jump, not both"
+        );
+        assert!(
+            !(self.is_branch && self.is_trap),
+            "An opcode must be either branch or trap, not both"
+        );
+        assert!(
+            !(self.is_jump && self.is_trap),
+            "An opcode must be either jump or trap, not both"
+        );
+
+        assert!(
+            utils::truth_a_implies_b(self.is_double, self.is_float),
+            "An 'is_double' opcode must be `is_float` too"
+        );
+
+        // modifies_r* and reads_r* (gpr)
+        assert!(
+            !(self.modifies_rs && self.reads_rs),
+            "An opcode must either modify or read the `rs` gpr register, not both"
+        );
+        assert!(
+            !(self.modifies_rt && self.reads_rt),
+            "An opcode must either modify or read the `rt` gpr register, not both"
+        );
+        assert!(
+            !(self.modifies_rd && self.reads_rd),
+            "An opcode must either modify or read the `rd` gpr register, not both"
+        );
+        assert!(
+            utils::truth_both_or_none(
+                self.modifies_rs || self.reads_rs,
+                self.has_operand_alias(Operand::core_rs)
+            ),
+            "An opcode that touches an `rs` gpr register must have an `rs` operand and viceversa"
+        );
+        assert!(
+            utils::truth_both_or_none(
+                self.modifies_rt || self.reads_rt,
+                self.has_operand_alias(Operand::core_rt)
+            ),
+            "An opcode that touches an `rt` gpr register must have an `rt` operand and viceversa"
+        );
+        assert!(
+            utils::truth_both_or_none(
+                self.modifies_rd || self.reads_rd,
+                self.has_operand_alias(Operand::core_rd)
+            ),
+            "An opcode that touches an `rd` gpr register must have an `rd` operand and viceversa"
+        );
+
+        // modifies_f* and reads_f* (fpr)
+        assert!(
+            !(self.modifies_fs && self.reads_fs),
+            "An opcode must either modify or read the `fs` gpr register, not both"
+        );
+        assert!(
+            !(self.modifies_ft && self.reads_ft),
+            "An opcode must either modify or read the `ft` gpr register, not both"
+        );
+        assert!(
+            !(self.modifies_fd && self.reads_fd),
+            "An opcode must either modify or read the `fd` gpr register, not both"
+        );
+        assert!(
+            utils::truth_both_or_none(
+                self.modifies_fs || self.reads_fs,
+                self.has_operand_alias(Operand::core_fs)
+            ),
+            "An opcode that touches an `fs` gpr register must have an `fs` operand and viceversa"
+        );
+        assert!(
+            utils::truth_both_or_none(
+                self.modifies_ft || self.reads_ft,
+                self.has_operand_alias(Operand::core_ft)
+            ),
+            "An opcode that touches an `ft` gpr register must have an `ft` operand and viceversa"
+        );
+        assert!(
+            utils::truth_both_or_none(
+                self.modifies_fd || self.reads_fd,
+                self.has_operand_alias(Operand::core_fd)
+            ),
+            "An opcode that touches an `fd` gpr register must have an `fd` operand and viceversa"
+        );
+
+        assert!(
+            !(self.can_be_hi && self.can_be_lo),
+            "An opcode can be either a `hi` or `lo`, not both"
+        );
+
+        assert!(
+            utils::truth_a_implies_b(self.does_link, self.is_branch || self.is_jump),
+            "A 'does_link' opcode must be either `is_branch` or `is_jump`"
+        );
+
+        // dereference stuff
+        assert!(
+            utils::truth_a_implies_b(self.does_dereference, self.does_load || self.does_store),
+            "Dereference must imply either reading from RAM or storing to it"
+        );
+        assert!(
+            utils::truth_a_implies_b(self.does_load, self.does_dereference),
+            "Reading from RAM must imply a dereference"
+        );
+        assert!(
+            utils::truth_a_implies_b(self.does_store, self.does_dereference),
+            "Storing to RAM must imply a dereference"
+        );
+        assert!(
+            !(self.does_load && self.does_store),
+            "Either load or store, not both"
+        );
+        assert!(
+            utils::truth_both_or_none(
+                self.does_dereference,
+                self.access_type as usize != AccessType::NONE as usize
+            ),
+            "An opcode that does dereference memory should have a non NONE AccessType"
+        );
+        assert!(
+            utils::truth_a_implies_b(self.does_unsigned_memory_access, self.does_dereference),
+            "Unsigned memory accesses require dereferences"
+        );
+
+        // TODO: remove `&& !self.is_pseudo` check when the move pseudo is removed.
+        assert!(
+            utils::truth_a_implies_b(
+                self.maybe_is_move && !self.is_pseudo,
+                self.has_operand_alias(Operand::core_rd)
+                    && self.has_operand_alias(Operand::core_rs)
+                    && self.has_operand_alias(Operand::core_rt)
+            ),
+            "A `maybe_is_move` must use all three gpr register operands"
+        );
+        // assert!(utils::truth_a_implies_b(self.maybe_is_move, !self.is_pseudo), "`move` pseudo is too problematic");
     }
 
     pub(crate) const fn check_panic_chain(self) -> Self {
@@ -389,22 +532,31 @@ impl OpcodeDescriptor {
     }
 
     #[must_use]
-    pub fn has_any_operands(&self) -> bool {
-        self.operands[0] != Operand::ALL_EMPTY
+    pub const fn has_any_operands(&self) -> bool {
+        self.operands[0] as usize != Operand::ALL_EMPTY as usize
     }
 
     #[must_use]
-    pub fn has_specific_operand(&self, operand: Operand) -> bool {
-        for op in self.operands_iter() {
-            if *op == operand {
+    pub const fn has_specific_operand(&self, operand: Operand) -> bool {
+        let mut i = 0;
+
+        while i < self.operands.len() {
+            let op = self.operands[i] as usize;
+
+            if op == Operand::ALL_EMPTY as usize {
+                break;
+            }
+
+            if self.operands[i] as usize == operand as usize {
                 return true;
             }
+            i += 1;
         }
         false
     }
 
     #[must_use]
-    pub fn has_operand_alias(&self, operand: Operand) -> bool {
+    pub const fn has_operand_alias(&self, operand: Operand) -> bool {
         if self.has_specific_operand(operand) {
             return true;
         }

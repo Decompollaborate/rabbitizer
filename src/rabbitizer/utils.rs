@@ -1,14 +1,17 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#[must_use]
 pub const fn mask(value: u32, width: u32) -> u32 {
     value & ((1 << width) - 1)
 }
 
+#[must_use]
 pub const fn bitmask(shift: u32, width: u32) -> u32 {
     mask(u32::MAX, width) << shift
 }
 
+#[must_use]
 pub const fn from_2s_complement(number: u32, width: u32) -> i32 {
     let is_negative = number & (1 << (width - 1)) != 0;
 
@@ -19,6 +22,7 @@ pub const fn from_2s_complement(number: u32, width: u32) -> i32 {
     }
 }
 
+#[must_use]
 pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
     // IEEE754 16-bit floats are encoded in 16 bits as follows:
     // Sign bit: 1 bit (bit 15)
@@ -84,4 +88,37 @@ pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
     ret |= (arg as u32) << (23 - 10);
 
     ret
+}
+
+/// If `a` is `true` then `b` must be `true` too. If `a` is `false` then we
+/// don't care about `b` and return `true`.
+///
+/// The above statement is expressed as the following truth table:
+///
+/// | a | b | OUT |
+/// |---|---|-----|
+/// | 1 | 1 |  1  |
+/// | 1 | 0 |  0  |
+/// | 0 | 1 |  1  |
+/// | 0 | 0 |  1  |
+#[inline(always)]
+#[must_use]
+pub const fn truth_a_implies_b(a: bool, b: bool) -> bool {
+    !a || b
+}
+
+/// Returns `true` if both `a` and `b` are `true` or if both are `false`.
+///
+/// The above statement is expressed as the following truth table:
+///
+/// | a | b | OUT |
+/// |---|---|-----|
+/// | 1 | 1 |  1  |
+/// | 1 | 0 |  0  |
+/// | 0 | 1 |  0  |
+/// | 0 | 0 |  1  |
+#[inline(always)]
+#[must_use]
+pub const fn truth_both_or_none(a: bool, b: bool) -> bool {
+    !(a ^ b)
 }
