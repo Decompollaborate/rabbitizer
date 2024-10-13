@@ -87,6 +87,10 @@ int main() {
         // A instruction should not have both doesLoad and doesStore
         LOGIC_ERROR(uniqueId, errorCount, !(descriptor->doesLoad && descriptor->doesStore));
 
+        // A dereference must do a non INVALID memory access
+        LOGIC_ERROR(uniqueId, errorCount, !(descriptor->doesDereference ^ (descriptor->accessType != RAB_ACCESSTYPE_INVALID)));
+        LOGIC_ERROR_A_IMPLIES_B(uniqueId, errorCount, descriptor->doesUnsignedMemoryAccess, descriptor->doesDereference);
+
         switch (uniqueId) {
             case RABBITIZER_INSTR_ID_cpu_move:
             case RABBITIZER_INSTR_ID_rsp_move:
