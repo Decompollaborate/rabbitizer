@@ -10,12 +10,13 @@
 // TODO: consider adding clippy::missing_inline_in_public_items
 #![cfg_attr(not(feature = "std"), no_std)]
 
-#[cfg(test)]
+#[cfg(feature = "std")]
 #[macro_use]
 extern crate std;
 
-#[cfg(feature = "std")]
-extern crate std;
+//#[cfg(feature = "std")]
+//#[macro_use]
+//use std::prelude::*;
 
 mod generated;
 
@@ -68,7 +69,7 @@ pub use instruction::Instruction;
 pub use opcode_category_descriptor::OpcodeCategoryDescriptor;
 pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
-pub use operand::OperandIterator;
+pub use operand::{OperandIterator, OPERAND_COUNT_MAX};
 pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
 pub use valued_operand::ValuedOperandIterator;
@@ -145,5 +146,3 @@ pub mod register_descriptors {
     pub use generated::RSP_COP2_CONTROL;
     pub use generated::RSP_VECTOR;
 }
-
-pub(crate) mod tests;

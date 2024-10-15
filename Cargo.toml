@@ -25,13 +25,6 @@ path = "src/rabbitizer/lib.rs"
 name = "test"
 path = "src/rabbitizer/bin.rs"
 
-# [dependencies]
-# num_enum = "0.5.7"
-
-# [build-dependencies]
-# cc = "1.0.78"
-# glob = "0.3.0"
-
 [features]
 default = []
 std = []
