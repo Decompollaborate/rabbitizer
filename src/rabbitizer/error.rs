@@ -1,7 +1,12 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use core::{error, fmt};
+use core::fmt;
+
+#[cfg(not(feature = "std"))]
+use core::error;
+#[cfg(feature = "std")]
+use std::error;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[non_exhaustive]

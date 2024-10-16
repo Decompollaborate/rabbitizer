@@ -18,7 +18,7 @@
     RAB_DEF_OPERAND(core, cop2cd, EncodedFieldMask::cop2cd, (Cop2Control)) // Coprocessor 2 control rd
     RAB_DEF_OPERAND(core, op, EncodedFieldMask::op, (u8)) // TODO: maybe merge with hint?
     RAB_DEF_OPERAND(core, hint, EncodedFieldMask::hint, (u8)) // TODO: maybe merge with op?
-    RAB_DEF_OPERAND(core, code, EncodedFieldMask::code, (u16, Option<NonZero<u16>>))
+    RAB_DEF_OPERAND(core, code, EncodedFieldMask::code, (u16, Option<NonZeroU16>))
     RAB_DEF_OPERAND(core, code_lower, EncodedFieldMask::code_lower, (u16))
     RAB_DEF_OPERAND(core, copraw, EncodedFieldMask::copraw, (u32)) // TODO: what?
     RAB_DEF_OPERAND(core, label, EncodedFieldMask::instr_index, (Vram))

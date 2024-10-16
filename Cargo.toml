@@ -12,6 +12,7 @@ readme = "README.md"
 repository = "https://github.com/Decompollaborate/rabbitizer"
 license-file = "LICENSE"
 keywords = ["MIPS", "decoder"]
+rust-version = "1.81.0"
 # build = "rust/build.rs"
 # include = ["/rust/src", "/rust/build.rs", "/src", "/include", "/tables"]
 

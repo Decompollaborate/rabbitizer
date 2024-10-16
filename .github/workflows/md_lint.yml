@@ -5,13 +5,14 @@ on: [push, pull_request]
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
     name: Lint md files
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    runs-on: ubuntu-20.04
 
-    - name: Lint markdown files
-      uses: articulate/actions-markdownlint@v1.1.0
-      with:
-        config: .markdownlint.jsonc
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lint markdown files
+        uses: articulate/actions-markdownlint@v1.1.0
+        with:
+          config: .markdownlint.jsonc

@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use core::num::NonZero;
+use core::num::NonZeroU16;
 
 use crate::{operand::OPERAND_COUNT_MAX, Operand, OperandDisplay, ValuedOperand};
 use crate::{traits::Register, DisplayFlags, Instruction};
@@ -57,7 +57,7 @@ impl ValuedOperand {
             Operand::core_hint => Self::core_hint(instr.field_hint_unchecked()),
             Operand::core_code => Self::core_code(
                 instr.field_code_upper_unchecked(),
-                NonZero::new(instr.field_code_lower_unchecked()),
+                NonZeroU16::new(instr.field_code_lower_unchecked()),
             ),
             Operand::core_code_lower => Self::core_code_lower(instr.field_code_lower_unchecked()),
             Operand::core_copraw => todo!(),

@@ -8,7 +8,7 @@ use crate::EncodedFieldMask;
 use crate::{operand::OPERAND_COUNT, OperandDescriptor, IU16};
 use crate::{operand_display::OperandDisplayCallback, OperandDisplay};
 use crate::{Vram, VramOffset};
-use core::num::NonZero;
+use core::num::NonZeroU16;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
@@ -854,7 +854,7 @@ pub enum ValuedOperand {
     core_cop2cd(Cop2Control),
     core_op(u8),
     core_hint(u8),
-    core_code(u16, Option<NonZero<u16>>),
+    core_code(u16, Option<NonZeroU16>),
     core_code_lower(u16),
     core_copraw(u32),
     core_label(Vram),

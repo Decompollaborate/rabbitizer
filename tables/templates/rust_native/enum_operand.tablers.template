@@ -5,7 +5,7 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-use core::num::NonZero;
+use core::num::NonZeroU16;
 
 use crate::EncodedFieldMask;
 use crate::registers::*;
