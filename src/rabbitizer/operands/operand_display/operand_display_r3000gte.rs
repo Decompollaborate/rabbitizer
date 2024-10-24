@@ -3,7 +3,7 @@
 
 use core::fmt;
 
-use crate::OperandDisplay;
+use crate::operands::OperandDisplay;
 
 impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     pub(crate) fn display_r3000gte_sf(

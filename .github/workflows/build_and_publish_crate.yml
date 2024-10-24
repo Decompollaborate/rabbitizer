@@ -79,7 +79,7 @@ jobs:
         run: cargo test --workspace
 
   msrv:
-    name: Check the Minimal Supported Rust Version (MSRV) is correct
+    name: Check MSRV is correct
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout reposistory
@@ -91,24 +91,18 @@ jobs:
       - name: Run MSRV checker
         run: cargo hack check --rust-version --workspace --all-targets --ignore-private
 
-  msrv_other:
-    name: Check the Minimal Supported Rust Version (MSRV) is correct
+  msrv_all_features:
+    name: Check MSRV is correct for all features
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout reposistory
         uses: actions/checkout@v4
 
-      - name: Setup Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
-
       - name: Setup MSRV checker
-        run: cargo install cargo-msrv
+        uses: taiki-e/install-action@cargo-hack
 
       - name: Run MSRV checker
-        run: cargo msrv verify
+        run: cargo hack check --rust-version --workspace --all-targets --ignore-private --all-features
 
   build_rust:
     name: Build Rust stuff and run Rust tests

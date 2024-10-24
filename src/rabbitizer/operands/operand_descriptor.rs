@@ -3,7 +3,8 @@
 
 use core::ops::Index;
 
-use crate::{EncodedFieldMask, Operand};
+use crate::operands::Operand;
+use crate::EncodedFieldMask;
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]

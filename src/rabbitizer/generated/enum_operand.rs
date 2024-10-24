@@ -3,10 +3,11 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::operands::{
+    OperandDescriptor, OperandDisplay, OperandDisplayCallback, IU16, OPERAND_COUNT,
+};
 use crate::registers::*;
 use crate::EncodedFieldMask;
-use crate::{operand::OPERAND_COUNT, OperandDescriptor, IU16};
-use crate::{operand_display::OperandDisplayCallback, OperandDisplay};
 use crate::{Vram, VramOffset};
 use core::num::NonZeroU16;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]

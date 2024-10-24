@@ -3,7 +3,7 @@
 
 use core::num::NonZeroU16;
 
-use crate::{operand::OPERAND_COUNT_MAX, Operand, OperandDisplay, ValuedOperand};
+use crate::operands::{Operand, OperandDisplay, ValuedOperand, OPERAND_COUNT_MAX};
 use crate::{traits::Register, DisplayFlags, Instruction};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]

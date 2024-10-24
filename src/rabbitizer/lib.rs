@@ -36,13 +36,10 @@ mod opcode_category;
 mod opcode_category_descriptor;
 mod opcode_decoder;
 mod opcode_descriptor;
-mod operand;
-mod operand_descriptor;
-mod operand_display;
+pub mod operands;
 mod register_descriptor;
 mod register_impls;
 pub mod traits;
-mod valued_operand;
 mod vram;
 mod vram_offset;
 
@@ -55,31 +52,22 @@ pub use generated::IsaExtension;
 pub use generated::IsaVersion;
 pub use generated::Opcode;
 pub use generated::OpcodeCategory;
-pub use generated::Operand;
-pub use generated::ValuedOperand;
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 
-pub(crate) use generated::DISPLAY_OPERAND_CALLBACKS;
 pub use generated::OPCODES;
-pub use generated::OPERANDS;
 
 pub use encoded_field_mask::EncodedFieldMask;
 pub use instruction::Instruction;
 pub use opcode_category_descriptor::OpcodeCategoryDescriptor;
 pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
-pub use operand::{OperandIterator, OPERAND_COUNT_MAX};
-pub use operand_descriptor::OperandDescriptor;
 pub use register_descriptor::RegisterDescriptor;
-pub use valued_operand::ValuedOperandIterator;
-pub use valued_operand::IU16;
 pub use vram::Vram;
 pub use vram_offset::VramOffset;
 
 // TODO: maybe not make public?
 pub use instruction_display::InstructionDisplay;
-pub use operand_display::OperandDisplay;
 
 pub use flags::DecodingFlags;
 pub use flags::DisplayFlags;

@@ -1,10 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{
-    operand::{OperandIterator, OPERAND_COUNT_MAX},
-    Operand,
-};
+use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 use crate::{AccessType, EncodedFieldMask, InstrType};
 use crate::{IsaExtension, IsaVersion};
 use crate::{Opcode, OpcodeDescriptor, OPCODES};

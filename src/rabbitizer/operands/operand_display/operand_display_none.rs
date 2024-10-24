@@ -3,7 +3,8 @@
 
 use core::fmt;
 
-use crate::{generated::Gpr, operand_display, traits::Register, OperandDisplay};
+use crate::operands::{operand_display, OperandDisplay};
+use crate::{generated::Gpr, traits::Register};
 
 impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     pub(crate) fn display_core_rs(

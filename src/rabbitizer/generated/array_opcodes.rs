@@ -3,9 +3,9 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::operands::Operand;
 use crate::{
     opcode, AccessType, InstrSuffix, InstrType, IsaExtension, IsaVersion, Opcode, OpcodeDescriptor,
-    Operand,
 };
 pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); opcode::OPCODE_COUNT];

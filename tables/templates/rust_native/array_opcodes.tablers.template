@@ -20,7 +20,8 @@
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
 
-use crate::{OpcodeDescriptor, opcode, Operand, Opcode, InstrType, AccessType, InstrSuffix, IsaVersion, IsaExtension};
+use crate::operands::Operand;
+use crate::{opcode, AccessType, InstrSuffix, InstrType, IsaExtension, IsaVersion, Opcode, OpcodeDescriptor};
 
 pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); opcode::OPCODE_COUNT];

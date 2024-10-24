@@ -7,11 +7,10 @@
 
 use core::num::NonZeroU16;
 
-use crate::EncodedFieldMask;
+use crate::operands::{OperandDescriptor, IU16, OPERAND_COUNT, OperandDisplay, OperandDisplayCallback};
 use crate::registers::*;
-use crate::{operand::OPERAND_COUNT, OperandDescriptor, IU16};
-use crate::{operand_display::OperandDisplayCallback, OperandDisplay};
-use crate::{VramOffset, Vram};
+use crate::EncodedFieldMask;
+use crate::{Vram, VramOffset};
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     prefix##_##operand,
