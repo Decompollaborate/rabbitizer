@@ -3,8 +3,9 @@
 
 use core::fmt;
 
+use crate::display_flags::DisplayFlags;
+use crate::instr::Instruction;
 use crate::operands::{Operand, DISPLAY_OPERAND_CALLBACKS};
-use crate::{DisplayFlags, Instruction};
 
 pub(crate) mod operand_display_none;
 pub(crate) mod operand_display_r3000gte;

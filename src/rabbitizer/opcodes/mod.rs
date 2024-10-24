@@ -1,11 +1,14 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+mod decoding_flags;
 mod opcode;
 mod opcode_category;
 mod opcode_category_descriptor;
 mod opcode_decoder;
 mod opcode_descriptor;
+
+pub(crate) use decoding_flags::DecodingFlags;
 
 pub(crate) use crate::generated::OPCODE_CATEGORIES;
 pub use crate::generated::{Opcode, OpcodeCategory, OPCODES};

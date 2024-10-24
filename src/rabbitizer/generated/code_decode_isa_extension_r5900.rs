@@ -4,8 +4,8 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::isa::IsaVersion;
-use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
-use crate::{DecodingFlags, EncodedFieldMask};
+use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::EncodedFieldMask;
 impl OpcodeDecoder {
     #[must_use]
     pub(crate) const fn decode_isa_extension_r5900_normal(

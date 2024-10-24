@@ -1,9 +1,11 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use rabbitizer::display_flags::DisplayFlags;
+use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::opcodes::Opcode;
 use rabbitizer::operands::OPERAND_COUNT_MAX;
-use rabbitizer::{DisplayFlags, Instruction, InstructionFlags, Vram};
+use rabbitizer::Vram;
 
 pub struct TestEntry {
     pub instr: Instruction,

@@ -40,15 +40,15 @@ fn main() {
 */
 
 fn main() {
-    let instr = rabbitizer::Instruction::new_r4000allegrex(
+    let instr = rabbitizer::instr::Instruction::new_r4000allegrex(
         0xD0119001,
         rabbitizer::Vram::new(0x80000000),
-        rabbitizer::InstructionFlags::default(),
+        rabbitizer::instr::InstructionFlags::default(),
     );
 
     println!(
         "{}",
-        instr.display(None, &rabbitizer::DisplayFlags::default())
+        instr.display(None, &rabbitizer::display_flags::DisplayFlags::default())
     );
 
     println!("{:?}", instr);

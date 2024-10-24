@@ -3,8 +3,10 @@
 
 use core::num::NonZeroU16;
 
+use crate::display_flags::DisplayFlags;
+use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDisplay, ValuedOperand, OPERAND_COUNT_MAX};
-use crate::{traits::Register, DisplayFlags, Instruction};
+use crate::traits::Register;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(clippy::exhaustive_enums)]

@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::InstrSuffix;
+use crate::instr::InstrSuffix;
 
 impl InstrSuffix {
     #[must_use]

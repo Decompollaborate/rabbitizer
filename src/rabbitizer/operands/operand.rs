@@ -1,8 +1,9 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::display_flags::DisplayFlags;
+use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDescriptor, OperandDisplay, ValuedOperand, OPERANDS};
-use crate::{DisplayFlags, Instruction};
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain

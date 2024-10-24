@@ -4,9 +4,11 @@
 mod common;
 
 use common::{check_test_entries, TestEntry};
+use rabbitizer::display_flags::DisplayFlags;
+use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::isa::IsaVersion;
 use rabbitizer::opcodes::Opcode;
-use rabbitizer::{DisplayFlags, Instruction, InstructionFlags, Vram};
+use rabbitizer::Vram;
 
 #[test]
 fn check_none_instructions() {

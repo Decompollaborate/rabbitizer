@@ -27,13 +27,10 @@ mod generated;
 
 mod abi;
 mod access_type;
+pub mod display_flags;
 mod encoded_field_mask;
 mod error;
-mod flags;
-mod instr_suffix;
-mod instr_type;
-mod instruction;
-mod instruction_display;
+pub mod instr;
 pub mod isa;
 pub mod opcodes;
 pub mod operands;
@@ -47,21 +44,10 @@ mod utils;
 
 pub use generated::Abi;
 pub use generated::AccessType;
-pub use generated::InstrSuffix;
 
-#[allow(deprecated)]
-pub use instr_type::InstrType;
-
+// pub use instruction::Instruction;
 pub use encoded_field_mask::EncodedFieldMask;
-pub use instruction::Instruction;
 pub use vram::Vram;
 pub use vram_offset::VramOffset;
-
-// TODO: maybe not make public?
-pub use instruction_display::InstructionDisplay;
-
-pub use flags::DecodingFlags;
-pub use flags::DisplayFlags;
-pub use flags::InstructionFlags;
 
 pub use error::Error;
