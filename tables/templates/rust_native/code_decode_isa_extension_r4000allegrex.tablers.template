@@ -20,7 +20,8 @@
     case_bits => Opcode::ALL_INVALID,
 
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
-use crate::{DecodingFlags, EncodedFieldMask, IsaVersion};
+use crate::isa::IsaVersion;
+use crate::{DecodingFlags, EncodedFieldMask};
 
 impl OpcodeDecoder {
     SPECIAL_RS_TAG(must_use)

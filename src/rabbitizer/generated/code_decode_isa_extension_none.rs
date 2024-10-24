@@ -3,8 +3,9 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::isa::IsaVersion;
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
-use crate::{DecodingFlags, EncodedFieldMask, IsaVersion};
+use crate::{DecodingFlags, EncodedFieldMask};
 impl OpcodeDecoder {
     #[must_use]
     pub(crate) const fn decode_isa_extension_none_normal(

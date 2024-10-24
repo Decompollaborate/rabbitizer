@@ -20,7 +20,8 @@
     case_bits if isa_version as u32 >= isa_version_min as u32 => Opcode::ALL_INVALID,
 
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
-use crate::{DecodingFlags, EncodedFieldMask, IsaVersion};
+use crate::isa::IsaVersion;
+use crate::{DecodingFlags, EncodedFieldMask};
 
 impl OpcodeDecoder {
     SPECIAL_RS_TAG(must_use)

@@ -3,9 +3,10 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
 use crate::operands::Operand;
-use crate::{AccessType, InstrSuffix, InstrType, IsaExtension, IsaVersion};
+use crate::{AccessType, InstrSuffix, InstrType};
 pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];
     table[Opcode::ALL_INVALID as usize] = OpcodeDescriptor {

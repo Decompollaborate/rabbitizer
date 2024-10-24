@@ -1,6 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::operands::{Operand, OperandIterator, ValuedOperandIterator};
 use crate::registers::*;
@@ -8,7 +9,6 @@ use crate::traits::{R4000AllegrexVectorRegister, Register};
 use crate::utils;
 use crate::Abi;
 use crate::{DisplayFlags, EncodedFieldMask, InstructionDisplay, InstructionFlags};
-use crate::{IsaExtension, IsaVersion};
 use crate::{Vram, VramOffset};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]

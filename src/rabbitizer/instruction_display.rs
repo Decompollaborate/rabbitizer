@@ -3,8 +3,9 @@
 
 use core::fmt;
 
+use crate::isa::IsaExtension;
 use crate::opcodes::Opcode;
-use crate::{DisplayFlags, Instruction, IsaExtension};
+use crate::{DisplayFlags, Instruction};
 
 pub struct InstructionDisplay<'ins, 'imm, 'flg> {
     instr: &'ins Instruction,

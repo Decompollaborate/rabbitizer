@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::IsaVersion;
+use crate::isa::IsaVersion;
 
 impl IsaVersion {
     #[must_use]

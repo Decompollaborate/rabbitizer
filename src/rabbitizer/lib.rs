@@ -29,8 +29,7 @@ mod instr_suffix;
 mod instr_type;
 mod instruction;
 mod instruction_display;
-mod isa_extension;
-mod isa_version;
+pub mod isa;
 pub mod opcodes;
 pub mod operands;
 mod register_descriptor;
@@ -44,8 +43,6 @@ mod utils;
 pub use generated::Abi;
 pub use generated::AccessType;
 pub use generated::InstrSuffix;
-pub use generated::IsaExtension;
-pub use generated::IsaVersion;
 
 #[allow(deprecated)]
 pub use instr_type::InstrType;
