@@ -1,21 +1,21 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::register_descriptors::COP2_CONTROL;
-use crate::registers::Cop2Control;
+use crate::register_descriptors;
+use crate::register_descriptors::RegisterDescriptor;
+use crate::registers::R5900VF;
 use crate::traits::Register;
-use crate::RegisterDescriptor;
 
-impl Cop2Control {
+impl R5900VF {
     #[must_use]
     pub const fn default() -> Self {
-        Self::r0
+        Self::vf0
     }
 }
 
-impl Register for Cop2Control {
+impl Register for R5900VF {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &COP2_CONTROL[*self]
+        &register_descriptors::R5900_VF[*self]
     }
 }

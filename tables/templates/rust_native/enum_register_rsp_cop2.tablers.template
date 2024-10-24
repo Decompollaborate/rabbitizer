@@ -9,7 +9,7 @@
 #define STR_EXPAND(x) STR_EXPAND2(x)
 #define STR(x) STR_EXPAND(x)
 
-use crate::RegisterDescriptor;
+use crate::register_descriptors::RegisterDescriptor;
 use core::ops::Index;
 
 #define REGISTER_ENUM_NAME RspCop2

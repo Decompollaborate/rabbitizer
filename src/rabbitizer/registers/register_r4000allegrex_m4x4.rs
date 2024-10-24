@@ -2,20 +2,20 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::register_descriptors;
-use crate::registers::R4000AllegrexPrefixSrc;
+use crate::register_descriptors::RegisterDescriptor;
+use crate::registers::R4000AllegrexM4x4;
 use crate::traits::Register;
-use crate::RegisterDescriptor;
 
-impl R4000AllegrexPrefixSrc {
+impl R4000AllegrexM4x4 {
     #[must_use]
     pub const fn default() -> Self {
-        Self::x
+        Self::M000
     }
 }
 
-impl Register for R4000AllegrexPrefixSrc {
+impl Register for R4000AllegrexM4x4 {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &register_descriptors::R4000ALLEGREX_PREFIX_SRC[*self]
+        &register_descriptors::R4000ALLEGREX_M4X4[*self]
     }
 }

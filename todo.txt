@@ -7,5 +7,8 @@ rsp:
 - lwv
 
 
+rename:
+- Rename R5900 to R5900EE
+
 bleh:
 cargo test -- --test-threads=1 2>&1 | grep left: -B 2 | grep -v "==" > allegrex_errors.txt

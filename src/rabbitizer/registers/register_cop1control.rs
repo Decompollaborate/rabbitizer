@@ -2,20 +2,20 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::register_descriptors;
-use crate::registers::R4000AllegrexM2x2;
+use crate::register_descriptors::RegisterDescriptor;
+use crate::registers::Cop1Control;
 use crate::traits::Register;
-use crate::RegisterDescriptor;
 
-impl R4000AllegrexM2x2 {
+impl Cop1Control {
     #[must_use]
     pub const fn default() -> Self {
-        Self::M000
+        Self::r0
     }
 }
 
-impl Register for R4000AllegrexM2x2 {
+impl Register for Cop1Control {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &register_descriptors::R4000ALLEGREX_M2X2[*self]
+        &register_descriptors::COP1_CONTROL[*self]
     }
 }

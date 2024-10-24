@@ -2,9 +2,9 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::register_descriptors;
+use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::RspVector;
 use crate::traits::Register;
-use crate::RegisterDescriptor;
 
 impl RspVector {
     #[must_use]

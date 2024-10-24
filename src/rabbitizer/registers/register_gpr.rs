@@ -2,10 +2,10 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::register_descriptors;
+use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::Gpr;
 use crate::traits::Register;
 use crate::Abi;
-use crate::RegisterDescriptor;
 
 impl Gpr {
     #[must_use]

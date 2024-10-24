@@ -2,9 +2,9 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::register_descriptors;
+use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::R4000AllegrexV2D;
 use crate::traits::{R4000AllegrexVectorRegister, Register};
-use crate::RegisterDescriptor;
 
 impl R4000AllegrexV2D {
     #[must_use]

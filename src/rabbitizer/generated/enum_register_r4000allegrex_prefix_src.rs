@@ -3,7 +3,7 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
-use crate::RegisterDescriptor;
+use crate::register_descriptors::RegisterDescriptor;
 use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]

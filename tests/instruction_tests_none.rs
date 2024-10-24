@@ -4,8 +4,8 @@
 mod common;
 
 use common::{check_test_entries, TestEntry};
-use rabbitizer::opcodes::Opcode;
 use rabbitizer::isa::IsaVersion;
+use rabbitizer::opcodes::Opcode;
 use rabbitizer::{DisplayFlags, Instruction, InstructionFlags, Vram};
 
 #[test]

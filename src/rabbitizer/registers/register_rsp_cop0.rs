@@ -2,20 +2,20 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::register_descriptors;
-use crate::registers::Cop2;
+use crate::register_descriptors::RegisterDescriptor;
+use crate::registers::RspCop0;
 use crate::traits::Register;
-use crate::RegisterDescriptor;
 
-impl Cop2 {
+impl RspCop0 {
     #[must_use]
     pub const fn default() -> Self {
-        Self::r0
+        Self::SP_MEM_ADDR
     }
 }
 
-impl Register for Cop2 {
+impl Register for RspCop0 {
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &register_descriptors::COP2[*self]
+        &register_descriptors::RSP_COP0[*self]
     }
 }
