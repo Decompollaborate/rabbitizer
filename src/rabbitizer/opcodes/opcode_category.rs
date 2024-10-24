@@ -1,10 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::{
-    generated::OPCODE_CATEGORIES, opcode_category_descriptor::OpcodeCategoryDescriptor,
-    OpcodeCategory,
-};
+use crate::opcodes::{OpcodeCategory, OpcodeCategoryDescriptor, OPCODE_CATEGORIES};
 
 pub const OPCODE_CATEGORY_COUNT: usize = 100;
 

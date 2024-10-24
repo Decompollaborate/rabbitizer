@@ -31,11 +31,7 @@ mod instruction;
 mod instruction_display;
 mod isa_extension;
 mod isa_version;
-mod opcode;
-mod opcode_category;
-mod opcode_category_descriptor;
-mod opcode_decoder;
-mod opcode_descriptor;
+pub mod opcodes;
 pub mod operands;
 mod register_descriptor;
 mod register_impls;
@@ -50,18 +46,12 @@ pub use generated::AccessType;
 pub use generated::InstrSuffix;
 pub use generated::IsaExtension;
 pub use generated::IsaVersion;
-pub use generated::Opcode;
-pub use generated::OpcodeCategory;
+
 #[allow(deprecated)]
 pub use instr_type::InstrType;
 
-pub use generated::OPCODES;
-
 pub use encoded_field_mask::EncodedFieldMask;
 pub use instruction::Instruction;
-pub use opcode_category_descriptor::OpcodeCategoryDescriptor;
-pub(crate) use opcode_decoder::OpcodeDecoder;
-pub use opcode_descriptor::OpcodeDescriptor;
 pub use register_descriptor::RegisterDescriptor;
 pub use vram::Vram;
 pub use vram_offset::VramOffset;

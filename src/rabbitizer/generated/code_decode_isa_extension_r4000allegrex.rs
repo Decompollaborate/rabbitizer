@@ -3,7 +3,8 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
-use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::{DecodingFlags, EncodedFieldMask, IsaVersion};
 impl OpcodeDecoder {
     #[must_use]
     pub(crate) const fn decode_isa_extension_r4000allegrex_normal(

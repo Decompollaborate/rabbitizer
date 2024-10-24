@@ -3,7 +3,7 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
-use crate::{opcode_category::OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
+use crate::opcodes::{OpcodeCategoryDescriptor, OPCODE_CATEGORY_COUNT};
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]

@@ -21,15 +21,16 @@
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
 
 use crate::operands::Operand;
-use crate::{opcode, AccessType, InstrSuffix, InstrType, IsaExtension, IsaVersion, Opcode, OpcodeDescriptor};
+use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
+use crate::{AccessType, InstrSuffix, InstrType, IsaExtension, IsaVersion};
 
-pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
-    let mut table = [OpcodeDescriptor::default(); opcode::OPCODE_COUNT];
+pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
+    let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];
 
     #include "Opcode.inc"
 
     let mut i = 0;
-    while i < opcode::OPCODE_COUNT {
+    while i < OPCODE_COUNT {
         table[i].check_panic();
         i += 1;
     }

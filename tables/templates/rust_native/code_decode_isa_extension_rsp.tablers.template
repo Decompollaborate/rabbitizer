@@ -19,7 +19,8 @@
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten) \
     case_bits => Opcode::ALL_INVALID,
 
-use crate::{DecodingFlags, EncodedFieldMask, IsaVersion, Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::{DecodingFlags, EncodedFieldMask, IsaVersion};
 
 impl OpcodeDecoder {
     SPECIAL_RS_TAG(must_use)

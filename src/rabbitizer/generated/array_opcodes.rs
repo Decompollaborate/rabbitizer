@@ -3,12 +3,11 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
 use crate::operands::Operand;
-use crate::{
-    opcode, AccessType, InstrSuffix, InstrType, IsaExtension, IsaVersion, Opcode, OpcodeDescriptor,
-};
-pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
-    let mut table = [OpcodeDescriptor::default(); opcode::OPCODE_COUNT];
+use crate::{AccessType, InstrSuffix, InstrType, IsaExtension, IsaVersion};
+pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
+    let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];
     table[Opcode::ALL_INVALID as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         ..OpcodeDescriptor::new("INVALID", IsaVersion::MIPS_I, IsaExtension::NONE)
@@ -7889,7 +7888,7 @@ pub static OPCODES: [OpcodeDescriptor; opcode::OPCODE_COUNT] = {
     }
     .check_panic_chain();
     let mut i = 0;
-    while i < opcode::OPCODE_COUNT {
+    while i < OPCODE_COUNT {
         table[i].check_panic();
         i += 1;
     }

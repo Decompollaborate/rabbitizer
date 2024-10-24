@@ -3,10 +3,11 @@
 
 use core::ops::Index;
 
+use crate::opcodes::Opcode;
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 #[allow(deprecated)]
 use crate::InstrType;
-use crate::{utils, AccessType, EncodedFieldMask, InstrSuffix, IsaExtension, IsaVersion, Opcode};
+use crate::{utils, AccessType, EncodedFieldMask, InstrSuffix, IsaExtension, IsaVersion};
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]

@@ -3,7 +3,7 @@
 
 use core::ops::Index;
 
-use crate::OpcodeCategory;
+use crate::opcodes::OpcodeCategory;
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]

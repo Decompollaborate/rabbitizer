@@ -132,7 +132,7 @@ impl<'ins> Iterator for OperandIterator<'ins> {
 
 #[cfg(test)]
 mod tests {
-    use crate::Opcode;
+    use crate::opcodes::Opcode;
 
     use super::*;
 

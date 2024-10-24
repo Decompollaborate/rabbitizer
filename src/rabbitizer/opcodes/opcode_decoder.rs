@@ -3,7 +3,8 @@
 
 #![allow(clippy::wildcard_enum_match_arm)]
 
-use crate::{DecodingFlags, EncodedFieldMask, IsaExtension, IsaVersion, Opcode, OpcodeCategory};
+use crate::opcodes::{Opcode, OpcodeCategory};
+use crate::{DecodingFlags, EncodedFieldMask, IsaExtension, IsaVersion};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub(crate) struct OpcodeDecoder {
