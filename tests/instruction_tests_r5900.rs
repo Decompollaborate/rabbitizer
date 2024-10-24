@@ -4,7 +4,8 @@
 mod common;
 
 use common::{check_test_entries, TestEntry};
-use rabbitizer::{DisplayFlags, Instruction, InstructionFlags, Opcode, Vram};
+use rabbitizer::opcodes::Opcode;
+use rabbitizer::{DisplayFlags, Instruction, InstructionFlags, Vram};
 
 #[test]
 fn check_r5900_instructions() {
