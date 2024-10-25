@@ -3,6 +3,10 @@ name: Build and upload Rust crate
 # Build on every branch push, tag push, and pull request change:
 on: [push, pull_request]
 
+env:
+  RUSTFLAGS: "-D warnings"
+  # RUSTDOCFLAGS: "-D warnings"
+
 jobs:
   check_fmt:
     name: Check format
@@ -39,7 +43,7 @@ jobs:
         run: rustup component add clippy
 
       - name: Run clippy
-        run: cargo clippy --all-targets -- -D warnings
+        run: cargo clippy --all-targets
 
   check_clippy_all_features:
     name: Check clippy - features- all
@@ -59,7 +63,24 @@ jobs:
         run: rustup component add clippy
 
       - name: Run clippy
-        run: cargo clippy --all-targets --all-features -- -D warnings
+        run: cargo clippy --all-targets --all-features
+
+  check_doc:
+    name: Check doc
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run doc
+        run: cargo doc
 
   run_tests:
     name: Run tests

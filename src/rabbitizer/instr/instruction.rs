@@ -195,9 +195,9 @@ impl Instruction {
     /// branch depends on how the [`InstructionFlags`] of this instruction
     /// instance was configured.
     ///
-    /// [`b`]: crate::Opcode::core_b
-    /// [`j`]: crate::Opcode::core_j
-    /// [`InstructionFlags`]: crate::InstructionFlags
+    /// [`b`]: crate::opcodes::Opcode::core_b
+    /// [`j`]: crate::opcodes::Opcode::core_j
+    /// [`InstructionFlags`]: crate::instr::InstructionFlags
     #[must_use]
     pub fn is_unconditional_branch(&self) -> bool {
         match self.opcode() {
@@ -221,9 +221,9 @@ impl Instruction {
     /// registers after a tail call. This can be configured by turning off the
     /// [`j_as_branch`] option on the [`InstructionFlags`].
     ///
-    /// [`j`]: crate::Opcode::core_j
-    /// [`j_as_branch`]: crate::InstructionFlags::with_j_as_branch
-    /// [`InstructionFlags`]: crate::InstructionFlags
+    /// [`j`]: crate::opcodes::Opcode::core_j
+    /// [`j_as_branch`]: crate::instr::InstructionFlags::with_j_as_branch
+    /// [`InstructionFlags`]: crate::instr::InstructionFlags
     #[must_use]
     pub fn is_function_call(&self) -> bool {
         if self.opcode().does_link() {
@@ -244,7 +244,7 @@ impl Instruction {
     /// Returns `false` if the instruction is not a [`jr`] or if it is a [`jr`]
     /// but the register is not [`$ra`].
     ///
-    /// [`jr`]: crate::Opcode::core_jr
+    /// [`jr`]: crate::opcodes::Opcode::core_jr
     /// [`$ra`]: crate::registers::Gpr::ra
     #[must_use]
     pub fn is_return(&self) -> bool {
@@ -263,7 +263,7 @@ impl Instruction {
     /// Returns `false` if the instruction is not a [`jr`] or if it is a [`jr`]
     /// but the register is [`$ra`].
     ///
-    /// [`jr`]: crate::Opcode::core_jr
+    /// [`jr`]: crate::opcodes::Opcode::core_jr
     /// [`$ra`]: crate::registers::Gpr::ra
     #[must_use]
     pub fn is_jumptable_jump(&self) -> bool {
@@ -925,6 +925,169 @@ impl Instruction {
     }
 }
 
+/// RSP opcode fields
+impl Instruction {
+    /// Returns either the [`RspCop0`] register embedded on the `rsp_cop0d`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`RspCop0`]: crate::registers::RspCop0
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_cop0d(&self) -> Option<RspCop0> {
+        if self.opcode().has_operand_alias(Operand::rsp_cop0d) {
+            Some(self.field_rsp_cop0d_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`RspCop2`] register embedded on the `rsp_cop2t`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`RspCop2`]: crate::registers::RspCop2
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_cop2t(&self) -> Option<RspCop2> {
+        if self.opcode().has_operand_alias(Operand::rsp_cop2t) {
+            Some(self.field_rsp_cop2t_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`RspCop2`] register embedded on the `rsp_cop2cd`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`RspCop2`]: crate::registers::RspCop2
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_cop2cd(&self) -> Option<RspCop2> {
+        if self.opcode().has_operand_alias(Operand::rsp_cop2cd) {
+            Some(self.field_rsp_cop2cd_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`RspVector`] register value embedded on the `rsp_vs`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`RspCop2`]: crate::registers::RspVector
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_vs(&self) -> Option<RspVector> {
+        if self.opcode().has_operand_alias(Operand::rsp_vs) {
+            Some(self.field_rsp_vs_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`RspVector`] register embedded on the `rsp_vt`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`RspCop2`]: crate::registers::RspVector
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_vt(&self) -> Option<RspVector> {
+        if self.opcode().has_operand_alias(Operand::rsp_vt_elementhigh) || self.opcode().has_operand_alias(Operand::rsp_vt_elementlow) {
+            Some(self.field_rsp_vt_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`RspVector`] register embedded on the `rsp_vd`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`RspCop2`]: crate::registers::RspVector
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_vd(&self) -> Option<RspVector> {
+        if self.opcode().has_operand_alias(Operand::rsp_vd) {
+            Some(self.field_rsp_vd_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_elementhigh` value embedded on the `rsp_elementhigh`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_elementhigh(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::rsp_vt_elementhigh) {
+            Some(self.field_rsp_elementhigh_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_elementlow` value embedded on the `rsp_elementlow`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_elementlow(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::rsp_vt_elementlow) {
+            Some(self.field_rsp_elementlow_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_index` value embedded on the `rsp_index`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_index(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::rsp_vs_index) {
+            Some(self.field_rsp_index_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_offset` value embedded on the `rsp_offset`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_offset(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::rsp_offset_rs) {
+            Some(self.field_rsp_offset_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_de` value embedded on the `rsp_de`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_rsp_de(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::rsp_vd_de) {
+            Some(self.field_rsp_de_unchecked())
+        } else {
+            None
+        }
+    }
+}
+
 /// Unchecked RSP opcode fields
 impl Instruction {
     /// Returns the [`RspCop0`] register embedded on the `rsp_cop0d` field of the word
@@ -1009,7 +1172,7 @@ impl Instruction {
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_rsp_vs`]
+    /// as this field. It is recommended to use the [`field_rsp_vt`]
     /// function instead.
     ///
     /// [`RspVector`]: crate::registers::RspVector
@@ -2275,6 +2438,226 @@ impl Instruction {
     }
 }
 
+/// R5900 opcode fields
+impl Instruction {
+    /// Returns either the `r5900_immediate5` value embedded on the `r5900_immediate5`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_immediate5(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r5900_immediate5) {
+            Some(self.field_r5900_immediate5_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_immediate15` value embedded on the `r5900_immediate15`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_immediate15(&self) -> Option<u16> {
+        if self.opcode().has_operand_alias(Operand::r5900_immediate15) {
+            Some(self.field_r5900_immediate15_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900VF`] register embedded on the `r5900_vfs`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900VF`]: crate::registers::R5900VF
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_vfs(&self) -> Option<R5900VF> {
+        if self.opcode().has_operand_alias(Operand::r5900_vfs) {
+            Some(self.field_r5900_vfs_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900VF`] register embedded on the `r5900_vft`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900VF`]: crate::registers::R5900VF
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_vft(&self) -> Option<R5900VF> {
+        if self.opcode().has_operand_alias(Operand::r5900_vft) {
+            Some(self.field_r5900_vft_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900VF`] register embedded on the `r5900_vfd`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900VF`]: crate::registers::R5900VF
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_vfd(&self) -> Option<R5900VF> {
+        if self.opcode().has_operand_alias(Operand::r5900_vfd) {
+            Some(self.field_r5900_vfd_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900VI`] register value embedded on the `r5900_vis`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900VI`]: crate::registers::R5900VI
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_vis(&self) -> Option<R5900VI> {
+        if self.opcode().has_operand_alias(Operand::r5900_vis) {
+            Some(self.field_r5900_vis_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900VI`] register embedded on the `r5900_vit`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900VI`]: crate::registers::R5900VI
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_vit(&self) -> Option<R5900VI> {
+        if self.opcode().has_operand_alias(Operand::r5900_vit) {
+            Some(self.field_r5900_vit_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900VI`] register embedded on the `r5900_vid`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900VI`]: crate::registers::R5900VI
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_vid(&self) -> Option<R5900VI> {
+        if self.opcode().has_operand_alias(Operand::r5900_vid) {
+            Some(self.field_r5900_vid_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_xyzw_x` value embedded on the `r5900_xyzw_x`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_xyzw_x(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+            Some(self.field_r5900_xyzw_x_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_xyzw_y` value embedded on the `r5900_xyzw_y`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_xyzw_y(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+            Some(self.field_r5900_xyzw_y_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_xyzw_z` value embedded on the `r5900_xyzw_z`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_xyzw_z(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+            Some(self.field_r5900_xyzw_z_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_xyzw_w` value embedded on the `r5900_xyzw_w`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_xyzw_w(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+            Some(self.field_r5900_xyzw_w_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_n` value embedded on the `r5900_n`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_n(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r5900_vftn) {
+            Some(self.field_r5900_n_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_l` value embedded on the `r5900_l`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_l(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r5900_vfsl) {
+            Some(self.field_r5900_l_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900_m` value embedded on the `r5900_m`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900_m(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r5900_vftm) {
+            Some(self.field_r5900_m_unchecked())
+        } else {
+            None
+        }
+    }
+
+}
+
 /// Unchecked R5900 opcode fields
 impl Instruction {
     /// Returns the `r5900_immediate5` value embedded on the `r5900_immediate5` field of
@@ -2729,7 +3112,7 @@ impl Instruction {
 
 impl Instruction {
     #[must_use]
-    pub fn get_processed_rsp_offset_unchecked(&self) -> u16 {
+    pub(crate) fn get_processed_rsp_offset_unchecked(&self) -> u16 {
         let offset: u16 = self.field_rsp_offset_unchecked().into();
 
         // TODO: do not depend on the opcode to process the offset itself.
