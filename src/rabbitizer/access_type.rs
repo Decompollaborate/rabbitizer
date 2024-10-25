@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::AccessType;
+pub use crate::generated::AccessType;
 
 impl AccessType {
     #[must_use]

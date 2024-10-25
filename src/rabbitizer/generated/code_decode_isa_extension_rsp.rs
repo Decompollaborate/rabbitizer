@@ -3,9 +3,9 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::isa::IsaVersion;
 use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
-use crate::EncodedFieldMask;
 impl OpcodeDecoder {
     #[must_use]
     pub(crate) const fn decode_isa_extension_rsp_normal(

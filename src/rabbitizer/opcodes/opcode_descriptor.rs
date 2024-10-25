@@ -3,12 +3,14 @@
 
 use core::ops::Index;
 
+use crate::access_type::AccessType;
+use crate::encoded_field_mask::EncodedFieldMask;
 #[allow(deprecated)]
 use crate::instr::{InstrSuffix, InstrType};
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::Opcode;
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
-use crate::{utils, AccessType, EncodedFieldMask};
+use crate::utils;
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]

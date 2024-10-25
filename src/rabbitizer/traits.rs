@@ -1,8 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::abi::Abi;
 use crate::register_descriptors::RegisterDescriptor;
-use crate::Abi;
 
 pub trait Register: PartialEq + PartialOrd + Default {
     #[must_use]

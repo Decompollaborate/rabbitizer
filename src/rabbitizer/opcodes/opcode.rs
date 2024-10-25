@@ -1,11 +1,12 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::access_type::AccessType;
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::InstrType;
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODES};
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
-use crate::{AccessType, EncodedFieldMask};
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain

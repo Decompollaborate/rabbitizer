@@ -16,7 +16,7 @@ use crate::vram::VramOffset;
 ///
 /// To get the raw inner value use the [`inner`] function.
 ///
-/// [`VramOffset`]: crate::VramOffset
+/// [`VramOffset`]: crate::vram::VramOffset
 /// [`add_offset`]: Vram::add_offset
 /// [`sub_vram`]: Vram::sub_vram
 /// [`inner`]: Vram::inner

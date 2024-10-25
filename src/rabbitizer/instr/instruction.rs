@@ -1,7 +1,9 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::abi::Abi;
 use crate::display_flags::DisplayFlags;
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::{InstructionDisplay, InstructionFlags};
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
@@ -10,8 +12,6 @@ use crate::registers::*;
 use crate::traits::{R4000AllegrexVectorRegister, Register};
 use crate::utils;
 use crate::vram::{Vram, VramOffset};
-use crate::Abi;
-use crate::EncodedFieldMask;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Instruction {
@@ -2589,7 +2589,7 @@ impl Instruction {
     /// Get the target [`Vram`] address this instruction jumps to.
     /// This function is intended only for direct jump instructions.
     ///
-    /// [`Vram`]: crate::Vram
+    /// [`Vram`]: crate::vram::Vram
     #[must_use]
     pub fn get_instr_index_as_vram(&self) -> Option<Vram> {
         self.field_instr_index()
@@ -2606,7 +2606,7 @@ impl Instruction {
     /// [`get_instr_index_as_vram`] function instead.
     ///
     /// [`get_instr_index_as_vram`]: Instruction::get_instr_index_as_vram
-    /// [`Vram`]: crate::Vram
+    /// [`Vram`]: crate::vram::Vram
     #[must_use]
     pub const fn get_instr_index_as_vram_unchecked(&self) -> Vram {
         self.vram_from_instr_index(self.field_instr_index_unchecked())
@@ -2623,7 +2623,7 @@ impl Instruction {
     /// use [`get_branch_offset_generic`] instead.
     ///
     /// [`get_branch_offset_generic`]: Instruction::get_branch_offset_generic
-    /// [`VramOffset`]: crate::VramOffset
+    /// [`VramOffset`]: crate::vram::VramOffset
     #[must_use]
     pub fn get_branch_offset(&self) -> Option<VramOffset> {
         if self
@@ -2654,7 +2654,7 @@ impl Instruction {
     ///
     /// [`get_branch_offset_generic`]: Instruction::get_branch_offset_generic
     /// [`get_branch_offset`]: Instruction::get_branch_offset
-    /// [`VramOffset`]: crate::VramOffset
+    /// [`VramOffset`]: crate::vram::VramOffset
     #[must_use]
     pub fn get_branch_offset_unchecked(&self) -> VramOffset {
         let imm = self.field_immediate_unchecked();
@@ -2669,7 +2669,7 @@ impl Instruction {
     ///
     /// The returned value can be either positive or negative.
     ///
-    /// [`VramOffset`]: crate::VramOffset
+    /// [`VramOffset`]: crate::vram::VramOffset
     #[must_use]
     pub fn get_branch_offset_generic(&self) -> Option<VramOffset> {
         if self.opcode().has_operand_alias(Operand::core_label) {
@@ -2683,7 +2683,7 @@ impl Instruction {
     /// This method is intended only for branch or direct jump with address
     /// instructions.
     ///
-    /// [`Vram`]: crate::Vram
+    /// [`Vram`]: crate::vram::Vram
     #[must_use]
     pub fn get_branch_vram_generic(&self) -> Option<Vram> {
         if self

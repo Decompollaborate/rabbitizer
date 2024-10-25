@@ -1,11 +1,11 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::abi::Abi;
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::Gpr;
 use crate::traits::Register;
-use crate::Abi;
 
 impl Gpr {
     #[must_use]

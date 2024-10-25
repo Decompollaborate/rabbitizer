@@ -3,12 +3,12 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::operands::{
     OperandDescriptor, OperandDisplay, OperandDisplayCallback, IU16, OPERAND_COUNT,
 };
 use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
-use crate::EncodedFieldMask;
 use core::num::NonZeroU16;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]

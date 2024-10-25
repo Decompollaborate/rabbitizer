@@ -10,7 +10,7 @@ use core::num::NonZeroU16;
 use crate::operands::{OperandDescriptor, IU16, OPERAND_COUNT, OperandDisplay, OperandDisplayCallback};
 use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
-use crate::EncodedFieldMask;
+use crate::encoded_field_mask::EncodedFieldMask;
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     prefix##_##operand,

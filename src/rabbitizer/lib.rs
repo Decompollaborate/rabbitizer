@@ -27,8 +27,8 @@ extern crate std;
 
 mod generated;
 
-mod abi;
-mod access_type;
+pub mod abi;
+pub mod access_type;
 pub mod display_flags;
 mod encoded_field_mask;
 mod error;
@@ -42,11 +42,5 @@ pub mod traits;
 pub mod vram;
 
 mod utils;
-
-pub use generated::Abi;
-pub use generated::AccessType;
-
-// pub use instruction::Instruction;
-pub use encoded_field_mask::EncodedFieldMask;
 
 pub use error::Error;

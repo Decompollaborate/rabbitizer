@@ -21,7 +21,7 @@
 
 use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::isa::IsaVersion;
-use crate::EncodedFieldMask;
+use crate::encoded_field_mask::EncodedFieldMask;
 
 impl OpcodeDecoder {
     SPECIAL_RS_TAG(must_use)

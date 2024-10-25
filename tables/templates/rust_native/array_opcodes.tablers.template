@@ -23,8 +23,8 @@
 use crate::operands::Operand;
 use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
 use crate::isa::{IsaExtension, IsaVersion};
-use crate::instruction::{InstrSuffix, InstrType};
-use crate::AccessType;
+use crate::instr::{InstrSuffix, InstrType};
+use crate::access_type::AccessType;
 
 pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];

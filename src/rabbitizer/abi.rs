@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::Abi;
+pub use crate::generated::Abi;
 
 impl Abi {
     #[must_use]
