@@ -5,6 +5,8 @@
 //! extensions, including RSP (N64 reality signal procesor), R3000 GTE (PSX), R4000 ALLEGREX (PSP) and R5900 EE (PS2
 //! Emotion Engine).
 
+// TODO: add example
+
 #![warn(clippy::exhaustive_enums)]
 #![warn(clippy::use_self)]
 #![warn(clippy::must_use_candidate)]
@@ -37,8 +39,7 @@ pub mod operands;
 pub mod register_descriptors;
 pub mod registers;
 pub mod traits;
-mod vram;
-mod vram_offset;
+pub mod vram;
 
 mod utils;
 
@@ -47,7 +48,5 @@ pub use generated::AccessType;
 
 // pub use instruction::Instruction;
 pub use encoded_field_mask::EncodedFieldMask;
-pub use vram::Vram;
-pub use vram_offset::VramOffset;
 
 pub use error::Error;

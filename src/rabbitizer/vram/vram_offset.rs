@@ -3,7 +3,7 @@
 
 use core::{fmt, ops};
 
-use crate::Vram;
+use crate::vram::Vram;
 
 /// Holds the offset (in bytes) or difference between two [`Vram`] addresses.
 ///
@@ -17,7 +17,7 @@ use crate::Vram;
 /// # Examples
 ///
 /// ```
-/// use rabbitizer::{VramOffset, Vram};
+/// use rabbitizer::vram::{VramOffset, Vram};
 ///
 /// let offset = VramOffset::new(-0x10);
 /// let vram = Vram::new(0x80000100);
@@ -25,7 +25,7 @@ use crate::Vram;
 /// assert_eq!(vram + offset, Vram::new(0x800000F0));
 /// ```
 ///
-/// [`Vram`]: crate::Vram
+/// [`Vram`]: crate::vram::Vram
 /// [`add_vram`]: VramOffset::add_vram
 /// [`inner`]: VramOffset::inner
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -52,7 +52,7 @@ impl VramOffset {
     /// # Examples
     ///
     /// ```
-    /// use rabbitizer::{VramOffset, Vram};
+    /// use rabbitizer::vram::{VramOffset, Vram};
     ///
     /// let offset = VramOffset::new(0x8);
     /// let vram = Vram::new(0x80000100);
@@ -60,7 +60,7 @@ impl VramOffset {
     /// assert_eq!(offset.add_vram(&vram), Vram::new(0x80000108));
     /// ```
     ///
-    /// [`Vram`]: crate::Vram
+    /// [`Vram`]: crate::vram::Vram
     #[must_use]
     pub const fn add_vram(&self, rhs: &Vram) -> Vram {
         rhs.add_offset(self)

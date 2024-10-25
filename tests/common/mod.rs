@@ -5,7 +5,7 @@ use rabbitizer::display_flags::DisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::opcodes::Opcode;
 use rabbitizer::operands::OPERAND_COUNT_MAX;
-use rabbitizer::Vram;
+use rabbitizer::vram::Vram;
 
 pub struct TestEntry {
     pub instr: Instruction,

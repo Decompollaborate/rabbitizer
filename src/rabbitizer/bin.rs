@@ -42,7 +42,7 @@ fn main() {
 fn main() {
     let instr = rabbitizer::instr::Instruction::new_r4000allegrex(
         0xD0119001,
-        rabbitizer::Vram::new(0x80000000),
+        rabbitizer::vram::Vram::new(0x80000000),
         rabbitizer::instr::InstructionFlags::default(),
     );
 

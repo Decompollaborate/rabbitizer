@@ -9,9 +9,9 @@ use crate::operands::{Operand, OperandIterator, ValuedOperandIterator};
 use crate::registers::*;
 use crate::traits::{R4000AllegrexVectorRegister, Register};
 use crate::utils;
+use crate::vram::{Vram, VramOffset};
 use crate::Abi;
 use crate::EncodedFieldMask;
-use crate::{Vram, VramOffset};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Instruction {

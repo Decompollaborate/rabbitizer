@@ -3,7 +3,7 @@
 
 use core::{fmt, ops};
 
-use crate::VramOffset;
+use crate::vram::VramOffset;
 
 /// A VRAM (Virtual RAM) address.
 ///
@@ -43,7 +43,7 @@ impl Vram {
     /// # Examples
     ///
     /// ```
-    /// use rabbitizer::{VramOffset, Vram};
+    /// use rabbitizer::vram::{VramOffset, Vram};
     ///
     /// let offset = VramOffset::new(0x8);
     /// let vram = Vram::new(0x80000100);
@@ -60,7 +60,7 @@ impl Vram {
     /// # Examples
     ///
     /// ```
-    /// use rabbitizer::{VramOffset, Vram};
+    /// use rabbitizer::vram::{VramOffset, Vram};
     ///
     /// let vram_a = Vram::new(0x80000100);
     /// let vram_b = Vram::new(0x80000140);

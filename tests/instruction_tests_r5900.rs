@@ -7,7 +7,7 @@ use common::{check_test_entries, TestEntry};
 use rabbitizer::display_flags::DisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::opcodes::Opcode;
-use rabbitizer::Vram;
+use rabbitizer::vram::Vram;
 
 #[test]
 fn check_r5900_instructions() {

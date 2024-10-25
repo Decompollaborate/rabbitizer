@@ -8,7 +8,7 @@ use rabbitizer::display_flags::DisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::isa::IsaVersion;
 use rabbitizer::opcodes::Opcode;
-use rabbitizer::Vram;
+use rabbitizer::vram::Vram;
 
 #[test]
 fn check_none_instructions() {
