@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: © 2024 Decompollaborate
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "rabbitizer"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "MIPS instruction decoder"
+readme = "README.md"
+keywords = ["MIPS", "decoder"]
+# build = "rust/build.rs"
+# include = ["/rust/src", "/rust/build.rs", "/src", "/include", "/tables"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "src/lib.rs"
+
+[features]
+default = []
+std = []
+bindings_c = []
+bindings_python = []
+
+[dependencies]
+bitflags = { version = "2.6.0", default-features = false }

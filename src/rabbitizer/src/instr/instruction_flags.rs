@@ -57,11 +57,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_enable_pseudos(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::enable_pseudos
+            self.decoding_flags.union(DecodingFlags::enable_pseudos)
         } else {
-            DecodingFlags::enable_pseudos.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::enable_pseudos.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -78,11 +79,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_move(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_move
+            self.decoding_flags.union(DecodingFlags::pseudo_move)
         } else {
-            DecodingFlags::pseudo_move.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_move.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -99,11 +101,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_beqz(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_beqz
+            self.decoding_flags.union(DecodingFlags::pseudo_beqz)
         } else {
-            DecodingFlags::pseudo_beqz.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_beqz.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -120,11 +123,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_bnez(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_bnez
+            self.decoding_flags.union(DecodingFlags::pseudo_bnez)
         } else {
-            DecodingFlags::pseudo_bnez.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_bnez.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -141,11 +145,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_b(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_b
+            self.decoding_flags.union(DecodingFlags::pseudo_b)
         } else {
-            DecodingFlags::pseudo_b.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_b.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -162,11 +167,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_bal(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_bal
+            self.decoding_flags.union(DecodingFlags::pseudo_bal)
         } else {
-            DecodingFlags::pseudo_bal.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_bal.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -183,11 +189,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_not(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_not
+            self.decoding_flags.union(DecodingFlags::pseudo_not)
         } else {
-            DecodingFlags::pseudo_not.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_not.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -204,11 +211,12 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_neg(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_neg
+            self.decoding_flags.union(DecodingFlags::pseudo_neg)
         } else {
-            DecodingFlags::pseudo_neg.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_neg.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
     }
 
     #[must_use]
@@ -225,11 +233,20 @@ impl InstructionFlags {
     #[must_use]
     pub const fn with_pseudo_negu(self, turn_on: bool) -> Self {
         let other = if turn_on {
-            DecodingFlags::pseudo_negu
+            self.decoding_flags.union(DecodingFlags::pseudo_negu)
         } else {
-            DecodingFlags::pseudo_negu.complement()
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_negu.complement())
         };
-        self.with_decoding_flags(self.decoding_flags.intersection(other))
+        self.with_decoding_flags(other)
+    }
+
+    pub fn set_all_pseudos(&mut self, turn_on: bool) {
+        self.decoding_flags.set_all_pseudos(turn_on)
+    }
+    #[must_use]
+    pub const fn with_all_pseudos(self, turn_on: bool) -> Self {
+        self.with_decoding_flags(self.decoding_flags.with_all_pseudos(turn_on))
     }
 
     #[must_use]

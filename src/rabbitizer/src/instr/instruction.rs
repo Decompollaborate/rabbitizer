@@ -995,7 +995,9 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_rsp_vt(&self) -> Option<RspVector> {
-        if self.opcode().has_operand_alias(Operand::rsp_vt_elementhigh) || self.opcode().has_operand_alias(Operand::rsp_vt_elementlow) {
+        if self.opcode().has_operand_alias(Operand::rsp_vt_elementhigh)
+            || self.opcode().has_operand_alias(Operand::rsp_vt_elementlow)
+        {
             Some(self.field_rsp_vt_unchecked())
         } else {
             None
@@ -2565,7 +2567,11 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_r5900_xyzw_x(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+        {
             Some(self.field_r5900_xyzw_x_unchecked())
         } else {
             None
@@ -2579,7 +2585,11 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_r5900_xyzw_y(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+        {
             Some(self.field_r5900_xyzw_y_unchecked())
         } else {
             None
@@ -2593,7 +2603,11 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_r5900_xyzw_z(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+        {
             Some(self.field_r5900_xyzw_z_unchecked())
         } else {
             None
@@ -2607,7 +2621,11 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_r5900_xyzw_w(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw) || self.opcode().has_operand_alias(Operand::r5900_vftxyzw) || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw) {
+        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+        {
             Some(self.field_r5900_xyzw_w_unchecked())
         } else {
             None
@@ -2655,7 +2673,6 @@ impl Instruction {
             None
         }
     }
-
 }
 
 /// Unchecked R5900 opcode fields

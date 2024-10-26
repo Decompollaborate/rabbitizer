@@ -45,6 +45,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Err(fmt::Error)
     }
 
+    #[inline]
     pub(crate) fn display_imm_override_or(
         myself: &OperandDisplay,
         f: &mut fmt::Formatter<'_>,

@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: © 2024 Decompollaborate
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "rab-disasmdis"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+# description = "MIPS instruction decoder"
+# readme = "README.md"
+# keywords = ["MIPS", "decoder"]
+
+[[bin]]
+# Just for testing
+name = "rab-disasmdis"
+path = "src/bin.rs"
+
+[dependencies]
+clap = { version = "4.5.20", features = ["derive"] }
+rabbitizer = { path = "../rabbitizer" }
