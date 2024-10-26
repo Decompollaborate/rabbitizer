@@ -19,7 +19,7 @@ $(shell mkdir -p ../include/generated/ ../cplusplus/include/generated/)
 # TABLE_RS_GENERATED          := $(TABLE_RS_TEMPLATES:$(TEMPLATE_FOLDER)/rust/%.tablers.template=../rust/src/%.rs)
 
 TABLE_RUST_TEMPLATES        := $(wildcard $(TEMPLATE_FOLDER)/rust_native/*.tablers.template)
-TABLE_RUST_GENERATED        := $(TABLE_RUST_TEMPLATES:$(TEMPLATE_FOLDER)/rust_native/%.tablers.template=../src/rabbitizer/generated/%.rs)
+TABLE_RUST_GENERATED        := $(TABLE_RUST_TEMPLATES:$(TEMPLATE_FOLDER)/rust_native/%.tablers.template=../src/rabbitizer/src/generated/%.rs)
 
 # TABLE_PYI_TEMPLATES         := $(wildcard $(TEMPLATE_FOLDER)/python/*.tablepyi.template)
 # TABLE_PYI_GENERATED         := $(TABLE_PYI_TEMPLATES:$(TEMPLATE_FOLDER)/python/%.tablepyi.template=../rabbitizer/%.pyi)
@@ -35,7 +35,7 @@ TABLE_DEP_FILES     += $(TABLE_RUST_TEMPLATES:%.template=%.d)
 all: tables
 
 tables: $(TABLE_C_GENERATED) $(TABLE_CPLUSPLUS_GENERATED) $(TABLE_RS_GENERATED) $(TABLE_RUST_GENERATED) $(TABLE_PYI_GENERATED)
-	cargo fmt
+	cargo fmt --manifest-path ../src/rabbitizer/Cargo.toml
 
 clean:
 #	$(RM) -rf $(TABLE_C_GENERATED)
@@ -65,7 +65,7 @@ distclean: clean
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
 	$(RS_TABLE_GEN) $< $@ || (rm -rf $@ && false)
 
-../src/rabbitizer/generated/%.rs: $(TEMPLATE_FOLDER)/rust_native/%.tablers.template | ../src/rabbitizer/generated
+../src/rabbitizer/src/generated/%.rs: $(TEMPLATE_FOLDER)/rust_native/%.tablers.template | ../src/rabbitizer/src/generated
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
 	$(RS_TABLE_GEN) $< $@ || (rm -rf $@ && false)
 
@@ -74,7 +74,7 @@ distclean: clean
 	$(PYI_TABLE_GEN) $< $@ || (rm -rf $@ && false)
 
 
-../src/rabbitizer/generated:
+../src/rabbitizer/src/generated:
 	mkdir -p $@
 
 
