@@ -26,39 +26,53 @@ struct Args {
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 struct Data {
-    bytes: [u8; 4],
+    characters: [char; 8],
     index: usize,
-    nibble: bool,
 }
 
 impl Data {
     pub fn new() -> Self {
         Self {
-            bytes: [0; 4],
+            characters: ['\0'; 8],
             index: 0,
-            nibble: false,
         }
     }
 
     pub const fn done(&self) -> bool {
-        self.index >= self.bytes.len()
+        self.index >= self.characters.len()
     }
 
     pub const fn is_empty(&self) -> bool {
-        self.index == 0 && !self.nibble
+        self.index == 0
     }
 
     pub const fn missing_chars(&self) -> usize {
-        let n = if self.nibble { 1 } else { 0 };
-
-        (self.bytes.len() - self.index) * 2 - n
+        self.characters.len() - self.index
     }
 
     pub fn get_bytes(&mut self) -> Option<[u8; 4]> {
         self.done().then(|| {
-            let bytes = self.bytes;
+            let mut bytes = [0u8; 4];
+
+            for (i, c) in self.characters.iter().enumerate() {
+                let byte_index = i / 2;
+                let nibble = i % 2 != 0;
+
+                let value = match c {
+                    '0'..='9' => *c as u8 - b'0',
+                    'A'..='F' => *c as u8 - b'A' + 10,
+                    'a'..='f' => *c as u8 - b'a' + 10,
+                    _ => panic!(),
+                };
+
+                if nibble {
+                    bytes[byte_index] |= value;
+                } else {
+                    bytes[byte_index] = value << 4;
+                }
+            }
+
             self.index = 0;
-            self.nibble = false;
             bytes
         })
     }
@@ -68,28 +82,17 @@ impl Data {
             return Err(());
         }
 
-        let value = match c {
-            '0'..='9' => c as u8 - b'0',
-            'A'..='F' => c as u8 - b'A' + 10,
-            'a'..='f' => c as u8 - b'a' + 10,
-            'x' | 'X' => return self.pop(),
-            ' ' | ':' | '-' | '+' => return Ok(()),
-            _ => return Err(()),
-        };
-
-        assert!(self.index < self.bytes.len());
-        let val = if self.nibble {
-            self.bytes[self.index] | value
-        } else {
-            value << 4
-        };
-        self.bytes[self.index] = val;
-        if self.nibble {
-            self.index += 1;
+        match c {
+            '0'..='9' | 'A'..='F' | 'a'..='f' => {
+                assert!(self.index < self.characters.len());
+                self.characters[self.index] = c;
+                self.index += 1;
+                Ok(())
+            }
+            'x' | 'X' => self.pop(),
+            ' ' | ':' | '-' | '+' => Ok(()), // ignore those
+            _ => Err(()),
         }
-        self.nibble = !self.nibble;
-
-        Ok(())
     }
 
     pub fn pop(&mut self) -> Result<(), ()> {
@@ -97,13 +100,8 @@ impl Data {
             return Err(());
         }
 
-        if self.nibble {
-            self.bytes[self.index] = 0;
-        } else {
-            self.bytes[self.index - 1] &= !0xF;
-            self.index -= 1;
-        }
-        self.nibble = !self.nibble;
+        self.characters[self.index - 1] = '\0';
+        self.index -= 1;
 
         Ok(())
     }
@@ -119,9 +117,15 @@ fn main() {
     let vram = rabbitizer::vram::Vram::new(0x8000_0000);
     let display_flags = rabbitizer::display_flags::DisplayFlags::new_gnu_as();
 
+    if args.inputs.is_empty() {
+        eprintln!("Missing arguments");
+        std::process::exit(1);
+    }
+
     for input in args.inputs {
         for c in input.chars() {
             if let Some(bytes) = data.get_bytes() {
+                // Display an instruction each time the buffer is full
                 let word = endian.word_from_bytes(bytes);
                 let instr = rabbitizer::instr::Instruction::new(
                     word,
@@ -149,9 +153,19 @@ fn main() {
         );
         println!("{}", instr.display(None, &display_flags));
     } else {
-        panic!(
+        eprintln!(
             "Could not fill up a word while parsing the input. Missing characters: '{}'",
             data.missing_chars()
         );
+        eprint!("Characters seen: ");
+        for (i, c) in data.characters.iter().enumerate() {
+            if i < data.index {
+                eprint!("{}", c);
+            } else {
+                eprint!("*");
+            }
+        }
+        eprintln!();
+        std::process::exit(1);
     }
 }

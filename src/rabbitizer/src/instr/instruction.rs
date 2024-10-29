@@ -2946,15 +2946,13 @@ impl Instruction {
     /// Get the (possibly signed) immediate value for this instruction.
     #[must_use]
     pub fn get_processed_immediate(&self) -> Option<i32> {
-        if let Some(imm) = self.field_immediate() {
+        self.field_immediate().map(|imm| {
             if self.opcode().is_unsigned() {
-                Some(imm as i32)
+                imm as i32
             } else {
-                Some(utils::from_2s_complement(imm as u32, 16))
+                utils::from_2s_complement(imm as u32, 16)
             }
-        } else {
-            None
-        }
+        })
     }
 
     /// Get the (possibly signed) immediate value for this instruction.

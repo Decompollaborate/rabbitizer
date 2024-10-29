@@ -66,6 +66,7 @@
 
 /*
 #![warn(clippy::nursery)]
+#![allow(clippy::redundant_pub_crate)]
 */
 
 #![warn(clippy::exhaustive_enums)]
@@ -76,8 +77,15 @@
 #![warn(clippy::pattern_type_mismatch)]
 // #![warn(clippy::missing_inline_in_public_items)] // TODO
 // #![warn(missing_docs)] // TODO: change to `deny`
+// #![warn(clippy::missing_docs_in_private_items)]
+// #![warn(clippy::doc_markdown)] // ?
+// #![warn(clippy::missing_errors_doc)]
 #![allow(clippy::pub_with_shorthand)]
 #![warn(clippy::pub_without_shorthand)]
+#![warn(clippy::option_if_let_else)]
+#![warn(clippy::option_map_or_none)]
+#![warn(clippy::bind_instead_of_map)]
+#![warn(clippy::cognitive_complexity)] // Maybe remove in the future (?)
 #![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg(feature = "std")]

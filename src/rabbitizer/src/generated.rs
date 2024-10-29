@@ -11,6 +11,10 @@
 #![allow(clippy::let_unit_value)]
 #![allow(clippy::match_single_binding)]
 #![allow(clippy::eq_op)]
+#![allow(clippy::unnecessary_struct_initialization)]
+#![allow(clippy::cognitive_complexity)]
+#![allow(missing_docs)]
+#![allow(clippy::missing_docs_in_private_items)]
 #![warn(clippy::exhaustive_enums)]
 
 mod array_opcodes;

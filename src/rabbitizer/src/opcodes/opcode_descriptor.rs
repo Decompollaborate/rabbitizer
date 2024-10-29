@@ -166,7 +166,8 @@ impl OpcodeDescriptor {
         }
     }
 
-    pub const fn check_panic(&self) {
+    #[allow(clippy::cognitive_complexity)]
+    pub(crate) const fn check_panic(&self) {
         assert!(
             !self.name.is_empty(),
             "An opcode must not have an empty name"
@@ -557,6 +558,7 @@ impl OpcodeDescriptor {
         false
     }
 
+    #[allow(clippy::cognitive_complexity)]
     #[must_use]
     pub const fn has_operand_alias(&self, operand: Operand) -> bool {
         if self.has_specific_operand(operand) {

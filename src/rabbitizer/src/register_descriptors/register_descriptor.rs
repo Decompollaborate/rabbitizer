@@ -65,7 +65,8 @@ impl RegisterDescriptor {
         }
     }
 
-    pub const fn check_panic(&self) {
+    #[allow(clippy::cognitive_complexity)]
+    pub(crate) const fn check_panic(&self) {
         if self.is_reserved {
             assert!(
                 !self.is_clobbered_by_func_call,
