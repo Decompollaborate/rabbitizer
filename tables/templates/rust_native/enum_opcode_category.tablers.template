@@ -7,7 +7,7 @@
 
 use crate::opcodes::{OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
 
-#define RAB_DEF_OPCODE_CATEGORY(prefix, name) \
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name, ...) \
     prefix##_##name,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
@@ -19,9 +19,11 @@ pub enum OpcodeCategory {
 
 #undef RAB_DEF_OPCODE_CATEGORY
 
-#define RAB_DEF_OPCODE_CATEGORY(prefix, name) \
-    table[ OpcodeCategory::prefix##_##name as usize] = \
-        OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name));
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name, ...) \
+    table[ OpcodeCategory::prefix##_##name as usize] = OpcodeCategoryDescriptor {\
+        __VA_ARGS__ \
+        ..OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name)) \
+    };
 
 pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] = {
     let mut table = [OpcodeCategoryDescriptor::default(); OPCODE_CATEGORY_COUNT];

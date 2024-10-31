@@ -17,4 +17,9 @@ impl OpcodeCategory {
     pub fn name(&self) -> &'static str {
         self.get_descriptor().name()
     }
+
+    #[must_use]
+    pub fn handwritten_category(&self) -> bool {
+        self.get_descriptor().handwritten_category()
+    }
 }

@@ -144,8 +144,8 @@ jobs:
 
       - name: Publish dry run
         if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
-        run: cargo publish --dry-run
+        run: cargo publish -p rabbitizer --dry-run
 
       - name: Upload crate
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: cargo publish -p rabbitizer --token ${{ secrets.CARGO_REGISTRY_TOKEN }}

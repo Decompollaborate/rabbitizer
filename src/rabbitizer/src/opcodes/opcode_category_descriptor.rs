@@ -9,15 +9,22 @@ use crate::opcodes::OpcodeCategory;
 #[allow(clippy::struct_excessive_bools)]
 pub struct OpcodeCategoryDescriptor {
     pub(crate) name: &'static str,
+    pub(crate) handwritten_category: bool,
 }
 
 impl OpcodeCategoryDescriptor {
     pub(crate) const fn default() -> Self {
-        Self { name: "" }
+        Self {
+            name: "",
+            handwritten_category: false,
+        }
     }
 
     pub(crate) const fn new(name: &'static str) -> Self {
-        Self { name }
+        Self {
+            name,
+            ..Self::default()
+        }
     }
 }
 
@@ -25,6 +32,11 @@ impl OpcodeCategoryDescriptor {
     #[must_use]
     pub const fn name(&self) -> &'static str {
         self.name
+    }
+
+    #[must_use]
+    pub const fn handwritten_category(&self) -> bool {
+        self.handwritten_category
     }
 }
 
