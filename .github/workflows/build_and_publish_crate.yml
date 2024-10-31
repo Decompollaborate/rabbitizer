@@ -99,6 +99,23 @@ jobs:
       - name: Run tests
         run: cargo test --workspace
 
+  test_bin_disasmdis:
+    name: Run tests
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo run -p rab-disasmdis 12345678
+
   msrv:
     name: Check MSRV is correct
     runs-on: ubuntu-20.04

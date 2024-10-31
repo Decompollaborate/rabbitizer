@@ -2,19 +2,27 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::abi::Abi;
+use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::DecodingFlags;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct InstructionFlags {
-    pub(crate) decoding_flags: DecodingFlags,
-    pub(crate) abi: Abi,
-    pub(crate) j_as_branch: bool,
+    isa_version: IsaVersion,
+    isa_extension: IsaExtension,
+
+    decoding_flags: DecodingFlags,
+    abi: Abi,
+    j_as_branch: bool,
 }
 
 impl InstructionFlags {
     #[must_use]
     pub const fn default() -> Self {
+        let isa_extension = IsaExtension::default();
+
         Self {
+            isa_version: isa_extension.isa_version(),
+            isa_extension,
             decoding_flags: DecodingFlags::default(),
             abi: Abi::O32,
             j_as_branch: true,
@@ -23,20 +31,53 @@ impl InstructionFlags {
 
     #[must_use]
     pub const fn new() -> Self {
-        Self::default()
+        Self { ..Self::default() }
     }
 }
 
 impl InstructionFlags {
     #[must_use]
-    pub const fn decoding_flags(&self) -> &DecodingFlags {
-        &self.decoding_flags
+    pub const fn isa_version(&self) -> IsaVersion {
+        self.isa_version
     }
-    pub fn decoding_flags_mut(&mut self) -> &mut DecodingFlags {
-        &mut self.decoding_flags
+    pub fn isa_version_mut(&mut self) -> &mut IsaVersion {
+        &mut self.isa_version
     }
     #[must_use]
-    pub const fn with_decoding_flags(self, decoding_flags: DecodingFlags) -> Self {
+    pub const fn with_isa_version(self, isa_version: IsaVersion) -> Self {
+        Self {
+            isa_version,
+            ..self
+        }
+    }
+
+    #[must_use]
+    pub const fn isa_extension(&self) -> IsaExtension {
+        self.isa_extension
+    }
+    pub fn isa_extension_mut(&mut self) -> &mut IsaExtension {
+        &mut self.isa_extension
+    }
+    #[must_use]
+    pub const fn with_isa_extension(self, isa_extension: IsaExtension) -> Self {
+        Self {
+            isa_version: isa_extension.isa_version(),
+            isa_extension,
+            ..self
+        }
+    }
+
+    #[must_use]
+    pub(crate) const fn decoding_flags(&self) -> &DecodingFlags {
+        &self.decoding_flags
+    }
+    /*
+    pub(crate) fn decoding_flags_mut(&mut self) -> &mut DecodingFlags {
+        &mut self.decoding_flags
+    }
+    */
+    #[must_use]
+    pub(crate) const fn with_decoding_flags(self, decoding_flags: DecodingFlags) -> Self {
         Self {
             decoding_flags,
             ..self

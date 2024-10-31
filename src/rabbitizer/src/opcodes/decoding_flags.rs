@@ -5,7 +5,7 @@ use bitflags::bitflags;
 
 bitflags! {
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-    pub struct DecodingFlags: u32 {
+    pub(crate) struct DecodingFlags: u32 {
         /// Produce pseudo instructions (like `move` or `b`) whenever those may match the desired original instruction.
         ///
         /// Turning off this flag disables all the other pseudos.

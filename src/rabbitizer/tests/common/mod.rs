@@ -3,6 +3,7 @@
 
 use rabbitizer::display_flags::DisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
+use rabbitizer::isa::IsaExtension;
 use rabbitizer::opcodes::Opcode;
 use rabbitizer::operands::OPERAND_COUNT_MAX;
 use rabbitizer::vram::Vram;
@@ -28,7 +29,11 @@ impl TestEntry {
         expected: &'static str,
     ) -> Self {
         Self {
-            instr: Instruction::new_rsp(word, Vram::new(0xA4000000), flags),
+            instr: Instruction::new(
+                word,
+                Vram::new(0xA4000000),
+                flags.with_isa_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
             valid: false,
@@ -48,13 +53,13 @@ impl TestEntry {
         operands_str: [Option<&'static str>; OPERAND_COUNT_MAX],
     ) -> Self {
         Self {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 word,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::default().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
-            display_flags: DisplayFlags::default(),
+            display_flags: DisplayFlags::new(),
             valid: true,
             expected,
             expected_opcode,

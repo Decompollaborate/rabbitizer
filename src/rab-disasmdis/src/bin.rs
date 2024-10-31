@@ -112,8 +112,9 @@ fn main() {
 
     let endian = args.endian;
     let mut data = Data::new();
-    let flags = rabbitizer::instr::InstructionFlags::new().with_all_pseudos(args.pseudos);
-    let isa_extension = rabbitizer::isa::IsaExtension::NONE;
+    let flags = rabbitizer::instr::InstructionFlags::new()
+        .with_isa_extension(rabbitizer::isa::IsaExtension::NONE)
+        .with_all_pseudos(args.pseudos);
     let vram = rabbitizer::vram::Vram::new(0x8000_0000);
     let display_flags = rabbitizer::display_flags::DisplayFlags::new_gnu_as();
 
@@ -127,13 +128,7 @@ fn main() {
             if let Some(bytes) = data.get_bytes() {
                 // Display an instruction each time the buffer is full
                 let word = endian.word_from_bytes(bytes);
-                let instr = rabbitizer::instr::Instruction::new(
-                    word,
-                    vram,
-                    flags,
-                    isa_extension.isa_version(),
-                    isa_extension,
-                );
+                let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
                 println!("{}", instr.display(None, &display_flags));
             }
 
@@ -144,13 +139,7 @@ fn main() {
 
     if let Some(bytes) = data.get_bytes() {
         let word = endian.word_from_bytes(bytes);
-        let instr = rabbitizer::instr::Instruction::new(
-            word,
-            vram,
-            flags,
-            isa_extension.isa_version(),
-            isa_extension,
-        );
+        let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
         println!("{}", instr.display(None, &display_flags));
     } else {
         eprintln!(

@@ -18,9 +18,6 @@ pub struct Instruction {
     word: u32,
     vram: Vram,
 
-    isa_version: IsaVersion,
-    isa_extension: IsaExtension,
-
     opcode_decoder: OpcodeDecoder,
 
     flags: InstructionFlags,
@@ -29,86 +26,20 @@ pub struct Instruction {
 /// Constructors
 impl Instruction {
     #[must_use]
-    pub const fn new(
-        word: u32,
-        vram: Vram,
-        flags: InstructionFlags,
-        isa_version: IsaVersion,
-        isa_extension: IsaExtension,
-    ) -> Self {
-        let opcode_decoder =
-            OpcodeDecoder::decode(word, flags.decoding_flags(), isa_version, isa_extension);
+    pub const fn new(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
+        let opcode_decoder = OpcodeDecoder::decode(
+            word,
+            flags.decoding_flags(),
+            flags.isa_version(),
+            flags.isa_extension(),
+        );
 
         Self {
             word,
             vram,
-            isa_version,
-            isa_extension,
             opcode_decoder,
             flags,
         }
-    }
-
-    #[must_use]
-    pub const fn new_no_extension(
-        word: u32,
-        vram: Vram,
-        flags: InstructionFlags,
-        isa_version: IsaVersion,
-    ) -> Self {
-        Self::new(word, vram, flags, isa_version, IsaExtension::NONE)
-    }
-
-    #[must_use]
-    pub const fn new_rsp(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
-        let isa_extension = IsaExtension::RSP;
-
-        Self::new(
-            word,
-            vram,
-            flags,
-            isa_extension.isa_version(),
-            isa_extension,
-        )
-    }
-
-    #[must_use]
-    pub const fn new_r3000gte(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
-        let isa_extension = IsaExtension::R3000GTE;
-
-        Self::new(
-            word,
-            vram,
-            flags,
-            isa_extension.isa_version(),
-            isa_extension,
-        )
-    }
-
-    #[must_use]
-    pub const fn new_r4000allegrex(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
-        let isa_extension = IsaExtension::R4000ALLEGREX;
-
-        Self::new(
-            word,
-            vram,
-            flags,
-            isa_extension.isa_version(),
-            isa_extension,
-        )
-    }
-
-    #[must_use]
-    pub const fn new_r5900(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
-        let isa_extension = IsaExtension::R5900;
-
-        Self::new(
-            word,
-            vram,
-            flags,
-            isa_extension.isa_version(),
-            isa_extension,
-        )
     }
 }
 
@@ -126,12 +57,12 @@ impl Instruction {
 
     #[must_use]
     pub const fn isa_version(&self) -> IsaVersion {
-        self.isa_version
+        self.flags.isa_version()
     }
 
     #[must_use]
     pub const fn isa_extension(&self) -> IsaExtension {
-        self.isa_extension
+        self.flags.isa_extension()
     }
 
     #[must_use]
@@ -203,7 +134,7 @@ impl Instruction {
                 // in case the b pseudo instruction is disabled
                 self.field_rt_unchecked() == Gpr::zero && self.field_rs_unchecked() == Gpr::zero
             }
-            Opcode::core_j => self.flags().j_as_branch,
+            Opcode::core_j => self.flags().j_as_branch(),
             _ => false,
         }
     }
@@ -228,7 +159,7 @@ impl Instruction {
         }
 
         match self.opcode() {
-            Opcode::core_j => !self.flags().j_as_branch,
+            Opcode::core_j => !self.flags().j_as_branch(),
             _ => false,
         }
     }
@@ -3354,37 +3285,21 @@ mod tests {
 
     #[test]
     fn check_j() {
-        let instr = Instruction::new_no_extension(
-            0x08000004,
-            Vram::new(0x80000000),
-            InstructionFlags::default(),
-            IsaVersion::MIPS_III,
-        );
+        let instr = Instruction::new(0x08000004, Vram::new(0x80000000), InstructionFlags::new());
         assert!(instr.is_valid());
         assert_eq!(instr.opcode_category(), OpcodeCategory::CORE_NORMAL);
         assert_eq!(instr.opcode(), Opcode::core_j);
         assert!(instr.opcode().is_jump());
 
         assert_eq!(
-            Instruction::new_no_extension(
-                0x08000000,
-                Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III
-            )
-            .opcode(),
+            Instruction::new(0x08000000, Vram::new(0x80000000), InstructionFlags::new(),).opcode(),
             Opcode::core_j
         );
     }
 
     #[test]
     fn check_jal() {
-        let instr = Instruction::new_no_extension(
-            0x0C000004,
-            Vram::new(0x80000000),
-            InstructionFlags::default(),
-            IsaVersion::MIPS_III,
-        );
+        let instr = Instruction::new(0x0C000004, Vram::new(0x80000000), InstructionFlags::new());
         assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_jal);
     }
@@ -3392,22 +3307,16 @@ mod tests {
     #[test]
     fn check_lwu() {
         // lwu was introduced in MIPS III
-        let flags = InstructionFlags::default();
+        let flags = InstructionFlags::new();
 
-        let instr = Instruction::new_no_extension(
-            0x9C000000,
-            Vram::new(0x80000000),
-            flags,
-            IsaVersion::MIPS_III,
-        );
+        let instr = Instruction::new(0x9C000000, Vram::new(0x80000000), flags);
         assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_lwu);
 
-        let instr = Instruction::new_no_extension(
+        let instr = Instruction::new(
             0x9C000000,
             Vram::new(0x80000000),
-            flags,
-            IsaVersion::MIPS_II,
+            flags.with_isa_version(IsaVersion::MIPS_II),
         );
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::ALL_INVALID);
@@ -3415,12 +3324,7 @@ mod tests {
 
     #[test]
     fn check_invalid() {
-        let instr = Instruction::new_no_extension(
-            0x0000072E,
-            Vram::new(0x80000000),
-            InstructionFlags::default(),
-            IsaVersion::MIPS_III,
-        );
+        let instr = Instruction::new(0x0000072E, Vram::new(0x80000000), InstructionFlags::new());
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_dsub);
     }

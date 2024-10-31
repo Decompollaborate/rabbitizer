@@ -14,8 +14,11 @@ use rabbitizer::vram::Vram;
 fn check_none_instructions() {
     const ENTRIES: &[TestEntry] = &[
         TestEntry {
-            instr: Instruction::new_no_extension(0x08000419, Vram::new(0x80001100), InstructionFlags::default(),
-            IsaVersion::MIPS_III,),
+            instr: Instruction::new(
+                0x08000419,
+                Vram::new(0x80001100),
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
+            ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
             valid: true,
@@ -25,11 +28,10 @@ fn check_none_instructions() {
             operands_str: [Some("func_80001064"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x3C088001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -40,11 +42,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("0x8001"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x25080E60,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -55,11 +56,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$t0"), Some("0xE60"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x3C090002,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -70,11 +70,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t1"), Some("0x2"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x25298DE0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -85,11 +84,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t1"), Some("$t1"), Some("-0x7220"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xAD000000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -100,11 +98,10 @@ fn check_none_instructions() {
             operands_str: [Some("$zero"), Some("0x0($t0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xAD000004,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -115,11 +112,10 @@ fn check_none_instructions() {
             operands_str: [Some("$zero"), Some("0x4($t0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x21080008,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -130,11 +126,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$t0"), Some("0x8"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x2129FFF8,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -145,11 +140,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t1"), Some("$t1"), Some("-0x8"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x1520FFFB,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -160,11 +154,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t1"), Some(". + 4 + (-0x5 << 2)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00000000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -175,11 +168,10 @@ fn check_none_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x3C0A8000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -190,11 +182,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t2"), Some("0x8000"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x254A0494,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -205,11 +196,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t2"), Some("$t2"), Some("0x494"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x3C1D8002,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -220,11 +210,10 @@ fn check_none_instructions() {
             operands_str: [Some("$sp"), Some("0x8002"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x01400008,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -235,11 +224,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t2"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x27BDF8C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -250,11 +238,10 @@ fn check_none_instructions() {
             operands_str: [Some("$sp"), Some("$sp"), Some("-0x740"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x3C018001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -265,11 +252,10 @@ fn check_none_instructions() {
             operands_str: [Some("$at"), Some("0x8001"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x03E00008,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -280,11 +266,10 @@ fn check_none_instructions() {
             operands_str: [Some("$ra"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xAC24E190,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -295,11 +280,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0"), Some("-0x1E70($at)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x3C018001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%hi(D_8000E190)"),
             display_flags: DisplayFlags::default(),
@@ -310,11 +294,10 @@ fn check_none_instructions() {
             operands_str: [Some("$at"), Some("%hi(D_8000E190)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xAC24E190,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%lo(D_8000E190)"),
             display_flags: DisplayFlags::default(),
@@ -325,11 +308,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0"), Some("%lo(D_8000E190)($at)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0C001F24,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -340,11 +322,10 @@ fn check_none_instructions() {
             operands_str: [Some("func_80007C90"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0C001F24,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: Some("some_func"),
             display_flags: DisplayFlags::default(),
@@ -355,11 +336,10 @@ fn check_none_instructions() {
             operands_str: [Some("some_func"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x8F99805C,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -370,11 +350,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t9"), Some("-0x7FA4($gp)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x8F99805C,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%call16(strcmp)"),
             display_flags: DisplayFlags::default(),
@@ -385,11 +364,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t9"), Some("%call16(strcmp)($gp)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x8F858028,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -400,11 +378,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a1"), Some("-0x7FD8($gp)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x8F858028,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%got(STR_10007C90)"),
             display_flags: DisplayFlags::default(),
@@ -421,11 +398,10 @@ fn check_none_instructions() {
             ],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00435022,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -436,11 +412,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t2"), Some("$v0"), Some("$v1"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00025022,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -451,11 +426,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t2"), Some("$v0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00E41823,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -466,11 +440,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v1"), Some("$a3"), Some("$a0"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00041823,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -481,11 +454,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v1"), Some("$a0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x42000010,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -496,11 +468,10 @@ fn check_none_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0260F809,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -511,11 +482,10 @@ fn check_none_instructions() {
             operands_str: [Some("$s3"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0260F809,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_expand_jalr(true),
@@ -526,11 +496,10 @@ fn check_none_instructions() {
             operands_str: [Some("$ra, $s3"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x02602009,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -541,11 +510,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0, $s3"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00042100,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -556,11 +524,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0"), Some("$a0"), Some("4"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00021882,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -571,11 +538,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v1"), Some("$v0"), Some("2"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00017443,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -586,11 +552,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t6"), Some("$at"), Some("17"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00042FF8,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -601,11 +566,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a1"), Some("$a0"), Some("31"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x000637FA,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -616,11 +580,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a2"), Some("$a2"), Some("31"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0002137B,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -631,11 +594,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v0"), Some("$v0"), Some("13"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x000437FC,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -646,11 +608,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a2"), Some("$a0"), Some("31"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0005283E,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -661,11 +622,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a1"), Some("$a1"), Some("0"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0002103F,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -676,11 +636,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v0"), Some("$v0"), Some("0"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x40086800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -691,11 +650,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$13"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x40286800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -706,11 +664,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$13"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x40486800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -721,11 +678,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$13"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x40886800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -736,11 +692,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$13"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x40A86800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -751,11 +706,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$13"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x40C86800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -766,11 +720,10 @@ fn check_none_instructions() {
             operands_str: [Some("$t0"), Some("$13"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x46168200,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_named_fpr(false),
@@ -781,11 +734,10 @@ fn check_none_instructions() {
             operands_str: [Some("$f8"), Some("$f16"), Some("$f22"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x46168200,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_named_fpr(true),
@@ -796,11 +748,10 @@ fn check_none_instructions() {
             operands_str: [Some("$ft2"), Some("$ft4"), Some("$fs1"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x44C2F800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -811,11 +762,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v0"), Some("$31"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xBD150000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -826,11 +776,10 @@ fn check_none_instructions() {
             operands_str: [Some("0x15"), Some("0x0($t0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xCD150018,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -841,11 +790,10 @@ fn check_none_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xCD150008,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_IV,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_IV),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -856,11 +804,10 @@ fn check_none_instructions() {
             operands_str: [Some("0x15"), Some("0x8($t0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0001008D,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -871,11 +818,10 @@ fn check_none_instructions() {
             operands_str: [Some("1, 2"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0001008D,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_sn64_break_fix(true),
@@ -886,11 +832,10 @@ fn check_none_instructions() {
             operands_str: [Some("1, 2"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0007000D,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -901,11 +846,10 @@ fn check_none_instructions() {
             operands_str: [Some("7"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0007000D,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_sn64_break_fix(true),
@@ -916,11 +860,10 @@ fn check_none_instructions() {
             operands_str: [Some("7"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0000000C,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -931,11 +874,10 @@ fn check_none_instructions() {
             operands_str: [Some("0"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00E200B0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -946,11 +888,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a3"), Some("$v0"), Some("2"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00E200B1,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -961,11 +902,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a3"), Some("$v0"), Some("2"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00E200B2,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -976,11 +916,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a3"), Some("$v0"), Some("2"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00E200B3,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -991,11 +930,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a3"), Some("$v0"), Some("2"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00E200B4,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1006,11 +944,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a3"), Some("$v0"), Some("2"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x00E200B6,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1021,11 +958,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a3"), Some("$v0"), Some("2"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xC8621800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1036,11 +972,10 @@ fn check_none_instructions() {
             operands_str: [Some("$2"), Some("0x1800($v1)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xD8621800,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1051,11 +986,10 @@ fn check_none_instructions() {
             operands_str: [Some("$2"), Some("0x1800($v1)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xE8810878,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1066,11 +1000,10 @@ fn check_none_instructions() {
             operands_str: [Some("$1"), Some("0x878($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xF8810878,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1081,11 +1014,10 @@ fn check_none_instructions() {
             operands_str: [Some("$1"), Some("0x878($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x4802E000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1096,11 +1028,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v0"), Some("$28"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x4882E000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1111,11 +1042,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v0"), Some("$28"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x4842E000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1126,11 +1056,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v0"), Some("$28"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x48C2E000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1141,11 +1070,10 @@ fn check_none_instructions() {
             operands_str: [Some("$v0"), Some("$28"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001A,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(true),
@@ -1156,11 +1084,10 @@ fn check_none_instructions() {
             operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001A,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(false),
@@ -1171,11 +1098,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0"), Some("$a1"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001B,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(true),
@@ -1186,11 +1112,10 @@ fn check_none_instructions() {
             operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001B,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(false),
@@ -1201,11 +1126,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0"), Some("$a1"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001E,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(true),
@@ -1216,11 +1140,10 @@ fn check_none_instructions() {
             operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001E,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(false),
@@ -1231,11 +1154,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0"), Some("$a1"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001F,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(true),
@@ -1246,11 +1168,10 @@ fn check_none_instructions() {
             operands_str: [Some("$zero, $a0"), Some("$a1"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x0085001F,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default().with_gnu_div(false),
@@ -1265,11 +1186,10 @@ fn check_none_instructions() {
         // Invalid instructions
 
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x44444444,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1280,11 +1200,10 @@ fn check_none_instructions() {
             operands_str: [Some("$a0"), Some("$8"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0x77777777,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1295,11 +1214,10 @@ fn check_none_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_no_extension(
+            instr: Instruction::new(
                 0xEEEEEEEE,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
-                IsaVersion::MIPS_III,
+                InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),

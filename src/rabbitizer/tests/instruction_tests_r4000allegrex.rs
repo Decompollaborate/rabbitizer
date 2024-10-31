@@ -6,6 +6,7 @@ mod common;
 use common::{check_test_entries, TestEntry};
 use rabbitizer::display_flags::DisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
+use rabbitizer::isa::IsaExtension;
 use rabbitizer::opcodes::Opcode;
 use rabbitizer::vram::Vram;
 
@@ -16,10 +17,10 @@ fn check_r4000allegrex_instructions() {
         // 0x00041182 -> "srl         $v0, $a0, 6"
 
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00801017,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30,10 +31,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00801016,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -44,10 +45,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00C7001C,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -58,10 +59,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$a2"), Some("$a3"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00C7001D,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -72,10 +73,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$a2"), Some("$a3"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00C7002E,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -86,10 +87,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$a2"), Some("$a3"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00C7002F,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -100,10 +101,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$a2"), Some("$a3"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x0085102C,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -114,10 +115,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("$a1"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x0085102D,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -128,10 +129,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("$a1"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x0085100B,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -142,10 +143,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("$a1"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x0085100A,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -156,10 +157,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("$a1"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C822080,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -170,10 +171,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("2"), Some("5"), None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C8221C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -184,10 +185,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("7"), Some("5"), None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C823084,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -198,10 +199,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("2"), Some("5"), None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C8259C4,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -212,10 +213,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("7"), Some("5"), None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C041420,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -226,10 +227,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C041620,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -240,10 +241,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C041520,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -254,10 +255,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00241182,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -268,10 +269,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("6"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x002414C2,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -282,10 +283,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("19"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x00A41046,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -296,10 +297,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), Some("$a1"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C0410A0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -310,10 +311,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("$a0"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x7C0410E0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -325,10 +326,10 @@ fn check_r4000allegrex_instructions() {
         },
 
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC840000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -339,10 +340,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x04"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC860000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -353,10 +354,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x06"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC880000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -367,10 +368,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x08"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC8A0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -381,10 +382,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x0A"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC8B0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -395,10 +396,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x0B"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC940000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -409,10 +410,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x14"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC960000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -423,10 +424,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x16"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC980000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -437,10 +438,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x18"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC990000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -451,10 +452,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x19"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC9A0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -465,10 +466,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x1A"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC9B0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -479,10 +480,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x1B"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC9C0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -493,10 +494,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x1C"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC9E0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -507,10 +508,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x1E"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC9F0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -522,10 +523,10 @@ fn check_r4000allegrex_instructions() {
         },
 
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x0000000F,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -536,10 +537,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some(""), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xC0820000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -550,10 +551,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xE0850000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -564,10 +565,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$a1"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC800000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -578,10 +579,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x00"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC810000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -592,10 +593,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x01"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC820000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -606,10 +607,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x02"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC830000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -620,10 +621,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x03"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC850000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -634,10 +635,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x05"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC870000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -648,10 +649,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x07"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC890000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -662,10 +663,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x09"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC8C0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -676,10 +677,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x0C"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC8D0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -690,10 +691,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x0D"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC8E0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -704,10 +705,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x0E"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC8F0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -718,10 +719,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x0F"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC900000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -732,10 +733,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x10"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC910000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -746,10 +747,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x11"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC920000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -760,10 +761,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x12"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC930000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -774,10 +775,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x13"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC950000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -788,10 +789,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x15"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC970000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -802,10 +803,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x17"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xBC9D0000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -816,10 +817,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("0x1D"), Some("0x0($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x70000000,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -830,10 +831,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some(""), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x70020024,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -844,10 +845,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$v0"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x70000024,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -858,10 +859,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$zero"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x70000026,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -872,10 +873,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$zero"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x70040026,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -887,10 +888,10 @@ fn check_r4000allegrex_instructions() {
         },
 
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x46002085,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -901,10 +902,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$f2"), Some("$f4"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x46042080,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -915,10 +916,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some("$f2"), Some("$f4"), Some("$f4"), None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x45000008,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -929,10 +930,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [Some(". + 4 + (0x8 << 2)"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x46100030,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -945,10 +946,10 @@ fn check_r4000allegrex_instructions() {
 
         // Allegrex removed 64 bits FPU instructions
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x468020A1,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -959,10 +960,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x46002088,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -973,10 +974,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x46002089,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -987,10 +988,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x4600208A,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1001,10 +1002,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x4600208B,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1015,10 +1016,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x460020A1,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -1029,10 +1030,10 @@ fn check_r4000allegrex_instructions() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x460020A5,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7384,10 +7385,10 @@ fn check_r4000allegrex_vfpu_instructions_branches() {
             [Some("5"), Some(". + 4 + (0x2 << 2)"), None, None, None],
         ),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x49000002,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: Some("branches_end"),
             display_flags: DisplayFlags::default(),
@@ -7636,10 +7637,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
         TestEntry::new_r4000allegrex(0xD89F0042, "lv.q        C730, 0x40($a0)", Opcode::r4000allegrex_lv_q, "lv.q", [Some("C730"), Some("0x40($a0)"), None, None, None]),
         */
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8800042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7650,10 +7651,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C000"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8810042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7664,10 +7665,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C010"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8820042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7678,10 +7679,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C020"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8830042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7692,10 +7693,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C030"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8840042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7706,10 +7707,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C100"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8850042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7720,10 +7721,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C110"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8860042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7734,10 +7735,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C120"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8870042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7748,10 +7749,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C130"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8880042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7762,10 +7763,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C200"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8890042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7776,10 +7777,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C210"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD88A0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7790,10 +7791,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C220"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD88B0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7804,10 +7805,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C230"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD88C0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7818,10 +7819,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C300"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD88D0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7832,10 +7833,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C310"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD88E0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7846,10 +7847,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C320"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD88F0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7860,10 +7861,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C330"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8900042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7874,10 +7875,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C400"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8910042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7888,10 +7889,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C410"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8920042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7902,10 +7903,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C420"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8930042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7916,10 +7917,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C430"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8940042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7930,10 +7931,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C500"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8950042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7944,10 +7945,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C510"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8960042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7958,10 +7959,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C520"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8970042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7972,10 +7973,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C530"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8980042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -7986,10 +7987,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C600"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD8990042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -8000,10 +8001,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C610"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD89A0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -8014,10 +8015,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C620"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD89B0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -8028,10 +8029,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C630"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD89C0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -8042,10 +8043,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C700"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD89D0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -8056,10 +8057,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C710"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD89E0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -8070,10 +8071,10 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
             operands_str: [Some("C720"), Some("0x40($a0)"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD89F0042,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13505,10 +13506,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
         TestEntry::new_r4000allegrex(0x608090C0, "vsub.q      C002, C400, C000", Opcode::r4000allegrex_vsub_q, "vsub.q", [Some("C002"), Some("C400"), Some("C000"), None, None]),
         TestEntry::new_r4000allegrex(0x61001040, "vsbn.s      S002, S400, S000", Opcode::r4000allegrex_vsbn_s, "vsbn.s", [Some("S002"), Some("S400"), Some("S000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x610010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13519,10 +13520,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x61009040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13533,10 +13534,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x610090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13547,10 +13548,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x61801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13561,10 +13562,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x618010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13575,10 +13576,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x61809040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13589,10 +13590,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x618090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13603,10 +13604,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x62001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13617,10 +13618,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x620010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13631,10 +13632,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x62009040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13645,10 +13646,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x620090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13659,10 +13660,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x62801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13673,10 +13674,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x628010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13687,10 +13688,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x62809040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13701,10 +13702,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x628090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13715,10 +13716,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x63001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13729,10 +13730,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x630010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13743,10 +13744,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x63009040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13757,10 +13758,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x630090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13789,10 +13790,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
         TestEntry::new_r4000allegrex(0x64009040, "vmul.t      C001, C400, C000", Opcode::r4000allegrex_vmul_t, "vmul.t", [Some("C001"), Some("C400"), Some("C000"), None, None]),
         TestEntry::new_r4000allegrex(0x640090C0, "vmul.q      C002, C400, C000", Opcode::r4000allegrex_vmul_q, "vmul.q", [Some("C002"), Some("C400"), Some("C000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x64801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13806,10 +13807,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
         TestEntry::new_r4000allegrex(0x64809040, "vdot.t      S002, C400, C000", Opcode::r4000allegrex_vdot_t, "vdot.t", [Some("S002"), Some("C400"), Some("C000"), None, None]),
         TestEntry::new_r4000allegrex(0x648090C0, "vdot.q      S002, C400, C000", Opcode::r4000allegrex_vdot_q, "vdot.q", [Some("S002"), Some("C400"), Some("C000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x65001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13823,10 +13824,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
         TestEntry::new_r4000allegrex(0x65009040, "vscl.t      C001, C400, S000", Opcode::r4000allegrex_vscl_t, "vscl.t", [Some("C001"), Some("C400"), Some("S000"), None, None]),
         TestEntry::new_r4000allegrex(0x650090C0, "vscl.q      C002, C400, S000", Opcode::r4000allegrex_vscl_q, "vscl.q", [Some("C002"), Some("C400"), Some("S000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x65801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13837,10 +13838,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x658010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13851,10 +13852,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x65809040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13865,10 +13866,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x658090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13879,10 +13880,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x66001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13896,10 +13897,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
         TestEntry::new_r4000allegrex(0x66009040, "vhdp.t      S002, C400, C000", Opcode::r4000allegrex_vhdp_t, "vhdp.t", [Some("S002"), Some("C400"), Some("C000"), None, None]),
         TestEntry::new_r4000allegrex(0x660090C0, "vhdp.q      S002, C400, C000", Opcode::r4000allegrex_vhdp_q, "vhdp.q", [Some("S002"), Some("C400"), Some("C000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x66801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13910,10 +13911,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x668010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13925,10 +13926,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
         },
         TestEntry::new_r4000allegrex(0x66809040, "vcrs.t      C001, C400, C000", Opcode::r4000allegrex_vcrs_t, "vcrs.t", [Some("C001"), Some("C400"), Some("C000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x668090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13939,10 +13940,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x67001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13954,10 +13955,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
         },
         TestEntry::new_r4000allegrex(0x670010C0, "vdet.p      S002, C400, C000", Opcode::r4000allegrex_vdet_p, "vdet.p", [Some("S002"), Some("C400"), Some("C000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x67009040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13968,10 +13969,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x670090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13982,10 +13983,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x67801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -13996,10 +13997,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x678010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14010,10 +14011,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x67809040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14024,10 +14025,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x678090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14053,10 +14054,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
         TestEntry::new_r4000allegrex(0x6C409001, "vcmp.t      eq, C400, C001", Opcode::r4000allegrex_vcmp_t, "vcmp.t", [Some("eq, C400, C001"), None, None, None, None]),
         TestEntry::new_r4000allegrex(0x6C409081, "vcmp.q      eq, C400, C002", Opcode::r4000allegrex_vcmp_q, "vcmp.q", [Some("eq, C400, C002"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6CC01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14067,10 +14068,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6CC01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14081,10 +14082,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6CC09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14095,10 +14096,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6CC09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14117,10 +14118,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
         TestEntry::new_r4000allegrex(0x6DC09001, "vmax.t      C010, C400, C001", Opcode::r4000allegrex_vmax_t, "vmax.t", [Some("C010"), Some("C400"), Some("C001"), None, None]),
         TestEntry::new_r4000allegrex(0x6DC09081, "vmax.q      C010, C400, C002", Opcode::r4000allegrex_vmax_q, "vmax.q", [Some("C010"), Some("C400"), Some("C002"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6E401001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14131,10 +14132,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6E401081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14145,10 +14146,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6E409001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -14159,10 +14160,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x6E409081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15125,10 +15126,10 @@ fn check_r4000allegrex_vfpu_instructions_COP2() {
         TestEntry::new_r4000allegrex(0x4864008E, "mfvc        $a0, $142", Opcode::r4000allegrex_mfvc, "mfvc", [Some("$a0"), Some("$142"), None, None, None]),
         TestEntry::new_r4000allegrex(0x4864008F, "mfvc        $a0, $143", Opcode::r4000allegrex_mfvc, "mfvc", [Some("$a0"), Some("$143"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x48640090,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15139,10 +15140,10 @@ fn check_r4000allegrex_vfpu_instructions_COP2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x48640091,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15153,10 +15154,10 @@ fn check_r4000allegrex_vfpu_instructions_COP2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0x48640092,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15194,10 +15195,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0029001, "vneg.t      C010, C400", Opcode::r4000allegrex_vneg_t, "vneg.t", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD0029081, "vneg.q      C010, C400", Opcode::r4000allegrex_vneg_q, "vneg.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0031001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15208,10 +15209,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0031081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15223,10 +15224,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0030081, "vidt.p      C010", Opcode::r4000allegrex_vidt_p, "vidt.p", [Some("C010"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0039001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15237,10 +15238,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0039081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15260,10 +15261,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0059001, "vsat1.t     C010, C400", Opcode::r4000allegrex_vsat1_t, "vsat1.t", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD0059081, "vsat1.q     C010, C400", Opcode::r4000allegrex_vsat1_q, "vsat1.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0061001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15274,10 +15275,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("S010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0061081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15288,10 +15289,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0069001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15302,10 +15303,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0069081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15320,10 +15321,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0078001, "vone.t      C010", Opcode::r4000allegrex_vone_t, "vone.t", [Some("C010"), None, None, None, None]),
         TestEntry::new_r4000allegrex(0xD0078081, "vone.q      C010", Opcode::r4000allegrex_vone_q, "vone.q", [Some("C010"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0081001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15334,10 +15335,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0081081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15348,10 +15349,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0089001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15362,10 +15363,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0089081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15376,10 +15377,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0091001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15390,10 +15391,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0091081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15404,10 +15405,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0099001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15418,10 +15419,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0099081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15432,10 +15433,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00A1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15446,10 +15447,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00A1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15460,10 +15461,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00A9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15474,10 +15475,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00A9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15488,10 +15489,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00B1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15502,10 +15503,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00B1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15516,10 +15517,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15530,10 +15531,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00B9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15544,10 +15545,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00C1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15558,10 +15559,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00C1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15572,10 +15573,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00C9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15586,10 +15587,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00C9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15600,10 +15601,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15614,10 +15615,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15628,10 +15629,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15642,10 +15643,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00D9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15656,10 +15657,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15670,10 +15671,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00E1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15684,10 +15685,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15698,10 +15699,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00E9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15712,10 +15713,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15726,10 +15727,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00F1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15740,10 +15741,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15754,10 +15755,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD00F9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15804,10 +15805,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0189001, "vnrcp.t     C010, C400", Opcode::r4000allegrex_vnrcp_t, "vnrcp.t", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD0189081, "vnrcp.q     C010, C400", Opcode::r4000allegrex_vnrcp_q, "vnrcp.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0191001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15818,10 +15819,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0191081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15832,10 +15833,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0199001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15846,10 +15847,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0199081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15864,10 +15865,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD01A9001, "vnsin.t     C010, C400", Opcode::r4000allegrex_vnsin_t, "vnsin.t", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD01A9081, "vnsin.q     C010, C400", Opcode::r4000allegrex_vnsin_q, "vnsin.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01B1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15878,10 +15879,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01B1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15892,10 +15893,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15906,10 +15907,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01B9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15924,10 +15925,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD01C9001, "vrexp2.t    C010, C400", Opcode::r4000allegrex_vrexp2_t, "vrexp2.t", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD01C9081, "vrexp2.q    C010, C400", Opcode::r4000allegrex_vrexp2_q, "vrexp2.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15938,10 +15939,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15952,10 +15953,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15966,10 +15967,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01D9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15980,10 +15981,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -15994,10 +15995,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01E1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16008,10 +16009,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16022,10 +16023,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01E9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16036,10 +16037,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16050,10 +16051,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01F1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16064,10 +16065,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16078,10 +16079,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD01F9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16093,10 +16094,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0201000, "vrnds.s     S400", Opcode::r4000allegrex_vrnds_s, "vrnds.s", [Some("S400"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0201001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16107,10 +16108,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("S400"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0201081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16121,10 +16122,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0209001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16135,10 +16136,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0209081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16153,10 +16154,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0218001, "vrndi.t     C010", Opcode::r4000allegrex_vrndi_t, "vrndi.t", [Some("C010"), None, None, None, None]),
         TestEntry::new_r4000allegrex(0xD0218081, "vrndi.q     C010", Opcode::r4000allegrex_vrndi_q, "vrndi.q", [Some("C010"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0211001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16167,10 +16168,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("S010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0211081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16181,10 +16182,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0219001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16195,10 +16196,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0219081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16213,10 +16214,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0228001, "vrndf1.t    C010", Opcode::r4000allegrex_vrndf1_t, "vrndf1.t", [Some("C010"), None, None, None, None]),
         TestEntry::new_r4000allegrex(0xD0228081, "vrndf1.q    C010", Opcode::r4000allegrex_vrndf1_q, "vrndf1.q", [Some("C010"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0221001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16227,10 +16228,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("S010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0221081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16241,10 +16242,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0229001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16255,10 +16256,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0229081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16273,10 +16274,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0238001, "vrndf2.t    C010", Opcode::r4000allegrex_vrndf2_t, "vrndf2.t", [Some("C010"), None, None, None, None]),
         TestEntry::new_r4000allegrex(0xD0238081, "vrndf2.q    C010", Opcode::r4000allegrex_vrndf2_q, "vrndf2.q", [Some("C010"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0231001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16287,10 +16288,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("S010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0231081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16301,10 +16302,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0239001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16315,10 +16316,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0239081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16329,10 +16330,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [Some("C010"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0241001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16343,10 +16344,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0241081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16357,10 +16358,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0249001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16371,10 +16372,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0249081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16385,10 +16386,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0251001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16399,10 +16400,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0251081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16413,10 +16414,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0259001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16427,10 +16428,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0259081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16441,10 +16442,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0261001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16455,10 +16456,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0261081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16469,10 +16470,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0269001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16483,10 +16484,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0269081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16497,10 +16498,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0271001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16511,10 +16512,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0271081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16525,10 +16526,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0279001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16539,10 +16540,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0279081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16553,10 +16554,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0281001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16567,10 +16568,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0281081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16581,10 +16582,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0289001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16595,10 +16596,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0289081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16609,10 +16610,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0291001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16623,10 +16624,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0291081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16637,10 +16638,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0299001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16651,10 +16652,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0299081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16665,10 +16666,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02A1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16679,10 +16680,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02A1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16693,10 +16694,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02A9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16707,10 +16708,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02A9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16721,10 +16722,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02B1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16735,10 +16736,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02B1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16749,10 +16750,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16763,10 +16764,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02B9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16777,10 +16778,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02C1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16791,10 +16792,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02C1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16805,10 +16806,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02C9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16819,10 +16820,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02C9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16833,10 +16834,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16847,10 +16848,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16861,10 +16862,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16875,10 +16876,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02D9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16889,10 +16890,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16903,10 +16904,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02E1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16917,10 +16918,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16931,10 +16932,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02E9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16945,10 +16946,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16959,10 +16960,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02F1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16973,10 +16974,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -16987,10 +16988,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD02F9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17001,10 +17002,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0301001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17015,10 +17016,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0301081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17029,10 +17030,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0309001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17043,10 +17044,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0309081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17057,10 +17058,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0311001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17071,10 +17072,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0311081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17085,10 +17086,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0319001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17099,10 +17100,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0319081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17113,10 +17114,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0321001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17128,10 +17129,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0321081, "vf2h.p      S010, C400", Opcode::r4000allegrex_vf2h_p, "vf2h.p", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0329001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17145,10 +17146,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0331001, "vh2f.s      C010, S400", Opcode::r4000allegrex_vh2f_s, "vh2f.s", [Some("C010"), Some("S400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD0331081, "vh2f.p      C010, C400", Opcode::r4000allegrex_vh2f_p, "vh2f.p", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0339001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17159,10 +17160,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0339081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17173,10 +17174,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0341001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17187,10 +17188,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0341081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17201,10 +17202,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0349001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17215,10 +17216,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0349081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17229,10 +17230,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0351001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17243,10 +17244,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0351081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17257,10 +17258,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0359001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17271,10 +17272,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0359081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17286,10 +17287,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0361001, "vsbz.s      S010, S400", Opcode::r4000allegrex_vsbz_s, "vsbz.s", [Some("S010"), Some("S400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0361081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17300,10 +17301,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0369001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17314,10 +17315,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0369081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17329,10 +17330,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0371001, "vlgb.s      S010, S400", Opcode::r4000allegrex_vlgb_s, "vlgb.s", [Some("S010"), Some("S400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0371081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17343,10 +17344,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0379001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17357,10 +17358,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0379081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17372,10 +17373,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0381001, "vuc2ifs.s   C010, S400", Opcode::r4000allegrex_vuc2ifs_s, "vuc2ifs.s", [Some("C010"), Some("S400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0381081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17386,10 +17387,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0389001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17400,10 +17401,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0389081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17415,10 +17416,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0391001, "vc2i.s      C010, S400", Opcode::r4000allegrex_vc2i_s, "vc2i.s", [Some("C010"), Some("S400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0391081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17429,10 +17430,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0399001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17443,10 +17444,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0399081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17459,10 +17460,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD03A1001, "vus2i.s     C010, S400", Opcode::r4000allegrex_vus2i_s, "vus2i.s", [Some("C010"), Some("S400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD03A1081, "vus2i.p     C010, C400", Opcode::r4000allegrex_vus2i_p, "vus2i.p", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03A9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17473,10 +17474,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03A9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17489,10 +17490,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD03B1001, "vs2i.s      C010, S400", Opcode::r4000allegrex_vs2i_s, "vs2i.s", [Some("C010"), Some("S400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD03B1081, "vs2i.p      C010, C400", Opcode::r4000allegrex_vs2i_p, "vs2i.p", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17503,10 +17504,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03B9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17517,10 +17518,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03C1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17531,10 +17532,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03C1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17545,10 +17546,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03C9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17560,10 +17561,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD03C9081, "vi2uc.q     S010, C400", Opcode::r4000allegrex_vi2uc_q, "vi2uc.q", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17574,10 +17575,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17588,10 +17589,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17603,10 +17604,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD03D9081, "vi2c.q      S010, C400", Opcode::r4000allegrex_vi2c_q, "vi2c.q", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17618,10 +17619,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD03E1081, "vi2us.p     S010, C400", Opcode::r4000allegrex_vi2us_p, "vi2us.p", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17633,10 +17634,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD03E9081, "vi2us.q     C010, C400", Opcode::r4000allegrex_vi2us_q, "vi2us.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17648,10 +17649,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD03F1081, "vi2s.p      S010, C400", Opcode::r4000allegrex_vi2s_p, "vi2s.p", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD03F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17663,10 +17664,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD03F9081, "vi2s.q      C010, C400", Opcode::r4000allegrex_vi2s_q, "vi2s.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0401001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17677,10 +17678,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0401081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17691,10 +17692,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0409001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17706,10 +17707,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0409081, "vsrt1.q     C010, C400", Opcode::r4000allegrex_vsrt1_q, "vsrt1.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0411001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17720,10 +17721,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0411081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17734,10 +17735,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0419001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17749,10 +17750,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0419081, "vsrt2.q     C010, C400", Opcode::r4000allegrex_vsrt2_q, "vsrt2.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0421001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17764,10 +17765,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0421081, "vbfy1.p     C010, C400", Opcode::r4000allegrex_vbfy1_p, "vbfy1.p", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0429001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17779,10 +17780,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0429081, "vbfy1.q     C010, C400", Opcode::r4000allegrex_vbfy1_q, "vbfy1.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0431001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17793,10 +17794,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0431081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17807,10 +17808,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0439001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17828,10 +17829,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0451001, "vsocp.s     C010, S400", Opcode::r4000allegrex_vsocp_s, "vsocp.s", [Some("C010"), Some("S400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD0451081, "vsocp.p     C010, C400", Opcode::r4000allegrex_vsocp_p, "vsocp.p", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0459001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17842,10 +17843,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0459081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17856,10 +17857,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0461001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17873,10 +17874,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0469001, "vfad.t      S010, C400", Opcode::r4000allegrex_vfad_t, "vfad.t", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD0469081, "vfad.q      S010, C400", Opcode::r4000allegrex_vfad_q, "vfad.q", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0471001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17890,10 +17891,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD0479001, "vavg.t      S010, C400", Opcode::r4000allegrex_vavg_t, "vavg.t", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD0479081, "vavg.q      S010, C400", Opcode::r4000allegrex_vavg_q, "vavg.q", [Some("S010"), Some("C400"), None, None, None]),
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0481001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17904,10 +17905,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0481081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17918,10 +17919,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0489001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17933,10 +17934,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             },
         TestEntry::new_r4000allegrex(0xD0489081, "vsrt3.q     C010, C400", Opcode::r4000allegrex_vsrt3_q, "vsrt3.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0491001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17947,10 +17948,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0491081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17961,10 +17962,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0499001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17980,10 +17981,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD04A9001, "vsgn.t      C010, C400", Opcode::r4000allegrex_vsgn_t, "vsgn.t", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD04A9081, "vsgn.q      C010, C400", Opcode::r4000allegrex_vsgn_q, "vsgn.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04B1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -17994,10 +17995,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04B1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18008,10 +18009,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18022,10 +18023,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04B9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18036,10 +18037,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04C1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18050,10 +18051,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04C1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18064,10 +18065,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04C9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18078,10 +18079,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04C9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18092,10 +18093,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18106,10 +18107,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18120,10 +18121,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18134,10 +18135,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04D9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18148,10 +18149,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18162,10 +18163,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04E1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18176,10 +18177,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18190,10 +18191,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04E9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18204,10 +18205,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18218,10 +18219,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04F1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18232,10 +18233,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18246,10 +18247,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD04F9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18516,10 +18517,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD05101FE, "vmtvc       $254, S010", Opcode::r4000allegrex_vmtvc, "vmtvc", [Some("$254"), Some("S010"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD05101FF, "vmtvc       $255, S010", Opcode::r4000allegrex_vmtvc, "vmtvc", [Some("$255"), Some("S010"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0521001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18530,10 +18531,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0521081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18544,10 +18545,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0529001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18558,10 +18559,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0529081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18572,10 +18573,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0531001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18586,10 +18587,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0531081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18600,10 +18601,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0539001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18614,10 +18615,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0539081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18628,10 +18629,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0541001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18642,10 +18643,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0541081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18656,10 +18657,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0549001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18670,10 +18671,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0549081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18684,10 +18685,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0551001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18698,10 +18699,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0551081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18712,10 +18713,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0559001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18726,10 +18727,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0559081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18740,10 +18741,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0561001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18754,10 +18755,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0561081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18768,10 +18769,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0569001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18782,10 +18783,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0569081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18796,10 +18797,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0571001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18810,10 +18811,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0571081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18824,10 +18825,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0579001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18838,10 +18839,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0579081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18852,10 +18853,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0581001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18866,10 +18867,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0581081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18880,10 +18881,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0589001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18894,10 +18895,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0589081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18908,10 +18909,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0591001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18922,10 +18923,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0591081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18936,10 +18937,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0599001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18951,10 +18952,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD0599081, "vt4444.q    C010, C400", Opcode::r4000allegrex_vt4444_q, "vt4444.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05A1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18965,10 +18966,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05A1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18979,10 +18980,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05A9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -18994,10 +18995,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD05A9081, "vt5551.q    C010, C400", Opcode::r4000allegrex_vt5551_q, "vt5551.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05B1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19008,10 +19009,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05B1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19022,10 +19023,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19037,10 +19038,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         },
         TestEntry::new_r4000allegrex(0xD05B9081, "vt5650.q    C010, C400", Opcode::r4000allegrex_vt5650_q, "vt5650.q", [Some("C010"), Some("C400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05C1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19051,10 +19052,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05C1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19065,10 +19066,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05C9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19079,10 +19080,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05C9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19093,10 +19094,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19107,10 +19108,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19121,10 +19122,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19135,10 +19136,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05D9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19149,10 +19150,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19163,10 +19164,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05E1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19177,10 +19178,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19191,10 +19192,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05E9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19205,10 +19206,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19219,10 +19220,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05F1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19233,10 +19234,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19247,10 +19248,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD05F9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19389,10 +19390,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
         TestEntry::new_r4000allegrex(0xD07F8001, "vcst.t      C010, INVALID_31", Opcode::r4000allegrex_vcst_t, "vcst.t", [Some("C010"), Some("INVALID_31"), None, None, None]),
         TestEntry::new_r4000allegrex(0xD07F8081, "vcst.q      C010, INVALID_31", Opcode::r4000allegrex_vcst_q, "vcst.q", [Some("C010"), Some("INVALID_31"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0801001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19403,10 +19404,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0801081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19417,10 +19418,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0809001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19431,10 +19432,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0809081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19445,10 +19446,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0811001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19459,10 +19460,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0811081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19473,10 +19474,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0819001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19487,10 +19488,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0819081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19501,10 +19502,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0821001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19515,10 +19516,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0821081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19529,10 +19530,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0829001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19543,10 +19544,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0829081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19557,10 +19558,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0831001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19571,10 +19572,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0831081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19585,10 +19586,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0839001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19599,10 +19600,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0839081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19613,10 +19614,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0841001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19627,10 +19628,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0841081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19641,10 +19642,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0849001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19655,10 +19656,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0849081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19669,10 +19670,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0851001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19683,10 +19684,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0851081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19697,10 +19698,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0859001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19711,10 +19712,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0859081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19725,10 +19726,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0861001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19739,10 +19740,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0861081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19753,10 +19754,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0869001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19767,10 +19768,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0869081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19781,10 +19782,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0871001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19795,10 +19796,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0871081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19809,10 +19810,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0879001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19823,10 +19824,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0879081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19837,10 +19838,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0881001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19851,10 +19852,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0881081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19865,10 +19866,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0889001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19879,10 +19880,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0889081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19893,10 +19894,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0891001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19907,10 +19908,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0891081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19921,10 +19922,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0899001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19935,10 +19936,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0899081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19949,10 +19950,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08A1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19963,10 +19964,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08A1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19977,10 +19978,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08A9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -19991,10 +19992,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08A9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20005,10 +20006,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08B1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20019,10 +20020,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08B1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20033,10 +20034,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20047,10 +20048,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08B9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20061,10 +20062,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08C1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20075,10 +20076,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08C1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20089,10 +20090,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08C9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20103,10 +20104,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08C9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20117,10 +20118,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20131,10 +20132,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20145,10 +20146,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20159,10 +20160,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08D9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20173,10 +20174,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20187,10 +20188,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08E1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20201,10 +20202,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20215,10 +20216,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08E9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20229,10 +20230,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20243,10 +20244,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08F1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20257,10 +20258,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20271,10 +20272,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD08F9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20285,10 +20286,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0901001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20299,10 +20300,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0901081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20313,10 +20314,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0909001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20327,10 +20328,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0909081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20341,10 +20342,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0911001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20355,10 +20356,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0911081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20369,10 +20370,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0919001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20383,10 +20384,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0919081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20397,10 +20398,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0921001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20411,10 +20412,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0921081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20425,10 +20426,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0929001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20439,10 +20440,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0929081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20453,10 +20454,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0931001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20467,10 +20468,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0931081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20481,10 +20482,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0939001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20495,10 +20496,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0939081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20509,10 +20510,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0941001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20523,10 +20524,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0941081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20537,10 +20538,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0949001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20551,10 +20552,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0949081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20565,10 +20566,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0951001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20579,10 +20580,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0951081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20593,10 +20594,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0959001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20607,10 +20608,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0959081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20621,10 +20622,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0961001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20635,10 +20636,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0961081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20649,10 +20650,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0969001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20663,10 +20664,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0969081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20677,10 +20678,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0971001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20691,10 +20692,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0971081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20705,10 +20706,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0979001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20719,10 +20720,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0979081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20733,10 +20734,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0981001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20747,10 +20748,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0981081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20761,10 +20762,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0989001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20775,10 +20776,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0989081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20789,10 +20790,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0991001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20803,10 +20804,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0991081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20817,10 +20818,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0999001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20831,10 +20832,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0999081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20845,10 +20846,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09A1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20859,10 +20860,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09A1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20873,10 +20874,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09A9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20887,10 +20888,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09A9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20901,10 +20902,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09B1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20915,10 +20916,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09B1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20929,10 +20930,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09B9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20943,10 +20944,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09B9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20957,10 +20958,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09C1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20971,10 +20972,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09C1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20985,10 +20986,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09C9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -20999,10 +21000,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09C9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21013,10 +21014,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09D1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21027,10 +21028,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09D1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21041,10 +21042,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09D9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21055,10 +21056,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09D9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21069,10 +21070,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09E1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21083,10 +21084,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09E1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21097,10 +21098,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09E9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21111,10 +21112,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09E9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21125,10 +21126,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09F1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21139,10 +21140,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09F1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21153,10 +21154,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09F9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21167,10 +21168,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD09F9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21181,10 +21182,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21195,10 +21196,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21209,10 +21210,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21223,10 +21224,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21237,10 +21238,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21251,10 +21252,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21265,10 +21266,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21279,10 +21280,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21293,10 +21294,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21307,10 +21308,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21321,10 +21322,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21335,10 +21336,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21349,10 +21350,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21363,10 +21364,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21377,10 +21378,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21391,10 +21392,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21405,10 +21406,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21419,10 +21420,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21433,10 +21434,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21447,10 +21448,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21461,10 +21462,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21475,10 +21476,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21489,10 +21490,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21503,10 +21504,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21517,10 +21518,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21531,10 +21532,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21545,10 +21546,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21559,10 +21560,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21573,10 +21574,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21587,10 +21588,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21601,10 +21602,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21615,10 +21616,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21629,10 +21630,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21643,10 +21644,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21657,10 +21658,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21671,10 +21672,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21685,10 +21686,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21699,10 +21700,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21713,10 +21714,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21727,10 +21728,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0A99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21741,10 +21742,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21755,10 +21756,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21769,10 +21770,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21783,10 +21784,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21797,10 +21798,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21811,10 +21812,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21825,10 +21826,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21839,10 +21840,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21853,10 +21854,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21867,10 +21868,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21881,10 +21882,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21895,10 +21896,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21909,10 +21910,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21923,10 +21924,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21937,10 +21938,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21951,10 +21952,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21965,10 +21966,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21979,10 +21980,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -21993,10 +21994,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22007,10 +22008,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22021,10 +22022,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22035,10 +22036,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22049,10 +22050,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22063,10 +22064,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0AF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22077,10 +22078,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22091,10 +22092,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22105,10 +22106,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22119,10 +22120,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22133,10 +22134,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22147,10 +22148,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22161,10 +22162,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22175,10 +22176,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22189,10 +22190,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22203,10 +22204,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22217,10 +22218,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22231,10 +22232,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22245,10 +22246,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22259,10 +22260,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22273,10 +22274,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22287,10 +22288,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22301,10 +22302,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22315,10 +22316,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22329,10 +22330,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22343,10 +22344,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22357,10 +22358,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22371,10 +22372,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22385,10 +22386,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22399,10 +22400,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22413,10 +22414,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22427,10 +22428,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22441,10 +22442,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22455,10 +22456,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22469,10 +22470,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22483,10 +22484,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22497,10 +22498,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22511,10 +22512,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22525,10 +22526,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22539,10 +22540,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22553,10 +22554,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22567,10 +22568,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22581,10 +22582,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22595,10 +22596,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22609,10 +22610,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22623,10 +22624,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0B99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22637,10 +22638,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22651,10 +22652,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22665,10 +22666,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22679,10 +22680,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22693,10 +22694,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22707,10 +22708,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22721,10 +22722,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22735,10 +22736,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22749,10 +22750,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22763,10 +22764,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22777,10 +22778,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22791,10 +22792,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22805,10 +22806,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22819,10 +22820,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22833,10 +22834,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22847,10 +22848,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22861,10 +22862,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22875,10 +22876,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22889,10 +22890,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22903,10 +22904,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22917,10 +22918,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22931,10 +22932,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22945,10 +22946,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22959,10 +22960,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0BF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22973,10 +22974,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -22987,10 +22988,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23001,10 +23002,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23015,10 +23016,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23029,10 +23030,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23043,10 +23044,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23057,10 +23058,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23071,10 +23072,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23085,10 +23086,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23099,10 +23100,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23113,10 +23114,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23127,10 +23128,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23141,10 +23142,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23155,10 +23156,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23169,10 +23170,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23183,10 +23184,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23197,10 +23198,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23211,10 +23212,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23225,10 +23226,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23239,10 +23240,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23253,10 +23254,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23267,10 +23268,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23281,10 +23282,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23295,10 +23296,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23309,10 +23310,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23323,10 +23324,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23337,10 +23338,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23351,10 +23352,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23365,10 +23366,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23379,10 +23380,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23393,10 +23394,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23407,10 +23408,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23421,10 +23422,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23435,10 +23436,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23449,10 +23450,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23463,10 +23464,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23477,10 +23478,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23491,10 +23492,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23505,10 +23506,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23519,10 +23520,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0C99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23533,10 +23534,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23547,10 +23548,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23561,10 +23562,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23575,10 +23576,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23589,10 +23590,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23603,10 +23604,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23617,10 +23618,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23631,10 +23632,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23645,10 +23646,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23659,10 +23660,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23673,10 +23674,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23687,10 +23688,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23701,10 +23702,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23715,10 +23716,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23729,10 +23730,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23743,10 +23744,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23757,10 +23758,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23771,10 +23772,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23785,10 +23786,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23799,10 +23800,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23813,10 +23814,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23827,10 +23828,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23841,10 +23842,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23855,10 +23856,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0CF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23869,10 +23870,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23883,10 +23884,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23897,10 +23898,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23911,10 +23912,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23925,10 +23926,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23939,10 +23940,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23953,10 +23954,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23967,10 +23968,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23981,10 +23982,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -23995,10 +23996,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24009,10 +24010,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24023,10 +24024,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24037,10 +24038,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24051,10 +24052,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24065,10 +24066,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24079,10 +24080,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24093,10 +24094,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24107,10 +24108,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24121,10 +24122,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24135,10 +24136,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24149,10 +24150,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24163,10 +24164,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24177,10 +24178,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24191,10 +24192,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24205,10 +24206,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24219,10 +24220,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24233,10 +24234,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24247,10 +24248,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24261,10 +24262,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24275,10 +24276,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24289,10 +24290,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24303,10 +24304,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24317,10 +24318,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24331,10 +24332,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24345,10 +24346,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24359,10 +24360,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24373,10 +24374,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24387,10 +24388,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24401,10 +24402,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24415,10 +24416,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0D99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24429,10 +24430,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24443,10 +24444,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24457,10 +24458,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24471,10 +24472,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24485,10 +24486,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24499,10 +24500,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24513,10 +24514,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24527,10 +24528,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24541,10 +24542,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24555,10 +24556,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24569,10 +24570,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24583,10 +24584,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24597,10 +24598,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24611,10 +24612,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24625,10 +24626,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24639,10 +24640,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24653,10 +24654,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24667,10 +24668,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24681,10 +24682,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24695,10 +24696,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24709,10 +24710,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24723,10 +24724,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24737,10 +24738,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24751,10 +24752,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0DF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24765,10 +24766,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24779,10 +24780,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24793,10 +24794,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24807,10 +24808,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24821,10 +24822,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24835,10 +24836,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24849,10 +24850,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24863,10 +24864,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24877,10 +24878,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24891,10 +24892,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24905,10 +24906,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24919,10 +24920,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24933,10 +24934,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24947,10 +24948,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24961,10 +24962,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24975,10 +24976,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -24989,10 +24990,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25003,10 +25004,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25017,10 +25018,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25031,10 +25032,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25045,10 +25046,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25059,10 +25060,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25073,10 +25074,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25087,10 +25088,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25101,10 +25102,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25115,10 +25116,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25129,10 +25130,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25143,10 +25144,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25157,10 +25158,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25171,10 +25172,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25185,10 +25186,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25199,10 +25200,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25213,10 +25214,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25227,10 +25228,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25241,10 +25242,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25255,10 +25256,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25269,10 +25270,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25283,10 +25284,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25297,10 +25298,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25311,10 +25312,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0E99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25325,10 +25326,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25339,10 +25340,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25353,10 +25354,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25367,10 +25368,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25381,10 +25382,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25395,10 +25396,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25409,10 +25410,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25423,10 +25424,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25437,10 +25438,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25451,10 +25452,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25465,10 +25466,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25479,10 +25480,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25493,10 +25494,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0ED1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25507,10 +25508,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0ED1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25521,10 +25522,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0ED9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25535,10 +25536,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0ED9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25549,10 +25550,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25563,10 +25564,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25577,10 +25578,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25591,10 +25592,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25605,10 +25606,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25619,10 +25620,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25633,10 +25634,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25647,10 +25648,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0EF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25661,10 +25662,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25675,10 +25676,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25689,10 +25690,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25703,10 +25704,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25717,10 +25718,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25731,10 +25732,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25745,10 +25746,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25759,10 +25760,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25773,10 +25774,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25787,10 +25788,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25801,10 +25802,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25815,10 +25816,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25829,10 +25830,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25843,10 +25844,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25857,10 +25858,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25871,10 +25872,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25885,10 +25886,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25899,10 +25900,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25913,10 +25914,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25927,10 +25928,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25941,10 +25942,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25955,10 +25956,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25969,10 +25970,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25983,10 +25984,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -25997,10 +25998,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26011,10 +26012,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26025,10 +26026,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26039,10 +26040,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26053,10 +26054,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26067,10 +26068,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26081,10 +26082,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26095,10 +26096,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26109,10 +26110,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26123,10 +26124,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26137,10 +26138,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26151,10 +26152,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26165,10 +26166,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26179,10 +26180,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26193,10 +26194,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26207,10 +26208,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0F99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26221,10 +26222,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26235,10 +26236,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26249,10 +26250,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26263,10 +26264,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26277,10 +26278,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26291,10 +26292,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26305,10 +26306,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26319,10 +26320,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26333,10 +26334,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26347,10 +26348,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26361,10 +26362,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26375,10 +26376,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26389,10 +26390,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26403,10 +26404,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD0FD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26417,10 +26418,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26431,10 +26432,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26445,10 +26446,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26459,10 +26460,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26473,10 +26474,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26487,10 +26488,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26501,10 +26502,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26515,10 +26516,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26529,10 +26530,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -26543,10 +26544,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
             operands_str: [None, None, None, None, None],
             },
         TestEntry {
-                instr: Instruction::new_r4000allegrex(
+                instr: Instruction::new(
                 0xD0FF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27263,10 +27264,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
         TestEntry::new_r4000allegrex(0xD2AE9001, "vcmovf.t    C010, C400, 6", Opcode::r4000allegrex_vcmovf_t, "vcmovf.t", [Some("C010"), Some("C400"), Some("6"), None, None]),
         TestEntry::new_r4000allegrex(0xD2AE9081, "vcmovf.q    C010, C400, 6", Opcode::r4000allegrex_vcmovf_q, "vcmovf.q", [Some("C010"), Some("C400"), Some("6"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27277,10 +27278,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27291,10 +27292,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27305,10 +27306,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27319,10 +27320,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27333,10 +27334,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27347,10 +27348,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27361,10 +27362,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27375,10 +27376,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27389,10 +27390,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27403,10 +27404,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27417,10 +27418,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27431,10 +27432,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27445,10 +27446,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27459,10 +27460,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27473,10 +27474,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27487,10 +27488,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27501,10 +27502,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27515,10 +27516,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27529,10 +27530,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27543,10 +27544,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27557,10 +27558,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27571,10 +27572,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27585,10 +27586,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27599,10 +27600,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27613,10 +27614,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27627,10 +27628,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27641,10 +27642,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27655,10 +27656,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27669,10 +27670,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27683,10 +27684,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27697,10 +27698,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27711,10 +27712,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27725,10 +27726,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27739,10 +27740,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27753,10 +27754,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2B99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27767,10 +27768,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27781,10 +27782,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27795,10 +27796,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27809,10 +27810,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27823,10 +27824,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27837,10 +27838,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27851,10 +27852,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27865,10 +27866,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27879,10 +27880,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27893,10 +27894,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27907,10 +27908,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27921,10 +27922,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27935,10 +27936,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27949,10 +27950,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27963,10 +27964,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27977,10 +27978,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -27991,10 +27992,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28005,10 +28006,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28019,10 +28020,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28033,10 +28034,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2BE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28047,10 +28048,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28061,10 +28062,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28075,10 +28076,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28089,10 +28090,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28103,10 +28104,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28117,10 +28118,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28131,10 +28132,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28145,10 +28146,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28159,10 +28160,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28173,10 +28174,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28187,10 +28188,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28201,10 +28202,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28215,10 +28216,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28229,10 +28230,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28243,10 +28244,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28257,10 +28258,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28271,10 +28272,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28285,10 +28286,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28299,10 +28300,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28313,10 +28314,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28327,10 +28328,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28341,10 +28342,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28355,10 +28356,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28369,10 +28370,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28383,10 +28384,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28397,10 +28398,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28411,10 +28412,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28425,10 +28426,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28439,10 +28440,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28453,10 +28454,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28467,10 +28468,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28481,10 +28482,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28495,10 +28496,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28509,10 +28510,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28523,10 +28524,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28537,10 +28538,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28551,10 +28552,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28565,10 +28566,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28579,10 +28580,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28593,10 +28594,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2C99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28607,10 +28608,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28621,10 +28622,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28635,10 +28636,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28649,10 +28650,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28663,10 +28664,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28677,10 +28678,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28691,10 +28692,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28705,10 +28706,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28719,10 +28720,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28733,10 +28734,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28747,10 +28748,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28761,10 +28762,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28775,10 +28776,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28789,10 +28790,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28803,10 +28804,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28817,10 +28818,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28831,10 +28832,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28845,10 +28846,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28859,10 +28860,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28873,10 +28874,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28887,10 +28888,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28901,10 +28902,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28915,10 +28916,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28929,10 +28930,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2CF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28943,10 +28944,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28957,10 +28958,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28971,10 +28972,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28985,10 +28986,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -28999,10 +29000,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29013,10 +29014,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29027,10 +29028,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29041,10 +29042,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29055,10 +29056,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29069,10 +29070,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29083,10 +29084,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29097,10 +29098,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29111,10 +29112,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29125,10 +29126,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29139,10 +29140,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29153,10 +29154,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29167,10 +29168,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29181,10 +29182,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29195,10 +29196,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29209,10 +29210,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29223,10 +29224,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29237,10 +29238,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29251,10 +29252,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29265,10 +29266,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29279,10 +29280,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29293,10 +29294,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29307,10 +29308,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29321,10 +29322,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29335,10 +29336,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29349,10 +29350,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29363,10 +29364,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29377,10 +29378,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29391,10 +29392,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29405,10 +29406,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29419,10 +29420,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29433,10 +29434,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29447,10 +29448,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29461,10 +29462,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29475,10 +29476,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29489,10 +29490,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2D99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29503,10 +29504,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29517,10 +29518,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29531,10 +29532,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29545,10 +29546,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29559,10 +29560,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29573,10 +29574,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29587,10 +29588,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29601,10 +29602,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29615,10 +29616,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29629,10 +29630,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29643,10 +29644,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29657,10 +29658,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29671,10 +29672,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29685,10 +29686,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29699,10 +29700,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29713,10 +29714,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29727,10 +29728,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29741,10 +29742,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29755,10 +29756,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29769,10 +29770,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29783,10 +29784,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29797,10 +29798,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29811,10 +29812,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29825,10 +29826,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2DF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29839,10 +29840,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29853,10 +29854,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29867,10 +29868,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29881,10 +29882,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29895,10 +29896,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29909,10 +29910,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29923,10 +29924,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29937,10 +29938,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29951,10 +29952,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29965,10 +29966,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29979,10 +29980,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -29993,10 +29994,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30007,10 +30008,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30021,10 +30022,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30035,10 +30036,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30049,10 +30050,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30063,10 +30064,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30077,10 +30078,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30091,10 +30092,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30105,10 +30106,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30119,10 +30120,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30133,10 +30134,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30147,10 +30148,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30161,10 +30162,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30175,10 +30176,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30189,10 +30190,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30203,10 +30204,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30217,10 +30218,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30231,10 +30232,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30245,10 +30246,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30259,10 +30260,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30273,10 +30274,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30287,10 +30288,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30301,10 +30302,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30315,10 +30316,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30329,10 +30330,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30343,10 +30344,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30357,10 +30358,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30371,10 +30372,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30385,10 +30386,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2E99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30399,10 +30400,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30413,10 +30414,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30427,10 +30428,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30441,10 +30442,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30455,10 +30456,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30469,10 +30470,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30483,10 +30484,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30497,10 +30498,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30511,10 +30512,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30525,10 +30526,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30539,10 +30540,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30553,10 +30554,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30567,10 +30568,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2ED1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30581,10 +30582,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2ED1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30595,10 +30596,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2ED9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30609,10 +30610,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2ED9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30623,10 +30624,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30637,10 +30638,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30651,10 +30652,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30665,10 +30666,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30679,10 +30680,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30693,10 +30694,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30707,10 +30708,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30721,10 +30722,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2EF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30735,10 +30736,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F01001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30749,10 +30750,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F01081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30763,10 +30764,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F09001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30777,10 +30778,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F09081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30791,10 +30792,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F11001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30805,10 +30806,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F11081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30819,10 +30820,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F19001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30833,10 +30834,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F19081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30847,10 +30848,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F21001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30861,10 +30862,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F21081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30875,10 +30876,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F29001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30889,10 +30890,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F29081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30903,10 +30904,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F31001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30917,10 +30918,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F31081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30931,10 +30932,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F39001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30945,10 +30946,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F39081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30959,10 +30960,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F41001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30973,10 +30974,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F41081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -30987,10 +30988,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F49001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31001,10 +31002,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F49081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31015,10 +31016,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F51001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31029,10 +31030,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F51081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31043,10 +31044,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F59001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31057,10 +31058,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F59081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31071,10 +31072,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F61001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31085,10 +31086,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F61081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31099,10 +31100,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F69001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31113,10 +31114,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F69081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31127,10 +31128,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F71001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31141,10 +31142,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F71081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31155,10 +31156,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F79001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31169,10 +31170,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F79081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31183,10 +31184,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F81001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31197,10 +31198,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F81081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31211,10 +31212,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F89001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31225,10 +31226,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F89081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31239,10 +31240,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F91001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31253,10 +31254,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F91081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31267,10 +31268,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F99001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31281,10 +31282,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2F99081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31295,10 +31296,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FA1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31309,10 +31310,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FA1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31323,10 +31324,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FA9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31337,10 +31338,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FA9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31351,10 +31352,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FB1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31365,10 +31366,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FB1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31379,10 +31380,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FB9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31393,10 +31394,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FB9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31407,10 +31408,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FC1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31421,10 +31422,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FC1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31435,10 +31436,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FC9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31449,10 +31450,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FC9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31463,10 +31464,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FD1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31477,10 +31478,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FD1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31491,10 +31492,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FD9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31505,10 +31506,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FD9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31519,10 +31520,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FE1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31533,10 +31534,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FE1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31547,10 +31548,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FE9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31561,10 +31562,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FE9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31575,10 +31576,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FF1001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31589,10 +31590,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FF1081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31603,10 +31604,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FF9001,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -31617,10 +31618,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xD2FF9081,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33621,10 +33622,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
     const ENTRIES: &[TestEntry] = &[
         /* VFPU6 */
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33647,10 +33648,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
         TestEntry::new_r4000allegrex(0xF1809040, "vhtfm4.q    C002, M400, C000", Opcode::r4000allegrex_vhtfm4_q, "vhtfm4.q", [Some("C002"), Some("M400"), Some("C000"), None, None]),
         TestEntry::new_r4000allegrex(0xF18090C0, "vtfm4.q     C002, M400, C000", Opcode::r4000allegrex_vtfm4_q, "vtfm4.q", [Some("C002"), Some("M400"), Some("C000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF2001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33664,10 +33665,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
         TestEntry::new_r4000allegrex(0xF2009040, "vmscl.t     M001, M400, S000", Opcode::r4000allegrex_vmscl_t, "vmscl.t", [Some("M001"), Some("M400"), Some("S000"), None, None]),
         TestEntry::new_r4000allegrex(0xF20090C0, "vmscl.q     M002, M400, S000", Opcode::r4000allegrex_vmscl_q, "vmscl.q", [Some("M002"), Some("M400"), Some("S000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF2801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33678,10 +33679,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF28010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33694,10 +33695,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
         TestEntry::new_r4000allegrex(0xF2809004, "vcrsp.t     C100, C400, C000", Opcode::r4000allegrex_vcrsp_t, "vcrsp.t", [Some("C100"), Some("C400"), Some("C000"), None, None]),
         TestEntry::new_r4000allegrex(0xF28090C0, "vqmul.q     C002, C400, C000", Opcode::r4000allegrex_vqmul_q, "vqmul.q", [Some("C002"), Some("C400"), Some("C000"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3001040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33708,10 +33709,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF30010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33722,10 +33723,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3009040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33736,10 +33737,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF30090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33750,10 +33751,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3801040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33767,10 +33768,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
         TestEntry::new_r4000allegrex(0xF3809040, "vmmov.t     M001, M400", Opcode::r4000allegrex_vmmov_t, "vmmov.t", [Some("M001"), Some("M400"), None, None, None]),
         TestEntry::new_r4000allegrex(0xF38090C0, "vmmov.q     M002, M400", Opcode::r4000allegrex_vmmov_q, "vmmov.q", [Some("M002"), Some("M400"), None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3811040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33781,10 +33782,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38110C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33795,10 +33796,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3819040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33809,10 +33810,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38190C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33823,10 +33824,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3821040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33837,10 +33838,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38210C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33851,10 +33852,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3829040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33865,10 +33866,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38290C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33879,10 +33880,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3831040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33896,10 +33897,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
         TestEntry::new_r4000allegrex(0xF3838040, "vmidt.t     M001", Opcode::r4000allegrex_vmidt_t, "vmidt.t", [Some("M001"), None, None, None, None]),
         TestEntry::new_r4000allegrex(0xF38380C0, "vmidt.q     M002", Opcode::r4000allegrex_vmidt_q, "vmidt.q", [Some("M002"), None, None, None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3841040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33910,10 +33911,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38410C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33924,10 +33925,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3849040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33938,10 +33939,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38490C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33952,10 +33953,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3851040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33966,10 +33967,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38510C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33980,10 +33981,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3859040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -33994,10 +33995,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38590C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34008,10 +34009,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3861040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34022,10 +34023,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38610C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34036,10 +34037,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [Some("M002"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3869040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34050,10 +34051,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [Some("M001"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38690C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34064,10 +34065,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [Some("M002"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3871040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34078,10 +34079,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38710C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34092,10 +34093,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [Some("M002"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3879040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34106,10 +34107,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [Some("M001"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF38790C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34120,10 +34121,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [Some("M002"), None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3A01040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34137,10 +34138,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
         TestEntry::new_r4000allegrex(0xF3A09040, "vrot.t      C001, S400, [C,S,S]", Opcode::r4000allegrex_vrot_t, "vrot.t", [Some("C001"), Some("S400"), Some("[C,S,S]"), None, None]),
         TestEntry::new_r4000allegrex(0xF3A090C0, "vrot.q      C002, S400, [C,S,S,S]", Opcode::r4000allegrex_vrot_q, "vrot.q", [Some("C002"), Some("S400"), Some("[C,S,S,S]"), None, None]),
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3C01040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34151,10 +34152,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3C010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34165,10 +34166,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3C09040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34179,10 +34180,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3C090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34193,10 +34194,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3E01040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34207,10 +34208,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3E010C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34221,10 +34222,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3E09040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34235,10 +34236,10 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF3E090C0,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34289,10 +34290,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
     const ENTRIES: &[TestEntry] = &[
         /* vmmul */
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34303,10 +34304,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34317,10 +34318,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34331,10 +34332,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34345,10 +34346,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34359,10 +34360,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34373,10 +34374,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34387,10 +34388,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34401,10 +34402,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34415,10 +34416,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34429,10 +34430,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34443,10 +34444,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34457,10 +34458,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34471,10 +34472,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34485,10 +34486,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34499,10 +34500,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0000F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34513,10 +34514,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34527,10 +34528,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34541,10 +34542,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34555,10 +34556,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34569,10 +34570,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34583,10 +34584,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34597,10 +34598,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34611,10 +34612,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34625,10 +34626,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34639,10 +34640,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34653,10 +34654,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34667,10 +34668,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34681,10 +34682,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34695,10 +34696,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34709,10 +34710,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0001F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34723,10 +34724,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34737,10 +34738,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34751,10 +34752,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34765,10 +34766,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34779,10 +34780,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34793,10 +34794,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34807,10 +34808,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34821,10 +34822,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34835,10 +34836,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34849,10 +34850,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34863,10 +34864,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34877,10 +34878,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34891,10 +34892,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34905,10 +34906,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34919,10 +34920,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34933,10 +34934,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0002F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34947,10 +34948,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34961,10 +34962,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34975,10 +34976,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -34989,10 +34990,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35003,10 +35004,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35017,10 +35018,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35031,10 +35032,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35045,10 +35046,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35059,10 +35060,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35073,10 +35074,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35087,10 +35088,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35101,10 +35102,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35115,10 +35116,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35129,10 +35130,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35143,10 +35144,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35157,10 +35158,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0003F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35171,10 +35172,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35185,10 +35186,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35199,10 +35200,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35213,10 +35214,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35227,10 +35228,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35241,10 +35242,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35255,10 +35256,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35269,10 +35270,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35283,10 +35284,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35297,10 +35298,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35311,10 +35312,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35325,10 +35326,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35339,10 +35340,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35353,10 +35354,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35367,10 +35368,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35381,10 +35382,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0004F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35395,10 +35396,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35409,10 +35410,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35423,10 +35424,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35437,10 +35438,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35451,10 +35452,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35465,10 +35466,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35479,10 +35480,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35493,10 +35494,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35507,10 +35508,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35521,10 +35522,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35535,10 +35536,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35549,10 +35550,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35563,10 +35564,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35577,10 +35578,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35591,10 +35592,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35605,10 +35606,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0005F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35619,10 +35620,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35633,10 +35634,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35647,10 +35648,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35661,10 +35662,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35675,10 +35676,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35689,10 +35690,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35703,10 +35704,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35717,10 +35718,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35731,10 +35732,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35745,10 +35746,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35759,10 +35760,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35773,10 +35774,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35787,10 +35788,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35801,10 +35802,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35815,10 +35816,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35829,10 +35830,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0006F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35843,10 +35844,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007040,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35857,10 +35858,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007140,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35871,10 +35872,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007240,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35885,10 +35886,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007340,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35899,10 +35900,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007440,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35913,10 +35914,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007540,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35927,10 +35928,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007640,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35941,10 +35942,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007740,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35955,10 +35956,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007840,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35969,10 +35970,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007940,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35983,10 +35984,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007A40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -35997,10 +35998,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007B40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -36011,10 +36012,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007C40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -36025,10 +36026,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007D40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -36039,10 +36040,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007E40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
@@ -36053,10 +36054,10 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
             operands_str: [None, None, None, None, None],
         },
         TestEntry {
-            instr: Instruction::new_r4000allegrex(
+            instr: Instruction::new(
                 0xF0007F40,
                 Vram::new(0x80000000),
-                InstructionFlags::default(),
+                InstructionFlags::new().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: DisplayFlags::default(),
