@@ -13,7 +13,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rsp_cop0d_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_rsp_cop0());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_rsp_cop0());
 
         write!(f, "{}", s)
     }
@@ -23,7 +23,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rsp_cop2t_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -33,7 +33,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rsp_cop2cd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -44,7 +44,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rsp_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -54,7 +54,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rsp_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -64,7 +64,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rsp_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }

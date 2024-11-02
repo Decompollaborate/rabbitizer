@@ -13,6 +13,70 @@ use crate::traits::{R4000AllegrexVectorRegister, Register};
 use crate::utils;
 use crate::vram::{Vram, VramOffset};
 
+/// A MIPS instruction.
+///
+/// For customization of a given instruction refer to the [`InstructionFlags`] struct.
+///
+/// For disassembling / displaying this instruction as an matching assemblable string (that would
+/// encode back to the original `word`) refer to the [`display`] function.
+///
+/// An instance of this struct contains the decoded information corresponding to a 32bits `word`.
+/// The passed `word` may not map to a valid MIPS instruction. To check validity of the decoded
+/// `word` use the [`is_valid`] function. Using any of the inspection methods on an invalid
+/// instruction will return garbage data, but [`display`]ing the instruction will fallback to
+/// produce a string use `.word` statements with the original raw word as a way to still produce
+/// matching assembly. To get an instance of a MIPS instruction that always get checked for
+/// validity during construction use the [`new_checked`] function instead of the [`new`] function.
+///
+/// Use [`valued_operands_iter`] to iterate over the operands of the instruction.
+///
+/// # Examples
+///
+/// ### Plain disassembly
+///
+/// ```
+/// use rabbitizer::{Instruction, Vram, InstructionFlags, DisplayFlags};
+/// use rabbitizer::opcodes::Opcode;
+///
+/// let vram = Vram::new(0x80000000);
+/// let flags = InstructionFlags::new();
+/// let instr = Instruction::new(0x3C088001, vram, flags);
+///
+/// assert_eq!(instr.opcode(), Opcode::core_lui);
+///
+/// let display_flags = DisplayFlags::new();
+/// assert_eq!(&instr.display(None, &display_flags).to_string(), "lui         $t0, 0x8001");
+/// ```
+///
+/// ### Managing pseudo instructions
+///
+/// ```
+/// use rabbitizer::{Instruction, Vram, InstructionFlags, DisplayFlags};
+/// use rabbitizer::opcodes::Opcode;
+///
+/// let vram = Vram::new(0x80000000);
+/// let flags = InstructionFlags::new();
+///
+/// // Specify the same word for both Instruction instances.
+/// let word = 0x00025022;
+/// let instr_raw = Instruction::new(word, vram, flags.with_all_pseudos(false));
+/// let instr_pseudo = Instruction::new(word, vram, flags.with_all_pseudos(true));
+///
+/// // The words get decoded as different opcodes due to the different flags.
+/// assert_eq!(instr_raw.opcode(), Opcode::core_sub);
+/// assert_eq!(instr_pseudo.opcode(), Opcode::core_neg);
+///
+/// let display_flags = DisplayFlags::new();
+/// assert_eq!(&instr_raw.display(None, &display_flags).to_string(),    "sub         $t2, $zero, $v0");
+/// assert_eq!(&instr_pseudo.display(None, &display_flags).to_string(), "neg         $t2, $v0");
+/// ```
+///
+/// [`display`]: Instruction::display
+/// [`is_valid`]: Instruction::is_valid
+/// [`InstructionFlags`]: crate::instr::InstructionFlags
+/// [`new`]: Instruction::new
+/// [`new_checked`]: Instruction::new_checked
+/// [`valued_operands_iter`]: Instruction::valued_operands_iter
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Instruction {
     word: u32,
@@ -25,6 +89,42 @@ pub struct Instruction {
 
 /// Constructors
 impl Instruction {
+    /// Decodes a 32bits `word` as a MIPS instruction.
+    ///
+    /// This function does not worry about endianness of the passed `word`. If the user is reading
+    /// data from a binary byte file stream (i.e. a ROM, an ELF, etc) it is up to the user to
+    /// ensure the bytes read from the file stream are decoded using the properly endianness.
+    /// Functions like [`u32::from_be_bytes`] and [`u32::from_le_bytes`] are recommended for
+    /// handling endianness in such cases.
+    ///
+    /// The `vram` (Virtual RAM) argument corresponds to the virtual address associated to this
+    /// instruction. It is okay for this argument to be a dummy value in the case the actual vram
+    /// of this instruction is not known (i.e. disassembling a relocatable ELF), since this value
+    /// is not used during the decoding process, but it may produce unexpected results on methods
+    /// that rely on this value, like jump/branch inspection methods (i.e.
+    /// [`get_instr_index_as_vram`], [`get_branch_offset_generic`], [`get_branch_vram_generic`]) or
+    /// when [`display`]ing jump instructions. If a dummy value is wanted to be used either way, it
+    /// is recommended to use a number that is a multiple of 4.
+    ///
+    /// The `flags` argument allows configuring the behavior of some instruction-inspection related
+    /// methods (i.e. [`is_unconditional_branch`]) or affect how the passed `word` should be
+    /// decoded, like (dis)allowing pseudo instructions or which [`IsaVersion`] / [`IsaExtension`]
+    /// pair should be following for decoding.
+    ///
+    /// In the case the passed `word` does not map to a valid instruction then this function will
+    /// not panic or error in any way. To check that the given word is actually a valid instruction
+    /// use the [`is_valid`] method.
+    ///
+    /// [`is_valid`]: Instruction::is_valid
+    /// [`get_instr_index_as_vram`]: Instruction::get_instr_index_as_vram
+    /// [`get_branch_offset_generic`]: Instruction::get_branch_offset_generic
+    /// [`get_branch_vram_generic`]: Instruction::get_branch_vram_generic
+    /// [`is_unconditional_branch`]: Instruction::is_unconditional_branch
+    /// [`display`]: Instruction::display
+    /// [`IsaVersion`]: crate::isa::IsaVersion
+    /// [`IsaExtension`]: crate::isa::IsaExtension
+    /// [`u32::from_be_bytes`]: u32::from_be_bytes
+    /// [`u32::from_le_bytes`]: u32::from_le_bytes
     #[must_use]
     pub const fn new(word: u32, vram: Vram, flags: InstructionFlags) -> Self {
         let opcode_decoder = OpcodeDecoder::decode(
@@ -41,63 +141,155 @@ impl Instruction {
             flags,
         }
     }
+
+    /// Like the [`new`] function, but returns [`None`] if the passed `word` does not map to a
+    /// valid MIPS instruction.
+    ///
+    /// [`new`]: Instruction::new
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn new_checked(word: u32, vram: Vram, flags: InstructionFlags) -> Option<Self> {
+        let instr = Self::new(word, vram, flags);
+
+        instr.is_valid().then_some(instr)
+    }
 }
 
 /// Getters and setters
 impl Instruction {
+    /// The raw 32bits word corresponding to this MIPS instruction.
     #[must_use]
     pub const fn word(&self) -> u32 {
         self.word
     }
 
+    /// The vram (Virtual RAM) address for this instruction.
     #[must_use]
     pub const fn vram(&self) -> Vram {
         self.vram
     }
 
+    /// The Instruction Set Architecture (ISA) version used to decode this instruction.
+    ///
+    /// This value does not necessarily correspond to the ISA version that introduced the opcode
+    /// of this instruction. To get that information instead use the [`Opcode::isa_version`] method
+    /// instead. To retrieve the opcode of this instruction use the [`opcode`] method.
+    ///
+    /// [`Opcode::isa_version`]: crate::opcodes::Opcode::isa_version
+    /// [`opcode`]: Instruction::opcode
     #[must_use]
     pub const fn isa_version(&self) -> IsaVersion {
         self.flags.isa_version()
     }
 
+    /// The Instruction Set Architecture (ISA) extension used to decode this instruction.
+    ///
+    /// This value does not necessarily correspond to the ISA extension that introduced the opcode
+    /// of this instruction. To get that information instead use the [`Opcode::isa_extension`] method
+    /// instead. To retrieve the opcode of this instruction use the [`opcode`] method.
+    ///
+    /// [`Opcode::isa_extension`]: crate::opcodes::Opcode::isa_extension
+    /// [`opcode`]: Instruction::opcode
     #[must_use]
     pub const fn isa_extension(&self) -> IsaExtension {
         self.flags.isa_extension()
     }
 
+    /// The Opcode for this instruction.
     #[must_use]
     pub const fn opcode(&self) -> Opcode {
         self.opcode_decoder.opcode()
     }
 
+    /// The category of the decoded [`Opcode`].
+    ///
+    /// This categorization is a construct completely made up by rabbitizer (this crate) as a way
+    /// to help debugging the decoding process. This information is usually not useful for
+    /// consumers of this crate.
+    ///
+    /// [`Opcode`]: crate::opcodes::Opcode.
     #[must_use]
     pub const fn opcode_category(&self) -> OpcodeCategory {
         self.opcode_decoder.opcode_category()
     }
 
+    /// The flags used to initialize this Instruction.
     #[must_use]
     pub const fn flags(&self) -> &InstructionFlags {
         &self.flags
     }
 
+    /// The Abi configured for this Instruction.
     #[must_use]
     pub const fn abi(&self) -> Abi {
         self.flags.abi()
     }
 }
 
+impl Instruction {
+    /// Returns an object that implements [`Display`].
+    ///
+    /// The `imm_override` parameter allows to replace the immediate, function or label field of
+    /// the instruction with the passed string if any is passed. This is usually useful for
+    /// disassembling the instruction using relocations or actual symbols. Note that if a string is
+    /// passed it will be used as-is, so if you want to use relocation operators then you need to
+    /// provide them yourself.
+    ///
+    /// The `display_flags` allows customizing how the instruction will be disassembled.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rabbitizer::{Instruction, Vram, InstructionFlags, DisplayFlags};
+    ///
+    /// let vram = Vram::new(0x80000000);
+    /// let flags = InstructionFlags::new();
+    /// let instr = Instruction::new(0x3C088001, vram, flags);
+    ///
+    /// let display_flags = DisplayFlags::new();
+    /// assert_eq!(&instr.display(None, &display_flags).to_string(), "lui         $t0, 0x8001");
+    ///
+    /// // Provide a string to override the immediate field of the instruction.
+    /// assert_eq!(
+    ///     &instr.display(Some("%hi(example)"), &display_flags).to_string(),
+    ///     "lui         $t0, %hi(example)",
+    /// );
+    ///
+    /// // Change how the disassembly of the instruction is displayed.
+    /// assert_eq!(
+    ///     &instr.display(None, &display_flags.with_named_gpr(false).with_opcode_ljust(0)).to_string(),
+    ///     "lui $8, 0x8001",
+    /// );
+    /// ```
+    ///
+    /// [`Display`]: core::fmt::Display
+    #[must_use]
+    pub const fn display<'ins, 'imm, 'flg>(
+        &'ins self,
+        imm_override: Option<&'imm str>,
+        display_flags: &'flg DisplayFlags,
+    ) -> InstructionDisplay<'ins, 'imm, 'flg> {
+        InstructionDisplay::new(self, imm_override, display_flags)
+    }
+}
+
 /// Instruction examination
 impl Instruction {
+    /// Check if this instruction is the `nop` opcode.
     #[must_use]
     pub const fn is_nop(&self) -> bool {
         OpcodeDecoder::is_nop(self.word)
     }
 
+    /// Returns a bitmask specifying which bits are allowed to be turned on for this instruction.
+    ///
+    /// This is useful to check if a word has bits turned on that should be zero.
     #[must_use]
     pub fn valid_bits(&self) -> EncodedFieldMask {
         self.opcode_decoder.mandatory_bits() | self.opcode().valid_bits()
     }
 
+    /// Returns `true` if the decoded `word` is a valid instruction.
     #[must_use]
     pub fn is_valid(&self) -> bool {
         if !self.opcode().is_valid() {
@@ -154,13 +346,9 @@ impl Instruction {
     /// [`InstructionFlags`]: crate::instr::InstructionFlags
     #[must_use]
     pub fn is_function_call(&self) -> bool {
-        if self.opcode().does_link() {
-            return true;
-        }
-
         match self.opcode() {
             Opcode::core_j => !self.flags().j_as_branch(),
-            _ => false,
+            opcode => opcode.does_link(),
         }
     }
 
@@ -235,16 +423,30 @@ impl Instruction {
 
 /// Opcode examination
 impl Instruction {
-    #[must_use]
-    pub fn operands_iter(&self) -> OperandIterator {
-        self.opcode().operands_iter()
-    }
-
+    /// Returns an iterator which yields [`ValuedOperand`]s.
+    ///
+    /// [`ValuedOperand`]: crate::operands::ValuedOperand
     #[must_use]
     pub fn valued_operands_iter(&self) -> ValuedOperandIterator {
         ValuedOperandIterator::new(self)
     }
+
+    /// Returns an iterator which yields [`Operand`]s.
+    ///
+    /// It is recommended to use [`valued_operands_iter`] instead.
+    ///
+    /// [`Operand`]: crate::operands::Operand
+    /// [`valued_operands_iter`]: Instruction::valued_operands_iter
+    #[must_use]
+    pub fn operands_iter(&self) -> OperandIterator {
+        self.opcode().operands_iter()
+    }
 }
+
+// impl Instruction {
+//     pub fn blank_out(&mut self) {
+//     }
+// }
 
 /// Opcode fields
 impl Instruction {
@@ -2906,10 +3108,11 @@ impl Instruction {
     #[must_use]
     #[inline(always)]
     const fn vram_from_instr_index(&self, instr_index: u32) -> Vram {
-        let vram = instr_index << 2;
-
+        let vram_raw = instr_index << 2;
         // Jumps are PC-region branches. The upper bits are filled with the address in the delay slot
-        Vram::new(vram | ((self.vram.inner() + 4) & 0xF0000000))
+        let upper_bits = (self.vram.inner() + 4) & 0xF0000000;
+
+        Vram::new(upper_bits | vram_raw)
     }
 
     /// Get the target [`Vram`] address this instruction jumps to.
@@ -3263,25 +3466,10 @@ impl Instruction {
     }
 }
 
-// impl Instruction {
-//     pub fn blank_out(&mut self) {
-//     }
-// }
-
-impl Instruction {
-    #[must_use]
-    pub const fn display<'ins, 'imm, 'flg>(
-        &'ins self,
-        imm_override: Option<&'imm str>,
-        display_flags: &'flg DisplayFlags,
-    ) -> InstructionDisplay<'ins, 'imm, 'flg> {
-        InstructionDisplay::new(self, imm_override, display_flags)
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::isa::*;
 
     #[test]
     fn check_j() {

@@ -81,7 +81,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900_vfs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -91,7 +91,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900_vft_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -101,7 +101,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900_vfd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -112,7 +112,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900_vis_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -122,7 +122,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900_vit_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -132,7 +132,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900_vid_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }

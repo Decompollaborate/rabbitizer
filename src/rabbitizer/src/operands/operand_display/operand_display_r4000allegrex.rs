@@ -13,7 +13,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_s_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -23,7 +23,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_s_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -33,7 +33,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_s_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -43,7 +43,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_s_vt_imm_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -53,7 +53,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_s_vd_imm_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -64,7 +64,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_p_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -74,7 +74,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_p_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -84,7 +84,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_p_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -95,7 +95,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_t_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -105,7 +105,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_t_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -115,7 +115,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_t_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -126,7 +126,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_q_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -136,7 +136,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_q_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -146,7 +146,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_q_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -156,7 +156,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_q_vt_imm_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -167,7 +167,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mp_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -177,7 +177,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mp_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -187,7 +187,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mp_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -197,7 +197,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mp_vs_transpose_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -208,7 +208,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mt_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -218,7 +218,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mt_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -228,7 +228,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mt_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -238,7 +238,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mt_vs_transpose_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -249,7 +249,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mq_vs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -259,7 +259,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mq_vt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -269,7 +269,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mq_vd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -279,7 +279,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_mq_vs_transpose_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -291,7 +291,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_cop2cs_unchecked();
         let s = reg.either_name(
-            instr.flags().abi(),
+            instr.abi(),
             myself.display_flags.named_r4000allegrex_vfpucontrol(),
         );
 
@@ -304,7 +304,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_cop2cd_unchecked();
         let s = reg.either_name(
-            instr.flags().abi(),
+            instr.abi(),
             myself.display_flags.named_r4000allegrex_vfpucontrol(),
         );
 
@@ -398,7 +398,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_vcmp_cond_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -489,7 +489,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_vconstant_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -677,7 +677,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_wpx_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -687,7 +687,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_wpy_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -697,7 +697,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_wpz_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -707,7 +707,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_wpw_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -718,7 +718,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_rpx_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -728,7 +728,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_rpy_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -738,7 +738,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_rpz_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -748,7 +748,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r4000allegrex_rpw_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }

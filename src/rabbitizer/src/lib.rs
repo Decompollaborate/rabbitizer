@@ -115,3 +115,8 @@ pub mod vram;
 mod utils;
 
 pub use error::Error;
+
+pub use display_flags::DisplayFlags;
+pub use instr::{Instruction, InstructionFlags};
+pub use isa::{IsaExtension, IsaVersion};
+pub use vram::Vram;

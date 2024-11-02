@@ -45,24 +45,24 @@ impl Operand {
     }
 
     #[must_use]
-    pub const fn arr0() -> [Self; OPERAND_COUNT_MAX] {
+    pub(crate) const fn arr0() -> [Self; OPERAND_COUNT_MAX] {
         [Self::default(); OPERAND_COUNT_MAX]
     }
     #[must_use]
-    pub const fn arr1(op0: Self) -> [Self; OPERAND_COUNT_MAX] {
+    pub(crate) const fn arr1(op0: Self) -> [Self; OPERAND_COUNT_MAX] {
         let mut arr = [Self::default(); OPERAND_COUNT_MAX];
         arr[0] = op0;
         arr
     }
     #[must_use]
-    pub const fn arr2(op0: Self, op1: Self) -> [Self; OPERAND_COUNT_MAX] {
+    pub(crate) const fn arr2(op0: Self, op1: Self) -> [Self; OPERAND_COUNT_MAX] {
         let mut arr = [Self::default(); OPERAND_COUNT_MAX];
         arr[0] = op0;
         arr[1] = op1;
         arr
     }
     #[must_use]
-    pub const fn arr3(op0: Self, op1: Self, op2: Self) -> [Self; OPERAND_COUNT_MAX] {
+    pub(crate) const fn arr3(op0: Self, op1: Self, op2: Self) -> [Self; OPERAND_COUNT_MAX] {
         let mut arr = [Self::default(); OPERAND_COUNT_MAX];
         arr[0] = op0;
         arr[1] = op1;
@@ -70,7 +70,12 @@ impl Operand {
         arr
     }
     #[must_use]
-    pub const fn arr4(op0: Self, op1: Self, op2: Self, op3: Self) -> [Self; OPERAND_COUNT_MAX] {
+    pub(crate) const fn arr4(
+        op0: Self,
+        op1: Self,
+        op2: Self,
+        op3: Self,
+    ) -> [Self; OPERAND_COUNT_MAX] {
         let mut arr = [Self::default(); OPERAND_COUNT_MAX];
         arr[0] = op0;
         arr[1] = op1;
@@ -79,7 +84,7 @@ impl Operand {
         arr
     }
     #[must_use]
-    pub const fn arr5(
+    pub(crate) const fn arr5(
         op0: Self,
         op1: Self,
         op2: Self,

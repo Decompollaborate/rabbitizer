@@ -89,7 +89,7 @@ impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
         ljust: u32,
         written_chars: usize,
     ) -> Result<usize, fmt::Error> {
-        let padding_len = (ljust as i32 - written_chars as i32) as usize;
+        let padding_len = ljust.saturating_sub(written_chars as u32) as usize;
         let mut new_written_chars = 0;
 
         if padding_len > 0 {

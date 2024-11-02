@@ -13,7 +13,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
     }
@@ -24,7 +24,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rt_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
     }
@@ -35,7 +35,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_rd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
     }
@@ -54,7 +54,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = Gpr::zero;
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_gpr());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_gpr());
 
         write!(f, "{}", s)
     }
@@ -64,10 +64,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_cop0d_unchecked();
-        let s = reg.either_name(
-            instr.flags().abi(),
-            myself.display_flags.named_vr4300_cop0(),
-        );
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_vr4300_cop0());
 
         write!(f, "{}", s)
     }
@@ -77,7 +74,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_cop0cd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -87,7 +84,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_fs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_fpr());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_fpr());
 
         write!(f, "{}", s)
     }
@@ -97,7 +94,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_ft_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_fpr());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_fpr());
 
         write!(f, "{}", s)
     }
@@ -107,7 +104,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_fd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_fpr());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_fpr());
 
         write!(f, "{}", s)
     }
@@ -117,7 +114,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_cop1cs_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -127,7 +124,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_cop2t_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -137,7 +134,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_cop2d_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -147,7 +144,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_cop2cd_unchecked();
-        let s = reg.either_name(instr.flags().abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
 
         write!(f, "{}", s)
     }
@@ -253,7 +250,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         let instr = myself.instr;
         let reg = instr.field_rd_unchecked();
 
-        if !reg.holds_return_address(instr.flags().abi()) || myself.display_flags.expand_jalr() {
+        if !reg.holds_return_address(instr.abi()) || myself.display_flags.expand_jalr() {
             Self::display_core_rd(myself, f)?;
             write!(f, ", ")?;
         }

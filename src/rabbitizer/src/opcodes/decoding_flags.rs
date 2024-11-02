@@ -19,7 +19,7 @@ bitflags! {
         const pseudo_neg = 1 << 7;
         const pseudo_negu = 1 << 8;
 
-        const gnu_mode = 1 << 9;
+        const gnu_mode = 1 << 9; // TODO: remove?
     }
 }
 

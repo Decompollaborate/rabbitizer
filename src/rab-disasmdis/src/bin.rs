@@ -3,7 +3,7 @@
 
 mod endian;
 
-pub use endian::Endian;
+use endian::Endian;
 
 use clap::Parser;
 

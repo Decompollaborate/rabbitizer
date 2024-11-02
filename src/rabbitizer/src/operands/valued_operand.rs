@@ -85,7 +85,7 @@ impl ValuedOperand {
             }
             Operand::core_maybe_rd_rs => {
                 let rd = instr.field_rd_unchecked();
-                let reg = if rd.holds_return_address(instr.flags().abi()) {
+                let reg = if rd.holds_return_address(instr.abi()) {
                     None
                 } else {
                     Some(rd)
