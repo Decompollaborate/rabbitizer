@@ -24,6 +24,9 @@ bitflags! {
 }
 
 impl DecodingFlags {
+    /// Returns a default value.
+    ///
+    /// Enables most pseudo instructions by default.
     #[must_use]
     pub const fn default() -> Self {
         Self::enable_pseudos

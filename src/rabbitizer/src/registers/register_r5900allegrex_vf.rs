@@ -7,6 +7,7 @@ use crate::registers::R5900VF;
 use crate::traits::Register;
 
 impl R5900VF {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::vf0

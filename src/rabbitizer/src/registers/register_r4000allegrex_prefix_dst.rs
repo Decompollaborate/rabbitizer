@@ -7,6 +7,7 @@ use crate::registers::R4000AllegrexPrefixDst;
 use crate::traits::Register;
 
 impl R4000AllegrexPrefixDst {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::none

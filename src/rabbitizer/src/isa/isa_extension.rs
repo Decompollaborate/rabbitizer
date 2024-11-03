@@ -4,6 +4,9 @@
 use crate::isa::{IsaExtension, IsaVersion};
 
 impl IsaExtension {
+    /// Returns a default value.
+    ///
+    /// This defaults to NO extension.
     #[must_use]
     pub const fn default() -> Self {
         Self::NONE

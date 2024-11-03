@@ -32,6 +32,7 @@ pub struct DisplayFlags {
 }
 
 impl DisplayFlags {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self {

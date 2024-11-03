@@ -8,14 +8,18 @@ use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDisplay, ValuedOperand, OPERAND_COUNT_MAX};
 use crate::traits::Register;
 
+/// A 16bits number, either signed or unsigned.
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(clippy::exhaustive_enums)]
 pub enum IU16 {
+    /// A signed 16bits value.
     Integer(i16),
+    /// An unsigned 16bits value.
     Unsigned(u16),
 }
 
 impl ValuedOperand {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::ALL_EMPTY()

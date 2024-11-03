@@ -7,6 +7,7 @@ use crate::registers::RspVector;
 use crate::traits::Register;
 
 impl RspVector {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::v0

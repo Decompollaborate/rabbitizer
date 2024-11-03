@@ -6,6 +6,9 @@ use core::ops::Index;
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::operands::Operand;
 
+/// Describes properties of a given [`Operand`].
+///
+/// [`Operand`]: crate::operands::Operand
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]
 pub struct OperandDescriptor {

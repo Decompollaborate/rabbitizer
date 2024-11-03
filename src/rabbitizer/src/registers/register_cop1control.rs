@@ -7,6 +7,7 @@ use crate::registers::Cop1Control;
 use crate::traits::Register;
 
 impl Cop1Control {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::r0

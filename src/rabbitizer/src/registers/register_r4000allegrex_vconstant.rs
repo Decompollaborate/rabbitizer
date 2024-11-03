@@ -7,6 +7,7 @@ use crate::registers::R4000AllegrexVConstant;
 use crate::traits::Register;
 
 impl R4000AllegrexVConstant {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::INVALID_0

@@ -7,6 +7,7 @@ use crate::registers::Cop0;
 use crate::traits::Register;
 
 impl Cop0 {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::Index

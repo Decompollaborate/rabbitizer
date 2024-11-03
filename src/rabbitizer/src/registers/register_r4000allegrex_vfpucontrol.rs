@@ -7,6 +7,7 @@ use crate::registers::R4000AllegrexVfpuControl;
 use crate::traits::Register;
 
 impl R4000AllegrexVfpuControl {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::VFPU_PFXS

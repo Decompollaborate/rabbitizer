@@ -4,6 +4,11 @@
 pub use crate::generated::Abi;
 
 impl Abi {
+    /// Returns a default value.
+    ///
+    /// Defaults to [`O32`].
+    ///
+    /// [`O32`]: Abi::O32
     #[must_use]
     pub const fn default() -> Self {
         Self::O32

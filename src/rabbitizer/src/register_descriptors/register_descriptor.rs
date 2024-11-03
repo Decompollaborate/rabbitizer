@@ -3,6 +3,7 @@
 
 use crate::abi::Abi;
 
+/// Describes properties of a given register.
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]
 pub struct RegisterDescriptor {
@@ -14,19 +15,32 @@ pub struct RegisterDescriptor {
     pub(crate) name_n32: Option<&'static str>,
     pub(crate) name_n64: Option<&'static str>,
 
-    pub(crate) is_clobbered_by_func_call: bool, // A function call invalidates the value hold by the register
-    pub(crate) is_reserved: bool, // This register is not implemented and is reserved for future use
-    pub(crate) is_kernel: bool,   // Kernel-only registers ($k0, $k1)
-    pub(crate) is_zero: bool,     // $zero
-    pub(crate) is_assembler_temp: bool, // $at
-    pub(crate) holds_return_value: bool, // $v0, $v1
-    pub(crate) holds_return_address: bool, // $ra
-    pub(crate) is_stack_pointer: bool, // $sp
-    pub(crate) is_global_pointer: bool, // $gp
-    pub(crate) is_saved: bool,    // $sX
-    pub(crate) is_temp: bool,     // $tX
-    pub(crate) is_arg: bool,      // $aX
-    pub(crate) either_arg_or_temp: bool, // $aX or $tX
+    /// A function call invalidates the value hold by the register.
+    pub(crate) is_clobbered_by_func_call: bool,
+    /// This register is not implemented and is reserved for future use.
+    pub(crate) is_reserved: bool,
+    /// Kernel-only registers ($k0, $k1)
+    pub(crate) is_kernel: bool,
+    /// $zero
+    pub(crate) is_zero: bool,
+    /// $at
+    pub(crate) is_assembler_temp: bool,
+    /// $v0, $v1
+    pub(crate) holds_return_value: bool,
+    /// $ra
+    pub(crate) holds_return_address: bool,
+    /// $sp
+    pub(crate) is_stack_pointer: bool,
+    /// $gp
+    pub(crate) is_global_pointer: bool,
+    /// $sX
+    pub(crate) is_saved: bool,
+    /// $tX
+    pub(crate) is_temp: bool,
+    /// $aX
+    pub(crate) is_arg: bool,
+    /// $aX or $tX
+    pub(crate) either_arg_or_temp: bool,
 }
 
 impl RegisterDescriptor {
@@ -261,11 +275,15 @@ impl RegisterDescriptor {
 }
 
 impl RegisterDescriptor {
+    /// Return the numeric "name" for the register.
     #[must_use]
     pub const fn name_numeric(&self) -> &'static str {
         self.name_numeric
     }
 
+    /// Return the an actual name for the register.
+    ///
+    /// This name may be different depending on the `abi` parameter.
     #[must_use]
     pub const fn name_abi(&self, abi: Abi) -> &'static str {
         match abi {
@@ -293,54 +311,71 @@ impl RegisterDescriptor {
         }
     }
 
+    /// A function call invalidates the value hold by the register.
     #[must_use]
     pub const fn is_clobbered_by_func_call(&self) -> bool {
         self.is_clobbered_by_func_call
     }
+    /// This register is not implemented and is reserved for future use.
     #[must_use]
     pub const fn is_reserved(&self) -> bool {
         self.is_reserved
     }
+    /// Kernel-only registers ($k0, $k1).
     #[must_use]
     pub const fn is_kernel(&self) -> bool {
         self.is_kernel
     }
+    /// This register is hardcoded to the zero value ($zero).
     #[must_use]
     pub const fn is_zero(&self) -> bool {
         self.is_zero
     }
+    /// The assembler uses this register as a temporary value to expand and reorder instructions
+    /// ($at).
     #[must_use]
     pub const fn is_assembler_temp(&self) -> bool {
         self.is_assembler_temp
     }
+    /// The register usually is used to hold the return value of a function ($v0, $v1)-
     #[must_use]
     pub const fn holds_return_value(&self) -> bool {
         self.holds_return_value
     }
+    /// The register holds the address to return to when returning to the caller of the current
+    /// function ($ra).
     #[must_use]
     pub const fn holds_return_address(&self) -> bool {
         self.holds_return_address
     }
+
+    /// The register holds the stack pointer ($sp).
     #[must_use]
     pub const fn is_stack_pointer(&self) -> bool {
         self.is_stack_pointer
     }
+    /// The register holds the global pointer ($gp).
     #[must_use]
     pub const fn is_global_pointer(&self) -> bool {
         self.is_global_pointer
     }
+    /// A saved register. It will hold the same value after calling a function ($sX).
     #[must_use]
     pub const fn is_saved(&self) -> bool {
         self.is_saved
     }
+    /// A temporary register. The value of this register may not be preserved after calling a
+    /// function ($tX).
     #[must_use]
     pub const fn is_temp(&self) -> bool {
         self.is_temp
     }
+    /// The register is used as arguments for functions ($aX).
     #[must_use]
     pub const fn is_arg(&self) -> bool {
         self.is_arg
     }
+    /// The register may be either an argument or a temp register depending on the abi.
     #[must_use]
     pub const fn either_arg_or_temp(&self) -> bool {
         self.either_arg_or_temp

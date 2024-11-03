@@ -7,6 +7,7 @@ use crate::registers::R4000AllegrexV2D;
 use crate::traits::{R4000AllegrexVectorRegister, Register};
 
 impl R4000AllegrexV2D {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::C000

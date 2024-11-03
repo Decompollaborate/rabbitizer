@@ -7,6 +7,7 @@ use crate::registers::R4000AllegrexM3x3;
 use crate::traits::Register;
 
 impl R4000AllegrexM3x3 {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::M000

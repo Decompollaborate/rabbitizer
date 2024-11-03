@@ -4,6 +4,7 @@
 pub use crate::generated::AccessType;
 
 impl AccessType {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::NONE

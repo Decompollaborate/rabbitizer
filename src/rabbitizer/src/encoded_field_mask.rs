@@ -172,6 +172,7 @@ bitflags! {
 }
 
 impl EncodedFieldMask {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::empty()

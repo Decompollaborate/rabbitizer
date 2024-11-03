@@ -8,6 +8,7 @@ use crate::registers::Gpr;
 use crate::traits::Register;
 
 impl Gpr {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::zero

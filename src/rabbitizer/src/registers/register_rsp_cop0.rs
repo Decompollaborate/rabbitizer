@@ -7,6 +7,7 @@ use crate::registers::RspCop0;
 use crate::traits::Register;
 
 impl RspCop0 {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::SP_MEM_ADDR

@@ -12,6 +12,9 @@ use crate::opcodes::Opcode;
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 use crate::utils;
 
+/// Describes properties of a given [`Opcode`].
+///
+/// [`Opcode`]: crate::opcodes::Opcode
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
 #[allow(clippy::struct_excessive_bools)]
 pub struct OpcodeDescriptor {

@@ -39,6 +39,7 @@ impl Operand {
 }
 
 impl Operand {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::ALL_EMPTY

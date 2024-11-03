@@ -16,6 +16,7 @@ pub enum InstrType {
 
 #[allow(deprecated)]
 impl InstrType {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::UNKNOWN

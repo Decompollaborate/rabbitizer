@@ -223,6 +223,7 @@ impl Opcode {
 }
 
 impl Opcode {
+    /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
         Self::ALL_INVALID
