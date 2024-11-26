@@ -20,7 +20,7 @@ use crate::vram::VramOffset;
 /// [`add_offset`]: Vram::add_offset
 /// [`sub_vram`]: Vram::sub_vram
 /// [`inner`]: Vram::inner
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Vram {
     inner: u32,
 }
@@ -114,6 +114,12 @@ impl ops::Sub<&Self> for Vram {
 
     fn sub(self, rhs: &Self) -> Self::Output {
         self.sub_vram(rhs)
+    }
+}
+
+impl fmt::Debug for Vram {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "Vram {{ inner: 0x{:08X} }}", self.inner)
     }
 }
 

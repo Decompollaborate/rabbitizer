@@ -28,7 +28,7 @@ use crate::vram::Vram;
 /// [`Vram`]: crate::vram::Vram
 /// [`add_vram`]: VramOffset::add_vram
 /// [`inner`]: VramOffset::inner
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct VramOffset {
     inner: i32,
 }
@@ -65,6 +65,64 @@ impl VramOffset {
     pub const fn add_vram(&self, rhs: &Vram) -> Vram {
         rhs.add_offset(self)
     }
+
+    /// This offset has value zero.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rabbitizer::vram::{VramOffset, Vram};
+    ///
+    /// let offset = VramOffset::new(0);
+    /// let vram = Vram::new(0x80000100);
+    ///
+    /// assert!(offset.is_zero());
+    /// assert_eq!(offset + vram, vram);
+    /// ```
+    #[must_use]
+    pub const fn is_zero(&self) -> bool {
+        self.inner == 0
+    }
+
+    /// This offset is positive.
+    ///
+    /// If this is a branch offset then it can be interpreted as a forward branch.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rabbitizer::vram::{VramOffset, Vram};
+    ///
+    /// let offset = VramOffset::new(0x20);
+    /// let vram = Vram::new(0x80000100);
+    ///
+    /// assert!(offset.is_positive());
+    /// assert_eq!((offset + vram).inner(), 0x80000120);
+    /// ```
+    #[must_use]
+    pub const fn is_positive(&self) -> bool {
+        self.inner > 0
+    }
+
+    /// This offset is positive.
+    ///
+    /// If this is a branch offset then it can be interpreted as a backwards branch (i.e. a loop).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rabbitizer::vram::{VramOffset, Vram};
+    ///
+    /// let offset = VramOffset::new(-0x20);
+    /// let vram = Vram::new(0x80000100);
+    ///
+    /// assert!(offset.is_negative());
+    /// assert_eq!((offset + vram).inner(), 0x800000E0);
+    /// ```
+    #[must_use]
+    pub const fn is_negative(&self) -> bool {
+        self.inner < 0
+    }
 }
 
 impl ops::Add<Vram> for VramOffset {
@@ -80,6 +138,21 @@ impl ops::Add<&Vram> for VramOffset {
 
     fn add(self, rhs: &Vram) -> Self::Output {
         self.add_vram(rhs)
+    }
+}
+
+impl fmt::Debug for VramOffset {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "VramOffset {{ inner: ")?;
+
+        // `-2^31` fits on an i32, but `-(-2^31)` doesn't, so we cast to i64 to
+        // avoid overflowing.
+        let mut inner = self.inner as i64;
+        if inner < 0 {
+            inner = -inner;
+            write!(f, "-")?;
+        }
+        write!(f, "0x{:X} }}", inner)
     }
 }
 

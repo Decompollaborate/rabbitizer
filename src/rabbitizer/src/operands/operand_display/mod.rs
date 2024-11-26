@@ -13,6 +13,7 @@ pub(crate) mod operand_display_r4000allegrex;
 pub(crate) mod operand_display_r5900;
 pub(crate) mod operand_display_rsp;
 
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct OperandDisplay<'ins, 'imm, 'flg> {
     operand: Operand,
     instr: &'ins Instruction,

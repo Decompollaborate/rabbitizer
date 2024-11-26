@@ -2805,6 +2805,7 @@ impl Instruction {
     }
 }
 
+// #[doc(hidden)]
 /// Unchecked R5900 opcode fields
 impl Instruction {
     /// Returns the `r5900_immediate5` value embedded on the `r5900_immediate5` field of

@@ -394,6 +394,7 @@ impl From<ValuedOperand> for Operand {
     }
 }
 
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct ValuedOperandIterator<'ins> {
     instr: &'ins Instruction,
     operands: &'ins [Operand; OPERAND_COUNT_MAX],

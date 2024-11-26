@@ -8,6 +8,7 @@ use crate::instr::Instruction;
 use crate::isa::IsaExtension;
 use crate::opcodes::Opcode;
 
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct InstructionDisplay<'ins, 'imm, 'flg> {
     instr: &'ins Instruction,
     imm_override: Option<&'imm str>,

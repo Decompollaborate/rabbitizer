@@ -8,6 +8,7 @@ use rabbitizer::opcodes::Opcode;
 use rabbitizer::operands::OPERAND_COUNT_MAX;
 use rabbitizer::vram::Vram;
 
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TestEntry {
     pub instr: Instruction,
     pub imm_override: Option<&'static str>,

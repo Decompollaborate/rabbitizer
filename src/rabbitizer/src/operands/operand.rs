@@ -108,6 +108,7 @@ impl Default for Operand {
     }
 }
 
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct OperandIterator<'ins> {
     operands: &'ins [Operand; OPERAND_COUNT_MAX],
     index: usize,

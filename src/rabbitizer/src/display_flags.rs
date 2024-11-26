@@ -1,6 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+// TODO: maybe rename to InstructionDisplayFlags?
+
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct DisplayFlags {
     /// Enables using named registers. This option takes precedence over the other named register options
