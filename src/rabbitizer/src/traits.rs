@@ -6,6 +6,20 @@ use crate::register_descriptors::RegisterDescriptor;
 
 /// A trait that provides common functionality for a register.
 pub trait Register: PartialEq + PartialOrd + Default {
+    /// Converts this register into a raw number.
+    ///
+    /// This number can be used as an index of an array of [`count`] elements.
+    ///
+    /// [`count`]: Register::count
+    #[must_use]
+    fn as_index(&self) -> usize;
+
+    /// How many registers this type has.
+    ///
+    /// For example `Gpr` returns 32.
+    #[must_use]
+    fn count() -> usize;
+
     /// Returns the descriptor with the actual data of the register.
     #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor;

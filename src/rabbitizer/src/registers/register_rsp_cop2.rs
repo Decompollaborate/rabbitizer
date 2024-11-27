@@ -16,6 +16,15 @@ impl RspCop2 {
 
 impl Register for RspCop2 {
     #[must_use]
+    fn as_index(&self) -> usize {
+        *self as usize
+    }
+
+    #[must_use]
+    fn count() -> usize {
+        Self::count()
+    }
+
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &register_descriptors::RSP_COP2[*self]
     }

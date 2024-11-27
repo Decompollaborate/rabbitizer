@@ -16,6 +16,16 @@ impl R4000AllegrexVfpuControl {
 
 impl Register for R4000AllegrexVfpuControl {
     #[must_use]
+    fn as_index(&self) -> usize {
+        *self as usize
+    }
+
+    #[must_use]
+    fn count() -> usize {
+        Self::count()
+    }
+
+    #[must_use]
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &register_descriptors::R4000ALLEGREX_VFPUCONTROL[*self]
     }

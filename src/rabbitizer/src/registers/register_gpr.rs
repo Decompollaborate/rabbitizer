@@ -17,6 +17,15 @@ impl Gpr {
 
 impl Register for Gpr {
     #[must_use]
+    fn as_index(&self) -> usize {
+        *self as usize
+    }
+
+    #[must_use]
+    fn count() -> usize {
+        Self::count()
+    }
+
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &register_descriptors::GPR[*self]
     }

@@ -797,6 +797,10 @@ impl R4000AllegrexVfpuControl {
             }),
         }
     }
+    #[must_use]
+    pub const fn count() -> usize {
+        128
+    }
 }
 impl TryFrom<u32> for R4000AllegrexVfpuControl {
     type Error = crate::Error;

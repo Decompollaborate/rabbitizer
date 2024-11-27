@@ -221,6 +221,10 @@ impl Cop0Control {
             }),
         }
     }
+    #[must_use]
+    pub const fn count() -> usize {
+        32
+    }
 }
 impl TryFrom<u32> for Cop0Control {
     type Error = crate::Error;

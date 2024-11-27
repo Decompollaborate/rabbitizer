@@ -16,6 +16,15 @@ impl R4000AllegrexVConstant {
 
 impl Register for R4000AllegrexVConstant {
     #[must_use]
+    fn as_index(&self) -> usize {
+        *self as usize
+    }
+
+    #[must_use]
+    fn count() -> usize {
+        Self::count()
+    }
+
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &register_descriptors::R4000ALLEGREX_VCONSTANT[*self]
     }

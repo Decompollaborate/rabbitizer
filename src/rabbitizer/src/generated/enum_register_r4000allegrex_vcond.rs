@@ -125,6 +125,10 @@ impl R4000AllegrexVCond {
             }),
         }
     }
+    #[must_use]
+    pub const fn count() -> usize {
+        16
+    }
 }
 impl TryFrom<u32> for R4000AllegrexVCond {
     type Error = crate::Error;

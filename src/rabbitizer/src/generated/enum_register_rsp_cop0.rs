@@ -125,6 +125,10 @@ impl RspCop0 {
             }),
         }
     }
+    #[must_use]
+    pub const fn count() -> usize {
+        16
+    }
 }
 impl TryFrom<u32> for RspCop0 {
     type Error = crate::Error;

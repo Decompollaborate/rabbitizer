@@ -16,6 +16,15 @@ impl Cop0 {
 
 impl Register for Cop0 {
     #[must_use]
+    fn as_index(&self) -> usize {
+        *self as usize
+    }
+
+    #[must_use]
+    fn count() -> usize {
+        Self::count()
+    }
+
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &register_descriptors::COP0[*self]
     }

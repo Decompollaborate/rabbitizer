@@ -88,6 +88,10 @@ impl R4000AllegrexPrefixDst {
             }),
         }
     }
+    #[must_use]
+    pub const fn count() -> usize {
+        8
+    }
 }
 impl TryFrom<u32> for R4000AllegrexPrefixDst {
     type Error = crate::Error;

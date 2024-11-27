@@ -797,6 +797,10 @@ impl R4000AllegrexM4x4 {
             }),
         }
     }
+    #[must_use]
+    pub const fn count() -> usize {
+        128
+    }
 }
 impl TryFrom<u32> for R4000AllegrexM4x4 {
     type Error = crate::Error;

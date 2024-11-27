@@ -16,6 +16,15 @@ impl Cop2Control {
 
 impl Register for Cop2Control {
     #[must_use]
+    fn as_index(&self) -> usize {
+        *self as usize
+    }
+
+    #[must_use]
+    fn count() -> usize {
+        Self::count()
+    }
+
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &COP2_CONTROL[*self]
     }

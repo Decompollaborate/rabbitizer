@@ -81,6 +81,11 @@ impl REGISTER_ENUM_NAME {
             }),
         }
     }
+
+    SPECIAL_RS_TAG(must_use)
+    pub const fn count() -> usize {
+        REGISTER_COUNT
+    }
 }
 
 #undef RABBITIZER_DEF_REG_NODOLLAR

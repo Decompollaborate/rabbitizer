@@ -16,6 +16,15 @@ impl R4000AllegrexVCond {
 
 impl Register for R4000AllegrexVCond {
     #[must_use]
+    fn as_index(&self) -> usize {
+        *self as usize
+    }
+
+    #[must_use]
+    fn count() -> usize {
+        Self::count()
+    }
+
     fn get_descriptor(&self) -> &'static RegisterDescriptor {
         &register_descriptors::R4000ALLEGREX_VCOND[*self]
     }
