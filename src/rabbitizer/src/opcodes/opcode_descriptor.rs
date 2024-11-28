@@ -594,9 +594,6 @@ impl OpcodeDescriptor {
                 if self.has_specific_operand(Operand::core_immediate_base) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::core_branch_target_label) {
-                    return true;
-                }
             }
 
             Operand::core_rt => {}
@@ -642,11 +639,7 @@ impl OpcodeDescriptor {
             Operand::core_copraw => {}
             Operand::core_label => {}
 
-            Operand::core_branch_target_label => {
-                if self.has_operand_alias(Operand::core_immediate) {
-                    return true;
-                }
-            }
+            Operand::core_branch_target_label => {}
 
             Operand::core_immediate_base => {
                 if self.has_operand_alias(Operand::core_rs) {

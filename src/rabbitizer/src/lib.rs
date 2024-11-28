@@ -86,15 +86,8 @@
 #![warn(clippy::option_map_or_none)]
 #![warn(clippy::bind_instead_of_map)]
 #![warn(clippy::cognitive_complexity)] // Maybe remove in the future (?)
+#![warn(clippy::alloc_instead_of_core)]
 #![cfg_attr(not(feature = "std"), no_std)]
-
-#[cfg(feature = "std")]
-#[macro_use]
-extern crate std;
-
-//#[cfg(feature = "std")]
-//#[macro_use]
-//use std::prelude::*;
 
 mod generated;
 
