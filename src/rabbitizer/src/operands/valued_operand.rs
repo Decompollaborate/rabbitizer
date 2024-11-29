@@ -1,6 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use core::fmt;
 use core::num::NonZeroU16;
 
 use crate::display_flags::DisplayFlags;
@@ -26,12 +27,15 @@ impl ValuedOperand {
     }
 
     #[must_use]
-    pub const fn display<'ins, 'imm, 'flg>(
+    pub const fn display<'ins, 'flg, T>(
         &self,
         instr: &'ins Instruction,
-        imm_override: Option<&'imm str>,
+        imm_override: Option<T>,
         display_flags: &'flg DisplayFlags,
-    ) -> OperandDisplay<'ins, 'imm, 'flg> {
+    ) -> OperandDisplay<'ins, 'flg, T>
+    where
+        T: fmt::Display,
+    {
         OperandDisplay::new(
             Operand::from_valued_operand(*self),
             instr,

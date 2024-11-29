@@ -66,7 +66,6 @@ pub use enum_isa_version::IsaVersion;
 pub use enum_opcode::Opcode;
 pub use enum_opcode_category::OpcodeCategory;
 pub use enum_opcode_category::OPCODE_CATEGORIES;
-pub(crate) use enum_operand::DISPLAY_OPERAND_CALLBACKS;
 pub use enum_operand::{Operand, ValuedOperand, OPERANDS};
 pub use enum_register_cop0::{Cop0, COP0};
 pub use enum_register_cop0control::{Cop0Control, COP0_CONTROL};

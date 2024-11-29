@@ -4,11 +4,10 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::encoded_field_mask::EncodedFieldMask;
-use crate::operands::{
-    OperandDescriptor, OperandDisplay, OperandDisplayCallback, IU16, OPERAND_COUNT,
-};
+use crate::operands::{OperandDescriptor, OperandDisplay, IU16, OPERAND_COUNT};
 use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
+use core::fmt;
 use core::num::NonZeroU16;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -562,278 +561,184 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     );
     table
 };
-pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_COUNT] = {
-    let mut table: [OperandDisplayCallback; OPERAND_COUNT] =
-        [OperandDisplay::display_ALL_EMPTY; OPERAND_COUNT];
-    let mut count = 0;
-    table[Operand::ALL_EMPTY as usize] = OperandDisplay::display_ALL_EMPTY;
-    count += 1;
-    table[Operand::core_rs as usize] = OperandDisplay::display_core_rs;
-    count += 1;
-    table[Operand::core_rt as usize] = OperandDisplay::display_core_rt;
-    count += 1;
-    table[Operand::core_rd as usize] = OperandDisplay::display_core_rd;
-    count += 1;
-    table[Operand::core_sa as usize] = OperandDisplay::display_core_sa;
-    count += 1;
-    table[Operand::core_zero as usize] = OperandDisplay::display_core_zero;
-    count += 1;
-    table[Operand::core_cop0d as usize] = OperandDisplay::display_core_cop0d;
-    count += 1;
-    table[Operand::core_cop0cd as usize] = OperandDisplay::display_core_cop0cd;
-    count += 1;
-    table[Operand::core_fs as usize] = OperandDisplay::display_core_fs;
-    count += 1;
-    table[Operand::core_ft as usize] = OperandDisplay::display_core_ft;
-    count += 1;
-    table[Operand::core_fd as usize] = OperandDisplay::display_core_fd;
-    count += 1;
-    table[Operand::core_cop1cs as usize] = OperandDisplay::display_core_cop1cs;
-    count += 1;
-    table[Operand::core_cop2t as usize] = OperandDisplay::display_core_cop2t;
-    count += 1;
-    table[Operand::core_cop2d as usize] = OperandDisplay::display_core_cop2d;
-    count += 1;
-    table[Operand::core_cop2cd as usize] = OperandDisplay::display_core_cop2cd;
-    count += 1;
-    table[Operand::core_op as usize] = OperandDisplay::display_core_op;
-    count += 1;
-    table[Operand::core_hint as usize] = OperandDisplay::display_core_hint;
-    count += 1;
-    table[Operand::core_code as usize] = OperandDisplay::display_core_code;
-    count += 1;
-    table[Operand::core_code_lower as usize] = OperandDisplay::display_core_code_lower;
-    count += 1;
-    table[Operand::core_copraw as usize] = OperandDisplay::display_core_copraw;
-    count += 1;
-    table[Operand::core_label as usize] = OperandDisplay::display_core_label;
-    count += 1;
-    table[Operand::core_immediate as usize] = OperandDisplay::display_core_immediate;
-    count += 1;
-    table[Operand::core_branch_target_label as usize] =
-        OperandDisplay::display_core_branch_target_label;
-    count += 1;
-    table[Operand::core_immediate_base as usize] = OperandDisplay::display_core_immediate_base;
-    count += 1;
-    table[Operand::core_maybe_rd_rs as usize] = OperandDisplay::display_core_maybe_rd_rs;
-    count += 1;
-    table[Operand::core_maybe_zero_rs as usize] = OperandDisplay::display_core_maybe_zero_rs;
-    count += 1;
-    table[Operand::rsp_cop0d as usize] = OperandDisplay::display_rsp_cop0d;
-    count += 1;
-    table[Operand::rsp_cop2t as usize] = OperandDisplay::display_rsp_cop2t;
-    count += 1;
-    table[Operand::rsp_cop2cd as usize] = OperandDisplay::display_rsp_cop2cd;
-    count += 1;
-    table[Operand::rsp_vs as usize] = OperandDisplay::display_rsp_vs;
-    count += 1;
-    table[Operand::rsp_vd as usize] = OperandDisplay::display_rsp_vd;
-    count += 1;
-    table[Operand::rsp_vt_elementhigh as usize] = OperandDisplay::display_rsp_vt_elementhigh;
-    count += 1;
-    table[Operand::rsp_vt_elementlow as usize] = OperandDisplay::display_rsp_vt_elementlow;
-    count += 1;
-    table[Operand::rsp_vd_de as usize] = OperandDisplay::display_rsp_vd_de;
-    count += 1;
-    table[Operand::rsp_vs_index as usize] = OperandDisplay::display_rsp_vs_index;
-    count += 1;
-    table[Operand::rsp_offset_rs as usize] = OperandDisplay::display_rsp_offset_rs;
-    count += 1;
-    table[Operand::r3000gte_sf as usize] = OperandDisplay::display_r3000gte_sf;
-    count += 1;
-    table[Operand::r3000gte_mx as usize] = OperandDisplay::display_r3000gte_mx;
-    count += 1;
-    table[Operand::r3000gte_v as usize] = OperandDisplay::display_r3000gte_v;
-    count += 1;
-    table[Operand::r3000gte_cv as usize] = OperandDisplay::display_r3000gte_cv;
-    count += 1;
-    table[Operand::r3000gte_lm as usize] = OperandDisplay::display_r3000gte_lm;
-    count += 1;
-    table[Operand::r4000allegrex_s_vs as usize] = OperandDisplay::display_r4000allegrex_s_vs;
-    count += 1;
-    table[Operand::r4000allegrex_s_vt as usize] = OperandDisplay::display_r4000allegrex_s_vt;
-    count += 1;
-    table[Operand::r4000allegrex_s_vd as usize] = OperandDisplay::display_r4000allegrex_s_vd;
-    count += 1;
-    table[Operand::r4000allegrex_s_vt_imm as usize] =
-        OperandDisplay::display_r4000allegrex_s_vt_imm;
-    count += 1;
-    table[Operand::r4000allegrex_s_vd_imm as usize] =
-        OperandDisplay::display_r4000allegrex_s_vd_imm;
-    count += 1;
-    table[Operand::r4000allegrex_p_vs as usize] = OperandDisplay::display_r4000allegrex_p_vs;
-    count += 1;
-    table[Operand::r4000allegrex_p_vt as usize] = OperandDisplay::display_r4000allegrex_p_vt;
-    count += 1;
-    table[Operand::r4000allegrex_p_vd as usize] = OperandDisplay::display_r4000allegrex_p_vd;
-    count += 1;
-    table[Operand::r4000allegrex_t_vs as usize] = OperandDisplay::display_r4000allegrex_t_vs;
-    count += 1;
-    table[Operand::r4000allegrex_t_vt as usize] = OperandDisplay::display_r4000allegrex_t_vt;
-    count += 1;
-    table[Operand::r4000allegrex_t_vd as usize] = OperandDisplay::display_r4000allegrex_t_vd;
-    count += 1;
-    table[Operand::r4000allegrex_q_vs as usize] = OperandDisplay::display_r4000allegrex_q_vs;
-    count += 1;
-    table[Operand::r4000allegrex_q_vt as usize] = OperandDisplay::display_r4000allegrex_q_vt;
-    count += 1;
-    table[Operand::r4000allegrex_q_vd as usize] = OperandDisplay::display_r4000allegrex_q_vd;
-    count += 1;
-    table[Operand::r4000allegrex_q_vt_imm as usize] =
-        OperandDisplay::display_r4000allegrex_q_vt_imm;
-    count += 1;
-    table[Operand::r4000allegrex_mp_vs as usize] = OperandDisplay::display_r4000allegrex_mp_vs;
-    count += 1;
-    table[Operand::r4000allegrex_mp_vt as usize] = OperandDisplay::display_r4000allegrex_mp_vt;
-    count += 1;
-    table[Operand::r4000allegrex_mp_vd as usize] = OperandDisplay::display_r4000allegrex_mp_vd;
-    count += 1;
-    table[Operand::r4000allegrex_mp_vs_transpose as usize] =
-        OperandDisplay::display_r4000allegrex_mp_vs_transpose;
-    count += 1;
-    table[Operand::r4000allegrex_mt_vs as usize] = OperandDisplay::display_r4000allegrex_mt_vs;
-    count += 1;
-    table[Operand::r4000allegrex_mt_vt as usize] = OperandDisplay::display_r4000allegrex_mt_vt;
-    count += 1;
-    table[Operand::r4000allegrex_mt_vd as usize] = OperandDisplay::display_r4000allegrex_mt_vd;
-    count += 1;
-    table[Operand::r4000allegrex_mt_vs_transpose as usize] =
-        OperandDisplay::display_r4000allegrex_mt_vs_transpose;
-    count += 1;
-    table[Operand::r4000allegrex_mq_vs as usize] = OperandDisplay::display_r4000allegrex_mq_vs;
-    count += 1;
-    table[Operand::r4000allegrex_mq_vt as usize] = OperandDisplay::display_r4000allegrex_mq_vt;
-    count += 1;
-    table[Operand::r4000allegrex_mq_vd as usize] = OperandDisplay::display_r4000allegrex_mq_vd;
-    count += 1;
-    table[Operand::r4000allegrex_mq_vs_transpose as usize] =
-        OperandDisplay::display_r4000allegrex_mq_vs_transpose;
-    count += 1;
-    table[Operand::r4000allegrex_cop2cs as usize] = OperandDisplay::display_r4000allegrex_cop2cs;
-    count += 1;
-    table[Operand::r4000allegrex_cop2cd as usize] = OperandDisplay::display_r4000allegrex_cop2cd;
-    count += 1;
-    table[Operand::r4000allegrex_pos as usize] = OperandDisplay::display_r4000allegrex_pos;
-    count += 1;
-    table[Operand::r4000allegrex_size as usize] = OperandDisplay::display_r4000allegrex_size;
-    count += 1;
-    table[Operand::r4000allegrex_size_plus_pos as usize] =
-        OperandDisplay::display_r4000allegrex_size_plus_pos;
-    count += 1;
-    table[Operand::r4000allegrex_imm3 as usize] = OperandDisplay::display_r4000allegrex_imm3;
-    count += 1;
-    table[Operand::r4000allegrex_offset14_base as usize] =
-        OperandDisplay::display_r4000allegrex_offset14_base;
-    count += 1;
-    table[Operand::r4000allegrex_offset14_base_maybe_wb as usize] =
-        OperandDisplay::display_r4000allegrex_offset14_base_maybe_wb;
-    count += 1;
-    table[Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt as usize] =
-        OperandDisplay::display_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt;
-    count += 1;
-    table[Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt as usize] =
-        OperandDisplay::display_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt;
-    count += 1;
-    table[Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt as usize] =
-        OperandDisplay::display_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt;
-    count += 1;
-    table[Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt as usize] =
-        OperandDisplay::display_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt;
-    count += 1;
-    table[Operand::r4000allegrex_vconstant as usize] =
-        OperandDisplay::display_r4000allegrex_vconstant;
-    count += 1;
-    table[Operand::r4000allegrex_power_of_two as usize] =
-        OperandDisplay::display_r4000allegrex_power_of_two;
-    count += 1;
-    table[Operand::r4000allegrex_vfpu_cc_bit as usize] =
-        OperandDisplay::display_r4000allegrex_vfpu_cc_bit;
-    count += 1;
-    table[Operand::r4000allegrex_bn as usize] = OperandDisplay::display_r4000allegrex_bn;
-    count += 1;
-    table[Operand::r4000allegrex_int16 as usize] = OperandDisplay::display_r4000allegrex_int16;
-    count += 1;
-    table[Operand::r4000allegrex_float16 as usize] = OperandDisplay::display_r4000allegrex_float16;
-    count += 1;
-    table[Operand::r4000allegrex_p_vrot_code as usize] =
-        OperandDisplay::display_r4000allegrex_p_vrot_code;
-    count += 1;
-    table[Operand::r4000allegrex_t_vrot_code as usize] =
-        OperandDisplay::display_r4000allegrex_t_vrot_code;
-    count += 1;
-    table[Operand::r4000allegrex_q_vrot_code as usize] =
-        OperandDisplay::display_r4000allegrex_q_vrot_code;
-    count += 1;
-    table[Operand::r4000allegrex_wpx as usize] = OperandDisplay::display_r4000allegrex_wpx;
-    count += 1;
-    table[Operand::r4000allegrex_wpy as usize] = OperandDisplay::display_r4000allegrex_wpy;
-    count += 1;
-    table[Operand::r4000allegrex_wpz as usize] = OperandDisplay::display_r4000allegrex_wpz;
-    count += 1;
-    table[Operand::r4000allegrex_wpw as usize] = OperandDisplay::display_r4000allegrex_wpw;
-    count += 1;
-    table[Operand::r4000allegrex_rpx as usize] = OperandDisplay::display_r4000allegrex_rpx;
-    count += 1;
-    table[Operand::r4000allegrex_rpy as usize] = OperandDisplay::display_r4000allegrex_rpy;
-    count += 1;
-    table[Operand::r4000allegrex_rpz as usize] = OperandDisplay::display_r4000allegrex_rpz;
-    count += 1;
-    table[Operand::r4000allegrex_rpw as usize] = OperandDisplay::display_r4000allegrex_rpw;
-    count += 1;
-    table[Operand::r5900_I as usize] = OperandDisplay::display_r5900_I;
-    count += 1;
-    table[Operand::r5900_Q as usize] = OperandDisplay::display_r5900_Q;
-    count += 1;
-    table[Operand::r5900_R as usize] = OperandDisplay::display_r5900_R;
-    count += 1;
-    table[Operand::r5900_ACC as usize] = OperandDisplay::display_r5900_ACC;
-    count += 1;
-    table[Operand::r5900_immediate5 as usize] = OperandDisplay::display_r5900_immediate5;
-    count += 1;
-    table[Operand::r5900_immediate15 as usize] = OperandDisplay::display_r5900_immediate15;
-    count += 1;
-    table[Operand::r5900_vfs as usize] = OperandDisplay::display_r5900_vfs;
-    count += 1;
-    table[Operand::r5900_vft as usize] = OperandDisplay::display_r5900_vft;
-    count += 1;
-    table[Operand::r5900_vfd as usize] = OperandDisplay::display_r5900_vfd;
-    count += 1;
-    table[Operand::r5900_vis as usize] = OperandDisplay::display_r5900_vis;
-    count += 1;
-    table[Operand::r5900_vit as usize] = OperandDisplay::display_r5900_vit;
-    count += 1;
-    table[Operand::r5900_vid as usize] = OperandDisplay::display_r5900_vid;
-    count += 1;
-    table[Operand::r5900_ACCxyzw as usize] = OperandDisplay::display_r5900_ACCxyzw;
-    count += 1;
-    table[Operand::r5900_vfsxyzw as usize] = OperandDisplay::display_r5900_vfsxyzw;
-    count += 1;
-    table[Operand::r5900_vftxyzw as usize] = OperandDisplay::display_r5900_vftxyzw;
-    count += 1;
-    table[Operand::r5900_vfdxyzw as usize] = OperandDisplay::display_r5900_vfdxyzw;
-    count += 1;
-    table[Operand::r5900_vftn as usize] = OperandDisplay::display_r5900_vftn;
-    count += 1;
-    table[Operand::r5900_vfsl as usize] = OperandDisplay::display_r5900_vfsl;
-    count += 1;
-    table[Operand::r5900_vftm as usize] = OperandDisplay::display_r5900_vftm;
-    count += 1;
-    table[Operand::r5900_vis_predecr as usize] = OperandDisplay::display_r5900_vis_predecr;
-    count += 1;
-    table[Operand::r5900_vit_predecr as usize] = OperandDisplay::display_r5900_vit_predecr;
-    count += 1;
-    table[Operand::r5900_vis_postincr as usize] = OperandDisplay::display_r5900_vis_postincr;
-    count += 1;
-    table[Operand::r5900_vit_postincr as usize] = OperandDisplay::display_r5900_vit_postincr;
-    count += 1;
-    table[Operand::r5900_vis_parenthesis as usize] = OperandDisplay::display_r5900_vis_parenthesis;
-    count += 1;
-    assert!(
-        count == OPERAND_COUNT,
-        "The OPERAND_COUNT constant and the actual count of operands doesn't match."
-    );
-    table
-};
+impl<T> OperandDisplay<'_, '_, T>
+// '
+where
+    T: fmt::Display,
+{
+    pub(crate) fn display_this_operand(
+        &self,
+        f: &mut fmt::Formatter<'_>, // '
+    ) -> fmt::Result {
+        match self.operand() {
+            Operand::ALL_EMPTY => OperandDisplay::display_ALL_EMPTY(self, f),
+            Operand::core_rs => OperandDisplay::display_core_rs(self, f),
+            Operand::core_rt => OperandDisplay::display_core_rt(self, f),
+            Operand::core_rd => OperandDisplay::display_core_rd(self, f),
+            Operand::core_sa => OperandDisplay::display_core_sa(self, f),
+            Operand::core_zero => OperandDisplay::display_core_zero(self, f),
+            Operand::core_cop0d => OperandDisplay::display_core_cop0d(self, f),
+            Operand::core_cop0cd => OperandDisplay::display_core_cop0cd(self, f),
+            Operand::core_fs => OperandDisplay::display_core_fs(self, f),
+            Operand::core_ft => OperandDisplay::display_core_ft(self, f),
+            Operand::core_fd => OperandDisplay::display_core_fd(self, f),
+            Operand::core_cop1cs => OperandDisplay::display_core_cop1cs(self, f),
+            Operand::core_cop2t => OperandDisplay::display_core_cop2t(self, f),
+            Operand::core_cop2d => OperandDisplay::display_core_cop2d(self, f),
+            Operand::core_cop2cd => OperandDisplay::display_core_cop2cd(self, f),
+            Operand::core_op => OperandDisplay::display_core_op(self, f),
+            Operand::core_hint => OperandDisplay::display_core_hint(self, f),
+            Operand::core_code => OperandDisplay::display_core_code(self, f),
+            Operand::core_code_lower => OperandDisplay::display_core_code_lower(self, f),
+            Operand::core_copraw => OperandDisplay::display_core_copraw(self, f),
+            Operand::core_label => OperandDisplay::display_core_label(self, f),
+            Operand::core_immediate => OperandDisplay::display_core_immediate(self, f),
+            Operand::core_branch_target_label => {
+                OperandDisplay::display_core_branch_target_label(self, f)
+            }
+            Operand::core_immediate_base => OperandDisplay::display_core_immediate_base(self, f),
+            Operand::core_maybe_rd_rs => OperandDisplay::display_core_maybe_rd_rs(self, f),
+            Operand::core_maybe_zero_rs => OperandDisplay::display_core_maybe_zero_rs(self, f),
+            Operand::rsp_cop0d => OperandDisplay::display_rsp_cop0d(self, f),
+            Operand::rsp_cop2t => OperandDisplay::display_rsp_cop2t(self, f),
+            Operand::rsp_cop2cd => OperandDisplay::display_rsp_cop2cd(self, f),
+            Operand::rsp_vs => OperandDisplay::display_rsp_vs(self, f),
+            Operand::rsp_vd => OperandDisplay::display_rsp_vd(self, f),
+            Operand::rsp_vt_elementhigh => OperandDisplay::display_rsp_vt_elementhigh(self, f),
+            Operand::rsp_vt_elementlow => OperandDisplay::display_rsp_vt_elementlow(self, f),
+            Operand::rsp_vd_de => OperandDisplay::display_rsp_vd_de(self, f),
+            Operand::rsp_vs_index => OperandDisplay::display_rsp_vs_index(self, f),
+            Operand::rsp_offset_rs => OperandDisplay::display_rsp_offset_rs(self, f),
+            Operand::r3000gte_sf => OperandDisplay::display_r3000gte_sf(self, f),
+            Operand::r3000gte_mx => OperandDisplay::display_r3000gte_mx(self, f),
+            Operand::r3000gte_v => OperandDisplay::display_r3000gte_v(self, f),
+            Operand::r3000gte_cv => OperandDisplay::display_r3000gte_cv(self, f),
+            Operand::r3000gte_lm => OperandDisplay::display_r3000gte_lm(self, f),
+            Operand::r4000allegrex_s_vs => OperandDisplay::display_r4000allegrex_s_vs(self, f),
+            Operand::r4000allegrex_s_vt => OperandDisplay::display_r4000allegrex_s_vt(self, f),
+            Operand::r4000allegrex_s_vd => OperandDisplay::display_r4000allegrex_s_vd(self, f),
+            Operand::r4000allegrex_s_vt_imm => {
+                OperandDisplay::display_r4000allegrex_s_vt_imm(self, f)
+            }
+            Operand::r4000allegrex_s_vd_imm => {
+                OperandDisplay::display_r4000allegrex_s_vd_imm(self, f)
+            }
+            Operand::r4000allegrex_p_vs => OperandDisplay::display_r4000allegrex_p_vs(self, f),
+            Operand::r4000allegrex_p_vt => OperandDisplay::display_r4000allegrex_p_vt(self, f),
+            Operand::r4000allegrex_p_vd => OperandDisplay::display_r4000allegrex_p_vd(self, f),
+            Operand::r4000allegrex_t_vs => OperandDisplay::display_r4000allegrex_t_vs(self, f),
+            Operand::r4000allegrex_t_vt => OperandDisplay::display_r4000allegrex_t_vt(self, f),
+            Operand::r4000allegrex_t_vd => OperandDisplay::display_r4000allegrex_t_vd(self, f),
+            Operand::r4000allegrex_q_vs => OperandDisplay::display_r4000allegrex_q_vs(self, f),
+            Operand::r4000allegrex_q_vt => OperandDisplay::display_r4000allegrex_q_vt(self, f),
+            Operand::r4000allegrex_q_vd => OperandDisplay::display_r4000allegrex_q_vd(self, f),
+            Operand::r4000allegrex_q_vt_imm => {
+                OperandDisplay::display_r4000allegrex_q_vt_imm(self, f)
+            }
+            Operand::r4000allegrex_mp_vs => OperandDisplay::display_r4000allegrex_mp_vs(self, f),
+            Operand::r4000allegrex_mp_vt => OperandDisplay::display_r4000allegrex_mp_vt(self, f),
+            Operand::r4000allegrex_mp_vd => OperandDisplay::display_r4000allegrex_mp_vd(self, f),
+            Operand::r4000allegrex_mp_vs_transpose => {
+                OperandDisplay::display_r4000allegrex_mp_vs_transpose(self, f)
+            }
+            Operand::r4000allegrex_mt_vs => OperandDisplay::display_r4000allegrex_mt_vs(self, f),
+            Operand::r4000allegrex_mt_vt => OperandDisplay::display_r4000allegrex_mt_vt(self, f),
+            Operand::r4000allegrex_mt_vd => OperandDisplay::display_r4000allegrex_mt_vd(self, f),
+            Operand::r4000allegrex_mt_vs_transpose => {
+                OperandDisplay::display_r4000allegrex_mt_vs_transpose(self, f)
+            }
+            Operand::r4000allegrex_mq_vs => OperandDisplay::display_r4000allegrex_mq_vs(self, f),
+            Operand::r4000allegrex_mq_vt => OperandDisplay::display_r4000allegrex_mq_vt(self, f),
+            Operand::r4000allegrex_mq_vd => OperandDisplay::display_r4000allegrex_mq_vd(self, f),
+            Operand::r4000allegrex_mq_vs_transpose => {
+                OperandDisplay::display_r4000allegrex_mq_vs_transpose(self, f)
+            }
+            Operand::r4000allegrex_cop2cs => OperandDisplay::display_r4000allegrex_cop2cs(self, f),
+            Operand::r4000allegrex_cop2cd => OperandDisplay::display_r4000allegrex_cop2cd(self, f),
+            Operand::r4000allegrex_pos => OperandDisplay::display_r4000allegrex_pos(self, f),
+            Operand::r4000allegrex_size => OperandDisplay::display_r4000allegrex_size(self, f),
+            Operand::r4000allegrex_size_plus_pos => {
+                OperandDisplay::display_r4000allegrex_size_plus_pos(self, f)
+            }
+            Operand::r4000allegrex_imm3 => OperandDisplay::display_r4000allegrex_imm3(self, f),
+            Operand::r4000allegrex_offset14_base => {
+                OperandDisplay::display_r4000allegrex_offset14_base(self, f)
+            }
+            Operand::r4000allegrex_offset14_base_maybe_wb => {
+                OperandDisplay::display_r4000allegrex_offset14_base_maybe_wb(self, f)
+            }
+            Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
+                OperandDisplay::display_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(self, f)
+            }
+            Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
+                OperandDisplay::display_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(self, f)
+            }
+            Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
+                OperandDisplay::display_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(self, f)
+            }
+            Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
+                OperandDisplay::display_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(self, f)
+            }
+            Operand::r4000allegrex_vconstant => {
+                OperandDisplay::display_r4000allegrex_vconstant(self, f)
+            }
+            Operand::r4000allegrex_power_of_two => {
+                OperandDisplay::display_r4000allegrex_power_of_two(self, f)
+            }
+            Operand::r4000allegrex_vfpu_cc_bit => {
+                OperandDisplay::display_r4000allegrex_vfpu_cc_bit(self, f)
+            }
+            Operand::r4000allegrex_bn => OperandDisplay::display_r4000allegrex_bn(self, f),
+            Operand::r4000allegrex_int16 => OperandDisplay::display_r4000allegrex_int16(self, f),
+            Operand::r4000allegrex_float16 => {
+                OperandDisplay::display_r4000allegrex_float16(self, f)
+            }
+            Operand::r4000allegrex_p_vrot_code => {
+                OperandDisplay::display_r4000allegrex_p_vrot_code(self, f)
+            }
+            Operand::r4000allegrex_t_vrot_code => {
+                OperandDisplay::display_r4000allegrex_t_vrot_code(self, f)
+            }
+            Operand::r4000allegrex_q_vrot_code => {
+                OperandDisplay::display_r4000allegrex_q_vrot_code(self, f)
+            }
+            Operand::r4000allegrex_wpx => OperandDisplay::display_r4000allegrex_wpx(self, f),
+            Operand::r4000allegrex_wpy => OperandDisplay::display_r4000allegrex_wpy(self, f),
+            Operand::r4000allegrex_wpz => OperandDisplay::display_r4000allegrex_wpz(self, f),
+            Operand::r4000allegrex_wpw => OperandDisplay::display_r4000allegrex_wpw(self, f),
+            Operand::r4000allegrex_rpx => OperandDisplay::display_r4000allegrex_rpx(self, f),
+            Operand::r4000allegrex_rpy => OperandDisplay::display_r4000allegrex_rpy(self, f),
+            Operand::r4000allegrex_rpz => OperandDisplay::display_r4000allegrex_rpz(self, f),
+            Operand::r4000allegrex_rpw => OperandDisplay::display_r4000allegrex_rpw(self, f),
+            Operand::r5900_I => OperandDisplay::display_r5900_I(self, f),
+            Operand::r5900_Q => OperandDisplay::display_r5900_Q(self, f),
+            Operand::r5900_R => OperandDisplay::display_r5900_R(self, f),
+            Operand::r5900_ACC => OperandDisplay::display_r5900_ACC(self, f),
+            Operand::r5900_immediate5 => OperandDisplay::display_r5900_immediate5(self, f),
+            Operand::r5900_immediate15 => OperandDisplay::display_r5900_immediate15(self, f),
+            Operand::r5900_vfs => OperandDisplay::display_r5900_vfs(self, f),
+            Operand::r5900_vft => OperandDisplay::display_r5900_vft(self, f),
+            Operand::r5900_vfd => OperandDisplay::display_r5900_vfd(self, f),
+            Operand::r5900_vis => OperandDisplay::display_r5900_vis(self, f),
+            Operand::r5900_vit => OperandDisplay::display_r5900_vit(self, f),
+            Operand::r5900_vid => OperandDisplay::display_r5900_vid(self, f),
+            Operand::r5900_ACCxyzw => OperandDisplay::display_r5900_ACCxyzw(self, f),
+            Operand::r5900_vfsxyzw => OperandDisplay::display_r5900_vfsxyzw(self, f),
+            Operand::r5900_vftxyzw => OperandDisplay::display_r5900_vftxyzw(self, f),
+            Operand::r5900_vfdxyzw => OperandDisplay::display_r5900_vfdxyzw(self, f),
+            Operand::r5900_vftn => OperandDisplay::display_r5900_vftn(self, f),
+            Operand::r5900_vfsl => OperandDisplay::display_r5900_vfsl(self, f),
+            Operand::r5900_vftm => OperandDisplay::display_r5900_vftm(self, f),
+            Operand::r5900_vis_predecr => OperandDisplay::display_r5900_vis_predecr(self, f),
+            Operand::r5900_vit_predecr => OperandDisplay::display_r5900_vit_predecr(self, f),
+            Operand::r5900_vis_postincr => OperandDisplay::display_r5900_vis_postincr(self, f),
+            Operand::r5900_vit_postincr => OperandDisplay::display_r5900_vit_postincr(self, f),
+            Operand::r5900_vis_parenthesis => {
+                OperandDisplay::display_r5900_vis_parenthesis(self, f)
+            }
+        }
+    }
+}
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
 #[allow(non_camel_case_types)]
 #[non_exhaustive]

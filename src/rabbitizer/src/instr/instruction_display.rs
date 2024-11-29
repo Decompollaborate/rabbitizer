@@ -9,16 +9,19 @@ use crate::isa::IsaExtension;
 use crate::opcodes::Opcode;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-pub struct InstructionDisplay<'ins, 'imm, 'flg> {
+pub struct InstructionDisplay<'ins, 'flg, T> {
     instr: &'ins Instruction,
-    imm_override: Option<&'imm str>,
+    imm_override: Option<T>,
     display_flags: &'flg DisplayFlags,
 }
 
-impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
+impl<'ins, 'flg, T> InstructionDisplay<'ins, 'flg, T>
+where
+    T: fmt::Display,
+{
     pub(crate) const fn new(
         instr: &'ins Instruction,
-        imm_override: Option<&'imm str>,
+        imm_override: Option<T>,
         display_flags: &'flg DisplayFlags,
     ) -> Self {
         Self {
@@ -83,7 +86,10 @@ impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
     }
 }
 
-impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
+impl<T> InstructionDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     fn display_ljust_padding(
         &self,
         f: &mut fmt::Formatter<'_>,
@@ -134,7 +140,7 @@ impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
             write!(
                 f,
                 "{}",
-                operand.display(self.instr, self.imm_override, self.display_flags)
+                operand.display(self.instr, self.imm_override.as_ref(), self.display_flags)
             )?;
         }
 
@@ -158,7 +164,10 @@ impl<'ins, 'imm, 'flg> InstructionDisplay<'ins, 'imm, 'flg> {
     }
 }
 
-impl<'ins, 'imm, 'flg> fmt::Display for InstructionDisplay<'ins, 'imm, 'flg> {
+impl<T> fmt::Display for InstructionDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         if self.must_disasm_as_data() {
             let written_chars = self.display_as_data(f)?;

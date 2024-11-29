@@ -1,6 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use core::fmt;
+
 use crate::display_flags::DisplayFlags;
 use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDescriptor, OperandDisplay, ValuedOperand, OPERANDS};
@@ -21,12 +23,15 @@ impl Operand {
 
 impl Operand {
     #[must_use]
-    pub const fn display<'ins, 'imm, 'flg>(
+    pub const fn display<'ins, 'flg, T>(
         &self,
         instr: &'ins Instruction,
-        imm_override: Option<&'imm str>,
+        imm_override: Option<T>,
         display_flags: &'flg DisplayFlags,
-    ) -> OperandDisplay<'ins, 'imm, 'flg> {
+    ) -> OperandDisplay<'ins, 'flg, T>
+    where
+        T: fmt::Display,
+    {
         OperandDisplay::new(*self, instr, imm_override, display_flags)
     }
 }

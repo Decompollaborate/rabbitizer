@@ -6,10 +6,13 @@ use core::fmt;
 use crate::operands::{operand_display, OperandDisplay};
 use crate::traits::Register;
 
-impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
+impl<T> OperandDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_I(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if myself.display_flags.r5900_use_dollar() {
@@ -20,7 +23,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_Q(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if myself.display_flags.r5900_use_dollar() {
@@ -31,7 +34,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_R(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if myself.display_flags.r5900_use_dollar() {
@@ -42,7 +45,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_ACC(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if myself.display_flags.r5900_use_dollar() {
@@ -53,7 +56,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r5900_immediate5(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
@@ -64,7 +67,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         })
     }
     pub(crate) fn display_r5900_immediate15(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
@@ -76,7 +79,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r5900_vfs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -86,7 +89,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vft(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -96,7 +99,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vfd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -107,7 +110,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r5900_vis(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -117,7 +120,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vit(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -127,7 +130,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r5900_vid(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -139,7 +142,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
 
     #[allow(non_snake_case)]
     pub(crate) fn display_r5900_ACCxyzw(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_r5900_ACC(myself, f)?;
@@ -164,7 +167,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r5900_vfsxyzw(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_r5900_vfs(myself, f)?;
@@ -188,7 +191,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Ok(())
     }
     pub(crate) fn display_r5900_vftxyzw(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_r5900_vft(myself, f)?;
@@ -212,7 +215,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Ok(())
     }
     pub(crate) fn display_r5900_vfdxyzw(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_r5900_vfd(myself, f)?;
@@ -236,7 +239,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Ok(())
     }
     pub(crate) fn display_r5900_vftn(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -246,7 +249,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])
     }
     pub(crate) fn display_r5900_vfsl(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -256,7 +259,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])
     }
     pub(crate) fn display_r5900_vftm(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -267,7 +270,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r5900_vis_predecr(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         write!(f, "(--")?;
@@ -275,7 +278,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, ")")
     }
     pub(crate) fn display_r5900_vit_predecr(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         write!(f, "(--")?;
@@ -283,7 +286,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, ")")
     }
     pub(crate) fn display_r5900_vis_postincr(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         write!(f, "(")?;
@@ -291,7 +294,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "++)")
     }
     pub(crate) fn display_r5900_vit_postincr(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         write!(f, "(")?;
@@ -299,7 +302,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "++)")
     }
     pub(crate) fn display_r5900_vis_parenthesis(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         write!(f, "(")?;

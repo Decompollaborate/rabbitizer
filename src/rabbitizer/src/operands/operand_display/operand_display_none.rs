@@ -6,9 +6,12 @@ use core::fmt;
 use crate::operands::{operand_display, OperandDisplay};
 use crate::{generated::Gpr, traits::Register};
 
-impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
+impl<T> OperandDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     pub(crate) fn display_core_rs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -19,7 +22,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_core_rt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -30,7 +33,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_core_rd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -40,7 +43,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_sa(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -49,7 +52,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_zero(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -59,7 +62,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop0d(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -69,7 +72,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop0cd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -79,7 +82,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_fs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -89,7 +92,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_ft(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -99,7 +102,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_fd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -109,7 +112,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop1cs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -119,7 +122,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop2t(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -129,7 +132,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop2d(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -139,7 +142,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_cop2cd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -149,7 +152,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_core_op(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -158,7 +161,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "0x{:02X}", s)
     }
     pub(crate) fn display_core_hint(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -167,7 +170,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "0x{:02X}", s)
     }
     pub(crate) fn display_core_code(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -181,7 +184,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Ok(())
     }
     pub(crate) fn display_core_code_lower(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -190,13 +193,13 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", code_lower)
     }
     pub(crate) fn display_core_copraw(
-        _myself: &OperandDisplay,
+        _myself: &OperandDisplay<T>,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         todo!()
     }
     pub(crate) fn display_core_label(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
@@ -207,7 +210,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         })
     }
     pub(crate) fn display_core_immediate(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
@@ -218,7 +221,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         })
     }
     pub(crate) fn display_core_branch_target_label(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
@@ -228,7 +231,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         })
     }
     pub(crate) fn display_core_immediate_base(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if false {
@@ -244,7 +247,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, ")")
     }
     pub(crate) fn display_core_maybe_rd_rs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -258,7 +261,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Self::display_core_rs(myself, f)
     }
     pub(crate) fn display_core_maybe_zero_rs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if myself.display_flags.gnu_div() {

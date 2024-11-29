@@ -1,6 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use core::fmt;
+
 use crate::abi::Abi;
 use crate::display_flags::DisplayFlags;
 use crate::encoded_field_mask::EncodedFieldMask;
@@ -45,7 +47,7 @@ use crate::vram::{Vram, VramOffset};
 /// assert_eq!(instr.opcode(), Opcode::core_lui);
 ///
 /// let display_flags = DisplayFlags::new();
-/// assert_eq!(&instr.display(None, &display_flags).to_string(), "lui         $t0, 0x8001");
+/// assert_eq!(&instr.display::<&str>(None, &display_flags).to_string(), "lui         $t0, 0x8001");
 /// ```
 ///
 /// ### Managing pseudo instructions
@@ -67,8 +69,8 @@ use crate::vram::{Vram, VramOffset};
 /// assert_eq!(instr_pseudo.opcode(), Opcode::core_neg);
 ///
 /// let display_flags = DisplayFlags::new();
-/// assert_eq!(&instr_raw.display(None, &display_flags).to_string(),    "sub         $t2, $zero, $v0");
-/// assert_eq!(&instr_pseudo.display(None, &display_flags).to_string(), "neg         $t2, $v0");
+/// assert_eq!(&instr_raw.display::<&str>(None, &display_flags).to_string(),    "sub         $t2, $zero, $v0");
+/// assert_eq!(&instr_pseudo.display::<&str>(None, &display_flags).to_string(), "neg         $t2, $v0");
 /// ```
 ///
 /// [`display`]: Instruction::display
@@ -230,10 +232,10 @@ impl Instruction {
     /// Returns an object that implements [`Display`].
     ///
     /// The `imm_override` parameter allows to replace the immediate, function or label field of
-    /// the instruction with the passed string if any is passed. This is usually useful for
-    /// disassembling the instruction using relocations or actual symbols. Note that if a string is
-    /// passed it will be used as-is, so if you want to use relocation operators then you need to
-    /// provide them yourself.
+    /// the instruction with the passed string, if any. This is usually useful for disassembling
+    /// the instruction using relocations or actual symbols. Note that if a string is passed it
+    /// will be used as-is, so if you want to use relocation operators then you need to provide
+    /// them yourself.
     ///
     /// The `display_flags` allows customizing how the instruction will be disassembled.
     ///
@@ -247,7 +249,7 @@ impl Instruction {
     /// let instr = Instruction::new(0x3C088001, vram, flags);
     ///
     /// let display_flags = DisplayFlags::new();
-    /// assert_eq!(&instr.display(None, &display_flags).to_string(), "lui         $t0, 0x8001");
+    /// assert_eq!(&instr.display::<&str>(None, &display_flags).to_string(), "lui         $t0, 0x8001");
     ///
     /// // Provide a string to override the immediate field of the instruction.
     /// assert_eq!(
@@ -257,18 +259,21 @@ impl Instruction {
     ///
     /// // Change how the disassembly of the instruction is displayed.
     /// assert_eq!(
-    ///     &instr.display(None, &display_flags.with_named_gpr(false).with_opcode_ljust(0)).to_string(),
+    ///     &instr.display::<&str>(None, &display_flags.with_named_gpr(false).with_opcode_ljust(0)).to_string(),
     ///     "lui $8, 0x8001",
     /// );
     /// ```
     ///
     /// [`Display`]: core::fmt::Display
     #[must_use]
-    pub const fn display<'ins, 'imm, 'flg>(
+    pub const fn display<'ins, 'flg, T>(
         &'ins self,
-        imm_override: Option<&'imm str>,
+        imm_override: Option<T>,
         display_flags: &'flg DisplayFlags,
-    ) -> InstructionDisplay<'ins, 'imm, 'flg> {
+    ) -> InstructionDisplay<'ins, 'flg, T>
+    where
+        T: fmt::Display,
+    {
         InstructionDisplay::new(self, imm_override, display_flags)
     }
 }

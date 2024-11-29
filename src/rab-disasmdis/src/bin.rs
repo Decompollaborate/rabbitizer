@@ -129,7 +129,7 @@ fn main() {
                 // Display an instruction each time the buffer is full
                 let word = endian.word_from_bytes(bytes);
                 let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
-                println!("{}", instr.display(None, &display_flags));
+                println!("{}", instr.display::<&str>(None, &display_flags));
             }
 
             data.push(c)
@@ -140,7 +140,7 @@ fn main() {
     if let Some(bytes) = data.get_bytes() {
         let word = endian.word_from_bytes(bytes);
         let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
-        println!("{}", instr.display(None, &display_flags));
+        println!("{}", instr.display::<&str>(None, &display_flags));
     } else {
         eprintln!(
             "Could not fill up a word while parsing the input. Missing characters: '{}'",

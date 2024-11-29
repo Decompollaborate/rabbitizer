@@ -6,9 +6,12 @@ use core::fmt;
 use crate::operands::OperandDisplay;
 use crate::traits::Register;
 
-impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
+impl<T> OperandDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     pub(crate) fn display_rsp_cop0d(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -18,7 +21,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_rsp_cop2t(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -28,7 +31,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_rsp_cop2cd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -39,7 +42,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_rsp_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -49,7 +52,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_rsp_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -59,7 +62,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_rsp_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -70,7 +73,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_rsp_vt_elementhigh(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_rsp_vt(myself, f)?;
@@ -91,7 +94,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         }
     }
     pub(crate) fn display_rsp_vt_elementlow(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_rsp_vt(myself, f)?;
@@ -100,7 +103,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "[{}]", element)
     }
     pub(crate) fn display_rsp_vd_de(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_rsp_vd(myself, f)?;
@@ -121,7 +124,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         }
     }
     pub(crate) fn display_rsp_vs_index(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -131,7 +134,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "[{}]", s)
     }
     pub(crate) fn display_rsp_offset_rs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;

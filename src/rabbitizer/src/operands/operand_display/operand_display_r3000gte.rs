@@ -5,9 +5,12 @@ use core::fmt;
 
 use crate::operands::OperandDisplay;
 
-impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
+impl<T> OperandDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     pub(crate) fn display_r3000gte_sf(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -16,7 +19,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r3000gte_mx(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -25,7 +28,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r3000gte_v(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -34,7 +37,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r3000gte_cv(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -43,7 +46,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r3000gte_lm(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;

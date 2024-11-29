@@ -6,9 +6,12 @@ use core::fmt;
 use crate::operands::OperandDisplay;
 use crate::traits::Register;
 
-impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
+impl<T> OperandDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     pub(crate) fn display_r4000allegrex_s_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -18,7 +21,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_s_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -28,7 +31,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_s_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -38,7 +41,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_s_vt_imm(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -48,7 +51,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_s_vd_imm(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -59,7 +62,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_p_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -69,7 +72,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_p_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -79,7 +82,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_p_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -90,7 +93,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_t_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -100,7 +103,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_t_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -110,7 +113,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_t_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -121,7 +124,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_q_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -131,7 +134,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_q_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -141,7 +144,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_q_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -151,7 +154,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_q_vt_imm(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -162,7 +165,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_mp_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -172,7 +175,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mp_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -182,7 +185,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mp_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -192,7 +195,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mp_vs_transpose(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -203,7 +206,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_mt_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -213,7 +216,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mt_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -223,7 +226,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mt_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -233,7 +236,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mt_vs_transpose(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -244,7 +247,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_mq_vs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -254,7 +257,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mq_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -264,7 +267,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mq_vd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -274,7 +277,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_mq_vs_transpose(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -285,7 +288,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_cop2cs(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -298,7 +301,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_cop2cd(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -312,7 +315,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_pos(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -321,7 +324,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_size(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -330,7 +333,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_size_plus_pos(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -341,7 +344,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_imm3(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -351,7 +354,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_offset14(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
@@ -362,7 +365,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         })
     }
     pub(crate) fn display_r4000allegrex_offset14_base(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if false {
@@ -380,7 +383,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, ")")
     }
     pub(crate) fn display_r4000allegrex_offset14_base_maybe_wb(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_r4000allegrex_offset14_base(myself, f)?;
@@ -393,7 +396,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_vcmp_cond(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -403,7 +406,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -423,7 +426,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Ok(())
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -443,7 +446,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Ok(())
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -463,7 +466,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         Ok(())
     }
     pub(crate) fn display_r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -484,7 +487,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_vconstant(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -495,7 +498,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_power_of_two(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -504,7 +507,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_vfpu_cc_bit(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -513,7 +516,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_bn(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -523,7 +526,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_int16(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -532,7 +535,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_float16(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -542,7 +545,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_p_vrot_code(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         const MNEMONICS: [&str; 32] = [
@@ -585,7 +588,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", MNEMONICS[s as usize])
     }
     pub(crate) fn display_r4000allegrex_t_vrot_code(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         const MNEMONICS: [&str; 32] = [
@@ -628,7 +631,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", MNEMONICS[s as usize])
     }
     pub(crate) fn display_r4000allegrex_q_vrot_code(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         const MNEMONICS: [&str; 32] = [
@@ -672,7 +675,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_wpx(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -682,7 +685,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_wpy(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -692,7 +695,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_wpz(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -702,7 +705,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_wpw(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -713,7 +716,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 
     pub(crate) fn display_r4000allegrex_rpx(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -723,7 +726,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_rpy(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -733,7 +736,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_rpz(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
@@ -743,7 +746,7 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
         write!(f, "{}", s)
     }
     pub(crate) fn display_r4000allegrex_rpw(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;

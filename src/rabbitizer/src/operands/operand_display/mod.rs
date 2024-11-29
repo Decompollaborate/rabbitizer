@@ -5,7 +5,7 @@ use core::fmt;
 
 use crate::display_flags::DisplayFlags;
 use crate::instr::Instruction;
-use crate::operands::{Operand, DISPLAY_OPERAND_CALLBACKS};
+use crate::operands::Operand;
 
 pub(crate) mod operand_display_none;
 pub(crate) mod operand_display_r3000gte;
@@ -14,18 +14,21 @@ pub(crate) mod operand_display_r5900;
 pub(crate) mod operand_display_rsp;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-pub struct OperandDisplay<'ins, 'imm, 'flg> {
+pub struct OperandDisplay<'ins, 'flg, T> {
     operand: Operand,
     instr: &'ins Instruction,
-    imm_override: Option<&'imm str>,
+    imm_override: Option<T>,
     display_flags: &'flg DisplayFlags,
 }
 
-impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
+impl<'ins, 'flg, T> OperandDisplay<'ins, 'flg, T>
+where
+    T: fmt::Display,
+{
     pub(crate) const fn new(
         operand: Operand,
         instr: &'ins Instruction,
-        imm_override: Option<&'imm str>,
+        imm_override: Option<T>,
         display_flags: &'flg DisplayFlags,
     ) -> Self {
         Self {
@@ -35,24 +38,33 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
             display_flags,
         }
     }
+
+    pub(crate) const fn operand(&self) -> Operand {
+        self.operand
+    }
 }
 
-impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
+impl<T> OperandDisplay<'_, '_, T> {
     #[allow(non_snake_case)]
     pub(crate) fn display_ALL_EMPTY(
-        _myself: &OperandDisplay,
+        _myself: &OperandDisplay<T>,
         _f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Err(fmt::Error)
     }
+}
 
+impl<T> OperandDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     #[inline]
     pub(crate) fn display_imm_override_or(
-        myself: &OperandDisplay,
+        myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
-        callback: fn(&OperandDisplay, &mut fmt::Formatter<'_>) -> fmt::Result,
+        callback: fn(&OperandDisplay<T>, &mut fmt::Formatter<'_>) -> fmt::Result,
     ) -> fmt::Result {
-        if let Some(imm_override) = myself.imm_override {
+        if let Some(imm_override) = myself.imm_override.as_ref() {
             write!(f, "{}", imm_override)
         } else {
             callback(myself, f)
@@ -60,12 +72,12 @@ impl<'ins, 'imm, 'flg> OperandDisplay<'ins, 'imm, 'flg> {
     }
 }
 
-pub(crate) type OperandDisplayCallback =
-    for<'a, 'b, 'c> fn(&'a OperandDisplay, &'b mut fmt::Formatter<'c>) -> fmt::Result;
-
-impl fmt::Display for OperandDisplay<'_, '_, '_> {
+impl<T> fmt::Display for OperandDisplay<'_, '_, T>
+where
+    T: fmt::Display,
+{
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        DISPLAY_OPERAND_CALLBACKS[self.operand as usize](self, f)
+        self.display_this_operand(f)
     }
 }
 
@@ -121,11 +133,11 @@ mod stuff {
         }
     }
 
-    fn test(a: &super::OperandDisplay, buf: &mut Buffer) -> fmt::Result {
+    fn test<T: fmt::Display>(a: &super::OperandDisplay<T>, buf: &mut Buffer) -> fmt::Result {
         write!(buf, "{}", a)
     }
 
-    fn test2(a: &super::OperandDisplay, buf: &mut Counter) -> fmt::Result {
+    fn test2<T: fmt::Display>(a: &super::OperandDisplay<T>, buf: &mut Counter) -> fmt::Result {
         write!(buf, "{}", a)
     }
 }

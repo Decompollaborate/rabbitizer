@@ -5,9 +5,10 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use core::fmt;
 use core::num::NonZeroU16;
 
-use crate::operands::{OperandDescriptor, IU16, OPERAND_COUNT, OperandDisplay, OperandDisplayCallback};
+use crate::operands::{OperandDescriptor, IU16, OPERAND_COUNT, OperandDisplay};
 use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
 use crate::encoded_field_mask::EncodedFieldMask;
@@ -40,20 +41,22 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
 #undef RAB_DEF_OPERAND
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
-    table[ Operand::prefix##_##operand as usize] = \
-        OperandDisplay::display_ ## prefix ## _ ## operand; \
-    count += 1;
+    Operand::prefix##_##operand => \
+        OperandDisplay::display_ ## prefix ## _ ## operand (self, f), \
 
-pub(crate) static DISPLAY_OPERAND_CALLBACKS: [OperandDisplayCallback; OPERAND_COUNT] = {
-    let mut table: [OperandDisplayCallback; OPERAND_COUNT] = [OperandDisplay::display_ALL_EMPTY; OPERAND_COUNT];
-    let mut count = 0;
-
-    #include "OperandTypes.inc"
-
-    assert!(count == OPERAND_COUNT, "The OPERAND_COUNT constant and the actual count of operands doesn't match.");
-
-    table
-};
+// The "// '" is a hack to prevent cpp from warning about unterminated literals
+impl<T> OperandDisplay<'_, '_, T> // '
+where T: fmt::Display
+{
+    pub(crate) fn display_this_operand(
+        &self,
+        f: &mut fmt::Formatter<'_>, // '
+    ) -> fmt::Result {
+        match self.operand() {
+            #include "OperandTypes.inc"
+        }
+    }
+}
 
 #undef RAB_DEF_OPERAND
 
