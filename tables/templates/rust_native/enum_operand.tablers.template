@@ -45,7 +45,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         OperandDisplay::display_ ## prefix ## _ ## operand (self, f), \
 
 // The "// '" is a hack to prevent cpp from warning about unterminated literals
-impl<T> OperandDisplay<'_, '_, T> // '
+impl<T> OperandDisplay<'_, '_, T>
 where T: fmt::Display
 {
     pub(crate) fn display_this_operand(

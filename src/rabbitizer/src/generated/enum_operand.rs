@@ -562,7 +562,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     table
 };
 impl<T> OperandDisplay<'_, '_, T>
-// '
 where
     T: fmt::Display,
 {

@@ -415,7 +415,7 @@ impl<'ins> ValuedOperandIterator<'ins> {
     }
 }
 
-impl<'ins> Iterator for ValuedOperandIterator<'ins> {
+impl Iterator for ValuedOperandIterator<'_> {
     type Item = ValuedOperand;
 
     fn next(&mut self) -> Option<Self::Item> {
