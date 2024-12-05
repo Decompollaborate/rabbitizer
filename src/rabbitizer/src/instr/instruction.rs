@@ -686,7 +686,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_op(&self) -> Option<u8> {
-        if self.opcode().has_operand_alias(Operand::core_label) {
+        if self.opcode().has_operand_alias(Operand::core_op) {
             Some(self.field_op_unchecked())
         } else {
             None
@@ -700,7 +700,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_hint(&self) -> Option<u8> {
-        if self.opcode().has_operand_alias(Operand::core_label) {
+        if self.opcode().has_operand_alias(Operand::core_hint) {
             Some(self.field_hint_unchecked())
         } else {
             None
@@ -714,7 +714,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_code_upper(&self) -> Option<u16> {
-        if self.opcode().has_operand_alias(Operand::core_label) {
+        if self.opcode().has_operand_alias(Operand::core_code) {
             Some(self.field_code_upper_unchecked())
         } else {
             None
@@ -728,7 +728,7 @@ impl Instruction {
     /// [`None`]: Option::None
     #[must_use]
     pub fn field_code_lower(&self) -> Option<u16> {
-        if self.opcode().has_operand_alias(Operand::core_label) {
+        if self.opcode().has_operand_alias(Operand::core_code_lower) {
             Some(self.field_code_lower_unchecked())
         } else {
             None
@@ -3207,10 +3207,12 @@ impl Instruction {
     /// [`VramOffset`]: crate::vram::VramOffset
     #[must_use]
     pub fn get_branch_offset_generic(&self) -> Option<VramOffset> {
-        if self.opcode().has_operand_alias(Operand::core_label) {
-            Some(self.get_instr_index_as_vram_unchecked() - self.vram)
+        if let Some(offset) = self.get_branch_offset() {
+            Some(offset)
+        } else if self.flags.j_as_branch() && self.opcode() == Opcode::core_j {
+            self.get_instr_index_as_vram().map(|vram| vram - self.vram)
         } else {
-            self.get_branch_offset()
+            None
         }
     }
 
@@ -3221,13 +3223,12 @@ impl Instruction {
     /// [`Vram`]: crate::vram::Vram
     #[must_use]
     pub fn get_branch_vram_generic(&self) -> Option<Vram> {
-        if self
-            .opcode()
-            .has_operand_alias(Operand::core_branch_target_label)
-        {
-            Some(self.get_branch_offset_unchecked() + self.vram)
-        } else {
+        if let Some(offset) = self.get_branch_offset() {
+            Some(offset + self.vram)
+        } else if self.flags.j_as_branch() && self.opcode() == Opcode::core_j {
             self.get_instr_index_as_vram()
+        } else {
+            None
         }
     }
 
@@ -3521,5 +3522,13 @@ mod tests {
         let instr = Instruction::new(0x0000072E, Vram::new(0x80000000), InstructionFlags::new());
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_dsub);
+    }
+
+    #[test]
+    fn check_jal_is_not_branch() {
+        let instr = Instruction::new(0x0C00E2F6, Vram::new(0x80000000), InstructionFlags::new());
+
+        assert!(instr.get_branch_vram_generic().is_none());
+        assert!(instr.get_instr_index_as_vram().is_some());
     }
 }

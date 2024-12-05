@@ -69,7 +69,7 @@ impl Vram {
     /// ```
     #[must_use]
     pub const fn sub_vram(&self, rhs: &Self) -> VramOffset {
-        VramOffset::new((self.inner as i32) - (rhs.inner() as i32))
+        VramOffset::new((self.inner as i32).wrapping_sub_unsigned(rhs.inner()))
     }
 }
 
@@ -119,7 +119,7 @@ impl ops::Sub<&Self> for Vram {
 
 impl fmt::Debug for Vram {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Vram {{ inner: 0x{:08X} }}", self.inner)
+        write!(f, "Vram {{ 0x{:08X} }}", self.inner)
     }
 }
 

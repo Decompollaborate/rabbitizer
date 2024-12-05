@@ -111,10 +111,10 @@ impl TestEntry {
             errors += 1;
         }
 
-        if self.instr.opcode().is_branch() || self.instr.opcode().is_jump_with_address() {
+        if self.instr.opcode().is_branch() {
             if self.instr.get_branch_offset_generic().is_none() {
                 println!(
-                    "'{}' ({:08X}) is a branch or jump opcode but `get_branch_offset_generic` returned `None`.",
+                    "'{}' ({:08X}) is a branch opcode but `get_branch_offset_generic` returned `None`.",
                     self.opcode_str,
                     self.instr.word()
                 );
@@ -122,11 +122,49 @@ impl TestEntry {
             }
             if self.instr.get_branch_vram_generic().is_none() {
                 println!(
-                    "'{}' ({:08X}) is a branch or jump opcode but `get_branch_vram_generic` returned `None`.",
+                    "'{}' ({:08X}) is a branch but `get_branch_vram_generic` returned `None`.",
                     self.opcode_str,
                     self.instr.word()
                 );
                 errors += 1;
+            }
+        }
+
+        if self.instr.opcode() == Opcode::core_j {
+            if self.instr.flags().j_as_branch() {
+                if self.instr.get_branch_offset_generic().is_none() {
+                    println!(
+                        "'{}' ({:08X}) is the `j` opcode but `get_branch_offset_generic` returned `None`.",
+                        self.opcode_str,
+                        self.instr.word()
+                    );
+                    errors += 1;
+                }
+                if self.instr.get_branch_vram_generic().is_none() {
+                    println!(
+                        "'{}' ({:08X}) is the `j` but `get_branch_vram_generic` returned `None`.",
+                        self.opcode_str,
+                        self.instr.word()
+                    );
+                    errors += 1;
+                }
+            } else {
+                if self.instr.get_branch_offset_generic().is_some() {
+                    println!(
+                        "'{}' ({:08X}) is the `j` opcode but `get_branch_offset_generic` returned `Some` when `j_as_branch` is turned off.",
+                        self.opcode_str,
+                        self.instr.word()
+                    );
+                    errors += 1;
+                }
+                if self.instr.get_branch_vram_generic().is_some() {
+                    println!(
+                        "'{}' ({:08X}) is the `j` opcode but `get_branch_vram_generic` returned `Some` when `j_as_branch` is turned off.",
+                        self.opcode_str,
+                        self.instr.word()
+                    );
+                    errors += 1;
+                }
             }
         }
 

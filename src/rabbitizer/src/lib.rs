@@ -82,11 +82,12 @@
 // #![warn(clippy::missing_errors_doc)]
 #![allow(clippy::pub_with_shorthand)]
 #![warn(clippy::pub_without_shorthand)]
-#![warn(clippy::option_if_let_else)]
+// #![warn(clippy::option_if_let_else)] // It can get kinda ugly. Reconsider later
 #![warn(clippy::option_map_or_none)]
 #![warn(clippy::bind_instead_of_map)]
 #![warn(clippy::cognitive_complexity)] // Maybe remove in the future (?)
 #![warn(clippy::alloc_instead_of_core)]
+#![warn(clippy::ref_option)]
 #![cfg_attr(not(feature = "std"), no_std)]
 
 mod generated;

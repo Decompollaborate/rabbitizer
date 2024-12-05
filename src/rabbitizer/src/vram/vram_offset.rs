@@ -143,7 +143,7 @@ impl ops::Add<&Vram> for VramOffset {
 
 impl fmt::Debug for VramOffset {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "VramOffset {{ inner: ")?;
+        write!(f, "VramOffset {{ ")?;
 
         // `-2^31` fits on an i32, but `-(-2^31)` doesn't, so we cast to i64 to
         // avoid overflowing.
