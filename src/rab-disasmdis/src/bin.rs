@@ -116,7 +116,7 @@ fn main() {
         .with_isa_extension(rabbitizer::isa::IsaExtension::NONE)
         .with_all_pseudos(args.pseudos);
     let vram = rabbitizer::vram::Vram::new(0x8000_0000);
-    let display_flags = rabbitizer::display_flags::DisplayFlags::new_gnu_as();
+    let display_flags = rabbitizer::display_flags::InstructionDisplayFlags::new_gnu_as();
 
     if args.inputs.is_empty() {
         eprintln!("Missing arguments");
@@ -129,7 +129,7 @@ fn main() {
                 // Display an instruction each time the buffer is full
                 let word = endian.word_from_bytes(bytes);
                 let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
-                println!("{}", instr.display::<&str>(None, &display_flags));
+                println!("{}", instr.display::<&str>(&display_flags, None, 0));
             }
 
             data.push(c)
@@ -140,7 +140,7 @@ fn main() {
     if let Some(bytes) = data.get_bytes() {
         let word = endian.word_from_bytes(bytes);
         let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
-        println!("{}", instr.display::<&str>(None, &display_flags));
+        println!("{}", instr.display::<&str>(&display_flags, None, 0));
     } else {
         eprintln!(
             "Could not fill up a word while parsing the input. Missing characters: '{}'",

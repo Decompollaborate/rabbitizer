@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use rabbitizer::display_flags::DisplayFlags;
+use rabbitizer::display_flags::InstructionDisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::isa::IsaExtension;
 use rabbitizer::opcodes::Opcode;
@@ -12,7 +12,7 @@ use rabbitizer::vram::Vram;
 pub struct TestEntry {
     pub instr: Instruction,
     pub imm_override: Option<&'static str>,
-    pub display_flags: DisplayFlags,
+    pub display_flags: InstructionDisplayFlags,
 
     pub valid: bool,
 
@@ -36,7 +36,7 @@ impl TestEntry {
                 flags.with_isa_extension(IsaExtension::RSP),
             ),
             imm_override: None,
-            display_flags: DisplayFlags::default(),
+            display_flags: InstructionDisplayFlags::default(),
             valid: false,
             expected,
             expected_opcode: Opcode::ALL_INVALID,
@@ -60,7 +60,7 @@ impl TestEntry {
                 InstructionFlags::default().with_isa_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
-            display_flags: DisplayFlags::new(),
+            display_flags: InstructionDisplayFlags::new(),
             valid: true,
             expected,
             expected_opcode,
@@ -176,7 +176,7 @@ impl TestEntry {
 
         let disasm = self
             .instr
-            .display(self.imm_override, &self.display_flags)
+            .display(&self.display_flags, self.imm_override, 0)
             .to_string();
         // println!("    {}", disasm);
         if disasm != self.expected {
@@ -194,7 +194,7 @@ impl TestEntry {
             let mut j = 0;
             for (i, operand) in self.instr.operands_iter().enumerate() {
                 let operand_str = operand
-                    .display(&self.instr, self.imm_override, &self.display_flags)
+                    .display(&self.instr, &self.display_flags, self.imm_override)
                     .to_string();
                 let maybe_expected_str = self.operands_str[i];
 

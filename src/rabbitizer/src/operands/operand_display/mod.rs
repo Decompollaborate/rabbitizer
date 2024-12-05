@@ -3,7 +3,7 @@
 
 use core::fmt;
 
-use crate::display_flags::DisplayFlags;
+use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::operands::Operand;
 
@@ -14,11 +14,12 @@ pub(crate) mod operand_display_r5900;
 pub(crate) mod operand_display_rsp;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[must_use]
 pub struct OperandDisplay<'ins, 'flg, T> {
     operand: Operand,
     instr: &'ins Instruction,
+    display_flags: &'flg InstructionDisplayFlags,
     imm_override: Option<T>,
-    display_flags: &'flg DisplayFlags,
 }
 
 impl<'ins, 'flg, T> OperandDisplay<'ins, 'flg, T>
@@ -28,14 +29,14 @@ where
     pub(crate) const fn new(
         operand: Operand,
         instr: &'ins Instruction,
+        display_flags: &'flg InstructionDisplayFlags,
         imm_override: Option<T>,
-        display_flags: &'flg DisplayFlags,
     ) -> Self {
         Self {
             operand,
             instr,
-            imm_override,
             display_flags,
+            imm_override,
         }
     }
 
@@ -84,7 +85,7 @@ where
 pub(crate) fn display_signed_imm(
     number: i32,
     f: &mut fmt::Formatter<'_>,
-    display_flags: &DisplayFlags,
+    display_flags: &InstructionDisplayFlags,
 ) -> fmt::Result {
     if display_flags.omit_0x_on_small_imm() && number > -10 && number < 10 {
         return write!(f, "{}", number);

@@ -4,7 +4,7 @@
 mod common;
 
 use common::{check_test_entries, TestEntry};
-use rabbitizer::display_flags::DisplayFlags;
+use rabbitizer::display_flags::InstructionDisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::isa::IsaExtension;
 use rabbitizer::opcodes::Opcode;
@@ -19,7 +19,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -34,7 +34,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -49,7 +49,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -64,7 +64,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false)
                 .with_named_rsp_cop0(true),
@@ -80,7 +80,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false)
                 .with_named_rsp_cop0(false),
@@ -96,7 +96,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -111,7 +111,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -126,7 +126,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B38E8"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -141,7 +141,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -156,7 +156,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B3A74"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -171,7 +171,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -186,7 +186,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -201,7 +201,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B2288"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -216,7 +216,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false)
                 .with_named_rsp_cop0(true),
@@ -232,7 +232,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -247,7 +247,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -262,7 +262,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -277,7 +277,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -292,7 +292,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -307,7 +307,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B2288"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -322,7 +322,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -337,7 +337,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -352,7 +352,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B1A78"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -367,7 +367,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -382,7 +382,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -397,7 +397,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -412,7 +412,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -427,7 +427,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -442,7 +442,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -457,7 +457,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -472,7 +472,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -487,7 +487,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -502,7 +502,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -517,7 +517,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -532,7 +532,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B304C"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -547,7 +547,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -562,7 +562,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -577,7 +577,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -592,7 +592,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -607,7 +607,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -622,7 +622,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -637,7 +637,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -652,7 +652,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -667,7 +667,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -682,7 +682,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -697,7 +697,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -712,7 +712,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -727,7 +727,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -742,7 +742,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -757,7 +757,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -772,7 +772,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -787,7 +787,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -802,7 +802,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -817,7 +817,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -832,7 +832,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -847,7 +847,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -862,7 +862,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -877,7 +877,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -892,7 +892,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -907,7 +907,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B2F4C"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -922,7 +922,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B3A2C"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -937,7 +937,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -952,7 +952,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -967,7 +967,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -982,7 +982,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -997,7 +997,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1012,7 +1012,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B3A2C"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1027,7 +1027,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1042,7 +1042,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1057,7 +1057,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1072,7 +1072,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1087,7 +1087,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1102,7 +1102,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1117,7 +1117,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1132,7 +1132,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1147,7 +1147,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1162,7 +1162,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1177,7 +1177,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1192,7 +1192,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1207,7 +1207,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1222,7 +1222,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1237,7 +1237,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1252,7 +1252,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1267,7 +1267,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1282,7 +1282,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1297,7 +1297,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1312,7 +1312,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1327,7 +1327,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1342,7 +1342,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1357,7 +1357,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1372,7 +1372,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1387,7 +1387,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1402,7 +1402,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1417,7 +1417,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1432,7 +1432,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1447,7 +1447,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1462,7 +1462,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1477,7 +1477,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1492,7 +1492,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1507,7 +1507,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1522,7 +1522,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1537,7 +1537,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1552,7 +1552,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(true)
                 .with_named_fpr(true),
             valid: true,
@@ -1567,7 +1567,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1582,7 +1582,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: Some(".LA00B3020"),
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1597,7 +1597,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1612,7 +1612,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1627,7 +1627,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,
@@ -1642,7 +1642,7 @@ fn check_rsp_instructions() {
                 Vram::new(0xA4000000),
                 InstructionFlags::new().with_isa_extension(IsaExtension::RSP),),
             imm_override: None,
-            display_flags: DisplayFlags::default()
+            display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
                 .with_named_fpr(false),
             valid: true,

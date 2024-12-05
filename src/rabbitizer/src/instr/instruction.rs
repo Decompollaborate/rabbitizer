@@ -4,7 +4,7 @@
 use core::fmt;
 
 use crate::abi::Abi;
-use crate::display_flags::DisplayFlags;
+use crate::display_flags::InstructionDisplayFlags;
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::{InstructionDisplay, InstructionFlags};
 use crate::isa::{IsaExtension, IsaVersion};
@@ -37,7 +37,7 @@ use crate::vram::{Vram, VramOffset};
 /// ### Plain disassembly
 ///
 /// ```
-/// use rabbitizer::{Instruction, Vram, InstructionFlags, DisplayFlags};
+/// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
 /// use rabbitizer::opcodes::Opcode;
 ///
 /// let vram = Vram::new(0x80000000);
@@ -46,14 +46,14 @@ use crate::vram::{Vram, VramOffset};
 ///
 /// assert_eq!(instr.opcode(), Opcode::core_lui);
 ///
-/// let display_flags = DisplayFlags::new();
-/// assert_eq!(&instr.display::<&str>(None, &display_flags).to_string(), "lui         $t0, 0x8001");
+/// let display_flags = InstructionDisplayFlags::new();
+/// assert_eq!(&instr.display::<&str>(&display_flags, None, 0).to_string(), "lui         $t0, 0x8001");
 /// ```
 ///
 /// ### Managing pseudo instructions
 ///
 /// ```
-/// use rabbitizer::{Instruction, Vram, InstructionFlags, DisplayFlags};
+/// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
 /// use rabbitizer::opcodes::Opcode;
 ///
 /// let vram = Vram::new(0x80000000);
@@ -68,9 +68,9 @@ use crate::vram::{Vram, VramOffset};
 /// assert_eq!(instr_raw.opcode(), Opcode::core_sub);
 /// assert_eq!(instr_pseudo.opcode(), Opcode::core_neg);
 ///
-/// let display_flags = DisplayFlags::new();
-/// assert_eq!(&instr_raw.display::<&str>(None, &display_flags).to_string(),    "sub         $t2, $zero, $v0");
-/// assert_eq!(&instr_pseudo.display::<&str>(None, &display_flags).to_string(), "neg         $t2, $v0");
+/// let display_flags = InstructionDisplayFlags::new();
+/// assert_eq!(&instr_raw.display::<&str>(&display_flags, None, 0).to_string(),    "sub         $t2, $zero, $v0");
+/// assert_eq!(&instr_pseudo.display::<&str>(&display_flags, None, 0).to_string(), "neg         $t2, $v0");
 /// ```
 ///
 /// [`display`]: Instruction::display
@@ -231,50 +231,59 @@ impl Instruction {
 impl Instruction {
     /// Returns an object that implements [`Display`].
     ///
-    /// The `imm_override` parameter allows to replace the immediate, function or label field of
-    /// the instruction with the passed string, if any. This is usually useful for disassembling
-    /// the instruction using relocations or actual symbols. Note that if a string is passed it
-    /// will be used as-is, so if you want to use relocation operators then you need to provide
-    /// them yourself.
+    /// The `display_flags` parameter allows customizing how the instruction will be disassembled.
     ///
-    /// The `display_flags` allows customizing how the instruction will be disassembled.
+    /// The `imm_override` parameter allows to replace the immediate, function or label field of
+    /// the instruction with the passed [`Display`]able object, if any. This is usually useful for
+    /// disassembling this instruction using proper relocation arguments or actual symbols. Note
+    /// that, if a string is passed, it will be used as-is, so if you want to use relocation
+    /// operators then you need to provide them yourself.
+    ///
+    /// The `extra_ljust` parameter allows controlling the spacing between the instruction and its
+    /// operands. For example, it is common to adjust this spacing for instructions on delay slots.
     ///
     /// # Examples
     ///
     /// ```
-    /// use rabbitizer::{Instruction, Vram, InstructionFlags, DisplayFlags};
+    /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
     ///
     /// let vram = Vram::new(0x80000000);
     /// let flags = InstructionFlags::new();
     /// let instr = Instruction::new(0x3C088001, vram, flags);
     ///
-    /// let display_flags = DisplayFlags::new();
-    /// assert_eq!(&instr.display::<&str>(None, &display_flags).to_string(), "lui         $t0, 0x8001");
-    ///
-    /// // Provide a string to override the immediate field of the instruction.
-    /// assert_eq!(
-    ///     &instr.display(Some("%hi(example)"), &display_flags).to_string(),
-    ///     "lui         $t0, %hi(example)",
-    /// );
+    /// let display_flags = InstructionDisplayFlags::new();
+    /// assert_eq!(&instr.display::<&str>(&display_flags, None, 0).to_string(), "lui         $t0, 0x8001");
     ///
     /// // Change how the disassembly of the instruction is displayed.
     /// assert_eq!(
-    ///     &instr.display::<&str>(None, &display_flags.with_named_gpr(false).with_opcode_ljust(0)).to_string(),
+    ///     &instr.display::<&str>(&display_flags.with_named_gpr(false).with_opcode_ljust(0), None, 0).to_string(),
     ///     "lui $8, 0x8001",
+    /// );
+    ///
+    /// // Provide a string to override the immediate field of the instruction.
+    /// assert_eq!(
+    ///     &instr.display(&display_flags, Some("%hi(example)"), 0).to_string(),
+    ///     "lui         $t0, %hi(example)",
+    /// );
+    ///
+    /// // Reduce the space between the opcode and the parameters.
+    /// assert_eq!(
+    ///     &instr.display(&display_flags, Some("%hi(example)"), -1).to_string(),
+    ///     "lui        $t0, %hi(example)",
     /// );
     /// ```
     ///
     /// [`Display`]: core::fmt::Display
-    #[must_use]
     pub const fn display<'ins, 'flg, T>(
         &'ins self,
+        display_flags: &'flg InstructionDisplayFlags,
         imm_override: Option<T>,
-        display_flags: &'flg DisplayFlags,
+        extra_ljust: i32,
     ) -> InstructionDisplay<'ins, 'flg, T>
     where
         T: fmt::Display,
     {
-        InstructionDisplay::new(self, imm_override, display_flags)
+        InstructionDisplay::new(self, display_flags, imm_override, extra_ljust)
     }
 }
 

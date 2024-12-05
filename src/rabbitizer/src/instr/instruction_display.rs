@@ -3,16 +3,18 @@
 
 use core::fmt;
 
-use crate::display_flags::DisplayFlags;
+use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::isa::IsaExtension;
 use crate::opcodes::Opcode;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[must_use]
 pub struct InstructionDisplay<'ins, 'flg, T> {
     instr: &'ins Instruction,
+    display_flags: &'flg InstructionDisplayFlags,
     imm_override: Option<T>,
-    display_flags: &'flg DisplayFlags,
+    extra_ljust: i32,
 }
 
 impl<'ins, 'flg, T> InstructionDisplay<'ins, 'flg, T>
@@ -21,13 +23,15 @@ where
 {
     pub(crate) const fn new(
         instr: &'ins Instruction,
+        display_flags: &'flg InstructionDisplayFlags,
         imm_override: Option<T>,
-        display_flags: &'flg DisplayFlags,
+        extra_ljust: i32,
     ) -> Self {
         Self {
             instr,
-            imm_override,
             display_flags,
+            imm_override,
+            extra_ljust,
         }
     }
 
@@ -94,9 +98,11 @@ where
         &self,
         f: &mut fmt::Formatter<'_>,
         ljust: u32,
+        extra_ljust: i32,
         written_chars: usize,
     ) -> Result<usize, fmt::Error> {
-        let padding_len = ljust.saturating_sub(written_chars as u32) as usize;
+        let new_ljust = ljust.saturating_add_signed(extra_ljust);
+        let padding_len = new_ljust.saturating_sub(written_chars as u32) as usize;
         let mut new_written_chars = 0;
 
         if padding_len > 0 {
@@ -131,7 +137,12 @@ where
             return Ok(());
         }
 
-        self.display_ljust_padding(f, self.display_flags.opcode_ljust(), written_chars)?;
+        self.display_ljust_padding(
+            f,
+            self.display_flags.opcode_ljust(),
+            self.extra_ljust,
+            written_chars,
+        )?;
 
         for (i, operand) in self.instr.operands_iter().enumerate() {
             if i != 0 {
@@ -140,7 +151,7 @@ where
             write!(
                 f,
                 "{}",
-                operand.display(self.instr, self.imm_override.as_ref(), self.display_flags)
+                operand.display(self.instr, self.display_flags, self.imm_override.as_ref())
             )?;
         }
 
@@ -154,8 +165,12 @@ where
         write!(f, "{}", s)?;
         written_chars += s.len();
 
-        written_chars +=
-            self.display_ljust_padding(f, self.display_flags.opcode_ljust(), written_chars)?;
+        written_chars += self.display_ljust_padding(
+            f,
+            self.display_flags.opcode_ljust(),
+            self.extra_ljust,
+            written_chars,
+        )?;
 
         write!(f, "0x{:08X}", self.instr.word())?;
         written_chars += 10;
@@ -173,7 +188,7 @@ where
             let written_chars = self.display_as_data(f)?;
 
             if self.display_flags.unknown_instr_comment() {
-                self.display_ljust_padding(f, 40, written_chars)?;
+                self.display_ljust_padding(f, 40, self.extra_ljust, written_chars)?;
 
                 write!(f, "/* ")?;
                 self.display_as_instruction_disassembly(f)?;

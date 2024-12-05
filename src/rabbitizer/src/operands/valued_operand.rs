@@ -4,7 +4,7 @@
 use core::fmt;
 use core::num::NonZeroU16;
 
-use crate::display_flags::DisplayFlags;
+use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDisplay, ValuedOperand, OPERAND_COUNT_MAX};
 use crate::traits::Register;
@@ -26,12 +26,11 @@ impl ValuedOperand {
         Self::ALL_EMPTY()
     }
 
-    #[must_use]
     pub const fn display<'ins, 'flg, T>(
         &self,
         instr: &'ins Instruction,
+        display_flags: &'flg InstructionDisplayFlags,
         imm_override: Option<T>,
-        display_flags: &'flg DisplayFlags,
     ) -> OperandDisplay<'ins, 'flg, T>
     where
         T: fmt::Display,
@@ -39,8 +38,8 @@ impl ValuedOperand {
         OperandDisplay::new(
             Operand::from_valued_operand(*self),
             instr,
-            imm_override,
             display_flags,
+            imm_override,
         )
     }
 }

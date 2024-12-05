@@ -3,7 +3,7 @@
 
 use core::fmt;
 
-use crate::display_flags::DisplayFlags;
+use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDescriptor, OperandDisplay, ValuedOperand, OPERANDS};
 
@@ -22,17 +22,16 @@ impl Operand {
 }
 
 impl Operand {
-    #[must_use]
     pub const fn display<'ins, 'flg, T>(
         &self,
         instr: &'ins Instruction,
+        display_flags: &'flg InstructionDisplayFlags,
         imm_override: Option<T>,
-        display_flags: &'flg DisplayFlags,
     ) -> OperandDisplay<'ins, 'flg, T>
     where
         T: fmt::Display,
     {
-        OperandDisplay::new(*self, instr, imm_override, display_flags)
+        OperandDisplay::new(*self, instr, display_flags, imm_override)
     }
 }
 

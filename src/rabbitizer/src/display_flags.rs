@@ -1,10 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-// TODO: maybe rename to InstructionDisplayFlags?
-
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-pub struct DisplayFlags {
+pub struct InstructionDisplayFlags {
     /// Enables using named registers. This option takes precedence over the other named register options
     named_registers: bool,
     /// Use the ABI names for the general purpose registers when disassembling the main processor's instructions
@@ -33,7 +31,7 @@ pub struct DisplayFlags {
     r5900_use_dollar: bool,
 }
 
-impl DisplayFlags {
+impl InstructionDisplayFlags {
     /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
@@ -91,7 +89,7 @@ impl DisplayFlags {
 }
 
 /// Getters and setters
-impl DisplayFlags {
+impl InstructionDisplayFlags {
     #[must_use]
     pub const fn named_registers(&self) -> bool {
         self.named_registers
@@ -309,7 +307,7 @@ impl DisplayFlags {
     }
 }
 
-impl Default for DisplayFlags {
+impl Default for InstructionDisplayFlags {
     fn default() -> Self {
         Self::default()
     }
