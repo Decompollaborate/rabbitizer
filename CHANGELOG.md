@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Set MSRV (minimal supported Rust version) to 1.66.1.
 - Prebuilt binaries for Python 3.13.
 
+### Changed
+
+- Python 3.9 or above is now required.
+
 ### Fixed
 
 - Fix some instructions missing their corresponding AccessType.
