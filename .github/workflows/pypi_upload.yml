@@ -1,11 +1,11 @@
 name: Build and upload to PyPI
 
 # Only run on releases
-on:
-  push:
-    # Pattern matched against refs/tags
-    tags:
-      - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
+# on:
+#   push:
+#     # Pattern matched against refs/tags
+#     tags:
+#       - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
 
 jobs:
   build_wheels:

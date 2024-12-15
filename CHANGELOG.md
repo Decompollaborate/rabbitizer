@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Set MSRV (minimal supported Rust version) to 1.66.1.
+
 ### Fixed
 
 - Fix some instructions missing their corresponding AccessType.
+- Fix some new clippy lints.
 
 ## [1.12.0] - 2024-07-21
 
