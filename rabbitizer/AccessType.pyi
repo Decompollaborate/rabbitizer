@@ -13,6 +13,11 @@ class AccessType:
     SHORT: Enum
     WORD: Enum
     DOUBLEWORD: Enum
+    QUADWORD: Enum
     FLOAT: Enum
     DOUBLEFLOAT: Enum
+    WORD_LEFT: Enum
+    WORD_RIGHT: Enum
+    DOUBLEWORD_LEFT: Enum
+    DOUBLEWORD_RIGHT: Enum
     MAX: Enum

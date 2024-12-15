@@ -6,7 +6,7 @@ on: [push, pull_request]
 jobs:
   build_repo:
     name: Build repo
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -23,7 +23,7 @@ jobs:
   build_info_checks:
     name: Test - build_info_checks
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -44,7 +44,7 @@ jobs:
   logic_checks:
     name: Test - logic_checks
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -65,7 +65,7 @@ jobs:
   instruction_checks_all:
     name: Test - instruction_checks_all
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -89,7 +89,7 @@ jobs:
   instruction_checks_jalr:
     name: Test - instruction_checks_jalr
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -110,7 +110,7 @@ jobs:
   instruction_checks_plain_disassembly:
     name: Test - instruction_checks_plain_disassembly
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -131,7 +131,7 @@ jobs:
   instruction_checks_r3000gte_disasm:
     name: Test - instruction_checks_r3000gte_disasm
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -152,7 +152,7 @@ jobs:
   instruction_checks_r4000allegrex_disasm:
     name: Test - instruction_checks_r4000allegrex_disasm
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -173,7 +173,7 @@ jobs:
   instruction_checks_r4000allegrex_vfpu_disasm:
     name: Test - instruction_checks_r4000allegrex_vfpu_disasm
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -194,7 +194,7 @@ jobs:
   instruction_checks_r5900_trunc_cvt:
     name: Test - instruction_checks_r5900_trunc_cvt
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory
@@ -215,7 +215,7 @@ jobs:
   instruction_checks_r5900_disasm:
     name: Test - instruction_checks_r5900_disasm
     needs: [build_repo]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout reposistory

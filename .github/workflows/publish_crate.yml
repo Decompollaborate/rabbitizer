@@ -4,41 +4,97 @@ name: Build and upload Rust crate
 on: [push, pull_request]
 
 jobs:
-  build_rust:
-    name: Build Rust stuff and run Rust tests
-    runs-on: ubuntu-latest
+  check_fmt:
+    name: Check format
+    runs-on: ubuntu-20.04
 
     steps:
-    - name: Checkout reposistory
-      uses: actions/checkout@v4
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
 
-    - name: Setup Rust toolchain
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
 
-    - name: Check format
-      run: cargo fmt --check
+      - name: Check format
+        run: cargo fmt --check
 
-    - name: Setup clippy
-      run: rustup component add clippy
+  check_clippy:
+    name: Check clippy lints
+    runs-on: ubuntu-20.04
 
-    - name: Run clippy
-      run: |
-        cargo clippy --version
-        cargo clippy --all-targets --all-features -- -D warnings
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
 
-    - name: Build Rust package
-      run: cargo build --release --workspace
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
 
-    - name: Build Rust tests
-      run: cargo test --workspace
+      - name: Setup clippy
+        run: rustup component add clippy
 
-    - name: Publish dry run
-      if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
-      run: cargo publish --dry-run
+      - name: Run clippy
+        run: |
+          cargo clippy --version
+          cargo clippy --all-targets --all-features -- -D warnings
 
-    - name: Upload crate
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-      run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+  run_tests:
+    name: Run Rust tests
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Build Rust tests
+        run: cargo test --workspace
+
+  msrv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup MSRV checker
+        uses: taiki-e/install-action@cargo-hack
+
+      # To find current MSRV use `cargo msrv find`. Install it with `cargo install cargo-msrv --locked`
+      - name: Run MSRV checker
+        run: cargo hack check --rust-version --workspace --all-targets --ignore-private
+
+  publish_crate:
+    name: Publish the crate!
+    runs-on: ubuntu-20.04
+    needs: [check_fmt, check_clippy, run_tests, msrv]
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Build Rust package
+        run: cargo build --release --workspace
+
+      - name: Publish dry run
+        if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
+        run: cargo publish --dry-run
+
+      - name: Upload crate
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}

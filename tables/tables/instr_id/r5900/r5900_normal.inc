@@ -31,7 +31,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_QUADWORD
     ) // Load Quadword
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x1F, sq,
@@ -41,7 +42,8 @@
         .readsRt=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_QUADWORD
     ) // Store Quadword
 
     RABBITIZER_DEF_INSTR_ID(
@@ -50,7 +52,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_QUADWORD
     )
 
     RABBITIZER_DEF_INSTR_ID(
@@ -59,5 +62,6 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_QUADWORD
     )

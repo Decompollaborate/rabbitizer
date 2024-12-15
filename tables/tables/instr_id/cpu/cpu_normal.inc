@@ -198,7 +198,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD_LEFT
     ) // Load Doubleword Left
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x1B, ldr,
@@ -208,7 +209,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD_RIGHT
     ) // Load Doubleword Right
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x20, lb,
@@ -240,7 +242,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_WORD_LEFT
     ) // Load Word Left
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x23, lw,
@@ -285,7 +288,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_WORD_RIGHT
     ) // Load Word Right
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x27, lwu,
@@ -329,7 +333,8 @@
         .readsRt=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_WORD_LEFT
     ) // Store Word Left
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x2B, sw,
@@ -350,7 +355,8 @@
         .readsRt=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD_LEFT
     ) // Store Doubleword Left
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x2D, sdr,
@@ -360,7 +366,8 @@
         .readsRt=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD_RIGHT
     ) // Store Doubleword Right
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x2E, swr,
@@ -370,7 +377,8 @@
         .readsRt=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_WORD_RIGHT
     ) // Store Word Right
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x30, ll,
@@ -381,7 +389,8 @@
         .notEmittedByCompilers=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_WORD
     ) // Load Linked word
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x33, pref,
@@ -398,7 +407,8 @@
         .notEmittedByCompilers=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD
     ) // Load Linked Doubleword
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x37, ld,
@@ -420,7 +430,8 @@
         .notEmittedByCompilers=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_WORD
     ) // Store Conditional word
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x3C, scd,
@@ -431,7 +442,8 @@
         .notEmittedByCompilers=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD
     ) // Store Conditional Doubleword
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x3F, sd,
@@ -514,7 +526,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_WORD
     ) // Load Word to Coprocessor z
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x36, ldc2,
@@ -523,7 +536,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesLoad=true
+        .doesLoad=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD
     ) // Load Doubleword to Coprocessor z
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x3A, swc2,
@@ -532,7 +546,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_WORD
     ) // Store Word from Coprocessor z
     RABBITIZER_DEF_INSTR_ID(
         cpu, 0x3E, sdc2,
@@ -541,7 +556,8 @@
         .readsRs=true,
         .canBeLo=true,
         .doesDereference=true,
-        .doesStore=true
+        .doesStore=true,
+        .accessType=RAB_ACCESSTYPE_DOUBLEWORD
     ) // Store Doubleword from Coprocessor z
 
 

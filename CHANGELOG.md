@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.1] - 2024-07-21
+
+### Added
+
+- Set MSRV (minimal supported Rust version) to 1.66.1.
+- Prebuilt binaries for Python 3.13.
+
+### Changed
+
+- Python 3.9 or above is now required.
+
+### Fixed
+
+- Fix some instructions missing their corresponding AccessType.
+- Fix some new clippy lints.
+
 ## [1.12.0] - 2024-07-21
 
 ### Added
@@ -658,6 +674,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.12.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.0...1.12.1
 [1.12.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.2...1.12.0
 [1.11.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.1...1.11.2
 [1.11.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.0...1.11.1

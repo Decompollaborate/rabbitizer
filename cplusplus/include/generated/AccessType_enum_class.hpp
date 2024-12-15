@@ -12,8 +12,13 @@ enum class AccessType {
     SHORT,
     WORD,
     DOUBLEWORD,
+    QUADWORD,
     FLOAT,
     DOUBLEFLOAT,
+    WORD_LEFT,
+    WORD_RIGHT,
+    DOUBLEWORD_LEFT,
+    DOUBLEWORD_RIGHT,
     MAX,
 };
 

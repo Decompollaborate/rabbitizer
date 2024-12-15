@@ -4,41 +4,40 @@
 use crate::{registers_enum, RegisterDescriptor};
 
 extern "C" {
-    pub static mut RabbitizerRegister_GprO32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_GprN32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop0_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1O32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1N32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1N64_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop1Control_Names:
+    pub static RabbitizerRegister_GprO32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_GprN32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_Cop0_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_Cop1O32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_Cop1N32_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_Cop1N64_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_Cop1Control_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_Cop2_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_RspGpr_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_RspCop0_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_RspCop2_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_RspCop2Control_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_Cop2_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspGpr_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspCop0_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspCop2_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspCop2Control_Names:
+    pub static RabbitizerRegister_RspVector_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexS_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_RspVector_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexS_Names:
+    pub static RabbitizerRegister_R4000AllegrexV2D_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexV2D_Names:
+    pub static RabbitizerRegister_R4000AllegrexV3D_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexV3D_Names:
+    pub static RabbitizerRegister_R4000AllegrexV4D_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexV4D_Names:
+    pub static RabbitizerRegister_R4000AllegrexM2x2_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexM2x2_Names:
+    pub static RabbitizerRegister_R4000AllegrexM3x3_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexM3x3_Names:
+    pub static RabbitizerRegister_R4000AllegrexM4x4_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexM4x4_Names:
+    pub static RabbitizerRegister_R4000AllegrexVfpuControl_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexVfpuControl_Names:
+    pub static RabbitizerRegister_R4000AllegrexVConstant_Names:
         [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexVConstant_Names:
-        [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R5900VF_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
-    pub static mut RabbitizerRegister_R5900VI_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_R5900VF_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
+    pub static RabbitizerRegister_R5900VI_Names: [[*const core::ffi::c_char; 2usize]; 0usize];
 
     /*
     pub fn RabbitizerRegister_getNameGpr(reg_value: u8) -> *const core::ffi::c_char;
@@ -57,41 +56,40 @@ extern "C" {
     pub fn RabbitizerRegister_getNameR5900VI(reg_value: u8) -> *const core::ffi::c_char;
     */
 
-    pub static mut RabbitizerRegister_GprO32_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_GprN32_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_Cop0_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_Cop1O32_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_Cop1N32_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_Cop1N64_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_Cop1Control_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_Cop2_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_GprO32_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_GprN32_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_Cop0_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_Cop1O32_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_Cop1N32_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_Cop1N64_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_Cop1Control_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_Cop2_Descriptors: [RegisterDescriptor; 0usize];
 
     /* RSP */
 
-    pub static mut RabbitizerRegister_RspGpr_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_RspCop0_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_RspCop2_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_RspCop2Control_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_RspVector_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_RspGpr_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_RspCop0_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_RspCop2_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_RspCop2Control_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_RspVector_Descriptors: [RegisterDescriptor; 0usize];
 
     /* RSP */
 
-    pub static mut RabbitizerRegister_R4000AllegrexS_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexV2D_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexV3D_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexV4D_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexM2x2_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexM3x3_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexM4x4_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors:
+    pub static RabbitizerRegister_R4000AllegrexS_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexV2D_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexV3D_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexV4D_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexM2x2_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexM3x3_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexM4x4_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexVfpuControl_Descriptors:
         [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R4000AllegrexVConstant_Descriptors:
-        [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R4000AllegrexVConstant_Descriptors: [RegisterDescriptor; 0usize];
 
     /* R5900 */
 
-    pub static mut RabbitizerRegister_R5900VF_Descriptors: [RegisterDescriptor; 0usize];
-    pub static mut RabbitizerRegister_R5900VI_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R5900VF_Descriptors: [RegisterDescriptor; 0usize];
+    pub static RabbitizerRegister_R5900VI_Descriptors: [RegisterDescriptor; 0usize];
 
     /* R5900 */
 }
