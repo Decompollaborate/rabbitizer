@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Set MSRV (minimal supported Rust version) to 1.66.1.
+- Prebuilt binaries for Python 3.13.
 
 ### Fixed
 
