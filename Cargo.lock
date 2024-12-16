@@ -102,7 +102,7 @@ dependencies = [
 
 [[package]]
 name = "rabbitizer"
-version = "1.12.3"
+version = "1.12.4"
 dependencies = [
  "cc",
  "glob",
