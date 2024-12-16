@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.5] - 2024-12-16
+
+### Fixed
+
+- Try to fix Python releases again, again, again.
+  - This time even the updated cibuildhweels example was wrong.
+
 ## [1.12.4] - 2024-12-16
 
 ### Fixed
@@ -695,6 +702,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.12.5]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.4...1.12.5
 [1.12.4]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.3...1.12.4
 [1.12.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.2...1.12.3
 [1.12.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.1...1.12.2
