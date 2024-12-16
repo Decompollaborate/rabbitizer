@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Try to fix Python releases again, again.
+  - Why are we still here? Just to suffer?
+
 ## [1.12.3] - 2024-12-16
 
 ### Fixed
