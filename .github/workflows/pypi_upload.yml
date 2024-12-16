@@ -33,7 +33,7 @@ jobs:
           CIBW_ARCHS_MACOS: "all"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: ./wheelhouse/*.whl
 
@@ -48,7 +48,7 @@ jobs:
         run: pipx run build --sdist
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: dist/*.tar.gz
 
