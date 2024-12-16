@@ -4,7 +4,7 @@
 [project]
 name = "rabbitizer"
 # Version should be synced with include/common/RabbitizerVersion.h
-version = "1.12.1"
+version = "1.12.2"
 description = "MIPS instruction decoder"
 # license = "MIT"
 readme = "README.md"
