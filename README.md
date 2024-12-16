@@ -69,7 +69,7 @@ If you use a `requirements.txt` file in your repository, then you can add this
 library with the following line:
 
 ```txt
-rabbitizer>=1.12.4,<2.0.0
+rabbitizer>=1.12.5,<2.0.0
 ```
 
 ### Development version
@@ -109,7 +109,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.12.4"
+rabbitizer = "1.12.5"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
