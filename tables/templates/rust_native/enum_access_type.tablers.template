@@ -5,7 +5,10 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RAB_DEF_ACCESSTYPE(name) \
+use crate::access_type::ACCESS_TYPE_COUNT;
+use crate::access_type_descriptor::AccessTypeDescriptor;
+
+#define RAB_DEF_ACCESSTYPE(name, ...) \
     name,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
@@ -14,5 +17,21 @@ SPECIAL_RS_TAG(non_exhaustive)
 pub enum AccessType {
     #include "AccessType.inc"
 }
+
+#undef RAB_DEF_ACCESSTYPE
+
+#define RAB_DEF_ACCESSTYPE(name, ...) \
+    table[ AccessType:: name as usize] = AccessTypeDescriptor {\
+        __VA_ARGS__ \
+        ..AccessTypeDescriptor::new(#name) \
+    };
+
+pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
+    let mut table = [AccessTypeDescriptor::default(); ACCESS_TYPE_COUNT];
+
+    #include "AccessType.inc"
+
+    table
+};
 
 #undef RAB_DEF_ACCESSTYPE

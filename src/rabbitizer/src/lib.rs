@@ -94,6 +94,7 @@ mod generated;
 
 pub mod abi;
 pub mod access_type;
+pub mod access_type_descriptor;
 pub mod display_flags;
 mod encoded_field_mask;
 mod error;

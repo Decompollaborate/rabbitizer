@@ -20,7 +20,7 @@ use crate::vram::VramOffset;
 /// [`add_offset`]: Vram::add_offset
 /// [`sub_vram`]: Vram::sub_vram
 /// [`inner`]: Vram::inner
-#[derive(Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Clone, Copy, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Vram {
     inner: u32,
 }
