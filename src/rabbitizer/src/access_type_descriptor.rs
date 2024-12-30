@@ -9,16 +9,16 @@ use crate::access_type::AccessType;
 #[allow(clippy::struct_excessive_bools)]
 pub struct AccessTypeDescriptor {
     pub(crate) name: &'static str,
-    pub(crate) min_size: u8,
-    pub(crate) min_alignment: u8,
+    pub(crate) min_size: Option<u8>,
+    pub(crate) min_alignment: Option<u8>,
 }
 
 impl AccessTypeDescriptor {
     pub(crate) const fn default() -> Self {
         Self {
             name: "",
-            min_size: 1,
-            min_alignment: 1,
+            min_size: None,
+            min_alignment: None,
         }
     }
 
@@ -37,12 +37,12 @@ impl AccessTypeDescriptor {
     }
 
     #[must_use]
-    pub const fn min_size(&self) -> u8 {
+    pub const fn min_size(&self) -> Option<u8> {
         self.min_size
     }
 
     #[must_use]
-    pub const fn min_alignment(&self) -> u8 {
+    pub const fn min_alignment(&self) -> Option<u8> {
         self.min_alignment
     }
 }

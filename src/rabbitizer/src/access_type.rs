@@ -14,7 +14,7 @@ impl AccessType {
     }
 
     #[must_use]
-    pub const fn get_descriptor(&self) -> &'static AccessTypeDescriptor {
+    pub fn get_descriptor(&self) -> &'static AccessTypeDescriptor {
         &ACCESS_TYPES[*self as usize]
     }
 }
@@ -22,7 +22,7 @@ impl AccessType {
 impl AccessType {
     /// The name of this access type.
     #[must_use]
-    pub const fn name(&self) -> &'static str {
+    pub fn name(&self) -> &'static str {
         self.get_descriptor().name()
     }
 
@@ -32,7 +32,7 @@ impl AccessType {
     /// 0x4 bytes big.
     /// The actual symbol may be larger since it could be an struct or an array too.
     #[must_use]
-    pub const fn min_size(&self) -> u8 {
+    pub fn min_size(&self) -> Option<u8> {
         self.get_descriptor().min_size()
     }
 
@@ -42,7 +42,7 @@ impl AccessType {
     /// least the 0x4 byte boundary.
     /// The actual symbol may be have an stricter alignment since it could be part of an struct.
     #[must_use]
-    pub const fn min_alignment(&self) -> u8 {
+    pub fn min_alignment(&self) -> Option<u8> {
         self.get_descriptor().min_alignment()
     }
 }

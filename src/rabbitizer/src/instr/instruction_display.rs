@@ -159,6 +159,8 @@ where
     }
 
     pub(crate) fn display_as_data(&self, f: &mut fmt::Formatter<'_>) -> Result<usize, fmt::Error> {
+        // TODO: investigate if we could/should use `.insn` instead
+        // https://sourceware.org/binutils/docs/as/MIPS-insn.html
         let s = ".word";
         let mut written_chars = 0;
 
