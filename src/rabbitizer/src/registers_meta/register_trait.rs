@@ -4,7 +4,9 @@
 use crate::abi::Abi;
 use crate::register_descriptors::RegisterDescriptor;
 
-/// A trait that provides common functionality for a register.
+use super::RegisterIterator;
+
+/// A trait that provides common functionality for every kind of register.
 pub trait Register: PartialEq + PartialOrd + Default {
     /// Converts this register into a raw number.
     ///
@@ -19,6 +21,25 @@ pub trait Register: PartialEq + PartialOrd + Default {
     /// For example `Gpr` returns 32.
     #[must_use]
     fn count() -> usize;
+
+    /// Returns an object which allows iterating over every register of this specific register type
+    /// in ascending order.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rabbitizer::{registers::Gpr, registers_meta::Register};
+    ///
+    /// let mut gpr_iter = Gpr::iter();
+    ///
+    /// assert_eq!(gpr_iter.next(), Some(Gpr::zero));
+    /// assert_eq!(gpr_iter.next(), Some(Gpr::at));
+    /// assert_eq!(gpr_iter.next(), Some(Gpr::v0));
+    /// ```
+    #[must_use]
+    fn iter() -> RegisterIterator<Self> {
+        RegisterIterator::new()
+    }
 
     /// Returns the descriptor with the actual data of the register.
     #[must_use]

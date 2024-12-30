@@ -4,7 +4,7 @@
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::R5900VI;
-use crate::traits::Register;
+use crate::registers_meta::Register;
 
 impl R5900VI {
     /// Returns a default value.

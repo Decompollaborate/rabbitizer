@@ -4,7 +4,7 @@
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::R4000AllegrexV3D;
-use crate::traits::{R4000AllegrexVectorRegister, Register};
+use crate::registers_meta::{R4000AllegrexVectorRegister, Register};
 
 impl R4000AllegrexV3D {
     /// Returns a default value.

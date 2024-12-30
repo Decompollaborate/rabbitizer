@@ -4,7 +4,7 @@
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::RspCop2Control;
-use crate::traits::Register;
+use crate::registers_meta::Register;
 
 impl RspCop2Control {
     /// Returns a default value.

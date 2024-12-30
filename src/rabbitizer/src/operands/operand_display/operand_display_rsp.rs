@@ -4,7 +4,7 @@
 use core::fmt;
 
 use crate::operands::OperandDisplay;
-use crate::traits::Register;
+use crate::registers_meta::Register;
 
 impl<T> OperandDisplay<'_, '_, T>
 where

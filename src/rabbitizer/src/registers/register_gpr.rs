@@ -5,7 +5,7 @@ use crate::abi::Abi;
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::Gpr;
-use crate::traits::Register;
+use crate::registers_meta::Register;
 
 impl Gpr {
     /// Returns a default value.

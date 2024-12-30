@@ -7,7 +7,7 @@ use core::num::NonZeroU16;
 use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDisplay, ValuedOperand, OPERAND_COUNT_MAX};
-use crate::traits::Register;
+use crate::registers_meta::Register;
 
 /// A 16bits number, either signed or unsigned.
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]

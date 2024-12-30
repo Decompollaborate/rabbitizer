@@ -4,7 +4,7 @@
 use crate::register_descriptors::RegisterDescriptor;
 use crate::register_descriptors::COP2_CONTROL;
 use crate::registers::Cop2Control;
-use crate::traits::Register;
+use crate::registers_meta::Register;
 
 impl Cop2Control {
     /// Returns a default value.

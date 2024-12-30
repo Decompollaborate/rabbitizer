@@ -104,7 +104,7 @@ pub mod opcodes;
 pub mod operands;
 pub mod register_descriptors;
 pub mod registers;
-pub mod traits;
+pub mod registers_meta;
 pub mod vram;
 
 mod utils;

@@ -11,7 +11,7 @@ use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::operands::{Operand, OperandIterator, ValuedOperandIterator};
 use crate::registers::*;
-use crate::traits::{R4000AllegrexVectorRegister, Register};
+use crate::registers_meta::{R4000AllegrexVectorRegister, Register};
 use crate::utils;
 use crate::vram::{Vram, VramOffset};
 

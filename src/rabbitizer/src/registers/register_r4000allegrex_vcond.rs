@@ -4,7 +4,7 @@
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::R4000AllegrexVCond;
-use crate::traits::Register;
+use crate::registers_meta::Register;
 
 impl R4000AllegrexVCond {
     /// Returns a default value.
