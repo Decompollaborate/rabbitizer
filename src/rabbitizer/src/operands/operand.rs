@@ -2,6 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 use core::fmt;
+use core::iter::FusedIterator;
 
 use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
@@ -140,7 +141,16 @@ impl<'ins> Iterator for OperandIterator<'ins> {
         self.index += 1;
         Some(val)
     }
+
+    fn size_hint(&self) -> (usize, Option<usize>) {
+        let remaining = self.operands.len() - self.index;
+
+        (remaining, Some(remaining))
+    }
 }
+
+impl ExactSizeIterator for OperandIterator<'_> {}
+impl FusedIterator for OperandIterator<'_> {}
 
 #[cfg(test)]
 mod tests {

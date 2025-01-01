@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use core::marker::PhantomData;
+use core::{iter::FusedIterator, marker::PhantomData};
 
 use super::Register;
 
@@ -89,6 +89,9 @@ where
     }
 }
 
+impl<T> ExactSizeIterator for RegisterIterator<T> where T: Register + TryFrom<u32> {}
+impl<T> FusedIterator for RegisterIterator<T> where T: Register + TryFrom<u32> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -96,6 +99,7 @@ mod tests {
     use crate::registers::Gpr;
 
     #[test]
+    #[allow(clippy::cognitive_complexity)]
     fn test_iterator_gpr() {
         let mut gpr_iter = Gpr::iter();
 
