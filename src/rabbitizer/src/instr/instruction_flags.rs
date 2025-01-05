@@ -29,8 +29,17 @@ impl InstructionFlags {
     }
 
     #[must_use]
-    pub const fn new() -> Self {
-        Self { ..Self::default() }
+    pub const fn new(isa_version: IsaVersion, isa_extension: Option<IsaExtension>) -> Self {
+        Self {
+            isa_version,
+            isa_extension,
+            ..Self::default()
+        }
+    }
+
+    #[must_use]
+    pub const fn new_extension(isa_extension: IsaExtension) -> Self {
+        Self::new(isa_extension.isa_version(), Some(isa_extension))
     }
 }
 

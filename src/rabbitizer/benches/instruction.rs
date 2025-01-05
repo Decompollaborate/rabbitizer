@@ -6,12 +6,13 @@ use rabbitizer::{
     display_flags::InstructionDisplayFlags,
     instr::{Instruction, InstructionFlags},
     isa::IsaExtension,
-    vram::Vram, IsaVersion,
+    vram::Vram,
+    IsaVersion,
 };
 
 fn decode_none(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(None).with_isa_version(IsaVersion::MIPS_III);
+    let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
 
     c.bench_function("decode NONE: nop", |b| {
         b.iter(|| Instruction::new(black_box(0x00000000), vram, flags))
@@ -32,7 +33,7 @@ fn decode_none(c: &mut Criterion) {
 
 fn display_none(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(None).with_isa_version(IsaVersion::MIPS_III);
+    let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
     let display_flags = InstructionDisplayFlags::new_gnu_as();
 
     c.bench_function("display NONE: nop", |b| {
@@ -74,7 +75,7 @@ fn display_none(c: &mut Criterion) {
 
 fn decode_rsp(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::RSP));
+    let flags = InstructionFlags::new_extension(IsaExtension::RSP);
 
     c.bench_function("decode RSP: nop", |b| {
         b.iter(|| Instruction::new(black_box(0x00000000), vram, flags))
@@ -110,7 +111,7 @@ fn decode_rsp(c: &mut Criterion) {
 
 fn display_rsp(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::RSP));
+    let flags = InstructionFlags::new_extension(IsaExtension::RSP);
     let display_flags = InstructionDisplayFlags::new_gnu_as();
 
     c.bench_function("display RSP: nop", |b| {
@@ -187,7 +188,7 @@ fn display_rsp(c: &mut Criterion) {
 
 fn decode_r3000gte(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE));
+    let flags = InstructionFlags::new_extension(IsaExtension::R3000GTE);
 
     c.bench_function("decode R3000GTE: nop", |b| {
         b.iter(|| Instruction::new(black_box(0x00000000), vram, flags))
@@ -223,7 +224,7 @@ fn decode_r3000gte(c: &mut Criterion) {
 
 fn display_r3000gte(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE));
+    let flags = InstructionFlags::new_extension(IsaExtension::R3000GTE);
     let display_flags = InstructionDisplayFlags::new_gnu_as();
 
     c.bench_function("display R3000GTE: nop", |b| {
@@ -300,7 +301,7 @@ fn display_r3000gte(c: &mut Criterion) {
 
 fn decode_r4000allegrex(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::R4000ALLEGREX));
+    let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
 
     c.bench_function("decode R4000ALLEGREX: nop", |b| {
         b.iter(|| Instruction::new(black_box(0x00000000), vram, flags))
@@ -336,7 +337,7 @@ fn decode_r4000allegrex(c: &mut Criterion) {
 
 fn display_r4000allegrex(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::R4000ALLEGREX));
+    let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
     let display_flags = InstructionDisplayFlags::new_gnu_as();
 
     c.bench_function("display R4000ALLEGREX: nop", |b| {
@@ -413,7 +414,7 @@ fn display_r4000allegrex(c: &mut Criterion) {
 
 fn decode_r5900(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900));
+    let flags = InstructionFlags::new_extension(IsaExtension::R5900);
 
     c.bench_function("decode R5900: nop", |b| {
         b.iter(|| Instruction::new(black_box(0x00000000), vram, flags))
@@ -449,7 +450,7 @@ fn decode_r5900(c: &mut Criterion) {
 
 fn display_r5900(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900));
+    let flags = InstructionFlags::new_extension(IsaExtension::R5900);
     let display_flags = InstructionDisplayFlags::new_gnu_as();
 
     c.bench_function("display R5900: nop", |b| {

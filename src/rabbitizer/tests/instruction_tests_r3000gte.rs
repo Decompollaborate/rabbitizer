@@ -17,7 +17,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A180001,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -31,7 +31,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A280030,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -45,7 +45,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A680029,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -59,7 +59,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A780010,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -73,7 +73,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4AF8002A,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -87,7 +87,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A980011,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -101,7 +101,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4AC8041E,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -115,7 +115,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4AD80420,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -129,7 +129,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4AE80413,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -143,7 +143,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4AF80416,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -157,7 +157,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B08041B,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -171,7 +171,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B18043F,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -185,7 +185,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B280414,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -199,7 +199,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B38041C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -213,7 +213,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B400006,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -227,7 +227,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B58002D,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -241,7 +241,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B68002E,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -255,7 +255,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A400012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -269,7 +269,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4AA00428,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -283,7 +283,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B70000C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -297,7 +297,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B90003D,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -311,7 +311,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4BA0003E,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -325,7 +325,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A486012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -339,7 +339,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A48E012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -353,7 +353,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A496012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -367,7 +367,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A49E012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -381,7 +381,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A41E012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -395,7 +395,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A480012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -409,7 +409,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A488012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -423,7 +423,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A490012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -437,7 +437,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A498012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -451,7 +451,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A482012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -465,7 +465,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A48A012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -479,7 +479,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A492012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -493,7 +493,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A49A012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -507,7 +507,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4A6412,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -521,7 +521,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4A6012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -535,7 +535,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4AE012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -549,7 +549,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4B6012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -563,7 +563,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4BE012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -577,7 +577,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4A0012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -591,7 +591,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4A8012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -605,7 +605,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4B0012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -619,7 +619,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4B8012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -633,7 +633,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4A2012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -647,7 +647,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4AA012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -661,7 +661,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4B2012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -675,7 +675,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4BA012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -689,7 +689,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4DA412,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -703,7 +703,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4C6012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -717,7 +717,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4CE012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -731,7 +731,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4D6012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -745,7 +745,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4DE012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -759,7 +759,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4C0012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -773,7 +773,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4C8012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -787,7 +787,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4D0012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -801,7 +801,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4D8012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -815,7 +815,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4C2012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -829,7 +829,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4CA012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -843,7 +843,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4D2012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -857,7 +857,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4A4DA012,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -871,7 +871,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4AA80428,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -885,7 +885,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B78000C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -899,7 +899,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4B98003D,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -913,7 +913,7 @@ fn check_r3000gte_instructions() {
             instr: Instruction::new(
                 0x4BA8003E,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R3000GTE)),
+                InstructionFlags::new_extension(IsaExtension::R3000GTE),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),

@@ -3489,21 +3489,34 @@ mod tests {
 
     #[test]
     fn check_j() {
-        let instr = Instruction::new(0x08000004, Vram::new(0x80000000), InstructionFlags::new());
+        let instr = Instruction::new(
+            0x08000004,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_III, None),
+        );
         assert!(instr.is_valid());
         assert_eq!(instr.opcode_category(), OpcodeCategory::CORE_NORMAL);
         assert_eq!(instr.opcode(), Opcode::core_j);
         assert!(instr.opcode().is_jump());
 
         assert_eq!(
-            Instruction::new(0x08000000, Vram::new(0x80000000), InstructionFlags::new(),).opcode(),
+            Instruction::new(
+                0x08000000,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III, None),
+            )
+            .opcode(),
             Opcode::core_j
         );
     }
 
     #[test]
     fn check_jal() {
-        let instr = Instruction::new(0x0C000004, Vram::new(0x80000000), InstructionFlags::new());
+        let instr = Instruction::new(
+            0x0C000004,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_III, None),
+        );
         assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_jal);
     }
@@ -3511,7 +3524,7 @@ mod tests {
     #[test]
     fn check_lwu() {
         // lwu was introduced in MIPS III
-        let flags = InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III);
+        let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
 
         let instr = Instruction::new(0x9C000000, Vram::new(0x80000000), flags);
         assert!(instr.is_valid());
@@ -3528,14 +3541,22 @@ mod tests {
 
     #[test]
     fn check_invalid() {
-        let instr = Instruction::new(0x0000072E, Vram::new(0x80000000), InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III));
+        let instr = Instruction::new(
+            0x0000072E,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_III, None),
+        );
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_dsub);
     }
 
     #[test]
     fn check_jal_is_not_branch() {
-        let instr = Instruction::new(0x0C00E2F6, Vram::new(0x80000000), InstructionFlags::new());
+        let instr = Instruction::new(
+            0x0C00E2F6,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_III, None),
+        );
 
         assert!(instr.get_branch_vram_generic().is_none());
         assert!(instr.get_instr_index_as_vram().is_some());
