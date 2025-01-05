@@ -38,10 +38,11 @@ use crate::vram::{Vram, VramOffset};
 ///
 /// ```
 /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+/// use rabbitizer::isa::IsaVersion;
 /// use rabbitizer::opcodes::Opcode;
 ///
 /// let vram = Vram::new(0x80000000);
-/// let flags = InstructionFlags::new();
+/// let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
 /// let instr = Instruction::new(0x3C088001, vram, flags);
 ///
 /// assert_eq!(instr.opcode(), Opcode::core_lui);
@@ -54,10 +55,11 @@ use crate::vram::{Vram, VramOffset};
 ///
 /// ```
 /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+/// use rabbitizer::isa::IsaVersion;
 /// use rabbitizer::opcodes::Opcode;
 ///
 /// let vram = Vram::new(0x80000000);
-/// let flags = InstructionFlags::new();
+/// let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
 ///
 /// // Specify the same word for both Instruction instances.
 /// let word = 0x00025022;
@@ -246,9 +248,10 @@ impl Instruction {
     ///
     /// ```
     /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+    /// use rabbitizer::isa::IsaVersion;
     ///
     /// let vram = Vram::new(0x80000000);
-    /// let flags = InstructionFlags::new();
+    /// let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
     /// let instr = Instruction::new(0x3C088001, vram, flags);
     ///
     /// let display_flags = InstructionDisplayFlags::new();
