@@ -20,27 +20,27 @@ impl OpcodeDecoder {
         word: u32,
         flags: &DecodingFlags,
         isa_version: IsaVersion,
-        isa_extension: IsaExtension,
+        isa_extension: Option<IsaExtension>,
     ) -> Self {
         let mandatory_bits = EncodedFieldMask::empty();
 
         match isa_extension {
-            IsaExtension::NONE => {
+            None => {
                 Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version)
             }
-            IsaExtension::RSP => {
+            Some(IsaExtension::RSP) => {
                 Self::decode_isa_extension_rsp_normal(word, mandatory_bits, flags, isa_version)
             }
-            IsaExtension::R3000GTE => {
+            Some(IsaExtension::R3000GTE) => {
                 Self::decode_isa_extension_r3000gte_normal(word, mandatory_bits, flags, isa_version)
             }
-            IsaExtension::R4000ALLEGREX => Self::decode_isa_extension_r4000allegrex_normal(
+            Some(IsaExtension::R4000ALLEGREX) => Self::decode_isa_extension_r4000allegrex_normal(
                 word,
                 mandatory_bits,
                 flags,
                 isa_version,
             ),
-            IsaExtension::R5900 => {
+            Some(IsaExtension::R5900) => {
                 Self::decode_isa_extension_r5900_normal(word, mandatory_bits, flags, isa_version)
             }
         }

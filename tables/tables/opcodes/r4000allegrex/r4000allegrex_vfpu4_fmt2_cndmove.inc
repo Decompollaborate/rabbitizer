@@ -21,7 +21,7 @@ vcmovt.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00000, vcmovt_s, vcmovt.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00000, vcmovt_s, vcmovt.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on True Single Word
@@ -34,7 +34,7 @@ vcmovt.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00001, vcmovt_p, vcmovt.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00001, vcmovt_p, vcmovt.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on True Single Pair
@@ -47,7 +47,7 @@ vcmovt.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00100, vcmovt_t, vcmovt.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00100, vcmovt_t, vcmovt.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on True Single Triple
@@ -60,7 +60,7 @@ vcmovt.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00101, vcmovt_q, vcmovt.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00101, vcmovt_q, vcmovt.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on True Single Quad
@@ -73,7 +73,7 @@ vcmovf.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01000, vcmovf_s, vcmovf.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x01000, vcmovf_s, vcmovf.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on False Single Word
@@ -86,7 +86,7 @@ vcmovf.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01001, vcmovf_p, vcmovf.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x01001, vcmovf_p, vcmovf.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on False Single Pair
@@ -99,7 +99,7 @@ vcmovf.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01100, vcmovf_t, vcmovf.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x01100, vcmovf_t, vcmovf.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on False Single Triple
@@ -112,7 +112,7 @@ vcmovf.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x01101, vcmovf_q, vcmovf.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x01101, vcmovf_q, vcmovf.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
     ) // Conditional Move on False Single Quad

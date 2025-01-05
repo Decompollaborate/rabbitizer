@@ -21,14 +21,14 @@ pub struct OpcodeDescriptor {
     pub(crate) name: &'static str,
 
     pub(crate) isa_version: IsaVersion,
-    pub(crate) isa_extension: IsaExtension,
+    pub(crate) isa_extension: Option<IsaExtension>,
 
     pub(crate) operands: [Operand; OPERAND_COUNT_MAX],
 
     #[allow(deprecated)]
     pub(crate) instr_type: InstrType,
 
-    pub(crate) instr_suffix: InstrSuffix,
+    pub(crate) instr_suffix: Option<InstrSuffix>,
 
     /// Local branch which has a "restricted" range, usually it doesn't jump outside the current function
     pub(crate) is_branch: bool,
@@ -112,11 +112,11 @@ impl OpcodeDescriptor {
         Self {
             name: "",
             isa_version: IsaVersion::default(),
-            isa_extension: IsaExtension::default(),
+            isa_extension: None,
             operands: Operand::arr0(),
             #[allow(deprecated)]
             instr_type: InstrType::default(),
-            instr_suffix: InstrSuffix::default(),
+            instr_suffix: None,
             is_branch: false,
             is_branch_likely: false,
             is_jump: false,
@@ -158,7 +158,7 @@ impl OpcodeDescriptor {
     pub(crate) const fn new(
         name: &'static str,
         isa_version: IsaVersion,
-        isa_extension: IsaExtension,
+        isa_extension: Option<IsaExtension>,
     ) -> Self {
         Self {
             name,
@@ -178,13 +178,13 @@ impl OpcodeDescriptor {
 
         if self.isa_version as u32 == IsaVersion::EXTENSION as u32 {
             assert!(
-                self.isa_extension as u32 != IsaExtension::NONE as u32,
-                "Opcode was marked as isa EXTENSION, but the extension type is NONE"
+                self.isa_extension.is_some(),
+                "Opcode was marked as isa EXTENSION, but the extension type is None"
             );
         } else {
             assert!(
-                self.isa_extension as u32 == IsaExtension::NONE as u32,
-                "Opcode was not marked as isa EXTENSION, but it has a non-NONE extension type"
+                self.isa_extension.is_none(),
+                "Opcode was not marked as isa EXTENSION, but it has a non-None extension type"
             );
         }
 
@@ -354,7 +354,7 @@ impl OpcodeDescriptor {
         self.isa_version
     }
     #[must_use]
-    pub const fn isa_extension(&self) -> IsaExtension {
+    pub const fn isa_extension(&self) -> Option<IsaExtension> {
         self.isa_extension
     }
 

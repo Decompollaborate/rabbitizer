@@ -20,13 +20,13 @@
     // The other instructions are implemented using the main CORE table
 
     RAB_DEF_OPCODE_ALTNAME(
-        r5900, 0x0F, sync_p, sync.p, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x0F, sync_p, sync.p, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr0(),
         instr_type: InstrType::R
     ) // Sync
 
     RAB_DEF_OPCODE(
-        r5900, 0x18, mult, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x18, mult, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -35,12 +35,12 @@
     ) // MULTtiply word
 
     RAB_DEF_OPCODE(
-        r5900, 0x28, mfsa, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x28, mfsa, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Move From Shift Amount register
     RAB_DEF_OPCODE(
-        r5900, 0x29, mtsa, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x29, mtsa, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Move To Shift Amount register

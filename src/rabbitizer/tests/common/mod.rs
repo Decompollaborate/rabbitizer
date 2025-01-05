@@ -33,7 +33,7 @@ impl TestEntry {
             instr: Instruction::new(
                 word,
                 Vram::new(0xA4000000),
-                flags.with_isa_extension(IsaExtension::RSP),
+                flags.with_isa_extension(Some(IsaExtension::RSP)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -57,7 +57,7 @@ impl TestEntry {
             instr: Instruction::new(
                 word,
                 Vram::new(0x80000000),
-                InstructionFlags::default().with_isa_extension(IsaExtension::R4000ALLEGREX),
+                InstructionFlags::default().with_isa_extension(Some(IsaExtension::R4000ALLEGREX)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new(),

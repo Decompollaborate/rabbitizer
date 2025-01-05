@@ -20,11 +20,11 @@
     // The other instructions are implemented using the main CORE table
 
     RAB_DEF_OPCODE(
-        r5900, 0x38, ei, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x38, ei, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr0()
     )
     RAB_DEF_OPCODE(
-        r5900, 0x39, di, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x39, di, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr0()
     )
 

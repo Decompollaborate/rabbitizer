@@ -14,7 +14,7 @@
 */
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x00, srl, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00, srl, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -22,7 +22,7 @@
     ) // Shift word Right Logical
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x01, rotr, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x01, rotr, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,

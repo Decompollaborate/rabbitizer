@@ -7,7 +7,6 @@
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum IsaExtension {
-    NONE,
     RSP,
     R3000GTE,
     R4000ALLEGREX,

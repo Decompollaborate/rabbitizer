@@ -21,7 +21,7 @@ vcst.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0, vcst_s, vcst.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x0, vcst_s, vcst.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_vconstant),
         instr_type: InstrType::R
     ) // Set ConsTant Single word
@@ -34,7 +34,7 @@ vcst.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x1, vcst_p, vcst.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x1, vcst_p, vcst.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_vconstant),
         instr_type: InstrType::R
     ) // Set ConsTant Pair word
@@ -47,7 +47,7 @@ vcst.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x100, vcst_t, vcst.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x100, vcst_t, vcst.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_vconstant),
         instr_type: InstrType::R
     ) // Set ConsTant Triple word
@@ -60,7 +60,7 @@ vcst.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x101, vcst_q, vcst.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x101, vcst_q, vcst.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_vconstant),
         instr_type: InstrType::R
     ) // Set ConsTant Quad word

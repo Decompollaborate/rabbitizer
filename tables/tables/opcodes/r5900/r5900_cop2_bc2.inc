@@ -16,23 +16,23 @@
     // TODO: operands and properties
 
     RAB_DEF_OPCODE(
-        r5900, 0x00, bc2f, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x00, bc2f, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true
     )
     RAB_DEF_OPCODE(
-        r5900, 0x01, bc2t, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x01, bc2t, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true
     )
     RAB_DEF_OPCODE(
-        r5900, 0x02, bc2fl, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x02, bc2fl, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true
     )
     RAB_DEF_OPCODE(
-        r5900, 0x03, bc2tl, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x03, bc2tl, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true

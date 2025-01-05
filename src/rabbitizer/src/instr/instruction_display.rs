@@ -43,7 +43,7 @@ where
         match self.instr.opcode() {
             Opcode::core_break if self.display_flags.sn64_break_fix() => true,
             Opcode::core_trunc_w_s | Opcode::core_cvt_w_s
-                if self.instr.isa_extension() == IsaExtension::R5900 =>
+                if self.instr.isa_extension() == Some(IsaExtension::R5900) =>
             {
                 /*
                  * Due to the R5900's FPU (floating point unit) not being

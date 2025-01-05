@@ -17,42 +17,42 @@
 
     // OP rt, cop0d
     RAB_DEF_OPCODE(
-        core, 0x00, mfc0, IsaVersion::MIPS_I, IsaExtension::NONE,
+        core, 0x00, mfc0, IsaVersion::MIPS_I, None,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Move word From CP0
     RAB_DEF_OPCODE(
-        core, 0x01, dmfc0, IsaVersion::MIPS_III, IsaExtension::NONE,
+        core, 0x01, dmfc0, IsaVersion::MIPS_III, None,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Doubleword Move From CP0
     RAB_DEF_OPCODE(
-        core, 0x02, cfc0, IsaVersion::MIPS_I, IsaExtension::NONE,
+        core, 0x02, cfc0, IsaVersion::MIPS_I, None,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Move control word From CP0
     RAB_DEF_OPCODE(
-        core, 0x04, mtc0, IsaVersion::MIPS_I, IsaExtension::NONE,
+        core, 0x04, mtc0, IsaVersion::MIPS_I, None,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // Move word to CP0
     RAB_DEF_OPCODE(
-        core, 0x05, dmtc0, IsaVersion::MIPS_III, IsaExtension::NONE,
+        core, 0x05, dmtc0, IsaVersion::MIPS_III, None,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // Doubleword Move To CP0
     RAB_DEF_OPCODE(
-        core, 0x06, ctc0, IsaVersion::MIPS_I, IsaExtension::NONE,
+        core, 0x06, ctc0, IsaVersion::MIPS_I, None,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,

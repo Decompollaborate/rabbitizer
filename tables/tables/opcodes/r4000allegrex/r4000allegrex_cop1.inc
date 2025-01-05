@@ -28,7 +28,7 @@ TODO:
     RAB_DEF_OPCODE_REDIRECT(0x10, r4000allegrex, coprocessor1_fpu_s)
     RAB_DEF_OPCODE_REDIRECT(0x14, r4000allegrex, coprocessor1_fpu_w)
 
-    RAB_DEF_OPCODE_REMOVED(0x11, , , IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX) // ALLEGREX doesn't have D?
-    RAB_DEF_OPCODE_REMOVED(0x15, , , IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX) // ALLEGREX doesn't have L?
+    RAB_DEF_OPCODE_REMOVED(0x11, , , IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX)) // ALLEGREX doesn't have D?
+    RAB_DEF_OPCODE_REMOVED(0x15, , , IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX)) // ALLEGREX doesn't have L?
 
     RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor1)

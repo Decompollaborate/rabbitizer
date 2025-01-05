@@ -9,7 +9,7 @@ vnop
 */
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x3FF0000, vnop, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x3FF0000, vnop, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Nop
@@ -22,7 +22,7 @@ vsync
 */
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x3FF0320, vsync, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x3FF0320, vsync, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Synchronize
@@ -35,7 +35,7 @@ vflush
 */
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x3FF040D, vflush, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x3FF040D, vflush, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Flush Write Buffer

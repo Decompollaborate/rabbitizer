@@ -193,7 +193,7 @@ impl Instruction {
     /// [`Opcode::isa_extension`]: crate::opcodes::Opcode::isa_extension
     /// [`opcode`]: Instruction::opcode
     #[must_use]
-    pub const fn isa_extension(&self) -> IsaExtension {
+    pub const fn isa_extension(&self) -> Option<IsaExtension> {
         self.flags.isa_extension()
     }
 
@@ -3511,7 +3511,7 @@ mod tests {
     #[test]
     fn check_lwu() {
         // lwu was introduced in MIPS III
-        let flags = InstructionFlags::new();
+        let flags = InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III);
 
         let instr = Instruction::new(0x9C000000, Vram::new(0x80000000), flags);
         assert!(instr.is_valid());
@@ -3528,7 +3528,7 @@ mod tests {
 
     #[test]
     fn check_invalid() {
-        let instr = Instruction::new(0x0000072E, Vram::new(0x80000000), InstructionFlags::new());
+        let instr = Instruction::new(0x0000072E, Vram::new(0x80000000), InstructionFlags::new().with_isa_version(IsaVersion::MIPS_III));
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_dsub);
     }

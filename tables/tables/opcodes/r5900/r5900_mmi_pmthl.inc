@@ -18,7 +18,7 @@
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r5900, 0x00, pmthl_lw, pmthl.lw, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x00, pmthl_lw, pmthl.lw, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Parallel Move To Hi/Lo register

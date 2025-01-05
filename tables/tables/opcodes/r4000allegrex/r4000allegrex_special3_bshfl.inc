@@ -16,7 +16,7 @@
     // OP rd, rt
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x02, wsbh, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x02, wsbh, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -24,7 +24,7 @@
     ) // Word Swap Bytes within Halfword
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x03, wsbw, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x03, wsbw, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -32,7 +32,7 @@
     ) // Word Swap Bytes within Word
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x10, seb, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x10, seb, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -40,7 +40,7 @@
     ) // Sign-Extend Byte
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x18, seh, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x18, seh, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -48,7 +48,7 @@
     ) // Sign-Extend Halfword
 
     RAB_DEF_OPCODE(
-        r4000allegrex, 0x14, bitrev, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x14, bitrev, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,

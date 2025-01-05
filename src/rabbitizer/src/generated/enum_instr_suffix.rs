@@ -7,6 +7,5 @@
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum InstrSuffix {
-    ALL_NONE,
     R5900_xyzw,
 }

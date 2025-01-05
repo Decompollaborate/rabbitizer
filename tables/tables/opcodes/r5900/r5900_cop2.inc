@@ -16,22 +16,22 @@
 
     // TODO: properties
     RAB_DEF_OPCODE(
-        r5900, 0x01, qmfc2, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x01, qmfc2, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
         modifies_rt: true
     )
     RAB_DEF_OPCODE(
-        r5900, 0x02, cfc2, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x02, cfc2, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
         modifies_rt: true
     )
     RAB_DEF_OPCODE(
-        r5900, 0x05, qmtc2, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x05, qmtc2, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
         reads_rt: true
     )
     RAB_DEF_OPCODE(
-        r5900, 0x06, ctc2, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x06, ctc2, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
         reads_rt: true
     )

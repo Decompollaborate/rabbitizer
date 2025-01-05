@@ -19,7 +19,7 @@
 
     // OP fd, fs
     RAB_DEF_OPCODE_ALTNAME(
-        core, 0x20, cvt_s_l, cvt.s.l, IsaVersion::MIPS_III, IsaExtension::NONE,
+        core, 0x20, cvt_s_l, cvt.s.l, IsaVersion::MIPS_III, None,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -27,7 +27,7 @@
         reads_fs: true
     )
     RAB_DEF_OPCODE_ALTNAME(
-        core, 0x21, cvt_d_l, cvt.d.l, IsaVersion::MIPS_III, IsaExtension::NONE,
+        core, 0x21, cvt_d_l, cvt.d.l, IsaVersion::MIPS_III, None,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,

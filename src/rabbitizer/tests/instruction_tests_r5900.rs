@@ -17,7 +17,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A000038,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -31,7 +31,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A004038,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -45,7 +45,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A008038,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -59,7 +59,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A008838,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -73,7 +73,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A009038,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -87,7 +87,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A009838,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -101,7 +101,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A00A038,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -115,7 +115,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A07FFF8,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -129,7 +129,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A080038,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -143,7 +143,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A1F8038,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -157,7 +157,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A1FFFB8,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -171,7 +171,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A1FFFF8,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -185,7 +185,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x70001030,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -199,7 +199,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x70001070,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -213,7 +213,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x700010B0,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -227,7 +227,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x700010F0,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -241,7 +241,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x70001130,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -255,7 +255,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x70000031,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -269,7 +269,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4B020BFE,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -283,7 +283,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A820BFE,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -297,7 +297,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A420BFE,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -311,7 +311,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A220BFE,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -325,7 +325,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4B020BFF,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -339,7 +339,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A820BFF,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -353,7 +353,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A420BFF,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -367,7 +367,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A220BFF,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -381,7 +381,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x70111334,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -395,7 +395,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x70111336,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -409,7 +409,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x70111337,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -423,7 +423,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x7011133C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -437,7 +437,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x7011133E,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -451,7 +451,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x7011133F,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -465,7 +465,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A00551D,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_gnu_as(),
@@ -479,7 +479,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A00551D,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_legacy_as(),
@@ -493,7 +493,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A00551C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_gnu_as(),
@@ -507,7 +507,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A00551C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_legacy_as(),
@@ -521,7 +521,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06043C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_gnu_as(),
@@ -535,7 +535,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06043C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_legacy_as(),
@@ -549,7 +549,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06003C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_gnu_as(),
@@ -563,7 +563,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06003C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_legacy_as(),
@@ -577,7 +577,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A0663BC,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -591,7 +591,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A066630,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -605,7 +605,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A066632,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -619,7 +619,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06637E,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -633,7 +633,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06637F,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -647,7 +647,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06637C,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -661,7 +661,7 @@ fn check_r5900_instructions() {
             instr: Instruction::new(
                 0x4A06637D,
                 Vram::new(0x80000000),
-                InstructionFlags::new().with_isa_extension(IsaExtension::R5900),
+                InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900)),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -680,7 +680,7 @@ fn check_r5900_instructions() {
 fn check_r5900_trunc_cvt_instructions() {
     const ENTRIES: &[TestEntry] = &[
         TestEntry {
-            instr: Instruction::new(0x4600600D, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(IsaExtension::R5900)),
+            instr: Instruction::new(0x4600600D, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900))),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_gnu_as(),
             valid: true,
@@ -690,7 +690,7 @@ fn check_r5900_trunc_cvt_instructions() {
             operands_str: [Some("$f0"), Some("$f12"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new(0x46006024, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(IsaExtension::R5900)),
+            instr: Instruction::new(0x46006024, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900))),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_gnu_as(),
             valid: true,
@@ -700,7 +700,7 @@ fn check_r5900_trunc_cvt_instructions() {
             operands_str: [Some("$f0"), Some("$f12"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new(0x4600600D, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(IsaExtension::R5900)),
+            instr: Instruction::new(0x4600600D, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900))),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_legacy_as(),
             valid: true,
@@ -710,7 +710,7 @@ fn check_r5900_trunc_cvt_instructions() {
             operands_str: [Some("$f0"), Some("$f12"), None, None, None],
         },
         TestEntry {
-            instr: Instruction::new(0x46006024, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(IsaExtension::R5900)),
+            instr: Instruction::new(0x46006024, Vram::new(0x80000000), InstructionFlags::new().with_isa_extension(Some(IsaExtension::R5900))),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new_legacy_as(),
             valid: true,

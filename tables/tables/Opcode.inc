@@ -36,7 +36,7 @@ Arguments:
 
 
     RAB_DEF_OPCODE(
-        ALL, , INVALID, IsaVersion::MIPS_I, IsaExtension::NONE,
+        ALL, , INVALID, IsaVersion::MIPS_I, None,
         operands: Operand::arr0()
     )
 

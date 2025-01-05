@@ -22,7 +22,7 @@ vf2in.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00000, vf2in_s, vf2in.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00000, vf2in_s, vf2in.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to nearest integer from float with Scaling Single Word
@@ -35,7 +35,7 @@ vf2in.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00001, vf2in_p, vf2in.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00001, vf2in_p, vf2in.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to nearest integer from float with Scaling Single Pair
@@ -48,7 +48,7 @@ vf2in.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00100, vf2in_t, vf2in.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00100, vf2in_t, vf2in.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to nearest integer from float with Scaling Single Triple
@@ -61,7 +61,7 @@ vf2in.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00101, vf2in_q, vf2in.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x00101, vf2in_q, vf2in.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to nearest integer from float with Scaling Single Quad
@@ -74,7 +74,7 @@ vf2iz.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x04000, vf2iz_s, vf2iz.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x04000, vf2iz_s, vf2iz.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to zero integer from float with Scaling Single Word
@@ -87,7 +87,7 @@ vf2iz.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x04001, vf2iz_p, vf2iz.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x04001, vf2iz_p, vf2iz.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to zero integer from float with Scaling Single Pair
@@ -100,7 +100,7 @@ vf2iz.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x04100, vf2iz_t, vf2iz.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x04100, vf2iz_t, vf2iz.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to zero integer from float with Scaling Single Triple
@@ -113,7 +113,7 @@ vf2iz.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x04101, vf2iz_q, vf2iz.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x04101, vf2iz_q, vf2iz.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to zero integer from float with Scaling Single Quad
@@ -126,7 +126,7 @@ vf2iu.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x08000, vf2iu_s, vf2iu.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x08000, vf2iu_s, vf2iu.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to smallest integer from float with Scaling Single Word
@@ -139,7 +139,7 @@ vf2iu.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x08001, vf2iu_p, vf2iu.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x08001, vf2iu_p, vf2iu.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to smallest integer from float with Scaling Single Pair
@@ -152,7 +152,7 @@ vf2iu.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x08100, vf2iu_t, vf2iu.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x08100, vf2iu_t, vf2iu.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to smallest integer from float with Scaling Single Triple
@@ -165,7 +165,7 @@ vf2iu.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x08101, vf2iu_q, vf2iu.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x08101, vf2iu_q, vf2iu.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to smallest integer from float with Scaling Single Quad
@@ -178,7 +178,7 @@ vf2id.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0C000, vf2id_s, vf2id.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x0C000, vf2id_s, vf2id.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to largest integer from float with Scaling Single Word
@@ -191,7 +191,7 @@ vf2id.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0C001, vf2id_p, vf2id.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x0C001, vf2id_p, vf2id.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to largest integer from float with Scaling Single Pair
@@ -204,7 +204,7 @@ vf2id.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0C100, vf2id_t, vf2id.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x0C100, vf2id_t, vf2id.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to largest integer from float with Scaling Single Triple
@@ -217,7 +217,7 @@ vf2id.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0C101, vf2id_q, vf2id.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x0C101, vf2id_q, vf2id.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Round to largest integer from float with Scaling Single Quad
@@ -230,7 +230,7 @@ vi2f.s
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x10000, vi2f_s, vi2f.s, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x10000, vi2f_s, vi2f.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Convert integer to float with Scaling Single Word
@@ -243,7 +243,7 @@ vi2f.p
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x10001, vi2f_p, vi2f.p, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x10001, vi2f_p, vi2f.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Convert integer to float with Scaling Single Pair
@@ -256,7 +256,7 @@ vi2f.t
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x10100, vi2f_t, vi2f.t, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x10100, vi2f_t, vi2f.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Convert integer to float with Scaling Single Triple
@@ -269,7 +269,7 @@ vi2f.q
 */
 
     RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x10101, vi2f_q, vi2f.q, IsaVersion::EXTENSION, IsaExtension::R4000ALLEGREX,
+        r4000allegrex, 0x10101, vi2f_q, vi2f.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_power_of_two),
         instr_type: InstrType::R
     ) // Convert integer to float with Scaling Single Quad

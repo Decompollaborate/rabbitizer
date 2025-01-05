@@ -17,13 +17,13 @@
 
     // OP rs, IMM
     RAB_DEF_OPCODE(
-        r5900, 0x18, mtsab, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x18, mtsab, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true
     )
     RAB_DEF_OPCODE(
-        r5900, 0x19, mtsah, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x19, mtsah, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true

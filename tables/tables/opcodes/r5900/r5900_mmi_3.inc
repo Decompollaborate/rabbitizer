@@ -18,14 +18,14 @@
 */
 
     RAB_DEF_OPCODE(
-        r5900, 0x00, pmadduw, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x00, pmadduw, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel Multiply-ADD Unsigned Word
     RAB_DEF_OPCODE(
-        r5900, 0x03, psravw, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x03, psravw, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
@@ -33,17 +33,17 @@
     ) // Parallel Shift Right Arithmetic Variable Word
 
     RAB_DEF_OPCODE(
-        r5900, 0x08, pmthi, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x08, pmthi, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Parallel Move To HI register
     RAB_DEF_OPCODE(
-        r5900, 0x09, pmtlo, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x09, pmtlo, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Parallel Move To LO register
     RAB_DEF_OPCODE(
-        r5900, 0x0A, pinteh, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x0A, pinteh, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -51,20 +51,20 @@
     ) // Parallel INTerleave Even Halfword
 
     RAB_DEF_OPCODE(
-        r5900, 0x0C, pmultuw, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x0C, pmultuw, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel MULTiply Unsigned Word
     RAB_DEF_OPCODE(
-        r5900, 0x0D, pdivuw, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x0D, pdivuw, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true
     ) // Prallel DIVide Unsigned Word
     RAB_DEF_OPCODE(
-        r5900, 0x0E, pcpyud, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x0E, pcpyud, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -72,14 +72,14 @@
     ) // Parallel CoPY Upper Doubleword
 
     RAB_DEF_OPCODE(
-        r5900, 0x12, por, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x12, por, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Parallel OR
     RAB_DEF_OPCODE(
-        r5900, 0x13, pnor, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x13, pnor, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -87,20 +87,20 @@
     ) // Parallel Not OR
 
     RAB_DEF_OPCODE(
-        r5900, 0x1A, pexch, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x1A, pexch, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel EXchange Center Halfword
     RAB_DEF_OPCODE(
-        r5900, 0x1B, pcpyh, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x1B, pcpyh, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel CoPY Halfword
 
     RAB_DEF_OPCODE(
-        r5900, 0x1E, pexcw, IsaVersion::EXTENSION, IsaExtension::R5900,
+        r5900, 0x1E, pexcw, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true

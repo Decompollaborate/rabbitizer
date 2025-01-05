@@ -32,7 +32,7 @@ impl Opcode {
         self.get_descriptor().isa_version()
     }
     #[must_use]
-    pub fn isa_extension(&self) -> IsaExtension {
+    pub fn isa_extension(&self) -> Option<IsaExtension> {
         self.get_descriptor().isa_extension()
     }
 

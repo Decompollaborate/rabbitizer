@@ -113,7 +113,7 @@ fn main() {
     let endian = args.endian;
     let mut data = Data::new();
     let flags = rabbitizer::instr::InstructionFlags::new()
-        .with_isa_extension(rabbitizer::isa::IsaExtension::NONE)
+        .with_isa_extension(None)
         .with_all_pseudos(args.pseudos);
     let vram = rabbitizer::vram::Vram::new(0x8000_0000);
     let display_flags = rabbitizer::display_flags::InstructionDisplayFlags::new_gnu_as();

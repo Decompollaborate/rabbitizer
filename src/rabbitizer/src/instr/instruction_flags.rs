@@ -8,7 +8,7 @@ use crate::opcodes::DecodingFlags;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct InstructionFlags {
     isa_version: IsaVersion,
-    isa_extension: IsaExtension,
+    isa_extension: Option<IsaExtension>,
 
     decoding_flags: DecodingFlags,
     abi: Abi,
@@ -19,11 +19,9 @@ impl InstructionFlags {
     /// Returns a default value.
     #[must_use]
     pub const fn default() -> Self {
-        let isa_extension = IsaExtension::default();
-
         Self {
-            isa_version: isa_extension.isa_version(),
-            isa_extension,
+            isa_version: IsaVersion::default(),
+            isa_extension: None,
             decoding_flags: DecodingFlags::default(),
             abi: Abi::O32,
             j_as_branch: true,
@@ -53,16 +51,22 @@ impl InstructionFlags {
     }
 
     #[must_use]
-    pub const fn isa_extension(&self) -> IsaExtension {
+    pub const fn isa_extension(&self) -> Option<IsaExtension> {
         self.isa_extension
     }
-    pub fn isa_extension_mut(&mut self) -> &mut IsaExtension {
+    pub fn isa_extension_mut(&mut self) -> &mut Option<IsaExtension> {
         &mut self.isa_extension
     }
     #[must_use]
-    pub const fn with_isa_extension(self, isa_extension: IsaExtension) -> Self {
+    pub const fn with_isa_extension(self, isa_extension: Option<IsaExtension>) -> Self {
+        let isa_version = if let Some(isa_extension) = isa_extension {
+            isa_extension.isa_version()
+        } else {
+            self.isa_version
+        };
+
         Self {
-            isa_version: isa_extension.isa_version(),
+            isa_version,
             isa_extension,
             ..self
         }
