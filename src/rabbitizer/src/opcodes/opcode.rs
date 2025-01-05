@@ -186,7 +186,7 @@ impl Opcode {
         self.get_descriptor().is_pseudo()
     }
     #[must_use]
-    pub fn access_type(&self) -> AccessType {
+    pub fn access_type(&self) -> Option<AccessType> {
         self.get_descriptor().access_type()
     }
     #[must_use]

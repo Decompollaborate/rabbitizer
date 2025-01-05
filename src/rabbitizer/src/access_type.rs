@@ -7,12 +7,6 @@ use crate::{access_type_descriptor::AccessTypeDescriptor, generated::ACCESS_TYPE
 pub const ACCESS_TYPE_COUNT: usize = 12;
 
 impl AccessType {
-    /// Returns a default value.
-    #[must_use]
-    pub const fn default() -> Self {
-        Self::NONE
-    }
-
     #[must_use]
     pub fn get_descriptor(&self) -> &'static AccessTypeDescriptor {
         &ACCESS_TYPES[*self as usize]
@@ -44,11 +38,5 @@ impl AccessType {
     #[must_use]
     pub fn min_alignment(&self) -> Option<u8> {
         self.get_descriptor().min_alignment()
-    }
-}
-
-impl Default for AccessType {
-    fn default() -> Self {
-        Self::default()
     }
 }

@@ -1,8 +1,6 @@
 /* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-    RAB_DEF_ACCESSTYPE(NONE, )
-
     RAB_DEF_ACCESSTYPE(BYTE, min_size: Some(1), min_alignment: Some(1), )
     RAB_DEF_ACCESSTYPE(SHORT, min_size: Some(2), min_alignment: Some(2), )
     RAB_DEF_ACCESSTYPE(WORD, min_size: Some(4), min_alignment: Some(4), )

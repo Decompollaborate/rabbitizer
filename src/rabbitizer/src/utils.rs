@@ -119,6 +119,6 @@ pub const fn truth_a_implies_b(a: bool, b: bool) -> bool {
 /// | 0 | 0 |  1  |
 #[inline(always)]
 #[must_use]
-pub const fn truth_both_or_none(a: bool, b: bool) -> bool {
+pub const fn truth_both_or_neither(a: bool, b: bool) -> bool {
     !(a ^ b)
 }

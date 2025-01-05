@@ -9,7 +9,6 @@ use crate::access_type_descriptor::AccessTypeDescriptor;
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum AccessType {
-    NONE,
     BYTE,
     SHORT,
     WORD,
@@ -24,9 +23,6 @@ pub enum AccessType {
 }
 pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
     let mut table = [AccessTypeDescriptor::default(); ACCESS_TYPE_COUNT];
-    table[AccessType::NONE as usize] = AccessTypeDescriptor {
-        ..AccessTypeDescriptor::new("NONE")
-    };
     table[AccessType::BYTE as usize] = AccessTypeDescriptor {
         min_size: Some(1),
         min_alignment: Some(1),

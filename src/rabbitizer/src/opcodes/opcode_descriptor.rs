@@ -103,7 +103,7 @@ pub struct OpcodeDescriptor {
     /// This instruction is a pseudo-instruction
     pub(crate) is_pseudo: bool,
 
-    pub(crate) access_type: AccessType,
+    pub(crate) access_type: Option<AccessType>,
     pub(crate) does_unsigned_memory_access: bool,
 }
 
@@ -150,7 +150,7 @@ impl OpcodeDescriptor {
             does_store: false,
             maybe_is_move: false,
             is_pseudo: false,
-            access_type: AccessType::default(),
+            access_type: None,
             does_unsigned_memory_access: false,
         }
     }
@@ -231,21 +231,21 @@ impl OpcodeDescriptor {
             "An opcode must either modify or read the `rd` gpr register, not both"
         );
         assert!(
-            utils::truth_both_or_none(
+            utils::truth_both_or_neither(
                 self.modifies_rs || self.reads_rs,
                 self.has_operand_alias(Operand::core_rs)
             ),
             "An opcode that touches an `rs` gpr register must have an `rs` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_none(
+            utils::truth_both_or_neither(
                 self.modifies_rt || self.reads_rt,
                 self.has_operand_alias(Operand::core_rt)
             ),
             "An opcode that touches an `rt` gpr register must have an `rt` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_none(
+            utils::truth_both_or_neither(
                 self.modifies_rd || self.reads_rd,
                 self.has_operand_alias(Operand::core_rd)
             ),
@@ -266,21 +266,21 @@ impl OpcodeDescriptor {
             "An opcode must either modify or read the `fd` gpr register, not both"
         );
         assert!(
-            utils::truth_both_or_none(
+            utils::truth_both_or_neither(
                 self.modifies_fs || self.reads_fs,
                 self.has_operand_alias(Operand::core_fs)
             ),
             "An opcode that touches an `fs` gpr register must have an `fs` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_none(
+            utils::truth_both_or_neither(
                 self.modifies_ft || self.reads_ft,
                 self.has_operand_alias(Operand::core_ft)
             ),
             "An opcode that touches an `ft` gpr register must have an `ft` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_none(
+            utils::truth_both_or_neither(
                 self.modifies_fd || self.reads_fd,
                 self.has_operand_alias(Operand::core_fd)
             ),
@@ -315,10 +315,7 @@ impl OpcodeDescriptor {
             "Either load or store, not both"
         );
         assert!(
-            utils::truth_both_or_none(
-                self.does_dereference,
-                self.access_type as usize != AccessType::NONE as usize
-            ),
+            utils::truth_both_or_neither(self.does_dereference, self.access_type.is_some()),
             "An opcode that does dereference memory should have a non NONE AccessType"
         );
         assert!(
@@ -511,7 +508,7 @@ impl OpcodeDescriptor {
         self.is_pseudo
     }
     #[must_use]
-    pub const fn access_type(&self) -> AccessType {
+    pub const fn access_type(&self) -> Option<AccessType> {
         self.access_type
     }
     #[must_use]

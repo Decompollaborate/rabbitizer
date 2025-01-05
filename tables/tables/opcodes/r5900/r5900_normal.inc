@@ -32,7 +32,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: AccessType::QUADWORD
+        access_type: Some(AccessType::QUADWORD)
     ) // Load Quadword
     RAB_DEF_OPCODE(
         r5900, 0x1F, sq, IsaVersion::EXTENSION, IsaExtension::R5900,
@@ -43,7 +43,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: AccessType::QUADWORD
+        access_type: Some(AccessType::QUADWORD)
     ) // Store Quadword
 
     RAB_DEF_OPCODE(
@@ -53,7 +53,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: AccessType::QUADWORD
+        access_type: Some(AccessType::QUADWORD)
     )
 
     RAB_DEF_OPCODE(
@@ -63,7 +63,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: AccessType::QUADWORD
+        access_type: Some(AccessType::QUADWORD)
     )
 
     RAB_DEF_OPCODE_REDIRECT(0x00, r5900, special)
