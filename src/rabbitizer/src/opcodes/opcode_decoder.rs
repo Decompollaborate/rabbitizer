@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #![allow(clippy::wildcard_enum_match_arm)]

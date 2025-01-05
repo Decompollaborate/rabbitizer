@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
     #include "r5900/r5900_normal.inc"

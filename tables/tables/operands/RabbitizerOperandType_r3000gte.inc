@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2023-2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2023-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
     RAB_DEF_OPERAND(r3000gte, sf, EncodedFieldMask::r3000gte_sf, (u8))

@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 #ifndef RABBITIZER_JR_REG_DATA_HPP

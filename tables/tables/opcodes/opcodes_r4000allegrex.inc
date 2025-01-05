@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
     #include "r4000allegrex/r4000allegrex_normal.inc"

@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
     RABBITIZER_DEF_REG_NODOLLAR(R4000ALLEGREX_M3X3, M000, 0, )

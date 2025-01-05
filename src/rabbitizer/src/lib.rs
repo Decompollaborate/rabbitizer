@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
 //! This crate provides a MIPS instruction decoder for MIPS versions I to IV. This also recognizes multiple MIPS

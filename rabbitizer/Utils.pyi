@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# SPDX-FileCopyrightText: © 2022-2024 Decompollaborate
+# SPDX-FileCopyrightText: © 2022-2025 Decompollaborate
 # SPDX-License-Identifier: MIT
 
 from __future__ import annotations

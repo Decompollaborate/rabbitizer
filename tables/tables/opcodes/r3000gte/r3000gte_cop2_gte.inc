@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2023-2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2023-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
     /* Indexed by "function" operand */

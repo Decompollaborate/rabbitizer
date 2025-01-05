@@ -1,4 +1,4 @@
-/* SPDX-FileCopyrightText: © 2022-2024 Decompollaborate */
+/* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
     RAB_DEF_INSTRSUFFIX(ALL, NONE)
