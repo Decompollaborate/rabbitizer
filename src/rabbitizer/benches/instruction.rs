@@ -12,7 +12,7 @@ use rabbitizer::{
 
 fn decode_none(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
+    let flags = InstructionFlags::new(IsaVersion::MIPS_III);
 
     c.bench_function("decode NONE: nop", |b| {
         b.iter(|| Instruction::new(black_box(0x00000000), vram, flags))
@@ -33,7 +33,7 @@ fn decode_none(c: &mut Criterion) {
 
 fn display_none(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
+    let flags = InstructionFlags::new(IsaVersion::MIPS_III);
     let display_flags = InstructionDisplayFlags::new_gnu_as();
 
     c.bench_function("display NONE: nop", |b| {

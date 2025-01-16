@@ -42,7 +42,7 @@ use crate::vram::{Vram, VramOffset};
 /// use rabbitizer::opcodes::Opcode;
 ///
 /// let vram = Vram::new(0x80000000);
-/// let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
+/// let flags = InstructionFlags::new(IsaVersion::MIPS_III);
 /// let instr = Instruction::new(0x3C088001, vram, flags);
 ///
 /// assert_eq!(instr.opcode(), Opcode::core_lui);
@@ -59,7 +59,7 @@ use crate::vram::{Vram, VramOffset};
 /// use rabbitizer::opcodes::Opcode;
 ///
 /// let vram = Vram::new(0x80000000);
-/// let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
+/// let flags = InstructionFlags::new(IsaVersion::MIPS_III);
 ///
 /// // Specify the same word for both Instruction instances.
 /// let word = 0x00025022;
@@ -251,7 +251,7 @@ impl Instruction {
     /// use rabbitizer::isa::IsaVersion;
     ///
     /// let vram = Vram::new(0x80000000);
-    /// let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
+    /// let flags = InstructionFlags::new(IsaVersion::MIPS_III);
     /// let instr = Instruction::new(0x3C088001, vram, flags);
     ///
     /// let display_flags = InstructionDisplayFlags::new();
@@ -3495,7 +3495,7 @@ mod tests {
         let instr = Instruction::new(
             0x08000004,
             Vram::new(0x80000000),
-            InstructionFlags::new(IsaVersion::MIPS_III, None),
+            InstructionFlags::new(IsaVersion::MIPS_III),
         );
         assert!(instr.is_valid());
         assert_eq!(instr.opcode_category(), OpcodeCategory::CORE_NORMAL);
@@ -3506,7 +3506,7 @@ mod tests {
             Instruction::new(
                 0x08000000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             )
             .opcode(),
             Opcode::core_j
@@ -3518,7 +3518,7 @@ mod tests {
         let instr = Instruction::new(
             0x0C000004,
             Vram::new(0x80000000),
-            InstructionFlags::new(IsaVersion::MIPS_III, None),
+            InstructionFlags::new(IsaVersion::MIPS_III),
         );
         assert!(instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_jal);
@@ -3527,7 +3527,7 @@ mod tests {
     #[test]
     fn check_lwu() {
         // lwu was introduced in MIPS III
-        let flags = InstructionFlags::new(IsaVersion::MIPS_III, None);
+        let flags = InstructionFlags::new(IsaVersion::MIPS_III);
 
         let instr = Instruction::new(0x9C000000, Vram::new(0x80000000), flags);
         assert!(instr.is_valid());
@@ -3547,7 +3547,7 @@ mod tests {
         let instr = Instruction::new(
             0x0000072E,
             Vram::new(0x80000000),
-            InstructionFlags::new(IsaVersion::MIPS_III, None),
+            InstructionFlags::new(IsaVersion::MIPS_III),
         );
         assert!(!instr.is_valid());
         assert_eq!(instr.opcode(), Opcode::core_dsub);
@@ -3558,7 +3558,7 @@ mod tests {
         let instr = Instruction::new(
             0x0C00E2F6,
             Vram::new(0x80000000),
-            InstructionFlags::new(IsaVersion::MIPS_III, None),
+            InstructionFlags::new(IsaVersion::MIPS_III),
         );
 
         assert!(instr.get_branch_vram_generic().is_none());

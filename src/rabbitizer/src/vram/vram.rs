@@ -3,6 +3,9 @@
 
 use core::{fmt, ops};
 
+#[cfg(feature = "pyo3")]
+use pyo3::prelude::*;
+
 use crate::vram::VramOffset;
 
 /// A VRAM (Virtual RAM) address.
@@ -21,6 +24,7 @@ use crate::vram::VramOffset;
 /// [`sub_vram`]: Vram::sub_vram
 /// [`inner`]: Vram::inner
 #[derive(Clone, Copy, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer"))]
 pub struct Vram {
     inner: u32,
 }
@@ -126,5 +130,25 @@ impl fmt::Debug for Vram {
 impl fmt::Display for Vram {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{:08X}", self.inner)
+    }
+}
+
+#[cfg(feature = "pyo3")]
+pub(crate) mod python_bindings {
+    use super::*;
+
+    #[pymethods]
+    impl Vram {
+        #[new]
+        #[must_use]
+        pub const fn py_new(value: u32) -> Self {
+            Self::new(value)
+        }
+
+        #[pyo3(name = "inner")]
+        #[must_use]
+        pub const fn py_inner(&self) -> u32 {
+            self.inner()
+        }
     }
 }

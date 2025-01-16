@@ -1,7 +1,11 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#[cfg(feature = "pyo3")]
+use pyo3::prelude::*;
+
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer"))]
 pub struct InstructionDisplayFlags {
     /// Enables using named registers. This option takes precedence over the other named register options
     named_registers: bool,
@@ -310,5 +314,69 @@ impl InstructionDisplayFlags {
 impl Default for InstructionDisplayFlags {
     fn default() -> Self {
         Self::default()
+    }
+}
+
+#[cfg(feature = "pyo3")]
+pub(crate) mod python_bindings {
+    use super::*;
+
+    #[pymethods]
+    impl InstructionDisplayFlags {
+        #[new]
+        #[must_use]
+        pub const fn py_new() -> Self {
+            Self::new()
+        }
+
+        #[pyo3(name = "new_gnu_as")]
+        #[staticmethod]
+        #[must_use]
+        pub const fn py_new_gnu_as() -> Self {
+            Self::new_gnu_as()
+        }
+
+        #[pyo3(name = "new_legacy_as")]
+        #[staticmethod]
+        #[must_use]
+        pub const fn py_new_legacy_as() -> Self {
+            Self::new_legacy_as()
+        }
+
+        #[pyo3(name = "set_named_gpr")]
+        pub fn py_set_named_gpr(&mut self, named_gpr: bool) {
+            self.named_gpr = named_gpr;
+        }
+        #[pyo3(name = "set_named_fpr")]
+        pub fn py_set_named_fpr(&mut self, named_fpr: bool) {
+            self.named_fpr = named_fpr;
+        }
+        #[pyo3(name = "set_opcode_ljust")]
+        pub fn py_set_opcode_ljust(&mut self, opcode_ljust: u32) {
+            self.opcode_ljust = opcode_ljust;
+        }
+        #[pyo3(name = "set_expand_jalr")]
+        pub fn py_set_expand_jalr(&mut self, expand_jalr: bool) {
+            self.expand_jalr = expand_jalr;
+        }
+        #[pyo3(name = "set_gnu_div")]
+        pub fn py_set_gnu_div(&mut self, gnu_div: bool) {
+            self.gnu_div = gnu_div;
+        }
+        #[pyo3(name = "set_sn64_break_fix")]
+        pub fn py_set_sn64_break_fix(&mut self, sn64_break_fix: bool) {
+            self.sn64_break_fix = sn64_break_fix;
+        }
+        #[pyo3(name = "set_r5900_modern_gas_instrs_workarounds")]
+        pub fn py_set_r5900_modern_gas_instrs_workarounds(
+            &mut self,
+            r5900_modern_gas_instrs_workarounds: bool,
+        ) {
+            self.r5900_modern_gas_instrs_workarounds = r5900_modern_gas_instrs_workarounds;
+        }
+        #[pyo3(name = "set_r5900_use_dollar")]
+        pub fn py_set_r5900_use_dollar(&mut self, r5900_use_dollar: bool) {
+            self.r5900_use_dollar = r5900_use_dollar;
+        }
     }
 }

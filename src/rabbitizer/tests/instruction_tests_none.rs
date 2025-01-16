@@ -17,7 +17,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x08000419,
                 Vram::new(0x80001100),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -31,7 +31,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x3C088001,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -45,7 +45,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x25080E60,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -59,7 +59,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x3C090002,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -73,7 +73,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x25298DE0,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -87,7 +87,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xAD000000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -101,7 +101,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xAD000004,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -115,7 +115,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x21080008,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -129,7 +129,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x2129FFF8,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -143,7 +143,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x1520FFFB,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -157,7 +157,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00000000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -171,7 +171,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x3C0A8000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -185,7 +185,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x254A0494,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -199,7 +199,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x3C1D8002,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -213,7 +213,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x01400008,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -227,7 +227,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x27BDF8C0,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -241,7 +241,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x3C018001,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -255,7 +255,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x03E00008,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -269,7 +269,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xAC24E190,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -283,7 +283,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x3C018001,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%hi(D_8000E190)"),
             display_flags: InstructionDisplayFlags::default(),
@@ -297,7 +297,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xAC24E190,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%lo(D_8000E190)"),
             display_flags: InstructionDisplayFlags::default(),
@@ -311,7 +311,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0C001F24,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -325,7 +325,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0C001F24,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: Some("some_func"),
             display_flags: InstructionDisplayFlags::default(),
@@ -339,7 +339,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x8F99805C,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -353,7 +353,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x8F99805C,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%call16(strcmp)"),
             display_flags: InstructionDisplayFlags::default(),
@@ -367,7 +367,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x8F858028,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -381,7 +381,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x8F858028,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: Some("%got(STR_10007C90)"),
             display_flags: InstructionDisplayFlags::default(),
@@ -401,7 +401,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00435022,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -415,7 +415,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00025022,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -429,7 +429,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00E41823,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -443,7 +443,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00041823,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -457,7 +457,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x42000010,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -471,7 +471,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0260F809,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -485,7 +485,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0260F809,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_expand_jalr(true),
@@ -499,7 +499,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x02602009,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -513,7 +513,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00042100,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -527,7 +527,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00021882,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -541,7 +541,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00017443,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -555,7 +555,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00042FF8,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -569,7 +569,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x000637FA,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -583,7 +583,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0002137B,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -597,7 +597,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x000437FC,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -611,7 +611,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0005283E,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -625,7 +625,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0002103F,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -639,7 +639,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x40086800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -653,7 +653,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x40286800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -667,7 +667,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x40486800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -681,7 +681,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x40886800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -695,7 +695,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x40A86800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -709,7 +709,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x40C86800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -723,7 +723,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x46168200,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_named_fpr(false),
@@ -737,7 +737,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x46168200,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_named_fpr(true),
@@ -751,7 +751,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x44C2F800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -765,7 +765,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xBD150000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -779,7 +779,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xCD150018,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -793,7 +793,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xCD150008,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_IV, None),
+                InstructionFlags::new(IsaVersion::MIPS_IV),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -807,7 +807,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0001008D,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -821,7 +821,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0001008D,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_sn64_break_fix(true),
@@ -835,7 +835,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0007000D,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -849,7 +849,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0007000D,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_sn64_break_fix(true),
@@ -863,7 +863,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0000000C,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -877,7 +877,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00E200B0,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -891,7 +891,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00E200B1,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -905,7 +905,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00E200B2,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -919,7 +919,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00E200B3,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -933,7 +933,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00E200B4,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -947,7 +947,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x00E200B6,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -961,7 +961,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xC8621800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -975,7 +975,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xD8621800,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -989,7 +989,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xE8810878,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1003,7 +1003,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xF8810878,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1017,7 +1017,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x4802E000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1031,7 +1031,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x4882E000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1045,7 +1045,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x4842E000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1059,7 +1059,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x48C2E000,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1073,7 +1073,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001A,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(true),
@@ -1087,7 +1087,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001A,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(false),
@@ -1101,7 +1101,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001B,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(true),
@@ -1115,7 +1115,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001B,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(false),
@@ -1129,7 +1129,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001E,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(true),
@@ -1143,7 +1143,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001E,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(false),
@@ -1157,7 +1157,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001F,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(true),
@@ -1171,7 +1171,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x0085001F,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default().with_gnu_div(false),
@@ -1189,7 +1189,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x44444444,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1203,7 +1203,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0x77777777,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
@@ -1217,7 +1217,7 @@ fn check_none_instructions() {
             instr: Instruction::new(
                 0xEEEEEEEE,
                 Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III, None),
+                InstructionFlags::new(IsaVersion::MIPS_III),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),

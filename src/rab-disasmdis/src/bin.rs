@@ -112,7 +112,7 @@ fn main() {
 
     let endian = args.endian;
     let mut data = Data::new();
-    let flags = rabbitizer::instr::InstructionFlags::new(rabbitizer::IsaVersion::MIPS_III, None)
+    let flags = rabbitizer::instr::InstructionFlags::new(rabbitizer::IsaVersion::MIPS_III)
         .with_isa_extension(None)
         .with_all_pseudos(args.pseudos);
     let vram = rabbitizer::vram::Vram::new(0x8000_0000);

@@ -1,11 +1,15 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#[cfg(feature = "pyo3")]
+use pyo3::prelude::*;
+
 use crate::abi::Abi;
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::DecodingFlags;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer"))]
 pub struct InstructionFlags {
     isa_version: IsaVersion,
     isa_extension: Option<IsaExtension>,
@@ -29,17 +33,22 @@ impl InstructionFlags {
     }
 
     #[must_use]
-    pub const fn new(isa_version: IsaVersion, isa_extension: Option<IsaExtension>) -> Self {
+    pub const fn new(isa_version: IsaVersion) -> Self {
+        Self::new_isa(isa_version, None)
+    }
+
+    #[must_use]
+    pub const fn new_extension(isa_extension: IsaExtension) -> Self {
+        Self::new_isa(isa_extension.isa_version(), Some(isa_extension))
+    }
+
+    #[must_use]
+    pub const fn new_isa(isa_version: IsaVersion, isa_extension: Option<IsaExtension>) -> Self {
         Self {
             isa_version,
             isa_extension,
             ..Self::default()
         }
-    }
-
-    #[must_use]
-    pub const fn new_extension(isa_extension: IsaExtension) -> Self {
-        Self::new(isa_extension.isa_version(), Some(isa_extension))
     }
 }
 
@@ -335,5 +344,31 @@ impl InstructionFlags {
 impl Default for InstructionFlags {
     fn default() -> Self {
         Self::default()
+    }
+}
+
+#[cfg(feature = "pyo3")]
+pub(crate) mod python_bindings {
+    use super::*;
+
+    #[pymethods]
+    impl InstructionFlags {
+        #[new]
+        #[must_use]
+        pub const fn py_new(isa_version: IsaVersion) -> Self {
+            Self::new(isa_version)
+        }
+
+        #[pyo3(name = "new_extension")]
+        #[staticmethod]
+        #[must_use]
+        pub const fn py_new_extension(isa_extension: IsaExtension) -> Self {
+            Self::new_extension(isa_extension)
+        }
+
+        #[pyo3(name = "set_j_as_branch")]
+        pub fn py_set_j_as_branch(&mut self, j_as_branch: bool) {
+            self.j_as_branch = j_as_branch;
+        }
     }
 }

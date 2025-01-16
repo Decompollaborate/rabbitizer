@@ -23,11 +23,13 @@ path = "src/lib.rs"
 [features]
 default = []
 std = []
+
 bindings_c = []
-bindings_python = []
+pyo3 = ["std", "dep:pyo3"]
 
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }
+pyo3 = { version = "0.23.2", optional = true }
 
 [dev-dependencies]
 criterion = { version ="0.3", features = ["html_reports"]}

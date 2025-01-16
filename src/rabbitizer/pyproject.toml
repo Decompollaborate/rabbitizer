@@ -1,0 +1,39 @@
+# SPDX-FileCopyrightText: © 2022-2025 Decompollaborate
+# SPDX-License-Identifier: MIT
+
+[project]
+name = "rabbitizer"
+# Version should be synced with include/common/RabbitizerVersion.h
+version = "2.0.0-dev0"
+description = "MIPS instruction decoder"
+readme = "README.md"
+license = {file = "../../LICENSE"}
+requires-python = ">=3.9"
+authors = [
+    { name="Anghelo Carvajal", email="angheloalf95@gmail.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+
+    "License :: OSI Approved :: MIT License",
+
+    "Topic :: Software Development :: Disassemblers",
+
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+
+    "Typing :: Typed",
+]
+
+[project.urls]
+"Repository" = "https://github.com/Decompollaborate/rabbitizer"
+"Bug Tracker" = "https://github.com/Decompollaborate/rabbitizer/issues"
+# "Changelog" = ""
+
+[build-system]
+requires = ["maturin>=1,<2"]
+build-backend = "maturin"
+
+[tool.maturin]
+features = ["pyo3/extension-module", "pyo3"]
+cargo-extra-args = "--crate-type=cdylib"

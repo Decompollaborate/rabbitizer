@@ -88,7 +88,11 @@
 #![warn(clippy::cognitive_complexity)] // Maybe remove in the future (?)
 #![warn(clippy::alloc_instead_of_core)]
 #![warn(clippy::ref_option)]
+//
 #![cfg_attr(not(feature = "std"), no_std)]
+
+#[cfg(feature = "pyo3")]
+use pyo3::prelude::*;
 
 mod generated;
 
@@ -115,3 +119,18 @@ pub use display_flags::InstructionDisplayFlags;
 pub use instr::{Instruction, InstructionFlags};
 pub use isa::{IsaExtension, IsaVersion};
 pub use vram::Vram;
+
+#[cfg(feature = "pyo3")]
+#[pymodule]
+fn rabbitizer(m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_class::<display_flags::InstructionDisplayFlags>()?;
+
+    m.add_class::<instr::InstructionFlags>()?;
+
+    m.add_class::<isa::IsaVersion>()?;
+    m.add_class::<isa::IsaExtension>()?;
+
+    m.add_class::<vram::Vram>()?;
+
+    Ok(())
+}
