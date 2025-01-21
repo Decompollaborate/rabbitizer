@@ -154,7 +154,7 @@
         is_unsigned: true,
         modifies_rt: true,
         reads_rs: true,
-        can_be_lo: true
+        can_be_unsigned_lo: true
     ) // Or Immediate
     RAB_DEF_OPCODE(
         core, 0x0E, xori, IsaVersion::MIPS_I, None,

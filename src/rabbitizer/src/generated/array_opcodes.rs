@@ -170,7 +170,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         is_unsigned: true,
         modifies_rt: true,
         reads_rs: true,
-        can_be_lo: true,
+        can_be_unsigned_lo: true,
         ..OpcodeDescriptor::new("ori", IsaVersion::MIPS_I, None)
     }
     .check_panic_chain();

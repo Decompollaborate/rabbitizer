@@ -85,6 +85,9 @@ pub struct OpcodeDescriptor {
     pub(crate) can_be_hi: bool,
     /// The instruction can hold the "lo" value of a %hi/%lo pair
     pub(crate) can_be_lo: bool,
+    /// The instruction can used with a "hi" instruction to load a big constant.
+    pub(crate) can_be_unsigned_lo: bool,
+
     /// "and link" family of instructions
     ///
     /// The instruction stores the return address link in the MIPS $ra (GPR 31) register
@@ -144,6 +147,7 @@ impl OpcodeDescriptor {
             not_emitted_by_compilers: false,
             can_be_hi: false,
             can_be_lo: false,
+            can_be_unsigned_lo: false,
             does_link: false,
             does_dereference: false,
             does_load: false,
@@ -290,6 +294,23 @@ impl OpcodeDescriptor {
         assert!(
             !(self.can_be_hi && self.can_be_lo),
             "An opcode can be either a `hi` or `lo`, not both"
+        );
+        assert!(
+            !(self.can_be_hi && self.can_be_unsigned_lo),
+            "An opcode can be either a `hi` or `lo`, not both"
+        );
+        assert!(
+            !(self.can_be_unsigned_lo && self.can_be_lo),
+            "An opcode can be either an unsigned `lo` or a normal one, not both"
+        );
+
+        assert!(
+            utils::truth_a_implies_b(self.can_be_unsigned_lo, self.is_unsigned),
+            "An unsigned `lo` opcode must be unsigned"
+        );
+        assert!(
+            utils::truth_a_implies_b(self.can_be_lo, !self.is_unsigned),
+            "An `lo` opcode must be signed"
         );
 
         assert!(
@@ -482,6 +503,10 @@ impl OpcodeDescriptor {
     #[must_use]
     pub const fn can_be_lo(&self) -> bool {
         self.can_be_lo
+    }
+    #[must_use]
+    pub const fn can_be_unsigned_lo(&self) -> bool {
+        self.can_be_unsigned_lo
     }
     #[must_use]
     pub const fn does_link(&self) -> bool {
