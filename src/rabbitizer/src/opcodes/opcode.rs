@@ -162,6 +162,10 @@ impl Opcode {
         self.get_descriptor().can_be_lo()
     }
     #[must_use]
+    pub fn can_be_unsigned_lo(&self) -> bool {
+        self.get_descriptor().can_be_unsigned_lo()
+    }
+    #[must_use]
     pub fn does_link(&self) -> bool {
         self.get_descriptor().does_link()
     }
