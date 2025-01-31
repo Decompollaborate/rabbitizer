@@ -4,6 +4,7 @@
 use core::fmt;
 
 use crate::operands::{operand_display, OperandDisplay};
+use crate::utils;
 use crate::{registers::Gpr, registers_meta::Register};
 
 impl<T> OperandDisplay<'_, '_, T>
@@ -193,10 +194,12 @@ where
         write!(f, "{}", code_lower)
     }
     pub(crate) fn display_core_copraw(
-        _myself: &OperandDisplay<T>,
-        _f: &mut fmt::Formatter<'_>,
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        todo!()
+        // TODO: either get rid of this or move to EncodedFieldMask/add as a Instruction function.
+        let val = myself.instr.word() & utils::bitmask(0, 25);
+        write!(f, "0x{:X}", val)
     }
     pub(crate) fn display_core_label(
         myself: &OperandDisplay<T>,

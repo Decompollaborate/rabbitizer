@@ -19,7 +19,8 @@
 
     // The other instructions are implemented using the main CORE table
 
-    // TODO: why do we have this here instead of just refusng to decode the word?
+    // sqrt.s may sometimes not be properly encoded, so as a workaround we decode it like this.
+    // TODO: We may be able to just decode it as words and call it a day.
     RAB_DEF_OPCODE_ALTNAME(
         r5900, 0x04, c1__sqrt_s, c1, IsaVersion::EXTENSION, Some(IsaExtension::R5900),
         operands: Operand::arr1(Operand::core_copraw)

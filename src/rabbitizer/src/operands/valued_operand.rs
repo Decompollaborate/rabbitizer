@@ -9,6 +9,7 @@ use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDisplay, ValuedOperand, OPERAND_COUNT_MAX};
 use crate::registers_meta::Register;
+use crate::utils;
 
 /// A 16bits number, either signed or unsigned.
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -70,7 +71,8 @@ impl ValuedOperand {
                 NonZeroU16::new(instr.field_code_lower_unchecked()),
             ),
             Operand::core_code_lower => Self::core_code_lower(instr.field_code_lower_unchecked()),
-            Operand::core_copraw => todo!(),
+            // TODO: either get rid of core_copraw or move to EncodedFieldMask/add as a Instruction function.
+            Operand::core_copraw => Self::core_copraw(instr.word() & utils::bitmask(0, 25)),
             Operand::core_label => Self::core_label(instr.get_instr_index_as_vram_unchecked()),
             Operand::core_immediate => {
                 let imm = if instr.opcode().is_unsigned() {
