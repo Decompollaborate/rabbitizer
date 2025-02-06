@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.12.6] - 2025-02-06
+
 ### Fixed
 
 - R5900: Fix decoding the `imm5` operand of the `viaddi` instruction as a signed
@@ -707,6 +709,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.12.6]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.5...1.12.6
 [1.12.5]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.4...1.12.5
 [1.12.4]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.3...1.12.4
 [1.12.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.2...1.12.3
