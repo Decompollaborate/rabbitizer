@@ -515,7 +515,7 @@ size_t RabbitizerOperandType_process_r5900_immediate5(const RabbitizerInstructio
         return immOverrideLength;
     }
 
-    number = RAB_INSTR_R5900_GET_imm5(self);
+    number = RabbitizerUtils_From2Complement(RAB_INSTR_R5900_GET_imm5(self), 5);
     if (RabbitizerConfig_Cfg.misc.omit0XOnSmallImm) {
         if (number > -10 && number < 10) {
             RABUTILS_BUFFER_SPRINTF(dst, totalSize, "%i", number);

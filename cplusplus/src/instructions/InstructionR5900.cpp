@@ -113,6 +113,6 @@ uint8_t InstructionR5900::GetR5900_m() const {
     return RAB_INSTR_R5900_GET_m(&this->instr);
 }
 
-uint8_t InstructionR5900::GetR5900_imm5() const {
-    return RAB_INSTR_R5900_GET_imm5(&this->instr);
+int8_t InstructionR5900::GetR5900_imm5() const {
+    return RabbitizerUtils_From2Complement(RAB_INSTR_R5900_GET_imm5(&this->instr), 5);
 }

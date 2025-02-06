@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- R5900: Fix decoding the `imm5` operand of the `viaddi` instruction as a signed
+  value instead of decoding it as an unsigned one.
+
 ## [1.12.5] - 2024-12-16
 
 ### Fixed
