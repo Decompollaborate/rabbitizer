@@ -6,7 +6,7 @@
     RAB_DEF_OPERAND(r5900, R, EncodedFieldMask::empty(), ())
     RAB_DEF_OPERAND(r5900, ACC, EncodedFieldMask::empty(), ())
 
-    RAB_DEF_OPERAND(r5900, immediate5, EncodedFieldMask::r5900_immediate5, (u8))
+    RAB_DEF_OPERAND(r5900, immediate5, EncodedFieldMask::r5900_immediate5, (i8))
     RAB_DEF_OPERAND(r5900, immediate15, EncodedFieldMask::r5900_immediate15, (u16))
 
     RAB_DEF_OPERAND(r5900, vfs, EncodedFieldMask::r5900_vfs, (R5900VF))

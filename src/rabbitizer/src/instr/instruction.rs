@@ -2595,7 +2595,7 @@ impl Instruction {
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_immediate5(&self) -> Option<u8> {
+    pub fn field_r5900_immediate5(&self) -> Option<i8> {
         if self.opcode().has_operand_alias(Operand::r5900_immediate5) {
             Some(self.field_r5900_immediate5_unchecked())
         } else {
@@ -2836,11 +2836,10 @@ impl Instruction {
     ///
     /// [`field_r5900_immediate5`]: Instruction::field_r5900_immediate5
     #[must_use]
-    pub fn field_r5900_immediate5_unchecked(&self) -> u8 {
-        EncodedFieldMask::r5900_immediate5
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
+    pub fn field_r5900_immediate5_unchecked(&self) -> i8 {
+        let raw = EncodedFieldMask::r5900_immediate5.get_shifted(self.word());
+
+        utils::from_2s_complement(raw, 5).try_into().unwrap()
     }
 
     /// Returns the `r5900_immediate15` value embedded on the `r5900_immediate15` field of

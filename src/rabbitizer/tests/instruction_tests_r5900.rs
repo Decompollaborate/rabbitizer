@@ -610,10 +610,10 @@ fn check_r5900_instructions() {
             imm_override: None,
             display_flags: InstructionDisplayFlags::default(),
             valid: true,
-            expected: "viaddi      $vi6, $vi12, 0x18",
+            expected: "viaddi      $vi6, $vi12, -0x8",
             expected_opcode: Opcode::r5900_viaddi,
             opcode_str: "viaddi",
-            operands_str: [Some("$vi6"), Some("$vi12"), Some("0x18"), None, None],
+            operands_str: [Some("$vi6"), Some("$vi12"), Some("-0x8"), None, None],
         },
         TestEntry {
             instr: Instruction::new(
@@ -670,6 +670,34 @@ fn check_r5900_instructions() {
             expected_opcode: Opcode::r5900_vsqi,
             opcode_str: "vsqi",
             operands_str: [Some("$vf12"), Some("($vi6++)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0307B2,
+                Vram::new(0x80000000),
+                InstructionFlags::new_extension(IsaExtension::R5900),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "viaddi      $vi3, $vi0, -0x2",
+            expected_opcode: Opcode::r5900_viaddi,
+            opcode_str: "viaddi",
+            operands_str: [Some("$vi3"), Some("$vi0"), Some("-0x2"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0303B2,
+                Vram::new(0x80000000),
+                InstructionFlags::new_extension(IsaExtension::R5900),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "viaddi      $vi3, $vi0, 0xE",
+            expected_opcode: Opcode::r5900_viaddi,
+            opcode_str: "viaddi",
+            operands_str: [Some("$vi3"), Some("$vi0"), Some("0xE"), None, None],
         },
     ];
 

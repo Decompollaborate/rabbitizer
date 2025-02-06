@@ -3,16 +3,35 @@
 
 #[must_use]
 pub const fn mask(value: u32, width: u32) -> u32 {
+    assert!(
+        width < 32,
+        "This operation is defined only for bitwidths up to 31 bits."
+    );
+
     value & ((1 << width) - 1)
 }
 
 #[must_use]
 pub const fn bitmask(shift: u32, width: u32) -> u32 {
+    assert!(
+        shift + width <= 32,
+        "Can't create a bitmask larger than 32 bits"
+    );
+
     mask(u32::MAX, width) << shift
 }
 
 #[must_use]
 pub const fn from_2s_complement(number: u32, width: u32) -> i32 {
+    assert!(
+        width < 32,
+        "This operation is defined only for bitwidths between 1 and 31 bits."
+    );
+    assert!(
+        width > 0,
+        "This operation is defined only for bitwidths between 1 and 31 bits."
+    );
+
     let is_negative = number & (1 << (width - 1)) != 0;
 
     if is_negative {

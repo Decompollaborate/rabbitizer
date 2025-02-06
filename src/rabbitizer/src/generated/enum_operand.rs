@@ -859,7 +859,7 @@ pub enum ValuedOperand {
     r5900_Q(),
     r5900_R(),
     r5900_ACC(),
-    r5900_immediate5(u8),
+    r5900_immediate5(i8),
     r5900_immediate15(u16),
     r5900_vfs(R5900VF),
     r5900_vft(R5900VF),
