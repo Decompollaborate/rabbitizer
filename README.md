@@ -109,7 +109,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.12.5"
+rabbitizer = "1.12.6"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
