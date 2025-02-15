@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Allow building Python bindings with Clang versions that do not support some
+  some warning flags.
+  - Specifically `-Wno-nonnull-compare`.
+
 ## [1.12.6] - 2025-02-06
 
 ### Fixed

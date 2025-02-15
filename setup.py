@@ -13,6 +13,7 @@ headersList = [str(x) for x in bindingsPath.glob("**/*.h")] + [str(x) for x in s
 
 extraCompileArgs = ["-std=c11", "-Wall", "-g",]
 if platform.system() == "Linux":
+    extraCompileArgs += ["-Wno-unknown-warning-option",]
     extraCompileArgs += ["-Os", "-Wextra",]
     extraCompileArgs += ["-Werror=vla", "-Werror=switch", "-Werror=implicit-fallthrough", "-Werror=unused-function", "-Werror=unused-parameter", "-Werror=shadow", "-Werror=switch"]
     extraCompileArgs += ["-Werror=implicit-function-declaration", "-Werror=incompatible-pointer-types"]
