@@ -848,149 +848,149 @@ impl OpcodeDescriptor {
             Operand::r4000allegrex_rpw => {}
             /* r4000allegrex */
 
-            /* r5900 */
-            Operand::r5900_I => {}
-            Operand::r5900_Q => {}
-            Operand::r5900_R => {}
+            /* r5900ee */
+            Operand::r5900ee_I => {}
+            Operand::r5900ee_Q => {}
+            Operand::r5900ee_R => {}
 
-            Operand::r5900_ACC => {
-                if self.has_specific_operand(Operand::r5900_ACCxyzw) {
+            Operand::r5900ee_ACC => {
+                if self.has_specific_operand(Operand::r5900ee_ACCxyzw) {
                     return true;
                 }
             }
 
-            Operand::r5900_immediate5 => {}
-            Operand::r5900_immediate15 => {}
+            Operand::r5900ee_immediate5 => {}
+            Operand::r5900ee_immediate15 => {}
 
-            Operand::r5900_vfs => {
-                if self.has_specific_operand(Operand::r5900_vfsxyzw) {
+            Operand::r5900ee_vfs => {
+                if self.has_specific_operand(Operand::r5900ee_vfsxyzw) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::r5900_vfsl) {
+                if self.has_specific_operand(Operand::r5900ee_vfsl) {
                     return true;
                 }
             }
 
-            Operand::r5900_vft => {
-                if self.has_specific_operand(Operand::r5900_vftxyzw) {
+            Operand::r5900ee_vft => {
+                if self.has_specific_operand(Operand::r5900ee_vftxyzw) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::r5900_vftn) {
+                if self.has_specific_operand(Operand::r5900ee_vftn) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::r5900_vftm) {
-                    return true;
-                }
-            }
-
-            Operand::r5900_vfd => {
-                if self.has_specific_operand(Operand::r5900_vfdxyzw) {
+                if self.has_specific_operand(Operand::r5900ee_vftm) {
                     return true;
                 }
             }
 
-            Operand::r5900_vis => {
-                if self.has_specific_operand(Operand::r5900_vis_predecr) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r5900_vis_postincr) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r5900_vis_parenthesis) {
+            Operand::r5900ee_vfd => {
+                if self.has_specific_operand(Operand::r5900ee_vfdxyzw) {
                     return true;
                 }
             }
 
-            Operand::r5900_vit => {
-                if self.has_specific_operand(Operand::r5900_vit_predecr) {
+            Operand::r5900ee_vis => {
+                if self.has_specific_operand(Operand::r5900ee_vis_predecr) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::r5900_vit_postincr) {
+                if self.has_specific_operand(Operand::r5900ee_vis_postincr) {
                     return true;
                 }
-            }
-
-            Operand::r5900_vid => {}
-
-            Operand::r5900_ACCxyzw => {
-                if self.has_specific_operand(Operand::r5900_ACC) {
+                if self.has_specific_operand(Operand::r5900ee_vis_parenthesis) {
                     return true;
                 }
             }
 
-            Operand::r5900_vfsxyzw => {
-                if self.has_specific_operand(Operand::r5900_vfs) {
+            Operand::r5900ee_vit => {
+                if self.has_specific_operand(Operand::r5900ee_vit_predecr) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900ee_vit_postincr) {
                     return true;
                 }
             }
 
-            Operand::r5900_vftxyzw => {
-                if self.has_specific_operand(Operand::r5900_vft) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r5900_vftn) {
+            Operand::r5900ee_vid => {}
+
+            Operand::r5900ee_ACCxyzw => {
+                if self.has_specific_operand(Operand::r5900ee_ACC) {
                     return true;
                 }
             }
 
-            Operand::r5900_vfdxyzw => {
-                if self.has_specific_operand(Operand::r5900_vfd) {
+            Operand::r5900ee_vfsxyzw => {
+                if self.has_specific_operand(Operand::r5900ee_vfs) {
                     return true;
                 }
             }
 
-            Operand::r5900_vftn => {
-                if self.has_specific_operand(Operand::r5900_vft) {
+            Operand::r5900ee_vftxyzw => {
+                if self.has_specific_operand(Operand::r5900ee_vft) {
                     return true;
                 }
-                if self.has_specific_operand(Operand::r5900_vftxyzw) {
-                    return true;
-                }
-            }
-
-            Operand::r5900_vfsl => {
-                if self.has_operand_alias(Operand::r5900_vfs) {
+                if self.has_specific_operand(Operand::r5900ee_vftn) {
                     return true;
                 }
             }
 
-            Operand::r5900_vftm => {
-                if self.has_operand_alias(Operand::r5900_vft) {
+            Operand::r5900ee_vfdxyzw => {
+                if self.has_specific_operand(Operand::r5900ee_vfd) {
                     return true;
                 }
             }
 
-            Operand::r5900_vis_predecr => {
-                if self.has_operand_alias(Operand::r5900_vis) {
+            Operand::r5900ee_vftn => {
+                if self.has_specific_operand(Operand::r5900ee_vft) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900ee_vftxyzw) {
                     return true;
                 }
             }
 
-            Operand::r5900_vit_predecr => {
-                if self.has_operand_alias(Operand::r5900_vit) {
+            Operand::r5900ee_vfsl => {
+                if self.has_operand_alias(Operand::r5900ee_vfs) {
                     return true;
                 }
             }
 
-            Operand::r5900_vis_postincr => {
-                if self.has_operand_alias(Operand::r5900_vis) {
+            Operand::r5900ee_vftm => {
+                if self.has_operand_alias(Operand::r5900ee_vft) {
                     return true;
                 }
             }
 
-            Operand::r5900_vit_postincr => {
-                if self.has_operand_alias(Operand::r5900_vit) {
+            Operand::r5900ee_vis_predecr => {
+                if self.has_operand_alias(Operand::r5900ee_vis) {
                     return true;
                 }
             }
 
-            Operand::r5900_vis_parenthesis => {
-                if self.has_operand_alias(Operand::r5900_vis) {
+            Operand::r5900ee_vit_predecr => {
+                if self.has_operand_alias(Operand::r5900ee_vit) {
                     return true;
                 }
             }
 
-            /* r5900 */
+            Operand::r5900ee_vis_postincr => {
+                if self.has_operand_alias(Operand::r5900ee_vis) {
+                    return true;
+                }
+            }
+
+            Operand::r5900ee_vit_postincr => {
+                if self.has_operand_alias(Operand::r5900ee_vit) {
+                    return true;
+                }
+            }
+
+            Operand::r5900ee_vis_parenthesis => {
+                if self.has_operand_alias(Operand::r5900ee_vis) {
+                    return true;
+                }
+            }
+
+            /* r5900ee */
             Operand::ALL_EMPTY => {}
         }
 

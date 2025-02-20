@@ -13,5 +13,5 @@ pub enum IsaExtension {
     RSP,
     R3000GTE,
     R4000ALLEGREX,
-    R5900,
+    R5900EE,
 }

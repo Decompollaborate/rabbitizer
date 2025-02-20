@@ -1,0 +1,98 @@
+/* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+#define HASH #
+#define HASH_EXPANSION(x) x
+#define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
+
+#define STR_EXPAND2(x) # x
+#define STR_EXPAND(x) STR_EXPAND2(x)
+#define STR(x) STR_EXPAND(x)
+
+use crate::register_descriptors::RegisterDescriptor;
+use core::ops::Index;
+
+#define REGISTER_ENUM_NAME R5900EEVF
+#define REG_NAME(name) name
+
+#define RABBITIZER_DEF_REG(prefix, name, value, ...) \
+    REG_NAME(name) = value,
+
+SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
+SPECIAL_RS_TAG(allow(non_camel_case_types))
+SPECIAL_RS_TAG(allow(clippy::exhaustive_enums))
+pub enum REGISTER_ENUM_NAME {
+    #include "registers/RabbitizerRegister_R5900EEVF.inc"
+}
+
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, value, ...) \
+    table[ REGISTER_ENUM_NAME :: REG_NAME(name) as usize] = RegisterDescriptor { \
+        __VA_ARGS__ \
+        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$vf", #value) ) \
+    } .check_panic_chain();
+
+#define REGISTER_COUNT 32
+
+pub static R5900EE_VF: [RegisterDescriptor; REGISTER_COUNT] = {
+    let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
+
+    #include "registers/RabbitizerRegister_R5900EEVF.inc"
+
+    let mut i = 0;
+    while i < REGISTER_COUNT {
+        assert!(table[i].value as usize == i, "Broken register index?");
+
+        i += 1;
+    }
+
+    table
+};
+
+#undef RABBITIZER_DEF_REG
+
+#define RABBITIZER_DEF_REG(prefix, name, value, ...) \
+    value => Ok(Self:: REG_NAME(name)),
+
+impl REGISTER_ENUM_NAME {
+    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        match value {
+            #include "registers/RabbitizerRegister_R5900EEVF.inc"
+            x => Err(crate::Error::OutOfRangeRegisterIndex {
+                index: x,
+                count: REGISTER_COUNT,
+                register_kind: STR(REGISTER_ENUM_NAME),
+            }),
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub const fn count() -> usize {
+        REGISTER_COUNT
+    }
+}
+
+#undef RABBITIZER_DEF_REG
+
+impl TryFrom<u32> for REGISTER_ENUM_NAME {
+    type Error = crate::Error;
+
+    fn try_from(value: u32) -> Result<Self, Self::Error> {
+        Self::try_from_u32(value)
+    }
+}
+
+impl Default for REGISTER_ENUM_NAME {
+    fn default() -> Self {
+        Self::default()
+    }
+}
+
+impl Index<REGISTER_ENUM_NAME> for [RegisterDescriptor] {
+    type Output = RegisterDescriptor;
+
+    fn index(&self, index: REGISTER_ENUM_NAME) -> &Self::Output {
+        &self[index as usize]
+    }
+}

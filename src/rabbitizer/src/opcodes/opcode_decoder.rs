@@ -40,8 +40,8 @@ impl OpcodeDecoder {
                 flags,
                 isa_version,
             ),
-            Some(IsaExtension::R5900) => {
-                Self::decode_isa_extension_r5900_normal(word, mandatory_bits, flags, isa_version)
+            Some(IsaExtension::R5900EE) => {
+                Self::decode_isa_extension_r5900ee_normal(word, mandatory_bits, flags, isa_version)
             }
         }
     }
@@ -224,22 +224,22 @@ impl OpcodeDecoder {}
 // IsaExtension::R4000ALLEGREX
 impl OpcodeDecoder {}
 
-// IsaExtension::R5900
+// IsaExtension::R5900EE
 impl OpcodeDecoder {
     #[must_use]
-    pub(crate) const fn fixups_decode_isa_extension_r5900_special(
+    pub(crate) const fn fixups_decode_isa_extension_r5900ee_special(
         self,
         word: u32,
         _flags: &DecodingFlags,
         _isa_version: IsaVersion,
     ) -> Self {
         match self.opcode {
-            Opcode::core_sync | Opcode::r5900_sync_p => {
+            Opcode::core_sync | Opcode::r5900ee_sync_p => {
                 let mask = EncodedFieldMask::stype;
                 let mandatory_bits = self.mandatory_bits.union(mask.mask_value(word));
                 if (mask.get_shifted(word) & 0x10) == 0x10 {
                     Self {
-                        opcode: Opcode::r5900_sync_p,
+                        opcode: Opcode::r5900ee_sync_p,
                         opcode_category: self.opcode_category,
                         mandatory_bits,
                     }

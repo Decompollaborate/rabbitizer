@@ -110,30 +110,30 @@ pub enum Operand {
     r4000allegrex_rpy,
     r4000allegrex_rpz,
     r4000allegrex_rpw,
-    r5900_I,
-    r5900_Q,
-    r5900_R,
-    r5900_ACC,
-    r5900_immediate5,
-    r5900_immediate15,
-    r5900_vfs,
-    r5900_vft,
-    r5900_vfd,
-    r5900_vis,
-    r5900_vit,
-    r5900_vid,
-    r5900_ACCxyzw,
-    r5900_vfsxyzw,
-    r5900_vftxyzw,
-    r5900_vfdxyzw,
-    r5900_vftn,
-    r5900_vfsl,
-    r5900_vftm,
-    r5900_vis_predecr,
-    r5900_vit_predecr,
-    r5900_vis_postincr,
-    r5900_vit_postincr,
-    r5900_vis_parenthesis,
+    r5900ee_I,
+    r5900ee_Q,
+    r5900ee_R,
+    r5900ee_ACC,
+    r5900ee_immediate5,
+    r5900ee_immediate15,
+    r5900ee_vfs,
+    r5900ee_vft,
+    r5900ee_vfd,
+    r5900ee_vis,
+    r5900ee_vit,
+    r5900ee_vid,
+    r5900ee_ACCxyzw,
+    r5900ee_vfsxyzw,
+    r5900ee_vftxyzw,
+    r5900ee_vfdxyzw,
+    r5900ee_vftn,
+    r5900ee_vfsl,
+    r5900ee_vftm,
+    r5900ee_vis_predecr,
+    r5900ee_vit_predecr,
+    r5900ee_vis_postincr,
+    r5900ee_vit_postincr,
+    r5900ee_vis_parenthesis,
 }
 pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     let mut table = [OperandDescriptor::default(); OPERAND_COUNT];
@@ -483,81 +483,93 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         concat!("r4000allegrex", "_", "rpw"),
         EncodedFieldMask::r4000allegrex_rpw,
     );
-    table[Operand::r5900_I as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "I"), EncodedFieldMask::empty());
-    table[Operand::r5900_Q as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "Q"), EncodedFieldMask::empty());
-    table[Operand::r5900_R as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "R"), EncodedFieldMask::empty());
-    table[Operand::r5900_ACC as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "ACC"), EncodedFieldMask::empty());
-    table[Operand::r5900_immediate5 as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "immediate5"),
-        EncodedFieldMask::r5900_immediate5,
+    table[Operand::r5900ee_I as usize] =
+        OperandDescriptor::new(concat!("r5900ee", "_", "I"), EncodedFieldMask::empty());
+    table[Operand::r5900ee_Q as usize] =
+        OperandDescriptor::new(concat!("r5900ee", "_", "Q"), EncodedFieldMask::empty());
+    table[Operand::r5900ee_R as usize] =
+        OperandDescriptor::new(concat!("r5900ee", "_", "R"), EncodedFieldMask::empty());
+    table[Operand::r5900ee_ACC as usize] =
+        OperandDescriptor::new(concat!("r5900ee", "_", "ACC"), EncodedFieldMask::empty());
+    table[Operand::r5900ee_immediate5 as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "immediate5"),
+        EncodedFieldMask::r5900ee_immediate5,
     );
-    table[Operand::r5900_immediate15 as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "immediate15"),
-        EncodedFieldMask::r5900_immediate15,
+    table[Operand::r5900ee_immediate15 as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "immediate15"),
+        EncodedFieldMask::r5900ee_immediate15,
     );
-    table[Operand::r5900_vfs as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "vfs"), EncodedFieldMask::r5900_vfs);
-    table[Operand::r5900_vft as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "vft"), EncodedFieldMask::r5900_vft);
-    table[Operand::r5900_vfd as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "vfd"), EncodedFieldMask::r5900_vfd);
-    table[Operand::r5900_vis as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "vis"), EncodedFieldMask::r5900_vis);
-    table[Operand::r5900_vit as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "vit"), EncodedFieldMask::r5900_vit);
-    table[Operand::r5900_vid as usize] =
-        OperandDescriptor::new(concat!("r5900", "_", "vid"), EncodedFieldMask::r5900_vid);
-    table[Operand::r5900_ACCxyzw as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "ACCxyzw"),
-        EncodedFieldMask::r5900_xyzw_xyzw,
+    table[Operand::r5900ee_vfs as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vfs"),
+        EncodedFieldMask::r5900ee_vfs,
     );
-    table[Operand::r5900_vfsxyzw as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vfsxyzw"),
-        EncodedFieldMask::r5900_vfs.union(EncodedFieldMask::r5900_xyzw_xyzw),
+    table[Operand::r5900ee_vft as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vft"),
+        EncodedFieldMask::r5900ee_vft,
     );
-    table[Operand::r5900_vftxyzw as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vftxyzw"),
-        EncodedFieldMask::r5900_vft.union(EncodedFieldMask::r5900_xyzw_xyzw),
+    table[Operand::r5900ee_vfd as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vfd"),
+        EncodedFieldMask::r5900ee_vfd,
     );
-    table[Operand::r5900_vfdxyzw as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vfdxyzw"),
-        EncodedFieldMask::r5900_vfd.union(EncodedFieldMask::r5900_xyzw_xyzw),
+    table[Operand::r5900ee_vis as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vis"),
+        EncodedFieldMask::r5900ee_vis,
     );
-    table[Operand::r5900_vftn as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vftn"),
-        EncodedFieldMask::r5900_vft.union(EncodedFieldMask::r5900_n),
+    table[Operand::r5900ee_vit as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vit"),
+        EncodedFieldMask::r5900ee_vit,
     );
-    table[Operand::r5900_vfsl as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vfsl"),
-        EncodedFieldMask::r5900_vfs.union(EncodedFieldMask::r5900_l),
+    table[Operand::r5900ee_vid as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vid"),
+        EncodedFieldMask::r5900ee_vid,
     );
-    table[Operand::r5900_vftm as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vftm"),
-        EncodedFieldMask::r5900_vft.union(EncodedFieldMask::r5900_m),
+    table[Operand::r5900ee_ACCxyzw as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "ACCxyzw"),
+        EncodedFieldMask::r5900ee_xyzw_xyzw,
     );
-    table[Operand::r5900_vis_predecr as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vis_predecr"),
-        EncodedFieldMask::r5900_vis,
+    table[Operand::r5900ee_vfsxyzw as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vfsxyzw"),
+        EncodedFieldMask::r5900ee_vfs.union(EncodedFieldMask::r5900ee_xyzw_xyzw),
     );
-    table[Operand::r5900_vit_predecr as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vit_predecr"),
-        EncodedFieldMask::r5900_vit,
+    table[Operand::r5900ee_vftxyzw as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vftxyzw"),
+        EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_xyzw_xyzw),
     );
-    table[Operand::r5900_vis_postincr as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vis_postincr"),
-        EncodedFieldMask::r5900_vis,
+    table[Operand::r5900ee_vfdxyzw as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vfdxyzw"),
+        EncodedFieldMask::r5900ee_vfd.union(EncodedFieldMask::r5900ee_xyzw_xyzw),
     );
-    table[Operand::r5900_vit_postincr as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vit_postincr"),
-        EncodedFieldMask::r5900_vit,
+    table[Operand::r5900ee_vftn as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vftn"),
+        EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_n),
     );
-    table[Operand::r5900_vis_parenthesis as usize] = OperandDescriptor::new(
-        concat!("r5900", "_", "vis_parenthesis"),
-        EncodedFieldMask::r5900_vis,
+    table[Operand::r5900ee_vfsl as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vfsl"),
+        EncodedFieldMask::r5900ee_vfs.union(EncodedFieldMask::r5900ee_l),
+    );
+    table[Operand::r5900ee_vftm as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vftm"),
+        EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_m),
+    );
+    table[Operand::r5900ee_vis_predecr as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vis_predecr"),
+        EncodedFieldMask::r5900ee_vis,
+    );
+    table[Operand::r5900ee_vit_predecr as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vit_predecr"),
+        EncodedFieldMask::r5900ee_vit,
+    );
+    table[Operand::r5900ee_vis_postincr as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vis_postincr"),
+        EncodedFieldMask::r5900ee_vis,
+    );
+    table[Operand::r5900ee_vit_postincr as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vit_postincr"),
+        EncodedFieldMask::r5900ee_vit,
+    );
+    table[Operand::r5900ee_vis_parenthesis as usize] = OperandDescriptor::new(
+        concat!("r5900ee", "_", "vis_parenthesis"),
+        EncodedFieldMask::r5900ee_vis,
     );
     table
 };
@@ -709,31 +721,31 @@ where
             Operand::r4000allegrex_rpy => OperandDisplay::display_r4000allegrex_rpy(self, f),
             Operand::r4000allegrex_rpz => OperandDisplay::display_r4000allegrex_rpz(self, f),
             Operand::r4000allegrex_rpw => OperandDisplay::display_r4000allegrex_rpw(self, f),
-            Operand::r5900_I => OperandDisplay::display_r5900_I(self, f),
-            Operand::r5900_Q => OperandDisplay::display_r5900_Q(self, f),
-            Operand::r5900_R => OperandDisplay::display_r5900_R(self, f),
-            Operand::r5900_ACC => OperandDisplay::display_r5900_ACC(self, f),
-            Operand::r5900_immediate5 => OperandDisplay::display_r5900_immediate5(self, f),
-            Operand::r5900_immediate15 => OperandDisplay::display_r5900_immediate15(self, f),
-            Operand::r5900_vfs => OperandDisplay::display_r5900_vfs(self, f),
-            Operand::r5900_vft => OperandDisplay::display_r5900_vft(self, f),
-            Operand::r5900_vfd => OperandDisplay::display_r5900_vfd(self, f),
-            Operand::r5900_vis => OperandDisplay::display_r5900_vis(self, f),
-            Operand::r5900_vit => OperandDisplay::display_r5900_vit(self, f),
-            Operand::r5900_vid => OperandDisplay::display_r5900_vid(self, f),
-            Operand::r5900_ACCxyzw => OperandDisplay::display_r5900_ACCxyzw(self, f),
-            Operand::r5900_vfsxyzw => OperandDisplay::display_r5900_vfsxyzw(self, f),
-            Operand::r5900_vftxyzw => OperandDisplay::display_r5900_vftxyzw(self, f),
-            Operand::r5900_vfdxyzw => OperandDisplay::display_r5900_vfdxyzw(self, f),
-            Operand::r5900_vftn => OperandDisplay::display_r5900_vftn(self, f),
-            Operand::r5900_vfsl => OperandDisplay::display_r5900_vfsl(self, f),
-            Operand::r5900_vftm => OperandDisplay::display_r5900_vftm(self, f),
-            Operand::r5900_vis_predecr => OperandDisplay::display_r5900_vis_predecr(self, f),
-            Operand::r5900_vit_predecr => OperandDisplay::display_r5900_vit_predecr(self, f),
-            Operand::r5900_vis_postincr => OperandDisplay::display_r5900_vis_postincr(self, f),
-            Operand::r5900_vit_postincr => OperandDisplay::display_r5900_vit_postincr(self, f),
-            Operand::r5900_vis_parenthesis => {
-                OperandDisplay::display_r5900_vis_parenthesis(self, f)
+            Operand::r5900ee_I => OperandDisplay::display_r5900ee_I(self, f),
+            Operand::r5900ee_Q => OperandDisplay::display_r5900ee_Q(self, f),
+            Operand::r5900ee_R => OperandDisplay::display_r5900ee_R(self, f),
+            Operand::r5900ee_ACC => OperandDisplay::display_r5900ee_ACC(self, f),
+            Operand::r5900ee_immediate5 => OperandDisplay::display_r5900ee_immediate5(self, f),
+            Operand::r5900ee_immediate15 => OperandDisplay::display_r5900ee_immediate15(self, f),
+            Operand::r5900ee_vfs => OperandDisplay::display_r5900ee_vfs(self, f),
+            Operand::r5900ee_vft => OperandDisplay::display_r5900ee_vft(self, f),
+            Operand::r5900ee_vfd => OperandDisplay::display_r5900ee_vfd(self, f),
+            Operand::r5900ee_vis => OperandDisplay::display_r5900ee_vis(self, f),
+            Operand::r5900ee_vit => OperandDisplay::display_r5900ee_vit(self, f),
+            Operand::r5900ee_vid => OperandDisplay::display_r5900ee_vid(self, f),
+            Operand::r5900ee_ACCxyzw => OperandDisplay::display_r5900ee_ACCxyzw(self, f),
+            Operand::r5900ee_vfsxyzw => OperandDisplay::display_r5900ee_vfsxyzw(self, f),
+            Operand::r5900ee_vftxyzw => OperandDisplay::display_r5900ee_vftxyzw(self, f),
+            Operand::r5900ee_vfdxyzw => OperandDisplay::display_r5900ee_vfdxyzw(self, f),
+            Operand::r5900ee_vftn => OperandDisplay::display_r5900ee_vftn(self, f),
+            Operand::r5900ee_vfsl => OperandDisplay::display_r5900ee_vfsl(self, f),
+            Operand::r5900ee_vftm => OperandDisplay::display_r5900ee_vftm(self, f),
+            Operand::r5900ee_vis_predecr => OperandDisplay::display_r5900ee_vis_predecr(self, f),
+            Operand::r5900ee_vit_predecr => OperandDisplay::display_r5900ee_vit_predecr(self, f),
+            Operand::r5900ee_vis_postincr => OperandDisplay::display_r5900ee_vis_postincr(self, f),
+            Operand::r5900ee_vit_postincr => OperandDisplay::display_r5900ee_vit_postincr(self, f),
+            Operand::r5900ee_vis_parenthesis => {
+                OperandDisplay::display_r5900ee_vis_parenthesis(self, f)
             }
         }
     }
@@ -855,30 +867,30 @@ pub enum ValuedOperand {
     r4000allegrex_rpy(R4000AllegrexPrefixSrc),
     r4000allegrex_rpz(R4000AllegrexPrefixSrc),
     r4000allegrex_rpw(R4000AllegrexPrefixSrc),
-    r5900_I(),
-    r5900_Q(),
-    r5900_R(),
-    r5900_ACC(),
-    r5900_immediate5(i8),
-    r5900_immediate15(u16),
-    r5900_vfs(R5900VF),
-    r5900_vft(R5900VF),
-    r5900_vfd(R5900VF),
-    r5900_vis(R5900VI),
-    r5900_vit(R5900VI),
-    r5900_vid(R5900VI),
-    r5900_ACCxyzw(bool, bool, bool, bool),
-    r5900_vfsxyzw(R5900VF, bool, bool, bool, bool),
-    r5900_vftxyzw(R5900VF, bool, bool, bool, bool),
-    r5900_vfdxyzw(R5900VF, bool, bool, bool, bool),
-    r5900_vftn(R5900VF, u8),
-    r5900_vfsl(R5900VF, u8),
-    r5900_vftm(R5900VF, u8),
-    r5900_vis_predecr((), R5900VI),
-    r5900_vit_predecr((), R5900VI),
-    r5900_vis_postincr(R5900VI, ()),
-    r5900_vit_postincr(R5900VI, ()),
-    r5900_vis_parenthesis(R5900VI),
+    r5900ee_I(),
+    r5900ee_Q(),
+    r5900ee_R(),
+    r5900ee_ACC(),
+    r5900ee_immediate5(i8),
+    r5900ee_immediate15(u16),
+    r5900ee_vfs(R5900EEVF),
+    r5900ee_vft(R5900EEVF),
+    r5900ee_vfd(R5900EEVF),
+    r5900ee_vis(R5900EEVI),
+    r5900ee_vit(R5900EEVI),
+    r5900ee_vid(R5900EEVI),
+    r5900ee_ACCxyzw(bool, bool, bool, bool),
+    r5900ee_vfsxyzw(R5900EEVF, bool, bool, bool, bool),
+    r5900ee_vftxyzw(R5900EEVF, bool, bool, bool, bool),
+    r5900ee_vfdxyzw(R5900EEVF, bool, bool, bool, bool),
+    r5900ee_vftn(R5900EEVF, u8),
+    r5900ee_vfsl(R5900EEVF, u8),
+    r5900ee_vftm(R5900EEVF, u8),
+    r5900ee_vis_predecr((), R5900EEVI),
+    r5900ee_vit_predecr((), R5900EEVI),
+    r5900ee_vis_postincr(R5900EEVI, ()),
+    r5900ee_vit_postincr(R5900EEVI, ()),
+    r5900ee_vis_parenthesis(R5900EEVI),
 }
 impl Operand {
     #[must_use]
@@ -991,30 +1003,30 @@ impl Operand {
             ValuedOperand::r4000allegrex_rpy(..) => Self::r4000allegrex_rpy,
             ValuedOperand::r4000allegrex_rpz(..) => Self::r4000allegrex_rpz,
             ValuedOperand::r4000allegrex_rpw(..) => Self::r4000allegrex_rpw,
-            ValuedOperand::r5900_I(..) => Self::r5900_I,
-            ValuedOperand::r5900_Q(..) => Self::r5900_Q,
-            ValuedOperand::r5900_R(..) => Self::r5900_R,
-            ValuedOperand::r5900_ACC(..) => Self::r5900_ACC,
-            ValuedOperand::r5900_immediate5(..) => Self::r5900_immediate5,
-            ValuedOperand::r5900_immediate15(..) => Self::r5900_immediate15,
-            ValuedOperand::r5900_vfs(..) => Self::r5900_vfs,
-            ValuedOperand::r5900_vft(..) => Self::r5900_vft,
-            ValuedOperand::r5900_vfd(..) => Self::r5900_vfd,
-            ValuedOperand::r5900_vis(..) => Self::r5900_vis,
-            ValuedOperand::r5900_vit(..) => Self::r5900_vit,
-            ValuedOperand::r5900_vid(..) => Self::r5900_vid,
-            ValuedOperand::r5900_ACCxyzw(..) => Self::r5900_ACCxyzw,
-            ValuedOperand::r5900_vfsxyzw(..) => Self::r5900_vfsxyzw,
-            ValuedOperand::r5900_vftxyzw(..) => Self::r5900_vftxyzw,
-            ValuedOperand::r5900_vfdxyzw(..) => Self::r5900_vfdxyzw,
-            ValuedOperand::r5900_vftn(..) => Self::r5900_vftn,
-            ValuedOperand::r5900_vfsl(..) => Self::r5900_vfsl,
-            ValuedOperand::r5900_vftm(..) => Self::r5900_vftm,
-            ValuedOperand::r5900_vis_predecr(..) => Self::r5900_vis_predecr,
-            ValuedOperand::r5900_vit_predecr(..) => Self::r5900_vit_predecr,
-            ValuedOperand::r5900_vis_postincr(..) => Self::r5900_vis_postincr,
-            ValuedOperand::r5900_vit_postincr(..) => Self::r5900_vit_postincr,
-            ValuedOperand::r5900_vis_parenthesis(..) => Self::r5900_vis_parenthesis,
+            ValuedOperand::r5900ee_I(..) => Self::r5900ee_I,
+            ValuedOperand::r5900ee_Q(..) => Self::r5900ee_Q,
+            ValuedOperand::r5900ee_R(..) => Self::r5900ee_R,
+            ValuedOperand::r5900ee_ACC(..) => Self::r5900ee_ACC,
+            ValuedOperand::r5900ee_immediate5(..) => Self::r5900ee_immediate5,
+            ValuedOperand::r5900ee_immediate15(..) => Self::r5900ee_immediate15,
+            ValuedOperand::r5900ee_vfs(..) => Self::r5900ee_vfs,
+            ValuedOperand::r5900ee_vft(..) => Self::r5900ee_vft,
+            ValuedOperand::r5900ee_vfd(..) => Self::r5900ee_vfd,
+            ValuedOperand::r5900ee_vis(..) => Self::r5900ee_vis,
+            ValuedOperand::r5900ee_vit(..) => Self::r5900ee_vit,
+            ValuedOperand::r5900ee_vid(..) => Self::r5900ee_vid,
+            ValuedOperand::r5900ee_ACCxyzw(..) => Self::r5900ee_ACCxyzw,
+            ValuedOperand::r5900ee_vfsxyzw(..) => Self::r5900ee_vfsxyzw,
+            ValuedOperand::r5900ee_vftxyzw(..) => Self::r5900ee_vftxyzw,
+            ValuedOperand::r5900ee_vfdxyzw(..) => Self::r5900ee_vfdxyzw,
+            ValuedOperand::r5900ee_vftn(..) => Self::r5900ee_vftn,
+            ValuedOperand::r5900ee_vfsl(..) => Self::r5900ee_vfsl,
+            ValuedOperand::r5900ee_vftm(..) => Self::r5900ee_vftm,
+            ValuedOperand::r5900ee_vis_predecr(..) => Self::r5900ee_vis_predecr,
+            ValuedOperand::r5900ee_vit_predecr(..) => Self::r5900ee_vit_predecr,
+            ValuedOperand::r5900ee_vis_postincr(..) => Self::r5900ee_vis_postincr,
+            ValuedOperand::r5900ee_vit_postincr(..) => Self::r5900ee_vit_postincr,
+            ValuedOperand::r5900ee_vis_parenthesis(..) => Self::r5900ee_vis_parenthesis,
         }
     }
 }

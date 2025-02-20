@@ -21,7 +21,7 @@ mod array_opcodes;
 mod code_decode_isa_extension_none;
 mod code_decode_isa_extension_r3000gte;
 mod code_decode_isa_extension_r4000allegrex;
-mod code_decode_isa_extension_r5900;
+mod code_decode_isa_extension_r5900ee;
 mod code_decode_isa_extension_rsp;
 mod enum_abi;
 mod enum_access_type;
@@ -50,8 +50,8 @@ mod enum_register_r4000allegrex_v4d;
 mod enum_register_r4000allegrex_vcond;
 mod enum_register_r4000allegrex_vconstant;
 mod enum_register_r4000allegrex_vfpucontrol;
-mod enum_register_r5900allegrex_vf;
-mod enum_register_r5900allegrex_vi;
+mod enum_register_r5900ee_vf;
+mod enum_register_r5900ee_vi;
 mod enum_register_rsp_cop0;
 mod enum_register_rsp_cop2;
 mod enum_register_rsp_cop2_control;
@@ -92,8 +92,8 @@ pub use enum_register_r4000allegrex_vconstant::{R4000AllegrexVConstant, R4000ALL
 pub use enum_register_r4000allegrex_vfpucontrol::{
     R4000AllegrexVfpuControl, R4000ALLEGREX_VFPUCONTROL,
 };
-pub use enum_register_r5900allegrex_vf::{R5900VF, R5900_VF};
-pub use enum_register_r5900allegrex_vi::{R5900VI, R5900_VI};
+pub use enum_register_r5900ee_vf::{R5900EEVF, R5900EE_VF};
+pub use enum_register_r5900ee_vi::{R5900EEVI, R5900EE_VI};
 pub use enum_register_rsp_cop0::{RspCop0, RSP_COP0};
 pub use enum_register_rsp_cop2::{RspCop2, RSP_COP2};
 pub use enum_register_rsp_cop2_control::{RspCop2Control, RSP_COP2_CONTROL};

@@ -43,7 +43,7 @@ where
         match self.instr.opcode() {
             Opcode::core_break if self.display_flags.sn64_break_fix() => true,
             Opcode::core_trunc_w_s | Opcode::core_cvt_w_s
-                if self.instr.isa_extension() == Some(IsaExtension::R5900) =>
+                if self.instr.isa_extension() == Some(IsaExtension::R5900EE) =>
             {
                 /*
                  * Due to the R5900's FPU (floating point unit) not being
@@ -68,22 +68,22 @@ where
                  * is built with GAS, we decode thse two instructions as
                  * `.word`s.
                  */
-                self.display_flags.r5900_modern_gas_instrs_workarounds()
+                self.display_flags.r5900ee_modern_gas_instrs_workarounds()
             }
-            Opcode::r5900_vclipw => {
+            Opcode::r5900ee_vclipw => {
                 /*
                  * The `vclipw` instruction has variants that are undocumented
                  * (i.e. `vclipw.xy`, `vclipw.z`) and won't assembly assemble
                  * when using GAS.
                  */
-                self.display_flags.r5900_modern_gas_instrs_workarounds()
+                self.display_flags.r5900ee_modern_gas_instrs_workarounds()
             }
-            Opcode::r5900_vsqrt => {
+            Opcode::r5900ee_vsqrt => {
                 /*
                  * The `vsqrt` instruction seems to be representable in
                  * multiple ways, but we only disassemble one of them.
                  */
-                self.display_flags.r5900_modern_gas_instrs_workarounds()
+                self.display_flags.r5900ee_modern_gas_instrs_workarounds()
             }
             _ => false,
         }

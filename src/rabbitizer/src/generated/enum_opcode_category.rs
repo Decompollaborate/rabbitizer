@@ -82,26 +82,26 @@ pub enum OpcodeCategory {
     R4000ALLEGREX_VFPU6_FMT7_FMT0,
     R4000ALLEGREX_VFPU7,
     R4000ALLEGREX_QUADLR,
-    R5900_NORMAL,
-    R5900_SPECIAL,
-    R5900_REGIMM,
-    R5900_COP0,
-    R5900_COP0_TLB,
-    R5900_COP1,
-    R5900_COP1_FPUS,
-    R5900_COP2,
-    R5900_COP2_NOHIGHBIT,
-    R5900_COP2_BC2,
-    R5900_COP2_SPECIAL1,
-    R5900_COP2_SPECIAL2,
-    R5900_COP2_VIWR,
-    R5900_MMI,
-    R5900_MMI_0,
-    R5900_MMI_1,
-    R5900_MMI_2,
-    R5900_MMI_3,
-    R5900_MMI_PMFHL,
-    R5900_MMI_PMTHL,
+    R5900EE_NORMAL,
+    R5900EE_SPECIAL,
+    R5900EE_REGIMM,
+    R5900EE_COP0,
+    R5900EE_COP0_TLB,
+    R5900EE_COP1,
+    R5900EE_COP1_FPUS,
+    R5900EE_COP2,
+    R5900EE_COP2_NOHIGHBIT,
+    R5900EE_COP2_BC2,
+    R5900EE_COP2_SPECIAL1,
+    R5900EE_COP2_SPECIAL2,
+    R5900EE_COP2_VIWR,
+    R5900EE_MMI,
+    R5900EE_MMI_0,
+    R5900EE_MMI_1,
+    R5900EE_MMI_2,
+    R5900EE_MMI_3,
+    R5900EE_MMI_PMFHL,
+    R5900EE_MMI_PMTHL,
 }
 pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] = {
     let mut table = [OpcodeCategoryDescriptor::default(); OPCODE_CATEGORY_COUNT];
@@ -334,67 +334,67 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     table[OpcodeCategory::R4000ALLEGREX_QUADLR as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "QUADLR"))
     };
-    table[OpcodeCategory::R5900_NORMAL as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "NORMAL"))
+    table[OpcodeCategory::R5900EE_NORMAL as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "NORMAL"))
     };
-    table[OpcodeCategory::R5900_SPECIAL as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "SPECIAL"))
+    table[OpcodeCategory::R5900EE_SPECIAL as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "SPECIAL"))
     };
-    table[OpcodeCategory::R5900_REGIMM as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "REGIMM"))
+    table[OpcodeCategory::R5900EE_REGIMM as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "REGIMM"))
     };
-    table[OpcodeCategory::R5900_COP0 as usize] = OpcodeCategoryDescriptor {
+    table[OpcodeCategory::R5900EE_COP0 as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP0"))
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP0"))
     };
-    table[OpcodeCategory::R5900_COP0_TLB as usize] = OpcodeCategoryDescriptor {
+    table[OpcodeCategory::R5900EE_COP0_TLB as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP0_TLB"))
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP0_TLB"))
     };
-    table[OpcodeCategory::R5900_COP1 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP1"))
+    table[OpcodeCategory::R5900EE_COP1 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP1"))
     };
-    table[OpcodeCategory::R5900_COP1_FPUS as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP1_FPUS"))
+    table[OpcodeCategory::R5900EE_COP1_FPUS as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP1_FPUS"))
     };
-    table[OpcodeCategory::R5900_COP2 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP2"))
+    table[OpcodeCategory::R5900EE_COP2 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2"))
     };
-    table[OpcodeCategory::R5900_COP2_NOHIGHBIT as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP2_NOHIGHBIT"))
+    table[OpcodeCategory::R5900EE_COP2_NOHIGHBIT as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_NOHIGHBIT"))
     };
-    table[OpcodeCategory::R5900_COP2_BC2 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP2_BC2"))
+    table[OpcodeCategory::R5900EE_COP2_BC2 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_BC2"))
     };
-    table[OpcodeCategory::R5900_COP2_SPECIAL1 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP2_SPECIAL1"))
+    table[OpcodeCategory::R5900EE_COP2_SPECIAL1 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_SPECIAL1"))
     };
-    table[OpcodeCategory::R5900_COP2_SPECIAL2 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP2_SPECIAL2"))
+    table[OpcodeCategory::R5900EE_COP2_SPECIAL2 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_SPECIAL2"))
     };
-    table[OpcodeCategory::R5900_COP2_VIWR as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "COP2_VIWR"))
+    table[OpcodeCategory::R5900EE_COP2_VIWR as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_VIWR"))
     };
-    table[OpcodeCategory::R5900_MMI as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "MMI"))
+    table[OpcodeCategory::R5900EE_MMI as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI"))
     };
-    table[OpcodeCategory::R5900_MMI_0 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "MMI_0"))
+    table[OpcodeCategory::R5900EE_MMI_0 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_0"))
     };
-    table[OpcodeCategory::R5900_MMI_1 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "MMI_1"))
+    table[OpcodeCategory::R5900EE_MMI_1 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_1"))
     };
-    table[OpcodeCategory::R5900_MMI_2 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "MMI_2"))
+    table[OpcodeCategory::R5900EE_MMI_2 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_2"))
     };
-    table[OpcodeCategory::R5900_MMI_3 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "MMI_3"))
+    table[OpcodeCategory::R5900EE_MMI_3 as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_3"))
     };
-    table[OpcodeCategory::R5900_MMI_PMFHL as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "MMI_PMFHL"))
+    table[OpcodeCategory::R5900EE_MMI_PMFHL as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_PMFHL"))
     };
-    table[OpcodeCategory::R5900_MMI_PMTHL as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("R5900", "_", "MMI_PMTHL"))
+    table[OpcodeCategory::R5900EE_MMI_PMTHL as usize] = OpcodeCategoryDescriptor {
+        ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_PMTHL"))
     };
     table
 };

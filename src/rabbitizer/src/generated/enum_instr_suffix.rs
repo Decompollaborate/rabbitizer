@@ -7,5 +7,5 @@
 #[allow(non_camel_case_types)]
 #[non_exhaustive]
 pub enum InstrSuffix {
-    R5900_xyzw,
+    R5900EE_xyzw,
 }

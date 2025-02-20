@@ -412,111 +412,111 @@ fn display_r4000allegrex(c: &mut Criterion) {
     });
 }
 
-fn decode_r5900(c: &mut Criterion) {
+fn decode_r5900ee(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new_extension(IsaExtension::R5900);
+    let flags = InstructionFlags::new_extension(IsaExtension::R5900EE);
 
-    c.bench_function("decode R5900: nop", |b| {
+    c.bench_function("decode R5900EE: nop", |b| {
         b.iter(|| Instruction::new(black_box(0x00000000), vram, flags))
     });
-    c.bench_function("decode R5900: jal", |b| {
+    c.bench_function("decode R5900EE: jal", |b| {
         b.iter(|| Instruction::new(black_box(0x0C123456), vram, flags))
     });
-    c.bench_function("decode R5900: jr", |b| {
+    c.bench_function("decode R5900EE: jr", |b| {
         b.iter(|| Instruction::new(black_box(0x03E00008), vram, flags))
     });
-    c.bench_function("decode R5900: bltz", |b| {
+    c.bench_function("decode R5900EE: bltz", |b| {
         b.iter(|| Instruction::new(black_box(0x0440FFF7), vram, flags))
     });
-    c.bench_function("decode R5900: cvt.s.w", |b| {
+    c.bench_function("decode R5900EE: cvt.s.w", |b| {
         b.iter(|| Instruction::new(black_box(0x468010A0), vram, flags))
     });
-    c.bench_function("decode R5900: vcallms", |b| {
+    c.bench_function("decode R5900EE: vcallms", |b| {
         b.iter(|| Instruction::new(black_box(0x4A000038), vram, flags))
     });
-    c.bench_function("decode R5900: pmthl.lw", |b| {
+    c.bench_function("decode R5900EE: pmthl.lw", |b| {
         b.iter(|| Instruction::new(black_box(0x70000031), vram, flags))
     });
-    c.bench_function("decode R5900: vilwr.w", |b| {
+    c.bench_function("decode R5900EE: vilwr.w", |b| {
         b.iter(|| Instruction::new(black_box(0x4A220BFE), vram, flags))
     });
-    c.bench_function("decode R5900: psrlw", |b| {
+    c.bench_function("decode R5900EE: psrlw", |b| {
         b.iter(|| Instruction::new(black_box(0x7011133E), vram, flags))
     });
-    c.bench_function("decode R5900: vrnext", |b| {
+    c.bench_function("decode R5900EE: vrnext", |b| {
         b.iter(|| Instruction::new(black_box(0x4A06043C), vram, flags))
     });
 }
 
-fn display_r5900(c: &mut Criterion) {
+fn display_r5900ee(c: &mut Criterion) {
     let vram = Vram::new(0x80000000);
-    let flags = InstructionFlags::new_extension(IsaExtension::R5900);
+    let flags = InstructionFlags::new_extension(IsaExtension::R5900EE);
     let display_flags = InstructionDisplayFlags::new_gnu_as();
 
-    c.bench_function("display R5900: nop", |b| {
+    c.bench_function("display R5900EE: nop", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x00000000), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: jal", |b| {
+    c.bench_function("display R5900EE: jal", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x0C123456), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: jr", |b| {
+    c.bench_function("display R5900EE: jr", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x03E00008), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: bltz", |b| {
+    c.bench_function("display R5900EE: bltz", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x0440FFF7), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: cvt.s.w", |b| {
+    c.bench_function("display R5900EE: cvt.s.w", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x468010A0), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: vcallms", |b| {
+    c.bench_function("display R5900EE: vcallms", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x4A000038), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: pmthl.lw", |b| {
+    c.bench_function("display R5900EE: pmthl.lw", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x70000031), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: vilwr.w", |b| {
+    c.bench_function("display R5900EE: vilwr.w", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x4A220BFE), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: psrlw", |b| {
+    c.bench_function("display R5900EE: psrlw", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x7011133E), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
                 .to_string()
         })
     });
-    c.bench_function("display R5900: vrnext", |b| {
+    c.bench_function("display R5900EE: vrnext", |b| {
         b.iter(|| {
             Instruction::new(black_box(0x4A06043C), vram, flags)
                 .display::<&str>(&display_flags, None, 0)
@@ -535,7 +535,7 @@ criterion_group!(
     display_r3000gte,
     decode_r4000allegrex,
     display_r4000allegrex,
-    decode_r5900,
-    display_r5900
+    decode_r5900ee,
+    display_r5900ee
 );
 criterion_main!(benches);

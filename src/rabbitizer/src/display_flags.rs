@@ -31,8 +31,8 @@ pub struct InstructionDisplayFlags {
     gnu_div: bool,
     sn64_break_fix: bool,
 
-    r5900_modern_gas_instrs_workarounds: bool,
-    r5900_use_dollar: bool,
+    r5900ee_modern_gas_instrs_workarounds: bool,
+    r5900ee_use_dollar: bool,
 }
 
 impl InstructionDisplayFlags {
@@ -55,8 +55,8 @@ impl InstructionDisplayFlags {
             gnu_div: true,
             sn64_break_fix: false,
 
-            r5900_modern_gas_instrs_workarounds: false,
-            r5900_use_dollar: false,
+            r5900ee_modern_gas_instrs_workarounds: false,
+            r5900ee_use_dollar: false,
         }
     }
 
@@ -71,8 +71,8 @@ impl InstructionDisplayFlags {
             gnu_div: true,
             sn64_break_fix: false,
 
-            r5900_modern_gas_instrs_workarounds: true,
-            r5900_use_dollar: true,
+            r5900ee_modern_gas_instrs_workarounds: true,
+            r5900ee_use_dollar: true,
             ..Self::new()
         }
     }
@@ -85,8 +85,8 @@ impl InstructionDisplayFlags {
             gnu_div: false,
             sn64_break_fix: false,
 
-            r5900_modern_gas_instrs_workarounds: false,
-            r5900_use_dollar: false,
+            r5900ee_modern_gas_instrs_workarounds: false,
+            r5900ee_use_dollar: false,
             ..Self::new()
         }
     }
@@ -278,34 +278,34 @@ impl InstructionDisplayFlags {
     }
 
     #[must_use]
-    pub const fn r5900_modern_gas_instrs_workarounds(&self) -> bool {
-        self.r5900_modern_gas_instrs_workarounds
+    pub const fn r5900ee_modern_gas_instrs_workarounds(&self) -> bool {
+        self.r5900ee_modern_gas_instrs_workarounds
     }
-    pub fn r5900_modern_gas_instrs_workarounds_mut(&mut self) -> &mut bool {
-        &mut self.r5900_modern_gas_instrs_workarounds
+    pub fn r5900ee_modern_gas_instrs_workarounds_mut(&mut self) -> &mut bool {
+        &mut self.r5900ee_modern_gas_instrs_workarounds
     }
     #[must_use]
-    pub const fn with_r5900_modern_gas_instrs_workarounds(
+    pub const fn with_r5900ee_modern_gas_instrs_workarounds(
         self,
-        r5900_modern_gas_instrs_workarounds: bool,
+        r5900ee_modern_gas_instrs_workarounds: bool,
     ) -> Self {
         Self {
-            r5900_modern_gas_instrs_workarounds,
+            r5900ee_modern_gas_instrs_workarounds,
             ..self
         }
     }
 
     #[must_use]
-    pub const fn r5900_use_dollar(&self) -> bool {
-        self.r5900_use_dollar
+    pub const fn r5900ee_use_dollar(&self) -> bool {
+        self.r5900ee_use_dollar
     }
-    pub fn r5900_use_dollar_mut(&mut self) -> &mut bool {
-        &mut self.r5900_use_dollar
+    pub fn r5900ee_use_dollar_mut(&mut self) -> &mut bool {
+        &mut self.r5900ee_use_dollar
     }
     #[must_use]
-    pub const fn with_r5900_use_dollar(self, r5900_use_dollar: bool) -> Self {
+    pub const fn with_r5900ee_use_dollar(self, r5900ee_use_dollar: bool) -> Self {
         Self {
-            r5900_use_dollar,
+            r5900ee_use_dollar,
             ..self
         }
     }
@@ -367,16 +367,16 @@ pub(crate) mod python_bindings {
         pub fn py_set_sn64_break_fix(&mut self, sn64_break_fix: bool) {
             self.sn64_break_fix = sn64_break_fix;
         }
-        #[pyo3(name = "set_r5900_modern_gas_instrs_workarounds")]
-        pub fn py_set_r5900_modern_gas_instrs_workarounds(
+        #[pyo3(name = "set_r5900ee_modern_gas_instrs_workarounds")]
+        pub fn py_set_r5900ee_modern_gas_instrs_workarounds(
             &mut self,
-            r5900_modern_gas_instrs_workarounds: bool,
+            r5900ee_modern_gas_instrs_workarounds: bool,
         ) {
-            self.r5900_modern_gas_instrs_workarounds = r5900_modern_gas_instrs_workarounds;
+            self.r5900ee_modern_gas_instrs_workarounds = r5900ee_modern_gas_instrs_workarounds;
         }
-        #[pyo3(name = "set_r5900_use_dollar")]
-        pub fn py_set_r5900_use_dollar(&mut self, r5900_use_dollar: bool) {
-            self.r5900_use_dollar = r5900_use_dollar;
+        #[pyo3(name = "set_r5900ee_use_dollar")]
+        pub fn py_set_r5900ee_use_dollar(&mut self, r5900ee_use_dollar: bool) {
+            self.r5900ee_use_dollar = r5900ee_use_dollar;
         }
     }
 }

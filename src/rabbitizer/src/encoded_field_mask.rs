@@ -140,32 +140,32 @@ bitflags! {
 
         /* r5000 */
 
-        const r5900_cop2_highbit = utils::bitmask(25,  1);
-        const r5900_cop2_nohighbit_fmt = utils::bitmask(21,  4);
+        const r5900ee_cop2_highbit = utils::bitmask(25,  1);
+        const r5900ee_cop2_nohighbit_fmt = utils::bitmask(21,  4);
 
-        const r5900_mmi_function = utils::bitmask(  6,  5);
-        const r5900_fhi_flo = utils::bitmask(  6,  5) | utils::bitmask(  0,  2);
-        const r5900_viwr_fhilo = utils::bitmask( 21,  4) | utils::bitmask(  0,  2);
+        const r5900ee_mmi_function = utils::bitmask(  6,  5);
+        const r5900ee_fhi_flo = utils::bitmask(  6,  5) | utils::bitmask(  0,  2);
+        const r5900ee_viwr_fhilo = utils::bitmask( 21,  4) | utils::bitmask(  0,  2);
 
-        const r5900_immediate5 = utils::bitmask(  6,  5);
-        const r5900_immediate15 = utils::bitmask(  6, 15);
+        const r5900ee_immediate5 = utils::bitmask(  6,  5);
+        const r5900ee_immediate15 = utils::bitmask(  6, 15);
 
-        const r5900_vfs = utils::bitmask( 11,  5);
-        const r5900_vft = utils::bitmask( 16,  5);
-        const r5900_vfd = utils::bitmask(  6,  5);
+        const r5900ee_vfs = utils::bitmask( 11,  5);
+        const r5900ee_vft = utils::bitmask( 16,  5);
+        const r5900ee_vfd = utils::bitmask(  6,  5);
 
-        const r5900_vis = utils::bitmask( 11,  5);
-        const r5900_vit = utils::bitmask( 16,  5);
-        const r5900_vid = utils::bitmask(  6,  5);
+        const r5900ee_vis = utils::bitmask( 11,  5);
+        const r5900ee_vit = utils::bitmask( 16,  5);
+        const r5900ee_vid = utils::bitmask(  6,  5);
 
-        const r5900_xyzw_x = utils::bitmask( 24,  1);
-        const r5900_xyzw_y = utils::bitmask( 23,  1);
-        const r5900_xyzw_z = utils::bitmask( 22,  1);
-        const r5900_xyzw_w = utils::bitmask( 21,  1);
-        const r5900_xyzw_xyzw = Self::r5900_xyzw_x.union(Self::r5900_xyzw_y).union(Self::r5900_xyzw_z).union(Self::r5900_xyzw_w).bits();
-        const r5900_n = utils::bitmask(  0,  2);
-        const r5900_l = utils::bitmask( 21,  2);
-        const r5900_m = utils::bitmask( 23,  2);
+        const r5900ee_xyzw_x = utils::bitmask( 24,  1);
+        const r5900ee_xyzw_y = utils::bitmask( 23,  1);
+        const r5900ee_xyzw_z = utils::bitmask( 22,  1);
+        const r5900ee_xyzw_w = utils::bitmask( 21,  1);
+        const r5900ee_xyzw_xyzw = Self::r5900ee_xyzw_x.union(Self::r5900ee_xyzw_y).union(Self::r5900ee_xyzw_z).union(Self::r5900ee_xyzw_w).bits();
+        const r5900ee_n = utils::bitmask(  0,  2);
+        const r5900ee_l = utils::bitmask( 21,  2);
+        const r5900ee_m = utils::bitmask( 23,  2);
 
         const _ = !0;
     }

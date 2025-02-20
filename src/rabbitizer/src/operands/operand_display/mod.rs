@@ -10,7 +10,7 @@ use crate::operands::Operand;
 pub(crate) mod operand_display_none;
 pub(crate) mod operand_display_r3000gte;
 pub(crate) mod operand_display_r4000allegrex;
-pub(crate) mod operand_display_r5900;
+pub(crate) mod operand_display_r5900ee;
 pub(crate) mod operand_display_rsp;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]

@@ -6333,7 +6333,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         )
     }
     .check_panic_chain();
-    table[Opcode::r5900_lq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_lq as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -6342,10 +6342,10 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::QUADWORD),
-        ..OpcodeDescriptor::new("lq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("lq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_sq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_sq as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -6354,2219 +6354,2395 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         does_dereference: true,
         does_store: true,
         access_type: Some(AccessType::QUADWORD),
-        ..OpcodeDescriptor::new("sq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("sq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_lqc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vft, Operand::core_immediate_base),
+    table[Opcode::r5900ee_lqc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::QUADWORD),
-        ..OpcodeDescriptor::new("lqc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("lqc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_sqc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vft, Operand::core_immediate_base),
+    table[Opcode::r5900ee_sqc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
         access_type: Some(AccessType::QUADWORD),
-        ..OpcodeDescriptor::new("sqc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("sqc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_sync_p as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_sync_p as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("sync.p", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("sync.p", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mult as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mult as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("mult", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mult", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mfsa as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mfsa as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("mfsa", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mfsa", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mtsa as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mtsa as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
-        ..OpcodeDescriptor::new("mtsa", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mtsa", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_mtsab as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mtsab as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
-        ..OpcodeDescriptor::new("mtsab", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mtsab", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mtsah as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mtsah as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true,
-        ..OpcodeDescriptor::new("mtsah", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mtsah", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_madd as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_madd as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("madd", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("madd", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_maddu as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_maddu as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("maddu", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("maddu", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_plzcw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_plzcw as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
-        ..OpcodeDescriptor::new("plzcw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("plzcw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mfhi1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mfhi1 as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("mfhi1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mfhi1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mthi1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mthi1 as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
-        ..OpcodeDescriptor::new("mthi1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mthi1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mflo1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mflo1 as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         reads_rd: true,
-        ..OpcodeDescriptor::new("mflo1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mflo1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mtlo1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mtlo1 as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
-        ..OpcodeDescriptor::new("mtlo1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mtlo1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mult1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mult1 as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("mult1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mult1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_multu1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_multu1 as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("multu1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("multu1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_div1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_div1 as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("div1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("div1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_divu1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_divu1 as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("divu1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("divu1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_madd1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_madd1 as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("madd1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("madd1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_maddu1 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_maddu1 as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("maddu1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("maddu1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psllh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psllh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psllh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psllh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psrlh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psrlh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psrlh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psrlh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psrah as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psrah as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psrah", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psrah", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psllw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psllw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psllw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psllw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psrlw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psrlw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psrlw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psrlw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psraw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psraw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psraw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psraw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_paddw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_paddw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("paddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("paddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pcgtw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pcgtw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pcgtw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pcgtw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmaxw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmaxw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmaxw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmaxw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_paddh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_paddh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("paddh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("paddh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pcgth as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pcgth as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pcgth", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pcgth", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmaxh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmaxh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmaxh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmaxh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_paddb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_paddb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("paddb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("paddb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pcgtb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pcgtb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pcgtb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pcgtb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_paddsw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_paddsw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("paddsw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("paddsw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubsw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubsw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubsw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubsw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pextlw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pextlw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pextlw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pextlw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_ppacw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_ppacw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("ppacw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("ppacw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_paddsh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_paddsh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("paddsh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("paddsh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubsh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubsh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubsh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubsh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pextlh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pextlh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pextlh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pextlh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_ppach as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_ppach as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("ppach", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("ppach", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_paddsb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_paddsb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("paddsb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("paddsb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubsb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubsb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubsb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubsb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pextlb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pextlb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pextlb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pextlb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_ppacb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_ppacb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("ppacb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("ppacb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pext5 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pext5 as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pext5", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pext5", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_ppac5 as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_ppac5 as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("ppac5", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("ppac5", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pabsw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pabsw as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pabsw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pabsw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pceqw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pceqw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pceqw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pceqw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pminw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pminw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pminw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pminw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_padsbh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_padsbh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("padsbh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("padsbh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pabsh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pabsh as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pabsh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pabsh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pceqh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pceqh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pceqh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pceqh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pminh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pminh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pminh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pminh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pceqb as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pceqb as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pceqb", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pceqb", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_padduw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_padduw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("padduw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("padduw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubuw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubuw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubuw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubuw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pextuw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pextuw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pextuw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pextuw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_padduh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_padduh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("padduh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("padduh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubuh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubuh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubuh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubuh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pextuh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pextuh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pextuh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pextuh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_paddub as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_paddub as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
         maybe_is_move: true,
-        ..OpcodeDescriptor::new("paddub", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("paddub", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psubub as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psubub as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psubub", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psubub", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pextub as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pextub as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pextub", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pextub", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_qfsrv as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_qfsrv as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("qfsrv", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("qfsrv", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmaddw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmaddw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmaddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmaddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psllvw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psllvw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psllvw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psllvw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_psrlvw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psrlvw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psrlvw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psrlvw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmsubw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmsubw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmsubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmsubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmfhi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmfhi as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmfhi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmflo as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmflo as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmflo", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmflo", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pinth as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pinth as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pinth", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pinth", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmultw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmultw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmultw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmultw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pdivw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pdivw as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pdivw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pdivw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pcpyld as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pcpyld as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pcpyld", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pcpyld", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmaddh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmaddh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmaddh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmaddh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_phmadh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_phmadh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("phmadh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("phmadh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pand as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pand as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pand", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pand", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pxor as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pxor as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pxor", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pxor", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmsubh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmsubh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmsubh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmsubh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_phmsbh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_phmsbh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("phmsbh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("phmsbh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pexeh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pexeh as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pexeh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pexeh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_prevh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_prevh as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("prevh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("prevh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmulth as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmulth as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmulth", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmulth", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pdivbw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pdivbw as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pdivbw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pdivbw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pexew as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pexew as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pexew", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pexew", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_prot3w as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_prot3w as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("prot3w", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("prot3w", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmadduw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmadduw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmadduw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "pmadduw",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_psravw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_psravw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("psravw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("psravw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmthi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmthi as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
-        ..OpcodeDescriptor::new("pmthi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmthi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmtlo as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmtlo as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
-        ..OpcodeDescriptor::new("pmtlo", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pmtlo", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pinteh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pinteh as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pinteh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pinteh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmultuw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmultuw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pmultuw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "pmultuw",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_pdivuw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pdivuw as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pdivuw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pdivuw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pcpyud as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pcpyud as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pcpyud", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pcpyud", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_por as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_por as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("por", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("por", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pnor as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pnor as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pnor", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pnor", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pexch as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pexch as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pexch", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pexch", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pcpyh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pcpyh as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pcpyh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pcpyh", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pexcw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pexcw as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         modifies_rd: true,
         reads_rt: true,
-        ..OpcodeDescriptor::new("pexcw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("pexcw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmfhl_lw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmfhl_lw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl.lw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "pmfhl.lw",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmfhl_uw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmfhl_uw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl.uw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "pmfhl.uw",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmfhl_slw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmfhl_slw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
         ..OpcodeDescriptor::new(
             "pmfhl.slw",
             IsaVersion::EXTENSION,
-            Some(IsaExtension::R5900),
+            Some(IsaExtension::R5900EE),
         )
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmfhl_lh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmfhl_lh as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl.lh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "pmfhl.lh",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmfhl_sh as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmfhl_sh as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true,
-        ..OpcodeDescriptor::new("pmfhl.sh", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "pmfhl.sh",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_pmthl_lw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_pmthl_lw as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true,
-        ..OpcodeDescriptor::new("pmthl.lw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "pmthl.lw",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_ei as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_ei as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
-        ..OpcodeDescriptor::new("ei", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("ei", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_di as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_di as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
-        ..OpcodeDescriptor::new("di", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("di", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_c1__sqrt_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_c1__sqrt_s as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_copraw),
-        ..OpcodeDescriptor::new("c1", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("c1", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_rsqrt_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_rsqrt_s as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("rsqrt.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "rsqrt.s",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_adda_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_adda_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("adda.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("adda.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_suba_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_suba_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("suba.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("suba.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_mula_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_mula_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("mula.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("mula.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_madd_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_madd_s as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("madd.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("madd.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_msub_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_msub_s as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("msub.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("msub.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_madda_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_madda_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("madda.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "madda.s",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_msuba_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_msuba_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("msuba.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "msuba.s",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_max_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_max_s as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("max.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("max.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_min_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_min_s as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         is_float: true,
         modifies_fd: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("min.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("min.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_c_lt_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_c_lt_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c.lt.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("c.lt.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_c_le_s as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_c_le_s as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         is_float: true,
         reads_fs: true,
         reads_ft: true,
-        ..OpcodeDescriptor::new("c.le.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("c.le.s", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_qmfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
+    table[Opcode::r5900ee_qmfc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
         modifies_rt: true,
-        ..OpcodeDescriptor::new("qmfc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("qmfc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_cfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
+    table[Opcode::r5900ee_cfc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
         modifies_rt: true,
-        ..OpcodeDescriptor::new("cfc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("cfc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_qmtc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vfs),
+    table[Opcode::r5900ee_qmtc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
         reads_rt: true,
-        ..OpcodeDescriptor::new("qmtc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("qmtc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_ctc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::r5900_vis),
+    table[Opcode::r5900ee_ctc2 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
         reads_rt: true,
-        ..OpcodeDescriptor::new("ctc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("ctc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_bc2f as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_bc2f as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
-        ..OpcodeDescriptor::new("bc2f", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("bc2f", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_bc2t as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_bc2t as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
-        ..OpcodeDescriptor::new("bc2t", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("bc2t", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_bc2fl as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_bc2fl as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true,
-        ..OpcodeDescriptor::new("bc2fl", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("bc2fl", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_bc2tl as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_bc2tl as usize] = OpcodeDescriptor {
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true,
-        ..OpcodeDescriptor::new("bc2tl", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("bc2tl", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddx as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddx as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddx", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddx", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddy as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddy as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddy", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddy", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubx as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubx as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubx", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubx", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsuby as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsuby as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsuby", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsuby", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddx as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddx as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddx", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaddx", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddy as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddy as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddy", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaddy", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaddz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaddw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubx as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubx as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubx", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsubx", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsuby as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsuby as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsuby", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsuby", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsubz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsubw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaxx as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaxx as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaxx", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaxx", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaxy as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaxy as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaxy", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaxy", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaxz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaxz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaxz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaxz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaxw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaxw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaxw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaxw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vminix as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vminix as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vminix", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vminix", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vminiy as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vminiy as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vminiy", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vminiy", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vminiz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vminiz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vminiz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vminiz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vminiw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vminiw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vminiw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vminiw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulx as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulx as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmulx", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmulx", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmuly as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmuly as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmuly", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmuly", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmulz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmulz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmulw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmulw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmulq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmulq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaxi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaxi as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaxi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaxi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmuli as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmuli as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmuli", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmuli", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vminii as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vminii as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vminii", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vminii", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaddq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddi as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddi as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmaddi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsubq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubi as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubi as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsubi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vadd as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vadd as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vadd", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vadd", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmadd as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmadd as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmadd", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmadd", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmul as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmul as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmul", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmul", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmax as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmax as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmax", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmax", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsub as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsub as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsub", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsub", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsub as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsub as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsub", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsub", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vopmsub as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vopmsub as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vopmsub", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vopmsub",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmini as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmini as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vfdxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_vfdxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmini", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmini", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_viadd as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit),
-        ..OpcodeDescriptor::new("viadd", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
-    }
-    .check_panic_chain();
-    table[Opcode::r5900_visub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit),
-        ..OpcodeDescriptor::new("visub", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
-    }
-    .check_panic_chain();
-    table[Opcode::r5900_viaddi as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_viadd as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_vit,
-            Operand::r5900_vis,
-            Operand::r5900_immediate5,
+            Operand::r5900ee_vid,
+            Operand::r5900ee_vis,
+            Operand::r5900ee_vit,
         ),
-        ..OpcodeDescriptor::new("viaddi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("viadd", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_viand as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit),
-        ..OpcodeDescriptor::new("viand", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_visub as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::r5900ee_vid,
+            Operand::r5900ee_vis,
+            Operand::r5900ee_vit,
+        ),
+        ..OpcodeDescriptor::new("visub", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vior as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::r5900_vid, Operand::r5900_vis, Operand::r5900_vit),
-        ..OpcodeDescriptor::new("vior", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_viaddi as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::r5900ee_vit,
+            Operand::r5900ee_vis,
+            Operand::r5900ee_immediate5,
+        ),
+        ..OpcodeDescriptor::new("viaddi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vcallms as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::r5900_immediate15),
-        ..OpcodeDescriptor::new("vcallms", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_viand as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::r5900ee_vid,
+            Operand::r5900ee_vis,
+            Operand::r5900ee_vit,
+        ),
+        ..OpcodeDescriptor::new("viand", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vcallmsr as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::r5900_vis),
-        ..OpcodeDescriptor::new("vcallmsr", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_vior as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::r5900ee_vid,
+            Operand::r5900ee_vis,
+            Operand::r5900ee_vit,
+        ),
+        ..OpcodeDescriptor::new("vior", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
+    }
+    .check_panic_chain();
+    table[Opcode::r5900ee_vcallms as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::r5900ee_immediate15),
+        ..OpcodeDescriptor::new(
+            "vcallms",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
+    }
+    .check_panic_chain();
+    table[Opcode::r5900ee_vcallmsr as usize] = OpcodeDescriptor {
+        operands: Operand::arr1(Operand::r5900ee_vis),
+        ..OpcodeDescriptor::new(
+            "vcallmsr",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_vaddax as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddax as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddax", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddax", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vadday as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vadday as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vadday", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vadday", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddaz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddaz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddaw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddaw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubax as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubax as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubax", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubax", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubay as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubay as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubay", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubay", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubaz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubaz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubaw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubaw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddax as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddax as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmaddax", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new(
+            "vmaddax",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmadday as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmadday as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmadday", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new(
+            "vmadday",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddaz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddaz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmaddaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new(
+            "vmaddaz",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddaw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddaw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmaddaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new(
+            "vmaddaw",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubax as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubax as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubax", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmsubax",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubay as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubay as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubay", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmsubay",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubaz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubaz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmsubaz",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubaw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubaw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmsubaw",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vitof0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vitof0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vitof0", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vitof0", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vitof4 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vitof4 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vitof4", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vitof4", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vitof12 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vitof12 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vitof12", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vitof12",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vitof15 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vitof15 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vitof15", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vitof15",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vftoi0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vftoi0 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vftoi0", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vftoi0", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vftoi4 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vftoi4 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vftoi4", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vftoi4", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vftoi12 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vftoi12 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vftoi12", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vftoi12",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vftoi15 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vftoi15 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vftoi15", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vftoi15",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulax as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulax as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmulax", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new("vmulax", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulay as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulay as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmulay", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new("vmulay", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulaz as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulaz as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmulaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new("vmulaz", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulaw as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulaw as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftn,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftn,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmulaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new("vmulaw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulaq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulaq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmulaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new("vmulaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vabs as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vabs as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vabs", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vabs", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmulai as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmulai as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmulai", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new("vmulai", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vclipw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vfsxyzw, Operand::r5900_vftn),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vclipw as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vfsxyzw, Operand::r5900ee_vftn),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vclipw", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vclipw", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddaq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddaq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddaq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddaq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmaddaq",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vaddai as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vaddai as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vaddai", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vaddai", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmaddai as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmaddai as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmaddai", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmaddai",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubaq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubaq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubaq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubaq as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_Q,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_Q,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubaq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmsubaq",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsubai as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsubai as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsubai", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsubai", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsubai as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsubai as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_I,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_I,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsubai", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vmsubai",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vadda as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vadda as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vftxyzw,
-            Operand::r5900_vfsxyzw,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vftxyzw,
+            Operand::r5900ee_vfsxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vadda", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vadda", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmadda as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmadda as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmadda", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmadda", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmula as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmula as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
-        ..OpcodeDescriptor::new("vmula", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+        ..OpcodeDescriptor::new("vmula", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsuba as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vsuba as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsuba", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsuba", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmsuba as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vmsuba as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vftxyzw,
-            Operand::r5900_vfsxyzw,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vftxyzw,
+            Operand::r5900ee_vfsxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmsuba", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmsuba", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vopmula as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vopmula as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
-            Operand::r5900_ACCxyzw,
-            Operand::r5900_vfsxyzw,
-            Operand::r5900_vftxyzw,
+            Operand::r5900ee_ACCxyzw,
+            Operand::r5900ee_vfsxyzw,
+            Operand::r5900ee_vftxyzw,
         ),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vopmula", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vopmula",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vnop as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vnop as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
-        ..OpcodeDescriptor::new("vnop", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vnop", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmove as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vmove as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmove", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmove", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmr32 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vfsxyzw),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vmr32 as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmr32", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmr32", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vlqi as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vis_postincr),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vlqi as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vis_postincr),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vlqi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vlqi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsqi as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vfsxyzw, Operand::r5900_vit_postincr),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vsqi as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vfsxyzw, Operand::r5900ee_vit_postincr),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsqi", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsqi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vlqd as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vis_predecr),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vlqd as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vis_predecr),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vlqd", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vlqd", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsqd as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vfsxyzw, Operand::r5900_vit_predecr),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vsqd as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vfsxyzw, Operand::r5900ee_vit_predecr),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vsqd", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vsqd", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vdiv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::r5900_Q, Operand::r5900_vfsl, Operand::r5900_vftm),
-        ..OpcodeDescriptor::new("vdiv", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_vdiv as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::r5900ee_Q,
+            Operand::r5900ee_vfsl,
+            Operand::r5900ee_vftm,
+        ),
+        ..OpcodeDescriptor::new("vdiv", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vsqrt as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_Q, Operand::r5900_vftm),
-        ..OpcodeDescriptor::new("vsqrt", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_vsqrt as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_Q, Operand::r5900ee_vftm),
+        ..OpcodeDescriptor::new("vsqrt", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vrsqrt as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::r5900_Q, Operand::r5900_vfsl, Operand::r5900_vftm),
-        ..OpcodeDescriptor::new("vrsqrt", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_vrsqrt as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::r5900ee_Q,
+            Operand::r5900ee_vfsl,
+            Operand::r5900ee_vftm,
+        ),
+        ..OpcodeDescriptor::new("vrsqrt", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vwaitq as usize] = OpcodeDescriptor {
+    table[Opcode::r5900ee_vwaitq as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
-        ..OpcodeDescriptor::new("vwaitq", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vwaitq", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmtir as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vfsl),
-        ..OpcodeDescriptor::new("vmtir", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_vmtir as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vfsl),
+        ..OpcodeDescriptor::new("vmtir", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vmfir as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_vis),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vmfir as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vis),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vmfir", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vmfir", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vrnext as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_R),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vrnext as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_R),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vrnext", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vrnext", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vrget as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vftxyzw, Operand::r5900_R),
-        instr_suffix: Some(InstrSuffix::R5900_xyzw),
+    table[Opcode::r5900ee_vrget as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_R),
+        instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
         is_float: true,
-        ..OpcodeDescriptor::new("vrget", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new("vrget", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vrinit as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_R, Operand::r5900_vfsl),
-        ..OpcodeDescriptor::new("vrinit", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_vrinit as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_R, Operand::r5900ee_vfsl),
+        ..OpcodeDescriptor::new("vrinit", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
-    table[Opcode::r5900_vrxor as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_R, Operand::r5900_vfsl),
-        ..OpcodeDescriptor::new("vrxor", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+    table[Opcode::r5900ee_vrxor as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_R, Operand::r5900ee_vfsl),
+        ..OpcodeDescriptor::new("vrxor", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
     }
     .check_panic_chain();
 
-    table[Opcode::r5900_vilwr_w as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_vilwr_w as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("vilwr.w", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vilwr.w",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vilwr_z as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_vilwr_z as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("vilwr.z", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vilwr.z",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vilwr_y as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_vilwr_y as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("vilwr.y", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vilwr.y",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_vilwr_x as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_vilwr_x as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("vilwr.x", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "vilwr.x",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_viswr_w as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_viswr_w as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("viswr.w", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "viswr.w",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_viswr_z as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_viswr_z as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("viswr.z", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "viswr.z",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_viswr_y as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_viswr_y as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("viswr.y", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "viswr.y",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
-    table[Opcode::r5900_viswr_x as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::r5900_vit, Operand::r5900_vis_parenthesis),
+    table[Opcode::r5900ee_viswr_x as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("viswr.x", IsaVersion::EXTENSION, Some(IsaExtension::R5900))
+        ..OpcodeDescriptor::new(
+            "viswr.x",
+            IsaVersion::EXTENSION,
+            Some(IsaExtension::R5900EE),
+        )
     }
     .check_panic_chain();
     let mut i = 0;

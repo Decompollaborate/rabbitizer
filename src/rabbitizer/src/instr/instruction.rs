@@ -2587,235 +2587,238 @@ impl Instruction {
     }
 }
 
-/// R5900 opcode fields
+/// R5900EE opcode fields
 impl Instruction {
-    /// Returns either the `r5900_immediate5` value embedded on the `r5900_immediate5`
+    /// Returns either the `r5900ee_immediate5` value embedded on the `r5900ee_immediate5`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_immediate5(&self) -> Option<i8> {
-        if self.opcode().has_operand_alias(Operand::r5900_immediate5) {
-            Some(self.field_r5900_immediate5_unchecked())
+    pub fn field_r5900ee_immediate5(&self) -> Option<i8> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_immediate5) {
+            Some(self.field_r5900ee_immediate5_unchecked())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900_immediate15` value embedded on the `r5900_immediate15`
+    /// Returns either the `r5900ee_immediate15` value embedded on the `r5900ee_immediate15`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_immediate15(&self) -> Option<u16> {
-        if self.opcode().has_operand_alias(Operand::r5900_immediate15) {
-            Some(self.field_r5900_immediate15_unchecked())
-        } else {
-            None
-        }
-    }
-
-    /// Returns either the [`R5900VF`] register embedded on the `r5900_vfs`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`R5900VF`]: crate::registers::R5900VF
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_r5900_vfs(&self) -> Option<R5900VF> {
-        if self.opcode().has_operand_alias(Operand::r5900_vfs) {
-            Some(self.field_r5900_vfs_unchecked())
-        } else {
-            None
-        }
-    }
-
-    /// Returns either the [`R5900VF`] register embedded on the `r5900_vft`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`R5900VF`]: crate::registers::R5900VF
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_r5900_vft(&self) -> Option<R5900VF> {
-        if self.opcode().has_operand_alias(Operand::r5900_vft) {
-            Some(self.field_r5900_vft_unchecked())
-        } else {
-            None
-        }
-    }
-
-    /// Returns either the [`R5900VF`] register embedded on the `r5900_vfd`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`R5900VF`]: crate::registers::R5900VF
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_r5900_vfd(&self) -> Option<R5900VF> {
-        if self.opcode().has_operand_alias(Operand::r5900_vfd) {
-            Some(self.field_r5900_vfd_unchecked())
-        } else {
-            None
-        }
-    }
-
-    /// Returns either the [`R5900VI`] register value embedded on the `r5900_vis`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_r5900_vis(&self) -> Option<R5900VI> {
-        if self.opcode().has_operand_alias(Operand::r5900_vis) {
-            Some(self.field_r5900_vis_unchecked())
-        } else {
-            None
-        }
-    }
-
-    /// Returns either the [`R5900VI`] register embedded on the `r5900_vit`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_r5900_vit(&self) -> Option<R5900VI> {
-        if self.opcode().has_operand_alias(Operand::r5900_vit) {
-            Some(self.field_r5900_vit_unchecked())
-        } else {
-            None
-        }
-    }
-
-    /// Returns either the [`R5900VI`] register embedded on the `r5900_vid`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_r5900_vid(&self) -> Option<R5900VI> {
-        if self.opcode().has_operand_alias(Operand::r5900_vid) {
-            Some(self.field_r5900_vid_unchecked())
-        } else {
-            None
-        }
-    }
-
-    /// Returns either the `r5900_xyzw_x` value embedded on the `r5900_xyzw_x`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_r5900_xyzw_x(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+    pub fn field_r5900ee_immediate15(&self) -> Option<u16> {
+        if self
+            .opcode()
+            .has_operand_alias(Operand::r5900ee_immediate15)
         {
-            Some(self.field_r5900_xyzw_x_unchecked())
+            Some(self.field_r5900ee_immediate15_unchecked())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900_xyzw_y` value embedded on the `r5900_xyzw_y`
+    /// Returns either the [`R5900EEVF`] register embedded on the `r5900ee_vfs`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900EEVF`]: crate::registers::R5900EEVF
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900ee_vfs(&self) -> Option<R5900EEVF> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vfs) {
+            Some(self.field_r5900ee_vfs_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900EEVF`] register embedded on the `r5900ee_vft`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900EEVF`]: crate::registers::R5900EEVF
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900ee_vft(&self) -> Option<R5900EEVF> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vft) {
+            Some(self.field_r5900ee_vft_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900EEVF`] register embedded on the `r5900ee_vfd`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900EEVF`]: crate::registers::R5900EEVF
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900ee_vfd(&self) -> Option<R5900EEVF> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vfd) {
+            Some(self.field_r5900ee_vfd_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900EEVI`] register value embedded on the `r5900ee_vis`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900EEVI`]: crate::registers::R5900EEVI
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900ee_vis(&self) -> Option<R5900EEVI> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vis) {
+            Some(self.field_r5900ee_vis_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900EEVI`] register embedded on the `r5900ee_vit`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900EEVI`]: crate::registers::R5900EEVI
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900ee_vit(&self) -> Option<R5900EEVI> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vit) {
+            Some(self.field_r5900ee_vit_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the [`R5900EEVI`] register embedded on the `r5900ee_vid`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`R5900EEVI`]: crate::registers::R5900EEVI
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900ee_vid(&self) -> Option<R5900EEVI> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vid) {
+            Some(self.field_r5900ee_vid_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900ee_xyzw_x` value embedded on the `r5900ee_xyzw_x`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_xyzw_y(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+    pub fn field_r5900ee_xyzw_x(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfdxyzw)
         {
-            Some(self.field_r5900_xyzw_y_unchecked())
+            Some(self.field_r5900ee_xyzw_x_unchecked())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900_xyzw_z` value embedded on the `r5900_xyzw_z`
+    /// Returns either the `r5900ee_xyzw_y` value embedded on the `r5900ee_xyzw_y`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_xyzw_z(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+    pub fn field_r5900ee_xyzw_y(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfdxyzw)
         {
-            Some(self.field_r5900_xyzw_z_unchecked())
+            Some(self.field_r5900ee_xyzw_y_unchecked())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900_xyzw_w` value embedded on the `r5900_xyzw_w`
+    /// Returns either the `r5900ee_xyzw_z` value embedded on the `r5900ee_xyzw_z`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_xyzw_w(&self) -> Option<bool> {
-        if self.opcode().has_operand_alias(Operand::r5900_ACCxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfsxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vftxyzw)
-            || self.opcode().has_operand_alias(Operand::r5900_vfdxyzw)
+    pub fn field_r5900ee_xyzw_z(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfdxyzw)
         {
-            Some(self.field_r5900_xyzw_w_unchecked())
+            Some(self.field_r5900ee_xyzw_z_unchecked())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900_n` value embedded on the `r5900_n`
+    /// Returns either the `r5900ee_xyzw_w` value embedded on the `r5900ee_xyzw_w`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_n(&self) -> Option<u8> {
-        if self.opcode().has_operand_alias(Operand::r5900_vftn) {
-            Some(self.field_r5900_n_unchecked())
+    pub fn field_r5900ee_xyzw_w(&self) -> Option<bool> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_ACCxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfsxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vftxyzw)
+            || self.opcode().has_operand_alias(Operand::r5900ee_vfdxyzw)
+        {
+            Some(self.field_r5900ee_xyzw_w_unchecked())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900_l` value embedded on the `r5900_l`
+    /// Returns either the `r5900ee_n` value embedded on the `r5900ee_n`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_l(&self) -> Option<u8> {
-        if self.opcode().has_operand_alias(Operand::r5900_vfsl) {
-            Some(self.field_r5900_l_unchecked())
+    pub fn field_r5900ee_n(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vftn) {
+            Some(self.field_r5900ee_n_unchecked())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900_m` value embedded on the `r5900_m`
+    /// Returns either the `r5900ee_l` value embedded on the `r5900ee_l`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn field_r5900_m(&self) -> Option<u8> {
-        if self.opcode().has_operand_alias(Operand::r5900_vftm) {
-            Some(self.field_r5900_m_unchecked())
+    pub fn field_r5900ee_l(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vfsl) {
+            Some(self.field_r5900ee_l_unchecked())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `r5900ee_m` value embedded on the `r5900ee_m`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn field_r5900ee_m(&self) -> Option<u8> {
+        if self.opcode().has_operand_alias(Operand::r5900ee_vftm) {
+            Some(self.field_r5900ee_m_unchecked())
         } else {
             None
         }
@@ -2823,266 +2826,266 @@ impl Instruction {
 }
 
 // #[doc(hidden)]
-/// Unchecked R5900 opcode fields
+/// Unchecked R5900EE opcode fields
 impl Instruction {
-    /// Returns the `r5900_immediate5` value embedded on the `r5900_immediate5` field of
+    /// Returns the `r5900ee_immediate5` value embedded on the `r5900ee_immediate5` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_immediate5` value. It is recommended to use the
-    /// [`field_r5900_immediate5`] function instead.
+    /// as an `r5900ee_immediate5` value. It is recommended to use the
+    /// [`field_r5900ee_immediate5`] function instead.
     ///
-    /// [`field_r5900_immediate5`]: Instruction::field_r5900_immediate5
+    /// [`field_r5900ee_immediate5`]: Instruction::field_r5900ee_immediate5
     #[must_use]
-    pub fn field_r5900_immediate5_unchecked(&self) -> i8 {
-        let raw = EncodedFieldMask::r5900_immediate5.get_shifted(self.word());
+    pub fn field_r5900ee_immediate5_unchecked(&self) -> i8 {
+        let raw = EncodedFieldMask::r5900ee_immediate5.get_shifted(self.word());
 
         utils::from_2s_complement(raw, 5).try_into().unwrap()
     }
 
-    /// Returns the `r5900_immediate15` value embedded on the `r5900_immediate15` field of
+    /// Returns the `r5900ee_immediate15` value embedded on the `r5900ee_immediate15` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_immediate15` value. It is recommended to use the
-    /// [`field_r5900_immediate15`] function instead.
+    /// as an `r5900ee_immediate15` value. It is recommended to use the
+    /// [`field_r5900ee_immediate15`] function instead.
     ///
-    /// [`field_r5900_immediate15`]: Instruction::field_r5900_immediate15
+    /// [`field_r5900ee_immediate15`]: Instruction::field_r5900ee_immediate15
     #[must_use]
-    pub fn field_r5900_immediate15_unchecked(&self) -> u16 {
-        EncodedFieldMask::r5900_immediate15
+    pub fn field_r5900ee_immediate15_unchecked(&self) -> u16 {
+        EncodedFieldMask::r5900ee_immediate15
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the [`R5900VF`] register embedded on the `r5900_vfs` field of the word
+    /// Returns the [`R5900EEVF`] register embedded on the `r5900ee_vfs` field of the word
     /// of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vfs`]
+    /// as this field. It is recommended to use the [`field_r5900ee_vfs`]
     /// function instead.
     ///
-    /// [`R5900VF`]: crate::registers::R5900VF
-    /// [`field_r5900_vfs`]: Instruction::field_r5900_vfs
+    /// [`R5900EEVF`]: crate::registers::R5900EEVF
+    /// [`field_r5900ee_vfs`]: Instruction::field_r5900ee_vfs
     #[must_use]
-    pub fn field_r5900_vfs_unchecked(&self) -> R5900VF {
-        EncodedFieldMask::r5900_vfs
+    pub fn field_r5900ee_vfs_unchecked(&self) -> R5900EEVF {
+        EncodedFieldMask::r5900ee_vfs
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the [`R5900VF`] register embedded on the `r5900_vft` field of the word
+    /// Returns the [`R5900EEVF`] register embedded on the `r5900ee_vft` field of the word
     /// of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vft`]
+    /// as this field. It is recommended to use the [`field_r5900ee_vft`]
     /// function instead.
     ///
-    /// [`R5900VF`]: crate::registers::R5900VF
-    /// [`field_r5900_vft`]: Instruction::field_r5900_vft
+    /// [`R5900EEVF`]: crate::registers::R5900EEVF
+    /// [`field_r5900ee_vft`]: Instruction::field_r5900ee_vft
     #[must_use]
-    pub fn field_r5900_vft_unchecked(&self) -> R5900VF {
-        EncodedFieldMask::r5900_vft
+    pub fn field_r5900ee_vft_unchecked(&self) -> R5900EEVF {
+        EncodedFieldMask::r5900ee_vft
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the [`R5900VF`] register embedded on the `r5900_vfd` field of the word
+    /// Returns the [`R5900EEVF`] register embedded on the `r5900ee_vfd` field of the word
     /// of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vfd`]
+    /// as this field. It is recommended to use the [`field_r5900ee_vfd`]
     /// function instead.
     ///
-    /// [`R5900VF`]: crate::registers::R5900VF
-    /// [`field_r5900_vfd`]: Instruction::field_r5900_vfd
+    /// [`R5900EEVF`]: crate::registers::R5900EEVF
+    /// [`field_r5900ee_vfd`]: Instruction::field_r5900ee_vfd
     #[must_use]
-    pub fn field_r5900_vfd_unchecked(&self) -> R5900VF {
-        EncodedFieldMask::r5900_vfd
+    pub fn field_r5900ee_vfd_unchecked(&self) -> R5900EEVF {
+        EncodedFieldMask::r5900ee_vfd
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the [`R5900VI`] register embedded on the `r5900_vis` field of the word
+    /// Returns the [`R5900EEVI`] register embedded on the `r5900ee_vis` field of the word
     /// of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vis`]
+    /// as this field. It is recommended to use the [`field_r5900ee_vis`]
     /// function instead.
     ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`field_r5900_vis`]: Instruction::field_r5900_vis
+    /// [`R5900EEVI`]: crate::registers::R5900EEVI
+    /// [`field_r5900ee_vis`]: Instruction::field_r5900ee_vis
     #[must_use]
-    pub fn field_r5900_vis_unchecked(&self) -> R5900VI {
-        EncodedFieldMask::r5900_vis
+    pub fn field_r5900ee_vis_unchecked(&self) -> R5900EEVI {
+        EncodedFieldMask::r5900ee_vis
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the [`R5900VI`] register embedded on the `r5900_vit` field of the word
+    /// Returns the [`R5900EEVI`] register embedded on the `r5900ee_vit` field of the word
     /// of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vit`]
+    /// as this field. It is recommended to use the [`field_r5900ee_vit`]
     /// function instead.
     ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`field_r5900_vit`]: Instruction::field_r5900_vit
+    /// [`R5900EEVI`]: crate::registers::R5900EEVI
+    /// [`field_r5900ee_vit`]: Instruction::field_r5900ee_vit
     #[must_use]
-    pub fn field_r5900_vit_unchecked(&self) -> R5900VI {
-        EncodedFieldMask::r5900_vit
+    pub fn field_r5900ee_vit_unchecked(&self) -> R5900EEVI {
+        EncodedFieldMask::r5900ee_vit
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the [`R5900VI`] register embedded on the `r5900_vid` field of the word
+    /// Returns the [`R5900EEVI`] register embedded on the `r5900ee_vid` field of the word
     /// of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_r5900_vid`]
+    /// as this field. It is recommended to use the [`field_r5900ee_vid`]
     /// function instead.
     ///
-    /// [`R5900VI`]: crate::registers::R5900VI
-    /// [`field_r5900_vid`]: Instruction::field_r5900_vid
+    /// [`R5900EEVI`]: crate::registers::R5900EEVI
+    /// [`field_r5900ee_vid`]: Instruction::field_r5900ee_vid
     #[must_use]
-    pub fn field_r5900_vid_unchecked(&self) -> R5900VI {
-        EncodedFieldMask::r5900_vid
+    pub fn field_r5900ee_vid_unchecked(&self) -> R5900EEVI {
+        EncodedFieldMask::r5900ee_vid
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the `r5900_xyzw_x` value embedded on the `r5900_xyzw_x` field of
+    /// Returns the `r5900ee_xyzw_x` value embedded on the `r5900ee_xyzw_x` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_xyzw_x` value. It is recommended to use the
-    /// [`field_r5900_xyzw_x`] function instead.
+    /// as an `r5900ee_xyzw_x` value. It is recommended to use the
+    /// [`field_r5900ee_xyzw_x`] function instead.
     ///
-    /// [`field_r5900_xyzw_x`]: Instruction::field_r5900_xyzw_x
+    /// [`field_r5900ee_xyzw_x`]: Instruction::field_r5900ee_xyzw_x
     #[must_use]
-    pub const fn field_r5900_xyzw_x_unchecked(&self) -> bool {
-        EncodedFieldMask::r5900_xyzw_x.get_shifted(self.word()) != 0
+    pub const fn field_r5900ee_xyzw_x_unchecked(&self) -> bool {
+        EncodedFieldMask::r5900ee_xyzw_x.get_shifted(self.word()) != 0
     }
 
-    /// Returns the `r5900_xyzw_y` value embedded on the `r5900_xyzw_y` field of
+    /// Returns the `r5900ee_xyzw_y` value embedded on the `r5900ee_xyzw_y` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_xyzw_y` value. It is recommended to use the
-    /// [`field_r5900_xyzw_y`] function instead.
+    /// as an `r5900ee_xyzw_y` value. It is recommended to use the
+    /// [`field_r5900ee_xyzw_y`] function instead.
     ///
-    /// [`field_r5900_xyzw_y`]: Instruction::field_r5900_xyzw_y
+    /// [`field_r5900ee_xyzw_y`]: Instruction::field_r5900ee_xyzw_y
     #[must_use]
-    pub const fn field_r5900_xyzw_y_unchecked(&self) -> bool {
-        EncodedFieldMask::r5900_xyzw_y.get_shifted(self.word()) != 0
+    pub const fn field_r5900ee_xyzw_y_unchecked(&self) -> bool {
+        EncodedFieldMask::r5900ee_xyzw_y.get_shifted(self.word()) != 0
     }
 
-    /// Returns the `r5900_xyzw_z` value embedded on the `r5900_xyzw_z` field of
+    /// Returns the `r5900ee_xyzw_z` value embedded on the `r5900ee_xyzw_z` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_xyzw_z` value. It is recommended to use the
-    /// [`field_r5900_xyzw_z`] function instead.
+    /// as an `r5900ee_xyzw_z` value. It is recommended to use the
+    /// [`field_r5900ee_xyzw_z`] function instead.
     ///
-    /// [`field_r5900_xyzw_z`]: Instruction::field_r5900_xyzw_z
+    /// [`field_r5900ee_xyzw_z`]: Instruction::field_r5900ee_xyzw_z
     #[must_use]
-    pub const fn field_r5900_xyzw_z_unchecked(&self) -> bool {
-        EncodedFieldMask::r5900_xyzw_z.get_shifted(self.word()) != 0
+    pub const fn field_r5900ee_xyzw_z_unchecked(&self) -> bool {
+        EncodedFieldMask::r5900ee_xyzw_z.get_shifted(self.word()) != 0
     }
 
-    /// Returns the `r5900_xyzw_w` value embedded on the `r5900_xyzw_w` field of
+    /// Returns the `r5900ee_xyzw_w` value embedded on the `r5900ee_xyzw_w` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_xyzw_w` value. It is recommended to use the
-    /// [`field_r5900_xyzw_w`] function instead.
+    /// as an `r5900ee_xyzw_w` value. It is recommended to use the
+    /// [`field_r5900ee_xyzw_w`] function instead.
     ///
-    /// [`field_r5900_xyzw_w`]: Instruction::field_r5900_xyzw_w
+    /// [`field_r5900ee_xyzw_w`]: Instruction::field_r5900ee_xyzw_w
     #[must_use]
-    pub const fn field_r5900_xyzw_w_unchecked(&self) -> bool {
-        EncodedFieldMask::r5900_xyzw_w.get_shifted(self.word()) != 0
+    pub const fn field_r5900ee_xyzw_w_unchecked(&self) -> bool {
+        EncodedFieldMask::r5900ee_xyzw_w.get_shifted(self.word()) != 0
     }
 
-    /// Returns the `r5900_n` value embedded on the `r5900_n` field of
+    /// Returns the `r5900ee_n` value embedded on the `r5900ee_n` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_n` value. It is recommended to use the
-    /// [`field_r5900_n`] function instead.
+    /// as an `r5900ee_n` value. It is recommended to use the
+    /// [`field_r5900ee_n`] function instead.
     ///
-    /// [`field_r5900_n`]: Instruction::field_r5900_n
+    /// [`field_r5900ee_n`]: Instruction::field_r5900ee_n
     #[must_use]
-    pub fn field_r5900_n_unchecked(&self) -> u8 {
-        EncodedFieldMask::r5900_n
+    pub fn field_r5900ee_n_unchecked(&self) -> u8 {
+        EncodedFieldMask::r5900ee_n
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the `r5900_l` value embedded on the `r5900_l` field of
+    /// Returns the `r5900ee_l` value embedded on the `r5900ee_l` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_l` value. It is recommended to use the
-    /// [`field_r5900_l`] function instead.
+    /// as an `r5900ee_l` value. It is recommended to use the
+    /// [`field_r5900ee_l`] function instead.
     ///
-    /// [`field_r5900_l`]: Instruction::field_r5900_l
+    /// [`field_r5900ee_l`]: Instruction::field_r5900ee_l
     #[must_use]
-    pub fn field_r5900_l_unchecked(&self) -> u8 {
-        EncodedFieldMask::r5900_l
+    pub fn field_r5900ee_l_unchecked(&self) -> u8 {
+        EncodedFieldMask::r5900ee_l
             .get_shifted(self.word())
             .try_into()
             .unwrap()
     }
 
-    /// Returns the `r5900_m` value embedded on the `r5900_m` field of
+    /// Returns the `r5900ee_m` value embedded on the `r5900ee_m` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900_m` value. It is recommended to use the
-    /// [`field_r5900_m`] function instead.
+    /// as an `r5900ee_m` value. It is recommended to use the
+    /// [`field_r5900ee_m`] function instead.
     ///
-    /// [`field_r5900_m`]: Instruction::field_r5900_m
+    /// [`field_r5900ee_m`]: Instruction::field_r5900ee_m
     #[must_use]
-    pub fn field_r5900_m_unchecked(&self) -> u8 {
-        EncodedFieldMask::r5900_m
+    pub fn field_r5900ee_m_unchecked(&self) -> u8 {
+        EncodedFieldMask::r5900ee_m
             .get_shifted(self.word())
             .try_into()
             .unwrap()

@@ -44,4 +44,4 @@ Arguments:
     #include "opcodes/opcodes_rsp.inc"
     #include "opcodes/opcodes_r3000gte.inc"
     #include "opcodes/opcodes_r4000allegrex.inc"
-    #include "opcodes/opcodes_r5900.inc"
+    #include "opcodes/opcodes_r5900ee.inc"
