@@ -195,13 +195,15 @@ where
                 write!(f, "/* ")?;
                 self.display_as_instruction_disassembly(f)?;
 
-                let valid_bits = self.instr.valid_bits().bits();
-                write!(
-                    f,
-                    " / {:08X} <OpcodeCategory: {}>",
-                    ((!valid_bits) & self.instr.word()),
-                    self.instr.opcode_category().name(),
-                )?;
+                if self.display_flags.debug_word_comment_info() {
+                    let valid_bits = self.instr.valid_bits().bits();
+                    write!(
+                        f,
+                        " / {:08X} <OpcodeCategory: {}>",
+                        ((!valid_bits) & self.instr.word()),
+                        self.instr.opcode_category().name(),
+                    )?;
+                }
 
                 write!(f, " */")?;
             }

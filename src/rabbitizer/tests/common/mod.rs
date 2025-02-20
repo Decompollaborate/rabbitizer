@@ -173,10 +173,11 @@ impl TestEntry {
 
     pub fn check_disassembly(&self) -> u32 {
         let mut errors = 0;
+        let display_flags = self.display_flags.with_debug_word_comment_info(true);
 
         let disasm = self
             .instr
-            .display(&self.display_flags, self.imm_override, 0)
+            .display(&display_flags, self.imm_override, 0)
             .to_string();
         // println!("    {}", disasm);
         if disasm != self.expected {
@@ -194,7 +195,7 @@ impl TestEntry {
             let mut j = 0;
             for (i, operand) in self.instr.operands_iter().enumerate() {
                 let operand_str = operand
-                    .display(&self.instr, &self.display_flags, self.imm_override)
+                    .display(&self.instr, &display_flags, self.imm_override)
                     .to_string();
                 let maybe_expected_str = self.operands_str[i];
 

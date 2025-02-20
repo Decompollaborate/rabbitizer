@@ -33,6 +33,9 @@ pub struct InstructionDisplayFlags {
 
     r5900ee_modern_gas_instrs_workarounds: bool,
     r5900ee_use_dollar: bool,
+
+    // Debug specific settings, keep them at the bottom
+    debug_word_comment_info: bool,
 }
 
 impl InstructionDisplayFlags {
@@ -57,6 +60,8 @@ impl InstructionDisplayFlags {
 
             r5900ee_modern_gas_instrs_workarounds: false,
             r5900ee_use_dollar: false,
+
+            debug_word_comment_info: false,
         }
     }
 
@@ -306,6 +311,21 @@ impl InstructionDisplayFlags {
     pub const fn with_r5900ee_use_dollar(self, r5900ee_use_dollar: bool) -> Self {
         Self {
             r5900ee_use_dollar,
+            ..self
+        }
+    }
+
+    #[must_use]
+    pub const fn debug_word_comment_info(&self) -> bool {
+        self.debug_word_comment_info
+    }
+    pub fn debug_word_comment_info_mut(&mut self) -> &mut bool {
+        &mut self.debug_word_comment_info
+    }
+    #[must_use]
+    pub const fn with_debug_word_comment_info(self, debug_word_comment_info: bool) -> Self {
+        Self {
+            debug_word_comment_info,
             ..self
         }
     }
