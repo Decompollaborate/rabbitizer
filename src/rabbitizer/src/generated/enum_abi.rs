@@ -10,4 +10,6 @@ pub enum Abi {
     O32,
     N32,
     N64,
+    EABI32,
+    EABI64,
 }

@@ -95,6 +95,8 @@ pub static GPR: [RegisterDescriptor; 32] = {
     table[Gpr::t0 as usize] = RegisterDescriptor {
         name_n32: Some("$a4"),
         name_n64: Some("$a4"),
+        name_eabi32: Some("$a4"),
+        name_eabi64: Some("$a4"),
         is_clobbered_by_func_call: true,
         is_temp: true,
         is_arg: true,
@@ -105,6 +107,8 @@ pub static GPR: [RegisterDescriptor; 32] = {
     table[Gpr::t1 as usize] = RegisterDescriptor {
         name_n32: Some("$a5"),
         name_n64: Some("$a5"),
+        name_eabi32: Some("$a5"),
+        name_eabi64: Some("$a5"),
         is_clobbered_by_func_call: true,
         is_temp: true,
         is_arg: true,
@@ -115,6 +119,8 @@ pub static GPR: [RegisterDescriptor; 32] = {
     table[Gpr::t2 as usize] = RegisterDescriptor {
         name_n32: Some("$a6"),
         name_n64: Some("$a6"),
+        name_eabi32: Some("$a6"),
+        name_eabi64: Some("$a6"),
         is_clobbered_by_func_call: true,
         is_temp: true,
         is_arg: true,
@@ -125,6 +131,8 @@ pub static GPR: [RegisterDescriptor; 32] = {
     table[Gpr::t3 as usize] = RegisterDescriptor {
         name_n32: Some("$a7"),
         name_n64: Some("$a7"),
+        name_eabi32: Some("$a7"),
+        name_eabi64: Some("$a7"),
         is_clobbered_by_func_call: true,
         is_temp: true,
         is_arg: true,

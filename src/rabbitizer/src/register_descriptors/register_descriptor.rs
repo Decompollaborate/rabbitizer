@@ -14,6 +14,8 @@ pub struct RegisterDescriptor {
     pub(crate) name_o32: Option<&'static str>,
     pub(crate) name_n32: Option<&'static str>,
     pub(crate) name_n64: Option<&'static str>,
+    pub(crate) name_eabi32: Option<&'static str>,
+    pub(crate) name_eabi64: Option<&'static str>,
 
     /// A function call invalidates the value hold by the register.
     pub(crate) is_clobbered_by_func_call: bool,
@@ -53,6 +55,8 @@ impl RegisterDescriptor {
             name_o32: None,
             name_n32: None,
             name_n64: None,
+            name_eabi32: None,
+            name_eabi64: None,
 
             is_clobbered_by_func_call: false,
             is_reserved: false,
@@ -303,6 +307,20 @@ impl RegisterDescriptor {
             }
             Abi::N64 => {
                 if let Some(x) = self.name_n64 {
+                    x
+                } else {
+                    self.name
+                }
+            }
+            Abi::EABI32 => {
+                if let Some(x) = self.name_eabi32 {
+                    x
+                } else {
+                    self.name
+                }
+            }
+            Abi::EABI64 => {
+                if let Some(x) = self.name_eabi64 {
                     x
                 } else {
                     self.name
