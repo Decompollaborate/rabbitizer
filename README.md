@@ -121,6 +121,9 @@ See this crate at <https://crates.io/crates/rabbitizer>.
   - MIPS Calling Convention Summary: <https://courses.cs.washington.edu/courses/cse410/09sp/examples/MIPSCallingConventionsSummary.pdf>
   - mipt-mips pseudo instructions: <https://github.com/MIPT-ILab/mipt-mips/wiki/MIPS-pseudo-instructions>
   - IDT R30xx Family Software Reference Manual, page 325 (for `rfe`): <https://psx.arthus.net/docs/R3000.pdf>
+  - Community research on register's names based on each ABI.
+    - <https://hackmd.io/mybJeh7IRE-3BYuv1uo4TQ>
+    - <https://gist.github.com/EllipticEllipsis/27eef11205c7a59d8ea85632bc49224d#general-purpose-registers>
 
 - N64's RSP (Reality Signal Processor):
   - Nintendo Ultra64 RSP Programmer’s Guide: <https://ultra64.ca/files/documentation/silicon-graphics/SGI_Nintendo_64_RSP_Programmers_Guide.pdf>

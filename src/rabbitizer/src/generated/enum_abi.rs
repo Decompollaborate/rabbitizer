@@ -8,6 +8,7 @@
 #[non_exhaustive]
 pub enum Abi {
     O32,
+    O64,
     N32,
     N64,
     EABI32,

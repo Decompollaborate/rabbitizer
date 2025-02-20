@@ -36,7 +36,7 @@ impl Register for Gpr {
 
         if descriptor.either_arg_or_temp() {
             match abi {
-                Abi::O32 => descriptor.is_temp(),
+                Abi::O32 | Abi::O64 => descriptor.is_temp(),
                 Abi::N32 | Abi::N64 | Abi::EABI32 | Abi::EABI64 => false,
             }
         } else {
@@ -49,7 +49,7 @@ impl Register for Gpr {
 
         if descriptor.either_arg_or_temp() {
             match abi {
-                Abi::O32 => false,
+                Abi::O32 | Abi::O64 => false,
                 Abi::N32 | Abi::N64 | Abi::EABI32 | Abi::EABI64 => descriptor.is_arg(),
             }
         } else {
