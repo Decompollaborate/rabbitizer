@@ -42,7 +42,7 @@ impl InstructionDisplayFlags {
         Self {
             named_registers: true,
             named_gpr: true,
-            named_fpr: false, // TODO: consider changing to True
+            named_fpr: true,
             named_vr4300_cop0: false,
             named_rsp_cop0: false,
             named_r4000allegrex_vfpucontrol: false,
