@@ -3,6 +3,7 @@
 
     RABBITIZER_DEF_REG(
         COP1, fv0,   0,
+        name_o64: Some("$fv0"),
         name_n32: Some("$fv0"),
         name_n64: Some("$fv0"),
         name_eabi32: Some("$fv0"),
@@ -10,6 +11,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fv0f,  1,
+        name_o64: Some("$fv1"),
         name_n32: Some("$ft14"),
         name_n64: Some("$ft12"),
         name_eabi32: Some("$fv0f"),
@@ -17,6 +19,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fv1,   2,
+        name_o64: Some("$ft0"),
         name_n32: Some("$fv1"),
         name_n64: Some("$fv1"),
         name_eabi32: Some("$fv1"),
@@ -24,6 +27,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fv1f,  3,
+        name_o64: Some("$ft1"),
         name_n32: Some("$ft15"),
         name_n64: Some("$ft13"),
         name_eabi32: Some("$fv1f"),
@@ -31,6 +35,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft0,   4,
+        name_o64: Some("$ft2"),
         name_n32: Some("$ft0"),
         name_n64: Some("$ft0"),
         name_eabi32: Some("$ft0"),
@@ -38,6 +43,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft0f,  5,
+        name_o64: Some("$ft3"),
         name_n32: Some("$ft1"),
         name_n64: Some("$ft1"),
         name_eabi32: Some("$ft0f"),
@@ -45,6 +51,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft1,   6,
+        name_o64: Some("$ft4"),
         name_n32: Some("$ft2"),
         name_n64: Some("$ft2"),
         name_eabi32: Some("$ft1"),
@@ -52,6 +59,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft1f,  7,
+        name_o64: Some("$ft5"),
         name_n32: Some("$ft3"),
         name_n64: Some("$ft3"),
         name_eabi32: Some("$ft1f"),
@@ -59,6 +67,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft2,   8,
+        name_o64: Some("$ft6"),
         name_n32: Some("$ft4"),
         name_n64: Some("$ft4"),
         name_eabi32: Some("$ft2"),
@@ -66,6 +75,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft2f,  9,
+        name_o64: Some("$ft7"),
         name_n32: Some("$ft5"),
         name_n64: Some("$ft5"),
         name_eabi32: Some("$ft2f"),
@@ -73,6 +83,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft3,  10,
+        name_o64: Some("$ft8"),
         name_n32: Some("$ft6"),
         name_n64: Some("$ft6"),
         name_eabi32: Some("$ft3"),
@@ -80,6 +91,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft3f, 11,
+        name_o64: Some("$ft9"),
         name_n32: Some("$ft7"),
         name_n64: Some("$ft7"),
         name_eabi32: Some("$ft3f"),
@@ -87,6 +99,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fa0,  12,
+        name_o64: Some("$fa0"),
         name_n32: Some("$fa0"),
         name_n64: Some("$fa0"),
         name_eabi32: Some("$fa0"),
@@ -94,6 +107,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fa0f, 13,
+        name_o64: Some("$fa1"),
         name_n32: Some("$fa1"),
         name_n64: Some("$fa1"),
         name_eabi32: Some("$fa0f"),
@@ -101,6 +115,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fa1,  14,
+        name_o64: Some("$ft10"),
         name_n32: Some("$fa2"),
         name_n64: Some("$fa2"),
         name_eabi32: Some("$fa1"),
@@ -108,6 +123,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fa1f, 15,
+        name_o64: Some("$ft11"),
         name_n32: Some("$fa3"),
         name_n64: Some("$fa3"),
         name_eabi32: Some("$fa1f"),
@@ -115,6 +131,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft4,  16,
+        name_o64: Some("$ft12"),
         name_n32: Some("$fa4"),
         name_n64: Some("$fa4"),
         name_eabi32: Some("$fa2"),
@@ -122,6 +139,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft4f, 17,
+        name_o64: Some("$ft13"),
         name_n32: Some("$fa5"),
         name_n64: Some("$fa5"),
         name_eabi32: Some("$fa2f"),
@@ -129,6 +147,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft5,  18,
+        name_o64: Some("$ft14"),
         name_n32: Some("$fa6"),
         name_n64: Some("$fa6"),
         name_eabi32: Some("$fa3"),
@@ -136,6 +155,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, ft5f, 19,
+        name_o64: Some("$ft15"),
         name_n32: Some("$fa7"),
         name_n64: Some("$fa7"),
         name_eabi32: Some("$fa3f"),
@@ -143,6 +163,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs0,  20,
+        name_o64: Some("$fs0"),
         name_n32: Some("$fs0"),
         name_n64: Some("$ft8"),
         name_eabi32: Some("$fs0"),
@@ -150,6 +171,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs0f, 21,
+        name_o64: Some("$fs1"),
         name_n32: Some("$ft8"),
         name_n64: Some("$ft9"),
         name_eabi32: Some("$fs0f"),
@@ -157,6 +179,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs1,  22,
+        name_o64: Some("$fs2"),
         name_n32: Some("$fs1"),
         name_n64: Some("$ft10"),
         name_eabi32: Some("$fs1"),
@@ -164,6 +187,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs1f, 23,
+        name_o64: Some("$fs3"),
         name_n32: Some("$ft9"),
         name_n64: Some("$ft11"),
         name_eabi32: Some("$fs1f"),
@@ -171,6 +195,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs2,  24,
+        name_o64: Some("$fs4"),
         name_n32: Some("$fs2"),
         name_n64: Some("$fs0"),
         name_eabi32: Some("$fs2"),
@@ -178,6 +203,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs2f, 25,
+        name_o64: Some("$fs5"),
         name_n32: Some("$ft10"),
         name_n64: Some("$fs1"),
         name_eabi32: Some("$fs2f"),
@@ -185,6 +211,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs3,  26,
+        name_o64: Some("$fs6"),
         name_n32: Some("$fs3"),
         name_n64: Some("$fs2"),
         name_eabi32: Some("$fs3"),
@@ -192,6 +219,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs3f, 27,
+        name_o64: Some("$fs7"),
         name_n32: Some("$ft11"),
         name_n64: Some("$fs3"),
         name_eabi32: Some("$fs3f"),
@@ -199,6 +227,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs4,  28,
+        name_o64: Some("$fs8"),
         name_n32: Some("$fs4"),
         name_n64: Some("$fs4"),
         name_eabi32: Some("$fs4"),
@@ -206,6 +235,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs4f, 29,
+        name_o64: Some("$fs9"),
         name_n32: Some("$ft12"),
         name_n64: Some("$fs5"),
         name_eabi32: Some("$fs4f"),
@@ -213,6 +243,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs5,  30,
+        name_o64: Some("$fs10"),
         name_n32: Some("$fs5"),
         name_n64: Some("$fs6"),
         name_eabi32: Some("$fs5"),
@@ -220,6 +251,7 @@
     )
     RABBITIZER_DEF_REG(
         COP1, fs5f, 31,
+        name_o64: Some("$fs11"),
         name_n32: Some("$ft13"),
         name_n64: Some("$fs7"),
         name_eabi32: Some("$fs5f"),

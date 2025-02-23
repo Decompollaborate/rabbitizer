@@ -45,6 +45,7 @@ pub enum Cop1 {
 pub static COP1: [RegisterDescriptor; 32] = {
     let mut table = [RegisterDescriptor::default(); 32];
     table[Cop1::fv0 as usize] = RegisterDescriptor {
+        name_o64: Some("$fv0"),
         name_n32: Some("$fv0"),
         name_n64: Some("$fv0"),
         name_eabi32: Some("$fv0"),
@@ -53,6 +54,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fv0f as usize] = RegisterDescriptor {
+        name_o64: Some("$fv1"),
         name_n32: Some("$ft14"),
         name_n64: Some("$ft12"),
         name_eabi32: Some("$fv0f"),
@@ -61,6 +63,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fv1 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft0"),
         name_n32: Some("$fv1"),
         name_n64: Some("$fv1"),
         name_eabi32: Some("$fv1"),
@@ -69,6 +72,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fv1f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft1"),
         name_n32: Some("$ft15"),
         name_n64: Some("$ft13"),
         name_eabi32: Some("$fv1f"),
@@ -77,6 +81,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft0 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft2"),
         name_n32: Some("$ft0"),
         name_n64: Some("$ft0"),
         name_eabi32: Some("$ft0"),
@@ -85,6 +90,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft0f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft3"),
         name_n32: Some("$ft1"),
         name_n64: Some("$ft1"),
         name_eabi32: Some("$ft0f"),
@@ -93,6 +99,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft1 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft4"),
         name_n32: Some("$ft2"),
         name_n64: Some("$ft2"),
         name_eabi32: Some("$ft1"),
@@ -101,6 +108,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft1f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft5"),
         name_n32: Some("$ft3"),
         name_n64: Some("$ft3"),
         name_eabi32: Some("$ft1f"),
@@ -109,6 +117,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft2 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft6"),
         name_n32: Some("$ft4"),
         name_n64: Some("$ft4"),
         name_eabi32: Some("$ft2"),
@@ -117,6 +126,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft2f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft7"),
         name_n32: Some("$ft5"),
         name_n64: Some("$ft5"),
         name_eabi32: Some("$ft2f"),
@@ -125,6 +135,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft3 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft8"),
         name_n32: Some("$ft6"),
         name_n64: Some("$ft6"),
         name_eabi32: Some("$ft3"),
@@ -133,6 +144,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft3f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft9"),
         name_n32: Some("$ft7"),
         name_n64: Some("$ft7"),
         name_eabi32: Some("$ft3f"),
@@ -141,6 +153,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fa0 as usize] = RegisterDescriptor {
+        name_o64: Some("$fa0"),
         name_n32: Some("$fa0"),
         name_n64: Some("$fa0"),
         name_eabi32: Some("$fa0"),
@@ -149,6 +162,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fa0f as usize] = RegisterDescriptor {
+        name_o64: Some("$fa1"),
         name_n32: Some("$fa1"),
         name_n64: Some("$fa1"),
         name_eabi32: Some("$fa0f"),
@@ -157,6 +171,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fa1 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft10"),
         name_n32: Some("$fa2"),
         name_n64: Some("$fa2"),
         name_eabi32: Some("$fa1"),
@@ -165,6 +180,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fa1f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft11"),
         name_n32: Some("$fa3"),
         name_n64: Some("$fa3"),
         name_eabi32: Some("$fa1f"),
@@ -173,6 +189,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft4 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft12"),
         name_n32: Some("$fa4"),
         name_n64: Some("$fa4"),
         name_eabi32: Some("$fa2"),
@@ -181,6 +198,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft4f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft13"),
         name_n32: Some("$fa5"),
         name_n64: Some("$fa5"),
         name_eabi32: Some("$fa2f"),
@@ -189,6 +207,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft5 as usize] = RegisterDescriptor {
+        name_o64: Some("$ft14"),
         name_n32: Some("$fa6"),
         name_n64: Some("$fa6"),
         name_eabi32: Some("$fa3"),
@@ -197,6 +216,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::ft5f as usize] = RegisterDescriptor {
+        name_o64: Some("$ft15"),
         name_n32: Some("$fa7"),
         name_n64: Some("$fa7"),
         name_eabi32: Some("$fa3f"),
@@ -205,6 +225,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs0 as usize] = RegisterDescriptor {
+        name_o64: Some("$fs0"),
         name_n32: Some("$fs0"),
         name_n64: Some("$ft8"),
         name_eabi32: Some("$fs0"),
@@ -213,6 +234,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs0f as usize] = RegisterDescriptor {
+        name_o64: Some("$fs1"),
         name_n32: Some("$ft8"),
         name_n64: Some("$ft9"),
         name_eabi32: Some("$fs0f"),
@@ -221,6 +243,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs1 as usize] = RegisterDescriptor {
+        name_o64: Some("$fs2"),
         name_n32: Some("$fs1"),
         name_n64: Some("$ft10"),
         name_eabi32: Some("$fs1"),
@@ -229,6 +252,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs1f as usize] = RegisterDescriptor {
+        name_o64: Some("$fs3"),
         name_n32: Some("$ft9"),
         name_n64: Some("$ft11"),
         name_eabi32: Some("$fs1f"),
@@ -237,6 +261,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs2 as usize] = RegisterDescriptor {
+        name_o64: Some("$fs4"),
         name_n32: Some("$fs2"),
         name_n64: Some("$fs0"),
         name_eabi32: Some("$fs2"),
@@ -245,6 +270,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs2f as usize] = RegisterDescriptor {
+        name_o64: Some("$fs5"),
         name_n32: Some("$ft10"),
         name_n64: Some("$fs1"),
         name_eabi32: Some("$fs2f"),
@@ -253,6 +279,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs3 as usize] = RegisterDescriptor {
+        name_o64: Some("$fs6"),
         name_n32: Some("$fs3"),
         name_n64: Some("$fs2"),
         name_eabi32: Some("$fs3"),
@@ -261,6 +288,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs3f as usize] = RegisterDescriptor {
+        name_o64: Some("$fs7"),
         name_n32: Some("$ft11"),
         name_n64: Some("$fs3"),
         name_eabi32: Some("$fs3f"),
@@ -269,6 +297,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs4 as usize] = RegisterDescriptor {
+        name_o64: Some("$fs8"),
         name_n32: Some("$fs4"),
         name_n64: Some("$fs4"),
         name_eabi32: Some("$fs4"),
@@ -277,6 +306,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs4f as usize] = RegisterDescriptor {
+        name_o64: Some("$fs9"),
         name_n32: Some("$ft12"),
         name_n64: Some("$fs5"),
         name_eabi32: Some("$fs4f"),
@@ -285,6 +315,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs5 as usize] = RegisterDescriptor {
+        name_o64: Some("$fs10"),
         name_n32: Some("$fs5"),
         name_n64: Some("$fs6"),
         name_eabi32: Some("$fs5"),
@@ -293,6 +324,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     }
     .check_panic_chain();
     table[Cop1::fs5f as usize] = RegisterDescriptor {
+        name_o64: Some("$fs11"),
         name_n32: Some("$ft13"),
         name_n64: Some("$fs7"),
         name_eabi32: Some("$fs5f"),

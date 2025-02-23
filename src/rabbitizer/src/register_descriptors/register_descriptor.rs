@@ -12,6 +12,7 @@ pub struct RegisterDescriptor {
     pub(crate) name_numeric: &'static str,
 
     pub(crate) name_o32: Option<&'static str>,
+    pub(crate) name_o64: Option<&'static str>,
     pub(crate) name_n32: Option<&'static str>,
     pub(crate) name_n64: Option<&'static str>,
     pub(crate) name_eabi32: Option<&'static str>,
@@ -53,6 +54,7 @@ impl RegisterDescriptor {
             name_numeric: "$0",
 
             name_o32: None,
+            name_o64: None,
             name_n32: None,
             name_n64: None,
             name_eabi32: None,
@@ -293,6 +295,13 @@ impl RegisterDescriptor {
         match abi {
             Abi::O32 => {
                 if let Some(x) = self.name_o32 {
+                    x
+                } else {
+                    self.name
+                }
+            }
+            Abi::O64 => {
+                if let Some(x) = self.name_o64 {
                     x
                 } else {
                     self.name
