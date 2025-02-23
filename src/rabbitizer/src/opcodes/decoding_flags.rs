@@ -6,7 +6,7 @@ use bitflags::bitflags;
 bitflags! {
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
     pub(crate) struct DecodingFlags: u32 {
-        /// Produce pseudo instructions (like `move` or `b`) whenever those may match the desired original instruction.
+        /// Produce pseudo instructions (like `neg` or `b`).
         ///
         /// Turning off this flag disables all the other pseudos.
         const enable_pseudos = 1 << 0;
@@ -17,8 +17,6 @@ bitflags! {
         const pseudo_not = 1 << 5;
         const pseudo_neg = 1 << 6;
         const pseudo_negu = 1 << 7;
-
-        const gnu_mode = 1 << 9; // TODO: remove?
     }
 }
 
@@ -36,7 +34,6 @@ impl DecodingFlags {
             .union(Self::pseudo_not)
             .union(Self::pseudo_neg)
             .union(Self::pseudo_negu)
-            .union(Self::gnu_mode)
     }
 
     pub fn set_all_pseudos(&mut self, turn_on: bool) {
