@@ -465,7 +465,7 @@
     ) // Trap if Not Equal
 
 
-    // Pseudo-Instruction Unique IDs
+    // Pseudo-instructions
 
     // OP
     RAB_DEF_OPCODE_PSEUDO(
@@ -474,15 +474,6 @@
         instr_type: InstrType::R
     ) // No OPeration
 
-    // OP rd, rs
-    RAB_DEF_OPCODE_PSEUDO(
-        core, move, IsaVersion::MIPS_I, None,
-        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        maybe_is_move: true
-    ) // Move
     RAB_DEF_OPCODE_PSEUDO(
         core, not, IsaVersion::MIPS_I, None,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),

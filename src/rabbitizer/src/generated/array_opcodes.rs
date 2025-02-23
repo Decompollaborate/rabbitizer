@@ -1124,16 +1124,6 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("nop", IsaVersion::MIPS_I, None)
     }
     .check_panic_chain();
-    table[Opcode::core_move as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        maybe_is_move: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("move", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
     table[Opcode::core_not as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,

@@ -125,14 +125,6 @@ impl OpcodeDecoder {
         }
 
         match opcode {
-            Opcode::core_or => {
-                if EncodedFieldMask::rt.get_shifted(word) == 0
-                    && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_move))
-                {
-                    opcode = Opcode::core_move;
-                }
-            }
             Opcode::core_nor => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0
                     && flags

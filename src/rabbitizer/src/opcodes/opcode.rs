@@ -11,7 +11,7 @@ use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
 // this constant.
-pub(crate) const OPCODE_COUNT: usize = 886;
+pub(crate) const OPCODE_COUNT: usize = 885;
 
 impl Opcode {
     #[must_use]

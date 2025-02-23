@@ -120,7 +120,6 @@ pub enum Opcode {
     core_teq,
     core_tne,
     core_nop,
-    core_move,
     core_not,
     core_neg,
     core_negu,

@@ -130,28 +130,6 @@ impl InstructionFlags {
     }
 
     #[must_use]
-    pub const fn pseudo_move(&self) -> bool {
-        self.decoding_flags.contains(DecodingFlags::pseudo_move)
-    }
-    pub fn set_pseudo_move(&mut self, turn_on: bool) {
-        if turn_on {
-            self.decoding_flags.insert(DecodingFlags::pseudo_move);
-        } else {
-            self.decoding_flags.remove(DecodingFlags::pseudo_move);
-        }
-    }
-    #[must_use]
-    pub const fn with_pseudo_move(self, turn_on: bool) -> Self {
-        let other = if turn_on {
-            self.decoding_flags.union(DecodingFlags::pseudo_move)
-        } else {
-            self.decoding_flags
-                .intersection(DecodingFlags::pseudo_move.complement())
-        };
-        self.with_decoding_flags(other)
-    }
-
-    #[must_use]
     pub const fn pseudo_beqz(&self) -> bool {
         self.decoding_flags.contains(DecodingFlags::pseudo_beqz)
     }
