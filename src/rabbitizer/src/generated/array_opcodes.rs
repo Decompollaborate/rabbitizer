@@ -632,6 +632,26 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("bnez", IsaVersion::MIPS_I, None)
     }
     .check_panic_chain();
+    table[Opcode::core_beqzl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+        instr_type: InstrType::I,
+        is_branch: true,
+        is_branch_likely: true,
+        reads_rs: true,
+        is_pseudo: true,
+        ..OpcodeDescriptor::new("beqzl", IsaVersion::MIPS_II, None)
+    }
+    .check_panic_chain();
+    table[Opcode::core_bnezl as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+        instr_type: InstrType::I,
+        is_branch: true,
+        is_branch_likely: true,
+        reads_rs: true,
+        is_pseudo: true,
+        ..OpcodeDescriptor::new("bnezl", IsaVersion::MIPS_II, None)
+    }
+    .check_panic_chain();
 
     table[Opcode::core_sll as usize] = OpcodeDescriptor {
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),

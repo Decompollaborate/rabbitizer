@@ -1,6 +1,3 @@
-Add these pseudos:
-- beqzl
-- bnezl
 rsp:
 - lwv
 
@@ -8,3 +5,6 @@ rsp:
 - Add `size_hint` to iterators
 
 - Set properties to float registers
+
+- Rename pseudos to aliases?
+  - A pseudo can expand to multiple instructions, but aliases can't

@@ -174,6 +174,50 @@ impl InstructionFlags {
     }
 
     #[must_use]
+    pub const fn pseudo_beqzl(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_beqzl)
+    }
+    pub fn set_pseudo_beqzl(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_beqzl);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_beqzl);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_beqzl(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            self.decoding_flags.union(DecodingFlags::pseudo_beqzl)
+        } else {
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_beqzl.complement())
+        };
+        self.with_decoding_flags(other)
+    }
+
+    #[must_use]
+    pub const fn pseudo_bnezl(&self) -> bool {
+        self.decoding_flags.contains(DecodingFlags::pseudo_bnezl)
+    }
+    pub fn set_pseudo_bnezl(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags.insert(DecodingFlags::pseudo_bnezl);
+        } else {
+            self.decoding_flags.remove(DecodingFlags::pseudo_bnezl);
+        }
+    }
+    #[must_use]
+    pub const fn with_pseudo_bnezl(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            self.decoding_flags.union(DecodingFlags::pseudo_bnezl)
+        } else {
+            self.decoding_flags
+                .intersection(DecodingFlags::pseudo_bnezl.complement())
+        };
+        self.with_decoding_flags(other)
+    }
+
+    #[must_use]
     pub const fn pseudo_b(&self) -> bool {
         self.decoding_flags.contains(DecodingFlags::pseudo_b)
     }

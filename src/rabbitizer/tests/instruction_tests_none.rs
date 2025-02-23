@@ -1071,6 +1071,93 @@ fn check_none_instructions() {
         },
         TestEntry {
             instr: Instruction::new(
+                0x50850007,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III).with_pseudo_beqzl(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "beql        $a0, $a1, . + 4 + (0x7 << 2)",
+            expected_opcode: Opcode::core_beql,
+            opcode_str: "beql",
+            operands_str: [Some("$a0"), Some("$a1"), Some(". + 4 + (0x7 << 2)"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x50800007,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III).with_pseudo_beqzl(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "beqzl       $a0, . + 4 + (0x7 << 2)",
+            expected_opcode: Opcode::core_beqzl,
+            opcode_str: "beqzl",
+            operands_str: [Some("$a0"), Some(". + 4 + (0x7 << 2)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x50800007,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III).with_pseudo_beqzl(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "beql        $a0, $zero, . + 4 + (0x7 << 2)",
+            expected_opcode: Opcode::core_beql,
+            opcode_str: "beql",
+            operands_str: [Some("$a0"), Some("$zero"), Some(". + 4 + (0x7 << 2)"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x54850005,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III).with_pseudo_bnezl(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "bnel        $a0, $a1, . + 4 + (0x5 << 2)",
+            expected_opcode: Opcode::core_bnel,
+            opcode_str: "bnel",
+            operands_str: [Some("$a0"), Some("$a1"), Some(". + 4 + (0x5 << 2)"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x54800005,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III).with_pseudo_bnezl(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "bnezl       $a0, . + 4 + (0x5 << 2)",
+            expected_opcode: Opcode::core_bnezl,
+            opcode_str: "bnezl",
+            operands_str: [Some("$a0"), Some(". + 4 + (0x5 << 2)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x54800005,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III).with_pseudo_bnezl(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "bnel        $a0, $zero, . + 4 + (0x5 << 2)",
+            expected_opcode: Opcode::core_bnel,
+            opcode_str: "bnel",
+            operands_str: [Some("$a0"), Some("$zero"), Some(". + 4 + (0x5 << 2)"), None, None],
+        },
+
+        // gnu_div
+
+        TestEntry {
+            instr: Instruction::new(
                 0x0085001A,
                 Vram::new(0x80000000),
                 InstructionFlags::new(IsaVersion::MIPS_III),

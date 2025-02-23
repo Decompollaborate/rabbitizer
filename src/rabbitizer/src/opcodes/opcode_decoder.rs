@@ -106,6 +106,20 @@ impl OpcodeDecoder {
                     opcode = Opcode::core_bnez;
                 }
             }
+            Opcode::core_beql => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0 && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqzl)) {
+                    opcode = Opcode::core_beqzl;
+                }
+            }
+            Opcode::core_bnel => {
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnezl))
+                {
+                    opcode = Opcode::core_bnezl;
+                }
+            }
             _ => {}
         }
 

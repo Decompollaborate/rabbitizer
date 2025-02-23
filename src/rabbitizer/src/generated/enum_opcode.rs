@@ -64,6 +64,8 @@ pub enum Opcode {
     core_b,
     core_beqz,
     core_bnez,
+    core_beqzl,
+    core_bnezl,
 
     core_sll,
     core_srl,

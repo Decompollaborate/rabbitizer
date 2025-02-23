@@ -589,6 +589,23 @@
         is_branch: true
     ) // Branch on Not Equal Zero
 
+    RAB_DEF_OPCODE_PSEUDO(
+        core, beqzl, IsaVersion::MIPS_II, None,
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+        instr_type: InstrType::I,
+        is_branch: true,
+        is_branch_likely: true,
+        reads_rs: true
+    ) // Branch on EQual Zero Likely
+    RAB_DEF_OPCODE_PSEUDO(
+        core, bnezl, IsaVersion::MIPS_II, None,
+        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+        instr_type: InstrType::I,
+        is_branch: true,
+        is_branch_likely: true,
+        reads_rs: true
+    ) // Branch on Not Equal Zero Likely
+
     RAB_DEF_OPCODE_REDIRECT(0x00, none, special)
     RAB_DEF_OPCODE_REDIRECT(0x01, none, regimm)
     RAB_DEF_OPCODE_REDIRECT(0x10, none, coprocessor0)
