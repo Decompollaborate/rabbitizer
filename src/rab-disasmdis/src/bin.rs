@@ -2,8 +2,10 @@
 /* SPDX-License-Identifier: MIT */
 
 mod endian;
+mod isas;
 
 use endian::Endian;
+use isas::{ArgIsaExtension, ArgIsaVersion};
 
 use clap::Parser;
 
@@ -15,13 +17,17 @@ struct Args {
     inputs: Vec<String>,
 
     /// Endian of the input strings
-    #[clap(short, long, value_enum, default_value_t = Endian::default())]
+    #[clap(short = 'E', long, value_enum, default_value_t = Endian::default())]
     endian: Endian,
 
     /// Enables all pseudo instructions supported by rabbitizer
     #[clap(short, long, default_value_t = false)]
     pseudos: bool,
-    // TODO: IsaVersion and IsaExtension
+
+    #[clap(short = 'i', long, value_enum, default_value_t = ArgIsaVersion::default())]
+    isa_version: ArgIsaVersion,
+    #[clap(short = 'e', long)]
+    isa_extension: Option<ArgIsaExtension>,
 }
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -112,8 +118,8 @@ fn main() {
 
     let endian = args.endian;
     let mut data = Data::new();
-    let flags = rabbitizer::instr::InstructionFlags::new(rabbitizer::IsaVersion::MIPS_III)
-        .with_isa_extension(None)
+    let flags = rabbitizer::instr::InstructionFlags::new(args.isa_version.into())
+        .with_isa_extension(args.isa_extension.map(|x| x.into()))
         .with_all_pseudos(args.pseudos);
     let vram = rabbitizer::vram::Vram::new(0x8000_0000);
     let display_flags = rabbitizer::display_flags::InstructionDisplayFlags::new_gnu_as();
@@ -128,7 +134,7 @@ fn main() {
             if let Some(bytes) = data.get_bytes() {
                 // Display an instruction each time the buffer is full
                 let word = endian.word_from_bytes(bytes);
-                let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
+                let instr = rabbitizer::Instruction::new(word, vram, flags);
                 println!("{}", instr.display::<&str>(&display_flags, None, 0));
             }
 

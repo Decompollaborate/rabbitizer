@@ -7,7 +7,6 @@ use crate::access_type::ACCESS_TYPE_COUNT;
 use crate::access_type_descriptor::AccessTypeDescriptor;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
-#[non_exhaustive]
 pub enum AccessType {
     BYTE,
     SHORT,

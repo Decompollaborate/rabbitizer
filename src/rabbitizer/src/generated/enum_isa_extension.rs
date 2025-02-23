@@ -7,7 +7,6 @@
 use pyo3::prelude::*;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
-#[non_exhaustive]
 #[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer", eq))]
 pub enum IsaExtension {
     RSP,

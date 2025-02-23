@@ -107,8 +107,10 @@ impl OpcodeDecoder {
                 }
             }
             Opcode::core_beql => {
-                if EncodedFieldMask::rt.get_shifted(word) == 0 && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqzl)) {
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags
+                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqzl))
+                {
                     opcode = Opcode::core_beqzl;
                 }
             }

@@ -11,7 +11,6 @@ use core::fmt;
 use core::num::NonZeroU16;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
-#[non_exhaustive]
 pub enum Operand {
     ALL_EMPTY,
     core_rs,
@@ -752,7 +751,6 @@ where
 }
 #[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
 #[allow(non_camel_case_types)]
-#[non_exhaustive]
 pub enum ValuedOperand {
     ALL_EMPTY(),
     core_rs(Gpr),

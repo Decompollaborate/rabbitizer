@@ -12,7 +12,6 @@ use crate::opcodes::{OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
-SPECIAL_RS_TAG(non_exhaustive)
 pub enum OpcodeCategory {
     #include "OpcodeCategory.inc"
 }

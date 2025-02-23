@@ -6,12 +6,12 @@ use crate::isa::IsaVersion;
 impl IsaVersion {
     /// Returns a default value.
     ///
-    /// This defaults to [`MIPS_I`].
+    /// Defaults to [`MIPS_III`].
     ///
-    /// [`MIPS_I`]: IsaVersion::MIPS_I
+    /// [`MIPS_III`]: IsaVersion::MIPS_III
     #[must_use]
     pub const fn default() -> Self {
-        Self::MIPS_I
+        Self::MIPS_III
     }
 }
 

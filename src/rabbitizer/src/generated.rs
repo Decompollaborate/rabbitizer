@@ -15,7 +15,7 @@
 #![allow(clippy::cognitive_complexity)]
 #![allow(missing_docs)]
 #![allow(clippy::missing_docs_in_private_items)]
-#![warn(clippy::exhaustive_enums)]
+#![allow(clippy::exhaustive_enums)]
 
 mod array_opcodes;
 mod code_decode_isa_extension_none;
