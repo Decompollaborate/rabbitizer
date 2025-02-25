@@ -193,7 +193,7 @@
 
     // OP rt, IMM(base)
     RAB_DEF_OPCODE(
-        core, 0x1A, ldl, IsaVersion::MIPS_I, None,
+        core, 0x1A, ldl, IsaVersion::MIPS_III, None,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,

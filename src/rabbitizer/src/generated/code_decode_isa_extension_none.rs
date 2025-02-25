@@ -38,7 +38,7 @@ impl OpcodeDecoder {
             0x18 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_daddi,
             0x19 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_daddiu,
             0x0F if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lui,
-            0x1A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_ldl,
+            0x1A if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ldl,
             0x1B if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ldr,
             0x20 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lb,
             0x21 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lh,

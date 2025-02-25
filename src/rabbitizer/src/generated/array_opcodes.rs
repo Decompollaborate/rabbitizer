@@ -219,7 +219,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::DOUBLEWORD_LEFT),
-        ..OpcodeDescriptor::new("ldl", IsaVersion::MIPS_I, None)
+        ..OpcodeDescriptor::new("ldl", IsaVersion::MIPS_III, None)
     }
     .check_panic_chain();
     table[Opcode::core_ldr as usize] = OpcodeDescriptor {
