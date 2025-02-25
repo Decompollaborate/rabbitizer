@@ -20,6 +20,9 @@
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
 
+#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate_expr, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+
 use crate::operands::Operand;
 use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
 use crate::isa::{IsaExtension, IsaVersion};
@@ -45,3 +48,4 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
 #undef RAB_DEF_OPCODE_PSEUDO
 #undef RAB_DEF_OPCODE_REDIRECT
 #undef RAB_DEF_OPCODE_REMOVED
+#undef RAB_DEF_OPCODE_GATED

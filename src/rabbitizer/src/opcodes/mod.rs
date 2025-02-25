@@ -7,6 +7,7 @@ mod opcode_category;
 mod opcode_category_descriptor;
 mod opcode_decoder;
 mod opcode_descriptor;
+mod opcode_validity_gate;
 
 pub(crate) use decoding_flags::DecodingFlags;
 
@@ -18,3 +19,4 @@ pub(crate) use opcode_category::OPCODE_CATEGORY_COUNT;
 pub use opcode_category_descriptor::OpcodeCategoryDescriptor;
 pub(crate) use opcode_decoder::OpcodeDecoder;
 pub use opcode_descriptor::OpcodeDescriptor;
+pub(crate) use opcode_validity_gate::OpcodeValidityGate;

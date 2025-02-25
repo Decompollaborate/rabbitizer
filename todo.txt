@@ -1,6 +1,4 @@
-rsp:
-- lwv
-
+- Fix `ldl` to be MIPS_III instead of MIPS_I
 
 - Add `size_hint` to iterators
 
@@ -10,3 +8,9 @@ rsp:
   - A pseudo can expand to multiple instructions, but aliases can't
 
 - Use lowercase for gte instructions
+
+- rsp named control registers
+- verify rsp named registers
+
+- Consider making `const` functions that access `static` data.
+  - con: It would raise the MSRV

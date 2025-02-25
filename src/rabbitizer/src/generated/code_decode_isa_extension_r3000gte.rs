@@ -246,6 +246,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 }

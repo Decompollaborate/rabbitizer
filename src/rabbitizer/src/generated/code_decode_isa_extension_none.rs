@@ -118,6 +118,7 @@ impl OpcodeDecoder {
             opcode: Self::fixups_decode_isa_extension_none_normal(word, opcode, flags, isa_version),
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -197,6 +198,7 @@ impl OpcodeDecoder {
             ),
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -231,6 +233,7 @@ impl OpcodeDecoder {
             opcode: Self::fixups_decode_isa_extension_none_regimm(word, opcode, flags, isa_version),
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -272,6 +275,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -295,6 +299,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -320,6 +325,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -385,6 +391,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -408,6 +415,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -462,6 +470,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -516,6 +525,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -537,6 +547,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -558,6 +569,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -581,6 +593,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 }

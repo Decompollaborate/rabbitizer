@@ -2217,12 +2217,14 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     .check_panic_chain();
     table[Opcode::rsp_mfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_cop2t, Operand::rsp_vs_index),
+        operands: Operand::arr2(Operand::core_rt, Operand::rsp_vs_index),
+        modifies_rt: true,
         ..OpcodeDescriptor::new("mfc2", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
     table[Opcode::rsp_mtc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_cop2t, Operand::rsp_vs_index),
+        operands: Operand::arr2(Operand::core_rt, Operand::rsp_vs_index),
+        reads_rt: true,
         ..OpcodeDescriptor::new("mtc2", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
@@ -2401,6 +2403,15 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vsub", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
+    table[Opcode::rsp_vsut as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vsut", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
     table[Opcode::rsp_vabs as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::rsp_vd,
@@ -2428,6 +2439,69 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vsubc", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
+    table[Opcode::rsp_vaddb as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vaddb", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vsubb as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vsubb", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vaccb as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vaccb", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vsucb as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vsucb", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vsad as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vsad", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vsac as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vsac", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vsum as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vsum", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
     table[Opcode::rsp_vsar as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::rsp_vd,
@@ -2437,58 +2511,22 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vsar", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
-    table[Opcode::rsp_vand as usize] = OpcodeDescriptor {
+    table[Opcode::rsp_vacc as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::rsp_vd,
             Operand::rsp_vs,
             Operand::rsp_vt_elementhigh,
         ),
-        ..OpcodeDescriptor::new("vand", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+        ..OpcodeDescriptor::new("vacc", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
-    table[Opcode::rsp_vnand as usize] = OpcodeDescriptor {
+    table[Opcode::rsp_vsuc as usize] = OpcodeDescriptor {
         operands: Operand::arr3(
             Operand::rsp_vd,
             Operand::rsp_vs,
             Operand::rsp_vt_elementhigh,
         ),
-        ..OpcodeDescriptor::new("vnand", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    }
-    .check_panic_chain();
-    table[Opcode::rsp_vor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::rsp_vd,
-            Operand::rsp_vs,
-            Operand::rsp_vt_elementhigh,
-        ),
-        ..OpcodeDescriptor::new("vor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    }
-    .check_panic_chain();
-    table[Opcode::rsp_vnor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::rsp_vd,
-            Operand::rsp_vs,
-            Operand::rsp_vt_elementhigh,
-        ),
-        ..OpcodeDescriptor::new("vnor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    }
-    .check_panic_chain();
-    table[Opcode::rsp_vxor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::rsp_vd,
-            Operand::rsp_vs,
-            Operand::rsp_vt_elementhigh,
-        ),
-        ..OpcodeDescriptor::new("vxor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    }
-    .check_panic_chain();
-    table[Opcode::rsp_vnxor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::rsp_vd,
-            Operand::rsp_vs,
-            Operand::rsp_vt_elementhigh,
-        ),
-        ..OpcodeDescriptor::new("vnxor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+        ..OpcodeDescriptor::new("vsuc", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
     table[Opcode::rsp_vlt as usize] = OpcodeDescriptor {
@@ -2563,6 +2601,78 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("vmrg", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
+    table[Opcode::rsp_vand as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vand", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vnand as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vnand", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vor as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vnor as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vnor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vxor as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vxor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vnxor as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vnxor", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_v056 as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("v056", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_v057 as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("v057", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
     table[Opcode::rsp_vrcp as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::rsp_vd_de, Operand::rsp_vt_elementhigh),
         ..OpcodeDescriptor::new("vrcp", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
@@ -2601,6 +2711,74 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     table[Opcode::rsp_vnop as usize] = OpcodeDescriptor {
         operands: Operand::arr0(),
         ..OpcodeDescriptor::new("vnop", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vextt as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vextt", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vextq as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vextq", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vextn as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vextn", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_v073 as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("v073", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vinst as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vinst", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vinsq as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vinsq", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vinsn as usize] = OpcodeDescriptor {
+        operands: Operand::arr3(
+            Operand::rsp_vd,
+            Operand::rsp_vs,
+            Operand::rsp_vt_elementhigh,
+        ),
+        ..OpcodeDescriptor::new("vinsn", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_vnull as usize] = OpcodeDescriptor {
+        operands: Operand::arr0(),
+        ..OpcodeDescriptor::new("vnull", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
     table[Opcode::rsp_lbv as usize] = OpcodeDescriptor {
@@ -2661,6 +2839,12 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("lfv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_lwv as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+        reads_rs: true,
+        ..OpcodeDescriptor::new("lwv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
     table[Opcode::rsp_ltv as usize] = OpcodeDescriptor {
@@ -2729,16 +2913,16 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         ..OpcodeDescriptor::new("sfv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
-    table[Opcode::rsp_stv as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
-        reads_rs: true,
-        ..OpcodeDescriptor::new("stv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    }
-    .check_panic_chain();
     table[Opcode::rsp_swv as usize] = OpcodeDescriptor {
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true,
         ..OpcodeDescriptor::new("swv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    }
+    .check_panic_chain();
+    table[Opcode::rsp_stv as usize] = OpcodeDescriptor {
+        operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+        reads_rs: true,
+        ..OpcodeDescriptor::new("stv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     }
     .check_panic_chain();
 

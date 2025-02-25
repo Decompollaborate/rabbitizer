@@ -266,6 +266,7 @@ pub fn check_test_entries(entries: &[TestEntry], thingy: bool) -> (u32, u32) {
         individual_errors += errors;
         if errors != 0 {
             instructions_with_errors += 1;
+            println!();
         }
     }
 

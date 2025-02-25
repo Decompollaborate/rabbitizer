@@ -17,7 +17,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x09000419,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -32,7 +33,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x21490000,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -47,7 +49,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x8C060578,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -62,7 +65,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x400B2800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -78,7 +82,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x400B2800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -94,7 +99,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x304203FF,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -109,7 +115,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x10400003,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -124,7 +131,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x10400003,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B38E8"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -139,7 +147,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00000000,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -154,7 +163,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x1C600033,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B3A74"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -169,7 +179,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x0D00077A,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -184,7 +195,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xAEEB000C,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -199,7 +211,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x1560FB8D,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B2288"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -214,7 +227,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x40921800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -230,7 +244,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00026A82,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -245,7 +260,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x004F1020,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -260,7 +276,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x84040572,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -275,7 +292,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x03E00008,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -290,7 +308,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x0000000D,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -305,7 +324,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x19C0FA06,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B2288"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -320,7 +340,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x09000A19,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -335,7 +356,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x37120000,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -350,7 +372,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x1000FE72,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B1A78"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -365,7 +388,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4A0318EC,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -380,7 +404,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xEAF11B0B,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -395,7 +420,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x940C0572,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -410,7 +436,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00095880,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -425,7 +452,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xA403057C,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -440,7 +468,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xCA832000,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -455,7 +484,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xEAE40C0B,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -470,7 +500,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xCBC41807,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -485,7 +516,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x3C07F510,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -500,7 +532,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00611824,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -515,7 +548,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xEBC62000,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -530,7 +564,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x1193FFFE,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B304C"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -545,7 +580,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x900B0539,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -560,7 +596,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B0C58A8,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -575,7 +612,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x008C5822,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -590,7 +628,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00432006,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -605,7 +644,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x488ED800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -620,7 +660,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xC9B12802,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -635,7 +676,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B1B21C6,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -650,7 +692,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B7F488E,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -665,7 +708,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B2A3A05,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -680,7 +724,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B3D1EC7,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -695,7 +740,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B7DFA0F,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -710,7 +756,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B0A529D,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -725,7 +772,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xEAFD1204,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -740,7 +788,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xC827080F,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -755,7 +804,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4BAA4351,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -770,7 +820,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B1F8ECD,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -785,7 +836,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B3F7384,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -800,7 +852,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B9F2940,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -815,7 +868,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4BAA4390,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -830,7 +884,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4813D900,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -845,7 +900,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4A1174D5,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -860,7 +916,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B7D6EE3,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -875,7 +932,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4AF4E0E4,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -890,7 +948,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4AC550C8,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -905,7 +964,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x15610003,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B2F4C"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -920,7 +980,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x05C1000F,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B3A2C"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -935,7 +996,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xEAFD0688,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -950,7 +1012,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x01675825,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -965,7 +1028,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x03241804,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -980,7 +1044,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00601827,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -995,7 +1060,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x83790500,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1010,7 +1076,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x05600002,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B3A2C"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1025,7 +1092,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xA2EB0009,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1040,7 +1108,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x000B5A83,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1055,7 +1124,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xC98C1000,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1070,7 +1140,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4AF5E8E5,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1085,7 +1156,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x484B0800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1100,7 +1172,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4A086A27,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1115,7 +1188,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B7D7EE0,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1130,7 +1204,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x26F70018,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1145,7 +1220,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00812021,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1160,7 +1236,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B1F6A0C,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1175,7 +1252,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x0185602A,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1190,7 +1268,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B224AF3,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1205,7 +1284,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B0343F0,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1220,7 +1300,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B7D4232,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1235,7 +1316,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4BDE0026,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1250,7 +1332,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4A0A56D3,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1265,7 +1348,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xC9513800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1280,7 +1364,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B0D41F1,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1295,7 +1380,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x398C0001,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1310,7 +1396,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00641826,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1325,7 +1412,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4ACB36D4,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1340,7 +1428,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B1F4221,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1355,7 +1444,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B1F7BE2,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1370,7 +1460,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B1F7A2D,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1385,7 +1476,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xE8FB3800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1400,7 +1492,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x03C0F809,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1415,7 +1508,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xC86F3000,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1430,7 +1524,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4A1FEF6A,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1445,7 +1540,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xE9085F04,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1460,7 +1556,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xC9085904,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1475,7 +1572,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B1F42F6,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1490,7 +1588,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B4743F5,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1505,7 +1604,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xE8273038,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1520,7 +1620,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0xC94F0786,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1535,7 +1636,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x48CB0800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1550,7 +1652,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x48CB0800,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(true)
@@ -1565,7 +1668,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x4B3E01EB,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1580,7 +1684,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x04D1FF9D,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: Some(".LA00B3020"),
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1595,7 +1700,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00035822,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1610,7 +1716,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00042100,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1625,7 +1732,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00021882,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1640,7 +1748,8 @@ fn check_rsp_instructions() {
             instr: Instruction::new(
                 0x00017443,
                 Vram::new(0xA4000000),
-                InstructionFlags::new_extension(IsaExtension::RSP),),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::default()
                 .with_named_gpr(false)
@@ -1651,7 +1760,2004 @@ fn check_rsp_instructions() {
             opcode_str: "sra",
             operands_str: [Some("$14"), Some("$1"), Some("17"), None, None],
         },
-        // removed rsp instructions
+    ];
+
+    assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
+}
+
+#[test]
+fn check_rsp_instructions_vu() {
+    const ENTRIES: &[TestEntry] = &[
+        TestEntry {
+            instr: Instruction::new(
+                0xC8000000,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lbv         $v0[0], 0x0($zero)",
+            expected_opcode: Opcode::rsp_lbv,
+            opcode_str: "lbv",
+            operands_str: [Some("$v0[0]"), Some("0x0($zero)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC8210888,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lsv         $v1[1], 0x10($at)",
+            expected_opcode: Opcode::rsp_lsv,
+            opcode_str: "lsv",
+            operands_str: [Some("$v1[1]"), Some("0x10($at)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC8421108,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "llv         $v2[2], 0x20($v0)",
+            expected_opcode: Opcode::rsp_llv,
+            opcode_str: "llv",
+            operands_str: [Some("$v2[2]"), Some("0x20($v0)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC8631986,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "ldv         $v3[3], 0x30($v1)",
+            expected_opcode: Opcode::rsp_ldv,
+            opcode_str: "ldv",
+            operands_str: [Some("$v3[3]"), Some("0x30($v1)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC8842204,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lqv         $v4[4], 0x40($a0)",
+            expected_opcode: Opcode::rsp_lqv,
+            opcode_str: "lqv",
+            operands_str: [Some("$v4[4]"), Some("0x40($a0)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC8A52A85,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lrv         $v5[5], 0x50($a1)",
+            expected_opcode: Opcode::rsp_lrv,
+            opcode_str: "lrv",
+            operands_str: [Some("$v5[5]"), Some("0x50($a1)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC8C6330C,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lpv         $v6[6], 0x60($a2)",
+            expected_opcode: Opcode::rsp_lpv,
+            opcode_str: "lpv",
+            operands_str: [Some("$v6[6]"), Some("0x60($a2)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC8E73B8E,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "luv         $v7[7], 0x70($a3)",
+            expected_opcode: Opcode::rsp_luv,
+            opcode_str: "luv",
+            operands_str: [Some("$v7[7]"), Some("0x70($a3)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC9084408,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lhv         $v8[8], 0x80($t0)",
+            expected_opcode: Opcode::rsp_lhv,
+            opcode_str: "lhv",
+            operands_str: [Some("$v8[8]"), Some("0x80($t0)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC9294C89,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lfv         $v9[9], 0x90($t1)",
+            expected_opcode: Opcode::rsp_lfv,
+            opcode_str: "lfv",
+            operands_str: [Some("$v9[9]"), Some("0x90($t1)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC96B5D91,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "ltv         $v11[11], 0x110($t3)",
+            expected_opcode: Opcode::rsp_ltv,
+            opcode_str: "ltv",
+            operands_str: [Some("$v11[11]"), Some("0x110($t3)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xE98C0600,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "sbv         $v12[12], 0x0($t4)",
+            expected_opcode: Opcode::rsp_sbv,
+            opcode_str: "sbv",
+            operands_str: [Some("$v12[12]"), Some("0x0($t4)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xE9AD0E88,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "ssv         $v13[13], 0x10($t5)",
+            expected_opcode: Opcode::rsp_ssv,
+            opcode_str: "ssv",
+            operands_str: [Some("$v13[13]"), Some("0x10($t5)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xE9CE1708,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "slv         $v14[14], 0x20($t6)",
+            expected_opcode: Opcode::rsp_slv,
+            opcode_str: "slv",
+            operands_str: [Some("$v14[14]"), Some("0x20($t6)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xE9EF1F86,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "sdv         $v15[15], 0x30($t7)",
+            expected_opcode: Opcode::rsp_sdv,
+            opcode_str: "sdv",
+            operands_str: [Some("$v15[15]"), Some("0x30($t7)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEA102004,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "sqv         $v16[0], 0x40($s0)",
+            expected_opcode: Opcode::rsp_sqv,
+            opcode_str: "sqv",
+            operands_str: [Some("$v16[0]"), Some("0x40($s0)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEA312885,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "srv         $v17[1], 0x50($s1)",
+            expected_opcode: Opcode::rsp_srv,
+            opcode_str: "srv",
+            operands_str: [Some("$v17[1]"), Some("0x50($s1)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEA52310C,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "spv         $v18[2], 0x60($s2)",
+            expected_opcode: Opcode::rsp_spv,
+            opcode_str: "spv",
+            operands_str: [Some("$v18[2]"), Some("0x60($s2)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEA73398E,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "suv         $v19[3], 0x70($s3)",
+            expected_opcode: Opcode::rsp_suv,
+            opcode_str: "suv",
+            operands_str: [Some("$v19[3]"), Some("0x70($s3)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEA944208,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "shv         $v20[4], 0x80($s4)",
+            expected_opcode: Opcode::rsp_shv,
+            opcode_str: "shv",
+            operands_str: [Some("$v20[4]"), Some("0x80($s4)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEAB54A89,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "sfv         $v21[5], 0x90($s5)",
+            expected_opcode: Opcode::rsp_sfv,
+            opcode_str: "sfv",
+            operands_str: [Some("$v21[5]"), Some("0x90($s5)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEAD65310,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "swv         $v22[6], 0x100($s6)",
+            expected_opcode: Opcode::rsp_swv,
+            opcode_str: "swv",
+            operands_str: [Some("$v22[6]"), Some("0x100($s6)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xEAF75B91,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "stv         $v23[7], 0x110($s7)",
+            expected_opcode: Opcode::rsp_stv,
+            opcode_str: "stv",
+            operands_str: [Some("$v23[7]"), Some("0x110($s7)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A020800,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmulf       $v0, $v1, $v2",
+            expected_opcode: Opcode::rsp_vmulf,
+            opcode_str: "vmulf",
+            operands_str: [Some("$v0"), Some("$v1"), Some("$v2"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0520C2,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrndp       $v3, $v4, $v5",
+            expected_opcode: Opcode::rsp_vrndp,
+            opcode_str: "vrndp",
+            operands_str: [Some("$v3"), Some("$v4"), Some("$v5"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A083984,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudl       $v6, $v7, $v8",
+            expected_opcode: Opcode::rsp_vmudl,
+            opcode_str: "vmudl",
+            operands_str: [Some("$v6"), Some("$v7"), Some("$v8"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B5245,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudm       $v9, $v10, $v11",
+            expected_opcode: Opcode::rsp_vmudm,
+            opcode_str: "vmudm",
+            operands_str: [Some("$v9"), Some("$v10"), Some("$v11"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B06,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudn       $v12, $v13, $v14",
+            expected_opcode: Opcode::rsp_vmudn,
+            opcode_str: "vmudn",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1183C7,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudh       $v15, $v16, $v17",
+            expected_opcode: Opcode::rsp_vmudh,
+            opcode_str: "vmudh",
+            operands_str: [Some("$v15"), Some("$v16"), Some("$v17"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A149C88,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmacf       $v18, $v19, $v20",
+            expected_opcode: Opcode::rsp_vmacf,
+            opcode_str: "vmacf",
+            operands_str: [Some("$v18"), Some("$v19"), Some("$v20"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A17B549,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmacu       $v21, $v22, $v23",
+            expected_opcode: Opcode::rsp_vmacu,
+            opcode_str: "vmacu",
+            operands_str: [Some("$v21"), Some("$v22"), Some("$v23"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE0A,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrndn       $v24, $v25, $v26",
+            expected_opcode: Opcode::rsp_vrndn,
+            opcode_str: "vrndn",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6CB,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmacq       $v27, $v28, $v29",
+            expected_opcode: Opcode::rsp_vmacq,
+            opcode_str: "vmacq",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00FF8C,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadl       $v30, $v31, $v0",
+            expected_opcode: Opcode::rsp_vmadl,
+            opcode_str: "vmadl",
+            operands_str: [Some("$v30"), Some("$v31"), Some("$v0"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A02080D,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadm       $v0, $v1, $v2",
+            expected_opcode: Opcode::rsp_vmadm,
+            opcode_str: "vmadm",
+            operands_str: [Some("$v0"), Some("$v1"), Some("$v2"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0520CE,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadn       $v3, $v4, $v5",
+            expected_opcode: Opcode::rsp_vmadn,
+            opcode_str: "vmadn",
+            operands_str: [Some("$v3"), Some("$v4"), Some("$v5"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A08398F,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadh       $v6, $v7, $v8",
+            expected_opcode: Opcode::rsp_vmadh,
+            opcode_str: "vmadh",
+            operands_str: [Some("$v6"), Some("$v7"), Some("$v8"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A08399D,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsar        $v6, $v7, $v8",
+            expected_opcode: Opcode::rsp_vsar,
+            opcode_str: "vsar",
+            operands_str: [Some("$v6"), Some("$v7"), Some("$v8"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B14,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vaddc       $v12, $v13, $v14",
+            expected_opcode: Opcode::rsp_vaddc,
+            opcode_str: "vaddc",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1183D5,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsubc       $v15, $v16, $v17",
+            expected_opcode: Opcode::rsp_vsubc,
+            opcode_str: "vsubc",
+            operands_str: [Some("$v15"), Some("$v16"), Some("$v17"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1183E0,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vlt         $v15, $v16, $v17",
+            expected_opcode: Opcode::rsp_vlt,
+            opcode_str: "vlt",
+            operands_str: [Some("$v15"), Some("$v16"), Some("$v17"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A149CA1,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "veq         $v18, $v19, $v20",
+            expected_opcode: Opcode::rsp_veq,
+            opcode_str: "veq",
+            operands_str: [Some("$v18"), Some("$v19"), Some("$v20"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A17B562,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vne         $v21, $v22, $v23",
+            expected_opcode: Opcode::rsp_vne,
+            opcode_str: "vne",
+            operands_str: [Some("$v21"), Some("$v22"), Some("$v23"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE23,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vge         $v24, $v25, $v26",
+            expected_opcode: Opcode::rsp_vge,
+            opcode_str: "vge",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6E4,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vcl         $v27, $v28, $v29",
+            expected_opcode: Opcode::rsp_vcl,
+            opcode_str: "vcl",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00FFA5,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vch         $v30, $v31, $v0",
+            expected_opcode: Opcode::rsp_vch,
+            opcode_str: "vch",
+            operands_str: [Some("$v30"), Some("$v31"), Some("$v0"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A020826,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vcr         $v0, $v1, $v2",
+            expected_opcode: Opcode::rsp_vcr,
+            opcode_str: "vcr",
+            operands_str: [Some("$v0"), Some("$v1"), Some("$v2"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0520E7,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmrg        $v3, $v4, $v5",
+            expected_opcode: Opcode::rsp_vmrg,
+            opcode_str: "vmrg",
+            operands_str: [Some("$v3"), Some("$v4"), Some("$v5"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0839A8,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vand        $v6, $v7, $v8",
+            expected_opcode: Opcode::rsp_vand,
+            opcode_str: "vand",
+            operands_str: [Some("$v6"), Some("$v7"), Some("$v8"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B5269,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vnand       $v9, $v10, $v11",
+            expected_opcode: Opcode::rsp_vnand,
+            opcode_str: "vnand",
+            operands_str: [Some("$v9"), Some("$v10"), Some("$v11"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B2A,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vor         $v12, $v13, $v14",
+            expected_opcode: Opcode::rsp_vor,
+            opcode_str: "vor",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1183EB,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vnor        $v15, $v16, $v17",
+            expected_opcode: Opcode::rsp_vnor,
+            opcode_str: "vnor",
+            operands_str: [Some("$v15"), Some("$v16"), Some("$v17"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A149CAC,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vxor        $v18, $v19, $v20",
+            expected_opcode: Opcode::rsp_vxor,
+            opcode_str: "vxor",
+            operands_str: [Some("$v18"), Some("$v19"), Some("$v20"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A17B56D,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vnxor       $v21, $v22, $v23",
+            expected_opcode: Opcode::rsp_vnxor,
+            opcode_str: "vnxor",
+            operands_str: [Some("$v21"), Some("$v22"), Some("$v23"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1F07B0,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrcp        $v30, $v31",
+            expected_opcode: Opcode::rsp_vrcp,
+            opcode_str: "vrcp",
+            operands_str: [Some("$v30"), Some("$v31"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A010031,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrcpl       $v0, $v1",
+            expected_opcode: Opcode::rsp_vrcpl,
+            opcode_str: "vrcpl",
+            operands_str: [Some("$v0"), Some("$v1"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0300B2,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrcph       $v2, $v3",
+            expected_opcode: Opcode::rsp_vrcph,
+            opcode_str: "vrcph",
+            operands_str: [Some("$v2"), Some("$v3"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A050133,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmov        $v4, $v5",
+            expected_opcode: Opcode::rsp_vmov,
+            opcode_str: "vmov",
+            operands_str: [Some("$v4"), Some("$v5"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0701B4,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrsq        $v6, $v7",
+            expected_opcode: Opcode::rsp_vrsq,
+            opcode_str: "vrsq",
+            operands_str: [Some("$v6"), Some("$v7"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A090235,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrsql       $v8, $v9",
+            expected_opcode: Opcode::rsp_vrsql,
+            opcode_str: "vrsql",
+            operands_str: [Some("$v8"), Some("$v9"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B02B6,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrsqh       $v10, $v11",
+            expected_opcode: Opcode::rsp_vrsqh,
+            opcode_str: "vrsqh",
+            operands_str: [Some("$v10"), Some("$v11"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A020801,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmulu       $v0, $v1, $v2",
+            expected_opcode: Opcode::rsp_vmulu,
+            opcode_str: "vmulu",
+            operands_str: [Some("$v0"), Some("$v1"), Some("$v2"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0520C3,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmulq       $v3, $v4, $v5",
+            expected_opcode: Opcode::rsp_vmulq,
+            opcode_str: "vmulq",
+            operands_str: [Some("$v3"), Some("$v4"), Some("$v5"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A083990,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vadd        $v6, $v7, $v8",
+            expected_opcode: Opcode::rsp_vadd,
+            opcode_str: "vadd",
+            operands_str: [Some("$v6"), Some("$v7"), Some("$v8"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B5251,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsub        $v9, $v10, $v11",
+            expected_opcode: Opcode::rsp_vsub,
+            opcode_str: "vsub",
+            operands_str: [Some("$v9"), Some("$v10"), Some("$v11"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B13,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vabs        $v12, $v13, $v14",
+            expected_opcode: Opcode::rsp_vabs,
+            opcode_str: "vabs",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A000037,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vnop",
+            expected_opcode: Opcode::rsp_vnop,
+            opcode_str: "vnop",
+            operands_str: [None, None, None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4AF4E0E4,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vcl         $v3, $v28, $v20[3h]",
+            expected_opcode: Opcode::rsp_vcl,
+            opcode_str: "vcl",
+            operands_str: [Some("$v3"), Some("$v28"), Some("$v20[3h]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4AC550C8,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmacf       $v3, $v10, $v5[2h]",
+            expected_opcode: Opcode::rsp_vmacf,
+            opcode_str: "vmacf",
+            operands_str: [Some("$v3"), Some("$v10"), Some("$v5[2h]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4AF5E8E5,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vch         $v3, $v29, $v21[3h]",
+            expected_opcode: Opcode::rsp_vch,
+            opcode_str: "vch",
+            operands_str: [Some("$v3"), Some("$v29"), Some("$v21[3h]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4ACB36D4,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vaddc       $v27, $v6, $v11[2h]",
+            expected_opcode: Opcode::rsp_vaddc,
+            opcode_str: "vaddc",
+            operands_str: [Some("$v27"), Some("$v6"), Some("$v11[2h]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B0C58A8,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vand        $v2, $v11, $v12[0]",
+            expected_opcode: Opcode::rsp_vand,
+            opcode_str: "vand",
+            operands_str: [Some("$v2"), Some("$v11"), Some("$v12[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x488ED800,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "mtc2        $t6, $v27[0]",
+            expected_opcode: Opcode::rsp_mtc2,
+            opcode_str: "mtc2",
+            operands_str: [Some("$t6"), Some("$v27[0]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B1B21C6,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudn       $v7, $v4, $v27[0]",
+            expected_opcode: Opcode::rsp_vmudn,
+            opcode_str: "vmudn",
+            operands_str: [Some("$v7"), Some("$v4"), Some("$v27[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B7F488E,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadn       $v2, $v9, $v31[3]",
+            expected_opcode: Opcode::rsp_vmadn,
+            opcode_str: "vmadn",
+            operands_str: [Some("$v2"), Some("$v9"), Some("$v31[3]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B2A3A05,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudm       $v8, $v7, $v10[1]",
+            expected_opcode: Opcode::rsp_vmudm,
+            opcode_str: "vmudm",
+            operands_str: [Some("$v8"), Some("$v7"), Some("$v10[1]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B3D1EC7,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudh       $v27, $v3, $v29[1]",
+            expected_opcode: Opcode::rsp_vmudh,
+            opcode_str: "vmudh",
+            operands_str: [Some("$v27"), Some("$v3"), Some("$v29[1]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B7DFA0F,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadh       $v8, $v31, $v29[3]",
+            expected_opcode: Opcode::rsp_vmadh,
+            opcode_str: "vmadh",
+            operands_str: [Some("$v8"), Some("$v31"), Some("$v29[3]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B0A529D,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsar        $v10, $v10, $v10[0]",
+            expected_opcode: Opcode::rsp_vsar,
+            opcode_str: "vsar",
+            operands_str: [Some("$v10"), Some("$v10"), Some("$v10[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4BAA4351,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsub        $v13, $v8, $v10[5]",
+            expected_opcode: Opcode::rsp_vsub,
+            opcode_str: "vsub",
+            operands_str: [Some("$v13"), Some("$v8"), Some("$v10[5]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B1F8ECD,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadm       $v27, $v17, $v31[0]",
+            expected_opcode: Opcode::rsp_vmadm,
+            opcode_str: "vmadm",
+            operands_str: [Some("$v27"), Some("$v17"), Some("$v31[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B3F7384,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmudl       $v14, $v14, $v31[1]",
+            expected_opcode: Opcode::rsp_vmudl,
+            opcode_str: "vmudl",
+            operands_str: [Some("$v14"), Some("$v14"), Some("$v31[1]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B9F2940,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmulf       $v5, $v5, $v31[4]",
+            expected_opcode: Opcode::rsp_vmulf,
+            opcode_str: "vmulf",
+            operands_str: [Some("$v5"), Some("$v5"), Some("$v31[4]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4BAA4390,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vadd        $v14, $v8, $v10[5]",
+            expected_opcode: Opcode::rsp_vadd,
+            opcode_str: "vadd",
+            operands_str: [Some("$v14"), Some("$v8"), Some("$v10[5]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4813D900,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "mfc2        $s3, $v27[2]",
+            expected_opcode: Opcode::rsp_mfc2,
+            opcode_str: "mfc2",
+            operands_str: [Some("$s3"), Some("$v27[2]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B7D6EE3,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vge         $v27, $v13, $v29[3]",
+            expected_opcode: Opcode::rsp_vge,
+            opcode_str: "vge",
+            operands_str: [Some("$v27"), Some("$v13"), Some("$v29[3]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B7D7EE0,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vlt         $v27, $v15, $v29[3]",
+            expected_opcode: Opcode::rsp_vlt,
+            opcode_str: "vlt",
+            operands_str: [Some("$v27"), Some("$v15"), Some("$v29[3]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B1F6A0C,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmadl       $v8, $v13, $v31[0]",
+            expected_opcode: Opcode::rsp_vmadl,
+            opcode_str: "vmadl",
+            operands_str: [Some("$v8"), Some("$v13"), Some("$v31[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B224AF3,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vmov        $v11[1], $v2[1]",
+            expected_opcode: Opcode::rsp_vmov,
+            opcode_str: "vmov",
+            operands_str: [Some("$v11[1]"), Some("$v2[1]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B0343F0,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrcp        $v15[0], $v3[0]",
+            expected_opcode: Opcode::rsp_vrcp,
+            opcode_str: "vrcp",
+            operands_str: [Some("$v15[0]"), Some("$v3[0]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B7D4232,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrcph       $v8[0], $v29[3]",
+            expected_opcode: Opcode::rsp_vrcph,
+            opcode_str: "vrcph",
+            operands_str: [Some("$v8[0]"), Some("$v29[3]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4BDE0026,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vcr         $v0, $v0, $v30[6]",
+            expected_opcode: Opcode::rsp_vcr,
+            opcode_str: "vcr",
+            operands_str: [Some("$v0"), Some("$v0"), Some("$v30[6]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B0D41F1,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrcpl       $v7[0], $v13[0]",
+            expected_opcode: Opcode::rsp_vrcpl,
+            opcode_str: "vrcpl",
+            operands_str: [Some("$v7[0]"), Some("$v13[0]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B1F4221,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "veq         $v8, $v8, $v31[0]",
+            expected_opcode: Opcode::rsp_veq,
+            opcode_str: "veq",
+            operands_str: [Some("$v8"), Some("$v8"), Some("$v31[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B1F7BE2,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vne         $v15, $v15, $v31[0]",
+            expected_opcode: Opcode::rsp_vne,
+            opcode_str: "vne",
+            operands_str: [Some("$v15"), Some("$v15"), Some("$v31[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B1F7A2D,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vnxor       $v8, $v15, $v31[0]",
+            expected_opcode: Opcode::rsp_vnxor,
+            opcode_str: "vnxor",
+            operands_str: [Some("$v8"), Some("$v15"), Some("$v31[0]"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B1F42F6,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrsqh       $v11[0], $v31[0]",
+            expected_opcode: Opcode::rsp_vrsqh,
+            opcode_str: "vrsqh",
+            operands_str: [Some("$v11[0]"), Some("$v31[0]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B4743F5,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vrsql       $v15[0], $v7[2]",
+            expected_opcode: Opcode::rsp_vrsql,
+            opcode_str: "vrsql",
+            operands_str: [Some("$v15[0]"), Some("$v7[2]"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4B3E01EB,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vnor        $v7, $v0, $v30[1]",
+            expected_opcode: Opcode::rsp_vnor,
+            opcode_str: "vnor",
+            operands_str: [Some("$v7"), Some("$v0"), Some("$v30[1]"), None, None],
+        },
+    ];
+
+    assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
+}
+
+#[test]
+fn check_rsp_instructions_vice_msp() {
+    const ENTRIES: &[TestEntry] = &[
+        TestEntry {
+            instr: Instruction::new(
+                0xC94A5510,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lwv         $v10[10], 0x100($t2)",
+            expected_opcode: Opcode::rsp_lwv,
+            opcode_str: "lwv",
+            operands_str: [Some("$v10[10]"), Some("0x100($t2)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xC94A5510,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0xC94A5510                   /* lwv         $v10[10], 0x100($t2) / 00000000 <OpcodeCategory: RSP_NORMAL_LWC2> */",
+            expected_opcode: Opcode::rsp_lwv,
+            opcode_str: "lwv",
+            operands_str: [Some("$v10[10]"), Some("0x100($t2)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B5252,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsut        $v9, $v10, $v11",
+            expected_opcode: Opcode::rsp_vsut,
+            opcode_str: "vsut",
+            operands_str: [Some("$v9"), Some("$v10"), Some("$v11"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B5252,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A0B5252                   /* vsut        $v9, $v10, $v11 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vsut,
+            opcode_str: "vsut",
+            operands_str: [Some("$v9"), Some("$v10"), Some("$v11"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A149C96,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vaddb       $v18, $v19, $v20",
+            expected_opcode: Opcode::rsp_vaddb,
+            opcode_str: "vaddb",
+            operands_str: [Some("$v18"), Some("$v19"), Some("$v20"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A149C96,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A149C96                   /* vaddb       $v18, $v19, $v20 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vaddb,
+            opcode_str: "vaddb",
+            operands_str: [Some("$v18"), Some("$v19"), Some("$v20"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A17B557,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsubb       $v21, $v22, $v23",
+            expected_opcode: Opcode::rsp_vsubb,
+            opcode_str: "vsubb",
+            operands_str: [Some("$v21"), Some("$v22"), Some("$v23"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A17B557,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A17B557                   /* vsubb       $v21, $v22, $v23 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vsubb,
+            opcode_str: "vsubb",
+            operands_str: [Some("$v21"), Some("$v22"), Some("$v23"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE18,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vaccb       $v24, $v25, $v26",
+            expected_opcode: Opcode::rsp_vaccb,
+            opcode_str: "vaccb",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE18,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A1ACE18                   /* vaccb       $v24, $v25, $v26 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vaccb,
+            opcode_str: "vaccb",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6D9,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsucb       $v27, $v28, $v29",
+            expected_opcode: Opcode::rsp_vsucb,
+            opcode_str: "vsucb",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6D9,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A1DE6D9                   /* vsucb       $v27, $v28, $v29 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vsucb,
+            opcode_str: "vsucb",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00FF9A,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsad        $v30, $v31, $v0",
+            expected_opcode: Opcode::rsp_vsad,
+            opcode_str: "vsad",
+            operands_str: [Some("$v30"), Some("$v31"), Some("$v0"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00FF9A,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A00FF9A                   /* vsad        $v30, $v31, $v0 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vsad,
+            opcode_str: "vsad",
+            operands_str: [Some("$v30"), Some("$v31"), Some("$v0"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A02081B,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsac        $v0, $v1, $v2",
+            expected_opcode: Opcode::rsp_vsac,
+            opcode_str: "vsac",
+            operands_str: [Some("$v0"), Some("$v1"), Some("$v2"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A02081B,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A02081B                   /* vsac        $v0, $v1, $v2 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vsac,
+            opcode_str: "vsac",
+            operands_str: [Some("$v0"), Some("$v1"), Some("$v2"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0520DC,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsum        $v3, $v4, $v5",
+            expected_opcode: Opcode::rsp_vsum,
+            opcode_str: "vsum",
+            operands_str: [Some("$v3"), Some("$v4"), Some("$v5"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0520DC,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A0520DC                   /* vsum        $v3, $v4, $v5 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vsum,
+            opcode_str: "vsum",
+            operands_str: [Some("$v3"), Some("$v4"), Some("$v5"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B525E,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vacc        $v9, $v10, $v11",
+            expected_opcode: Opcode::rsp_vacc,
+            opcode_str: "vacc",
+            operands_str: [Some("$v9"), Some("$v10"), Some("$v11"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0B525E,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A0B525E                   /* vacc        $v9, $v10, $v11 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vacc,
+            opcode_str: "vacc",
+            operands_str: [Some("$v9"), Some("$v10"), Some("$v11"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B1F,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vsuc        $v12, $v13, $v14",
+            expected_opcode: Opcode::rsp_vsuc,
+            opcode_str: "vsuc",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B1F,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A0E6B1F                   /* vsuc        $v12, $v13, $v14 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vsuc,
+            opcode_str: "vsuc",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE2E,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "v056        $v24, $v25, $v26",
+            expected_opcode: Opcode::rsp_v056,
+            opcode_str: "v056",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE2E,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A1ACE2E                   /* v056        $v24, $v25, $v26 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_v056,
+            opcode_str: "v056",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6EF,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "v057        $v27, $v28, $v29",
+            expected_opcode: Opcode::rsp_v057,
+            opcode_str: "v057",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6EF,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A1DE6EF                   /* v057        $v27, $v28, $v29 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_v057,
+            opcode_str: "v057",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B38,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vextt       $v12, $v13, $v14",
+            expected_opcode: Opcode::rsp_vextt,
+            opcode_str: "vextt",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A0E6B38,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A0E6B38                   /* vextt       $v12, $v13, $v14 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vextt,
+            opcode_str: "vextt",
+            operands_str: [Some("$v12"), Some("$v13"), Some("$v14"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1183F9,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vextq       $v15, $v16, $v17",
+            expected_opcode: Opcode::rsp_vextq,
+            opcode_str: "vextq",
+            operands_str: [Some("$v15"), Some("$v16"), Some("$v17"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1183F9,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A1183F9                   /* vextq       $v15, $v16, $v17 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vextq,
+            opcode_str: "vextq",
+            operands_str: [Some("$v15"), Some("$v16"), Some("$v17"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A149CBA,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vextn       $v18, $v19, $v20",
+            expected_opcode: Opcode::rsp_vextn,
+            opcode_str: "vextn",
+            operands_str: [Some("$v18"), Some("$v19"), Some("$v20"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A149CBA,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A149CBA                   /* vextn       $v18, $v19, $v20 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vextn,
+            opcode_str: "vextn",
+            operands_str: [Some("$v18"), Some("$v19"), Some("$v20"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A17B57B,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "v073        $v21, $v22, $v23",
+            expected_opcode: Opcode::rsp_v073,
+            opcode_str: "v073",
+            operands_str: [Some("$v21"), Some("$v22"), Some("$v23"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A17B57B,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A17B57B                   /* v073        $v21, $v22, $v23 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_v073,
+            opcode_str: "v073",
+            operands_str: [Some("$v21"), Some("$v22"), Some("$v23"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE3C,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vinst       $v24, $v25, $v26",
+            expected_opcode: Opcode::rsp_vinst,
+            opcode_str: "vinst",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1ACE3C,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A1ACE3C                   /* vinst       $v24, $v25, $v26 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vinst,
+            opcode_str: "vinst",
+            operands_str: [Some("$v24"), Some("$v25"), Some("$v26"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6FD,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vinsq       $v27, $v28, $v29",
+            expected_opcode: Opcode::rsp_vinsq,
+            opcode_str: "vinsq",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A1DE6FD,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A1DE6FD                   /* vinsq       $v27, $v28, $v29 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vinsq,
+            opcode_str: "vinsq",
+            operands_str: [Some("$v27"), Some("$v28"), Some("$v29"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00FFBE,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vinsn       $v30, $v31, $v0",
+            expected_opcode: Opcode::rsp_vinsn,
+            opcode_str: "vinsn",
+            operands_str: [Some("$v30"), Some("$v31"), Some("$v0"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00FFBE,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A00FFBE                   /* vinsn       $v30, $v31, $v0 / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vinsn,
+            opcode_str: "vinsn",
+            operands_str: [Some("$v30"), Some("$v31"), Some("$v0"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00003F,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(true),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "vnull",
+            expected_opcode: Opcode::rsp_vnull,
+            opcode_str: "vnull",
+            operands_str: [None, None, None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x4A00003F,
+                Vram::new(0xA4000000),
+                InstructionFlags::new_extension(IsaExtension::RSP).with_gated_rsp_vice_msp(false),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected: ".word       0x4A00003F                   /* vnull / 00000000 <OpcodeCategory: RSP_COP2_VU> */",
+            expected_opcode: Opcode::rsp_vnull,
+            opcode_str: "vnull",
+            operands_str: [None, None, None, None, None],
+        },
+    ];
+
+    assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
+}
+
+#[test]
+fn check_rsp_instructions_removed() {
+    const ENTRIES: &[TestEntry] = &[
         TestEntry::new_rsp_invalid(0x50740008, InstructionFlags::default(), ".word       0x50740008                   /* INVALID / 00740008 <OpcodeCategory: RSP_NORMAL> */"), // beql
         TestEntry::new_rsp_invalid(0x56E1FFF8, InstructionFlags::default(), ".word       0x56E1FFF8                   /* INVALID / 02E1FFF8 <OpcodeCategory: RSP_NORMAL> */"), // bnel
         TestEntry::new_rsp_invalid(0x59C00007, InstructionFlags::default(), ".word       0x59C00007                   /* INVALID / 01C00007 <OpcodeCategory: RSP_NORMAL> */"), // blezl
@@ -1729,7 +3835,14 @@ fn check_rsp_instructions() {
         TestEntry::new_rsp_invalid(0x40420800, InstructionFlags::default(), ".word       0x40420800                   /* INVALID / 00020800 <OpcodeCategory: RSP_COP0> */"), // cfc0
         TestEntry::new_rsp_invalid(0x40A20800, InstructionFlags::default(), ".word       0x40A20800                   /* INVALID / 00020800 <OpcodeCategory: RSP_COP0> */"), // dmtc0
         TestEntry::new_rsp_invalid(0x40C20800, InstructionFlags::default(), ".word       0x40C20800                   /* INVALID / 00020800 <OpcodeCategory: RSP_COP0> */"), // ctc0
-        // Invalid instructions
+    ];
+
+    assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
+}
+
+#[test]
+fn check_rsp_instructions_invalid() {
+    const ENTRIES: &[TestEntry] = &[
         TestEntry::new_rsp_invalid(0x44444444, InstructionFlags::default(), ".word       0x44444444                   /* INVALID / 00444444 <OpcodeCategory: RSP_COP1> */"),
         TestEntry::new_rsp_invalid(0x77777777, InstructionFlags::default(), ".word       0x77777777                   /* INVALID / 03777777 <OpcodeCategory: CORE_NORMAL> */"),
         TestEntry::new_rsp_invalid(0xEEEEEEEE, InstructionFlags::default(), ".word       0xEEEEEEEE                   /* INVALID / 02EEEEEE <OpcodeCategory: CORE_NORMAL> */"),

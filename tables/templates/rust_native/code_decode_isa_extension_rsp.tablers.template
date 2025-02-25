@@ -19,7 +19,10 @@
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten) \
     case_bits => Opcode::ALL_INVALID,
 
-use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
+#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate_expr, ...) \
+    case_bits => { gated_behind = Some(OpcodeValidityGate:: gate_expr) ; Opcode::prefix##_##name },
+
+use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder, OpcodeValidityGate};
 use crate::isa::IsaVersion;
 use crate::encoded_field_mask::EncodedFieldMask;
 
@@ -43,6 +46,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 
@@ -55,6 +59,7 @@ impl OpcodeDecoder {
     ) -> Self {
         let mask = EncodedFieldMask::rd;
         let opcode_category = OpcodeCategory::RSP_NORMAL_LWC2;
+        let mut gated_behind = None;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
@@ -66,6 +71,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind,
         }
     }
 
@@ -73,8 +79,8 @@ impl OpcodeDecoder {
     pub(crate) const fn decode_isa_extension_rsp_swc2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rd;
         let opcode_category = OpcodeCategory::RSP_NORMAL_SWC2;
@@ -89,7 +95,8 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
-        }.fixups_decode_isa_extension_rsp_swc2(word, flags, isa_version)
+            gated_behind: None,
+        }
     }
 
     SPECIAL_RS_TAG(must_use)
@@ -111,6 +118,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 
@@ -133,6 +141,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 
@@ -156,6 +165,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 
@@ -173,6 +183,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 
@@ -190,11 +201,13 @@ impl OpcodeDecoder {
 
         let opcode = match mask.get_shifted(word) {
 #include "opcodes/rsp/rsp_cop2.inc"
+            _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
 
@@ -207,17 +220,10 @@ impl OpcodeDecoder {
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode_category = OpcodeCategory::RSP_COP2_VU;
+        let mut gated_behind = None;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::rsp_vu.mask_value(word));
-        if EncodedFieldMask::rsp_vu.get_shifted(word) != 1 {
-            return Self {
-                opcode: Opcode::ALL_INVALID,
-                opcode_category,
-                mandatory_bits,
-            };
-        }
 
         let opcode = match mask.get_shifted(word) {
 #include "opcodes/rsp/rsp_cop2_vu.inc"
@@ -227,6 +233,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind,
         }
     }
 }
@@ -236,3 +243,4 @@ impl OpcodeDecoder {
 #undef RAB_DEF_OPCODE_PSEUDO
 #undef RAB_DEF_OPCODE_REDIRECT
 #undef RAB_DEF_OPCODE_REMOVED
+#undef RAB_DEF_OPCODE_GATED

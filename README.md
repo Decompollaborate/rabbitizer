@@ -128,6 +128,8 @@ See this crate at <https://crates.io/crates/rabbitizer>.
 - N64's RSP (Reality Signal Processor):
   - Nintendo Ultra64 RSP Programmer’s Guide: <https://ultra64.ca/files/documentation/silicon-graphics/SGI_Nintendo_64_RSP_Programmers_Guide.pdf>
   - N64brew Reality Signal Processor/CPU Core: <https://n64brew.dev/wiki/Reality_Signal_Processor/CPU_Core>
+  - Tharo's binutils rsp: <https://github.com/Thar0/binutils-rsp/>
+    - VICE MSP binutils port: <https://web.archive.org/web/20220704165937/https://www.linux-mips.org/~glaurung/VICE/binutils-2.13-msp.diff>
 
 - R3000 GTE:
   - PSYQ SDK headers: <https://github.com/FoxdieTeam/psyq_sdk/blob/master/psyq_4.4/INCLUDE/INLINE_A.H>

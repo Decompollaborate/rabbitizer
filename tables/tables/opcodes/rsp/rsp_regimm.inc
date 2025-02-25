@@ -1,6 +1,18 @@
 /* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+/*
+    31---------26----------20-------16------------------------------0
+    | = REGIMM  |          |   rt    |                              |
+    ------6---------------------5------------------------------------
+    |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| lo
+ 00 | BLTZ  | BGEZ  | ---   | ---   | ---   | ---   | ---   | ---   |
+ 01 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+ 10 | BLTZAL| BGEZAL| ---   | ---   | ---   | ---   | ---   | ---   |
+ 11 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
+*/
+
     RAB_DEF_OPCODE_REMOVED(0x02, core, bltzl, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x03, core, bgezl, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x08, core, tgei, IsaVersion::EXTENSION, Some(IsaExtension::RSP))

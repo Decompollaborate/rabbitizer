@@ -7,11 +7,14 @@ use crate::encoded_field_mask::EncodedFieldMask;
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory};
 
+use super::OpcodeValidityGate;
+
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub(crate) struct OpcodeDecoder {
     pub(crate) opcode: Opcode,
     pub(crate) opcode_category: OpcodeCategory,
     pub(crate) mandatory_bits: EncodedFieldMask,
+    pub(crate) gated_behind: Option<OpcodeValidityGate>,
 }
 
 impl OpcodeDecoder {
@@ -63,6 +66,20 @@ impl OpcodeDecoder {
     #[must_use]
     pub const fn mandatory_bits(&self) -> EncodedFieldMask {
         self.mandatory_bits
+    }
+
+    #[must_use]
+    pub const fn is_valid(&self, flags: &DecodingFlags) -> bool {
+        if !self.opcode.is_valid() {
+            return false;
+        }
+
+        match self.gated_behind {
+            Some(OpcodeValidityGate::RspViceMsp) => {
+                flags.contains(DecodingFlags::gated_rsp_vice_msp)
+            }
+            None => true,
+        }
     }
 }
 
@@ -195,36 +212,7 @@ impl OpcodeDecoder {
 }
 
 /// IsaExtension::RSP
-impl OpcodeDecoder {
-    #[must_use]
-    pub(crate) const fn fixups_decode_isa_extension_rsp_swc2(
-        self,
-        word: u32,
-        _flags: &DecodingFlags,
-        _isa_version: IsaVersion,
-    ) -> Self {
-        match self.opcode {
-            Opcode::rsp_suv => {
-                let mask = EncodedFieldMask::rsp_elementlow;
-                let mandatory_bits = self.mandatory_bits.union(mask.mask_value(word));
-                if mask.get_shifted(word) != 0x00 {
-                    Self {
-                        opcode: Opcode::rsp_swv,
-                        opcode_category: self.opcode_category,
-                        mandatory_bits,
-                    }
-                } else {
-                    Self {
-                        opcode: self.opcode,
-                        opcode_category: self.opcode_category,
-                        mandatory_bits,
-                    }
-                }
-            }
-            _ => self,
-        }
-    }
-}
+impl OpcodeDecoder {}
 
 // IsaExtension::R3000GTE
 impl OpcodeDecoder {}
@@ -248,14 +236,14 @@ impl OpcodeDecoder {
                 if (mask.get_shifted(word) & 0x10) == 0x10 {
                     Self {
                         opcode: Opcode::r5900ee_sync_p,
-                        opcode_category: self.opcode_category,
                         mandatory_bits,
+                        ..self
                     }
                 } else {
                     Self {
                         opcode: Opcode::core_sync,
-                        opcode_category: self.opcode_category,
                         mandatory_bits,
+                        ..self
                     }
                 }
             }

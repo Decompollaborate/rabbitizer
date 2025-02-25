@@ -298,7 +298,8 @@ impl Instruction {
         OpcodeDecoder::is_nop(self.word)
     }
 
-    /// Returns a bitmask specifying which bits are allowed to be turned on for this instruction.
+    /// Returns a bitmask specifying which bits are allowed to be turned on for
+    /// this instruction.
     ///
     /// This is useful to check if a word has bits turned on that should be zero.
     #[must_use]
@@ -309,7 +310,7 @@ impl Instruction {
     /// Returns `true` if the decoded `word` is a valid instruction.
     #[must_use]
     pub fn is_valid(&self) -> bool {
-        if !self.opcode().is_valid() {
+        if !self.opcode_decoder.is_valid(self.flags.decoding_flags()) {
             return false;
         }
 
@@ -1089,21 +1090,6 @@ impl Instruction {
         }
     }
 
-    /// Returns either the [`RspCop2`] register embedded on the `rsp_cop2t`
-    /// field of the word of this instruction, or [`None`] if this instruction
-    /// does not this field.
-    ///
-    /// [`RspCop2`]: crate::registers::RspCop2
-    /// [`None`]: Option::None
-    #[must_use]
-    pub fn field_rsp_cop2t(&self) -> Option<RspCop2> {
-        if self.opcode().has_operand_alias(Operand::rsp_cop2t) {
-            Some(self.field_rsp_cop2t_unchecked())
-        } else {
-            None
-        }
-    }
-
     /// Returns either the [`RspCop2`] register embedded on the `rsp_cop2cd`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
@@ -1253,25 +1239,6 @@ impl Instruction {
     #[must_use]
     pub fn field_rsp_cop0d_unchecked(&self) -> RspCop0 {
         EncodedFieldMask::cop0d
-            .get_shifted(self.word())
-            .try_into()
-            .unwrap()
-    }
-
-    /// Returns the [`RspCop2`] register embedded on the `rsp_cop2t` field of the word
-    /// of this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has this field, meaning that calling this function on an
-    /// instruction that does not have this field will interpret garbage data
-    /// as this field. It is recommended to use the [`field_rsp_cop2t`]
-    /// function instead.
-    ///
-    /// [`RspCop2`]: crate::registers::RspCop2
-    /// [`field_rsp_cop2t`]: Instruction::field_rsp_cop2t
-    #[must_use]
-    pub fn field_rsp_cop2t_unchecked(&self) -> RspCop2 {
-        EncodedFieldMask::cop2t
             .get_shifted(self.word())
             .try_into()
             .unwrap()
@@ -3305,6 +3272,7 @@ impl Instruction {
             | Opcode::rsp_sfv
             | Opcode::rsp_ltv
             | Opcode::rsp_stv
+            | Opcode::rsp_lwv
             | Opcode::rsp_swv => offset << 4,
 
             _ => offset,

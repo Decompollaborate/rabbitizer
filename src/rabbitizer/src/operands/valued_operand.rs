@@ -104,7 +104,6 @@ impl ValuedOperand {
             }
             Operand::core_maybe_zero_rs => Self::core_maybe_zero_rs((), instr.field_rs_unchecked()),
             Operand::rsp_cop0d => Self::rsp_cop0d(instr.field_rsp_cop0d_unchecked()),
-            Operand::rsp_cop2t => Self::rsp_cop2t(instr.field_rsp_cop2t_unchecked()),
             Operand::rsp_cop2cd => Self::rsp_cop2cd(instr.field_rsp_cop2cd_unchecked()),
             Operand::rsp_vs => Self::rsp_vs(instr.field_rsp_vs_unchecked()),
             Operand::rsp_vd => Self::rsp_vd(instr.field_rsp_vd_unchecked()),

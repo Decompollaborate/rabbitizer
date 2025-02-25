@@ -39,7 +39,6 @@ pub enum Operand {
     core_maybe_rd_rs,
     core_maybe_zero_rs,
     rsp_cop0d,
-    rsp_cop2t,
     rsp_cop2cd,
     rsp_vs,
     rsp_vd,
@@ -202,8 +201,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     );
     table[Operand::rsp_cop0d as usize] =
         OperandDescriptor::new(concat!("rsp", "_", "cop0d"), EncodedFieldMask::cop0d);
-    table[Operand::rsp_cop2t as usize] =
-        OperandDescriptor::new(concat!("rsp", "_", "cop2t"), EncodedFieldMask::cop2t);
     table[Operand::rsp_cop2cd as usize] =
         OperandDescriptor::new(concat!("rsp", "_", "cop2cd"), EncodedFieldMask::cop2cd);
     table[Operand::rsp_vs as usize] =
@@ -610,7 +607,6 @@ where
             Operand::core_maybe_rd_rs => OperandDisplay::display_core_maybe_rd_rs(self, f),
             Operand::core_maybe_zero_rs => OperandDisplay::display_core_maybe_zero_rs(self, f),
             Operand::rsp_cop0d => OperandDisplay::display_rsp_cop0d(self, f),
-            Operand::rsp_cop2t => OperandDisplay::display_rsp_cop2t(self, f),
             Operand::rsp_cop2cd => OperandDisplay::display_rsp_cop2cd(self, f),
             Operand::rsp_vs => OperandDisplay::display_rsp_vs(self, f),
             Operand::rsp_vd => OperandDisplay::display_rsp_vd(self, f),
@@ -779,7 +775,6 @@ pub enum ValuedOperand {
     core_maybe_rd_rs(Option<Gpr>, Gpr),
     core_maybe_zero_rs((), Gpr),
     rsp_cop0d(RspCop0),
-    rsp_cop2t(RspCop2),
     rsp_cop2cd(RspCop2),
     rsp_vs(RspVector),
     rsp_vd(RspVector),
@@ -921,7 +916,6 @@ impl Operand {
             ValuedOperand::core_maybe_rd_rs(..) => Self::core_maybe_rd_rs,
             ValuedOperand::core_maybe_zero_rs(..) => Self::core_maybe_zero_rs,
             ValuedOperand::rsp_cop0d(..) => Self::rsp_cop0d,
-            ValuedOperand::rsp_cop2t(..) => Self::rsp_cop2t,
             ValuedOperand::rsp_cop2cd(..) => Self::rsp_cop2cd,
             ValuedOperand::rsp_vs(..) => Self::rsp_vs,
             ValuedOperand::rsp_vd(..) => Self::rsp_vd,

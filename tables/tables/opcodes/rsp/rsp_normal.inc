@@ -1,6 +1,29 @@
 /* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+/*
+    31---------26---------------------------------------------------0
+    |  opcode   |                                                   |
+    ------6----------------------------------------------------------
+    |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| lo
+000 | *1    | *2    | J     | JAL   | BEQ   | BNE   | BLEZ  | BGTZ  |
+001 | ADDI  | ADDIU | SLTI  | SLTIU | ANDI  | ORI   | XORI  | LUI   |
+010 | *3    | *4    |  *5   | ---   | ---   | ---   | ---   | ---   |
+011 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+100 | LB    | LH    | ---   | LW    | LBU   | LHU   | ---   | ---   |
+101 | SB    | SH    | ---   | SW    | ---   | ---   | ---   | ---   |
+110 | ---   | ---   | *6    | PREF  | ---   | ---   | ---   | ---   |
+111 | ---   | ---   | *7    | ---   | ---   | ---   | ---   | ---   |
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
+     *1 = SPECIAL
+     *2 = REGIMM
+     *3 = COP0
+     *4 = COP1
+     *5 = COP2
+     *6 = LWC2
+     *7 = SWC2
+*/
+
     RAB_DEF_OPCODE_REMOVED(0x14, core, beql, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x15, core, bnel, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x16, core, blezl, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
@@ -16,21 +39,21 @@
     RAB_DEF_OPCODE_REMOVED(0x2C, core, sdl, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x2D, core, sdr, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x2E, core, swr, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x2F, core, cache, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x30, core, ll, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x31, core, lwc1, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    // RAB_DEF_OPCODE_REMOVED(0x32, core, lwc2, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x34, core, lld, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x35, core, ldc1, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x36, core, ldc2, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x37, core, ld, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x38, core, sc, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3C, core, scd, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3F, core, sd, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x2F, core, cache, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x31, core, lwc1, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x35, core, ldc1, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x39, core, swc1, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3D, core, sdc1, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    // RAB_DEF_OPCODE_REMOVED(0x32, core, lwc2, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x36, core, ldc2, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     // RAB_DEF_OPCODE_REMOVED(0x3A, core, swc2, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3C, core, scd, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3D, core, sdc1, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x3E, core, sdc2, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3F, core, sd, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
 
     // lwc2 and swc2 are commented out because they interferes with the REDIRECT patterns.
 

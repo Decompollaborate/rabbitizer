@@ -19,6 +19,9 @@ bitflags! {
         const pseudo_not = 1 << 7;
         const pseudo_neg = 1 << 8;
         const pseudo_negu = 1 << 9;
+
+        /// Allow decoding VICE MSP instructions as part of the RSP ones.
+        const gated_rsp_vice_msp = 1 << 26;
     }
 }
 

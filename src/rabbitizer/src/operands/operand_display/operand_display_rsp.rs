@@ -20,16 +20,6 @@ where
 
         write!(f, "{}", s)
     }
-    pub(crate) fn display_rsp_cop2t(
-        myself: &OperandDisplay<T>,
-        f: &mut fmt::Formatter<'_>,
-    ) -> fmt::Result {
-        let instr = myself.instr;
-        let reg = instr.field_rsp_cop2t_unchecked();
-        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
-
-        write!(f, "{}", s)
-    }
     pub(crate) fn display_rsp_cop2cd(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,

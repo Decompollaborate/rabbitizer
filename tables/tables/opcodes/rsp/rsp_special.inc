@@ -1,38 +1,54 @@
 /* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-    RAB_DEF_OPCODE_REMOVED(0x38, core, dsll, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3A, core, dsrl, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3B, core, dsra, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3C, core, dsll32, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3E, core, dsrl32, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x3F, core, dsra32, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+/*
+    31---------26------------------------------------------5--------0
+    | = SPECIAL |                                         | function|
+    ------6----------------------------------------------------6-----
+    |--000--|--001--|--010--|--011--|--100--|--101--|--110--|--111--| lo
+000 | SLL   | ---   | SRL   | SRA   | SLLV  | ---   | SRLV  | SRAV  |
+001 | JR    | JALR  | MOVZ  | MOVN  | ---   | BREAK | ---   | ---   |
+010 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+011 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+100 | ADD   | ADDU  | SUB   | SUBU  | AND   | OR    | XOR   | NOR   |
+101 | ---   | ---   | SLT   | SLTU  | ---   | ---   | ---   | ---   |
+110 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+111 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
+*/
+
+    RAB_DEF_OPCODE_REMOVED(0x0C, core, syscall, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x0F, core, sync, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x10, core, mfhi, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x11, core, mthi, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x12, core, mflo, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x13, core, mtlo, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x14, core, dsllv, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x16, core, dsrlv, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x17, core, dsrav, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x11, core, mthi, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x13, core, mtlo, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x10, core, mfhi, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x12, core, mflo, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x18, core, mult, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x19, core, multu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x1A, core, div, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x1B, core, divu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x1C, core, dmult, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x1D, core, dmultu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x1E, core, ddiv, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x1F, core, ddivu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x2C, core, dadd, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x2D, core, daddu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x2E, core, dsub, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x2F, core, dsubu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x0C, core, syscall, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x0F, core, sync, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x18, core, mult, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x19, core, multu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x1C, core, dmult, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
-    RAB_DEF_OPCODE_REMOVED(0x1D, core, dmultu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x30, core, tge, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x31, core, tgeu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x32, core, tlt, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x33, core, tltu, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x34, core, teq, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
     RAB_DEF_OPCODE_REMOVED(0x36, core, tne, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x38, core, dsll, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3A, core, dsrl, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3B, core, dsra, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3C, core, dsll32, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3E, core, dsrl32, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
+    RAB_DEF_OPCODE_REMOVED(0x3F, core, dsra32, IsaVersion::EXTENSION, Some(IsaExtension::RSP))
 
     RAB_DEF_OPCODE_REDIRECT(_, none, special)

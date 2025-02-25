@@ -16,6 +16,9 @@ The macros for defining an opcode use the following syntax:
   - This table will redirect to table `kind` from extension `prefix`.
 - RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
   - The opcode was removed by the given isa/extension combo.
+- RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate_expr, ...)
+  - Define an opcode that should be conditionally decoded depending on runtime
+    decoding flags.
 
 Arguments:
 - prefix: The name of the extension group.
@@ -30,6 +33,7 @@ Arguments:
 - isa_version_min: The ISA version that introduced this instruction. Should be
   EXTENSION if `isa_exten` is not NONE, or non-EXTENSION if `isa_exten` is NONE.
 - isa_exten: The extension instruction set that this instruction belongs to.
+- gate_expr: The decoding flags needed to recognize this instruction.
 - ...: Extra attributes for the opcode.
 
 */

@@ -694,7 +694,6 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::rsp_cop2t => {}
             Operand::rsp_cop2cd => {}
 
             Operand::rsp_vs => {

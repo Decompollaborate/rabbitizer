@@ -336,6 +336,31 @@ impl InstructionFlags {
     }
 
     #[must_use]
+    pub const fn gated_rsp_vice_msp(&self) -> bool {
+        self.decoding_flags
+            .contains(DecodingFlags::gated_rsp_vice_msp)
+    }
+    pub fn set_gated_rsp_vice_msp(&mut self, turn_on: bool) {
+        if turn_on {
+            self.decoding_flags
+                .insert(DecodingFlags::gated_rsp_vice_msp);
+        } else {
+            self.decoding_flags
+                .remove(DecodingFlags::gated_rsp_vice_msp);
+        }
+    }
+    #[must_use]
+    pub const fn with_gated_rsp_vice_msp(self, turn_on: bool) -> Self {
+        let other = if turn_on {
+            self.decoding_flags.union(DecodingFlags::gated_rsp_vice_msp)
+        } else {
+            self.decoding_flags
+                .intersection(DecodingFlags::gated_rsp_vice_msp.complement())
+        };
+        self.with_decoding_flags(other)
+    }
+
+    #[must_use]
     pub const fn abi(&self) -> Abi {
         self.abi
     }

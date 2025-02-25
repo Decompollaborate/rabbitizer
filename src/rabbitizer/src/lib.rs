@@ -69,6 +69,7 @@
 #![allow(clippy::redundant_pub_crate)]
 */
 
+#![deny(unreachable_patterns)]
 #![allow(clippy::exhaustive_enums)]
 #![warn(clippy::use_self)]
 #![warn(clippy::must_use_candidate)]

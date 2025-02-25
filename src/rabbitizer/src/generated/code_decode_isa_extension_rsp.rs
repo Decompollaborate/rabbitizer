@@ -5,7 +5,7 @@
 
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::isa::IsaVersion;
-use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
+use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder, OpcodeValidityGate};
 impl OpcodeDecoder {
     #[must_use]
     pub(crate) const fn decode_isa_extension_rsp_normal(
@@ -33,19 +33,19 @@ impl OpcodeDecoder {
             0x2C => Opcode::ALL_INVALID,
             0x2D => Opcode::ALL_INVALID,
             0x2E => Opcode::ALL_INVALID,
+            0x2F => Opcode::ALL_INVALID,
             0x30 => Opcode::ALL_INVALID,
+            0x31 => Opcode::ALL_INVALID,
             0x34 => Opcode::ALL_INVALID,
+            0x35 => Opcode::ALL_INVALID,
+            0x36 => Opcode::ALL_INVALID,
             0x37 => Opcode::ALL_INVALID,
             0x38 => Opcode::ALL_INVALID,
-            0x3C => Opcode::ALL_INVALID,
-            0x3F => Opcode::ALL_INVALID,
-            0x2F => Opcode::ALL_INVALID,
-            0x31 => Opcode::ALL_INVALID,
-            0x35 => Opcode::ALL_INVALID,
             0x39 => Opcode::ALL_INVALID,
+            0x3C => Opcode::ALL_INVALID,
             0x3D => Opcode::ALL_INVALID,
-            0x36 => Opcode::ALL_INVALID,
             0x3E => Opcode::ALL_INVALID,
+            0x3F => Opcode::ALL_INVALID,
             0x00 => {
                 return Self::decode_isa_extension_rsp_special(
                     word,
@@ -115,6 +115,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -126,6 +127,7 @@ impl OpcodeDecoder {
     ) -> Self {
         let mask = EncodedFieldMask::rd;
         let opcode_category = OpcodeCategory::RSP_NORMAL_LWC2;
+        let mut gated_behind = None;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
             0x00 => Opcode::rsp_lbv,
@@ -138,6 +140,10 @@ impl OpcodeDecoder {
             0x07 => Opcode::rsp_luv,
             0x08 => Opcode::rsp_lhv,
             0x09 => Opcode::rsp_lfv,
+            0x0A => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_lwv
+            }
             0x0B => Opcode::rsp_ltv,
             _ => Opcode::ALL_INVALID,
         };
@@ -145,14 +151,15 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind,
         }
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_rsp_swc2(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
-        flags: &DecodingFlags,
-        isa_version: IsaVersion,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
     ) -> Self {
         let mask = EncodedFieldMask::rd;
         let opcode_category = OpcodeCategory::RSP_NORMAL_SWC2;
@@ -168,16 +175,16 @@ impl OpcodeDecoder {
             0x07 => Opcode::rsp_suv,
             0x08 => Opcode::rsp_shv,
             0x09 => Opcode::rsp_sfv,
+            0x0A => Opcode::rsp_swv,
             0x0B => Opcode::rsp_stv,
-            0xFFFFFF07 => Opcode::rsp_swv,
             _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
-        .fixups_decode_isa_extension_rsp_swc2(word, flags, isa_version)
     }
     #[must_use]
     pub(crate) const fn decode_isa_extension_rsp_special(
@@ -190,39 +197,39 @@ impl OpcodeDecoder {
         let opcode_category = OpcodeCategory::RSP_SPECIAL;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x38 => Opcode::ALL_INVALID,
-            0x3A => Opcode::ALL_INVALID,
-            0x3B => Opcode::ALL_INVALID,
-            0x3C => Opcode::ALL_INVALID,
-            0x3E => Opcode::ALL_INVALID,
-            0x3F => Opcode::ALL_INVALID,
+            0x0C => Opcode::ALL_INVALID,
+            0x0F => Opcode::ALL_INVALID,
+            0x10 => Opcode::ALL_INVALID,
+            0x11 => Opcode::ALL_INVALID,
+            0x12 => Opcode::ALL_INVALID,
+            0x13 => Opcode::ALL_INVALID,
             0x14 => Opcode::ALL_INVALID,
             0x16 => Opcode::ALL_INVALID,
             0x17 => Opcode::ALL_INVALID,
-            0x11 => Opcode::ALL_INVALID,
-            0x13 => Opcode::ALL_INVALID,
-            0x10 => Opcode::ALL_INVALID,
-            0x12 => Opcode::ALL_INVALID,
+            0x18 => Opcode::ALL_INVALID,
+            0x19 => Opcode::ALL_INVALID,
             0x1A => Opcode::ALL_INVALID,
             0x1B => Opcode::ALL_INVALID,
+            0x1C => Opcode::ALL_INVALID,
+            0x1D => Opcode::ALL_INVALID,
             0x1E => Opcode::ALL_INVALID,
             0x1F => Opcode::ALL_INVALID,
             0x2C => Opcode::ALL_INVALID,
             0x2D => Opcode::ALL_INVALID,
             0x2E => Opcode::ALL_INVALID,
             0x2F => Opcode::ALL_INVALID,
-            0x0C => Opcode::ALL_INVALID,
-            0x0F => Opcode::ALL_INVALID,
-            0x18 => Opcode::ALL_INVALID,
-            0x19 => Opcode::ALL_INVALID,
-            0x1C => Opcode::ALL_INVALID,
-            0x1D => Opcode::ALL_INVALID,
             0x30 => Opcode::ALL_INVALID,
             0x31 => Opcode::ALL_INVALID,
             0x32 => Opcode::ALL_INVALID,
             0x33 => Opcode::ALL_INVALID,
             0x34 => Opcode::ALL_INVALID,
             0x36 => Opcode::ALL_INVALID,
+            0x38 => Opcode::ALL_INVALID,
+            0x3A => Opcode::ALL_INVALID,
+            0x3B => Opcode::ALL_INVALID,
+            0x3C => Opcode::ALL_INVALID,
+            0x3E => Opcode::ALL_INVALID,
+            0x3F => Opcode::ALL_INVALID,
             _ => {
                 return Self::decode_isa_extension_none_special(
                     word,
@@ -236,6 +243,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -272,6 +280,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -293,6 +302,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -308,6 +318,7 @@ impl OpcodeDecoder {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -325,7 +336,7 @@ impl OpcodeDecoder {
             0x04 => Opcode::rsp_mtc2,
             0x02 => Opcode::rsp_cfc2,
             0x06 => Opcode::rsp_ctc2,
-            _ => {
+            0x10..=0x1F => {
                 return Self::decode_isa_extension_rsp_coprocessor2_vu(
                     word,
                     mandatory_bits,
@@ -333,11 +344,13 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
+            _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind: None,
         }
     }
     #[must_use]
@@ -349,15 +362,9 @@ impl OpcodeDecoder {
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode_category = OpcodeCategory::RSP_COP2_VU;
+        let mut gated_behind = None;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::rsp_vu.mask_value(word));
-        if EncodedFieldMask::rsp_vu.get_shifted(word) != 1 {
-            return Self {
-                opcode: Opcode::ALL_INVALID,
-                opcode_category,
-                mandatory_bits,
-            };
-        }
         let opcode = match mask.get_shifted(word) {
             0x00 => Opcode::rsp_vmulf,
             0x01 => Opcode::rsp_vmulu,
@@ -377,16 +384,50 @@ impl OpcodeDecoder {
             0x0F => Opcode::rsp_vmadh,
             0x10 => Opcode::rsp_vadd,
             0x11 => Opcode::rsp_vsub,
+            0x12 => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vsut
+            }
             0x13 => Opcode::rsp_vabs,
             0x14 => Opcode::rsp_vaddc,
             0x15 => Opcode::rsp_vsubc,
+            0x16 => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vaddb
+            }
+            0x17 => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vsubb
+            }
+            0x18 => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vaccb
+            }
+            0x19 => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vsucb
+            }
+            0x1A => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vsad
+            }
+            0x1B => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vsac
+            }
+            0x1C => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vsum
+            }
             0x1D => Opcode::rsp_vsar,
-            0x28 => Opcode::rsp_vand,
-            0x29 => Opcode::rsp_vnand,
-            0x2A => Opcode::rsp_vor,
-            0x2B => Opcode::rsp_vnor,
-            0x2C => Opcode::rsp_vxor,
-            0x2D => Opcode::rsp_vnxor,
+            0x1E => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vacc
+            }
+            0x1F => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vsuc
+            }
             0x20 => Opcode::rsp_vlt,
             0x21 => Opcode::rsp_veq,
             0x22 => Opcode::rsp_vne,
@@ -395,6 +436,20 @@ impl OpcodeDecoder {
             0x25 => Opcode::rsp_vch,
             0x26 => Opcode::rsp_vcr,
             0x27 => Opcode::rsp_vmrg,
+            0x28 => Opcode::rsp_vand,
+            0x29 => Opcode::rsp_vnand,
+            0x2A => Opcode::rsp_vor,
+            0x2B => Opcode::rsp_vnor,
+            0x2C => Opcode::rsp_vxor,
+            0x2D => Opcode::rsp_vnxor,
+            0x2E => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_v056
+            }
+            0x2F => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_v057
+            }
             0x30 => Opcode::rsp_vrcp,
             0x31 => Opcode::rsp_vrcpl,
             0x32 => Opcode::rsp_vrcph,
@@ -403,12 +458,45 @@ impl OpcodeDecoder {
             0x35 => Opcode::rsp_vrsql,
             0x36 => Opcode::rsp_vrsqh,
             0x37 => Opcode::rsp_vnop,
+            0x38 => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vextt
+            }
+            0x39 => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vextq
+            }
+            0x3A => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vextn
+            }
+            0x3B => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_v073
+            }
+            0x3C => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vinst
+            }
+            0x3D => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vinsq
+            }
+            0x3E => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vinsn
+            }
+            0x3F => {
+                gated_behind = Some(OpcodeValidityGate::RspViceMsp);
+                Opcode::rsp_vnull
+            }
             _ => Opcode::ALL_INVALID,
         };
         Self {
             opcode,
             opcode_category,
             mandatory_bits,
+            gated_behind,
         }
     }
 }
