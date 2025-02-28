@@ -91,7 +91,6 @@ impl Operand {
         arr
     }
     #[must_use]
-    #[allow(dead_code)]
     #[cfg(feature = "R3000GTE")]
     pub(crate) const fn arr5(
         op0: Self,

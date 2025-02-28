@@ -50,6 +50,13 @@ impl OpcodeDecoder {
             Some(IsaExtension::R5900EE) => {
                 Self::decode_isa_extension_r5900ee_normal(word, mandatory_bits, flags, isa_version)
             }
+            #[cfg(not(any(
+                feature = "RSP",
+                feature = "R3000GTE",
+                feature = "R4000ALLEGREX",
+                feature = "R5900EE",
+            )))]
+            Some(_) => unreachable!(),
         }
     }
 }
@@ -80,13 +87,13 @@ impl OpcodeDecoder {
             return false;
         }
 
-        #[allow(unreachable_patterns)]
         match self.gated_behind {
             #[cfg(feature = "RspViceMsp")]
             Some(OpcodeValidityGate::RspViceMsp) => {
                 flags.contains(DecodingFlags::gated_rsp_vice_msp)
             }
             None => true,
+            #[cfg(not(any(feature = "RspViceMsp",)))]
             Some(_) => unreachable!(),
         }
     }
