@@ -2,11 +2,11 @@
 /* SPDX-License-Identifier: MIT */
 
 use rabbitizer::display_flags::InstructionDisplayFlags;
-use rabbitizer::instr::{Instruction, InstructionFlags};
-use rabbitizer::isa::IsaExtension;
+use rabbitizer::instr::Instruction;
 use rabbitizer::opcodes::Opcode;
 use rabbitizer::operands::OPERAND_COUNT_MAX;
-use rabbitizer::vram::Vram;
+#[cfg(any(feature = "RSP", feature = "R4000ALLEGREX"))]
+use rabbitizer::{instr::InstructionFlags, isa::IsaExtension, vram::Vram};
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TestEntry {
@@ -23,6 +23,7 @@ pub struct TestEntry {
 }
 
 impl TestEntry {
+    #[cfg(feature = "RSP")]
     #[allow(dead_code)]
     pub const fn new_rsp_invalid(
         word: u32,
@@ -45,6 +46,7 @@ impl TestEntry {
         }
     }
 
+    #[cfg(feature = "R4000ALLEGREX")]
     #[allow(dead_code)]
     pub const fn new_r4000allegrex(
         word: u32,
@@ -57,7 +59,7 @@ impl TestEntry {
             instr: Instruction::new(
                 word,
                 Vram::new(0x80000000),
-                InstructionFlags::default().with_isa_extension(Some(IsaExtension::R4000ALLEGREX)),
+                InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX),
             ),
             imm_override: None,
             display_flags: InstructionDisplayFlags::new(),

@@ -1,17 +1,23 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#[cfg(feature = "R4000ALLEGREX")]
 mod common;
 
+#[cfg(feature = "R4000ALLEGREX")]
 use common::{check_test_entries, TestEntry};
 
-use rabbitizer::abi::Abi;
-use rabbitizer::display_flags::InstructionDisplayFlags;
-use rabbitizer::instr::{Instruction, InstructionFlags};
-use rabbitizer::isa::IsaExtension;
-use rabbitizer::opcodes::Opcode;
-use rabbitizer::vram::Vram;
+#[cfg(feature = "R4000ALLEGREX")]
+use rabbitizer::{
+    abi::Abi,
+    display_flags::InstructionDisplayFlags,
+    instr::{Instruction, InstructionFlags},
+    isa::IsaExtension,
+    opcodes::Opcode,
+    vram::Vram,
+};
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_instructions() {
     const ENTRIES: &[TestEntry] = &[
@@ -1050,6 +1056,7 @@ fn check_r4000allegrex_instructions() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vector_zero() {
     const ENTRIES: &[TestEntry] = &[
@@ -4643,6 +4650,7 @@ fn check_r4000allegrex_vfpu_instructions_vector_zero() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_matrix_zero() {
     const ENTRIES: &[TestEntry] = &[
@@ -7340,6 +7348,7 @@ fn check_r4000allegrex_vfpu_instructions_matrix_zero() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_branches() {
     const ENTRIES: &[TestEntry] = &[
@@ -7405,6 +7414,7 @@ fn check_r4000allegrex_vfpu_instructions_branches() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_load_move_store() {
     const ENTRIES: &[TestEntry] = &[
@@ -8106,6 +8116,7 @@ fn check_r4000allegrex_vfpu_instructions_load_move_store() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_scale_quad_x_quad_matrix() {
     const ENTRIES: &[TestEntry] = &[
@@ -9900,6 +9911,7 @@ fn check_r4000allegrex_vfpu_instructions_scale_quad_x_quad_matrix() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_abs_all() {
     const ENTRIES: &[TestEntry] = &[
@@ -13494,6 +13506,7 @@ fn check_r4000allegrex_vfpu_instructions_abs_all() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU0() {
     const ENTRIES: &[TestEntry] = &[
@@ -13783,6 +13796,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU0() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU1() {
     const ENTRIES: &[TestEntry] = &[
@@ -14047,6 +14061,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU1() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU3() {
     const ENTRIES: &[TestEntry] = &[
@@ -14192,6 +14207,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU3() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vcmp_all_conds() {
     const ENTRIES: &[TestEntry] = &[
@@ -14649,6 +14665,7 @@ fn check_r4000allegrex_vfpu_instructions_vcmp_all_conds() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vcmp_zero() {
     const ENTRIES: &[TestEntry] = &[
@@ -15107,6 +15124,7 @@ fn check_r4000allegrex_vfpu_instructions_vcmp_zero() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_COP2() {
     const ENTRIES: &[TestEntry] = &[
@@ -15180,6 +15198,7 @@ fn check_r4000allegrex_vfpu_instructions_COP2() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
     const ENTRIES: &[TestEntry] = &[
@@ -26565,6 +26584,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT0() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
     const ENTRIES: &[TestEntry] = &[
@@ -31639,6 +31659,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT2() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT3() {
     const ENTRIES: &[TestEntry] = &[
@@ -33441,6 +33462,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT3() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU5() {
     const ENTRIES: &[TestEntry] = &[
@@ -33619,6 +33641,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU5() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU6() {
     const ENTRIES: &[TestEntry] = &[
@@ -34257,6 +34280,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU6() {
 }
 
 #[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU7() {
     const ENTRIES: &[TestEntry] = &[
@@ -34287,6 +34311,7 @@ fn check_r4000allegrex_vfpu_instructions_VFPU7() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vmmul() {
     const ENTRIES: &[TestEntry] = &[
@@ -36458,6 +36483,7 @@ fn check_r4000allegrex_vfpu_instructions_vmmul() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vrot() {
     const ENTRIES: &[TestEntry] = &[
@@ -37139,6 +37165,7 @@ fn check_r4000allegrex_vfpu_instructions_vrot() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vpfxs() {
     const ENTRIES: &[TestEntry] = &[
@@ -38016,6 +38043,7 @@ fn check_r4000allegrex_vfpu_instructions_vpfxs() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vpfxt() {
     const ENTRIES: &[TestEntry] = &[
@@ -38893,6 +38921,7 @@ fn check_r4000allegrex_vfpu_instructions_vpfxt() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 #[test]
 fn check_r4000allegrex_vfpu_instructions_vpfxd() {
     const ENTRIES: &[TestEntry] = &[

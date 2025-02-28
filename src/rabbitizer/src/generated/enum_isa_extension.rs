@@ -9,8 +9,12 @@ use pyo3::prelude::*;
 #[allow(non_camel_case_types)]
 #[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer", eq))]
 pub enum IsaExtension {
+    #[cfg(feature = "RSP")]
     RSP,
+    #[cfg(feature = "R3000GTE")]
     R3000GTE,
+    #[cfg(feature = "R4000ALLEGREX")]
     R4000ALLEGREX,
+    #[cfg(feature = "R5900EE")]
     R5900EE,
 }

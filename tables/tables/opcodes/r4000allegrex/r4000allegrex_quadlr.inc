@@ -10,15 +10,15 @@
     |-------------------------------|-------------------------------|
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0, svl_q, svl.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0, svl_q, svl.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base),
         instr_type: InstrType::I,
         reads_rs: true
     ) // Store Quad word Left from Vfpu
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x1, svr_q, svr.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x1, svr_q, svr.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base),
         instr_type: InstrType::I,
         reads_rs: true

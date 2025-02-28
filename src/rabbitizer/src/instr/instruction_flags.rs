@@ -22,7 +22,7 @@ pub struct InstructionFlags {
 impl InstructionFlags {
     /// Returns a default value.
     #[must_use]
-    pub const fn default() -> Self {
+    pub(crate) const fn default() -> Self {
         Self {
             isa_version: IsaVersion::default(),
             isa_extension: None,
@@ -37,6 +37,12 @@ impl InstructionFlags {
         Self::new_isa(isa_version, None)
     }
 
+    #[cfg(any(
+        feature = "RSP",
+        feature = "R3000GTE",
+        feature = "R4000ALLEGREX",
+        feature = "R5900EE",
+    ))]
     #[must_use]
     pub const fn new_extension(isa_extension: IsaExtension) -> Self {
         Self::new_isa(isa_extension.isa_version(), Some(isa_extension))
@@ -72,9 +78,21 @@ impl InstructionFlags {
     pub const fn isa_extension(&self) -> Option<IsaExtension> {
         self.isa_extension
     }
+    #[cfg(any(
+        feature = "RSP",
+        feature = "R3000GTE",
+        feature = "R4000ALLEGREX",
+        feature = "R5900EE",
+    ))]
     pub fn isa_extension_mut(&mut self) -> &mut Option<IsaExtension> {
         &mut self.isa_extension
     }
+    #[cfg(any(
+        feature = "RSP",
+        feature = "R3000GTE",
+        feature = "R4000ALLEGREX",
+        feature = "R5900EE",
+    ))]
     #[must_use]
     pub const fn with_isa_extension(self, isa_extension: Option<IsaExtension>) -> Self {
         let isa_version = if let Some(isa_extension) = isa_extension {
@@ -385,12 +403,6 @@ impl InstructionFlags {
             j_as_branch,
             ..self
         }
-    }
-}
-
-impl Default for InstructionFlags {
-    fn default() -> Self {
-        Self::default()
     }
 }
 

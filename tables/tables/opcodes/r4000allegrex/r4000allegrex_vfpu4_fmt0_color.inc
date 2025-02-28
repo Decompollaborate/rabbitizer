@@ -20,8 +20,8 @@ vt4444.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0301, vt4444_q, vt4444.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0301, vt4444_q, vt4444.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Convert to color4444 from packed unsigned chars Quad Word
@@ -33,8 +33,8 @@ vt5551.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0501, vt5551_q, vt5551.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0501, vt5551_q, vt5551.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Convert to color5551 from packed unsigned chars Quad Word
@@ -46,8 +46,8 @@ vt5650.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0701, vt5650_q, vt5650.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0701, vt5650_q, vt5650.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Convert to color5650 from packed unsigned chars Quad Word

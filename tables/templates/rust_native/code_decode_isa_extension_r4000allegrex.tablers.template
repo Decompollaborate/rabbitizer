@@ -19,6 +19,12 @@
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten) \
     case_bits => Opcode::ALL_INVALID,
 
+#define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, , Some(IsaExtension:: isa_exten ), __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, , Some(IsaExtension:: isa_exten ), __VA_ARGS__)
+
 use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::isa::IsaVersion;
 use crate::encoded_field_mask::EncodedFieldMask;
@@ -1070,3 +1076,5 @@ impl OpcodeDecoder {
 #undef RAB_DEF_OPCODE_PSEUDO
 #undef RAB_DEF_OPCODE_REDIRECT
 #undef RAB_DEF_OPCODE_REMOVED
+#undef RAB_DEF_OPCODE_EXTENSION
+#undef RAB_DEF_OPCODE_EXTENSION_ALTNAME

@@ -20,4 +20,4 @@ path = "src/bin.rs"
 
 [dependencies]
 clap = { version = "4.5.20", features = ["derive"] }
-rabbitizer = { path = "../rabbitizer" }
+rabbitizer = { path = "../rabbitizer", features = ["all_extensions"]}

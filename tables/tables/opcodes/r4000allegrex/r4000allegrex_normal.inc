@@ -36,22 +36,22 @@
 
     // OP vt, offset_14(base)
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x32, lv_s, lv.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x32, lv_s, lv.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vt_imm, Operand::r4000allegrex_offset14_base),
         instr_type: InstrType::I,
         reads_rs: true
     ) // Load Single word to Vfpu
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x3A, sv_s, sv.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x3A, sv_s, sv.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vt_imm, Operand::r4000allegrex_offset14_base),
         instr_type: InstrType::I,
         reads_rs: true
     ) // Store Single word to Vfpu
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x36, lv_q, lv.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x36, lv_q, lv.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base),
         instr_type: InstrType::I,
         reads_rs: true
@@ -59,8 +59,8 @@
 
     // OP vt, offset_14(base), maybe_wb
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x3E, sv_q, sv.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x3E, sv_q, sv.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base_maybe_wb),
         instr_type: InstrType::I,
         reads_rs: true

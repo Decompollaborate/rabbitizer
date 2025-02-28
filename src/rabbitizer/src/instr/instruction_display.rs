@@ -5,8 +5,10 @@ use core::fmt;
 
 use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
-use crate::isa::IsaExtension;
 use crate::opcodes::Opcode;
+
+#[cfg(feature = "R5900EE")]
+use crate::isa::IsaExtension;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[must_use]
@@ -42,6 +44,8 @@ where
 
         match self.instr.opcode() {
             Opcode::core_break if self.display_flags.sn64_break_fix() => true,
+
+            #[cfg(feature = "R5900EE")]
             Opcode::core_trunc_w_s | Opcode::core_cvt_w_s
                 if self.instr.isa_extension() == Some(IsaExtension::R5900EE) =>
             {
@@ -70,6 +74,7 @@ where
                  */
                 self.display_flags.r5900ee_modern_gas_instrs_workarounds()
             }
+            #[cfg(feature = "R5900EE")]
             Opcode::r5900ee_vclipw => {
                 /*
                  * The `vclipw` instruction has variants that are undocumented
@@ -78,6 +83,7 @@ where
                  */
                 self.display_flags.r5900ee_modern_gas_instrs_workarounds()
             }
+            #[cfg(feature = "R5900EE")]
             Opcode::r5900ee_vsqrt => {
                 /*
                  * The `vsqrt` instruction seems to be representable in

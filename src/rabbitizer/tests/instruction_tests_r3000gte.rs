@@ -1,15 +1,22 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#[cfg(feature = "R3000GTE")]
 mod common;
 
+#[cfg(feature = "R3000GTE")]
 use common::{check_test_entries, TestEntry};
-use rabbitizer::display_flags::InstructionDisplayFlags;
-use rabbitizer::instr::{Instruction, InstructionFlags};
-use rabbitizer::isa::IsaExtension;
-use rabbitizer::opcodes::Opcode;
-use rabbitizer::vram::Vram;
 
+#[cfg(feature = "R3000GTE")]
+use rabbitizer::{
+    display_flags::InstructionDisplayFlags,
+    instr::{Instruction, InstructionFlags},
+    isa::IsaExtension,
+    opcodes::Opcode,
+    vram::Vram,
+};
+
+#[cfg(feature = "R3000GTE")]
 #[test]
 fn check_r3000gte_instructions() {
     const ENTRIES: &[TestEntry] = &[

@@ -18,8 +18,8 @@ mfvc
     ------6----------5---------5---------------------1-------7-------
 */
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x0, mfvc, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x0, mfvc, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_cop2cd),
         instr_type: InstrType::R,
         modifies_rt: true

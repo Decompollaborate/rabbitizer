@@ -43,7 +43,7 @@ jobs:
         run: rustup component add clippy
 
       - name: Run clippy
-        run: cargo clippy --all-targets
+        run: cargo clippy -p rabbitizer --all-targets --no-default-features
 
   check_clippy_all_features:
     name: Check clippy - features- all
@@ -63,7 +63,7 @@ jobs:
         run: rustup component add clippy
 
       - name: Run clippy
-        run: cargo clippy --all-targets --all-features
+        run: cargo clippy -p rabbitizer --all-targets --all-features
 
   check_doc:
     name: Check doc
@@ -83,7 +83,7 @@ jobs:
         run: cargo doc
 
   run_tests:
-    name: Run tests
+    name: Run tests - No features
     runs-on: ubuntu-20.04
 
     steps:
@@ -97,7 +97,109 @@ jobs:
           override: true
 
       - name: Run tests
-        run: cargo test --workspace
+        run: cargo test -p rabbitizer --no-default-features
+
+  run_tests_ext_rsp:
+    name: Run tests - Extension RSP
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo test -p rabbitizer -F RSP
+
+  run_tests_ext_r3000gte:
+    name: Run tests - Extension R3000GTE
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo test -p rabbitizer -F R3000GTE
+
+  run_tests_ext_r4000allegrex:
+    name: Run tests - Extension R4000ALLEGREX
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo test -p rabbitizer -F R4000ALLEGREX
+
+  run_tests_ext_r5900ee:
+    name: Run tests - Extension R5900EE
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo test -p rabbitizer -F R5900EE
+
+  run_tests_all_extensions:
+    name: Run tests - All extensions
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo test -p rabbitizer -F all_extensions
+
+  run_tests_all_gated_extensions:
+    name: Run tests - All extensions
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Run tests
+        run: cargo test -p rabbitizer -F all_gated_extensions
 
   test_bin_disasmdis:
     name: Run tests

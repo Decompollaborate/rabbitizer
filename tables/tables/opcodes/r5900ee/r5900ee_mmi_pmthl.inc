@@ -17,8 +17,8 @@
  hi |---------------|---------------|---------------|---------------|
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x00, pmthl_lw, pmthl.lw, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x00, pmthl_lw, pmthl.lw, R5900EE,
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Parallel Move To Hi/Lo register

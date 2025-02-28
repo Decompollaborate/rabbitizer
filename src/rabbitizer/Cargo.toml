@@ -24,8 +24,28 @@ path = "src/lib.rs"
 default = []
 std = []
 
+# TODO: Normalize capitalization
+RSP = []
+R3000GTE = []
+R4000ALLEGREX = []
+R5900EE = []
+
+RspViceMsp = ["RSP"]
+
+all_extensions = [
+    "RSP",
+    "R3000GTE",
+    "R4000ALLEGREX",
+    "R5900EE",
+]
+
+all_gated_extensions = [
+    "all_extensions",
+    "RspViceMsp",
+]
+
 bindings_c = []
-pyo3 = ["std", "dep:pyo3"]
+pyo3 = ["std", "dep:pyo3", "all_extensions", "all_gated_extensions"]
 
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }

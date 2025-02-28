@@ -19,9 +19,13 @@
 
 mod array_opcodes;
 mod code_decode_isa_extension_none;
+#[cfg(feature = "R3000GTE")]
 mod code_decode_isa_extension_r3000gte;
+#[cfg(feature = "R4000ALLEGREX")]
 mod code_decode_isa_extension_r4000allegrex;
+#[cfg(feature = "R5900EE")]
 mod code_decode_isa_extension_r5900ee;
+#[cfg(feature = "RSP")]
 mod code_decode_isa_extension_rsp;
 mod enum_abi;
 mod enum_access_type;

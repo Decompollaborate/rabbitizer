@@ -22,8 +22,8 @@ vmul.s
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00000, vmul_s, vmul.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x00000, vmul_s, vmul.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // MULtiply Single word
@@ -35,8 +35,8 @@ vmul.p
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00001, vmul_p, vmul.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x00001, vmul_p, vmul.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // MULtiply Pair word
@@ -48,8 +48,8 @@ vmul.t
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00100, vmul_t, vmul.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x00100, vmul_t, vmul.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // MULtiply Triple word
@@ -61,8 +61,8 @@ vmul.q
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x00101, vmul_q, vmul.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x00101, vmul_q, vmul.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // MULtiply Quad word
@@ -74,8 +74,8 @@ vdot.p
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x10001, vdot_p, vdot.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x10001, vdot_p, vdot.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // DOT Product Pair word
@@ -87,8 +87,8 @@ vdot.t
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x10100, vdot_t, vdot.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x10100, vdot_t, vdot.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // DOT Product Triple word
@@ -100,8 +100,8 @@ vdot.q
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x10101, vdot_q, vdot.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x10101, vdot_q, vdot.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // DOT Product Quad word
@@ -113,8 +113,8 @@ vscl.p
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x20001, vscl_p, vscl.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x20001, vscl_p, vscl.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // DOT Product Pair word
@@ -126,8 +126,8 @@ vscl.t
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x20100, vscl_t, vscl.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x20100, vscl_t, vscl.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // DOT Product Triple word
@@ -139,8 +139,8 @@ vscl.q
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x20101, vscl_q, vscl.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x20101, vscl_q, vscl.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // SCaLe Quad word
@@ -152,8 +152,8 @@ vhdp.p
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x40001, vhdp_p, vhdp.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x40001, vhdp_p, vhdp.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // Homogeneous Dot Product Pair word
@@ -165,8 +165,8 @@ vhdp.t
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x40100, vhdp_t, vhdp.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x40100, vhdp_t, vhdp.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // Homogeneous Dot Product Pair word
@@ -178,8 +178,8 @@ vhdp.q
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x40101, vhdp_q, vhdp.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x40101, vhdp_q, vhdp.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // Homogeneous Dot Product Pair word
@@ -191,8 +191,8 @@ vcrs.t
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x50100, vcrs_t, vcrs.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x50100, vcrs_t, vcrs.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // Cross Triple Word
@@ -204,8 +204,8 @@ vdet.p
     ------6--------3---------7-------1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x60001, vdet_p, vdet.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x60001, vdet_p, vdet.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // 2x2 matrix DETerminant

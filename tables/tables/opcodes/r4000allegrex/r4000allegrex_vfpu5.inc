@@ -18,8 +18,8 @@ vpfxs
     ------6--------3-----------------------------20-------------------
 */
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x00, vpfxs, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x00, vpfxs, R4000ALLEGREX,
         operands: Operand::arr4(Operand::r4000allegrex_rpx, Operand::r4000allegrex_rpy, Operand::r4000allegrex_rpz, Operand::r4000allegrex_rpw),
         instr_type: InstrType::UNKNOWN
     ) // Source Prefix
@@ -31,8 +31,8 @@ vpfxt
     ------6--------3----------------------------20-------------------
 */
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x02, vpfxt, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x02, vpfxt, R4000ALLEGREX,
         operands: Operand::arr4(Operand::r4000allegrex_rpx, Operand::r4000allegrex_rpy, Operand::r4000allegrex_rpz, Operand::r4000allegrex_rpw),
         instr_type: InstrType::UNKNOWN
     ) // Target Prefix
@@ -44,8 +44,8 @@ vpfxd
     ------6--------3----------------------------20-------------------
 */
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x04, vpfxd, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x04, vpfxd, R4000ALLEGREX,
         operands: Operand::arr4(Operand::r4000allegrex_wpx, Operand::r4000allegrex_wpy, Operand::r4000allegrex_wpz, Operand::r4000allegrex_wpw),
         instr_type: InstrType::UNKNOWN
     ) // Destination Prefix
@@ -57,8 +57,8 @@ viim.s
     ------6--------3---------7-----------------------16--------------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x6, viim_s, viim.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x6, viim_s, viim.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_int16),
         instr_type: InstrType::R
     ) // Convert integer immediate to float Single Word
@@ -70,8 +70,8 @@ vfim.s
     ------6--------3---------7-----------------------16--------------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x7, vfim_s, vfim.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x7, vfim_s, vfim.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_float16),
         instr_type: InstrType::R
     ) // Convert integer immediate to float Single Word

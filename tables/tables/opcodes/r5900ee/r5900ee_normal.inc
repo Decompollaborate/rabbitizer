@@ -23,8 +23,8 @@
     // The other instructions are implemented using the main CORE table
 
 
-    RAB_DEF_OPCODE(
-        r5900ee, 0x1E, lq, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION(
+        r5900ee, 0x1E, lq, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -34,8 +34,8 @@
         does_load: true,
         access_type: Some(AccessType::QUADWORD)
     ) // Load Quadword
-    RAB_DEF_OPCODE(
-        r5900ee, 0x1F, sq, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION(
+        r5900ee, 0x1F, sq, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -46,8 +46,8 @@
         access_type: Some(AccessType::QUADWORD)
     ) // Store Quadword
 
-    RAB_DEF_OPCODE(
-        r5900ee, 0x36, lqc2, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION(
+        r5900ee, 0x36, lqc2, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,
@@ -56,8 +56,8 @@
         access_type: Some(AccessType::QUADWORD)
     )
 
-    RAB_DEF_OPCODE(
-        r5900ee, 0x3E, sqc2, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION(
+        r5900ee, 0x3E, sqc2, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_base),
         reads_rs: true,
         can_be_lo: true,

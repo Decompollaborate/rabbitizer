@@ -13,18 +13,18 @@
 100 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
 101 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
 110 | ---   | ---   | ---   | ---   | ---   | ---   | ---   | ---   |
-111 |  EI   |  DI   | ---   | ---   | ---   | ---   | ---   | ---   |
+111 | EI    | DI    | ---   | ---   | ---   | ---   | ---   | ---   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
 */
 
     // The other instructions are implemented using the main CORE table
 
-    RAB_DEF_OPCODE(
-        r5900ee, 0x38, ei, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION(
+        r5900ee, 0x38, ei, R5900EE,
         operands: Operand::arr0()
     )
-    RAB_DEF_OPCODE(
-        r5900ee, 0x39, di, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION(
+        r5900ee, 0x39, di, R5900EE,
         operands: Operand::arr0()
     )
 

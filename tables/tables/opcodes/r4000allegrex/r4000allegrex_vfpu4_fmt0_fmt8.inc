@@ -20,8 +20,8 @@ vsrt1.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0101, vsrt1_q, vsrt1.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0101, vsrt1_q, vsrt1.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SoRT 1 Quad word
@@ -33,8 +33,8 @@ vsrt2.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0301, vsrt2_q, vsrt2.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0301, vsrt2_q, vsrt2.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SoRT 2 Quad word
@@ -46,8 +46,8 @@ vbfy1.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0401, vbfy1_p, vbfy1.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0401, vbfy1_p, vbfy1.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // ButterFlY 1 Pair word
@@ -59,8 +59,8 @@ vbfy1.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0501, vbfy1_q, vbfy1.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0501, vbfy1_q, vbfy1.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // ButterFlY 1 Quad word
@@ -72,8 +72,8 @@ vbfy2.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0701, vbfy2_q, vbfy2.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0701, vbfy2_q, vbfy2.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // ButterFlY 2 Quad word
@@ -85,8 +85,8 @@ vocp.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0800, vocp_s, vocp.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0800, vocp_s, vocp.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // One's Complement Single word
@@ -98,8 +98,8 @@ vocp.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0801, vocp_p, vocp.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0801, vocp_p, vocp.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // One's Complement Pair word
@@ -111,8 +111,8 @@ vocp.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0900, vocp_t, vocp.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0900, vocp_t, vocp.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // One's Complement Triple word
@@ -124,8 +124,8 @@ vocp.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0901, vocp_q, vocp.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0901, vocp_q, vocp.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // One's Complement Quad word
@@ -137,8 +137,8 @@ vsocp.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0A00, vsocp_s, vsocp.s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0A00, vsocp_s, vsocp.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Saturate and One's Complement Single word
@@ -150,8 +150,8 @@ vsocp.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0A01, vsocp_p, vsocp.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0A01, vsocp_p, vsocp.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Saturate and One's Complement Pair word
@@ -163,8 +163,8 @@ vfad.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0C01, vfad_p, vfad.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0C01, vfad_p, vfad.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Funnel Add Pair word
@@ -177,8 +177,8 @@ vfad.t
 */
 
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0D00, vfad_t, vfad.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0D00, vfad_t, vfad.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Funnel Add Triple word
@@ -190,8 +190,8 @@ vfad.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0D01, vfad_q, vfad.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0D01, vfad_q, vfad.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Funnel Add Quad word
@@ -203,8 +203,8 @@ vavg.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0E01, vavg_p, vavg.p, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0E01, vavg_p, vavg.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Average Pair word
@@ -216,8 +216,8 @@ vavg.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0F00, vavg_t, vavg.t, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0F00, vavg_t, vavg.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Average Triple word
@@ -229,8 +229,8 @@ vavg.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r4000allegrex, 0x0F01, vavg_q, vavg.q, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r4000allegrex, 0x0F01, vavg_q, vavg.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Average Quad word

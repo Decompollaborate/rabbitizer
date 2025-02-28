@@ -17,8 +17,19 @@
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
 
-#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate_expr, ...) \
+#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate, ...) \
     RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, , isa_exten, __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+    RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #gate )) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, , isa_exten, __VA_ARGS__)
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
@@ -32,3 +43,6 @@ pub enum Opcode {
 #undef RAB_DEF_OPCODE_REDIRECT
 #undef RAB_DEF_OPCODE_REMOVED
 #undef RAB_DEF_OPCODE_GATED
+#undef RAB_DEF_OPCODE_EXTENSION
+#undef RAB_DEF_OPCODE_EXTENSION_ALTNAME
+#undef RAB_DEF_OPCODE_EXTENSION_GATED

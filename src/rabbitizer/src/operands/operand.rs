@@ -76,6 +76,7 @@ impl Operand {
         arr
     }
     #[must_use]
+    #[cfg(feature = "R4000ALLEGREX")]
     pub(crate) const fn arr4(
         op0: Self,
         op1: Self,
@@ -90,6 +91,8 @@ impl Operand {
         arr
     }
     #[must_use]
+    #[allow(dead_code)]
+    #[cfg(feature = "R3000GTE")]
     pub(crate) const fn arr5(
         op0: Self,
         op1: Self,

@@ -8,7 +8,7 @@
 #define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
     case_bits => Opcode::prefix##_##name,
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, isa_version_min, isa_exten, altname, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
     RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...)
@@ -18,6 +18,12 @@
 
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten) \
     case_bits => Opcode::ALL_INVALID,
+
+#define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, , Some(IsaExtension:: isa_exten ), __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+    RAB_DEF_OPCODE(prefix, case_bits, name, , Some(IsaExtension:: isa_exten ), __VA_ARGS__)
 
 use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::isa::IsaVersion;
@@ -96,3 +102,5 @@ impl OpcodeDecoder {
 #undef RAB_DEF_OPCODE_PSEUDO
 #undef RAB_DEF_OPCODE_REDIRECT
 #undef RAB_DEF_OPCODE_REMOVED
+#undef RAB_DEF_OPCODE_EXTENSION
+#undef RAB_DEF_OPCODE_EXTENSION_ALTNAME

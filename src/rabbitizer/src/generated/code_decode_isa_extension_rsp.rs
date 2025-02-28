@@ -5,7 +5,9 @@
 
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::isa::IsaVersion;
-use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder, OpcodeValidityGate};
+#[cfg(feature = "RspViceMsp")]
+use crate::opcodes::OpcodeValidityGate;
+use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
 impl OpcodeDecoder {
     #[must_use]
     pub(crate) const fn decode_isa_extension_rsp_normal(
@@ -127,6 +129,7 @@ impl OpcodeDecoder {
     ) -> Self {
         let mask = EncodedFieldMask::rd;
         let opcode_category = OpcodeCategory::RSP_NORMAL_LWC2;
+        #[allow(unused_mut)]
         let mut gated_behind = None;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
@@ -140,6 +143,7 @@ impl OpcodeDecoder {
             0x07 => Opcode::rsp_luv,
             0x08 => Opcode::rsp_lhv,
             0x09 => Opcode::rsp_lfv,
+            #[cfg(feature = "RspViceMsp")]
             0x0A => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_lwv
@@ -362,6 +366,7 @@ impl OpcodeDecoder {
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode_category = OpcodeCategory::RSP_COP2_VU;
+        #[allow(unused_mut)]
         let mut gated_behind = None;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::rsp_vu.mask_value(word));
@@ -384,6 +389,7 @@ impl OpcodeDecoder {
             0x0F => Opcode::rsp_vmadh,
             0x10 => Opcode::rsp_vadd,
             0x11 => Opcode::rsp_vsub,
+            #[cfg(feature = "RspViceMsp")]
             0x12 => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vsut
@@ -391,39 +397,48 @@ impl OpcodeDecoder {
             0x13 => Opcode::rsp_vabs,
             0x14 => Opcode::rsp_vaddc,
             0x15 => Opcode::rsp_vsubc,
+            #[cfg(feature = "RspViceMsp")]
             0x16 => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vaddb
             }
+            #[cfg(feature = "RspViceMsp")]
             0x17 => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vsubb
             }
+            #[cfg(feature = "RspViceMsp")]
             0x18 => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vaccb
             }
+            #[cfg(feature = "RspViceMsp")]
             0x19 => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vsucb
             }
+            #[cfg(feature = "RspViceMsp")]
             0x1A => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vsad
             }
+            #[cfg(feature = "RspViceMsp")]
             0x1B => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vsac
             }
+            #[cfg(feature = "RspViceMsp")]
             0x1C => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vsum
             }
             0x1D => Opcode::rsp_vsar,
+            #[cfg(feature = "RspViceMsp")]
             0x1E => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vacc
             }
+            #[cfg(feature = "RspViceMsp")]
             0x1F => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vsuc
@@ -442,10 +457,12 @@ impl OpcodeDecoder {
             0x2B => Opcode::rsp_vnor,
             0x2C => Opcode::rsp_vxor,
             0x2D => Opcode::rsp_vnxor,
+            #[cfg(feature = "RspViceMsp")]
             0x2E => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_v056
             }
+            #[cfg(feature = "RspViceMsp")]
             0x2F => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_v057
@@ -458,34 +475,42 @@ impl OpcodeDecoder {
             0x35 => Opcode::rsp_vrsql,
             0x36 => Opcode::rsp_vrsqh,
             0x37 => Opcode::rsp_vnop,
+            #[cfg(feature = "RspViceMsp")]
             0x38 => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vextt
             }
+            #[cfg(feature = "RspViceMsp")]
             0x39 => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vextq
             }
+            #[cfg(feature = "RspViceMsp")]
             0x3A => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vextn
             }
+            #[cfg(feature = "RspViceMsp")]
             0x3B => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_v073
             }
+            #[cfg(feature = "RspViceMsp")]
             0x3C => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vinst
             }
+            #[cfg(feature = "RspViceMsp")]
             0x3D => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vinsq
             }
+            #[cfg(feature = "RspViceMsp")]
             0x3E => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vinsn
             }
+            #[cfg(feature = "RspViceMsp")]
             0x3F => {
                 gated_behind = Some(OpcodeValidityGate::RspViceMsp);
                 Opcode::rsp_vnull

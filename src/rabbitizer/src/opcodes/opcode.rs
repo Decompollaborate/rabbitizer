@@ -4,14 +4,42 @@
 use crate::access_type::AccessType;
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::InstrType;
-use crate::isa::{IsaExtension, IsaVersion};
+#[cfg(any(
+    feature = "RSP",
+    feature = "R3000GTE",
+    feature = "R4000ALLEGREX",
+    feature = "R5900EE",
+))]
+use crate::isa::IsaExtension;
+use crate::isa::IsaVersion;
 use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODES};
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
 // this constant.
-pub(crate) const OPCODE_COUNT: usize = 908;
+pub(crate) const OPCODE_COUNT: usize = {
+    let mut count = 236;
+
+    if cfg!(feature = "RSP") {
+        count += 73;
+    }
+    if cfg!(feature = "R3000GTE") {
+        count += 22;
+    }
+    if cfg!(feature = "R4000ALLEGREX") {
+        count += 294;
+    }
+    if cfg!(feature = "R5900EE") {
+        count += 262;
+    }
+
+    if cfg!(feature = "RspViceMsp") {
+        count += 21;
+    }
+
+    count
+};
 
 impl Opcode {
     #[must_use]
@@ -31,6 +59,12 @@ impl Opcode {
     pub fn isa_version(&self) -> IsaVersion {
         self.get_descriptor().isa_version()
     }
+    #[cfg(any(
+        feature = "RSP",
+        feature = "R3000GTE",
+        feature = "R4000ALLEGREX",
+        feature = "R5900EE",
+    ))]
     #[must_use]
     pub fn isa_extension(&self) -> Option<IsaExtension> {
         self.get_descriptor().isa_extension()

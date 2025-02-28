@@ -23,16 +23,16 @@
 
     // OP rd, rs
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x16, clz, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x16, clz, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true
     ) // Count Leading Zero
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x17, clo, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x17, clo, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -41,8 +41,8 @@
 
     // OP rs, rt
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x1C, madd, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x1C, madd, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -51,8 +51,8 @@
         modifies_lo: true
     ) // Multiply ADD
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x1D, maddu, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x1D, maddu, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -61,8 +61,8 @@
         modifies_lo: true
     ) // Multiply ADD Unsigned
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x2E, msub, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x2E, msub, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -71,8 +71,8 @@
         modifies_lo: true
     ) // Multiply SUBtract
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x2F, msubu, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x2F, msubu, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -83,16 +83,16 @@
 
     // OP rd, rs, rt
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x0A, movz, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x0A, movz, R4000ALLEGREX,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // MOVe conditional on Zero
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x0B, movn, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x0B, movn, R4000ALLEGREX,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -100,8 +100,8 @@
         reads_rt: true
     ) // MOVe conditional on Not zero
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x2C, max, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x2C, max, R4000ALLEGREX,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -109,8 +109,8 @@
         reads_rt: true
     ) // select MAX
 
-    RAB_DEF_OPCODE(
-        r4000allegrex, 0x2D, min, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX),
+    RAB_DEF_OPCODE_EXTENSION(
+        r4000allegrex, 0x2D, min, R4000ALLEGREX,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,

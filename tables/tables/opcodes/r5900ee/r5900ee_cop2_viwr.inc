@@ -25,32 +25,32 @@
  hi  |-------|-------|-------|-------|
 */
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x0200002, vilwr_w, vilwr.w, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x0200002, vilwr_w, vilwr.w, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD)
     ) // Integer load word register
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x0400002, vilwr_z, vilwr.z, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x0400002, vilwr_z, vilwr.z, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD)
     ) // Integer load word register
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x0800002, vilwr_y, vilwr.y, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x0800002, vilwr_y, vilwr.y, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD)
     ) // Integer load word register
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x1000002, vilwr_x, vilwr.x, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x1000002, vilwr_x, vilwr.x, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
@@ -58,32 +58,32 @@
         access_type: Some(AccessType::WORD)
     ) // Integer load word register
 
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x0200003, viswr_w, viswr.w, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x0200003, viswr_w, viswr.w, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD)
     ) // Integer store word register
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x0400003, viswr_z, viswr.z, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x0400003, viswr_z, viswr.z, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD)
     ) // Integer store word register
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x0800003, viswr_y, viswr.y, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x0800003, viswr_y, viswr.y, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,
         does_load: true,
         access_type: Some(AccessType::WORD)
     ) // Integer store word register
-    RAB_DEF_OPCODE_ALTNAME(
-        r5900ee, 0x1000003, viswr_x, viswr.x, IsaVersion::EXTENSION, Some(IsaExtension::R5900EE),
+    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+        r5900ee, 0x1000003, viswr_x, viswr.x, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vit, Operand::r5900ee_vis_parenthesis),
         is_float: true,
         does_dereference: true,

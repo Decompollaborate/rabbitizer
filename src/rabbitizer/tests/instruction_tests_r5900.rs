@@ -1,17 +1,23 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#[cfg(feature = "R5900EE")]
 mod common;
 
+#[cfg(feature = "R5900EE")]
 use common::{check_test_entries, TestEntry};
 
-use rabbitizer::abi::Abi;
-use rabbitizer::display_flags::InstructionDisplayFlags;
-use rabbitizer::instr::{Instruction, InstructionFlags};
-use rabbitizer::isa::IsaExtension;
-use rabbitizer::opcodes::Opcode;
-use rabbitizer::vram::Vram;
+#[cfg(feature = "R5900EE")]
+use rabbitizer::{
+    abi::Abi,
+    display_flags::InstructionDisplayFlags,
+    instr::{Instruction, InstructionFlags},
+    isa::IsaExtension,
+    opcodes::Opcode,
+    vram::Vram,
+};
 
+#[cfg(feature = "R5900EE")]
 #[test]
 fn check_r5900ee_instructions() {
     const ENTRIES: &[TestEntry] = &[
@@ -706,6 +712,7 @@ fn check_r5900ee_instructions() {
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
 
+#[cfg(feature = "R5900EE")]
 #[test]
 fn check_r5900ee_trunc_cvt_instructions() {
     const ENTRIES: &[TestEntry] = &[

@@ -6,6 +6,7 @@
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
 #define RAB_DEF_ISA_EXTENSION(name) \
+    SPECIAL_RS_TAG(cfg(feature = #name )) \
     name,
 
 SPECIAL_RS_TAG(cfg(feature = "pyo3"))

@@ -3,5 +3,6 @@
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub(crate) enum OpcodeValidityGate {
+    #[cfg(feature = "RspViceMsp")]
     RspViceMsp,
 }

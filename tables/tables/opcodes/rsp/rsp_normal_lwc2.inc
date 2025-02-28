@@ -14,63 +14,63 @@
 */
 
     // OP vt[elementlow], offset(vs)
-    RAB_DEF_OPCODE(
-        rsp, 0x00, lbv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x00, lbv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load byte from memory into vt[e]. (e : 0-15)
-    RAB_DEF_OPCODE(
-        rsp, 0x01, lsv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x01, lsv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load short from memory into vt[e]. (e : 0-14 by 2)
-    RAB_DEF_OPCODE(
-        rsp, 0x02, llv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x02, llv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load word from memory into vt[e]. (e : 0-12 by 4)
-    RAB_DEF_OPCODE(
-        rsp, 0x03, ldv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x03, ldv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load double word from memory into vt[e]. (e : 0,8)
-    RAB_DEF_OPCODE(
-        rsp, 0x04, lqv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x04, lqv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load quad word from memory into vt[e]. (e : 0)
-    RAB_DEF_OPCODE(
-        rsp, 0x05, lrv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x05, lrv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load rest
-    RAB_DEF_OPCODE(
-        rsp, 0x06, lpv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x06, lpv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load packed
-    RAB_DEF_OPCODE(
-        rsp, 0x07, luv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x07, luv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load unpack
-    RAB_DEF_OPCODE(
-        rsp, 0x08, lhv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x08, lhv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load half
-    RAB_DEF_OPCODE(
-        rsp, 0x09, lfv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x09, lfv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load fourth
-    RAB_DEF_OPCODE_GATED(
-        rsp, 0x0A, lwv, IsaVersion::EXTENSION, Some(IsaExtension::RSP), RspViceMsp,
+    RAB_DEF_OPCODE_EXTENSION_GATED(
+        rsp, 0x0A, lwv, RSP, RspViceMsp,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load wrap
-    RAB_DEF_OPCODE(
-        rsp, 0x0B, ltv, IsaVersion::EXTENSION, Some(IsaExtension::RSP),
+    RAB_DEF_OPCODE_EXTENSION(
+        rsp, 0x0B, ltv, RSP,
         operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
         reads_rs: true
     ) // load transpose

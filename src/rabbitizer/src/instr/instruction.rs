@@ -7,7 +7,14 @@ use crate::abi::Abi;
 use crate::display_flags::InstructionDisplayFlags;
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::{InstructionDisplay, InstructionFlags};
-use crate::isa::{IsaExtension, IsaVersion};
+#[cfg(any(
+    feature = "RSP",
+    feature = "R3000GTE",
+    feature = "R4000ALLEGREX",
+    feature = "R5900EE",
+))]
+use crate::isa::IsaExtension;
+use crate::isa::IsaVersion;
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::operands::{Operand, OperandIterator, ValuedOperandIterator};
 use crate::registers::*;
@@ -194,6 +201,12 @@ impl Instruction {
     ///
     /// [`Opcode::isa_extension`]: crate::opcodes::Opcode::isa_extension
     /// [`opcode`]: Instruction::opcode
+    #[cfg(any(
+        feature = "RSP",
+        feature = "R3000GTE",
+        feature = "R4000ALLEGREX",
+        feature = "R5900EE",
+    ))]
     #[must_use]
     pub const fn isa_extension(&self) -> Option<IsaExtension> {
         self.flags.isa_extension()
@@ -3250,6 +3263,7 @@ impl Instruction {
         let offset: u16 = self.field_rsp_offset_unchecked().into();
 
         // TODO: do not depend on the opcode to process the offset itself.
+        #[cfg(feature = "RSP")]
         match self.opcode() {
             Opcode::rsp_lsv | Opcode::rsp_ssv => offset << 1,
 
@@ -3272,11 +3286,15 @@ impl Instruction {
             | Opcode::rsp_sfv
             | Opcode::rsp_ltv
             | Opcode::rsp_stv
-            | Opcode::rsp_lwv
             | Opcode::rsp_swv => offset << 4,
+
+            #[cfg(feature = "RspViceMsp")]
+            Opcode::rsp_lwv => offset << 4,
 
             _ => offset,
         }
+        #[cfg(not(feature = "RSP"))]
+        offset
     }
 }
 

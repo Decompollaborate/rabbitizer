@@ -31,18 +31,22 @@ impl OpcodeDecoder {
             None => {
                 Self::decode_isa_extension_none_normal(word, mandatory_bits, flags, isa_version)
             }
+            #[cfg(feature = "RSP")]
             Some(IsaExtension::RSP) => {
                 Self::decode_isa_extension_rsp_normal(word, mandatory_bits, flags, isa_version)
             }
+            #[cfg(feature = "R3000GTE")]
             Some(IsaExtension::R3000GTE) => {
                 Self::decode_isa_extension_r3000gte_normal(word, mandatory_bits, flags, isa_version)
             }
+            #[cfg(feature = "R4000ALLEGREX")]
             Some(IsaExtension::R4000ALLEGREX) => Self::decode_isa_extension_r4000allegrex_normal(
                 word,
                 mandatory_bits,
                 flags,
                 isa_version,
             ),
+            #[cfg(feature = "R5900EE")]
             Some(IsaExtension::R5900EE) => {
                 Self::decode_isa_extension_r5900ee_normal(word, mandatory_bits, flags, isa_version)
             }
@@ -70,15 +74,20 @@ impl OpcodeDecoder {
 
     #[must_use]
     pub const fn is_valid(&self, flags: &DecodingFlags) -> bool {
+        let _avoid_unused_warning = flags;
+
         if !self.opcode.is_valid() {
             return false;
         }
 
+        #[allow(unreachable_patterns)]
         match self.gated_behind {
+            #[cfg(feature = "RspViceMsp")]
             Some(OpcodeValidityGate::RspViceMsp) => {
                 flags.contains(DecodingFlags::gated_rsp_vice_msp)
             }
             None => true,
+            Some(_) => unreachable!(),
         }
     }
 }
@@ -211,15 +220,19 @@ impl OpcodeDecoder {
     }
 }
 
+#[cfg(feature = "RSP")]
 /// IsaExtension::RSP
 impl OpcodeDecoder {}
 
+#[cfg(feature = "R3000GTE")]
 // IsaExtension::R3000GTE
 impl OpcodeDecoder {}
 
+#[cfg(feature = "R4000ALLEGREX")]
 // IsaExtension::R4000ALLEGREX
 impl OpcodeDecoder {}
 
+#[cfg(feature = "R5900EE")]
 // IsaExtension::R5900EE
 impl OpcodeDecoder {
     #[must_use]
@@ -229,6 +242,7 @@ impl OpcodeDecoder {
         _flags: &DecodingFlags,
         _isa_version: IsaVersion,
     ) -> Self {
+        // TODO: is it possible to express this check with the table system instead?
         match self.opcode {
             Opcode::core_sync | Opcode::r5900ee_sync_p => {
                 let mask = EncodedFieldMask::stype;

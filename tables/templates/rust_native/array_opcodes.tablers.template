@@ -20,15 +20,50 @@
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
 #define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
 
-#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate_expr, ...) \
+#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate, ...) \
     RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
 
-use crate::operands::Operand;
-use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
-use crate::isa::{IsaExtension, IsaVersion};
-use crate::instr::{InstrSuffix, InstrType};
-use crate::access_type::AccessType;
+#define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
+    { \
+        table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
+            __VA_ARGS__, \
+            ..OpcodeDescriptor::new( #name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten )) \
+        } .check_panic_chain(); \
+    }
 
+#define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
+    { \
+        table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
+            __VA_ARGS__, \
+            ..OpcodeDescriptor::new( #altname, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten )) \
+        } .check_panic_chain(); \
+    }
+
+#define RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #gate )) \
+    { \
+        table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
+            __VA_ARGS__, \
+            ..OpcodeDescriptor::new( #name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten )) \
+        } .check_panic_chain(); \
+    }
+
+use crate::access_type::AccessType;
+SPECIAL_RS_TAG(cfg(feature = "R5900EE"))
+use crate::instr::InstrSuffix;
+use crate::instr::InstrType;
+SPECIAL_RS_TAG(cfg(any(
+    feature = "RSP",
+    feature = "R3000GTE",
+    feature = "R4000ALLEGREX",
+    feature = "R5900EE",
+)))
+use crate::isa::IsaExtension;
+use crate::isa::IsaVersion;
+use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
+use crate::operands::Operand;
 pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];
 
@@ -49,3 +84,6 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
 #undef RAB_DEF_OPCODE_REDIRECT
 #undef RAB_DEF_OPCODE_REMOVED
 #undef RAB_DEF_OPCODE_GATED
+#undef RAB_DEF_OPCODE_EXTENSION
+#undef RAB_DEF_OPCODE_EXTENSION_ALTNAME
+#undef RAB_DEF_OPCODE_EXTENSION_GATED
