@@ -10,8 +10,12 @@ use pyo3::prelude::*;
 #[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer", eq))]
 pub enum IsaVersion {
     MIPS_I,
+    #[cfg(feature = "MIPS_II")]
     MIPS_II,
+    #[cfg(feature = "MIPS_III")]
     MIPS_III,
+    #[cfg(feature = "MIPS_IV")]
     MIPS_IV,
+    #[doc(hidden)]
     EXTENSION,
 }

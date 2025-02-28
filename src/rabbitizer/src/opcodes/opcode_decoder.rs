@@ -139,6 +139,7 @@ impl OpcodeDecoder {
                     opcode = Opcode::core_bnez;
                 }
             }
+            #[cfg(feature = "MIPS_II")]
             Opcode::core_beql => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0
                     && flags
@@ -147,6 +148,7 @@ impl OpcodeDecoder {
                     opcode = Opcode::core_beqzl;
                 }
             }
+            #[cfg(feature = "MIPS_II")]
             Opcode::core_bnel => {
                 if EncodedFieldMask::rt.get_shifted(word) == 0
                     && flags

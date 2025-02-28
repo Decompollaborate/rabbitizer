@@ -18,9 +18,6 @@
 
 #define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
 
-#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, gate, ...) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, gated_behind = Some(OpcodeValidityGate:: gate) ;, __VA_ARGS__)
-
 
 #define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), , __VA_ARGS__)

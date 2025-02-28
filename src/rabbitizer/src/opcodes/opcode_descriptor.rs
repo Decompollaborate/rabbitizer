@@ -108,6 +108,8 @@ pub struct OpcodeDescriptor {
 
     pub(crate) access_type: Option<AccessType>,
     pub(crate) does_unsigned_memory_access: bool,
+
+    pub(crate) is_invalid: bool,
 }
 
 impl OpcodeDescriptor {
@@ -156,6 +158,7 @@ impl OpcodeDescriptor {
             is_pseudo: false,
             access_type: None,
             does_unsigned_memory_access: false,
+            is_invalid: false,
         }
     }
 

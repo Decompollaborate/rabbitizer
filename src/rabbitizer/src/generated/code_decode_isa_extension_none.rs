@@ -22,11 +22,15 @@ impl OpcodeDecoder {
             0x03 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_jal,
             0x04 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_beq,
             0x05 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bne,
+            #[cfg(feature = "MIPS_II")]
             0x14 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_beql,
+            #[cfg(feature = "MIPS_II")]
             0x15 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bnel,
             0x06 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_blez,
+            #[cfg(feature = "MIPS_II")]
             0x16 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_blezl,
             0x07 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bgtz,
+            #[cfg(feature = "MIPS_II")]
             0x17 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bgtzl,
             0x08 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_addi,
             0x09 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_addiu,
@@ -35,10 +39,14 @@ impl OpcodeDecoder {
             0x0C if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_andi,
             0x0D if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_ori,
             0x0E if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_xori,
+            #[cfg(feature = "MIPS_III")]
             0x18 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_daddi,
+            #[cfg(feature = "MIPS_III")]
             0x19 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_daddiu,
             0x0F if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lui,
+            #[cfg(feature = "MIPS_III")]
             0x1A if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ldl,
+            #[cfg(feature = "MIPS_III")]
             0x1B if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ldr,
             0x20 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lb,
             0x21 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lh,
@@ -47,29 +55,44 @@ impl OpcodeDecoder {
             0x24 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lbu,
             0x25 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lhu,
             0x26 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lwr,
+            #[cfg(feature = "MIPS_III")]
             0x27 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_lwu,
             0x28 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sb,
             0x29 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sh,
             0x2A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_swl,
             0x2B if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sw,
+            #[cfg(feature = "MIPS_III")]
             0x2C if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_sdl,
+            #[cfg(feature = "MIPS_III")]
             0x2D if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_sdr,
             0x2E if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_swr,
+            #[cfg(feature = "MIPS_II")]
             0x30 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_ll,
+            #[cfg(feature = "MIPS_IV")]
             0x33 if isa_version as u32 >= IsaVersion::MIPS_IV as u32 => Opcode::core_pref,
+            #[cfg(feature = "MIPS_III")]
             0x34 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_lld,
+            #[cfg(feature = "MIPS_III")]
             0x37 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ld,
+            #[cfg(feature = "MIPS_II")]
             0x38 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_sc,
+            #[cfg(feature = "MIPS_III")]
             0x3C if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_scd,
+            #[cfg(feature = "MIPS_III")]
             0x3F if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_sd,
+            #[cfg(feature = "MIPS_II")]
             0x2F if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_cache,
             0x31 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lwc1,
+            #[cfg(feature = "MIPS_II")]
             0x35 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_ldc1,
             0x39 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_swc1,
+            #[cfg(feature = "MIPS_II")]
             0x3D if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_sdc1,
             0x32 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_lwc2,
+            #[cfg(feature = "MIPS_II")]
             0x36 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_ldc2,
             0x3A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_swc2,
+            #[cfg(feature = "MIPS_II")]
             0x3E if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_sdc2,
 
             0x00 => {
@@ -135,14 +158,23 @@ impl OpcodeDecoder {
             0x00 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sll,
             0x02 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_srl,
             0x03 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sra,
+            #[cfg(feature = "MIPS_III")]
             0x38 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsll,
+            #[cfg(feature = "MIPS_III")]
             0x3A if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsrl,
+            #[cfg(feature = "MIPS_III")]
             0x3B if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsra,
+            #[cfg(feature = "MIPS_III")]
             0x3C if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsll32,
+            #[cfg(feature = "MIPS_III")]
             0x3E if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsrl32,
+            #[cfg(feature = "MIPS_III")]
             0x3F if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsra32,
+            #[cfg(feature = "MIPS_III")]
             0x14 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsllv,
+            #[cfg(feature = "MIPS_III")]
             0x16 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsrlv,
+            #[cfg(feature = "MIPS_III")]
             0x17 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsrav,
             0x04 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sllv,
             0x06 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_srlv,
@@ -153,11 +185,15 @@ impl OpcodeDecoder {
             0x09 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_jalr,
             0x10 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mfhi,
             0x12 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mflo,
+            #[cfg(feature = "MIPS_IV")]
             0x0A if isa_version as u32 >= IsaVersion::MIPS_IV as u32 => Opcode::core_movz,
+            #[cfg(feature = "MIPS_IV")]
             0x0B if isa_version as u32 >= IsaVersion::MIPS_IV as u32 => Opcode::core_movn,
             0x1A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_div,
             0x1B if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_divu,
+            #[cfg(feature = "MIPS_III")]
             0x1E if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ddiv,
+            #[cfg(feature = "MIPS_III")]
             0x1F if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ddivu,
             0x20 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_add,
             0x21 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_addu,
@@ -169,22 +205,35 @@ impl OpcodeDecoder {
             0x27 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_nor,
             0x2A if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_slt,
             0x2B if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sltu,
+            #[cfg(feature = "MIPS_III")]
             0x2C if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dadd,
+            #[cfg(feature = "MIPS_III")]
             0x2D if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_daddu,
+            #[cfg(feature = "MIPS_III")]
             0x2E if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsub,
+            #[cfg(feature = "MIPS_III")]
             0x2F if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dsubu,
             0x0C if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_syscall,
             0x0D if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_break,
+            #[cfg(feature = "MIPS_II")]
             0x0F if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_sync,
             0x18 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mult,
             0x19 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_multu,
+            #[cfg(feature = "MIPS_III")]
             0x1C if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dmult,
+            #[cfg(feature = "MIPS_III")]
             0x1D if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dmultu,
+            #[cfg(feature = "MIPS_II")]
             0x30 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tge,
+            #[cfg(feature = "MIPS_II")]
             0x31 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tgeu,
+            #[cfg(feature = "MIPS_II")]
             0x32 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tlt,
+            #[cfg(feature = "MIPS_II")]
             0x33 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tltu,
+            #[cfg(feature = "MIPS_II")]
             0x34 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_teq,
+            #[cfg(feature = "MIPS_II")]
             0x36 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tne,
 
             _ => Opcode::ALL_INVALID,
@@ -214,17 +263,27 @@ impl OpcodeDecoder {
         let opcode = match mask.get_shifted(word) {
             0x00 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bltz,
             0x01 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bgez,
+            #[cfg(feature = "MIPS_II")]
             0x02 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bltzl,
+            #[cfg(feature = "MIPS_II")]
             0x03 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bgezl,
+            #[cfg(feature = "MIPS_II")]
             0x08 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tgei,
+            #[cfg(feature = "MIPS_II")]
             0x09 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tgeiu,
+            #[cfg(feature = "MIPS_II")]
             0x0A if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tlti,
+            #[cfg(feature = "MIPS_II")]
             0x0B if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tltiu,
+            #[cfg(feature = "MIPS_II")]
             0x0C if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_teqi,
+            #[cfg(feature = "MIPS_II")]
             0x0E if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_tnei,
             0x10 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bltzal,
             0x11 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bgezal,
+            #[cfg(feature = "MIPS_II")]
             0x12 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bltzall,
+            #[cfg(feature = "MIPS_II")]
             0x13 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bgezall,
 
             _ => Opcode::ALL_INVALID,
@@ -248,9 +307,11 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
             0x00 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mfc0,
+            #[cfg(feature = "MIPS_III")]
             0x01 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dmfc0,
             0x02 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_cfc0,
             0x04 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mtc0,
+            #[cfg(feature = "MIPS_III")]
             0x05 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dmtc0,
             0x06 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_ctc0,
             0x08 => {
@@ -291,7 +352,9 @@ impl OpcodeDecoder {
         let opcode = match mask.get_shifted(word) {
             0x00 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bc0f,
             0x01 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bc0t,
+            #[cfg(feature = "MIPS_II")]
             0x02 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bc0fl,
+            #[cfg(feature = "MIPS_II")]
             0x03 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bc0tl,
             _ => Opcode::ALL_INVALID,
         };
@@ -340,8 +403,10 @@ impl OpcodeDecoder {
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
             0x00 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mfc1,
+            #[cfg(feature = "MIPS_III")]
             0x01 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dmfc1,
             0x04 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mtc1,
+            #[cfg(feature = "MIPS_III")]
             0x05 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_dmtc1,
             0x02 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_cfc1,
             0x06 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_ctc1,
@@ -407,7 +472,9 @@ impl OpcodeDecoder {
         let opcode = match mask.get_shifted(word) {
             0x00 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bc1f,
             0x01 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_bc1t,
+            #[cfg(feature = "MIPS_II")]
             0x02 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bc1fl,
+            #[cfg(feature = "MIPS_II")]
             0x03 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_bc1tl,
             _ => Opcode::ALL_INVALID,
         };
@@ -433,20 +500,30 @@ impl OpcodeDecoder {
             0x01 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sub_s,
             0x02 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mul_s,
             0x03 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_div_s,
+            #[cfg(feature = "MIPS_II")]
             0x04 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_sqrt_s,
             0x05 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_abs_s,
             0x06 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mov_s,
             0x07 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_neg_s,
+            #[cfg(feature = "MIPS_III")]
             0x08 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_round_l_s,
+            #[cfg(feature = "MIPS_III")]
             0x09 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_trunc_l_s,
+            #[cfg(feature = "MIPS_III")]
             0x0A if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ceil_l_s,
+            #[cfg(feature = "MIPS_III")]
             0x0B if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_floor_l_s,
+            #[cfg(feature = "MIPS_II")]
             0x0C if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_round_w_s,
+            #[cfg(feature = "MIPS_II")]
             0x0D if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_trunc_w_s,
+            #[cfg(feature = "MIPS_II")]
             0x0E if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_ceil_w_s,
+            #[cfg(feature = "MIPS_II")]
             0x0F if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_floor_w_s,
             0x21 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_cvt_d_s,
             0x24 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_cvt_w_s,
+            #[cfg(feature = "MIPS_III")]
             0x25 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_cvt_l_s,
             0x30 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_c_f_s,
             0x31 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_c_un_s,
@@ -488,20 +565,30 @@ impl OpcodeDecoder {
             0x01 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_sub_d,
             0x02 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mul_d,
             0x03 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_div_d,
+            #[cfg(feature = "MIPS_II")]
             0x04 if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_sqrt_d,
             0x05 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_abs_d,
             0x06 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_mov_d,
             0x07 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_neg_d,
+            #[cfg(feature = "MIPS_III")]
             0x08 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_round_l_d,
+            #[cfg(feature = "MIPS_III")]
             0x09 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_trunc_l_d,
+            #[cfg(feature = "MIPS_III")]
             0x0A if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_ceil_l_d,
+            #[cfg(feature = "MIPS_III")]
             0x0B if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_floor_l_d,
+            #[cfg(feature = "MIPS_II")]
             0x0C if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_round_w_d,
+            #[cfg(feature = "MIPS_II")]
             0x0D if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_trunc_w_d,
+            #[cfg(feature = "MIPS_II")]
             0x0E if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_ceil_w_d,
+            #[cfg(feature = "MIPS_II")]
             0x0F if isa_version as u32 >= IsaVersion::MIPS_II as u32 => Opcode::core_floor_w_d,
             0x20 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_cvt_s_d,
             0x24 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_cvt_w_d,
+            #[cfg(feature = "MIPS_III")]
             0x25 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_cvt_l_d,
             0x30 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_c_f_d,
             0x31 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_c_un_d,
@@ -559,9 +646,12 @@ impl OpcodeDecoder {
     ) -> Self {
         let mask = EncodedFieldMask::function;
         let opcode_category = OpcodeCategory::CORE_COP1_FPUL;
+        let _avoid_unused_warning = isa_version;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
+            #[cfg(feature = "MIPS_III")]
             0x20 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_cvt_s_l,
+            #[cfg(feature = "MIPS_III")]
             0x21 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_cvt_d_l,
             _ => Opcode::ALL_INVALID,
         };

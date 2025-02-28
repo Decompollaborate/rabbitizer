@@ -10,16 +10,26 @@
     prefix##_##name,
 
 
+#define RAB_DEF_OPCODE_MIPS1(prefix, case_bits, name, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, name)
+
+#define RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, case_bits, name, altname, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, name)
+
+#define RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, name, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, name)
+
+
 #define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, name)
 
 #define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, name)
 
 #define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...) \
-    __IMPL_RAB_DEF_OPCODE(prefix, name)
-
-#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, gate, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, name)
 
 
@@ -37,6 +47,7 @@
 
 #define RAB_DEF_OPCODE_EXTENSION_REMOVED(case_bits, prefix, name, isa_exten)
 
+
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
 
 
@@ -49,7 +60,6 @@ pub enum Opcode {
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
-#undef RAB_DEF_OPCODE_GATED
 
 #undef RAB_DEF_OPCODE_EXTENSION
 #undef RAB_DEF_OPCODE_EXTENSION_ALTNAME

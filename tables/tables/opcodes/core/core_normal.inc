@@ -23,15 +23,15 @@
 */
 
     // OP LABEL
-    RAB_DEF_OPCODE(
-        core, 0x02, j, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x02, j,
         operands: Operand::arr1(Operand::core_label),
         instr_type: InstrType::J,
         is_jump: true,
         is_jump_with_address: true
     ) // Jump
-    RAB_DEF_OPCODE(
-        core, 0x03, jal, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x03, jal,
         operands: Operand::arr1(Operand::core_label),
         instr_type: InstrType::J,
         is_jump: true,
@@ -40,16 +40,16 @@
     ) // Jump And Link
 
     // OP rs, rt, IMM
-    RAB_DEF_OPCODE(
-        core, 0x04, beq, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x04, beq,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
         reads_rs: true,
         reads_rt: true
     ) // Branch on EQual
-    RAB_DEF_OPCODE(
-        core, 0x05, bne, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x05, bne,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
@@ -76,8 +76,8 @@
     ) // Branch on Not Equal Likely
 
     // OP rs, IMM
-    RAB_DEF_OPCODE(
-        core, 0x06, blez, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x06, blez,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
@@ -91,8 +91,8 @@
         is_branch_likely: true,
         reads_rs: true
     ) // Branch on Less than or Equal to Zero Likely
-    RAB_DEF_OPCODE(
-        core, 0x07, bgtz, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x07, bgtz,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true,
@@ -108,8 +108,8 @@
     ) // Branch on Greater Than Zero Likely
 
     // OP rt, rs, IMM
-    RAB_DEF_OPCODE(
-        core, 0x08, addi, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x08, addi,
         operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -117,38 +117,38 @@
         not_emitted_by_compilers: true,
         can_be_lo: true
     ) // Add Immediate
-    RAB_DEF_OPCODE(
-        core, 0x09, addiu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x09, addiu,
         operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
         can_be_lo: true
     ) // Add Immediate Unsigned Word
-    RAB_DEF_OPCODE(
-        core, 0x0A, slti, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0A, slti,
         operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true
     ) // Set on Less Than Immediate
-    RAB_DEF_OPCODE(
-        core, 0x0B, sltiu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0B, sltiu,
         operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true
     ) // Set on Less Than Immediate Unsigned
-    RAB_DEF_OPCODE(
-        core, 0x0C, andi, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0C, andi,
         operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
         modifies_rt: true,
         reads_rs: true
     ) // And Immediate
-    RAB_DEF_OPCODE(
-        core, 0x0D, ori, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0D, ori,
         operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
@@ -156,8 +156,8 @@
         reads_rs: true,
         can_be_unsigned_lo: true
     ) // Or Immediate
-    RAB_DEF_OPCODE(
-        core, 0x0E, xori, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0E, xori,
         operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
@@ -182,8 +182,8 @@
     ) // Doubleword add Immediate Unsigned
 
     // OP rt, IMM
-    RAB_DEF_OPCODE(
-        core, 0x0F, lui, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0F, lui,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate),
         instr_type: InstrType::I,
         is_unsigned: true,
@@ -214,8 +214,8 @@
         does_load: true,
         access_type: Some(AccessType::DOUBLEWORD_RIGHT)
     ) // Load Doubleword Right
-    RAB_DEF_OPCODE(
-        core, 0x20, lb, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x20, lb,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -225,8 +225,8 @@
         does_load: true,
         access_type: Some(AccessType::BYTE)
     ) // Load Byte
-    RAB_DEF_OPCODE(
-        core, 0x21, lh, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x21, lh,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -236,8 +236,8 @@
         does_load: true,
         access_type: Some(AccessType::SHORT)
     ) // Load Halfword
-    RAB_DEF_OPCODE(
-        core, 0x22, lwl, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x22, lwl,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -247,8 +247,8 @@
         does_load: true,
         access_type: Some(AccessType::WORD_LEFT)
     ) // Load Word Left
-    RAB_DEF_OPCODE(
-        core, 0x23, lw, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x23, lw,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -258,8 +258,8 @@
         does_load: true,
         access_type: Some(AccessType::WORD)
     ) // Load Word
-    RAB_DEF_OPCODE(
-        core, 0x24, lbu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x24, lbu,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -270,8 +270,8 @@
         access_type: Some(AccessType::BYTE),
         does_unsigned_memory_access: true
     ) // Load Byte Insigned
-    RAB_DEF_OPCODE(
-        core, 0x25, lhu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x25, lhu,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -282,8 +282,8 @@
         access_type: Some(AccessType::SHORT),
         does_unsigned_memory_access: true
     ) // Load Halfword Unsigned
-    RAB_DEF_OPCODE(
-        core, 0x26, lwr, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x26, lwr,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -305,8 +305,8 @@
         access_type: Some(AccessType::WORD),
         does_unsigned_memory_access: true
     ) // Load Word Unsigned
-    RAB_DEF_OPCODE(
-        core, 0x28, sb, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x28, sb,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -316,8 +316,8 @@
         does_store: true,
         access_type: Some(AccessType::BYTE)
     ) // Store Byte
-    RAB_DEF_OPCODE(
-        core, 0x29, sh, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x29, sh,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -327,8 +327,8 @@
         does_store: true,
         access_type: Some(AccessType::SHORT)
     ) // Store Halfword
-    RAB_DEF_OPCODE(
-        core, 0x2A, swl, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x2A, swl,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -338,8 +338,8 @@
         does_store: true,
         access_type: Some(AccessType::WORD_LEFT)
     ) // Store Word Left
-    RAB_DEF_OPCODE(
-        core, 0x2B, sw, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x2B, sw,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -371,8 +371,8 @@
         does_store: true,
         access_type: Some(AccessType::DOUBLEWORD_RIGHT)
     ) // Store Doubleword Right
-    RAB_DEF_OPCODE(
-        core, 0x2E, swr, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x2E, swr,
         operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -469,8 +469,8 @@
     ) // Cache
 
     // OP ft, IMM(base)
-    RAB_DEF_OPCODE(
-        core, 0x31, lwc1, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x31, lwc1,
         operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
         instr_type: InstrType::I,
         is_float: true,
@@ -494,8 +494,8 @@
         does_load: true,
         access_type: Some(AccessType::DOUBLEFLOAT)
     ) // Load Doubleword to Coprocessor z
-    RAB_DEF_OPCODE(
-        core, 0x39, swc1, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x39, swc1,
         operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
         instr_type: InstrType::I,
         is_float: true,
@@ -521,8 +521,8 @@
     ) // Store Doubleword from Coprocessor z
 
     // OP cop2t, IMM(base)
-    RAB_DEF_OPCODE(
-        core, 0x32, lwc2, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x32, lwc2,
         operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -541,8 +541,8 @@
         does_load: true,
         access_type: Some(AccessType::DOUBLEWORD)
     ) // Load Doubleword to Coprocessor z
-    RAB_DEF_OPCODE(
-        core, 0x3A, swc2, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x3A, swc2,
         operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -566,23 +566,23 @@
     // Pseudo-Instruction Unique IDs
 
     // OP IMM
-    RAB_DEF_OPCODE_PSEUDO(
-        core, b, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, b,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::I,
         is_branch: true
     ) // Branch (unconditional)
 
     // OP rs, IMM
-    RAB_DEF_OPCODE_PSEUDO(
-        core, beqz, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, beqz,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,
         is_branch: true
     ) // Branch on EQual Zero
-    RAB_DEF_OPCODE_PSEUDO(
-        core, bnez, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, bnez,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::I,
         reads_rs: true,

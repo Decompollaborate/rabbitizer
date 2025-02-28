@@ -5,8 +5,16 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+#define RAB_DEF_ISA_VERSION_MIPS1() \
+    MIPS_I,
+
 #define RAB_DEF_ISA_VERSION(name) \
+    SPECIAL_RS_TAG(cfg(feature = #name )) \
     name,
+
+#define RAB_DEF_ISA_VERSION_EXTENSION() \
+    SPECIAL_RS_TAG(doc(hidden)) \
+    EXTENSION,
 
 SPECIAL_RS_TAG(cfg(feature = "pyo3"))
 use pyo3::prelude::*;
@@ -18,4 +26,6 @@ pub enum IsaVersion {
     #include "IsaVersion.inc"
 }
 
+#undef RAB_DEF_ISA_VERSION_MIPS1
 #undef RAB_DEF_ISA_VERSION
+#undef RAB_DEF_ISA_VERSION_EXTENSION

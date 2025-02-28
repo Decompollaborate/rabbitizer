@@ -14,15 +14,15 @@
 */
 
     // OP rs, IMM
-    RAB_DEF_OPCODE(
-        core, 0x00, bltz, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x00, bltz,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true
     ) // Branch on Less Than Zero
-    RAB_DEF_OPCODE(
-        core, 0x01, bgez, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x01, bgez,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -94,16 +94,16 @@
         not_emitted_by_compilers: true
     )
 
-    RAB_DEF_OPCODE(
-        core, 0x10, bltzal, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x10, bltzal,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true,
         does_link: true
     ) // Branch on Less Than Zero and Link
-    RAB_DEF_OPCODE(
-        core, 0x11, bgezal, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x11, bgezal,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -133,8 +133,8 @@
 
     // Pseudo-Instruction Unique IDs
 
-    RAB_DEF_OPCODE_PSEUDO(
-        core, bal, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, bal,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,

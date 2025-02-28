@@ -14,14 +14,14 @@
 */
 
     // OP IMM
-    RAB_DEF_OPCODE(
-        core, 0x00, bc0f, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x00, bc0f,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true
     ) // Branch on FP False
-    RAB_DEF_OPCODE(
-        core, 0x01, bc0t, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x01, bc0t,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true

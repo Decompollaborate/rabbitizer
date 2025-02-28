@@ -11,11 +11,15 @@ pub enum Opcode {
     core_jal,
     core_beq,
     core_bne,
+    #[cfg(feature = "MIPS_II")]
     core_beql,
+    #[cfg(feature = "MIPS_II")]
     core_bnel,
     core_blez,
+    #[cfg(feature = "MIPS_II")]
     core_blezl,
     core_bgtz,
+    #[cfg(feature = "MIPS_II")]
     core_bgtzl,
     core_addi,
     core_addiu,
@@ -24,10 +28,14 @@ pub enum Opcode {
     core_andi,
     core_ori,
     core_xori,
+    #[cfg(feature = "MIPS_III")]
     core_daddi,
+    #[cfg(feature = "MIPS_III")]
     core_daddiu,
     core_lui,
+    #[cfg(feature = "MIPS_III")]
     core_ldl,
+    #[cfg(feature = "MIPS_III")]
     core_ldr,
     core_lb,
     core_lh,
@@ -36,47 +44,73 @@ pub enum Opcode {
     core_lbu,
     core_lhu,
     core_lwr,
+    #[cfg(feature = "MIPS_III")]
     core_lwu,
     core_sb,
     core_sh,
     core_swl,
     core_sw,
+    #[cfg(feature = "MIPS_III")]
     core_sdl,
+    #[cfg(feature = "MIPS_III")]
     core_sdr,
     core_swr,
+    #[cfg(feature = "MIPS_II")]
     core_ll,
+    #[cfg(feature = "MIPS_IV")]
     core_pref,
+    #[cfg(feature = "MIPS_III")]
     core_lld,
+    #[cfg(feature = "MIPS_III")]
     core_ld,
+    #[cfg(feature = "MIPS_II")]
     core_sc,
+    #[cfg(feature = "MIPS_III")]
     core_scd,
+    #[cfg(feature = "MIPS_III")]
     core_sd,
+    #[cfg(feature = "MIPS_II")]
     core_cache,
     core_lwc1,
+    #[cfg(feature = "MIPS_II")]
     core_ldc1,
     core_swc1,
+    #[cfg(feature = "MIPS_II")]
     core_sdc1,
     core_lwc2,
+    #[cfg(feature = "MIPS_II")]
     core_ldc2,
     core_swc2,
+    #[cfg(feature = "MIPS_II")]
     core_sdc2,
     core_b,
     core_beqz,
     core_bnez,
+    #[cfg(feature = "MIPS_II")]
     core_beqzl,
+    #[cfg(feature = "MIPS_II")]
     core_bnezl,
 
     core_sll,
     core_srl,
     core_sra,
+    #[cfg(feature = "MIPS_III")]
     core_dsll,
+    #[cfg(feature = "MIPS_III")]
     core_dsrl,
+    #[cfg(feature = "MIPS_III")]
     core_dsra,
+    #[cfg(feature = "MIPS_III")]
     core_dsll32,
+    #[cfg(feature = "MIPS_III")]
     core_dsrl32,
+    #[cfg(feature = "MIPS_III")]
     core_dsra32,
+    #[cfg(feature = "MIPS_III")]
     core_dsllv,
+    #[cfg(feature = "MIPS_III")]
     core_dsrlv,
+    #[cfg(feature = "MIPS_III")]
     core_dsrav,
     core_sllv,
     core_srlv,
@@ -87,11 +121,15 @@ pub enum Opcode {
     core_jalr,
     core_mfhi,
     core_mflo,
+    #[cfg(feature = "MIPS_IV")]
     core_movz,
+    #[cfg(feature = "MIPS_IV")]
     core_movn,
     core_div,
     core_divu,
+    #[cfg(feature = "MIPS_III")]
     core_ddiv,
+    #[cfg(feature = "MIPS_III")]
     core_ddivu,
     core_add,
     core_addu,
@@ -103,22 +141,35 @@ pub enum Opcode {
     core_nor,
     core_slt,
     core_sltu,
+    #[cfg(feature = "MIPS_III")]
     core_dadd,
+    #[cfg(feature = "MIPS_III")]
     core_daddu,
+    #[cfg(feature = "MIPS_III")]
     core_dsub,
+    #[cfg(feature = "MIPS_III")]
     core_dsubu,
     core_syscall,
     core_break,
+    #[cfg(feature = "MIPS_II")]
     core_sync,
     core_mult,
     core_multu,
+    #[cfg(feature = "MIPS_III")]
     core_dmult,
+    #[cfg(feature = "MIPS_III")]
     core_dmultu,
+    #[cfg(feature = "MIPS_II")]
     core_tge,
+    #[cfg(feature = "MIPS_II")]
     core_tgeu,
+    #[cfg(feature = "MIPS_II")]
     core_tlt,
+    #[cfg(feature = "MIPS_II")]
     core_tltu,
+    #[cfg(feature = "MIPS_II")]
     core_teq,
+    #[cfg(feature = "MIPS_II")]
     core_tne,
     core_nop,
     core_not,
@@ -126,29 +177,43 @@ pub enum Opcode {
     core_negu,
     core_bltz,
     core_bgez,
+    #[cfg(feature = "MIPS_II")]
     core_bltzl,
+    #[cfg(feature = "MIPS_II")]
     core_bgezl,
+    #[cfg(feature = "MIPS_II")]
     core_tgei,
+    #[cfg(feature = "MIPS_II")]
     core_tgeiu,
+    #[cfg(feature = "MIPS_II")]
     core_tlti,
+    #[cfg(feature = "MIPS_II")]
     core_tltiu,
+    #[cfg(feature = "MIPS_II")]
     core_teqi,
+    #[cfg(feature = "MIPS_II")]
     core_tnei,
     core_bltzal,
     core_bgezal,
+    #[cfg(feature = "MIPS_II")]
     core_bltzall,
+    #[cfg(feature = "MIPS_II")]
     core_bgezall,
     core_bal,
     core_mfc0,
+    #[cfg(feature = "MIPS_III")]
     core_dmfc0,
     core_cfc0,
     core_mtc0,
+    #[cfg(feature = "MIPS_III")]
     core_dmtc0,
     core_ctc0,
 
     core_bc0f,
     core_bc0t,
+    #[cfg(feature = "MIPS_II")]
     core_bc0fl,
+    #[cfg(feature = "MIPS_II")]
     core_bc0tl,
     core_tlbr,
     core_tlbwi,
@@ -157,34 +222,48 @@ pub enum Opcode {
     core_rfe,
     core_eret,
     core_mfc1,
+    #[cfg(feature = "MIPS_III")]
     core_dmfc1,
     core_mtc1,
+    #[cfg(feature = "MIPS_III")]
     core_dmtc1,
     core_cfc1,
     core_ctc1,
 
     core_bc1f,
     core_bc1t,
+    #[cfg(feature = "MIPS_II")]
     core_bc1fl,
+    #[cfg(feature = "MIPS_II")]
     core_bc1tl,
     core_add_s,
     core_sub_s,
     core_mul_s,
     core_div_s,
+    #[cfg(feature = "MIPS_II")]
     core_sqrt_s,
     core_abs_s,
     core_mov_s,
     core_neg_s,
+    #[cfg(feature = "MIPS_III")]
     core_round_l_s,
+    #[cfg(feature = "MIPS_III")]
     core_trunc_l_s,
+    #[cfg(feature = "MIPS_III")]
     core_ceil_l_s,
+    #[cfg(feature = "MIPS_III")]
     core_floor_l_s,
+    #[cfg(feature = "MIPS_II")]
     core_round_w_s,
+    #[cfg(feature = "MIPS_II")]
     core_trunc_w_s,
+    #[cfg(feature = "MIPS_II")]
     core_ceil_w_s,
+    #[cfg(feature = "MIPS_II")]
     core_floor_w_s,
     core_cvt_d_s,
     core_cvt_w_s,
+    #[cfg(feature = "MIPS_III")]
     core_cvt_l_s,
     core_c_f_s,
     core_c_un_s,
@@ -206,20 +285,30 @@ pub enum Opcode {
     core_sub_d,
     core_mul_d,
     core_div_d,
+    #[cfg(feature = "MIPS_II")]
     core_sqrt_d,
     core_abs_d,
     core_mov_d,
     core_neg_d,
+    #[cfg(feature = "MIPS_III")]
     core_round_l_d,
+    #[cfg(feature = "MIPS_III")]
     core_trunc_l_d,
+    #[cfg(feature = "MIPS_III")]
     core_ceil_l_d,
+    #[cfg(feature = "MIPS_III")]
     core_floor_l_d,
+    #[cfg(feature = "MIPS_II")]
     core_round_w_d,
+    #[cfg(feature = "MIPS_II")]
     core_trunc_w_d,
+    #[cfg(feature = "MIPS_II")]
     core_ceil_w_d,
+    #[cfg(feature = "MIPS_II")]
     core_floor_w_d,
     core_cvt_s_d,
     core_cvt_w_d,
+    #[cfg(feature = "MIPS_III")]
     core_cvt_l_d,
     core_c_f_d,
     core_c_un_d,
@@ -239,7 +328,9 @@ pub enum Opcode {
     core_c_ngt_d,
     core_cvt_s_w,
     core_cvt_d_w,
+    #[cfg(feature = "MIPS_III")]
     core_cvt_s_l,
+    #[cfg(feature = "MIPS_III")]
     core_cvt_d_l,
     core_mfc2,
     core_mtc2,

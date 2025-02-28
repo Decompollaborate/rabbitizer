@@ -18,8 +18,8 @@
 */
 
     // OP fd, fs, ft
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x00, add_s, add.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x00, add_s, add.s,
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -27,8 +27,8 @@
         reads_fs: true,
         reads_ft: true
     ) // Floating-Point Add
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x01, sub_s, sub.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x01, sub_s, sub.s,
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -36,8 +36,8 @@
         reads_fs: true,
         reads_ft: true
     ) // Floating-Point Sub
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x02, mul_s, mul.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x02, mul_s, mul.s,
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -45,8 +45,8 @@
         reads_fs: true,
         reads_ft: true
     ) // Floating-Point Multiply
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x03, div_s, div.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x03, div_s, div.s,
         operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -64,24 +64,24 @@
         modifies_fd: true,
         reads_fs: true
     ) // Floating-Point Square Root
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x05, abs_s, abs.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x05, abs_s, abs.s,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
         reads_fs: true
     ) // Floating-Point Absolute Value
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x06, mov_s, mov.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x06, mov_s, mov.s,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_fd: true,
         reads_fs: true
     ) // Floating-Point Move
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x07, neg_s, neg.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x07, neg_s, neg.s,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -156,8 +156,8 @@
     ) // Floating-Point Floor Convert to Word Fixed-Point
 
     // OP fd, fs
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x21, cvt_d_s, cvt.d.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x21, cvt_d_s, cvt.d.s,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -165,8 +165,8 @@
         modifies_fd: true,
         reads_fs: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x24, cvt_w_s, cvt.w.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x24, cvt_w_s, cvt.w.s,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -183,64 +183,64 @@
     )
 
     // OP fs, ft
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x30, c_f_s, c.f.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x30, c_f_s, c.f.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x31, c_un_s, c.un.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x31, c_un_s, c.un.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x32, c_eq_s, c.eq.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x32, c_eq_s, c.eq.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x33, c_ueq_s, c.ueq.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x33, c_ueq_s, c.ueq.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x34, c_olt_s, c.olt.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x34, c_olt_s, c.olt.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x35, c_ult_s, c.ult.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x35, c_ult_s, c.ult.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x36, c_ole_s, c.ole.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x36, c_ole_s, c.ole.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x37, c_ule_s, c.ule.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x37, c_ule_s, c.ule.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -248,64 +248,64 @@
         reads_ft: true
     )
 
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x38, c_sf_s, c.sf.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x38, c_sf_s, c.sf.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x39, c_ngle_s, c.ngle.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x39, c_ngle_s, c.ngle.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x3A, c_seq_s, c.seq.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x3A, c_seq_s, c.seq.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x3B, c_ngl_s, c.ngl.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x3B, c_ngl_s, c.ngl.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x3C, c_lt_s, c.lt.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x3C, c_lt_s, c.lt.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x3D, c_nge_s, c.nge.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x3D, c_nge_s, c.nge.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x3E, c_le_s, c.le.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x3E, c_le_s, c.le.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         reads_fs: true,
         reads_ft: true
     )
-    RAB_DEF_OPCODE_ALTNAME(
-        core, 0x3F, c_ngt_s, c.ngt.s, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_ALTNAME(
+        core, 0x3F, c_ngt_s, c.ngt.s,
         operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
         instr_type: InstrType::UNKNOWN,
         is_float: true,

@@ -19,7 +19,18 @@ use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
 // this constant.
 pub(crate) const OPCODE_COUNT: usize = {
-    let mut count = 236;
+    let mut count = 1;
+    count += 144;
+
+    if cfg!(feature = "MIPS_II") {
+        count += 44;
+    }
+    if cfg!(feature = "MIPS_III") {
+        count += 44;
+    }
+    if cfg!(feature = "MIPS_IV") {
+        count += 3;
+    }
 
     if cfg!(feature = "RSP") {
         count += 73;

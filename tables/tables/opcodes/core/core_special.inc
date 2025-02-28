@@ -18,22 +18,22 @@
 */
 
     // OP rd, rt, sa
-    RAB_DEF_OPCODE(
-        core, 0x00, sll, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x00, sll,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
     ) // Shift word Left Logical
-    RAB_DEF_OPCODE(
-        core, 0x02, srl, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x02, srl,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rt: true
     ) // Shift word Right Logical
-    RAB_DEF_OPCODE(
-        core, 0x03, sra, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x03, sra,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -107,24 +107,24 @@
         reads_rs: true,
         reads_rt: true
     ) // Doubleword Shift Right Arithmetic Variable
-    RAB_DEF_OPCODE(
-        core, 0x04, sllv, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x04, sllv,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Shift word Left Logical Variable
-    RAB_DEF_OPCODE(
-        core, 0x06, srlv, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x06, srlv,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Shift word Right Logical Variable
-    RAB_DEF_OPCODE(
-        core, 0x07, srav, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x07, srav,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -133,29 +133,29 @@
     ) // Shift word Right Arithmetic Variable
 
     // OP rs
-    RAB_DEF_OPCODE(
-        core, 0x11, mthi, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x11, mthi,
         operands: Operand::arr1(Operand::core_rs),
         instr_type: InstrType::R,
         reads_rs: true,
         modifies_hi: true
     ) // Move To HI register
-    RAB_DEF_OPCODE(
-        core, 0x13, mtlo, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x13, mtlo,
         operands: Operand::arr1(Operand::core_rs),
         instr_type: InstrType::R,
         reads_rs: true,
         modifies_lo: true
     ) // Move To LO register
-    RAB_DEF_OPCODE(
-        core, 0x08, jr, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x08, jr,
         operands: Operand::arr1(Operand::core_rs),
         instr_type: InstrType::R,
         reads_rs: true,
         is_jump: true
     ) // Jump Register
-    RAB_DEF_OPCODE(
-        core, 0x09, jalr, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x09, jalr,
         operands: Operand::arr1(Operand::core_maybe_rd_rs),
         instr_type: InstrType::R,
         is_jump: true,
@@ -165,15 +165,15 @@
     ) // Jump And Link Register
 
     // OP rd
-    RAB_DEF_OPCODE(
-        core, 0x10, mfhi, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x10, mfhi,
         operands: Operand::arr1(Operand::core_rd),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_hi: true
     ) // Move From HI register
-    RAB_DEF_OPCODE(
-        core, 0x12, mflo, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x12, mflo,
         operands: Operand::arr1(Operand::core_rd),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -197,8 +197,8 @@
         reads_rs: true,
         reads_rt: true
     ) // MOVe conditional on Not zero
-    RAB_DEF_OPCODE(
-        core, 0x1A, div, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x1A, div,
         operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -206,8 +206,8 @@
         modifies_hi: true,
         modifies_lo: true
     ) // DIVide word
-    RAB_DEF_OPCODE(
-        core, 0x1B, divu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x1B, divu,
         operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -235,8 +235,8 @@
         modifies_lo: true
     ) // Doubleword DIVide Unsigned
 
-    RAB_DEF_OPCODE(
-        core, 0x20, add, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x20, add,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -244,8 +244,8 @@
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // ADD word
-    RAB_DEF_OPCODE(
-        core, 0x21, addu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x21, addu,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -253,8 +253,8 @@
         reads_rt: true,
         maybe_is_move: true
     ) // ADD Unsigned word
-    RAB_DEF_OPCODE(
-        core, 0x22, sub, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x22, sub,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -262,24 +262,24 @@
         reads_rs: true,
         reads_rt: true
     ) // Subtract word
-    RAB_DEF_OPCODE(
-        core, 0x23, subu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x23, subu,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // SUBtract Unsigned word
-    RAB_DEF_OPCODE(
-        core, 0x24, and, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x24, and,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // AND
-    RAB_DEF_OPCODE(
-        core, 0x25, or, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x25, or,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -287,32 +287,32 @@
         reads_rs: true,
         reads_rt: true
     ) // OR
-    RAB_DEF_OPCODE(
-        core, 0x26, xor, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x26, xor,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // eXclusive OR
-    RAB_DEF_OPCODE(
-        core, 0x27, nor, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x27, nor,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Not OR
-    RAB_DEF_OPCODE(
-        core, 0x2A, slt, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x2A, slt,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Set on Less Than
-    RAB_DEF_OPCODE(
-        core, 0x2B, sltu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x2B, sltu,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -354,14 +354,14 @@
     ) // Doubleword SUBtract Unsigned
 
     // OP code
-    RAB_DEF_OPCODE(
-        core, 0x0C, syscall, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0C, syscall,
         operands: Operand::arr1(Operand::core_code_lower),
         instr_type: InstrType::R,
         not_emitted_by_compilers: true
     ) // SYStem CALL
-    RAB_DEF_OPCODE(
-        core, 0x0D, break, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x0D, break,
         operands: Operand::arr1(Operand::core_code),
         instr_type: InstrType::R
     ) // Break
@@ -372,8 +372,8 @@
     ) // Sync
 
     // OP rs, rt
-    RAB_DEF_OPCODE(
-        core, 0x18, mult, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x18, mult,
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -381,8 +381,8 @@
         modifies_hi: true,
         modifies_lo: true
     ) // MULTtiply word
-    RAB_DEF_OPCODE(
-        core, 0x19, multu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x19, multu,
         operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         reads_rs: true,
@@ -468,14 +468,14 @@
     // Pseudo-instructions
 
     // OP
-    RAB_DEF_OPCODE_PSEUDO(
-        core, nop, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, nop,
         operands: Operand::arr0(),
         instr_type: InstrType::R
     ) // No OPeration
 
-    RAB_DEF_OPCODE_PSEUDO(
-        core, not, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, not,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -483,8 +483,8 @@
     ) // Not
 
     // OP rd, rt
-    RAB_DEF_OPCODE_PSEUDO(
-        core, neg, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, neg,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         not_emitted_by_compilers: true,
@@ -493,8 +493,8 @@
     )
 
     // OP rd, rt
-    RAB_DEF_OPCODE_PSEUDO(
-        core, negu, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1_PSEUDO(
+        core, negu,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,

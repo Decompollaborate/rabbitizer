@@ -19,8 +19,8 @@
 */
 
     // OP rt, fs
-    RAB_DEF_OPCODE(
-        core, 0x00, mfc1, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x00, mfc1,
         operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -35,8 +35,8 @@
         modifies_rt: true,
         reads_fs: true
     ) // Doubleword Move From Floating-Point
-    RAB_DEF_OPCODE(
-        core, 0x04, mtc1, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x04, mtc1,
         operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -53,15 +53,15 @@
     ) // Doubleword Move To Floating-Point
 
     // OP rt, cop1cs
-    RAB_DEF_OPCODE(
-        core, 0x02, cfc1, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x02, cfc1,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
         modifies_rt: true
     ) // Move Control Word from Floating-Point
-    RAB_DEF_OPCODE(
-        core, 0x06, ctc1, MIPS_I,
+    RAB_DEF_OPCODE_MIPS1(
+        core, 0x06, ctc1,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,

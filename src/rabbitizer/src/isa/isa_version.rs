@@ -4,14 +4,19 @@
 use crate::isa::IsaVersion;
 
 impl IsaVersion {
-    /// Returns a default value.
+    /// Returns a default ISA version.
     ///
-    /// Defaults to [`MIPS_III`].
-    ///
-    /// [`MIPS_III`]: IsaVersion::MIPS_III
+    /// The returned ISA version may change depending on the configured features.
     #[must_use]
     pub const fn default() -> Self {
-        Self::MIPS_III
+        #[cfg(feature = "MIPS_III")]
+        {
+            Self::MIPS_III
+        }
+        #[cfg(not(feature = "MIPS_III"))]
+        {
+            Self::MIPS_I
+        }
     }
 }
 

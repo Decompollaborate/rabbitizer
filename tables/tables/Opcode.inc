@@ -4,23 +4,29 @@
 /*
 The macros for defining an opcode use the following syntax:
 
+- RAB_DEF_OPCODE_MIPS1(prefix, case_bits, name, ...)
+  - Define a MIPS I opcode.
+- RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, case_bits, name, altname, ...)
+  - Define an opcode that doesn't use the `name` argument as the mnemonic.
+    Useful for instructions with dots on their mnemonics.
+- RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, name, ...)
+  - Defines a pseudo instruction.
+
 - RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...)
-  - The normal way to define an opcode.
+  - Define a non-extension opcode.
 - RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...)
   - Define an opcode that doesn't use the `name` argument as the mnemonic.
     Useful for instructions with dots on their mnemonics.
 - RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
   - Defines a pseudo instruction.
-- RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, gate, ...)
-  - Define an opcode that should be conditionally decoded depending on runtime
-    decoding flags.
 
 - RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...)
   - Define an opcode of an extension ISA.
 - RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...)
   - Define an opcode of an extension ISA.
 - RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...)
-  - A gated opcode of an extension ISA.
+  - Define an opcode that should be conditionally decoded depending on
+    compile-time features and runtime decoding flags.
 - RAB_DEF_OPCODE_EXTENSION_REMOVED(case_bits, prefix, name, isa_exten)
   - The opcode was removed by the given extension.
 
@@ -47,10 +53,7 @@ Arguments:
 */
 
 
-    RAB_DEF_OPCODE(
-        ALL, , INVALID, MIPS_I,
-        operands: Operand::arr0()
-    )
+    RAB_DEF_OPCODE_MIPS1(ALL, , INVALID, is_invalid: true)
 
     #include "opcodes/opcodes_core.inc"
     #include "opcodes/opcodes_rsp.inc"

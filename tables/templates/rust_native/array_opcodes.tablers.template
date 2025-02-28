@@ -15,17 +15,27 @@
     }
 
 
+#define RAB_DEF_OPCODE_MIPS1(prefix, case_bits, name, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::MIPS_I, None, , __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, case_bits, name, altname, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, IsaVersion::MIPS_I, None, , __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, name, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, , name, name, IsaVersion::MIPS_I, None, , __VA_ARGS__, is_pseudo: true)
+
+
 #define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, , name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__, is_pseudo: true)
-
-#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, gate, ...) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, gate, __VA_ARGS__)
 
 
 #define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
@@ -80,7 +90,10 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
-#undef RAB_DEF_OPCODE_GATED
+
+#undef RAB_DEF_OPCODE_MIPS1
+#undef RAB_DEF_OPCODE_MIPS1_ALTNAME
+#undef RAB_DEF_OPCODE_MIPS1_PSEUDO
 
 #undef RAB_DEF_OPCODE_EXTENSION
 #undef RAB_DEF_OPCODE_EXTENSION_ALTNAME

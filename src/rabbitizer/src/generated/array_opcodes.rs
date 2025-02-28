@@ -21,7 +21,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];
     {
         table[Opcode::ALL_INVALID as usize] = OpcodeDescriptor {
-            operands: Operand::arr0(),
+            is_invalid: true,
             ..OpcodeDescriptor::new("INVALID", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -77,6 +77,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_beql as usize] = OpcodeDescriptor {
             operands: Operand::arr3(
@@ -93,6 +94,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bnel as usize] = OpcodeDescriptor {
             operands: Operand::arr3(
@@ -119,6 +121,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_blezl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -140,6 +143,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bgtzl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -228,6 +232,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_daddi as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
@@ -239,6 +244,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_daddiu as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
@@ -261,6 +267,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ldl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -275,6 +282,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ldr as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -389,6 +397,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_lwu as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -460,6 +469,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_sdl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -474,6 +484,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_sdr as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -502,6 +513,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ll as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -517,6 +529,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_IV")]
     {
         table[Opcode::core_pref as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_hint, Operand::core_immediate_base),
@@ -526,6 +539,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_lld as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -541,6 +555,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ld as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -555,6 +570,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sc as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -570,6 +586,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_scd as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -585,6 +602,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_sd as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
@@ -599,6 +617,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_cache as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_op, Operand::core_immediate_base),
@@ -624,6 +643,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ldc1 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
@@ -655,6 +675,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sdc1 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
@@ -684,6 +705,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ldc2 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
@@ -710,6 +732,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sdc2 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
@@ -755,6 +778,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_beqzl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -767,6 +791,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bnezl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -810,6 +835,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsll as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
@@ -820,6 +846,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsrl as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
@@ -830,6 +857,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsra as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
@@ -840,6 +868,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsll32 as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
@@ -850,6 +879,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsrl32 as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
@@ -860,6 +890,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsra32 as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
@@ -870,6 +901,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsllv as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
@@ -881,6 +913,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsrlv as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
@@ -892,6 +925,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsrav as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
@@ -998,6 +1032,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_IV")]
     {
         table[Opcode::core_movz as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
@@ -1009,6 +1044,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_IV")]
     {
         table[Opcode::core_movn as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
@@ -1044,6 +1080,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ddiv as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
@@ -1056,6 +1093,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ddivu as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
@@ -1182,6 +1220,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dadd as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
@@ -1193,6 +1232,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_daddu as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
@@ -1205,6 +1245,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsub as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
@@ -1216,6 +1257,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dsubu as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
@@ -1244,6 +1286,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sync as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
@@ -1276,6 +1319,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dmult as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
@@ -1288,6 +1332,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dmultu as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
@@ -1300,6 +1345,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tge as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
@@ -1312,6 +1358,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tgeu as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
@@ -1324,6 +1371,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tlt as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
@@ -1336,6 +1384,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tltu as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
@@ -1348,6 +1397,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_teq as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
@@ -1360,6 +1410,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tne as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
@@ -1435,6 +1486,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bltzl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -1446,6 +1498,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bgezl as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -1457,6 +1510,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tgei as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
@@ -1468,6 +1522,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tgeiu as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
@@ -1479,6 +1534,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tlti as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
@@ -1490,6 +1546,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tltiu as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
@@ -1501,6 +1558,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_teqi as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
@@ -1512,6 +1570,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tnei as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
@@ -1545,6 +1604,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bltzall as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -1557,6 +1617,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bgezall as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
@@ -1592,6 +1653,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dmfc0 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
@@ -1622,6 +1684,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dmtc0 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
@@ -1661,6 +1724,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bc0fl as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::core_branch_target_label),
@@ -1671,6 +1735,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bc0tl as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::core_branch_target_label),
@@ -1745,6 +1810,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dmfc1 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
@@ -1767,6 +1833,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_dmtc1 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
@@ -1817,6 +1884,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bc1fl as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::core_branch_target_label),
@@ -1827,6 +1895,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_bc1tl as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::core_branch_target_label),
@@ -1885,6 +1954,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sqrt_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -1929,6 +1999,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_round_l_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -1940,6 +2011,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_trunc_l_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -1951,6 +2023,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ceil_l_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -1962,6 +2035,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_floor_l_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -1973,6 +2047,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_round_w_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -1984,6 +2059,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_trunc_w_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -1995,6 +2071,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ceil_w_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2006,6 +2083,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_floor_w_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2040,6 +2118,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_cvt_l_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2275,6 +2354,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sqrt_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2319,6 +2399,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_round_l_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2330,6 +2411,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_trunc_l_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2341,6 +2423,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ceil_l_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2352,6 +2435,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_floor_l_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2363,6 +2447,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_round_w_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2374,6 +2459,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_trunc_w_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2385,6 +2471,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ceil_w_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2396,6 +2483,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_floor_w_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2431,6 +2519,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_cvt_l_d as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2642,6 +2731,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_cvt_s_l as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
@@ -2653,6 +2743,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_cvt_d_l as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_fd, Operand::core_fs),

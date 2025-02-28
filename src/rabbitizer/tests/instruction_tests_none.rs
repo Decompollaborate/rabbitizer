@@ -4,14 +4,40 @@
 mod common;
 
 use common::{check_test_entries, TestEntry};
-use rabbitizer::display_flags::InstructionDisplayFlags;
-use rabbitizer::instr::{Instruction, InstructionFlags};
-use rabbitizer::isa::IsaVersion;
-use rabbitizer::opcodes::Opcode;
-use rabbitizer::vram::Vram;
+
+use rabbitizer::{
+    display_flags::InstructionDisplayFlags,
+    instr::{Instruction, InstructionFlags},
+    isa::IsaVersion,
+    opcodes::Opcode,
+    vram::Vram,
+};
+
+// TODO: test cases for MIPS_I and MIPS_II
 
 #[test]
-fn check_none_instructions() {
+fn check_none_instructions_mips_1() {
+    const ENTRIES: &[TestEntry] = &[TestEntry {
+        instr: Instruction::new(
+            0x08000419,
+            Vram::new(0x80001100),
+            InstructionFlags::new(IsaVersion::MIPS_I),
+        ),
+        imm_override: None,
+        display_flags: InstructionDisplayFlags::default(),
+        valid: true,
+        expected: "j           func_80001064",
+        expected_opcode: Opcode::core_j,
+        opcode_str: "j",
+        operands_str: [Some("func_80001064"), None, None, None, None],
+    }];
+
+    assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
+}
+
+#[cfg(feature = "MIPS_III")]
+#[test]
+fn check_none_instructions_mips_3() {
     const ENTRIES: &[TestEntry] = &[
         TestEntry {
             instr: Instruction::new(
@@ -791,20 +817,6 @@ fn check_none_instructions() {
         },
         TestEntry {
             instr: Instruction::new(
-                0xCD150008,
-                Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_IV),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "pref        0x15, 0x8($t0)",
-            expected_opcode:   Opcode::core_pref,
-            opcode_str: "pref",
-            operands_str: [Some("0x15"), Some("0x8($t0)"), None, None, None],
-        },
-        TestEntry {
-            instr: Instruction::new(
                 0x0001008D,
                 Vram::new(0x80000000),
                 InstructionFlags::new(IsaVersion::MIPS_III),
@@ -1268,10 +1280,36 @@ fn check_none_instructions() {
             opcode_str: "ddivu",
             operands_str: [Some("$a0"), Some("$a1"), None, None, None],
         },
+    ];
 
+    assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
+}
 
-        // Invalid instructions
+#[cfg(feature = "MIPS_IV")]
+#[test]
+fn check_none_instructions_mips_4() {
+    const ENTRIES: &[TestEntry] = &[TestEntry {
+        instr: Instruction::new(
+            0xCD150008,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_IV),
+        ),
+        imm_override: None,
+        display_flags: InstructionDisplayFlags::default(),
+        valid: true,
+        expected: "pref        0x15, 0x8($t0)",
+        expected_opcode: Opcode::core_pref,
+        opcode_str: "pref",
+        operands_str: [Some("0x15"), Some("0x8($t0)"), None, None, None],
+    }];
 
+    assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
+}
+
+#[cfg(feature = "MIPS_III")]
+#[test]
+fn check_none_instructions_invalid() {
+    const ENTRIES: &[TestEntry] = &[
         TestEntry {
             instr: Instruction::new(
                 0x44444444,
