@@ -19,11 +19,11 @@
 
     // The other instructions are implemented using the main CORE table
 
-    RAB_DEF_OPCODE_REMOVED(0x08, core, round_l_s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x09, core, trunc_l_s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x0A, core, ceil_l_s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x0B, core, floor_l_s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x21, core, cvt_d_s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x25, core, cvt_l_s, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x08, core, round_l_s, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x09, core, trunc_l_s, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x0A, core, ceil_l_s, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x0B, core, floor_l_s, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x21, core, cvt_d_s, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x25, core, cvt_l_s, R4000ALLEGREX)
 
     RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor1_fpu_s)

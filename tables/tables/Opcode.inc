@@ -4,27 +4,29 @@
 /*
 The macros for defining an opcode use the following syntax:
 
-- RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...)
+- RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...)
   - The normal way to define an opcode.
-- RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...)
+- RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...)
   - Define an opcode that doesn't use the `name` argument as the mnemonic.
     Useful for instructions with dots on their mnemonics.
-- RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...)
+- RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
   - Defines a pseudo instruction.
-- RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
-  - Indicates a redirection is needed to decode the word.
-  - This table will redirect to table `kind` from extension `prefix`.
-- RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
-  - The opcode was removed by the given isa/extension combo.
-- RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate, ...)
+- RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, gate, ...)
   - Define an opcode that should be conditionally decoded depending on runtime
     decoding flags.
+
 - RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...)
   - Define an opcode of an extension ISA.
 - RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...)
   - Define an opcode of an extension ISA.
 - RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...)
   - A gated opcode of an extension ISA.
+- RAB_DEF_OPCODE_EXTENSION_REMOVED(case_bits, prefix, name, isa_exten)
+  - The opcode was removed by the given extension.
+
+- RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
+  - Indicates a redirection is needed to decode the word.
+  - This table will redirect to table `kind` from extension `prefix`.
 
 Arguments:
 - prefix: The name of the extension group.
@@ -46,7 +48,7 @@ Arguments:
 
 
     RAB_DEF_OPCODE(
-        ALL, , INVALID, IsaVersion::MIPS_I, None,
+        ALL, , INVALID, MIPS_I,
         operands: Operand::arr0()
     )
 

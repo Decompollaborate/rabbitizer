@@ -15,26 +15,26 @@
 
     // OP IMM
     RAB_DEF_OPCODE(
-        core, 0x00, bc1f, IsaVersion::MIPS_I, None,
+        core, 0x00, bc1f, MIPS_I,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true
     )
     RAB_DEF_OPCODE(
-        core, 0x01, bc1t, IsaVersion::MIPS_I, None,
+        core, 0x01, bc1t, MIPS_I,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true
     )
     RAB_DEF_OPCODE(
-        core, 0x02, bc1fl, IsaVersion::MIPS_II, None,
+        core, 0x02, bc1fl, MIPS_II,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,
         is_branch_likely: true
     )
     RAB_DEF_OPCODE(
-        core, 0x03, bc1tl, IsaVersion::MIPS_II, None,
+        core, 0x03, bc1tl, MIPS_II,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::UNKNOWN,
         is_branch: true,

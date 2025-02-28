@@ -15,21 +15,21 @@
 
     // OP rs, IMM
     RAB_DEF_OPCODE(
-        core, 0x00, bltz, IsaVersion::MIPS_I, None,
+        core, 0x00, bltz, MIPS_I,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true
     ) // Branch on Less Than Zero
     RAB_DEF_OPCODE(
-        core, 0x01, bgez, IsaVersion::MIPS_I, None,
+        core, 0x01, bgez, MIPS_I,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
         reads_rs: true
     ) // Branch on Greater than or Equal to Zero
     RAB_DEF_OPCODE(
-        core, 0x02, bltzl, IsaVersion::MIPS_II, None,
+        core, 0x02, bltzl, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -37,7 +37,7 @@
         reads_rs: true
     ) // Branch on Less Than Zero Likely
     RAB_DEF_OPCODE(
-        core, 0x03, bgezl, IsaVersion::MIPS_II, None,
+        core, 0x03, bgezl, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -46,7 +46,7 @@
     ) // Branch on Greater than or Equal to Zero Likely
 
     RAB_DEF_OPCODE(
-        core, 0x08, tgei, IsaVersion::MIPS_II, None,
+        core, 0x08, tgei, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
@@ -54,7 +54,7 @@
         not_emitted_by_compilers: true
     )
     RAB_DEF_OPCODE(
-        core, 0x09, tgeiu, IsaVersion::MIPS_II, None,
+        core, 0x09, tgeiu, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
@@ -62,7 +62,7 @@
         not_emitted_by_compilers: true
     )
     RAB_DEF_OPCODE(
-        core, 0x0A, tlti, IsaVersion::MIPS_II, None,
+        core, 0x0A, tlti, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
@@ -70,7 +70,7 @@
         not_emitted_by_compilers: true
     )
     RAB_DEF_OPCODE(
-        core, 0x0B, tltiu, IsaVersion::MIPS_II, None,
+        core, 0x0B, tltiu, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
@@ -78,7 +78,7 @@
         not_emitted_by_compilers: true
     )
     RAB_DEF_OPCODE(
-        core, 0x0C, teqi, IsaVersion::MIPS_II, None,
+        core, 0x0C, teqi, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
@@ -86,7 +86,7 @@
         not_emitted_by_compilers: true
     )
     RAB_DEF_OPCODE(
-        core, 0x0E, tnei, IsaVersion::MIPS_II, None,
+        core, 0x0E, tnei, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
@@ -95,7 +95,7 @@
     )
 
     RAB_DEF_OPCODE(
-        core, 0x10, bltzal, IsaVersion::MIPS_I, None,
+        core, 0x10, bltzal, MIPS_I,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -103,7 +103,7 @@
         does_link: true
     ) // Branch on Less Than Zero and Link
     RAB_DEF_OPCODE(
-        core, 0x11, bgezal, IsaVersion::MIPS_I, None,
+        core, 0x11, bgezal, MIPS_I,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -111,7 +111,7 @@
         does_link: true
     ) // Branch on Greater Than or Equal to Zero and Link
     RAB_DEF_OPCODE(
-        core, 0x12, bltzall, IsaVersion::MIPS_II, None,
+        core, 0x12, bltzall, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -120,7 +120,7 @@
         does_link: true
     ) // Branch on Less Than Zero and Link Likely
     RAB_DEF_OPCODE(
-        core, 0x13, bgezall, IsaVersion::MIPS_II, None,
+        core, 0x13, bgezall, MIPS_II,
         operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,
@@ -134,7 +134,7 @@
     // Pseudo-Instruction Unique IDs
 
     RAB_DEF_OPCODE_PSEUDO(
-        core, bal, IsaVersion::MIPS_I, None,
+        core, bal, MIPS_I,
         operands: Operand::arr1(Operand::core_branch_target_label),
         instr_type: InstrType::REGIMM,
         is_branch: true,

@@ -5,50 +5,46 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
-    table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
-        __VA_ARGS__, \
-        ..OpcodeDescriptor::new( #altname, isa_version_min, isa_exten ) \
-    } .check_panic_chain();
 
-#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
-    RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, name, isa_version_min, isa_exten, __VA_ARGS__)
+#define __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, isa_version_min, isa_exten, extra_expr, ...) \
+    { \
+        table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
+            __VA_ARGS__, \
+            ..OpcodeDescriptor::new( #altname, isa_version_min, isa_exten) \
+        } .check_panic_chain(); \
+    }
 
-#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...) \
-    RAB_DEF_OPCODE_ALTNAME(prefix, , name, name, isa_version_min, isa_exten, __VA_ARGS__, is_pseudo: true)
 
-#define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
-#define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten)
+#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, isa_exten, gate, ...) \
-    RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, , name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__, is_pseudo: true)
+
+#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, gate, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, gate, __VA_ARGS__)
+
 
 #define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
-    { \
-        table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
-            __VA_ARGS__, \
-            ..OpcodeDescriptor::new( #name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten )) \
-        } .check_panic_chain(); \
-    }
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), , __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
-    { \
-        table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
-            __VA_ARGS__, \
-            ..OpcodeDescriptor::new( #altname, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten )) \
-        } .check_panic_chain(); \
-    }
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), , __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
     SPECIAL_RS_TAG(cfg(feature = #gate )) \
-    { \
-        table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
-            __VA_ARGS__, \
-            ..OpcodeDescriptor::new( #name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten )) \
-        } .check_panic_chain(); \
-    }
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), gate, __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_REMOVED(case_bits, prefix, name, isa_exten)
+
+
+#define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)
+
 
 use crate::access_type::AccessType;
 SPECIAL_RS_TAG(cfg(feature = "R5900EE"))
@@ -78,12 +74,17 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     table
 };
 
+
+#undef __IMPL_RAB_DEF_OPCODE
+
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
-#undef RAB_DEF_OPCODE_REDIRECT
-#undef RAB_DEF_OPCODE_REMOVED
 #undef RAB_DEF_OPCODE_GATED
+
 #undef RAB_DEF_OPCODE_EXTENSION
 #undef RAB_DEF_OPCODE_EXTENSION_ALTNAME
 #undef RAB_DEF_OPCODE_EXTENSION_GATED
+#undef RAB_DEF_OPCODE_EXTENSION_REMOVED
+
+#undef RAB_DEF_OPCODE_REDIRECT

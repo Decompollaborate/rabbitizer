@@ -19,2212 +19,2684 @@ use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
 use crate::operands::Operand;
 pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];
-    table[Opcode::ALL_INVALID as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        ..OpcodeDescriptor::new("INVALID", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::ALL_INVALID as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            ..OpcodeDescriptor::new("INVALID", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_j as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_label),
-        instr_type: InstrType::J,
-        is_jump: true,
-        is_jump_with_address: true,
-        ..OpcodeDescriptor::new("j", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_j as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_label),
+            instr_type: InstrType::J,
+            is_jump: true,
+            is_jump_with_address: true,
+            ..OpcodeDescriptor::new("j", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_jal as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_label),
-        instr_type: InstrType::J,
-        is_jump: true,
-        is_jump_with_address: true,
-        does_link: true,
-        ..OpcodeDescriptor::new("jal", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_jal as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_label),
+            instr_type: InstrType::J,
+            is_jump: true,
+            is_jump_with_address: true,
+            does_link: true,
+            ..OpcodeDescriptor::new("jal", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_beq as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::core_rs,
-            Operand::core_rt,
-            Operand::core_branch_target_label,
-        ),
-        instr_type: InstrType::I,
-        is_branch: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("beq", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_beq as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(
+                Operand::core_rs,
+                Operand::core_rt,
+                Operand::core_branch_target_label,
+            ),
+            instr_type: InstrType::I,
+            is_branch: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("beq", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bne as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::core_rs,
-            Operand::core_rt,
-            Operand::core_branch_target_label,
-        ),
-        instr_type: InstrType::I,
-        is_branch: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("bne", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_bne as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(
+                Operand::core_rs,
+                Operand::core_rt,
+                Operand::core_branch_target_label,
+            ),
+            instr_type: InstrType::I,
+            is_branch: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("bne", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_beql as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::core_rs,
-            Operand::core_rt,
-            Operand::core_branch_target_label,
-        ),
-        instr_type: InstrType::I,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("beql", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_beql as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(
+                Operand::core_rs,
+                Operand::core_rt,
+                Operand::core_branch_target_label,
+            ),
+            instr_type: InstrType::I,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("beql", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bnel as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(
-            Operand::core_rs,
-            Operand::core_rt,
-            Operand::core_branch_target_label,
-        ),
-        instr_type: InstrType::I,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("bnel", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_bnel as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(
+                Operand::core_rs,
+                Operand::core_rt,
+                Operand::core_branch_target_label,
+            ),
+            instr_type: InstrType::I,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("bnel", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_blez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        is_branch: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("blez", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_blez as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            is_branch: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("blez", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_blezl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("blezl", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_blezl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("blezl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bgtz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        is_branch: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("bgtz", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_bgtz as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            is_branch: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("bgtz", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bgtzl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("bgtzl", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_bgtzl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("bgtzl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_addi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        can_be_lo: true,
-        ..OpcodeDescriptor::new("addi", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_addi as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            can_be_lo: true,
+            ..OpcodeDescriptor::new("addi", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_addiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        ..OpcodeDescriptor::new("addiu", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_addiu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            ..OpcodeDescriptor::new("addiu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_slti as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("slti", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_slti as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("slti", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sltiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("sltiu", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_sltiu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("sltiu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_andi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        is_unsigned: true,
-        modifies_rt: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("andi", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_andi as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            is_unsigned: true,
+            modifies_rt: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("andi", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ori as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        is_unsigned: true,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_unsigned_lo: true,
-        ..OpcodeDescriptor::new("ori", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_ori as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            is_unsigned: true,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_unsigned_lo: true,
+            ..OpcodeDescriptor::new("ori", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_xori as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        is_unsigned: true,
-        modifies_rt: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("xori", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_xori as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            is_unsigned: true,
+            modifies_rt: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("xori", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_daddi as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        ..OpcodeDescriptor::new("daddi", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_daddi as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            ..OpcodeDescriptor::new("daddi", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_daddiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        ..OpcodeDescriptor::new("daddiu", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_daddiu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            ..OpcodeDescriptor::new("daddiu", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lui as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate),
-        instr_type: InstrType::I,
-        is_unsigned: true,
-        modifies_rt: true,
-        can_be_hi: true,
-        ..OpcodeDescriptor::new("lui", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lui as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate),
+            instr_type: InstrType::I,
+            is_unsigned: true,
+            modifies_rt: true,
+            can_be_hi: true,
+            ..OpcodeDescriptor::new("lui", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ldl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD_LEFT),
-        ..OpcodeDescriptor::new("ldl", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_ldl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::DOUBLEWORD_LEFT),
+            ..OpcodeDescriptor::new("ldl", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ldr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD_RIGHT),
-        ..OpcodeDescriptor::new("ldr", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_ldr as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::DOUBLEWORD_RIGHT),
+            ..OpcodeDescriptor::new("ldr", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lb as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::BYTE),
-        ..OpcodeDescriptor::new("lb", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lb as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::BYTE),
+            ..OpcodeDescriptor::new("lb", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::SHORT),
-        ..OpcodeDescriptor::new("lh", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lh as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::SHORT),
+            ..OpcodeDescriptor::new("lh", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lwl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::WORD_LEFT),
-        ..OpcodeDescriptor::new("lwl", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lwl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::WORD_LEFT),
+            ..OpcodeDescriptor::new("lwl", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("lw", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lw as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::WORD),
+            ..OpcodeDescriptor::new("lw", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lbu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::BYTE),
-        does_unsigned_memory_access: true,
-        ..OpcodeDescriptor::new("lbu", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lbu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::BYTE),
+            does_unsigned_memory_access: true,
+            ..OpcodeDescriptor::new("lbu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lhu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::SHORT),
-        does_unsigned_memory_access: true,
-        ..OpcodeDescriptor::new("lhu", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lhu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::SHORT),
+            does_unsigned_memory_access: true,
+            ..OpcodeDescriptor::new("lhu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lwr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::WORD_RIGHT),
-        ..OpcodeDescriptor::new("lwr", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lwr as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::WORD_RIGHT),
+            ..OpcodeDescriptor::new("lwr", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lwu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::WORD),
-        does_unsigned_memory_access: true,
-        ..OpcodeDescriptor::new("lwu", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_lwu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::WORD),
+            does_unsigned_memory_access: true,
+            ..OpcodeDescriptor::new("lwu", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sb as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::BYTE),
-        ..OpcodeDescriptor::new("sb", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_sb as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::BYTE),
+            ..OpcodeDescriptor::new("sb", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sh as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::SHORT),
-        ..OpcodeDescriptor::new("sh", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_sh as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::SHORT),
+            ..OpcodeDescriptor::new("sh", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_swl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::WORD_LEFT),
-        ..OpcodeDescriptor::new("swl", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_swl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::WORD_LEFT),
+            ..OpcodeDescriptor::new("swl", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sw as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("sw", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_sw as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::WORD),
+            ..OpcodeDescriptor::new("sw", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sdl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD_LEFT),
-        ..OpcodeDescriptor::new("sdl", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_sdl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::DOUBLEWORD_LEFT),
+            ..OpcodeDescriptor::new("sdl", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sdr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD_RIGHT),
-        ..OpcodeDescriptor::new("sdr", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_sdr as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::DOUBLEWORD_RIGHT),
+            ..OpcodeDescriptor::new("sdr", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_swr as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::WORD_RIGHT),
-        ..OpcodeDescriptor::new("swr", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_swr as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::WORD_RIGHT),
+            ..OpcodeDescriptor::new("swr", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ll as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("ll", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_ll as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::WORD),
+            ..OpcodeDescriptor::new("ll", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_pref as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_hint, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("pref", IsaVersion::MIPS_IV, None)
+    {
+        table[Opcode::core_pref as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_hint, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("pref", IsaVersion::MIPS_IV, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lld as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD),
-        ..OpcodeDescriptor::new("lld", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_lld as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::DOUBLEWORD),
+            ..OpcodeDescriptor::new("lld", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ld as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        modifies_rt: true,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD),
-        ..OpcodeDescriptor::new("ld", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_ld as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            modifies_rt: true,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::DOUBLEWORD),
+            ..OpcodeDescriptor::new("ld", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sc as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        not_emitted_by_compilers: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("sc", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_sc as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            not_emitted_by_compilers: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::WORD),
+            ..OpcodeDescriptor::new("sc", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_scd as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        not_emitted_by_compilers: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD),
-        ..OpcodeDescriptor::new("scd", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_scd as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            not_emitted_by_compilers: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::DOUBLEWORD),
+            ..OpcodeDescriptor::new("scd", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sd as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        reads_rt: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD),
-        ..OpcodeDescriptor::new("sd", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_sd as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            reads_rt: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::DOUBLEWORD),
+            ..OpcodeDescriptor::new("sd", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_cache as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_op, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("cache", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_cache as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_op, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("cache", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lwc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        is_float: true,
-        reads_rs: true,
-        modifies_ft: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::FLOAT),
-        ..OpcodeDescriptor::new("lwc1", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lwc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            is_float: true,
+            reads_rs: true,
+            modifies_ft: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::FLOAT),
+            ..OpcodeDescriptor::new("lwc1", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ldc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        is_float: true,
-        is_double: true,
-        reads_rs: true,
-        modifies_ft: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::DOUBLEFLOAT),
-        ..OpcodeDescriptor::new("ldc1", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_ldc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            is_float: true,
+            is_double: true,
+            reads_rs: true,
+            modifies_ft: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::DOUBLEFLOAT),
+            ..OpcodeDescriptor::new("ldc1", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_swc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        is_float: true,
-        reads_rs: true,
-        reads_ft: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::FLOAT),
-        ..OpcodeDescriptor::new("swc1", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_swc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            is_float: true,
+            reads_rs: true,
+            reads_ft: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::FLOAT),
+            ..OpcodeDescriptor::new("swc1", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sdc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        is_float: true,
-        is_double: true,
-        reads_rs: true,
-        reads_ft: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::DOUBLEFLOAT),
-        ..OpcodeDescriptor::new("sdc1", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_sdc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            is_float: true,
+            is_double: true,
+            reads_rs: true,
+            reads_ft: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::DOUBLEFLOAT),
+            ..OpcodeDescriptor::new("sdc1", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_lwc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("lwc2", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_lwc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::WORD),
+            ..OpcodeDescriptor::new("lwc2", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ldc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD),
-        ..OpcodeDescriptor::new("ldc2", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_ldc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_load: true,
+            access_type: Some(AccessType::DOUBLEWORD),
+            ..OpcodeDescriptor::new("ldc2", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_swc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::WORD),
-        ..OpcodeDescriptor::new("swc2", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_swc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::WORD),
+            ..OpcodeDescriptor::new("swc2", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_sdc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        can_be_lo: true,
-        does_dereference: true,
-        does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD),
-        ..OpcodeDescriptor::new("sdc2", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_sdc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            can_be_lo: true,
+            does_dereference: true,
+            does_store: true,
+            access_type: Some(AccessType::DOUBLEWORD),
+            ..OpcodeDescriptor::new("sdc2", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_b as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        is_branch: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("b", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_b as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            is_branch: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("b", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_beqz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        is_branch: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("beqz", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_beqz as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            is_branch: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("beqz", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bnez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        reads_rs: true,
-        is_branch: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("bnez", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_bnez as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            is_branch: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("bnez", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_beqzl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("beqzl", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_beqzl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("beqzl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bnezl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::I,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("bnezl", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_bnezl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::I,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("bnezl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
 
-    table[Opcode::core_sll as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("sll", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_srl as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("srl", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sra as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("sra", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsll as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsll", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsrl as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsrl", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsra as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsra", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsll32 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsll32", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsrl32 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsrl32", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsra32 as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsra32", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsllv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsllv", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsrlv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsrlv", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsrav as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsrav", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sllv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("sllv", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_srlv as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("srlv", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_srav as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("srav", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mthi as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_rs),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        modifies_hi: true,
-        ..OpcodeDescriptor::new("mthi", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mtlo as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_rs),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("mtlo", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_jr as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_rs),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        is_jump: true,
-        ..OpcodeDescriptor::new("jr", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_jalr as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_maybe_rd_rs),
-        instr_type: InstrType::R,
-        is_jump: true,
-        modifies_rd: true,
-        reads_rs: true,
-        does_link: true,
-        ..OpcodeDescriptor::new("jalr", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mfhi as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_rd),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_hi: true,
-        ..OpcodeDescriptor::new("mfhi", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mflo as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_rd),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_lo: true,
-        ..OpcodeDescriptor::new("mflo", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_movz as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("movz", IsaVersion::MIPS_IV, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_movn as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("movn", IsaVersion::MIPS_IV, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_div as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("div", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_divu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("divu", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ddiv as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("ddiv", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ddivu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("ddivu", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_add as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("add", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_addu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        maybe_is_move: true,
-        ..OpcodeDescriptor::new("addu", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        not_emitted_by_compilers: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("sub", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_subu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("subu", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_and as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("and", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_or as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        maybe_is_move: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("or", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_xor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("xor", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_nor as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("nor", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_slt as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("slt", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sltu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("sltu", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dadd as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dadd", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_daddu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        maybe_is_move: true,
-        ..OpcodeDescriptor::new("daddu", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsub as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsub", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dsubu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("dsubu", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_syscall as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_code_lower),
-        instr_type: InstrType::R,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("syscall", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_break as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_code),
-        instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("break", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sync as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::R,
-        ..OpcodeDescriptor::new("sync", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mult as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("mult", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_multu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("multu", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dmult as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("dmult", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dmultu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        modifies_hi: true,
-        modifies_lo: true,
-        ..OpcodeDescriptor::new("dmultu", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tge as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        is_trap: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tge", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tgeu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        is_trap: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tgeu", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tlt as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        is_trap: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tlt", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tltu as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        is_trap: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tltu", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_teq as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        is_trap: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("teq", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tne as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
-        instr_type: InstrType::R,
-        reads_rs: true,
-        reads_rt: true,
-        is_trap: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tne", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_nop as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::R,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("nop", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_not as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rs: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("not", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_neg as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
-        instr_type: InstrType::R,
-        not_emitted_by_compilers: true,
-        modifies_rd: true,
-        reads_rt: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("neg", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_negu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
-        instr_type: InstrType::R,
-        modifies_rd: true,
-        reads_rt: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("negu", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bltz as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("bltz", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bgez as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("bgez", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bltzl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("bltzl", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bgezl as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        ..OpcodeDescriptor::new("bgezl", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tgei as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::REGIMM,
-        is_trap: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tgei", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tgeiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::REGIMM,
-        is_trap: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tgeiu", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tlti as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::REGIMM,
-        is_trap: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tlti", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tltiu as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::REGIMM,
-        is_trap: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tltiu", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_teqi as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::REGIMM,
-        is_trap: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("teqi", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_tnei as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
-        instr_type: InstrType::REGIMM,
-        is_trap: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tnei", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bltzal as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        reads_rs: true,
-        does_link: true,
-        ..OpcodeDescriptor::new("bltzal", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bgezal as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        reads_rs: true,
-        does_link: true,
-        ..OpcodeDescriptor::new("bgezal", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bltzall as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        does_link: true,
-        ..OpcodeDescriptor::new("bltzall", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bgezall as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        is_branch_likely: true,
-        reads_rs: true,
-        not_emitted_by_compilers: true,
-        does_link: true,
-        ..OpcodeDescriptor::new("bgezall", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bal as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::REGIMM,
-        is_branch: true,
-        not_emitted_by_compilers: true,
-        does_link: true,
-        is_pseudo: true,
-        ..OpcodeDescriptor::new("bal", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mfc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
-        instr_type: InstrType::UNKNOWN,
-        modifies_rt: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("mfc0", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dmfc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
-        instr_type: InstrType::UNKNOWN,
-        modifies_rt: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("dmfc0", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cfc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
-        instr_type: InstrType::UNKNOWN,
-        modifies_rt: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("cfc0", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mtc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
-        instr_type: InstrType::UNKNOWN,
-        reads_rt: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("mtc0", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_dmtc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
-        instr_type: InstrType::UNKNOWN,
-        reads_rt: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("dmtc0", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ctc0 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
-        instr_type: InstrType::UNKNOWN,
-        reads_rt: true,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("ctc0", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
+    {
+        table[Opcode::core_sll as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("sll", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_srl as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("srl", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sra as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("sra", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsll as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsll", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsrl as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsrl", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsra as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsra", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsll32 as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsll32", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsrl32 as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsrl32", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsra32 as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsra32", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsllv as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsllv", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsrlv as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsrlv", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsrav as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsrav", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sllv as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("sllv", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_srlv as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("srlv", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_srav as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("srav", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mthi as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_rs),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            modifies_hi: true,
+            ..OpcodeDescriptor::new("mthi", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mtlo as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_rs),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("mtlo", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_jr as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_rs),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            is_jump: true,
+            ..OpcodeDescriptor::new("jr", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_jalr as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_maybe_rd_rs),
+            instr_type: InstrType::R,
+            is_jump: true,
+            modifies_rd: true,
+            reads_rs: true,
+            does_link: true,
+            ..OpcodeDescriptor::new("jalr", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mfhi as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_rd),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_hi: true,
+            ..OpcodeDescriptor::new("mfhi", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mflo as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_rd),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_lo: true,
+            ..OpcodeDescriptor::new("mflo", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_movz as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("movz", IsaVersion::MIPS_IV, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_movn as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("movn", IsaVersion::MIPS_IV, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_div as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("div", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_divu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("divu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ddiv as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("ddiv", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ddivu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_maybe_zero_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("ddivu", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_add as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("add", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_addu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            maybe_is_move: true,
+            ..OpcodeDescriptor::new("addu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sub as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            not_emitted_by_compilers: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("sub", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_subu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("subu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_and as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("and", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_or as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            maybe_is_move: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("or", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_xor as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("xor", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_nor as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("nor", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_slt as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("slt", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sltu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("sltu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dadd as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dadd", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_daddu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            maybe_is_move: true,
+            ..OpcodeDescriptor::new("daddu", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsub as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsub", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dsubu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("dsubu", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_syscall as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_code_lower),
+            instr_type: InstrType::R,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("syscall", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_break as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_code),
+            instr_type: InstrType::R,
+            ..OpcodeDescriptor::new("break", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sync as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::R,
+            ..OpcodeDescriptor::new("sync", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mult as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("mult", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_multu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("multu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dmult as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("dmult", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dmultu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_rt),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            modifies_hi: true,
+            modifies_lo: true,
+            ..OpcodeDescriptor::new("dmultu", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tge as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            is_trap: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tge", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tgeu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            is_trap: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tgeu", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tlt as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            is_trap: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tlt", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tltu as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            is_trap: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tltu", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_teq as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            is_trap: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("teq", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tne as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
+            instr_type: InstrType::R,
+            reads_rs: true,
+            reads_rt: true,
+            is_trap: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tne", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_nop as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::R,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("nop", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_not as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rs: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("not", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_neg as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
+            instr_type: InstrType::R,
+            not_emitted_by_compilers: true,
+            modifies_rd: true,
+            reads_rt: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("neg", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_negu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
+            instr_type: InstrType::R,
+            modifies_rd: true,
+            reads_rt: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("negu", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bltz as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("bltz", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bgez as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("bgez", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bltzl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("bltzl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bgezl as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            ..OpcodeDescriptor::new("bgezl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tgei as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::REGIMM,
+            is_trap: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tgei", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tgeiu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::REGIMM,
+            is_trap: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tgeiu", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tlti as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::REGIMM,
+            is_trap: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tlti", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tltiu as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::REGIMM,
+            is_trap: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tltiu", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_teqi as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::REGIMM,
+            is_trap: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("teqi", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_tnei as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            instr_type: InstrType::REGIMM,
+            is_trap: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tnei", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bltzal as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            reads_rs: true,
+            does_link: true,
+            ..OpcodeDescriptor::new("bltzal", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bgezal as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            reads_rs: true,
+            does_link: true,
+            ..OpcodeDescriptor::new("bgezal", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bltzall as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            does_link: true,
+            ..OpcodeDescriptor::new("bltzall", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bgezall as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rs, Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            is_branch_likely: true,
+            reads_rs: true,
+            not_emitted_by_compilers: true,
+            does_link: true,
+            ..OpcodeDescriptor::new("bgezall", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bal as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::REGIMM,
+            is_branch: true,
+            not_emitted_by_compilers: true,
+            does_link: true,
+            is_pseudo: true,
+            ..OpcodeDescriptor::new("bal", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mfc0 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+            instr_type: InstrType::UNKNOWN,
+            modifies_rt: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("mfc0", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dmfc0 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+            instr_type: InstrType::UNKNOWN,
+            modifies_rt: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("dmfc0", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cfc0 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
+            instr_type: InstrType::UNKNOWN,
+            modifies_rt: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("cfc0", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mtc0 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+            instr_type: InstrType::UNKNOWN,
+            reads_rt: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("mtc0", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_dmtc0 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
+            instr_type: InstrType::UNKNOWN,
+            reads_rt: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("dmtc0", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ctc0 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
+            instr_type: InstrType::UNKNOWN,
+            reads_rt: true,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("ctc0", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
 
-    table[Opcode::core_bc0f as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        ..OpcodeDescriptor::new("bc0f", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_bc0f as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            ..OpcodeDescriptor::new("bc0f", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bc0t as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        ..OpcodeDescriptor::new("bc0t", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_bc0t as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            ..OpcodeDescriptor::new("bc0t", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bc0fl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        is_branch_likely: true,
-        ..OpcodeDescriptor::new("bc0fl", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_bc0fl as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            is_branch_likely: true,
+            ..OpcodeDescriptor::new("bc0fl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_bc0tl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        is_branch_likely: true,
-        ..OpcodeDescriptor::new("bc0tl", IsaVersion::MIPS_II, None)
+    {
+        table[Opcode::core_bc0tl as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            is_branch_likely: true,
+            ..OpcodeDescriptor::new("bc0tl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_tlbr as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::UNKNOWN,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tlbr", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_tlbr as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::UNKNOWN,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tlbr", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_tlbwi as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::UNKNOWN,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tlbwi", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_tlbwi as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::UNKNOWN,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tlbwi", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_tlbwr as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::UNKNOWN,
-        ..OpcodeDescriptor::new("tlbwr", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_tlbwr as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::UNKNOWN,
+            ..OpcodeDescriptor::new("tlbwr", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_tlbp as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::UNKNOWN,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("tlbp", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_tlbp as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::UNKNOWN,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("tlbp", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_rfe as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::UNKNOWN,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("rfe", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_rfe as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::UNKNOWN,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("rfe", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_eret as usize] = OpcodeDescriptor {
-        operands: Operand::arr0(),
-        instr_type: InstrType::UNKNOWN,
-        not_emitted_by_compilers: true,
-        ..OpcodeDescriptor::new("eret", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_eret as usize] = OpcodeDescriptor {
+            operands: Operand::arr0(),
+            instr_type: InstrType::UNKNOWN,
+            not_emitted_by_compilers: true,
+            ..OpcodeDescriptor::new("eret", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_mfc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_rt: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("mfc1", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_mfc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_rt: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("mfc1", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_dmfc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_rt: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("dmfc1", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_dmfc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_rt: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("dmfc1", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_mtc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_rt: true,
-        modifies_fs: true,
-        ..OpcodeDescriptor::new("mtc1", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_mtc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_rt: true,
+            modifies_fs: true,
+            ..OpcodeDescriptor::new("mtc1", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_dmtc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_rt: true,
-        modifies_fs: true,
-        ..OpcodeDescriptor::new("dmtc1", IsaVersion::MIPS_III, None)
+    {
+        table[Opcode::core_dmtc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_rt: true,
+            modifies_fs: true,
+            ..OpcodeDescriptor::new("dmtc1", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_cfc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_rt: true,
-        ..OpcodeDescriptor::new("cfc1", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_cfc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_rt: true,
+            ..OpcodeDescriptor::new("cfc1", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
-    table[Opcode::core_ctc1 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_rt: true,
-        ..OpcodeDescriptor::new("ctc1", IsaVersion::MIPS_I, None)
+    {
+        table[Opcode::core_ctc1 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop1cs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_rt: true,
+            ..OpcodeDescriptor::new("ctc1", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
     }
-    .check_panic_chain();
 
-    table[Opcode::core_bc1f as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        ..OpcodeDescriptor::new("bc1f", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bc1t as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        ..OpcodeDescriptor::new("bc1t", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bc1fl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        is_branch_likely: true,
-        ..OpcodeDescriptor::new("bc1fl", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_bc1tl as usize] = OpcodeDescriptor {
-        operands: Operand::arr1(Operand::core_branch_target_label),
-        instr_type: InstrType::UNKNOWN,
-        is_branch: true,
-        is_branch_likely: true,
-        ..OpcodeDescriptor::new("bc1tl", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_add_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("add.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sub_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("sub.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mul_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("mul.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_div_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("div.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sqrt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("sqrt.s", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_abs_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("abs.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mov_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("mov.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_neg_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("neg.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_round_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("round.l.s", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_trunc_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("trunc.l.s", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ceil_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("ceil.l.s", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_floor_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("floor.l.s", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_round_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("round.w.s", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_trunc_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("trunc.w.s", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ceil_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("ceil.w.s", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_floor_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("floor.w.s", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_d_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        is_double: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.d.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_w_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.w.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_l_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.l.s", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_f_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.f.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_un_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.un.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_eq_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.eq.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ueq_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ueq.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_olt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.olt.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ult_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ult.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ole_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ole.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ule_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ule.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_sf_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.sf.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ngle_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ngle.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_seq_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.seq.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ngl_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ngl.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_lt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.lt.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_nge_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.nge.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_le_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.le.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ngt_s as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ngt.s", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_add_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("add.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sub_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("sub.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mul_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("mul.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_div_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("div.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_sqrt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("sqrt.d", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_abs_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("abs.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mov_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("mov.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_neg_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("neg.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_round_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("round.l.d", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_trunc_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("trunc.l.d", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ceil_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("ceil.l.d", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_floor_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("floor.l.d", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_round_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("round.w.d", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_trunc_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("trunc.w.d", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ceil_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("ceil.w.d", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_floor_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("floor.w.d", IsaVersion::MIPS_II, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_s_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        is_double: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.s.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_w_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        is_double: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.w.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_l_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        is_double: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.l.d", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_f_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.f.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_un_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.un.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_eq_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.eq.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ueq_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ueq.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_olt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.olt.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ult_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ult.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ole_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ole.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ule_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ule.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_df_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.df.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ngle_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ngle.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_seq_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.seq.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ngl_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ngl.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_lt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.lt.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_nge_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.nge.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_le_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.le.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_c_ngt_d as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        reads_fs: true,
-        reads_ft: true,
-        ..OpcodeDescriptor::new("c.ngt.d", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_s_w as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.s.w", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_d_w as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        is_double: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.d.w", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_s_l as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.s.l", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cvt_d_l as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
-        instr_type: InstrType::UNKNOWN,
-        is_float: true,
-        is_double: true,
-        modifies_fd: true,
-        reads_fs: true,
-        ..OpcodeDescriptor::new("cvt.d.l", IsaVersion::MIPS_III, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
-        modifies_rt: true,
-        ..OpcodeDescriptor::new("mfc2", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_mtc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
-        reads_rt: true,
-        ..OpcodeDescriptor::new("mtc2", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_cfc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
-        modifies_rt: true,
-        ..OpcodeDescriptor::new("cfc2", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
-    table[Opcode::core_ctc2 as usize] = OpcodeDescriptor {
-        operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
-        reads_rt: true,
-        ..OpcodeDescriptor::new("ctc2", IsaVersion::MIPS_I, None)
-    }
-    .check_panic_chain();
+    {
+        table[Opcode::core_bc1f as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            ..OpcodeDescriptor::new("bc1f", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bc1t as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            ..OpcodeDescriptor::new("bc1t", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bc1fl as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            is_branch_likely: true,
+            ..OpcodeDescriptor::new("bc1fl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_bc1tl as usize] = OpcodeDescriptor {
+            operands: Operand::arr1(Operand::core_branch_target_label),
+            instr_type: InstrType::UNKNOWN,
+            is_branch: true,
+            is_branch_likely: true,
+            ..OpcodeDescriptor::new("bc1tl", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_add_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("add.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sub_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("sub.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mul_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("mul.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_div_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("div.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sqrt_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("sqrt.s", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_abs_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("abs.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mov_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("mov.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_neg_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("neg.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_round_l_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("round.l.s", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_trunc_l_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("trunc.l.s", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ceil_l_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("ceil.l.s", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_floor_l_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("floor.l.s", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_round_w_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("round.w.s", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_trunc_w_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("trunc.w.s", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ceil_w_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("ceil.w.s", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_floor_w_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("floor.w.s", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_d_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            is_double: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.d.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_w_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.w.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_l_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.l.s", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_f_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.f.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_un_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.un.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_eq_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.eq.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ueq_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ueq.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_olt_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.olt.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ult_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ult.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ole_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ole.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ule_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ule.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_sf_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.sf.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ngle_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ngle.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_seq_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.seq.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ngl_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ngl.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_lt_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.lt.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_nge_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.nge.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_le_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.le.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ngt_s as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ngt.s", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_add_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("add.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sub_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("sub.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mul_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("mul.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_div_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr3(Operand::core_fd, Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("div.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_sqrt_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("sqrt.d", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_abs_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("abs.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mov_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("mov.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_neg_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("neg.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_round_l_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("round.l.d", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_trunc_l_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("trunc.l.d", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ceil_l_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("ceil.l.d", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_floor_l_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("floor.l.d", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_round_w_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("round.w.d", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_trunc_w_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("trunc.w.d", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ceil_w_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("ceil.w.d", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_floor_w_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("floor.w.d", IsaVersion::MIPS_II, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_s_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            is_double: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.s.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_w_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            is_double: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.w.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_l_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            is_double: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.l.d", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_f_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.f.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_un_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.un.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_eq_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.eq.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ueq_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ueq.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_olt_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.olt.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ult_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ult.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ole_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ole.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ule_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ule.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_df_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.df.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ngle_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ngle.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_seq_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.seq.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ngl_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ngl.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_lt_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.lt.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_nge_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.nge.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_le_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.le.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_c_ngt_d as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fs, Operand::core_ft),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            reads_fs: true,
+            reads_ft: true,
+            ..OpcodeDescriptor::new("c.ngt.d", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_s_w as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.s.w", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_d_w as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            is_double: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.d.w", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_s_l as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.s.l", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cvt_d_l as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
+            instr_type: InstrType::UNKNOWN,
+            is_float: true,
+            is_double: true,
+            modifies_fd: true,
+            reads_fs: true,
+            ..OpcodeDescriptor::new("cvt.d.l", IsaVersion::MIPS_III, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mfc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
+            modifies_rt: true,
+            ..OpcodeDescriptor::new("mfc2", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_mtc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
+            reads_rt: true,
+            ..OpcodeDescriptor::new("mtc2", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_cfc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
+            modifies_rt: true,
+            ..OpcodeDescriptor::new("cfc2", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
+    {
+        table[Opcode::core_ctc2 as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
+            reads_rt: true,
+            ..OpcodeDescriptor::new("ctc2", IsaVersion::MIPS_I, None)
+        }
+        .check_panic_chain();
+    }
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_mfc2 as usize] = OpcodeDescriptor {

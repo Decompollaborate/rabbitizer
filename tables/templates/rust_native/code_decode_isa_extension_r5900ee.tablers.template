@@ -5,25 +5,40 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, ...) \
-    case_bits => Opcode::prefix##_##name,
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, isa_exten, ...) \
-    RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, isa_exten, __VA_ARGS__)
+#define __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, isa_version_min, isa_exten, extra_expr, ...) \
+    case_bits => { extra_expr Opcode::prefix##_##name },
 
-#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, isa_exten, ...)
+
+#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
+
+#define RAB_DEF_OPCODE_GATED(prefix, case_bits, name, isa_version_min, gate, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, gated_behind = Some(OpcodeValidityGate:: gate) ;, __VA_ARGS__)
+
+
+#define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), , __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), , __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #gate )) \
+    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), gated_behind = Some(OpcodeValidityGate:: gate) ;, __VA_ARGS__)
+
+#define RAB_DEF_OPCODE_EXTENSION_REMOVED(case_bits, prefix, name, isa_exten) \
+    __IMPL_RAB_DEF_OPCODE(ALL, case_bits, INVALID, INVALID, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), )
+
 
 #define RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind) \
     case_bits => return Self::decode_isa_extension_## prefix ##_## kind (word, mandatory_bits, flags, isa_version),
 
-#define RAB_DEF_OPCODE_REMOVED(case_bits, prefix, name, isa_version_min, isa_exten) \
-    case_bits => Opcode::ALL_INVALID,
-
-#define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
-    RAB_DEF_OPCODE(prefix, case_bits, name, , Some(IsaExtension:: isa_exten ), __VA_ARGS__)
-
-#define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
-    RAB_DEF_OPCODE(prefix, case_bits, name, , Some(IsaExtension:: isa_exten ), __VA_ARGS__)
 
 use crate::opcodes::{DecodingFlags, Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::isa::IsaVersion;
@@ -493,10 +508,15 @@ impl OpcodeDecoder {
     }
 }
 
+
+#undef __IMPL_RAB_DEF_OPCODE
+
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
-#undef RAB_DEF_OPCODE_REDIRECT
-#undef RAB_DEF_OPCODE_REMOVED
+
 #undef RAB_DEF_OPCODE_EXTENSION
 #undef RAB_DEF_OPCODE_EXTENSION_ALTNAME
+#undef RAB_DEF_OPCODE_EXTENSION_REMOVED
+
+#undef RAB_DEF_OPCODE_REDIRECT

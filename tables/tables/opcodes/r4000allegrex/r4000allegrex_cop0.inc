@@ -17,10 +17,10 @@
 
     // The other instructions are implemented using the main CORE table
 
-    RAB_DEF_OPCODE_REMOVED(0x01, core, dmfc0, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x02, core, cfc0, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x05, core, dmtc0, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
-    RAB_DEF_OPCODE_REMOVED(0x06, core, ctc0, IsaVersion::EXTENSION, Some(IsaExtension::R4000ALLEGREX))
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x01, core, dmfc0, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x02, core, cfc0, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x05, core, dmtc0, R4000ALLEGREX)
+    RAB_DEF_OPCODE_EXTENSION_REMOVED(0x06, core, ctc0, R4000ALLEGREX)
 
     RAB_DEF_OPCODE_REDIRECT(0x08, r4000allegrex, coprocessor0_bc0)
     RAB_DEF_OPCODE_REDIRECT(0x10, r4000allegrex, coprocessor0_tlb)
