@@ -10,7 +10,7 @@ env:
 jobs:
   check_fmt:
     name: Check format
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -27,7 +27,7 @@ jobs:
 
   check_clippy:
     name: Check clippy - no features
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -47,7 +47,7 @@ jobs:
 
   check_clippy_all_features:
     name: Check clippy - features- all
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -67,7 +67,7 @@ jobs:
 
   check_doc:
     name: Check doc
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -84,7 +84,7 @@ jobs:
 
   run_tests:
     name: Run tests - No features
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -101,7 +101,7 @@ jobs:
 
   run_tests_mips_2:
     name: Run tests - MIPS II
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -118,7 +118,7 @@ jobs:
 
   run_tests_mips_3:
     name: Run tests - MIPS III
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -135,7 +135,7 @@ jobs:
 
   run_tests_mips_4:
     name: Run tests - MIPS IV
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -152,7 +152,7 @@ jobs:
 
   run_tests_ext_rsp:
     name: Run tests - Extension RSP
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -169,7 +169,7 @@ jobs:
 
   run_tests_ext_r3000gte:
     name: Run tests - Extension R3000GTE
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -186,7 +186,7 @@ jobs:
 
   run_tests_ext_r4000allegrex:
     name: Run tests - Extension R4000ALLEGREX
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -203,7 +203,7 @@ jobs:
 
   run_tests_ext_r5900ee:
     name: Run tests - Extension R5900EE
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -220,7 +220,7 @@ jobs:
 
   run_tests_all_extensions:
     name: Run tests - All extensions
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -237,7 +237,7 @@ jobs:
 
   run_tests_all_gated_extensions:
     name: Run tests - All extensions
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -254,7 +254,7 @@ jobs:
 
   test_bin_disasmdis:
     name: Run tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
@@ -271,7 +271,7 @@ jobs:
 
   msrv:
     name: Check MSRV is correct
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout reposistory
         uses: actions/checkout@v4
@@ -284,7 +284,7 @@ jobs:
 
   msrv_all_features:
     name: Check MSRV is correct for all features
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout reposistory
         uses: actions/checkout@v4
@@ -297,7 +297,7 @@ jobs:
 
   build_rust:
     name: Build Rust stuff and run Rust tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout reposistory
