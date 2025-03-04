@@ -19,13 +19,13 @@
 
     // The other instructions are implemented using the main CORE table
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r5900ee, 0x0F, sync_p, sync.p, R5900EE,
         operands: Operand::arr0(),
         instr_type: InstrType::R
     ) // Sync
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r5900ee, 0x18, mult, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
@@ -34,12 +34,12 @@
         reads_rt: true
     ) // MULTtiply word
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r5900ee, 0x28, mfsa, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Move From Shift Amount register
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r5900ee, 0x29, mtsa, R5900EE,
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true

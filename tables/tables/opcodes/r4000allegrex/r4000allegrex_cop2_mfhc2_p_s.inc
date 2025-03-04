@@ -18,7 +18,7 @@ vsync2
     ------6----------5---------5---------------------1---3------4----
 */
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0xF, vsync2, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::R

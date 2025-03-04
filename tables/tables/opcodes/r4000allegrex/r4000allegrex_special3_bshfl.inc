@@ -15,7 +15,7 @@
 
     // OP rd, rt
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x02, wsbh, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
@@ -23,7 +23,7 @@
         reads_rt: true
     ) // Word Swap Bytes within Halfword
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x03, wsbw, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
@@ -31,7 +31,7 @@
         reads_rt: true
     ) // Word Swap Bytes within Word
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x10, seb, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
@@ -39,7 +39,7 @@
         reads_rt: true
     ) // Sign-Extend Byte
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x18, seh, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,
@@ -47,7 +47,7 @@
         reads_rt: true
     ) // Sign-Extend Halfword
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x14, bitrev, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rt),
         instr_type: InstrType::R,

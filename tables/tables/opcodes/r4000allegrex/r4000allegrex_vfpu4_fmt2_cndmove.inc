@@ -20,7 +20,7 @@ vcmovt.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x00000, vcmovt_s, vcmovt.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
@@ -33,7 +33,7 @@ vcmovt.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x00001, vcmovt_p, vcmovt.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
@@ -46,7 +46,7 @@ vcmovt.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x00100, vcmovt_t, vcmovt.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
@@ -59,7 +59,7 @@ vcmovt.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x00101, vcmovt_q, vcmovt.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
@@ -72,7 +72,7 @@ vcmovf.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x01000, vcmovf_s, vcmovf.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
@@ -85,7 +85,7 @@ vcmovf.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x01001, vcmovf_p, vcmovf.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
@@ -98,7 +98,7 @@ vcmovf.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x01100, vcmovf_t, vcmovf.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R
@@ -111,7 +111,7 @@ vcmovf.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x01101, vcmovf_q, vcmovf.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_vfpu_cc_bit),
         instr_type: InstrType::R

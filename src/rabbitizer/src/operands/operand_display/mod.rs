@@ -8,9 +8,13 @@ use crate::instr::Instruction;
 use crate::operands::Operand;
 
 pub(crate) mod operand_display_none;
+#[cfg(feature = "R3000GTE")]
 pub(crate) mod operand_display_r3000gte;
+#[cfg(feature = "R4000ALLEGREX")]
 pub(crate) mod operand_display_r4000allegrex;
+#[cfg(feature = "R5900EE")]
 pub(crate) mod operand_display_r5900ee;
+#[cfg(feature = "RSP")]
 pub(crate) mod operand_display_rsp;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]

@@ -5,5 +5,6 @@ mod register_iterator;
 mod register_trait;
 
 pub use register_iterator::RegisterIterator;
+#[cfg(feature = "R4000ALLEGREX")]
 pub(crate) use register_trait::R4000AllegrexVectorRegister;
 pub use register_trait::Register;

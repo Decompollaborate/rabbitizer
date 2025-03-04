@@ -20,14 +20,14 @@ The macros for defining an opcode use the following syntax:
 - RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
   - Defines a pseudo instruction.
 
-- RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...)
+- RAB_DEF_OPCODE_EXT(prefix, case_bits, name, isa_exten, ...)
   - Define an opcode of an extension ISA.
-- RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...)
+- RAB_DEF_OPCODE_EXT_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...)
   - Define an opcode of an extension ISA.
-- RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...)
+- RAB_DEF_OPCODE_EXT_GATED(prefix, case_bits, name, isa_exten, gate, ...)
   - Define an opcode that should be conditionally decoded depending on
     compile-time features and runtime decoding flags.
-- RAB_DEF_OPCODE_EXTENSION_REMOVED(case_bits, prefix, name, isa_exten)
+- RAB_DEF_OPCODE_EXT_REMOVED(case_bits, prefix, name, isa_exten)
   - The opcode was removed by the given extension.
 
 - RAB_DEF_OPCODE_REDIRECT(case_bits, prefix, kind)

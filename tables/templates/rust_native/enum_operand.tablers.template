@@ -16,6 +16,10 @@ use crate::encoded_field_mask::EncodedFieldMask;
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     prefix##_##operand,
 
+#define RAB_DEF_OPERAND_EXT(isa_exten, prefix, operand, mask, values) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten))\
+    RAB_DEF_OPERAND(prefix, operand, mask, values)
+
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 pub enum Operand {
@@ -23,25 +27,43 @@ pub enum Operand {
 }
 
 #undef RAB_DEF_OPERAND
+#undef RAB_DEF_OPERAND_EXT
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
-    table[ Operand::prefix##_##operand as usize] = \
-        OperandDescriptor::new(concat!( #prefix, "_", #operand ), mask) \
-    ;
+    { \
+        table[ Operand::prefix##_##operand as usize] = \
+            OperandDescriptor::new(concat!( #prefix, "_", #operand ), mask) \
+            .check_panic_chain(); \
+    }
+
+#define RAB_DEF_OPERAND_EXT(isa_exten, prefix, operand, mask, values) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten))\
+    RAB_DEF_OPERAND(prefix, operand, mask, values)
 
 pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     let mut table = [OperandDescriptor::default(); OPERAND_COUNT];
 
     #include "OperandTypes.inc"
 
+    let mut i = 0;
+    while i < OPERAND_COUNT {
+        table[i].check_panic();
+        i += 1;
+    }
+
     table
 };
 
 #undef RAB_DEF_OPERAND
+#undef RAB_DEF_OPERAND_EXT
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     Operand::prefix##_##operand => \
         OperandDisplay::display_ ## prefix ## _ ## operand (self, f), \
+
+#define RAB_DEF_OPERAND_EXT(isa_exten, prefix, operand, mask, values) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten))\
+    RAB_DEF_OPERAND(prefix, operand, mask, values)
 
 // The "// '" is a hack to prevent cpp from warning about unterminated literals
 impl<T> OperandDisplay<'_, '_, T>
@@ -58,9 +80,14 @@ where T: fmt::Display
 }
 
 #undef RAB_DEF_OPERAND
+#undef RAB_DEF_OPERAND_EXT
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     prefix##_##operand values,
+
+#define RAB_DEF_OPERAND_EXT(isa_exten, prefix, operand, mask, values) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten))\
+    RAB_DEF_OPERAND(prefix, operand, mask, values)
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, PartialEq, PartialOrd))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
@@ -69,9 +96,14 @@ pub enum ValuedOperand {
 }
 
 #undef RAB_DEF_OPERAND
+#undef RAB_DEF_OPERAND_EXT
 
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     ValuedOperand:: prefix##_##operand (..) => Self:: prefix##_##operand,
+
+#define RAB_DEF_OPERAND_EXT(isa_exten, prefix, operand, mask, values) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten))\
+    RAB_DEF_OPERAND(prefix, operand, mask, values)
 
 impl Operand {
     SPECIAL_RS_TAG(must_use)
@@ -83,3 +115,4 @@ impl Operand {
 }
 
 #undef RAB_DEF_OPERAND
+#undef RAB_DEF_OPERAND_EXT

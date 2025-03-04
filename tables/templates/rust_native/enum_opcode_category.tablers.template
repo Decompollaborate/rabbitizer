@@ -10,7 +10,7 @@ use crate::opcodes::{OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
 #define RAB_DEF_OPCODE_CATEGORY(prefix, name, ...) \
     prefix##_##name,
 
-#define RAB_DEF_OPCODE_CATEGORY_EXTENSION(prefix, name, ...) \
+#define RAB_DEF_OPCODE_CATEGORY_EXT(prefix, name, ...) \
     SPECIAL_RS_TAG(cfg(feature = #prefix)) \
     prefix##_##name,
 
@@ -21,7 +21,7 @@ pub enum OpcodeCategory {
 }
 
 #undef RAB_DEF_OPCODE_CATEGORY
-#undef RAB_DEF_OPCODE_CATEGORY_EXTENSION
+#undef RAB_DEF_OPCODE_CATEGORY_EXT
 
 #define RAB_DEF_OPCODE_CATEGORY(prefix, name, ...) \
     table[ OpcodeCategory::prefix##_##name as usize] = OpcodeCategoryDescriptor {\
@@ -29,7 +29,7 @@ pub enum OpcodeCategory {
         ..OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name)) \
     };
 
-#define RAB_DEF_OPCODE_CATEGORY_EXTENSION(prefix, name, ...) \
+#define RAB_DEF_OPCODE_CATEGORY_EXT(prefix, name, ...) \
     SPECIAL_RS_TAG(cfg(feature = #prefix)) \
     { \
         RAB_DEF_OPCODE_CATEGORY(prefix, name, __VA_ARGS__) \
@@ -44,4 +44,4 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
 };
 
 #undef RAB_DEF_OPCODE_CATEGORY
-#undef RAB_DEF_OPCODE_CATEGORY_EXTENSION
+#undef RAB_DEF_OPCODE_CATEGORY_EXT

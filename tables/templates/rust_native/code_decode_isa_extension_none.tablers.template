@@ -30,16 +30,16 @@
 #define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
 
 
-#define RAB_DEF_OPCODE_EXTENSION(prefix, case_bits, name, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT(prefix, case_bits, name, isa_exten, ...) \
     what? This doesnt make sense
 
-#define RAB_DEF_OPCODE_EXTENSION_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
     aaaaaaaaaa
 
-#define RAB_DEF_OPCODE_EXTENSION_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
+#define RAB_DEF_OPCODE_EXT_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
     still doesnt make sense
 
-#define RAB_DEF_OPCODE_EXTENSION_REMOVED(case_bits, prefix, name, isa_exten) \
+#define RAB_DEF_OPCODE_EXT_REMOVED(case_bits, prefix, name, isa_exten) \
     case_bits => Opcode::ALL_INVALID,
 
 
@@ -368,10 +368,10 @@ impl OpcodeDecoder {
 #undef RAB_DEF_OPCODE
 #undef RAB_DEF_OPCODE_ALTNAME
 #undef RAB_DEF_OPCODE_PSEUDO
-#undef RAB_DEF_OPCODE_EXTENSION_REMOVED
+#undef RAB_DEF_OPCODE_EXT_REMOVED
 
-#undef RAB_DEF_OPCODE_EXTENSION
-#undef RAB_DEF_OPCODE_EXTENSION_ALTNAME
-#undef RAB_DEF_OPCODE_EXTENSION_GATED
+#undef RAB_DEF_OPCODE_EXT
+#undef RAB_DEF_OPCODE_EXT_ALTNAME
+#undef RAB_DEF_OPCODE_EXT_GATED
 
 #undef RAB_DEF_OPCODE_REDIRECT

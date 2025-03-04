@@ -20,7 +20,7 @@ vsrt1.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0101, vsrt1_q, vsrt1.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
@@ -33,7 +33,7 @@ vsrt2.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0301, vsrt2_q, vsrt2.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
@@ -46,7 +46,7 @@ vbfy1.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0401, vbfy1_p, vbfy1.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
@@ -59,7 +59,7 @@ vbfy1.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0501, vbfy1_q, vbfy1.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
@@ -72,7 +72,7 @@ vbfy2.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0701, vbfy2_q, vbfy2.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
@@ -85,7 +85,7 @@ vocp.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0800, vocp_s, vocp.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
@@ -98,7 +98,7 @@ vocp.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0801, vocp_p, vocp.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
@@ -111,7 +111,7 @@ vocp.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0900, vocp_t, vocp.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
@@ -124,7 +124,7 @@ vocp.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0901, vocp_q, vocp.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
@@ -137,7 +137,7 @@ vsocp.s
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0A00, vsocp_s, vsocp.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
@@ -150,7 +150,7 @@ vsocp.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0A01, vsocp_p, vsocp.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
@@ -163,7 +163,7 @@ vfad.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0C01, vfad_p, vfad.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
@@ -177,7 +177,7 @@ vfad.t
 */
 
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0D00, vfad_t, vfad.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
@@ -190,7 +190,7 @@ vfad.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0D01, vfad_q, vfad.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
@@ -203,7 +203,7 @@ vavg.p
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0E01, vavg_p, vavg.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
@@ -216,7 +216,7 @@ vavg.t
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0F00, vavg_t, vavg.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
@@ -229,7 +229,7 @@ vavg.q
     ------6-------2----3----2----3---1-------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, 0x0F01, vavg_q, vavg.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R

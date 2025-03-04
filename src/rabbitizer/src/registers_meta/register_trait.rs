@@ -133,4 +133,5 @@ pub trait Register: PartialEq + PartialOrd + Default {
     }
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 pub(crate) trait R4000AllegrexVectorRegister: Register {}

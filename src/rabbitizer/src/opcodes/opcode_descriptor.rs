@@ -598,6 +598,7 @@ impl OpcodeDescriptor {
                 if self.has_specific_operand(Operand::core_immediate_base) {
                     return true;
                 }
+                #[cfg(feature = "RSP")]
                 if self.has_specific_operand(Operand::rsp_offset_rs) {
                     return true;
                 }
@@ -607,9 +608,11 @@ impl OpcodeDescriptor {
                 if self.has_specific_operand(Operand::core_maybe_zero_rs) {
                     return true;
                 }
+                #[cfg(feature = "R4000ALLEGREX")]
                 if self.has_specific_operand(Operand::r4000allegrex_offset14_base) {
                     return true;
                 }
+                #[cfg(feature = "R4000ALLEGREX")]
                 if self.has_specific_operand(Operand::r4000allegrex_offset14_base_maybe_wb) {
                     return true;
                 }
@@ -632,11 +635,7 @@ impl OpcodeDescriptor {
             Operand::core_sa => {}
             Operand::core_zero => {}
             // Operand::core_function => {},
-            Operand::core_cop0d => {
-                if self.has_specific_operand(Operand::rsp_cop0d) {
-                    return true;
-                }
-            }
+            Operand::core_cop0d => {}
             Operand::core_cop0cd => {}
 
             Operand::core_fs => {}
@@ -691,41 +690,50 @@ impl OpcodeDescriptor {
             }
 
             /* rsp */
+            #[cfg(feature = "RSP")]
             Operand::rsp_cop0d => {
                 if self.has_specific_operand(Operand::core_cop0d) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "RSP")]
             Operand::rsp_cop2cd => {}
 
+            #[cfg(feature = "RSP")]
             Operand::rsp_vs => {
                 if self.has_specific_operand(Operand::rsp_vs_index) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "RSP")]
             Operand::rsp_vd => {
                 if self.has_specific_operand(Operand::rsp_vd_de) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "RSP")]
             Operand::rsp_vt_elementhigh => {}
+            #[cfg(feature = "RSP")]
             Operand::rsp_vt_elementlow => {}
 
+            #[cfg(feature = "RSP")]
             Operand::rsp_vd_de => {
                 if self.has_operand_alias(Operand::rsp_vd) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "RSP")]
             Operand::rsp_vs_index => {
                 if self.has_operand_alias(Operand::rsp_vs) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "RSP")]
             Operand::rsp_offset_rs => {
                 if self.has_operand_alias(Operand::core_rs) {
                     return true;
@@ -734,49 +742,88 @@ impl OpcodeDescriptor {
             /* rsp */
 
             /* r3000gte */
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_sf => {}
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_mx => {}
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_v => {}
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_cv => {}
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_lm => {}
             /* r3000gte */
 
             /* r4000allegrex */
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vt => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vd => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vt_imm => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vd_imm => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_p_vs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_p_vt => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_p_vd => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_t_vs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_t_vt => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_t_vd => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_q_vs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_q_vt => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_q_vd => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_q_vt_imm => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mp_vs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mp_vt => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mp_vd => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mp_vs_transpose => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mt_vs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mt_vt => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mt_vd => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mt_vs_transpose => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mq_vs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mq_vt => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mq_vd => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_mq_vs_transpose => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_cop2cs => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_cop2cd => {}
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_pos => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_size => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_size_plus_pos => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_imm3 => {}
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_offset14_base => {
                 if self.has_operand_alias(Operand::core_rs) {
                     return true;
@@ -786,6 +833,7 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_offset14_base_maybe_wb => {
                 if self.has_operand_alias(Operand::core_rs) {
                     return true;
@@ -795,6 +843,7 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
                 if self.has_specific_operand(Operand::r4000allegrex_s_vs) {
                     return true;
@@ -804,6 +853,7 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
                 if self.has_specific_operand(Operand::r4000allegrex_p_vs) {
                     return true;
@@ -813,6 +863,7 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
                 if self.has_specific_operand(Operand::r4000allegrex_t_vs) {
                     return true;
@@ -822,6 +873,7 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
                 if self.has_specific_operand(Operand::r4000allegrex_q_vs) {
                     return true;
@@ -831,39 +883,63 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vconstant => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_power_of_two => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vfpu_cc_bit => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_bn => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_int16 => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_float16 => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_p_vrot_code => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_t_vrot_code => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_q_vrot_code => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_wpx => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_wpy => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_wpz => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_wpw => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_rpx => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_rpy => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_rpz => {}
+            #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_rpw => {}
             /* r4000allegrex */
 
             /* r5900ee */
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_I => {}
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_Q => {}
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_R => {}
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_ACC => {
                 if self.has_specific_operand(Operand::r5900ee_ACCxyzw) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_immediate5 => {}
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_immediate15 => {}
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfs => {
                 if self.has_specific_operand(Operand::r5900ee_vfsxyzw) {
                     return true;
@@ -873,6 +949,7 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vft => {
                 if self.has_specific_operand(Operand::r5900ee_vftxyzw) {
                     return true;
@@ -885,12 +962,14 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfd => {
                 if self.has_specific_operand(Operand::r5900ee_vfdxyzw) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vis => {
                 if self.has_specific_operand(Operand::r5900ee_vis_predecr) {
                     return true;
@@ -903,6 +982,7 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vit => {
                 if self.has_specific_operand(Operand::r5900ee_vit_predecr) {
                     return true;
@@ -912,20 +992,24 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vid => {}
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_ACCxyzw => {
                 if self.has_specific_operand(Operand::r5900ee_ACC) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfsxyzw => {
                 if self.has_specific_operand(Operand::r5900ee_vfs) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vftxyzw => {
                 if self.has_specific_operand(Operand::r5900ee_vft) {
                     return true;
@@ -935,12 +1019,14 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfdxyzw => {
                 if self.has_specific_operand(Operand::r5900ee_vfd) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vftn => {
                 if self.has_specific_operand(Operand::r5900ee_vft) {
                     return true;
@@ -950,42 +1036,49 @@ impl OpcodeDescriptor {
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfsl => {
                 if self.has_operand_alias(Operand::r5900ee_vfs) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vftm => {
                 if self.has_operand_alias(Operand::r5900ee_vft) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vis_predecr => {
                 if self.has_operand_alias(Operand::r5900ee_vis) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vit_predecr => {
                 if self.has_operand_alias(Operand::r5900ee_vit) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vis_postincr => {
                 if self.has_operand_alias(Operand::r5900ee_vis) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vit_postincr => {
                 if self.has_operand_alias(Operand::r5900ee_vit) {
                     return true;
                 }
             }
 
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vis_parenthesis => {
                 if self.has_operand_alias(Operand::r5900ee_vis) {
                     return true;

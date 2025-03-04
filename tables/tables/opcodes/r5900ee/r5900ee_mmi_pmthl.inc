@@ -17,7 +17,7 @@
  hi |---------------|---------------|---------------|---------------|
 */
 
-    RAB_DEF_OPCODE_EXTENSION_ALTNAME(
+    RAB_DEF_OPCODE_EXT_ALTNAME(
         r5900ee, 0x00, pmthl_lw, pmthl.lw, R5900EE,
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true

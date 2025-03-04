@@ -1,5 +1,3 @@
-- Fix `ldl` to be MIPS_III instead of MIPS_I
-
 - Add `size_hint` to iterators
 
 - Set properties to float registers

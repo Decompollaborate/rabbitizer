@@ -15,24 +15,24 @@
 */
 
     // OP rt, vs[index]
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         rsp, 0x00, mfc2, RSP,
         operands: Operand::arr2(Operand::core_rt, Operand::rsp_vs_index),
         modifies_rt: true
     )
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         rsp, 0x04, mtc2, RSP,
         operands: Operand::arr2(Operand::core_rt, Operand::rsp_vs_index),
         reads_rt: true
     )
 
     // OP rt, cop2cd
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         rsp, 0x02, cfc2, RSP,
         operands: Operand::arr2(Operand::core_rt, Operand::rsp_cop2cd),
         modifies_rt: true
     )
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         rsp, 0x06, ctc2, RSP,
         operands: Operand::arr2(Operand::core_rt, Operand::rsp_cop2cd),
         reads_rt: true

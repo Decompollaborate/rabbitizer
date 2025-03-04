@@ -16,13 +16,13 @@
     // The other instructions are implemented using the main CORE table
 
     // OP rs, IMM
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r5900ee, 0x18, mtsab, R5900EE,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         reads_rs: true
     )
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r5900ee, 0x19, mtsah, R5900EE,
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,

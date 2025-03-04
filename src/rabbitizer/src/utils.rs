@@ -42,6 +42,7 @@ pub const fn from_2s_complement(number: u32, width: u32) -> i32 {
 }
 
 #[must_use]
+#[cfg(feature = "R4000ALLEGREX")]
 pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
     // IEEE754 16-bit floats are encoded in 16 bits as follows:
     // Sign bit: 1 bit (bit 15)

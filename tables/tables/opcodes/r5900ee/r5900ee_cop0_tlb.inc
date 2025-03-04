@@ -19,11 +19,11 @@
 
     // The other instructions are implemented using the main CORE table
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r5900ee, 0x38, ei, R5900EE,
         operands: Operand::arr0()
     )
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r5900ee, 0x39, di, R5900EE,
         operands: Operand::arr0()
     )

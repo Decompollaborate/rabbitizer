@@ -18,7 +18,7 @@
      *1 = SPECIAL3 BSHFL
 */
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x00, ext, R4000ALLEGREX,
         operands: Operand::arr4(Operand::core_rt, Operand::core_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size),
         instr_type: InstrType::R,
@@ -26,7 +26,7 @@
         reads_rs: true
     ) // EXTract bit field
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x04, ins, R4000ALLEGREX,
         operands: Operand::arr4(Operand::core_rt, Operand::core_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size_plus_pos),
         instr_type: InstrType::R,

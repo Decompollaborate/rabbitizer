@@ -18,7 +18,9 @@ use crate::isa::IsaVersion;
 use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::operands::{Operand, OperandIterator, ValuedOperandIterator};
 use crate::registers::*;
-use crate::registers_meta::{R4000AllegrexVectorRegister, Register};
+#[cfg(feature = "R4000ALLEGREX")]
+use crate::registers_meta::R4000AllegrexVectorRegister;
+use crate::registers_meta::Register;
 use crate::utils;
 use crate::vram::{Vram, VramOffset};
 
@@ -1087,6 +1089,7 @@ impl Instruction {
 }
 
 /// RSP opcode fields
+#[cfg(feature = "RSP")]
 impl Instruction {
     /// Returns either the [`RspCop0`] register embedded on the `rsp_cop0d`
     /// field of the word of this instruction, or [`None`] if this instruction
@@ -1237,6 +1240,7 @@ impl Instruction {
 }
 
 /// Unchecked RSP opcode fields
+#[cfg(feature = "RSP")]
 impl Instruction {
     /// Returns the [`RspCop0`] register embedded on the `rsp_cop0d` field of the word
     /// of this instruction.
@@ -1425,6 +1429,7 @@ impl Instruction {
 }
 
 /// R3000GTE opcode fields
+#[cfg(feature = "R3000GTE")]
 impl Instruction {
     /// Returns either the `r3000gte_sf` value embedded on the `r3000gte_sf`
     /// field of the word of this instruction, or [`None`] if this instruction
@@ -1498,6 +1503,7 @@ impl Instruction {
 }
 
 /// Unchecked R3000GTE opcode fields
+#[cfg(feature = "R3000GTE")]
 impl Instruction {
     /// Returns the `r3000gte_sf` value embedded on the `r3000gte_sf` field of
     /// the word of this instruction.
@@ -1591,6 +1597,7 @@ impl Instruction {
 }
 
 /// Unchecked R4000ALLEGREX opcode fields
+#[cfg(feature = "R4000ALLEGREX")]
 impl Instruction {
     /// Returns the [`R4000AllegrexS`] register embedded on the `r4000allegrex_vs`
     /// field of the word of this instruction.
@@ -2568,6 +2575,7 @@ impl Instruction {
 }
 
 /// R5900EE opcode fields
+#[cfg(feature = "R5900EE")]
 impl Instruction {
     /// Returns either the `r5900ee_immediate5` value embedded on the `r5900ee_immediate5`
     /// field of the word of this instruction, or [`None`] if this instruction
@@ -2807,6 +2815,7 @@ impl Instruction {
 
 // #[doc(hidden)]
 /// Unchecked R5900EE opcode fields
+#[cfg(feature = "R5900EE")]
 impl Instruction {
     /// Returns the `r5900ee_immediate5` value embedded on the `r5900ee_immediate5` field of
     /// the word of this instruction.
@@ -3257,6 +3266,7 @@ impl Instruction {
     }
 }
 
+#[cfg(feature = "RSP")]
 impl Instruction {
     #[must_use]
     pub(crate) fn get_processed_rsp_offset_unchecked(&self) -> u16 {
@@ -3298,6 +3308,7 @@ impl Instruction {
     }
 }
 
+#[cfg(feature = "R4000ALLEGREX")]
 impl Instruction {
     pub(crate) fn process_r4000allegrex_vcmp_operands<T>(
         cond: R4000AllegrexVCond,

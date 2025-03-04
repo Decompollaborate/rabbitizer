@@ -20,7 +20,7 @@ vmfvc
     ------6-------2----3----2----3---1-------7---------------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x0100, vmfvc, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_cop2cs),
         instr_type: InstrType::R
@@ -33,7 +33,7 @@ vmtvc
     ------6-------2----3----2----3-----------7-------1-------7-------
 */
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x0201, vmtvc, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_cop2cd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R

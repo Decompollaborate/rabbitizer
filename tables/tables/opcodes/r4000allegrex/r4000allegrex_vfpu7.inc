@@ -8,7 +8,7 @@ vnop
     ------6-------------------------------26-------------------------
 */
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x3FF0000, vnop, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
@@ -21,7 +21,7 @@ vsync
     ------6-------------------------------26-------------------------
 */
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x3FF0320, vsync, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
@@ -34,7 +34,7 @@ vflush
     ------6-------------------------------26-------------------------
 */
 
-    RAB_DEF_OPCODE_EXTENSION(
+    RAB_DEF_OPCODE_EXT(
         r4000allegrex, 0x3FF040D, vflush, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN

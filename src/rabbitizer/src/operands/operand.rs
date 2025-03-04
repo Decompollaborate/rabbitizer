@@ -11,9 +11,54 @@ use crate::operands::{Operand, OperandDescriptor, OperandDisplay, ValuedOperand,
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
 // this constant.
-pub(crate) const OPERAND_COUNT: usize = 121;
+pub(crate) const OPERAND_COUNT: usize = {
+    let mut count = 1;
+    count += 25;
 
-pub const OPERAND_COUNT_MAX: usize = 5;
+    if cfg!(feature = "MIPS_II") {
+        count += 0;
+    }
+    if cfg!(feature = "MIPS_III") {
+        count += 0;
+    }
+    if cfg!(feature = "MIPS_IV") {
+        count += 0;
+    }
+
+    if cfg!(feature = "RSP") {
+        count += 9;
+    }
+    if cfg!(feature = "R3000GTE") {
+        count += 5;
+    }
+    if cfg!(feature = "R4000ALLEGREX") {
+        count += 56;
+    }
+    if cfg!(feature = "R5900EE") {
+        count += 24;
+    }
+
+    if cfg!(feature = "RspViceMsp") {
+        count += 0;
+    }
+
+    count
+};
+
+pub const OPERAND_COUNT_MAX: usize = {
+    5
+
+    // TODO
+    /*
+    if cfg!(feature = "R3000GTE") {
+        5
+    } else if cfg!(feature = "R4000ALLEGREX") {
+        4
+    } else {
+        3
+    }
+    */
+};
 
 impl Operand {
     #[must_use]
