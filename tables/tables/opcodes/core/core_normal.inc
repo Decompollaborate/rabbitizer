@@ -201,7 +201,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD_LEFT)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
     ) // Load Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x1B, ldr, MIPS_III,
@@ -212,7 +212,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD_RIGHT)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
     ) // Load Doubleword Right
     RAB_DEF_OPCODE_MIPS1(
         core, 0x20, lb,
@@ -245,7 +245,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::WORD_LEFT)
+        access_type: Some(AccessType::UNALIGNED_WORD)
     ) // Load Word Left
     RAB_DEF_OPCODE_MIPS1(
         core, 0x23, lw,
@@ -291,7 +291,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::WORD_RIGHT)
+        access_type: Some(AccessType::UNALIGNED_WORD)
     ) // Load Word Right
     RAB_DEF_OPCODE(
         core, 0x27, lwu, MIPS_III,
@@ -336,7 +336,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::WORD_LEFT)
+        access_type: Some(AccessType::UNALIGNED_WORD)
     ) // Store Word Left
     RAB_DEF_OPCODE_MIPS1(
         core, 0x2B, sw,
@@ -358,7 +358,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD_LEFT)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
     ) // Store Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x2D, sdr, MIPS_III,
@@ -369,7 +369,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD_RIGHT)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
     ) // Store Doubleword Right
     RAB_DEF_OPCODE_MIPS1(
         core, 0x2E, swr,
@@ -380,7 +380,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::WORD_RIGHT)
+        access_type: Some(AccessType::UNALIGNED_WORD)
     ) // Store Word Right
     RAB_DEF_OPCODE(
         core, 0x30, ll, MIPS_II,
@@ -392,7 +392,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::WORD)
+        access_type: Some(AccessType::LINKED_WORD_WORD)
     ) // Load Linked word
     RAB_DEF_OPCODE(
         core, 0x33, pref, MIPS_IV,
@@ -410,7 +410,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD)
+        access_type: Some(AccessType::LINKED_WORD_DOUBLEWORD)
     ) // Load Linked Doubleword
     RAB_DEF_OPCODE(
         core, 0x37, ld, MIPS_III,
@@ -433,7 +433,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::WORD)
+        access_type: Some(AccessType::LINKED_WORD_WORD)
     ) // Store Conditional word
     RAB_DEF_OPCODE(
         core, 0x3C, scd, MIPS_III,
@@ -445,7 +445,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD)
+        access_type: Some(AccessType::LINKED_WORD_DOUBLEWORD)
     ) // Store Conditional Doubleword
     RAB_DEF_OPCODE(
         core, 0x3F, sd, MIPS_III,
@@ -529,7 +529,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::WORD)
+        access_type: Some(AccessType::WORD_COP2)
     ) // Load Word to Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x36, ldc2, MIPS_II,
@@ -539,7 +539,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::DOUBLEWORD)
+        access_type: Some(AccessType::DOUBLEWORD_COP2)
     ) // Load Doubleword to Coprocessor z
     RAB_DEF_OPCODE_MIPS1(
         core, 0x3A, swc2,
@@ -549,7 +549,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::WORD)
+        access_type: Some(AccessType::WORD_COP2)
     ) // Store Word from Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x3E, sdc2, MIPS_II,
@@ -559,7 +559,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::DOUBLEWORD)
+        access_type: Some(AccessType::DOUBLEWORD_COP2)
     ) // Store Doubleword from Coprocessor z
 
 

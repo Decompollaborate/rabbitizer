@@ -28,6 +28,18 @@ impl AccessTypeDescriptor {
             ..Self::default()
         }
     }
+
+    pub(crate) const fn check_panic(&self) {
+        assert!(
+            !self.name.is_empty(),
+            "An access type must not have an empty name"
+        );
+    }
+
+    pub(crate) const fn check_panic_chain(self) -> Self {
+        self.check_panic();
+        self
+    }
 }
 
 impl AccessTypeDescriptor {

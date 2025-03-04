@@ -277,7 +277,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::DOUBLEWORD_LEFT),
+            access_type: Some(AccessType::UNALIGNED_DOUBLEWORD),
             ..OpcodeDescriptor::new("ldl", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -292,7 +292,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::DOUBLEWORD_RIGHT),
+            access_type: Some(AccessType::UNALIGNED_DOUBLEWORD),
             ..OpcodeDescriptor::new("ldr", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -334,7 +334,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::WORD_LEFT),
+            access_type: Some(AccessType::UNALIGNED_WORD),
             ..OpcodeDescriptor::new("lwl", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -392,7 +392,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::WORD_RIGHT),
+            access_type: Some(AccessType::UNALIGNED_WORD),
             ..OpcodeDescriptor::new("lwr", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -450,7 +450,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::WORD_LEFT),
+            access_type: Some(AccessType::UNALIGNED_WORD),
             ..OpcodeDescriptor::new("swl", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -479,7 +479,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::DOUBLEWORD_LEFT),
+            access_type: Some(AccessType::UNALIGNED_DOUBLEWORD),
             ..OpcodeDescriptor::new("sdl", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -494,7 +494,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::DOUBLEWORD_RIGHT),
+            access_type: Some(AccessType::UNALIGNED_DOUBLEWORD),
             ..OpcodeDescriptor::new("sdr", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -508,7 +508,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::WORD_RIGHT),
+            access_type: Some(AccessType::UNALIGNED_WORD),
             ..OpcodeDescriptor::new("swr", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -524,7 +524,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::WORD),
+            access_type: Some(AccessType::LINKED_WORD_WORD),
             ..OpcodeDescriptor::new("ll", IsaVersion::MIPS_II, None)
         }
         .check_panic_chain();
@@ -550,7 +550,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::DOUBLEWORD),
+            access_type: Some(AccessType::LINKED_WORD_DOUBLEWORD),
             ..OpcodeDescriptor::new("lld", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -581,7 +581,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::WORD),
+            access_type: Some(AccessType::LINKED_WORD_WORD),
             ..OpcodeDescriptor::new("sc", IsaVersion::MIPS_II, None)
         }
         .check_panic_chain();
@@ -597,7 +597,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::DOUBLEWORD),
+            access_type: Some(AccessType::LINKED_WORD_DOUBLEWORD),
             ..OpcodeDescriptor::new("scd", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -700,7 +700,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::WORD),
+            access_type: Some(AccessType::WORD_COP2),
             ..OpcodeDescriptor::new("lwc2", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -714,7 +714,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
-            access_type: Some(AccessType::DOUBLEWORD),
+            access_type: Some(AccessType::DOUBLEWORD_COP2),
             ..OpcodeDescriptor::new("ldc2", IsaVersion::MIPS_II, None)
         }
         .check_panic_chain();
@@ -727,7 +727,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::WORD),
+            access_type: Some(AccessType::WORD_COP2),
             ..OpcodeDescriptor::new("swc2", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -741,7 +741,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
-            access_type: Some(AccessType::DOUBLEWORD),
+            access_type: Some(AccessType::DOUBLEWORD_COP2),
             ..OpcodeDescriptor::new("sdc2", IsaVersion::MIPS_II, None)
         }
         .check_panic_chain();

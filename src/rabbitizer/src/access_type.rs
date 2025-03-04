@@ -4,7 +4,38 @@
 pub use crate::generated::AccessType;
 use crate::{access_type_descriptor::AccessTypeDescriptor, generated::ACCESS_TYPES};
 
-pub const ACCESS_TYPE_COUNT: usize = 12;
+pub const ACCESS_TYPE_COUNT: usize = {
+    let mut count = 6;
+
+    if cfg!(feature = "MIPS_II") {
+        count += 3;
+    }
+    if cfg!(feature = "MIPS_III") {
+        count += 3;
+    }
+    if cfg!(feature = "MIPS_IV") {
+        count += 0;
+    }
+
+    if cfg!(feature = "RSP") {
+        count += 0;
+    }
+    if cfg!(feature = "R3000GTE") {
+        count += 0;
+    }
+    if cfg!(feature = "R4000ALLEGREX") {
+        count += 0;
+    }
+    if cfg!(feature = "R5900EE") {
+        count += 1;
+    }
+
+    if cfg!(feature = "RspViceMsp") {
+        count += 0;
+    }
+
+    count
+};
 
 impl AccessType {
     #[must_use]

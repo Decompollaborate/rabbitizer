@@ -11,6 +11,14 @@ use crate::access_type_descriptor::AccessTypeDescriptor;
 #define RAB_DEF_ACCESSTYPE(name, ...) \
     name,
 
+#define RAB_DEF_ACCESSTYPE_ISA(isa, name, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa)) \
+    RAB_DEF_ACCESSTYPE(name, __VA_ARGS__)
+
+#define RAB_DEF_ACCESSTYPE_EXT(ext, name, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #ext)) \
+    RAB_DEF_ACCESSTYPE(name, __VA_ARGS__)
+
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 pub enum AccessType {
@@ -18,19 +26,39 @@ pub enum AccessType {
 }
 
 #undef RAB_DEF_ACCESSTYPE
+#undef RAB_DEF_ACCESSTYPE_ISA
+#undef RAB_DEF_ACCESSTYPE_EXT
 
 #define RAB_DEF_ACCESSTYPE(name, ...) \
-    table[ AccessType:: name as usize] = AccessTypeDescriptor {\
-        __VA_ARGS__ \
-        ..AccessTypeDescriptor::new(#name) \
-    };
+    { \
+        table[ AccessType:: name as usize] = AccessTypeDescriptor {\
+            __VA_ARGS__ \
+            ..AccessTypeDescriptor::new(#name) \
+        } .check_panic_chain(); \
+    }
+
+#define RAB_DEF_ACCESSTYPE_ISA(isa, name, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa)) \
+    RAB_DEF_ACCESSTYPE(name, __VA_ARGS__)
+
+#define RAB_DEF_ACCESSTYPE_EXT(ext, name, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #ext)) \
+    RAB_DEF_ACCESSTYPE(name, __VA_ARGS__)
 
 pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
     let mut table = [AccessTypeDescriptor::default(); ACCESS_TYPE_COUNT];
 
     #include "AccessType.inc"
 
+    let mut i = 0;
+    while i < ACCESS_TYPE_COUNT {
+        table[i].check_panic();
+        i += 1;
+    }
+
     table
 };
 
 #undef RAB_DEF_ACCESSTYPE
+#undef RAB_DEF_ACCESSTYPE_ISA
+#undef RAB_DEF_ACCESSTYPE_EXT
