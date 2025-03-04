@@ -29,72 +29,72 @@ pub enum R4000AllegrexVCond {
 pub static R4000ALLEGREX_VCOND: [RegisterDescriptor; 16] = {
     let mut table = [RegisterDescriptor::default(); 16];
     table[R4000AllegrexVCond::fl as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("fl", 0, "fl")
+        ..RegisterDescriptor::new("fl", 0, "fl", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::eq as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("eq", 1, "eq")
+        ..RegisterDescriptor::new("eq", 1, "eq", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::lt as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("lt", 2, "lt")
+        ..RegisterDescriptor::new("lt", 2, "lt", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::le as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("le", 3, "le")
+        ..RegisterDescriptor::new("le", 3, "le", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::tr as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("tr", 4, "tr")
+        ..RegisterDescriptor::new("tr", 4, "tr", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::ne as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("ne", 5, "ne")
+        ..RegisterDescriptor::new("ne", 5, "ne", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::ge as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("ge", 6, "ge")
+        ..RegisterDescriptor::new("ge", 6, "ge", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::gt as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("gt", 7, "gt")
+        ..RegisterDescriptor::new("gt", 7, "gt", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::ez as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("ez", 8, "ez")
+        ..RegisterDescriptor::new("ez", 8, "ez", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::en as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("en", 9, "en")
+        ..RegisterDescriptor::new("en", 9, "en", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::ei as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("ei", 10, "ei")
+        ..RegisterDescriptor::new("ei", 10, "ei", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::es as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("es", 11, "es")
+        ..RegisterDescriptor::new("es", 11, "es", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::nz as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("nz", 12, "nz")
+        ..RegisterDescriptor::new("nz", 12, "nz", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::nn as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("nn", 13, "nn")
+        ..RegisterDescriptor::new("nn", 13, "nn", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::ni as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("ni", 14, "ni")
+        ..RegisterDescriptor::new("ni", 14, "ni", false)
     }
     .check_panic_chain();
     table[R4000AllegrexVCond::ns as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("ns", 15, "ns")
+        ..RegisterDescriptor::new("ns", 15, "ns", false)
     }
     .check_panic_chain();
     let mut i = 0;
     while i < 16 {
-        assert!(table[i].value as usize == i, "Broken register index?");
+        assert!(table[i].value() as usize == i, "Broken register index?");
         i += 1;
     }
     table
@@ -145,5 +145,87 @@ impl Index<R4000AllegrexVCond> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
     fn index(&self, index: R4000AllegrexVCond) -> &Self::Output {
         &self[index as usize]
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_dollar() {
+        for x in &R4000ALLEGREX_VCOND {
+            if x.has_dollar {
+                assert!(
+                    x.name.starts_with('$'),
+                    "Register {} is missing dollar sign",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi64
+                );
+            } else {
+                assert!(
+                    !x.name.starts_with('$'),
+                    "Register {} has dollar sign when it shouldn't",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi64
+                );
+            }
+        }
     }
 }

@@ -141,520 +141,523 @@ pub enum R4000AllegrexVfpuControl {
 pub static R4000ALLEGREX_VFPUCONTROL: [RegisterDescriptor; 128] = {
     let mut table = [RegisterDescriptor::default(); 128];
     table[R4000AllegrexVfpuControl::VFPU_PFXS as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_PFXS", 128, concat!("$", "128"))
+        ..RegisterDescriptor::new("VFPU_PFXS", 128, concat!("$", "128"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_PFXT as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_PFXT", 129, concat!("$", "129"))
+        ..RegisterDescriptor::new("VFPU_PFXT", 129, concat!("$", "129"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_PFXD as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_PFXD", 130, concat!("$", "130"))
+        ..RegisterDescriptor::new("VFPU_PFXD", 130, concat!("$", "130"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_CC as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_CC", 131, concat!("$", "131"))
+        ..RegisterDescriptor::new("VFPU_CC", 131, concat!("$", "131"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_INF4 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_INF4", 132, concat!("$", "132"))
+        ..RegisterDescriptor::new("VFPU_INF4", 132, concat!("$", "132"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RSV5 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RSV5", 133, concat!("$", "133"))
+        ..RegisterDescriptor::new("VFPU_RSV5", 133, concat!("$", "133"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RSV6 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RSV6", 134, concat!("$", "134"))
+        ..RegisterDescriptor::new("VFPU_RSV6", 134, concat!("$", "134"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_REV as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_REV", 135, concat!("$", "135"))
+        ..RegisterDescriptor::new("VFPU_REV", 135, concat!("$", "135"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX0 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX0", 136, concat!("$", "136"))
+        ..RegisterDescriptor::new("VFPU_RCX0", 136, concat!("$", "136"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX1 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX1", 137, concat!("$", "137"))
+        ..RegisterDescriptor::new("VFPU_RCX1", 137, concat!("$", "137"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX2 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX2", 138, concat!("$", "138"))
+        ..RegisterDescriptor::new("VFPU_RCX2", 138, concat!("$", "138"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX3 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX3", 139, concat!("$", "139"))
+        ..RegisterDescriptor::new("VFPU_RCX3", 139, concat!("$", "139"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX4 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX4", 140, concat!("$", "140"))
+        ..RegisterDescriptor::new("VFPU_RCX4", 140, concat!("$", "140"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX5 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX5", 141, concat!("$", "141"))
+        ..RegisterDescriptor::new("VFPU_RCX5", 141, concat!("$", "141"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX6 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX6", 142, concat!("$", "142"))
+        ..RegisterDescriptor::new("VFPU_RCX6", 142, concat!("$", "142"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::VFPU_RCX7 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new("VFPU_RCX7", 143, concat!("$", "143"))
+        ..RegisterDescriptor::new("VFPU_RCX7", 143, concat!("$", "143"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r144 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "144"), 144, concat!("$", "144"))
+        ..RegisterDescriptor::new(concat!("$", "144"), 144, concat!("$", "144"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r145 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "145"), 145, concat!("$", "145"))
+        ..RegisterDescriptor::new(concat!("$", "145"), 145, concat!("$", "145"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r146 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "146"), 146, concat!("$", "146"))
+        ..RegisterDescriptor::new(concat!("$", "146"), 146, concat!("$", "146"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r147 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "147"), 147, concat!("$", "147"))
+        ..RegisterDescriptor::new(concat!("$", "147"), 147, concat!("$", "147"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r148 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "148"), 148, concat!("$", "148"))
+        ..RegisterDescriptor::new(concat!("$", "148"), 148, concat!("$", "148"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r149 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "149"), 149, concat!("$", "149"))
+        ..RegisterDescriptor::new(concat!("$", "149"), 149, concat!("$", "149"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r150 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "150"), 150, concat!("$", "150"))
+        ..RegisterDescriptor::new(concat!("$", "150"), 150, concat!("$", "150"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r151 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "151"), 151, concat!("$", "151"))
+        ..RegisterDescriptor::new(concat!("$", "151"), 151, concat!("$", "151"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r152 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "152"), 152, concat!("$", "152"))
+        ..RegisterDescriptor::new(concat!("$", "152"), 152, concat!("$", "152"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r153 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "153"), 153, concat!("$", "153"))
+        ..RegisterDescriptor::new(concat!("$", "153"), 153, concat!("$", "153"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r154 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "154"), 154, concat!("$", "154"))
+        ..RegisterDescriptor::new(concat!("$", "154"), 154, concat!("$", "154"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r155 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "155"), 155, concat!("$", "155"))
+        ..RegisterDescriptor::new(concat!("$", "155"), 155, concat!("$", "155"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r156 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "156"), 156, concat!("$", "156"))
+        ..RegisterDescriptor::new(concat!("$", "156"), 156, concat!("$", "156"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r157 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "157"), 157, concat!("$", "157"))
+        ..RegisterDescriptor::new(concat!("$", "157"), 157, concat!("$", "157"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r158 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "158"), 158, concat!("$", "158"))
+        ..RegisterDescriptor::new(concat!("$", "158"), 158, concat!("$", "158"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r159 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "159"), 159, concat!("$", "159"))
+        ..RegisterDescriptor::new(concat!("$", "159"), 159, concat!("$", "159"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r160 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "160"), 160, concat!("$", "160"))
+        ..RegisterDescriptor::new(concat!("$", "160"), 160, concat!("$", "160"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r161 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "161"), 161, concat!("$", "161"))
+        ..RegisterDescriptor::new(concat!("$", "161"), 161, concat!("$", "161"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r162 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "162"), 162, concat!("$", "162"))
+        ..RegisterDescriptor::new(concat!("$", "162"), 162, concat!("$", "162"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r163 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "163"), 163, concat!("$", "163"))
+        ..RegisterDescriptor::new(concat!("$", "163"), 163, concat!("$", "163"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r164 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "164"), 164, concat!("$", "164"))
+        ..RegisterDescriptor::new(concat!("$", "164"), 164, concat!("$", "164"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r165 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "165"), 165, concat!("$", "165"))
+        ..RegisterDescriptor::new(concat!("$", "165"), 165, concat!("$", "165"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r166 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "166"), 166, concat!("$", "166"))
+        ..RegisterDescriptor::new(concat!("$", "166"), 166, concat!("$", "166"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r167 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "167"), 167, concat!("$", "167"))
+        ..RegisterDescriptor::new(concat!("$", "167"), 167, concat!("$", "167"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r168 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "168"), 168, concat!("$", "168"))
+        ..RegisterDescriptor::new(concat!("$", "168"), 168, concat!("$", "168"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r169 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "169"), 169, concat!("$", "169"))
+        ..RegisterDescriptor::new(concat!("$", "169"), 169, concat!("$", "169"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r170 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "170"), 170, concat!("$", "170"))
+        ..RegisterDescriptor::new(concat!("$", "170"), 170, concat!("$", "170"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r171 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "171"), 171, concat!("$", "171"))
+        ..RegisterDescriptor::new(concat!("$", "171"), 171, concat!("$", "171"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r172 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "172"), 172, concat!("$", "172"))
+        ..RegisterDescriptor::new(concat!("$", "172"), 172, concat!("$", "172"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r173 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "173"), 173, concat!("$", "173"))
+        ..RegisterDescriptor::new(concat!("$", "173"), 173, concat!("$", "173"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r174 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "174"), 174, concat!("$", "174"))
+        ..RegisterDescriptor::new(concat!("$", "174"), 174, concat!("$", "174"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r175 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "175"), 175, concat!("$", "175"))
+        ..RegisterDescriptor::new(concat!("$", "175"), 175, concat!("$", "175"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r176 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "176"), 176, concat!("$", "176"))
+        ..RegisterDescriptor::new(concat!("$", "176"), 176, concat!("$", "176"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r177 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "177"), 177, concat!("$", "177"))
+        ..RegisterDescriptor::new(concat!("$", "177"), 177, concat!("$", "177"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r178 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "178"), 178, concat!("$", "178"))
+        ..RegisterDescriptor::new(concat!("$", "178"), 178, concat!("$", "178"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r179 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "179"), 179, concat!("$", "179"))
+        ..RegisterDescriptor::new(concat!("$", "179"), 179, concat!("$", "179"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r180 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "180"), 180, concat!("$", "180"))
+        ..RegisterDescriptor::new(concat!("$", "180"), 180, concat!("$", "180"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r181 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "181"), 181, concat!("$", "181"))
+        ..RegisterDescriptor::new(concat!("$", "181"), 181, concat!("$", "181"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r182 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "182"), 182, concat!("$", "182"))
+        ..RegisterDescriptor::new(concat!("$", "182"), 182, concat!("$", "182"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r183 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "183"), 183, concat!("$", "183"))
+        ..RegisterDescriptor::new(concat!("$", "183"), 183, concat!("$", "183"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r184 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "184"), 184, concat!("$", "184"))
+        ..RegisterDescriptor::new(concat!("$", "184"), 184, concat!("$", "184"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r185 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "185"), 185, concat!("$", "185"))
+        ..RegisterDescriptor::new(concat!("$", "185"), 185, concat!("$", "185"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r186 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "186"), 186, concat!("$", "186"))
+        ..RegisterDescriptor::new(concat!("$", "186"), 186, concat!("$", "186"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r187 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "187"), 187, concat!("$", "187"))
+        ..RegisterDescriptor::new(concat!("$", "187"), 187, concat!("$", "187"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r188 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "188"), 188, concat!("$", "188"))
+        ..RegisterDescriptor::new(concat!("$", "188"), 188, concat!("$", "188"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r189 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "189"), 189, concat!("$", "189"))
+        ..RegisterDescriptor::new(concat!("$", "189"), 189, concat!("$", "189"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r190 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "190"), 190, concat!("$", "190"))
+        ..RegisterDescriptor::new(concat!("$", "190"), 190, concat!("$", "190"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r191 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "191"), 191, concat!("$", "191"))
+        ..RegisterDescriptor::new(concat!("$", "191"), 191, concat!("$", "191"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r192 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "192"), 192, concat!("$", "192"))
+        ..RegisterDescriptor::new(concat!("$", "192"), 192, concat!("$", "192"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r193 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "193"), 193, concat!("$", "193"))
+        ..RegisterDescriptor::new(concat!("$", "193"), 193, concat!("$", "193"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r194 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "194"), 194, concat!("$", "194"))
+        ..RegisterDescriptor::new(concat!("$", "194"), 194, concat!("$", "194"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r195 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "195"), 195, concat!("$", "195"))
+        ..RegisterDescriptor::new(concat!("$", "195"), 195, concat!("$", "195"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r196 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "196"), 196, concat!("$", "196"))
+        ..RegisterDescriptor::new(concat!("$", "196"), 196, concat!("$", "196"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r197 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "197"), 197, concat!("$", "197"))
+        ..RegisterDescriptor::new(concat!("$", "197"), 197, concat!("$", "197"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r198 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "198"), 198, concat!("$", "198"))
+        ..RegisterDescriptor::new(concat!("$", "198"), 198, concat!("$", "198"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r199 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "199"), 199, concat!("$", "199"))
+        ..RegisterDescriptor::new(concat!("$", "199"), 199, concat!("$", "199"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r200 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "200"), 200, concat!("$", "200"))
+        ..RegisterDescriptor::new(concat!("$", "200"), 200, concat!("$", "200"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r201 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "201"), 201, concat!("$", "201"))
+        ..RegisterDescriptor::new(concat!("$", "201"), 201, concat!("$", "201"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r202 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "202"), 202, concat!("$", "202"))
+        ..RegisterDescriptor::new(concat!("$", "202"), 202, concat!("$", "202"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r203 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "203"), 203, concat!("$", "203"))
+        ..RegisterDescriptor::new(concat!("$", "203"), 203, concat!("$", "203"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r204 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "204"), 204, concat!("$", "204"))
+        ..RegisterDescriptor::new(concat!("$", "204"), 204, concat!("$", "204"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r205 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "205"), 205, concat!("$", "205"))
+        ..RegisterDescriptor::new(concat!("$", "205"), 205, concat!("$", "205"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r206 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "206"), 206, concat!("$", "206"))
+        ..RegisterDescriptor::new(concat!("$", "206"), 206, concat!("$", "206"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r207 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "207"), 207, concat!("$", "207"))
+        ..RegisterDescriptor::new(concat!("$", "207"), 207, concat!("$", "207"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r208 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "208"), 208, concat!("$", "208"))
+        ..RegisterDescriptor::new(concat!("$", "208"), 208, concat!("$", "208"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r209 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "209"), 209, concat!("$", "209"))
+        ..RegisterDescriptor::new(concat!("$", "209"), 209, concat!("$", "209"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r210 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "210"), 210, concat!("$", "210"))
+        ..RegisterDescriptor::new(concat!("$", "210"), 210, concat!("$", "210"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r211 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "211"), 211, concat!("$", "211"))
+        ..RegisterDescriptor::new(concat!("$", "211"), 211, concat!("$", "211"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r212 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "212"), 212, concat!("$", "212"))
+        ..RegisterDescriptor::new(concat!("$", "212"), 212, concat!("$", "212"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r213 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "213"), 213, concat!("$", "213"))
+        ..RegisterDescriptor::new(concat!("$", "213"), 213, concat!("$", "213"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r214 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "214"), 214, concat!("$", "214"))
+        ..RegisterDescriptor::new(concat!("$", "214"), 214, concat!("$", "214"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r215 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "215"), 215, concat!("$", "215"))
+        ..RegisterDescriptor::new(concat!("$", "215"), 215, concat!("$", "215"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r216 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "216"), 216, concat!("$", "216"))
+        ..RegisterDescriptor::new(concat!("$", "216"), 216, concat!("$", "216"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r217 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "217"), 217, concat!("$", "217"))
+        ..RegisterDescriptor::new(concat!("$", "217"), 217, concat!("$", "217"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r218 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "218"), 218, concat!("$", "218"))
+        ..RegisterDescriptor::new(concat!("$", "218"), 218, concat!("$", "218"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r219 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "219"), 219, concat!("$", "219"))
+        ..RegisterDescriptor::new(concat!("$", "219"), 219, concat!("$", "219"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r220 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "220"), 220, concat!("$", "220"))
+        ..RegisterDescriptor::new(concat!("$", "220"), 220, concat!("$", "220"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r221 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "221"), 221, concat!("$", "221"))
+        ..RegisterDescriptor::new(concat!("$", "221"), 221, concat!("$", "221"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r222 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "222"), 222, concat!("$", "222"))
+        ..RegisterDescriptor::new(concat!("$", "222"), 222, concat!("$", "222"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r223 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "223"), 223, concat!("$", "223"))
+        ..RegisterDescriptor::new(concat!("$", "223"), 223, concat!("$", "223"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r224 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "224"), 224, concat!("$", "224"))
+        ..RegisterDescriptor::new(concat!("$", "224"), 224, concat!("$", "224"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r225 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "225"), 225, concat!("$", "225"))
+        ..RegisterDescriptor::new(concat!("$", "225"), 225, concat!("$", "225"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r226 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "226"), 226, concat!("$", "226"))
+        ..RegisterDescriptor::new(concat!("$", "226"), 226, concat!("$", "226"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r227 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "227"), 227, concat!("$", "227"))
+        ..RegisterDescriptor::new(concat!("$", "227"), 227, concat!("$", "227"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r228 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "228"), 228, concat!("$", "228"))
+        ..RegisterDescriptor::new(concat!("$", "228"), 228, concat!("$", "228"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r229 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "229"), 229, concat!("$", "229"))
+        ..RegisterDescriptor::new(concat!("$", "229"), 229, concat!("$", "229"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r230 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "230"), 230, concat!("$", "230"))
+        ..RegisterDescriptor::new(concat!("$", "230"), 230, concat!("$", "230"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r231 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "231"), 231, concat!("$", "231"))
+        ..RegisterDescriptor::new(concat!("$", "231"), 231, concat!("$", "231"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r232 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "232"), 232, concat!("$", "232"))
+        ..RegisterDescriptor::new(concat!("$", "232"), 232, concat!("$", "232"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r233 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "233"), 233, concat!("$", "233"))
+        ..RegisterDescriptor::new(concat!("$", "233"), 233, concat!("$", "233"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r234 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "234"), 234, concat!("$", "234"))
+        ..RegisterDescriptor::new(concat!("$", "234"), 234, concat!("$", "234"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r235 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "235"), 235, concat!("$", "235"))
+        ..RegisterDescriptor::new(concat!("$", "235"), 235, concat!("$", "235"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r236 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "236"), 236, concat!("$", "236"))
+        ..RegisterDescriptor::new(concat!("$", "236"), 236, concat!("$", "236"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r237 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "237"), 237, concat!("$", "237"))
+        ..RegisterDescriptor::new(concat!("$", "237"), 237, concat!("$", "237"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r238 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "238"), 238, concat!("$", "238"))
+        ..RegisterDescriptor::new(concat!("$", "238"), 238, concat!("$", "238"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r239 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "239"), 239, concat!("$", "239"))
+        ..RegisterDescriptor::new(concat!("$", "239"), 239, concat!("$", "239"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r240 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "240"), 240, concat!("$", "240"))
+        ..RegisterDescriptor::new(concat!("$", "240"), 240, concat!("$", "240"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r241 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "241"), 241, concat!("$", "241"))
+        ..RegisterDescriptor::new(concat!("$", "241"), 241, concat!("$", "241"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r242 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "242"), 242, concat!("$", "242"))
+        ..RegisterDescriptor::new(concat!("$", "242"), 242, concat!("$", "242"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r243 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "243"), 243, concat!("$", "243"))
+        ..RegisterDescriptor::new(concat!("$", "243"), 243, concat!("$", "243"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r244 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "244"), 244, concat!("$", "244"))
+        ..RegisterDescriptor::new(concat!("$", "244"), 244, concat!("$", "244"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r245 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "245"), 245, concat!("$", "245"))
+        ..RegisterDescriptor::new(concat!("$", "245"), 245, concat!("$", "245"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r246 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "246"), 246, concat!("$", "246"))
+        ..RegisterDescriptor::new(concat!("$", "246"), 246, concat!("$", "246"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r247 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "247"), 247, concat!("$", "247"))
+        ..RegisterDescriptor::new(concat!("$", "247"), 247, concat!("$", "247"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r248 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "248"), 248, concat!("$", "248"))
+        ..RegisterDescriptor::new(concat!("$", "248"), 248, concat!("$", "248"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r249 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "249"), 249, concat!("$", "249"))
+        ..RegisterDescriptor::new(concat!("$", "249"), 249, concat!("$", "249"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r250 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "250"), 250, concat!("$", "250"))
+        ..RegisterDescriptor::new(concat!("$", "250"), 250, concat!("$", "250"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r251 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "251"), 251, concat!("$", "251"))
+        ..RegisterDescriptor::new(concat!("$", "251"), 251, concat!("$", "251"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r252 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "252"), 252, concat!("$", "252"))
+        ..RegisterDescriptor::new(concat!("$", "252"), 252, concat!("$", "252"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r253 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "253"), 253, concat!("$", "253"))
+        ..RegisterDescriptor::new(concat!("$", "253"), 253, concat!("$", "253"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r254 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "254"), 254, concat!("$", "254"))
+        ..RegisterDescriptor::new(concat!("$", "254"), 254, concat!("$", "254"), true)
     }
     .check_panic_chain();
     table[R4000AllegrexVfpuControl::r255 as usize] = RegisterDescriptor {
-        ..RegisterDescriptor::new(concat!("$", "255"), 255, concat!("$", "255"))
+        ..RegisterDescriptor::new(concat!("$", "255"), 255, concat!("$", "255"), true)
     }
     .check_panic_chain();
     let mut i = 0;
     while i < 128 {
-        assert!(table[i].value as usize - 128 == i, "Broken register index?");
+        assert!(
+            table[i].value() as usize - 128 == i,
+            "Broken register index?"
+        );
         i += 1;
     }
     table
@@ -817,5 +820,87 @@ impl Index<R4000AllegrexVfpuControl> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
     fn index(&self, index: R4000AllegrexVfpuControl) -> &Self::Output {
         &self[index as usize]
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_dollar() {
+        for x in &R4000ALLEGREX_VFPUCONTROL {
+            if x.has_dollar {
+                assert!(
+                    x.name.starts_with('$'),
+                    "Register {} is missing dollar sign",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi64
+                );
+            } else {
+                assert!(
+                    !x.name.starts_with('$'),
+                    "Register {} has dollar sign when it shouldn't",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi64
+                );
+            }
+        }
     }
 }

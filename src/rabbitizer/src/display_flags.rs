@@ -20,6 +20,9 @@ pub struct InstructionDisplayFlags {
     /// Use named registers for R4000 Allegrex's VFPU control registers
     named_r4000allegrex_vfpucontrol: bool,
 
+    /// Use dollar sign (`$`) on named registers that support it.
+    use_dollar: bool,
+
     /// The minimal number of characters to left-align the opcode name
     opcode_ljust: u32,
     /// Generate a pseudo-disassembly comment when disassembling non implemented instructions
@@ -49,6 +52,8 @@ impl InstructionDisplayFlags {
             named_vr4300_cop0: false,
             named_rsp_cop0: false,
             named_r4000allegrex_vfpucontrol: false,
+
+            use_dollar: true,
 
             opcode_ljust: 7 + 4,
             unknown_instr_comment: true,
@@ -190,6 +195,20 @@ impl InstructionDisplayFlags {
             named_r4000allegrex_vfpucontrol,
             ..self
         }
+    }
+
+    #[must_use]
+    pub const fn use_dollar(&self) -> bool {
+        self.named_registers && self.use_dollar
+    }
+    /// Use dollar sign (`$`) on named registers that support it.
+    pub fn use_dollar_mut(&mut self) -> &mut bool {
+        &mut self.use_dollar
+    }
+    /// Use dollar sign (`$`) on named registers that support it.
+    #[must_use]
+    pub const fn with_use_dollar(self, use_dollar: bool) -> Self {
+        Self { use_dollar, ..self }
     }
 
     #[must_use]

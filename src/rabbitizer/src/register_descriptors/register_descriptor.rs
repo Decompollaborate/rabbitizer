@@ -10,6 +10,7 @@ pub struct RegisterDescriptor {
     pub(crate) name: &'static str,
     pub(crate) value: u8,
     pub(crate) name_numeric: &'static str,
+    pub(crate) has_dollar: bool,
 
     pub(crate) name_o32: Option<&'static str>,
     pub(crate) name_o64: Option<&'static str>,
@@ -52,6 +53,7 @@ impl RegisterDescriptor {
             name: "$0",
             value: 0,
             name_numeric: "$0",
+            has_dollar: true,
 
             name_o32: None,
             name_o64: None,
@@ -76,11 +78,17 @@ impl RegisterDescriptor {
         }
     }
 
-    pub(crate) const fn new(name: &'static str, value: u8, name_numeric: &'static str) -> Self {
+    pub(crate) const fn new(
+        name: &'static str,
+        value: u8,
+        name_numeric: &'static str,
+        has_dollar: bool,
+    ) -> Self {
         Self {
             name,
             value,
             name_numeric,
+            has_dollar,
             ..Self::default()
         }
     }
@@ -281,6 +289,11 @@ impl RegisterDescriptor {
 }
 
 impl RegisterDescriptor {
+    #[must_use]
+    pub(crate) const fn value(&self) -> u8 {
+        self.value
+    }
+
     /// Return the numeric "name" for the register.
     #[must_use]
     pub const fn name_numeric(&self) -> &'static str {
@@ -290,9 +303,13 @@ impl RegisterDescriptor {
     /// Return the an actual name for the register.
     ///
     /// This name may be different depending on the `abi` parameter.
+    ///
+    /// Many registers have a `$` (dollar sign) prefix on their name which can
+    /// be stripped with the `strip_dollar` parameter.
     #[must_use]
-    pub const fn name_abi(&self, abi: Abi) -> &'static str {
-        match abi {
+    // TODO: make this function const on Rust 1.86.0
+    pub fn name_abi(&self, abi: Abi, strip_dollar: bool) -> &'static str {
+        let name = match abi {
             Abi::O32 => {
                 if let Some(x) = self.name_o32 {
                     x
@@ -335,6 +352,14 @@ impl RegisterDescriptor {
                     self.name
                 }
             }
+        };
+
+        if strip_dollar && self.has_dollar {
+            let (dollar, new_name) = name.split_at(1);
+            debug_assert!(dollar.eq_ignore_ascii_case("$"), "A register has a `has_dollar` attribute, but the register name is missing the dollar sign.");
+            new_name
+        } else {
+            name
         }
     }
 

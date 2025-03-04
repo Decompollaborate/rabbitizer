@@ -50,7 +50,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fv0"),
         name_eabi32: Some("$fv0"),
         name_eabi64: Some("$fv0"),
-        ..RegisterDescriptor::new(concat!("$", "fv0"), 0, concat!("$f", "0"))
+        ..RegisterDescriptor::new(concat!("$", "fv0"), 0, concat!("$f", "0"), true)
     }
     .check_panic_chain();
     table[Cop1::fv0f as usize] = RegisterDescriptor {
@@ -59,7 +59,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft12"),
         name_eabi32: Some("$fv0f"),
         name_eabi64: Some("$fv1"),
-        ..RegisterDescriptor::new(concat!("$", "fv0f"), 1, concat!("$f", "1"))
+        ..RegisterDescriptor::new(concat!("$", "fv0f"), 1, concat!("$f", "1"), true)
     }
     .check_panic_chain();
     table[Cop1::fv1 as usize] = RegisterDescriptor {
@@ -68,7 +68,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fv1"),
         name_eabi32: Some("$fv1"),
         name_eabi64: Some("$ft0"),
-        ..RegisterDescriptor::new(concat!("$", "fv1"), 2, concat!("$f", "2"))
+        ..RegisterDescriptor::new(concat!("$", "fv1"), 2, concat!("$f", "2"), true)
     }
     .check_panic_chain();
     table[Cop1::fv1f as usize] = RegisterDescriptor {
@@ -77,7 +77,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft13"),
         name_eabi32: Some("$fv1f"),
         name_eabi64: Some("$ft1"),
-        ..RegisterDescriptor::new(concat!("$", "fv1f"), 3, concat!("$f", "3"))
+        ..RegisterDescriptor::new(concat!("$", "fv1f"), 3, concat!("$f", "3"), true)
     }
     .check_panic_chain();
     table[Cop1::ft0 as usize] = RegisterDescriptor {
@@ -86,7 +86,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft0"),
         name_eabi32: Some("$ft0"),
         name_eabi64: Some("$ft2"),
-        ..RegisterDescriptor::new(concat!("$", "ft0"), 4, concat!("$f", "4"))
+        ..RegisterDescriptor::new(concat!("$", "ft0"), 4, concat!("$f", "4"), true)
     }
     .check_panic_chain();
     table[Cop1::ft0f as usize] = RegisterDescriptor {
@@ -95,7 +95,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft1"),
         name_eabi32: Some("$ft0f"),
         name_eabi64: Some("$ft3"),
-        ..RegisterDescriptor::new(concat!("$", "ft0f"), 5, concat!("$f", "5"))
+        ..RegisterDescriptor::new(concat!("$", "ft0f"), 5, concat!("$f", "5"), true)
     }
     .check_panic_chain();
     table[Cop1::ft1 as usize] = RegisterDescriptor {
@@ -104,7 +104,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft2"),
         name_eabi32: Some("$ft1"),
         name_eabi64: Some("$ft4"),
-        ..RegisterDescriptor::new(concat!("$", "ft1"), 6, concat!("$f", "6"))
+        ..RegisterDescriptor::new(concat!("$", "ft1"), 6, concat!("$f", "6"), true)
     }
     .check_panic_chain();
     table[Cop1::ft1f as usize] = RegisterDescriptor {
@@ -113,7 +113,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft3"),
         name_eabi32: Some("$ft1f"),
         name_eabi64: Some("$ft5"),
-        ..RegisterDescriptor::new(concat!("$", "ft1f"), 7, concat!("$f", "7"))
+        ..RegisterDescriptor::new(concat!("$", "ft1f"), 7, concat!("$f", "7"), true)
     }
     .check_panic_chain();
     table[Cop1::ft2 as usize] = RegisterDescriptor {
@@ -122,7 +122,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft4"),
         name_eabi32: Some("$ft2"),
         name_eabi64: Some("$ft6"),
-        ..RegisterDescriptor::new(concat!("$", "ft2"), 8, concat!("$f", "8"))
+        ..RegisterDescriptor::new(concat!("$", "ft2"), 8, concat!("$f", "8"), true)
     }
     .check_panic_chain();
     table[Cop1::ft2f as usize] = RegisterDescriptor {
@@ -131,7 +131,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft5"),
         name_eabi32: Some("$ft2f"),
         name_eabi64: Some("$ft7"),
-        ..RegisterDescriptor::new(concat!("$", "ft2f"), 9, concat!("$f", "9"))
+        ..RegisterDescriptor::new(concat!("$", "ft2f"), 9, concat!("$f", "9"), true)
     }
     .check_panic_chain();
     table[Cop1::ft3 as usize] = RegisterDescriptor {
@@ -140,7 +140,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft6"),
         name_eabi32: Some("$ft3"),
         name_eabi64: Some("$ft8"),
-        ..RegisterDescriptor::new(concat!("$", "ft3"), 10, concat!("$f", "10"))
+        ..RegisterDescriptor::new(concat!("$", "ft3"), 10, concat!("$f", "10"), true)
     }
     .check_panic_chain();
     table[Cop1::ft3f as usize] = RegisterDescriptor {
@@ -149,7 +149,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft7"),
         name_eabi32: Some("$ft3f"),
         name_eabi64: Some("$ft9"),
-        ..RegisterDescriptor::new(concat!("$", "ft3f"), 11, concat!("$f", "11"))
+        ..RegisterDescriptor::new(concat!("$", "ft3f"), 11, concat!("$f", "11"), true)
     }
     .check_panic_chain();
     table[Cop1::fa0 as usize] = RegisterDescriptor {
@@ -158,7 +158,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa0"),
         name_eabi32: Some("$fa0"),
         name_eabi64: Some("$fa0"),
-        ..RegisterDescriptor::new(concat!("$", "fa0"), 12, concat!("$f", "12"))
+        ..RegisterDescriptor::new(concat!("$", "fa0"), 12, concat!("$f", "12"), true)
     }
     .check_panic_chain();
     table[Cop1::fa0f as usize] = RegisterDescriptor {
@@ -167,7 +167,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa1"),
         name_eabi32: Some("$fa0f"),
         name_eabi64: Some("$fa1"),
-        ..RegisterDescriptor::new(concat!("$", "fa0f"), 13, concat!("$f", "13"))
+        ..RegisterDescriptor::new(concat!("$", "fa0f"), 13, concat!("$f", "13"), true)
     }
     .check_panic_chain();
     table[Cop1::fa1 as usize] = RegisterDescriptor {
@@ -176,7 +176,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa2"),
         name_eabi32: Some("$fa1"),
         name_eabi64: Some("$fa2"),
-        ..RegisterDescriptor::new(concat!("$", "fa1"), 14, concat!("$f", "14"))
+        ..RegisterDescriptor::new(concat!("$", "fa1"), 14, concat!("$f", "14"), true)
     }
     .check_panic_chain();
     table[Cop1::fa1f as usize] = RegisterDescriptor {
@@ -185,7 +185,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa3"),
         name_eabi32: Some("$fa1f"),
         name_eabi64: Some("$fa3"),
-        ..RegisterDescriptor::new(concat!("$", "fa1f"), 15, concat!("$f", "15"))
+        ..RegisterDescriptor::new(concat!("$", "fa1f"), 15, concat!("$f", "15"), true)
     }
     .check_panic_chain();
     table[Cop1::ft4 as usize] = RegisterDescriptor {
@@ -194,7 +194,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa4"),
         name_eabi32: Some("$fa2"),
         name_eabi64: Some("$fa4"),
-        ..RegisterDescriptor::new(concat!("$", "ft4"), 16, concat!("$f", "16"))
+        ..RegisterDescriptor::new(concat!("$", "ft4"), 16, concat!("$f", "16"), true)
     }
     .check_panic_chain();
     table[Cop1::ft4f as usize] = RegisterDescriptor {
@@ -203,7 +203,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa5"),
         name_eabi32: Some("$fa2f"),
         name_eabi64: Some("$fa5"),
-        ..RegisterDescriptor::new(concat!("$", "ft4f"), 17, concat!("$f", "17"))
+        ..RegisterDescriptor::new(concat!("$", "ft4f"), 17, concat!("$f", "17"), true)
     }
     .check_panic_chain();
     table[Cop1::ft5 as usize] = RegisterDescriptor {
@@ -212,7 +212,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa6"),
         name_eabi32: Some("$fa3"),
         name_eabi64: Some("$fa6"),
-        ..RegisterDescriptor::new(concat!("$", "ft5"), 18, concat!("$f", "18"))
+        ..RegisterDescriptor::new(concat!("$", "ft5"), 18, concat!("$f", "18"), true)
     }
     .check_panic_chain();
     table[Cop1::ft5f as usize] = RegisterDescriptor {
@@ -221,7 +221,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fa7"),
         name_eabi32: Some("$fa3f"),
         name_eabi64: Some("$fa7"),
-        ..RegisterDescriptor::new(concat!("$", "ft5f"), 19, concat!("$f", "19"))
+        ..RegisterDescriptor::new(concat!("$", "ft5f"), 19, concat!("$f", "19"), true)
     }
     .check_panic_chain();
     table[Cop1::fs0 as usize] = RegisterDescriptor {
@@ -230,7 +230,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft8"),
         name_eabi32: Some("$fs0"),
         name_eabi64: Some("$fs0"),
-        ..RegisterDescriptor::new(concat!("$", "fs0"), 20, concat!("$f", "20"))
+        ..RegisterDescriptor::new(concat!("$", "fs0"), 20, concat!("$f", "20"), true)
     }
     .check_panic_chain();
     table[Cop1::fs0f as usize] = RegisterDescriptor {
@@ -239,7 +239,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft9"),
         name_eabi32: Some("$fs0f"),
         name_eabi64: Some("$fs1"),
-        ..RegisterDescriptor::new(concat!("$", "fs0f"), 21, concat!("$f", "21"))
+        ..RegisterDescriptor::new(concat!("$", "fs0f"), 21, concat!("$f", "21"), true)
     }
     .check_panic_chain();
     table[Cop1::fs1 as usize] = RegisterDescriptor {
@@ -248,7 +248,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft10"),
         name_eabi32: Some("$fs1"),
         name_eabi64: Some("$fs2"),
-        ..RegisterDescriptor::new(concat!("$", "fs1"), 22, concat!("$f", "22"))
+        ..RegisterDescriptor::new(concat!("$", "fs1"), 22, concat!("$f", "22"), true)
     }
     .check_panic_chain();
     table[Cop1::fs1f as usize] = RegisterDescriptor {
@@ -257,7 +257,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$ft11"),
         name_eabi32: Some("$fs1f"),
         name_eabi64: Some("$fs3"),
-        ..RegisterDescriptor::new(concat!("$", "fs1f"), 23, concat!("$f", "23"))
+        ..RegisterDescriptor::new(concat!("$", "fs1f"), 23, concat!("$f", "23"), true)
     }
     .check_panic_chain();
     table[Cop1::fs2 as usize] = RegisterDescriptor {
@@ -266,7 +266,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs0"),
         name_eabi32: Some("$fs2"),
         name_eabi64: Some("$fs4"),
-        ..RegisterDescriptor::new(concat!("$", "fs2"), 24, concat!("$f", "24"))
+        ..RegisterDescriptor::new(concat!("$", "fs2"), 24, concat!("$f", "24"), true)
     }
     .check_panic_chain();
     table[Cop1::fs2f as usize] = RegisterDescriptor {
@@ -275,7 +275,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs1"),
         name_eabi32: Some("$fs2f"),
         name_eabi64: Some("$fs5"),
-        ..RegisterDescriptor::new(concat!("$", "fs2f"), 25, concat!("$f", "25"))
+        ..RegisterDescriptor::new(concat!("$", "fs2f"), 25, concat!("$f", "25"), true)
     }
     .check_panic_chain();
     table[Cop1::fs3 as usize] = RegisterDescriptor {
@@ -284,7 +284,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs2"),
         name_eabi32: Some("$fs3"),
         name_eabi64: Some("$fs6"),
-        ..RegisterDescriptor::new(concat!("$", "fs3"), 26, concat!("$f", "26"))
+        ..RegisterDescriptor::new(concat!("$", "fs3"), 26, concat!("$f", "26"), true)
     }
     .check_panic_chain();
     table[Cop1::fs3f as usize] = RegisterDescriptor {
@@ -293,7 +293,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs3"),
         name_eabi32: Some("$fs3f"),
         name_eabi64: Some("$fs7"),
-        ..RegisterDescriptor::new(concat!("$", "fs3f"), 27, concat!("$f", "27"))
+        ..RegisterDescriptor::new(concat!("$", "fs3f"), 27, concat!("$f", "27"), true)
     }
     .check_panic_chain();
     table[Cop1::fs4 as usize] = RegisterDescriptor {
@@ -302,7 +302,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs4"),
         name_eabi32: Some("$fs4"),
         name_eabi64: Some("$fs8"),
-        ..RegisterDescriptor::new(concat!("$", "fs4"), 28, concat!("$f", "28"))
+        ..RegisterDescriptor::new(concat!("$", "fs4"), 28, concat!("$f", "28"), true)
     }
     .check_panic_chain();
     table[Cop1::fs4f as usize] = RegisterDescriptor {
@@ -311,7 +311,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs5"),
         name_eabi32: Some("$fs4f"),
         name_eabi64: Some("$fs9"),
-        ..RegisterDescriptor::new(concat!("$", "fs4f"), 29, concat!("$f", "29"))
+        ..RegisterDescriptor::new(concat!("$", "fs4f"), 29, concat!("$f", "29"), true)
     }
     .check_panic_chain();
     table[Cop1::fs5 as usize] = RegisterDescriptor {
@@ -320,7 +320,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs6"),
         name_eabi32: Some("$fs5"),
         name_eabi64: Some("$fs10"),
-        ..RegisterDescriptor::new(concat!("$", "fs5"), 30, concat!("$f", "30"))
+        ..RegisterDescriptor::new(concat!("$", "fs5"), 30, concat!("$f", "30"), true)
     }
     .check_panic_chain();
     table[Cop1::fs5f as usize] = RegisterDescriptor {
@@ -329,12 +329,12 @@ pub static COP1: [RegisterDescriptor; 32] = {
         name_n64: Some("$fs7"),
         name_eabi32: Some("$fs5f"),
         name_eabi64: Some("$fs11"),
-        ..RegisterDescriptor::new(concat!("$", "fs5f"), 31, concat!("$f", "31"))
+        ..RegisterDescriptor::new(concat!("$", "fs5f"), 31, concat!("$f", "31"), true)
     }
     .check_panic_chain();
     let mut i = 0;
     while i < 32 {
-        assert!(table[i].value as usize == i, "Broken register index?");
+        assert!(table[i].value() as usize == i, "Broken register index?");
         i += 1;
     }
     table
@@ -401,5 +401,87 @@ impl Index<Cop1> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
     fn index(&self, index: Cop1) -> &Self::Output {
         &self[index as usize]
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_dollar() {
+        for x in &COP1 {
+            if x.has_dollar {
+                assert!(
+                    x.name.starts_with('$'),
+                    "Register {} is missing dollar sign",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi64
+                );
+            } else {
+                assert!(
+                    !x.name.starts_with('$'),
+                    "Register {} has dollar sign when it shouldn't",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi64
+                );
+            }
+        }
     }
 }

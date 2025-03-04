@@ -111,6 +111,20 @@ fn check_none_instructions_mips_3() {
         },
         TestEntry {
             instr: Instruction::new(
+                0x25298DE0,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default().with_use_dollar(false),
+            valid: true,
+            expected: "addiu       t1, t1, -0x7220",
+            expected_opcode: Opcode::core_addiu,
+            opcode_str: "addiu",
+            operands_str: [Some("t1"), Some("t1"), Some("-0x7220"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
                 0xAD000000,
                 Vram::new(0x80000000),
                 InstructionFlags::new(IsaVersion::MIPS_III),
@@ -772,6 +786,20 @@ fn check_none_instructions_mips_3() {
             expected_opcode: Opcode::core_add_s,
             opcode_str: "add.s",
             operands_str: [Some("$ft2"), Some("$ft4"), Some("$fs1"), None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x46168200,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_III),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default().with_use_dollar(false),
+            valid: true,
+            expected: "add.s       ft2, ft4, fs1",
+            expected_opcode: Opcode::core_add_s,
+            opcode_str: "add.s",
+            operands_str: [Some("ft2"), Some("ft4"), Some("fs1"), None, None],
         },
         TestEntry {
             instr: Instruction::new(

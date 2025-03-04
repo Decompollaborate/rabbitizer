@@ -54,14 +54,14 @@ pub trait Register: PartialEq + PartialOrd + Default {
     ///
     /// This name may be different depending on the `abi` parameter.
     #[must_use]
-    fn name_abi(&self, abi: Abi) -> &'static str {
-        self.get_descriptor().name_abi(abi)
+    fn name_abi(&self, abi: Abi, strip_dollar: bool) -> &'static str {
+        self.get_descriptor().name_abi(abi, strip_dollar)
     }
     /// Returns either the numeric name or the abi name based on the `use_named` parameter.
     #[must_use]
-    fn either_name(&self, abi: Abi, use_named: bool) -> &'static str {
+    fn either_name(&self, abi: Abi, use_named: bool, strip_dollar: bool) -> &'static str {
         if use_named {
-            self.get_descriptor().name_abi(abi)
+            self.name_abi(abi, strip_dollar)
         } else {
             self.name_numeric()
         }

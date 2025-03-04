@@ -84,7 +84,11 @@ where
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900ee_vfs_unchecked();
-        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(
+            instr.abi(),
+            myself.display_flags.named_registers(),
+            !myself.display_flags.use_dollar(),
+        );
 
         write!(f, "{}", s)
     }
@@ -94,7 +98,11 @@ where
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900ee_vft_unchecked();
-        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(
+            instr.abi(),
+            myself.display_flags.named_registers(),
+            !myself.display_flags.use_dollar(),
+        );
 
         write!(f, "{}", s)
     }
@@ -104,7 +112,11 @@ where
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900ee_vfd_unchecked();
-        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(
+            instr.abi(),
+            myself.display_flags.named_registers(),
+            !myself.display_flags.use_dollar(),
+        );
 
         write!(f, "{}", s)
     }
@@ -115,7 +127,11 @@ where
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900ee_vis_unchecked();
-        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(
+            instr.abi(),
+            myself.display_flags.named_registers(),
+            !myself.display_flags.use_dollar(),
+        );
 
         write!(f, "{}", s)
     }
@@ -125,7 +141,11 @@ where
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900ee_vit_unchecked();
-        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(
+            instr.abi(),
+            myself.display_flags.named_registers(),
+            !myself.display_flags.use_dollar(),
+        );
 
         write!(f, "{}", s)
     }
@@ -135,7 +155,11 @@ where
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_r5900ee_vid_unchecked();
-        let s = reg.either_name(instr.abi(), myself.display_flags.named_registers());
+        let s = reg.either_name(
+            instr.abi(),
+            myself.display_flags.named_registers(),
+            !myself.display_flags.use_dollar(),
+        );
 
         write!(f, "{}", s)
     }

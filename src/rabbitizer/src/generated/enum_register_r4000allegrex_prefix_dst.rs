@@ -23,49 +23,49 @@ pub static R4000ALLEGREX_PREFIX_DST: [RegisterDescriptor; 8] = {
     table[R4000AllegrexPrefixDst::none as usize] = RegisterDescriptor {
         name_numeric: "",
         name: "",
-        ..RegisterDescriptor::new("none", 0, concat!("$", "0"))
+        ..RegisterDescriptor::new("none", 0, concat!("$", "0"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixDst::zero as usize] = RegisterDescriptor {
         name_numeric: "0",
         name: "0",
-        ..RegisterDescriptor::new("zero", 1, concat!("$", "1"))
+        ..RegisterDescriptor::new("zero", 1, concat!("$", "1"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixDst::INVALID_2 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_2",
-        ..RegisterDescriptor::new("INVALID_2", 2, concat!("$", "2"))
+        ..RegisterDescriptor::new("INVALID_2", 2, concat!("$", "2"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixDst::one as usize] = RegisterDescriptor {
         name_numeric: "1",
         name: "1",
-        ..RegisterDescriptor::new("one", 3, concat!("$", "3"))
+        ..RegisterDescriptor::new("one", 3, concat!("$", "3"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixDst::M as usize] = RegisterDescriptor {
         name_numeric: "M",
-        ..RegisterDescriptor::new("M", 4, concat!("$", "4"))
+        ..RegisterDescriptor::new("M", 4, concat!("$", "4"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixDst::INVALID_5 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_5",
-        ..RegisterDescriptor::new("INVALID_5", 5, concat!("$", "5"))
+        ..RegisterDescriptor::new("INVALID_5", 5, concat!("$", "5"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixDst::INVALID_6 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_6",
-        ..RegisterDescriptor::new("INVALID_6", 6, concat!("$", "6"))
+        ..RegisterDescriptor::new("INVALID_6", 6, concat!("$", "6"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixDst::INVALID_7 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_7",
-        ..RegisterDescriptor::new("INVALID_7", 7, concat!("$", "7"))
+        ..RegisterDescriptor::new("INVALID_7", 7, concat!("$", "7"), false)
     }
     .check_panic_chain();
     let mut i = 0;
     while i < 8 {
-        assert!(table[i].value as usize == i, "Broken register index?");
+        assert!(table[i].value() as usize == i, "Broken register index?");
         i += 1;
     }
     table
@@ -108,5 +108,87 @@ impl Index<R4000AllegrexPrefixDst> for [RegisterDescriptor] {
     type Output = RegisterDescriptor;
     fn index(&self, index: R4000AllegrexPrefixDst) -> &Self::Output {
         &self[index as usize]
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_dollar() {
+        for x in &R4000ALLEGREX_PREFIX_DST {
+            if x.has_dollar {
+                assert!(
+                    x.name.starts_with('$'),
+                    "Register {} is missing dollar sign",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| x.starts_with('$')),
+                    "Register {:?} is missing dollar sign",
+                    x.name_eabi64
+                );
+            } else {
+                assert!(
+                    !x.name.starts_with('$'),
+                    "Register {} has dollar sign when it shouldn't",
+                    x.name
+                );
+                assert!(
+                    x.name_o32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o32
+                );
+                assert!(
+                    x.name_o64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_o64
+                );
+                assert!(
+                    x.name_n32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n32
+                );
+                assert!(
+                    x.name_n64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_n64
+                );
+                assert!(
+                    x.name_eabi32.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi32
+                );
+                assert!(
+                    x.name_eabi64.is_none_or(|x| !x.starts_with('$')),
+                    "Register {:?} has dollar sign when it shouldn't",
+                    x.name_eabi64
+                );
+            }
+        }
     }
 }

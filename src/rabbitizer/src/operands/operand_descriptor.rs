@@ -31,7 +31,7 @@ impl OperandDescriptor {
     pub(crate) const fn check_panic(&self) {
         assert!(
             !self.name.is_empty(),
-            "An opcode must not have an empty name"
+            "An operand must not have an empty name"
         );
     }
 

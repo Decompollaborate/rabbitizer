@@ -30,7 +30,7 @@ pub enum REGISTER_ENUM_NAME {
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
     table[ REGISTER_ENUM_NAME :: REG_NAME(name) as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
-        ..RegisterDescriptor::new( #name, value, concat!("$", #value) ) \
+        ..RegisterDescriptor::new( #name, value, concat!("$", #value), false) \
     } .check_panic_chain();
 
 #define REGISTER_COUNT 16
@@ -42,7 +42,7 @@ pub static RSP_COP0: [RegisterDescriptor; REGISTER_COUNT] = {
 
     let mut i = 0;
     while i < REGISTER_COUNT {
-        assert!(table[i].value as usize == i, "Broken register index?");
+        assert!(table[i].value() as usize == i, "Broken register index?");
 
         i += 1;
     }
@@ -94,5 +94,33 @@ impl Index<REGISTER_ENUM_NAME> for [RegisterDescriptor] {
 
     fn index(&self, index: REGISTER_ENUM_NAME) -> &Self::Output {
         &self[index as usize]
+    }
+}
+
+SPECIAL_RS_TAG(cfg(test))
+mod tests {
+    use super::*;
+
+    SPECIAL_RS_TAG(test)
+    fn check_dollar() {
+        for x in &RSP_COP0 {
+            if x.has_dollar {
+                assert!(x.name.starts_with('$'), "Register {} is missing dollar sign", x.name);
+                assert!(x.name_o32.is_none_or(|x| x.starts_with('$')), "Register {:?} is missing dollar sign", x.name_o32);
+                assert!(x.name_o64.is_none_or(|x| x.starts_with('$')), "Register {:?} is missing dollar sign", x.name_o64);
+                assert!(x.name_n32.is_none_or(|x| x.starts_with('$')), "Register {:?} is missing dollar sign", x.name_n32);
+                assert!(x.name_n64.is_none_or(|x| x.starts_with('$')), "Register {:?} is missing dollar sign", x.name_n64);
+                assert!(x.name_eabi32.is_none_or(|x| x.starts_with('$')), "Register {:?} is missing dollar sign", x.name_eabi32);
+                assert!(x.name_eabi64.is_none_or(|x| x.starts_with('$')), "Register {:?} is missing dollar sign", x.name_eabi64);
+            } else {
+                assert!(!x.name.starts_with('$'), "Register {} has dollar sign when it shouldn't", x.name);
+                assert!(x.name_o32.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_o32);
+                assert!(x.name_o64.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_o64);
+                assert!(x.name_n32.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_n32);
+                assert!(x.name_n64.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_n64);
+                assert!(x.name_eabi32.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_eabi32);
+                assert!(x.name_eabi64.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_eabi64);
+            }
+        }
     }
 }
