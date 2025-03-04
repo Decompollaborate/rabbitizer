@@ -84,11 +84,19 @@ where
     ) -> fmt::Result {
         let instr = myself.instr;
         let reg = instr.field_cop0d_unchecked();
-        let s = reg.either_name(
-            instr.abi(),
-            myself.display_flags.named_vr4300_cop0(),
-            !myself.display_flags.use_dollar(),
-        );
+
+        let use_named;
+
+        #[cfg(feature = "MIPS_III")]
+        {
+            use_named = myself.display_flags.named_vr4300_cop0();
+        }
+        #[cfg(not(feature = "MIPS_III"))]
+        {
+            use_named = true;
+        }
+
+        let s = reg.either_name(instr.abi(), use_named, !myself.display_flags.use_dollar());
 
         write!(f, "{}", s)
     }

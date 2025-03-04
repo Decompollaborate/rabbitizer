@@ -3,7 +3,38 @@
 
 use crate::opcodes::{OpcodeCategory, OpcodeCategoryDescriptor, OPCODE_CATEGORIES};
 
-pub const OPCODE_CATEGORY_COUNT: usize = 100;
+pub const OPCODE_CATEGORY_COUNT: usize = {
+    let mut count = 13;
+
+    if cfg!(feature = "MIPS_II") {
+        count += 0;
+    }
+    if cfg!(feature = "MIPS_III") {
+        count += 0;
+    }
+    if cfg!(feature = "MIPS_IV") {
+        count += 0;
+    }
+
+    if cfg!(feature = "RSP") {
+        count += 9;
+    }
+    if cfg!(feature = "R3000GTE") {
+        count += 7;
+    }
+    if cfg!(feature = "R4000ALLEGREX") {
+        count += 45;
+    }
+    if cfg!(feature = "R5900EE") {
+        count += 20;
+    }
+
+    if cfg!(feature = "RspViceMsp") {
+        count += 0;
+    }
+
+    count
+};
 
 impl OpcodeCategory {
     #[must_use]

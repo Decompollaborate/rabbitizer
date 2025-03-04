@@ -192,9 +192,11 @@ impl InstructionFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "MIPS_II")]
     pub const fn pseudo_beqzl(&self) -> bool {
         self.decoding_flags.contains(DecodingFlags::pseudo_beqzl)
     }
+    #[cfg(feature = "MIPS_II")]
     pub fn set_pseudo_beqzl(&mut self, turn_on: bool) {
         if turn_on {
             self.decoding_flags.insert(DecodingFlags::pseudo_beqzl);
@@ -203,6 +205,7 @@ impl InstructionFlags {
         }
     }
     #[must_use]
+    #[cfg(feature = "MIPS_II")]
     pub const fn with_pseudo_beqzl(self, turn_on: bool) -> Self {
         let other = if turn_on {
             self.decoding_flags.union(DecodingFlags::pseudo_beqzl)
@@ -214,9 +217,11 @@ impl InstructionFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "MIPS_II")]
     pub const fn pseudo_bnezl(&self) -> bool {
         self.decoding_flags.contains(DecodingFlags::pseudo_bnezl)
     }
+    #[cfg(feature = "MIPS_II")]
     pub fn set_pseudo_bnezl(&mut self, turn_on: bool) {
         if turn_on {
             self.decoding_flags.insert(DecodingFlags::pseudo_bnezl);
@@ -225,6 +230,7 @@ impl InstructionFlags {
         }
     }
     #[must_use]
+    #[cfg(feature = "MIPS_II")]
     pub const fn with_pseudo_bnezl(self, turn_on: bool) -> Self {
         let other = if turn_on {
             self.decoding_flags.union(DecodingFlags::pseudo_bnezl)
@@ -354,10 +360,12 @@ impl InstructionFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "RspViceMsp")]
     pub const fn gated_rsp_vice_msp(&self) -> bool {
         self.decoding_flags
             .contains(DecodingFlags::gated_rsp_vice_msp)
     }
+    #[cfg(feature = "RspViceMsp")]
     pub fn set_gated_rsp_vice_msp(&mut self, turn_on: bool) {
         if turn_on {
             self.decoding_flags
@@ -368,6 +376,7 @@ impl InstructionFlags {
         }
     }
     #[must_use]
+    #[cfg(feature = "RspViceMsp")]
     pub const fn with_gated_rsp_vice_msp(self, turn_on: bool) -> Self {
         let other = if turn_on {
             self.decoding_flags.union(DecodingFlags::gated_rsp_vice_msp)

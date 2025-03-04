@@ -14,10 +14,13 @@ pub struct InstructionDisplayFlags {
     /// Use the ABI names for the floating point registers when disassembling the floating point (coprocessor 1) instructions
     named_fpr: bool,
     /// Use named registers for VR4300's coprocessor 0 registers
+    #[cfg(feature = "MIPS_III")]
     named_vr4300_cop0: bool,
     /// Use named registers for VR4300's RSP's coprocessor 0 registers
+    #[cfg(feature = "RSP")]
     named_rsp_cop0: bool,
     /// Use named registers for R4000 Allegrex's VFPU control registers
+    #[cfg(feature = "R4000ALLEGREX")]
     named_r4000allegrex_vfpucontrol: bool,
 
     /// Use dollar sign (`$`) on named registers that support it.
@@ -34,7 +37,9 @@ pub struct InstructionDisplayFlags {
     gnu_div: bool,
     sn64_break_fix: bool,
 
+    #[cfg(feature = "R5900EE")]
     r5900ee_modern_gas_instrs_workarounds: bool,
+    #[cfg(feature = "R5900EE")]
     r5900ee_use_dollar: bool,
 
     // Debug specific settings, keep them at the bottom
@@ -49,8 +54,11 @@ impl InstructionDisplayFlags {
             named_registers: true,
             named_gpr: true,
             named_fpr: true,
+            #[cfg(feature = "MIPS_III")]
             named_vr4300_cop0: false,
+            #[cfg(feature = "RSP")]
             named_rsp_cop0: false,
+            #[cfg(feature = "R4000ALLEGREX")]
             named_r4000allegrex_vfpucontrol: false,
 
             use_dollar: true,
@@ -63,7 +71,9 @@ impl InstructionDisplayFlags {
             gnu_div: true,
             sn64_break_fix: false,
 
+            #[cfg(feature = "R5900EE")]
             r5900ee_modern_gas_instrs_workarounds: false,
+            #[cfg(feature = "R5900EE")]
             r5900ee_use_dollar: false,
 
             debug_word_comment_info: false,
@@ -81,7 +91,9 @@ impl InstructionDisplayFlags {
             gnu_div: true,
             sn64_break_fix: false,
 
+            #[cfg(feature = "R5900EE")]
             r5900ee_modern_gas_instrs_workarounds: true,
+            #[cfg(feature = "R5900EE")]
             r5900ee_use_dollar: true,
             ..Self::new()
         }
@@ -95,7 +107,9 @@ impl InstructionDisplayFlags {
             gnu_div: false,
             sn64_break_fix: false,
 
+            #[cfg(feature = "R5900EE")]
             r5900ee_modern_gas_instrs_workarounds: false,
+            #[cfg(feature = "R5900EE")]
             r5900ee_use_dollar: false,
             ..Self::new()
         }
@@ -147,14 +161,17 @@ impl InstructionDisplayFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "MIPS_III")]
     pub const fn named_vr4300_cop0(&self) -> bool {
         self.named_registers && self.named_vr4300_cop0
     }
     /// Use named registers for VR4300's coprocessor 0 registers
+    #[cfg(feature = "MIPS_III")]
     pub fn named_vr4300_cop0_mut(&mut self) -> &mut bool {
         &mut self.named_vr4300_cop0
     }
     #[must_use]
+    #[cfg(feature = "MIPS_III")]
     pub const fn with_named_vr4300_cop0(self, named_vr4300_cop0: bool) -> Self {
         Self {
             named_vr4300_cop0,
@@ -163,14 +180,17 @@ impl InstructionDisplayFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "RSP")]
     pub const fn named_rsp_cop0(&self) -> bool {
         self.named_registers && self.named_rsp_cop0
     }
     /// Use named registers for VR4300's RSP's coprocessor 0 registers
+    #[cfg(feature = "RSP")]
     pub fn named_rsp_cop0_mut(&mut self) -> &mut bool {
         &mut self.named_rsp_cop0
     }
     #[must_use]
+    #[cfg(feature = "RSP")]
     pub const fn with_named_rsp_cop0(self, named_rsp_cop0: bool) -> Self {
         Self {
             named_rsp_cop0,
@@ -179,14 +199,17 @@ impl InstructionDisplayFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "R4000ALLEGREX")]
     pub const fn named_r4000allegrex_vfpucontrol(&self) -> bool {
         self.named_registers && self.named_r4000allegrex_vfpucontrol
     }
     /// Use named registers for R4000 Allegrex's VFPU control registers
+    #[cfg(feature = "R4000ALLEGREX")]
     pub fn named_r4000allegrex_vfpucontrol_mut(&mut self) -> &mut bool {
         &mut self.named_r4000allegrex_vfpucontrol
     }
     #[must_use]
+    #[cfg(feature = "R4000ALLEGREX")]
     pub const fn with_named_r4000allegrex_vfpucontrol(
         self,
         named_r4000allegrex_vfpucontrol: bool,
@@ -302,13 +325,16 @@ impl InstructionDisplayFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "R5900EE")]
     pub const fn r5900ee_modern_gas_instrs_workarounds(&self) -> bool {
         self.r5900ee_modern_gas_instrs_workarounds
     }
+    #[cfg(feature = "R5900EE")]
     pub fn r5900ee_modern_gas_instrs_workarounds_mut(&mut self) -> &mut bool {
         &mut self.r5900ee_modern_gas_instrs_workarounds
     }
     #[must_use]
+    #[cfg(feature = "R5900EE")]
     pub const fn with_r5900ee_modern_gas_instrs_workarounds(
         self,
         r5900ee_modern_gas_instrs_workarounds: bool,
@@ -320,13 +346,16 @@ impl InstructionDisplayFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "R5900EE")]
     pub const fn r5900ee_use_dollar(&self) -> bool {
         self.r5900ee_use_dollar
     }
+    #[cfg(feature = "R5900EE")]
     pub fn r5900ee_use_dollar_mut(&mut self) -> &mut bool {
         &mut self.r5900ee_use_dollar
     }
     #[must_use]
+    #[cfg(feature = "R5900EE")]
     pub const fn with_r5900ee_use_dollar(self, r5900ee_use_dollar: bool) -> Self {
         Self {
             r5900ee_use_dollar,
