@@ -427,6 +427,17 @@ pub(crate) mod python_bindings {
             Self::new(isa_version)
         }
 
+        #[pyo3(name = "set_pseudo_beqzl")]
+        #[cfg(feature = "MIPS_II")]
+        pub fn py_set_pseudo_beqzl(&mut self, turn_on: bool) {
+            self.set_pseudo_beqzl(turn_on);
+        }
+        #[pyo3(name = "set_pseudo_bnezl")]
+        #[cfg(feature = "MIPS_II")]
+        pub fn py_set_pseudo_bnezl(&mut self, turn_on: bool) {
+            self.set_pseudo_bnezl(turn_on);
+        }
+
         #[pyo3(name = "new_extension")]
         #[staticmethod]
         #[must_use]
