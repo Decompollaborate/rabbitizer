@@ -358,11 +358,16 @@
         core, 0x0C, syscall,
         operands: Operand::arr1(Operand::core_code_lower),
         instr_type: InstrType::R,
+        causes_exception: true,
+        causes_unconditional_exception: true,
+        causes_returnable_exception: true,
         not_emitted_by_compilers: true
     ) // SYStem CALL
     RAB_DEF_OPCODE_MIPS1(
         core, 0x0D, break,
         operands: Operand::arr1(Operand::core_code),
+        causes_exception: true,
+        causes_unconditional_exception: true,
         instr_type: InstrType::R
     ) // Break
     RAB_DEF_OPCODE(
@@ -413,54 +418,66 @@
         core, 0x30, tge, MIPS_II,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
+        is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         reads_rt: true,
-        is_trap: true,
         not_emitted_by_compilers: true
     ) // Trap if Greater or Equal
     RAB_DEF_OPCODE(
         core, 0x31, tgeu, MIPS_II,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
+        is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         reads_rt: true,
-        is_trap: true,
         not_emitted_by_compilers: true
     ) // Trap if Greater or Equal Unsigned
     RAB_DEF_OPCODE(
         core, 0x32, tlt, MIPS_II,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
+        is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         reads_rt: true,
-        is_trap: true,
         not_emitted_by_compilers: true
     ) // Trap if Less Than
     RAB_DEF_OPCODE(
         core, 0x33, tltu, MIPS_II,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
+        is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         reads_rt: true,
-        is_trap: true,
         not_emitted_by_compilers: true
     ) // Trap if Less Than Unsigned
     RAB_DEF_OPCODE(
         core, 0x34, teq, MIPS_II,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
+        is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         reads_rt: true,
-        is_trap: true,
         not_emitted_by_compilers: true
     ) // Trap if EQual
     RAB_DEF_OPCODE(
         core, 0x36, tne, MIPS_II,
         operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
         instr_type: InstrType::R,
+        is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         reads_rt: true,
-        is_trap: true,
         not_emitted_by_compilers: true
     ) // Trap if Not Equal
 

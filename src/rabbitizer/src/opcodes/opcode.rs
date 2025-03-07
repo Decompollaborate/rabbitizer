@@ -119,6 +119,22 @@ impl Opcode {
         self.get_descriptor().is_trap()
     }
     #[must_use]
+    pub fn causes_exception(&self) -> bool {
+        self.get_descriptor().causes_exception()
+    }
+    #[must_use]
+    pub fn causes_unconditional_exception(&self) -> bool {
+        self.get_descriptor().causes_unconditional_exception()
+    }
+    #[must_use]
+    pub fn causes_conditional_exception(&self) -> bool {
+        self.get_descriptor().causes_conditional_exception()
+    }
+    #[must_use]
+    pub fn causes_returnable_exception(&self) -> bool {
+        self.get_descriptor().causes_returnable_exception()
+    }
+    #[must_use]
     pub fn is_float(&self) -> bool {
         self.get_descriptor().is_float()
     }

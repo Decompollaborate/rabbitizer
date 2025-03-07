@@ -50,6 +50,8 @@
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         not_emitted_by_compilers: true
     )
@@ -58,6 +60,8 @@
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         not_emitted_by_compilers: true
     )
@@ -66,6 +70,8 @@
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         not_emitted_by_compilers: true
     )
@@ -74,6 +80,8 @@
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         not_emitted_by_compilers: true
     )
@@ -82,6 +90,8 @@
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         not_emitted_by_compilers: true
     )
@@ -90,6 +100,8 @@
         operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
         instr_type: InstrType::REGIMM,
         is_trap: true,
+        causes_exception: true,
+        causes_conditional_exception: true,
         reads_rs: true,
         not_emitted_by_compilers: true
     )

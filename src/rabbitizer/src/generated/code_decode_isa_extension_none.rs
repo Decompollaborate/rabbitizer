@@ -381,7 +381,8 @@ impl OpcodeDecoder {
             0x06 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_tlbwr,
             0x08 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_tlbp,
             0x10 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_rfe,
-            0x18 if isa_version as u32 >= IsaVersion::MIPS_I as u32 => Opcode::core_eret,
+            #[cfg(feature = "MIPS_III")]
+            0x18 if isa_version as u32 >= IsaVersion::MIPS_III as u32 => Opcode::core_eret,
             _ => Opcode::ALL_INVALID,
         };
         Self {

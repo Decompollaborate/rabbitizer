@@ -30,7 +30,7 @@ pub struct OpcodeDescriptor {
 
     pub(crate) instr_suffix: Option<InstrSuffix>,
 
-    /// Local branch which has a "restricted" range, usually it doesn't jump outside the current function
+    /// Local branch which has a "restricted" range, usually it doesn't jump outside the current function.
     pub(crate) is_branch: bool,
     pub(crate) is_branch_likely: bool,
 
@@ -42,6 +42,50 @@ pub struct OpcodeDescriptor {
 
     /// May trigger a trap on the processor
     pub(crate) is_trap: bool,
+
+    /// May produce an exception and transfer control to an exception handler.
+    ///
+    /// It has no delay slot.
+    pub(crate) causes_exception: bool,
+
+    /// Causes an uncoditional exception when executed.
+    ///
+    /// It has no delay slot.
+    ///
+    /// This is the opposite of [`causes_conditional_exception`].
+    ///
+    /// If this is `true`, then [`causes_exception`] is `true` too.
+    ///
+    /// [`causes_exception`]: OpcodeDescritor::causes_exception
+    /// [`causes_conditional_exception`]: OpcodeDescritor::causes_conditional_exception
+    pub(crate) causes_unconditional_exception: bool,
+
+    /// Conditionally causes exception when executed.
+    ///
+    /// It has no delay slot.
+    ///
+    /// This is the opposite of [`causes_unconditional_exception`].
+    ///
+    /// If this is `true`, then [`causes_exception`] is `true` too.
+    ///
+    /// [`causes_exception`]: OpcodeDescritor::causes_exception
+    /// [`causes_unconditional_exception`]: OpcodeDescritor::causes_unconditional_exception
+    pub(crate) causes_conditional_exception: bool,
+
+    /// Causes an exception, but the control flow is expected to come back and continue the
+    /// execution (similar to a function call) (i.e. `syscall`).
+    ///
+    /// It has no delay slot.
+    ///
+    /// Check [`causes_unconditional_exception`] or [`causes_conditional_exception`] to know if the
+    /// exception is triggered conditionally.
+    ///
+    /// If this is `true`, then [`causes_exception`] is `true` too.
+    ///
+    /// [`causes_exception`]: OpcodeDescritor::causes_exception
+    /// [`causes_unconditional_exception`]: OpcodeDescritor::causes_unconditional_exception
+    /// [`causes_conditional_exception`]: OpcodeDescritor::causes_conditional_exception
+    pub(crate) causes_returnable_exception: bool,
 
     /// The instruction performs float (any kind of float, including double precision) operations
     pub(crate) is_float: bool,
@@ -127,6 +171,10 @@ impl OpcodeDescriptor {
             is_jump: false,
             is_jump_with_address: false,
             is_trap: false,
+            causes_exception: false,
+            causes_unconditional_exception: false,
+            causes_conditional_exception: false,
+            causes_returnable_exception: false,
             is_float: false,
             is_double: false,
             is_unsigned: false,
@@ -217,6 +265,29 @@ impl OpcodeDescriptor {
         assert!(
             !(self.is_jump && self.is_trap),
             "An opcode must be either jump or trap, not both"
+        );
+
+        // Exceptions
+        assert!(
+            utils::truth_a_implies_b(self.causes_unconditional_exception, self.causes_exception),
+            "An 'causes_unconditional_exception' opcode must be `causes_exception` too"
+        );
+        assert!(
+            utils::truth_a_implies_b(self.causes_conditional_exception, self.causes_exception),
+            "An 'causes_conditional_exception' opcode must be `causes_exception` too"
+        );
+        assert!(
+            !(self.causes_unconditional_exception && self.causes_conditional_exception),
+            "An opcode must either cause an unconditional exception or a conditional one, not both"
+        );
+        assert!(
+            utils::truth_a_implies_b(self.causes_returnable_exception, self.causes_exception),
+            "An 'causes_returnable_exception' opcode must be `causes_exception` too"
+        );
+
+        assert!(
+            utils::truth_a_implies_b(self.is_trap, self.causes_exception),
+            "An trap instructions cause exceptions"
         );
 
         assert!(
@@ -418,6 +489,22 @@ impl OpcodeDescriptor {
     #[must_use]
     pub const fn is_trap(&self) -> bool {
         self.is_trap
+    }
+    #[must_use]
+    pub const fn causes_exception(&self) -> bool {
+        self.causes_exception
+    }
+    #[must_use]
+    pub const fn causes_unconditional_exception(&self) -> bool {
+        self.causes_unconditional_exception
+    }
+    #[must_use]
+    pub const fn causes_conditional_exception(&self) -> bool {
+        self.causes_conditional_exception
+    }
+    #[must_use]
+    pub const fn causes_returnable_exception(&self) -> bool {
+        self.causes_returnable_exception
     }
     #[must_use]
     pub const fn is_float(&self) -> bool {

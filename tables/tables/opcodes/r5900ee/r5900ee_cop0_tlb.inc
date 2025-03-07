@@ -22,10 +22,10 @@
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x38, ei, R5900EE,
         operands: Operand::arr0()
-    )
+    ) // Enable Interrupt
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x39, di, R5900EE,
         operands: Operand::arr0()
-    )
+    ) // Disable Interrupt
 
     RAB_DEF_OPCODE_REDIRECT(_, none, coprocessor0_tlb)

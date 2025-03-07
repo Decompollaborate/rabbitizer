@@ -220,6 +220,7 @@ pub enum Opcode {
     core_tlbwr,
     core_tlbp,
     core_rfe,
+    #[cfg(feature = "MIPS_III")]
     core_eret,
     core_mfc1,
     #[cfg(feature = "MIPS_III")]

@@ -697,6 +697,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
             instr_type: InstrType::I,
             reads_rs: true,
+            not_emitted_by_compilers: true,
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
@@ -711,6 +712,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
             instr_type: InstrType::I,
             reads_rs: true,
+            not_emitted_by_compilers: true,
             can_be_lo: true,
             does_dereference: true,
             does_load: true,
@@ -724,6 +726,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
             instr_type: InstrType::I,
             reads_rs: true,
+            not_emitted_by_compilers: true,
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
@@ -738,6 +741,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
             instr_type: InstrType::I,
             reads_rs: true,
+            not_emitted_by_compilers: true,
             can_be_lo: true,
             does_dereference: true,
             does_store: true,
@@ -1273,6 +1277,9 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_syscall as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::core_code_lower),
             instr_type: InstrType::R,
+            causes_exception: true,
+            causes_unconditional_exception: true,
+            causes_returnable_exception: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("syscall", IsaVersion::MIPS_I, None)
         }
@@ -1281,6 +1288,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::core_break as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::core_code),
+            causes_exception: true,
+            causes_unconditional_exception: true,
             instr_type: InstrType::R,
             ..OpcodeDescriptor::new("break", IsaVersion::MIPS_I, None)
         }
@@ -1350,9 +1359,11 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_tge as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
             instr_type: InstrType::R,
+            is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             reads_rt: true,
-            is_trap: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tge", IsaVersion::MIPS_II, None)
         }
@@ -1363,9 +1374,11 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_tgeu as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
             instr_type: InstrType::R,
+            is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             reads_rt: true,
-            is_trap: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tgeu", IsaVersion::MIPS_II, None)
         }
@@ -1376,9 +1389,11 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_tlt as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
             instr_type: InstrType::R,
+            is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             reads_rt: true,
-            is_trap: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tlt", IsaVersion::MIPS_II, None)
         }
@@ -1389,9 +1404,11 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_tltu as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
             instr_type: InstrType::R,
+            is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             reads_rt: true,
-            is_trap: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tltu", IsaVersion::MIPS_II, None)
         }
@@ -1402,9 +1419,11 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_teq as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
             instr_type: InstrType::R,
+            is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             reads_rt: true,
-            is_trap: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("teq", IsaVersion::MIPS_II, None)
         }
@@ -1415,9 +1434,11 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_tne as usize] = OpcodeDescriptor {
             operands: Operand::arr3(Operand::core_rs, Operand::core_rt, Operand::core_code_lower),
             instr_type: InstrType::R,
+            is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             reads_rt: true,
-            is_trap: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tne", IsaVersion::MIPS_II, None)
         }
@@ -1516,6 +1537,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
             instr_type: InstrType::REGIMM,
             is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tgei", IsaVersion::MIPS_II, None)
@@ -1528,6 +1551,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
             instr_type: InstrType::REGIMM,
             is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tgeiu", IsaVersion::MIPS_II, None)
@@ -1540,6 +1565,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
             instr_type: InstrType::REGIMM,
             is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tlti", IsaVersion::MIPS_II, None)
@@ -1552,6 +1579,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
             instr_type: InstrType::REGIMM,
             is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tltiu", IsaVersion::MIPS_II, None)
@@ -1564,6 +1593,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
             instr_type: InstrType::REGIMM,
             is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("teqi", IsaVersion::MIPS_II, None)
@@ -1576,6 +1607,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
             instr_type: InstrType::REGIMM,
             is_trap: true,
+            causes_exception: true,
+            causes_conditional_exception: true,
             reads_rs: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("tnei", IsaVersion::MIPS_II, None)
@@ -1785,17 +1818,22 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_rfe as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
             instr_type: InstrType::UNKNOWN,
+            causes_exception: true,
+            causes_unconditional_exception: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("rfe", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
     }
+    #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_eret as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
             instr_type: InstrType::UNKNOWN,
+            causes_exception: true,
+            causes_unconditional_exception: true,
             not_emitted_by_compilers: true,
-            ..OpcodeDescriptor::new("eret", IsaVersion::MIPS_I, None)
+            ..OpcodeDescriptor::new("eret", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
     }

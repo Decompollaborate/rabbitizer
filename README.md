@@ -146,7 +146,7 @@ See this crate at <https://crates.io/crates/rabbitizer>.
     - Chapter "4.8  Allegrex Instructions" <http://hitmen.c02.at/files/yapspd/psp_doc/chap4.html#sec4.8>
   - GNU binutils: <https://github.com/bminor/binutils-gdb/compare/011365b...a0176d8>
 
-- R5900:
+- R5900EE:
   - EmotionEngine instruction decoding: <https://psi-rockin.github.io/ps2tek/#eeinstructiondecoding>
   - Official documentation from Toshiba: <https://wiki.qemu.org/images/2/2a/C790.pdf>
   - VU instruction manual: <http://lukasz.dk/files/vu-instruction-manual.pdf>
