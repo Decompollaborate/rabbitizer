@@ -48,8 +48,6 @@
         core, 0x10, rfe,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
-        causes_exception: true,
-        causes_unconditional_exception: true,
         not_emitted_by_compilers: true
     ) // Restore From Exception
 

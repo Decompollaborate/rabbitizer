@@ -1818,8 +1818,6 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::core_rfe as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
             instr_type: InstrType::UNKNOWN,
-            causes_exception: true,
-            causes_unconditional_exception: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("rfe", IsaVersion::MIPS_I, None)
         }
