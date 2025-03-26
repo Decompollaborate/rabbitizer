@@ -151,14 +151,16 @@
         core, 0x08, jr,
         operands: Operand::arr1(Operand::core_rs),
         instr_type: InstrType::R,
-        reads_rs: true,
-        is_jump: true
+        is_jump: true,
+        jumps_to_register: true,
+        reads_rs: true
     ) // Jump Register
     RAB_DEF_OPCODE_MIPS1(
         core, 0x09, jalr,
         operands: Operand::arr1(Operand::core_maybe_rd_rs),
         instr_type: InstrType::R,
         is_jump: true,
+        jumps_to_register: true,
         modifies_rd: true,
         reads_rs: true,
         does_link: true

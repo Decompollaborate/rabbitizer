@@ -115,6 +115,10 @@ impl Opcode {
         self.get_descriptor().is_jump_with_address()
     }
     #[must_use]
+    pub fn jumps_to_register(&self) -> bool {
+        self.get_descriptor().jumps_to_register()
+    }
+    #[must_use]
     pub fn is_trap(&self) -> bool {
         self.get_descriptor().is_trap()
     }

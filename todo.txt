@@ -12,3 +12,5 @@
 
 - Consider making `const` functions that access `static` data.
   - con: It would raise the MSRV
+
+- Rename `immediate_base`

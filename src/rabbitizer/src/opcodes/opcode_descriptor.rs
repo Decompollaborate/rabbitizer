@@ -40,6 +40,9 @@ pub struct OpcodeDescriptor {
     /// The target address of this jump is encoded in the instruction (MIPS: j and jal)
     pub(crate) is_jump_with_address: bool,
 
+    /// Uses the value stored in a register operand to jump to.
+    pub(crate) jumps_to_register: bool,
+
     /// May trigger a trap on the processor
     pub(crate) is_trap: bool,
 
@@ -134,7 +137,7 @@ pub struct OpcodeDescriptor {
 
     /// "and link" family of instructions
     ///
-    /// The instruction stores the return address link in the MIPS $ra (GPR 31) register
+    /// The instruction stores the return address link in the MIPS $ra (GPR 31) register by default.
     pub(crate) does_link: bool,
 
     /// This instruction performs a pointer dereference, either by loading from RAM or storing into RAM
@@ -170,6 +173,7 @@ impl OpcodeDescriptor {
             is_branch_likely: false,
             is_jump: false,
             is_jump_with_address: false,
+            jumps_to_register: false,
             is_trap: false,
             causes_exception: false,
             causes_unconditional_exception: false,
@@ -251,6 +255,10 @@ impl OpcodeDescriptor {
         assert!(
             utils::truth_a_implies_b(self.is_jump_with_address, self.is_jump),
             "An 'is_jump_with_address' opcode must be `is_jump` too"
+        );
+        assert!(
+            utils::truth_a_implies_b(self.jumps_to_register, self.is_jump),
+            "An 'jumps_to_register' opcode must be `is_jump` too"
         );
 
         // Opcode must be at max either branch, jump or trap.
@@ -485,6 +493,10 @@ impl OpcodeDescriptor {
     #[must_use]
     pub const fn is_jump_with_address(&self) -> bool {
         self.is_jump_with_address
+    }
+    #[must_use]
+    pub const fn jumps_to_register(&self) -> bool {
+        self.jumps_to_register
     }
     #[must_use]
     pub const fn is_trap(&self) -> bool {

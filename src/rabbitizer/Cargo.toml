@@ -21,7 +21,7 @@ keywords = ["MIPS", "decoder"]
 path = "src/lib.rs"
 
 [features]
-default = ["all_extensions"]
+default = []
 std = []
 
 # TODO: Normalize capitalization
@@ -51,6 +51,14 @@ all_gated_extensions = [
 bindings_c = []
 pyo3 = ["std", "dep:pyo3", "all_extensions", "all_gated_extensions"]
 
+# Documentation should be generated with every user-facing feature
+doc = ["MIPS_IV", "all_extensions", "all_gated_extensions"]
+
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }
 pyo3 = { version = "0.23.2", optional = true }
+
+[package.metadata.docs.rs]
+# This should allow documenting parts of the crate that are not enabled by default
+# https://docs.rs/about/metadata
+features = ['doc']
