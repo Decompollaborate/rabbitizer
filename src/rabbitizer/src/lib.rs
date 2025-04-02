@@ -1,12 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-//! This crate provides a MIPS instruction decoder for MIPS versions I to IV. This also recognizes multiple MIPS
-//! extensions, including RSP (N64 reality signal procesor), R3000 GTE (PSX), R4000 ALLEGREX (PSP) and R5900 EE (PS2
-//! Emotion Engine).
-
-// TODO: add example
-
+#![doc = include_str!("../README.md")]
 /*
 #![warn(clippy::pedantic)]
 #![allow(clippy::inline_always)]
@@ -68,7 +63,6 @@
 #![warn(clippy::nursery)]
 #![allow(clippy::redundant_pub_crate)]
 */
-
 #![deny(unreachable_patterns)]
 #![allow(clippy::exhaustive_enums)]
 #![warn(clippy::use_self)]

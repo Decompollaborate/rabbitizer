@@ -9,54 +9,85 @@
 
 rabbitizer (whole name is lowercase) is a MIPS instruction decoder API.
 
+## Quick example
+
+Check the [Rust-specific README](src/rabbitizer/README.md) for examples of the
+Rust API.
+
+`rab-disasmdis` is a an example program that allows decoding words on your
+terminal. Check out [its README](src/rab-disasmdis/README.md).
+
 ## Features
 
-- Should produce matching assembly.
-- Fully written in C for fast decoding.
-  - The library is completely allocation-less, in other words `rabbitizer`
-  doesn't allocate in anything in the heap by itself.
-- Other language bindings supported in this repo:
-  - Python bindings
-    - The minimal Python version is 3.7, older versions are not guaranteed to
-      work.
-  - C++ bindings
-  - Rust bindings
 - Simple per-word instruction decoding.
   - The library doesn't try to be too smart by processing multiple instructions
-    at a time.
-- Can perform validation checks for instructions.
+    at a time, neither trying to handle endianness.
+- Can perform validation checks for decoded instructions.
+  - For example, it can check if a given instruction has garbage data on bits
+    where the it should contain zeroes.
 - Provides many examination/grouping functions for instructions, allowing to
   simplify checking characteristics of an instruction and minimizing the need to
   check for specific instructions in a hardcoded way.
-- Includes some minor tools to build your own pointer/symbol detection.
+  - i.e. Check for `.does_link()` instead of checking for `jal`, `jalr`, `bal`
+    `bltzal`, etc.
 - Configurable, many features can be turned on and off.
 - MIPS instructions features:
+  - Support for ABI register names: o32, n32, o64, n64, eabi32 and eabi64.
+    - You can also turn off ABI names and use numeric names for registers if
+      preferred.
   - Configurable behavior for the `jalr` instruction, allowing to disassemble
-    that instruction using an implicit or explicit `rd` register depending if
+    the instruction using an implicit or explicit `rd` register depending if
     that register is `$ra` or not.
   - Named registers for MIPS VR4300's coprocessors.
   - Support for many pseudo-instructions.
-  - Properly handle move to/from coprocessor instructions.
-  - Support for numeric, o32, n32 and n64 ABI register names.
+    - Pseudo-instruction detection can be turned off per pseudo.
 - Some workarounds for some specific compilers/assemblers:
-  - `SN64`:
-    - `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and `break` instructions.
-- Multiple MIPS architectures are supported:
-  - Main focus on MIPS I, II and III architectures. Partial support for MIPS IV too.
-  - N64 RSP instruction decoding support.
+  - `SN64`: `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and
+    `break` instructions.
+  - `gccee`: Many workarounds for R5900EE specific instructions to support the
+    differences between the original toolchain and modern gas.
+- Multiple MIPS ISAs versions and ISA extensions are supported:
+  - MIPS I, II and III ISAs.
+    - Partial support for MIPS IV too.
+  - N64 RSP instruction support.
     - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
-  - R3000 GTE (PSX's CPU) decoding support.
-  - R4000 ALLEGREX (PSP's CPU) decoding support.
-  - R5900 (PS2's Emotion Engine processor) decoding support.
+  - R3000 GTE (PSX's CPU) support.
+  - R4000 ALLEGREX (PSP's CPU) support.
+  - R5900 EE (PS2's Emotion Engine processor) support.
+  - Which ISA version/extension pair is used to decode an instruction can be
+    selected at runtime.
+  - ISAs are "feature gated", so you can only pay for what you use.
+    - This may not be configurable if using a language binding other than the
+      native Rust API.
+
+### Planned features
+
+- Bindings for other programming languages, so you can unleash rabbitizer's
+  power on your prefered language.
+  - Python bindings
+  - C bindings.
+  - C++ bindings
 
 ## Non-features
 
-In order to keep it simple and fast the following features will not be added:
+In order to keep it simple the following features will never be supported:
 
 - Pseudo-instructions which expands to more than one instruction.
 
-## Installing
+## Installation
 
+rabbitizer is available on [crates.io](https://crates.io/crates/rabbitizer) and
+can be included in your Cargo enabled project like this:
+
+```toml
+[dependencies]
+rabbitizer = "2.0.0-alpha.1"
+```
+
+For more details and feature configuration, consult the
+[Rust-specific README](src/rabbitizer/README.md#installation).
+
+<!--
 ### Python bindings
 
 The recommended way to install is using from the PyPi release, via `pip`:
@@ -113,6 +144,8 @@ rabbitizer = "1.12.0"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
+
+-->
 
 ## References
 

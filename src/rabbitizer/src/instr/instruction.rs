@@ -52,12 +52,14 @@ use crate::vram::{Vram, VramOffset};
 ///
 /// let vram = Vram::new(0x80000000);
 /// let flags = InstructionFlags::new(IsaVersion::MIPS_I);
-/// let instr = Instruction::new(0x3C088001, vram, flags);
+/// let word = 0x3C088001;
+/// let instr = Instruction::new(word, vram, flags);
 ///
 /// assert_eq!(instr.opcode(), Opcode::core_lui);
 ///
 /// let display_flags = InstructionDisplayFlags::new();
-/// assert_eq!(&instr.display::<&str>(&display_flags, None, 0).to_string(), "lui         $t0, 0x8001");
+/// let display = instr.display::<&str>(&display_flags, None, 0);
+/// assert_eq!(&display.to_string(), "lui         $t0, 0x8001");
 /// ```
 ///
 /// ### Managing pseudo instructions

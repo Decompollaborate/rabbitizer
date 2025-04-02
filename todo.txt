@@ -14,3 +14,9 @@
   - con: It would raise the MSRV
 
 - Rename `immediate_base`
+
+- Change `is_jumptable_jump` to return the register too.
+  - Will need to be renamed to avoid the `is_` part, probably
+
+- Hide the `_unchecked` variants from the docs and only show them by enabling a feature.
+  - Consider making them unsafe.

@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-alpha.1] - 2025-04-02
+
+### Changed
+
+- rabbitizer has been fully rewritten in Rust.
+- The API has changed and now every function and method are `snake_case`.
+- Some old subsystems were renamed to a more fitting name.
+- ISA version can now be selected at decoding time. There's no longer the need
+  to have to deal with MIPS II and up instruction when decoding a MIPS I binary.
+- And many others!
+
+### Removed
+
+- API/Bindings for Python 3, C and C++.
+  - These bindings are planned for a future release.
+- `RegistersTracker` and family of analyzis structs.
+
 ## [1.12.0] - 2024-07-21
 
 ### Added

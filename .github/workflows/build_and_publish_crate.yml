@@ -296,7 +296,7 @@ jobs:
         run: cargo hack check --rust-version --workspace --all-targets --ignore-private --all-features
 
   build_rust:
-    name: Build Rust stuff and run Rust tests
+    name: Publish crate
     runs-on: ubuntu-latest
 
     steps:
