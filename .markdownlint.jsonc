@@ -8,7 +8,7 @@
     // https://github.com/DavidAnson/markdownlint/blob/main/doc/md013.md
     // MD013 - Line length
     "MD013": {
-        "code_block_line_length": 120,
+        "code_block_line_length": 140,
         "headings": false
     }
 }
