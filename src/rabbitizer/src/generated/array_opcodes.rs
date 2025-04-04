@@ -9779,37 +9779,98 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
 
     #[cfg(feature = "R5900EE")]
     {
-        table[Opcode::r5900ee_qmfc2 as usize] = OpcodeDescriptor {
+        table[Opcode::r5900ee_qmfc2_ni as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
             modifies_rt: true,
-            ..OpcodeDescriptor::new("qmfc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
+            ..OpcodeDescriptor::new(
+                "qmfc2.ni",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R5900EE),
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
-        table[Opcode::r5900ee_cfc2 as usize] = OpcodeDescriptor {
+        table[Opcode::r5900ee_cfc2_ni as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
             modifies_rt: true,
-            ..OpcodeDescriptor::new("cfc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
+            ..OpcodeDescriptor::new(
+                "cfc2.ni",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R5900EE),
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
-        table[Opcode::r5900ee_qmtc2 as usize] = OpcodeDescriptor {
+        table[Opcode::r5900ee_qmtc2_ni as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
             reads_rt: true,
-            ..OpcodeDescriptor::new("qmtc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
+            ..OpcodeDescriptor::new(
+                "qmtc2.ni",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R5900EE),
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
-        table[Opcode::r5900ee_ctc2 as usize] = OpcodeDescriptor {
+        table[Opcode::r5900ee_ctc2_ni as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
             reads_rt: true,
-            ..OpcodeDescriptor::new("ctc2", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
+            ..OpcodeDescriptor::new(
+                "ctc2.ni",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R5900EE),
+            )
+        }
+        .check_panic_chain();
+    }
+
+    #[cfg(feature = "R5900EE")]
+    {
+        table[Opcode::r5900ee_qmfc2_i as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
+            modifies_rt: true,
+            ..OpcodeDescriptor::new(
+                "qmfc2.i",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R5900EE),
+            )
+        }
+        .check_panic_chain();
+    }
+    #[cfg(feature = "R5900EE")]
+    {
+        table[Opcode::r5900ee_cfc2_i as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
+            modifies_rt: true,
+            ..OpcodeDescriptor::new("cfc2.i", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
+        }
+        .check_panic_chain();
+    }
+    #[cfg(feature = "R5900EE")]
+    {
+        table[Opcode::r5900ee_qmtc2_i as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
+            reads_rt: true,
+            ..OpcodeDescriptor::new(
+                "qmtc2.i",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R5900EE),
+            )
+        }
+        .check_panic_chain();
+    }
+    #[cfg(feature = "R5900EE")]
+    {
+        table[Opcode::r5900ee_ctc2_i as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
+            reads_rt: true,
+            ..OpcodeDescriptor::new("ctc2.i", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
         }
         .check_panic_chain();
     }

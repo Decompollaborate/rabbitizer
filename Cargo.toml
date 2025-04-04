@@ -10,7 +10,7 @@ resolver = "2"
 
 [workspace.package]
 # Version should be synced with include/common/RabbitizerVersion.h
-version = "2.0.0-alpha.1"
+version = "2.0.0-alpha.2"
 edition = "2021"
 authors = ["Anghelo Carvajal <angheloalf95@gmail.com>"]
 repository = "https://github.com/Decompollaborate/rabbitizer"

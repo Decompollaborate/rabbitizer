@@ -20,6 +20,8 @@
     #include "r5900ee/r5900ee_cop1_fpu_s.inc"
 
     #include "r5900ee/r5900ee_cop2.inc"
+    #include "r5900ee/r5900ee_cop2_ni.inc"
+    #include "r5900ee/r5900ee_cop2_i.inc"
     #include "r5900ee/r5900ee_cop2_bc2.inc"
     #include "r5900ee/r5900ee_cop2_special1.inc"
     #include "r5900ee/r5900ee_cop2_special2.inc"

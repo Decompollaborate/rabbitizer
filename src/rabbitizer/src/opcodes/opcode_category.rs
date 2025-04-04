@@ -26,7 +26,7 @@ pub const OPCODE_CATEGORY_COUNT: usize = {
         count += 45;
     }
     if cfg!(feature = "R5900EE") {
-        count += 20;
+        count += 21;
     }
 
     if cfg!(feature = "RspViceMsp") {

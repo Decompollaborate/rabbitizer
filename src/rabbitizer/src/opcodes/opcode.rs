@@ -42,7 +42,7 @@ pub(crate) const OPCODE_COUNT: usize = {
         count += 294;
     }
     if cfg!(feature = "R5900EE") {
-        count += 262;
+        count += 266;
     }
 
     if cfg!(feature = "RspViceMsp") {

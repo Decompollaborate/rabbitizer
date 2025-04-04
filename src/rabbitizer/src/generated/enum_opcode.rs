@@ -1435,13 +1435,22 @@ pub enum Opcode {
     r5900ee_c_le_s,
 
     #[cfg(feature = "R5900EE")]
-    r5900ee_qmfc2,
+    r5900ee_qmfc2_ni,
     #[cfg(feature = "R5900EE")]
-    r5900ee_cfc2,
+    r5900ee_cfc2_ni,
     #[cfg(feature = "R5900EE")]
-    r5900ee_qmtc2,
+    r5900ee_qmtc2_ni,
     #[cfg(feature = "R5900EE")]
-    r5900ee_ctc2,
+    r5900ee_ctc2_ni,
+
+    #[cfg(feature = "R5900EE")]
+    r5900ee_qmfc2_i,
+    #[cfg(feature = "R5900EE")]
+    r5900ee_cfc2_i,
+    #[cfg(feature = "R5900EE")]
+    r5900ee_qmtc2_i,
+    #[cfg(feature = "R5900EE")]
+    r5900ee_ctc2_i,
 
     #[cfg(feature = "R5900EE")]
     r5900ee_bc2f,

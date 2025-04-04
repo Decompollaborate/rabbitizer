@@ -198,14 +198,13 @@ impl OpcodeDecoder {
         flags: &DecodingFlags,
         isa_version: IsaVersion,
     ) -> Self {
-        let mask = EncodedFieldMask::r5900ee_cop2_highbit;
+        let mask = EncodedFieldMask::r5900ee_cop2_discriminant;
         let opcode_category = OpcodeCategory::R5900EE_COP2;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         let opcode = match mask.get_shifted(word) {
-            RAB_DEF_OPCODE_REDIRECT(0x0, r5900ee, coprocessor2_nohighbit)
-            RAB_DEF_OPCODE_REDIRECT(0x1, r5900ee, coprocessor2_special1)
+#include "opcodes/r5900ee/r5900ee_cop2.inc"
             _ => Opcode::ALL_INVALID,
         };
         Self {
@@ -217,19 +216,43 @@ impl OpcodeDecoder {
     }
 
     SPECIAL_RS_TAG(must_use)
-    pub(crate) const fn decode_isa_extension_r5900ee_coprocessor2_nohighbit(
+    pub(crate) const fn decode_isa_extension_r5900ee_coprocessor2_ni(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
         flags: &DecodingFlags,
         isa_version: IsaVersion,
     ) -> Self {
-        let mask = EncodedFieldMask::r5900ee_cop2_nohighbit_fmt;
-        let opcode_category = OpcodeCategory::R5900EE_COP2_NOHIGHBIT;
+        let mask = EncodedFieldMask::r5900ee_cop2_ini_fmt;
+        let opcode_category = OpcodeCategory::R5900EE_COP2_NI;
 
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
 
         let opcode = match mask.get_shifted(word) {
-#include "opcodes/r5900ee/r5900ee_cop2.inc"
+#include "opcodes/r5900ee/r5900ee_cop2_ni.inc"
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+            gated_behind: None,
+        }
+    }
+
+    SPECIAL_RS_TAG(must_use)
+    pub(crate) const fn decode_isa_extension_r5900ee_coprocessor2_i(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r5900ee_cop2_ini_fmt;
+        let opcode_category = OpcodeCategory::R5900EE_COP2_I;
+
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+
+        let opcode = match mask.get_shifted(word) {
+#include "opcodes/r5900ee/r5900ee_cop2_i.inc"
             _ => Opcode::ALL_INVALID,
         };
         Self {

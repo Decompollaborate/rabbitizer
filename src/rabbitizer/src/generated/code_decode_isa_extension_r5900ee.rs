@@ -321,19 +321,35 @@ impl OpcodeDecoder {
         flags: &DecodingFlags,
         isa_version: IsaVersion,
     ) -> Self {
-        let mask = EncodedFieldMask::r5900ee_cop2_highbit;
+        let mask = EncodedFieldMask::r5900ee_cop2_discriminant;
         let opcode_category = OpcodeCategory::R5900EE_COP2;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x0 => {
-                return Self::decode_isa_extension_r5900ee_coprocessor2_nohighbit(
+            0x0000000 => {
+                return Self::decode_isa_extension_r5900ee_coprocessor2_ni(
                     word,
                     mandatory_bits,
                     flags,
                     isa_version,
                 )
             }
-            0x1 => {
+            0x0000001 => {
+                return Self::decode_isa_extension_r5900ee_coprocessor2_i(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x2000000 => {
+                return Self::decode_isa_extension_r5900ee_coprocessor2_special1(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            0x2000001 => {
                 return Self::decode_isa_extension_r5900ee_coprocessor2_special1(
                     word,
                     mandatory_bits,
@@ -351,20 +367,52 @@ impl OpcodeDecoder {
         }
     }
     #[must_use]
-    pub(crate) const fn decode_isa_extension_r5900ee_coprocessor2_nohighbit(
+    pub(crate) const fn decode_isa_extension_r5900ee_coprocessor2_ni(
         word: u32,
         mut mandatory_bits: EncodedFieldMask,
         flags: &DecodingFlags,
         isa_version: IsaVersion,
     ) -> Self {
-        let mask = EncodedFieldMask::r5900ee_cop2_nohighbit_fmt;
-        let opcode_category = OpcodeCategory::R5900EE_COP2_NOHIGHBIT;
+        let mask = EncodedFieldMask::r5900ee_cop2_ini_fmt;
+        let opcode_category = OpcodeCategory::R5900EE_COP2_NI;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
         let opcode = match mask.get_shifted(word) {
-            0x01 => Opcode::r5900ee_qmfc2,
-            0x02 => Opcode::r5900ee_cfc2,
-            0x05 => Opcode::r5900ee_qmtc2,
-            0x06 => Opcode::r5900ee_ctc2,
+            0x01 => Opcode::r5900ee_qmfc2_ni,
+            0x02 => Opcode::r5900ee_cfc2_ni,
+            0x05 => Opcode::r5900ee_qmtc2_ni,
+            0x06 => Opcode::r5900ee_ctc2_ni,
+            0x08 => {
+                return Self::decode_isa_extension_r5900ee_coprocessor2_bc2(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+            gated_behind: None,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r5900ee_coprocessor2_i(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        flags: &DecodingFlags,
+        isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r5900ee_cop2_ini_fmt;
+        let opcode_category = OpcodeCategory::R5900EE_COP2_I;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x01 => Opcode::r5900ee_qmfc2_i,
+            0x02 => Opcode::r5900ee_cfc2_i,
+            0x05 => Opcode::r5900ee_qmtc2_i,
+            0x06 => Opcode::r5900ee_ctc2_i,
             0x08 => {
                 return Self::decode_isa_extension_r5900ee_coprocessor2_bc2(
                     word,

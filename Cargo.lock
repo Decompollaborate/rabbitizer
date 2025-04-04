@@ -243,7 +243,7 @@ dependencies = [
 
 [[package]]
 name = "rab-disasmdis"
-version = "2.0.0-alpha.1"
+version = "2.0.0-alpha.2"
 dependencies = [
  "clap",
  "rabbitizer",
@@ -251,7 +251,7 @@ dependencies = [
 
 [[package]]
 name = "rabbitizer"
-version = "2.0.0-alpha.1"
+version = "2.0.0-alpha.2"
 dependencies = [
  "bitflags",
  "pyo3",

@@ -204,9 +204,10 @@ bitflags! {
         /* r5000 */
 
         #[cfg(feature = "R5900EE")]
-        const r5900ee_cop2_highbit = utils::bitmask(25,  1);
+        const r5900ee_cop2_discriminant = utils::bitmask(25,  1) | utils::bitmask( 0,  1);
         #[cfg(feature = "R5900EE")]
-        const r5900ee_cop2_nohighbit_fmt = utils::bitmask(21,  4);
+        /// Interlock / No interlock.
+        const r5900ee_cop2_ini_fmt = utils::bitmask(21,  4);
 
         #[cfg(feature = "R5900EE")]
         const r5900ee_mmi_function = utils::bitmask(  6,  5);

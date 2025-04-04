@@ -159,7 +159,9 @@ pub enum OpcodeCategory {
     #[cfg(feature = "R5900EE")]
     R5900EE_COP2,
     #[cfg(feature = "R5900EE")]
-    R5900EE_COP2_NOHIGHBIT,
+    R5900EE_COP2_NI,
+    #[cfg(feature = "R5900EE")]
+    R5900EE_COP2_I,
     #[cfg(feature = "R5900EE")]
     R5900EE_COP2_BC2,
     #[cfg(feature = "R5900EE")]
@@ -735,8 +737,15 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     }
     #[cfg(feature = "R5900EE")]
     {
-        table[OpcodeCategory::R5900EE_COP2_NOHIGHBIT as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_NOHIGHBIT"))
+        table[OpcodeCategory::R5900EE_COP2_NI as usize] = OpcodeCategoryDescriptor {
+            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_NI"))
+        }
+        .check_panic_chain();
+    }
+    #[cfg(feature = "R5900EE")]
+    {
+        table[OpcodeCategory::R5900EE_COP2_I as usize] = OpcodeCategoryDescriptor {
+            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_I"))
         }
         .check_panic_chain();
     }
