@@ -12,7 +12,7 @@ extern "C" {
 #endif
 
 
-#define RAB_INSTR_R5900_GET_cop2_highbit(self)          (SHIFTR((self)->word, 25,  1))
+#define RAB_INSTR_R5900_GET_cop2_highlowbit(self)       ((SHIFTR((self)->word, 25,  1) << 1) | SHIFTR((self)->word, 0,  1))
 #define RAB_INSTR_R5900_GET_cop2_nohighbit_fmt(self)    (SHIFTR((self)->word, 21,  4))
 
 #define RAB_INSTR_R5900_GET_mmi_function(self)          (SHIFTR((self)->word,  6,  5))
@@ -39,7 +39,7 @@ extern "C" {
 #define RAB_INSTR_R5900_GET_imm15(self)                 (SHIFTR((self)->word,  6, 15))
 
 
-#define RAB_INSTR_R5900_PACK_cop2_highbit(word, value)  (BITREPACK((word), (value), 25,  1))
+#define RAB_INSTR_R5900_PACK_cop2_highlowbit(word, value)  (BITREPACK(BITREPACK((word), (value) >> 1, 25,  1), (value),  0,  1))
 #define RAB_INSTR_R5900_PACK_cop2_nohighbit_fmt(word, value)    (BITREPACK((word), (value), 21,  4))
 
 #define RAB_INSTR_R5900_PACK_mmi_function(word, value)  (BITREPACK((word), (value),  6,  5))

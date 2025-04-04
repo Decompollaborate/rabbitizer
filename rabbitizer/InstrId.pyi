@@ -825,10 +825,14 @@ class InstrId:
     r5900_min_s: Enum
     r5900_c_lt_s: Enum
     r5900_c_le_s: Enum
-    r5900_qmfc2: Enum
-    r5900_cfc2: Enum
-    r5900_qmtc2: Enum
-    r5900_ctc2: Enum
+    r5900_qmfc2_ni: Enum
+    r5900_cfc2_ni: Enum
+    r5900_qmtc2_ni: Enum
+    r5900_ctc2_ni: Enum
+    r5900_qmfc2_i: Enum
+    r5900_cfc2_i: Enum
+    r5900_qmtc2_i: Enum
+    r5900_ctc2_i: Enum
     r5900_bc2f: Enum
     r5900_bc2t: Enum
     r5900_bc2fl: Enum
