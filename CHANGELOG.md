@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.13.0] - 2025-04-04
+
 ### Added
 
 - Add support for a few missing R5900 instructions.
@@ -726,6 +728,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.13.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.6...1.13.0
 [1.12.6]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.5...1.12.6
 [1.12.5]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.4...1.12.5
 [1.12.4]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.3...1.12.4
