@@ -23,7 +23,8 @@
 
     #include "r5900/r5900_cop1_fpu_s.inc"
 
-    #include "r5900/r5900_cop2.inc"
+    #include "r5900/r5900_cop2_ni.inc"
+    #include "r5900/r5900_cop2_i.inc"
     #include "r5900/r5900_cop2_bc2.inc"
     #include "r5900/r5900_cop2_special1.inc"
     #include "r5900/r5900_cop2_special2.inc"

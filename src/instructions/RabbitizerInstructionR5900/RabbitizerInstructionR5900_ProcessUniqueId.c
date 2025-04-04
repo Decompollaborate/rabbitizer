@@ -222,14 +222,29 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(Rabbitizer
     }
 }
 
-void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_nohighbit(RabbitizerInstruction *self) {
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_ni(RabbitizerInstruction *self) {
     uint8_t fmt = RAB_INSTR_R5900_GET_cop2_nohighbit_fmt(self);
 
     self->_mandatorybits = RAB_INSTR_R5900_PACK_cop2_nohighbit_fmt(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_NOHIGHBIT;
 
     switch (fmt) {
-#include "tables/instr_id/r5900/r5900_cop2.inc"
+#include "tables/instr_id/r5900/r5900_cop2_ni.inc"
+
+        case 0x08:
+            RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(self);
+            break;
+    }
+}
+
+void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_i(RabbitizerInstruction *self) {
+    uint8_t fmt = RAB_INSTR_R5900_GET_cop2_nohighbit_fmt(self);
+
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_cop2_nohighbit_fmt(self->_mandatorybits, fmt);
+    self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2_NOHIGHBIT;
+
+    switch (fmt) {
+#include "tables/instr_id/r5900/r5900_cop2_i.inc"
 
         case 0x08:
             RabbitizerInstruction_processUniqueId_Coprocessor2_BC2(self);
@@ -238,17 +253,22 @@ void RabbitizerInstructionR5900_processUniqueId_Coprocessor2_nohighbit(Rabbitize
 }
 
 void RabbitizerInstructionR5900_processUniqueId_Coprocessor2(RabbitizerInstruction *self) {
-    uint8_t fmt = RAB_INSTR_R5900_GET_cop2_highbit(self);
+    uint8_t fmt = RAB_INSTR_R5900_GET_cop2_highlowbit(self);
 
-    self->_mandatorybits = RAB_INSTR_R5900_PACK_cop2_highbit(self->_mandatorybits, fmt);
+    self->_mandatorybits = RAB_INSTR_R5900_PACK_cop2_highlowbit(self->_mandatorybits, fmt);
     self->instrIdType = RAB_INSTR_ID_TYPE_R5900_COP2;
 
     switch (fmt) {
         case 0x00:
-            RabbitizerInstructionR5900_processUniqueId_Coprocessor2_nohighbit(self);
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor2_ni(self);
             break;
 
         case 0x01:
+            RabbitizerInstructionR5900_processUniqueId_Coprocessor2_i(self);
+            break;
+
+        case 0x02:
+        case 0x03:
             RabbitizerInstructionR5900_processUniqueId_Coprocessor2_Special1(self);
             break;
     }

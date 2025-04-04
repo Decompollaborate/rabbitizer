@@ -42,6 +42,9 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x4A220BFF, NULL, "viswr.w     $vi2, ($vi1)"),
 
     TEST_ENTRY_C(0x4A0307B2, NULL, "viaddi      $vi3, $vi0, -0x2"),
+
+    TEST_ENTRY_C(0x48500800, NULL, "cfc2.ni     $s0, $vi1"),
+    TEST_ENTRY_C(0x48500801, NULL, "cfc2.i      $s0, $vi1"),
 };
 
 size_t test_entries_len = ARRAY_COUNT(test_entries);

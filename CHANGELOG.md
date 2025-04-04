@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add support for a few missing R5900 instructions.
+  - `cfc2.i`, `ctc2.i`, `qmfc2.i` and `qmtc2.i`.
+
+### Changed
+
+- Change some R5900 opcodes to use their suffix.
+  - Specifically `cfc2`, `ctc2`, `qmfc2` and `qmtc2` are changed to `cfc2.ni`,
+    `ctc2.ni`, `qmfc2.ni` and `qmtc2.ni`.
+
 ### Fixed
 
 - Allow building Python bindings with Clang versions that do not support some
