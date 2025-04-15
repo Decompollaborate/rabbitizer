@@ -11,6 +11,7 @@ pub struct AccessTypeDescriptor {
     pub(crate) name: &'static str,
     pub(crate) min_size: Option<u8>,
     pub(crate) min_alignment: Option<u8>,
+    pub(crate) is_unaligned: bool,
 }
 
 impl AccessTypeDescriptor {
@@ -19,6 +20,7 @@ impl AccessTypeDescriptor {
             name: "",
             min_size: None,
             min_alignment: None,
+            is_unaligned: false,
         }
     }
 
@@ -56,6 +58,11 @@ impl AccessTypeDescriptor {
     #[must_use]
     pub const fn min_alignment(&self) -> Option<u8> {
         self.min_alignment
+    }
+
+    #[must_use]
+    pub const fn is_unaligned(&self) -> bool {
+        self.is_unaligned
     }
 }
 

@@ -13,8 +13,10 @@
     RAB_DEF_ACCESSTYPE(WORD_COP2, min_size: Some(4), min_alignment: Some(4), )
     RAB_DEF_ACCESSTYPE_ISA(MIPS_II, DOUBLEWORD_COP2, min_size: Some(8), min_alignment: Some(8), )
 
-    RAB_DEF_ACCESSTYPE(UNALIGNED_WORD, min_size: Some(4), )
-    RAB_DEF_ACCESSTYPE_ISA(MIPS_III, UNALIGNED_DOUBLEWORD, min_size: Some(8), )
+    RAB_DEF_ACCESSTYPE(UNALIGNED_WORD_LEFT, min_size: Some(4), is_unaligned: true, )
+    RAB_DEF_ACCESSTYPE(UNALIGNED_WORD_RIGHT, min_size: Some(4), is_unaligned: true, )
+    RAB_DEF_ACCESSTYPE_ISA(MIPS_III, UNALIGNED_DOUBLEWORD_LEFT, min_size: Some(8), is_unaligned: true, )
+    RAB_DEF_ACCESSTYPE_ISA(MIPS_III, UNALIGNED_DOUBLEWORD_RIGHT, min_size: Some(8), is_unaligned: true, )
 
     RAB_DEF_ACCESSTYPE_ISA(MIPS_II, LINKED_WORD_WORD, min_size: Some(4), min_alignment: Some(4), )
     RAB_DEF_ACCESSTYPE_ISA(MIPS_III, LINKED_WORD_DOUBLEWORD, min_size: Some(8), min_alignment: Some(8), )

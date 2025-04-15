@@ -16,12 +16,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `subs_registers`
   - `ors_registers`
   - `ands_registers`
+- Add `AccessType.is_unaligned`.
 
 ### Changed
 
 - Change some R5900EE opcodes to use their suffix.
   - Specifically `cfc2`, `ctc2`, `qmfc2` and `qmtc2` are changed to `cfc2.ni`,
     `ctc2.ni`, `qmfc2.ni` and `qmtc2.ni`.
+- Change `AccessType` `UNALIGNED_WORD` to
+  `UNALIGNED_WORD_LEFT`/`UNALIGNED_WORD_RIGHT` pairs.
+- Change `AccessType` `UNALIGNED_DOUBLEWORD` to
+  `UNALIGNED_DOUBLEWORD_LEFT`/`UNALIGNED_DOUBLEWORD_RIGHT` pairs.
 
 ### Removed
 

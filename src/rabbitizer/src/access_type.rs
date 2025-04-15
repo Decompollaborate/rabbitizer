@@ -5,13 +5,13 @@ pub use crate::generated::AccessType;
 use crate::{access_type_descriptor::AccessTypeDescriptor, generated::ACCESS_TYPES};
 
 pub const ACCESS_TYPE_COUNT: usize = {
-    let mut count = 6;
+    let mut count = 7;
 
     if cfg!(feature = "MIPS_II") {
         count += 3;
     }
     if cfg!(feature = "MIPS_III") {
-        count += 3;
+        count += 4;
     }
     if cfg!(feature = "MIPS_IV") {
         count += 0;
@@ -69,5 +69,13 @@ impl AccessType {
     #[must_use]
     pub fn min_alignment(&self) -> Option<u8> {
         self.get_descriptor().min_alignment()
+    }
+
+    /// Unaligned access type.
+    ///
+    /// This is usually paired with the corresponding left/right variant.
+    #[must_use]
+    pub fn is_unaligned(&self) -> bool {
+        self.get_descriptor().is_unaligned()
     }
 }

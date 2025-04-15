@@ -201,7 +201,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD_LEFT)
     ) // Load Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x1B, ldr, MIPS_III,
@@ -212,7 +212,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD_RIGHT)
     ) // Load Doubleword Right
     RAB_DEF_OPCODE_MIPS1(
         core, 0x20, lb,
@@ -245,7 +245,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::UNALIGNED_WORD)
+        access_type: Some(AccessType::UNALIGNED_WORD_LEFT)
     ) // Load Word Left
     RAB_DEF_OPCODE_MIPS1(
         core, 0x23, lw,
@@ -291,7 +291,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_load: true,
-        access_type: Some(AccessType::UNALIGNED_WORD)
+        access_type: Some(AccessType::UNALIGNED_WORD_RIGHT)
     ) // Load Word Right
     RAB_DEF_OPCODE(
         core, 0x27, lwu, MIPS_III,
@@ -336,7 +336,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::UNALIGNED_WORD)
+        access_type: Some(AccessType::UNALIGNED_WORD_LEFT)
     ) // Store Word Left
     RAB_DEF_OPCODE_MIPS1(
         core, 0x2B, sw,
@@ -358,7 +358,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD_RIGHT)
     ) // Store Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x2D, sdr, MIPS_III,
@@ -369,7 +369,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD)
+        access_type: Some(AccessType::UNALIGNED_DOUBLEWORD_LEFT)
     ) // Store Doubleword Right
     RAB_DEF_OPCODE_MIPS1(
         core, 0x2E, swr,
@@ -380,7 +380,7 @@
         can_be_lo: true,
         does_dereference: true,
         does_store: true,
-        access_type: Some(AccessType::UNALIGNED_WORD)
+        access_type: Some(AccessType::UNALIGNED_WORD_RIGHT)
     ) // Store Word Right
     RAB_DEF_OPCODE(
         core, 0x30, ll, MIPS_II,

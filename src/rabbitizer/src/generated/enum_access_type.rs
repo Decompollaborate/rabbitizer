@@ -21,9 +21,12 @@ pub enum AccessType {
     WORD_COP2,
     #[cfg(feature = "MIPS_II")]
     DOUBLEWORD_COP2,
-    UNALIGNED_WORD,
+    UNALIGNED_WORD_LEFT,
+    UNALIGNED_WORD_RIGHT,
     #[cfg(feature = "MIPS_III")]
-    UNALIGNED_DOUBLEWORD,
+    UNALIGNED_DOUBLEWORD_LEFT,
+    #[cfg(feature = "MIPS_III")]
+    UNALIGNED_DOUBLEWORD_RIGHT,
     #[cfg(feature = "MIPS_II")]
     LINKED_WORD_WORD,
     #[cfg(feature = "MIPS_III")]
@@ -108,17 +111,36 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
         .check_panic_chain();
     }
     {
-        table[AccessType::UNALIGNED_WORD as usize] = AccessTypeDescriptor {
+        table[AccessType::UNALIGNED_WORD_LEFT as usize] = AccessTypeDescriptor {
             min_size: Some(4),
-            ..AccessTypeDescriptor::new("UNALIGNED_WORD")
+            is_unaligned: true,
+            ..AccessTypeDescriptor::new("UNALIGNED_WORD_LEFT")
+        }
+        .check_panic_chain();
+    }
+    {
+        table[AccessType::UNALIGNED_WORD_RIGHT as usize] = AccessTypeDescriptor {
+            min_size: Some(4),
+            is_unaligned: true,
+            ..AccessTypeDescriptor::new("UNALIGNED_WORD_RIGHT")
         }
         .check_panic_chain();
     }
     #[cfg(feature = "MIPS_III")]
     {
-        table[AccessType::UNALIGNED_DOUBLEWORD as usize] = AccessTypeDescriptor {
+        table[AccessType::UNALIGNED_DOUBLEWORD_LEFT as usize] = AccessTypeDescriptor {
             min_size: Some(8),
-            ..AccessTypeDescriptor::new("UNALIGNED_DOUBLEWORD")
+            is_unaligned: true,
+            ..AccessTypeDescriptor::new("UNALIGNED_DOUBLEWORD_LEFT")
+        }
+        .check_panic_chain();
+    }
+    #[cfg(feature = "MIPS_III")]
+    {
+        table[AccessType::UNALIGNED_DOUBLEWORD_RIGHT as usize] = AccessTypeDescriptor {
+            min_size: Some(8),
+            is_unaligned: true,
+            ..AccessTypeDescriptor::new("UNALIGNED_DOUBLEWORD_RIGHT")
         }
         .check_panic_chain();
     }
