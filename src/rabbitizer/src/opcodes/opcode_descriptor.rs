@@ -147,8 +147,14 @@ pub struct OpcodeDescriptor {
     /// Dereferences a pointer and stores data to RAM
     pub(crate) does_store: bool,
 
-    /// This instruction may be the result of expanding the `move` pseudo-instruction
-    pub(crate) maybe_is_move: bool,
+    /// This instruction adds two registers together and stores the result in a third one.
+    pub(crate) adds_registers: bool,
+    /// This instruction subtracts two registers together and stores the result in a third one.
+    pub(crate) subs_registers: bool,
+    /// This instruction bitwise-or two registers together and stores the result in a third one.
+    pub(crate) ors_registers: bool,
+    /// This instruction bitwise-and two registers together and stores the result in a third one.
+    pub(crate) ands_registers: bool,
 
     /// This instruction is a pseudo-instruction
     pub(crate) is_pseudo: bool,
@@ -206,7 +212,10 @@ impl OpcodeDescriptor {
             does_dereference: false,
             does_load: false,
             does_store: false,
-            maybe_is_move: false,
+            adds_registers: false,
+            subs_registers: false,
+            ors_registers: false,
+            ands_registers: false,
             is_pseudo: false,
             access_type: None,
             does_unsigned_memory_access: false,
@@ -426,17 +435,71 @@ impl OpcodeDescriptor {
             "Unsigned memory accesses require dereferences"
         );
 
-        // TODO: remove `&& !self.is_pseudo` check when the move pseudo is removed.
         assert!(
             utils::truth_a_implies_b(
-                self.maybe_is_move && !self.is_pseudo,
+                self.adds_registers,
                 self.has_operand_alias(Operand::core_rd)
                     && self.has_operand_alias(Operand::core_rs)
                     && self.has_operand_alias(Operand::core_rt)
             ),
-            "A `maybe_is_move` must use all three gpr register operands"
+            "A `adds_registers` must use three gpr register operands"
         );
-        // assert!(utils::truth_a_implies_b(self.maybe_is_move, !self.is_pseudo), "`move` pseudo is too problematic");
+        assert!(
+            utils::truth_a_implies_b(
+                self.subs_registers,
+                self.has_operand_alias(Operand::core_rd)
+                    && self.has_operand_alias(Operand::core_rs)
+                    && self.has_operand_alias(Operand::core_rt)
+            ),
+            "A `adds_registers` must use three gpr register operands"
+        );
+        assert!(
+            utils::truth_a_implies_b(
+                self.ors_registers,
+                self.has_operand_alias(Operand::core_rd)
+                    && self.has_operand_alias(Operand::core_rs)
+                    && self.has_operand_alias(Operand::core_rt)
+            ),
+            "A `adds_registers` must use three gpr register operands"
+        );
+        assert!(
+            utils::truth_a_implies_b(
+                self.ands_registers,
+                self.has_operand_alias(Operand::core_rd)
+                    && self.has_operand_alias(Operand::core_rs)
+                    && self.has_operand_alias(Operand::core_rt)
+            ),
+            "A `adds_registers` must use three gpr register operands"
+        );
+
+        assert!(
+            utils::truth_a_implies_b(
+                self.adds_registers,
+                !self.subs_registers && !self.ors_registers && !self.ands_registers
+            ),
+            "These properties are mutually exclusive"
+        );
+        assert!(
+            utils::truth_a_implies_b(
+                self.subs_registers,
+                !self.adds_registers && !self.ors_registers && !self.ands_registers
+            ),
+            "These properties are mutually exclusive"
+        );
+        assert!(
+            utils::truth_a_implies_b(
+                self.ors_registers,
+                !self.subs_registers && !self.adds_registers && !self.ands_registers
+            ),
+            "These properties are mutually exclusive"
+        );
+        assert!(
+            utils::truth_a_implies_b(
+                self.ands_registers,
+                !self.subs_registers && !self.ors_registers && !self.adds_registers
+            ),
+            "These properties are mutually exclusive"
+        );
     }
 
     pub(crate) const fn check_panic_chain(self) -> Self {
@@ -627,8 +690,20 @@ impl OpcodeDescriptor {
         self.does_store
     }
     #[must_use]
-    pub const fn maybe_is_move(&self) -> bool {
-        self.maybe_is_move
+    pub const fn adds_registers(&self) -> bool {
+        self.adds_registers
+    }
+    #[must_use]
+    pub const fn subs_registers(&self) -> bool {
+        self.subs_registers
+    }
+    #[must_use]
+    pub const fn ors_registers(&self) -> bool {
+        self.ors_registers
+    }
+    #[must_use]
+    pub const fn ands_registers(&self) -> bool {
+        self.ands_registers
     }
     #[must_use]
     pub const fn is_pseudo(&self) -> bool {

@@ -247,8 +247,20 @@ impl Opcode {
         self.get_descriptor().does_store()
     }
     #[must_use]
-    pub fn maybe_is_move(&self) -> bool {
-        self.get_descriptor().maybe_is_move()
+    pub fn adds_registers(&self) -> bool {
+        self.get_descriptor().adds_registers()
+    }
+    #[must_use]
+    pub fn subs_registers(&self) -> bool {
+        self.get_descriptor().subs_registers()
+    }
+    #[must_use]
+    pub fn ors_registers(&self) -> bool {
+        self.get_descriptor().ors_registers()
+    }
+    #[must_use]
+    pub fn ands_registers(&self) -> bool {
+        self.get_descriptor().ands_registers()
     }
     #[must_use]
     pub fn is_pseudo(&self) -> bool {

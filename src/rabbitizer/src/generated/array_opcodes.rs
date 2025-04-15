@@ -1119,6 +1119,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
+            adds_registers: true,
             not_emitted_by_compilers: true,
             ..OpcodeDescriptor::new("add", IsaVersion::MIPS_I, None)
         }
@@ -1131,7 +1132,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
-            maybe_is_move: true,
+            adds_registers: true,
             ..OpcodeDescriptor::new("addu", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -1144,6 +1145,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             not_emitted_by_compilers: true,
             reads_rs: true,
             reads_rt: true,
+            subs_registers: true,
             ..OpcodeDescriptor::new("sub", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -1155,6 +1157,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
+            subs_registers: true,
             ..OpcodeDescriptor::new("subu", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -1166,6 +1169,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
+            ands_registers: true,
             ..OpcodeDescriptor::new("and", IsaVersion::MIPS_I, None)
         }
         .check_panic_chain();
@@ -1175,7 +1179,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
             instr_type: InstrType::R,
             modifies_rd: true,
-            maybe_is_move: true,
+            ors_registers: true,
             reads_rs: true,
             reads_rt: true,
             ..OpcodeDescriptor::new("or", IsaVersion::MIPS_I, None)
@@ -1234,6 +1238,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
+            adds_registers: true,
             ..OpcodeDescriptor::new("dadd", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -1246,7 +1251,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
-            maybe_is_move: true,
+            adds_registers: true,
             ..OpcodeDescriptor::new("daddu", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -1259,6 +1264,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
+            subs_registers: true,
             ..OpcodeDescriptor::new("dsub", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -1271,6 +1277,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
+            subs_registers: true,
             ..OpcodeDescriptor::new("dsubu", IsaVersion::MIPS_III, None)
         }
         .check_panic_chain();
@@ -9110,7 +9117,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rd: true,
             reads_rs: true,
             reads_rt: true,
-            maybe_is_move: true,
+            adds_registers: true,
             ..OpcodeDescriptor::new("paddub", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
         }
         .check_panic_chain();

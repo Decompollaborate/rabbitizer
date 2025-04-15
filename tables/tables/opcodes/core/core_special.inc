@@ -244,6 +244,7 @@
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
+        adds_registers: true,
         not_emitted_by_compilers: true
     ) // ADD word
     RAB_DEF_OPCODE_MIPS1(
@@ -253,7 +254,7 @@
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        maybe_is_move: true
+        adds_registers: true
     ) // ADD Unsigned word
     RAB_DEF_OPCODE_MIPS1(
         core, 0x22, sub,
@@ -262,7 +263,8 @@
         modifies_rd: true,
         not_emitted_by_compilers: true,
         reads_rs: true,
-        reads_rt: true
+        reads_rt: true,
+        subs_registers: true
     ) // Subtract word
     RAB_DEF_OPCODE_MIPS1(
         core, 0x23, subu,
@@ -270,7 +272,8 @@
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
-        reads_rt: true
+        reads_rt: true,
+        subs_registers: true
     ) // SUBtract Unsigned word
     RAB_DEF_OPCODE_MIPS1(
         core, 0x24, and,
@@ -278,14 +281,15 @@
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
-        reads_rt: true
+        reads_rt: true,
+        ands_registers: true
     ) // AND
     RAB_DEF_OPCODE_MIPS1(
         core, 0x25, or,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         instr_type: InstrType::R,
         modifies_rd: true,
-        maybe_is_move: true,
+        ors_registers: true,
         reads_rs: true,
         reads_rt: true
     ) // OR
@@ -327,7 +331,8 @@
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
-        reads_rt: true
+        reads_rt: true,
+        adds_registers: true
     ) // Doubleword Add
     RAB_DEF_OPCODE(
         core, 0x2D, daddu, MIPS_III,
@@ -336,7 +341,7 @@
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        maybe_is_move: true
+        adds_registers: true
     ) // Doubleword Add Unsigned
     RAB_DEF_OPCODE(
         core, 0x2E, dsub, MIPS_III,
@@ -344,7 +349,8 @@
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
-        reads_rt: true
+        reads_rt: true,
+        subs_registers: true
     ) // Doubleword SUBtract
     RAB_DEF_OPCODE(
         core, 0x2F, dsubu, MIPS_III,
@@ -352,7 +358,8 @@
         instr_type: InstrType::R,
         modifies_rd: true,
         reads_rs: true,
-        reads_rt: true
+        reads_rt: true,
+        subs_registers: true
     ) // Doubleword SUBtract Unsigned
 
     // OP code

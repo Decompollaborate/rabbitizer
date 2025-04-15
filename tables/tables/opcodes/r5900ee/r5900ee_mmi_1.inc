@@ -125,7 +125,7 @@
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true,
-        maybe_is_move: true
+        adds_registers: true
     ) // Parallel ADD Unsigned saturation Byte
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x19, psubub, R5900EE,

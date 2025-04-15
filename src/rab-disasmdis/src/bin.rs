@@ -96,7 +96,7 @@ impl Data {
                 Ok(())
             }
             'x' | 'X' => self.pop(),
-            ' ' | ':' | '-' | '+' => Ok(()), // ignore those
+            ' ' | ':' | '-' | '+' | ',' => Ok(()), // ignore those
             _ => Err(()),
         }
     }
@@ -147,7 +147,7 @@ fn main() {
         let word = endian.word_from_bytes(bytes);
         let instr = rabbitizer::instr::Instruction::new(word, vram, flags);
         println!("{}", instr.display::<&str>(&display_flags, None, 0));
-    } else {
+    } else if data.missing_chars() < 8 {
         eprintln!(
             "Could not fill up a word while parsing the input. Missing characters: '{}'",
             data.missing_chars()

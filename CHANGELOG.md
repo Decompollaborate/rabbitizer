@@ -11,12 +11,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add support for a few missing R5900EE instructions.
   - `cfc2.i`, `ctc2.i`, `qmfc2.i` and `qmtc2.i`.
+- Add more opcode properties.
+  - `adds_registers`
+  - `subs_registers`
+  - `ors_registers`
+  - `ands_registers`
 
 ### Changed
 
 - Change some R5900EE opcodes to use their suffix.
   - Specifically `cfc2`, `ctc2`, `qmfc2` and `qmtc2` are changed to `cfc2.ni`,
     `ctc2.ni`, `qmfc2.ni` and `qmtc2.ni`.
+
+### Removed
+
+- Remove `maybe_is_move` opcode property.
 
 ## [2.0.0-alpha.1] - 2025-04-02
 
