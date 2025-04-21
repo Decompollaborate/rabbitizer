@@ -75,6 +75,31 @@ impl Vram {
     pub const fn sub_vram(&self, rhs: &Self) -> VramOffset {
         VramOffset::new((self.inner as i32).wrapping_sub_unsigned(rhs.inner()))
     }
+
+    /// Aligns down the Vram to the given power-of-two `alignment`.
+    ///
+    /// If the `alignment` parameter is not a power-of-two then it will be rounded down.
+    ///
+    /// # Panics
+    ///
+    /// This function will panic if `alignment` is zero.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rabbitizer::vram::Vram;
+    ///
+    /// let vram = Vram::new(0x800000A4);
+    ///
+    /// assert_eq!(vram.align_down(8), Vram::new(0x800000A0));
+    /// ```
+    #[must_use = "this returns the result of the operation, without modifying the original"]
+    pub const fn align_down(&self, alignment: u8) -> Self {
+        let shift = alignment.ilog2();
+
+        // Strip the lower bits by shifting.
+        Self::new((self.inner >> shift) << shift)
+    }
 }
 
 impl ops::Add<VramOffset> for Vram {
