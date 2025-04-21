@@ -1,6 +1,9 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#[cfg(feature = "pyo3")]
+use pyo3::prelude::*;
+
 pub use crate::generated::Abi;
 
 impl Abi {
@@ -25,9 +28,27 @@ impl From<&str> for Abi {
     fn from(value: &str) -> Self {
         match value {
             "32" | "o32" | "O32" => Self::O32,
+            "o64" | "O64" => Self::O64,
             "n32" | "N32" => Self::N32,
             "64" | "n64" | "N64" => Self::N64,
-            _ => Self::O32,
+            "eabi32" | "EABI32" => Self::EABI32,
+            "eabi64" | "EABI64" => Self::EABI64,
+            _ => Self::default(),
+        }
+    }
+}
+
+#[cfg(feature = "pyo3")]
+pub(crate) mod python_bindings {
+    use super::*;
+
+    #[pymethods]
+    impl Abi {
+        #[pyo3(name = "from_name")]
+        #[staticmethod]
+        #[must_use]
+        pub fn from_name(name: &str) -> Self {
+            name.into()
         }
     }
 }

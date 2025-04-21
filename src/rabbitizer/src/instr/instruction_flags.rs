@@ -445,6 +445,11 @@ pub(crate) mod python_bindings {
             Self::new_extension(isa_extension)
         }
 
+        #[pyo3(name = "set_abi")]
+        pub fn py_set_abi(&mut self, abi: Abi) {
+            self.abi = abi;
+        }
+
         #[pyo3(name = "set_j_as_branch")]
         pub fn py_set_j_as_branch(&mut self, j_as_branch: bool) {
             self.j_as_branch = j_as_branch;
