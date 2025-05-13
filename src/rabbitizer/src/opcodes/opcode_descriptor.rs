@@ -752,7 +752,7 @@ impl OpcodeDescriptor {
                 break;
             }
 
-            if self.operands[i] as usize == operand as usize {
+            if op == operand as usize {
                 return true;
             }
             i += 1;
@@ -828,40 +828,18 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::core_code_lower => {
-                if self.has_operand_alias(Operand::core_code) {
-                    return true;
-                }
-            }
+            Operand::core_code_lower => {}
 
             Operand::core_copraw => {}
             Operand::core_label => {}
 
             Operand::core_branch_target_label => {}
 
-            Operand::core_immediate_base => {
-                if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-                if self.has_operand_alias(Operand::core_immediate) {
-                    return true;
-                }
-            }
+            Operand::core_immediate_base => {}
 
-            Operand::core_maybe_rd_rs => {
-                if self.has_operand_alias(Operand::core_rd) {
-                    return true;
-                }
-                if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-            }
+            Operand::core_maybe_rd_rs => {}
 
-            Operand::core_maybe_zero_rs => {
-                if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-            }
+            Operand::core_maybe_zero_rs => {}
 
             /* rsp */
             #[cfg(feature = "RSP")]
@@ -894,25 +872,13 @@ impl OpcodeDescriptor {
             Operand::rsp_vt_elementlow => {}
 
             #[cfg(feature = "RSP")]
-            Operand::rsp_vd_de => {
-                if self.has_operand_alias(Operand::rsp_vd) {
-                    return true;
-                }
-            }
+            Operand::rsp_vd_de => {}
 
             #[cfg(feature = "RSP")]
-            Operand::rsp_vs_index => {
-                if self.has_operand_alias(Operand::rsp_vs) {
-                    return true;
-                }
-            }
+            Operand::rsp_vs_index => {}
 
             #[cfg(feature = "RSP")]
-            Operand::rsp_offset_rs => {
-                if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-            }
+            Operand::rsp_offset_rs => {}
             /* rsp */
 
             /* r3000gte */
@@ -930,31 +896,69 @@ impl OpcodeDescriptor {
 
             /* r4000allegrex */
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_s_vs => {}
+            Operand::r4000allegrex_s_vs => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_s_vt => {}
+            Operand::r4000allegrex_s_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
+
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vd => {}
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vt_imm => {}
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_s_vd_imm => {}
+
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_p_vs => {}
+            Operand::r4000allegrex_p_vs => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_p_vt => {}
+            Operand::r4000allegrex_p_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
+
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_p_vd => {}
+
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_t_vs => {}
+            Operand::r4000allegrex_t_vs => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_t_vt => {}
+            Operand::r4000allegrex_t_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
+
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_t_vd => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_q_vs => {}
+            Operand::r4000allegrex_q_vs => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_q_vt => {}
+            Operand::r4000allegrex_q_vt => {
+                if self.has_specific_operand(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt) {
+                    return true;
+                }
+            }
+
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_q_vd => {}
             #[cfg(feature = "R4000ALLEGREX")]
@@ -987,7 +991,6 @@ impl OpcodeDescriptor {
             Operand::r4000allegrex_cop2cs => {}
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_cop2cd => {}
-
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_pos => {}
             #[cfg(feature = "R4000ALLEGREX")]
@@ -996,67 +999,18 @@ impl OpcodeDescriptor {
             Operand::r4000allegrex_size_plus_pos => {}
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_imm3 => {}
-
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base => {
-                if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_offset14_base_maybe_wb) {
-                    return true;
-                }
-            }
-
+            Operand::r4000allegrex_offset14_base => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base_maybe_wb => {
-                if self.has_operand_alias(Operand::core_rs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_offset14_base) {
-                    return true;
-                }
-            }
-
+            Operand::r4000allegrex_offset14_base_maybe_wb => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_s_vs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_s_vt) {
-                    return true;
-                }
-            }
-
+            Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_p_vs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_p_vt) {
-                    return true;
-                }
-            }
-
+            Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_t_vs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_t_vt) {
-                    return true;
-                }
-            }
-
+            Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
-                if self.has_specific_operand(Operand::r4000allegrex_q_vs) {
-                    return true;
-                }
-                if self.has_specific_operand(Operand::r4000allegrex_q_vt) {
-                    return true;
-                }
-            }
-
+            Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {}
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vconstant => {}
             #[cfg(feature = "R4000ALLEGREX")]

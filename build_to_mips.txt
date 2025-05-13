@@ -1,5 +1,5 @@
 rustup override set nightly
-cargo rustc --lib --release --target mips-unknown-linux-musl -Zbuild-std -- --emit asm
+cargo rustc --manifest-path src/rabbitizer/Cargo.toml --lib --release --target mips-unknown-linux-musl -Zbuild-std -- --emit asm
 rustup override set stable
 
 
