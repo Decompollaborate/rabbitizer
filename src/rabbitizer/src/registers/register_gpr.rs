@@ -16,12 +16,10 @@ impl Gpr {
 }
 
 impl Register for Gpr {
-    #[must_use]
     fn as_index(&self) -> usize {
         *self as usize
     }
 
-    #[must_use]
     fn count() -> usize {
         Self::count()
     }
@@ -30,7 +28,6 @@ impl Register for Gpr {
         &register_descriptors::GPR[*self]
     }
 
-    #[must_use]
     fn is_temp(&self, abi: Abi) -> bool {
         let descriptor = self.get_descriptor();
 
@@ -43,7 +40,6 @@ impl Register for Gpr {
             descriptor.is_temp()
         }
     }
-    #[must_use]
     fn is_arg(&self, abi: Abi) -> bool {
         let descriptor = self.get_descriptor();
 

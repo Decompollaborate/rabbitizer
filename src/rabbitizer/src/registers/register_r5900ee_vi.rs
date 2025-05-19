@@ -15,12 +15,10 @@ impl R5900EEVI {
 }
 
 impl Register for R5900EEVI {
-    #[must_use]
     fn as_index(&self) -> usize {
         *self as usize
     }
 
-    #[must_use]
     fn count() -> usize {
         Self::count()
     }

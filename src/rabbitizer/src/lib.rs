@@ -83,6 +83,7 @@
 #![warn(clippy::cognitive_complexity)] // Maybe remove in the future (?)
 #![warn(clippy::alloc_instead_of_core)]
 #![warn(clippy::ref_option)]
+#![warn(clippy::manual_let_else)]
 //
 #![cfg_attr(not(feature = "std"), no_std)]
 

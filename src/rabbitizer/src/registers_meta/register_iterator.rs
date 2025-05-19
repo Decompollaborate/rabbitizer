@@ -60,7 +60,6 @@ impl<T> Default for RegisterIterator<T>
 where
     T: Register,
 {
-    #[must_use]
     fn default() -> Self {
         Self::new()
     }

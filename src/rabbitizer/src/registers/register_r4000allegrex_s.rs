@@ -15,12 +15,10 @@ impl R4000AllegrexS {
 }
 
 impl Register for R4000AllegrexS {
-    #[must_use]
     fn as_index(&self) -> usize {
         *self as usize
     }
 
-    #[must_use]
     fn count() -> usize {
         Self::count()
     }

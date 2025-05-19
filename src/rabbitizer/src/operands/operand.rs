@@ -79,7 +79,6 @@ impl Operand {
 }
 
 impl Operand {
-    #[must_use]
     pub const fn display<'ins, 'flg, T>(
         &self,
         instr: &'ins Instruction,

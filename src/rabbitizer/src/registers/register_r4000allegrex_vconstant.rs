@@ -15,12 +15,10 @@ impl R4000AllegrexVConstant {
 }
 
 impl Register for R4000AllegrexVConstant {
-    #[must_use]
     fn as_index(&self) -> usize {
         *self as usize
     }
 
-    #[must_use]
     fn count() -> usize {
         Self::count()
     }

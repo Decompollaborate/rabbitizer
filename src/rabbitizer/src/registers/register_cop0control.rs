@@ -15,12 +15,10 @@ impl Cop0Control {
 }
 
 impl Register for Cop0Control {
-    #[must_use]
     fn as_index(&self) -> usize {
         *self as usize
     }
 
-    #[must_use]
     fn count() -> usize {
         Self::count()
     }

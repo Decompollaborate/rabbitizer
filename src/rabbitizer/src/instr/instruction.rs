@@ -3276,6 +3276,7 @@ impl Instruction {
     /// Note, checking if the instruction has the operand via
     /// `has_operand_alias` will still return `true` if it previously did, even
     /// after setting that field to zero.
+    #[must_use]
     pub fn clear_operand(&self, operand: Operand) -> Option<Self> {
         if self.opcode().has_operand_alias(operand) {
             let mut new_instr = *self;
