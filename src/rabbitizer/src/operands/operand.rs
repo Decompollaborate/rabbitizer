@@ -5,6 +5,7 @@ use core::fmt;
 use core::iter::FusedIterator;
 
 use crate::display_flags::InstructionDisplayFlags;
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDescriptor, OperandDisplay, ValuedOperand, OPERANDS};
 
@@ -65,9 +66,20 @@ impl Operand {
     pub fn get_descriptor(&self) -> &'static OperandDescriptor {
         &OPERANDS[*self]
     }
+
+    #[must_use]
+    pub fn name(&self) -> &'static str {
+        self.get_descriptor().name()
+    }
+
+    #[must_use]
+    pub fn mask(&self) -> EncodedFieldMask {
+        self.get_descriptor().mask()
+    }
 }
 
 impl Operand {
+    #[must_use]
     pub const fn display<'ins, 'flg, T>(
         &self,
         instr: &'ins Instruction,

@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `ors_registers`
   - `ands_registers`
 - Add `AccessType.is_unaligned`.
+- `Instruction.clear_operand` and `Instruction.clear_operand_self`. Allows
+  clearing by setting to zero a field of an instruction by using the given
+  operand.
 
 ### Changed
 

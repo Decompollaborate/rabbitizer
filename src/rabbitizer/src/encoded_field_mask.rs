@@ -3,7 +3,7 @@
 
 use bitflags::bitflags;
 
-use crate::utils;
+use crate::{operands::Operand, utils};
 
 bitflags! {
     #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
@@ -281,6 +281,12 @@ impl EncodedFieldMask {
 impl Default for EncodedFieldMask {
     fn default() -> Self {
         Self::default()
+    }
+}
+
+impl From<Operand> for EncodedFieldMask {
+    fn from(value: Operand) -> Self {
+        value.mask()
     }
 }
 

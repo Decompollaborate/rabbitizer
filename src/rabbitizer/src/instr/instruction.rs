@@ -3268,6 +3268,41 @@ impl Instruction {
     }
 }
 
+impl Instruction {
+    /// Clears the given operand by setting the corresponding instruction field
+    /// to zero, returning a new `Instruction` instance if the instruction has
+    /// the operand, otherwise `None` is returned.
+    ///
+    /// Note, checking if the instruction has the operand via
+    /// `has_operand_alias` will still return `true` if it previously did, even
+    /// after setting that field to zero.
+    pub fn clear_operand(&self, operand: Operand) -> Option<Self> {
+        if self.opcode().has_operand_alias(operand) {
+            let mut new_instr = *self;
+            new_instr.word = self.word() & !operand.mask().bits();
+
+            Some(new_instr)
+        } else {
+            None
+        }
+    }
+
+    /// Clears the given operand by setting the corresponding instruction field
+    /// to zero, modifying the current `Instruction` instance.
+    ///
+    /// Note, checking if the instruction has the operand via
+    /// `has_operand_alias` will still return `true` if it previously did, even
+    /// after setting that field to zero.
+    pub fn clear_operand_self(&mut self, operand: Operand) -> bool {
+        if let Some(new_instr) = self.clear_operand(operand) {
+            *self = new_instr;
+            true
+        } else {
+            false
+        }
+    }
+}
+
 #[cfg(feature = "RSP")]
 impl Instruction {
     #[must_use]
@@ -3567,5 +3602,125 @@ mod tests {
 
         assert!(instr.get_branch_vram_generic().is_none());
         assert!(instr.get_instr_index_as_vram().is_some());
+    }
+
+    #[test]
+    fn check_clearing() {
+        let mut instr = Instruction::new(
+            0x0C00E2F6,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_I),
+        );
+
+        assert_eq!(
+            instr
+                .clear_operand(Operand::core_immediate)
+                .map(|x| x.word()),
+            None,
+            "jal doesn't have an immediate field, so this should return the same word"
+        );
+        assert_eq!(
+            instr
+                .clear_operand(Operand::core_branch_target_label)
+                .map(|x| x.word()),
+            None,
+            "jal is not a branch, so this should return the same word"
+        );
+        assert_eq!(
+            instr.clear_operand(Operand::core_label).map(|x| x.word()),
+            Some(0x0C000000),
+            "jal has a label field, so clearing it should zero out the lower 26 bits"
+        );
+
+        // Check we haven't modified the original instruction
+        assert_eq!(
+            instr.word(),
+            0x0C00E2F6,
+            "original instruction should remain unchanged"
+        );
+
+        // Check modifying the instruction in place.
+        let changed = instr.clear_operand_self(Operand::core_label);
+        assert!(changed);
+        assert_eq!(instr.word(), 0x0C000000);
+    }
+
+    #[test]
+    fn test_clear_operand_self_no_effect() {
+        let mut instr = Instruction::new(
+            0x0C00E2F6,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_I),
+        );
+        let changed = instr.clear_operand_self(Operand::core_immediate);
+        assert!(!changed);
+        // Should remain unchanged
+        assert_eq!(instr.word(), 0x0C00E2F6);
+    }
+
+    #[test]
+    fn test_clear_operand_on_branch_instruction() {
+        // beq $zero, $zero, 0x10
+        let instr = Instruction::new(
+            0x10000004,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_I),
+        );
+        // Should clear the immediate field (lower 16 bits)
+        let cleared = instr
+            .clear_operand(Operand::core_branch_target_label)
+            .unwrap();
+        assert_eq!(cleared.word(), 0x10000000);
+    }
+
+    #[test]
+    fn test_clear_operand_on_register_field() {
+        // add $t0, $t1, $t2: opcode=0x00, rd=8, rs=9, rt=10, imm=0x20
+        let instr = Instruction::new(
+            0x012A4020,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_I),
+        );
+        // Clear the rd field (bits 11-15)
+        let cleared = instr.clear_operand(Operand::core_rd).unwrap();
+        // rd field zeroed, rest unchanged
+        assert_eq!(cleared.word(), 0x012A0020);
+    }
+
+    #[test]
+    fn test_clear_operand_multiple_fields() {
+        // ori $t0, $t1, 0x1234
+        let instr = Instruction::new(
+            0x35281234,
+            Vram::new(0x80000000),
+            InstructionFlags::new(IsaVersion::MIPS_I),
+        );
+        // Clear the immediate field
+        let cleared_imm = instr.clear_operand(Operand::core_immediate).unwrap();
+        assert_eq!(cleared_imm.word(), 0x35280000);
+
+        // Clear the rt field
+        let cleared_rt = instr.clear_operand(Operand::core_rt).unwrap();
+        assert_eq!(cleared_rt.word(), 0x35201234);
+
+        // Clear the rs field
+        let cleared_rs = instr.clear_operand(Operand::core_rs).unwrap();
+        assert_eq!(cleared_rs.word(), 0x34081234);
+
+        assert_eq!(
+            instr.word(),
+            0x35281234,
+            "original instruction should remain unchanged"
+        );
+
+        let new_instr = instr
+            .clear_operand(Operand::core_immediate)
+            .and_then(|x| x.clear_operand(Operand::core_rt))
+            .and_then(|x| x.clear_operand(Operand::core_rs));
+        assert_eq!(
+            new_instr.map(|x| x.word()),
+            Some(0x34000000),
+            "should clear all three fields"
+        );
     }
 }

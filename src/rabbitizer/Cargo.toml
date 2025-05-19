@@ -12,6 +12,7 @@ repository.workspace = true
 description = "MIPS instruction decoder"
 readme = "README.md"
 keywords = ["MIPS", "decoder"]
+categories = ["no-std", "no-std::no-alloc"]
 # build = "rust/build.rs"
 # include = ["/rust/src", "/rust/build.rs", "/src", "/include", "/tables"]
 
