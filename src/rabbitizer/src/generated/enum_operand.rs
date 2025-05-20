@@ -9,6 +9,7 @@ use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
 use core::fmt;
 use core::num::NonZeroU16;
+#[cfg(feature = "R4000ALLEGREX")]
 use ordered_float::OrderedFloat;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
