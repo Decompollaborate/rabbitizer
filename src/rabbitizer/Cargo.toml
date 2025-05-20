@@ -32,7 +32,7 @@ MIPS_IV = ["MIPS_III"]
 
 RSP = ["MIPS_III"]
 R3000GTE = [] # MIPS_I
-R4000ALLEGREX = ["MIPS_III"]
+R4000ALLEGREX = ["MIPS_III", "dep:ordered-float"]
 R5900EE = ["MIPS_IV"]
 
 RspViceMsp = ["RSP"]
@@ -57,7 +57,7 @@ doc = ["MIPS_IV", "all_extensions", "all_gated_extensions"]
 
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }
-ordered-float = { version = "5.0.0", default-features = false }
+ordered-float = { version = "5.0.0", default-features = false, optional = true }
 pyo3 = { version = "0.23.2", optional = true }
 
 [package.metadata.docs.rs]
