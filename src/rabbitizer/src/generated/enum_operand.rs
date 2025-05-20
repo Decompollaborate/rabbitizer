@@ -1398,7 +1398,7 @@ where
         }
     }
 }
-#[derive(Debug, Copy, Clone, PartialEq, PartialOrd)]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 pub enum ValuedOperand {
     ALL_EMPTY(),
