@@ -67,7 +67,7 @@
     RAB_DEF_OPERAND_EXT(R4000ALLEGREX, r4000allegrex, bn, EncodedFieldMask::r4000allegrex_bn, (u8))
 
     RAB_DEF_OPERAND_EXT(R4000ALLEGREX, r4000allegrex, int16, EncodedFieldMask::r4000allegrex_intfloat16, (i16))
-    RAB_DEF_OPERAND_EXT(R4000ALLEGREX, r4000allegrex, float16, EncodedFieldMask::r4000allegrex_intfloat16, (f32))
+    RAB_DEF_OPERAND_EXT(R4000ALLEGREX, r4000allegrex, float16, EncodedFieldMask::r4000allegrex_intfloat16, (OrderedFloat<f32>))
 
     RAB_DEF_OPERAND_EXT(R4000ALLEGREX, r4000allegrex, p_vrot_code, EncodedFieldMask::r4000allegrex_vrot_code, (u8))
     RAB_DEF_OPERAND_EXT(R4000ALLEGREX, r4000allegrex, t_vrot_code, EncodedFieldMask::r4000allegrex_vrot_code, (u8))

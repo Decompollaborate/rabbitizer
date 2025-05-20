@@ -9,6 +9,8 @@ use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
 use core::fmt;
 use core::num::NonZeroU16;
+#[cfg(feature = "R4000ALLEGREX")]
+use ordered_float::OrderedFloat;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
 pub enum Operand {
@@ -1558,7 +1560,7 @@ pub enum ValuedOperand {
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_int16(i16),
     #[cfg(feature = "R4000ALLEGREX")]
-    r4000allegrex_float16(f32),
+    r4000allegrex_float16(OrderedFloat<f32>),
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_p_vrot_code(u8),
     #[cfg(feature = "R4000ALLEGREX")]

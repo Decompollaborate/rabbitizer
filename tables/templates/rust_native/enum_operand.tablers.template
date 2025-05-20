@@ -13,6 +13,9 @@ use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
 use crate::encoded_field_mask::EncodedFieldMask;
 
+SPECIAL_RS_TAG(cfg(feature = "R4000ALLEGREX"))
+use ordered_float::OrderedFloat;
+
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     prefix##_##operand,
 
