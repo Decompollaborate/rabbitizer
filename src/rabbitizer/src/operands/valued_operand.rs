@@ -481,6 +481,15 @@ impl ValuedOperand {
     }
 }
 
+impl core::hash::Hash for ValuedOperand {
+    fn hash<H: core::hash::Hasher>(&self, state: &mut H) {
+        match self {
+            ValuedOperand::r4000allegrex_float16(f) => f.to_bits().hash(state),
+            _ => self.hash(state),
+        }
+    }
+}
+
 impl Default for ValuedOperand {
     fn default() -> Self {
         Self::default()
