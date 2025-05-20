@@ -57,6 +57,7 @@ doc = ["MIPS_IV", "all_extensions", "all_gated_extensions"]
 
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }
+ordered-float = { version = "5.0.0", default-features = false }
 pyo3 = { version = "0.23.2", optional = true }
 
 [package.metadata.docs.rs]

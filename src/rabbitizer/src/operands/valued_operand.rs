@@ -336,9 +336,9 @@ impl ValuedOperand {
                 Self::r4000allegrex_int16(instr.field_r4000allegrex_int16_unchecked())
             }
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_float16 => {
-                Self::r4000allegrex_float16(instr.field_r4000allegrex_float16_unchecked())
-            }
+            Operand::r4000allegrex_float16 => Self::r4000allegrex_float16(
+                ordered_float::OrderedFloat(instr.field_r4000allegrex_float16_unchecked()),
+            ),
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_p_vrot_code => {
                 Self::r4000allegrex_p_vrot_code(instr.field_r4000allegrex_vrot_code_unchecked())
@@ -477,16 +477,6 @@ impl ValuedOperand {
             Operand::r5900ee_vis_parenthesis => {
                 Self::r5900ee_vis_parenthesis(instr.field_r5900ee_vis_unchecked())
             }
-        }
-    }
-}
-
-impl core::hash::Hash for ValuedOperand {
-    fn hash<H: core::hash::Hasher>(&self, state: &mut H) {
-        match self {
-            #[cfg(feature = "R4000ALLEGREX")]
-            ValuedOperand::r4000allegrex_float16(f) => f.to_bits().hash(state),
-            _ => self.hash(state),
         }
     }
 }
