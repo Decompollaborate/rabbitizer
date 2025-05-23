@@ -295,9 +295,20 @@ jobs:
       - name: Run MSRV checker
         run: cargo hack check --rust-version --workspace --all-targets --ignore-private --all-features
 
-  build_rust:
+  publish_rabbitizer:
     name: Publish crate
     runs-on: ubuntu-latest
+    needs:
+      - check_fmt
+      - check_clippy
+      - check_clippy_all_features
+      - check_doc
+      - run_tests
+      - run_tests_all_extensions
+      - run_tests_all_gated_extensions
+      - test_bin_disasmdis
+      - msrv
+      - msrv_all_features
 
     steps:
       - name: Checkout reposistory
@@ -312,10 +323,14 @@ jobs:
       - name: Build Rust package
         run: cargo build --release --workspace
 
-      - name: Publish dry run
+      - name: Publish rabbitizer dry run
         if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
         run: cargo publish -p rabbitizer --dry-run
 
-      - name: Upload crate
+      - name: Upload rabbitizer crate
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         run: cargo publish -p rabbitizer --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+
+      - name: Upload rab-disasmdis crate
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        run: cargo publish -p rab-disasmdis --token ${{ secrets.CARGO_REGISTRY_TOKEN }}

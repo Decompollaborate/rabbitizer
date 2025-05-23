@@ -13,7 +13,11 @@ use clap::Parser;
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
-    /// Hex words to be disassembled. Each word literal must be in groups of 8 characters.
+    /// Hex words to be disassembled. Each word literal must be in groups of 8
+    /// characters.
+    ///
+    /// This stream of bytes may or not contain `0x` prefixes, or even be
+    /// separated by either spaces, `:`, `-`, `+` or `,`.
     inputs: Vec<String>,
 
     /// Endian of the input strings

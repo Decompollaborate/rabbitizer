@@ -22,6 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Instruction.clear_operand` and `Instruction.clear_operand_self`. Allows
   clearing by setting to zero a field of an instruction by using the given
   operand.
+- Implementations for `ValuedOperand`: `Hash`, `Eq` and `Ord`.
+  - Thanks to @ethteck (PR #80)
+- First public release of `rab-disasmdis`.
+  - Disassemble MIPS instructions directly in your terminal, using the power of
+    rabbitizer.
 
 ### Changed
 
