@@ -381,19 +381,19 @@ jobs:
           {
             name: linux,
             target: x86_64-unknown-linux-musl,
-            runner: ubuntu-20.04,
+            runner: ubuntu-22.04,
             cp_cmd: cp,
           },
           {
             name: linux,
             target: x86_64-unknown-linux-gnu,
-            runner: ubuntu-20.04,
+            runner: ubuntu-22.04,
             cp_cmd: cp,
           },
         ]
         binaries: [
           {
-            package: rab-disasmdis
+            package: rab-disasmdis,
           },
         ]
 
