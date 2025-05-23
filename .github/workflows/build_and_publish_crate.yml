@@ -359,36 +359,42 @@ jobs:
             target: x86_64-pc-windows-gnu,
             runner: windows-2019,
             cp_cmd: Copy-Item,
+            extension: ".exe",
           },
           {
             name: windows,
             target: x86_64-pc-windows-msvc,
             runner: windows-2019,
             cp_cmd: Copy-Item,
+            extension: ".exe",
           },
           {
             name: mac,
             target: x86_64-apple-darwin,
             runner: macos-12,
             cp_cmd: cp,
+            extension: "",
           },
           {
             name: mac,
             target: aarch64-apple-darwin,
             runner: macos-14, # ARM
             cp_cmd: cp,
+            extension: "",
           },
           {
             name: linux,
             target: x86_64-unknown-linux-musl,
             runner: ubuntu-22.04,
             cp_cmd: cp,
+            extension: "",
           },
           {
             name: linux,
             target: x86_64-unknown-linux-gnu,
             runner: ubuntu-22.04,
             cp_cmd: cp,
+            extension: "",
           },
         ]
         binaries: [
@@ -412,7 +418,7 @@ jobs:
       - name: Move files for packaging
         run: |
           mkdir -p package/
-          ${{ matrix.builder.cp_cmd }} target/${{ matrix.builder.target }}/release/${{ matrix.binaries.package }} package/
+          ${{ matrix.builder.cp_cmd }} target/${{ matrix.builder.target }}/release/${{ matrix.binaries.package }}${{ matrix.builder.extension }} package/
           ${{ matrix.builder.cp_cmd }} LICENSE package/${{ matrix.binaries.package }}.LICENSE
           ${{ matrix.builder.cp_cmd }} src/${{ matrix.binaries.package }}/README.md package/${{ matrix.binaries.package }}.README.md
           ${{ matrix.builder.cp_cmd }} README.md package/rabbitizer.README.md
