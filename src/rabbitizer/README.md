@@ -149,3 +149,18 @@ default.
   - `pyo3`: Expose Python3 bindings. NOT WORKING YET.
     - Enables the `std`, `all_extensions` and `all_gated_extensions` features.
     - It also enables the `pyo3` dependency.
+
+## Versioning and changelog
+
+This library follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+We try to always keep backwards compatibility, so no breaking changes should
+happen until a major release (i.e. jumping from 1.X.X to 2.0.0).
+
+<!--
+TODO change this link when we do the first stable release
+-->
+To see what changed on each release check either the
+[CHANGELOG.md](https://github.com/Decompollaborate/rabbitizer/blob/%F0%9F%A6%80/CHANGELOG.md)
+file or check the [releases page on Github](https://github.com/Decompollaborate/rabbitizer/releases).
+You can also use [this link](https://github.com/Decompollaborate/rabbitizer/releases/latest)
+to check the latest release.

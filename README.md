@@ -184,3 +184,14 @@ See this crate at <https://crates.io/crates/rabbitizer>.
   - Official documentation from Toshiba: <https://wiki.qemu.org/images/2/2a/C790.pdf>
   - VU instruction manual: <http://lukasz.dk/files/vu-instruction-manual.pdf>
   - GNU binutils: <https://github.com/bminor/binutils-gdb/blob/master/opcodes/mips-opc.c>
+
+## Versioning and changelog
+
+This library follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+We try to always keep backwards compatibility, so no breaking changes should
+happen until a major release (i.e. jumping from 1.X.X to 2.0.0).
+
+To see what changed on each release check either the [CHANGELOG.md](CHANGELOG.md)
+file or check the [releases page on Github](https://github.com/Decompollaborate/rabbitizer/releases).
+You can also use [this link](https://github.com/Decompollaborate/rabbitizer/releases/latest)
+to check the latest release.
