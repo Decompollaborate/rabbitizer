@@ -111,7 +111,7 @@ can be included in your Cargo enabled project like this:
 
 ```toml
 [dependencies]
-rabbitizer = "2.0.0-alpha.1"
+rabbitizer = "2.0.0-alpha.3"
 ```
 
 ### Crate features

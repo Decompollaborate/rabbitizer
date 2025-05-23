@@ -9,9 +9,10 @@ rust-version.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-# description = "MIPS instruction decoder"
-# readme = "README.md"
-# keywords = ["MIPS", "decoder"]
+description = "Disassemble MIPS instructions directly in your terminal, using the power of rabbitizer."
+readme = "README.md"
+keywords = ["MIPS", "decoder", "cli"]
+categories = ["command-line-utilities"]
 
 [[bin]]
 # Just for testing
@@ -20,4 +21,4 @@ path = "src/bin.rs"
 
 [dependencies]
 clap = { version = "4.5.20", features = ["derive"] }
-rabbitizer = { path = "../rabbitizer", features = ["all_extensions"]}
+rabbitizer = { path = "../rabbitizer", version = "2.0.0-alpha.3", features = ["all_extensions"] }

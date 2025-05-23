@@ -261,7 +261,7 @@ dependencies = [
 
 [[package]]
 name = "rab-disasmdis"
-version = "2.0.0-alpha.2"
+version = "2.0.0-alpha.3"
 dependencies = [
  "clap",
  "rabbitizer",
@@ -269,7 +269,7 @@ dependencies = [
 
 [[package]]
 name = "rabbitizer"
-version = "2.0.0-alpha.2"
+version = "2.0.0-alpha.3"
 dependencies = [
  "bitflags",
  "ordered-float",

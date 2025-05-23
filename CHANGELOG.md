@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.0-alpha.2] - 2025-04-02
+## [2.0.0-alpha.3] - 2025-05-23
+
+### Added
+
+- First public release of `rab-disasmdis`.
+  - Disassemble MIPS instructions directly in your terminal, using the power of
+    rabbitizer.
+
+## [2.0.0-alpha.2] - 2025-05-23
 
 ### Added
 
@@ -24,9 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   operand.
 - Implementations for `ValuedOperand`: `Hash`, `Eq` and `Ord`.
   - Thanks to @ethteck (PR #80)
-- First public release of `rab-disasmdis`.
-  - Disassemble MIPS instructions directly in your terminal, using the power of
-    rabbitizer.
 
 ### Changed
 
@@ -709,7 +714,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.2...🦀
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.3...🦀
+[2.0.0-alpha.3]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.1...2.0.0-alpha.3
 [2.0.0-alpha.2]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.1...2.0.0-alpha.2
 [2.0.0-alpha.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.0...2.0.0-alpha.1
 [1.12.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.2...1.12.0
