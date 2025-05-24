@@ -288,7 +288,7 @@ jobs:
         run: cargo publish -p rab-disasmdis --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   github_binary_release:
-    name: Github binary release for ${{ matrix.binaries.package }} (${{ matrix.builder.target }})
+    name: Binary release for ${{ matrix.binaries.package }} (${{ matrix.builder.target }})
     runs-on: ${{ matrix.builder.runner }}
     needs:
       - check_fmt
@@ -323,7 +323,7 @@ jobs:
           {
             name: mac,
             target: x86_64-apple-darwin,
-            runner: macos-12,
+            runner: macos-14-large,
             cp_cmd: cp,
             extension: "",
           },
