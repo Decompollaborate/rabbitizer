@@ -323,7 +323,7 @@ jobs:
           {
             name: mac,
             target: x86_64-apple-darwin,
-            runner: macos-14-large,
+            runner: macos-13,
             cp_cmd: cp,
             extension: "",
           },
