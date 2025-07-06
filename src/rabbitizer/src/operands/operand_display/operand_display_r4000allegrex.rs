@@ -15,7 +15,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_s_vs_unchecked();
+        let reg = instr.field().r4000allegrex_s_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -29,7 +29,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_s_vt_unchecked();
+        let reg = instr.field().r4000allegrex_s_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -43,7 +43,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_s_vd_unchecked();
+        let reg = instr.field().r4000allegrex_s_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -57,7 +57,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_s_vt_imm_unchecked();
+        let reg = instr.field().r4000allegrex_s_vt_imm_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -71,7 +71,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_s_vd_imm_unchecked();
+        let reg = instr.field().r4000allegrex_s_vd_imm_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -86,7 +86,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_p_vs_unchecked();
+        let reg = instr.field().r4000allegrex_p_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -100,7 +100,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_p_vt_unchecked();
+        let reg = instr.field().r4000allegrex_p_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -114,7 +114,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_p_vd_unchecked();
+        let reg = instr.field().r4000allegrex_p_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -129,7 +129,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_t_vs_unchecked();
+        let reg = instr.field().r4000allegrex_t_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -143,7 +143,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_t_vt_unchecked();
+        let reg = instr.field().r4000allegrex_t_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -157,7 +157,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_t_vd_unchecked();
+        let reg = instr.field().r4000allegrex_t_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -172,7 +172,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_q_vs_unchecked();
+        let reg = instr.field().r4000allegrex_q_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -186,7 +186,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_q_vt_unchecked();
+        let reg = instr.field().r4000allegrex_q_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -200,7 +200,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_q_vd_unchecked();
+        let reg = instr.field().r4000allegrex_q_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -214,7 +214,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_q_vt_imm_unchecked();
+        let reg = instr.field().r4000allegrex_q_vt_imm_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -229,7 +229,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mp_vs_unchecked();
+        let reg = instr.field().r4000allegrex_mp_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -243,7 +243,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mp_vt_unchecked();
+        let reg = instr.field().r4000allegrex_mp_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -257,7 +257,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mp_vd_unchecked();
+        let reg = instr.field().r4000allegrex_mp_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -271,7 +271,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mp_vs_transpose_unchecked();
+        let reg = instr.field().r4000allegrex_mp_vs_transpose_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -286,7 +286,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mt_vs_unchecked();
+        let reg = instr.field().r4000allegrex_mt_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -300,7 +300,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mt_vt_unchecked();
+        let reg = instr.field().r4000allegrex_mt_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -314,7 +314,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mt_vd_unchecked();
+        let reg = instr.field().r4000allegrex_mt_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -328,7 +328,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mt_vs_transpose_unchecked();
+        let reg = instr.field().r4000allegrex_mt_vs_transpose_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -343,7 +343,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mq_vs_unchecked();
+        let reg = instr.field().r4000allegrex_mq_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -357,7 +357,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mq_vt_unchecked();
+        let reg = instr.field().r4000allegrex_mq_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -371,7 +371,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mq_vd_unchecked();
+        let reg = instr.field().r4000allegrex_mq_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -385,7 +385,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_mq_vs_transpose_unchecked();
+        let reg = instr.field().r4000allegrex_mq_vs_transpose_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -400,7 +400,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_cop2cs_unchecked();
+        let reg = instr.field().r4000allegrex_cop2cs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_r4000allegrex_vfpucontrol(),
@@ -414,7 +414,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_cop2cd_unchecked();
+        let reg = instr.field().r4000allegrex_cop2cd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_r4000allegrex_vfpucontrol(),
@@ -429,7 +429,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_pos_unchecked();
+        let s = instr.field().r4000allegrex_pos_impl();
 
         write!(f, "{}", s)
     }
@@ -438,7 +438,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_size_unchecked() + 1;
+        let s = instr.field().r4000allegrex_size_impl() + 1;
 
         write!(f, "{}", s)
     }
@@ -447,8 +447,8 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_size_plus_pos_unchecked() + 1
-            - (instr.field_r4000allegrex_pos_unchecked() as i8);
+        let s = instr.field().r4000allegrex_size_plus_pos_impl() + 1
+            - (instr.field().r4000allegrex_pos_impl() as i8);
 
         write!(f, "{}", s)
     }
@@ -458,7 +458,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_imm3_unchecked();
+        let s = instr.field().r4000allegrex_imm3_impl();
 
         write!(f, "{}", s)
     }
@@ -469,7 +469,7 @@ where
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.field_r4000allegrex_offset14_unchecked();
+            let s = instr.field().r4000allegrex_offset14_impl();
 
             write!(f, "0x{:X}", s)
         })
@@ -480,7 +480,7 @@ where
     ) -> fmt::Result {
         if false {
             if myself.imm_override.is_some()
-                || myself.instr.field_r4000allegrex_offset14_unchecked() != 0
+                || myself.instr.field().r4000allegrex_offset14_impl() != 0
             {
                 Self::display_r4000allegrex_offset14(myself, f)?;
             }
@@ -498,7 +498,7 @@ where
     ) -> fmt::Result {
         Self::display_r4000allegrex_offset14_base(myself, f)?;
 
-        if myself.instr.field_r4000allegrex_wb_unchecked() {
+        if myself.instr.field().r4000allegrex_wb_impl() {
             write!(f, ", wb")?;
         }
 
@@ -510,7 +510,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_vcmp_cond_unchecked();
+        let reg = instr.field().r4000allegrex_vcmp_cond_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -524,7 +524,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_s_args_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_s_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
@@ -544,7 +544,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_p_args_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_p_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
@@ -564,7 +564,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_t_args_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_t_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
@@ -584,7 +584,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_q_args_unchecked();
+        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_q_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
@@ -605,7 +605,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_vconstant_unchecked();
+        let reg = instr.field().r4000allegrex_vconstant_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -620,7 +620,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_power_of_two_unchecked();
+        let s = instr.field().r4000allegrex_power_of_two_impl();
 
         write!(f, "{}", s)
     }
@@ -629,7 +629,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_vfpu_cc_bit_unchecked();
+        let s = instr.field().r4000allegrex_vfpu_cc_bit_impl();
 
         write!(f, "{}", s)
     }
@@ -638,7 +638,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_bn_unchecked();
+        let s = instr.field().r4000allegrex_bn_impl();
 
         write!(f, "{}", s)
     }
@@ -648,7 +648,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_int16_unchecked();
+        let s = instr.field().r4000allegrex_int16_impl();
 
         write!(f, "{}", s)
     }
@@ -657,7 +657,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_float16_unchecked();
+        let s = instr.field().r4000allegrex_float16_impl();
 
         write!(f, "{}", s)
     }
@@ -701,7 +701,7 @@ where
             "[-S,-S]", // [31]
         ];
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_vrot_code_unchecked();
+        let s = instr.field().r4000allegrex_vrot_code_impl();
 
         write!(f, "{}", MNEMONICS[s as usize])
     }
@@ -744,7 +744,7 @@ where
             "[-S,-S,-S]", // [31]
         ];
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_vrot_code_unchecked();
+        let s = instr.field().r4000allegrex_vrot_code_impl();
 
         write!(f, "{}", MNEMONICS[s as usize])
     }
@@ -787,7 +787,7 @@ where
             "[-S,-S,-S,C]", // [31]
         ];
         let instr = myself.instr;
-        let s = instr.field_r4000allegrex_vrot_code_unchecked();
+        let s = instr.field().r4000allegrex_vrot_code_impl();
 
         write!(f, "{}", MNEMONICS[s as usize])
     }
@@ -797,7 +797,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_wpx_unchecked();
+        let reg = instr.field().r4000allegrex_wpx_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -811,7 +811,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_wpy_unchecked();
+        let reg = instr.field().r4000allegrex_wpy_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -825,7 +825,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_wpz_unchecked();
+        let reg = instr.field().r4000allegrex_wpz_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -839,7 +839,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_wpw_unchecked();
+        let reg = instr.field().r4000allegrex_wpw_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -854,7 +854,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_rpx_unchecked();
+        let reg = instr.field().r4000allegrex_rpx_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -868,7 +868,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_rpy_unchecked();
+        let reg = instr.field().r4000allegrex_rpy_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -882,7 +882,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_rpz_unchecked();
+        let reg = instr.field().r4000allegrex_rpz_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -896,7 +896,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r4000allegrex_rpw_unchecked();
+        let reg = instr.field().r4000allegrex_rpw_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),

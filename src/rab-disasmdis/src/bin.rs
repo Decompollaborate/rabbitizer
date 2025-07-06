@@ -1,6 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+#![allow(clippy::uninlined_format_args)]
+
 mod endian;
 mod isas;
 

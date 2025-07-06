@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add prebuilt binaries for `rab-disasmdis` on Github releases.
+- Add `field()` method to `Instruction`. Allows accessing the fields of the
+  given instruction.
+
+### Changed
+
+- Moved all `field_` methods of `Instruction` to a dedicated struct returned
+  by the `field()` method of `Instruction`.
+- Mark the `_unchecked` variants of `InstrField` as `unsafe`.
 
 ## [2.0.0-alpha.3] - 2025-05-23
 

@@ -61,7 +61,7 @@ where
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.field_r5900ee_immediate5_unchecked() as i32;
+            let s = instr.field().r5900ee_immediate5_impl() as i32;
 
             operand_display::display_signed_imm(s, f, myself.display_flags)
         })
@@ -72,7 +72,7 @@ where
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.field_r5900ee_immediate15_unchecked() as i32 * 8;
+            let s = instr.field().r5900ee_immediate15_impl() as i32 * 8;
 
             operand_display::display_signed_imm(s, f, myself.display_flags)
         })
@@ -83,7 +83,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r5900ee_vfs_unchecked();
+        let reg = instr.field().r5900ee_vfs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -97,7 +97,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r5900ee_vft_unchecked();
+        let reg = instr.field().r5900ee_vft_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -111,7 +111,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r5900ee_vfd_unchecked();
+        let reg = instr.field().r5900ee_vfd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -126,7 +126,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r5900ee_vis_unchecked();
+        let reg = instr.field().r5900ee_vis_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -140,7 +140,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r5900ee_vit_unchecked();
+        let reg = instr.field().r5900ee_vit_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -154,7 +154,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_r5900ee_vid_unchecked();
+        let reg = instr.field().r5900ee_vid_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -173,16 +173,16 @@ where
 
         /*
         let instr = myself.instr;
-        if instr.field_r5900ee_xyzw_x_unchecked() {
+        if instr.field().r5900ee_xyzw_x_impl() {
             write!(f, "x")?;
         }
-        if instr.field_r5900ee_xyzw_y_unchecked() {
+        if instr.field().r5900ee_xyzw_y_impl() {
             write!(f, "y")?;
         }
-        if instr.field_r5900ee_xyzw_z_unchecked() {
+        if instr.field().r5900ee_xyzw_z_impl() {
             write!(f, "z")?;
         }
-        if instr.field_r5900ee_xyzw_w_unchecked() {
+        if instr.field().r5900ee_xyzw_w_impl() {
             write!(f, "w")?;
         }
         */
@@ -198,16 +198,16 @@ where
 
         /*
         let instr = myself.instr;
-        if instr.field_r5900ee_xyzw_x_unchecked() {
+        if instr.field().r5900ee_xyzw_x_impl() {
             write!(f, "x")?;
         }
-        if instr.field_r5900ee_xyzw_y_unchecked() {
+        if instr.field().r5900ee_xyzw_y_impl() {
             write!(f, "y")?;
         }
-        if instr.field_r5900ee_xyzw_z_unchecked() {
+        if instr.field().r5900ee_xyzw_z_impl() {
             write!(f, "z")?;
         }
-        if instr.field_r5900ee_xyzw_w_unchecked() {
+        if instr.field().r5900ee_xyzw_w_impl() {
             write!(f, "w")?;
         }
         */
@@ -222,16 +222,16 @@ where
 
         /*
         let instr = myself.instr;
-        if instr.field_r5900ee_xyzw_x_unchecked() {
+        if instr.field().r5900ee_xyzw_x_impl() {
             write!(f, "x")?;
         }
-        if instr.field_r5900ee_xyzw_y_unchecked() {
+        if instr.field().r5900ee_xyzw_y_impl() {
             write!(f, "y")?;
         }
-        if instr.field_r5900ee_xyzw_z_unchecked() {
+        if instr.field().r5900ee_xyzw_z_impl() {
             write!(f, "z")?;
         }
-        if instr.field_r5900ee_xyzw_w_unchecked() {
+        if instr.field().r5900ee_xyzw_w_impl() {
             write!(f, "w")?;
         }
         */
@@ -246,16 +246,16 @@ where
 
         /*
         let instr = myself.instr;
-        if instr.field_r5900ee_xyzw_x_unchecked() {
+        if instr.field().r5900ee_xyzw_x_impl() {
             write!(f, "x")?;
         }
-        if instr.field_r5900ee_xyzw_y_unchecked() {
+        if instr.field().r5900ee_xyzw_y_impl() {
             write!(f, "y")?;
         }
-        if instr.field_r5900ee_xyzw_z_unchecked() {
+        if instr.field().r5900ee_xyzw_z_impl() {
             write!(f, "z")?;
         }
-        if instr.field_r5900ee_xyzw_w_unchecked() {
+        if instr.field().r5900ee_xyzw_w_impl() {
             write!(f, "w")?;
         }
         */
@@ -267,7 +267,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let n = instr.field_r5900ee_n_unchecked();
+        let n = instr.field().r5900ee_n_impl();
 
         Self::display_r5900ee_vft(myself, f)?;
         write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])
@@ -277,7 +277,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let n = instr.field_r5900ee_l_unchecked();
+        let n = instr.field().r5900ee_l_impl();
 
         Self::display_r5900ee_vfs(myself, f)?;
         write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])
@@ -287,7 +287,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let n = instr.field_r5900ee_m_unchecked();
+        let n = instr.field().r5900ee_m_impl();
 
         Self::display_r5900ee_vft(myself, f)?;
         write!(f, "{}", ['x', 'y', 'z', 'w'][n as usize])

@@ -25,6 +25,8 @@ path = "src/lib.rs"
 default = []
 std = []
 
+unchecked_instr_fields = []
+
 # TODO: Normalize capitalization
 MIPS_II = [] # MIPS_I
 MIPS_III = ["MIPS_II"]

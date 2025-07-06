@@ -16,7 +16,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rs_unchecked();
+        let reg = instr.field().rs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_gpr(),
@@ -31,7 +31,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rt_unchecked();
+        let reg = instr.field().rt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_gpr(),
@@ -46,7 +46,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rd_unchecked();
+        let reg = instr.field().rd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_gpr(),
@@ -60,7 +60,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_sa_unchecked();
+        let s = instr.field().sa_impl();
 
         write!(f, "{}", s)
     }
@@ -83,7 +83,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_cop0d_unchecked();
+        let reg = instr.field().cop0d_impl();
 
         let use_named;
 
@@ -105,7 +105,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_cop0cd_unchecked();
+        let reg = instr.field().cop0cd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -119,7 +119,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_fs_unchecked();
+        let reg = instr.field().fs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_fpr(),
@@ -133,7 +133,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_ft_unchecked();
+        let reg = instr.field().ft_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_fpr(),
@@ -147,7 +147,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_fd_unchecked();
+        let reg = instr.field().fd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_fpr(),
@@ -161,7 +161,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_cop1cs_unchecked();
+        let reg = instr.field().cop1cs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -175,7 +175,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_cop2t_unchecked();
+        let reg = instr.field().cop2t_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -189,7 +189,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_cop2d_unchecked();
+        let reg = instr.field().cop2d_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -203,7 +203,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_cop2cd_unchecked();
+        let reg = instr.field().cop2cd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -217,7 +217,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_op_unchecked();
+        let s = instr.field().op_impl();
 
         write!(f, "0x{:02X}", s)
     }
@@ -226,7 +226,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_hint_unchecked();
+        let s = instr.field().hint_impl();
 
         write!(f, "0x{:02X}", s)
     }
@@ -235,8 +235,8 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let code_upper = instr.field_code_upper_unchecked();
-        let code_lower = instr.field_code_lower_unchecked();
+        let code_upper = instr.field().code_upper_impl();
+        let code_lower = instr.field().code_lower_impl();
 
         write!(f, "{}", code_upper)?;
         if code_lower != 0 {
@@ -249,7 +249,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let code_lower = instr.field_code_lower_unchecked();
+        let code_lower = instr.field().code_lower_impl();
 
         write!(f, "{}", code_lower)
     }
@@ -267,7 +267,7 @@ where
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.get_instr_index_as_vram_unchecked();
+            let s = instr.get_instr_index_as_vram_impl();
 
             write!(f, "func_{}", s)
         })
@@ -278,7 +278,7 @@ where
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.get_processed_immediate_unchecked();
+            let s = instr.get_processed_immediate_impl();
 
             operand_display::display_signed_imm(s, f, myself.display_flags)
         })
@@ -298,7 +298,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if false {
-            if myself.imm_override.is_some() || myself.instr.field_immediate_unchecked() != 0 {
+            if myself.imm_override.is_some() || myself.instr.field().immediate_impl() != 0 {
                 Self::display_core_immediate(myself, f)?;
             }
         } else {
@@ -314,7 +314,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rd_unchecked();
+        let reg = instr.field().rd_impl();
 
         if !reg.holds_return_address(instr.abi()) || myself.display_flags.expand_jalr() {
             Self::display_core_rd(myself, f)?;

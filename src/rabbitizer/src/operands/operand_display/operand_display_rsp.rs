@@ -15,7 +15,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rsp_cop0d_unchecked();
+        let reg = instr.field().rsp_cop0d_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_rsp_cop0(),
@@ -29,7 +29,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rsp_cop2cd_unchecked();
+        let reg = instr.field().rsp_cop2cd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -44,7 +44,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rsp_vs_unchecked();
+        let reg = instr.field().rsp_vs_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -58,7 +58,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rsp_vt_unchecked();
+        let reg = instr.field().rsp_vt_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -72,7 +72,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let reg = instr.field_rsp_vd_unchecked();
+        let reg = instr.field().rsp_vd_impl();
         let s = reg.either_name(
             instr.abi(),
             myself.display_flags.named_registers(),
@@ -88,7 +88,7 @@ where
     ) -> fmt::Result {
         Self::display_rsp_vt(myself, f)?;
 
-        let element = myself.instr.field_rsp_elementhigh_unchecked();
+        let element = myself.instr.field().rsp_elementhigh_impl();
         if element != 0 {
             if (element & 0x8) == 0x8 {
                 write!(f, "[{}]", element & 7)
@@ -109,7 +109,7 @@ where
     ) -> fmt::Result {
         Self::display_rsp_vt(myself, f)?;
 
-        let element = myself.instr.field_rsp_elementlow_unchecked();
+        let element = myself.instr.field().rsp_elementlow_impl();
         write!(f, "[{}]", element)
     }
     pub(crate) fn display_rsp_vd_de(
@@ -118,7 +118,7 @@ where
     ) -> fmt::Result {
         Self::display_rsp_vd(myself, f)?;
 
-        let element = myself.instr.field_rsp_de_unchecked();
+        let element = myself.instr.field().rsp_de_impl();
         if element != 0 {
             if (element & 0x8) == 0x8 {
                 write!(f, "[{}]", element & (!0x8))
@@ -138,7 +138,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_rsp_index_unchecked();
+        let s = instr.field().rsp_index_impl();
 
         Self::display_rsp_vs(myself, f)?;
         write!(f, "[{}]", s)
@@ -148,7 +148,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.get_processed_rsp_offset_unchecked();
+        let s = instr.get_processed_rsp_offset_impl();
 
         write!(f, "0x{:X}", s)?;
         write!(f, "(")?;

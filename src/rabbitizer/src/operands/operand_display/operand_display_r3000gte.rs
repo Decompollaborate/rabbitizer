@@ -14,7 +14,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r3000gte_sf_unchecked();
+        let s = instr.field().r3000gte_sf_impl();
 
         write!(f, "{}", s)
     }
@@ -23,7 +23,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r3000gte_mx_unchecked();
+        let s = instr.field().r3000gte_mx_impl();
 
         write!(f, "{}", s)
     }
@@ -32,7 +32,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r3000gte_v_unchecked();
+        let s = instr.field().r3000gte_v_impl();
 
         write!(f, "{}", s)
     }
@@ -41,7 +41,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r3000gte_cv_unchecked();
+        let s = instr.field().r3000gte_cv_impl();
 
         write!(f, "{}", s)
     }
@@ -50,7 +50,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let s = instr.field_r3000gte_lm_unchecked();
+        let s = instr.field().r3000gte_lm_impl();
 
         write!(f, "{}", s)
     }

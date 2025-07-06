@@ -145,6 +145,10 @@ default.
   - `std`: Turns on `std` (or turn off `no_std`, depending on how you prefer it).
     This currently doesn't do much besides internally using `std::error` instead
     of `core::error`, which may lower the MSRV.
+  - `unchecked_instr_fields`: Exposes `unchecked` variants functions of the
+    `InstrField` struct that allow skipping validity checks.
+    - These functions are marked `unsafe`. Even if their use may not trigger UB
+      or similar effects, they could return garbage data if misused. 
   - `bindings_c`: Expose C bindings. NOT WORKING YET.
   - `pyo3`: Expose Python3 bindings. NOT WORKING YET.
     - Enables the `std`, `all_extensions` and `all_gated_extensions` features.
