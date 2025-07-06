@@ -309,14 +309,14 @@ jobs:
           {
             name: windows,
             target: x86_64-pc-windows-gnu,
-            runner: windows-2019,
+            runner: windows-2022,
             cp_cmd: Copy-Item,
             extension: ".exe",
           },
           {
             name: windows,
             target: x86_64-pc-windows-msvc,
-            runner: windows-2019,
+            runner: windows-2022,
             cp_cmd: Copy-Item,
             extension: ".exe",
           },
