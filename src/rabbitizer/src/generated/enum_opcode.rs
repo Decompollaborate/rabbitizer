@@ -529,49 +529,49 @@ pub enum Opcode {
     rsp_mtc0,
 
     #[cfg(feature = "R3000GTE")]
-    r3000gte_RTPS,
+    r3000gte_rtps,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_RTPT,
+    r3000gte_rtpt,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_DPCL,
+    r3000gte_dpcl,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_DPCS,
+    r3000gte_dpcs,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_DPCT,
+    r3000gte_dpct,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_INTPL,
+    r3000gte_intpl,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_NCS,
+    r3000gte_ncs,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_NCT,
+    r3000gte_nct,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_NCDS,
+    r3000gte_ncds,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_NCDT,
+    r3000gte_ncdt,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_NCCS,
+    r3000gte_nccs,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_NCCT,
+    r3000gte_ncct,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_CDP,
+    r3000gte_cdp,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_CC,
+    r3000gte_cc,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_NCLIP,
+    r3000gte_nclip,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_AVSZ3,
+    r3000gte_avsz3,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_AVSZ4,
+    r3000gte_avsz4,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_MVMVA,
+    r3000gte_mvmva,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_SQR,
+    r3000gte_sqr,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_OP,
+    r3000gte_op,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_GPF,
+    r3000gte_gpf,
     #[cfg(feature = "R3000GTE")]
-    r3000gte_GPL,
+    r3000gte_gpl,
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_lv_s,
     #[cfg(feature = "R4000ALLEGREX")]

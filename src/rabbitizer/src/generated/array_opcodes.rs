@@ -3844,143 +3844,143 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
 
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_RTPS as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_rtps as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("RTPS", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("rtps", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_RTPT as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_rtpt as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("RTPT", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("rtpt", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_DPCL as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_dpcl as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("DPCL", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("dpcl", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_DPCS as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_dpcs as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("DPCS", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("dpcs", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_DPCT as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_dpct as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("DPCT", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("dpct", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_INTPL as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_intpl as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("INTPL", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("intpl", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_NCS as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_ncs as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("NCS", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("ncs", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_NCT as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_nct as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("NCT", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("nct", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_NCDS as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_ncds as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("NCDS", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("ncds", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_NCDT as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_ncdt as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("NCDT", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("ncdt", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_NCCS as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_nccs as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("NCCS", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("nccs", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_NCCT as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_ncct as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("NCCT", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("ncct", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_CDP as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_cdp as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("CDP", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("cdp", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_CC as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_cc as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("CC", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("cc", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_NCLIP as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_nclip as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("NCLIP", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("nclip", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_AVSZ3 as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_avsz3 as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("AVSZ3", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("avsz3", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_AVSZ4 as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_avsz4 as usize] = OpcodeDescriptor {
             operands: Operand::arr0(),
-            ..OpcodeDescriptor::new("AVSZ4", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("avsz4", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_MVMVA as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_mvmva as usize] = OpcodeDescriptor {
             operands: Operand::arr5(
                 Operand::r3000gte_sf,
                 Operand::r3000gte_mx,
@@ -3988,39 +3988,39 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r3000gte_cv,
                 Operand::r3000gte_lm,
             ),
-            ..OpcodeDescriptor::new("MVMVA", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("mvmva", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_SQR as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_sqr as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::r3000gte_sf),
-            ..OpcodeDescriptor::new("SQR", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("sqr", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_OP as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_op as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::r3000gte_sf),
-            ..OpcodeDescriptor::new("OP", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("op", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_GPF as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_gpf as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::r3000gte_sf),
-            ..OpcodeDescriptor::new("GPF", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("gpf", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
-        table[Opcode::r3000gte_GPL as usize] = OpcodeDescriptor {
+        table[Opcode::r3000gte_gpl as usize] = OpcodeDescriptor {
             operands: Operand::arr1(Operand::r3000gte_sf),
-            ..OpcodeDescriptor::new("GPL", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
+            ..OpcodeDescriptor::new("gpl", IsaVersion::EXTENSION, Some(IsaExtension::R3000GTE))
         }
         .check_panic_chain();
     }

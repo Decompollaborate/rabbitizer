@@ -3,8 +3,6 @@
 - Rename pseudos to aliases?
   - A pseudo can expand to multiple instructions, but aliases can't
 
-- Use lowercase for gte instructions
-
 - rsp named control registers
 - verify rsp named registers
 

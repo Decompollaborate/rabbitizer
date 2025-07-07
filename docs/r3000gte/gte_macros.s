@@ -2,87 +2,87 @@
 ## This macros are meant to be used with GAS and avoid using DMPSX
 
 /*  RTPS    15      0x4A180001  Perspective transform */
-.macro RTPS
+.macro rtps
     .word 0x4A180001
 .endm
 
 /*  RTPT    23      0x4A280030  Perspective transform on 3 points */
-.macro RTPT
+.macro rtpt
     .word 0x4A280030
 .endm
 
 /*  DPCL    8       0x4A680029  Depth Cue Color light */
-.macro DPCL
+.macro dpcl
     .word 0x4A680029
 .endm
 
 /*  DPCS    8       0x4A780010  Depth Cueing */
-.macro DPCS
+.macro dpcs
     .word 0x4A780010
 .endm
 
 /*  DPCT    17      0x4AF8002A  Depth cue color RGB0,RGB1,RGB2 */
-.macro DPCT
+.macro dpct
     .word 0x4AF8002A
 .endm
 
 /*  INTPL   8       0x4A980011  Interpolation of vector and far color */
-.macro INTPL
+.macro intpl
     .word 0x4A980011
 .endm
 
 /*  NCS     14      0x4AC8041E  Normal color v0 */
-.macro NCS
+.macro ncs
     .word 0x4AC8041E
 .endm
 
 /*  NCT     30      0x4AD80420  Normal color v0, v1, v2 */
-.macro NCT
+.macro nct
     .word 0x4AD80420
 .endm
 
 /*  NCDS    19      0x4AE80413  Normal color depth cuev0 */
-.macro NCDS
+.macro ncds
     .word 0x4AE80413
 .endm
 
 /*  NCDT    44      0x4AF80416  Normal color depth cue v0, v1, v2 */
-.macro NCDT
+.macro ncdt
     .word 0x4AF80416
 .endm
 
 /*  NCCS    17      0x4B08041B  Normal color col. v0 */
-.macro NCCS
+.macro nccs
     .word 0x4B08041B
 .endm
 
 /*  NCCT    39      0x4B18043F  Normal color col.v0, v1, v2 */
-.macro NCCT
+.macro ncct
     .word 0x4B18043F
 .endm
 
 /*  CDP     13      0x4B280414  Color Depth Queue */
-.macro CDP
+.macro cdp
     .word 0x4B280414
 .endm
 
 /*  CC      11      0x4B38041C  Color Col. */
-.macro CC
+.macro cc
     .word 0x4B38041C
 .endm
 
 /*  NCLIP   8       0x4B400006  Normal clipping */
-.macro NCLIP
+.macro nclip
     .word 0x4B400006
 .endm
 
 /*  AVSZ3   5       0x4B58002D  Average of three Z values */
-.macro AVSZ3
+.macro avsz3
     .word 0x4B58002D
 .endm
 
 /*  AVSZ4   6       0x4B68002E  Average of four Z values */
-.macro AVSZ4
+.macro avsz4
     .word 0x4B68002E
 .endm
 
@@ -95,27 +95,27 @@
 # lm : arg is 1 bit wide
 
 /*  MVMVA   8       0x4A400012  Multiply vector by matrix and vector addition. */
-.macro MVMVA sf, mx, v, cv, lm
+.macro mvmva sf, mx, v, cv, lm
     .word 0x4A400012 | (\sf & 0x1) << 19 | (\mx & 0x3) << 17 | (\v & 0x3) << 15 | (\cv & 0x3) << 13 | (\lm & 0x1) << 10
 .endm
 
 /*  SQR     5       0x4AA00428  Square of vector */
-.macro SQR sf
+.macro sqr sf
     .word 0x4AA00428 | (\sf & 0x1) << 19
 .endm
 
 /*  OP      6       0x4B70000C  Outer Product */
-.macro OP sf
+.macro op sf
     .word 0x4B70000C | (\sf & 0x1) << 19
 .endm
 
 /*  GPF     6       0x4B90003D  General purpose interpolation */
-.macro GPF sf
+.macro gpf sf
     .word 0x4B90003D | (\sf & 0x1) << 19
 .endm
 
 /*  GPL     5       0x4BA0003E  general purpose interpolation */
-.macro GPL sf
+.macro gpl sf
     .word 0x4BA0003E | (\sf & 0x1) << 19
 .endm
 

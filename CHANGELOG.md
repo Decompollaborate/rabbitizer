@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   by the `field()` method of `Instruction`.
 - Mark the `_unchecked` variants of `InstrField` as `unsafe`.
 - Rename `immediate_base` to `immediate_rs`.
+- R3000GTE-specific instructions are now lowercase.
 
 ## [2.0.0-alpha.3] - 2025-05-23
 
