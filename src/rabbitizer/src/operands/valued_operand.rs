@@ -466,14 +466,19 @@ pub struct ValuedOperandIterator<'ins> {
     instr: &'ins Instruction,
     operands: &'ins [Operand; OPERAND_COUNT_MAX],
     index: usize,
+    end: usize,
 }
 
 impl<'ins> ValuedOperandIterator<'ins> {
     pub(crate) fn new(instr: &'ins Instruction) -> Self {
+        let operands = instr.opcode().get_descriptor().operands();
+        let end = utils::array_len_non_default(operands);
+
         Self {
             instr,
-            operands: instr.opcode().get_descriptor().operands(),
+            operands,
             index: 0,
+            end,
         }
     }
 }
@@ -482,25 +487,131 @@ impl Iterator for ValuedOperandIterator<'_> {
     type Item = ValuedOperand;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.index >= self.operands.len() {
+        if self.index >= self.end {
             return None;
         }
 
-        let val = &self.operands[self.index];
-        if *val == Operand::default() {
+        let val = self.operands[self.index];
+        if val == Operand::default() {
             return None;
         }
 
-        self.index += 1;
+        self.index = self.index.saturating_add(1);
         Some(val.to_valued_operand(self.instr))
     }
 
+    fn nth(&mut self, n: usize) -> Option<Self::Item> {
+        self.index = self.index.saturating_add(n);
+        self.next()
+    }
+
     fn size_hint(&self) -> (usize, Option<usize>) {
-        let remaining = self.operands.len() - self.index;
+        let remaining = self.end - self.index;
 
         (remaining, Some(remaining))
+    }
+
+    fn count(self) -> usize {
+        // The size_hint is always accurate.
+        self.size_hint().0
+    }
+
+    fn last(mut self) -> Option<Self::Item> {
+        self.next_back()
+    }
+}
+
+impl DoubleEndedIterator for ValuedOperandIterator<'_> {
+    fn next_back(&mut self) -> Option<Self::Item> {
+        if self.index >= self.end {
+            return None;
+        }
+
+        self.end = self.end.saturating_sub(1);
+        let val = self.operands[self.end];
+        if val == Operand::default() {
+            return None;
+        }
+        Some(val.to_valued_operand(self.instr))
+    }
+
+    fn nth_back(&mut self, n: usize) -> Option<Self::Item> {
+        self.end = self.end.saturating_sub(n);
+        self.next_back()
     }
 }
 
 impl ExactSizeIterator for ValuedOperandIterator<'_> {}
 impl FusedIterator for ValuedOperandIterator<'_> {}
+
+#[cfg(test)]
+mod tests {
+    use crate::instr::InstructionFlags;
+    use crate::registers::Gpr;
+    use crate::vram::Vram;
+
+    use super::*;
+
+    #[test]
+    fn test_valued_operand_iter_addiu() {
+        let instr = Instruction::new(
+            0x27A40010,
+            Vram::new(0x00000000),
+            InstructionFlags::default(),
+        );
+        let mut iter = instr.valued_operands_iter();
+
+        assert_eq!(iter.size_hint(), (3, Some(3)));
+        assert_eq!(iter.next(), Some(ValuedOperand::core_rt(Gpr::a0)));
+        assert_eq!(iter.next(), Some(ValuedOperand::core_rs(Gpr::sp)));
+        assert_eq!(
+            iter.next(),
+            Some(ValuedOperand::core_immediate(IU16::Integer(0x10)))
+        );
+        assert_eq!(iter.next(), None);
+        assert_eq!(iter.size_hint(), (0, Some(0)));
+    }
+
+    #[test]
+    fn test_valued_operand_iter_addiu_rev() {
+        let instr = Instruction::new(
+            0x27A40010,
+            Vram::new(0x00000000),
+            InstructionFlags::default(),
+        );
+        let mut iter = instr.valued_operands_iter().rev();
+
+        assert_eq!(iter.size_hint(), (3, Some(3)));
+        assert_eq!(
+            iter.next(),
+            Some(ValuedOperand::core_immediate(IU16::Integer(0x10)))
+        );
+        assert_eq!(iter.next(), Some(ValuedOperand::core_rs(Gpr::sp)));
+        assert_eq!(iter.next(), Some(ValuedOperand::core_rt(Gpr::a0)));
+        assert_eq!(iter.next(), None);
+        assert_eq!(iter.size_hint(), (0, Some(0)));
+    }
+
+    #[test]
+    fn test_valued_operand_iter_addiu_forward_back() {
+        let instr = Instruction::new(
+            0x27A40010,
+            Vram::new(0x00000000),
+            InstructionFlags::default(),
+        );
+        let mut iter = instr.valued_operands_iter();
+
+        assert_eq!(iter.size_hint(), (3, Some(3)));
+        assert_eq!(iter.next(), Some(ValuedOperand::core_rt(Gpr::a0)));
+        assert_eq!(iter.size_hint(), (2, Some(2)));
+        assert_eq!(
+            iter.next_back(),
+            Some(ValuedOperand::core_immediate(IU16::Integer(0x10)))
+        );
+        assert_eq!(iter.size_hint(), (1, Some(1)));
+        assert_eq!(iter.next(), Some(ValuedOperand::core_rs(Gpr::sp)));
+        assert_eq!(iter.size_hint(), (0, Some(0)));
+        assert_eq!(iter.next(), None);
+        assert_eq!(iter.size_hint(), (0, Some(0)));
+    }
+}

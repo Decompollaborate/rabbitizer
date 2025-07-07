@@ -1,5 +1,3 @@
-- Add `size_hint` to iterators
-
 - Set properties to float registers
 
 - Rename pseudos to aliases?

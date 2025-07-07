@@ -529,7 +529,7 @@ impl OpcodeDescriptor {
         &self.operands
     }
     #[must_use]
-    pub const fn operands_iter(&self) -> OperandIterator {
+    pub fn operands_iter(&self) -> OperandIterator {
         OperandIterator::new(&self.operands)
     }
 

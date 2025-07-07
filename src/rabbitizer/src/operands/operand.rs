@@ -8,6 +8,7 @@ use crate::display_flags::InstructionDisplayFlags;
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::Instruction;
 use crate::operands::{Operand, OperandDescriptor, OperandDisplay, ValuedOperand, OPERANDS};
+use crate::utils;
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
 // I didn't want to have a `Opcode::MAX` value, so instead we manually maintain
@@ -175,35 +176,76 @@ impl Default for Operand {
 pub struct OperandIterator<'ins> {
     operands: &'ins [Operand; OPERAND_COUNT_MAX],
     index: usize,
+    end: usize,
 }
 
 impl<'ins> OperandIterator<'ins> {
-    pub(crate) const fn new(operands: &'ins [Operand; OPERAND_COUNT_MAX]) -> Self {
-        Self { operands, index: 0 }
+    pub(crate) fn new(operands: &'ins [Operand; OPERAND_COUNT_MAX]) -> Self {
+        let end = utils::array_len_non_default(operands);
+
+        Self {
+            operands,
+            index: 0,
+            end,
+        }
     }
 }
 
-impl<'ins> Iterator for OperandIterator<'ins> {
-    type Item = &'ins Operand;
+impl Iterator for OperandIterator<'_> {
+    type Item = Operand;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if self.index >= self.operands.len() {
+        if self.index >= self.end {
             return None;
         }
 
-        let val = &self.operands[self.index];
-        if *val == Operand::default() {
+        let val = self.operands[self.index];
+        if val == Operand::default() {
             return None;
         }
 
-        self.index += 1;
+        self.index = self.index.saturating_add(1);
         Some(val)
     }
 
+    fn nth(&mut self, n: usize) -> Option<Self::Item> {
+        self.index = self.index.saturating_add(n);
+        self.next()
+    }
+
     fn size_hint(&self) -> (usize, Option<usize>) {
-        let remaining = self.operands.len() - self.index;
+        let remaining = self.end - self.index;
 
         (remaining, Some(remaining))
+    }
+
+    fn count(self) -> usize {
+        // The size_hint is always accurate.
+        self.size_hint().0
+    }
+
+    fn last(mut self) -> Option<Self::Item> {
+        self.next_back()
+    }
+}
+
+impl DoubleEndedIterator for OperandIterator<'_> {
+    fn next_back(&mut self) -> Option<Self::Item> {
+        if self.index >= self.end {
+            return None;
+        }
+
+        self.end = self.end.saturating_sub(1);
+        let val = self.operands[self.end];
+        if val == Operand::default() {
+            return None;
+        }
+        Some(val)
+    }
+
+    fn nth_back(&mut self, n: usize) -> Option<Self::Item> {
+        self.end = self.end.saturating_sub(n);
+        self.next_back()
     }
 }
 
@@ -217,12 +259,41 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_addiu_operands() {
+    fn test_operand_iter_addiu() {
         let mut operands = Opcode::core_addiu.get_descriptor().operands_iter();
 
-        assert_eq!(operands.next(), Some(Operand::core_rt).as_ref());
-        assert_eq!(operands.next(), Some(Operand::core_rs).as_ref());
-        assert_eq!(operands.next(), Some(Operand::core_immediate).as_ref());
+        assert_eq!(operands.size_hint(), (3, Some(3)));
+        assert_eq!(operands.next(), Some(Operand::core_rt));
+        assert_eq!(operands.next(), Some(Operand::core_rs));
+        assert_eq!(operands.next(), Some(Operand::core_immediate));
         assert_eq!(operands.next(), None);
+        assert_eq!(operands.size_hint(), (0, Some(0)));
+    }
+
+    #[test]
+    fn test_operand_iter_addiu_rev() {
+        let mut operands = Opcode::core_addiu.get_descriptor().operands_iter().rev();
+
+        assert_eq!(operands.size_hint(), (3, Some(3)));
+        assert_eq!(operands.next(), Some(Operand::core_immediate));
+        assert_eq!(operands.next(), Some(Operand::core_rs));
+        assert_eq!(operands.next(), Some(Operand::core_rt));
+        assert_eq!(operands.next(), None);
+        assert_eq!(operands.size_hint(), (0, Some(0)));
+    }
+
+    #[test]
+    fn test_operand_iter_addiu_forward_back() {
+        let mut operands = Opcode::core_addiu.get_descriptor().operands_iter();
+
+        assert_eq!(operands.size_hint(), (3, Some(3)));
+        assert_eq!(operands.next(), Some(Operand::core_rt));
+        assert_eq!(operands.size_hint(), (2, Some(2)));
+        assert_eq!(operands.next_back(), Some(Operand::core_immediate));
+        assert_eq!(operands.size_hint(), (1, Some(1)));
+        assert_eq!(operands.next(), Some(Operand::core_rs));
+        assert_eq!(operands.size_hint(), (0, Some(0)));
+        assert_eq!(operands.next(), None);
+        assert_eq!(operands.size_hint(), (0, Some(0)));
     }
 }

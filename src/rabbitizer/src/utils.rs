@@ -142,3 +142,21 @@ pub const fn truth_a_implies_b(a: bool, b: bool) -> bool {
 pub const fn truth_both_or_neither(a: bool, b: bool) -> bool {
     !(a ^ b)
 }
+
+pub(crate) fn array_len_non_default<T, const N: usize>(array: &[T; N]) -> usize
+where
+    T: Default + PartialEq,
+{
+    let mut end_aux = N;
+    let default = T::default();
+    loop {
+        if end_aux == 0 {
+            break 0;
+        }
+        let end2 = end_aux - 1;
+        if array[end2] != default {
+            break end_aux;
+        }
+        end_aux = end2;
+    }
+}
