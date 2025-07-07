@@ -11,16 +11,6 @@ use crate::operands::{Operand, OperandDisplay, ValuedOperand, OPERAND_COUNT_MAX}
 use crate::registers_meta::Register;
 use crate::utils;
 
-/// A 16bits number, either signed or unsigned.
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-#[allow(clippy::exhaustive_enums)]
-pub enum IU16 {
-    /// A signed 16bits value.
-    Integer(i16),
-    /// An unsigned 16bits value.
-    Unsigned(u16),
-}
-
 impl ValuedOperand {
     /// Returns a default value.
     #[must_use]
@@ -76,25 +66,12 @@ impl ValuedOperand {
             // TODO: either get rid of core_copraw or move to EncodedFieldMask/add as a Instruction function.
             Operand::core_copraw => Self::core_copraw(instr.word() & utils::bitmask(0, 25)),
             Operand::core_label => Self::core_label(instr.get_instr_index_as_vram_impl()),
-            Operand::core_immediate => {
-                let imm = if instr.opcode().is_unsigned() {
-                    IU16::Unsigned(field.immediate_impl())
-                } else {
-                    IU16::Integer(instr.get_processed_immediate_impl() as i16)
-                };
-                Self::core_immediate(imm)
-            }
+            Operand::core_imm_i16 => Self::core_imm_i16(field.imm_i16_impl()),
+            Operand::core_imm_u16 => Self::core_imm_u16(field.imm_u16_impl()),
             Operand::core_branch_target_label => {
                 Self::core_branch_target_label(instr.get_branch_offset_impl())
             }
-            Operand::core_immediate_rs => {
-                let imm = if instr.opcode().is_unsigned() {
-                    IU16::Unsigned(field.immediate_impl())
-                } else {
-                    IU16::Integer(instr.get_processed_immediate_impl() as i16)
-                };
-                Self::core_immediate_rs(imm, field.rs_impl())
-            }
+            Operand::core_imm_rs => Self::core_imm_rs(field.imm_i16_impl(), field.rs_impl()),
             Operand::core_maybe_rd_rs => {
                 let rd = field.rd_impl();
                 let reg = if rd.holds_return_address(instr.abi()) {
@@ -367,13 +344,9 @@ impl ValuedOperand {
             #[cfg(feature = "R5900EE")]
             Operand::r5900ee_ACC => Self::r5900ee_ACC(),
             #[cfg(feature = "R5900EE")]
-            Operand::r5900ee_immediate5 => {
-                Self::r5900ee_immediate5(field.r5900ee_immediate5_impl())
-            }
+            Operand::r5900ee_imm5 => Self::r5900ee_imm5(field.r5900ee_imm5_impl()),
             #[cfg(feature = "R5900EE")]
-            Operand::r5900ee_immediate15 => {
-                Self::r5900ee_immediate15(field.r5900ee_immediate15_impl())
-            }
+            Operand::r5900ee_imm15 => Self::r5900ee_imm15(field.r5900ee_imm15_impl()),
             #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfs => Self::r5900ee_vfs(field.r5900ee_vfs_impl()),
             #[cfg(feature = "R5900EE")]
@@ -564,10 +537,7 @@ mod tests {
         assert_eq!(iter.size_hint(), (3, Some(3)));
         assert_eq!(iter.next(), Some(ValuedOperand::core_rt(Gpr::a0)));
         assert_eq!(iter.next(), Some(ValuedOperand::core_rs(Gpr::sp)));
-        assert_eq!(
-            iter.next(),
-            Some(ValuedOperand::core_immediate(IU16::Integer(0x10)))
-        );
+        assert_eq!(iter.next(), Some(ValuedOperand::core_imm_i16(0x10)));
         assert_eq!(iter.next(), None);
         assert_eq!(iter.size_hint(), (0, Some(0)));
     }
@@ -582,10 +552,7 @@ mod tests {
         let mut iter = instr.valued_operands_iter().rev();
 
         assert_eq!(iter.size_hint(), (3, Some(3)));
-        assert_eq!(
-            iter.next(),
-            Some(ValuedOperand::core_immediate(IU16::Integer(0x10)))
-        );
+        assert_eq!(iter.next(), Some(ValuedOperand::core_imm_i16(0x10)));
         assert_eq!(iter.next(), Some(ValuedOperand::core_rs(Gpr::sp)));
         assert_eq!(iter.next(), Some(ValuedOperand::core_rt(Gpr::a0)));
         assert_eq!(iter.next(), None);
@@ -604,10 +571,7 @@ mod tests {
         assert_eq!(iter.size_hint(), (3, Some(3)));
         assert_eq!(iter.next(), Some(ValuedOperand::core_rt(Gpr::a0)));
         assert_eq!(iter.size_hint(), (2, Some(2)));
-        assert_eq!(
-            iter.next_back(),
-            Some(ValuedOperand::core_immediate(IU16::Integer(0x10)))
-        );
+        assert_eq!(iter.next_back(), Some(ValuedOperand::core_imm_i16(0x10)));
         assert_eq!(iter.size_hint(), (1, Some(1)));
         assert_eq!(iter.next(), Some(ValuedOperand::core_rs(Gpr::sp)));
         assert_eq!(iter.size_hint(), (0, Some(0)));

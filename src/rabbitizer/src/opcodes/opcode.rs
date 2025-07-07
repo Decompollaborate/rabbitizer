@@ -147,10 +147,6 @@ impl Opcode {
         self.get_descriptor().is_double()
     }
     #[must_use]
-    pub fn is_unsigned(&self) -> bool {
-        self.get_descriptor().is_unsigned()
-    }
-    #[must_use]
     pub fn modifies_rs(&self) -> bool {
         self.get_descriptor().modifies_rs()
     }

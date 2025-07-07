@@ -25,7 +25,7 @@
 
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x1E, lq, R5900EE,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -36,7 +36,7 @@
     ) // Load Quadword
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x1F, sq, R5900EE,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -48,7 +48,7 @@
 
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x36, lqc2, R5900EE,
-        operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_rs),
+        operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_imm_rs),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,
@@ -58,7 +58,7 @@
 
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x3E, sqc2, R5900EE,
-        operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_rs),
+        operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_imm_rs),
         reads_rs: true,
         can_be_lo: true,
         does_dereference: true,

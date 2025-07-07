@@ -8,7 +8,7 @@
 use core::fmt;
 use core::num::NonZeroU16;
 
-use crate::operands::{OperandDescriptor, IU16, OPERAND_COUNT, OperandDisplay};
+use crate::operands::{OperandDescriptor, OPERAND_COUNT, OperandDisplay};
 use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
 use crate::encoded_field_mask::EncodedFieldMask;

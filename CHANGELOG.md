@@ -20,6 +20,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Mark the `_unchecked` variants of `InstrField` as `unsafe`.
 - Rename `immediate_base` to `immediate_rs`.
 - R3000GTE-specific instructions are now lowercase.
+- Change `Operand::core_immediate` into two different operands:
+  `Operand::core_imm_i16` and `Operand::core_imm_u16`. They now encode the
+  signedness of the immediate instead of relying in the opcode.
+- Renamed a few `Operand`s:
+  - `core_immediate_rs` -> `core_imm_rs`.
+  - `r5900ee_immediate5` -> `r5900ee_imm5`.
+  - `r5900ee_immediate15` -> `r5900ee_imm15`.
+
+### Removed
+
+- `OpcodeDescriptor::is_unsigned` and family. This information is now encoded
+  into the immediate operand instead (`core_imm_i16` / `core_imm_u16`).
+- `Instruction::get_processed_immediate`. Use either `InstrField::imm_i16()` or
+  `InstrField::imm_u16()` instead.
+- `IU16` enum.
 
 ## [2.0.0-alpha.3] - 2025-05-23
 

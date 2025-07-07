@@ -228,27 +228,30 @@ impl InstrField<'_> {
         }
     }
 
-    /// Returns either the `immediate` value embedded on the `immediate` field
+    /// Returns either the `imm_i16` value embedded on the `immediate` field
     /// of the word of this instruction, or [`None`] if this instruction does
-    /// not have an `immediate` operand.
-    ///
-    /// Note this method returns the immediate as unsigned, but some
-    /// instructions use this value as signed and others as unsigned. To get
-    /// an immediate with proper signedness use [`get_processed_immediate`]
-    /// instead.
+    /// not have an `imm_i16` operand.
     ///
     /// [`None`]: Option::None
-    /// [`get_processed_immediate`]: Instruction::get_processed_immediate
     #[must_use]
-    pub fn immediate(&self) -> Option<u16> {
-        if !self
-            .instr
-            .opcode()
-            .has_operand_alias(Operand::core_immediate)
-        {
+    pub fn imm_i16(&self) -> Option<i16> {
+        if !self.instr.opcode().has_operand_alias(Operand::core_imm_i16) {
             return None;
         }
-        Some(self.immediate_impl())
+        Some(self.imm_i16_impl())
+    }
+
+    /// Returns either the `imm_u16` value embedded on the `immediate` field
+    /// of the word of this instruction, or [`None`] if this instruction does
+    /// not have an `imm_u16` operand.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn imm_u16(&self) -> Option<u16> {
+        if !self.instr.opcode().has_operand_alias(Operand::core_imm_u16) {
+            return None;
+        }
+        Some(self.imm_u16_impl())
     }
 
     /// Returns either the `op` value embedded on the `op`
@@ -1490,37 +1493,33 @@ impl InstrField<'_> {
 /// R5900EE opcode fields
 #[cfg(feature = "R5900EE")]
 impl InstrField<'_> {
-    /// Returns either the `r5900ee_immediate5` value embedded on the `r5900ee_immediate5`
+    /// Returns either the `r5900ee_imm5` value embedded on the `r5900ee_imm5`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn r5900ee_immediate5(&self) -> Option<i8> {
-        if self
-            .instr
-            .opcode()
-            .has_operand_alias(Operand::r5900ee_immediate5)
-        {
-            Some(self.r5900ee_immediate5_impl())
+    pub fn r5900ee_imm5(&self) -> Option<i8> {
+        if self.instr.opcode().has_operand_alias(Operand::r5900ee_imm5) {
+            Some(self.r5900ee_imm5_impl())
         } else {
             None
         }
     }
 
-    /// Returns either the `r5900ee_immediate15` value embedded on the `r5900ee_immediate15`
+    /// Returns either the `r5900ee_imm15` value embedded on the `r5900ee_imm15`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn r5900ee_immediate15(&self) -> Option<u16> {
+    pub fn r5900ee_imm15(&self) -> Option<u16> {
         if self
             .instr
             .opcode()
-            .has_operand_alias(Operand::r5900ee_immediate15)
+            .has_operand_alias(Operand::r5900ee_imm15)
         {
-            Some(self.r5900ee_immediate15_impl())
+            Some(self.r5900ee_imm15_impl())
         } else {
             None
         }
@@ -2020,23 +2019,42 @@ impl InstrField<'_> {
         self.instr_index_impl()
     }
 
-    /// Returns the `immediate` value embedded on the `immediate` field of the
+    /// Returns the `imm_i16` value embedded on the `immediate` field of the
     /// word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `immediate` value. It is recommended to use the
-    /// [`immediate`] function instead.
+    /// as an `imm_i16` value. It is recommended to use the
+    /// [`imm_i16`] function instead.
     ///
     /// # Safety
     ///
-    /// - The instruction must contain the [`Operand::core_immediate`] operand.
+    /// - The instruction must contain the [`Operand::core_imm_i16`] operand.
     ///
-    /// [`immediate`]: InstrField::immediate
+    /// [`imm_i16`]: InstrField::imm_i16
     #[must_use]
-    pub unsafe fn immediate_unchecked(&self) -> u16 {
-        self.immediate_impl()
+    pub unsafe fn imm_i16_unchecked(&self) -> i16 {
+        self.imm_i16_impl()
+    }
+
+    /// Returns the `imm_u16` value embedded on the `immediate` field of the
+    /// word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `imm_u16` value. It is recommended to use the
+    /// [`imm_u16`] function instead.
+    ///
+    /// # Safety
+    ///
+    /// - The instruction must contain the [`Operand::core_imm_u16`] operand.
+    ///
+    /// [`imm_u16`]: InstrField::imm_u16
+    #[must_use]
+    pub unsafe fn imm_u16_unchecked(&self) -> u16 {
+        self.imm_u16_impl()
     }
 
     /// Returns the `op` value embedded on the `op` field of the word of this
@@ -3452,42 +3470,42 @@ impl InstrField<'_> {
 /// Unchecked R5900EE opcode fields
 #[cfg(all(feature = "R5900EE", feature = "unchecked_instr_fields",))]
 impl InstrField<'_> {
-    /// Returns the `r5900ee_immediate5` value embedded on the `r5900ee_immediate5` field of
+    /// Returns the `r5900ee_imm5` value embedded on the `r5900ee_imm5` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900ee_immediate5` value. It is recommended to use the
-    /// [`r5900ee_immediate5`] function instead.
+    /// as an `r5900ee_imm5` value. It is recommended to use the
+    /// [`r5900ee_imm5`] function instead.
     ///
     /// # Safety
     ///
-    /// - The instruction must contain the [`Operand::r5900ee_immediate5`] operand.
+    /// - The instruction must contain the [`Operand::r5900ee_imm5`] operand.
     ///
-    /// [`r5900ee_immediate5`]: InstrField::r5900ee_immediate5
+    /// [`r5900ee_imm5`]: InstrField::r5900ee_imm5
     #[must_use]
-    pub unsafe fn r5900ee_immediate5_unchecked(&self) -> i8 {
-        self.r5900ee_immediate5_impl()
+    pub unsafe fn r5900ee_imm5_unchecked(&self) -> i8 {
+        self.r5900ee_imm5_impl()
     }
 
-    /// Returns the `r5900ee_immediate15` value embedded on the `r5900ee_immediate15` field of
+    /// Returns the `r5900ee_imm15` value embedded on the `r5900ee_imm15` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900ee_immediate15` value. It is recommended to use the
-    /// [`r5900ee_immediate15`] function instead.
+    /// as an `r5900ee_imm15` value. It is recommended to use the
+    /// [`r5900ee_imm15`] function instead.
     ///
     /// # Safety
     ///
-    /// - The instruction must contain the [`Operand::r5900ee_immediate15`] operand.
+    /// - The instruction must contain the [`Operand::r5900ee_imm15`] operand.
     ///
-    /// [`r5900ee_immediate15`]: InstrField::r5900ee_immediate15
+    /// [`r5900ee_imm15`]: InstrField::r5900ee_imm15
     #[must_use]
-    pub unsafe fn r5900ee_immediate15_unchecked(&self) -> u16 {
-        self.r5900ee_immediate15_impl()
+    pub unsafe fn r5900ee_imm15_unchecked(&self) -> u16 {
+        self.r5900ee_imm15_impl()
     }
 
     /// Returns the [`R5900EEVF`] register embedded on the `r5900ee_vfs` field of the word
@@ -3985,18 +4003,33 @@ impl InstrField<'_> {
         EncodedFieldMask::instr_index.get_shifted(self.instr.word())
     }
 
-    /// Returns the `immediate` value embedded on the `immediate` field of the
+    /// Returns the `imm_i16` value embedded on the `immediate` field of the
     /// word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
     /// as an `immediate` value. It is recommended to use the
-    /// [`immediate`] function instead.
+    /// [`imm_i16`] function instead.
     ///
-    /// [`immediate`]: InstrField::immediate
+    /// [`imm_i16`]: InstrField::imm_i16
     #[must_use]
-    pub(crate) fn immediate_impl(&self) -> u16 {
+    pub(crate) fn imm_i16_impl(&self) -> i16 {
+        self.imm_u16_impl() as i16
+    }
+
+    /// Returns the `imm_u16` value embedded on the `immediate` field of the
+    /// word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as an `immediate` value. It is recommended to use the
+    /// [`imm_u16`] function instead.
+    ///
+    /// [`imm_u16`]: InstrField::imm_u16
+    #[must_use]
+    pub(crate) fn imm_u16_impl(&self) -> u16 {
         EncodedFieldMask::immediate
             .get_shifted(self.instr.word())
             .try_into()
@@ -5341,36 +5374,36 @@ impl InstrField<'_> {
 /// Impls R5900EE opcode fields
 #[cfg(feature = "R5900EE")]
 impl InstrField<'_> {
-    /// Returns the `r5900ee_immediate5` value embedded on the `r5900ee_immediate5` field of
+    /// Returns the `r5900ee_imm5` value embedded on the `r5900ee_imm5` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900ee_immediate5` value. It is recommended to use the
-    /// [`r5900ee_immediate5`] function instead.
+    /// as an `r5900ee_imm5` value. It is recommended to use the
+    /// [`r5900ee_imm5`] function instead.
     ///
-    /// [`r5900ee_immediate5`]: InstrField::r5900ee_immediate5
+    /// [`r5900ee_imm5`]: InstrField::r5900ee_imm5
     #[must_use]
-    pub(crate) fn r5900ee_immediate5_impl(&self) -> i8 {
-        let raw = EncodedFieldMask::r5900ee_immediate5.get_shifted(self.instr.word());
+    pub(crate) fn r5900ee_imm5_impl(&self) -> i8 {
+        let raw = EncodedFieldMask::r5900ee_imm5.get_shifted(self.instr.word());
 
         utils::from_2s_complement(raw, 5).try_into().unwrap()
     }
 
-    /// Returns the `r5900ee_immediate15` value embedded on the `r5900ee_immediate15` field of
+    /// Returns the `r5900ee_imm15` value embedded on the `r5900ee_imm15` field of
     /// the word of this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
-    /// as an `r5900ee_immediate15` value. It is recommended to use the
-    /// [`r5900ee_immediate15`] function instead.
+    /// as an `r5900ee_imm15` value. It is recommended to use the
+    /// [`r5900ee_imm15`] function instead.
     ///
-    /// [`r5900ee_immediate15`]: InstrField::r5900ee_immediate15
+    /// [`r5900ee_imm15`]: InstrField::r5900ee_imm15
     #[must_use]
-    pub(crate) fn r5900ee_immediate15_impl(&self) -> u16 {
-        EncodedFieldMask::r5900ee_immediate15
+    pub(crate) fn r5900ee_imm15_impl(&self) -> u16 {
+        EncodedFieldMask::r5900ee_imm15
             .get_shifted(self.instr.word())
             .try_into()
             .unwrap()

@@ -15,4 +15,3 @@ pub use operand::{OperandIterator, OPERAND_COUNT_MAX};
 pub use operand_descriptor::OperandDescriptor;
 pub use operand_display::OperandDisplay;
 pub use valued_operand::ValuedOperandIterator;
-pub use valued_operand::IU16;

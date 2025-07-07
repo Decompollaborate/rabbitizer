@@ -47,7 +47,7 @@
 
     RAB_DEF_OPCODE(
         core, 0x08, tgei, MIPS_II,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         causes_exception: true,
@@ -57,7 +57,7 @@
     )
     RAB_DEF_OPCODE(
         core, 0x09, tgeiu, MIPS_II,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         causes_exception: true,
@@ -67,7 +67,7 @@
     )
     RAB_DEF_OPCODE(
         core, 0x0A, tlti, MIPS_II,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         causes_exception: true,
@@ -77,7 +77,7 @@
     )
     RAB_DEF_OPCODE(
         core, 0x0B, tltiu, MIPS_II,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         causes_exception: true,
@@ -87,7 +87,7 @@
     )
     RAB_DEF_OPCODE(
         core, 0x0C, teqi, MIPS_II,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         causes_exception: true,
@@ -97,7 +97,7 @@
     )
     RAB_DEF_OPCODE(
         core, 0x0E, tnei, MIPS_II,
-        operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+        operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
         instr_type: InstrType::REGIMM,
         is_trap: true,
         causes_exception: true,

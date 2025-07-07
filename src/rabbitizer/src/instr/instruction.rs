@@ -21,7 +21,6 @@ use crate::registers::*;
 #[cfg(feature = "R4000ALLEGREX")]
 use crate::registers_meta::R4000AllegrexVectorRegister;
 use crate::registers_meta::Register;
-use crate::utils;
 use crate::vram::{Vram, VramOffset};
 
 /// A MIPS instruction.
@@ -501,38 +500,6 @@ impl Instruction {
 }
 
 impl Instruction {
-    /// Get the (possibly signed) immediate value for this instruction.
-    #[must_use]
-    pub fn get_processed_immediate(&self) -> Option<i32> {
-        self.field().immediate().map(|imm| {
-            if self.opcode().is_unsigned() {
-                imm as i32
-            } else {
-                utils::from_2s_complement(imm as u32, 16)
-            }
-        })
-    }
-
-    /// Get the (possibly signed) immediate value for this instruction.
-    ///
-    /// Note this function **does not check** if the opcode of this instruction
-    /// actually has an `immediate` field, meaning that calling this function
-    /// on an instruction that does not have this field will interpret garbage
-    /// data as returned immediate. It is recommended to use the
-    /// [`get_processed_immediate`] function instead.
-    ///
-    /// [`get_processed_immediate`]: Instruction::get_processed_immediate
-    #[must_use]
-    pub(crate) fn get_processed_immediate_impl(&self) -> i32 {
-        let imm = self.field().immediate_impl();
-
-        if self.opcode().is_unsigned() {
-            imm as i32
-        } else {
-            utils::from_2s_complement(imm as u32, 16)
-        }
-    }
-
     #[must_use]
     #[inline(always)]
     const fn vram_from_instr_index(&self, instr_index: u32) -> Vram {
@@ -615,10 +582,9 @@ impl Instruction {
     /// [`VramOffset`]: crate::vram::VramOffset
     #[must_use]
     pub(crate) fn get_branch_offset_impl(&self) -> VramOffset {
-        let imm = self.field().immediate_impl();
-        let diff = utils::from_2s_complement(imm as u32, 16);
+        let imm: i32 = self.field().imm_i16_impl().into();
 
-        VramOffset::new((diff + 1) << 2)
+        VramOffset::new((imm + 1) << 2)
     }
 
     /// Returns the offset (in bytes) that the instruction would branch,
@@ -1032,9 +998,7 @@ mod tests {
         );
 
         assert_eq!(
-            instr
-                .clear_operand(Operand::core_immediate)
-                .map(|x| x.word()),
+            instr.clear_operand(Operand::core_imm_i16).map(|x| x.word()),
             None,
             "jal doesn't have an immediate field, so this should return the same word"
         );
@@ -1071,7 +1035,7 @@ mod tests {
             Vram::new(0x80000000),
             InstructionFlags::new(IsaVersion::MIPS_I),
         );
-        let changed = instr.clear_operand_self(Operand::core_immediate);
+        let changed = instr.clear_operand_self(Operand::core_imm_i16);
         assert!(!changed);
         // Should remain unchanged
         assert_eq!(instr.word(), 0x0C00E2F6);
@@ -1115,7 +1079,7 @@ mod tests {
             InstructionFlags::new(IsaVersion::MIPS_I),
         );
         // Clear the immediate field
-        let cleared_imm = instr.clear_operand(Operand::core_immediate).unwrap();
+        let cleared_imm = instr.clear_operand(Operand::core_imm_u16).unwrap();
         assert_eq!(cleared_imm.word(), 0x35280000);
 
         // Clear the rt field
@@ -1133,7 +1097,7 @@ mod tests {
         );
 
         let new_instr = instr
-            .clear_operand(Operand::core_immediate)
+            .clear_operand(Operand::core_imm_u16)
             .and_then(|x| x.clear_operand(Operand::core_rt))
             .and_then(|x| x.clear_operand(Operand::core_rs));
         assert_eq!(

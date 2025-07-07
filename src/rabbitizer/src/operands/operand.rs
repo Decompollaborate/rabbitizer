@@ -15,7 +15,7 @@ use crate::utils;
 // this constant.
 pub(crate) const OPERAND_COUNT: usize = {
     let mut count = 1;
-    count += 25;
+    count += 26;
 
     if cfg!(feature = "MIPS_II") {
         count += 0;
@@ -265,7 +265,7 @@ mod tests {
         assert_eq!(operands.size_hint(), (3, Some(3)));
         assert_eq!(operands.next(), Some(Operand::core_rt));
         assert_eq!(operands.next(), Some(Operand::core_rs));
-        assert_eq!(operands.next(), Some(Operand::core_immediate));
+        assert_eq!(operands.next(), Some(Operand::core_imm_i16));
         assert_eq!(operands.next(), None);
         assert_eq!(operands.size_hint(), (0, Some(0)));
     }
@@ -275,7 +275,7 @@ mod tests {
         let mut operands = Opcode::core_addiu.get_descriptor().operands_iter().rev();
 
         assert_eq!(operands.size_hint(), (3, Some(3)));
-        assert_eq!(operands.next(), Some(Operand::core_immediate));
+        assert_eq!(operands.next(), Some(Operand::core_imm_i16));
         assert_eq!(operands.next(), Some(Operand::core_rs));
         assert_eq!(operands.next(), Some(Operand::core_rt));
         assert_eq!(operands.next(), None);
@@ -289,7 +289,7 @@ mod tests {
         assert_eq!(operands.size_hint(), (3, Some(3)));
         assert_eq!(operands.next(), Some(Operand::core_rt));
         assert_eq!(operands.size_hint(), (2, Some(2)));
-        assert_eq!(operands.next_back(), Some(Operand::core_immediate));
+        assert_eq!(operands.next_back(), Some(Operand::core_imm_i16));
         assert_eq!(operands.size_hint(), (1, Some(1)));
         assert_eq!(operands.next(), Some(Operand::core_rs));
         assert_eq!(operands.size_hint(), (0, Some(0)));

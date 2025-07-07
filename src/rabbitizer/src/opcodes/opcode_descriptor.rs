@@ -95,10 +95,6 @@ pub struct OpcodeDescriptor {
     /// The instruction performs double precision float operations
     pub(crate) is_double: bool,
 
-    /// The instruction holds an immediate which is treated as an unsigned value,
-    /// otherwise the immediate it may hold should be treated as a Two's complement value
-    pub(crate) is_unsigned: bool,
-
     /// The instruction modifies the state of the MIPS `rs` register
     pub(crate) modifies_rs: bool,
     /// The instruction modifies the state of the MIPS `rt` register
@@ -187,7 +183,6 @@ impl OpcodeDescriptor {
             causes_returnable_exception: false,
             is_float: false,
             is_double: false,
-            is_unsigned: false,
             modifies_rs: false,
             modifies_rt: false,
             modifies_rd: false,
@@ -396,15 +391,6 @@ impl OpcodeDescriptor {
         );
 
         assert!(
-            utils::truth_a_implies_b(self.can_be_unsigned_lo, self.is_unsigned),
-            "An unsigned `lo` opcode must be unsigned"
-        );
-        assert!(
-            utils::truth_a_implies_b(self.can_be_lo, !self.is_unsigned),
-            "An `lo` opcode must be signed"
-        );
-
-        assert!(
             utils::truth_a_implies_b(self.does_link, self.is_branch || self.is_jump),
             "A 'does_link' opcode must be either `is_branch` or `is_jump`"
         );
@@ -590,10 +576,6 @@ impl OpcodeDescriptor {
         self.is_double
     }
     #[must_use]
-    pub const fn is_unsigned(&self) -> bool {
-        self.is_unsigned
-    }
-    #[must_use]
     pub const fn modifies_rs(&self) -> bool {
         self.modifies_rs
     }
@@ -769,7 +751,7 @@ impl OpcodeDescriptor {
 
         match operand {
             Operand::core_rs => {
-                if self.has_specific_operand(Operand::core_immediate_rs) {
+                if self.has_specific_operand(Operand::core_imm_rs) {
                     return true;
                 }
                 #[cfg(feature = "RSP")]
@@ -792,11 +774,12 @@ impl OpcodeDescriptor {
                 }
             }
 
-            Operand::core_immediate => {
-                if self.has_specific_operand(Operand::core_immediate_rs) {
+            Operand::core_imm_i16 => {
+                if self.has_specific_operand(Operand::core_imm_rs) {
                     return true;
                 }
             }
+            Operand::core_imm_u16 => {}
 
             Operand::core_rt => {}
 
@@ -835,7 +818,7 @@ impl OpcodeDescriptor {
 
             Operand::core_branch_target_label => {}
 
-            Operand::core_immediate_rs => {}
+            Operand::core_imm_rs => {}
 
             Operand::core_maybe_rd_rs => {}
 
@@ -1063,9 +1046,9 @@ impl OpcodeDescriptor {
             }
 
             #[cfg(feature = "R5900EE")]
-            Operand::r5900ee_immediate5 => {}
+            Operand::r5900ee_imm5 => {}
             #[cfg(feature = "R5900EE")]
-            Operand::r5900ee_immediate15 => {}
+            Operand::r5900ee_imm15 => {}
 
             #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfs => {

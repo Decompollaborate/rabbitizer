@@ -272,15 +272,26 @@ where
             write!(f, "func_{}", s)
         })
     }
-    pub(crate) fn display_core_immediate(
+    pub(crate) fn display_core_imm_i16(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.get_processed_immediate_impl();
+            let s = instr.field().imm_i16_impl();
 
-            operand_display::display_signed_imm(s, f, myself.display_flags)
+            operand_display::display_signed_imm(s.into(), f, myself.display_flags)
+        })
+    }
+    pub(crate) fn display_core_imm_u16(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        Self::display_imm_override_or(myself, f, |myself, f| {
+            let instr = myself.instr;
+            let s = instr.field().imm_u16_impl();
+
+            operand_display::display_signed_imm(s.into(), f, myself.display_flags)
         })
     }
     pub(crate) fn display_core_branch_target_label(
@@ -289,20 +300,20 @@ where
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             write!(f, ". + 4 + (")?;
-            Self::display_core_immediate(myself, f)?;
+            Self::display_core_imm_i16(myself, f)?;
             write!(f, " << 2)")
         })
     }
-    pub(crate) fn display_core_immediate_rs(
+    pub(crate) fn display_core_imm_rs(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         if false {
-            if myself.imm_override.is_some() || myself.instr.field().immediate_impl() != 0 {
-                Self::display_core_immediate(myself, f)?;
+            if myself.imm_override.is_some() || myself.instr.field().imm_i16_impl() != 0 {
+                Self::display_core_imm_i16(myself, f)?;
             }
         } else {
-            Self::display_core_immediate(myself, f)?;
+            Self::display_core_imm_i16(myself, f)?;
         }
 
         write!(f, "(")?;

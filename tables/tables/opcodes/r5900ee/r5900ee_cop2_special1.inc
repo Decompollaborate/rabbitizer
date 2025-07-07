@@ -321,7 +321,7 @@
     ) // Integer SUBtract
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x32, viaddi, R5900EE,
-        operands: Operand::arr3(Operand::r5900ee_vit, Operand::r5900ee_vis, Operand::r5900ee_immediate5)
+        operands: Operand::arr3(Operand::r5900ee_vit, Operand::r5900ee_vis, Operand::r5900ee_imm5)
     ) // Integer ADD Immediate
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x34, viand, R5900EE,
@@ -334,7 +334,7 @@
 
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x38, vcallms, R5900EE,
-        operands: Operand::arr1(Operand::r5900ee_immediate15)
+        operands: Operand::arr1(Operand::r5900ee_imm15)
     )
     RAB_DEF_OPCODE_EXT(
         r5900ee, 0x39, vcallmsr, R5900EE,

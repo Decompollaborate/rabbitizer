@@ -217,9 +217,9 @@ bitflags! {
         const r5900ee_viwr_fhilo = utils::bitmask( 21,  4) | utils::bitmask(  0,  2);
 
         #[cfg(feature = "R5900EE")]
-        const r5900ee_immediate5 = utils::bitmask(  6,  5);
+        const r5900ee_imm5 = utils::bitmask(  6,  5);
         #[cfg(feature = "R5900EE")]
-        const r5900ee_immediate15 = utils::bitmask(  6, 15);
+        const r5900ee_imm15 = utils::bitmask(  6, 15);
 
         #[cfg(feature = "R5900EE")]
         const r5900ee_vfs = utils::bitmask( 11,  5);

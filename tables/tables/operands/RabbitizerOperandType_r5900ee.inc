@@ -6,8 +6,8 @@
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, R, EncodedFieldMask::empty(), ())
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, ACC, EncodedFieldMask::empty(), ())
 
-    RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, immediate5, EncodedFieldMask::r5900ee_immediate5, (i8))
-    RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, immediate15, EncodedFieldMask::r5900ee_immediate15, (u16))
+    RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, imm5, EncodedFieldMask::r5900ee_imm5, (i8))
+    RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, imm15, EncodedFieldMask::r5900ee_imm15, (u16))
 
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vfs, EncodedFieldMask::r5900ee_vfs, (R5900EEVF))
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vft, EncodedFieldMask::r5900ee_vft, (R5900EEVF))

@@ -157,7 +157,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_addi as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -169,7 +169,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_addiu as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -180,7 +180,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_slti as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -190,7 +190,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_sltiu as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -200,9 +200,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_andi as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_u16),
             instr_type: InstrType::I,
-            is_unsigned: true,
             modifies_rt: true,
             reads_rs: true,
             ..OpcodeDescriptor::new("andi", IsaVersion::MIPS_I, None)
@@ -211,9 +210,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_ori as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_u16),
             instr_type: InstrType::I,
-            is_unsigned: true,
             modifies_rt: true,
             reads_rs: true,
             can_be_unsigned_lo: true,
@@ -223,9 +221,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_xori as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_u16),
             instr_type: InstrType::I,
-            is_unsigned: true,
             modifies_rt: true,
             reads_rs: true,
             ..OpcodeDescriptor::new("xori", IsaVersion::MIPS_I, None)
@@ -235,7 +232,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_daddi as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -247,7 +244,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_daddiu as usize] = OpcodeDescriptor {
-            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr3(Operand::core_rt, Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -258,9 +255,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lui as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_u16),
             instr_type: InstrType::I,
-            is_unsigned: true,
             modifies_rt: true,
             can_be_hi: true,
             ..OpcodeDescriptor::new("lui", IsaVersion::MIPS_I, None)
@@ -270,7 +266,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ldl as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -285,7 +281,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ldr as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -299,7 +295,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lb as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -313,7 +309,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lh as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -327,7 +323,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lwl as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -341,7 +337,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lw as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -355,7 +351,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lbu as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -370,7 +366,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lhu as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -385,7 +381,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lwr as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -400,7 +396,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_lwu as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -415,7 +411,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_sb as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -429,7 +425,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_sh as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -443,7 +439,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_swl as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -457,7 +453,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_sw as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -472,7 +468,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_sdl as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -487,7 +483,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_sdr as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -501,7 +497,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_swr as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -516,7 +512,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ll as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -532,7 +528,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_IV")]
     {
         table[Opcode::core_pref as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_hint, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_hint, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             ..OpcodeDescriptor::new("pref", IsaVersion::MIPS_IV, None)
@@ -542,7 +538,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_lld as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -558,7 +554,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_ld as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -573,7 +569,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sc as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -589,7 +585,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_scd as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -605,7 +601,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_III")]
     {
         table[Opcode::core_sd as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -620,7 +616,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_cache as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_op, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_op, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             not_emitted_by_compilers: true,
@@ -630,7 +626,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lwc1 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_ft, Operand::core_imm_rs),
             instr_type: InstrType::I,
             is_float: true,
             reads_rs: true,
@@ -646,7 +642,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ldc1 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_ft, Operand::core_imm_rs),
             instr_type: InstrType::I,
             is_float: true,
             is_double: true,
@@ -662,7 +658,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_swc1 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_ft, Operand::core_imm_rs),
             instr_type: InstrType::I,
             is_float: true,
             reads_rs: true,
@@ -678,7 +674,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sdc1 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_ft, Operand::core_imm_rs),
             instr_type: InstrType::I,
             is_float: true,
             is_double: true,
@@ -694,7 +690,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_lwc2 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             not_emitted_by_compilers: true,
@@ -709,7 +705,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_ldc2 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             not_emitted_by_compilers: true,
@@ -723,7 +719,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     {
         table[Opcode::core_swc2 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             not_emitted_by_compilers: true,
@@ -738,7 +734,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_sdc2 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_cop2t, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             not_emitted_by_compilers: true,
@@ -1543,7 +1539,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tgei as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             is_trap: true,
             causes_exception: true,
@@ -1557,7 +1553,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tgeiu as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             is_trap: true,
             causes_exception: true,
@@ -1571,7 +1567,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tlti as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             is_trap: true,
             causes_exception: true,
@@ -1585,7 +1581,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tltiu as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             is_trap: true,
             causes_exception: true,
@@ -1599,7 +1595,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_teqi as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             is_trap: true,
             causes_exception: true,
@@ -1613,7 +1609,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "MIPS_II")]
     {
         table[Opcode::core_tnei as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             is_trap: true,
             causes_exception: true,
@@ -8377,7 +8373,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R5900EE")]
     {
         table[Opcode::r5900ee_lq as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             modifies_rt: true,
             reads_rs: true,
@@ -8392,7 +8388,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R5900EE")]
     {
         table[Opcode::r5900ee_sq as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
             instr_type: InstrType::I,
             reads_rs: true,
             reads_rt: true,
@@ -8407,7 +8403,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R5900EE")]
     {
         table[Opcode::r5900ee_lqc2 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_imm_rs),
             reads_rs: true,
             can_be_lo: true,
             does_dereference: true,
@@ -8420,7 +8416,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R5900EE")]
     {
         table[Opcode::r5900ee_sqc2 as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_immediate_rs),
+            operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_imm_rs),
             reads_rs: true,
             can_be_lo: true,
             does_dereference: true,
@@ -8474,7 +8470,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R5900EE")]
     {
         table[Opcode::r5900ee_mtsab as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             reads_rs: true,
             ..OpcodeDescriptor::new("mtsab", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
@@ -8484,7 +8480,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R5900EE")]
     {
         table[Opcode::r5900ee_mtsah as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::core_rs, Operand::core_immediate),
+            operands: Operand::arr2(Operand::core_rs, Operand::core_imm_i16),
             instr_type: InstrType::REGIMM,
             reads_rs: true,
             ..OpcodeDescriptor::new("mtsah", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
@@ -10626,7 +10622,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             operands: Operand::arr3(
                 Operand::r5900ee_vit,
                 Operand::r5900ee_vis,
-                Operand::r5900ee_immediate5,
+                Operand::r5900ee_imm5,
             ),
             ..OpcodeDescriptor::new("viaddi", IsaVersion::EXTENSION, Some(IsaExtension::R5900EE))
         }
@@ -10659,7 +10655,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R5900EE")]
     {
         table[Opcode::r5900ee_vcallms as usize] = OpcodeDescriptor {
-            operands: Operand::arr1(Operand::r5900ee_immediate15),
+            operands: Operand::arr1(Operand::r5900ee_imm15),
             ..OpcodeDescriptor::new(
                 "vcallms",
                 IsaVersion::EXTENSION,

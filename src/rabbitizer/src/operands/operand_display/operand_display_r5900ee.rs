@@ -55,24 +55,24 @@ where
         }
     }
 
-    pub(crate) fn display_r5900ee_immediate5(
+    pub(crate) fn display_r5900ee_imm5(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.field().r5900ee_immediate5_impl() as i32;
+            let s = instr.field().r5900ee_imm5_impl() as i32;
 
             operand_display::display_signed_imm(s, f, myself.display_flags)
         })
     }
-    pub(crate) fn display_r5900ee_immediate15(
+    pub(crate) fn display_r5900ee_imm15(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
             let instr = myself.instr;
-            let s = instr.field().r5900ee_immediate15_impl() as i32 * 8;
+            let s = instr.field().r5900ee_imm15_impl() as i32 * 8;
 
             operand_display::display_signed_imm(s, f, myself.display_flags)
         })

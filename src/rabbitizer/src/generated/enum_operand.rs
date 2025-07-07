@@ -4,7 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::encoded_field_mask::EncodedFieldMask;
-use crate::operands::{OperandDescriptor, OperandDisplay, IU16, OPERAND_COUNT};
+use crate::operands::{OperandDescriptor, OperandDisplay, OPERAND_COUNT};
 use crate::registers::*;
 use crate::vram::{Vram, VramOffset};
 use core::fmt;
@@ -35,9 +35,10 @@ pub enum Operand {
     core_code_lower,
     core_copraw,
     core_label,
-    core_immediate,
+    core_imm_i16,
+    core_imm_u16,
     core_branch_target_label,
-    core_immediate_rs,
+    core_imm_rs,
     core_maybe_rd_rs,
     core_maybe_zero_rs,
     #[cfg(feature = "RSP")]
@@ -189,9 +190,9 @@ pub enum Operand {
     #[cfg(feature = "R5900EE")]
     r5900ee_ACC,
     #[cfg(feature = "R5900EE")]
-    r5900ee_immediate5,
+    r5900ee_imm5,
     #[cfg(feature = "R5900EE")]
-    r5900ee_immediate15,
+    r5900ee_imm15,
     #[cfg(feature = "R5900EE")]
     r5900ee_vfs,
     #[cfg(feature = "R5900EE")]
@@ -339,11 +340,14 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
                 .check_panic_chain();
     }
     {
-        table[Operand::core_immediate as usize] = OperandDescriptor::new(
-            concat!("core", "_", "immediate"),
-            EncodedFieldMask::immediate,
-        )
-        .check_panic_chain();
+        table[Operand::core_imm_i16 as usize] =
+            OperandDescriptor::new(concat!("core", "_", "imm_i16"), EncodedFieldMask::immediate)
+                .check_panic_chain();
+    }
+    {
+        table[Operand::core_imm_u16 as usize] =
+            OperandDescriptor::new(concat!("core", "_", "imm_u16"), EncodedFieldMask::immediate)
+                .check_panic_chain();
     }
     {
         table[Operand::core_branch_target_label as usize] = OperandDescriptor::new(
@@ -353,8 +357,8 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         .check_panic_chain();
     }
     {
-        table[Operand::core_immediate_rs as usize] = OperandDescriptor::new(
-            concat!("core", "_", "immediate_rs"),
+        table[Operand::core_imm_rs as usize] = OperandDescriptor::new(
+            concat!("core", "_", "imm_rs"),
             EncodedFieldMask::immediate.union(EncodedFieldMask::rs),
         )
         .check_panic_chain();
@@ -963,17 +967,17 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     }
     #[cfg(feature = "R5900EE")]
     {
-        table[Operand::r5900ee_immediate5 as usize] = OperandDescriptor::new(
-            concat!("r5900ee", "_", "immediate5"),
-            EncodedFieldMask::r5900ee_immediate5,
+        table[Operand::r5900ee_imm5 as usize] = OperandDescriptor::new(
+            concat!("r5900ee", "_", "imm5"),
+            EncodedFieldMask::r5900ee_imm5,
         )
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
-        table[Operand::r5900ee_immediate15 as usize] = OperandDescriptor::new(
-            concat!("r5900ee", "_", "immediate15"),
-            EncodedFieldMask::r5900ee_immediate15,
+        table[Operand::r5900ee_imm15 as usize] = OperandDescriptor::new(
+            concat!("r5900ee", "_", "imm15"),
+            EncodedFieldMask::r5900ee_imm15,
         )
         .check_panic_chain();
     }
@@ -1158,11 +1162,12 @@ where
             Operand::core_code_lower => OperandDisplay::display_core_code_lower(self, f),
             Operand::core_copraw => OperandDisplay::display_core_copraw(self, f),
             Operand::core_label => OperandDisplay::display_core_label(self, f),
-            Operand::core_immediate => OperandDisplay::display_core_immediate(self, f),
+            Operand::core_imm_i16 => OperandDisplay::display_core_imm_i16(self, f),
+            Operand::core_imm_u16 => OperandDisplay::display_core_imm_u16(self, f),
             Operand::core_branch_target_label => {
                 OperandDisplay::display_core_branch_target_label(self, f)
             }
-            Operand::core_immediate_rs => OperandDisplay::display_core_immediate_rs(self, f),
+            Operand::core_imm_rs => OperandDisplay::display_core_imm_rs(self, f),
             Operand::core_maybe_rd_rs => OperandDisplay::display_core_maybe_rd_rs(self, f),
             Operand::core_maybe_zero_rs => OperandDisplay::display_core_maybe_zero_rs(self, f),
             #[cfg(feature = "RSP")]
@@ -1354,9 +1359,9 @@ where
             #[cfg(feature = "R5900EE")]
             Operand::r5900ee_ACC => OperandDisplay::display_r5900ee_ACC(self, f),
             #[cfg(feature = "R5900EE")]
-            Operand::r5900ee_immediate5 => OperandDisplay::display_r5900ee_immediate5(self, f),
+            Operand::r5900ee_imm5 => OperandDisplay::display_r5900ee_imm5(self, f),
             #[cfg(feature = "R5900EE")]
-            Operand::r5900ee_immediate15 => OperandDisplay::display_r5900ee_immediate15(self, f),
+            Operand::r5900ee_imm15 => OperandDisplay::display_r5900ee_imm15(self, f),
             #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfs => OperandDisplay::display_r5900ee_vfs(self, f),
             #[cfg(feature = "R5900EE")]
@@ -1422,9 +1427,10 @@ pub enum ValuedOperand {
     core_code_lower(u16),
     core_copraw(u32),
     core_label(Vram),
-    core_immediate(IU16),
+    core_imm_i16(i16),
+    core_imm_u16(u16),
     core_branch_target_label(VramOffset),
-    core_immediate_rs(IU16, Gpr),
+    core_imm_rs(i16, Gpr),
     core_maybe_rd_rs(Option<Gpr>, Gpr),
     core_maybe_zero_rs((), Gpr),
     #[cfg(feature = "RSP")]
@@ -1592,9 +1598,9 @@ pub enum ValuedOperand {
     #[cfg(feature = "R5900EE")]
     r5900ee_ACC(),
     #[cfg(feature = "R5900EE")]
-    r5900ee_immediate5(i8),
+    r5900ee_imm5(i8),
     #[cfg(feature = "R5900EE")]
-    r5900ee_immediate15(u16),
+    r5900ee_imm15(u16),
     #[cfg(feature = "R5900EE")]
     r5900ee_vfs(R5900EEVF),
     #[cfg(feature = "R5900EE")]
@@ -1657,9 +1663,10 @@ impl Operand {
             ValuedOperand::core_code_lower(..) => Self::core_code_lower,
             ValuedOperand::core_copraw(..) => Self::core_copraw,
             ValuedOperand::core_label(..) => Self::core_label,
-            ValuedOperand::core_immediate(..) => Self::core_immediate,
+            ValuedOperand::core_imm_i16(..) => Self::core_imm_i16,
+            ValuedOperand::core_imm_u16(..) => Self::core_imm_u16,
             ValuedOperand::core_branch_target_label(..) => Self::core_branch_target_label,
-            ValuedOperand::core_immediate_rs(..) => Self::core_immediate_rs,
+            ValuedOperand::core_imm_rs(..) => Self::core_imm_rs,
             ValuedOperand::core_maybe_rd_rs(..) => Self::core_maybe_rd_rs,
             ValuedOperand::core_maybe_zero_rs(..) => Self::core_maybe_zero_rs,
             #[cfg(feature = "RSP")]
@@ -1821,9 +1828,9 @@ impl Operand {
             #[cfg(feature = "R5900EE")]
             ValuedOperand::r5900ee_ACC(..) => Self::r5900ee_ACC,
             #[cfg(feature = "R5900EE")]
-            ValuedOperand::r5900ee_immediate5(..) => Self::r5900ee_immediate5,
+            ValuedOperand::r5900ee_imm5(..) => Self::r5900ee_imm5,
             #[cfg(feature = "R5900EE")]
-            ValuedOperand::r5900ee_immediate15(..) => Self::r5900ee_immediate15,
+            ValuedOperand::r5900ee_imm15(..) => Self::r5900ee_imm15,
             #[cfg(feature = "R5900EE")]
             ValuedOperand::r5900ee_vfs(..) => Self::r5900ee_vfs,
             #[cfg(feature = "R5900EE")]
