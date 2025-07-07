@@ -769,7 +769,7 @@ impl OpcodeDescriptor {
 
         match operand {
             Operand::core_rs => {
-                if self.has_specific_operand(Operand::core_immediate_base) {
+                if self.has_specific_operand(Operand::core_immediate_rs) {
                     return true;
                 }
                 #[cfg(feature = "RSP")]
@@ -793,7 +793,7 @@ impl OpcodeDescriptor {
             }
 
             Operand::core_immediate => {
-                if self.has_specific_operand(Operand::core_immediate_base) {
+                if self.has_specific_operand(Operand::core_immediate_rs) {
                     return true;
                 }
             }
@@ -835,7 +835,7 @@ impl OpcodeDescriptor {
 
             Operand::core_branch_target_label => {}
 
-            Operand::core_immediate_base => {}
+            Operand::core_immediate_rs => {}
 
             Operand::core_maybe_rd_rs => {}
 

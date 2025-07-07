@@ -293,7 +293,7 @@ where
             write!(f, " << 2)")
         })
     }
-    pub(crate) fn display_core_immediate_base(
+    pub(crate) fn display_core_immediate_rs(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {

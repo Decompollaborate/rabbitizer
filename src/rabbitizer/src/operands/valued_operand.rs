@@ -87,13 +87,13 @@ impl ValuedOperand {
             Operand::core_branch_target_label => {
                 Self::core_branch_target_label(instr.get_branch_offset_impl())
             }
-            Operand::core_immediate_base => {
+            Operand::core_immediate_rs => {
                 let imm = if instr.opcode().is_unsigned() {
                     IU16::Unsigned(field.immediate_impl())
                 } else {
                     IU16::Integer(instr.get_processed_immediate_impl() as i16)
                 };
-                Self::core_immediate_base(imm, field.rs_impl())
+                Self::core_immediate_rs(imm, field.rs_impl())
             }
             Operand::core_maybe_rd_rs => {
                 let rd = field.rd_impl();

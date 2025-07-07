@@ -37,7 +37,7 @@ pub enum Operand {
     core_label,
     core_immediate,
     core_branch_target_label,
-    core_immediate_base,
+    core_immediate_rs,
     core_maybe_rd_rs,
     core_maybe_zero_rs,
     #[cfg(feature = "RSP")]
@@ -353,8 +353,8 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         .check_panic_chain();
     }
     {
-        table[Operand::core_immediate_base as usize] = OperandDescriptor::new(
-            concat!("core", "_", "immediate_base"),
+        table[Operand::core_immediate_rs as usize] = OperandDescriptor::new(
+            concat!("core", "_", "immediate_rs"),
             EncodedFieldMask::immediate.union(EncodedFieldMask::rs),
         )
         .check_panic_chain();
@@ -1162,7 +1162,7 @@ where
             Operand::core_branch_target_label => {
                 OperandDisplay::display_core_branch_target_label(self, f)
             }
-            Operand::core_immediate_base => OperandDisplay::display_core_immediate_base(self, f),
+            Operand::core_immediate_rs => OperandDisplay::display_core_immediate_rs(self, f),
             Operand::core_maybe_rd_rs => OperandDisplay::display_core_maybe_rd_rs(self, f),
             Operand::core_maybe_zero_rs => OperandDisplay::display_core_maybe_zero_rs(self, f),
             #[cfg(feature = "RSP")]
@@ -1424,7 +1424,7 @@ pub enum ValuedOperand {
     core_label(Vram),
     core_immediate(IU16),
     core_branch_target_label(VramOffset),
-    core_immediate_base(IU16, Gpr),
+    core_immediate_rs(IU16, Gpr),
     core_maybe_rd_rs(Option<Gpr>, Gpr),
     core_maybe_zero_rs((), Gpr),
     #[cfg(feature = "RSP")]
@@ -1659,7 +1659,7 @@ impl Operand {
             ValuedOperand::core_label(..) => Self::core_label,
             ValuedOperand::core_immediate(..) => Self::core_immediate,
             ValuedOperand::core_branch_target_label(..) => Self::core_branch_target_label,
-            ValuedOperand::core_immediate_base(..) => Self::core_immediate_base,
+            ValuedOperand::core_immediate_rs(..) => Self::core_immediate_rs,
             ValuedOperand::core_maybe_rd_rs(..) => Self::core_maybe_rd_rs,
             ValuedOperand::core_maybe_zero_rs(..) => Self::core_maybe_zero_rs,
             #[cfg(feature = "RSP")]

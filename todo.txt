@@ -11,7 +11,9 @@
 - Consider making `const` functions that access `static` data.
   - con: It would raise the MSRV
 
-- Rename `immediate_base`
-
 - Change `is_jumptable_jump` to return the register too.
   - Will need to be renamed to avoid the `is_` part, probably
+
+- Split operand immediate into signed/unsigned.
+
+- Get rid of get_processed_rsp_offset_impl.

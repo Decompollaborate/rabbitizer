@@ -194,7 +194,7 @@
     // OP rt, IMM(base)
     RAB_DEF_OPCODE(
         core, 0x1A, ldl, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -205,7 +205,7 @@
     ) // Load Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x1B, ldr, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -216,7 +216,7 @@
     ) // Load Doubleword Right
     RAB_DEF_OPCODE_MIPS1(
         core, 0x20, lb,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -227,7 +227,7 @@
     ) // Load Byte
     RAB_DEF_OPCODE_MIPS1(
         core, 0x21, lh,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -238,7 +238,7 @@
     ) // Load Halfword
     RAB_DEF_OPCODE_MIPS1(
         core, 0x22, lwl,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -249,7 +249,7 @@
     ) // Load Word Left
     RAB_DEF_OPCODE_MIPS1(
         core, 0x23, lw,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -260,7 +260,7 @@
     ) // Load Word
     RAB_DEF_OPCODE_MIPS1(
         core, 0x24, lbu,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -272,7 +272,7 @@
     ) // Load Byte Insigned
     RAB_DEF_OPCODE_MIPS1(
         core, 0x25, lhu,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -284,7 +284,7 @@
     ) // Load Halfword Unsigned
     RAB_DEF_OPCODE_MIPS1(
         core, 0x26, lwr,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -295,7 +295,7 @@
     ) // Load Word Right
     RAB_DEF_OPCODE(
         core, 0x27, lwu, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -307,7 +307,7 @@
     ) // Load Word Unsigned
     RAB_DEF_OPCODE_MIPS1(
         core, 0x28, sb,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -318,7 +318,7 @@
     ) // Store Byte
     RAB_DEF_OPCODE_MIPS1(
         core, 0x29, sh,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -329,7 +329,7 @@
     ) // Store Halfword
     RAB_DEF_OPCODE_MIPS1(
         core, 0x2A, swl,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -340,7 +340,7 @@
     ) // Store Word Left
     RAB_DEF_OPCODE_MIPS1(
         core, 0x2B, sw,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -351,7 +351,7 @@
     ) // Store Word
     RAB_DEF_OPCODE(
         core, 0x2C, sdl, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -362,7 +362,7 @@
     ) // Store Doubleword Left
     RAB_DEF_OPCODE(
         core, 0x2D, sdr, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -373,7 +373,7 @@
     ) // Store Doubleword Right
     RAB_DEF_OPCODE_MIPS1(
         core, 0x2E, swr,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -384,7 +384,7 @@
     ) // Store Word Right
     RAB_DEF_OPCODE(
         core, 0x30, ll, MIPS_II,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -396,13 +396,13 @@
     ) // Load Linked word
     RAB_DEF_OPCODE(
         core, 0x33, pref, MIPS_IV,
-        operands: Operand::arr2(Operand::core_hint, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_hint, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true
     ) // Prefetch
     RAB_DEF_OPCODE(
         core, 0x34, lld, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -414,7 +414,7 @@
     ) // Load Linked Doubleword
     RAB_DEF_OPCODE(
         core, 0x37, ld, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
         reads_rs: true,
@@ -425,7 +425,7 @@
     ) // Load Doubleword
     RAB_DEF_OPCODE(
         core, 0x38, sc, MIPS_II,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -437,7 +437,7 @@
     ) // Store Conditional word
     RAB_DEF_OPCODE(
         core, 0x3C, scd, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -449,7 +449,7 @@
     ) // Store Conditional Doubleword
     RAB_DEF_OPCODE(
         core, 0x3F, sd, MIPS_III,
-        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_rt, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         reads_rt: true,
@@ -462,7 +462,7 @@
     // OP op, IMM(base)
     RAB_DEF_OPCODE(
         core, 0x2F, cache, MIPS_II,
-        operands: Operand::arr2(Operand::core_op, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_op, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         not_emitted_by_compilers: true
@@ -471,7 +471,7 @@
     // OP ft, IMM(base)
     RAB_DEF_OPCODE_MIPS1(
         core, 0x31, lwc1,
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         is_float: true,
         reads_rs: true,
@@ -483,7 +483,7 @@
     ) // Load Word to Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x35, ldc1, MIPS_II,
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         is_float: true,
         is_double: true,
@@ -496,7 +496,7 @@
     ) // Load Doubleword to Coprocessor z
     RAB_DEF_OPCODE_MIPS1(
         core, 0x39, swc1,
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         is_float: true,
         reads_rs: true,
@@ -508,7 +508,7 @@
     ) // Store Word from Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x3D, sdc1, MIPS_II,
-        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_ft, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         is_float: true,
         is_double: true,
@@ -523,7 +523,7 @@
     // OP cop2t, IMM(base)
     RAB_DEF_OPCODE_MIPS1(
         core, 0x32, lwc2,
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         not_emitted_by_compilers: true,
@@ -534,7 +534,7 @@
     ) // Load Word to Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x36, ldc2, MIPS_II,
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         not_emitted_by_compilers: true,
@@ -545,7 +545,7 @@
     ) // Load Doubleword to Coprocessor z
     RAB_DEF_OPCODE_MIPS1(
         core, 0x3A, swc2,
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         not_emitted_by_compilers: true,
@@ -556,7 +556,7 @@
     ) // Store Word from Coprocessor z
     RAB_DEF_OPCODE(
         core, 0x3E, sdc2, MIPS_II,
-        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_base),
+        operands: Operand::arr2(Operand::core_cop2t, Operand::core_immediate_rs),
         instr_type: InstrType::I,
         reads_rs: true,
         not_emitted_by_compilers: true,
