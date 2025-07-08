@@ -7,7 +7,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/Decompollaborate/rabbitizer?logo=purple)
 
 Disassemble MIPS instructions directly in your terminal, using the power of
-rabbitizer and written in Rust.
+rabbitizer and Rust.
 
 ## Basic usage
 

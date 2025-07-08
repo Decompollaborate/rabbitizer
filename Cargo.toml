@@ -5,8 +5,10 @@
 members = [
     "src/rabbitizer",
     "src/rab-disasmdis",
+    "src/rab-disasmdis-web",
 ]
 resolver = "2"
+default-members = ["src/rabbitizer", "src/rab-disasmdis"]
 
 [workspace.package]
 # Version should be synced with include/common/RabbitizerVersion.h

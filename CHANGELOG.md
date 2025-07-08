@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add prebuilt binaries for `rab-disasmdis` on Github releases.
 - Add `field()` method to `Instruction`. Allows accessing the fields of the
   given instruction.
+- First public release of `rab-disasmdis-web`.
+  - Disassemble MIPS instructions directly in your browser, using the power of
+    rabbitizer.
+  - Visit <https://decompollaborate.github.io/rabbitizer> to see it in action.
 
 ### Changed
 

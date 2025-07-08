@@ -1,0 +1,96 @@
+name: Continuous deployment
+on:
+  workflow_run:
+    branches: [main]
+    workflows: [Build and upload Rust crate]
+    types: [completed]
+
+env:
+  RUSTFLAGS: "-D warnings"
+  RUSTDOCFLAGS: "-D warnings"
+
+jobs:
+  check_fmt:
+    name: Check format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Check format
+        run: cargo fmt -p rab-disasmdis-web --check
+
+  check_clippy:
+    name: Check clippy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup clippy
+        run: rustup component add clippy
+
+      - name: Run clippy
+        run: cargo clippy -p rab-disasmdis-web --all-targets
+
+  run_tests:
+    name: Run tests - No features
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Run tests
+        run: cargo test -p rab-disasmdis-web
+
+  msrv:
+    name: Check MSRV is correct
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup MSRV checker
+        uses: taiki-e/install-action@cargo-hack
+
+      - name: Run MSRV checker
+        run: cargo hack check -p rab-disasmdis-web --rust-version --workspace --all-targets --ignore-private
+
+  deploy_disasmdis_web:
+    name: Deploy disasmdis-web to Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: [wasm32-unknown-unknown]
+
+      - name: Setup trunk
+        uses: jetli/trunk-action@v0.5.0
+        with:
+          version: 'latest'
+
+      - name: Build disasmdis-web
+        run: cd src/rab-disasmdis-web && trunk build --release && cd ../..
+
+      - name: Deployment
+      - uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
