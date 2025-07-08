@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>disasmdis</title>
-  <link rel="modulepreload" href="/rab-disasmdis-web-515d1bc08b944061.js" crossorigin="anonymous" integrity="sha384-nOkTFRMmXR9oaeRsmce5KKEiuEkpnCzcUbWFOfA48RDYnU5cuVN2DLrKqXBE0YQL"><link rel="preload" href="/rab-disasmdis-web-515d1bc08b944061_bg.wasm" crossorigin="anonymous" integrity="sha384-RHs81xgzBkfGd7JWtk0VaaNnGeSMfanJ/AYPanckMZc7LJQIVIUoGrB6JAh8D1Sc" as="fetch" type="application/wasm"></head>
-  <body>
+    
 <script type="module">
-import init, * as bindings from '/rab-disasmdis-web-515d1bc08b944061.js';
-const wasm = await init({ module_or_path: '/rab-disasmdis-web-515d1bc08b944061_bg.wasm' });
+import init, * as bindings from '/rab-disasmdis-web-3ebc34d3c532f8a1.js';
+const wasm = await init({ module_or_path: '/rab-disasmdis-web-3ebc34d3c532f8a1_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -15,5 +14,7 @@ window.wasmBindings = bindings;
 
 dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
 
-</script></body>
+</script>
+  <link rel="modulepreload" href="/rab-disasmdis-web-3ebc34d3c532f8a1.js" crossorigin="anonymous" integrity="sha384-nOkTFRMmXR9oaeRsmce5KKEiuEkpnCzcUbWFOfA48RDYnU5cuVN2DLrKqXBE0YQL"><link rel="preload" href="/rab-disasmdis-web-3ebc34d3c532f8a1_bg.wasm" crossorigin="anonymous" integrity="sha384-NrmVL0rkWGhmE6eZH/mrW2Fuz3W7ALvCYzO6iIfrlowwuNIJWER1wZ8wczIKxRYi" as="fetch" type="application/wasm"></head>
+  <body></body>
 </html>
