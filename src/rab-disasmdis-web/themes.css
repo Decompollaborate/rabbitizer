@@ -1,0 +1,50 @@
+/* SPDX-FileCopyrightText: © 2025 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+body.light {
+  --bg-color: #fefefe;
+  --panel-color: #ffffff;
+  --accent-color: #0077cc;
+  --text-color: #111;
+  --border-color: #ccc;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --panel-color: #1e1e1e;
+  --accent-color: #ff6ec7;
+  --text-color: #eee;
+  --border-color: #444;
+}
+
+body.solarized-light {
+  --bg-color: #fdf6e3;
+  --panel-color: #eee8d5;
+  --accent-color: #268bd2;
+  --text-color: #657b83;
+  --border-color: #ccc;
+}
+
+body.solarized-dark {
+  --bg-color: #002b36;
+  --panel-color: #073642;
+  --accent-color: #b58900;
+  --text-color: #839496;
+  --border-color: #586e75;
+}
+
+body.dracula {
+  --bg-color: #282a36;
+  --panel-color: #44475a;
+  --accent-color: #bd93f9;
+  --text-color: #f8f8f2;
+  --border-color: #6272a4;
+}
+
+body.pastel-midnight {
+  --bg-color: #1e1e2f;
+  --panel-color: #2e2e40;
+  --accent-color: #ffb3c6;
+  --text-color: #f0eaff;
+  --border-color: #44445a;
+}

@@ -56,6 +56,41 @@ impl Component for App {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
+        let header = self.view_header(ctx);
+        let main = self.view_main(ctx);
+        let footer = self.view_footer(ctx);
+
+        html! {
+          <>
+            { header }
+            { main }
+            { footer }
+          </>
+        }
+    }
+}
+
+impl App {
+    fn view_header(&self, _ctx: &Context<Self>) -> Html {
+        html! {
+          <header>
+            <h1> { "🧩 disasmdis-web" } <h6> { built_info::PKG_VERSION } </h6> </h1>
+          </header>
+        }
+    }
+
+    fn view_main(&self, ctx: &Context<Self>) -> Html {
+        html! {
+          <main>
+            <section class="editor">
+              { self.view_input(ctx.link()) }
+              { self.view_disassemble_box() }
+            </section>
+          </main>
+        }
+    }
+
+    fn view_footer(&self, _ctx: &Context<Self>) -> Html {
         let git_info = if let Some(info) = built_info::GIT_COMMIT_HASH_SHORT {
             format!("Git hash: {info}")
         } else {
@@ -63,32 +98,11 @@ impl Component for App {
         };
 
         html! {
-            <div>
-                <section>
-                    <header class="header">
-                        <h1>{ "disasmdis-web " } { built_info::PKG_VERSION } </h1>
-                        { self.view_input(ctx.link()) }
-                    </header>
-                    <section>
-                        <ul>
-                            { self.disassemble() }
-                        </ul>
-                        /*
-                        <ul>
-                            { &self.input }
-                        </ul>
-                        */
-                    </section>
-                </section>
-                <footer>
-                    <div>
-                    { git_info }
-                    </div>
-                    <div>
-                    { "Powered by " } <a target="_blank" href={ built_info::PKG_REPOSITORY }>{ "rabbitizer" }</a>
-                    </div>
-                </footer>
-            </div>
+          <footer>
+            <p> { "© 2025 Decompollaborate" } </p>
+            <p> { "Powered by " } <a target="_blank" href={ built_info::PKG_REPOSITORY }>{ "rabbitizer" }</a> </p>
+            <p> { git_info } </p>
+          </footer>
         }
     }
 }
@@ -101,24 +115,20 @@ impl App {
         });
 
         html! {
-            <div>
-                <label
-                    for="bytes-input"
-                >
-                    { "Enter MIPS bytes:" }
-                </label>
-                <br/>
-                <textarea
-                    id="bytes-input"
-                    rows="8"
-                    cols="80"
-                    {oninput}
-                />
-            </div>
+          <div class="input-box">
+            <h2 for="bytes-input"> { "Input" } </h2>
+            <textarea
+              id="bytes-input"
+              rows="8"
+              cols="80"
+              placeholder="Enter hex code..."
+              {oninput}
+            />
+          </div>
         }
     }
 
-    fn disassemble(&self) -> Vec<Html> {
+    fn view_disassemble_box(&self) -> Html {
         // TODO: configurable flags
         /*
         let flags = InstructionFlags::new(args.isa_version.into())
@@ -140,26 +150,29 @@ impl App {
                     let disassembled = instr.display::<&str>(&display_flags, None, 0).to_string();
                     let word_str = format!("{word:08X}");
                     result.push(html! {
-                        <li>
-                            <div>
-                                <code> { word_str } { " => " } { disassembled } </code>
-                            </div>
-                        </li>
+                      <tr>
+                        <td><pre> <code class="plaintext"> { word_str } </code> </pre></td>
+                        <td><pre> <code class="mips"> { disassembled } </code> </pre></td>
+                      </tr>
                     });
                 }
                 ParsedTextResult::InvalidCharacter(c, index) => {
                     result.push(html! {
-                        <li>
-                            <div>
-                                { "Invalid character '" } {c} { "' at index " } {index}
-                            </div>
-                        </li>
+                      <tr>
+                        <td></td>
+                        <td>{ "Invalid character '" } {c} { "' at index " } {index}</td>
+                      </tr>
                     });
                 }
             }
         }
 
-        result
+        html! {
+          <div class="output-box">
+            <h2> { "Disassembled Output" } </h2>
+            <div class="scrollable-container"> <table> { result } </table> </div>
+          </div>
+        }
     }
 }
 
