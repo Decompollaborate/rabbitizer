@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 #[must_use]
-pub const fn mask(value: u32, width: u32) -> u32 {
+pub(crate) const fn mask(value: u32, width: u32) -> u32 {
     assert!(
         width < 32,
         "This operation is defined only for bitwidths up to 31 bits."
@@ -12,7 +12,7 @@ pub const fn mask(value: u32, width: u32) -> u32 {
 }
 
 #[must_use]
-pub const fn bitmask(shift: u32, width: u32) -> u32 {
+pub(crate) const fn bitmask(shift: u32, width: u32) -> u32 {
     assert!(
         shift + width <= 32,
         "Can't create a bitmask larger than 32 bits"
@@ -21,21 +21,24 @@ pub const fn bitmask(shift: u32, width: u32) -> u32 {
     mask(u32::MAX, width) << shift
 }
 
+#[cfg(any(feature = "R4000ALLEGREX", feature = "R5900EE"))]
 #[must_use]
-pub const fn from_2s_complement(number: u32, width: u32) -> i32 {
-    assert!(
-        width < 32,
-        "This operation is defined only for bitwidths between 1 and 31 bits."
-    );
-    assert!(
-        width > 0,
-        "This operation is defined only for bitwidths between 1 and 31 bits."
-    );
+pub(crate) const fn from_2s_complement<const WIDTH: u32>(number: u32) -> i32 {
+    const {
+        assert!(
+            WIDTH < 32,
+            "This operation is defined only for bitwidths between 1 and 31 bits."
+        );
+        assert!(
+            WIDTH > 0,
+            "This operation is defined only for bitwidths between 1 and 31 bits."
+        );
+    }
 
-    let is_negative = number & (1 << (width - 1)) != 0;
+    let is_negative = number & (1 << (WIDTH - 1)) != 0;
 
     if is_negative {
-        -(mask(!number + 1, width) as i32)
+        -(mask(!number + 1, WIDTH) as i32)
     } else {
         number as i32
     }
@@ -43,7 +46,7 @@ pub const fn from_2s_complement(number: u32, width: u32) -> i32 {
 
 #[must_use]
 #[cfg(feature = "R4000ALLEGREX")]
-pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
+pub(crate) const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
     // IEEE754 16-bit floats are encoded in 16 bits as follows:
     // Sign bit: 1 bit (bit 15)
     // Encoded exponent: 5 bits (bits 10 ~ 15)
@@ -123,7 +126,7 @@ pub const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
 /// | 0 | 0 |  1  |
 #[inline(always)]
 #[must_use]
-pub const fn truth_a_implies_b(a: bool, b: bool) -> bool {
+pub(crate) const fn truth_a_implies_b(a: bool, b: bool) -> bool {
     !a || b
 }
 
@@ -139,7 +142,7 @@ pub const fn truth_a_implies_b(a: bool, b: bool) -> bool {
 /// | 0 | 0 |  1  |
 #[inline(always)]
 #[must_use]
-pub const fn truth_both_or_neither(a: bool, b: bool) -> bool {
+pub(crate) const fn truth_both_or_neither(a: bool, b: bool) -> bool {
     !(a ^ b)
 }
 

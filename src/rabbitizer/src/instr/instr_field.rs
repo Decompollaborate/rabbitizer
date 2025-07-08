@@ -5177,7 +5177,7 @@ impl InstrField<'_> {
     /// [`r4000allegrex_int16`]: InstrField::r4000allegrex_int16
     #[must_use]
     pub(crate) fn r4000allegrex_int16_impl(&self) -> i16 {
-        utils::from_2s_complement(self.r4000allegrex_intfloat16_impl() as u32, 16) as i16
+        utils::from_2s_complement::<16>(self.r4000allegrex_intfloat16_impl() as u32) as i16
     }
 
     /// Returns the value embedded on the `r4000allegrex_intfloat16` field of
@@ -5388,7 +5388,7 @@ impl InstrField<'_> {
     pub(crate) fn r5900ee_imm5_impl(&self) -> i8 {
         let raw = EncodedFieldMask::r5900ee_imm5.get_shifted(self.instr.word());
 
-        utils::from_2s_complement(raw, 5).try_into().unwrap()
+        utils::from_2s_complement::<5>(raw).try_into().unwrap()
     }
 
     /// Returns the `r5900ee_imm15` value embedded on the `r5900ee_imm15` field of
