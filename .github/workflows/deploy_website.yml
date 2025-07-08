@@ -86,7 +86,7 @@ jobs:
           version: 'latest'
 
       - name: Build disasmdis-web
-        run: cd src/rab-disasmdis-web && trunk build --release && cd ../..
+        run: cd src/rab-disasmdis-web && trunk build --release --locked --public-url /${{ github.event.repository.name }} && cd ../..
 
       - name: Deployment
         uses: peaceiris/actions-gh-pages@v4
