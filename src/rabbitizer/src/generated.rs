@@ -18,7 +18,7 @@
 #![allow(clippy::exhaustive_enums)]
 
 mod array_opcodes;
-mod code_decode_isa_extension_none;
+mod code_decode_isa_extension_core;
 #[cfg(feature = "R3000GTE")]
 mod code_decode_isa_extension_r3000gte;
 #[cfg(feature = "R4000ALLEGREX")]

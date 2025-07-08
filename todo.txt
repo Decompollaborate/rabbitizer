@@ -13,5 +13,3 @@
   - Will need to be renamed to avoid the `is_` part, probably
 
 - Get rid of get_processed_rsp_offset_impl.
-
-- Rename `_none` suffixed files to `_core`.

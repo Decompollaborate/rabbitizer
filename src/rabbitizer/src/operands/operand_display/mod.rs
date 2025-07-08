@@ -7,7 +7,7 @@ use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::operands::Operand;
 
-pub(crate) mod operand_display_none;
+pub(crate) mod operand_display_core;
 #[cfg(feature = "R3000GTE")]
 pub(crate) mod operand_display_r3000gte;
 #[cfg(feature = "R4000ALLEGREX")]
