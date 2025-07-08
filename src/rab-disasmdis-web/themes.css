@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-body.light {
+.theme-light {
   --bg-color: #fefefe;
   --panel-color: #ffffff;
   --accent-color: #0077cc;
@@ -9,7 +9,7 @@ body.light {
   --border-color: #ccc;
 }
 
-body.dark {
+.theme-dark {
   --bg-color: #121212;
   --panel-color: #1e1e1e;
   --accent-color: #ff6ec7;
@@ -17,7 +17,7 @@ body.dark {
   --border-color: #444;
 }
 
-body.solarized-light {
+.theme-solarized-light {
   --bg-color: #fdf6e3;
   --panel-color: #eee8d5;
   --accent-color: #268bd2;
@@ -25,7 +25,7 @@ body.solarized-light {
   --border-color: #ccc;
 }
 
-body.solarized-dark {
+.theme-solarized-dark {
   --bg-color: #002b36;
   --panel-color: #073642;
   --accent-color: #b58900;
@@ -33,7 +33,7 @@ body.solarized-dark {
   --border-color: #586e75;
 }
 
-body.dracula {
+.theme-dracula {
   --bg-color: #282a36;
   --panel-color: #44475a;
   --accent-color: #bd93f9;
@@ -41,7 +41,7 @@ body.dracula {
   --border-color: #6272a4;
 }
 
-body.pastel-midnight {
+.theme-pastel-midnight {
   --bg-color: #1e1e2f;
   --panel-color: #2e2e40;
   --accent-color: #ffb3c6;

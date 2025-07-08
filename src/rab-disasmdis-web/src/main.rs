@@ -4,29 +4,30 @@
 use rabbitizer::{
     Instruction, InstructionDisplayFlags, InstructionFlags, IsaExtension, IsaVersion, Vram,
 };
-use web_sys::HtmlInputElement as InputElement;
-use yew::events::InputEvent;
+use web_sys::{HtmlInputElement, HtmlSelectElement};
+use yew::events::{Event, InputEvent};
 use yew::html::Scope;
 use yew::{html, Component, Context, Html, TargetCast};
 
 mod bytes_text_parser;
+mod persistent_state;
+
 use bytes_text_parser::{BytesTextParser, ParsedTextResult};
+use persistent_state::{PersistentState, Theme, THEMES};
 
 pub mod built_info {
     // The file has been placed there by the build script.
     include!(concat!(env!("OUT_DIR"), "/built.rs"));
 }
 
-/*
-const KEY: &str = "decompollaborate.disasmdis-web.self";
-*/
-
 pub enum Msg {
     InputData(String),
+    ChangeTheme(Theme),
 }
 
 pub struct App {
     input: String,
+    state: PersistentState,
     isa_version: IsaVersion,
     _isa_extension: Option<IsaExtension>,
 }
@@ -38,6 +39,7 @@ impl Component for App {
     fn create(_ctx: &Context<Self>) -> Self {
         Self {
             input: "".to_string(),
+            state: PersistentState::new(),
             isa_version: IsaVersion::default(),
             _isa_extension: None,
         }
@@ -46,12 +48,13 @@ impl Component for App {
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::InputData(input) => {
-                self.input = input.to_string();
+                self.input = input;
+            }
+            Msg::ChangeTheme(theme) => {
+                self.state.theme = theme;
             }
         }
-        /*
-        LocalStorage::set(KEY, &self.).expect("Failed to save into LocalStorage.");
-        */
+        self.state.save();
         true
     }
 
@@ -60,21 +63,46 @@ impl Component for App {
         let main = self.view_main(ctx);
         let footer = self.view_footer(ctx);
 
+        let root_class = format!("{} view-root", self.state.theme.id());
+
         html! {
-          <>
+          <div class={root_class}>
             { header }
             { main }
             { footer }
-          </>
+          </div>
         }
     }
 }
 
 impl App {
-    fn view_header(&self, _ctx: &Context<Self>) -> Html {
+    fn view_header(&self, ctx: &Context<Self>) -> Html {
+        let onchange = ctx.link().batch_callback(|e: Event| {
+            let select: HtmlSelectElement = e.target_unchecked_into();
+            Some(Msg::ChangeTheme(Theme::from_id(&select.value())))
+        });
+
+        let themes: Vec<Html> = THEMES
+            .iter()
+            .map(|x| {
+                let selected = *x == self.state.theme;
+
+                html! {
+                    <option value={x.id()} {selected}> { {x.name()} } </option>
+                }
+            })
+            .collect();
+
         html! {
           <header>
             <h1> { "🧩 disasmdis-web" } <h6> { built_info::PKG_VERSION } </h6> </h1>
+
+            <div class="theme-selector">
+              <label for="theme"> { "Theme:" } </label>
+              <select id="theme" { onchange }>
+                { themes }
+              </select>
+            </div>
           </header>
         }
     }
@@ -110,7 +138,7 @@ impl App {
 impl App {
     fn view_input(&self, link: &Scope<Self>) -> Html {
         let oninput = link.batch_callback(|e: InputEvent| {
-            let input: InputElement = e.target_unchecked_into();
+            let input: HtmlInputElement = e.target_unchecked_into();
             Some(Msg::InputData(input.value()))
         });
 

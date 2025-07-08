@@ -10,7 +10,7 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-body {
+.view-root {
   background-color: var(--bg-color);
   color: var(--text-color);
   display: flex;
