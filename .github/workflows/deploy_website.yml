@@ -1,8 +1,7 @@
 name: Continuous deployment
 on:
   workflow_run:
-    branches: [main]
-    workflows: [Build and upload Rust crate]
+    branches: [main, 🦀]
     types: [completed]
 
 env:
