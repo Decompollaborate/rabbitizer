@@ -78,7 +78,7 @@ jobs:
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: [wasm32-unknown-unknown]
+          targets: wasm32-unknown-unknown
 
       - name: Setup trunk
         uses: jetli/trunk-action@v0.5.0
