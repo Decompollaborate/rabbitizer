@@ -89,7 +89,7 @@ jobs:
         run: cd src/rab-disasmdis-web && trunk build --release && cd ../..
 
       - name: Deployment
-      - uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
