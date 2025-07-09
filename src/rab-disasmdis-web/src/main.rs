@@ -189,14 +189,14 @@ impl App {
                     let word_str = format!("{word:08X}");
                     result.push(html! {
                       <tr>
-                        <td>{ "/* " } { word_str } { " */ " } { disassembled } </td>
+                        <td class="cod">{ "/* " } { word_str } { " */ " } { disassembled } </td>
                       </tr>
                     });
                 }
                 ParsedTextResult::InvalidCharacter(c, index) => {
                     result.push(html! {
                       <tr>
-                        <td>{ "/* Invalid character '" } {c} { "' at index " } {index} { " */" } </td>
+                        <td class="cod">{ "/* Invalid character '" } {c} { "' at index " } {index} { " */" } </td>
                       </tr>
                     });
                 }

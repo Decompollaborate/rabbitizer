@@ -111,6 +111,13 @@ pre code {
   font-family: monospace;
 }
 
+.cod {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: monospace;
+}
+
 /* Config Section */
 .config {
   background: var(--panel-color);
