@@ -4,8 +4,10 @@
 use rabbitizer::{
     Instruction, InstructionDisplayFlags, InstructionFlags, IsaExtension, IsaVersion, Vram,
 };
+use wasm_bindgen::prelude::*;
 use web_sys::{HtmlInputElement, HtmlSelectElement};
 use yew::events::{Event, InputEvent};
+use yew::functional::use_effect;
 use yew::html::Scope;
 use yew::{html, Component, Context, Html, TargetCast};
 
@@ -18,6 +20,12 @@ use persistent_state::{PersistentState, Theme, THEMES};
 pub mod built_info {
     // The file has been placed there by the build script.
     include!(concat!(env!("OUT_DIR"), "/built.rs"));
+}
+
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_namespace = hljs)]
+    fn highlightAll();
 }
 
 pub enum Msg {
@@ -64,6 +72,12 @@ impl Component for App {
         let footer = self.view_footer(ctx);
 
         let root_class = format!("{} view-root", self.state.theme.id());
+
+        use_effect(move || {
+            // asm syntax highlight.
+            //! TODO: breaks the site due to lack of auto update
+            // highlightAll();
+        });
 
         html! {
           <div class={root_class}>
@@ -179,16 +193,14 @@ impl App {
                     let word_str = format!("{word:08X}");
                     result.push(html! {
                       <tr>
-                        <td><pre> <code class="plaintext"> { word_str } </code> </pre></td>
-                        <td><pre> <code class="mips"> { disassembled } </code> </pre></td>
+                        <td>{ "/* " } { word_str } { " */ " } { disassembled } </td>
                       </tr>
                     });
                 }
                 ParsedTextResult::InvalidCharacter(c, index) => {
                     result.push(html! {
                       <tr>
-                        <td></td>
-                        <td>{ "Invalid character '" } {c} { "' at index " } {index}</td>
+                        <td>{ "/* Invalid character '" } {c} { "' at index " } {index} { " */" } </td>
                       </tr>
                     });
                 }
@@ -198,7 +210,11 @@ impl App {
         html! {
           <div class="output-box">
             <h2> { "Disassembled Output" } </h2>
-            <div class="scrollable-container"> <table> { result } </table> </div>
+            <div class="scrollable-container">
+              <pre><code /*class="language-mipsasm"*/>
+                <table> { result } </table>
+              </code></pre>
+            </div>
           </div>
         }
     }

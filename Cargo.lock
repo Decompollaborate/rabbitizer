@@ -1295,6 +1295,7 @@ dependencies = [
  "gloo 0.11.0",
  "rabbitizer",
  "serde",
+ "wasm-bindgen",
  "web-sys",
  "yew",
 ]
