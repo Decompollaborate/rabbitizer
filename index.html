@@ -1,12 +1,19 @@
+<!-- SPDX-FileCopyrightText: © 2025 Decompollaborate -->
+<!-- SPDX-License-Identifier: MIT -->
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>disasmdis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🧩 disasmdis</title>
+
+    <link rel="stylesheet" href="/rabbitizer/styles-f3085cafae710ca9.css" integrity="sha384-LQ5sKxco7fkKUIyHaINaKoVh8iV0W4UbKaMsZ7iFrqSFymWYSowOtki/pMMXqK9k"/>
+    <link rel="stylesheet" href="/rabbitizer/themes-3008bbf549efba41.css" integrity="sha384-yEn2ozLavGNTmdL/kpU1Dtduc00+6WYxoVw5rIi5nlWKau8u+LN8jFBXMtvM7Kou"/>
     
 <script type="module">
-import init, * as bindings from '/rabbitizer/rab-disasmdis-web-36552e98d8b383a1.js';
-const wasm = await init({ module_or_path: '/rabbitizer/rab-disasmdis-web-36552e98d8b383a1_bg.wasm' });
+import init, * as bindings from '/rabbitizer/rab-disasmdis-web-c1538763b0ea7477.js';
+const wasm = await init({ module_or_path: '/rabbitizer/rab-disasmdis-web-c1538763b0ea7477_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -15,6 +22,12 @@ window.wasmBindings = bindings;
 dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
 
 </script>
-  <link rel="modulepreload" href="/rabbitizer/rab-disasmdis-web-36552e98d8b383a1.js" crossorigin="anonymous" integrity="sha384-nOkTFRMmXR9oaeRsmce5KKEiuEkpnCzcUbWFOfA48RDYnU5cuVN2DLrKqXBE0YQL"><link rel="preload" href="/rabbitizer/rab-disasmdis-web-36552e98d8b383a1_bg.wasm" crossorigin="anonymous" integrity="sha384-uilfuAj+T59V9HgrFdoMCkFn88QMWQqKxmyUQ5jkZHL+MHqeCHsnyUgeNOfDy7NE" as="fetch" type="application/wasm"></head>
-  <body></body>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/mipsasm.min.js"></script>
+  <link rel="modulepreload" href="/rabbitizer/rab-disasmdis-web-c1538763b0ea7477.js" crossorigin="anonymous" integrity="sha384-CZKeEy59vnNJD+7fWBcOx+Deeemss450RtX3s843dIbXfO4EuWIVs/9PIMTEzjDh"><link rel="preload" href="/rabbitizer/rab-disasmdis-web-c1538763b0ea7477_bg.wasm" crossorigin="anonymous" integrity="sha384-mnJ+qia2x6eKZ3VASel8zin8UUbGN6XyhOqQWrqu/S9yklnwSBIcUoDQFF17Vg3i" as="fetch" type="application/wasm"></head>
+
+  <body>
+  </body>
 </html>

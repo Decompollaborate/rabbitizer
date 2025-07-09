@@ -1,0 +1,178 @@
+/* SPDX-FileCopyrightText: © 2025 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
+/* Base layout styles using CSS variables (theme-specific values come from themes.css) */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.view-root {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  padding: 1rem;
+  background: var(--panel-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+}
+
+.theme-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-selector select {
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* Editor Section */
+.editor {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.input-box,
+.output-box {
+  flex: 1;
+  background: var(--panel-color);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+.input-box h2,
+.output-box h2 {
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+textarea {
+  flex: 1;
+  background: #1a1a2b;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.5rem;
+  resize: vertical;
+  font-family: monospace;
+}
+
+/* Output Code Block */
+pre {
+  flex: 1;
+  background: #1a1a2b;
+  padding: 0.5rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+pre code {
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: monospace;
+}
+
+/* Config Section */
+.config {
+  background: var(--panel-color);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.config h3 {
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.settings label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.settings select {
+  margin-top: 0.25rem;
+  padding: 0.4rem;
+  background-color: #1a1a2b;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+/* Footer */
+footer {
+  background: var(--panel-color);
+  text-align: center;
+  padding: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+  margin-top: auto;
+}
+
+footer p {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .editor {
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+
+.scrollable-container {
+  overflow-y: auto;
+}
