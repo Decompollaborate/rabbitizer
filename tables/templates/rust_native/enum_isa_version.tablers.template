@@ -22,6 +22,7 @@ use pyo3::prelude::*;
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
 SPECIAL_RS_TAG(allow(non_camel_case_types))
 SPECIAL_RS_TAG(cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer", eq)))
+SPECIAL_RS_TAG(cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize)))
 pub enum IsaVersion {
     #include "IsaVersion.inc"
 }

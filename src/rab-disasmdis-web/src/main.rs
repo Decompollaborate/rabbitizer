@@ -1,9 +1,7 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use rabbitizer::{
-    Instruction, InstructionDisplayFlags, InstructionFlags, IsaExtension, IsaVersion, Vram,
-};
+use rabbitizer::{Instruction, InstructionDisplayFlags, InstructionFlags, Vram};
 use wasm_bindgen::prelude::*;
 use web_sys::HtmlInputElement;
 use yew::events::InputEvent;
@@ -13,9 +11,11 @@ use yew::{html, Component, Context, Html, TargetCast};
 
 mod bytes_text_parser;
 mod persistent_state;
+mod settings;
 
-use bytes_text_parser::{BytesTextParser, ParsedTextResult};
-use persistent_state::{DropdownEnum, Endian, PersistentState, Theme};
+use crate::bytes_text_parser::{BytesTextParser, ParsedTextResult};
+use crate::persistent_state::PersistentState;
+use crate::settings::*;
 
 pub mod built_info {
     // The file has been placed there by the build script.
@@ -32,13 +32,13 @@ pub enum Msg {
     InputData(String),
     ChangeTheme(Theme),
     ChangeEndian(Endian),
+    ChangeIsaVersion(IsaVersion),
+    ChangeIsaExtension(Option<IsaExtension>),
 }
 
 pub struct App {
     input: String,
     state: PersistentState,
-    isa_version: IsaVersion,
-    _isa_extension: Option<IsaExtension>,
 }
 
 impl Component for App {
@@ -49,8 +49,6 @@ impl Component for App {
         Self {
             input: "".to_string(),
             state: PersistentState::new(),
-            isa_version: IsaVersion::default(),
-            _isa_extension: None,
         }
     }
 
@@ -65,7 +63,17 @@ impl Component for App {
             Msg::ChangeEndian(endian) => {
                 self.state.endian = endian;
             }
+            Msg::ChangeIsaVersion(isa_version) => {
+                self.state.isa_version = isa_version;
+            }
+            Msg::ChangeIsaExtension(isa_extension) => {
+                self.state.isa_extension = isa_extension;
+                if let Some(isa_extension) = isa_extension {
+                    self.state.isa_version = isa_extension.isa_version();
+                }
+            }
         }
+
         self.state.save();
         true
     }
@@ -173,7 +181,7 @@ impl App {
             .with_isa_extension(args.isa_extension.map(|x| x.into()))
             .with_all_pseudos(args.pseudos);
         */
-        let flags = InstructionFlags::new(self.isa_version);
+        let flags = InstructionFlags::new_isa(self.state.isa_version, self.state.isa_extension);
         let vram = Vram::new(0x8000_0000);
         let display_flags = InstructionDisplayFlags::new_gnu_as();
 
@@ -187,7 +195,7 @@ impl App {
                     let word = self.state.endian.word_from_bytes(b);
                     let instr = Instruction::new(word, vram, flags);
                     let disassembled = instr.display::<&str>(&display_flags, None, 0).to_string();
-                    let comment = format!("/* {byte_offset:06X} {word:08X} */");
+                    let comment = format!("/* {byte_offset:04X} {word:08X} */");
                     result.push(html! {
                       <tr>
                         <td class="cod"> { comment } { " " } { disassembled } </td>
@@ -218,18 +226,38 @@ impl App {
     }
 
     fn view_config(&self, link: &Scope<Self>) -> Html {
-        let dropdown_id = "endian";
-        let dropdown = self
-            .state
-            .endian
-            .gen_dropdown(link, dropdown_id, Msg::ChangeEndian);
+        let dropdown_id_endian = "endian";
+        let dropdown_endian =
+            self.state
+                .endian
+                .gen_dropdown(link, dropdown_id_endian, Msg::ChangeEndian);
+
+        let dropdown_id_isa_version = "isa_version";
+        let dropdown_isa_version = self.state.isa_version.gen_dropdown(
+            link,
+            dropdown_id_isa_version,
+            Msg::ChangeIsaVersion,
+        );
+
+        let dropdown_id_isa_extension = "isa_extension";
+        let dropdown_isa_extension = self.state.isa_extension.gen_dropdown(
+            link,
+            dropdown_id_isa_extension,
+            Msg::ChangeIsaExtension,
+        );
 
         html! {
           <>
             <h3> { "⚙️ Configuration" }</h3>
             <div class="settings">
-              <label for={dropdown_id}> { "Endianness:" }
-                { dropdown }
+              <label for={dropdown_id_endian}> { "Endianness:" }
+                { dropdown_endian }
+              </label>
+              <label for={dropdown_id_isa_version}> { "ISA version:" }
+                { dropdown_isa_version }
+              </label>
+              <label for={dropdown_id_isa_extension}> { "ISA extension:" }
+                { dropdown_isa_extension }
               </label>
             </div>
           </>
@@ -238,5 +266,7 @@ impl App {
 }
 
 fn main() {
+    wasm_logger::init(wasm_logger::Config::default());
+
     yew::Renderer::<App>::new().render();
 }

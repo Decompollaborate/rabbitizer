@@ -53,6 +53,7 @@ all_gated_extensions = [
 
 bindings_c = []
 pyo3 = ["std", "dep:pyo3", "all_extensions", "all_gated_extensions"]
+serde = ["dep:serde"]
 
 # Documentation should be generated with every user-facing feature
 doc = ["MIPS_IV", "all_extensions", "all_gated_extensions"]
@@ -61,6 +62,7 @@ doc = ["MIPS_IV", "all_extensions", "all_gated_extensions"]
 bitflags = { version = "2.6.0", default-features = false }
 ordered-float = { version = "5.0.0", default-features = false, optional = true }
 pyo3 = { version = "0.23.2", optional = true }
+serde = { version = "1", features = ["derive"], default-features = false, optional = true }
 
 [package.metadata.docs.rs]
 # This should allow documenting parts of the crate that are not enabled by default
