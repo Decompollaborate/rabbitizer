@@ -5,8 +5,8 @@ use rabbitizer::{
     Instruction, InstructionDisplayFlags, InstructionFlags, IsaExtension, IsaVersion, Vram,
 };
 use wasm_bindgen::prelude::*;
-use web_sys::{HtmlInputElement, HtmlSelectElement};
-use yew::events::{Event, InputEvent};
+use web_sys::HtmlInputElement;
+use yew::events::InputEvent;
 use yew::functional::use_effect;
 use yew::html::Scope;
 use yew::{html, Component, Context, Html, TargetCast};
@@ -15,7 +15,7 @@ mod bytes_text_parser;
 mod persistent_state;
 
 use bytes_text_parser::{BytesTextParser, ParsedTextResult};
-use persistent_state::{PersistentState, Theme, THEMES};
+use persistent_state::{DropdownEnum, Endian, PersistentState, Theme};
 
 pub mod built_info {
     // The file has been placed there by the build script.
@@ -31,6 +31,7 @@ extern "C" {
 pub enum Msg {
     InputData(String),
     ChangeTheme(Theme),
+    ChangeEndian(Endian),
 }
 
 pub struct App {
@@ -61,6 +62,9 @@ impl Component for App {
             Msg::ChangeTheme(theme) => {
                 self.state.theme = theme;
             }
+            Msg::ChangeEndian(endian) => {
+                self.state.endian = endian;
+            }
         }
         self.state.save();
         true
@@ -75,7 +79,7 @@ impl Component for App {
 
         use_effect(move || {
             // asm syntax highlight.
-            //! TODO: breaks the site due to lack of auto update
+            // TODO: breaks the site due to lack of auto update
             // highlightAll();
         });
 
@@ -91,31 +95,19 @@ impl Component for App {
 
 impl App {
     fn view_header(&self, ctx: &Context<Self>) -> Html {
-        let onchange = ctx.link().batch_callback(|e: Event| {
-            let select: HtmlSelectElement = e.target_unchecked_into();
-            Some(Msg::ChangeTheme(Theme::from_id(&select.value())))
-        });
-
-        let themes: Vec<Html> = THEMES
-            .iter()
-            .map(|x| {
-                let selected = *x == self.state.theme;
-
-                html! {
-                    <option value={x.id()} {selected}> { {x.name()} } </option>
-                }
-            })
-            .collect();
+        let dropdown_id = "theme";
+        let dropdown = self
+            .state
+            .theme
+            .gen_dropdown(ctx.link(), dropdown_id, Msg::ChangeTheme);
 
         html! {
           <header>
             <h1> { "🧩 disasmdis-web" } <h6> { built_info::PKG_VERSION } </h6> </h1>
 
             <div class="theme-selector">
-              <label for="theme"> { "Theme:" } </label>
-              <select id="theme" { onchange }>
-                { themes }
-              </select>
+              <label for={dropdown_id}> { "Theme:" } </label>
+              { dropdown }
             </div>
           </header>
         }
@@ -127,6 +119,10 @@ impl App {
             <section class="editor">
               { self.view_input(ctx.link()) }
               { self.view_disassemble_box() }
+            </section>
+
+            <section class="config">
+              { self.view_config(ctx.link()) }
             </section>
           </main>
         }
@@ -187,7 +183,7 @@ impl App {
             match x {
                 ParsedTextResult::Bytes(b) => {
                     // TODO: endian
-                    let word = u32::from_be_bytes(b);
+                    let word = self.state.endian.word_from_bytes(b);
                     let instr = Instruction::new(word, vram, flags);
                     let disassembled = instr.display::<&str>(&display_flags, None, 0).to_string();
                     let word_str = format!("{word:08X}");
@@ -216,6 +212,25 @@ impl App {
               </code></pre>
             </div>
           </div>
+        }
+    }
+
+    fn view_config(&self, link: &Scope<Self>) -> Html {
+        let dropdown_id = "endian";
+        let dropdown = self
+            .state
+            .endian
+            .gen_dropdown(link, dropdown_id, Msg::ChangeEndian);
+
+        html! {
+          <>
+            <h3> { "⚙️ Configuration" }</h3>
+            <div class="settings">
+              <label for={dropdown_id}> { "Endianness:" }
+                { dropdown }
+              </label>
+            </div>
+          </>
         }
     }
 }
