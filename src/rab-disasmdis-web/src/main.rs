@@ -178,6 +178,7 @@ impl App {
         let display_flags = InstructionDisplayFlags::new_gnu_as();
 
         let mut result = Vec::new();
+        let mut byte_offset = 0;
 
         for x in BytesTextParser::new(&self.input) {
             match x {
@@ -186,12 +187,13 @@ impl App {
                     let word = self.state.endian.word_from_bytes(b);
                     let instr = Instruction::new(word, vram, flags);
                     let disassembled = instr.display::<&str>(&display_flags, None, 0).to_string();
-                    let word_str = format!("{word:08X}");
+                    let comment = format!("/* {byte_offset:06X} {word:08X} */");
                     result.push(html! {
                       <tr>
-                        <td class="cod">{ "/* " } { word_str } { " */ " } { disassembled } </td>
+                        <td class="cod"> { comment } { " " } { disassembled } </td>
                       </tr>
                     });
+                    byte_offset += 4;
                 }
                 ParsedTextResult::InvalidCharacter(c, index) => {
                     result.push(html! {

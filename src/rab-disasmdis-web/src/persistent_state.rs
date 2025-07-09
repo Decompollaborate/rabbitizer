@@ -19,27 +19,28 @@ pub struct PersistentState {
 impl PersistentState {
     pub fn new() -> Self {
         Self {
-            theme: LocalStorage::get(KEY_THEME).unwrap_or_default(),
-            endian: LocalStorage::get(KEY_ENDIAN).unwrap_or_default(),
+            theme: Theme::load_storage(),
+            endian: Endian::load_storage(),
         }
     }
 
     pub fn save(&self) {
         let Self { theme, endian } = self;
 
-        LocalStorage::set(KEY_THEME, theme).expect("Failed to save theme into LocalStorage.");
-        LocalStorage::set(KEY_ENDIAN, endian).expect("Failed to save endian into LocalStorage.");
+        theme.save_storage();
+        endian.save_storage();
     }
 }
 
 pub trait DropdownEnum
 where
-    Self: Sized + PartialEq + 'static,
+    Self: Sized + PartialEq + Default + Serialize + for<'de> Deserialize<'de> + 'static,
 {
     fn from_id(id: &str) -> Self;
     fn id(&self) -> &'static str;
     fn name(&self) -> &'static str;
     fn array() -> &'static [Self];
+    fn storage_key() -> &'static str;
 
     fn gen_dropdown<F, T, S>(&self, link: &Scope<S>, dropdown_id: &'static str, msgfier: F) -> Html
     where
@@ -67,6 +68,15 @@ where
             { elements }
           </select>
         }
+    }
+
+    fn load_storage() -> Self {
+        LocalStorage::get(Self::storage_key()).unwrap_or_default()
+    }
+
+    fn save_storage(self) {
+        LocalStorage::set(Self::storage_key(), self)
+            .expect("Failed to save key into LocalStorage.");
     }
 }
 
@@ -121,9 +131,13 @@ impl DropdownEnum for Theme {
     fn array() -> &'static [Self] {
         &THEMES
     }
+
+    fn storage_key() -> &'static str {
+        KEY_THEME
+    }
 }
 
-pub static THEMES: [Theme; 6] = [
+static THEMES: [Theme; 6] = [
     Theme::PastelMidnight,
     Theme::Dracula,
     Theme::SolarizedDark,
@@ -167,6 +181,10 @@ impl DropdownEnum for Endian {
     fn array() -> &'static [Self] {
         &ENDIANS
     }
+
+    fn storage_key() -> &'static str {
+        KEY_ENDIAN
+    }
 }
 
 impl Endian {
@@ -178,4 +196,4 @@ impl Endian {
     }
 }
 
-pub static ENDIANS: [Endian; 2] = [Endian::Big, Endian::Little];
+static ENDIANS: [Endian; 2] = [Endian::Big, Endian::Little];
