@@ -3,7 +3,7 @@
 
 use core::fmt;
 
-use crate::operands::{operand_display, OperandDisplay};
+use crate::operands::{operand_display, DefaultLabelDisplay, OperandDisplay};
 use crate::utils;
 use crate::{registers::Gpr, registers_meta::Register};
 
@@ -266,10 +266,25 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
-            let instr = myself.instr;
-            let s = instr.get_instr_index_as_vram_impl();
+            match myself.display_flags.jump_default_label_display() {
+                DefaultLabelDisplay::FullExpression => {
+                    write!(f, ". + 4 + (")?;
+                    Self::display_core_imm_i16(myself, f)?;
+                    write!(f, " << 2)")
+                }
+                DefaultLabelDisplay::Computed => {
+                    let s = myself.instr.field().imm_i16_impl();
+                    let computed = 4 + (i32::from(s) << 2);
 
-            write!(f, "func_{}", s)
+                    write!(f, ". + ")?;
+                    operand_display::display_signed_imm(computed, f, myself.display_flags)
+                }
+                DefaultLabelDisplay::Absolute => {
+                    let s = myself.instr.get_instr_index_as_vram_impl();
+
+                    write!(f, "func_{}", s)
+                }
+            }
         })
     }
     pub(crate) fn display_core_imm_i16(
@@ -299,9 +314,30 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         Self::display_imm_override_or(myself, f, |myself, f| {
-            write!(f, ". + 4 + (")?;
-            Self::display_core_imm_i16(myself, f)?;
-            write!(f, " << 2)")
+            match myself.display_flags.branch_default_label_display() {
+                DefaultLabelDisplay::FullExpression => {
+                    write!(f, ". + 4 + (")?;
+                    Self::display_core_imm_i16(myself, f)?;
+                    write!(f, " << 2)")
+                }
+                DefaultLabelDisplay::Computed => {
+                    let s = myself.instr.field().imm_i16_impl();
+                    let computed = 4 + (i32::from(s) << 2);
+
+                    write!(f, ". + ")?;
+                    operand_display::display_signed_imm(computed, f, myself.display_flags)
+                }
+                DefaultLabelDisplay::Absolute => {
+                    let s = myself.instr.field().imm_i16_impl();
+                    let absolute = myself
+                        .instr
+                        .vram()
+                        .inner()
+                        .wrapping_add_signed(4 + (i32::from(s) << 2));
+
+                    write!(f, "0x{:08X}", absolute)
+                }
+            }
         })
     }
     pub(crate) fn display_core_imm_rs(

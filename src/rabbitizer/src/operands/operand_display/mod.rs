@@ -17,6 +17,10 @@ pub(crate) mod operand_display_r5900ee;
 #[cfg(feature = "RSP")]
 pub(crate) mod operand_display_rsp;
 
+pub(crate) mod default_label_display;
+
+pub use default_label_display::DefaultLabelDisplay;
+
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[must_use]
 pub struct OperandDisplay<'ins, 'flg, T> {

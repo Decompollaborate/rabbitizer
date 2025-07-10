@@ -4,6 +4,8 @@
 #[cfg(feature = "pyo3")]
 use pyo3::prelude::*;
 
+pub use crate::operands::DefaultLabelDisplay;
+
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer"))]
 pub struct InstructionDisplayFlags {
@@ -32,6 +34,9 @@ pub struct InstructionDisplayFlags {
     unknown_instr_comment: bool,
     /// Omit the `0x` prefix on small immediates (values on the \[-9, 9\] inclusive range).
     omit_0x_on_small_imm: bool, // TODO: maybe remove?
+
+    branch_default_label_display: DefaultLabelDisplay,
+    jump_default_label_display: DefaultLabelDisplay,
 
     expand_jalr: bool,
     gnu_div: bool,
@@ -66,6 +71,9 @@ impl InstructionDisplayFlags {
             opcode_ljust: 7 + 4,
             unknown_instr_comment: true,
             omit_0x_on_small_imm: false,
+
+            branch_default_label_display: DefaultLabelDisplay::FullExpression,
+            jump_default_label_display: DefaultLabelDisplay::Absolute,
 
             expand_jalr: false,
             gnu_div: true,
@@ -278,6 +286,42 @@ impl InstructionDisplayFlags {
     pub const fn with_omit_0x_on_small_imm(self, omit_0x_on_small_imm: bool) -> Self {
         Self {
             omit_0x_on_small_imm,
+            ..self
+        }
+    }
+
+    #[must_use]
+    pub const fn branch_default_label_display(&self) -> DefaultLabelDisplay {
+        self.branch_default_label_display
+    }
+    pub fn branch_default_label_display_mut(&mut self) -> &mut DefaultLabelDisplay {
+        &mut self.branch_default_label_display
+    }
+    #[must_use]
+    pub const fn with_branch_default_label_display(
+        self,
+        branch_default_label_display: DefaultLabelDisplay,
+    ) -> Self {
+        Self {
+            branch_default_label_display,
+            ..self
+        }
+    }
+
+    #[must_use]
+    pub const fn jump_default_label_display(&self) -> DefaultLabelDisplay {
+        self.jump_default_label_display
+    }
+    pub fn jump_default_label_display_mut(&mut self) -> &mut DefaultLabelDisplay {
+        &mut self.jump_default_label_display
+    }
+    #[must_use]
+    pub const fn with_jump_default_label_display(
+        self,
+        jump_default_label_display: DefaultLabelDisplay,
+    ) -> Self {
+        Self {
+            jump_default_label_display,
             ..self
         }
     }

@@ -13,5 +13,5 @@ pub use crate::generated::OPERANDS;
 pub(crate) use operand::OPERAND_COUNT;
 pub use operand::{OperandIterator, OPERAND_COUNT_MAX};
 pub use operand_descriptor::OperandDescriptor;
-pub use operand_display::OperandDisplay;
+pub use operand_display::{DefaultLabelDisplay, OperandDisplay};
 pub use valued_operand::ValuedOperandIterator;

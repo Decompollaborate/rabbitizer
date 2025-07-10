@@ -3,9 +3,15 @@
 
 pub use rabbitizer::IsaVersion;
 
-use crate::settings::DropdownEnum;
+use crate::settings::{DropdownEnum, Storagable};
 
 const KEY: &str = "decompollaborate.disasmdis-web.state.isa_version";
+
+impl Storagable for IsaVersion {
+    fn storage_key() -> &'static str {
+        KEY
+    }
+}
 
 impl DropdownEnum for IsaVersion {
     fn from_id(id: &str) -> Self {
@@ -40,10 +46,6 @@ impl DropdownEnum for IsaVersion {
 
     fn array() -> &'static [Self] {
         &ARR
-    }
-
-    fn storage_key() -> &'static str {
-        KEY
     }
 }
 

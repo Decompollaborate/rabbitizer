@@ -8,25 +8,47 @@ use yew::events::Event;
 use yew::html::Scope;
 use yew::{html, Component, Html, TargetCast};
 
+mod branch_default_label_display;
 mod endian;
 mod isa_extension;
 mod isa_version;
 mod theme;
+mod vram;
 
+pub use branch_default_label_display::DefaultLabelDisplay;
 pub use endian::Endian;
 pub use isa_extension::IsaExtension;
 pub use isa_version::IsaVersion;
 pub use theme::Theme;
+pub use vram::Vram;
+
+pub trait Storagable
+where
+    Self: Serialize + for<'de> Deserialize<'de>,
+{
+    fn storage_key() -> &'static str;
+
+    fn load_storage<F>(default: F) -> Self
+    where
+        F: FnOnce() -> Self,
+    {
+        LocalStorage::get(Self::storage_key()).unwrap_or_else(|_| default())
+    }
+
+    fn save_storage(self) {
+        LocalStorage::set(Self::storage_key(), self)
+            .expect("Failed to save key into LocalStorage.");
+    }
+}
 
 pub trait DropdownEnum
 where
-    Self: Sized + PartialEq + Default + Serialize + for<'de> Deserialize<'de> + 'static,
+    Self: Sized + PartialEq + 'static,
 {
     fn from_id(id: &str) -> Self;
     fn id(&self) -> &'static str;
     fn name(&self) -> &'static str;
     fn array() -> &'static [Self];
-    fn storage_key() -> &'static str;
 
     fn gen_dropdown<F, T, S>(&self, link: &Scope<S>, dropdown_id: &'static str, msgfier: F) -> Html
     where
@@ -55,13 +77,14 @@ where
           </select>
         }
     }
+}
 
-    fn load_storage() -> Self {
-        LocalStorage::get(Self::storage_key()).unwrap_or_default()
-    }
-
-    fn save_storage(self) {
-        LocalStorage::set(Self::storage_key(), self)
-            .expect("Failed to save key into LocalStorage.");
-    }
+pub trait InputStruct
+where
+    Self: Sized,
+{
+    fn gen_input<F, T, S>(&self, link: &Scope<S>, input_id: &'static str, msgfier: F) -> Html
+    where
+        F: Fn(Self) -> T + 'static,
+        S: Component<Message = T>;
 }

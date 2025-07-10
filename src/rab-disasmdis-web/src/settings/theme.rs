@@ -3,7 +3,7 @@
 
 use serde::{Deserialize, Serialize};
 
-use crate::settings::DropdownEnum;
+use crate::settings::{DropdownEnum, Storagable};
 
 const KEY: &str = "decompollaborate.disasmdis-web.state.theme";
 
@@ -18,6 +18,12 @@ pub enum Theme {
     SolarizedLight,
     Dark,
     Light,
+}
+
+impl Storagable for Theme {
+    fn storage_key() -> &'static str {
+        KEY
+    }
 }
 
 impl DropdownEnum for Theme {
@@ -57,10 +63,6 @@ impl DropdownEnum for Theme {
 
     fn array() -> &'static [Self] {
         &ARR
-    }
-
-    fn storage_key() -> &'static str {
-        KEY
     }
 }
 

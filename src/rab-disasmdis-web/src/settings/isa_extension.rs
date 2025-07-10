@@ -3,9 +3,15 @@
 
 pub use rabbitizer::IsaExtension;
 
-use crate::settings::DropdownEnum;
+use crate::settings::{DropdownEnum, Storagable};
 
 const KEY: &str = "decompollaborate.disasmdis-web.state.isa_extension";
+
+impl Storagable for Option<IsaExtension> {
+    fn storage_key() -> &'static str {
+        KEY
+    }
+}
 
 impl DropdownEnum for Option<IsaExtension> {
     fn from_id(id: &str) -> Self {
@@ -41,10 +47,6 @@ impl DropdownEnum for Option<IsaExtension> {
 
     fn array() -> &'static [Self] {
         &ARR
-    }
-
-    fn storage_key() -> &'static str {
-        KEY
     }
 }
 

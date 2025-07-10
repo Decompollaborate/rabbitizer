@@ -10,15 +10,19 @@ pub struct PersistentState {
     pub endian: Endian,
     pub isa_version: IsaVersion,
     pub isa_extension: Option<IsaExtension>,
+    pub branch_label: DefaultLabelDisplay,
+    pub vram: Vram,
 }
 
 impl PersistentState {
     pub fn new() -> Self {
         Self {
-            theme: DropdownEnum::load_storage(),
-            endian: DropdownEnum::load_storage(),
-            isa_version: DropdownEnum::load_storage(),
-            isa_extension: DropdownEnum::load_storage(),
+            theme: Storagable::load_storage(Default::default),
+            endian: Storagable::load_storage(Default::default),
+            isa_version: Storagable::load_storage(Default::default),
+            isa_extension: Storagable::load_storage(Default::default),
+            branch_label: Storagable::load_storage(Default::default),
+            vram: Storagable::load_storage(|| Vram::new(0x80000000)),
         }
     }
 
@@ -28,16 +32,21 @@ impl PersistentState {
             endian,
             isa_version,
             isa_extension,
+            branch_label,
+            vram,
         } = self;
 
         info!("Saving theme: {theme:?}");
         info!("Saving endian: {endian:?}");
         info!("Saving isa_version: {isa_version:?}");
         info!("Saving isa_extension: {isa_extension:?}");
+        info!("Saving vram: {vram:?}");
 
         theme.save_storage();
         endian.save_storage();
         isa_version.save_storage();
         isa_extension.save_storage();
+        branch_label.save_storage();
+        vram.save_storage();
     }
 }

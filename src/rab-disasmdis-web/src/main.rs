@@ -1,7 +1,7 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use rabbitizer::{Instruction, InstructionDisplayFlags, InstructionFlags, Vram};
+use rabbitizer::{vram::VramOffset, Instruction, InstructionDisplayFlags, InstructionFlags, Vram};
 use wasm_bindgen::prelude::*;
 use web_sys::HtmlInputElement;
 use yew::events::InputEvent;
@@ -34,6 +34,8 @@ pub enum Msg {
     ChangeEndian(Endian),
     ChangeIsaVersion(IsaVersion),
     ChangeIsaExtension(Option<IsaExtension>),
+    ChangeBranchLabel(DefaultLabelDisplay),
+    ChangeVram(Vram),
 }
 
 pub struct App {
@@ -71,6 +73,12 @@ impl Component for App {
                 if let Some(isa_extension) = isa_extension {
                     self.state.isa_version = isa_extension.isa_version();
                 }
+            }
+            Msg::ChangeBranchLabel(branch_label) => {
+                self.state.branch_label = branch_label;
+            }
+            Msg::ChangeVram(vram) => {
+                self.state.vram = vram;
             }
         }
 
@@ -182,10 +190,11 @@ impl App {
             .with_all_pseudos(args.pseudos);
         */
         let flags = InstructionFlags::new_isa(self.state.isa_version, self.state.isa_extension);
-        let vram = Vram::new(0x8000_0000);
-        let display_flags = InstructionDisplayFlags::new_gnu_as();
+        let display_flags = InstructionDisplayFlags::new_gnu_as()
+            .with_branch_default_label_display(self.state.branch_label);
 
         let mut result = Vec::new();
+        let mut vram = self.state.vram;
         let mut byte_offset = 0;
 
         for x in BytesTextParser::new(&self.input) {
@@ -194,13 +203,14 @@ impl App {
                     // TODO: endian
                     let word = self.state.endian.word_from_bytes(b);
                     let instr = Instruction::new(word, vram, flags);
-                    let disassembled = instr.display::<&str>(&display_flags, None, 0).to_string();
-                    let comment = format!("/* {byte_offset:04X} {word:08X} */");
+                    let disassembled = instr.display::<&str>(&display_flags, None, -4).to_string();
+                    let comment = format!("/* {byte_offset:04X} {vram} {word:08X} */");
                     result.push(html! {
                       <tr>
                         <td class="cod"> { comment } { " " } { disassembled } </td>
                       </tr>
                     });
+                    vram += VramOffset::new(4);
                     byte_offset += 4;
                 }
                 ParsedTextResult::InvalidCharacter(c, index) => {
@@ -246,6 +256,19 @@ impl App {
             Msg::ChangeIsaExtension,
         );
 
+        let dropdown_id_branch_label = "branch_label";
+        let dropdown_branch_label = self.state.branch_label.gen_dropdown(
+            link,
+            dropdown_id_branch_label,
+            Msg::ChangeBranchLabel,
+        );
+
+        let input_id_vram = "vram";
+        let dropdown_vram = self
+            .state
+            .vram
+            .gen_input(link, input_id_vram, Msg::ChangeVram);
+
         html! {
           <>
             <h3> { "⚙️ Configuration" }</h3>
@@ -258,6 +281,12 @@ impl App {
               </label>
               <label for={dropdown_id_isa_extension}> { "ISA extension:" }
                 { dropdown_isa_extension }
+              </label>
+              <label for={dropdown_id_branch_label}> { "Branch label style:" }
+                { dropdown_branch_label }
+              </label>
+              <label for={input_id_vram}> { "Vram:" }
+                { dropdown_vram }
               </label>
             </div>
           </>

@@ -3,7 +3,7 @@
 
 use serde::{Deserialize, Serialize};
 
-use crate::settings::DropdownEnum;
+use crate::settings::{DropdownEnum, Storagable};
 
 const KEY: &str = "decompollaborate.disasmdis-web.state.endian";
 
@@ -14,6 +14,12 @@ pub enum Endian {
     #[default]
     Big,
     Little,
+}
+
+impl Storagable for Endian {
+    fn storage_key() -> &'static str {
+        KEY
+    }
 }
 
 impl DropdownEnum for Endian {
@@ -41,10 +47,6 @@ impl DropdownEnum for Endian {
 
     fn array() -> &'static [Self] {
         &ARR
-    }
-
-    fn storage_key() -> &'static str {
-        KEY
     }
 }
 
