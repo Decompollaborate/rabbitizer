@@ -28,7 +28,7 @@ pub(crate) const OPERAND_COUNT: usize = {
     }
 
     if cfg!(feature = "RSP") {
-        count += 9;
+        count += 13;
     }
     if cfg!(feature = "R3000GTE") {
         count += 5;

@@ -451,19 +451,91 @@ impl InstrField<'_> {
         }
     }
 
-    /// Returns either the `rsp_offset` value embedded on the `rsp_offset`
+    /// Returns either the `rsp_offset7` value embedded on the `rsp_offset7`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
     ///
     /// [`None`]: Option::None
     #[must_use]
-    pub fn rsp_offset(&self) -> Option<u8> {
+    pub fn rsp_offset7(&self) -> Option<u8> {
         if self
             .instr
             .opcode()
-            .has_operand_alias(Operand::rsp_offset_rs)
+            .has_operand_alias(Operand::rsp_offset7_rs)
         {
-            Some(self.rsp_offset_impl())
+            Some(self.rsp_offset7_impl())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_offset8` value embedded on the `rsp_offset8`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn rsp_offset8(&self) -> Option<u8> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::rsp_offset8_rs)
+        {
+            Some(self.rsp_offset8_impl())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_offset9` value embedded on the `rsp_offset9`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn rsp_offset9(&self) -> Option<u16> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::rsp_offset9_rs)
+        {
+            Some(self.rsp_offset9_impl())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_offset10` value embedded on the `rsp_offset10`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn rsp_offset10(&self) -> Option<u16> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::rsp_offset10_rs)
+        {
+            Some(self.rsp_offset10_impl())
+        } else {
+            None
+        }
+    }
+
+    /// Returns either the `rsp_offset11` value embedded on the `rsp_offset11`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn rsp_offset11(&self) -> Option<u16> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::rsp_offset11_rs)
+        {
+            Some(self.rsp_offset11_impl())
         } else {
             None
         }
@@ -2295,23 +2367,99 @@ impl InstrField<'_> {
         self.rsp_index_impl()
     }
 
-    /// Returns the `rsp_offset` value embedded on the `rsp_offset` field of the word of
+    /// Returns the `rsp_offset7` value embedded on the `rsp_offset7` field of the word of
     /// this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
     /// as this field. It is recommended to use the
-    /// [`rsp_offset`] function instead.
+    /// [`rsp_offset7`] function instead.
     ///
     /// # Safety
     ///
     /// - The instruction must contain the [`Operand::rsp_vs_index`] operand.
     ///
-    /// [`rsp_offset`]: InstrField::rsp_offset
+    /// [`rsp_offset7`]: InstrField::rsp_offset7
     #[must_use]
-    pub unsafe fn rsp_offset_unchecked(&self) -> u8 {
-        self.rsp_offset_impl()
+    pub unsafe fn rsp_offset7_unchecked(&self) -> u8 {
+        self.rsp_offset7_impl()
+    }
+
+    /// Returns the `rsp_offset8` value embedded on the `rsp_offset8` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset8`] function instead.
+    ///
+    /// # Safety
+    ///
+    /// - The instruction must contain the [`Operand::rsp_vs_index`] operand.
+    ///
+    /// [`rsp_offset8`]: InstrField::rsp_offset8
+    #[must_use]
+    pub unsafe fn rsp_offset8_unchecked(&self) -> u8 {
+        self.rsp_offset8_impl()
+    }
+
+    /// Returns the `rsp_offset9` value embedded on the `rsp_offset9` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset9`] function instead.
+    ///
+    /// # Safety
+    ///
+    /// - The instruction must contain the [`Operand::rsp_vs_index`] operand.
+    ///
+    /// [`rsp_offset9`]: InstrField::rsp_offset9
+    #[must_use]
+    pub unsafe fn rsp_offset9_unchecked(&self) -> u16 {
+        self.rsp_offset9_impl()
+    }
+
+    /// Returns the `rsp_offset10` value embedded on the `rsp_offset10` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset10`] function instead.
+    ///
+    /// # Safety
+    ///
+    /// - The instruction must contain the [`Operand::rsp_vs_index`] operand.
+    ///
+    /// [`rsp_offset10`]: InstrField::rsp_offset10
+    #[must_use]
+    pub unsafe fn rsp_offset10_unchecked(&self) -> u16 {
+        self.rsp_offset10_impl()
+    }
+
+    /// Returns the `rsp_offset11` value embedded on the `rsp_offset11` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset11`] function instead.
+    ///
+    /// # Safety
+    ///
+    /// - The instruction must contain the [`Operand::rsp_vs_index`] operand.
+    ///
+    /// [`rsp_offset11`]: InstrField::rsp_offset11
+    #[must_use]
+    pub unsafe fn rsp_offset11_unchecked(&self) -> u16 {
+        self.rsp_offset11_impl()
     }
 
     /// Returns the `rsp_de` value embedded on the `rsp_de` field of the word of
@@ -4261,22 +4409,102 @@ impl InstrField<'_> {
             .unwrap()
     }
 
-    /// Returns the `rsp_offset` value embedded on the `rsp_offset` field of the word of
+    /// Returns the `rsp_offset7` value embedded on the `rsp_offset7` field of the word of
     /// this instruction.
     ///
     /// Note this function **does not check** if the opcode of this instruction
     /// actually has this field, meaning that calling this function on an
     /// instruction that does not have this field will interpret garbage data
     /// as this field. It is recommended to use the
-    /// [`rsp_offset`] function instead.
+    /// [`rsp_offset7`] function instead.
     ///
-    /// [`rsp_offset`]: InstrField::rsp_offset
+    /// [`rsp_offset7`]: InstrField::rsp_offset7
     #[must_use]
-    pub(crate) fn rsp_offset_impl(&self) -> u8 {
+    pub(crate) fn rsp_offset7_impl(&self) -> u8 {
         EncodedFieldMask::rsp_offset
             .get_shifted(self.instr.word())
             .try_into()
             .unwrap()
+    }
+
+    /// Returns the `rsp_offset8` value embedded on the `rsp_offset8` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset8`] function instead.
+    ///
+    /// [`rsp_offset8`]: InstrField::rsp_offset8
+    #[must_use]
+    pub(crate) fn rsp_offset8_impl(&self) -> u8 {
+        let val: u8 = EncodedFieldMask::rsp_offset
+            .get_shifted(self.instr.word())
+            .try_into()
+            .unwrap();
+
+        val << 1
+    }
+
+    /// Returns the `rsp_offset9` value embedded on the `rsp_offset9` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset9`] function instead.
+    ///
+    /// [`rsp_offset9`]: InstrField::rsp_offset9
+    #[must_use]
+    pub(crate) fn rsp_offset9_impl(&self) -> u16 {
+        let val: u16 = EncodedFieldMask::rsp_offset
+            .get_shifted(self.instr.word())
+            .try_into()
+            .unwrap();
+
+        val << 2
+    }
+
+    /// Returns the `rsp_offset10` value embedded on the `rsp_offset10` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset10`] function instead.
+    ///
+    /// [`rsp_offset10`]: InstrField::rsp_offset10
+    #[must_use]
+    pub(crate) fn rsp_offset10_impl(&self) -> u16 {
+        let val: u16 = EncodedFieldMask::rsp_offset
+            .get_shifted(self.instr.word())
+            .try_into()
+            .unwrap();
+
+        val << 3
+    }
+
+    /// Returns the `rsp_offset11` value embedded on the `rsp_offset11` field of the word of
+    /// this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as this field. It is recommended to use the
+    /// [`rsp_offset11`] function instead.
+    ///
+    /// [`rsp_offset11`]: InstrField::rsp_offset11
+    #[must_use]
+    pub(crate) fn rsp_offset11_impl(&self) -> u16 {
+        let val: u16 = EncodedFieldMask::rsp_offset
+            .get_shifted(self.instr.word())
+            .try_into()
+            .unwrap();
+
+        val << 4
     }
 
     /// Returns the `rsp_de` value embedded on the `rsp_de` field of the word of

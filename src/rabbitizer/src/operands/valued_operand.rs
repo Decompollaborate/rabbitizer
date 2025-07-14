@@ -105,8 +105,24 @@ impl ValuedOperand {
                 Self::rsp_vs_index(field.rsp_vs_impl(), field.rsp_index_impl())
             }
             #[cfg(feature = "RSP")]
-            Operand::rsp_offset_rs => {
-                Self::rsp_offset_rs(instr.get_processed_rsp_offset_impl(), field.rs_impl())
+            Operand::rsp_offset7_rs => {
+                Self::rsp_offset7_rs(field.rsp_offset7_impl(), field.rs_impl())
+            }
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset8_rs => {
+                Self::rsp_offset8_rs(field.rsp_offset8_impl(), field.rs_impl())
+            }
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset9_rs => {
+                Self::rsp_offset9_rs(field.rsp_offset9_impl(), field.rs_impl())
+            }
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset10_rs => {
+                Self::rsp_offset10_rs(field.rsp_offset10_impl(), field.rs_impl())
+            }
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset11_rs => {
+                Self::rsp_offset11_rs(field.rsp_offset11_impl(), field.rs_impl())
             }
             #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_sf => Self::r3000gte_sf(field.r3000gte_sf_impl()),

@@ -143,12 +143,60 @@ where
         Self::display_rsp_vs(myself, f)?;
         write!(f, "[{}]", s)
     }
-    pub(crate) fn display_rsp_offset_rs(
+    pub(crate) fn display_rsp_offset7_rs(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        let instr = myself.instr;
-        let s = instr.get_processed_rsp_offset_impl();
+        let field = myself.instr.field();
+        let s = field.rsp_offset7_impl();
+
+        write!(f, "0x{:X}", s)?;
+        write!(f, "(")?;
+        Self::display_core_rs(myself, f)?;
+        write!(f, ")")
+    }
+    pub(crate) fn display_rsp_offset8_rs(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        let field = myself.instr.field();
+        let s = field.rsp_offset8_impl();
+
+        write!(f, "0x{:X}", s)?;
+        write!(f, "(")?;
+        Self::display_core_rs(myself, f)?;
+        write!(f, ")")
+    }
+    pub(crate) fn display_rsp_offset9_rs(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        let field = myself.instr.field();
+        let s = field.rsp_offset9_impl();
+
+        write!(f, "0x{:X}", s)?;
+        write!(f, "(")?;
+        Self::display_core_rs(myself, f)?;
+        write!(f, ")")
+    }
+    pub(crate) fn display_rsp_offset10_rs(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        let field = myself.instr.field();
+        let s = field.rsp_offset10_impl();
+
+        write!(f, "0x{:X}", s)?;
+        write!(f, "(")?;
+        Self::display_core_rs(myself, f)?;
+        write!(f, ")")
+    }
+    pub(crate) fn display_rsp_offset11_rs(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        let field = myself.instr.field();
+        let s = field.rsp_offset11_impl();
 
         write!(f, "0x{:X}", s)?;
         write!(f, "(")?;

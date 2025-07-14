@@ -3601,7 +3601,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_lbv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset7_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lbv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3610,7 +3610,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_lsv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset8_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lsv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3619,7 +3619,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_llv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset9_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("llv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3628,7 +3628,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_ldv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset10_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("ldv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3637,7 +3637,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_lqv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lqv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3646,7 +3646,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_lrv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lrv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3655,7 +3655,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_lpv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset10_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lpv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3664,7 +3664,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_luv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset10_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("luv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3673,7 +3673,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_lhv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lhv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3682,7 +3682,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_lfv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lfv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3691,7 +3691,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RspViceMsp")]
     {
         table[Opcode::rsp_lwv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("lwv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3700,7 +3700,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_ltv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("ltv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3709,7 +3709,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_sbv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset7_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("sbv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3718,7 +3718,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_ssv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset8_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("ssv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3727,7 +3727,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_slv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset9_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("slv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3736,7 +3736,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_sdv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset10_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("sdv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3745,7 +3745,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_sqv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("sqv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3754,7 +3754,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_srv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("srv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3763,7 +3763,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_spv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset10_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("spv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3772,7 +3772,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_suv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset10_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("suv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3781,7 +3781,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_shv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("shv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3790,7 +3790,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_sfv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("sfv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3799,7 +3799,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_swv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("swv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }
@@ -3808,7 +3808,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Opcode::rsp_stv as usize] = OpcodeDescriptor {
-            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset_rs),
+            operands: Operand::arr2(Operand::rsp_vt_elementlow, Operand::rsp_offset11_rs),
             reads_rs: true,
             ..OpcodeDescriptor::new("stv", IsaVersion::EXTENSION, Some(IsaExtension::RSP))
         }

@@ -688,48 +688,6 @@ impl Instruction {
     }
 }
 
-#[cfg(feature = "RSP")]
-impl Instruction {
-    #[must_use]
-    pub(crate) fn get_processed_rsp_offset_impl(&self) -> u16 {
-        let offset: u16 = self.field().rsp_offset_impl().into();
-
-        // TODO: do not depend on the opcode to process the offset itself.
-        #[cfg(feature = "RSP")]
-        match self.opcode() {
-            Opcode::rsp_lsv | Opcode::rsp_ssv => offset << 1,
-
-            Opcode::rsp_llv | Opcode::rsp_slv => offset << 2,
-
-            Opcode::rsp_ldv
-            | Opcode::rsp_sdv
-            | Opcode::rsp_lpv
-            | Opcode::rsp_spv
-            | Opcode::rsp_luv
-            | Opcode::rsp_suv => offset << 3,
-
-            Opcode::rsp_lqv
-            | Opcode::rsp_sqv
-            | Opcode::rsp_lrv
-            | Opcode::rsp_srv
-            | Opcode::rsp_lhv
-            | Opcode::rsp_shv
-            | Opcode::rsp_lfv
-            | Opcode::rsp_sfv
-            | Opcode::rsp_ltv
-            | Opcode::rsp_stv
-            | Opcode::rsp_swv => offset << 4,
-
-            #[cfg(feature = "RspViceMsp")]
-            Opcode::rsp_lwv => offset << 4,
-
-            _ => offset,
-        }
-        #[cfg(not(feature = "RSP"))]
-        offset
-    }
-}
-
 #[cfg(feature = "R4000ALLEGREX")]
 impl Instruction {
     pub(crate) fn process_r4000allegrex_vcmp_operands<T>(

@@ -755,7 +755,23 @@ impl OpcodeDescriptor {
                     return true;
                 }
                 #[cfg(feature = "RSP")]
-                if self.has_specific_operand(Operand::rsp_offset_rs) {
+                if self.has_specific_operand(Operand::rsp_offset7_rs) {
+                    return true;
+                }
+                #[cfg(feature = "RSP")]
+                if self.has_specific_operand(Operand::rsp_offset8_rs) {
+                    return true;
+                }
+                #[cfg(feature = "RSP")]
+                if self.has_specific_operand(Operand::rsp_offset9_rs) {
+                    return true;
+                }
+                #[cfg(feature = "RSP")]
+                if self.has_specific_operand(Operand::rsp_offset10_rs) {
+                    return true;
+                }
+                #[cfg(feature = "RSP")]
+                if self.has_specific_operand(Operand::rsp_offset11_rs) {
                     return true;
                 }
                 if self.has_specific_operand(Operand::core_maybe_rd_rs) {
@@ -861,7 +877,15 @@ impl OpcodeDescriptor {
             Operand::rsp_vs_index => {}
 
             #[cfg(feature = "RSP")]
-            Operand::rsp_offset_rs => {}
+            Operand::rsp_offset7_rs => {}
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset8_rs => {}
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset9_rs => {}
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset10_rs => {}
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset11_rs => {}
             /* rsp */
 
             /* r3000gte */

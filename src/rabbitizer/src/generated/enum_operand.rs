@@ -58,7 +58,15 @@ pub enum Operand {
     #[cfg(feature = "RSP")]
     rsp_vs_index,
     #[cfg(feature = "RSP")]
-    rsp_offset_rs,
+    rsp_offset7_rs,
+    #[cfg(feature = "RSP")]
+    rsp_offset8_rs,
+    #[cfg(feature = "RSP")]
+    rsp_offset9_rs,
+    #[cfg(feature = "RSP")]
+    rsp_offset10_rs,
+    #[cfg(feature = "RSP")]
+    rsp_offset11_rs,
     #[cfg(feature = "R3000GTE")]
     r3000gte_sf,
     #[cfg(feature = "R3000GTE")]
@@ -435,8 +443,40 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     }
     #[cfg(feature = "RSP")]
     {
-        table[Operand::rsp_offset_rs as usize] = OperandDescriptor::new(
-            concat!("rsp", "_", "offset_rs"),
+        table[Operand::rsp_offset7_rs as usize] = OperandDescriptor::new(
+            concat!("rsp", "_", "offset7_rs"),
+            EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
+        )
+        .check_panic_chain();
+    }
+    #[cfg(feature = "RSP")]
+    {
+        table[Operand::rsp_offset8_rs as usize] = OperandDescriptor::new(
+            concat!("rsp", "_", "offset8_rs"),
+            EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
+        )
+        .check_panic_chain();
+    }
+    #[cfg(feature = "RSP")]
+    {
+        table[Operand::rsp_offset9_rs as usize] = OperandDescriptor::new(
+            concat!("rsp", "_", "offset9_rs"),
+            EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
+        )
+        .check_panic_chain();
+    }
+    #[cfg(feature = "RSP")]
+    {
+        table[Operand::rsp_offset10_rs as usize] = OperandDescriptor::new(
+            concat!("rsp", "_", "offset10_rs"),
+            EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
+        )
+        .check_panic_chain();
+    }
+    #[cfg(feature = "RSP")]
+    {
+        table[Operand::rsp_offset11_rs as usize] = OperandDescriptor::new(
+            concat!("rsp", "_", "offset11_rs"),
             EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
         )
         .check_panic_chain();
@@ -1187,7 +1227,15 @@ where
             #[cfg(feature = "RSP")]
             Operand::rsp_vs_index => OperandDisplay::display_rsp_vs_index(self, f),
             #[cfg(feature = "RSP")]
-            Operand::rsp_offset_rs => OperandDisplay::display_rsp_offset_rs(self, f),
+            Operand::rsp_offset7_rs => OperandDisplay::display_rsp_offset7_rs(self, f),
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset8_rs => OperandDisplay::display_rsp_offset8_rs(self, f),
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset9_rs => OperandDisplay::display_rsp_offset9_rs(self, f),
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset10_rs => OperandDisplay::display_rsp_offset10_rs(self, f),
+            #[cfg(feature = "RSP")]
+            Operand::rsp_offset11_rs => OperandDisplay::display_rsp_offset11_rs(self, f),
             #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_sf => OperandDisplay::display_r3000gte_sf(self, f),
             #[cfg(feature = "R3000GTE")]
@@ -1450,7 +1498,15 @@ pub enum ValuedOperand {
     #[cfg(feature = "RSP")]
     rsp_vs_index(RspVector, u8),
     #[cfg(feature = "RSP")]
-    rsp_offset_rs(u16, Gpr),
+    rsp_offset7_rs(u8, Gpr),
+    #[cfg(feature = "RSP")]
+    rsp_offset8_rs(u8, Gpr),
+    #[cfg(feature = "RSP")]
+    rsp_offset9_rs(u16, Gpr),
+    #[cfg(feature = "RSP")]
+    rsp_offset10_rs(u16, Gpr),
+    #[cfg(feature = "RSP")]
+    rsp_offset11_rs(u16, Gpr),
     #[cfg(feature = "R3000GTE")]
     r3000gte_sf(u8),
     #[cfg(feature = "R3000GTE")]
@@ -1686,7 +1742,15 @@ impl Operand {
             #[cfg(feature = "RSP")]
             ValuedOperand::rsp_vs_index(..) => Self::rsp_vs_index,
             #[cfg(feature = "RSP")]
-            ValuedOperand::rsp_offset_rs(..) => Self::rsp_offset_rs,
+            ValuedOperand::rsp_offset7_rs(..) => Self::rsp_offset7_rs,
+            #[cfg(feature = "RSP")]
+            ValuedOperand::rsp_offset8_rs(..) => Self::rsp_offset8_rs,
+            #[cfg(feature = "RSP")]
+            ValuedOperand::rsp_offset9_rs(..) => Self::rsp_offset9_rs,
+            #[cfg(feature = "RSP")]
+            ValuedOperand::rsp_offset10_rs(..) => Self::rsp_offset10_rs,
+            #[cfg(feature = "RSP")]
+            ValuedOperand::rsp_offset11_rs(..) => Self::rsp_offset11_rs,
             #[cfg(feature = "R3000GTE")]
             ValuedOperand::r3000gte_sf(..) => Self::r3000gte_sf,
             #[cfg(feature = "R3000GTE")]
