@@ -5,10 +5,10 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RAB_DEF_OPCODE(prefix, caseBits, name, ...) \
+#define RAB_DEF_OPCODE(prefix, cat, caseBits, name, ...) \
     prefix##_##name,
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, caseBits, name, altname, ...) \
     RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 SPECIAL_RS_TAG(repr(u32))

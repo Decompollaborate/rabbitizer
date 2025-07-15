@@ -24,83 +24,83 @@
 */
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x00, madd, R5900EE,
+        r5900ee, R5900EE_MMI, 0x00, madd, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Multiply-ADD word
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x01, maddu, R5900EE,
+        r5900ee, R5900EE_MMI, 0x01, maddu, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Multiply-ADD Unsigned word
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x04, plzcw, R5900EE,
+        r5900ee, R5900EE_MMI, 0x04, plzcw, R5900EE,
         operands: Operand::arr2(Operand::core_rd, Operand::core_rs),
         modifies_rd: true,
         reads_rs: true
     ) // Parallel Leading Zero or one Count Word
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x10, mfhi1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x10, mfhi1, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Move From HI1 register
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x11, mthi1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x11, mthi1, R5900EE,
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Move To HI1 register
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x12, mflo1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x12, mflo1, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         reads_rd: true
     ) // Move From LO1 register
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x13, mtlo1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x13, mtlo1, R5900EE,
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Move To LO1 register
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x18, mult1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x18, mult1, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // MULTiply word pipeline 1
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x19, multu1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x19, multu1, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // MULTiply Unsigned word pipeline 1
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x1A, div1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x1A, div1, R5900EE,
         operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true
     ) // DIVide word pipeline 1
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x1B, divu1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x1B, divu1, R5900EE,
         operands: Operand::arr3(Operand::core_zero, Operand::core_rs, Operand::core_rt),
         reads_rs: true,
         reads_rt: true
     ) // DIVide Unsigned word pipeline 1
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x20, madd1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x20, madd1, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
         reads_rt: true
     ) // Multiply-ADD word pipeline 1
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x21, maddu1, R5900EE,
+        r5900ee, R5900EE_MMI, 0x21, maddu1, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rs, Operand::core_rt),
         modifies_rd: true,
         reads_rs: true,
@@ -108,38 +108,38 @@
     ) // Multiply-ADD Unsigned word pipeline 1
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x34, psllh, R5900EE,
+        r5900ee, R5900EE_MMI, 0x34, psllh, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Left Logical Halfword
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x36, psrlh, R5900EE,
+        r5900ee, R5900EE_MMI, 0x36, psrlh, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Logical Halfword
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x37, psrah, R5900EE,
+        r5900ee, R5900EE_MMI, 0x37, psrah, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Arithmetic Halfword
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x3C, psllw, R5900EE,
+        r5900ee, R5900EE_MMI, 0x3C, psllw, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Left Logical Word
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x3E, psrlw, R5900EE,
+        r5900ee, R5900EE_MMI, 0x3E, psrlw, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true
     ) // Parallel Shift Right Logical Word
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x3F, psraw, R5900EE,
+        r5900ee, R5900EE_MMI, 0x3F, psraw, R5900EE,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_sa),
         modifies_rd: true,
         reads_rt: true

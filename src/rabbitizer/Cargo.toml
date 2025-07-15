@@ -25,6 +25,10 @@ path = "src/lib.rs"
 default = []
 std = []
 
+# Encode string representation into an Instruction.
+encoder = []
+
+# Unsafe unchecked field accesses
 unchecked_instr_fields = []
 
 # TODO: Normalize capitalization
@@ -51,9 +55,9 @@ all_gated_extensions = [
     "RspViceMsp",
 ]
 
+serde = ["dep:serde"]
 bindings_c = []
 pyo3 = ["std", "dep:pyo3", "all_extensions", "all_gated_extensions"]
-serde = ["dep:serde"]
 
 # Documentation should be generated with every user-facing feature
 doc = ["MIPS_IV", "all_extensions", "all_gated_extensions"]

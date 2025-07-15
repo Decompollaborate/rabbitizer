@@ -167,6 +167,22 @@ impl Instruction {
 
         instr.is_valid().then_some(instr)
     }
+
+    #[cfg(feature = "encoder")]
+    #[must_use]
+    pub(crate) const fn from_raw_parts(
+        word: u32,
+        vram: Vram,
+        opcode_decoder: OpcodeDecoder,
+        flags: InstructionFlags,
+    ) -> Self {
+        Self {
+            word,
+            vram,
+            opcode_decoder,
+            flags,
+        }
+    }
 }
 
 /// Getters and setters

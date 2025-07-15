@@ -23,7 +23,11 @@ impl Register for RspCop2 {
         Self::count()
     }
 
-    fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &register_descriptors::RSP_COP2[*self]
+    fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        Self::try_from_u32(value)
+    }
+
+    fn descriptor_array() -> &'static [RegisterDescriptor] {
+        &register_descriptors::RSP_COP2
     }
 }

@@ -59,6 +59,22 @@ impl OpcodeDecoder {
             Some(_) => unreachable!(),
         }
     }
+
+    #[cfg(feature = "encoder")]
+    #[must_use]
+    pub(crate) const fn from_raw_parts(
+        opcode: Opcode,
+        opcode_category: OpcodeCategory,
+        mandatory_bits: EncodedFieldMask,
+        gated_behind: Option<OpcodeValidityGate>,
+    ) -> Self {
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+            gated_behind,
+        }
+    }
 }
 
 impl OpcodeDecoder {

@@ -14,7 +14,7 @@
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x00, srlv, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_SPECIAL_SA, 0x00, srlv, R4000ALLEGREX,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,
@@ -23,7 +23,7 @@
     ) // Shift word Right Logical Variable
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x01, rotrv, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_SPECIAL_SA, 0x01, rotrv, R4000ALLEGREX,
         operands: Operand::arr3(Operand::core_rd, Operand::core_rt, Operand::core_rs),
         instr_type: InstrType::R,
         modifies_rd: true,

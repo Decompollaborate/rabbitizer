@@ -8,16 +8,19 @@ use crate::encoded_field_mask::EncodedFieldMask;
 #[allow(deprecated)]
 use crate::instr::{InstrSuffix, InstrType};
 use crate::isa::{IsaExtension, IsaVersion};
-use crate::opcodes::Opcode;
+use crate::opcodes::{Opcode, OpcodeCategory};
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 use crate::utils;
 
 /// Describes properties of a given [`Opcode`].
 ///
 /// [`Opcode`]: crate::opcodes::Opcode
-#[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash, Default)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone, Ord, PartialOrd, Hash)]
 #[allow(clippy::struct_excessive_bools)]
 pub struct OpcodeDescriptor {
+    pub(crate) opcode: Opcode,
+    pub(crate) opcode_category: OpcodeCategory,
+    pub(crate) bitpattern: u32,
     pub(crate) name: &'static str,
 
     pub(crate) isa_version: IsaVersion,
@@ -164,6 +167,9 @@ pub struct OpcodeDescriptor {
 impl OpcodeDescriptor {
     pub(crate) const fn default() -> Self {
         Self {
+            opcode: Opcode::ALL_INVALID,
+            opcode_category: OpcodeCategory::CORE_NORMAL,
+            bitpattern: 0,
             name: "",
             isa_version: IsaVersion::default(),
             isa_extension: None,
@@ -219,11 +225,17 @@ impl OpcodeDescriptor {
     }
 
     pub(crate) const fn new(
+        opcode: Opcode,
+        opcode_category: OpcodeCategory,
+        bitpattern: u32,
         name: &'static str,
         isa_version: IsaVersion,
         isa_extension: Option<IsaExtension>,
     ) -> Self {
         Self {
+            opcode,
+            opcode_category,
+            bitpattern,
             name,
             isa_version,
             isa_extension,
@@ -497,6 +509,19 @@ impl OpcodeDescriptor {
 /// Getters
 impl OpcodeDescriptor {
     #[must_use]
+    pub const fn opcode(&self) -> Opcode {
+        self.opcode
+    }
+    #[must_use]
+    pub const fn opcode_category(&self) -> OpcodeCategory {
+        self.opcode_category
+    }
+    #[must_use]
+    pub const fn bitpattern(&self) -> u32 {
+        self.bitpattern
+    }
+
+    #[must_use]
     pub const fn name(&self) -> &'static str {
         self.name
     }
@@ -702,6 +727,14 @@ impl OpcodeDescriptor {
 }
 
 impl OpcodeDescriptor {
+    #[must_use]
+    pub fn opcode_bits(&self) -> u32 {
+        let field = self.opcode_category.field_mask().unshift(self.bitpattern);
+        let trailing = self.opcode_category.trailing_bits();
+
+        field | trailing
+    }
+
     #[must_use]
     pub fn valid_bits(&self) -> EncodedFieldMask {
         let mut bits = EncodedFieldMask::empty();

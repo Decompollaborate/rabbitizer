@@ -19,40 +19,40 @@
 
     // OP
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x01, tlbr,
+        core, CORE_COP0_TLB, 0x01, tlbr,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Read Indexed TLB Entry
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x02, tlbwi,
+        core, CORE_COP0_TLB, 0x02, tlbwi,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Write Indexed TLB Entry
 
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x06, tlbwr,
+        core, CORE_COP0_TLB, 0x06, tlbwr,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Write Random TLB Entry
 
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x08, tlbp,
+        core, CORE_COP0_TLB, 0x08, tlbp,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Probe TLB for Matching Entry
 
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x10, rfe,
+        core, CORE_COP0_TLB, 0x10, rfe,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         not_emitted_by_compilers: true
     ) // Restore From Exception
 
     RAB_DEF_OPCODE(
-        core, 0x18, eret, MIPS_III,
+        core, CORE_COP0_TLB, 0x18, eret, MIPS_III,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN,
         causes_exception: true,

@@ -17,22 +17,22 @@
 
     // TODO: properties
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x01, qmfc2_ni, qmfc2.ni, R5900EE,
+        r5900ee, R5900EE_COP2_NI, 0x01, qmfc2_ni, qmfc2.ni, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
         modifies_rt: true
     )
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x02, cfc2_ni, cfc2.ni, R5900EE,
+        r5900ee, R5900EE_COP2_NI, 0x02, cfc2_ni, cfc2.ni, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
         modifies_rt: true
     )
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x05, qmtc2_ni, qmtc2.ni, R5900EE,
+        r5900ee, R5900EE_COP2_NI, 0x05, qmtc2_ni, qmtc2.ni, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vfs),
         reads_rt: true
     )
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x06, ctc2_ni, ctc2.ni, R5900EE,
+        r5900ee, R5900EE_COP2_NI, 0x06, ctc2_ni, ctc2.ni, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::r5900ee_vis),
         reads_rt: true
     )

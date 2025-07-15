@@ -18,7 +18,7 @@ mtv
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x0, mtv, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_COP2_MTHC2, 0x0, mtv, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         reads_rt: true
@@ -32,7 +32,7 @@ mtvc
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x1, mtvc, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_COP2_MTHC2, 0x1, mtvc, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_cop2cd),
         instr_type: InstrType::R,
         reads_rt: true

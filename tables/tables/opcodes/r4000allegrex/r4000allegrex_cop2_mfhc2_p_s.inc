@@ -19,7 +19,7 @@ vsync2
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0xF, vsync2, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_COP2_MFHC2_P_S, 0xF, vsync2, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::R
     ) // SYNChronize2

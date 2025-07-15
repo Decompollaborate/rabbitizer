@@ -271,6 +271,13 @@ impl EncodedFieldMask {
     }
 
     #[must_use]
+    pub const fn unshift(&self, value: u32) -> u32 {
+        let bits = self.bits();
+
+        (value << bits.trailing_zeros()) & bits
+    }
+
+    #[must_use]
     pub const fn mask_value(&self, value: u32) -> Self {
         let bits = self.bits();
 

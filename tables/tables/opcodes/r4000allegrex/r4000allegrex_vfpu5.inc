@@ -19,7 +19,7 @@ vpfxs
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x00, vpfxs, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU5, 0x00, vpfxs, R4000ALLEGREX,
         operands: Operand::arr4(Operand::r4000allegrex_rpx, Operand::r4000allegrex_rpy, Operand::r4000allegrex_rpz, Operand::r4000allegrex_rpw),
         instr_type: InstrType::UNKNOWN
     ) // Source Prefix
@@ -32,7 +32,7 @@ vpfxt
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x02, vpfxt, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU5, 0x02, vpfxt, R4000ALLEGREX,
         operands: Operand::arr4(Operand::r4000allegrex_rpx, Operand::r4000allegrex_rpy, Operand::r4000allegrex_rpz, Operand::r4000allegrex_rpw),
         instr_type: InstrType::UNKNOWN
     ) // Target Prefix
@@ -45,7 +45,7 @@ vpfxd
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x04, vpfxd, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU5, 0x04, vpfxd, R4000ALLEGREX,
         operands: Operand::arr4(Operand::r4000allegrex_wpx, Operand::r4000allegrex_wpy, Operand::r4000allegrex_wpz, Operand::r4000allegrex_wpw),
         instr_type: InstrType::UNKNOWN
     ) // Destination Prefix
@@ -58,7 +58,7 @@ viim.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x6, viim_s, viim.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU5, 0x6, viim_s, viim.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_int16),
         instr_type: InstrType::R
     ) // Convert integer immediate to float Single Word
@@ -71,7 +71,7 @@ vfim.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x7, vfim_s, vfim.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU5, 0x7, vfim_s, vfim.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vt, Operand::r4000allegrex_float16),
         instr_type: InstrType::R
     ) // Convert integer immediate to float Single Word

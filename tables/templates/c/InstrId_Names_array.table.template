@@ -1,9 +1,9 @@
 /* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#define RAB_DEF_OPCODE(prefix, caseBits, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #name,
+#define RAB_DEF_OPCODE(prefix, cat, caseBits, name, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #name,
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #altname,
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, caseBits, name, altname, ...) [RABBITIZER_INSTR_ID_##prefix##_##name] = #altname,
 
 const char *RabbitizerInstrId_Names[] = {
     #include "Opcode.inc"

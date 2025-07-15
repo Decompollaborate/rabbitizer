@@ -17,42 +17,42 @@
 
     // OP rt, cop0d
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x00, mfc0,
+        core, CORE_COP0, 0x00, mfc0,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Move word From CP0
     RAB_DEF_OPCODE(
-        core, 0x01, dmfc0, MIPS_III,
+        core, CORE_COP0, 0x01, dmfc0, MIPS_III,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Doubleword Move From CP0
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x02, cfc0,
+        core, CORE_COP0, 0x02, cfc0,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         modifies_rt: true,
         not_emitted_by_compilers: true
     ) // Move control word From CP0
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x04, mtc0,
+        core, CORE_COP0, 0x04, mtc0,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // Move word to CP0
     RAB_DEF_OPCODE(
-        core, 0x05, dmtc0, MIPS_III,
+        core, CORE_COP0, 0x05, dmtc0, MIPS_III,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0d),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,
         not_emitted_by_compilers: true
     ) // Doubleword Move To CP0
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x06, ctc0,
+        core, CORE_COP0, 0x06, ctc0,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop0cd),
         instr_type: InstrType::UNKNOWN,
         reads_rt: true,

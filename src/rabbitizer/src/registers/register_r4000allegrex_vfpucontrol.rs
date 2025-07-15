@@ -23,7 +23,11 @@ impl Register for R4000AllegrexVfpuControl {
         Self::count()
     }
 
-    fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &register_descriptors::R4000ALLEGREX_VFPUCONTROL[*self]
+    fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        Self::try_from_u32(value)
+    }
+
+    fn descriptor_array() -> &'static [RegisterDescriptor] {
+        &register_descriptors::R4000ALLEGREX_VFPUCONTROL
     }
 }

@@ -5,10 +5,10 @@ from __future__ import annotations
 
 from .Enum import Enum
 
-#define RAB_DEF_OPCODE(prefix, caseBits, name, ...) \
+#define RAB_DEF_OPCODE(prefix, cat, caseBits, name, ...) \
     prefix##_##name: Enum
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, caseBits, name, altname, ...) \
     RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 #define INSTRID_AVOID_USERDEF

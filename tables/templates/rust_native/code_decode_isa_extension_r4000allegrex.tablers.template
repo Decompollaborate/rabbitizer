@@ -10,22 +10,22 @@
     case_bits => { extra_expr Opcode::prefix##_##name },
 
 
-#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...) \
+#define RAB_DEF_OPCODE(prefix, cat, case_bits, name, isa_version_min, ...) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, case_bits, name, altname, isa_version_min, ...) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
+#define RAB_DEF_OPCODE_PSEUDO(prefix, cat, case_bits, name, isa_version_min, ...)
 
 
-#define RAB_DEF_OPCODE_EXT(prefix, case_bits, name, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT(prefix, cat, case_bits, name, isa_exten, ...) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_EXT_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT_ALTNAME(prefix, cat, case_bits, name, altname, isa_exten, ...) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_EXT_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
+#define RAB_DEF_OPCODE_EXT_GATED(prefix, cat, case_bits, name, isa_exten, gate, ...) \
     SPECIAL_RS_TAG(cfg(feature = #gate )) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten), gated_behind = Some(OpcodeValidityGate:: gate) ;, __VA_ARGS__)
 

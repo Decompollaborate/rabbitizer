@@ -6,49 +6,49 @@
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
 
-#define __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, isa_version_min, isa_exten, extra_expr, ...) \
+#define __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, altname, isa_version_min, isa_exten, extra_expr, ...) \
     { \
         table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
             __VA_ARGS__, \
-            ..OpcodeDescriptor::new( #altname, isa_version_min, isa_exten) \
+            ..OpcodeDescriptor::new( Opcode::prefix##_##name, OpcodeCategory :: cat, case_bits, #altname, isa_version_min, isa_exten) \
         } .check_panic_chain(); \
     }
 
 
-#define RAB_DEF_OPCODE_MIPS1(prefix, case_bits, name, ...) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::MIPS_I, None, , __VA_ARGS__)
+#define RAB_DEF_OPCODE_MIPS1(prefix, cat, case_bits, name, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, name, IsaVersion::MIPS_I, None, , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, case_bits, name, altname, ...) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, IsaVersion::MIPS_I, None, , __VA_ARGS__)
+#define RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, cat, case_bits, name, altname, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, altname, IsaVersion::MIPS_I, None, , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, name, ...) \
-    __IMPL_RAB_DEF_OPCODE(prefix, , name, name, IsaVersion::MIPS_I, None, , __VA_ARGS__, is_pseudo: true)
+#define RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, cat, case_bits, name, ...) \
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, name, IsaVersion::MIPS_I, None, , __VA_ARGS__, is_pseudo: true)
 
 
-#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...) \
+#define RAB_DEF_OPCODE(prefix, cat, case_bits, name, isa_version_min, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, case_bits, name, altname, isa_version_min, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, altname, IsaVersion:: isa_version_min, None, , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...) \
+#define RAB_DEF_OPCODE_PSEUDO(prefix, cat, case_bits, name, isa_version_min, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
-    __IMPL_RAB_DEF_OPCODE(prefix, , name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__, is_pseudo: true)
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, name, IsaVersion:: isa_version_min, None, , __VA_ARGS__, is_pseudo: true)
 
 
-#define RAB_DEF_OPCODE_EXT(prefix, case_bits, name, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT(prefix, cat, case_bits, name, isa_exten, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), , __VA_ARGS__)
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_EXT_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT_ALTNAME(prefix, cat, case_bits, name, altname, isa_exten, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, altname, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), , __VA_ARGS__)
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, altname, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), , __VA_ARGS__)
 
-#define RAB_DEF_OPCODE_EXT_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
+#define RAB_DEF_OPCODE_EXT_GATED(prefix, cat, case_bits, name, isa_exten, gate, ...) \
     SPECIAL_RS_TAG(cfg(feature = #gate )) \
-    __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), gate, __VA_ARGS__)
+    __IMPL_RAB_DEF_OPCODE(prefix, cat, case_bits, name, name, IsaVersion::EXTENSION, Some(IsaExtension:: isa_exten ), gate, __VA_ARGS__)
 
 #define RAB_DEF_OPCODE_EXT_REMOVED(case_bits, prefix, name, isa_exten)
 
@@ -68,7 +68,7 @@ SPECIAL_RS_TAG(cfg(any(
 )))
 use crate::isa::IsaExtension;
 use crate::isa::IsaVersion;
-use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODE_COUNT};
+use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDescriptor, OPCODE_COUNT};
 use crate::operands::Operand;
 pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     let mut table = [OpcodeDescriptor::default(); OPCODE_COUNT];

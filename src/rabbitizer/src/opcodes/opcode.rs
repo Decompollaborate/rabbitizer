@@ -12,7 +12,7 @@ use crate::instr::InstrType;
 ))]
 use crate::isa::IsaExtension;
 use crate::isa::IsaVersion;
-use crate::opcodes::{Opcode, OpcodeDescriptor, OPCODES};
+use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDescriptor, OPCODES};
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
 
 // Rust doesn't have a way to automatically get the larger value of an enum and
@@ -61,6 +61,15 @@ impl Opcode {
 
 /// Getters
 impl Opcode {
+    #[must_use]
+    pub fn opcode_category(&self) -> OpcodeCategory {
+        self.get_descriptor().opcode_category()
+    }
+    #[must_use]
+    pub fn bitpattern(&self) -> u32 {
+        self.get_descriptor().bitpattern()
+    }
+
     #[must_use]
     pub fn name(&self) -> &'static str {
         self.get_descriptor().name()
@@ -273,6 +282,11 @@ impl Opcode {
 }
 
 impl Opcode {
+    #[must_use]
+    pub fn opcode_bits(&self) -> u32 {
+        self.get_descriptor().opcode_bits()
+    }
+
     #[must_use]
     pub fn valid_bits(&self) -> EncodedFieldMask {
         self.get_descriptor().valid_bits()

@@ -23,7 +23,7 @@ vadd.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00000, vadd_s, vadd.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x00000, vadd_s, vadd.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // ADD Single word
@@ -36,7 +36,7 @@ vadd.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00001, vadd_p, vadd.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x00001, vadd_p, vadd.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // ADD Pair word
@@ -49,7 +49,7 @@ vadd.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00100, vadd_t, vadd.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x00100, vadd_t, vadd.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // ADD Triple word
@@ -62,7 +62,7 @@ vadd.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00101, vadd_q, vadd.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x00101, vadd_q, vadd.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // ADD Quad word
@@ -75,7 +75,7 @@ vsub.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x10000, vsub_s, vsub.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x10000, vsub_s, vsub.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // SUBtract Single word
@@ -88,7 +88,7 @@ vsub.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x10001, vsub_p, vsub.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x10001, vsub_p, vsub.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // ADD Pair word
@@ -101,7 +101,7 @@ vsub.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x10100, vsub_t, vsub.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x10100, vsub_t, vsub.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // ADD Triple word
@@ -114,7 +114,7 @@ vsub.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x10101, vsub_q, vsub.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x10101, vsub_q, vsub.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // ADD Quad word
@@ -127,7 +127,7 @@ vsbn.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x20000, vsbn_s, vsbn.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x20000, vsbn_s, vsbn.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // ScaleBN Single word
@@ -140,7 +140,7 @@ vdiv.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70000, vdiv_s, vdiv.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x70000, vdiv_s, vdiv.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // DIVide Single word
@@ -153,7 +153,7 @@ vdiv.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70001, vdiv_p, vdiv.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x70001, vdiv_p, vdiv.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // DIVide Single word
@@ -166,7 +166,7 @@ vdiv.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70100, vdiv_t, vdiv.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x70100, vdiv_t, vdiv.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // DIVide Single word
@@ -179,7 +179,7 @@ vdiv.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70101, vdiv_q, vdiv.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU0, 0x70101, vdiv_q, vdiv.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // DIVide Single word

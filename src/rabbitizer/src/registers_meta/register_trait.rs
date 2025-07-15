@@ -41,9 +41,16 @@ pub trait Register: PartialEq + PartialOrd + Default {
         RegisterIterator::new()
     }
 
+    fn try_from_u32(value: u32) -> Result<Self, crate::Error>;
+
+    #[must_use]
+    fn descriptor_array() -> &'static [RegisterDescriptor];
+
     /// Returns the descriptor with the actual data of the register.
     #[must_use]
-    fn get_descriptor(&self) -> &'static RegisterDescriptor;
+    fn get_descriptor(&self) -> &'static RegisterDescriptor {
+        &Self::descriptor_array()[self.as_index()]
+    }
 
     /// Return the numeric "name" for the register.
     #[must_use]
@@ -130,6 +137,23 @@ pub trait Register: PartialEq + PartialOrd + Default {
     #[must_use]
     fn is_arg(&self, _abi: Abi) -> bool {
         self.get_descriptor().is_arg()
+    }
+
+    #[must_use]
+    fn from_name(name: &str, abi: Abi, mut allow_dollarless: bool) -> Option<Self> {
+        allow_dollarless = allow_dollarless && name.starts_with('$');
+
+        for descriptor in Self::descriptor_array() {
+            let found = descriptor.name_abi(abi, false) == name
+                || (allow_dollarless && descriptor.name_abi(abi, true) == name)
+                || descriptor.name_numeric() == name;
+
+            if found {
+                return Some(Self::try_from_u32(descriptor.value().into()).expect("The value returned by the descriptor should always be a valid value for the try_from_u32 method"));
+            }
+        }
+
+        None
     }
 }
 

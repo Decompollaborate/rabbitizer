@@ -18,31 +18,31 @@
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x00, pmfhl_lw, pmfhl.lw, R5900EE,
+        r5900ee, R5900EE_MMI_PMFHL, 0x00, pmfhl_lw, pmfhl.lw, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x01, pmfhl_uw, pmfhl.uw, R5900EE,
+        r5900ee, R5900EE_MMI_PMFHL, 0x01, pmfhl_uw, pmfhl.uw, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x02, pmfhl_slw, pmfhl.slw, R5900EE,
+        r5900ee, R5900EE_MMI_PMFHL, 0x02, pmfhl_slw, pmfhl.slw, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x03, pmfhl_lh, pmfhl.lh, R5900EE,
+        r5900ee, R5900EE_MMI_PMFHL, 0x03, pmfhl_lh, pmfhl.lh, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x04, pmfhl_sh, pmfhl.sh, R5900EE,
+        r5900ee, R5900EE_MMI_PMFHL, 0x04, pmfhl_sh, pmfhl.sh, R5900EE,
         operands: Operand::arr1(Operand::core_rd),
         modifies_rd: true
     ) // Parallel Move From Hi/Lo register

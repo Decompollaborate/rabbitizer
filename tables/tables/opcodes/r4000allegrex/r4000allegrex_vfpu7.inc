@@ -9,7 +9,7 @@ vnop
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x3FF0000, vnop, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU7, 0x3FF0000, vnop, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Nop
@@ -22,7 +22,7 @@ vsync
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x3FF0320, vsync, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU7, 0x3FF0320, vsync, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Synchronize
@@ -35,7 +35,7 @@ vflush
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x3FF040D, vflush, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU7, 0x3FF040D, vflush, R4000ALLEGREX,
         operands: Operand::arr0(),
         instr_type: InstrType::UNKNOWN
     ) // Flush Write Buffer

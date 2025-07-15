@@ -19,7 +19,7 @@ mfv
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x0, mfv, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_COP2_MFHC2, 0x0, mfv, R4000ALLEGREX,
         operands: Operand::arr2(Operand::core_rt, Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R,
         modifies_rt: true

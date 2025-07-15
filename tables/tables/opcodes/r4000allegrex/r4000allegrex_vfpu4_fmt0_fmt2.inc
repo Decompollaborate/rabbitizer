@@ -21,7 +21,7 @@ vrcp.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0000, vrcp_s, vrcp.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0000, vrcp_s, vrcp.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Single word
@@ -34,7 +34,7 @@ vrcp.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0001, vrcp_p, vrcp.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0001, vrcp_p, vrcp.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Pair word
@@ -47,7 +47,7 @@ vrcp.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0100, vrcp_t, vrcp.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0100, vrcp_t, vrcp.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Triple word
@@ -60,7 +60,7 @@ vrcp.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0101, vrcp_q, vrcp.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0101, vrcp_q, vrcp.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // ReCiProcal Quad word
@@ -73,7 +73,7 @@ vrsq.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0200, vrsq_s, vrsq.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0200, vrsq_s, vrsq.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Single word
@@ -86,7 +86,7 @@ vrsq.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0201, vrsq_p, vrsq.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0201, vrsq_p, vrsq.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Pair word
@@ -99,7 +99,7 @@ vrsq.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0300, vrsq_t, vrsq.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0300, vrsq_t, vrsq.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Triple word
@@ -112,7 +112,7 @@ vrsq.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0301, vrsq_q, vrsq.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0301, vrsq_q, vrsq.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Reciprocal Square Root value Quad word
@@ -127,7 +127,7 @@ vsin.s
 
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0400, vsin_s, vsin.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0400, vsin_s, vsin.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // SINe Single word
@@ -140,7 +140,7 @@ vsin.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0401, vsin_p, vsin.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0401, vsin_p, vsin.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // SINe Pair word
@@ -153,7 +153,7 @@ vsin.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0500, vsin_t, vsin.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0500, vsin_t, vsin.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // SINe Triple word
@@ -166,7 +166,7 @@ vsin.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0501, vsin_q, vsin.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0501, vsin_q, vsin.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SINe Quad word
@@ -179,7 +179,7 @@ vcos.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0600, vcos_s, vcos.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0600, vcos_s, vcos.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // COSine Pair word
@@ -192,7 +192,7 @@ vcos.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0601, vcos_p, vcos.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0601, vcos_p, vcos.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // COSine Pair word
@@ -205,7 +205,7 @@ vcos.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0700, vcos_t, vcos.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0700, vcos_t, vcos.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // COSine Quad word
@@ -218,7 +218,7 @@ vcos.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0701, vcos_q, vcos.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0701, vcos_q, vcos.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // COSine Quad word
@@ -231,7 +231,7 @@ vexp2.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0800, vexp2_s, vexp2.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0800, vexp2_s, vexp2.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Single word
@@ -244,7 +244,7 @@ vexp2.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0801, vexp2_p, vexp2.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0801, vexp2_p, vexp2.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Pair word
@@ -257,7 +257,7 @@ vexp2.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0900, vexp2_t, vexp2.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0900, vexp2_t, vexp2.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Triple word
@@ -270,7 +270,7 @@ vexp2.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0901, vexp2_q, vexp2.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0901, vexp2_q, vexp2.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // EXPonential base 2 Quad word
@@ -283,7 +283,7 @@ vlog2.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0A00, vlog2_s, vlog2.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0A00, vlog2_s, vlog2.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Single word
@@ -296,7 +296,7 @@ vlog2.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0A01, vlog2_p, vlog2.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0A01, vlog2_p, vlog2.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Pair word
@@ -309,7 +309,7 @@ vlog2.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0B00, vlog2_t, vlog2.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0B00, vlog2_t, vlog2.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Triple word
@@ -322,7 +322,7 @@ vlog2.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0B01, vlog2_q, vlog2.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0B01, vlog2_q, vlog2.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // LOGarithm base 2 Quad word
@@ -335,7 +335,7 @@ vsqrt.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0C00, vsqrt_s, vsqrt.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0C00, vsqrt_s, vsqrt.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Single word
@@ -348,7 +348,7 @@ vsqrt.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0C01, vsqrt_p, vsqrt.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0C01, vsqrt_p, vsqrt.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Pair word
@@ -361,7 +361,7 @@ vsqrt.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0D00, vsqrt_t, vsqrt.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0D00, vsqrt_t, vsqrt.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Triple word
@@ -374,7 +374,7 @@ vsqrt.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0D01, vsqrt_q, vsqrt.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0D01, vsqrt_q, vsqrt.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SQuare RooT Quad word
@@ -387,7 +387,7 @@ vasin.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0E00, vasin_s, vasin.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0E00, vasin_s, vasin.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // Arc SINe Single word
@@ -400,7 +400,7 @@ vasin.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0E01, vasin_p, vasin.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0E01, vasin_p, vasin.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // Arc SINe Pair word
@@ -413,7 +413,7 @@ vasin.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0F00, vasin_t, vasin.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0F00, vasin_t, vasin.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // Arc SINe Triple word
@@ -426,7 +426,7 @@ vasin.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0F01, vasin_q, vasin.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT2, 0x0F01, vasin_q, vasin.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // Arc SINe Quad word

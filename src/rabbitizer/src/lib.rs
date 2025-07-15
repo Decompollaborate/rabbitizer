@@ -108,6 +108,9 @@ pub mod registers;
 pub mod registers_meta;
 pub mod vram;
 
+#[cfg(feature = "encoder")]
+pub mod encoder;
+
 mod utils;
 
 pub use error::Error;

@@ -21,7 +21,7 @@ vcmp.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00000, vcmp_s, vcmp.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x00000, vcmp_s, vcmp.s, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt),
         instr_type: InstrType::R
     ) // CoMPare Single word
@@ -34,7 +34,7 @@ vcmp.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00001, vcmp_p, vcmp.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x00001, vcmp_p, vcmp.p, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt),
         instr_type: InstrType::R
     ) // CoMPare Pair word
@@ -47,7 +47,7 @@ vcmp.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00100, vcmp_t, vcmp.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x00100, vcmp_t, vcmp.t, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt),
         instr_type: InstrType::R
     ) // CoMPare Triple word
@@ -60,7 +60,7 @@ vcmp.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x00101, vcmp_q, vcmp.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x00101, vcmp_q, vcmp.q, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt),
         instr_type: InstrType::R
     ) // CoMPare Quad word
@@ -73,7 +73,7 @@ vmin.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x20000, vmin_s, vmin.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x20000, vmin_s, vmin.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // MINimum Single word
@@ -86,7 +86,7 @@ vmin.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x20001, vmin_p, vmin.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x20001, vmin_p, vmin.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // MINimum Pair word
@@ -99,7 +99,7 @@ vmin.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x20100, vmin_t, vmin.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x20100, vmin_t, vmin.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // MINimum Triple word
@@ -112,7 +112,7 @@ vmin.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x20101, vmin_q, vmin.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x20101, vmin_q, vmin.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // MINimum Quad word
@@ -125,7 +125,7 @@ vmax.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x30000, vmax_s, vmax.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x30000, vmax_s, vmax.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // MAXimum Single word
@@ -138,7 +138,7 @@ vmax.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x30001, vmax_p, vmax.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x30001, vmax_p, vmax.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // MAXimum Pair word
@@ -151,7 +151,7 @@ vmax.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x30100, vmax_t, vmax.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x30100, vmax_t, vmax.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // MAXimum Triple word
@@ -164,7 +164,7 @@ vmax.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x30101, vmax_q, vmax.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x30101, vmax_q, vmax.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // MAXimum Quad word
@@ -177,7 +177,7 @@ vscmp.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x50000, vscmp_s, vscmp.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x50000, vscmp_s, vscmp.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // Set ComPare Single word
@@ -191,7 +191,7 @@ vscmp.p
 
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x50001, vscmp_p, vscmp.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x50001, vscmp_p, vscmp.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // Set ComPare Pair word
@@ -204,7 +204,7 @@ vscmp.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x50100, vscmp_t, vscmp.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x50100, vscmp_t, vscmp.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // Set ComPare Triple word
@@ -217,7 +217,7 @@ vscmp.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x50101, vscmp_q, vscmp.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x50101, vscmp_q, vscmp.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // Set ComPare Quad word
@@ -230,7 +230,7 @@ vsge.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x60000, vsge_s, vsge.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x60000, vsge_s, vsge.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // Greater Equal Single word to value
@@ -243,7 +243,7 @@ vsge.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x60001, vsge_p, vsge.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x60001, vsge_p, vsge.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // Greater Equal Pair word to value
@@ -256,7 +256,7 @@ vsge.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x60100, vsge_t, vsge.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x60100, vsge_t, vsge.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // Greater Equal Triple word to value
@@ -269,7 +269,7 @@ vsge.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x60101, vsge_q, vsge.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x60101, vsge_q, vsge.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // CGreater Equal Quad word to value
@@ -282,7 +282,7 @@ vslt.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70000, vslt_s, vslt.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x70000, vslt_s, vslt.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_s_vt),
         instr_type: InstrType::R
     ) // Less Than Single word to value
@@ -295,7 +295,7 @@ vslt.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70001, vslt_p, vslt.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x70001, vslt_p, vslt.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs, Operand::r4000allegrex_p_vt),
         instr_type: InstrType::R
     ) // Less Than Pair word to value
@@ -308,7 +308,7 @@ vslt.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70100, vslt_t, vslt.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x70100, vslt_t, vslt.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs, Operand::r4000allegrex_t_vt),
         instr_type: InstrType::R
     ) // Less Than Triple word to value
@@ -321,7 +321,7 @@ vslt.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x70101, vslt_q, vslt.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU3, 0x70101, vslt_q, vslt.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs, Operand::r4000allegrex_q_vt),
         instr_type: InstrType::R
     ) // Less Than Quad word to value

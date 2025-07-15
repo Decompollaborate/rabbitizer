@@ -19,7 +19,7 @@
 */
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x00, ext, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_SPECIAL3, 0x00, ext, R4000ALLEGREX,
         operands: Operand::arr4(Operand::core_rt, Operand::core_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size),
         instr_type: InstrType::R,
         modifies_rt: true,
@@ -27,7 +27,7 @@
     ) // EXTract bit field
 
     RAB_DEF_OPCODE_EXT(
-        r4000allegrex, 0x04, ins, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_SPECIAL3, 0x04, ins, R4000ALLEGREX,
         operands: Operand::arr4(Operand::core_rt, Operand::core_rs, Operand::r4000allegrex_pos, Operand::r4000allegrex_size_plus_pos),
         instr_type: InstrType::R,
         modifies_rt: true,

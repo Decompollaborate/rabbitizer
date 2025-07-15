@@ -10,36 +10,36 @@
     case_bits if isa_version as u32 >= isa_version_min as u32 => Opcode::prefix##_##name,
 
 
-#define RAB_DEF_OPCODE_MIPS1(prefix, case_bits, name, ...) \
+#define RAB_DEF_OPCODE_MIPS1(prefix, cat, case_bits, name, ...) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, IsaVersion::MIPS_I)
 
-#define RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, case_bits, name, altname, ...) \
+#define RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, cat, case_bits, name, altname, ...) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, IsaVersion::MIPS_I)
 
-#define RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, name, ...)
+#define RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, cat, case_bits, name, ...)
 
 
-#define RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...) \
+#define RAB_DEF_OPCODE(prefix, cat, case_bits, name, isa_version_min, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, IsaVersion:: isa_version_min)
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, case_bits, name, altname, isa_version_min, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_version_min )) \
     __IMPL_RAB_DEF_OPCODE(prefix, case_bits, name, IsaVersion:: isa_version_min)
 
-#define RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
+#define RAB_DEF_OPCODE_PSEUDO(prefix, cat, case_bits, name, isa_version_min, ...)
 
 
-#define RAB_DEF_OPCODE_EXT(prefix, case_bits, name, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT(prefix, cat, case_bits, name, isa_exten, ...) \
     what? This doesnt make sense
 
-#define RAB_DEF_OPCODE_EXT_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...) \
+#define RAB_DEF_OPCODE_EXT_ALTNAME(prefix, cat, case_bits, name, altname, isa_exten, ...) \
     aaaaaaaaaa
 
-#define RAB_DEF_OPCODE_EXT_GATED(prefix, case_bits, name, isa_exten, gate, ...) \
+#define RAB_DEF_OPCODE_EXT_GATED(prefix, cat, case_bits, name, isa_exten, gate, ...) \
     still doesnt make sense
 
-#define RAB_DEF_OPCODE_EXT_REMOVED(case_bits, prefix, name, isa_exten) \
+#define RAB_DEF_OPCODE_EXT_REMOVED(case_bits, prefix, cat, name, isa_exten) \
     case_bits => Opcode::ALL_INVALID,
 
 

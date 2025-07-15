@@ -18,7 +18,7 @@
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r5900ee, 0x00, pmthl_lw, pmthl.lw, R5900EE,
+        r5900ee, R5900EE_MMI_PMTHL, 0x00, pmthl_lw, pmthl.lw, R5900EE,
         operands: Operand::arr1(Operand::core_rs),
         reads_rs: true
     ) // Parallel Move To Hi/Lo register

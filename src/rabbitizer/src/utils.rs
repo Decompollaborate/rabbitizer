@@ -163,3 +163,50 @@ where
         end_aux = end2;
     }
 }
+
+#[cfg(feature = "encoder")]
+pub struct DoubleOptIterator<I>
+where
+    I: Iterator,
+{
+    iter: I,
+}
+
+#[cfg(feature = "encoder")]
+impl<I> DoubleOptIterator<I>
+where
+    I: Iterator,
+{
+    pub const fn new(iter: I) -> Self {
+        Self { iter }
+    }
+}
+
+#[cfg(feature = "encoder")]
+impl<I> Iterator for DoubleOptIterator<I>
+where
+    I: Iterator,
+{
+    type Item = (I::Item, Option<I::Item>);
+
+    fn next(&mut self) -> Option<Self::Item> {
+        match self.iter.next() {
+            None => None,
+            Some(x) => Some((x, self.iter.next())),
+        }
+    }
+}
+
+#[cfg(feature = "encoder")]
+pub fn i16_hex_from_str(s: &str) -> Result<i16, core::num::ParseIntError> {
+    let is_negative = s.starts_with('-');
+    let s = s.trim_start_matches('-');
+
+    let value = if s.starts_with("0x") || s.starts_with("0X") {
+        i16::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+    } else {
+        s.parse()?
+    };
+
+    Ok(if is_negative { -value } else { value })
+}

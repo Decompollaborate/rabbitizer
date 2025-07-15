@@ -4,27 +4,27 @@
 /*
 The macros for defining an opcode use the following syntax:
 
-- RAB_DEF_OPCODE_MIPS1(prefix, case_bits, name, ...)
+- RAB_DEF_OPCODE_MIPS1(prefix, cat, case_bits, name, ...)
   - Define a MIPS I opcode.
-- RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, case_bits, name, altname, ...)
+- RAB_DEF_OPCODE_MIPS1_ALTNAME(prefix, cat, case_bits, name, altname, ...)
   - Define an opcode that doesn't use the `name` argument as the mnemonic.
     Useful for instructions with dots on their mnemonics.
-- RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, name, ...)
+- RAB_DEF_OPCODE_MIPS1_PSEUDO(prefix, cat, case_bits, name, ...)
   - Defines a pseudo instruction.
 
-- RAB_DEF_OPCODE(prefix, case_bits, name, isa_version_min, ...)
+- RAB_DEF_OPCODE(prefix, cat, case_bits, name, isa_version_min, ...)
   - Define a non-extension opcode.
-- RAB_DEF_OPCODE_ALTNAME(prefix, case_bits, name, altname, isa_version_min, ...)
+- RAB_DEF_OPCODE_ALTNAME(prefix, cat, case_bits, name, altname, isa_version_min, ...)
   - Define an opcode that doesn't use the `name` argument as the mnemonic.
     Useful for instructions with dots on their mnemonics.
-- RAB_DEF_OPCODE_PSEUDO(prefix, name, isa_version_min, ...)
+- RAB_DEF_OPCODE_PSEUDO(prefix, cat, case_bits, name, isa_version_min, ...)
   - Defines a pseudo instruction.
 
-- RAB_DEF_OPCODE_EXT(prefix, case_bits, name, isa_exten, ...)
+- RAB_DEF_OPCODE_EXT(prefix, cat, case_bits, name, isa_exten, ...)
   - Define an opcode of an extension ISA.
-- RAB_DEF_OPCODE_EXT_ALTNAME(prefix, case_bits, name, altname, isa_exten, ...)
+- RAB_DEF_OPCODE_EXT_ALTNAME(prefix, cat, case_bits, name, altname, isa_exten, ...)
   - Define an opcode of an extension ISA.
-- RAB_DEF_OPCODE_EXT_GATED(prefix, case_bits, name, isa_exten, gate, ...)
+- RAB_DEF_OPCODE_EXT_GATED(prefix, cat, case_bits, name, isa_exten, gate, ...)
   - Define an opcode that should be conditionally decoded depending on
     compile-time features and runtime decoding flags.
 - RAB_DEF_OPCODE_EXT_REMOVED(case_bits, prefix, name, isa_exten)
@@ -36,6 +36,7 @@ The macros for defining an opcode use the following syntax:
 
 Arguments:
 - prefix: The name of the extension group.
+- cat: OpcodeCategory.
 - case_bits: A value used to match against a corresponding masked field to
   decode the instruction.
 - name: Actual name of the instruction. Should be a valid token for programing
@@ -53,7 +54,7 @@ Arguments:
 */
 
 
-    RAB_DEF_OPCODE_MIPS1(ALL, , INVALID, is_invalid: true)
+    RAB_DEF_OPCODE_MIPS1(ALL, CORE_NORMAL, !0, INVALID, is_invalid: true)
 
     #include "opcodes/opcodes_core.inc"
     #include "opcodes/opcodes_rsp.inc"

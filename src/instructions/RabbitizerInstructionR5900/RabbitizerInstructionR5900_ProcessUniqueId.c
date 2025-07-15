@@ -4,11 +4,11 @@
 #include "instructions/RabbitizerInstructionR5900.h"
 #include "common/RabbitizerConfig.h"
 
-#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)    \
+#define RAB_DEF_OPCODE(prefix, cat, caseBits, name, ...)    \
     case (caseBits):                                            \
         self->uniqueId = RABBITIZER_INSTR_ID_##prefix##_##name; \
         break;
-#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, caseBits, name, altname, ...) \
     RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 void RabbitizerInstructionR5900_processUniqueId_Normal(RabbitizerInstruction *self) {

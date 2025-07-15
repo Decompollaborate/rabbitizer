@@ -1,6 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::opcodes::{OpcodeCategory, OpcodeCategoryDescriptor, OPCODE_CATEGORIES};
 
 pub const OPCODE_CATEGORY_COUNT: usize = {
@@ -47,6 +48,15 @@ impl OpcodeCategory {
     #[must_use]
     pub fn name(&self) -> &'static str {
         self.get_descriptor().name()
+    }
+
+    #[must_use]
+    pub fn field_mask(&self) -> EncodedFieldMask {
+        self.get_descriptor().field_mask()
+    }
+    #[must_use]
+    pub fn trailing_bits(&self) -> u32 {
+        self.get_descriptor().trailing_bits()
     }
 
     #[must_use]

@@ -24,7 +24,7 @@
 
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x1E, lq, R5900EE,
+        r5900ee, R5900EE_NORMAL, 0x1E, lq, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
         instr_type: InstrType::I,
         modifies_rt: true,
@@ -35,7 +35,7 @@
         access_type: Some(AccessType::QUADWORD)
     ) // Load Quadword
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x1F, sq, R5900EE,
+        r5900ee, R5900EE_NORMAL, 0x1F, sq, R5900EE,
         operands: Operand::arr2(Operand::core_rt, Operand::core_imm_rs),
         instr_type: InstrType::I,
         reads_rs: true,
@@ -47,7 +47,7 @@
     ) // Store Quadword
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x36, lqc2, R5900EE,
+        r5900ee, R5900EE_NORMAL, 0x36, lqc2, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_imm_rs),
         reads_rs: true,
         can_be_lo: true,
@@ -57,7 +57,7 @@
     )
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x3E, sqc2, R5900EE,
+        r5900ee, R5900EE_NORMAL, 0x3E, sqc2, R5900EE,
         operands: Operand::arr2(Operand::r5900ee_vft, Operand::core_imm_rs),
         reads_rs: true,
         can_be_lo: true,

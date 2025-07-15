@@ -1,8 +1,7 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use crate::register_descriptors::RegisterDescriptor;
-use crate::register_descriptors::COP2_CONTROL;
+use crate::register_descriptors::{self, RegisterDescriptor};
 use crate::registers::Cop2Control;
 use crate::registers_meta::Register;
 
@@ -23,7 +22,11 @@ impl Register for Cop2Control {
         Self::count()
     }
 
-    fn get_descriptor(&self) -> &'static RegisterDescriptor {
-        &COP2_CONTROL[*self]
+    fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+        Self::try_from_u32(value)
+    }
+
+    fn descriptor_array() -> &'static [RegisterDescriptor] {
+        &register_descriptors::COP2_CONTROL
     }
 }

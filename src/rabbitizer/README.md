@@ -145,10 +145,23 @@ default.
   - `std`: Turns on `std` (or turn off `no_std`, depending on how you prefer it).
     This currently doesn't do much besides internally using `std::error` instead
     of `core::error`, which may lower the MSRV.
+  - `encoder`: Exposes the encoder api.
+    - NOT FULLY IMPLEMENTED YET.
+    - The encoder api parses assemblable MIPS instructions back into an
+      `Instruction` struct, in a similar fashion to an assembler, but more
+      limited.
+    - The encoder api is not part of the stable api. It may change at any
+      version without previous notice.
   - `unchecked_instr_fields`: Exposes `unchecked` variants functions of the
     `InstrField` struct that allow skipping validity checks.
     - These functions are marked `unsafe`. Even if their use may not trigger UB
       or similar effects, they could return garbage data if misused.
+  - `serde`: Allows serializing and deserializing some structs and enums by
+    using `serde`.
+    - (de)serializing is implemented in structs and enums as needed by other
+      projects, so expect lots of structs and enums missing them. If you need
+      any of them to support `serde` then open an issue requesting it or send a
+      PR implementing them.
   - `bindings_c`: Expose C bindings. NOT WORKING YET.
   - `pyo3`: Expose Python3 bindings. NOT WORKING YET.
     - Enables the `std`, `all_extensions` and `all_gated_extensions` features.

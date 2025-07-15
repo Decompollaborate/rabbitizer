@@ -219,9 +219,11 @@ impl Iterator for OperandIterator<'_> {
         (remaining, Some(remaining))
     }
 
-    fn count(self) -> usize {
+    fn count(mut self) -> usize {
         // The size_hint is always accurate.
-        self.size_hint().0
+        let count = self.size_hint().0;
+        self.index = self.end;
+        count
     }
 
     fn last(mut self) -> Option<Self::Item> {

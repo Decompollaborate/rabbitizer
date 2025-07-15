@@ -16,23 +16,23 @@
     // TODO: operands and properties
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x00, bc2f, R5900EE,
+        r5900ee, R5900EE_COP2_BC2, 0x00, bc2f, R5900EE,
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true
     )
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x01, bc2t, R5900EE,
+        r5900ee, R5900EE_COP2_BC2, 0x01, bc2t, R5900EE,
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true
     )
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x02, bc2fl, R5900EE,
+        r5900ee, R5900EE_COP2_BC2, 0x02, bc2fl, R5900EE,
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true
     )
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x03, bc2tl, R5900EE,
+        r5900ee, R5900EE_COP2_BC2, 0x03, bc2tl, R5900EE,
         operands: Operand::arr1(Operand::core_branch_target_label),
         is_branch: true,
         is_branch_likely: true

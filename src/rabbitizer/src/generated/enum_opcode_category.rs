@@ -3,6 +3,7 @@
 
 /* Automatically generated. DO NOT MODIFY */
 
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::opcodes::{OpcodeCategoryDescriptor, OPCODE_CATEGORY_COUNT};
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -188,226 +189,362 @@ pub enum OpcodeCategory {
 pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] = {
     let mut table = [OpcodeCategoryDescriptor::default(); OPCODE_CATEGORY_COUNT];
     table[OpcodeCategory::CORE_NORMAL as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "NORMAL"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "NORMAL"),
+            EncodedFieldMask::opcode,
+            0x0,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_SPECIAL as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "SPECIAL"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "SPECIAL"),
+            EncodedFieldMask::function,
+            0x0,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_REGIMM as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "REGIMM"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "REGIMM"),
+            EncodedFieldMask::rt,
+            0x04000000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP0 as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP0"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP0"),
+            EncodedFieldMask::fmt,
+            0x40000000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP0_BC0 as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP0_BC0"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP0_BC0"),
+            EncodedFieldMask::bc_fmt,
+            0x01000000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP0_TLB as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP0_TLB"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP0_TLB"),
+            EncodedFieldMask::function,
+            0x02000000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP1 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP1"),
+            EncodedFieldMask::fmt,
+            0x44000000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP1_BC1 as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_BC1"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP1_BC1"),
+            EncodedFieldMask::bc_fmt,
+            0x01000000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP1_FPUS as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUS"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP1_FPUS"),
+            EncodedFieldMask::function,
+            0x02000000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP1_FPUD as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUD"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP1_FPUD"),
+            EncodedFieldMask::function,
+            0x02200000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP1_FPUW as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUW"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP1_FPUW"),
+            EncodedFieldMask::function,
+            0x02800000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP1_FPUL as usize] = OpcodeCategoryDescriptor {
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP1_FPUL"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP1_FPUL"),
+            EncodedFieldMask::function,
+            0x02A00000,
+        )
     }
     .check_panic_chain();
     table[OpcodeCategory::CORE_COP2 as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
-        ..OpcodeCategoryDescriptor::new(concat!("CORE", "_", "COP2"))
+        ..OpcodeCategoryDescriptor::new(
+            concat!("CORE", "_", "COP2"),
+            EncodedFieldMask::fmt,
+            0x48000000,
+        )
     }
     .check_panic_chain();
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_NORMAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "NORMAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "NORMAL"),
+                EncodedFieldMask::opcode,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_NORMAL_LWC2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "NORMAL_LWC2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "NORMAL_LWC2"),
+                EncodedFieldMask::rd,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_NORMAL_SWC2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "NORMAL_SWC2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "NORMAL_SWC2"),
+                EncodedFieldMask::rd,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_SPECIAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "SPECIAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "SPECIAL"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_REGIMM as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "REGIMM"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "REGIMM"),
+                EncodedFieldMask::rt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_COP0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP0"))
+            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP0"), EncodedFieldMask::fmt, 0x0)
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_COP1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP1"))
+            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP1"), EncodedFieldMask::fmt, 0x0)
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_COP2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP2"))
+            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP2"), EncodedFieldMask::fmt, 0x0)
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_COP2_VU as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP2_VU"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "COP2_VU"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[OpcodeCategory::R3000GTE_NORMAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "NORMAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R3000GTE", "_", "NORMAL"),
+                EncodedFieldMask::opcode,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[OpcodeCategory::R3000GTE_SPECIAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "SPECIAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R3000GTE", "_", "SPECIAL"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[OpcodeCategory::R3000GTE_REGIMM as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "REGIMM"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R3000GTE", "_", "REGIMM"),
+                EncodedFieldMask::rt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[OpcodeCategory::R3000GTE_COP0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "COP0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R3000GTE", "_", "COP0"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[OpcodeCategory::R3000GTE_COP1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "COP1"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R3000GTE", "_", "COP1"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[OpcodeCategory::R3000GTE_COP2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "COP2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R3000GTE", "_", "COP2"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[OpcodeCategory::R3000GTE_COP2_GTE as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R3000GTE", "_", "COP2_GTE"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R3000GTE", "_", "COP2_GTE"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_NORMAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "NORMAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "NORMAL"),
+                EncodedFieldMask::opcode,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_SPECIAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "SPECIAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "SPECIAL"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_SPECIAL_RS as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "SPECIAL_RS"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "SPECIAL_RS"),
+                EncodedFieldMask::rs,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_SPECIAL_SA as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "SPECIAL_SA"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "SPECIAL_SA"),
+                EncodedFieldMask::sa,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_REGIMM as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "REGIMM"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "REGIMM"),
+                EncodedFieldMask::rt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_SPECIAL2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "SPECIAL2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "SPECIAL2"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_SPECIAL3 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "SPECIAL3"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "SPECIAL3"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_SPECIAL3_BSHFL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "SPECIAL3_BSHFL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "SPECIAL3_BSHFL"),
+                EncodedFieldMask::sa,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -415,7 +552,11 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R4000ALLEGREX_COP0 as usize] = OpcodeCategoryDescriptor {
             handwritten_category: true,
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP0"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -423,7 +564,11 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R4000ALLEGREX_COP0_BC0 as usize] = OpcodeCategoryDescriptor {
             handwritten_category: true,
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP0_BC0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP0_BC0"),
+                EncodedFieldMask::bc_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -431,140 +576,220 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R4000ALLEGREX_COP0_TLB as usize] = OpcodeCategoryDescriptor {
             handwritten_category: true,
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP0_TLB"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP0_TLB"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP1"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP1"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP1_BC1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP1_BC1"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP1_BC1"),
+                EncodedFieldMask::bc_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP1_FPUS as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP1_FPUS"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP1_FPUS"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP1_FPUW as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP1_FPUW"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP1_FPUW"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP2"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP2_BC2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP2_BC2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP2_BC2"),
+                EncodedFieldMask::r4000allegrex_bc2_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP2_MFHC2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP2_MFHC2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP2_MFHC2"),
+                EncodedFieldMask::r4000allegrex_mxhc2,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP2_MFHC2_P as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP2_MFHC2_P"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP2_MFHC2_P"),
+                EncodedFieldMask::r4000allegrex_mfhc2_p_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP2_MFHC2_P_S as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP2_MFHC2_P_S"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP2_MFHC2_P_S"),
+                EncodedFieldMask::r4000allegrex_mfhc2_p_s_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_COP2_MTHC2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "COP2_MTHC2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "COP2_MTHC2"),
+                EncodedFieldMask::r4000allegrex_mxhc2,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU0"),
+                EncodedFieldMask::r4000allegrex_vfpu0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU1"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU1"),
+                EncodedFieldMask::r4000allegrex_vfpu0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU3 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU3"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU3"),
+                EncodedFieldMask::r4000allegrex_vfpu0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT0"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT2"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT3 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT3"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT3"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_RND as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_RND"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_RND"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -572,7 +797,11 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CVTFLT as usize] =
             OpcodeCategoryDescriptor {
-                ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CVTFLT"))
+                ..OpcodeCategoryDescriptor::new(
+                    concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CVTFLT"),
+                    EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                    0x0,
+                )
             }
             .check_panic_chain();
     }
@@ -580,21 +809,33 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CVTINT as usize] =
             OpcodeCategoryDescriptor {
-                ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CVTINT"))
+                ..OpcodeCategoryDescriptor::new(
+                    concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CVTINT"),
+                    EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                    0x0,
+                )
             }
             .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT8 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT8"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT8"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_FMT9 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT9"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT9"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -602,28 +843,44 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CONTROL as usize] =
             OpcodeCategoryDescriptor {
-                ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CONTROL"))
+                ..OpcodeCategoryDescriptor::new(
+                    concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CONTROL"),
+                    EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                    0x0,
+                )
             }
             .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_COLOR as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_COLOR"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_COLOR"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT0_CST as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CST"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CST"),
+                EncodedFieldMask::r4000allegrex_tp,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU4_FMT2"),
+                EncodedFieldMask::r4000allegrex_vfpu4_fmt2_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -631,70 +888,110 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU4_FMT2_CNDMOVE as usize] =
             OpcodeCategoryDescriptor {
-                ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU4_FMT2_CNDMOVE"))
+                ..OpcodeCategoryDescriptor::new(
+                    concat!("R4000ALLEGREX", "_", "VFPU4_FMT2_CNDMOVE"),
+                    EncodedFieldMask::r4000allegrex_vfpu4_fmt2_cndmove_fmt,
+                    0x0,
+                )
             }
             .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU5 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU5"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU5"),
+                EncodedFieldMask::r4000allegrex_vfpu5_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU6 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU6"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU6"),
+                EncodedFieldMask::r4000allegrex_vfpu6_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU6_FMT7 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU6_FMT7"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU6_FMT7"),
+                EncodedFieldMask::r4000allegrex_vfpu6_fmt7_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU6_FMT7_FMT0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU6_FMT7_FMT0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU6_FMT7_FMT0"),
+                EncodedFieldMask::r4000allegrex_vfpu6_fmt7_fmt0_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_VFPU7 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "VFPU7"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "VFPU7"),
+                EncodedFieldMask::r4000allegrex_vfpu7_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[OpcodeCategory::R4000ALLEGREX_QUADLR as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R4000ALLEGREX", "_", "QUADLR"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "QUADLR"),
+                EncodedFieldMask::r4000allegrex_wb,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_NORMAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "NORMAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "NORMAL"),
+                EncodedFieldMask::opcode,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_SPECIAL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "SPECIAL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "SPECIAL"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_REGIMM as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "REGIMM"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "REGIMM"),
+                EncodedFieldMask::rt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -702,7 +999,11 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R5900EE_COP0 as usize] = OpcodeCategoryDescriptor {
             handwritten_category: true,
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP0"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
@@ -710,119 +1011,187 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     {
         table[OpcodeCategory::R5900EE_COP0_TLB as usize] = OpcodeCategoryDescriptor {
             handwritten_category: true,
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP0_TLB"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP0_TLB"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP1"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP1"),
+                EncodedFieldMask::fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP1_FPUS as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP1_FPUS"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP1_FPUS"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP2"),
+                EncodedFieldMask::r5900ee_cop2_discriminant,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP2_NI as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_NI"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP2_NI"),
+                EncodedFieldMask::r5900ee_cop2_ini_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP2_I as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_I"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP2_I"),
+                EncodedFieldMask::r5900ee_cop2_ini_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP2_BC2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_BC2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP2_BC2"),
+                EncodedFieldMask::bc_fmt,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP2_SPECIAL1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_SPECIAL1"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP2_SPECIAL1"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP2_SPECIAL2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_SPECIAL2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP2_SPECIAL2"),
+                EncodedFieldMask::r5900ee_fhi_flo,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_COP2_VIWR as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "COP2_VIWR"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "COP2_VIWR"),
+                EncodedFieldMask::r5900ee_viwr_fhilo,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_MMI as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "MMI"),
+                EncodedFieldMask::function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_MMI_0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_0"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "MMI_0"),
+                EncodedFieldMask::r5900ee_mmi_function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_MMI_1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_1"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "MMI_1"),
+                EncodedFieldMask::r5900ee_mmi_function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_MMI_2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_2"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "MMI_2"),
+                EncodedFieldMask::r5900ee_mmi_function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_MMI_3 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_3"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "MMI_3"),
+                EncodedFieldMask::r5900ee_mmi_function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_MMI_PMFHL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_PMFHL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "MMI_PMFHL"),
+                EncodedFieldMask::r5900ee_mmi_function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "R5900EE")]
     {
         table[OpcodeCategory::R5900EE_MMI_PMTHL as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("R5900EE", "_", "MMI_PMTHL"))
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R5900EE", "_", "MMI_PMTHL"),
+                EncodedFieldMask::r5900ee_mmi_function,
+                0x0,
+            )
         }
         .check_panic_chain();
     }

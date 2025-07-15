@@ -20,11 +20,11 @@
     // The other instructions are implemented using the main CORE table
 
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x38, ei, R5900EE,
+        r5900ee, R5900EE_COP0_TLB, 0x38, ei, R5900EE,
         operands: Operand::arr0()
     ) // Enable Interrupt
     RAB_DEF_OPCODE_EXT(
-        r5900ee, 0x39, di, R5900EE,
+        r5900ee, R5900EE_COP0_TLB, 0x39, di, R5900EE,
         operands: Operand::arr0()
     ) // Disable Interrupt
 

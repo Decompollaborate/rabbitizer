@@ -21,7 +21,7 @@ vmov.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0000, vmov_s, vmov.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0000, vmov_s, vmov.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // MOVe Single word
@@ -34,7 +34,7 @@ vmov.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0001, vmov_p, vmov.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0001, vmov_p, vmov.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // MOVe Pair word
@@ -47,7 +47,7 @@ vmov.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0100, vmov_t, vmov.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0100, vmov_t, vmov.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // MOVe Triple word
@@ -60,7 +60,7 @@ vmov.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0101, vmov_q, vmov.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0101, vmov_q, vmov.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // MOVe Quad word
@@ -73,7 +73,7 @@ vabs.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0200, vabs_s, vabs.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0200, vabs_s, vabs.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // ABSolute value Single word
@@ -86,7 +86,7 @@ vabs.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0201, vabs_p, vabs.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0201, vabs_p, vabs.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // ABSolute value Pair word
@@ -99,7 +99,7 @@ vabs.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0300, vabs_t, vabs.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0300, vabs_t, vabs.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // ABSolute value Triple word
@@ -112,7 +112,7 @@ vabs.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0301, vabs_q, vabs.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0301, vabs_q, vabs.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // ABSolute value Quad word
@@ -125,7 +125,7 @@ vneg.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0400, vneg_s, vneg.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0400, vneg_s, vneg.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // NEGate Single word
@@ -138,7 +138,7 @@ vneg.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0401, vneg_p, vneg.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0401, vneg_p, vneg.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // NEGate Pair word
@@ -151,7 +151,7 @@ vneg.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0500, vneg_t, vneg.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0500, vneg_t, vneg.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // NEGate Triple word
@@ -164,7 +164,7 @@ vneg.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0501, vneg_q, vneg.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0501, vneg_q, vneg.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // NEGate Quad word
@@ -177,7 +177,7 @@ vidt.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0601, vidt_p, vidt.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0601, vidt_p, vidt.p, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R
     ) // IDenTity Pair word
@@ -190,7 +190,7 @@ vidt.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0701, vidt_q, vidt.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0701, vidt_q, vidt.q, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R
     ) // IDenTity Quad word
@@ -203,7 +203,7 @@ vsat0.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0800, vsat0_s, vsat0.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0800, vsat0_s, vsat0.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // SATurate to [0.0:1.0] Single word
@@ -216,7 +216,7 @@ vsat0.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0801, vsat0_p, vsat0.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0801, vsat0_p, vsat0.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // SATurate to [0.0:1.0] Pair word
@@ -229,7 +229,7 @@ vsat0.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0900, vsat0_t, vsat0.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0900, vsat0_t, vsat0.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // SATurate to [0.0:1.0] Triple word
@@ -242,7 +242,7 @@ vsat0.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0901, vsat0_q, vsat0.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0901, vsat0_q, vsat0.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SATurate to [0.0:1.0] Quad word
@@ -255,7 +255,7 @@ vsat1.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0A00, vsat1_s, vsat1.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0A00, vsat1_s, vsat1.s, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs),
         instr_type: InstrType::R
     ) // SATurate to [-1.0:1.0] Single word
@@ -268,7 +268,7 @@ vsat1.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0A01, vsat1_p, vsat1.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0A01, vsat1_p, vsat1.p, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_p_vs),
         instr_type: InstrType::R
     ) // SATurate to [-1.0:1.0] Pair word
@@ -281,7 +281,7 @@ vsat1.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0B00, vsat1_t, vsat1.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0B00, vsat1_t, vsat1.t, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_t_vs),
         instr_type: InstrType::R
     ) // SATurate to [-1.0:1.0] Triple word
@@ -294,7 +294,7 @@ vsat1.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0B01, vsat1_q, vsat1.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0B01, vsat1_q, vsat1.q, R4000ALLEGREX,
         operands: Operand::arr2(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_q_vs),
         instr_type: InstrType::R
     ) // SATurate to [-1.0:1.0] Quad word
@@ -307,7 +307,7 @@ vzero.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0C00, vzero_s, vzero.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0C00, vzero_s, vzero.s, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R
     ) // set ZERO Single word
@@ -320,7 +320,7 @@ vzero.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0C01, vzero_p, vzero.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0C01, vzero_p, vzero.p, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R
     ) // set ZERO Pair word
@@ -333,7 +333,7 @@ vzero.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0D00, vzero_t, vzero.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0D00, vzero_t, vzero.t, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R
     ) // set ZERO Triple word
@@ -346,7 +346,7 @@ vzero.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0D01, vzero_q, vzero.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0D01, vzero_q, vzero.q, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R
     ) // set ZERO Quad word
@@ -359,7 +359,7 @@ vone.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0E00, vone_s, vone.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0E00, vone_s, vone.s, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_s_vd),
         instr_type: InstrType::R
     ) // One's ComPlement Single word
@@ -372,7 +372,7 @@ vone.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0E01, vone_p, vone.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0E01, vone_p, vone.p, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_p_vd),
         instr_type: InstrType::R
     ) // One's ComPlement Pair word
@@ -385,7 +385,7 @@ vone.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0F00, vone_t, vone.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0F00, vone_t, vone.t, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_t_vd),
         instr_type: InstrType::R
     ) // One's ComPlement Triple word
@@ -398,7 +398,7 @@ vone.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x0F01, vone_q, vone.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4_FMT0_FMT0, 0x0F01, vone_q, vone.q, R4000ALLEGREX,
         operands: Operand::arr1(Operand::r4000allegrex_q_vd),
         instr_type: InstrType::R
     ) // One's ComPlement Quad word

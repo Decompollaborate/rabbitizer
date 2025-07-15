@@ -1,10 +1,10 @@
 /* SPDX-FileCopyrightText: © 2022-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-#define RAB_DEF_OPCODE(prefix, caseBits, name, ...) \
+#define RAB_DEF_OPCODE(prefix, cat, caseBits, name, ...) \
     prefix##_##name,
 
-#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...) \
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, caseBits, name, altname, ...) \
     RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 enum class UniqueId {

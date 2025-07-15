@@ -19,7 +19,7 @@
 
     // OP fd, fs
     RAB_DEF_OPCODE_MIPS1_ALTNAME(
-        core, 0x20, cvt_s_w, cvt.s.w,
+        core, CORE_COP1_FPUW, 0x20, cvt_s_w, cvt.s.w,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,
@@ -27,7 +27,7 @@
         reads_fs: true
     )
     RAB_DEF_OPCODE_MIPS1_ALTNAME(
-        core, 0x21, cvt_d_w, cvt.d.w,
+        core, CORE_COP1_FPUW, 0x21, cvt_d_w, cvt.d.w,
         operands: Operand::arr2(Operand::core_fd, Operand::core_fs),
         instr_type: InstrType::UNKNOWN,
         is_float: true,

@@ -22,7 +22,7 @@ vrot.p
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x04001, vrot_p, vrot.p, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU6_FMT7, 0x04001, vrot_p, vrot.p, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_p_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_p_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Pair word
@@ -35,7 +35,7 @@ vrot.t
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x04100, vrot_t, vrot.t, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU6_FMT7, 0x04100, vrot_t, vrot.t, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_t_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_t_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Triple word
@@ -48,7 +48,7 @@ vrot.q
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x04101, vrot_q, vrot.q, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU6_FMT7, 0x04101, vrot_q, vrot.q, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_q_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_q_vrot_code),
         instr_type: InstrType::R
     ) // Rotator Quad word

@@ -8,7 +8,7 @@ use crate::settings::{DropdownEnum, Storagable};
 const KEY: &str = "decompollaborate.disasmdis-web.state.endian";
 
 #[derive(
-    Debug, Clone, Copy, Hash, PartialEq, Eq, PartialOrd, Ord, Default, Serialize, Deserialize,
+    Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, Default, Serialize, Deserialize,
 )]
 pub enum Endian {
     #[default]

@@ -5,8 +5,8 @@
 #include "instructions/RabbitizerInstrId.h"
 
 
-#define RAB_DEF_OPCODE(prefix, caseBits, name, ...)                   { "InstrId", #prefix "_" #name, RABBITIZER_INSTR_ID_##prefix##_##name, false, NULL },
-#define RAB_DEF_OPCODE_ALTNAME(prefix, caseBits, name, altname, ...)  RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
+#define RAB_DEF_OPCODE(prefix, cat, caseBits, name, ...)                   { "InstrId", #prefix "_" #name, RABBITIZER_INSTR_ID_##prefix##_##name, false, NULL },
+#define RAB_DEF_OPCODE_ALTNAME(prefix, cat, caseBits, name, altname, ...)  RAB_DEF_OPCODE(prefix, caseBits, name, __VA_ARGS__)
 
 RabbitizerEnumMetadata rabbitizer_enum_InstrId_enumvalues[] = {
     #include "tables/Opcode.inc"

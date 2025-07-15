@@ -15,24 +15,24 @@
 
     // OP rt, cop2cd
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x00, mfc2,
+        core, CORE_COP2, 0x00, mfc2,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
         modifies_rt: true
     )
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x04, mtc2,
+        core, CORE_COP2, 0x04, mtc2,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop2d),
         reads_rt: true
     )
 
     // OP rt, cop2cd
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x02, cfc2,
+        core, CORE_COP2, 0x02, cfc2,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
         modifies_rt: true
     )
     RAB_DEF_OPCODE_MIPS1(
-        core, 0x06, ctc2,
+        core, CORE_COP2, 0x06, ctc2,
         operands: Operand::arr2(Operand::core_rt, Operand::core_cop2cd),
         reads_rt: true
     )

@@ -5,12 +5,13 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
+use crate::encoded_field_mask::EncodedFieldMask;
 use crate::opcodes::{OPCODE_CATEGORY_COUNT, OpcodeCategoryDescriptor};
 
-#define RAB_DEF_OPCODE_CATEGORY(prefix, name, ...) \
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name, field_mask, trailing_bits, ...) \
     prefix##_##name,
 
-#define RAB_DEF_OPCODE_CATEGORY_EXT(prefix, name, ...) \
+#define RAB_DEF_OPCODE_CATEGORY_EXT(prefix, name, field_mask, trailing_bits, ...) \
     SPECIAL_RS_TAG(cfg(feature = #prefix)) \
     prefix##_##name,
 
@@ -23,16 +24,16 @@ pub enum OpcodeCategory {
 #undef RAB_DEF_OPCODE_CATEGORY
 #undef RAB_DEF_OPCODE_CATEGORY_EXT
 
-#define RAB_DEF_OPCODE_CATEGORY(prefix, name, ...) \
+#define RAB_DEF_OPCODE_CATEGORY(prefix, name, field_mask, trailing_bits, ...) \
     table[ OpcodeCategory::prefix##_##name as usize] = OpcodeCategoryDescriptor {\
         __VA_ARGS__ \
-        ..OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name)) \
+        ..OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name), field_mask, trailing_bits) \
     } .check_panic_chain();
 
-#define RAB_DEF_OPCODE_CATEGORY_EXT(prefix, name, ...) \
+#define RAB_DEF_OPCODE_CATEGORY_EXT(prefix, name, field_mask, trailing_bits, ...) \
     SPECIAL_RS_TAG(cfg(feature = #prefix)) \
     { \
-        RAB_DEF_OPCODE_CATEGORY(prefix, name, __VA_ARGS__) \
+        RAB_DEF_OPCODE_CATEGORY(prefix, name, field_mask, trailing_bits, __VA_ARGS__) \
     }
 
 pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] = {

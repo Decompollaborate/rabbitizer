@@ -23,7 +23,7 @@ vwbn.s
 */
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
-        r4000allegrex, 0x60000, vwbn_s, vwbn.s, R4000ALLEGREX,
+        r4000allegrex, R4000ALLEGREX_VFPU4, 0x60000, vwbn_s, vwbn.s, R4000ALLEGREX,
         operands: Operand::arr3(Operand::r4000allegrex_s_vd, Operand::r4000allegrex_s_vs, Operand::r4000allegrex_bn),
         instr_type: InstrType::R
     ) // WrapBN Single word
