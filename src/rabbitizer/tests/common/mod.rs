@@ -195,6 +195,7 @@ impl TestEntry {
             errors += 1;
         }
 
+        // Check disassembling specific operands
         {
             let mut j = 0;
             for (i, operand) in self.instr.operands_iter().enumerate() {
@@ -240,6 +241,71 @@ impl TestEntry {
 
         errors
     }
+
+    #[cfg(feature = "encoder")]
+    #[allow(dead_code)]
+    pub fn check_encoding(&self) -> u32 {
+        use rabbitizer::encoder::EncoderIterator;
+
+        if !self.valid {
+            return 0;
+        }
+        if self.imm_override.is_some() {
+            // TODO: We don't support `imm_override`s yet while encoding.
+            return 0;
+        }
+
+        let mut errors = 0;
+        let mut encoder =
+            EncoderIterator::new(self.expected, self.instr.vram(), *self.instr.flags());
+        let display_flags = self.display_flags.with_debug_word_comment_info(true);
+
+        match encoder.next() {
+            None => {
+                println!("Unable to encode? '{}'", self.expected);
+                errors += 1;
+            }
+            Some(Err(())) => {
+                // TODO: add error
+                println!("Unable to encode '{}' due to error", self.expected);
+                errors += 1;
+            }
+            Some(Ok(instr)) => {
+                let disasm = instr
+                    .display(&display_flags, self.imm_override, 0)
+                    .to_string();
+                if !instr.is_valid() {
+                    println!(
+                        "Encoded instruction '{}' (encoded '{}') is not valid?",
+                        self.expected, disasm
+                    );
+                    errors += 1;
+                }
+                if instr.word() != self.instr.word() {
+                    println!(
+                        "Encoded instruction '{}' (encoded '{}') does not match the expected word.",
+                        self.expected, disasm
+                    );
+                    println!("    Expected: '0x{:08X}'", self.instr.word());
+                    println!("    Got:      '0x{:08X}'", instr.word());
+                    errors += 1;
+                }
+            }
+        }
+
+        match encoder.next() {
+            None => {}
+            Some(_) => {
+                println!(
+                    "What? A second instruction was tried to be encoded while encoding '{}'?",
+                    self.expected
+                );
+                errors += 1;
+            }
+        }
+
+        errors
+    }
 }
 
 pub fn entries_sanity_check(entries: &[TestEntry]) {
@@ -265,6 +331,10 @@ pub fn check_test_entries(entries: &[TestEntry], thingy: bool) -> (u32, u32) {
         let mut errors = entry.check_validity();
         if thingy {
             errors += entry.check_disassembly();
+        }
+        #[cfg(feature = "encoder")]
+        {
+            // errors += entry.check_encoding();
         }
 
         individual_errors += errors;

@@ -140,8 +140,9 @@ pub trait Register: PartialEq + PartialOrd + Default {
     }
 
     #[must_use]
+    #[cfg(feature = "encoder")]
     fn from_name(name: &str, abi: Abi, mut allow_dollarless: bool) -> Option<Self> {
-        allow_dollarless = allow_dollarless && name.starts_with('$');
+        allow_dollarless = allow_dollarless && !name.starts_with('$');
 
         for descriptor in Self::descriptor_array() {
             let found = descriptor.name_abi(abi, false) == name

@@ -226,7 +226,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP0_BC0"),
             EncodedFieldMask::bc_fmt,
-            0x01000000,
+            0x41000000,
         )
     }
     .check_panic_chain();
@@ -235,7 +235,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP0_TLB"),
             EncodedFieldMask::function,
-            0x02000000,
+            0x42000000,
         )
     }
     .check_panic_chain();
@@ -251,7 +251,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_BC1"),
             EncodedFieldMask::bc_fmt,
-            0x01000000,
+            0x45000000,
         )
     }
     .check_panic_chain();
@@ -259,7 +259,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUS"),
             EncodedFieldMask::function,
-            0x02000000,
+            0x46000000,
         )
     }
     .check_panic_chain();
@@ -267,7 +267,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUD"),
             EncodedFieldMask::function,
-            0x02200000,
+            0x46200000,
         )
     }
     .check_panic_chain();
@@ -275,7 +275,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUW"),
             EncodedFieldMask::function,
-            0x02800000,
+            0x46800000,
         )
     }
     .check_panic_chain();
@@ -283,7 +283,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUL"),
             EncodedFieldMask::function,
-            0x02A00000,
+            0x46A00000,
         )
     }
     .check_panic_chain();

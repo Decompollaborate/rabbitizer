@@ -42,6 +42,7 @@ impl Iterator for EncoderIterator<'_> {
             }
         };
 
+        let allow_dollarless = true;
         let mut word = opcode.opcode_bits();
 
         let operands_iter = opcode.operands_iter();
@@ -60,8 +61,12 @@ impl Iterator for EncoderIterator<'_> {
                     Token::End => return Some(Err(())),
                     Token::Comma => return Some(Err(())),
                     Token::Text(text) => {
-                        if let Some(bits) = operand.encode_to_bits(text, self.flags.abi(), false) {
+                        if let Some(bits) =
+                            operand.encode_to_bits(text, self.flags.abi(), allow_dollarless)
+                        {
                             word |= bits;
+                        } else {
+                            return Some(Err(()));
                         }
                     }
                 }
@@ -96,7 +101,6 @@ impl Iterator for EncoderIterator<'_> {
             gated_behind,
         );
 
-        //println!("word = 0x{word:08X}");
         let instr = Instruction::from_raw_parts(word, vram, opcode_decoder, self.flags);
 
         Some(Ok(instr))

@@ -17,20 +17,17 @@ impl Operand {
     ) -> Option<u32> {
         let mask = self.mask();
 
-        match self {
+        let val = match self {
             Self::ALL_EMPTY => None,
-            Self::core_rs | Self::core_rt | Self::core_rd => Gpr::from_name(text, abi, allow_dollarless).map(|x| mask.unshift(x.as_index() as u32)),
-            Self::core_sa => None /*Self::core_sa(field.sa_impl())*/,
+            Self::core_rs | Self::core_rt | Self::core_rd => regval::<Gpr>(text, abi, allow_dollarless),
+            Self::core_sa => utils::u8_hex_from_str(text).ok().map(|x| x.into()),
             Self::core_zero => None /*Self::core_zero()*/,
-            Self::core_cop0d => None /*Self::core_cop0d(field.cop0d_impl())*/,
-            Self::core_cop0cd => None /*Self::core_cop0cd(field.cop0cd_impl())*/,
-            Self::core_fs => None /*Self::core_fs(field.fs_impl())*/,
-            Self::core_ft => None /*Self::core_ft(field.ft_impl())*/,
-            Self::core_fd => None /*Self::core_fd(field.fd_impl())*/,
+            Self::core_cop0d => regval::<Cop0>(text, abi, allow_dollarless),
+            Self::core_cop0cd => regval::<Cop0Control>(text, abi, allow_dollarless),
+            Self::core_fs | Self::core_ft | Self::core_fd => regval::<Cop1>(text, abi, allow_dollarless),
             Self::core_cop1cs => None /*Self::core_cop1cs(field.cop1cs_impl())*/,
-            Self::core_cop2t => None /*Self::core_cop2t(field.cop2t_impl())*/,
-            Self::core_cop2d => None /*Self::core_cop2d(field.cop2d_impl())*/,
-            Self::core_cop2cd => None /*Self::core_cop2cd(field.cop2cd_impl())*/,
+            Self::core_cop2t | Self::core_cop2d => regval::<Cop2>(text, abi, allow_dollarless),
+            Self::core_cop2cd => regval::<Cop2Control>(text, abi, allow_dollarless),
             Self::core_op => None /*Self::core_op(field.op_impl())*/,
             Self::core_hint => None /*Self::core_hint(field.hint_impl())*/,
             Self::core_code => None /*Self::core_code(
@@ -40,8 +37,8 @@ impl Operand {
             Self::core_code_lower => None /*Self::core_code_lower(field.code_lower_impl())*/,
             Self::core_copraw => None /*Self::core_copraw(instr.word() & utils::bitmask(0, 25))*/,
             Self::core_label => None /*Self::core_label(instr.get_instr_index_as_vram_impl())*/,
-            Self::core_imm_i16 => utils::i16_hex_from_str(text).ok().map(|x| mask.unshift(x as u16 as u32)),
-            Self::core_imm_u16 => None /*Self::core_imm_u16(field.imm_u16_impl())*/,
+            Self::core_imm_i16 => utils::i16_hex_from_str(text).ok().map(|x| (x as u16).into()),
+            Self::core_imm_u16 => utils::u16_hex_from_str(text).ok().map(|x| x.into()),
             Self::core_branch_target_label => None /*{
                 Self::core_branch_target_label(instr.get_branch_offset_impl())
             }*/,
@@ -408,6 +405,15 @@ impl Operand {
             Self::r5900ee_vis_parenthesis => None /*{
                 Self::r5900ee_vis_parenthesis(field.r5900ee_vis_impl())
             }*/,
-        }
+        };
+
+        val.map(|x| mask.unshift(x))
     }
+}
+
+fn regval<R>(name: &str, abi: Abi, allow_dollarless: bool) -> Option<u32>
+where
+    R: Register,
+{
+    R::from_name(name, abi, allow_dollarless).map(|x| x.as_index() as u32)
 }

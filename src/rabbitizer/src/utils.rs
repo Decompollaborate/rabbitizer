@@ -210,3 +210,25 @@ pub fn i16_hex_from_str(s: &str) -> Result<i16, core::num::ParseIntError> {
 
     Ok(if is_negative { -value } else { value })
 }
+
+#[cfg(feature = "encoder")]
+pub fn u16_hex_from_str(s: &str) -> Result<u16, core::num::ParseIntError> {
+    let value = if s.starts_with("0x") || s.starts_with("0X") {
+        u16::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+    } else {
+        s.parse()?
+    };
+
+    Ok(value)
+}
+
+#[cfg(feature = "encoder")]
+pub fn u8_hex_from_str(s: &str) -> Result<u8, core::num::ParseIntError> {
+    let value = if s.starts_with("0x") || s.starts_with("0X") {
+        u8::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+    } else {
+        s.parse()?
+    };
+
+    Ok(value)
+}

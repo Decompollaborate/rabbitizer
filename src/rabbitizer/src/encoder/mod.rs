@@ -6,7 +6,3 @@ pub(crate) mod operand_encoder;
 pub(crate) mod token;
 
 pub use encoder_iterator::EncoderIterator;
-
-/*
-addiu       $sp, $sp, -0x740 => 0x27BDF8C0
-*/

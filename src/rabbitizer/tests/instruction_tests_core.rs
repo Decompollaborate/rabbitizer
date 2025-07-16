@@ -17,7 +17,7 @@ use rabbitizer::{
 
 #[test]
 fn check_none_instructions_mips_1() {
-    const ENTRIES: &[TestEntry] = &[TestEntry {
+    static ENTRIES: &[TestEntry] = &[TestEntry {
         instr: Instruction::new(
             0x08000419,
             Vram::new(0x80001100),
@@ -38,7 +38,7 @@ fn check_none_instructions_mips_1() {
 #[cfg(feature = "MIPS_III")]
 #[test]
 fn check_none_instructions_mips_3() {
-    const ENTRIES: &[TestEntry] = &[
+    static ENTRIES: &[TestEntry] = &[
         TestEntry {
             instr: Instruction::new(
                 0x08000419,
@@ -1316,7 +1316,7 @@ fn check_none_instructions_mips_3() {
 #[cfg(feature = "MIPS_IV")]
 #[test]
 fn check_none_instructions_mips_4() {
-    const ENTRIES: &[TestEntry] = &[TestEntry {
+    static ENTRIES: &[TestEntry] = &[TestEntry {
         instr: Instruction::new(
             0xCD150008,
             Vram::new(0x80000000),
@@ -1337,7 +1337,7 @@ fn check_none_instructions_mips_4() {
 #[cfg(feature = "MIPS_III")]
 #[test]
 fn check_none_instructions_invalid() {
-    const ENTRIES: &[TestEntry] = &[
+    static ENTRIES: &[TestEntry] = &[
         TestEntry {
             instr: Instruction::new(
                 0x44444444,
