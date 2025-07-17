@@ -265,9 +265,9 @@ impl TestEntry {
                 println!("Unable to encode? '{}'", self.expected);
                 errors += 1;
             }
-            Some(Err(())) => {
+            Some(Err(e)) => {
                 // TODO: add error
-                println!("Unable to encode '{}' due to error", self.expected);
+                println!("Unable to encode '{}' due to error '{}'", self.expected, e);
                 errors += 1;
             }
             Some(Ok(instr)) => {

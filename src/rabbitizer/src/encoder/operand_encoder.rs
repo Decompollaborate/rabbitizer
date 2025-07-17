@@ -2,20 +2,29 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::abi::Abi;
+use crate::encoded_field_mask::EncodedFieldMask;
+use crate::encoder::token::{Token, Tokenize};
+use crate::encoder::EncodingError;
+use crate::opcodes::Opcode;
 use crate::operands::Operand;
 use crate::registers::*;
+#[cfg(feature = "R4000ALLEGREX")]
+use crate::registers_meta::R4000AllegrexVectorRegister;
 use crate::registers_meta::Register;
-use crate::utils;
+use crate::utils::{self, DoubleOptIterator};
 
 impl Operand {
-    // TODO: Result instead of Option
-    pub(crate) fn encode_to_bits(
+    pub(crate) fn encode_to_bits<'s>(
         self,
-        text: &str,
+        token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
         abi: Abi,
         allow_dollarless: bool,
-    ) -> Option<u32> {
-        let mask = self.mask();
+        opcode: Opcode,
+    ) -> Result<EncodedOperandBits, EncodingError<'s>> {
+        let Some((token, mut next_token)) = token_stream.next() else {
+            return Err(EncodingError::RanOutOfTokens(opcode, self));
+        };
+        let text = operand_text_from_token(token, opcode, self)?;
 
         let val = match self {
             Self::ALL_EMPTY => None,
@@ -249,29 +258,73 @@ impl Operand {
                 )
             }*/,
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => None /*{
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_s_args_impl();
-
-                Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(cond, vs, vt)
-            }*/,
+            Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
+                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
+                    None => None,
+                    Some(cond) => {
+                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexS>(
+                            cond,
+                            &mut next_token,
+                            token_stream,
+                            abi,
+                            allow_dollarless,
+                            opcode,
+                            self,)?
+                        )
+                    }
+                }
+            },
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => None /*{
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_p_args_impl();
-
-                Self::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(cond, vs, vt)
-            }*/,
+            Self::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
+                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
+                    None => None,
+                    Some(cond) => {
+                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV2D>(
+                            cond,
+                            &mut next_token,
+                            token_stream,
+                            abi,
+                            allow_dollarless,
+                            opcode,
+                            self,)?
+                        )
+                    }
+                }
+            },
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => None /*{
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_t_args_impl();
-
-                Self::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(cond, vs, vt)
-            }*/,
+            Self::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
+                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
+                    None => None,
+                    Some(cond) => {
+                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV3D>(
+                            cond,
+                            &mut next_token,
+                            token_stream,
+                            abi,
+                            allow_dollarless,
+                            opcode,
+                            self,)?
+                        )
+                    }
+                }
+            },
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => None /*{
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_q_args_impl();
-
-                Self::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(cond, vs, vt)
-            }*/,
+            Self::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
+                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
+                    None => None,
+                    Some(cond) => {
+                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV4D>(
+                            cond,
+                            &mut next_token,
+                            token_stream,
+                            abi,
+                            allow_dollarless,
+                            opcode,
+                            self,)?
+                        )
+                    }
+                }
+            },
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vconstant => None /*{
                 Self::r4000allegrex_vconstant(field.r4000allegrex_vconstant_impl())
@@ -407,7 +460,13 @@ impl Operand {
             }*/,
         };
 
-        val.map(|x| mask.unshift(x))
+        let encoded = if let Some(val) = val {
+            self.mask().unshift(val)
+        } else {
+            return Err(EncodingError::UnrecognizedOperand(opcode, text, self));
+        };
+
+        EncodedOperandBits::new(encoded, next_token, opcode)
     }
 }
 
@@ -416,4 +475,196 @@ where
     R: Register,
 {
     R::from_name(name, abi, allow_dollarless).map(|x| x.as_index() as u32)
+}
+
+const fn operand_text_from_token<'s>(
+    token: Token<'s>,
+    opcode: Opcode,
+    operand: Operand,
+) -> Result<&'s str, EncodingError<'s>> {
+    match token {
+        Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
+        Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
+        Token::Text(text) => Ok(text),
+    }
+}
+
+#[cfg(feature = "R4000ALLEGREX")]
+fn identify_r4000allegrex_vcmp_registers<'s, R>(
+    cond: R4000AllegrexVCond,
+    next_token: &mut Option<Token<'s>>,
+    token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
+    abi: Abi,
+    allow_dollarless: bool,
+    opcode: Opcode,
+    operand: Operand,
+) -> Result<(R, R), EncodingError<'s>>
+where
+    R: R4000AllegrexVectorRegister,
+{
+    let (vs, vt) = match cond {
+        R4000AllegrexVCond::fl | R4000AllegrexVCond::tr => {
+            // The two arguments may be omitted if they are zero.
+            if next_token != &Some(Token::Comma) {
+                (R::default(), R::default())
+            } else {
+                let Some((token_a, next_token_a)) = token_stream.next() else {
+                    return Err(EncodingError::RanOutOfTokens(opcode, operand));
+                };
+                let text_a = operand_text_from_token(token_a, opcode, operand)?;
+                let Some(reg_a) = R::from_name(text_a, abi, allow_dollarless) else {
+                    return Err(EncodingError::UnrecognizedOperand(opcode, text_a, operand));
+                };
+                if next_token_a != Some(Token::Comma) {
+                    return Err(EncodingError::MissingCommaInComposedOperand(
+                        opcode, operand,
+                    ));
+                }
+
+                let Some((token_b, next_token_b)) = token_stream.next() else {
+                    return Err(EncodingError::RanOutOfTokens(opcode, operand));
+                };
+                let text_b = operand_text_from_token(token_b, opcode, operand)?;
+                let Some(reg_b) = R::from_name(text_b, abi, allow_dollarless) else {
+                    return Err(EncodingError::UnrecognizedOperand(opcode, text_b, operand));
+                };
+
+                *next_token = next_token_b;
+
+                (reg_a, reg_b)
+            }
+        }
+        R4000AllegrexVCond::eq
+        | R4000AllegrexVCond::lt
+        | R4000AllegrexVCond::le
+        | R4000AllegrexVCond::ne
+        | R4000AllegrexVCond::ge
+        | R4000AllegrexVCond::gt => {
+            if next_token != &Some(Token::Comma) {
+                return Err(EncodingError::MissingCommaInComposedOperand(
+                    opcode, operand,
+                ));
+            }
+
+            let Some((token_a, next_token_a)) = token_stream.next() else {
+                return Err(EncodingError::RanOutOfTokens(opcode, operand));
+            };
+            let text_a = operand_text_from_token(token_a, opcode, operand)?;
+            let Some(reg_a) = R::from_name(text_a, abi, allow_dollarless) else {
+                return Err(EncodingError::UnrecognizedOperand(opcode, text_a, operand));
+            };
+            if next_token_a != Some(Token::Comma) {
+                return Err(EncodingError::MissingCommaInComposedOperand(
+                    opcode, operand,
+                ));
+            }
+
+            let Some((token_b, next_token_b)) = token_stream.next() else {
+                return Err(EncodingError::RanOutOfTokens(opcode, operand));
+            };
+            let text_b = operand_text_from_token(token_b, opcode, operand)?;
+            let Some(reg_b) = R::from_name(text_b, abi, allow_dollarless) else {
+                return Err(EncodingError::UnrecognizedOperand(opcode, text_b, operand));
+            };
+
+            *next_token = next_token_b;
+
+            (reg_a, reg_b)
+        }
+        R4000AllegrexVCond::ez
+        | R4000AllegrexVCond::en
+        | R4000AllegrexVCond::ei
+        | R4000AllegrexVCond::es
+        | R4000AllegrexVCond::nz
+        | R4000AllegrexVCond::nn
+        | R4000AllegrexVCond::ni
+        | R4000AllegrexVCond::ns => {
+            if next_token != &Some(Token::Comma) {
+                return Err(EncodingError::MissingCommaInComposedOperand(
+                    opcode, operand,
+                ));
+            }
+
+            let Some((token_a, next_token_a)) = token_stream.next() else {
+                return Err(EncodingError::RanOutOfTokens(opcode, operand));
+            };
+            let text_a = operand_text_from_token(token_a, opcode, operand)?;
+            let Some(reg_a) = R::from_name(text_a, abi, allow_dollarless) else {
+                return Err(EncodingError::UnrecognizedOperand(opcode, text_a, operand));
+            };
+
+            /* The last register may be omitted if it is zero */
+            let vt = if next_token_a != Some(Token::Comma) {
+                *next_token = next_token_a;
+
+                R::default()
+            } else {
+                let Some((token_b, next_token_b)) = token_stream.next() else {
+                    return Err(EncodingError::RanOutOfTokens(opcode, operand));
+                };
+                let text_b = operand_text_from_token(token_b, opcode, operand)?;
+                let Some(reg_b) = R::from_name(text_b, abi, allow_dollarless) else {
+                    return Err(EncodingError::UnrecognizedOperand(opcode, text_b, operand));
+                };
+
+                *next_token = next_token_b;
+
+                reg_b
+            };
+
+            (reg_a, vt)
+        }
+    };
+
+    Ok((vs, vt))
+}
+
+#[cfg(feature = "R4000ALLEGREX")]
+fn encode_r4000allegrex_vcmp_registers<'s, R>(
+    cond: R4000AllegrexVCond,
+    next_token: &mut Option<Token<'s>>,
+    token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
+    abi: Abi,
+    allow_dollarless: bool,
+    opcode: Opcode,
+    operand: Operand,
+) -> Result<u32, EncodingError<'s>>
+where
+    R: R4000AllegrexVectorRegister,
+{
+    let (vs, vt) = identify_r4000allegrex_vcmp_registers::<R>(
+        cond,
+        next_token,
+        token_stream,
+        abi,
+        allow_dollarless,
+        opcode,
+        operand,
+    )?;
+
+    let cond_bits = EncodedFieldMask::r4000allegrex_vcmp_cond.unshift(cond.as_index() as u32);
+    let vs_bits = EncodedFieldMask::r4000allegrex_vs.unshift(vs.as_index() as u32);
+    let vt_bits = EncodedFieldMask::r4000allegrex_vt.unshift(vt.as_index() as u32);
+    Ok(cond_bits | vs_bits | vt_bits)
+}
+
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[must_use]
+pub(crate) enum EncodedOperandBits {
+    EndBits(u32),
+    ContinueBits(u32),
+}
+
+impl EncodedOperandBits {
+    const fn new<'s>(
+        bits: u32,
+        next_token: Option<Token<'s>>,
+        opcode: Opcode,
+    ) -> Result<Self, EncodingError<'s>> {
+        match next_token {
+            None | Some(Token::End) => Ok(Self::EndBits(bits)),
+            Some(Token::Text(t)) => Err(EncodingError::TokenInsteadOfComma(opcode, t)),
+            Some(Token::Comma) => Ok(Self::ContinueBits(bits)),
+        }
+    }
 }

@@ -722,7 +722,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU3"),
                 EncodedFieldMask::r4000allegrex_vfpu0_fmt,
-                0x0,
+                0x6C000000,
             )
         }
         .check_panic_chain();

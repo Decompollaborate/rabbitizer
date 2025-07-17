@@ -36,7 +36,7 @@
 
     // VFPU2 doesn't exist?
 
-    RAB_DEF_OPCODE_CATEGORY_EXT(R4000ALLEGREX, VFPU3, EncodedFieldMask::r4000allegrex_vfpu0_fmt, 0x0, )
+    RAB_DEF_OPCODE_CATEGORY_EXT(R4000ALLEGREX, VFPU3, EncodedFieldMask::r4000allegrex_vfpu0_fmt, 0x6C000000, )
 
     RAB_DEF_OPCODE_CATEGORY_EXT(R4000ALLEGREX, VFPU4, EncodedFieldMask::r4000allegrex_vfpu4_fmt, 0x0, )
     RAB_DEF_OPCODE_CATEGORY_EXT(R4000ALLEGREX, VFPU4_FMT0, EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt, 0x0, )
