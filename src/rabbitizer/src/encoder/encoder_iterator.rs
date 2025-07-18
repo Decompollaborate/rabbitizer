@@ -195,7 +195,7 @@ mod tests {
     fn test_encoder_r4000allegrex_vcmp() {
         use crate::IsaExtension;
 
-        static DATA: [(u32, &'static str); 132] = [
+        static DATA: [(u32, &str); 132] = [
             (0x6C401001, "vcmp.s      eq, S400, S002"),
             (0x6C401081, "vcmp.p      eq, C400, C002"),
             (0x6C409001, "vcmp.t      eq, C400, C001"),

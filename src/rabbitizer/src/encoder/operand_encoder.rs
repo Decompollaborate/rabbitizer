@@ -34,34 +34,169 @@ impl Operand {
             Self::core_cop0d => regval::<Cop0>(text, abi, allow_dollarless),
             Self::core_cop0cd => regval::<Cop0Control>(text, abi, allow_dollarless),
             Self::core_fs | Self::core_ft | Self::core_fd => regval::<Cop1>(text, abi, allow_dollarless),
-            Self::core_cop1cs => None /*Self::core_cop1cs(field.cop1cs_impl())*/,
+            Self::core_cop1cs => regval::<Cop1Control>(text, abi, allow_dollarless),
             Self::core_cop2t | Self::core_cop2d => regval::<Cop2>(text, abi, allow_dollarless),
             Self::core_cop2cd => regval::<Cop2Control>(text, abi, allow_dollarless),
-            Self::core_op => None /*Self::core_op(field.op_impl())*/,
-            Self::core_hint => None /*Self::core_hint(field.hint_impl())*/,
-            Self::core_code => None /*Self::core_code(
-                field.code_upper_impl(),
-                NonZeroU16::new(field.code_lower_impl()),
-            )*/,
-            Self::core_code_lower => None /*Self::core_code_lower(field.code_lower_impl())*/,
+            Self::core_op => utils::u8_hex_from_str(text).ok().map(|x| x.into()),
+            Self::core_hint => utils::u8_hex_from_str(text).ok().map(|x| x.into()),
+            Self::core_code => {
+                let parsed = match utils::u16_hex_from_str(text).ok() {
+                    None => None,
+                    Some(code_upper) => {
+                        if next_token == Some(Token::Comma) {
+                            let code_lower_text = request_next_text(
+                                token_stream,
+                                &mut next_token,
+                                opcode,
+                                self,
+                            )?;
+                            utils::u16_hex_from_str(code_lower_text).ok().map(|code_lower| {
+                                (code_upper, code_lower)
+                            })
+                        } else {
+                            Some((code_upper, 0))
+                        }
+                    }
+                };
+
+                match parsed {
+                    None => None,
+                    Some((code_upper, code_lower)) => {
+                        let code_upper = EncodedFieldMask::code_upper.unshift(code_upper.into());
+                        let code_lower = EncodedFieldMask::code_lower.unshift(code_lower.into());
+                        let bits = code_upper | code_lower;
+                        Some(EncodedFieldMask::code_upper.union(EncodedFieldMask::code_lower).get_shifted(bits))
+                    }
+                }
+            }
+            Self::core_code_lower => utils::u16_hex_from_str(text).ok().map(|x| x.into()),
             Self::core_copraw => None /*Self::core_copraw(instr.word() & utils::bitmask(0, 25))*/,
-            Self::core_label => None /*Self::core_label(instr.get_instr_index_as_vram_impl())*/,
+            Self::core_label | Self::core_branch_target_label => {
+                if text == "." && next_token == Some(Token::Text("+")) {
+                    next_token = Some(Token::Comma);
+                    let num_text = request_next_text(
+                        token_stream,
+                        &mut next_token,
+                        opcode,
+                        self,
+                    )?;
+
+                    let Some(num) = utils::i32_hex_from_str(num_text).ok() else {
+                        return Err(EncodingError::UnrecognizedOperand(opcode, num_text, self));
+                    };
+
+                    if next_token != Some(Token::Text("+")) {
+                        Some(((num - 4) >> 2) as i16 as u16 as u32)
+                    } else {
+                        next_token = Some(Token::Comma);
+                        let num2_text = request_next_text(
+                            token_stream,
+                            &mut next_token,
+                            opcode,
+                            self,
+                        )?;
+                        let (empty, aux) = num2_text.split_once('(').ok_or(EncodingError::UnrecognizedOperand(opcode, num2_text, self))?;
+                        if !empty.is_empty() {
+                            return Err(EncodingError::UnrecognizedOperand(opcode, empty, self))
+                        }
+                        let num2 = utils::i32_hex_from_str(aux).map_err(|_| EncodingError::UnrecognizedOperand(opcode, aux, self))?;
+
+                        if next_token == Some(Token::Text("<<")) {
+                            next_token = Some(Token::Comma);
+                            let num3_text = request_next_text(
+                                token_stream,
+                                &mut next_token,
+                                opcode,
+                                self,
+                            )?;
+                            let (aux, empty) = num3_text.split_once(')').ok_or(EncodingError::UnrecognizedOperand(opcode, num3_text, self))?;
+                            if !empty.is_empty() {
+                                return Err(EncodingError::UnrecognizedOperand(opcode, empty, self))
+                            }
+                            let num3 = utils::u32_hex_from_str(aux).map_err(|_| EncodingError::UnrecognizedOperand(opcode, aux, self))?;
+
+                            Some(((num + num2.wrapping_shl(num3) - 4) >> 2) as u32)
+                        } else {
+                            None
+                        }
+                    }
+                } else if text.starts_with("func_") && text.len() >= 5+8 {
+                    u32::from_str_radix(&text[5..5+8], 16).ok().map(|x| x >> 2)
+                } else {
+                    utils::u32_hex_from_str(text).ok().map(|x| (x - 4) >> 2)
+                }
+            },
             Self::core_imm_i16 => utils::i16_hex_from_str(text).ok().map(|x| (x as u16).into()),
             Self::core_imm_u16 => utils::u16_hex_from_str(text).ok().map(|x| x.into()),
-            Self::core_branch_target_label => None /*{
-                Self::core_branch_target_label(instr.get_branch_offset_impl())
-            }*/,
-            Self::core_imm_rs => None /*Self::core_imm_rs(field.imm_i16_impl(), field.rs_impl())*/,
-            Self::core_maybe_rd_rs => None /*{
-                let rd = field.rd_impl();
-                let reg = if rd.holds_return_address(instr.abi()) {
-                    None
-                } else {
-                    Some(rd)
+            Self::core_imm_rs => {
+                // split the text token 'imm_text(reg_text)' into two variables.
+                // 
+                let Some((imm_text, reg_text)) = text.split_once('(').and_then(|(imm_text, right)| {
+                    right.split_once(')').and_then(|(reg_text, empty)| {
+                        if empty.is_empty() {
+                            Some((imm_text, reg_text))
+                        } else {
+                            None
+                        }
+                    })
+                }) else {
+                    return Err(EncodingError::UnrecognizedOperand(opcode, text, self));
                 };
-                Self::core_maybe_rd_rs(reg, field.rs_impl())
-            }*/,
-            Self::core_maybe_zero_rs => None /*Self::core_maybe_zero_rs((), field.rs_impl())*/,
+
+                utils::i16_hex_from_str(imm_text).ok().and_then(|imm| {
+                    regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
+                        let rs = EncodedFieldMask::rs.unshift(rs);
+                        let imm = EncodedFieldMask::immediate.unshift((imm as u16).into());
+                        let bits = imm | rs;
+                        EncodedFieldMask::immediate.union(EncodedFieldMask::rs).get_shifted(bits)
+                    })
+                })
+            },
+            Self::core_maybe_rd_rs => {
+                match regval::<Gpr>(text, abi, allow_dollarless) {
+                    None => None,
+                    Some(maybe_rd) => {
+                        let (rd, rs) = if next_token != Some(Token::Comma) {
+                            (Gpr::ra.as_index() as u32, maybe_rd)
+                        } else {
+                            let rs = encode_next_reg::<Gpr>(
+                                token_stream,
+                                &mut next_token,
+                                opcode,
+                                self,
+                                abi,
+                                allow_dollarless
+                            )?;
+
+                            (maybe_rd, rs)
+                        };
+
+                        let rd = EncodedFieldMask::rd.unshift(rd);
+                        let rs = EncodedFieldMask::rs.unshift(rs);
+                        let bits = rd | rs;
+                        Some(EncodedFieldMask::rd.union(EncodedFieldMask::rs).get_shifted(bits))
+                    }
+                }
+            }
+            Self::core_maybe_zero_rs => {
+                match regval::<Gpr>(text, abi, allow_dollarless) {
+                    None => None,
+                    Some(maybe_zero) => {
+                        Some(if maybe_zero != 0 {
+                            maybe_zero
+                        } else {
+                            encode_next_reg::<Gpr>(
+                                token_stream,
+                                &mut next_token,
+                                opcode,
+                                self,
+                                abi,
+                                allow_dollarless
+                            )?
+                        })
+                    }
+                }
+            },
             #[cfg(feature = "RSP")]
             Self::rsp_cop0d => None /*Self::rsp_cop0d(field.rsp_cop0d_impl())*/,
             #[cfg(feature = "RSP")]
@@ -263,14 +398,14 @@ impl Operand {
                     None => None,
                     Some(cond) => {
                         Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexS>(
-                            cond,
-                            &mut next_token,
                             token_stream,
+                            &mut next_token,
+                            opcode,
+                            self,
                             abi,
                             allow_dollarless,
-                            opcode,
-                            self,)?
-                        )
+                            cond,
+                        )?)
                     }
                 }
             },
@@ -280,14 +415,14 @@ impl Operand {
                     None => None,
                     Some(cond) => {
                         Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV2D>(
-                            cond,
-                            &mut next_token,
                             token_stream,
+                            &mut next_token,
+                            opcode,
+                            self,
                             abi,
                             allow_dollarless,
-                            opcode,
-                            self,)?
-                        )
+                            cond,
+                        )?)
                     }
                 }
             },
@@ -297,14 +432,14 @@ impl Operand {
                     None => None,
                     Some(cond) => {
                         Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV3D>(
-                            cond,
-                            &mut next_token,
                             token_stream,
+                            &mut next_token,
+                            opcode,
+                            self,
                             abi,
                             allow_dollarless,
-                            opcode,
-                            self,)?
-                        )
+                            cond,
+                        )?)
                     }
                 }
             },
@@ -314,14 +449,14 @@ impl Operand {
                     None => None,
                     Some(cond) => {
                         Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV4D>(
-                            cond,
-                            &mut next_token,
                             token_stream,
+                            &mut next_token,
+                            opcode,
+                            self,
                             abi,
                             allow_dollarless,
-                            opcode,
-                            self,)?
-                        )
+                            cond,
+                        )?)
                     }
                 }
             },
@@ -489,15 +624,74 @@ const fn operand_text_from_token<'s>(
     }
 }
 
-#[cfg(feature = "R4000ALLEGREX")]
-fn identify_r4000allegrex_vcmp_registers<'s, R>(
-    cond: R4000AllegrexVCond,
-    next_token: &mut Option<Token<'s>>,
+fn request_next_text<'s>(
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
-    abi: Abi,
-    allow_dollarless: bool,
+    next_token: &mut Option<Token<'s>>,
     opcode: Opcode,
     operand: Operand,
+) -> Result<&'s str, EncodingError<'s>> {
+    if next_token != &Some(Token::Comma) {
+        return Err(EncodingError::MissingCommaInComposedOperand(
+            opcode, operand,
+        ));
+    }
+
+    let Some((token_aux, next_token_aux)) = token_stream.next() else {
+        return Err(EncodingError::RanOutOfTokens(opcode, operand));
+    };
+    *next_token = next_token_aux;
+
+    operand_text_from_token(token_aux, opcode, operand)
+}
+
+fn request_next_reg<'s, R>(
+    token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
+    next_token: &mut Option<Token<'s>>,
+    opcode: Opcode,
+    operand: Operand,
+    abi: Abi,
+    allow_dollarless: bool,
+) -> Result<R, EncodingError<'s>>
+where
+    R: Register,
+{
+    let text = request_next_text(token_stream, next_token, opcode, operand)?;
+
+    R::from_name(text, abi, allow_dollarless)
+        .ok_or(EncodingError::UnrecognizedOperand(opcode, text, operand))
+}
+
+fn encode_next_reg<'s, R>(
+    token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
+    next_token: &mut Option<Token<'s>>,
+    opcode: Opcode,
+    operand: Operand,
+    abi: Abi,
+    allow_dollarless: bool,
+) -> Result<u32, EncodingError<'s>>
+where
+    R: Register,
+{
+    request_next_reg(
+        token_stream,
+        next_token,
+        opcode,
+        operand,
+        abi,
+        allow_dollarless,
+    )
+    .map(|reg: R| reg.as_index() as u32)
+}
+
+#[cfg(feature = "R4000ALLEGREX")]
+fn identify_r4000allegrex_vcmp_registers<'s, R>(
+    token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
+    next_token: &mut Option<Token<'s>>,
+    opcode: Opcode,
+    operand: Operand,
+    abi: Abi,
+    allow_dollarless: bool,
+    cond: R4000AllegrexVCond,
 ) -> Result<(R, R), EncodingError<'s>>
 where
     R: R4000AllegrexVectorRegister,
@@ -508,30 +702,24 @@ where
             if next_token != &Some(Token::Comma) {
                 (R::default(), R::default())
             } else {
-                let Some((token_a, next_token_a)) = token_stream.next() else {
-                    return Err(EncodingError::RanOutOfTokens(opcode, operand));
-                };
-                let text_a = operand_text_from_token(token_a, opcode, operand)?;
-                let Some(reg_a) = R::from_name(text_a, abi, allow_dollarless) else {
-                    return Err(EncodingError::UnrecognizedOperand(opcode, text_a, operand));
-                };
-                if next_token_a != Some(Token::Comma) {
-                    return Err(EncodingError::MissingCommaInComposedOperand(
-                        opcode, operand,
-                    ));
-                }
+                let vs = request_next_reg(
+                    token_stream,
+                    next_token,
+                    opcode,
+                    operand,
+                    abi,
+                    allow_dollarless,
+                )?;
+                let vt = request_next_reg(
+                    token_stream,
+                    next_token,
+                    opcode,
+                    operand,
+                    abi,
+                    allow_dollarless,
+                )?;
 
-                let Some((token_b, next_token_b)) = token_stream.next() else {
-                    return Err(EncodingError::RanOutOfTokens(opcode, operand));
-                };
-                let text_b = operand_text_from_token(token_b, opcode, operand)?;
-                let Some(reg_b) = R::from_name(text_b, abi, allow_dollarless) else {
-                    return Err(EncodingError::UnrecognizedOperand(opcode, text_b, operand));
-                };
-
-                *next_token = next_token_b;
-
-                (reg_a, reg_b)
+                (vs, vt)
             }
         }
         R4000AllegrexVCond::eq
@@ -540,36 +728,24 @@ where
         | R4000AllegrexVCond::ne
         | R4000AllegrexVCond::ge
         | R4000AllegrexVCond::gt => {
-            if next_token != &Some(Token::Comma) {
-                return Err(EncodingError::MissingCommaInComposedOperand(
-                    opcode, operand,
-                ));
-            }
+            let vs = request_next_reg(
+                token_stream,
+                next_token,
+                opcode,
+                operand,
+                abi,
+                allow_dollarless,
+            )?;
+            let vt = request_next_reg(
+                token_stream,
+                next_token,
+                opcode,
+                operand,
+                abi,
+                allow_dollarless,
+            )?;
 
-            let Some((token_a, next_token_a)) = token_stream.next() else {
-                return Err(EncodingError::RanOutOfTokens(opcode, operand));
-            };
-            let text_a = operand_text_from_token(token_a, opcode, operand)?;
-            let Some(reg_a) = R::from_name(text_a, abi, allow_dollarless) else {
-                return Err(EncodingError::UnrecognizedOperand(opcode, text_a, operand));
-            };
-            if next_token_a != Some(Token::Comma) {
-                return Err(EncodingError::MissingCommaInComposedOperand(
-                    opcode, operand,
-                ));
-            }
-
-            let Some((token_b, next_token_b)) = token_stream.next() else {
-                return Err(EncodingError::RanOutOfTokens(opcode, operand));
-            };
-            let text_b = operand_text_from_token(token_b, opcode, operand)?;
-            let Some(reg_b) = R::from_name(text_b, abi, allow_dollarless) else {
-                return Err(EncodingError::UnrecognizedOperand(opcode, text_b, operand));
-            };
-
-            *next_token = next_token_b;
-
-            (reg_a, reg_b)
+            (vs, vt)
         }
         R4000AllegrexVCond::ez
         | R4000AllegrexVCond::en
@@ -579,40 +755,30 @@ where
         | R4000AllegrexVCond::nn
         | R4000AllegrexVCond::ni
         | R4000AllegrexVCond::ns => {
-            if next_token != &Some(Token::Comma) {
-                return Err(EncodingError::MissingCommaInComposedOperand(
-                    opcode, operand,
-                ));
-            }
-
-            let Some((token_a, next_token_a)) = token_stream.next() else {
-                return Err(EncodingError::RanOutOfTokens(opcode, operand));
-            };
-            let text_a = operand_text_from_token(token_a, opcode, operand)?;
-            let Some(reg_a) = R::from_name(text_a, abi, allow_dollarless) else {
-                return Err(EncodingError::UnrecognizedOperand(opcode, text_a, operand));
-            };
+            let vs = request_next_reg(
+                token_stream,
+                next_token,
+                opcode,
+                operand,
+                abi,
+                allow_dollarless,
+            )?;
 
             /* The last register may be omitted if it is zero */
-            let vt = if next_token_a != Some(Token::Comma) {
-                *next_token = next_token_a;
-
+            let vt = if next_token != &Some(Token::Comma) {
                 R::default()
             } else {
-                let Some((token_b, next_token_b)) = token_stream.next() else {
-                    return Err(EncodingError::RanOutOfTokens(opcode, operand));
-                };
-                let text_b = operand_text_from_token(token_b, opcode, operand)?;
-                let Some(reg_b) = R::from_name(text_b, abi, allow_dollarless) else {
-                    return Err(EncodingError::UnrecognizedOperand(opcode, text_b, operand));
-                };
-
-                *next_token = next_token_b;
-
-                reg_b
+                request_next_reg(
+                    token_stream,
+                    next_token,
+                    opcode,
+                    operand,
+                    abi,
+                    allow_dollarless,
+                )?
             };
 
-            (reg_a, vt)
+            (vs, vt)
         }
     };
 
@@ -621,25 +787,25 @@ where
 
 #[cfg(feature = "R4000ALLEGREX")]
 fn encode_r4000allegrex_vcmp_registers<'s, R>(
-    cond: R4000AllegrexVCond,
-    next_token: &mut Option<Token<'s>>,
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
-    abi: Abi,
-    allow_dollarless: bool,
+    next_token: &mut Option<Token<'s>>,
     opcode: Opcode,
     operand: Operand,
+    abi: Abi,
+    allow_dollarless: bool,
+    cond: R4000AllegrexVCond,
 ) -> Result<u32, EncodingError<'s>>
 where
     R: R4000AllegrexVectorRegister,
 {
     let (vs, vt) = identify_r4000allegrex_vcmp_registers::<R>(
-        cond,
-        next_token,
         token_stream,
-        abi,
-        allow_dollarless,
+        next_token,
         opcode,
         operand,
+        abi,
+        allow_dollarless,
+        cond,
     )?;
 
     let cond_bits = EncodedFieldMask::r4000allegrex_vcmp_cond.unshift(cond.as_index() as u32);

@@ -250,6 +250,9 @@ impl TestEntry {
         if !self.valid {
             return 0;
         }
+        if self.expected.starts_with(".word") {
+            return 0;
+        }
         if self.imm_override.is_some() {
             // TODO: We don't support `imm_override`s yet while encoding.
             return 0;
@@ -267,7 +270,10 @@ impl TestEntry {
             }
             Some(Err(e)) => {
                 // TODO: add error
-                println!("Unable to encode '{}' due to error '{}'", self.expected, e);
+                println!(
+                    "Unable to encode '{}' due to error:\n    '{}'",
+                    self.expected, e
+                );
                 errors += 1;
             }
             Some(Ok(instr)) => {
@@ -334,7 +340,7 @@ pub fn check_test_entries(entries: &[TestEntry], thingy: bool) -> (u32, u32) {
         }
         #[cfg(feature = "encoder")]
         {
-            // errors += entry.check_encoding();
+            errors += entry.check_encoding();
         }
 
         individual_errors += errors;

@@ -6,7 +6,7 @@ mod common;
 use common::{check_test_entries, TestEntry};
 
 use rabbitizer::{
-    display_flags::InstructionDisplayFlags,
+    display_flags::{DefaultLabelDisplay, InstructionDisplayFlags},
     instr::{Instruction, InstructionFlags},
     isa::IsaVersion,
     opcodes::Opcode,
@@ -17,20 +17,98 @@ use rabbitizer::{
 
 #[test]
 fn check_none_instructions_mips_1() {
-    static ENTRIES: &[TestEntry] = &[TestEntry {
-        instr: Instruction::new(
-            0x08000419,
-            Vram::new(0x80001100),
-            InstructionFlags::new(IsaVersion::MIPS_I),
-        ),
-        imm_override: None,
-        display_flags: InstructionDisplayFlags::default(),
-        valid: true,
-        expected: "j           func_80001064",
-        expected_opcode: Opcode::core_j,
-        opcode_str: "j",
-        operands_str: [Some("func_80001064"), None, None, None, None],
-    }];
+    static ENTRIES: &[TestEntry] = &[
+        TestEntry {
+            instr: Instruction::new(
+                0x08000419,
+                Vram::new(0x80001100),
+                InstructionFlags::new(IsaVersion::MIPS_I),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default()
+                .with_jump_default_label_display(DefaultLabelDisplay::FullExpression),
+            valid: true,
+            expected: "j           . + 4 + (0x419 << 2)",
+            expected_opcode: Opcode::core_j,
+            opcode_str: "j",
+            operands_str: [Some(". + 4 + (0x419 << 2)"), None, None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x08000419,
+                Vram::new(0x80001100),
+                InstructionFlags::new(IsaVersion::MIPS_I),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default()
+                .with_jump_default_label_display(DefaultLabelDisplay::Computed),
+            valid: true,
+            expected: "j           . + 0x1068",
+            expected_opcode: Opcode::core_j,
+            opcode_str: "j",
+            operands_str: [Some(". + 0x1068"), None, None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x08000419,
+                Vram::new(0x80001100),
+                InstructionFlags::new(IsaVersion::MIPS_I),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default()
+                .with_jump_default_label_display(DefaultLabelDisplay::Absolute),
+            valid: true,
+            expected: "j           func_80001064",
+            expected_opcode: Opcode::core_j,
+            opcode_str: "j",
+            operands_str: [Some("func_80001064"), None, None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x1520FFFB,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_I),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default()
+                .with_branch_default_label_display(DefaultLabelDisplay::FullExpression),
+            valid: true,
+            expected: "bnez        $t1, . + 4 + (-0x5 << 2)",
+            expected_opcode: Opcode::core_bnez,
+            opcode_str: "bnez",
+            operands_str: [Some("$t1"), Some(". + 4 + (-0x5 << 2)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x1520FFFB,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_I),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default()
+                .with_branch_default_label_display(DefaultLabelDisplay::Computed),
+            valid: true,
+            expected: "bnez        $t1, . + -0x10",
+            expected_opcode: Opcode::core_bnez,
+            opcode_str: "bnez",
+            operands_str: [Some("$t1"), Some(". + -0x10"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x1520FFFB,
+                Vram::new(0x80000000),
+                InstructionFlags::new(IsaVersion::MIPS_I),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default()
+                .with_branch_default_label_display(DefaultLabelDisplay::Absolute),
+            valid: true,
+            expected: "bnez        $t1, 0x7FFFFFF0",
+            expected_opcode: Opcode::core_bnez,
+            opcode_str: "bnez",
+            operands_str: [Some("$t1"), Some("0x7FFFFFF0"), None, None, None],
+        },
+    ];
 
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));
 }
@@ -178,20 +256,6 @@ fn check_none_instructions_mips_3() {
             expected_opcode: Opcode::core_addi,
             opcode_str: "addi",
             operands_str: [Some("$t1"), Some("$t1"), Some("-0x8"), None, None],
-        },
-        TestEntry {
-            instr: Instruction::new(
-                0x1520FFFB,
-                Vram::new(0x80000000),
-                InstructionFlags::new(IsaVersion::MIPS_III),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "bnez        $t1, . + 4 + (-0x5 << 2)",
-            expected_opcode: Opcode::core_bnez,
-            opcode_str: "bnez",
-            operands_str: [Some("$t1"), Some(". + 4 + (-0x5 << 2)"), None, None, None],
         },
         TestEntry {
             instr: Instruction::new(
