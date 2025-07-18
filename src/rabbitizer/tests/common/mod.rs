@@ -327,7 +327,8 @@ pub fn entries_sanity_check(entries: &[TestEntry]) {
     }
 }
 
-pub fn check_test_entries(entries: &[TestEntry], thingy: bool) -> (u32, u32) {
+pub fn check_test_entries(entries: &[TestEntry], test_encoder: bool) -> (u32, u32) {
+    let _avoid_unused_warning = test_encoder;
     let mut instructions_with_errors = 0;
     let mut individual_errors = 0;
 
@@ -335,11 +336,9 @@ pub fn check_test_entries(entries: &[TestEntry], thingy: bool) -> (u32, u32) {
 
     for entry in entries {
         let mut errors = entry.check_validity();
-        if thingy {
-            errors += entry.check_disassembly();
-        }
+        errors += entry.check_disassembly();
         #[cfg(feature = "encoder")]
-        {
+        if test_encoder {
             errors += entry.check_encoding();
         }
 

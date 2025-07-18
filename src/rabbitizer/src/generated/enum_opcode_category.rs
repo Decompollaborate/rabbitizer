@@ -423,7 +423,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R3000GTE", "_", "REGIMM"),
                 EncodedFieldMask::rt,
-                0x0,
+                0x04000000,
             )
         }
         .check_panic_chain();
@@ -434,7 +434,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R3000GTE", "_", "COP0"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x40000000,
             )
         }
         .check_panic_chain();
@@ -445,7 +445,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R3000GTE", "_", "COP1"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x44000000,
             )
         }
         .check_panic_chain();
@@ -456,7 +456,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R3000GTE", "_", "COP2"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x48000000,
             )
         }
         .check_panic_chain();
@@ -467,7 +467,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R3000GTE", "_", "COP2_GTE"),
                 EncodedFieldMask::function,
-                0x0,
+                0x4A000000,
             )
         }
         .check_panic_chain();

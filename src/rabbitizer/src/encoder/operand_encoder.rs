@@ -352,15 +352,11 @@ impl Operand {
             }
 
             #[cfg(feature = "R3000GTE")]
-            Self::r3000gte_sf => None /*Self::r3000gte_sf(field.r3000gte_sf_impl())*/,
-            #[cfg(feature = "R3000GTE")]
-            Self::r3000gte_mx => None /*Self::r3000gte_mx(field.r3000gte_mx_impl())*/,
-            #[cfg(feature = "R3000GTE")]
-            Self::r3000gte_v => None /*Self::r3000gte_v(field.r3000gte_v_impl())*/,
-            #[cfg(feature = "R3000GTE")]
-            Self::r3000gte_cv => None /*Self::r3000gte_cv(field.r3000gte_cv_impl())*/,
-            #[cfg(feature = "R3000GTE")]
-            Self::r3000gte_lm => None /*Self::r3000gte_lm(field.r3000gte_lm_impl())*/,
+            Self::r3000gte_sf | Self::r3000gte_mx | Self::r3000gte_v | Self::r3000gte_cv | Self::r3000gte_lm => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(Into::into)
+            }
+
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_s_vs => None /*{
                 Self::r4000allegrex_s_vs(field.r4000allegrex_s_vs_impl())
@@ -626,6 +622,7 @@ impl Operand {
             Self::r4000allegrex_rpz => None /*Self::r4000allegrex_rpz(field.r4000allegrex_rpz_impl())*/,
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_rpw => None /*Self::r4000allegrex_rpw(field.r4000allegrex_rpw_impl())*/,
+
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_I => None /*Self::r5900ee_I()*/,
             #[cfg(feature = "R5900EE")]
