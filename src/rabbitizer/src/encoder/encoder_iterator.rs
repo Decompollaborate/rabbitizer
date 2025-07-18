@@ -122,6 +122,13 @@ impl<'s> Iterator for EncoderIterator<'s> {
                         return Some(Err(EncodingError::UnrecognizedOpcode(text)));
                     }
                 }
+                Some(Token::Bracketed(left, right, bracket_type)) => {
+                    return Some(Err(EncodingError::BracketedInsteadOfOpcode(
+                        left,
+                        right,
+                        bracket_type,
+                    )))
+                }
             }
         };
 

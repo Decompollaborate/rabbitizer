@@ -8,3 +8,4 @@ pub(crate) mod token;
 
 pub use encoder_iterator::EncoderIterator;
 pub use encoding_error::EncodingError;
+pub use token::BracketType;

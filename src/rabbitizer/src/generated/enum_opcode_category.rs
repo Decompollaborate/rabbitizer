@@ -313,7 +313,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("RSP", "_", "NORMAL_LWC2"),
                 EncodedFieldMask::rd,
-                0x0,
+                0xC8000000,
             )
         }
         .check_panic_chain();
@@ -324,7 +324,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("RSP", "_", "NORMAL_SWC2"),
                 EncodedFieldMask::rd,
-                0x0,
+                0xE8000000,
             )
         }
         .check_panic_chain();
@@ -346,7 +346,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("RSP", "_", "REGIMM"),
                 EncodedFieldMask::rt,
-                0x0,
+                0x04000000,
             )
         }
         .check_panic_chain();
@@ -354,21 +354,33 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_COP0 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP0"), EncodedFieldMask::fmt, 0x0)
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "COP0"),
+                EncodedFieldMask::fmt,
+                0x40000000,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_COP1 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP1"), EncodedFieldMask::fmt, 0x0)
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "COP1"),
+                EncodedFieldMask::fmt,
+                0x44000000,
+            )
         }
         .check_panic_chain();
     }
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_COP2 as usize] = OpcodeCategoryDescriptor {
-            ..OpcodeCategoryDescriptor::new(concat!("RSP", "_", "COP2"), EncodedFieldMask::fmt, 0x0)
+            ..OpcodeCategoryDescriptor::new(
+                concat!("RSP", "_", "COP2"),
+                EncodedFieldMask::fmt,
+                0x48000000,
+            )
         }
         .check_panic_chain();
     }
@@ -378,7 +390,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("RSP", "_", "COP2_VU"),
                 EncodedFieldMask::function,
-                0x0,
+                0x4A000000,
             )
         }
         .check_panic_chain();
