@@ -91,15 +91,7 @@ impl Operand {
                     }
                 };
 
-                match parsed {
-                    None => None,
-                    Some((code_upper, code_lower)) => {
-                        let code_upper = EncodedFieldMask::code_upper.unshift(code_upper.into());
-                        let code_lower = EncodedFieldMask::code_lower.unshift(code_lower.into());
-                        let bits = code_upper | code_lower;
-                        Some(EncodedFieldMask::code_upper.union(EncodedFieldMask::code_lower).get_shifted(bits))
-                    }
-                }
+                parsed.map(|(code_upper, code_lower)| reshift_pair((EncodedFieldMask::code_upper, code_upper.into()), (EncodedFieldMask::code_lower, code_lower.into())))
             }
 
             Self::core_code_lower => {
@@ -165,10 +157,7 @@ impl Operand {
                 let (imm_text, reg_text) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
                 utils::i16_hex_from_str(imm_text).ok().and_then(|imm| {
                     regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
-                        let rs = EncodedFieldMask::rs.unshift(rs);
-                        let imm = EncodedFieldMask::immediate.unshift((imm as u16).into());
-                        let bits = imm | rs;
-                        EncodedFieldMask::immediate.union(EncodedFieldMask::rs).get_shifted(bits)
+                        reshift_pair((EncodedFieldMask::rs, rs), (EncodedFieldMask::immediate, (imm as u16).into()))
                     })
                 })
             },
@@ -193,10 +182,7 @@ impl Operand {
                             (maybe_rd, rs)
                         };
 
-                        let rd = EncodedFieldMask::rd.unshift(rd);
-                        let rs = EncodedFieldMask::rs.unshift(rs);
-                        let bits = rd | rs;
-                        Some(EncodedFieldMask::rd.union(EncodedFieldMask::rs).get_shifted(bits))
+                        Some(reshift_pair((EncodedFieldMask::rd, rd), (EncodedFieldMask::rs, rs)))
                     }
                 }
             }
@@ -228,46 +214,143 @@ impl Operand {
                 regval::<RspCop0>(text, abi, allow_dollarless)
             }
             #[cfg(feature = "RSP")]
-            Self::rsp_cop2cd => None /*Self::rsp_cop2cd(field.rsp_cop2cd_impl())*/,
+            Self::rsp_cop2cd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<RspCop2Control>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "RSP")]
             Self::rsp_vs | Self::rsp_vd => {
                 let text = operand_text_from_token(token, opcode, self)?;
                 regval::<RspVector>(text, abi, allow_dollarless)
             }
             #[cfg(feature = "RSP")]
-            Self::rsp_vt_elementhigh => None /*{
-                Self::rsp_vt_elementhigh(field.rsp_vt_impl(), field.rsp_elementhigh_impl())
-            }*/,
+            Self::rsp_vt_elementhigh => {
+                // The brackected argument is optional, so we need to check which one we have here.
+                let (vt, element) = match bracketed_text_from_token(token, opcode, self, BracketType::Brackets).ok() {
+                    Some((vt, element)) => {
+                        let element = parse_rsp_element_hq(element, opcode, self)?;
+
+                        (vt, element)
+                    }
+                    None => {
+                        let text = operand_text_from_token(token, opcode, self)?;
+                        (text, 0)
+                    }
+                };
+
+                let vt = regval::<RspVector>(vt, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, vt, Some((vt, BracketType::Brackets)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_vt, vt), (EncodedFieldMask::rsp_elementhigh, element.into())))
+            }
             #[cfg(feature = "RSP")]
-            Self::rsp_vt_elementlow => None /*{
-                Self::rsp_vt_elementlow(field.rsp_vt_impl(), field.rsp_elementlow_impl())
-            }*/,
+            Self::rsp_vt_elementlow => {
+                let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Brackets)?;
+                let vt = regval::<RspVector>(left, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Brackets)), self,
+                ))?;
+                let element = utils::u8_hex_from_str(right).map_err(|_| EncodingError::UnrecognizedOperand(
+                    opcode, right, Some((right, BracketType::Brackets)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_vt, vt), (EncodedFieldMask::rsp_elementlow, element.into())))
+            }
             #[cfg(feature = "RSP")]
-            Self::rsp_vd_de => None /*Self::rsp_vd_de(field.rsp_vd_impl(), field.rsp_de_impl())*/,
+            Self::rsp_vd_de => {
+                // The brackected argument is optional, so we need to check which one we have here.
+                let (vd, de) = match bracketed_text_from_token(token, opcode, self, BracketType::Brackets).ok() {
+                    Some((vd, de)) => {
+                        let element = parse_rsp_element_hq(de, opcode, self)?;
+
+                        (vd, element)
+                    }
+                    None => {
+                        let text = operand_text_from_token(token, opcode, self)?;
+                        (text, 0)
+                    }
+                };
+
+                let vd = regval::<RspVector>(vd, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, vd, Some((vd, BracketType::Brackets)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_vd, vd), (EncodedFieldMask::rsp_de, de.into())))
+            }
             #[cfg(feature = "RSP")]
-            Self::rsp_vs_index => None /*{
-                Self::rsp_vs_index(field.rsp_vs_impl(), field.rsp_index_impl())
-            }*/,
+            Self::rsp_vs_index => {
+                let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Brackets)?;
+                let vs = regval::<RspVector>(left, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Brackets)), self,
+                ))?;
+                let index = utils::u8_hex_from_str(right).map_err(|_| EncodingError::UnrecognizedOperand(
+                    opcode, right, Some((right, BracketType::Brackets)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_vs, vs), (EncodedFieldMask::rsp_index, index.into())))
+            }
+
             #[cfg(feature = "RSP")]
-            Self::rsp_offset7_rs => None /*{
-                Self::rsp_offset7_rs(field.rsp_offset7_impl(), field.rs_impl())
-            }*/,
+            Self::rsp_offset7_rs => {
+                let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                let offset = utils::u8_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))?;
+                let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_offset, offset.into()), (EncodedFieldMask::rs, rs)))
+            }
             #[cfg(feature = "RSP")]
-            Self::rsp_offset8_rs => None /*{
-                Self::rsp_offset8_rs(field.rsp_offset8_impl(), field.rs_impl())
-            }*/,
+            Self::rsp_offset8_rs => {
+                let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                let offset = utils::u8_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))? >> 1;
+                let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_offset, offset.into()), (EncodedFieldMask::rs, rs)))
+            }
             #[cfg(feature = "RSP")]
-            Self::rsp_offset9_rs => None /*{
-                Self::rsp_offset9_rs(field.rsp_offset9_impl(), field.rs_impl())
-            }*/,
+            Self::rsp_offset9_rs => {
+                let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                let offset = utils::u16_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))? >> 2;
+                let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_offset, offset.into()), (EncodedFieldMask::rs, rs)))
+            }
             #[cfg(feature = "RSP")]
-            Self::rsp_offset10_rs => None /*{
-                Self::rsp_offset10_rs(field.rsp_offset10_impl(), field.rs_impl())
-            }*/,
+            Self::rsp_offset10_rs => {
+                let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                let offset = utils::u16_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))? >> 3;
+                let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_offset, offset.into()), (EncodedFieldMask::rs, rs)))
+            }
             #[cfg(feature = "RSP")]
-            Self::rsp_offset11_rs => None /*{
-                Self::rsp_offset11_rs(field.rsp_offset11_impl(), field.rs_impl())
-            }*/,
+            Self::rsp_offset11_rs => {
+                let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                let offset = utils::u16_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))? >> 4;
+                let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
+                    opcode, left, Some((right, BracketType::Parenthesis)), self,
+                ))?;
+
+                Some(reshift_pair((EncodedFieldMask::rsp_offset, offset.into()), (EncodedFieldMask::rs, rs)))
+            }
+
             #[cfg(feature = "R3000GTE")]
             Self::r3000gte_sf => None /*Self::r3000gte_sf(field.r3000gte_sf_impl())*/,
             #[cfg(feature = "R3000GTE")]
@@ -772,6 +855,37 @@ where
     .map(|reg: R| reg.as_index() as u32)
 }
 
+#[cfg(feature = "RSP")]
+fn parse_rsp_element_hq<'s>(
+    text: &'s str,
+    opcode: Opcode,
+    operand: Operand,
+) -> Result<u8, EncodingError<'s>> {
+    let w = text.ends_with('w');
+    let h = text.ends_with('h');
+    let q = text.ends_with('q');
+
+    let (element, suffix_less) = if w || h || q {
+        (&text[..text.len() - 1], false)
+    } else {
+        (text, true)
+    };
+
+    utils::u8_hex_from_str(element)
+        .map_err(|_| EncodingError::UnrecognizedOperand(opcode, text, None, operand))
+        .map(|x| {
+            if w || suffix_less {
+                x | 8
+            } else if h {
+                x | 4
+            } else if q {
+                x | 2
+            } else {
+                x
+            }
+        })
+}
+
 #[cfg(feature = "R4000ALLEGREX")]
 fn identify_r4000allegrex_vcmp_registers<'s, R>(
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
@@ -901,6 +1015,16 @@ where
     let vs_bits = EncodedFieldMask::r4000allegrex_vs.unshift(vs.as_index() as u32);
     let vt_bits = EncodedFieldMask::r4000allegrex_vt.unshift(vt.as_index() as u32);
     Ok(cond_bits | vs_bits | vt_bits)
+}
+
+const fn reshift_pair(
+    (mask_a, mut value_a): (EncodedFieldMask, u32),
+    (mask_b, mut value_b): (EncodedFieldMask, u32),
+) -> u32 {
+    value_a = mask_a.unshift(value_a);
+    value_b = mask_b.unshift(value_b);
+
+    mask_a.union(mask_b).get_shifted(value_a | value_b)
 }
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
