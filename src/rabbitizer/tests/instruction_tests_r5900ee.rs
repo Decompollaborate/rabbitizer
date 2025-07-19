@@ -819,6 +819,62 @@ fn check_r5900ee_instructions() {
             opcode_str: "ctc2.i",
             operands_str: [Some("$s0"), Some("$vi1"), None, None, None],
         },
+        TestEntry {
+            instr: Instruction::new(
+                0xD8771234,
+                Vram::new(0x80000000),
+                InstructionFlags::new_extension(IsaExtension::R5900EE).with_abi(Abi::EABI64),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lqc2        $vf23, 0x1234($v1)",
+            expected_opcode: Opcode::r5900ee_lqc2,
+            opcode_str: "lqc2",
+            operands_str: [Some("$vf23"), Some("0x1234($v1)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0xF8661234,
+                Vram::new(0x80000000),
+                InstructionFlags::new_extension(IsaExtension::R5900EE).with_abi(Abi::EABI64),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "sqc2        $vf6, 0x1234($v1)",
+            expected_opcode: Opcode::r5900ee_sqc2,
+            opcode_str: "sqc2",
+            operands_str: [Some("$vf6"), Some("0x1234($v1)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x78771234,
+                Vram::new(0x80000000),
+                InstructionFlags::new_extension(IsaExtension::R5900EE).with_abi(Abi::EABI64),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "lq          $s7, 0x1234($v1)",
+            expected_opcode: Opcode::r5900ee_lq,
+            opcode_str: "lq",
+            operands_str: [Some("$s7"), Some("0x1234($v1)"), None, None, None],
+        },
+        TestEntry {
+            instr: Instruction::new(
+                0x7C661234,
+                Vram::new(0x80000000),
+                InstructionFlags::new_extension(IsaExtension::R5900EE).with_abi(Abi::EABI64),
+            ),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: true,
+            expected: "sq          $a2, 0x1234($v1)",
+            expected_opcode: Opcode::r5900ee_sq,
+            opcode_str: "sq",
+            operands_str: [Some("$a2"), Some("0x1234($v1)"), None, None, None],
+        },
     ];
 
     assert_eq!(check_test_entries(ENTRIES, true), (0, 0));

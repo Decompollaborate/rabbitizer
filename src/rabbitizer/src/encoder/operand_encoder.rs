@@ -14,6 +14,7 @@ use crate::registers_meta::Register;
 use crate::utils::{self, DoubleOptIterator};
 
 impl Operand {
+    #[allow(clippy::cognitive_complexity)]
     pub(crate) fn encode_to_bits<'s>(
         self,
         token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
@@ -33,7 +34,7 @@ impl Operand {
             }
             Self::core_sa => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(|x| x.into())
+                utils::u8_hex_from_str(text).ok().map(Into::into)
             }
             Self::core_zero => None /*Self::core_zero()*/,
             Self::core_cop0d => {
@@ -63,11 +64,11 @@ impl Operand {
 
             Self::core_op => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(|x| x.into())
+                utils::u8_hex_from_str(text).ok().map(Into::into)
             }
             Self::core_hint => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(|x| x.into())
+                utils::u8_hex_from_str(text).ok().map(Into::into)
             }
 
             Self::core_code => {
@@ -96,7 +97,7 @@ impl Operand {
 
             Self::core_code_lower => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u16_hex_from_str(text).ok().map(|x| x.into())
+                utils::u16_hex_from_str(text).ok().map(Into::into)
             }
 
             Self::core_copraw => None /*Self::core_copraw(instr.word() & utils::bitmask(0, 25))*/,
@@ -150,7 +151,7 @@ impl Operand {
             }
             Self::core_imm_u16 => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u16_hex_from_str(text).ok().map(|x| x.into())
+                utils::u16_hex_from_str(text).ok().map(Into::into)
             }
 
             Self::core_imm_rs => {
@@ -624,88 +625,147 @@ impl Operand {
             Self::r4000allegrex_rpw => None /*Self::r4000allegrex_rpw(field.r4000allegrex_rpw_impl())*/,
 
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_I => None /*Self::r5900ee_I()*/,
+            Self::r5900ee_I => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                matches!(text, "I" | "$I").then_some(0)
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_Q => None /*Self::r5900ee_Q()*/,
+            Self::r5900ee_Q => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                matches!(text, "Q" | "$Q").then_some(0)
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_R => None /*Self::r5900ee_R()*/,
+            Self::r5900ee_R => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                matches!(text, "R" | "$R").then_some(0)
+            }
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_ACC => None /*Self::r5900ee_ACC()*/,
+
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_imm5 => None /*Self::r5900ee_imm5(field.r5900ee_imm5_impl())*/,
+            Self::r5900ee_imm5 => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::i8_hex_from_str(text).ok().map(|x| (x as u8).into())
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_imm15 => None /*Self::r5900ee_imm15(field.r5900ee_imm15_impl())*/,
+            Self::r5900ee_imm15 => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u32_hex_from_str(text).ok().map(|x| x >> 3)
+            }
+
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vfs => None /*Self::r5900ee_vfs(field.r5900ee_vfs_impl())*/,
+            Self::r5900ee_vfs | Self::r5900ee_vft | Self::r5900ee_vfd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R5900EEVF>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vft => None /*Self::r5900ee_vft(field.r5900ee_vft_impl())*/,
+            Self::r5900ee_vis | Self::r5900ee_vit | Self::r5900ee_vid => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R5900EEVI>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vfd => None /*Self::r5900ee_vfd(field.r5900ee_vfd_impl())*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vis => None /*Self::r5900ee_vis(field.r5900ee_vis_impl())*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vit => None /*Self::r5900ee_vit(field.r5900ee_vit_impl())*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vid => None /*Self::r5900ee_vid(field.r5900ee_vid_impl())*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_ACCxyzw => None /*Self::r5900ee_ACCxyzw(
+            Self::r5900ee_ACCxyzw => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                matches!(text, "ACC" | "$ACC").then_some(0)
+                /*
                 field.r5900ee_xyzw_x_impl(),
                 field.r5900ee_xyzw_y_impl(),
                 field.r5900ee_xyzw_z_impl(),
                 field.r5900ee_xyzw_w_impl(),
-            )*/,
+                */
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vfsxyzw => None /*Self::r5900ee_vfsxyzw(
-                field.r5900ee_vfs_impl(),
+            Self::r5900ee_vfsxyzw | Self::r5900ee_vftxyzw | Self::r5900ee_vfdxyzw => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R5900EEVF>(text, abi, allow_dollarless)
+                /*
                 field.r5900ee_xyzw_x_impl(),
                 field.r5900ee_xyzw_y_impl(),
                 field.r5900ee_xyzw_z_impl(),
                 field.r5900ee_xyzw_w_impl(),
-            )*/,
+                */
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vftxyzw => None /*Self::r5900ee_vftxyzw(
-                field.r5900ee_vft_impl(),
-                field.r5900ee_xyzw_x_impl(),
-                field.r5900ee_xyzw_y_impl(),
-                field.r5900ee_xyzw_z_impl(),
-                field.r5900ee_xyzw_w_impl(),
-            )*/,
+            Self::r5900ee_vftn => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                if text.ends_with('x') || text.ends_with('y') || text.ends_with('z') || text.ends_with('w') {
+                    let n = match text.chars().last().expect("Already checked the string is long enough") {
+                        'x' => 0,
+                        'y' => 1,
+                        'z' => 2,
+                        'w' => 3,
+                        _ => unreachable!(),
+                    };
+                    regval::<R5900EEVF>(&text[..text.len()-1], abi, allow_dollarless).map(|reg| {
+                        reshift_pair((EncodedFieldMask::r5900ee_vft, reg), (EncodedFieldMask::r5900ee_n, n))
+                    })
+                } else {
+                    None
+                }
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vfdxyzw => None /*Self::r5900ee_vfdxyzw(
-                field.r5900ee_vfd_impl(),
-                field.r5900ee_xyzw_x_impl(),
-                field.r5900ee_xyzw_y_impl(),
-                field.r5900ee_xyzw_z_impl(),
-                field.r5900ee_xyzw_w_impl(),
-            )*/,
+            Self::r5900ee_vfsl => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                if text.ends_with('x') || text.ends_with('y') || text.ends_with('z') || text.ends_with('w') {
+                    let l = match text.chars().last().expect("Already checked the string is long enough") {
+                        'x' => 0,
+                        'y' => 1,
+                        'z' => 2,
+                        'w' => 3,
+                        _ => unreachable!(),
+                    };
+                    regval::<R5900EEVF>(&text[..text.len()-1], abi, allow_dollarless).map(|reg| {
+                        reshift_pair((EncodedFieldMask::r5900ee_vfs, reg), (EncodedFieldMask::r5900ee_l, l))
+                    })
+                } else {
+                    None
+                }
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vftn => None /*{
-                Self::r5900ee_vftn(field.r5900ee_vft_impl(), field.r5900ee_n_impl())
-            }*/,
+            Self::r5900ee_vftm => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                if text.ends_with('x') || text.ends_with('y') || text.ends_with('z') || text.ends_with('w') {
+                    let m = match text.chars().last().expect("Already checked the string is long enough") {
+                        'x' => 0,
+                        'y' => 1,
+                        'z' => 2,
+                        'w' => 3,
+                        _ => unreachable!(),
+                    };
+                    regval::<R5900EEVF>(&text[..text.len()-1], abi, allow_dollarless).map(|reg| {
+                        reshift_pair((EncodedFieldMask::r5900ee_vft, reg), (EncodedFieldMask::r5900ee_m, m))
+                    })
+                } else {
+                    None
+                }
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vfsl => None /*{
-                Self::r5900ee_vfsl(field.r5900ee_vfs_impl(), field.r5900ee_l_impl())
-            }*/,
+            Self::r5900ee_vis_predecr | Self::r5900ee_vit_predecr => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                if text.starts_with("(--") && text.ends_with(')') {
+                    regval::<R5900EEVI>(&text[3..text.len()-1], abi, allow_dollarless)
+                } else {
+                    None
+                }
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vftm => None /*{
-                Self::r5900ee_vftm(field.r5900ee_vft_impl(), field.r5900ee_m_impl())
-            }*/,
+            Self::r5900ee_vis_postincr | Self::r5900ee_vit_postincr => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                if text.starts_with('(') && text.ends_with("++)") {
+                    regval::<R5900EEVI>(&text[1..text.len()-3], abi, allow_dollarless)
+                } else {
+                    None
+                }
+            }
             #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vis_predecr => None /*Self::r5900ee_vis_predecr((), field.r5900ee_vis_impl())*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vit_predecr => None /*Self::r5900ee_vit_predecr((), field.r5900ee_vit_impl())*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vis_postincr => None /*{
-                Self::r5900ee_vis_postincr(field.r5900ee_vis_impl(), ())
-            }*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vit_postincr => None /*{
-                Self::r5900ee_vit_postincr(field.r5900ee_vit_impl(), ())
-            }*/,
-            #[cfg(feature = "R5900EE")]
-            Self::r5900ee_vis_parenthesis => None /*{
-                Self::r5900ee_vis_parenthesis(field.r5900ee_vis_impl())
-            }*/,
+            Self::r5900ee_vis_parenthesis => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                if text.starts_with('(') && text.ends_with(')') {
+                    regval::<R5900EEVI>(&text[1..text.len()-1], abi, allow_dollarless)
+                } else {
+                    None
+                }
+            }
         };
 
         let encoded = if let Some(val) = val {

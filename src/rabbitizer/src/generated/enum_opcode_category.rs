@@ -1002,7 +1002,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "REGIMM"),
                 EncodedFieldMask::rt,
-                0x0,
+                0x04000000,
             )
         }
         .check_panic_chain();
@@ -1014,7 +1014,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP0"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x40000000,
             )
         }
         .check_panic_chain();
@@ -1026,7 +1026,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP0_TLB"),
                 EncodedFieldMask::function,
-                0x0,
+                0x42000000,
             )
         }
         .check_panic_chain();
@@ -1037,7 +1037,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP1"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x44000000,
             )
         }
         .check_panic_chain();
@@ -1048,7 +1048,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP1_FPUS"),
                 EncodedFieldMask::function,
-                0x0,
+                0x46000000,
             )
         }
         .check_panic_chain();
@@ -1059,7 +1059,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP2"),
                 EncodedFieldMask::r5900ee_cop2_discriminant,
-                0x0,
+                0x48000000,
             )
         }
         .check_panic_chain();
@@ -1070,7 +1070,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP2_NI"),
                 EncodedFieldMask::r5900ee_cop2_ini_fmt,
-                0x0,
+                0x48000000,
             )
         }
         .check_panic_chain();
@@ -1081,7 +1081,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP2_I"),
                 EncodedFieldMask::r5900ee_cop2_ini_fmt,
-                0x0,
+                0x48000001,
             )
         }
         .check_panic_chain();
@@ -1092,7 +1092,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP2_BC2"),
                 EncodedFieldMask::bc_fmt,
-                0x0,
+                0x49000000,
             )
         }
         .check_panic_chain();
@@ -1103,7 +1103,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP2_SPECIAL1"),
                 EncodedFieldMask::function,
-                0x0,
+                0x4A000000,
             )
         }
         .check_panic_chain();
@@ -1114,7 +1114,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP2_SPECIAL2"),
                 EncodedFieldMask::r5900ee_fhi_flo,
-                0x0,
+                0x4A00003C,
             )
         }
         .check_panic_chain();
@@ -1125,7 +1125,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "COP2_VIWR"),
                 EncodedFieldMask::r5900ee_viwr_fhilo,
-                0x0,
+                0x4A0003FC,
             )
         }
         .check_panic_chain();
@@ -1136,7 +1136,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "MMI"),
                 EncodedFieldMask::function,
-                0x0,
+                0x70000000,
             )
         }
         .check_panic_chain();
@@ -1147,7 +1147,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "MMI_0"),
                 EncodedFieldMask::r5900ee_mmi_function,
-                0x0,
+                0x70000008,
             )
         }
         .check_panic_chain();
@@ -1158,7 +1158,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "MMI_1"),
                 EncodedFieldMask::r5900ee_mmi_function,
-                0x0,
+                0x70000028,
             )
         }
         .check_panic_chain();
@@ -1169,7 +1169,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "MMI_2"),
                 EncodedFieldMask::r5900ee_mmi_function,
-                0x0,
+                0x70000009,
             )
         }
         .check_panic_chain();
@@ -1180,7 +1180,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "MMI_3"),
                 EncodedFieldMask::r5900ee_mmi_function,
-                0x0,
+                0x70000029,
             )
         }
         .check_panic_chain();
@@ -1191,7 +1191,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "MMI_PMFHL"),
                 EncodedFieldMask::r5900ee_mmi_function,
-                0x0,
+                0x70000030,
             )
         }
         .check_panic_chain();
@@ -1202,7 +1202,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R5900EE", "_", "MMI_PMTHL"),
                 EncodedFieldMask::r5900ee_mmi_function,
-                0x0,
+                0x70000031,
             )
         }
         .check_panic_chain();

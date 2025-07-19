@@ -14050,7 +14050,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rt: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_qmfc2_i,
-                OpcodeCategory::R5900EE_COP2,
+                OpcodeCategory::R5900EE_COP2_I,
                 0x01,
                 "qmfc2.i",
                 IsaVersion::EXTENSION,
@@ -14066,7 +14066,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             modifies_rt: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_cfc2_i,
-                OpcodeCategory::R5900EE_COP2,
+                OpcodeCategory::R5900EE_COP2_I,
                 0x02,
                 "cfc2.i",
                 IsaVersion::EXTENSION,
@@ -14082,7 +14082,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             reads_rt: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_qmtc2_i,
-                OpcodeCategory::R5900EE_COP2,
+                OpcodeCategory::R5900EE_COP2_I,
                 0x05,
                 "qmtc2.i",
                 IsaVersion::EXTENSION,
@@ -14098,7 +14098,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
             reads_rt: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_ctc2_i,
-                OpcodeCategory::R5900EE_COP2,
+                OpcodeCategory::R5900EE_COP2_I,
                 0x06,
                 "ctc2.i",
                 IsaVersion::EXTENSION,
