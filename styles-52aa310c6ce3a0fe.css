@@ -77,7 +77,7 @@ main {
 
 textarea {
   flex: 1;
-  background: #1a1a2b;
+  background: var(--code-panel-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -89,7 +89,7 @@ textarea {
 /* Output Code Block */
 pre {
   flex: 1;
-  background: #1a1a2b;
+  background: var(--code-panel-color);
   padding: 0.5rem;
   border-radius: 4px;
   overflow-x: auto;
@@ -141,11 +141,6 @@ pre code {
 
 .settings input {
   margin-top: 0.25rem;
-  padding: 0.4rem;
-  background-color: #1a1a2b;
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
 }
 
 .settings-label-container-centerer {
@@ -175,11 +170,11 @@ footer {
   border-top: 1px solid var(--border-color);
   width: 100%;
   margin-top: auto;
+  color: var(--text-color);
 }
 
 footer p {
-  font-size: 0.85rem;
-  color: #ccc;
+  font-size: 0.80rem;
 }
 
 /* Responsive Layout */
