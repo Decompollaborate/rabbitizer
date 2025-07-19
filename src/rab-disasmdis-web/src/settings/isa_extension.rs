@@ -48,6 +48,13 @@ impl DropdownEnum for Option<IsaExtension> {
     fn array() -> &'static [Self] {
         &ARR
     }
+
+    fn label_text() -> &'static str {
+        "ISA extension:"
+    }
+    fn dropdown_id() -> &'static str {
+        "isa_extension"
+    }
 }
 
 static ARR: [Option<IsaExtension>; 5] = [

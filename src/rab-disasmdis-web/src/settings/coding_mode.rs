@@ -49,6 +49,13 @@ impl DropdownEnum for CodingMode {
     fn array() -> &'static [Self] {
         &ARR
     }
+
+    fn label_text() -> &'static str {
+        "Mode:"
+    }
+    fn dropdown_id() -> &'static str {
+        "coding_mode"
+    }
 }
 
 static ARR: [CodingMode; 2] = [CodingMode::Decoder, CodingMode::Encoder];

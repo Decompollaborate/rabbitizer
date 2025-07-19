@@ -43,6 +43,13 @@ where
     }
 }
 
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord, Default)]
+pub enum LabelPosition {
+    #[default]
+    Upper,
+    Left,
+}
+
 pub trait DropdownEnum
 where
     Self: Sized + PartialEq + 'static,
@@ -51,12 +58,21 @@ where
     fn id(&self) -> &'static str;
     fn name(&self) -> &'static str;
     fn array() -> &'static [Self];
+    fn label_text() -> &'static str;
+    fn dropdown_id() -> &'static str;
 
-    fn gen_dropdown<F, M, S>(&self, link: &Scope<S>, dropdown_id: &'static str, msgfier: F) -> Html
+    fn gen_dropdown<F, M, S>(
+        &self,
+        link: &Scope<S>,
+        label_position: LabelPosition,
+        msgfier: F,
+    ) -> Html
     where
         F: Fn(Self) -> M + 'static,
         S: Component<Message = M>,
     {
+        let label_text = Self::label_text();
+        let dropdown_id = Self::dropdown_id();
         let onchange = link.batch_callback(move |e: Event| {
             let select: HtmlSelectElement = e.target_unchecked_into();
             Some(msgfier(Self::from_id(&select.value())))
@@ -73,10 +89,24 @@ where
             })
             .collect();
 
-        html! {
+        let dropdown = html! {
           <select class="settings-dropdown" id={dropdown_id} {onchange}>
             { elements }
           </select>
+        };
+
+        match label_position {
+            LabelPosition::Upper => html! {
+              <label for={dropdown_id}> { label_text }
+                { dropdown }
+              </label>
+            },
+            LabelPosition::Left => html! {
+              <>
+                <label for={dropdown_id}> { label_text }</label>
+                { dropdown }
+              </>
+            },
         }
     }
 }
@@ -85,8 +115,16 @@ pub trait InputStruct
 where
     Self: Sized,
 {
-    fn gen_input<F, T, S>(&self, link: &Scope<S>, input_id: &'static str, msgfier: F) -> Html
+    fn label_text() -> &'static str;
+    fn input_id() -> &'static str;
+
+    fn gen_input<F, M, S>(
+        &self,
+        link: &Scope<S>,
+        label_position: LabelPosition,
+        msgfier: F,
+    ) -> Html
     where
-        F: Fn(Self) -> T + 'static,
-        S: Component<Message = T>;
+        F: Fn(Self) -> M + 'static,
+        S: Component<Message = M>;
 }

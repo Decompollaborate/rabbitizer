@@ -8,7 +8,7 @@ use yew::{html, Component, Html, TargetCast};
 
 pub use rabbitizer::Vram;
 
-use crate::settings::{InputStruct, Storagable};
+use crate::settings::{InputStruct, LabelPosition, Storagable};
 
 const KEY: &str = "decompollaborate.disasmdis-web.state.vram";
 
@@ -19,11 +19,21 @@ impl Storagable for Vram {
 }
 
 impl InputStruct for Vram {
-    fn gen_input<F, T, S>(&self, link: &Scope<S>, input_id: &'static str, msgfier: F) -> Html
+    fn label_text() -> &'static str {
+        "Vram:"
+    }
+    fn input_id() -> &'static str {
+        "vram"
+    }
+
+    fn gen_input<F, M, S>(&self, link: &Scope<S>, label_position: LabelPosition, msgfier: F) -> Html
     where
-        F: Fn(Self) -> T + 'static,
-        S: Component<Message = T>,
+        F: Fn(Self) -> M + 'static,
+        S: Component<Message = M>,
     {
+        let label_text = Self::label_text();
+        let input_id = Self::input_id();
+
         let onchange = link.batch_callback(move |e: Event| {
             let select: HtmlSelectElement = e.target_unchecked_into();
             let filtered: String = select
@@ -37,11 +47,25 @@ impl InputStruct for Vram {
 
         let value = format!("{:08X}", self.inner());
 
-        html! {
+        let input = html! {
           <div class="settings-label-container-centerer" >
             <span class="settings-label-centered"> {"0x"} </span>
-            <input type="text" id={input_id} size=8 maxlength=8 {value} {onchange} />
+            <input class="settings-dropdown" type="text" id={input_id} size=8 maxlength=8 {value} {onchange} />
           </div>
+        };
+
+        match label_position {
+            LabelPosition::Upper => html! {
+              <label for={input_id}> { label_text }
+                { input }
+              </label>
+            },
+            LabelPosition::Left => html! {
+              <>
+                <label for={input_id}> { label_text }</label>
+                { input }
+              </>
+            },
         }
     }
 }

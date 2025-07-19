@@ -42,6 +42,13 @@ impl DropdownEnum for DefaultLabelDisplay {
     fn array() -> &'static [Self] {
         &ARR
     }
+
+    fn label_text() -> &'static str {
+        "Branch label style:"
+    }
+    fn dropdown_id() -> &'static str {
+        "branch_label"
+    }
 }
 
 static ARR: [DefaultLabelDisplay; 3] = [

@@ -64,6 +64,13 @@ impl DropdownEnum for Theme {
     fn array() -> &'static [Self] {
         &ARR
     }
+
+    fn label_text() -> &'static str {
+        "Theme:"
+    }
+    fn dropdown_id() -> &'static str {
+        "theme"
+    }
 }
 
 static ARR: [Theme; 6] = [

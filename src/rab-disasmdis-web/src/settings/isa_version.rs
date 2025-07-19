@@ -47,6 +47,13 @@ impl DropdownEnum for IsaVersion {
     fn array() -> &'static [Self] {
         &ARR
     }
+
+    fn label_text() -> &'static str {
+        "ISA version:"
+    }
+    fn dropdown_id() -> &'static str {
+        "isa_version"
+    }
 }
 
 static ARR: [IsaVersion; 4] = [

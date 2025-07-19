@@ -43,7 +43,10 @@ pub enum Msg {
 }
 
 pub struct App {
-    input: String,
+    /// Used with CodingMode::Decoder
+    hex_input: String,
+    /// Used with CodingMode::Encoder
+    instr_input: String,
     state: PersistentState,
 }
 
@@ -53,16 +56,18 @@ impl Component for App {
 
     fn create(_ctx: &Context<Self>) -> Self {
         Self {
-            input: "".to_string(),
+            hex_input: "3C028020\n24 42 12 34\n03E00008 00000000".to_string(),
+            instr_input: "lui $v0, 0x8020\naddiu $v0, $v0, 0x1234\njr $ra; nop".to_string(),
             state: PersistentState::new(),
         }
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
-            Msg::InputData(input) => {
-                self.input = input;
-            }
+            Msg::InputData(input) => match self.state.coding_mode {
+                CodingMode::Decoder => self.hex_input = input,
+                CodingMode::Encoder => self.instr_input = input,
+            },
             Msg::ChangeCodingMode(coding_mode) => {
                 self.state.coding_mode = coding_mode;
             }
@@ -119,31 +124,27 @@ impl Component for App {
 impl App {
     fn view_header(&self, ctx: &Context<Self>) -> Html {
         let link = ctx.link();
+        let label_position = LabelPosition::Left;
 
-        let dropdown_id_coding_mode = "coding_mode";
-        let dropdown_coding_mode = self.state.coding_mode.gen_dropdown(
-            link,
-            dropdown_id_coding_mode,
-            Msg::ChangeCodingMode,
-        );
+        let dropdown_coding_mode =
+            self.state
+                .coding_mode
+                .gen_dropdown(link, label_position, Msg::ChangeCodingMode);
 
-        let dropdown_id = "theme";
         let dropdown = self
             .state
             .theme
-            .gen_dropdown(link, dropdown_id, Msg::ChangeTheme);
+            .gen_dropdown(link, label_position, Msg::ChangeTheme);
 
         html! {
           <header>
             <h1> { "🧩 disasmdis-web" } <h6> { built_info::PKG_VERSION } </h6> </h1>
 
             <div class="theme-selector">
-              <label for={dropdown_id_coding_mode}> { "Mode:" }</label>
               { dropdown_coding_mode }
             </div>
 
             <div class="theme-selector">
-              <label for={dropdown_id}> { "Theme:" } </label>
               { dropdown }
             </div>
           </header>
@@ -188,6 +189,15 @@ impl App {
             let input: HtmlInputElement = e.target_unchecked_into();
             Some(Msg::InputData(input.value()))
         });
+        let placeholder = match self.state.coding_mode {
+            CodingMode::Decoder => "Enter hex code...",
+            CodingMode::Encoder => "Enter assembly instructions...",
+        };
+        let value = match self.state.coding_mode {
+            CodingMode::Decoder => &self.hex_input,
+            CodingMode::Encoder => &self.instr_input,
+        }
+        .clone();
 
         html! {
           <div class="input-box">
@@ -196,8 +206,9 @@ impl App {
               id="bytes-input"
               rows="8"
               cols="80"
-              placeholder="Enter hex code..."
+              {placeholder}
               {oninput}
+              {value}
             />
           </div>
         }
@@ -208,10 +219,14 @@ impl App {
             CodingMode::Decoder => self.disassemble_input(),
             CodingMode::Encoder => self.encode_input(),
         };
+        let label = match self.state.coding_mode {
+            CodingMode::Decoder => "Disassembled output",
+            CodingMode::Encoder => "Encoded output",
+        };
 
         html! {
           <div class="output-box">
-            <h2> { "Disassembled output" } </h2>
+            <h2> { label } </h2>
             <div class="scrollable-container">
               <pre><code /*class="language-mipsasm"*/>
                 <table> { result } </table>
@@ -230,7 +245,7 @@ impl App {
         let display_flags = InstructionDisplayFlags::new_gnu_as()
             .with_branch_default_label_display(self.state.branch_label);
 
-        for x in BytesTextParser::new(&self.input) {
+        for x in BytesTextParser::new(&self.hex_input) {
             match x {
                 ParsedTextResult::Bytes(b) => {
                     let word = self.state.endian.word_from_bytes(b);
@@ -263,7 +278,7 @@ impl App {
 
         let flags = InstructionFlags::new_isa(self.state.isa_version, self.state.isa_extension);
 
-        for x in EncoderIterator::new(&self.input, self.state.vram, flags) {
+        for x in EncoderIterator::new(&self.instr_input, self.state.vram, flags) {
             match x {
                 Err(e) => {
                     result.push(html! {
@@ -292,58 +307,42 @@ impl App {
     }
 
     fn view_config(&self, link: &Scope<Self>) -> Html {
-        let dropdown_id_endian = "endian";
+        let label_position = LabelPosition::Upper;
+
         let dropdown_endian =
             self.state
                 .endian
-                .gen_dropdown(link, dropdown_id_endian, Msg::ChangeEndian);
+                .gen_dropdown(link, label_position, Msg::ChangeEndian);
 
-        let dropdown_id_isa_version = "isa_version";
-        let dropdown_isa_version = self.state.isa_version.gen_dropdown(
-            link,
-            dropdown_id_isa_version,
-            Msg::ChangeIsaVersion,
-        );
+        let dropdown_isa_version =
+            self.state
+                .isa_version
+                .gen_dropdown(link, label_position, Msg::ChangeIsaVersion);
 
-        let dropdown_id_isa_extension = "isa_extension";
-        let dropdown_isa_extension = self.state.isa_extension.gen_dropdown(
-            link,
-            dropdown_id_isa_extension,
-            Msg::ChangeIsaExtension,
-        );
+        let dropdown_isa_extension =
+            self.state
+                .isa_extension
+                .gen_dropdown(link, label_position, Msg::ChangeIsaExtension);
 
-        let dropdown_id_branch_label = "branch_label";
-        let dropdown_branch_label = self.state.branch_label.gen_dropdown(
-            link,
-            dropdown_id_branch_label,
-            Msg::ChangeBranchLabel,
-        );
+        let dropdown_branch_label =
+            self.state
+                .branch_label
+                .gen_dropdown(link, label_position, Msg::ChangeBranchLabel);
 
-        let input_id_vram = "vram";
         let dropdown_vram = self
             .state
             .vram
-            .gen_input(link, input_id_vram, Msg::ChangeVram);
+            .gen_input(link, label_position, Msg::ChangeVram);
 
         html! {
           <>
-            <h3> { "⚙️ Configuration" }</h3>
+            <h3> { "⚙️ Configuration" } </h3>
             <div class="settings">
-              <label for={dropdown_id_endian}> { "Endianness:" }
-                { dropdown_endian }
-              </label>
-              <label for={dropdown_id_isa_version}> { "ISA version:" }
-                { dropdown_isa_version }
-              </label>
-              <label for={dropdown_id_isa_extension}> { "ISA extension:" }
-                { dropdown_isa_extension }
-              </label>
-              <label for={dropdown_id_branch_label}> { "Branch label style:" }
-                { dropdown_branch_label }
-              </label>
-              <label for={input_id_vram}> { "Vram:" }
-                { dropdown_vram }
-              </label>
+              { dropdown_endian }
+              { dropdown_isa_version }
+              { dropdown_isa_extension }
+              { dropdown_branch_label }
+              { dropdown_vram }
             </div>
           </>
         }

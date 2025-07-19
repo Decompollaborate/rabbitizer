@@ -48,6 +48,13 @@ impl DropdownEnum for Endian {
     fn array() -> &'static [Self] {
         &ARR
     }
+
+    fn label_text() -> &'static str {
+        "Endianness:"
+    }
+    fn dropdown_id() -> &'static str {
+        "endian"
+    }
 }
 
 impl Endian {
