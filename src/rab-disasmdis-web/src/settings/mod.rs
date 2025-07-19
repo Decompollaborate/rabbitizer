@@ -9,6 +9,7 @@ use yew::html::Scope;
 use yew::{html, Component, Html, TargetCast};
 
 mod branch_default_label_display;
+mod coding_mode;
 mod endian;
 mod isa_extension;
 mod isa_version;
@@ -16,6 +17,7 @@ mod theme;
 mod vram;
 
 pub use branch_default_label_display::DefaultLabelDisplay;
+pub use coding_mode::CodingMode;
 pub use endian::Endian;
 pub use isa_extension::IsaExtension;
 pub use isa_version::IsaVersion;
@@ -50,10 +52,10 @@ where
     fn name(&self) -> &'static str;
     fn array() -> &'static [Self];
 
-    fn gen_dropdown<F, T, S>(&self, link: &Scope<S>, dropdown_id: &'static str, msgfier: F) -> Html
+    fn gen_dropdown<F, M, S>(&self, link: &Scope<S>, dropdown_id: &'static str, msgfier: F) -> Html
     where
-        F: Fn(Self) -> T + 'static,
-        S: Component<Message = T>,
+        F: Fn(Self) -> M + 'static,
+        S: Component<Message = M>,
     {
         let onchange = link.batch_callback(move |e: Event| {
             let select: HtmlSelectElement = e.target_unchecked_into();
@@ -72,7 +74,7 @@ where
             .collect();
 
         html! {
-          <select id={dropdown_id} {onchange}>
+          <select class="settings-dropdown" id={dropdown_id} {onchange}>
             { elements }
           </select>
         }

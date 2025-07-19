@@ -57,6 +57,12 @@ impl Endian {
             Self::Little => u32::from_le_bytes(bytes),
         }
     }
+    pub fn bytes_from_word(self, word: u32) -> [u8; 4] {
+        match self {
+            Self::Big => word.to_be_bytes(),
+            Self::Little => word.to_le_bytes(),
+        }
+    }
 }
 
 static ARR: [Endian; 2] = [Endian::Big, Endian::Little];

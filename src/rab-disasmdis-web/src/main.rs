@@ -1,7 +1,10 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use rabbitizer::{vram::VramOffset, Instruction, InstructionDisplayFlags, InstructionFlags, Vram};
+use rabbitizer::{
+    encoder::EncoderIterator, vram::VramOffset, Instruction, InstructionDisplayFlags,
+    InstructionFlags, Vram,
+};
 use wasm_bindgen::prelude::*;
 use web_sys::HtmlInputElement;
 use yew::events::InputEvent;
@@ -30,6 +33,7 @@ extern "C" {
 
 pub enum Msg {
     InputData(String),
+    ChangeCodingMode(CodingMode),
     ChangeTheme(Theme),
     ChangeEndian(Endian),
     ChangeIsaVersion(IsaVersion),
@@ -58,6 +62,9 @@ impl Component for App {
         match msg {
             Msg::InputData(input) => {
                 self.input = input;
+            }
+            Msg::ChangeCodingMode(coding_mode) => {
+                self.state.coding_mode = coding_mode;
             }
             Msg::ChangeTheme(theme) => {
                 self.state.theme = theme;
@@ -111,15 +118,29 @@ impl Component for App {
 
 impl App {
     fn view_header(&self, ctx: &Context<Self>) -> Html {
+        let link = ctx.link();
+
+        let dropdown_id_coding_mode = "coding_mode";
+        let dropdown_coding_mode = self.state.coding_mode.gen_dropdown(
+            link,
+            dropdown_id_coding_mode,
+            Msg::ChangeCodingMode,
+        );
+
         let dropdown_id = "theme";
         let dropdown = self
             .state
             .theme
-            .gen_dropdown(ctx.link(), dropdown_id, Msg::ChangeTheme);
+            .gen_dropdown(link, dropdown_id, Msg::ChangeTheme);
 
         html! {
           <header>
             <h1> { "🧩 disasmdis-web" } <h6> { built_info::PKG_VERSION } </h6> </h1>
+
+            <div class="theme-selector">
+              <label for={dropdown_id_coding_mode}> { "Mode:" }</label>
+              { dropdown_coding_mode }
+            </div>
 
             <div class="theme-selector">
               <label for={dropdown_id}> { "Theme:" } </label>
@@ -183,24 +204,35 @@ impl App {
     }
 
     fn view_disassemble_box(&self) -> Html {
-        // TODO: configurable flags
-        /*
-        let flags = InstructionFlags::new(args.isa_version.into())
-            .with_isa_extension(args.isa_extension.map(|x| x.into()))
-            .with_all_pseudos(args.pseudos);
-        */
-        let flags = InstructionFlags::new_isa(self.state.isa_version, self.state.isa_extension);
-        let display_flags = InstructionDisplayFlags::new_gnu_as()
-            .with_branch_default_label_display(self.state.branch_label);
+        let result = match self.state.coding_mode {
+            CodingMode::Decoder => self.disassemble_input(),
+            CodingMode::Encoder => self.encode_input(),
+        };
 
+        html! {
+          <div class="output-box">
+            <h2> { "Disassembled output" } </h2>
+            <div class="scrollable-container">
+              <pre><code /*class="language-mipsasm"*/>
+                <table> { result } </table>
+              </code></pre>
+            </div>
+          </div>
+        }
+    }
+
+    fn disassemble_input(&self) -> Vec<Html> {
         let mut result = Vec::new();
         let mut vram = self.state.vram;
         let mut byte_offset = 0;
 
+        let flags = InstructionFlags::new_isa(self.state.isa_version, self.state.isa_extension);
+        let display_flags = InstructionDisplayFlags::new_gnu_as()
+            .with_branch_default_label_display(self.state.branch_label);
+
         for x in BytesTextParser::new(&self.input) {
             match x {
                 ParsedTextResult::Bytes(b) => {
-                    // TODO: endian
                     let word = self.state.endian.word_from_bytes(b);
                     let instr = Instruction::new(word, vram, flags);
                     let disassembled = instr.display::<&str>(&display_flags, None, -4).to_string();
@@ -223,16 +255,40 @@ impl App {
             }
         }
 
-        html! {
-          <div class="output-box">
-            <h2> { "Disassembled Output" } </h2>
-            <div class="scrollable-container">
-              <pre><code /*class="language-mipsasm"*/>
-                <table> { result } </table>
-              </code></pre>
-            </div>
-          </div>
+        result
+    }
+
+    fn encode_input(&self) -> Vec<Html> {
+        let mut result = Vec::new();
+
+        let flags = InstructionFlags::new_isa(self.state.isa_version, self.state.isa_extension);
+
+        for x in EncoderIterator::new(&self.input, self.state.vram, flags) {
+            match x {
+                Err(e) => {
+                    result.push(html! {
+                      <tr>
+                        <td class="cod">{ "/* Error: " } {e} { " */" } </td>
+                      </tr>
+                    });
+                }
+                Ok(instr) => {
+                    let bytes = self.state.endian.bytes_from_word(instr.word());
+                    let formatted = format!(
+                        "{:02X}{:02X}{:02X}{:02X}",
+                        bytes[0], bytes[1], bytes[2], bytes[3]
+                    );
+
+                    result.push(html! {
+                      <tr>
+                        <td class="cod">{ formatted } </td>
+                      </tr>
+                    });
+                }
+            }
         }
+
+        result
     }
 
     fn view_config(&self, link: &Scope<Self>) -> Html {

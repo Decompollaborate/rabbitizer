@@ -7,6 +7,7 @@ use crate::settings::*;
 
 pub struct PersistentState {
     pub theme: Theme,
+    pub coding_mode: CodingMode,
     pub endian: Endian,
     pub isa_version: IsaVersion,
     pub isa_extension: Option<IsaExtension>,
@@ -18,6 +19,7 @@ impl PersistentState {
     pub fn new() -> Self {
         Self {
             theme: Storagable::load_storage(Default::default),
+            coding_mode: Storagable::load_storage(Default::default),
             endian: Storagable::load_storage(Default::default),
             isa_version: Storagable::load_storage(Default::default),
             isa_extension: Storagable::load_storage(Default::default),
@@ -29,6 +31,7 @@ impl PersistentState {
     pub fn save(&self) {
         let Self {
             theme,
+            coding_mode,
             endian,
             isa_version,
             isa_extension,
@@ -37,12 +40,14 @@ impl PersistentState {
         } = self;
 
         info!("Saving theme: {theme:?}");
+        info!("Saving coding_mode: {coding_mode:?}");
         info!("Saving endian: {endian:?}");
         info!("Saving isa_version: {isa_version:?}");
         info!("Saving isa_extension: {isa_extension:?}");
         info!("Saving vram: {vram:?}");
 
         theme.save_storage();
+        coding_mode.save_storage();
         endian.save_storage();
         isa_version.save_storage();
         isa_extension.save_storage();
