@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="/rabbitizer/themes-19f416b131d380e5.css" integrity="sha384-9BxNzyigsqM1rl4TG4zWQ2IcqYGuYDhmIZgYzPATAFnqzZiBX8e1/5DvRa5+Qhf4"/>
     
 <script type="module">
-import init, * as bindings from '/rabbitizer/rab-disasmdis-web-67a56e384c2a88c5.js';
-const wasm = await init({ module_or_path: '/rabbitizer/rab-disasmdis-web-67a56e384c2a88c5_bg.wasm' });
+import init, * as bindings from '/rabbitizer/rab-disasmdis-web-b1ee943aac1caf41.js';
+const wasm = await init({ module_or_path: '/rabbitizer/rab-disasmdis-web-b1ee943aac1caf41_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -26,7 +26,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/mipsasm.min.js"></script>
-  <link rel="modulepreload" href="/rabbitizer/rab-disasmdis-web-67a56e384c2a88c5.js" crossorigin="anonymous" integrity="sha384-ZxTrFxRs9i5uKsMTjHRmz9SZYSZe9fzpz5FGBw0BA9KNia+BlAR/0tkha5+1F+6X"><link rel="preload" href="/rabbitizer/rab-disasmdis-web-67a56e384c2a88c5_bg.wasm" crossorigin="anonymous" integrity="sha384-/JuoBf6ktnnLHfdjFWg5OwQItXS0D4rG9FgHVg70cuOfG3nZaRMSXH0YvrzEdDdZ" as="fetch" type="application/wasm"></head>
+  <link rel="modulepreload" href="/rabbitizer/rab-disasmdis-web-b1ee943aac1caf41.js" crossorigin="anonymous" integrity="sha384-ZxTrFxRs9i5uKsMTjHRmz9SZYSZe9fzpz5FGBw0BA9KNia+BlAR/0tkha5+1F+6X"><link rel="preload" href="/rabbitizer/rab-disasmdis-web-b1ee943aac1caf41_bg.wasm" crossorigin="anonymous" integrity="sha384-qFvO91EnQ5XQJpJ0C5VYKfPRcDBcNu0IBXTLB/khakGqUEtK3cq2tMK3RcMp7xLz" as="fetch" type="application/wasm"></head>
 
   <body>
   </body>
