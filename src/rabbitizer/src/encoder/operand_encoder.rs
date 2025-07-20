@@ -788,7 +788,7 @@ impl Operand {
             }
         };
 
-        EncodedOperandBits::new(encoded, next_token, opcode)
+        EncodedOperandBits::new(encoded, next_token, opcode, self)
     }
 }
 
@@ -1096,14 +1096,21 @@ impl EncodedOperandBits {
         bits: u32,
         next_token: Option<Token<'s>>,
         opcode: Opcode,
+        operand: Operand,
     ) -> Result<Self, EncodingError<'s>> {
         match next_token {
             None | Some(Token::End) => Ok(Self::EndBits(bits)),
-            Some(Token::Text(t)) => Err(EncodingError::TokenInsteadOfComma(opcode, t)),
             Some(Token::Comma) => Ok(Self::ContinueBits(bits)),
-            Some(Token::Bracketed(left, right, bracket_type)) => Err(
-                EncodingError::BracketedInsteadOfComma(opcode, left, right, bracket_type),
-            ),
+            Some(Token::Text(t)) => Err(EncodingError::TokenInsteadOfCommaEnd(opcode, operand, t)),
+            Some(Token::Bracketed(left, right, bracket_type)) => {
+                Err(EncodingError::BracketedInsteadOfCommaEnd(
+                    opcode,
+                    operand,
+                    left,
+                    right,
+                    bracket_type,
+                ))
+            }
         }
     }
 }

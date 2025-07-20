@@ -49,6 +49,23 @@ impl<'s> Iterator for Tokenize<'s> {
             .into_iter()
             .chain(self.char_indices.by_ref());
         while let Some((index, c)) = iterator.next() {
+            if matches!(c, '/') && self.text[index + 1..].starts_with('*') {
+                // Found multiline coment.
+                // Skip over it.
+                iterator.find(|&(other_i, other_c)| {
+                    other_c == '*' && self.text[other_i + 1..].starts_with('/')
+                });
+                // Skip the trailing `/` from the `*/`.
+                iterator.next();
+                continue;
+            }
+            if matches!(c, '#') {
+                // Single line comment.
+                // Skip everything until newline
+                iterator.find(|&(_other_i, other_c)| other_c == '\n');
+                continue;
+            }
+
             if matches!(c, '\n' | ';') {
                 return match current_start {
                     None => Some(Token::End),
@@ -104,7 +121,9 @@ impl<'s> Iterator for Tokenize<'s> {
                         if bracket_start.is_none() {
                             let mut yield_value = true;
                             // Check if after this token there's a bracket start character.
-                            if let Some((i2, c2)) = iterator.find(|&(_, x)| !x.is_whitespace()) {
+                            if let Some((i2, c2)) =
+                                iterator.find(|&(_, x)| !x.is_whitespace() || x == '\n')
+                            {
                                 if matches!(c2, '(' | '[') {
                                     bracket_start.get_or_insert((i2, c2));
                                     yield_value = false;
@@ -204,5 +223,25 @@ mod tests {
             );
             assert_eq!(tokenizer.next(), None)
         }
+    }
+
+    #[test]
+    fn test_tokenizer_multiline() {
+        let s = "lui $v0, 0x8020 \n addiu $v0, $v0, 0x1234";
+        let mut tokenizer = Tokenize::new(s);
+
+        assert_eq!(tokenizer.next(), Some(Token::Text("lui")));
+        assert_eq!(tokenizer.next(), Some(Token::Text("$v0")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(tokenizer.next(), Some(Token::Text("0x8020")));
+        assert_eq!(tokenizer.next(), Some(Token::End));
+        assert_eq!(tokenizer.next(), Some(Token::Text("addiu")));
+        assert_eq!(tokenizer.next(), Some(Token::Text("$v0")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(tokenizer.next(), Some(Token::Text("$v0")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(tokenizer.next(), Some(Token::Text("0x1234")));
+
+        assert_eq!(tokenizer.next(), None)
     }
 }

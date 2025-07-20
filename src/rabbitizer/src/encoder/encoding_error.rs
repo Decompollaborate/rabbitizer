@@ -25,8 +25,8 @@ pub enum EncodingError<'s> {
     WrongBracketedOperand(Opcode, Operand, &'s str, &'s str, BracketType, BracketType),
     UnrecognizedOperand(Opcode, &'s str, Option<(&'s str, BracketType)>, Operand),
     EndButMissingOperands(Opcode, usize),
-    TokenInsteadOfComma(Opcode, &'s str),
-    BracketedInsteadOfComma(Opcode, &'s str, &'s str, BracketType),
+    TokenInsteadOfCommaEnd(Opcode, Operand, &'s str),
+    BracketedInsteadOfCommaEnd(Opcode, Operand, &'s str, &'s str, BracketType),
     MissingCommaInComposedOperand(Opcode, Operand),
 }
 
@@ -67,11 +67,11 @@ impl fmt::Display for EncodingError<'_> {
                 write!(f, "' could not be encoded as operand '{:?}'", operand)
             }
             Self::EndButMissingOperands(opcode, reamining_operands) => write!(f, "Unable to encode opcode '{:?}': Reached end of stream, but there were still {} operands to process", opcode, reamining_operands),
-            Self::TokenInsteadOfComma(opcode, text) => write!(f, "Unable to encode opcode '{:?}': Found token '{}' instead of comma while parsing operands", opcode, text),
-            Self::BracketedInsteadOfComma(opcode, left, right, bracket_type) => {
-                write!(f, "Unable to encode opcode '{:?}': Found token '", opcode)?;
+            Self::TokenInsteadOfCommaEnd(opcode, operand, text) => write!(f, "Unable to encode opcode '{:?}': Found unrecognized token '{}' instead of comma or end while processing operand '{:?}'", opcode, text, operand),
+            Self::BracketedInsteadOfCommaEnd(opcode, operand, left, right, bracket_type) => {
+                write!(f, "Unable to encode opcode '{:?}': Found unrecognized token '", opcode)?;
                 write_bracketed(f, bracket_type, left, right)?;
-                write!(f, "' instead of comma while parsing operands")
+                write!(f, "' instead of comma or end while processing operand '{:?}'", operand)
             }
             Self::MissingCommaInComposedOperand(opcode, operand) => write!(f, "Unable to encode opcode '{:?}': Missing comma in composed operand '{:?}'", opcode, operand),
         }
