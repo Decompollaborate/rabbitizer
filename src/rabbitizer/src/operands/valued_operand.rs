@@ -265,13 +265,13 @@ impl ValuedOperand {
                 Self::r4000allegrex_imm3(field.r4000allegrex_imm3_impl())
             }
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base => Self::r4000allegrex_offset14_base(
+            Operand::r4000allegrex_offset14_rs => Self::r4000allegrex_offset14_rs(
                 field.r4000allegrex_offset14_impl(),
                 field.rs_impl(),
             ),
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base_maybe_wb => {
-                Self::r4000allegrex_offset14_base_maybe_wb(
+            Operand::r4000allegrex_offset14_rs_maybe_wb => {
+                Self::r4000allegrex_offset14_rs_maybe_wb(
                     field.r4000allegrex_offset14_impl(),
                     field.rs_impl(),
                     field.r4000allegrex_wb_impl(),

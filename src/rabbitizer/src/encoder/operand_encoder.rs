@@ -359,143 +359,121 @@ impl Operand {
             }
 
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_s_vs => None /*{
-                Self::r4000allegrex_s_vs(field.r4000allegrex_s_vs_impl())
-            }*/,
+            Self::r4000allegrex_s_vs | Self::r4000allegrex_s_vt | Self::r4000allegrex_s_vd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexS>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_s_vt => None /*{
-                Self::r4000allegrex_s_vt(field.r4000allegrex_s_vt_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_s_vd => None /*{
-                Self::r4000allegrex_s_vd(field.r4000allegrex_s_vd_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_s_vt_imm => None /*{
-                Self::r4000allegrex_s_vt_imm(field.r4000allegrex_s_vt_imm_impl())
-            }*/,
+            Self::r4000allegrex_s_vt_imm => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexS>(text, abi, allow_dollarless).map(|x| {
+                    let upper = x >> 5;
+                    let lower = x & utils::bitmask(0, 5);
+
+                    reshift_pair((EncodedFieldMask::r4000allegrex_vt_6_imm_upper, upper), (EncodedFieldMask::r4000allegrex_vt_imm_lower, lower))
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_s_vd_imm => None /*{
                 Self::r4000allegrex_s_vd_imm(field.r4000allegrex_s_vd_imm_impl())
             }*/,
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_p_vs => None /*{
-                Self::r4000allegrex_p_vs(field.r4000allegrex_p_vs_impl())
-            }*/,
+            Self::r4000allegrex_p_vs | Self::r4000allegrex_p_vt | Self::r4000allegrex_p_vd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexV2D>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_p_vt => None /*{
-                Self::r4000allegrex_p_vt(field.r4000allegrex_p_vt_impl())
-            }*/,
+            Self::r4000allegrex_t_vs | Self::r4000allegrex_t_vt | Self::r4000allegrex_t_vd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexV3D>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_p_vd => None /*{
-                Self::r4000allegrex_p_vd(field.r4000allegrex_p_vd_impl())
-            }*/,
+            Self::r4000allegrex_q_vs | Self::r4000allegrex_q_vt | Self::r4000allegrex_q_vd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexV4D>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_t_vs => None /*{
-                Self::r4000allegrex_t_vs(field.r4000allegrex_t_vs_impl())
-            }*/,
+            Self::r4000allegrex_q_vt_imm => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexV4D>(text, abi, allow_dollarless).map(|x| {
+                    let upper = x >> 5;
+                    let lower = x & utils::bitmask(0, 5);
+
+                    reshift_pair((EncodedFieldMask::r4000allegrex_vt_6_imm_upper, upper), (EncodedFieldMask::r4000allegrex_vt_imm_lower, lower))
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_t_vt => None /*{
-                Self::r4000allegrex_t_vt(field.r4000allegrex_t_vt_impl())
-            }*/,
+            Self::r4000allegrex_mp_vs | Self::r4000allegrex_mp_vt | Self::r4000allegrex_mp_vd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexM2x2>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_t_vd => None /*{
-                Self::r4000allegrex_t_vd(field.r4000allegrex_t_vd_impl())
-            }*/,
+            Self::r4000allegrex_mp_vs_transpose => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexM2x2>(text, abi, allow_dollarless).map(|x| x ^ 0x20)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_q_vs => None /*{
-                Self::r4000allegrex_q_vs(field.r4000allegrex_q_vs_impl())
-            }*/,
+            Self::r4000allegrex_mt_vs | Self::r4000allegrex_mt_vt | Self::r4000allegrex_mt_vd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexM3x3>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_q_vt => None /*{
-                Self::r4000allegrex_q_vt(field.r4000allegrex_q_vt_impl())
-            }*/,
+            Self::r4000allegrex_mt_vs_transpose => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexM3x3>(text, abi, allow_dollarless).map(|x| x ^ 0x20)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_q_vd => None /*{
-                Self::r4000allegrex_q_vd(field.r4000allegrex_q_vd_impl())
-            }*/,
+            Self::r4000allegrex_mq_vs | Self::r4000allegrex_mq_vt | Self::r4000allegrex_mq_vd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexM4x4>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_q_vt_imm => None /*{
-                Self::r4000allegrex_q_vt_imm(field.r4000allegrex_q_vt_imm_impl())
-            }*/,
+            Self::r4000allegrex_mq_vs_transpose => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexM4x4>(text, abi, allow_dollarless).map(|x| x ^ 0x20)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mp_vs => None /*{
-                Self::r4000allegrex_mp_vs(field.r4000allegrex_mp_vs_impl())
-            }*/,
+            Self::r4000allegrex_cop2cs => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexVfpuControl>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mp_vt => None /*{
-                Self::r4000allegrex_mp_vt(field.r4000allegrex_mp_vt_impl())
-            }*/,
+            Self::r4000allegrex_cop2cd => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexVfpuControl>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mp_vd => None /*{
-                Self::r4000allegrex_mp_vd(field.r4000allegrex_mp_vd_impl())
-            }*/,
+            Self::r4000allegrex_pos => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(Into::into)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mp_vs_transpose => None /*{
-                Self::r4000allegrex_mp_vs_transpose(field.r4000allegrex_mp_vs_transpose_impl())
-            }*/,
+            Self::r4000allegrex_size => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(|x| (x - 1).into())
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mt_vs => None /*{
-                Self::r4000allegrex_mt_vs(field.r4000allegrex_mt_vs_impl())
-            }*/,
+            Self::r4000allegrex_size_plus_pos => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(Into::into)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mt_vt => None /*{
-                Self::r4000allegrex_mt_vt(field.r4000allegrex_mt_vt_impl())
-            }*/,
+            Self::r4000allegrex_imm3 => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(Into::into)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mt_vd => None /*{
-                Self::r4000allegrex_mt_vd(field.r4000allegrex_mt_vd_impl())
-            }*/,
+            Self::r4000allegrex_offset14_rs => {
+                let (offset14, reg_text) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                utils::u16_hex_from_str(offset14).ok().and_then(|imm| {
+                    regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
+                        reshift_pair((EncodedFieldMask::rs, rs), (EncodedFieldMask::immediate, (imm >> 2).into()))
+                    })
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mt_vs_transpose => None /*{
-                Self::r4000allegrex_mt_vs_transpose(field.r4000allegrex_mt_vs_transpose_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mq_vs => None /*{
-                Self::r4000allegrex_mq_vs(field.r4000allegrex_mq_vs_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mq_vt => None /*{
-                Self::r4000allegrex_mq_vt(field.r4000allegrex_mq_vt_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mq_vd => None /*{
-                Self::r4000allegrex_mq_vd(field.r4000allegrex_mq_vd_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_mq_vs_transpose => None /*{
-                Self::r4000allegrex_mq_vs_transpose(field.r4000allegrex_mq_vs_transpose_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_cop2cs => None /*{
-                Self::r4000allegrex_cop2cs(field.r4000allegrex_cop2cs_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_cop2cd => None /*{
-                Self::r4000allegrex_cop2cd(field.r4000allegrex_cop2cd_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_pos => None /*Self::r4000allegrex_pos(field.r4000allegrex_pos_impl())*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_size => None /*{
-                Self::r4000allegrex_size(field.r4000allegrex_size_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_size_plus_pos => None /*{
-                Self::r4000allegrex_size_plus_pos(field.r4000allegrex_size_plus_pos_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_imm3 => None /*{
-                Self::r4000allegrex_imm3(field.r4000allegrex_imm3_impl())
-            }*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_offset14_base => None /*Self::r4000allegrex_offset14_base(
-                field.r4000allegrex_offset14_impl(),
-                field.rs_impl(),
-            )*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_offset14_base_maybe_wb => None /*{
-                Self::r4000allegrex_offset14_base_maybe_wb(
+            Self::r4000allegrex_offset14_rs_maybe_wb => None /*{
+                Self::r4000allegrex_offset14_rs_maybe_wb(
                     field.r4000allegrex_offset14_impl(),
                     field.rs_impl(),
                     field.r4000allegrex_wb_impl(),
@@ -578,19 +556,25 @@ impl Operand {
                 Self::r4000allegrex_vconstant(field.r4000allegrex_vconstant_impl())
             }*/,
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_power_of_two => None /*{
-                Self::r4000allegrex_power_of_two(field.r4000allegrex_power_of_two_impl())
-            }*/,
+            Self::r4000allegrex_power_of_two => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(Into::into)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_vfpu_cc_bit => None /*{
-                Self::r4000allegrex_vfpu_cc_bit(field.r4000allegrex_vfpu_cc_bit_impl())
-            }*/,
+            Self::r4000allegrex_vfpu_cc_bit => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(Into::into)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_bn => None /*Self::r4000allegrex_bn(field.r4000allegrex_bn_impl())*/,
+            Self::r4000allegrex_bn => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::u8_hex_from_str(text).ok().map(Into::into)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_int16 => None /*{
-                Self::r4000allegrex_int16(field.r4000allegrex_int16_impl())
-            }*/,
+            Self::r4000allegrex_int16 => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                utils::i16_hex_from_str(text).ok().map(|x| (x as u16).into())
+            }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_float16 => None /*Self::r4000allegrex_float16(
                 ordered_float::OrderedFloat(field.r4000allegrex_float16_impl()),
@@ -616,13 +600,53 @@ impl Operand {
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_wpw => None /*Self::r4000allegrex_wpw(field.r4000allegrex_wpw_impl())*/,
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_rpx => None /*Self::r4000allegrex_rpx(field.r4000allegrex_rpx_impl())*/,
+            Self::r4000allegrex_rpx => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
+                    let a = (x & utils::bitmask(4, 1)) << 16;
+                    let b = (x & utils::bitmask(3, 1)) << 12;
+                    let c = (x & utils::bitmask(2, 1)) << 8;
+                    let d = x & utils::bitmask(0, 2);
+
+                    a | b | c | d
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_rpy => None /*Self::r4000allegrex_rpy(field.r4000allegrex_rpy_impl())*/,
+            Self::r4000allegrex_rpy => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
+                    let a = (x & utils::bitmask(4, 1)) << 17;
+                    let b = (x & utils::bitmask(3, 1)) << 13;
+                    let c = (x & utils::bitmask(2, 1)) << 9;
+                    let d = (x & utils::bitmask(0, 2)) << 2;
+
+                    a | b | c | d
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_rpz => None /*Self::r4000allegrex_rpz(field.r4000allegrex_rpz_impl())*/,
+            Self::r4000allegrex_rpz => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
+                    let a = (x & utils::bitmask(4, 1)) << 18;
+                    let b = (x & utils::bitmask(3, 1)) << 14;
+                    let c = (x & utils::bitmask(2, 1)) << 10;
+                    let d = (x & utils::bitmask(0, 2)) << 4;
+
+                    a | b | c | d
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_rpw => None /*Self::r4000allegrex_rpw(field.r4000allegrex_rpw_impl())*/,
+            Self::r4000allegrex_rpw => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
+                    let a = (x & utils::bitmask(4, 1)) << 19;
+                    let b = (x & utils::bitmask(3, 1)) << 15;
+                    let c = (x & utils::bitmask(2, 1)) << 11;
+                    let d = (x & utils::bitmask(0, 2)) << 6;
+
+                    a | b | c | d
+                })
+            }
 
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_I => {

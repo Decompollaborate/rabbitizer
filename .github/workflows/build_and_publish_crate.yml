@@ -67,6 +67,9 @@ jobs:
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Run doc tets
+        run: cargo test --doc --all-features
+
       - name: Run doc
         run: cargo doc --all-features
 

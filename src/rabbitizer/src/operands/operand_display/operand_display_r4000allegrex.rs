@@ -474,7 +474,7 @@ where
             write!(f, "0x{:X}", s)
         })
     }
-    pub(crate) fn display_r4000allegrex_offset14_base(
+    pub(crate) fn display_r4000allegrex_offset14_rs(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
@@ -492,11 +492,11 @@ where
         Self::display_core_rs(myself, f)?;
         write!(f, ")")
     }
-    pub(crate) fn display_r4000allegrex_offset14_base_maybe_wb(
+    pub(crate) fn display_r4000allegrex_offset14_rs_maybe_wb(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
-        Self::display_r4000allegrex_offset14_base(myself, f)?;
+        Self::display_r4000allegrex_offset14_rs(myself, f)?;
 
         if myself.instr.field().r4000allegrex_wb_impl() {
             write!(f, ", wb")?;

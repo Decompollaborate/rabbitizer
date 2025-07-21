@@ -144,9 +144,9 @@ pub enum Operand {
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_imm3,
     #[cfg(feature = "R4000ALLEGREX")]
-    r4000allegrex_offset14_base,
+    r4000allegrex_offset14_rs,
     #[cfg(feature = "R4000ALLEGREX")]
-    r4000allegrex_offset14_base_maybe_wb,
+    r4000allegrex_offset14_rs_maybe_wb,
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt,
     #[cfg(feature = "R4000ALLEGREX")]
@@ -785,16 +785,16 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
-        table[Operand::r4000allegrex_offset14_base as usize] = OperandDescriptor::new(
-            concat!("r4000allegrex", "_", "offset14_base"),
+        table[Operand::r4000allegrex_offset14_rs as usize] = OperandDescriptor::new(
+            concat!("r4000allegrex", "_", "offset14_rs"),
             EncodedFieldMask::r4000allegrex_offset14.union(EncodedFieldMask::rs),
         )
         .check_panic_chain();
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
-        table[Operand::r4000allegrex_offset14_base_maybe_wb as usize] = OperandDescriptor::new(
-            concat!("r4000allegrex", "_", "offset14_base_maybe_wb"),
+        table[Operand::r4000allegrex_offset14_rs_maybe_wb as usize] = OperandDescriptor::new(
+            concat!("r4000allegrex", "_", "offset14_rs_maybe_wb"),
             EncodedFieldMask::r4000allegrex_offset14
                 .union(EncodedFieldMask::rs)
                 .union(EncodedFieldMask::r4000allegrex_wb),
@@ -1327,12 +1327,12 @@ where
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_imm3 => OperandDisplay::display_r4000allegrex_imm3(self, f),
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base => {
-                OperandDisplay::display_r4000allegrex_offset14_base(self, f)
+            Operand::r4000allegrex_offset14_rs => {
+                OperandDisplay::display_r4000allegrex_offset14_rs(self, f)
             }
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base_maybe_wb => {
-                OperandDisplay::display_r4000allegrex_offset14_base_maybe_wb(self, f)
+            Operand::r4000allegrex_offset14_rs_maybe_wb => {
+                OperandDisplay::display_r4000allegrex_offset14_rs_maybe_wb(self, f)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
@@ -1584,9 +1584,9 @@ pub enum ValuedOperand {
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_imm3(u8),
     #[cfg(feature = "R4000ALLEGREX")]
-    r4000allegrex_offset14_base(u16, Gpr),
+    r4000allegrex_offset14_rs(u16, Gpr),
     #[cfg(feature = "R4000ALLEGREX")]
-    r4000allegrex_offset14_base_maybe_wb(u16, Gpr, bool),
+    r4000allegrex_offset14_rs_maybe_wb(u16, Gpr, bool),
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(
         R4000AllegrexVCond,
@@ -1828,10 +1828,10 @@ impl Operand {
             #[cfg(feature = "R4000ALLEGREX")]
             ValuedOperand::r4000allegrex_imm3(..) => Self::r4000allegrex_imm3,
             #[cfg(feature = "R4000ALLEGREX")]
-            ValuedOperand::r4000allegrex_offset14_base(..) => Self::r4000allegrex_offset14_base,
+            ValuedOperand::r4000allegrex_offset14_rs(..) => Self::r4000allegrex_offset14_rs,
             #[cfg(feature = "R4000ALLEGREX")]
-            ValuedOperand::r4000allegrex_offset14_base_maybe_wb(..) => {
-                Self::r4000allegrex_offset14_base_maybe_wb
+            ValuedOperand::r4000allegrex_offset14_rs_maybe_wb(..) => {
+                Self::r4000allegrex_offset14_rs_maybe_wb
             }
             #[cfg(feature = "R4000ALLEGREX")]
             ValuedOperand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(..) => {

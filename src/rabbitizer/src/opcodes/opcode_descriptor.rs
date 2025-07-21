@@ -814,11 +814,11 @@ impl OpcodeDescriptor {
                     return true;
                 }
                 #[cfg(feature = "R4000ALLEGREX")]
-                if self.has_specific_operand(Operand::r4000allegrex_offset14_base) {
+                if self.has_specific_operand(Operand::r4000allegrex_offset14_rs) {
                     return true;
                 }
                 #[cfg(feature = "R4000ALLEGREX")]
-                if self.has_specific_operand(Operand::r4000allegrex_offset14_base_maybe_wb) {
+                if self.has_specific_operand(Operand::r4000allegrex_offset14_rs_maybe_wb) {
                     return true;
                 }
             }
@@ -1040,9 +1040,9 @@ impl OpcodeDescriptor {
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_imm3 => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base => {}
+            Operand::r4000allegrex_offset14_rs => {}
             #[cfg(feature = "R4000ALLEGREX")]
-            Operand::r4000allegrex_offset14_base_maybe_wb => {}
+            Operand::r4000allegrex_offset14_rs_maybe_wb => {}
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {}
             #[cfg(feature = "R4000ALLEGREX")]

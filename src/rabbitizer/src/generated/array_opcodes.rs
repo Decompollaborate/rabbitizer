@@ -6489,7 +6489,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r4000allegrex_lv_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(
                 Operand::r4000allegrex_s_vt_imm,
-                Operand::r4000allegrex_offset14_base,
+                Operand::r4000allegrex_offset14_rs,
             ),
             instr_type: InstrType::I,
             reads_rs: true,
@@ -6509,7 +6509,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r4000allegrex_sv_s as usize] = OpcodeDescriptor {
             operands: Operand::arr2(
                 Operand::r4000allegrex_s_vt_imm,
-                Operand::r4000allegrex_offset14_base,
+                Operand::r4000allegrex_offset14_rs,
             ),
             instr_type: InstrType::I,
             reads_rs: true,
@@ -6529,7 +6529,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r4000allegrex_lv_q as usize] = OpcodeDescriptor {
             operands: Operand::arr2(
                 Operand::r4000allegrex_q_vt_imm,
-                Operand::r4000allegrex_offset14_base,
+                Operand::r4000allegrex_offset14_rs,
             ),
             instr_type: InstrType::I,
             reads_rs: true,
@@ -6549,7 +6549,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r4000allegrex_sv_q as usize] = OpcodeDescriptor {
             operands: Operand::arr2(
                 Operand::r4000allegrex_q_vt_imm,
-                Operand::r4000allegrex_offset14_base_maybe_wb,
+                Operand::r4000allegrex_offset14_rs_maybe_wb,
             ),
             instr_type: InstrType::I,
             reads_rs: true,
@@ -11681,7 +11681,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r4000allegrex_svl_q as usize] = OpcodeDescriptor {
             operands: Operand::arr2(
                 Operand::r4000allegrex_q_vt_imm,
-                Operand::r4000allegrex_offset14_base,
+                Operand::r4000allegrex_offset14_rs,
             ),
             instr_type: InstrType::I,
             reads_rs: true,
@@ -11701,7 +11701,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r4000allegrex_svr_q as usize] = OpcodeDescriptor {
             operands: Operand::arr2(
                 Operand::r4000allegrex_q_vt_imm,
-                Operand::r4000allegrex_offset14_base,
+                Operand::r4000allegrex_offset14_rs,
             ),
             instr_type: InstrType::I,
             reads_rs: true,

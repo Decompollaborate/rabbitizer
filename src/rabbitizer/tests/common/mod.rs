@@ -271,7 +271,7 @@ impl TestEntry {
             Some(Err(e)) => {
                 // TODO: add error
                 println!(
-                    "Unable to encode '{}' due to error:\n    '{}'",
+                    "Unable to encode '{}' due to error:\n    {}",
                     self.expected, e
                 );
                 errors += 1;

@@ -500,7 +500,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "SPECIAL_RS"),
                 EncodedFieldMask::rs,
-                0x0,
+                0x00000002,
             )
         }
         .check_panic_chain();
@@ -511,7 +511,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "SPECIAL_SA"),
                 EncodedFieldMask::sa,
-                0x0,
+                0x00000006,
             )
         }
         .check_panic_chain();
@@ -522,7 +522,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "REGIMM"),
                 EncodedFieldMask::rt,
-                0x0,
+                0x04000000,
             )
         }
         .check_panic_chain();
@@ -533,7 +533,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "SPECIAL2"),
                 EncodedFieldMask::function,
-                0x0,
+                0x70000000,
             )
         }
         .check_panic_chain();
@@ -544,7 +544,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "SPECIAL3"),
                 EncodedFieldMask::function,
-                0x0,
+                0x7C000000,
             )
         }
         .check_panic_chain();
@@ -555,7 +555,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "SPECIAL3_BSHFL"),
                 EncodedFieldMask::sa,
-                0x0,
+                0x7C000020,
             )
         }
         .check_panic_chain();
@@ -567,7 +567,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP0"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x40000000,
             )
         }
         .check_panic_chain();
@@ -579,7 +579,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP0_BC0"),
                 EncodedFieldMask::bc_fmt,
-                0x0,
+                0x41000000,
             )
         }
         .check_panic_chain();
@@ -591,7 +591,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP0_TLB"),
                 EncodedFieldMask::function,
-                0x0,
+                0x42000000,
             )
         }
         .check_panic_chain();
@@ -602,7 +602,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP1"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x44000000,
             )
         }
         .check_panic_chain();
@@ -613,7 +613,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP1_BC1"),
                 EncodedFieldMask::bc_fmt,
-                0x0,
+                0x45000000,
             )
         }
         .check_panic_chain();
@@ -624,7 +624,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP1_FPUS"),
                 EncodedFieldMask::function,
-                0x0,
+                0x46000000,
             )
         }
         .check_panic_chain();
@@ -635,7 +635,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP1_FPUW"),
                 EncodedFieldMask::function,
-                0x0,
+                0x46800000,
             )
         }
         .check_panic_chain();
@@ -646,7 +646,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP2"),
                 EncodedFieldMask::fmt,
-                0x0,
+                0x48000000,
             )
         }
         .check_panic_chain();
@@ -657,7 +657,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP2_BC2"),
                 EncodedFieldMask::r4000allegrex_bc2_fmt,
-                0x0,
+                0x49000000,
             )
         }
         .check_panic_chain();
@@ -668,7 +668,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP2_MFHC2"),
                 EncodedFieldMask::r4000allegrex_mxhc2,
-                0x0,
+                0x48600000,
             )
         }
         .check_panic_chain();
@@ -679,7 +679,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP2_MFHC2_P"),
                 EncodedFieldMask::r4000allegrex_mfhc2_p_fmt,
-                0x0,
+                0x48600080,
             )
         }
         .check_panic_chain();
@@ -690,7 +690,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP2_MFHC2_P_S"),
                 EncodedFieldMask::r4000allegrex_mfhc2_p_s_fmt,
-                0x0,
+                0x486000F0,
             )
         }
         .check_panic_chain();
@@ -701,7 +701,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "COP2_MTHC2"),
                 EncodedFieldMask::r4000allegrex_mxhc2,
-                0x0,
+                0x48E00000,
             )
         }
         .check_panic_chain();
@@ -712,7 +712,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU0"),
                 EncodedFieldMask::r4000allegrex_vfpu0_fmt,
-                0x0,
+                0x60000000,
             )
         }
         .check_panic_chain();
@@ -723,7 +723,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU1"),
                 EncodedFieldMask::r4000allegrex_vfpu0_fmt,
-                0x0,
+                0x64000000,
             )
         }
         .check_panic_chain();
@@ -745,7 +745,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt,
-                0x0,
+                0xD0000000,
             )
         }
         .check_panic_chain();
@@ -756,7 +756,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt,
-                0x0,
+                0xD0000000,
             )
         }
         .check_panic_chain();
@@ -767,7 +767,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT0"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                0x0,
+                0xD0000000,
             )
         }
         .check_panic_chain();
@@ -778,7 +778,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT2"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                0x0,
+                0xD0100000,
             )
         }
         .check_panic_chain();
@@ -789,7 +789,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT3"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                0x0,
+                0xD0180000,
             )
         }
         .check_panic_chain();
@@ -800,7 +800,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_RND"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                0x0,
+                0xD0200000,
             )
         }
         .check_panic_chain();
@@ -812,7 +812,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 ..OpcodeCategoryDescriptor::new(
                     concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CVTFLT"),
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                    0x0,
+                    0xD0300000,
                 )
             }
             .check_panic_chain();
@@ -824,7 +824,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 ..OpcodeCategoryDescriptor::new(
                     concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CVTINT"),
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                    0x0,
+                    0xD0380000,
                 )
             }
             .check_panic_chain();
@@ -835,7 +835,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT8"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                0x0,
+                0xD0400000,
             )
         }
         .check_panic_chain();
@@ -846,7 +846,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_FMT9"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                0x0,
+                0xD0480000,
             )
         }
         .check_panic_chain();
@@ -858,7 +858,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 ..OpcodeCategoryDescriptor::new(
                     concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CONTROL"),
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                    0x0,
+                    0xD0500000,
                 )
             }
             .check_panic_chain();
@@ -869,7 +869,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_COLOR"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
-                0x0,
+                0xD0580000,
             )
         }
         .check_panic_chain();
@@ -880,7 +880,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT0_CST"),
                 EncodedFieldMask::r4000allegrex_tp,
-                0x0,
+                0xD0600000,
             )
         }
         .check_panic_chain();
@@ -891,7 +891,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU4_FMT2"),
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt2_fmt,
-                0x0,
+                0xD2000000,
             )
         }
         .check_panic_chain();
@@ -903,7 +903,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 ..OpcodeCategoryDescriptor::new(
                     concat!("R4000ALLEGREX", "_", "VFPU4_FMT2_CNDMOVE"),
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt2_cndmove_fmt,
-                    0x0,
+                    0xD2A00000,
                 )
             }
             .check_panic_chain();
@@ -914,7 +914,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU5"),
                 EncodedFieldMask::r4000allegrex_vfpu5_fmt,
-                0x0,
+                0xDC000000,
             )
         }
         .check_panic_chain();
@@ -925,7 +925,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU6"),
                 EncodedFieldMask::r4000allegrex_vfpu6_fmt,
-                0x0,
+                0xF0000000,
             )
         }
         .check_panic_chain();
@@ -936,7 +936,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU6_FMT7"),
                 EncodedFieldMask::r4000allegrex_vfpu6_fmt7_fmt,
-                0x0,
+                0xF3800000,
             )
         }
         .check_panic_chain();
@@ -947,7 +947,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU6_FMT7_FMT0"),
                 EncodedFieldMask::r4000allegrex_vfpu6_fmt7_fmt0_fmt,
-                0x0,
+                0xF3800000,
             )
         }
         .check_panic_chain();
@@ -958,7 +958,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "VFPU7"),
                 EncodedFieldMask::r4000allegrex_vfpu7_fmt,
-                0x0,
+                0xFC000000,
             )
         }
         .check_panic_chain();
@@ -969,7 +969,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             ..OpcodeCategoryDescriptor::new(
                 concat!("R4000ALLEGREX", "_", "QUADLR"),
                 EncodedFieldMask::r4000allegrex_wb,
-                0x0,
+                0xF4000000,
             )
         }
         .check_panic_chain();

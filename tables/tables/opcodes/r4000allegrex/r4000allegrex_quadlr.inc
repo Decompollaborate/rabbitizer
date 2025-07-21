@@ -12,14 +12,14 @@
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, R4000ALLEGREX_QUADLR, 0x0, svl_q, svl.q, R4000ALLEGREX,
-        operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base),
+        operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_rs),
         instr_type: InstrType::I,
         reads_rs: true
     ) // Store Quad word Left from Vfpu
 
     RAB_DEF_OPCODE_EXT_ALTNAME(
         r4000allegrex, R4000ALLEGREX_QUADLR, 0x1, svr_q, svr.q, R4000ALLEGREX,
-        operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_base),
+        operands: Operand::arr2(Operand::r4000allegrex_q_vt_imm, Operand::r4000allegrex_offset14_rs),
         instr_type: InstrType::I,
         reads_rs: true
     ) // Store Quad word Right from Vfpu

@@ -199,6 +199,10 @@ where
 
 #[cfg(feature = "encoder")]
 pub fn i32_hex_from_str(s: &str) -> Result<i32, core::num::ParseIntError> {
+    if matches!(s, "-0x80000000" | "-0X80000000" | "-2147483648") {
+        return Ok(-0x80000000);
+    }
+
     let is_negative = s.starts_with('-');
     let s = s.trim_start_matches('-');
 
@@ -224,6 +228,10 @@ pub fn u32_hex_from_str(s: &str) -> Result<u32, core::num::ParseIntError> {
 
 #[cfg(feature = "encoder")]
 pub fn i16_hex_from_str(s: &str) -> Result<i16, core::num::ParseIntError> {
+    if matches!(s, "-0x8000" | "-0X8000" | "-32768") {
+        return Ok(-0x8000);
+    }
+
     let is_negative = s.starts_with('-');
     let s = s.trim_start_matches('-');
 
@@ -249,6 +257,10 @@ pub fn u16_hex_from_str(s: &str) -> Result<u16, core::num::ParseIntError> {
 
 #[cfg(feature = "encoder")]
 pub fn i8_hex_from_str(s: &str) -> Result<i8, core::num::ParseIntError> {
+    if matches!(s, "-0x80" | "-0X80" | "-128") {
+        return Ok(-0x80);
+    }
+
     let is_negative = s.starts_with('-');
     let s = s.trim_start_matches('-');
 
