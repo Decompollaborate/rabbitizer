@@ -10,6 +10,8 @@ pub(crate) enum Token<'s> {
     Text(&'s str),
     /// a[b], a(b)
     Bracketed(&'s str, &'s str, BracketType),
+    /// [b], (b)
+    BracketSolo(&'s str, BracketType),
 }
 
 #[derive(Debug, Clone)]
@@ -41,7 +43,7 @@ impl<'s> Iterator for Tokenize<'s> {
         }
 
         let mut current_start: Option<usize> = None;
-        let mut bracket_start: Option<(usize, char)> = None;
+        let mut bracket_start_info: Option<(usize, char)> = None;
 
         let mut iterator = self
             .trailing_char
@@ -86,30 +88,31 @@ impl<'s> Iterator for Tokenize<'s> {
                 };
             }
 
-            if matches!(c, ')' | ']') && bracket_start.is_some() {
-                let (bracket_index, bracket_char) = bracket_start.unwrap();
-                let parethesis = bracket_char == '(' && c == ')';
-                let brackets = bracket_char == '[' && c == ']';
-                if parethesis || brackets {
-                    let i = current_start.unwrap();
-                    let left = &self.text[i..bracket_index];
-                    let right = &self.text[bracket_index + 1..index];
-                    if parethesis {
-                        return Some(Token::Bracketed(
-                            left.trim(),
-                            right.trim(),
-                            BracketType::Parenthesis,
-                        ));
-                    } else if brackets {
-                        return Some(Token::Bracketed(
-                            left.trim(),
-                            right.trim(),
-                            BracketType::Brackets,
-                        ));
-                    } else {
-                        unreachable!()
+            if matches!(c, '(' | '[') || bracket_start_info.is_some() {
+                let (bracket_index, bracket_start) = bracket_start_info.unwrap_or((index, c));
+
+                let bracket_type = if bracket_start == '(' {
+                    BracketType::Parenthesis
+                } else if bracket_start == '[' {
+                    BracketType::Brackets
+                } else {
+                    unreachable!()
+                };
+                let bracket_end = bracket_type.right();
+
+                // Consume the iterator until we find the first closing bracket
+                let (end_pos, _) = iterator.find(|&(_other_i, other_c)| other_c == bracket_end)?;
+
+                let bracketed_part = &self.text[bracket_index + 1..end_pos];
+                let token = match current_start {
+                    None => Token::BracketSolo(bracketed_part, bracket_type),
+                    Some(i) => {
+                        let left = &self.text[i..bracket_index];
+
+                        Token::Bracketed(left.trim(), bracketed_part.trim(), bracket_type)
                     }
-                }
+                };
+                return Some(token);
             }
 
             if c.is_whitespace() {
@@ -118,14 +121,14 @@ impl<'s> Iterator for Tokenize<'s> {
                     Some(i) => {
                         // Do not yield at the very first space if we are
                         // inside a bracket-like expression.
-                        if bracket_start.is_none() {
+                        if bracket_start_info.is_none() {
                             let mut yield_value = true;
                             // Check if after this token there's a bracket start character.
                             if let Some((i2, c2)) =
                                 iterator.find(|&(_, x)| !x.is_whitespace() || x == '\n')
                             {
                                 if matches!(c2, '(' | '[') {
-                                    bracket_start.get_or_insert((i2, c2));
+                                    bracket_start_info.get_or_insert((i2, c2));
                                     yield_value = false;
                                 } else {
                                     // Ensure we don't lose this value.
@@ -140,13 +143,8 @@ impl<'s> Iterator for Tokenize<'s> {
                     }
                 }
             } else {
-                let already_started = current_start.is_some();
                 // Replace if empty
                 current_start.get_or_insert(index);
-
-                if already_started && matches!(c, '(' | '[') {
-                    bracket_start.get_or_insert((index, c));
-                }
             }
         }
 
@@ -242,6 +240,23 @@ mod tests {
         assert_eq!(tokenizer.next(), Some(Token::Comma));
         assert_eq!(tokenizer.next(), Some(Token::Text("0x1234")));
 
+        assert_eq!(tokenizer.next(), None)
+    }
+
+    #[test]
+    fn test_tokenizer_bracket_solo() {
+        let s = "vrot.q      C002, S400, [C,S,S,S]";
+        let mut tokenizer = Tokenize::new(s);
+
+        assert_eq!(tokenizer.next(), Some(Token::Text("vrot.q")));
+        assert_eq!(tokenizer.next(), Some(Token::Text("C002")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(tokenizer.next(), Some(Token::Text("S400")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(
+            tokenizer.next(),
+            Some(Token::BracketSolo("C,S,S,S", BracketType::Brackets))
+        );
         assert_eq!(tokenizer.next(), None)
     }
 }

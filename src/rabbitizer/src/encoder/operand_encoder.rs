@@ -584,17 +584,125 @@ impl Operand {
                 })
             }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_p_vrot_code => None /*{
-                Self::r4000allegrex_p_vrot_code(field.r4000allegrex_vrot_code_impl())
-            }*/,
+            Self::r4000allegrex_p_vrot_code => {
+                let text = bracket_solo_from_token(token, opcode, self, BracketType::Brackets)?;
+                // TODO: what to do with the duplicated entries?
+                match text {
+                    "C,S"  => Some(0),
+                    "S,C"  => Some(1),
+                    "S,0"  => Some(2),
+                    //"S,0"  => Some(3),
+                    //"C,S"  => Some(4),
+                    //"S,C"  => Some(5),
+                    "0,S"  => Some(6),
+                    //"0,S"  => Some(7),
+                    "C,0"  => Some(8),
+                    "0,C"  => Some(9),
+                    "S,S"  => Some(10),
+                    "0,0"  => Some(11),
+                    //"C,0"  => Some(12),
+                    //"0,C"  => Some(13),
+                    //"0,0"  => Some(14),
+                    //"S,S"  => Some(15),
+                    "C,-S" => Some(16),
+                    "-S,C" => Some(17),
+                    "-S,0" => Some(18),
+                    //"-S,0" => Some(19),
+                    //"C,-S" => Some(20),
+                    //"-S,C" => Some(21),
+                    "0,-S" => Some(22),
+                    //"0,-S" => Some(23),
+                    //"C,0"  => Some(24),
+                    //"0,C"  => Some(25),
+                    "-S,-S"=> Some(26),
+                    //"0,0"  => Some(27),
+                    //"C,0"  => Some(28),
+                    //"0,C"  => Some(29),
+                    //"0,0"  => Some(30),
+                    //"-S,-S"=> Some(31),
+                    _ => None,
+                }
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_t_vrot_code => None /*{
-                Self::r4000allegrex_t_vrot_code(field.r4000allegrex_vrot_code_impl())
-            }*/,
+            Self::r4000allegrex_t_vrot_code => {
+                let text = bracket_solo_from_token(token, opcode, self, BracketType::Brackets)?;
+                // TODO: what to do with the duplicated entries?
+                match text {
+                    "C,S,S" => Some(0),
+                    "S,C,0" => Some(1),
+                    "S,0,C" => Some(2),
+                    "S,0,0" => Some(3),
+                    "C,S,0" => Some(4),
+                    "S,C,S" => Some(5),
+                    "0,S,C" => Some(6),
+                    "0,S,0" => Some(7),
+                    "C,0,S" => Some(8),
+                    "0,C,S" => Some(9),
+                    "S,S,C" => Some(10),
+                    "0,0,S" => Some(11),
+                    "C,0,0" => Some(12),
+                    "0,C,0" => Some(13),
+                    "0,0,C" => Some(14),
+                    "S,S,S" => Some(15),
+                    "C,-S,-S" => Some(16),
+                    "-S,C,0" => Some(17),
+                    "-S,0,C" => Some(18),
+                    "-S,0,0" => Some(19),
+                    "C,-S,0" => Some(20),
+                    "-S,C,-S" => Some(21),
+                    "0,-S,C" => Some(22),
+                    "0,-S,0" => Some(23),
+                    "C,0,-S" => Some(24),
+                    "0,C,-S" => Some(25),
+                    "-S,-S,C" => Some(26),
+                    "0,0,-S" => Some(27),
+                    //"C,0,0" => Some(28),
+                    //"0,C,0" => Some(29),
+                    //"0,0,C" => Some(30),
+                    "-S,-S,-S" => Some(31),
+                    _ => None,
+                }
+            }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_q_vrot_code => None /*{
-                Self::r4000allegrex_q_vrot_code(field.r4000allegrex_vrot_code_impl())
-            }*/,
+            Self::r4000allegrex_q_vrot_code => {
+                let text = bracket_solo_from_token(token, opcode, self, BracketType::Brackets)?;
+                // TODO: what to do with the duplicated entries?
+                match text {
+                    "C,S,S,S" => Some(0),
+                    "S,C,0,0" => Some(1),
+                    "S,0,C,0" => Some(2),
+                    "S,0,0,C" => Some(3),
+                    "C,S,0,0" => Some(4),
+                    "S,C,S,S" => Some(5),
+                    "0,S,C,0" => Some(6),
+                    "0,S,0,C" => Some(7),
+                    "C,0,S,0" => Some(8),
+                    "0,C,S,0" => Some(9),
+                    "S,S,C,S" => Some(10),
+                    "0,0,S,C" => Some(11),
+                    "C,0,0,S" => Some(12),
+                    "0,C,0,S" => Some(13),
+                    "0,0,C,S" => Some(14),
+                    "S,S,S,C" => Some(15),
+                    "C,-S,-S,-S" => Some(16),
+                    "-S,C,0,0" => Some(17),
+                    "-S,0,C,0" => Some(18),
+                    "-S,0,0,C" => Some(19),
+                    "C,-S,0,0" => Some(20),
+                    "-S,C,-S,-S" => Some(21),
+                    "0,-S,C,0" => Some(22),
+                    "0,-S,0,C" => Some(23),
+                    "C,0,-S,0" => Some(24),
+                    "0,C,-S,0" => Some(25),
+                    "-S,-S,C,-S" => Some(26),
+                    "0,0,-S,C" => Some(27),
+                    "C,0,0,-S" => Some(28),
+                    "0,C,0,-S" => Some(29),
+                    "0,0,C,-S" => Some(30),
+                    "-S,-S,-S,C" => Some(31),
+                    _ => None,
+                }
+            }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_wpx => None /*Self::r4000allegrex_wpx(field.r4000allegrex_wpx_impl())*/,
             #[cfg(feature = "R4000ALLEGREX")]
@@ -799,21 +907,22 @@ impl Operand {
         let encoded = if let Some(val) = val {
             self.mask().unshift(val)
         } else {
-            match token {
-                Token::End => return Err(EncodingError::EndTokenInsteadOfOperand(opcode, self)),
-                Token::Comma => return Err(EncodingError::CommaInsteadOfOperand(opcode, self)),
-                Token::Text(text) => {
-                    return Err(EncodingError::UnrecognizedOperand(opcode, text, None, self))
+            let err = match token {
+                Token::End => EncodingError::EndTokenInsteadOfOperand(opcode, self),
+                Token::Comma => EncodingError::CommaInsteadOfOperand(opcode, self),
+                Token::Text(text) => EncodingError::UnrecognizedOperand(opcode, text, None, self),
+                Token::Bracketed(left, right, bracket_type) => EncodingError::UnrecognizedOperand(
+                    opcode,
+                    left,
+                    Some((right, bracket_type)),
+                    self,
+                ),
+                Token::BracketSolo(text, bracket_type) => {
+                    EncodingError::UnrecognizedOperand(opcode, "", Some((text, bracket_type)), self)
                 }
-                Token::Bracketed(left, right, bracket_type) => {
-                    return Err(EncodingError::UnrecognizedOperand(
-                        opcode,
-                        left,
-                        Some((right, bracket_type)),
-                        self,
-                    ))
-                }
-            }
+            };
+
+            return Err(err);
         };
 
         EncodedOperandBits::new(encoded, next_token, opcode, self)
@@ -833,9 +942,10 @@ const fn operand_text_from_token<'s>(
     operand: Operand,
 ) -> Result<&'s str, EncodingError<'s>> {
     match token {
+        Token::Text(text) => Ok(text),
+
         Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
         Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
-        Token::Text(text) => Ok(text),
         Token::Bracketed(left, right, bracket_type) => {
             Err(EncodingError::BracketedInsteadOfSingleOperand(
                 opcode,
@@ -845,6 +955,9 @@ const fn operand_text_from_token<'s>(
                 bracket_type,
             ))
         }
+        Token::BracketSolo(text, bracket_type) => Err(
+            EncodingError::BracketSoloInsteadOfSingleOperand(opcode, operand, text, bracket_type),
+        ),
     }
 }
 
@@ -855,14 +968,6 @@ fn bracketed_text_from_token<'s>(
     required_bracket_type: BracketType,
 ) -> Result<(&'s str, &'s str), EncodingError<'s>> {
     match token {
-        Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
-        Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
-        Token::Text(text) => Err(EncodingError::TextInsteadOfBracketedOperand(
-            opcode,
-            operand,
-            text,
-            required_bracket_type,
-        )),
         Token::Bracketed(left, right, bracket_type) => {
             if bracket_type == required_bracket_type {
                 Ok((left, right))
@@ -876,6 +981,67 @@ fn bracketed_text_from_token<'s>(
                     required_bracket_type,
                 ))
             }
+        }
+
+        Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
+        Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
+        Token::Text(text) => Err(EncodingError::TextInsteadOfBracketedOperand(
+            opcode,
+            operand,
+            text,
+            required_bracket_type,
+        )),
+        Token::BracketSolo(text, bracket_type) => {
+            Err(EncodingError::BracketSoloInsteadOfBracketedOperand(
+                opcode,
+                operand,
+                text,
+                bracket_type,
+                required_bracket_type,
+            ))
+        }
+    }
+}
+
+fn bracket_solo_from_token<'s>(
+    token: Token<'s>,
+    opcode: Opcode,
+    operand: Operand,
+    required_bracket_type: BracketType,
+) -> Result<&'s str, EncodingError<'s>> {
+    match token {
+        Token::BracketSolo(text, bracket_type) => {
+            if bracket_type == required_bracket_type {
+                Ok(text)
+            } else {
+                Err(EncodingError::WrongBracketedOperand(
+                    opcode,
+                    operand,
+                    "",
+                    text,
+                    bracket_type,
+                    required_bracket_type,
+                ))
+            }
+        }
+
+        Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
+        Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
+        Token::Text(text) => Err(EncodingError::TextInsteadOfBracketedOperand(
+            opcode,
+            operand,
+            text,
+            required_bracket_type,
+        )),
+        Token::Bracketed(left, right, bracket_type) => {
+            Err(EncodingError::BracketedInsteadOfBracketSoloOperand(
+                opcode,
+                operand,
+                left,
+                right,
+                bracket_type,
+                required_bracket_type,
+            ))
         }
     }
 }
@@ -1129,6 +1295,7 @@ impl EncodedOperandBits {
         match next_token {
             None | Some(Token::End) => Ok(Self::EndBits(bits)),
             Some(Token::Comma) => Ok(Self::ContinueBits(bits)),
+
             Some(Token::Text(t)) => Err(EncodingError::TokenInsteadOfCommaEnd(opcode, operand, t)),
             Some(Token::Bracketed(left, right, bracket_type)) => {
                 Err(EncodingError::BracketedInsteadOfCommaEnd(
@@ -1139,6 +1306,9 @@ impl EncodedOperandBits {
                     bracket_type,
                 ))
             }
+            Some(Token::BracketSolo(text, bracket_type)) => Err(
+                EncodingError::BracketSoloInsteadOfCommaEnd(opcode, operand, text, bracket_type),
+            ),
         }
     }
 }

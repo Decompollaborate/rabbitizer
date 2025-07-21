@@ -129,6 +129,12 @@ impl<'s> Iterator for EncoderIterator<'s> {
                         bracket_type,
                     )))
                 }
+                Some(Token::BracketSolo(text, bracket_type)) => {
+                    return Some(Err(EncodingError::BracketSoloInsteadOfOpcode(
+                        text,
+                        bracket_type,
+                    )))
+                }
             }
         };
 
