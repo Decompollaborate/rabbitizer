@@ -22,7 +22,7 @@ impl Operand {
         allow_dollarless: bool,
         opcode: Opcode,
     ) -> Result<EncodedOperandBits, EncodingError<'s>> {
-        let Some((token, mut next_token)) = token_stream.next() else {
+        let Some((mut token, mut next_token)) = token_stream.next() else {
             return Err(EncodingError::RanOutOfTokens(opcode, self));
         };
 
@@ -472,13 +472,28 @@ impl Operand {
                 })
             }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_offset14_rs_maybe_wb => None /*{
-                Self::r4000allegrex_offset14_rs_maybe_wb(
-                    field.r4000allegrex_offset14_impl(),
-                    field.rs_impl(),
-                    field.r4000allegrex_wb_impl(),
-                )
-            }*/,
+            Self::r4000allegrex_offset14_rs_maybe_wb => {
+                let (offset14, reg_text) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
+
+                let wb = if next_token == Some(Token::Comma) {
+                    let wb_text = request_next_text(token_stream, &mut next_token, opcode, self)?;
+                    if wb_text == "wb" {
+                        1
+                    } else {
+                        return Err(EncodingError::UnrecognizedOperand(opcode, wb_text, None, self));
+                    }
+                } else {
+                    0
+                };
+
+                utils::u16_hex_from_str(offset14).ok().and_then(|imm| {
+                    regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
+                        let repaired = reshift_pair((EncodedFieldMask::rs, rs), (EncodedFieldMask::immediate, (imm >> 2).into()));
+
+                        reshift_pair((EncodedFieldMask::r4000allegrex_wb, wb), (EncodedFieldMask::rs.union(EncodedFieldMask::immediate), repaired))
+                    })
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
                 let text = operand_text_from_token(token, opcode, self)?;
@@ -552,9 +567,10 @@ impl Operand {
                 }
             },
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_vconstant => None /*{
-                Self::r4000allegrex_vconstant(field.r4000allegrex_vconstant_impl())
-            }*/,
+            Self::r4000allegrex_vconstant => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexVConstant>(text, abi, allow_dollarless)
+            }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_power_of_two => {
                 let text = operand_text_from_token(token, opcode, self)?;
@@ -666,7 +682,6 @@ impl Operand {
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_q_vrot_code => {
                 let text = bracket_solo_from_token(token, opcode, self, BracketType::Brackets)?;
-                // TODO: what to do with the duplicated entries?
                 match text {
                     "C,S,S,S" => Some(0),
                     "S,C,0,0" => Some(1),
@@ -704,13 +719,27 @@ impl Operand {
                 }
             }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_wpx => None /*Self::r4000allegrex_wpx(field.r4000allegrex_wpx_impl())*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_wpy => None /*Self::r4000allegrex_wpy(field.r4000allegrex_wpy_impl())*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_wpz => None /*Self::r4000allegrex_wpz(field.r4000allegrex_wpz_impl())*/,
-            #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_wpw => None /*Self::r4000allegrex_wpw(field.r4000allegrex_wpw_impl())*/,
+            Self::r4000allegrex_wpx | Self::r4000allegrex_wpy | Self::r4000allegrex_wpz | Self::r4000allegrex_wpw => {
+                // An empty operand is valid for some reason, so we have to
+                // mess up with the token stream to allow this kind of stuff
+                // i.e. `vpfxd       , , , ` is valid.
+                (token, next_token) = if token == Token::Comma {
+                    if let Some(n) = next_token {
+                        token_stream.push_front(n);
+                    }
+                    (Token::Text(""), Some(Token::Comma))
+                } else {
+                    (token, next_token)
+                };
+
+                let text = operand_text_from_token(token, opcode, self)?;
+                regval::<R4000AllegrexPrefixDst>(text, abi, allow_dollarless).map(|x| {
+                    let c = x >> 2;
+                    let d = x & utils::bitmask(0, 2);
+
+                    (c << 8) | d
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_rpx => {
                 let text = operand_text_from_token(token, opcode, self)?;

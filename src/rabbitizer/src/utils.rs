@@ -237,11 +237,13 @@ where
 }
 
 #[cfg(feature = "encoder")]
+#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct DoubleOptIterator<I>
 where
     I: Iterator,
 {
     iter: I,
+    front: Option<I::Item>,
 }
 
 #[cfg(feature = "encoder")]
@@ -250,7 +252,11 @@ where
     I: Iterator,
 {
     pub const fn new(iter: I) -> Self {
-        Self { iter }
+        Self { iter, front: None }
+    }
+
+    pub fn push_front(&mut self, item: I::Item) {
+        self.front = Some(item);
     }
 }
 
@@ -262,7 +268,7 @@ where
     type Item = (I::Item, Option<I::Item>);
 
     fn next(&mut self) -> Option<Self::Item> {
-        match self.iter.next() {
+        match self.front.take().or_else(|| self.iter.next()) {
             None => None,
             Some(x) => Some((x, self.iter.next())),
         }

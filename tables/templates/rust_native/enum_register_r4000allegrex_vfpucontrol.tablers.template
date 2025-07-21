@@ -35,13 +35,13 @@ pub enum REGISTER_ENUM_NAME {
 #define RABBITIZER_DEF_REG_NODOLLAR(prefix, name, value, ...) \
     table[ REGISTER_ENUM_NAME :: name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
-        ..RegisterDescriptor::new( #name, value, concat!("$", #value), false) \
+        ..RegisterDescriptor::new( #name, value - REGISTER_OFFSET, concat!("$", #value), false) \
     } .check_panic_chain();
 
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
     table[ REGISTER_ENUM_NAME :: r ## name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
-        ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$", #value), true) \
+        ..RegisterDescriptor::new( concat!("$", #name), value - REGISTER_OFFSET, concat!("$", #value), true) \
     } .check_panic_chain();
 
 #define REGISTER_COUNT 128
@@ -53,7 +53,7 @@ pub static R4000ALLEGREX_VFPUCONTROL: [RegisterDescriptor; REGISTER_COUNT] = {
 
     let mut i = 0;
     while i < REGISTER_COUNT {
-        assert!(table[i].value() as usize - REGISTER_OFFSET == i, "Broken register index?");
+        assert!(table[i].value() as usize == i, "Broken register index?");
 
         i += 1;
     }
