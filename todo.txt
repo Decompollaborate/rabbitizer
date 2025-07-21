@@ -13,3 +13,5 @@
   - Will need to be renamed to avoid the `is_` part, probably
 
 - Decide how to capitalize cargo isa features.
+
+- Rename `Error` to the specific error type.

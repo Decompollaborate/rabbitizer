@@ -60,7 +60,7 @@ bindings_c = []
 pyo3 = ["std", "dep:pyo3", "all_extensions", "all_gated_extensions"]
 
 # Documentation should be generated with every user-facing feature
-doc = ["MIPS_IV", "all_extensions", "all_gated_extensions"]
+doc = ["MIPS_IV", "all_extensions", "all_gated_extensions", "encoder"]
 
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }
@@ -69,6 +69,13 @@ pyo3 = { version = "0.23.2", optional = true }
 serde = { version = "1", features = ["derive"], default-features = false, optional = true }
 
 [package.metadata.docs.rs]
+# Build docs with the following flags to see how they should look on docs.rs.
+# `RUSTFLAGS="--cfg docsrs" cargo +nightly doc -p rabbitizer -F doc --open`
+
 # This should allow documenting parts of the crate that are not enabled by default
 # https://docs.rs/about/metadata
 features = ['doc']
+# In theory this (in combination with `[cfg_attr(docsrs, feature(doc_cfg))]`
+# and `[cfg_attr(docsrs, doc(cfg(feature = "encoder")))]`) allows to have a message
+# specifying that something requires a specific feature to be available.
+rustdoc-args = ["--cfg", "docsrs"]

@@ -49,7 +49,7 @@ pub(crate) const fn from_2s_complement<const WIDTH: u32>(number: u32) -> i32 {
 pub(crate) const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
     // IEEE754 16-bit floats are encoded in 16 bits as follows:
     // Sign bit: 1 bit (bit 15)
-    // Encoded exponent: 5 bits (bits 10 ~ 15)
+    // Encoded exponent: 5 bits (bits 10 ~ 14)
     // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
 
     let mut ret: u32 = 0;
@@ -67,7 +67,7 @@ pub(crate) const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
 
     let encoded_exponent: i32 = arg as i32 >> 10;
     // Clear up the encoded exponent
-    arg &= !0x7C00;
+    arg &= !bitmask(10, 5) as u16;
 
     // Exponent bias: 0xF
     let real_exponent: i32 = encoded_exponent - 0xF;
@@ -90,7 +90,7 @@ pub(crate) const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
         // Infinity and NaN
 
         ret |= (sign as u32) << 31;
-        ret |= 0x7F800000;
+        ret |= bitmask(23, 8);
 
         if !mantissa_is_zero {
             // NaN
@@ -111,6 +111,78 @@ pub(crate) const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
     ret |= (arg as u32) << (23 - 10);
 
     ret
+}
+
+#[must_use]
+#[cfg(feature = "R4000ALLEGREX")]
+#[cfg(feature = "encoder")]
+pub(crate) const fn floatrepr_16_from_32(mut arg: u32) -> u16 {
+    // IEEE754 16-bit floats are encoded in 16 bits as follows:
+    // Sign bit: 1 bit (bit 15)
+    // Encoded exponent: 5 bits (bits 10 ~ 14)
+    // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
+
+    let mut ret = 0;
+    let sign = (arg >> 31) as u16;
+
+    // Clear up the sign
+    arg &= !(1 << 31);
+
+    // If parameter is zero, then return zero
+    if arg == 0 {
+        // Preserve the sign
+        ret |= sign << 15;
+        return ret;
+    }
+
+    let encoded_exponent = (arg >> 23) as i32;
+    // Clear up the encoded exponent
+    arg &= !bitmask(23, 8);
+
+    // Exponent bias: 0xF
+    let real_exponent = encoded_exponent - 0x7F;
+
+    let mantissa_is_zero = arg == 0;
+
+    match encoded_exponent {
+        0x00 => {
+            // subnormals
+
+            ret |= sign << 15;
+            // no need to set the exponent part since it was already zero'd
+
+            // Set the mantissa
+            ret |= (arg >> (23 - 10)) as u16;
+
+            ret
+        }
+        0xFF => {
+            // Infinity and NaN
+
+            ret |= sign << 15;
+            ret |= bitmask(10, 5) as u16;
+
+            if !mantissa_is_zero {
+                // NaN
+
+                // Set the mantissa to any non-zero value
+                ret |= (arg >> (23 - 10)) as u16;
+            }
+
+            ret
+        }
+        _ => {
+            ret |= sign << 15;
+
+            // re-encode the exponent
+            ret |= mask((real_exponent + 0xF) as u32, 5) as u16;
+
+            // Set the mantissa
+            ret |= (arg >> (23 - 10)) as u16;
+
+            ret
+        }
+    }
 }
 
 /// If `a` is `true` then `b` must be `true` too. If `a` is `false` then we
@@ -282,4 +354,20 @@ pub fn u8_hex_from_str(s: &str) -> Result<u8, core::num::ParseIntError> {
     };
 
     Ok(value)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    #[cfg(feature = "R4000ALLEGREX")]
+    fn test_floatrepr_32_from_16_1_5() {
+        // 1.5 in f16
+        let hex_16 = 0x3E00;
+        let hex_32 = floatrepr_32_from_16(hex_16);
+
+        assert_eq!(hex_32, 0x3FC00000);
+        assert_eq!(f32::from_bits(hex_32), 1.5);
+    }
 }

@@ -87,6 +87,8 @@
 #![allow(clippy::uninlined_format_args)]
 //
 #![cfg_attr(not(feature = "std"), no_std)]
+//
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[cfg(feature = "pyo3")]
 use pyo3::prelude::*;
@@ -109,6 +111,7 @@ pub mod registers_meta;
 pub mod vram;
 
 #[cfg(feature = "encoder")]
+#[cfg_attr(docsrs, doc(cfg(feature = "encoder")))]
 pub mod encoder;
 
 mod utils;

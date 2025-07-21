@@ -576,9 +576,13 @@ impl Operand {
                 utils::i16_hex_from_str(text).ok().map(|x| (x as u16).into())
             }
             #[cfg(feature = "R4000ALLEGREX")]
-            Self::r4000allegrex_float16 => None /*Self::r4000allegrex_float16(
-                ordered_float::OrderedFloat(field.r4000allegrex_float16_impl()),
-            )*/,
+            Self::r4000allegrex_float16 => {
+                let text = operand_text_from_token(token, opcode, self)?;
+                let float = text.parse::<f32>();
+                float.ok().filter(|x| (-65504.0..=65504.0).contains(x) || x.is_nan() || x.is_infinite()).map(|x| {
+                    utils::floatrepr_16_from_32(x.to_bits()).into()
+                })
+            }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_p_vrot_code => None /*{
                 Self::r4000allegrex_p_vrot_code(field.r4000allegrex_vrot_code_impl())
