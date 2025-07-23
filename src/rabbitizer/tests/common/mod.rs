@@ -288,12 +288,13 @@ impl TestEntry {
                     errors += 1;
                 }
                 if instr.word() != self.instr.word() {
+                    println!("Encoded instruction does not match the expected word.");
                     println!(
-                        "Encoded instruction '{}' (encoded '{}') does not match the expected word.",
-                        self.expected, disasm
+                        "    Expected: '0x{:08X}' '{}'",
+                        self.instr.word(),
+                        self.expected
                     );
-                    println!("    Expected: '0x{:08X}'", self.instr.word());
-                    println!("    Got:      '0x{:08X}'", instr.word());
+                    println!("    Got:      '0x{:08X}' '{}'", instr.word(), disasm);
                     errors += 1;
                 }
             }

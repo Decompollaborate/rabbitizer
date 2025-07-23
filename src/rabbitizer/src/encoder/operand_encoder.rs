@@ -467,7 +467,7 @@ impl Operand {
                 let (offset14, reg_text) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
                 utils::u16_hex_from_str(offset14).ok().and_then(|imm| {
                     regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
-                        reshift_pair((EncodedFieldMask::rs, rs), (EncodedFieldMask::immediate, (imm >> 2).into()))
+                        reshift_pair((EncodedFieldMask::r4000allegrex_offset14, (imm >> 2).into()), (EncodedFieldMask::rs, rs))
                     })
                 })
             }
@@ -488,7 +488,7 @@ impl Operand {
 
                 utils::u16_hex_from_str(offset14).ok().and_then(|imm| {
                     regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
-                        let repaired = reshift_pair((EncodedFieldMask::rs, rs), (EncodedFieldMask::immediate, (imm >> 2).into()));
+                        let repaired = reshift_pair((EncodedFieldMask::r4000allegrex_offset14, (imm >> 2).into()), (EncodedFieldMask::rs, rs));
 
                         reshift_pair((EncodedFieldMask::r4000allegrex_wb, wb), (EncodedFieldMask::rs.union(EncodedFieldMask::immediate), repaired))
                     })
@@ -744,9 +744,9 @@ impl Operand {
             Self::r4000allegrex_rpx => {
                 let text = operand_text_from_token(token, opcode, self)?;
                 regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
-                    let a = (x & utils::bitmask(4, 1)) << 16;
-                    let b = (x & utils::bitmask(3, 1)) << 12;
-                    let c = (x & utils::bitmask(2, 1)) << 8;
+                    let a = ((x & utils::bitmask(4, 1)) >> 4) << 16;
+                    let b = ((x & utils::bitmask(3, 1)) >> 3) << 12;
+                    let c = ((x & utils::bitmask(2, 1)) >> 2) << 8;
                     let d = x & utils::bitmask(0, 2);
 
                     a | b | c | d
@@ -756,10 +756,11 @@ impl Operand {
             Self::r4000allegrex_rpy => {
                 let text = operand_text_from_token(token, opcode, self)?;
                 regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
-                    let a = (x & utils::bitmask(4, 1)) << 17;
-                    let b = (x & utils::bitmask(3, 1)) << 13;
-                    let c = (x & utils::bitmask(2, 1)) << 9;
-                    let d = (x & utils::bitmask(0, 2)) << 2;
+                    const SHIFT_VAL: u32 = 2;
+                    let a = ((x & utils::bitmask(4, 1)) >> 4) << (17 - SHIFT_VAL);
+                    let b = ((x & utils::bitmask(3, 1)) >> 3) << (13 - SHIFT_VAL);
+                    let c = ((x & utils::bitmask(2, 1)) >> 2) << (9 - SHIFT_VAL);
+                    let d = (x & utils::bitmask(0, 2)) << (2 - SHIFT_VAL);
 
                     a | b | c | d
                 })
@@ -768,10 +769,11 @@ impl Operand {
             Self::r4000allegrex_rpz => {
                 let text = operand_text_from_token(token, opcode, self)?;
                 regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
-                    let a = (x & utils::bitmask(4, 1)) << 18;
-                    let b = (x & utils::bitmask(3, 1)) << 14;
-                    let c = (x & utils::bitmask(2, 1)) << 10;
-                    let d = (x & utils::bitmask(0, 2)) << 4;
+                    const SHIFT_VAL: u32 = 4;
+                    let a = ((x & utils::bitmask(4, 1)) >> 4) << (18 - SHIFT_VAL);
+                    let b = ((x & utils::bitmask(3, 1)) >> 3) << (14 - SHIFT_VAL);
+                    let c = ((x & utils::bitmask(2, 1)) >> 2) << (10 - SHIFT_VAL);
+                    let d = (x & utils::bitmask(0, 2)) << (4 - SHIFT_VAL);
 
                     a | b | c | d
                 })
@@ -780,10 +782,11 @@ impl Operand {
             Self::r4000allegrex_rpw => {
                 let text = operand_text_from_token(token, opcode, self)?;
                 regval::<R4000AllegrexPrefixSrc>(text, abi, allow_dollarless).map(|x| {
-                    let a = (x & utils::bitmask(4, 1)) << 19;
-                    let b = (x & utils::bitmask(3, 1)) << 15;
-                    let c = (x & utils::bitmask(2, 1)) << 11;
-                    let d = (x & utils::bitmask(0, 2)) << 6;
+                    const SHIFT_VAL: u32 = 6;
+                    let a = ((x & utils::bitmask(4, 1)) >> 4) << (19 - SHIFT_VAL);
+                    let b = ((x & utils::bitmask(3, 1)) >> 3) << (15 - SHIFT_VAL);
+                    let c = ((x & utils::bitmask(2, 1)) >> 2) << (11 - SHIFT_VAL);
+                    let d = (x & utils::bitmask(0, 2)) << (6 - SHIFT_VAL);
 
                     a | b | c | d
                 })

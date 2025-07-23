@@ -16,7 +16,7 @@ pub enum R4000AllegrexPrefixSrc {
     abs_x = 4,
     abs_y = 5,
     abs_z = 6,
-    abw_w = 7,
+    abs_w = 7,
     zero = 8,
     one = 9,
     two = 10,
@@ -32,7 +32,7 @@ pub enum R4000AllegrexPrefixSrc {
     neg_abs_x = 20,
     neg_abs_y = 21,
     neg_abs_z = 22,
-    neg_abw_w = 23,
+    neg_abs_w = 23,
     neg_zero = 24,
     neg_one = 25,
     neg_two = 26,
@@ -86,10 +86,10 @@ pub static R4000ALLEGREX_PREFIX_SRC: [RegisterDescriptor; 32] = {
         ..RegisterDescriptor::new("abs_z", 6, concat!("$", "6"), false)
     }
     .check_panic_chain();
-    table[R4000AllegrexPrefixSrc::abw_w as usize] = RegisterDescriptor {
+    table[R4000AllegrexPrefixSrc::abs_w as usize] = RegisterDescriptor {
         name: "|W|",
         name_numeric: "|W|",
-        ..RegisterDescriptor::new("abw_w", 7, concat!("$", "7"), false)
+        ..RegisterDescriptor::new("abs_w", 7, concat!("$", "7"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixSrc::zero as usize] = RegisterDescriptor {
@@ -182,10 +182,10 @@ pub static R4000ALLEGREX_PREFIX_SRC: [RegisterDescriptor; 32] = {
         ..RegisterDescriptor::new("neg_abs_z", 22, concat!("$", "22"), false)
     }
     .check_panic_chain();
-    table[R4000AllegrexPrefixSrc::neg_abw_w as usize] = RegisterDescriptor {
+    table[R4000AllegrexPrefixSrc::neg_abs_w as usize] = RegisterDescriptor {
         name: "-|W|",
         name_numeric: "-|W|",
-        ..RegisterDescriptor::new("neg_abw_w", 23, concat!("$", "23"), false)
+        ..RegisterDescriptor::new("neg_abs_w", 23, concat!("$", "23"), false)
     }
     .check_panic_chain();
     table[R4000AllegrexPrefixSrc::neg_zero as usize] = RegisterDescriptor {
@@ -253,7 +253,7 @@ impl R4000AllegrexPrefixSrc {
             4 => Ok(Self::abs_x),
             5 => Ok(Self::abs_y),
             6 => Ok(Self::abs_z),
-            7 => Ok(Self::abw_w),
+            7 => Ok(Self::abs_w),
             8 => Ok(Self::zero),
             9 => Ok(Self::one),
             10 => Ok(Self::two),
@@ -269,7 +269,7 @@ impl R4000AllegrexPrefixSrc {
             20 => Ok(Self::neg_abs_x),
             21 => Ok(Self::neg_abs_y),
             22 => Ok(Self::neg_abs_z),
-            23 => Ok(Self::neg_abw_w),
+            23 => Ok(Self::neg_abs_w),
             24 => Ok(Self::neg_zero),
             25 => Ok(Self::neg_one),
             26 => Ok(Self::neg_two),

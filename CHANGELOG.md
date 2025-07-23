@@ -12,9 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add prebuilt binaries for `rab-disasmdis` on Github releases.
 - Add `field()` method to `Instruction`. Allows accessing the fields of the
   given instruction.
+- New experimental `encoder` API: Allows encoding a text assembly instruction
+  into its corresponding hex representation, similar to how an assembler works.
+  - The supported syntax for instructions is somewhat limited, it only supports
+    a single syntax per instruction and relocs are not supported.
 - First public release of `rab-disasmdis-web`.
   - Disassemble MIPS instructions directly in your browser, using the power of
     rabbitizer.
+  - Includes an encoder mode too.
   - Visit <https://decompollaborate.github.io/rabbitizer> to see it in action.
 
 ### Changed

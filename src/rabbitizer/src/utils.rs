@@ -364,6 +364,7 @@ pub fn u8_hex_from_str(s: &str) -> Result<u8, core::num::ParseIntError> {
 
 #[cfg(test)]
 mod tests {
+    #[allow(unused_imports)]
     use super::*;
 
     #[test]
