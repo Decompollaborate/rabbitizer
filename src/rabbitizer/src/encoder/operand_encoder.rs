@@ -930,30 +930,18 @@ impl Operand {
             }
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_vis_predecr | Self::r5900ee_vit_predecr => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                if text.starts_with("(--") && text.ends_with(')') {
-                    regval::<R5900EEVI>(&text[3..text.len()-1], abi, allow_dollarless)
-                } else {
-                    None
-                }
+                let text = bracket_solo_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                text.strip_prefix("--").and_then(|reg| regval::<R5900EEVI>(reg, abi, allow_dollarless))
             }
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_vis_postincr | Self::r5900ee_vit_postincr => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                if text.starts_with('(') && text.ends_with("++)") {
-                    regval::<R5900EEVI>(&text[1..text.len()-3], abi, allow_dollarless)
-                } else {
-                    None
-                }
+                let text = bracket_solo_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                text.strip_suffix("++").and_then(|reg| regval::<R5900EEVI>(reg, abi, allow_dollarless))
             }
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_vis_parenthesis => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                if text.starts_with('(') && text.ends_with(')') {
-                    regval::<R5900EEVI>(&text[1..text.len()-1], abi, allow_dollarless)
-                } else {
-                    None
-                }
+                let text = bracket_solo_from_token(token, opcode, self, BracketType::Parenthesis)?;
+                regval::<R5900EEVI>(text, abi, allow_dollarless)
             }
         };
 
