@@ -175,7 +175,7 @@ pub(crate) const fn floatrepr_16_from_32(mut arg: u32) -> u16 {
             ret |= sign << 15;
 
             // re-encode the exponent
-            ret |= mask((real_exponent + 0xF) as u32, 5) as u16;
+            ret |= (mask((real_exponent + 0xF) as u32, 5) as u16) << 10;
 
             // Set the mantissa
             ret |= (arg >> (23 - 10)) as u16;
