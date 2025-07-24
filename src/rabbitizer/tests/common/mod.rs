@@ -22,9 +22,73 @@ pub struct TestEntry {
     pub expected_opcode: Opcode,
     pub opcode_str: &'static str,
     pub operands_str: [Option<&'static str>; OPERAND_COUNT_MAX],
+
+    pub test_encoder: bool,
 }
 
 impl TestEntry {
+    const fn new_impl(
+        word: u32,
+        vram: Vram,
+        flags: InstructionFlags,
+        expected: &'static str,
+        expected_opcode: Opcode,
+        opcode_str: &'static str,
+        operands_str: [Option<&'static str>; OPERAND_COUNT_MAX],
+    ) -> Self {
+        Self {
+            instr: Instruction::new(word, vram, flags),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::new(),
+            valid: true,
+            expected,
+            expected_opcode,
+            opcode_str,
+            operands_str,
+            test_encoder: true,
+        }
+    }
+
+    pub const fn new(
+        word: u32,
+        flags: InstructionFlags,
+        expected: &'static str,
+        expected_opcode: Opcode,
+        opcode_str: &'static str,
+        operands_str: [Option<&'static str>; OPERAND_COUNT_MAX],
+    ) -> Self {
+        Self::new_impl(
+            word,
+            Vram::new(0x80000000),
+            flags,
+            expected,
+            expected_opcode,
+            opcode_str,
+            operands_str,
+        )
+    }
+
+    #[cfg(feature = "RSP")]
+    #[allow(dead_code)]
+    pub const fn new_rsp(
+        word: u32,
+        flags: InstructionFlags,
+        expected: &'static str,
+        expected_opcode: Opcode,
+        opcode_str: &'static str,
+        operands_str: [Option<&'static str>; OPERAND_COUNT_MAX],
+    ) -> Self {
+        Self::new_impl(
+            word,
+            Vram::new(0xA4000000),
+            flags,
+            expected,
+            expected_opcode,
+            opcode_str,
+            operands_str,
+        )
+    }
+
     #[cfg(feature = "RSP")]
     #[allow(dead_code)]
     pub const fn new_rsp_invalid(
@@ -45,6 +109,7 @@ impl TestEntry {
             expected_opcode: Opcode::ALL_INVALID,
             opcode_str: "INVALID",
             operands_str: [None, None, None, None, None],
+            test_encoder: false,
         }
     }
 
@@ -57,19 +122,56 @@ impl TestEntry {
         opcode_str: &'static str,
         operands_str: [Option<&'static str>; OPERAND_COUNT_MAX],
     ) -> Self {
-        Self {
-            instr: Instruction::new(
-                word,
-                Vram::new(0x80000000),
-                InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::new(),
-            valid: true,
+        use rabbitizer::abi::Abi;
+
+        Self::new(
+            word,
+            InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX).with_abi(Abi::EABI64),
             expected,
             expected_opcode,
             opcode_str,
             operands_str,
+        )
+    }
+
+    #[allow(dead_code)]
+    pub const fn new_full_invalid(
+        word: u32,
+        flags: InstructionFlags,
+        expected: &'static str,
+    ) -> Self {
+        Self {
+            instr: Instruction::new(word, Vram::new(0x80000000), flags),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected,
+            expected_opcode: Opcode::ALL_INVALID,
+            opcode_str: "INVALID",
+            operands_str: [None, None, None, None, None],
+            test_encoder: false,
+        }
+    }
+
+    #[allow(dead_code)]
+    pub const fn new_semi_invalid(
+        word: u32,
+        flags: InstructionFlags,
+        expected: &'static str,
+        expected_opcode: Opcode,
+        opcode_str: &'static str,
+        operands_str: [Option<&'static str>; OPERAND_COUNT_MAX],
+    ) -> Self {
+        Self {
+            instr: Instruction::new(word, Vram::new(0x80000000), flags),
+            imm_override: None,
+            display_flags: InstructionDisplayFlags::default(),
+            valid: false,
+            expected,
+            expected_opcode,
+            opcode_str,
+            operands_str,
+            test_encoder: false,
         }
     }
 
@@ -328,8 +430,7 @@ pub fn entries_sanity_check(entries: &[TestEntry]) {
     }
 }
 
-pub fn check_test_entries(entries: &[TestEntry], test_encoder: bool) -> (u32, u32) {
-    let _avoid_unused_warning = test_encoder;
+pub fn check_test_entries(entries: &[TestEntry]) -> (u32, u32) {
     let mut instructions_with_errors = 0;
     let mut individual_errors = 0;
 
@@ -339,7 +440,7 @@ pub fn check_test_entries(entries: &[TestEntry], test_encoder: bool) -> (u32, u3
         let mut errors = entry.check_validity();
         errors += entry.check_disassembly();
         #[cfg(feature = "encoder")]
-        if test_encoder {
+        if entry.test_encoder {
             errors += entry.check_encoding();
         }
 

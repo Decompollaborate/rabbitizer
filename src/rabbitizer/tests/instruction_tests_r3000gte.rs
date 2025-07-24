@@ -8,927 +8,726 @@ mod common;
 use common::{check_test_entries, TestEntry};
 
 #[cfg(feature = "R3000GTE")]
-use rabbitizer::{
-    display_flags::InstructionDisplayFlags,
-    instr::{Instruction, InstructionFlags},
-    isa::IsaExtension,
-    opcodes::Opcode,
-    vram::Vram,
-};
+use rabbitizer::{instr::InstructionFlags, isa::IsaExtension, opcodes::Opcode};
 
 #[cfg(feature = "R3000GTE")]
 #[test]
 fn check_r3000gte_instructions() {
     const ENTRIES: &[TestEntry] = &[
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A180001,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "rtps",
-            expected_opcode: Opcode::r3000gte_rtps,
-            opcode_str: "rtps",
-            operands_str: [Some(""), None, None, None, None],
+                "rtps",
+                Opcode::r3000gte_rtps,
+                "rtps",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A280030,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "rtpt",
-            expected_opcode: Opcode::r3000gte_rtpt,
-            opcode_str: "rtpt",
-            operands_str: [Some(""), None, None, None, None],
+                "rtpt",
+                Opcode::r3000gte_rtpt,
+                "rtpt",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A680029,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "dpcl",
-            expected_opcode: Opcode::r3000gte_dpcl,
-            opcode_str: "dpcl",
-            operands_str: [Some(""), None, None, None, None],
+                "dpcl",
+                Opcode::r3000gte_dpcl,
+                "dpcl",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A780010,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "dpcs",
-            expected_opcode: Opcode::r3000gte_dpcs,
-            opcode_str: "dpcs",
-            operands_str: [Some(""), None, None, None, None],
+                "dpcs",
+                Opcode::r3000gte_dpcs,
+                "dpcs",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4AF8002A,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "dpct",
-            expected_opcode: Opcode::r3000gte_dpct,
-            opcode_str: "dpct",
-            operands_str: [Some(""), None, None, None, None],
+                "dpct",
+                Opcode::r3000gte_dpct,
+                "dpct",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A980011,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "intpl",
-            expected_opcode: Opcode::r3000gte_intpl,
-            opcode_str: "intpl",
-            operands_str: [Some(""), None, None, None, None],
+                "intpl",
+                Opcode::r3000gte_intpl,
+                "intpl",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4AC8041E,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "ncs",
-            expected_opcode: Opcode::r3000gte_ncs,
-            opcode_str: "ncs",
-            operands_str: [Some(""), None, None, None, None],
+                "ncs",
+                Opcode::r3000gte_ncs,
+                "ncs",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4AD80420,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "nct",
-            expected_opcode: Opcode::r3000gte_nct,
-            opcode_str: "nct",
-            operands_str: [Some(""), None, None, None, None],
+                "nct",
+                Opcode::r3000gte_nct,
+                "nct",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4AE80413,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "ncds",
-            expected_opcode: Opcode::r3000gte_ncds,
-            opcode_str: "ncds",
-            operands_str: [Some(""), None, None, None, None],
+                "ncds",
+                Opcode::r3000gte_ncds,
+                "ncds",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4AF80416,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "ncdt",
-            expected_opcode: Opcode::r3000gte_ncdt,
-            opcode_str: "ncdt",
-            operands_str: [Some(""), None, None, None, None],
+                "ncdt",
+                Opcode::r3000gte_ncdt,
+                "ncdt",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B08041B,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "nccs",
-            expected_opcode: Opcode::r3000gte_nccs,
-            opcode_str: "nccs",
-            operands_str: [Some(""), None, None, None, None],
+                "nccs",
+                Opcode::r3000gte_nccs,
+                "nccs",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B18043F,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "ncct",
-            expected_opcode: Opcode::r3000gte_ncct,
-            opcode_str: "ncct",
-            operands_str: [Some(""), None, None, None, None],
+                "ncct",
+                Opcode::r3000gte_ncct,
+                "ncct",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B280414,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "cdp",
-            expected_opcode: Opcode::r3000gte_cdp,
-            opcode_str: "cdp",
-            operands_str: [Some(""), None, None, None, None],
+                "cdp",
+                Opcode::r3000gte_cdp,
+                "cdp",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B38041C,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "cc",
-            expected_opcode: Opcode::r3000gte_cc,
-            opcode_str: "cc",
-            operands_str: [Some(""), None, None, None, None],
+                "cc",
+                Opcode::r3000gte_cc,
+                "cc",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B400006,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "nclip",
-            expected_opcode: Opcode::r3000gte_nclip,
-            opcode_str: "nclip",
-            operands_str: [Some(""), None, None, None, None],
+                "nclip",
+                Opcode::r3000gte_nclip,
+                "nclip",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B58002D,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "avsz3",
-            expected_opcode: Opcode::r3000gte_avsz3,
-            opcode_str: "avsz3",
-            operands_str: [Some(""), None, None, None, None],
+                "avsz3",
+                Opcode::r3000gte_avsz3,
+                "avsz3",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B68002E,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "avsz4",
-            expected_opcode: Opcode::r3000gte_avsz4,
-            opcode_str: "avsz4",
-            operands_str: [Some(""), None, None, None, None],
+                "avsz4",
+                Opcode::r3000gte_avsz4,
+                "avsz4",
+                [Some(""), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A400012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       0, 0, 0, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("0"), Some("0"), Some("0"), Some("0"), Some("0")],
+                "mvmva       0, 0, 0, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("0"), Some("0"), Some("0"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4AA00428,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "sqr         0",
-            expected_opcode: Opcode::r3000gte_sqr,
-            opcode_str: "sqr",
-            operands_str: [Some("0"), None, None, None, None],
+                "sqr         0",
+                Opcode::r3000gte_sqr,
+                "sqr",
+                [Some("0"), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B70000C,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "op          0",
-            expected_opcode: Opcode::r3000gte_op,
-            opcode_str: "op",
-            operands_str: [Some("0"), None, None, None, None],
+                "op          0",
+                Opcode::r3000gte_op,
+                "op",
+                [Some("0"), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B90003D,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "gpf         0",
-            expected_opcode: Opcode::r3000gte_gpf,
-            opcode_str: "gpf",
-            operands_str: [Some("0"), None, None, None, None],
+                "gpf         0",
+                Opcode::r3000gte_gpf,
+                "gpf",
+                [Some("0"), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4BA0003E,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "gpl         0",
-            expected_opcode: Opcode::r3000gte_gpl,
-            opcode_str: "gpl",
-            operands_str: [Some("0"), None, None, None, None],
+                "gpl         0",
+                Opcode::r3000gte_gpl,
+                "gpl",
+                [Some("0"), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A486012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 0, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("0"), Some("3"), Some("0")],
+                "mvmva       1, 0, 0, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("0"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A48E012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 1, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("1"), Some("3"), Some("0")],
+                "mvmva       1, 0, 1, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("1"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A496012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 2, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("2"), Some("3"), Some("0")],
+                "mvmva       1, 0, 2, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("2"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A49E012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 3, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("3"), Some("3"), Some("0")],
+                "mvmva       1, 0, 3, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("3"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A41E012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       0, 0, 3, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("0"), Some("0"), Some("3"), Some("3"), Some("0")],
+                "mvmva       0, 0, 3, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("0"), Some("0"), Some("3"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A480012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 0, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("0"), Some("0"), Some("0")],
+                "mvmva       1, 0, 0, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("0"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A488012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 1, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("1"), Some("0"), Some("0")],
+                "mvmva       1, 0, 1, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("1"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A490012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 2, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("2"), Some("0"), Some("0")],
+                "mvmva       1, 0, 2, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("2"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A498012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 3, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("3"), Some("0"), Some("0")],
+                "mvmva       1, 0, 3, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("3"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A482012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 0, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("0"), Some("1"), Some("0")],
+                "mvmva       1, 0, 0, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("0"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A48A012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 1, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("1"), Some("1"), Some("0")],
+                "mvmva       1, 0, 1, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("1"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A492012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 2, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("2"), Some("1"), Some("0")],
+                "mvmva       1, 0, 2, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("2"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A49A012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 0, 3, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("0"), Some("3"), Some("1"), Some("0")],
+                "mvmva       1, 0, 3, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("0"), Some("3"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4A6412,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 0, 3, 1",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("0"), Some("3"), Some("1")],
+                "mvmva       1, 1, 0, 3, 1",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("0"), Some("3"), Some("1")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4A6012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 0, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("0"), Some("3"), Some("0")],
+                "mvmva       1, 1, 0, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("0"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4AE012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 1, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("1"), Some("3"), Some("0")],
+                "mvmva       1, 1, 1, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("1"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4B6012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 2, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("2"), Some("3"), Some("0")],
+                "mvmva       1, 1, 2, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("2"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4BE012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 3, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("3"), Some("3"), Some("0")],
+                "mvmva       1, 1, 3, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("3"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4A0012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 0, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("0"), Some("0"), Some("0")],
+                "mvmva       1, 1, 0, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("0"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4A8012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 1, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("1"), Some("0"), Some("0")],
+                "mvmva       1, 1, 1, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("1"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4B0012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 2, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("2"), Some("0"), Some("0")],
+                "mvmva       1, 1, 2, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("2"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4B8012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 3, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("3"), Some("0"), Some("0")],
+                "mvmva       1, 1, 3, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("3"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4A2012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 0, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("0"), Some("1"), Some("0")],
+                "mvmva       1, 1, 0, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("0"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4AA012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 1, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("1"), Some("1"), Some("0")],
+                "mvmva       1, 1, 1, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("1"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4B2012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 2, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("2"), Some("1"), Some("0")],
+                "mvmva       1, 1, 2, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("2"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4BA012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 1, 3, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("1"), Some("3"), Some("1"), Some("0")],
+                "mvmva       1, 1, 3, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("1"), Some("3"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4DA412,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 3, 1, 1",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("3"), Some("1"), Some("1")],
+                "mvmva       1, 2, 3, 1, 1",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("3"), Some("1"), Some("1")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4C6012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 0, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("0"), Some("3"), Some("0")],
+                "mvmva       1, 2, 0, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("0"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4CE012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 1, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("1"), Some("3"), Some("0")],
+                "mvmva       1, 2, 1, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("1"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4D6012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 2, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("2"), Some("3"), Some("0")],
+                "mvmva       1, 2, 2, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("2"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4DE012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 3, 3, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("3"), Some("3"), Some("0")],
+                "mvmva       1, 2, 3, 3, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("3"), Some("3"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4C0012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 0, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("0"), Some("0"), Some("0")],
+                "mvmva       1, 2, 0, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("0"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4C8012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 1, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("1"), Some("0"), Some("0")],
+                "mvmva       1, 2, 1, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("1"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4D0012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 2, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("2"), Some("0"), Some("0")],
+                "mvmva       1, 2, 2, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("2"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4D8012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 3, 0, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("3"), Some("0"), Some("0")],
+                "mvmva       1, 2, 3, 0, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("3"), Some("0"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4C2012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 0, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("0"), Some("1"), Some("0")],
+                "mvmva       1, 2, 0, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("0"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4CA012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 1, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("1"), Some("1"), Some("0")],
+                "mvmva       1, 2, 1, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("1"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4D2012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 2, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("2"), Some("1"), Some("0")],
+                "mvmva       1, 2, 2, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("2"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4A4DA012,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "mvmva       1, 2, 3, 1, 0",
-            expected_opcode: Opcode::r3000gte_mvmva,
-            opcode_str: "mvmva",
-            operands_str: [Some("1"), Some("2"), Some("3"), Some("1"), Some("0")],
+                "mvmva       1, 2, 3, 1, 0",
+                Opcode::r3000gte_mvmva,
+                "mvmva",
+                [Some("1"), Some("2"), Some("3"), Some("1"), Some("0")],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4AA80428,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "sqr         1",
-            expected_opcode: Opcode::r3000gte_sqr,
-            opcode_str: "sqr",
-            operands_str: [Some("1"), None, None, None, None],
+                "sqr         1",
+                Opcode::r3000gte_sqr,
+                "sqr",
+                [Some("1"), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B78000C,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "op          1",
-            expected_opcode: Opcode::r3000gte_op,
-            opcode_str: "op",
-            operands_str: [Some("1"), None, None, None, None],
+                "op          1",
+                Opcode::r3000gte_op,
+                "op",
+                [Some("1"), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4B98003D,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "gpf         1",
-            expected_opcode: Opcode::r3000gte_gpf,
-            opcode_str: "gpf",
-            operands_str: [Some("1"), None, None, None, None],
+                "gpf         1",
+                Opcode::r3000gte_gpf,
+                "gpf",
+                [Some("1"), None, None, None, None],
+            )
         },
         TestEntry {
-            instr: Instruction::new(
+            test_encoder: false,
+            ..TestEntry::new(
                 0x4BA8003E,
-                Vram::new(0x80000000),
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-            ),
-            imm_override: None,
-            display_flags: InstructionDisplayFlags::default(),
-            valid: true,
-            expected: "gpl         1",
-            expected_opcode: Opcode::r3000gte_gpl,
-            opcode_str: "gpl",
-            operands_str: [Some("1"), None, None, None, None],
+                "gpl         1",
+                Opcode::r3000gte_gpl,
+                "gpl",
+                [Some("1"), None, None, None, None],
+            )
         },
     ];
 
@@ -936,5 +735,5 @@ fn check_r3000gte_instructions() {
     // those instructions can have multiple valid encodings, but currently the
     // encoder picks one of them, and it doesn't match the value from the tests.
     // TODO: add more tests that actually test encoding GTE instructions
-    assert_eq!(check_test_entries(ENTRIES, false), (0, 0));
+    assert_eq!(check_test_entries(ENTRIES), (0, 0));
 }
