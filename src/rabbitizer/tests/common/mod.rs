@@ -4,11 +4,12 @@
 #![allow(clippy::uninlined_format_args)]
 
 use rabbitizer::display_flags::InstructionDisplayFlags;
-use rabbitizer::instr::Instruction;
+use rabbitizer::instr::{Instruction, InstructionFlags};
 use rabbitizer::opcodes::Opcode;
 use rabbitizer::operands::OPERAND_COUNT_MAX;
+use rabbitizer::vram::Vram;
 #[cfg(any(feature = "RSP", feature = "R4000ALLEGREX"))]
-use rabbitizer::{instr::InstructionFlags, isa::IsaExtension, vram::Vram};
+use rabbitizer::isa::IsaExtension;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TestEntry {
@@ -27,6 +28,7 @@ pub struct TestEntry {
 }
 
 impl TestEntry {
+    #[allow(dead_code)]
     const fn new_impl(
         word: u32,
         vram: Vram,
@@ -49,6 +51,7 @@ impl TestEntry {
         }
     }
 
+    #[allow(dead_code)]
     pub const fn new(
         word: u32,
         flags: InstructionFlags,
