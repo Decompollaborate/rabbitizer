@@ -370,7 +370,7 @@ impl Operand {
                     let upper = x >> 5;
                     let lower = x & utils::bitmask(0, 5);
 
-                    reshift_pair((EncodedFieldMask::r4000allegrex_vt_6_imm_upper, upper), (EncodedFieldMask::r4000allegrex_vt_imm_lower, lower))
+                    reshift_pair((EncodedFieldMask::r4000allegrex_vt_imm_upper, upper), (EncodedFieldMask::r4000allegrex_vt_imm_lower, lower))
                 })
             }
             #[cfg(feature = "R4000ALLEGREX")]
@@ -455,7 +455,7 @@ impl Operand {
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_size_plus_pos => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::i8_hex_from_str(text).ok().map(|x| (x as u8).into())
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_imm3 => {
@@ -490,7 +490,7 @@ impl Operand {
                     regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
                         let repaired = reshift_pair((EncodedFieldMask::r4000allegrex_offset14, (imm >> 2).into()), (EncodedFieldMask::rs, rs));
 
-                        reshift_pair((EncodedFieldMask::r4000allegrex_wb, wb), (EncodedFieldMask::rs.union(EncodedFieldMask::immediate), repaired))
+                        reshift_pair((EncodedFieldMask::r4000allegrex_wb, wb), (EncodedFieldMask::rs.union(EncodedFieldMask::r4000allegrex_offset14), repaired))
                     })
                 })
             }
@@ -724,11 +724,24 @@ impl Operand {
                 // mess up with the token stream to allow this kind of stuff
                 // i.e. `vpfxd       , , , ` is valid.
                 (token, next_token) = if token == Token::Comma {
+                    // Hacks to handle empty operands
                     if let Some(n) = next_token {
                         token_stream.push_front(n);
+                    } else if self == Self::r4000allegrex_wpz {
+                        token_stream.push_front(Token::Text(""));
                     }
                     (Token::Text(""), Some(Token::Comma))
                 } else {
+                    // Hack to avoid erroring when wpz is not an empty string, but wpw is.
+                    if self == Self::r4000allegrex_wpz {
+                        if let Some(n) = token_stream.next_inner() {
+                            // There's already something, so push it back in.
+                            token_stream.push_front(n);
+                        } else {
+                            // There's nothing, so push an empty string to make wpw happy.
+                            token_stream.push_front(Token::Text(""));
+                        }
+                    }
                     (token, next_token)
                 };
 
@@ -737,7 +750,15 @@ impl Operand {
                     let c = x >> 2;
                     let d = x & utils::bitmask(0, 2);
 
-                    (c << 8) | d
+                    let c = match self {
+                        Self::r4000allegrex_wpx => c << (8),
+                        Self::r4000allegrex_wpy => c << (9-2),
+                        Self::r4000allegrex_wpz => c << (10-4),
+                        Self::r4000allegrex_wpw => c << (11-6),
+                        _ => unreachable!(),
+                    };
+
+                    c | d
                 })
             }
             #[cfg(feature = "R4000ALLEGREX")]

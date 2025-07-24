@@ -258,6 +258,10 @@ where
     pub fn push_front(&mut self, item: I::Item) {
         self.front = Some(item);
     }
+
+    pub fn next_inner(&mut self) -> Option<I::Item> {
+        self.iter.next()
+    }
 }
 
 #[cfg(feature = "encoder")]

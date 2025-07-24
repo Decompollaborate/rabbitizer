@@ -7,6 +7,7 @@ use crate::encoder::token::{Token, Tokenize};
 use crate::encoder::EncodingError;
 use crate::instr::{Instruction, InstructionFlags};
 use crate::opcodes::{Opcode, OpcodeDecoder, OPCODES};
+use crate::operands::Operand;
 use crate::utils::DoubleOptIterator;
 use crate::vram::{Vram, VramOffset};
 
@@ -80,7 +81,7 @@ impl<'s> EncoderIterator<'s> {
             )? {
                 EncodedOperandBits::EndBits(bits) => {
                     if reamining_operands == 0 {
-                        word |= bits;
+                        word = handle_bits(word, bits, operand);
                         break;
                     } else {
                         return Err(EncodingError::EndButMissingOperands(
@@ -90,7 +91,7 @@ impl<'s> EncoderIterator<'s> {
                     }
                 }
                 EncodedOperandBits::ContinueBits(bits) => {
-                    word |= bits;
+                    word = handle_bits(word, bits, operand);
                 }
             }
         }
@@ -104,6 +105,25 @@ impl<'s> EncoderIterator<'s> {
             Ok(word)
         }
     }
+}
+
+const fn handle_bits(mut word: u32, bits: u32, operand: Operand) -> u32 {
+    match operand {
+        #[cfg(feature = "R4000ALLEGREX")]
+        Operand::r4000allegrex_size_plus_pos => {
+            use crate::utils;
+
+            let s = utils::from_2s_complement::<5>(
+                EncodedFieldMask::r4000allegrex_size_plus_pos.get_shifted(bits),
+            );
+            let b = EncodedFieldMask::r4000allegrex_pos.get_shifted(word) as i32;
+            let x = s - 1 + b;
+
+            word |= EncodedFieldMask::r4000allegrex_size_plus_pos.unshift(x as u32);
+        }
+        _ => word |= bits,
+    }
+    word
 }
 
 impl<'s> Iterator for EncoderIterator<'s> {
@@ -341,6 +361,29 @@ mod tests {
             (0x6C00008F, "vcmp.p      ns, C000"),
             (0x6C00800F, "vcmp.t      ns, C000"),
             (0x6C00808F, "vcmp.q      ns, C000"),
+        ];
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+
+        for (word, text) in DATA {
+            let mut encoder = EncoderIterator::new(text, vram, flags);
+
+            let instr = encoder.next().unwrap().unwrap();
+            assert!(instr.is_valid());
+            assert_eq!(instr.word(), word);
+
+            assert_eq!(encoder.next(), None);
+        }
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_r4000allegrex_vpfxd() {
+        use crate::IsaExtension;
+
+        static DATA: [(u32, &str); 2] = [
+            (0xDE000001, "vpfxd       0, , , "),
+            (0xDE000400, "vpfxd       , , M, "),
         ];
         let vram = Vram::new(0x80000000);
         let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
