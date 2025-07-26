@@ -3,10 +3,11 @@
 
 use crate::abi::Abi;
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 
 use super::RegisterIterator;
 
-/// A trait that provides common functionality for every kind of register.
+/// A trait that provides common functionality for every register kind.
 pub trait Register: PartialEq + PartialOrd + Default {
     /// Converts this register into a raw number.
     ///
@@ -18,12 +19,16 @@ pub trait Register: PartialEq + PartialOrd + Default {
 
     /// How many registers this type has.
     ///
-    /// For example `Gpr` returns 32.
+    /// For example, on the [`Gpr`] type this returns 32.
+    ///
+    /// [`Gpr`]: crate::registers::Gpr
     #[must_use]
     fn count() -> usize;
 
     /// Returns an object which allows iterating over every register of this specific register type
     /// in ascending order.
+    ///
+    /// The given iterator can iterate in reverse too.
     ///
     /// # Examples
     ///
@@ -35,14 +40,24 @@ pub trait Register: PartialEq + PartialOrd + Default {
     /// assert_eq!(gpr_iter.next(), Some(Gpr::zero));
     /// assert_eq!(gpr_iter.next(), Some(Gpr::at));
     /// assert_eq!(gpr_iter.next(), Some(Gpr::v0));
+    /// assert_eq!(gpr_iter.next_back(), Some(Gpr::ra));
     /// ```
     #[must_use]
     fn iter() -> RegisterIterator<Self> {
         RegisterIterator::new()
     }
 
-    fn try_from_u32(value: u32) -> Result<Self, crate::Error>;
+    /// Returns a Register that represents the given value.
+    ///
+    /// The conversion may fail if the value is larger than the amount of
+    /// registers in the given register kind.
+    fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError>;
 
+    /// Returns a reference to an array holding descriptor information for each
+    /// register of this kind.
+    ///
+    /// This array can be indexed by the numeric representation of each
+    /// register.
     #[must_use]
     fn descriptor_array() -> &'static [RegisterDescriptor];
 
@@ -139,10 +154,14 @@ pub trait Register: PartialEq + PartialOrd + Default {
         self.get_descriptor().is_arg()
     }
 
+    /// Returns the register that corresponds to the given string, or `None` if
+    /// the given name does not correspond to any register of the current kind.
+    ///
+    /// The accepted names will change dependending on the given [`Abi`].
     #[must_use]
     #[cfg(feature = "encoder")]
-    fn from_name(name: &str, abi: Abi, mut allow_dollarless: bool) -> Option<Self> {
-        allow_dollarless = allow_dollarless && !name.starts_with('$');
+    fn from_name(name: &str, abi: Abi, allow_dollarless: bool) -> Option<Self> {
+        let allow_dollarless = allow_dollarless && !name.starts_with('$');
 
         for descriptor in Self::descriptor_array() {
             let found = descriptor.name_abi(abi, false) == name
@@ -150,7 +169,9 @@ pub trait Register: PartialEq + PartialOrd + Default {
                 || descriptor.name_numeric() == name;
 
             if found {
-                return Some(Self::try_from_u32(descriptor.value().into()).expect("The value returned by the descriptor should always be a valid value for the try_from_u32 method"));
+                let reg_value = descriptor.value().into();
+                let reg = Self::try_from_u32(reg_value).expect("The value returned by the descriptor should always be a valid value for the try_from_u32 method");
+                return Some(reg);
             }
         }
 

@@ -10,6 +10,7 @@
 #define STR(x) STR_EXPAND(x)
 
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 use core::ops::Index;
 
 #define REGISTER_ENUM_NAME Gpr
@@ -56,14 +57,10 @@ pub static GPR: [RegisterDescriptor; REGISTER_COUNT] = {
     value => Ok(Self:: REG_NAME(name)),
 
 impl REGISTER_ENUM_NAME {
-    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    pub const fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         match value {
             #include "registers/RabbitizerRegister_Gpr.inc"
-            x => Err(crate::Error::OutOfRangeRegisterIndex {
-                index: x,
-                count: REGISTER_COUNT,
-                register_kind: STR(REGISTER_ENUM_NAME),
-            }),
+            x => Err(IntRegisterConversionError::new_out_of_range(x, REGISTER_COUNT, STR(REGISTER_ENUM_NAME))),
         }
     }
 
@@ -76,7 +73,7 @@ impl REGISTER_ENUM_NAME {
 #undef RABBITIZER_DEF_REG
 
 impl TryFrom<u32> for REGISTER_ENUM_NAME {
-    type Error = crate::Error;
+    type Error = IntRegisterConversionError;
 
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         Self::try_from_u32(value)

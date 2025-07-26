@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -660,7 +661,7 @@ pub static R4000ALLEGREX_VFPUCONTROL: [RegisterDescriptor; 128] = {
     table
 };
 impl R4000AllegrexVfpuControl {
-    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    pub const fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         match value + 128 {
             128 => Ok(Self::VFPU_PFXS),
             129 => Ok(Self::VFPU_PFXT),
@@ -790,11 +791,11 @@ impl R4000AllegrexVfpuControl {
             253 => Ok(Self::r253),
             254 => Ok(Self::r254),
             255 => Ok(Self::r255),
-            x => Err(crate::Error::OutOfRangeRegisterIndex {
-                index: x,
-                count: 128,
-                register_kind: "R4000AllegrexVfpuControl",
-            }),
+            x => Err(IntRegisterConversionError::new_out_of_range(
+                x,
+                128,
+                "R4000AllegrexVfpuControl",
+            )),
         }
     }
     #[must_use]
@@ -803,7 +804,7 @@ impl R4000AllegrexVfpuControl {
     }
 }
 impl TryFrom<u32> for R4000AllegrexVfpuControl {
-    type Error = crate::Error;
+    type Error = IntRegisterConversionError;
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         Self::try_from_u32(value)
     }

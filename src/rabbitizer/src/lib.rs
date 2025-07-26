@@ -100,7 +100,6 @@ pub mod access_type;
 pub mod access_type_descriptor;
 pub mod display_flags;
 mod encoded_field_mask;
-mod error;
 pub mod instr;
 pub mod isa;
 pub mod opcodes;
@@ -115,8 +114,6 @@ pub mod vram;
 pub mod encoder;
 
 mod utils;
-
-pub use error::Error;
 
 pub use display_flags::InstructionDisplayFlags;
 pub use instr::{Instruction, InstructionFlags};

@@ -5,6 +5,7 @@ use crate::abi::Abi;
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::Gpr;
+use crate::registers_meta::IntRegisterConversionError;
 use crate::registers_meta::Register;
 
 impl Gpr {
@@ -24,7 +25,7 @@ impl Register for Gpr {
         Self::count()
     }
 
-    fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         Self::try_from_u32(value)
     }
 

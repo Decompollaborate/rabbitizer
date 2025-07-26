@@ -4,6 +4,7 @@
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::R5900EEVF;
+use crate::registers_meta::IntRegisterConversionError;
 use crate::registers_meta::Register;
 
 impl R5900EEVF {
@@ -23,7 +24,7 @@ impl Register for R5900EEVF {
         Self::count()
     }
 
-    fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         Self::try_from_u32(value)
     }
 

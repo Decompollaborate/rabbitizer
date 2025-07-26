@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -100,7 +101,7 @@ pub static R4000ALLEGREX_VCOND: [RegisterDescriptor; 16] = {
     table
 };
 impl R4000AllegrexVCond {
-    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    pub const fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         match value {
             0 => Ok(Self::fl),
             1 => Ok(Self::eq),
@@ -118,11 +119,11 @@ impl R4000AllegrexVCond {
             13 => Ok(Self::nn),
             14 => Ok(Self::ni),
             15 => Ok(Self::ns),
-            x => Err(crate::Error::OutOfRangeRegisterIndex {
-                index: x,
-                count: 16,
-                register_kind: "R4000AllegrexVCond",
-            }),
+            x => Err(IntRegisterConversionError::new_out_of_range(
+                x,
+                16,
+                "R4000AllegrexVCond",
+            )),
         }
     }
     #[must_use]
@@ -131,7 +132,7 @@ impl R4000AllegrexVCond {
     }
 }
 impl TryFrom<u32> for R4000AllegrexVCond {
-    type Error = crate::Error;
+    type Error = IntRegisterConversionError;
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         Self::try_from_u32(value)
     }

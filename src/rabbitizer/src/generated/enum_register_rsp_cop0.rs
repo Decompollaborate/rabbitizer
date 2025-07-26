@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -100,7 +101,7 @@ pub static RSP_COP0: [RegisterDescriptor; 16] = {
     table
 };
 impl RspCop0 {
-    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    pub const fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         match value {
             0 => Ok(Self::SP_MEM_ADDR),
             1 => Ok(Self::SP_DRAM_ADDR),
@@ -118,11 +119,9 @@ impl RspCop0 {
             13 => Ok(Self::DPC_BUFBUSY),
             14 => Ok(Self::DPC_PIPEBUSY),
             15 => Ok(Self::DPC_TMEM),
-            x => Err(crate::Error::OutOfRangeRegisterIndex {
-                index: x,
-                count: 16,
-                register_kind: "RspCop0",
-            }),
+            x => Err(IntRegisterConversionError::new_out_of_range(
+                x, 16, "RspCop0",
+            )),
         }
     }
     #[must_use]
@@ -131,7 +130,7 @@ impl RspCop0 {
     }
 }
 impl TryFrom<u32> for RspCop0 {
-    type Error = crate::Error;
+    type Error = IntRegisterConversionError;
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         Self::try_from_u32(value)
     }

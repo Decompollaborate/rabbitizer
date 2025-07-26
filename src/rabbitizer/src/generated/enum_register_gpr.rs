@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -256,7 +257,7 @@ pub static GPR: [RegisterDescriptor; 32] = {
     table
 };
 impl Gpr {
-    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    pub const fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         match value {
             0 => Ok(Self::zero),
             1 => Ok(Self::at),
@@ -290,11 +291,7 @@ impl Gpr {
             29 => Ok(Self::sp),
             30 => Ok(Self::s8),
             31 => Ok(Self::ra),
-            x => Err(crate::Error::OutOfRangeRegisterIndex {
-                index: x,
-                count: 32,
-                register_kind: "Gpr",
-            }),
+            x => Err(IntRegisterConversionError::new_out_of_range(x, 32, "Gpr")),
         }
     }
     #[must_use]
@@ -303,7 +300,7 @@ impl Gpr {
     }
 }
 impl TryFrom<u32> for Gpr {
-    type Error = crate::Error;
+    type Error = IntRegisterConversionError;
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         Self::try_from_u32(value)
     }

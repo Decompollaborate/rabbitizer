@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -244,7 +245,7 @@ pub static R4000ALLEGREX_PREFIX_SRC: [RegisterDescriptor; 32] = {
     table
 };
 impl R4000AllegrexPrefixSrc {
-    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    pub const fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         match value {
             0 => Ok(Self::x),
             1 => Ok(Self::y),
@@ -278,11 +279,11 @@ impl R4000AllegrexPrefixSrc {
             29 => Ok(Self::neg_one_third),
             30 => Ok(Self::neg_one_fourth),
             31 => Ok(Self::neg_one_sixth),
-            x => Err(crate::Error::OutOfRangeRegisterIndex {
-                index: x,
-                count: 32,
-                register_kind: "R4000AllegrexPrefixSrc",
-            }),
+            x => Err(IntRegisterConversionError::new_out_of_range(
+                x,
+                32,
+                "R4000AllegrexPrefixSrc",
+            )),
         }
     }
     #[must_use]
@@ -291,7 +292,7 @@ impl R4000AllegrexPrefixSrc {
     }
 }
 impl TryFrom<u32> for R4000AllegrexPrefixSrc {
-    type Error = crate::Error;
+    type Error = IntRegisterConversionError;
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         Self::try_from_u32(value)
     }

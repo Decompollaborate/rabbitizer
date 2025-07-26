@@ -3,6 +3,7 @@
 
 use crate::register_descriptors::{self, RegisterDescriptor};
 use crate::registers::Cop0Control;
+use crate::registers_meta::IntRegisterConversionError;
 use crate::registers_meta::Register;
 
 impl Cop0Control {
@@ -22,7 +23,7 @@ impl Register for Cop0Control {
         Self::count()
     }
 
-    fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         Self::try_from_u32(value)
     }
 

@@ -4,6 +4,7 @@
 use crate::register_descriptors;
 use crate::register_descriptors::RegisterDescriptor;
 use crate::registers::R4000AllegrexV2D;
+use crate::registers_meta::IntRegisterConversionError;
 use crate::registers_meta::{R4000AllegrexVectorRegister, Register};
 
 impl R4000AllegrexV2D {
@@ -23,7 +24,7 @@ impl Register for R4000AllegrexV2D {
         Self::count()
     }
 
-    fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         Self::try_from_u32(value)
     }
 

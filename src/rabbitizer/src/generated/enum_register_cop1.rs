@@ -4,6 +4,7 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::register_descriptors::RegisterDescriptor;
+use crate::registers_meta::IntRegisterConversionError;
 use core::ops::Index;
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[allow(non_camel_case_types)]
@@ -340,7 +341,7 @@ pub static COP1: [RegisterDescriptor; 32] = {
     table
 };
 impl Cop1 {
-    pub const fn try_from_u32(value: u32) -> Result<Self, crate::Error> {
+    pub const fn try_from_u32(value: u32) -> Result<Self, IntRegisterConversionError> {
         match value {
             0 => Ok(Self::fv0),
             1 => Ok(Self::fv0f),
@@ -374,11 +375,7 @@ impl Cop1 {
             29 => Ok(Self::fs4f),
             30 => Ok(Self::fs5),
             31 => Ok(Self::fs5f),
-            x => Err(crate::Error::OutOfRangeRegisterIndex {
-                index: x,
-                count: 32,
-                register_kind: "Cop1",
-            }),
+            x => Err(IntRegisterConversionError::new_out_of_range(x, 32, "Cop1")),
         }
     }
     #[must_use]
@@ -387,7 +384,7 @@ impl Cop1 {
     }
 }
 impl TryFrom<u32> for Cop1 {
-    type Error = crate::Error;
+    type Error = IntRegisterConversionError;
     fn try_from(value: u32) -> Result<Self, Self::Error> {
         Self::try_from_u32(value)
     }
