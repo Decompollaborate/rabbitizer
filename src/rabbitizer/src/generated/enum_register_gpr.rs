@@ -49,50 +49,42 @@ pub static GPR: [RegisterDescriptor; 32] = {
         name_numeric: "$zero",
         is_zero: true,
         ..RegisterDescriptor::new(concat!("$", "zero"), 0, concat!("$", "0"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::at as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_assembler_temp: true,
         ..RegisterDescriptor::new(concat!("$", "at"), 1, concat!("$", "1"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::v0 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         holds_return_value: true,
         ..RegisterDescriptor::new(concat!("$", "v0"), 2, concat!("$", "2"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::v1 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         holds_return_value: true,
         ..RegisterDescriptor::new(concat!("$", "v1"), 3, concat!("$", "3"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::a0 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_arg: true,
         ..RegisterDescriptor::new(concat!("$", "a0"), 4, concat!("$", "4"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::a1 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_arg: true,
         ..RegisterDescriptor::new(concat!("$", "a1"), 5, concat!("$", "5"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::a2 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_arg: true,
         ..RegisterDescriptor::new(concat!("$", "a2"), 6, concat!("$", "6"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::a3 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_arg: true,
         ..RegisterDescriptor::new(concat!("$", "a3"), 7, concat!("$", "7"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t0 as usize] = RegisterDescriptor {
         name_n32: Some("$a4"),
         name_n64: Some("$a4"),
@@ -103,8 +95,7 @@ pub static GPR: [RegisterDescriptor; 32] = {
         is_arg: true,
         either_arg_or_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t0"), 8, concat!("$", "8"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t1 as usize] = RegisterDescriptor {
         name_n32: Some("$a5"),
         name_n64: Some("$a5"),
@@ -115,8 +106,7 @@ pub static GPR: [RegisterDescriptor; 32] = {
         is_arg: true,
         either_arg_or_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t1"), 9, concat!("$", "9"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t2 as usize] = RegisterDescriptor {
         name_n32: Some("$a6"),
         name_n64: Some("$a6"),
@@ -127,8 +117,7 @@ pub static GPR: [RegisterDescriptor; 32] = {
         is_arg: true,
         either_arg_or_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t2"), 10, concat!("$", "10"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t3 as usize] = RegisterDescriptor {
         name_n32: Some("$a7"),
         name_n64: Some("$a7"),
@@ -139,121 +128,95 @@ pub static GPR: [RegisterDescriptor; 32] = {
         is_arg: true,
         either_arg_or_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t3"), 11, concat!("$", "11"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t4 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t4"), 12, concat!("$", "12"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t5 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t5"), 13, concat!("$", "13"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t6 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t6"), 14, concat!("$", "14"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t7 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t7"), 15, concat!("$", "15"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s0 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s0"), 16, concat!("$", "16"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s1 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s1"), 17, concat!("$", "17"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s2 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s2"), 18, concat!("$", "18"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s3 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s3"), 19, concat!("$", "19"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s4 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s4"), 20, concat!("$", "20"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s5 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s5"), 21, concat!("$", "21"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s6 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s6"), 22, concat!("$", "22"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s7 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s7"), 23, concat!("$", "23"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t8 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t8"), 24, concat!("$", "24"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::t9 as usize] = RegisterDescriptor {
         is_clobbered_by_func_call: true,
         is_temp: true,
         ..RegisterDescriptor::new(concat!("$", "t9"), 25, concat!("$", "25"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::k0 as usize] = RegisterDescriptor {
         is_kernel: true,
         ..RegisterDescriptor::new(concat!("$", "k0"), 26, concat!("$", "26"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::k1 as usize] = RegisterDescriptor {
         is_kernel: true,
         ..RegisterDescriptor::new(concat!("$", "k1"), 27, concat!("$", "27"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::gp as usize] = RegisterDescriptor {
         is_global_pointer: true,
         ..RegisterDescriptor::new(concat!("$", "gp"), 28, concat!("$", "28"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::sp as usize] = RegisterDescriptor {
         is_stack_pointer: true,
         ..RegisterDescriptor::new(concat!("$", "sp"), 29, concat!("$", "29"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::s8 as usize] = RegisterDescriptor {
         is_saved: true,
         ..RegisterDescriptor::new(concat!("$", "s8"), 30, concat!("$", "30"), true)
-    }
-    .check_panic_chain();
+    };
     table[Gpr::ra as usize] = RegisterDescriptor {
         name_numeric: "$ra",
         is_clobbered_by_func_call: true,
         holds_return_address: true,
         ..RegisterDescriptor::new(concat!("$", "ra"), 31, concat!("$", "31"), true)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 32 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl Gpr {
@@ -395,6 +358,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in GPR.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

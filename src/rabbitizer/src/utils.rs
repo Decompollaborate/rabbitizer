@@ -196,6 +196,7 @@ pub(crate) const fn floatrepr_16_from_32(mut arg: u32) -> u16 {
 /// | 1 | 0 |  0  |
 /// | 0 | 1 |  1  |
 /// | 0 | 0 |  1  |
+#[cfg(test)]
 #[inline(always)]
 #[must_use]
 pub(crate) const fn truth_a_implies_b(a: bool, b: bool) -> bool {
@@ -212,6 +213,7 @@ pub(crate) const fn truth_a_implies_b(a: bool, b: bool) -> bool {
 /// | 1 | 0 |  0  |
 /// | 0 | 1 |  0  |
 /// | 0 | 0 |  1  |
+#[cfg(test)]
 #[inline(always)]
 #[must_use]
 pub(crate) const fn truth_both_or_neither(a: bool, b: bool) -> bool {

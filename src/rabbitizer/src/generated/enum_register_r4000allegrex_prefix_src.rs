@@ -49,199 +49,162 @@ pub static R4000ALLEGREX_PREFIX_SRC: [RegisterDescriptor; 32] = {
         name: "X",
         name_numeric: "X",
         ..RegisterDescriptor::new("x", 0, concat!("$", "0"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::y as usize] = RegisterDescriptor {
         name: "Y",
         name_numeric: "Y",
         ..RegisterDescriptor::new("y", 1, concat!("$", "1"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::z as usize] = RegisterDescriptor {
         name: "Z",
         name_numeric: "Z",
         ..RegisterDescriptor::new("z", 2, concat!("$", "2"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::w as usize] = RegisterDescriptor {
         name: "W",
         name_numeric: "W",
         ..RegisterDescriptor::new("w", 3, concat!("$", "3"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::abs_x as usize] = RegisterDescriptor {
         name: "|X|",
         name_numeric: "|X|",
         ..RegisterDescriptor::new("abs_x", 4, concat!("$", "4"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::abs_y as usize] = RegisterDescriptor {
         name: "|Y|",
         name_numeric: "|Y|",
         ..RegisterDescriptor::new("abs_y", 5, concat!("$", "5"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::abs_z as usize] = RegisterDescriptor {
         name: "|Z|",
         name_numeric: "|Z|",
         ..RegisterDescriptor::new("abs_z", 6, concat!("$", "6"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::abs_w as usize] = RegisterDescriptor {
         name: "|W|",
         name_numeric: "|W|",
         ..RegisterDescriptor::new("abs_w", 7, concat!("$", "7"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::zero as usize] = RegisterDescriptor {
         name: "0",
         name_numeric: "0",
         ..RegisterDescriptor::new("zero", 8, concat!("$", "8"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::one as usize] = RegisterDescriptor {
         name: "1",
         name_numeric: "1",
         ..RegisterDescriptor::new("one", 9, concat!("$", "9"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::two as usize] = RegisterDescriptor {
         name: "2",
         name_numeric: "2",
         ..RegisterDescriptor::new("two", 10, concat!("$", "10"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::one_half as usize] = RegisterDescriptor {
         name: "1/2",
         name_numeric: "1/2",
         ..RegisterDescriptor::new("one_half", 11, concat!("$", "11"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::three as usize] = RegisterDescriptor {
         name: "3",
         name_numeric: "3",
         ..RegisterDescriptor::new("three", 12, concat!("$", "12"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::one_third as usize] = RegisterDescriptor {
         name: "1/3",
         name_numeric: "1/3",
         ..RegisterDescriptor::new("one_third", 13, concat!("$", "13"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::one_fourth as usize] = RegisterDescriptor {
         name: "1/4",
         name_numeric: "1/4",
         ..RegisterDescriptor::new("one_fourth", 14, concat!("$", "14"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::one_sixth as usize] = RegisterDescriptor {
         name: "1/6",
         name_numeric: "1/6",
         ..RegisterDescriptor::new("one_sixth", 15, concat!("$", "15"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_x as usize] = RegisterDescriptor {
         name: "-X",
         name_numeric: "-X",
         ..RegisterDescriptor::new("neg_x", 16, concat!("$", "16"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_y as usize] = RegisterDescriptor {
         name: "-Y",
         name_numeric: "-Y",
         ..RegisterDescriptor::new("neg_y", 17, concat!("$", "17"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_z as usize] = RegisterDescriptor {
         name: "-Z",
         name_numeric: "-Z",
         ..RegisterDescriptor::new("neg_z", 18, concat!("$", "18"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_w as usize] = RegisterDescriptor {
         name: "-W",
         name_numeric: "-W",
         ..RegisterDescriptor::new("neg_w", 19, concat!("$", "19"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_abs_x as usize] = RegisterDescriptor {
         name: "-|X|",
         name_numeric: "-|X|",
         ..RegisterDescriptor::new("neg_abs_x", 20, concat!("$", "20"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_abs_y as usize] = RegisterDescriptor {
         name: "-|Y|",
         name_numeric: "-|Y|",
         ..RegisterDescriptor::new("neg_abs_y", 21, concat!("$", "21"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_abs_z as usize] = RegisterDescriptor {
         name: "-|Z|",
         name_numeric: "-|Z|",
         ..RegisterDescriptor::new("neg_abs_z", 22, concat!("$", "22"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_abs_w as usize] = RegisterDescriptor {
         name: "-|W|",
         name_numeric: "-|W|",
         ..RegisterDescriptor::new("neg_abs_w", 23, concat!("$", "23"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_zero as usize] = RegisterDescriptor {
         name: "-0",
         name_numeric: "-0",
         ..RegisterDescriptor::new("neg_zero", 24, concat!("$", "24"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_one as usize] = RegisterDescriptor {
         name: "-1",
         name_numeric: "-1",
         ..RegisterDescriptor::new("neg_one", 25, concat!("$", "25"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_two as usize] = RegisterDescriptor {
         name: "-2",
         name_numeric: "-2",
         ..RegisterDescriptor::new("neg_two", 26, concat!("$", "26"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_one_half as usize] = RegisterDescriptor {
         name: "-1/2",
         name_numeric: "-1/2",
         ..RegisterDescriptor::new("neg_one_half", 27, concat!("$", "27"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_three as usize] = RegisterDescriptor {
         name: "-3",
         name_numeric: "-3",
         ..RegisterDescriptor::new("neg_three", 28, concat!("$", "28"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_one_third as usize] = RegisterDescriptor {
         name: "-1/3",
         name_numeric: "-1/3",
         ..RegisterDescriptor::new("neg_one_third", 29, concat!("$", "29"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_one_fourth as usize] = RegisterDescriptor {
         name: "-1/4",
         name_numeric: "-1/4",
         ..RegisterDescriptor::new("neg_one_fourth", 30, concat!("$", "30"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixSrc::neg_one_sixth as usize] = RegisterDescriptor {
         name: "-1/6",
         name_numeric: "-1/6",
         ..RegisterDescriptor::new("neg_one_sixth", 31, concat!("$", "31"), false)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 32 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl R4000AllegrexPrefixSrc {
@@ -387,6 +350,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in R4000ALLEGREX_PREFIX_SRC.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

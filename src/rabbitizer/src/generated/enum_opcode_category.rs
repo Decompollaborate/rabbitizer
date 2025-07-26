@@ -194,24 +194,21 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             EncodedFieldMask::opcode,
             0x0,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_SPECIAL as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "SPECIAL"),
             EncodedFieldMask::function,
             0x0,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_REGIMM as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "REGIMM"),
             EncodedFieldMask::rt,
             0x04000000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP0 as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
         ..OpcodeCategoryDescriptor::new(
@@ -219,8 +216,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             EncodedFieldMask::fmt,
             0x40000000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP0_BC0 as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
         ..OpcodeCategoryDescriptor::new(
@@ -228,8 +224,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             EncodedFieldMask::bc_fmt,
             0x41000000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP0_TLB as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
         ..OpcodeCategoryDescriptor::new(
@@ -237,56 +232,49 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             EncodedFieldMask::function,
             0x42000000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP1 as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1"),
             EncodedFieldMask::fmt,
             0x44000000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP1_BC1 as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_BC1"),
             EncodedFieldMask::bc_fmt,
             0x45000000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP1_FPUS as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUS"),
             EncodedFieldMask::function,
             0x46000000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP1_FPUD as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUD"),
             EncodedFieldMask::function,
             0x46200000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP1_FPUW as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUW"),
             EncodedFieldMask::function,
             0x46800000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP1_FPUL as usize] = OpcodeCategoryDescriptor {
         ..OpcodeCategoryDescriptor::new(
             concat!("CORE", "_", "COP1_FPUL"),
             EncodedFieldMask::function,
             0x46A00000,
         )
-    }
-    .check_panic_chain();
+    };
     table[OpcodeCategory::CORE_COP2 as usize] = OpcodeCategoryDescriptor {
         handwritten_category: true,
         ..OpcodeCategoryDescriptor::new(
@@ -294,8 +282,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
             EncodedFieldMask::fmt,
             0x48000000,
         )
-    }
-    .check_panic_chain();
+    };
     #[cfg(feature = "RSP")]
     {
         table[OpcodeCategory::RSP_NORMAL as usize] = OpcodeCategoryDescriptor {
@@ -304,8 +291,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::opcode,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -315,8 +301,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::rd,
                 0xC8000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -326,8 +311,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::rd,
                 0xE8000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -337,8 +321,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -348,8 +331,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::rt,
                 0x04000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -359,8 +341,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x40000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -370,8 +351,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x44000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -381,8 +361,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x48000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -392,8 +371,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x4A000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -403,8 +381,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::opcode,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -414,8 +391,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -425,8 +401,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::rt,
                 0x04000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -436,8 +411,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x40000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -447,8 +421,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x44000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -458,8 +431,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x48000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -469,8 +441,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x4A000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -480,8 +451,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::opcode,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -491,8 +461,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -502,8 +471,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::rs,
                 0x00000002,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -513,8 +481,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::sa,
                 0x00000006,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -524,8 +491,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::rt,
                 0x04000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -535,8 +501,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x70000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -546,8 +511,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x7C000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -557,8 +521,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::sa,
                 0x7C000020,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -569,8 +532,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x40000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -581,8 +543,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::bc_fmt,
                 0x41000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -593,8 +554,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x42000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -604,8 +564,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x44000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -615,8 +574,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::bc_fmt,
                 0x45000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -626,8 +584,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x46000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -637,8 +594,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x46800000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -648,8 +604,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x48000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -659,8 +614,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_bc2_fmt,
                 0x49000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -670,8 +624,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_mxhc2,
                 0x48600000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -681,8 +634,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_mfhc2_p_fmt,
                 0x48600080,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -692,8 +644,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_mfhc2_p_s_fmt,
                 0x486000F0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -703,8 +654,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_mxhc2,
                 0x48E00000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -714,8 +664,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu0_fmt,
                 0x60000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -725,8 +674,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu0_fmt,
                 0x64000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -736,8 +684,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu0_fmt,
                 0x6C000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -747,8 +694,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt,
                 0xD0000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -758,8 +704,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt,
                 0xD0000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -769,8 +714,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                 0xD0000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -780,8 +724,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                 0xD0100000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -791,8 +734,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                 0xD0180000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -802,8 +744,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                 0xD0200000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -814,8 +755,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                     0xD0300000,
                 )
-            }
-            .check_panic_chain();
+            };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -826,8 +766,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                     0xD0380000,
                 )
-            }
-            .check_panic_chain();
+            };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -837,8 +776,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                 0xD0400000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -848,8 +786,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                 0xD0480000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -860,8 +797,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                     0xD0500000,
                 )
-            }
-            .check_panic_chain();
+            };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -871,8 +807,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt0_fmt0_fmt,
                 0xD0580000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -882,8 +817,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_tp,
                 0xD0600000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -893,8 +827,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu4_fmt2_fmt,
                 0xD2000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -905,8 +838,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                     EncodedFieldMask::r4000allegrex_vfpu4_fmt2_cndmove_fmt,
                     0xD2A00000,
                 )
-            }
-            .check_panic_chain();
+            };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -916,8 +848,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu5_fmt,
                 0xDC000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -927,8 +858,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu6_fmt,
                 0xF0000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -938,8 +868,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu6_fmt7_fmt,
                 0xF3800000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -949,8 +878,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu6_fmt7_fmt0_fmt,
                 0xF3800000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -960,8 +888,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_vfpu7_fmt,
                 0xFC000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -971,8 +898,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r4000allegrex_wb,
                 0xF4000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -982,8 +908,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::opcode,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -993,8 +918,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x0,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1004,8 +928,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::rt,
                 0x04000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1016,8 +939,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x40000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1028,8 +950,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x42000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1039,8 +960,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::fmt,
                 0x44000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1050,8 +970,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x46000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1061,8 +980,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_cop2_discriminant,
                 0x48000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1072,8 +990,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_cop2_ini_fmt,
                 0x48000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1083,8 +1000,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_cop2_ini_fmt,
                 0x48000001,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1094,8 +1010,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::bc_fmt,
                 0x49000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1105,8 +1020,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x4A000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1116,8 +1030,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_fhi_flo,
                 0x4A00003C,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1127,8 +1040,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_viwr_fhilo,
                 0x4A0003FC,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1138,8 +1050,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::function,
                 0x70000000,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1149,8 +1060,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_mmi_function,
                 0x70000008,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1160,8 +1070,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_mmi_function,
                 0x70000028,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1171,8 +1080,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_mmi_function,
                 0x70000009,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1182,8 +1090,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_mmi_function,
                 0x70000029,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1193,8 +1100,7 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_mmi_function,
                 0x70000030,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -1204,13 +1110,17 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                 EncodedFieldMask::r5900ee_mmi_function,
                 0x70000031,
             )
-        }
-        .check_panic_chain();
-    }
-    let mut i = 0;
-    while i < OPCODE_CATEGORY_COUNT {
-        table[i].check_panic();
-        i += 1;
+        };
     }
     table
 };
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_descriptor_valid() {
+        for x in OPCODE_CATEGORIES {
+            x.check_valid_entry();
+        }
+    }
+}

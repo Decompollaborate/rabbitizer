@@ -28,7 +28,7 @@ pub enum OpcodeCategory {
     table[ OpcodeCategory::prefix##_##name as usize] = OpcodeCategoryDescriptor {\
         __VA_ARGS__ \
         ..OpcodeCategoryDescriptor::new(concat!(#prefix, "_", #name), field_mask, trailing_bits) \
-    } .check_panic_chain();
+    };
 
 #define RAB_DEF_OPCODE_CATEGORY_EXT(prefix, name, field_mask, trailing_bits, ...) \
     SPECIAL_RS_TAG(cfg(feature = #prefix)) \
@@ -41,14 +41,20 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
 
     #include "OpcodeCategory.inc"
 
-    let mut i = 0;
-    while i < OPCODE_CATEGORY_COUNT {
-        table[i].check_panic();
-        i += 1;
-    }
-
     table
 };
 
 #undef RAB_DEF_OPCODE_CATEGORY
 #undef RAB_DEF_OPCODE_CATEGORY_EXT
+
+SPECIAL_RS_TAG(cfg(test))
+mod tests {
+    use super::*;
+
+    SPECIAL_RS_TAG(test)
+    fn check_descriptor_valid() {
+        for x in OPCODE_CATEGORIES {
+            x.check_valid_entry();
+        }
+    }
+}

@@ -93,8 +93,9 @@ impl RegisterDescriptor {
         }
     }
 
+    #[cfg(test)]
     #[allow(clippy::cognitive_complexity)]
-    pub(crate) const fn check_panic(&self) {
+    pub(crate) const fn check_valid_entry(&self) {
         if self.is_reserved {
             assert!(
                 !self.is_clobbered_by_func_call,
@@ -280,11 +281,6 @@ impl RegisterDescriptor {
             assert!(self.is_temp, "Broken register descriptor");
             assert!(self.is_arg, "Broken register descriptor");
         }
-    }
-
-    pub(crate) const fn check_panic_chain(self) -> Self {
-        self.check_panic();
-        self
     }
 }
 

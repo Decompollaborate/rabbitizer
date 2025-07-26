@@ -31,16 +31,12 @@ impl AccessTypeDescriptor {
         }
     }
 
-    pub(crate) const fn check_panic(&self) {
+    #[cfg(test)]
+    pub(crate) const fn check_valid_entry(&self) {
         assert!(
             !self.name.is_empty(),
             "An access type must not have an empty name"
         );
-    }
-
-    pub(crate) const fn check_panic_chain(self) -> Self {
-        self.check_panic();
-        self
     }
 }
 

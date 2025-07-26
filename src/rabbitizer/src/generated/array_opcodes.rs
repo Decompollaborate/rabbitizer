@@ -30,8 +30,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_j as usize] = OpcodeDescriptor {
@@ -47,8 +46,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_jal as usize] = OpcodeDescriptor {
@@ -65,8 +63,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_beq as usize] = OpcodeDescriptor {
@@ -87,8 +84,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bne as usize] = OpcodeDescriptor {
@@ -109,8 +105,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -133,8 +128,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -157,8 +151,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_blez as usize] = OpcodeDescriptor {
@@ -174,8 +167,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -193,8 +185,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bgtz as usize] = OpcodeDescriptor {
@@ -210,8 +201,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -229,8 +219,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_addi as usize] = OpcodeDescriptor {
@@ -248,8 +237,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_addiu as usize] = OpcodeDescriptor {
@@ -266,8 +254,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_slti as usize] = OpcodeDescriptor {
@@ -283,8 +270,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sltiu as usize] = OpcodeDescriptor {
@@ -300,8 +286,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_andi as usize] = OpcodeDescriptor {
@@ -317,8 +302,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_ori as usize] = OpcodeDescriptor {
@@ -335,8 +319,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_xori as usize] = OpcodeDescriptor {
@@ -352,8 +335,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -371,8 +353,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -390,8 +371,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lui as usize] = OpcodeDescriptor {
@@ -407,8 +387,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -429,8 +408,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -451,8 +429,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lb as usize] = OpcodeDescriptor {
@@ -472,8 +449,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lh as usize] = OpcodeDescriptor {
@@ -493,8 +469,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lwl as usize] = OpcodeDescriptor {
@@ -514,8 +489,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lw as usize] = OpcodeDescriptor {
@@ -535,8 +509,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lbu as usize] = OpcodeDescriptor {
@@ -557,8 +530,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lhu as usize] = OpcodeDescriptor {
@@ -579,8 +551,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lwr as usize] = OpcodeDescriptor {
@@ -600,8 +571,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -623,8 +593,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sb as usize] = OpcodeDescriptor {
@@ -644,8 +613,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sh as usize] = OpcodeDescriptor {
@@ -665,8 +633,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_swl as usize] = OpcodeDescriptor {
@@ -686,8 +653,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sw as usize] = OpcodeDescriptor {
@@ -707,8 +673,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -729,8 +694,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -751,8 +715,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_swr as usize] = OpcodeDescriptor {
@@ -772,8 +735,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -795,8 +757,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_IV")]
     {
@@ -812,8 +773,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_IV,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -835,8 +795,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -857,8 +816,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -880,8 +838,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -903,8 +860,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -925,8 +881,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -943,8 +898,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lwc1 as usize] = OpcodeDescriptor {
@@ -965,8 +919,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -989,8 +942,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_swc1 as usize] = OpcodeDescriptor {
@@ -1011,8 +963,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -1035,8 +986,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_lwc2 as usize] = OpcodeDescriptor {
@@ -1056,8 +1006,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -1078,8 +1027,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_swc2 as usize] = OpcodeDescriptor {
@@ -1099,8 +1047,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -1121,8 +1068,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_b as usize] = OpcodeDescriptor {
@@ -1138,8 +1084,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_beqz as usize] = OpcodeDescriptor {
@@ -1156,8 +1101,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bnez as usize] = OpcodeDescriptor {
@@ -1174,8 +1118,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -1194,8 +1137,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -1214,8 +1156,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     {
@@ -1232,8 +1173,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_srl as usize] = OpcodeDescriptor {
@@ -1249,8 +1189,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sra as usize] = OpcodeDescriptor {
@@ -1266,8 +1205,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1284,8 +1222,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1302,8 +1239,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1320,8 +1256,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1338,8 +1273,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1356,8 +1290,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1374,8 +1307,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1393,8 +1325,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1412,8 +1343,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1431,8 +1361,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sllv as usize] = OpcodeDescriptor {
@@ -1449,8 +1378,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_srlv as usize] = OpcodeDescriptor {
@@ -1467,8 +1395,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_srav as usize] = OpcodeDescriptor {
@@ -1485,8 +1412,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mthi as usize] = OpcodeDescriptor {
@@ -1502,8 +1428,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mtlo as usize] = OpcodeDescriptor {
@@ -1519,8 +1444,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_jr as usize] = OpcodeDescriptor {
@@ -1537,8 +1461,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_jalr as usize] = OpcodeDescriptor {
@@ -1557,8 +1480,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mfhi as usize] = OpcodeDescriptor {
@@ -1574,8 +1496,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mflo as usize] = OpcodeDescriptor {
@@ -1591,8 +1512,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_IV")]
     {
@@ -1610,8 +1530,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_IV,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_IV")]
     {
@@ -1629,8 +1548,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_IV,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_div as usize] = OpcodeDescriptor {
@@ -1648,8 +1566,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_divu as usize] = OpcodeDescriptor {
@@ -1667,8 +1584,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1687,8 +1603,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1707,8 +1622,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_add as usize] = OpcodeDescriptor {
@@ -1727,8 +1641,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_addu as usize] = OpcodeDescriptor {
@@ -1746,8 +1659,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sub as usize] = OpcodeDescriptor {
@@ -1766,8 +1678,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_subu as usize] = OpcodeDescriptor {
@@ -1785,8 +1696,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_and as usize] = OpcodeDescriptor {
@@ -1804,8 +1714,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_or as usize] = OpcodeDescriptor {
@@ -1823,8 +1732,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_xor as usize] = OpcodeDescriptor {
@@ -1841,8 +1749,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_nor as usize] = OpcodeDescriptor {
@@ -1859,8 +1766,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_slt as usize] = OpcodeDescriptor {
@@ -1877,8 +1783,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sltu as usize] = OpcodeDescriptor {
@@ -1895,8 +1800,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1915,8 +1819,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1935,8 +1838,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1955,8 +1857,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -1975,8 +1876,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_syscall as usize] = OpcodeDescriptor {
@@ -1994,8 +1894,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_break as usize] = OpcodeDescriptor {
@@ -2011,8 +1910,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2027,8 +1925,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mult as usize] = OpcodeDescriptor {
@@ -2046,8 +1943,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_multu as usize] = OpcodeDescriptor {
@@ -2065,8 +1961,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -2085,8 +1980,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -2105,8 +1999,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2127,8 +2020,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2149,8 +2041,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2171,8 +2062,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2193,8 +2083,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2215,8 +2104,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2237,8 +2125,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_nop as usize] = OpcodeDescriptor {
@@ -2253,8 +2140,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_not as usize] = OpcodeDescriptor {
@@ -2271,8 +2157,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_neg as usize] = OpcodeDescriptor {
@@ -2290,8 +2175,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_negu as usize] = OpcodeDescriptor {
@@ -2308,8 +2192,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bltz as usize] = OpcodeDescriptor {
@@ -2325,8 +2208,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bgez as usize] = OpcodeDescriptor {
@@ -2342,8 +2224,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2361,8 +2242,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2380,8 +2260,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2401,8 +2280,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2422,8 +2300,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2443,8 +2320,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2464,8 +2340,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2485,8 +2360,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2506,8 +2380,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bltzal as usize] = OpcodeDescriptor {
@@ -2524,8 +2397,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bgezal as usize] = OpcodeDescriptor {
@@ -2542,8 +2414,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2562,8 +2433,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2583,8 +2453,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bal as usize] = OpcodeDescriptor {
@@ -2602,8 +2471,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mfc0 as usize] = OpcodeDescriptor {
@@ -2619,8 +2487,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -2637,8 +2504,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cfc0 as usize] = OpcodeDescriptor {
@@ -2654,8 +2520,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mtc0 as usize] = OpcodeDescriptor {
@@ -2671,8 +2536,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -2689,8 +2553,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_ctc0 as usize] = OpcodeDescriptor {
@@ -2706,8 +2569,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     {
@@ -2723,8 +2585,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bc0t as usize] = OpcodeDescriptor {
@@ -2739,8 +2600,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2757,8 +2617,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -2775,8 +2634,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_tlbr as usize] = OpcodeDescriptor {
@@ -2791,8 +2649,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_tlbwi as usize] = OpcodeDescriptor {
@@ -2807,8 +2664,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_tlbwr as usize] = OpcodeDescriptor {
@@ -2822,8 +2678,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_tlbp as usize] = OpcodeDescriptor {
@@ -2838,8 +2693,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_rfe as usize] = OpcodeDescriptor {
@@ -2854,8 +2708,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -2873,8 +2726,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mfc1 as usize] = OpcodeDescriptor {
@@ -2891,8 +2743,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -2910,8 +2761,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mtc1 as usize] = OpcodeDescriptor {
@@ -2928,8 +2778,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -2947,8 +2796,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cfc1 as usize] = OpcodeDescriptor {
@@ -2964,8 +2812,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_ctc1 as usize] = OpcodeDescriptor {
@@ -2981,8 +2828,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     {
@@ -2998,8 +2844,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_bc1t as usize] = OpcodeDescriptor {
@@ -3014,8 +2859,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3032,8 +2876,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3050,8 +2893,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_add_s as usize] = OpcodeDescriptor {
@@ -3069,8 +2911,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sub_s as usize] = OpcodeDescriptor {
@@ -3088,8 +2929,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mul_s as usize] = OpcodeDescriptor {
@@ -3107,8 +2947,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_div_s as usize] = OpcodeDescriptor {
@@ -3126,8 +2965,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3145,8 +2983,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_abs_s as usize] = OpcodeDescriptor {
@@ -3163,8 +3000,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mov_s as usize] = OpcodeDescriptor {
@@ -3181,8 +3017,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_neg_s as usize] = OpcodeDescriptor {
@@ -3199,8 +3034,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3218,8 +3052,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3237,8 +3070,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3256,8 +3088,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3275,8 +3106,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3294,8 +3124,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3313,8 +3142,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3332,8 +3160,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3351,8 +3178,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cvt_d_s as usize] = OpcodeDescriptor {
@@ -3370,8 +3196,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cvt_w_s as usize] = OpcodeDescriptor {
@@ -3388,8 +3213,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3407,8 +3231,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_f_s as usize] = OpcodeDescriptor {
@@ -3425,8 +3248,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_un_s as usize] = OpcodeDescriptor {
@@ -3443,8 +3265,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_eq_s as usize] = OpcodeDescriptor {
@@ -3461,8 +3282,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ueq_s as usize] = OpcodeDescriptor {
@@ -3479,8 +3299,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_olt_s as usize] = OpcodeDescriptor {
@@ -3497,8 +3316,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ult_s as usize] = OpcodeDescriptor {
@@ -3515,8 +3333,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ole_s as usize] = OpcodeDescriptor {
@@ -3533,8 +3350,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ule_s as usize] = OpcodeDescriptor {
@@ -3551,8 +3367,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_sf_s as usize] = OpcodeDescriptor {
@@ -3569,8 +3384,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ngle_s as usize] = OpcodeDescriptor {
@@ -3587,8 +3401,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_seq_s as usize] = OpcodeDescriptor {
@@ -3605,8 +3418,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ngl_s as usize] = OpcodeDescriptor {
@@ -3623,8 +3435,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_lt_s as usize] = OpcodeDescriptor {
@@ -3641,8 +3452,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_nge_s as usize] = OpcodeDescriptor {
@@ -3659,8 +3469,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_le_s as usize] = OpcodeDescriptor {
@@ -3677,8 +3486,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ngt_s as usize] = OpcodeDescriptor {
@@ -3695,8 +3503,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_add_d as usize] = OpcodeDescriptor {
@@ -3714,8 +3521,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_sub_d as usize] = OpcodeDescriptor {
@@ -3733,8 +3539,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mul_d as usize] = OpcodeDescriptor {
@@ -3752,8 +3557,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_div_d as usize] = OpcodeDescriptor {
@@ -3771,8 +3575,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3790,8 +3593,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_abs_d as usize] = OpcodeDescriptor {
@@ -3808,8 +3610,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mov_d as usize] = OpcodeDescriptor {
@@ -3826,8 +3627,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_neg_d as usize] = OpcodeDescriptor {
@@ -3844,8 +3644,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3863,8 +3662,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3882,8 +3680,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3901,8 +3698,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -3920,8 +3716,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3939,8 +3734,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3958,8 +3752,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3977,8 +3770,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -3996,8 +3788,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_II,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cvt_s_d as usize] = OpcodeDescriptor {
@@ -4015,8 +3806,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cvt_w_d as usize] = OpcodeDescriptor {
@@ -4034,8 +3824,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -4054,8 +3843,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_f_d as usize] = OpcodeDescriptor {
@@ -4072,8 +3860,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_un_d as usize] = OpcodeDescriptor {
@@ -4090,8 +3877,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_eq_d as usize] = OpcodeDescriptor {
@@ -4108,8 +3894,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ueq_d as usize] = OpcodeDescriptor {
@@ -4126,8 +3911,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_olt_d as usize] = OpcodeDescriptor {
@@ -4144,8 +3928,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ult_d as usize] = OpcodeDescriptor {
@@ -4162,8 +3945,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ole_d as usize] = OpcodeDescriptor {
@@ -4180,8 +3962,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ule_d as usize] = OpcodeDescriptor {
@@ -4198,8 +3979,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_df_d as usize] = OpcodeDescriptor {
@@ -4216,8 +3996,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ngle_d as usize] = OpcodeDescriptor {
@@ -4234,8 +4013,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_seq_d as usize] = OpcodeDescriptor {
@@ -4252,8 +4030,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ngl_d as usize] = OpcodeDescriptor {
@@ -4270,8 +4047,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_lt_d as usize] = OpcodeDescriptor {
@@ -4288,8 +4064,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_nge_d as usize] = OpcodeDescriptor {
@@ -4306,8 +4081,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_le_d as usize] = OpcodeDescriptor {
@@ -4324,8 +4098,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_c_ngt_d as usize] = OpcodeDescriptor {
@@ -4342,8 +4115,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cvt_s_w as usize] = OpcodeDescriptor {
@@ -4360,8 +4132,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cvt_d_w as usize] = OpcodeDescriptor {
@@ -4379,8 +4150,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -4398,8 +4168,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -4418,8 +4187,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_III,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mfc2 as usize] = OpcodeDescriptor {
@@ -4433,8 +4201,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_mtc2 as usize] = OpcodeDescriptor {
@@ -4448,8 +4215,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_cfc2 as usize] = OpcodeDescriptor {
@@ -4463,8 +4229,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[Opcode::core_ctc2 as usize] = OpcodeDescriptor {
@@ -4478,8 +4243,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::MIPS_I,
                 None,
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4494,8 +4258,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4510,8 +4273,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4526,8 +4288,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4542,8 +4303,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "RSP")]
@@ -4562,8 +4322,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4581,8 +4340,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4600,8 +4358,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4619,8 +4376,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4638,8 +4394,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4657,8 +4412,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4676,8 +4430,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4695,8 +4448,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4714,8 +4466,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4733,8 +4484,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4752,8 +4502,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4771,8 +4520,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4790,8 +4538,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4809,8 +4556,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4828,8 +4574,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4847,8 +4592,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4866,8 +4610,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4885,8 +4628,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -4904,8 +4646,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4923,8 +4664,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4942,8 +4682,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -4961,8 +4700,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -4980,8 +4718,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -4999,8 +4736,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5018,8 +4754,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5037,8 +4772,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5056,8 +4790,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5075,8 +4808,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5094,8 +4826,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5113,8 +4844,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5132,8 +4862,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5151,8 +4880,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5170,8 +4898,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5189,8 +4916,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5208,8 +4934,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5227,8 +4952,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5246,8 +4970,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5265,8 +4988,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5284,8 +5006,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5303,8 +5024,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5322,8 +5042,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5341,8 +5060,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5360,8 +5078,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5379,8 +5096,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5398,8 +5114,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5417,8 +5132,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5436,8 +5150,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5455,8 +5168,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5470,8 +5182,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5485,8 +5196,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5500,8 +5210,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5515,8 +5224,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5530,8 +5238,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5545,8 +5252,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5560,8 +5266,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5575,8 +5280,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5594,8 +5298,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5613,8 +5316,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5632,8 +5334,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5651,8 +5352,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5670,8 +5370,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5689,8 +5388,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5708,8 +5406,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5723,8 +5420,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5739,8 +5435,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5755,8 +5450,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5771,8 +5465,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5787,8 +5480,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5803,8 +5495,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5819,8 +5510,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5835,8 +5525,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5851,8 +5540,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5867,8 +5555,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5883,8 +5570,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RspViceMsp")]
     {
@@ -5899,8 +5585,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5915,8 +5600,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5931,8 +5615,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5947,8 +5630,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5963,8 +5645,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5979,8 +5660,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -5995,8 +5675,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6011,8 +5690,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6027,8 +5705,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6043,8 +5720,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6059,8 +5735,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6075,8 +5750,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6091,8 +5765,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6107,8 +5780,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "RSP")]
@@ -6126,8 +5798,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "RSP")]
     {
@@ -6144,8 +5815,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::RSP),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R3000GTE")]
@@ -6160,8 +5830,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6175,8 +5844,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6190,8 +5858,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6205,8 +5872,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6220,8 +5886,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6235,8 +5900,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6250,8 +5914,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6265,8 +5928,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6280,8 +5942,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6295,8 +5956,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6310,8 +5970,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6325,8 +5984,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6340,8 +5998,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6355,8 +6012,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6370,8 +6026,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6385,8 +6040,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6400,8 +6054,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6421,8 +6074,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6436,8 +6088,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6451,8 +6102,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6466,8 +6116,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R3000GTE")]
     {
@@ -6481,8 +6130,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R3000GTE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6501,8 +6149,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6521,8 +6168,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6541,8 +6187,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6561,8 +6206,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -6580,8 +6224,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6598,8 +6241,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6618,8 +6260,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6638,8 +6279,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6658,8 +6298,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6678,8 +6317,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6697,8 +6335,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6716,8 +6353,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6735,8 +6371,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6754,8 +6389,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -6773,8 +6407,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6791,8 +6424,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6810,8 +6442,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6829,8 +6460,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -6846,8 +6476,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6863,8 +6492,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6880,8 +6508,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6903,8 +6530,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6926,8 +6552,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -6945,8 +6570,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6963,8 +6587,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6981,8 +6604,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -6999,8 +6621,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7017,8 +6638,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -7038,8 +6658,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7058,8 +6677,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7079,8 +6697,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7100,8 +6717,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7117,8 +6733,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -7135,8 +6750,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -7152,8 +6766,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7169,8 +6782,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7186,8 +6798,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7206,8 +6817,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7226,8 +6836,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7246,8 +6855,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7266,8 +6874,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7286,8 +6893,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7306,8 +6912,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7326,8 +6931,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7346,8 +6950,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7366,8 +6969,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7386,8 +6988,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7406,8 +7007,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7426,8 +7026,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7446,8 +7045,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7466,8 +7064,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7486,8 +7083,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7506,8 +7102,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7526,8 +7121,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7546,8 +7140,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7566,8 +7159,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7586,8 +7178,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7606,8 +7197,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7626,8 +7216,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7646,8 +7235,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7666,8 +7254,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7686,8 +7273,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7706,8 +7292,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7726,8 +7311,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7746,8 +7330,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7762,8 +7345,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7778,8 +7360,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7794,8 +7375,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7810,8 +7390,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7830,8 +7409,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7850,8 +7428,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7870,8 +7447,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7890,8 +7466,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7910,8 +7485,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7930,8 +7504,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7950,8 +7523,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7970,8 +7542,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -7990,8 +7561,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8010,8 +7580,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8030,8 +7599,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8050,8 +7618,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8070,8 +7637,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8090,8 +7656,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8110,8 +7675,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8130,8 +7694,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8150,8 +7713,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8170,8 +7732,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8190,8 +7751,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8210,8 +7770,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8230,8 +7789,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -8247,8 +7805,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8263,8 +7820,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8279,8 +7835,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8295,8 +7850,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8311,8 +7865,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8327,8 +7880,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8343,8 +7895,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8359,8 +7910,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8375,8 +7925,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8391,8 +7940,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8407,8 +7955,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8423,8 +7970,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8439,8 +7985,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8455,8 +8000,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8471,8 +8015,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8487,8 +8030,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8503,8 +8045,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8519,8 +8060,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8535,8 +8075,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8551,8 +8090,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8567,8 +8105,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8583,8 +8120,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8599,8 +8135,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8615,8 +8150,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8631,8 +8165,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8647,8 +8180,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8663,8 +8195,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8679,8 +8210,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8695,8 +8225,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8711,8 +8240,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8727,8 +8255,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8743,8 +8270,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8759,8 +8285,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8775,8 +8300,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8791,8 +8315,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8807,8 +8330,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8823,8 +8345,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8839,8 +8360,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8855,8 +8375,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8871,8 +8390,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8887,8 +8405,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8903,8 +8420,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8919,8 +8435,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8935,8 +8450,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8951,8 +8465,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8967,8 +8480,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8983,8 +8495,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -8999,8 +8510,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9015,8 +8525,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9031,8 +8540,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9047,8 +8555,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9063,8 +8570,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9079,8 +8585,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9095,8 +8600,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9111,8 +8615,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9127,8 +8630,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9143,8 +8645,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9159,8 +8660,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9175,8 +8675,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9191,8 +8690,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9207,8 +8705,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9223,8 +8720,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9239,8 +8735,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9255,8 +8750,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9271,8 +8765,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9287,8 +8780,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9303,8 +8795,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9319,8 +8810,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9335,8 +8825,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9351,8 +8840,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9367,8 +8855,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9383,8 +8870,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9399,8 +8885,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9415,8 +8900,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9431,8 +8915,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9447,8 +8930,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9463,8 +8945,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9479,8 +8960,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9495,8 +8975,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9511,8 +8990,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9527,8 +9005,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9543,8 +9020,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9559,8 +9035,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9575,8 +9050,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9591,8 +9065,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9607,8 +9080,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9623,8 +9095,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9639,8 +9110,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9655,8 +9125,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9671,8 +9140,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9687,8 +9155,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9703,8 +9170,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9719,8 +9185,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9735,8 +9200,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9751,8 +9215,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9767,8 +9230,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9783,8 +9245,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9799,8 +9260,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9815,8 +9275,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9831,8 +9290,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9847,8 +9305,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9863,8 +9320,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9879,8 +9335,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9895,8 +9350,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9911,8 +9365,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9927,8 +9380,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9943,8 +9395,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9959,8 +9410,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9975,8 +9425,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -9991,8 +9440,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10007,8 +9455,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10023,8 +9470,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10039,8 +9485,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10055,8 +9500,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10071,8 +9515,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10087,8 +9530,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10103,8 +9545,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10119,8 +9560,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10135,8 +9575,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10151,8 +9590,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10167,8 +9605,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10183,8 +9620,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10199,8 +9635,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10215,8 +9650,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10231,8 +9665,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10247,8 +9680,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10263,8 +9695,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10279,8 +9710,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10295,8 +9725,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10311,8 +9740,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10327,8 +9755,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10343,8 +9770,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10359,8 +9785,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10378,8 +9803,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10397,8 +9821,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10416,8 +9839,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10435,8 +9857,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10455,8 +9876,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10475,8 +9895,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10495,8 +9914,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10515,8 +9933,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10535,8 +9952,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10555,8 +9971,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10575,8 +9990,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10595,8 +10009,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10615,8 +10028,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10635,8 +10047,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10655,8 +10066,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10675,8 +10085,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10695,8 +10104,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10715,8 +10123,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10735,8 +10142,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10755,8 +10161,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10775,8 +10180,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10795,8 +10199,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10815,8 +10218,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10835,8 +10237,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -10856,8 +10257,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10876,8 +10276,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10896,8 +10295,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10916,8 +10314,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10936,8 +10333,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10956,8 +10352,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10976,8 +10371,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -10996,8 +10390,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11017,8 +10410,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11038,8 +10430,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11059,8 +10450,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11075,8 +10465,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11091,8 +10480,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11111,8 +10499,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11131,8 +10518,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11151,8 +10537,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11171,8 +10556,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11191,8 +10575,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11211,8 +10594,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11231,8 +10613,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11251,8 +10632,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11271,8 +10651,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11291,8 +10670,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11311,8 +10689,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11331,8 +10708,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11351,8 +10727,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11371,8 +10746,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -11392,8 +10766,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11412,8 +10785,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11432,8 +10804,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R4000ALLEGREX")]
@@ -11449,8 +10820,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11465,8 +10835,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11481,8 +10850,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11497,8 +10865,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11513,8 +10880,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11529,8 +10895,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11545,8 +10910,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11561,8 +10925,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11577,8 +10940,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11593,8 +10955,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11609,8 +10970,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11625,8 +10985,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11641,8 +11000,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11657,8 +11015,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11673,8 +11030,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11693,8 +11049,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -11713,8 +11068,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R4000ALLEGREX),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11735,8 +11089,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11757,8 +11110,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11777,8 +11129,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11797,8 +11148,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -11814,8 +11164,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11833,8 +11182,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11849,8 +11197,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11865,8 +11212,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -11883,8 +11229,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11900,8 +11245,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -11919,8 +11263,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11937,8 +11280,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11954,8 +11296,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11970,8 +11311,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -11986,8 +11326,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12002,8 +11341,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12018,8 +11356,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12036,8 +11373,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12054,8 +11390,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12071,8 +11406,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12088,8 +11422,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12106,8 +11439,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12124,8 +11456,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12141,8 +11472,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12158,8 +11488,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12175,8 +11504,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12192,8 +11520,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12209,8 +11536,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12226,8 +11552,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -12245,8 +11570,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12263,8 +11587,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12281,8 +11604,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12299,8 +11621,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12317,8 +11638,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12335,8 +11655,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12353,8 +11672,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12371,8 +11689,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12389,8 +11706,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12407,8 +11723,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12425,8 +11740,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12443,8 +11757,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12461,8 +11774,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12479,8 +11791,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12497,8 +11808,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12515,8 +11825,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12533,8 +11842,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12551,8 +11859,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12569,8 +11876,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12587,8 +11893,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12605,8 +11910,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12623,8 +11927,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12641,8 +11944,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12658,8 +11960,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12675,8 +11976,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12692,8 +11992,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12710,8 +12009,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12728,8 +12026,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12746,8 +12043,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12763,8 +12059,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12781,8 +12076,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12799,8 +12093,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12817,8 +12110,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12835,8 +12127,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12853,8 +12144,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12871,8 +12161,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12889,8 +12178,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12907,8 +12195,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12925,8 +12212,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12944,8 +12230,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12962,8 +12247,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12980,8 +12264,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -12998,8 +12281,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13016,8 +12298,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13034,8 +12315,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13052,8 +12332,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13070,8 +12349,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13086,8 +12364,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13102,8 +12379,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13120,8 +12396,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13138,8 +12413,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13155,8 +12429,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13173,8 +12446,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13191,8 +12463,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13209,8 +12480,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13227,8 +12497,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13245,8 +12514,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13263,8 +12531,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13281,8 +12548,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13298,8 +12564,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13315,8 +12580,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13333,8 +12597,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13350,8 +12613,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13367,8 +12629,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13384,8 +12645,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13402,8 +12662,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13420,8 +12679,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13436,8 +12694,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13452,8 +12709,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13470,8 +12726,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13488,8 +12743,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13505,8 +12759,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13523,8 +12776,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13541,8 +12793,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13559,8 +12810,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13576,8 +12826,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13593,8 +12842,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13610,8 +12858,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13626,8 +12873,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13642,8 +12888,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13658,8 +12903,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13674,8 +12918,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13690,8 +12933,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13706,8 +12948,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -13722,8 +12963,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13737,8 +12977,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -13753,8 +12992,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13772,8 +13010,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13790,8 +13027,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13808,8 +13044,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13826,8 +13061,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13845,8 +13079,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13864,8 +13097,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13882,8 +13114,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13900,8 +13131,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13919,8 +13149,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13938,8 +13167,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13956,8 +13184,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -13974,8 +13201,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -13991,8 +13217,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14007,8 +13232,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14023,8 +13247,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14039,8 +13262,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -14056,8 +13278,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14072,8 +13293,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14088,8 +13308,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14104,8 +13323,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -14121,8 +13339,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14137,8 +13354,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14154,8 +13370,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14171,8 +13386,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14192,8 +13406,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14213,8 +13426,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14234,8 +13446,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14255,8 +13466,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14276,8 +13486,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14297,8 +13506,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14318,8 +13526,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14339,8 +13546,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14360,8 +13566,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14381,8 +13586,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14402,8 +13606,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14423,8 +13626,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14444,8 +13646,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14465,8 +13666,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14486,8 +13686,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14507,8 +13706,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14528,8 +13726,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14549,8 +13746,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14570,8 +13766,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14591,8 +13786,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14612,8 +13806,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14633,8 +13826,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14654,8 +13846,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14675,8 +13866,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14696,8 +13886,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14717,8 +13906,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14738,8 +13926,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14759,8 +13946,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14780,8 +13966,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14801,8 +13986,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14822,8 +14006,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14843,8 +14026,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14864,8 +14046,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14885,8 +14066,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14906,8 +14086,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14927,8 +14106,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14948,8 +14126,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14969,8 +14146,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -14990,8 +14166,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15011,8 +14186,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15032,8 +14206,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15053,8 +14226,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15074,8 +14246,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15095,8 +14266,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15116,8 +14286,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15137,8 +14306,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15158,8 +14326,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15179,8 +14346,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15198,8 +14364,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15217,8 +14382,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15236,8 +14400,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15255,8 +14418,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15274,8 +14436,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15289,8 +14450,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15304,8 +14464,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -15326,8 +14485,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15347,8 +14505,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15368,8 +14525,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15389,8 +14545,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15410,8 +14565,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15431,8 +14585,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15452,8 +14605,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15473,8 +14625,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15493,8 +14644,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15513,8 +14663,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15533,8 +14682,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15553,8 +14701,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15574,8 +14721,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15595,8 +14741,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15616,8 +14761,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15637,8 +14781,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15654,8 +14797,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15671,8 +14813,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15688,8 +14829,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15705,8 +14845,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15722,8 +14861,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15739,8 +14877,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15756,8 +14893,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15773,8 +14909,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15793,8 +14928,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15813,8 +14947,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15833,8 +14966,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15853,8 +14985,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15873,8 +15004,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15890,8 +15020,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15910,8 +15039,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15927,8 +15055,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15948,8 +15075,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15969,8 +15095,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -15990,8 +15115,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16011,8 +15135,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16032,8 +15155,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16053,8 +15175,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16074,8 +15195,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16095,8 +15215,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16116,8 +15235,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16137,8 +15255,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16157,8 +15274,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16178,8 +15294,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16199,8 +15314,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16220,8 +15334,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16235,8 +15348,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16252,8 +15364,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16269,8 +15380,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16286,8 +15396,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16303,8 +15412,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16320,8 +15428,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16337,8 +15444,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16356,8 +15462,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16371,8 +15476,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16390,8 +15494,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16405,8 +15508,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16420,8 +15522,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16437,8 +15538,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16454,8 +15554,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16471,8 +15570,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16486,8 +15584,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16501,8 +15598,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
 
     #[cfg(feature = "R5900EE")]
@@ -16521,8 +15617,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16540,8 +15635,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16559,8 +15653,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16578,8 +15671,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16597,8 +15689,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16616,8 +15707,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16635,8 +15725,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -16654,13 +15743,17 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 IsaVersion::EXTENSION,
                 Some(IsaExtension::R5900EE),
             )
-        }
-        .check_panic_chain();
-    }
-    let mut i = 0;
-    while i < OPCODE_COUNT {
-        table[i].check_panic();
-        i += 1;
+        };
     }
     table
 };
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_descriptor_valid() {
+        for x in OPCODES {
+            x.check_valid_entry();
+        }
+    }
+}

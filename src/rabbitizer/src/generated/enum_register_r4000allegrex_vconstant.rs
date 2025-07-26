@@ -47,137 +47,100 @@ pub static R4000ALLEGREX_VCONSTANT: [RegisterDescriptor; 32] = {
     let mut table = [RegisterDescriptor::default(); 32];
     table[R4000AllegrexVConstant::INVALID_0 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_0", 0, concat!("$", "0"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_HUGE as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_HUGE", 1, concat!("$", "1"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_SQRT2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_SQRT2", 2, concat!("$", "2"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_SQRT1_2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_SQRT1_2", 3, concat!("$", "3"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_2_SQRTPI as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_2_SQRTPI", 4, concat!("$", "4"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_2_PI as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_2_PI", 5, concat!("$", "5"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_1_PI as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_1_PI", 6, concat!("$", "6"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_PI_4 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_PI_4", 7, concat!("$", "7"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_PI_2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_PI_2", 8, concat!("$", "8"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_PI as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_PI", 9, concat!("$", "9"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_E as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_E", 10, concat!("$", "10"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_LOG2E as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_LOG2E", 11, concat!("$", "11"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_LOG10E as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_LOG10E", 12, concat!("$", "12"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_LN2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_LN2", 13, concat!("$", "13"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_LN10 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_LN10", 14, concat!("$", "14"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_2PI as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_2PI", 15, concat!("$", "15"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_PI_6 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_PI_6", 16, concat!("$", "16"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_LOG10TWO as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_LOG10TWO", 17, concat!("$", "17"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_LOG2TEN as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_LOG2TEN", 18, concat!("$", "18"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::VFPU_SQRT3_2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("VFPU_SQRT3_2", 19, concat!("$", "19"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_20 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_20", 20, concat!("$", "20"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_21 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_21", 21, concat!("$", "21"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_22 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_22", 22, concat!("$", "22"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_23 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_23", 23, concat!("$", "23"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_24 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_24", 24, concat!("$", "24"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_25 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_25", 25, concat!("$", "25"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_26 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_26", 26, concat!("$", "26"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_27 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_27", 27, concat!("$", "27"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_28 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_28", 28, concat!("$", "28"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_29 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_29", 29, concat!("$", "29"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_30 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_30", 30, concat!("$", "30"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexVConstant::INVALID_31 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("INVALID_31", 31, concat!("$", "31"), false)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 32 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl R4000AllegrexVConstant {
@@ -323,6 +286,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in R4000ALLEGREX_VCONSTANT.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

@@ -37,13 +37,13 @@ pub enum REGISTER_ENUM_NAME {
     table[ REGISTER_ENUM_NAME :: name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
         ..RegisterDescriptor::new( #name, value - REGISTER_OFFSET, concat!("$", #value), false) \
-    } .check_panic_chain();
+    };
 
 #define RABBITIZER_DEF_REG(prefix, name, value, ...) \
     table[ REGISTER_ENUM_NAME :: r ## name as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
         ..RegisterDescriptor::new( concat!("$", #name), value - REGISTER_OFFSET, concat!("$", #value), true) \
-    } .check_panic_chain();
+    };
 
 #define REGISTER_COUNT 128
 
@@ -51,13 +51,6 @@ pub static R4000ALLEGREX_VFPUCONTROL: [RegisterDescriptor; REGISTER_COUNT] = {
     let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
 
     #include "registers/RabbitizerRegister_R4000AllegrexVfpuControl.inc"
-
-    let mut i = 0;
-    while i < REGISTER_COUNT {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-
-        i += 1;
-    }
 
     table
 };
@@ -134,6 +127,15 @@ mod tests {
                 assert!(x.name_eabi32.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_eabi32);
                 assert!(x.name_eabi64.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_eabi64);
             }
+        }
+    }
+
+    SPECIAL_RS_TAG(test)
+    fn check_descriptor_valid() {
+        for (i, x) in R4000ALLEGREX_VFPUCONTROL.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+
+            x.check_valid_entry();
         }
     }
 }

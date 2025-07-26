@@ -38,7 +38,8 @@ impl OpcodeCategoryDescriptor {
         }
     }
 
-    pub(crate) const fn check_panic(&self) {
+    #[cfg(test)]
+    pub(crate) const fn check_valid_entry(&self) {
         assert!(
             !self.name.is_empty(),
             "An opcode category must not have an empty name"
@@ -47,11 +48,6 @@ impl OpcodeCategoryDescriptor {
             self.field_mask.bits() != self.trailing_bits,
             "The masks from an opcode category must be different"
         );
-    }
-
-    pub(crate) const fn check_panic_chain(self) -> Self {
-        self.check_panic();
-        self
     }
 }
 

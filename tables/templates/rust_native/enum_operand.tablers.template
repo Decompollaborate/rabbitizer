@@ -35,8 +35,7 @@ pub enum Operand {
 #define RAB_DEF_OPERAND(prefix, operand, mask, values) \
     { \
         table[ Operand::prefix##_##operand as usize] = \
-            OperandDescriptor::new(concat!( #prefix, "_", #operand ), mask) \
-            .check_panic_chain(); \
+            OperandDescriptor::new(concat!( #prefix, "_", #operand ), mask); \
     }
 
 #define RAB_DEF_OPERAND_EXT(isa_exten, prefix, operand, mask, values) \
@@ -47,12 +46,6 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     let mut table = [OperandDescriptor::default(); OPERAND_COUNT];
 
     #include "OperandTypes.inc"
-
-    let mut i = 0;
-    while i < OPERAND_COUNT {
-        table[i].check_panic();
-        i += 1;
-    }
 
     table
 };
@@ -119,3 +112,15 @@ impl Operand {
 
 #undef RAB_DEF_OPERAND
 #undef RAB_DEF_OPERAND_EXT
+
+SPECIAL_RS_TAG(cfg(test))
+mod tests {
+    use super::*;
+
+    SPECIAL_RS_TAG(test)
+    fn check_descriptor_valid() {
+        for x in OPERANDS {
+            x.check_valid_entry();
+        }
+    }
+}

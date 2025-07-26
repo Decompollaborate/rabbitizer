@@ -34,7 +34,7 @@ pub enum AccessType {
         table[ AccessType:: name as usize] = AccessTypeDescriptor {\
             __VA_ARGS__ \
             ..AccessTypeDescriptor::new(#name) \
-        } .check_panic_chain(); \
+        }; \
     }
 
 #define RAB_DEF_ACCESSTYPE_ISA(isa, name, ...) \
@@ -50,15 +50,21 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
 
     #include "AccessType.inc"
 
-    let mut i = 0;
-    while i < ACCESS_TYPE_COUNT {
-        table[i].check_panic();
-        i += 1;
-    }
-
     table
 };
 
 #undef RAB_DEF_ACCESSTYPE
 #undef RAB_DEF_ACCESSTYPE_ISA
 #undef RAB_DEF_ACCESSTYPE_EXT
+
+SPECIAL_RS_TAG(cfg(test))
+mod tests {
+    use super::*;
+
+    SPECIAL_RS_TAG(test)
+    fn check_descriptor_valid() {
+        for x in ACCESS_TYPES {
+            x.check_valid_entry();
+        }
+    }
+}

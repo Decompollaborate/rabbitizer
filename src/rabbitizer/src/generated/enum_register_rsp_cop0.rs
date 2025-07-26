@@ -31,73 +31,52 @@ pub static RSP_COP0: [RegisterDescriptor; 16] = {
     let mut table = [RegisterDescriptor::default(); 16];
     table[RspCop0::SP_MEM_ADDR as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_MEM_ADDR", 0, concat!("$", "0"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::SP_DRAM_ADDR as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_DRAM_ADDR", 1, concat!("$", "1"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::SP_RD_LEN as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_RD_LEN", 2, concat!("$", "2"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::SP_WR_LEN as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_WR_LEN", 3, concat!("$", "3"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::SP_STATUS as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_STATUS", 4, concat!("$", "4"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::SP_DMA_FULL as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_DMA_FULL", 5, concat!("$", "5"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::SP_DMA_BUSY as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_DMA_BUSY", 6, concat!("$", "6"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::SP_SEMAPHORE as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("SP_SEMAPHORE", 7, concat!("$", "7"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_START as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_START", 8, concat!("$", "8"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_END as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_END", 9, concat!("$", "9"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_CURRENT as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_CURRENT", 10, concat!("$", "10"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_STATUS as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_STATUS", 11, concat!("$", "11"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_CLOCK as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_CLOCK", 12, concat!("$", "12"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_BUFBUSY as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_BUFBUSY", 13, concat!("$", "13"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_PIPEBUSY as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_PIPEBUSY", 14, concat!("$", "14"), false)
-    }
-    .check_panic_chain();
+    };
     table[RspCop0::DPC_TMEM as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("DPC_TMEM", 15, concat!("$", "15"), false)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 16 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl RspCop0 {
@@ -225,6 +204,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in RSP_COP0.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

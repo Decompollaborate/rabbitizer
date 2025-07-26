@@ -10,7 +10,6 @@ use crate::instr::{InstrSuffix, InstrType};
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{Opcode, OpcodeCategory};
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
-use crate::utils;
 
 /// Describes properties of a given [`Opcode`].
 ///
@@ -244,8 +243,11 @@ impl OpcodeDescriptor {
         }
     }
 
+    #[cfg(test)]
     #[allow(clippy::cognitive_complexity)]
-    pub(crate) const fn check_panic(&self) {
+    pub(crate) const fn check_valid_entry(&self) {
+        use crate::utils;
+
         assert!(
             !self.name.is_empty(),
             "An opcode must not have an empty name"
@@ -498,11 +500,6 @@ impl OpcodeDescriptor {
             ),
             "These properties are mutually exclusive"
         );
-    }
-
-    pub(crate) const fn check_panic_chain(self) -> Self {
-        self.check_panic();
-        self
     }
 }
 

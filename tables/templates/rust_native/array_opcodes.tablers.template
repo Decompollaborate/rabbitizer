@@ -11,7 +11,7 @@
         table[ Opcode::prefix##_##name as usize] = OpcodeDescriptor { \
             __VA_ARGS__, \
             ..OpcodeDescriptor::new( Opcode::prefix##_##name, OpcodeCategory :: cat, case_bits, #altname, isa_version_min, isa_exten) \
-        } .check_panic_chain(); \
+        }; \
     }
 
 
@@ -75,12 +75,6 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
 
     #include "Opcode.inc"
 
-    let mut i = 0;
-    while i < OPCODE_COUNT {
-        table[i].check_panic();
-        i += 1;
-    }
-
     table
 };
 
@@ -101,3 +95,15 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
 #undef RAB_DEF_OPCODE_EXT_REMOVED
 
 #undef RAB_DEF_OPCODE_REDIRECT
+
+SPECIAL_RS_TAG(cfg(test))
+mod tests {
+    use super::*;
+
+    SPECIAL_RS_TAG(test)
+    fn check_descriptor_valid() {
+        for x in OPCODES {
+            x.check_valid_entry();
+        }
+    }
+}

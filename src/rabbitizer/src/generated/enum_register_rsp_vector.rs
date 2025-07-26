@@ -47,137 +47,100 @@ pub static RSP_VECTOR: [RegisterDescriptor; 32] = {
     let mut table = [RegisterDescriptor::default(); 32];
     table[RspVector::v0 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v0"), 0, concat!("$", "0"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v1 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v1"), 1, concat!("$", "1"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v2"), 2, concat!("$", "2"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v3 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v3"), 3, concat!("$", "3"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v4 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v4"), 4, concat!("$", "4"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v5 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v5"), 5, concat!("$", "5"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v6 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v6"), 6, concat!("$", "6"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v7 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v7"), 7, concat!("$", "7"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v8 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v8"), 8, concat!("$", "8"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v9 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v9"), 9, concat!("$", "9"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v10 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v10"), 10, concat!("$", "10"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v11 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v11"), 11, concat!("$", "11"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v12 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v12"), 12, concat!("$", "12"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v13 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v13"), 13, concat!("$", "13"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v14 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v14"), 14, concat!("$", "14"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v15 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v15"), 15, concat!("$", "15"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v16 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v16"), 16, concat!("$", "16"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v17 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v17"), 17, concat!("$", "17"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v18 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v18"), 18, concat!("$", "18"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v19 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v19"), 19, concat!("$", "19"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v20 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v20"), 20, concat!("$", "20"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v21 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v21"), 21, concat!("$", "21"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v22 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v22"), 22, concat!("$", "22"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v23 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v23"), 23, concat!("$", "23"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v24 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v24"), 24, concat!("$", "24"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v25 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v25"), 25, concat!("$", "25"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v26 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v26"), 26, concat!("$", "26"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v27 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v27"), 27, concat!("$", "27"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v28 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v28"), 28, concat!("$", "28"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v29 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v29"), 29, concat!("$", "29"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v30 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v30"), 30, concat!("$", "30"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspVector::v31 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "v31"), 31, concat!("$", "31"), true)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 32 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl RspVector {
@@ -323,6 +286,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in RSP_VECTOR.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

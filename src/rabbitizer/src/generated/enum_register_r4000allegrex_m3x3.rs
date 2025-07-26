@@ -143,521 +143,388 @@ pub static R4000ALLEGREX_M3X3: [RegisterDescriptor; 128] = {
     let mut table = [RegisterDescriptor::default(); 128];
     table[R4000AllegrexM3x3::M000 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M000", 0, concat!("$", "0"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M010 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M010", 1, concat!("$", "1"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M020 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M020", 2, concat!("$", "2"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M030 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M030", 3, concat!("$", "3"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M100 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M100", 4, concat!("$", "4"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M110 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M110", 5, concat!("$", "5"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M120 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M120", 6, concat!("$", "6"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M130 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M130", 7, concat!("$", "7"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M200 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M200", 8, concat!("$", "8"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M210 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M210", 9, concat!("$", "9"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M220 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M220", 10, concat!("$", "10"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M230 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M230", 11, concat!("$", "11"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M300 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M300", 12, concat!("$", "12"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M310 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M310", 13, concat!("$", "13"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M320 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M320", 14, concat!("$", "14"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M330 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M330", 15, concat!("$", "15"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M400 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M400", 16, concat!("$", "16"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M410 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M410", 17, concat!("$", "17"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M420 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M420", 18, concat!("$", "18"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M430 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M430", 19, concat!("$", "19"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M500 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M500", 20, concat!("$", "20"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M510 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M510", 21, concat!("$", "21"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M520 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M520", 22, concat!("$", "22"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M530 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M530", 23, concat!("$", "23"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M600 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M600", 24, concat!("$", "24"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M610 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M610", 25, concat!("$", "25"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M620 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M620", 26, concat!("$", "26"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M630 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M630", 27, concat!("$", "27"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M700 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M700", 28, concat!("$", "28"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M710 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M710", 29, concat!("$", "29"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M720 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M720", 30, concat!("$", "30"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M730 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M730", 31, concat!("$", "31"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E000 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E000", 32, concat!("$", "32"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E001 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E001", 33, concat!("$", "33"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E002 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E002", 34, concat!("$", "34"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E003 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E003", 35, concat!("$", "35"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E100 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E100", 36, concat!("$", "36"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E101 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E101", 37, concat!("$", "37"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E102 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E102", 38, concat!("$", "38"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E103 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E103", 39, concat!("$", "39"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E200 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E200", 40, concat!("$", "40"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E201 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E201", 41, concat!("$", "41"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E202 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E202", 42, concat!("$", "42"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E203 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E203", 43, concat!("$", "43"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E300 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E300", 44, concat!("$", "44"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E301 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E301", 45, concat!("$", "45"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E302 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E302", 46, concat!("$", "46"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E303 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E303", 47, concat!("$", "47"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E400 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E400", 48, concat!("$", "48"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E401 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E401", 49, concat!("$", "49"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E402 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E402", 50, concat!("$", "50"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E403 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E403", 51, concat!("$", "51"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E500 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E500", 52, concat!("$", "52"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E501 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E501", 53, concat!("$", "53"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E502 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E502", 54, concat!("$", "54"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E503 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E503", 55, concat!("$", "55"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E600 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E600", 56, concat!("$", "56"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E601 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E601", 57, concat!("$", "57"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E602 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E602", 58, concat!("$", "58"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E603 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E603", 59, concat!("$", "59"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E700 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E700", 60, concat!("$", "60"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E701 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E701", 61, concat!("$", "61"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E702 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E702", 62, concat!("$", "62"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E703 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E703", 63, concat!("$", "63"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M001 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M001", 64, concat!("$", "64"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M011 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M011", 65, concat!("$", "65"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M021 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M021", 66, concat!("$", "66"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M031 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M031", 67, concat!("$", "67"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M101 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M101", 68, concat!("$", "68"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M111 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M111", 69, concat!("$", "69"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M121 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M121", 70, concat!("$", "70"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M131 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M131", 71, concat!("$", "71"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M201 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M201", 72, concat!("$", "72"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M211 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M211", 73, concat!("$", "73"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M221 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M221", 74, concat!("$", "74"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M231 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M231", 75, concat!("$", "75"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M301 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M301", 76, concat!("$", "76"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M311 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M311", 77, concat!("$", "77"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M321 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M321", 78, concat!("$", "78"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M331 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M331", 79, concat!("$", "79"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M401 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M401", 80, concat!("$", "80"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M411 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M411", 81, concat!("$", "81"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M421 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M421", 82, concat!("$", "82"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M431 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M431", 83, concat!("$", "83"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M501 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M501", 84, concat!("$", "84"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M511 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M511", 85, concat!("$", "85"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M521 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M521", 86, concat!("$", "86"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M531 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M531", 87, concat!("$", "87"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M601 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M601", 88, concat!("$", "88"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M611 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M611", 89, concat!("$", "89"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M621 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M621", 90, concat!("$", "90"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M631 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M631", 91, concat!("$", "91"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M701 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M701", 92, concat!("$", "92"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M711 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M711", 93, concat!("$", "93"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M721 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M721", 94, concat!("$", "94"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::M731 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("M731", 95, concat!("$", "95"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E010 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E010", 96, concat!("$", "96"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E011 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E011", 97, concat!("$", "97"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E012 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E012", 98, concat!("$", "98"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E013 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E013", 99, concat!("$", "99"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E110 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E110", 100, concat!("$", "100"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E111 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E111", 101, concat!("$", "101"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E112 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E112", 102, concat!("$", "102"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E113 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E113", 103, concat!("$", "103"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E210 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E210", 104, concat!("$", "104"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E211 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E211", 105, concat!("$", "105"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E212 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E212", 106, concat!("$", "106"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E213 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E213", 107, concat!("$", "107"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E310 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E310", 108, concat!("$", "108"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E311 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E311", 109, concat!("$", "109"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E312 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E312", 110, concat!("$", "110"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E313 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E313", 111, concat!("$", "111"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E410 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E410", 112, concat!("$", "112"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E411 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E411", 113, concat!("$", "113"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E412 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E412", 114, concat!("$", "114"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E413 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E413", 115, concat!("$", "115"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E510 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E510", 116, concat!("$", "116"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E511 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E511", 117, concat!("$", "117"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E512 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E512", 118, concat!("$", "118"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E513 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E513", 119, concat!("$", "119"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E610 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E610", 120, concat!("$", "120"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E611 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E611", 121, concat!("$", "121"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E612 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E612", 122, concat!("$", "122"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E613 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E613", 123, concat!("$", "123"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E710 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E710", 124, concat!("$", "124"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E711 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E711", 125, concat!("$", "125"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E712 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E712", 126, concat!("$", "126"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexM3x3::E713 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new("E713", 127, concat!("$", "127"), false)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 128 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl R4000AllegrexM3x3 {
@@ -899,6 +766,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in R4000ALLEGREX_M3X3.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

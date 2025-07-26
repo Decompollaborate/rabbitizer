@@ -39,24 +39,21 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(1),
             min_alignment: Some(1),
             ..AccessTypeDescriptor::new("BYTE")
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[AccessType::SHORT as usize] = AccessTypeDescriptor {
             min_size: Some(2),
             min_alignment: Some(2),
             ..AccessTypeDescriptor::new("SHORT")
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[AccessType::WORD as usize] = AccessTypeDescriptor {
             min_size: Some(4),
             min_alignment: Some(4),
             ..AccessTypeDescriptor::new("WORD")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -64,8 +61,7 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(8),
             min_alignment: Some(8),
             ..AccessTypeDescriptor::new("DOUBLEWORD")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "R5900EE")]
     {
@@ -73,16 +69,14 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(16),
             min_alignment: Some(16),
             ..AccessTypeDescriptor::new("QUADWORD")
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[AccessType::FLOAT as usize] = AccessTypeDescriptor {
             min_size: Some(4),
             min_alignment: Some(4),
             ..AccessTypeDescriptor::new("FLOAT")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -90,16 +84,14 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(8),
             min_alignment: Some(8),
             ..AccessTypeDescriptor::new("DOUBLEFLOAT")
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[AccessType::WORD_COP2 as usize] = AccessTypeDescriptor {
             min_size: Some(4),
             min_alignment: Some(4),
             ..AccessTypeDescriptor::new("WORD_COP2")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -107,24 +99,21 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(8),
             min_alignment: Some(8),
             ..AccessTypeDescriptor::new("DOUBLEWORD_COP2")
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[AccessType::UNALIGNED_WORD_LEFT as usize] = AccessTypeDescriptor {
             min_size: Some(4),
             is_unaligned: true,
             ..AccessTypeDescriptor::new("UNALIGNED_WORD_LEFT")
-        }
-        .check_panic_chain();
+        };
     }
     {
         table[AccessType::UNALIGNED_WORD_RIGHT as usize] = AccessTypeDescriptor {
             min_size: Some(4),
             is_unaligned: true,
             ..AccessTypeDescriptor::new("UNALIGNED_WORD_RIGHT")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -132,8 +121,7 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(8),
             is_unaligned: true,
             ..AccessTypeDescriptor::new("UNALIGNED_DOUBLEWORD_LEFT")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -141,8 +129,7 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(8),
             is_unaligned: true,
             ..AccessTypeDescriptor::new("UNALIGNED_DOUBLEWORD_RIGHT")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_II")]
     {
@@ -150,8 +137,7 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(4),
             min_alignment: Some(4),
             ..AccessTypeDescriptor::new("LINKED_WORD_WORD")
-        }
-        .check_panic_chain();
+        };
     }
     #[cfg(feature = "MIPS_III")]
     {
@@ -159,13 +145,17 @@ pub static ACCESS_TYPES: [AccessTypeDescriptor; ACCESS_TYPE_COUNT] = {
             min_size: Some(8),
             min_alignment: Some(8),
             ..AccessTypeDescriptor::new("LINKED_WORD_DOUBLEWORD")
-        }
-        .check_panic_chain();
-    }
-    let mut i = 0;
-    while i < ACCESS_TYPE_COUNT {
-        table[i].check_panic();
-        i += 1;
+        };
     }
     table
 };
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_descriptor_valid() {
+        for x in ACCESS_TYPES {
+            x.check_valid_entry();
+        }
+    }
+}

@@ -32,7 +32,7 @@ pub enum REGISTER_ENUM_NAME {
     table[ REGISTER_ENUM_NAME :: REG_NAME(name) as usize] = RegisterDescriptor { \
         __VA_ARGS__ \
         ..RegisterDescriptor::new( concat!("$", #name), value, concat!("$vi", #value), true) \
-    } .check_panic_chain();
+    };
 
 #define REGISTER_COUNT 32
 
@@ -40,13 +40,6 @@ pub static R5900EE_VI: [RegisterDescriptor; REGISTER_COUNT] = {
     let mut table = [RegisterDescriptor::default(); REGISTER_COUNT];
 
     #include "registers/RabbitizerRegister_R5900EEVI.inc"
-
-    let mut i = 0;
-    while i < REGISTER_COUNT {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-
-        i += 1;
-    }
 
     table
 };
@@ -118,6 +111,15 @@ mod tests {
                 assert!(x.name_eabi32.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_eabi32);
                 assert!(x.name_eabi64.is_none_or(|x| !x.starts_with('$')), "Register {:?} has dollar sign when it shouldn't", x.name_eabi64);
             }
+        }
+    }
+
+    SPECIAL_RS_TAG(test)
+    fn check_descriptor_valid() {
+        for (i, x) in R5900EE_VI.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+
+            x.check_valid_entry();
         }
     }
 }

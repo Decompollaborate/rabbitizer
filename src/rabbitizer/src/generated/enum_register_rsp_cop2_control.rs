@@ -47,137 +47,100 @@ pub static RSP_COP2_CONTROL: [RegisterDescriptor; 32] = {
     let mut table = [RegisterDescriptor::default(); 32];
     table[RspCop2Control::r0 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "0"), 0, concat!("$", "0"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r1 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "1"), 1, concat!("$", "1"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "2"), 2, concat!("$", "2"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r3 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "3"), 3, concat!("$", "3"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r4 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "4"), 4, concat!("$", "4"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r5 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "5"), 5, concat!("$", "5"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r6 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "6"), 6, concat!("$", "6"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r7 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "7"), 7, concat!("$", "7"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r8 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "8"), 8, concat!("$", "8"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r9 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "9"), 9, concat!("$", "9"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r10 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "10"), 10, concat!("$", "10"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r11 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "11"), 11, concat!("$", "11"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r12 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "12"), 12, concat!("$", "12"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r13 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "13"), 13, concat!("$", "13"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r14 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "14"), 14, concat!("$", "14"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r15 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "15"), 15, concat!("$", "15"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r16 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "16"), 16, concat!("$", "16"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r17 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "17"), 17, concat!("$", "17"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r18 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "18"), 18, concat!("$", "18"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r19 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "19"), 19, concat!("$", "19"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r20 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "20"), 20, concat!("$", "20"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r21 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "21"), 21, concat!("$", "21"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r22 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "22"), 22, concat!("$", "22"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r23 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "23"), 23, concat!("$", "23"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r24 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "24"), 24, concat!("$", "24"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r25 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "25"), 25, concat!("$", "25"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r26 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "26"), 26, concat!("$", "26"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r27 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "27"), 27, concat!("$", "27"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r28 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "28"), 28, concat!("$", "28"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r29 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "29"), 29, concat!("$", "29"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r30 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "30"), 30, concat!("$", "30"), true)
-    }
-    .check_panic_chain();
+    };
     table[RspCop2Control::r31 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "31"), 31, concat!("$", "31"), true)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 32 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl RspCop2Control {
@@ -323,6 +286,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in RSP_COP2_CONTROL.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

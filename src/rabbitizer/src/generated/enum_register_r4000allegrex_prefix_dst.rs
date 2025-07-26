@@ -25,50 +25,37 @@ pub static R4000ALLEGREX_PREFIX_DST: [RegisterDescriptor; 8] = {
         name_numeric: "",
         name: "",
         ..RegisterDescriptor::new("none", 0, concat!("$", "0"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixDst::zero as usize] = RegisterDescriptor {
         name_numeric: "0",
         name: "0",
         ..RegisterDescriptor::new("zero", 1, concat!("$", "1"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixDst::INVALID_2 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_2",
         ..RegisterDescriptor::new("INVALID_2", 2, concat!("$", "2"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixDst::one as usize] = RegisterDescriptor {
         name_numeric: "1",
         name: "1",
         ..RegisterDescriptor::new("one", 3, concat!("$", "3"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixDst::M as usize] = RegisterDescriptor {
         name_numeric: "M",
         ..RegisterDescriptor::new("M", 4, concat!("$", "4"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixDst::INVALID_5 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_5",
         ..RegisterDescriptor::new("INVALID_5", 5, concat!("$", "5"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixDst::INVALID_6 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_6",
         ..RegisterDescriptor::new("INVALID_6", 6, concat!("$", "6"), false)
-    }
-    .check_panic_chain();
+    };
     table[R4000AllegrexPrefixDst::INVALID_7 as usize] = RegisterDescriptor {
         name_numeric: "INVALID_7",
         ..RegisterDescriptor::new("INVALID_7", 7, concat!("$", "7"), false)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 8 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl R4000AllegrexPrefixDst {
@@ -190,6 +177,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in R4000ALLEGREX_PREFIX_DST.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }

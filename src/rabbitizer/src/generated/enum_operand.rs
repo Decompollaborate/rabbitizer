@@ -242,554 +242,475 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     let mut table = [OperandDescriptor::default(); OPERAND_COUNT];
     {
         table[Operand::ALL_EMPTY as usize] =
-            OperandDescriptor::new(concat!("ALL", "_", "EMPTY"), EncodedFieldMask::empty())
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("ALL", "_", "EMPTY"), EncodedFieldMask::empty());
     }
     {
         table[Operand::core_rs as usize] =
-            OperandDescriptor::new(concat!("core", "_", "rs"), EncodedFieldMask::rs)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "rs"), EncodedFieldMask::rs);
     }
     {
         table[Operand::core_rt as usize] =
-            OperandDescriptor::new(concat!("core", "_", "rt"), EncodedFieldMask::rt)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "rt"), EncodedFieldMask::rt);
     }
     {
         table[Operand::core_rd as usize] =
-            OperandDescriptor::new(concat!("core", "_", "rd"), EncodedFieldMask::rd)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "rd"), EncodedFieldMask::rd);
     }
     {
         table[Operand::core_sa as usize] =
-            OperandDescriptor::new(concat!("core", "_", "sa"), EncodedFieldMask::sa)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "sa"), EncodedFieldMask::sa);
     }
     {
         table[Operand::core_zero as usize] =
-            OperandDescriptor::new(concat!("core", "_", "zero"), EncodedFieldMask::empty())
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "zero"), EncodedFieldMask::empty());
     }
     {
         table[Operand::core_cop0d as usize] =
-            OperandDescriptor::new(concat!("core", "_", "cop0d"), EncodedFieldMask::cop0d)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "cop0d"), EncodedFieldMask::cop0d);
     }
     {
         table[Operand::core_cop0cd as usize] =
-            OperandDescriptor::new(concat!("core", "_", "cop0cd"), EncodedFieldMask::cop0cd)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "cop0cd"), EncodedFieldMask::cop0cd);
     }
     {
         table[Operand::core_fs as usize] =
-            OperandDescriptor::new(concat!("core", "_", "fs"), EncodedFieldMask::fs)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "fs"), EncodedFieldMask::fs);
     }
     {
         table[Operand::core_ft as usize] =
-            OperandDescriptor::new(concat!("core", "_", "ft"), EncodedFieldMask::ft)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "ft"), EncodedFieldMask::ft);
     }
     {
         table[Operand::core_fd as usize] =
-            OperandDescriptor::new(concat!("core", "_", "fd"), EncodedFieldMask::fd)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "fd"), EncodedFieldMask::fd);
     }
     {
         table[Operand::core_cop1cs as usize] =
-            OperandDescriptor::new(concat!("core", "_", "cop1cs"), EncodedFieldMask::cop1cs)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "cop1cs"), EncodedFieldMask::cop1cs);
     }
     {
         table[Operand::core_cop2t as usize] =
-            OperandDescriptor::new(concat!("core", "_", "cop2t"), EncodedFieldMask::cop2t)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "cop2t"), EncodedFieldMask::cop2t);
     }
     {
         table[Operand::core_cop2d as usize] =
-            OperandDescriptor::new(concat!("core", "_", "cop2d"), EncodedFieldMask::cop2d)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "cop2d"), EncodedFieldMask::cop2d);
     }
     {
         table[Operand::core_cop2cd as usize] =
-            OperandDescriptor::new(concat!("core", "_", "cop2cd"), EncodedFieldMask::cop2cd)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "cop2cd"), EncodedFieldMask::cop2cd);
     }
     {
         table[Operand::core_op as usize] =
-            OperandDescriptor::new(concat!("core", "_", "op"), EncodedFieldMask::op)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "op"), EncodedFieldMask::op);
     }
     {
         table[Operand::core_hint as usize] =
-            OperandDescriptor::new(concat!("core", "_", "hint"), EncodedFieldMask::hint)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "hint"), EncodedFieldMask::hint);
     }
     {
         table[Operand::core_code as usize] =
-            OperandDescriptor::new(concat!("core", "_", "code"), EncodedFieldMask::code)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "code"), EncodedFieldMask::code);
     }
     {
         table[Operand::core_code_lower as usize] = OperandDescriptor::new(
             concat!("core", "_", "code_lower"),
             EncodedFieldMask::code_lower,
-        )
-        .check_panic_chain();
+        );
     }
     {
         table[Operand::core_copraw as usize] =
-            OperandDescriptor::new(concat!("core", "_", "copraw"), EncodedFieldMask::copraw)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "copraw"), EncodedFieldMask::copraw);
     }
     {
         table[Operand::core_label as usize] =
-            OperandDescriptor::new(concat!("core", "_", "label"), EncodedFieldMask::instr_index)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "label"), EncodedFieldMask::instr_index);
     }
     {
         table[Operand::core_imm_i16 as usize] =
-            OperandDescriptor::new(concat!("core", "_", "imm_i16"), EncodedFieldMask::immediate)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "imm_i16"), EncodedFieldMask::immediate);
     }
     {
         table[Operand::core_imm_u16 as usize] =
-            OperandDescriptor::new(concat!("core", "_", "imm_u16"), EncodedFieldMask::immediate)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("core", "_", "imm_u16"), EncodedFieldMask::immediate);
     }
     {
         table[Operand::core_branch_target_label as usize] = OperandDescriptor::new(
             concat!("core", "_", "branch_target_label"),
             EncodedFieldMask::immediate,
-        )
-        .check_panic_chain();
+        );
     }
     {
         table[Operand::core_imm_rs as usize] = OperandDescriptor::new(
             concat!("core", "_", "imm_rs"),
             EncodedFieldMask::immediate.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     {
         table[Operand::core_maybe_rd_rs as usize] = OperandDescriptor::new(
             concat!("core", "_", "maybe_rd_rs"),
             EncodedFieldMask::rd.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     {
         table[Operand::core_maybe_zero_rs as usize] = OperandDescriptor::new(
             concat!("core", "_", "maybe_zero_rs"),
             EncodedFieldMask::empty().union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_cop0d as usize] =
-            OperandDescriptor::new(concat!("rsp", "_", "cop0d"), EncodedFieldMask::cop0d)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("rsp", "_", "cop0d"), EncodedFieldMask::cop0d);
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_cop2cd as usize] =
-            OperandDescriptor::new(concat!("rsp", "_", "cop2cd"), EncodedFieldMask::cop2cd)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("rsp", "_", "cop2cd"), EncodedFieldMask::cop2cd);
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_vs as usize] =
-            OperandDescriptor::new(concat!("rsp", "_", "vs"), EncodedFieldMask::rsp_vs)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("rsp", "_", "vs"), EncodedFieldMask::rsp_vs);
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_vd as usize] =
-            OperandDescriptor::new(concat!("rsp", "_", "vd"), EncodedFieldMask::rsp_vd)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("rsp", "_", "vd"), EncodedFieldMask::rsp_vd);
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_vt_elementhigh as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "vt_elementhigh"),
             EncodedFieldMask::rsp_vt.union(EncodedFieldMask::rsp_elementhigh),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_vt_elementlow as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "vt_elementlow"),
             EncodedFieldMask::rsp_vt.union(EncodedFieldMask::rsp_elementlow),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_vd_de as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "vd_de"),
             EncodedFieldMask::rsp_vd.union(EncodedFieldMask::rsp_de),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_vs_index as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "vs_index"),
             EncodedFieldMask::rsp_vs.union(EncodedFieldMask::rsp_index),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_offset7_rs as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "offset7_rs"),
             EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_offset8_rs as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "offset8_rs"),
             EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_offset9_rs as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "offset9_rs"),
             EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_offset10_rs as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "offset10_rs"),
             EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_offset11_rs as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "offset11_rs"),
             EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[Operand::r3000gte_sf as usize] = OperandDescriptor::new(
             concat!("r3000gte", "_", "sf"),
             EncodedFieldMask::r3000gte_sf,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[Operand::r3000gte_mx as usize] = OperandDescriptor::new(
             concat!("r3000gte", "_", "mx"),
             EncodedFieldMask::r3000gte_mx,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[Operand::r3000gte_v as usize] =
-            OperandDescriptor::new(concat!("r3000gte", "_", "v"), EncodedFieldMask::r3000gte_v)
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("r3000gte", "_", "v"), EncodedFieldMask::r3000gte_v);
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[Operand::r3000gte_cv as usize] = OperandDescriptor::new(
             concat!("r3000gte", "_", "cv"),
             EncodedFieldMask::r3000gte_cv,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R3000GTE")]
     {
         table[Operand::r3000gte_lm as usize] = OperandDescriptor::new(
             concat!("r3000gte", "_", "lm"),
             EncodedFieldMask::r3000gte_lm,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_s_vs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "s_vs"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_s_vt as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "s_vt"),
             EncodedFieldMask::r4000allegrex_vt,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_s_vd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "s_vd"),
             EncodedFieldMask::r4000allegrex_vd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_s_vt_imm as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "s_vt_imm"),
             EncodedFieldMask::r4000allegrex_vt_imm,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_s_vd_imm as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "s_vd_imm"),
             EncodedFieldMask::r4000allegrex_vd_imm,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_p_vs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "p_vs"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_p_vt as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "p_vt"),
             EncodedFieldMask::r4000allegrex_vt,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_p_vd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "p_vd"),
             EncodedFieldMask::r4000allegrex_vd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_t_vs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "t_vs"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_t_vt as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "t_vt"),
             EncodedFieldMask::r4000allegrex_vt,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_t_vd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "t_vd"),
             EncodedFieldMask::r4000allegrex_vd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_q_vs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "q_vs"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_q_vt as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "q_vt"),
             EncodedFieldMask::r4000allegrex_vt,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_q_vd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "q_vd"),
             EncodedFieldMask::r4000allegrex_vd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_q_vt_imm as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "q_vt_imm"),
             EncodedFieldMask::r4000allegrex_vt_6_imm,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mp_vs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mp_vs"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mp_vt as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mp_vt"),
             EncodedFieldMask::r4000allegrex_vt,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mp_vd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mp_vd"),
             EncodedFieldMask::r4000allegrex_vd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mp_vs_transpose as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mp_vs_transpose"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mt_vs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mt_vs"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mt_vt as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mt_vt"),
             EncodedFieldMask::r4000allegrex_vt,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mt_vd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mt_vd"),
             EncodedFieldMask::r4000allegrex_vd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mt_vs_transpose as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mt_vs_transpose"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mq_vs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mq_vs"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mq_vt as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mq_vt"),
             EncodedFieldMask::r4000allegrex_vt,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mq_vd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mq_vd"),
             EncodedFieldMask::r4000allegrex_vd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_mq_vs_transpose as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "mq_vs_transpose"),
             EncodedFieldMask::r4000allegrex_vs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_cop2cs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "cop2cs"),
             EncodedFieldMask::r4000allegrex_cop2cs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_cop2cd as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "cop2cd"),
             EncodedFieldMask::r4000allegrex_cop2cd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_pos as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "pos"),
             EncodedFieldMask::r4000allegrex_pos,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_size as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "size"),
             EncodedFieldMask::r4000allegrex_size,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_size_plus_pos as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "size_plus_pos"),
             EncodedFieldMask::r4000allegrex_size_plus_pos,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_imm3 as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "imm3"),
             EncodedFieldMask::r4000allegrex_imm3,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_offset14_rs as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "offset14_rs"),
             EncodedFieldMask::r4000allegrex_offset14.union(EncodedFieldMask::rs),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -798,8 +719,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
             EncodedFieldMask::r4000allegrex_offset14
                 .union(EncodedFieldMask::rs)
                 .union(EncodedFieldMask::r4000allegrex_wb),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -809,8 +729,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
                 EncodedFieldMask::r4000allegrex_vcmp_cond
                     .union(EncodedFieldMask::r4000allegrex_vs)
                     .union(EncodedFieldMask::r4000allegrex_vt),
-            )
-            .check_panic_chain();
+            );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -820,8 +739,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
                 EncodedFieldMask::r4000allegrex_vcmp_cond
                     .union(EncodedFieldMask::r4000allegrex_vs)
                     .union(EncodedFieldMask::r4000allegrex_vt),
-            )
-            .check_panic_chain();
+            );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -831,8 +749,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
                 EncodedFieldMask::r4000allegrex_vcmp_cond
                     .union(EncodedFieldMask::r4000allegrex_vs)
                     .union(EncodedFieldMask::r4000allegrex_vt),
-            )
-            .check_panic_chain();
+            );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
@@ -842,333 +759,286 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
                 EncodedFieldMask::r4000allegrex_vcmp_cond
                     .union(EncodedFieldMask::r4000allegrex_vs)
                     .union(EncodedFieldMask::r4000allegrex_vt),
-            )
-            .check_panic_chain();
+            );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_vconstant as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "vconstant"),
             EncodedFieldMask::r4000allegrex_vconstant,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_power_of_two as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "power_of_two"),
             EncodedFieldMask::r4000allegrex_power_of_two,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_vfpu_cc_bit as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "vfpu_cc_bit"),
             EncodedFieldMask::r4000allegrex_vfpu_cc_bit,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_bn as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "bn"),
             EncodedFieldMask::r4000allegrex_bn,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_int16 as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "int16"),
             EncodedFieldMask::r4000allegrex_intfloat16,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_float16 as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "float16"),
             EncodedFieldMask::r4000allegrex_intfloat16,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_p_vrot_code as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "p_vrot_code"),
             EncodedFieldMask::r4000allegrex_vrot_code,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_t_vrot_code as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "t_vrot_code"),
             EncodedFieldMask::r4000allegrex_vrot_code,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_q_vrot_code as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "q_vrot_code"),
             EncodedFieldMask::r4000allegrex_vrot_code,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_wpx as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "wpx"),
             EncodedFieldMask::r4000allegrex_wpx,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_wpy as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "wpy"),
             EncodedFieldMask::r4000allegrex_wpy,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_wpz as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "wpz"),
             EncodedFieldMask::r4000allegrex_wpz,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_wpw as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "wpw"),
             EncodedFieldMask::r4000allegrex_wpw,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_rpx as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "rpx"),
             EncodedFieldMask::r4000allegrex_rpx,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_rpy as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "rpy"),
             EncodedFieldMask::r4000allegrex_rpy,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_rpz as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "rpz"),
             EncodedFieldMask::r4000allegrex_rpz,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
         table[Operand::r4000allegrex_rpw as usize] = OperandDescriptor::new(
             concat!("r4000allegrex", "_", "rpw"),
             EncodedFieldMask::r4000allegrex_rpw,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_I as usize] =
-            OperandDescriptor::new(concat!("r5900ee", "_", "I"), EncodedFieldMask::empty())
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("r5900ee", "_", "I"), EncodedFieldMask::empty());
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_Q as usize] =
-            OperandDescriptor::new(concat!("r5900ee", "_", "Q"), EncodedFieldMask::empty())
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("r5900ee", "_", "Q"), EncodedFieldMask::empty());
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_R as usize] =
-            OperandDescriptor::new(concat!("r5900ee", "_", "R"), EncodedFieldMask::empty())
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("r5900ee", "_", "R"), EncodedFieldMask::empty());
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_ACC as usize] =
-            OperandDescriptor::new(concat!("r5900ee", "_", "ACC"), EncodedFieldMask::empty())
-                .check_panic_chain();
+            OperandDescriptor::new(concat!("r5900ee", "_", "ACC"), EncodedFieldMask::empty());
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_imm5 as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "imm5"),
             EncodedFieldMask::r5900ee_imm5,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_imm15 as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "imm15"),
             EncodedFieldMask::r5900ee_imm15,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vfs as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vfs"),
             EncodedFieldMask::r5900ee_vfs,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vft as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vft"),
             EncodedFieldMask::r5900ee_vft,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vfd as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vfd"),
             EncodedFieldMask::r5900ee_vfd,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vis as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vis"),
             EncodedFieldMask::r5900ee_vis,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vit as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vit"),
             EncodedFieldMask::r5900ee_vit,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vid as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vid"),
             EncodedFieldMask::r5900ee_vid,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_ACCxyzw as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "ACCxyzw"),
             EncodedFieldMask::r5900ee_xyzw_xyzw,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vfsxyzw as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vfsxyzw"),
             EncodedFieldMask::r5900ee_vfs.union(EncodedFieldMask::r5900ee_xyzw_xyzw),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vftxyzw as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vftxyzw"),
             EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_xyzw_xyzw),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vfdxyzw as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vfdxyzw"),
             EncodedFieldMask::r5900ee_vfd.union(EncodedFieldMask::r5900ee_xyzw_xyzw),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vftn as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vftn"),
             EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_n),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vfsl as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vfsl"),
             EncodedFieldMask::r5900ee_vfs.union(EncodedFieldMask::r5900ee_l),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vftm as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vftm"),
             EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_m),
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vis_predecr as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vis_predecr"),
             EncodedFieldMask::r5900ee_vis,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vit_predecr as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vit_predecr"),
             EncodedFieldMask::r5900ee_vit,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vis_postincr as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vis_postincr"),
             EncodedFieldMask::r5900ee_vis,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vit_postincr as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vit_postincr"),
             EncodedFieldMask::r5900ee_vit,
-        )
-        .check_panic_chain();
+        );
     }
     #[cfg(feature = "R5900EE")]
     {
         table[Operand::r5900ee_vis_parenthesis as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vis_parenthesis"),
             EncodedFieldMask::r5900ee_vis,
-        )
-        .check_panic_chain();
-    }
-    let mut i = 0;
-    while i < OPERAND_COUNT {
-        table[i].check_panic();
-        i += 1;
+        );
     }
     table
 };
@@ -1931,6 +1801,16 @@ impl Operand {
             ValuedOperand::r5900ee_vit_postincr(..) => Self::r5900ee_vit_postincr,
             #[cfg(feature = "R5900EE")]
             ValuedOperand::r5900ee_vis_parenthesis(..) => Self::r5900ee_vis_parenthesis,
+        }
+    }
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn check_descriptor_valid() {
+        for x in OPERANDS {
+            x.check_valid_entry();
         }
     }
 }

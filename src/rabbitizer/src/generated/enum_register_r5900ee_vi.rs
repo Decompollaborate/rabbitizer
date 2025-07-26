@@ -47,137 +47,100 @@ pub static R5900EE_VI: [RegisterDescriptor; 32] = {
     let mut table = [RegisterDescriptor::default(); 32];
     table[R5900EEVI::vi0 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi0"), 0, concat!("$vi", "0"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi1 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi1"), 1, concat!("$vi", "1"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi2 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi2"), 2, concat!("$vi", "2"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi3 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi3"), 3, concat!("$vi", "3"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi4 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi4"), 4, concat!("$vi", "4"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi5 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi5"), 5, concat!("$vi", "5"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi6 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi6"), 6, concat!("$vi", "6"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi7 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi7"), 7, concat!("$vi", "7"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi8 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi8"), 8, concat!("$vi", "8"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi9 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi9"), 9, concat!("$vi", "9"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi10 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi10"), 10, concat!("$vi", "10"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi11 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi11"), 11, concat!("$vi", "11"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi12 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi12"), 12, concat!("$vi", "12"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi13 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi13"), 13, concat!("$vi", "13"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi14 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi14"), 14, concat!("$vi", "14"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi15 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi15"), 15, concat!("$vi", "15"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi16 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi16"), 16, concat!("$vi", "16"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi17 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi17"), 17, concat!("$vi", "17"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi18 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi18"), 18, concat!("$vi", "18"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi19 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi19"), 19, concat!("$vi", "19"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi20 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi20"), 20, concat!("$vi", "20"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi21 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi21"), 21, concat!("$vi", "21"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi22 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi22"), 22, concat!("$vi", "22"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi23 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi23"), 23, concat!("$vi", "23"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi24 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi24"), 24, concat!("$vi", "24"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi25 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi25"), 25, concat!("$vi", "25"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi26 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi26"), 26, concat!("$vi", "26"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi27 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi27"), 27, concat!("$vi", "27"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi28 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi28"), 28, concat!("$vi", "28"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi29 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi29"), 29, concat!("$vi", "29"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi30 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi30"), 30, concat!("$vi", "30"), true)
-    }
-    .check_panic_chain();
+    };
     table[R5900EEVI::vi31 as usize] = RegisterDescriptor {
         ..RegisterDescriptor::new(concat!("$", "vi31"), 31, concat!("$vi", "31"), true)
-    }
-    .check_panic_chain();
-    let mut i = 0;
-    while i < 32 {
-        assert!(table[i].value() as usize == i, "Broken register index?");
-        i += 1;
-    }
+    };
     table
 };
 impl R5900EEVI {
@@ -323,6 +286,13 @@ mod tests {
                     x.name_eabi64
                 );
             }
+        }
+    }
+    #[test]
+    fn check_descriptor_valid() {
+        for (i, x) in R5900EE_VI.iter().enumerate() {
+            assert!(x.value() as usize == i, "Broken register index?");
+            x.check_valid_entry();
         }
     }
 }
