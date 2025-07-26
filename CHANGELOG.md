@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-alpha.4] - 2025-07-26
+
 ### Added
 
 - Add prebuilt binaries for `rab-disasmdis` on Github releases.
@@ -752,8 +754,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.3...🦀
-[2.0.0-alpha.3]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.1...2.0.0-alpha.3
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.4...🦀
+[2.0.0-alpha.4]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.3...2.0.0-alpha.4
+[2.0.0-alpha.3]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.2...2.0.0-alpha.3
 [2.0.0-alpha.2]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.1...2.0.0-alpha.2
 [2.0.0-alpha.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.0...2.0.0-alpha.1
 [1.12.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.11.2...1.12.0

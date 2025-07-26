@@ -5,6 +5,9 @@ rabbitizer and Rust.
 
 This site is available at <https://decompollaborate.github.io/rabbitizer>.
 
+This application is meant to be built to a WASM target and be used as an static
+website running completely on the client, without the need of any webserver.
+
 ## Running
 
 disasmdis-web can be built and hosted locally, mainly for local development.

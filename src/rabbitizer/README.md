@@ -83,6 +83,15 @@ Check the documentation at [crates.io](https://crates.io/crates/rabbitizer).
     selected at runtime.
   - ISAs are "feature gated", so you can only pay for what you use. See
     [Crate features](#crate-features) for more info.
+- Includes an experimental instruction encoder, allowing to "assemble" MIPS asm
+  instructions back to their hex representation.
+  - This is not an assembler. Most of the features supported by an assembler
+    are completely missing, without any plans to support them.
+  - The supported syntax is pretty restrictive, only supporting the syntax
+    emitted by the rabbitizer's decoder.
+  - Explicit relocations are not supported.
+  - The encoder is gated behind the `encoder` feature. See
+    [Crate features](#crate-features) for more info.
 
 ### Planned features
 
@@ -111,7 +120,7 @@ can be included in your Cargo enabled project like this:
 
 ```toml
 [dependencies]
-rabbitizer = "2.0.0-alpha.3"
+rabbitizer = "2.0.0-alpha.4"
 ```
 
 ### Crate features

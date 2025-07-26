@@ -14,8 +14,12 @@ rabbitizer (whole name is lowercase) is a MIPS instruction decoder API.
 Check the [Rust-specific README](src/rabbitizer/README.md) for examples of the
 Rust API.
 
-`rab-disasmdis` is a an example program that allows decoding words on your
+`rab-disasmdis` is a an example program that allows decoding hex words on your
 terminal. Check out [its README](src/rab-disasmdis/README.md).
+
+`rab-disasmdis-web` contains the code for running a static website for decoding
+and encoding MIPS instructions. It gets compiled to WASM, so no webserver is
+needed. Check out [its README](src/rab-disasmdis-web/README.md).
 
 ## Features
 
@@ -59,6 +63,13 @@ terminal. Check out [its README](src/rab-disasmdis/README.md).
   - ISAs are "feature gated", so you can only pay for what you use.
     - This may not be configurable if using a language binding other than the
       native Rust API.
+- Includes an experimental instruction encoder, allowing to "assemble" MIPS asm
+  instructions back to their hex representation.
+  - This is not an assembler. Most of the features supported by an assembler
+    are completely missing, without any plans to support them.
+  - The supported syntax is pretty restrictive, only supporting the syntax
+    emitted by the rabbitizer's decoder.
+  - Explicit relocations are not supported.
 
 ### Planned features
 
@@ -81,7 +92,7 @@ can be included in your Cargo enabled project like this:
 
 ```toml
 [dependencies]
-rabbitizer = "2.0.0-alpha.3"
+rabbitizer = "2.0.0-alpha.4"
 ```
 
 For more details and feature configuration, consult the
