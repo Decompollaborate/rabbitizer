@@ -15,9 +15,6 @@ $(shell mkdir -p ../include/generated/ ../cplusplus/include/generated/)
 # TABLE_CPLUSPLUS_TEMPLATES   := $(wildcard $(TEMPLATE_FOLDER)/cplusplus/*.table.template)
 # TABLE_CPLUSPLUS_GENERATED   := $(TABLE_CPLUSPLUS_TEMPLATES:$(TEMPLATE_FOLDER)/cplusplus/%.table.template=../cplusplus/include/generated/%.hpp)
 
-# TABLE_RS_TEMPLATES          := $(wildcard $(TEMPLATE_FOLDER)/rust/*.tablers.template)
-# TABLE_RS_GENERATED          := $(TABLE_RS_TEMPLATES:$(TEMPLATE_FOLDER)/rust/%.tablers.template=../rust/src/%.rs)
-
 TABLE_RUST_TEMPLATES        := $(wildcard $(TEMPLATE_FOLDER)/rust_native/*.tablers.template)
 TABLE_RUST_GENERATED        := $(TABLE_RUST_TEMPLATES:$(TEMPLATE_FOLDER)/rust_native/%.tablers.template=../src/rabbitizer/src/generated/%.rs)
 
@@ -60,10 +57,6 @@ distclean: clean
 ../cplusplus/include/generated/%.hpp: $(TEMPLATE_FOLDER)/cplusplus/%.table.template
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(@:.hpp=.d) $<
 	$(C_TABLE_GEN) $< $@ $(@F) || (rm -rf $@ && false)
-
-../rust/src/%.rs: $(TEMPLATE_FOLDER)/rust/%.tablers.template
-	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<
-	$(RS_TABLE_GEN) $< $@ || (rm -rf $@ && false)
 
 ../src/rabbitizer/src/generated/%.rs: $(TEMPLATE_FOLDER)/rust_native/%.tablers.template | ../src/rabbitizer/src/generated
 	cpp -P $(IINC) -M -MM -MMD -MP -MT $@ -MF $(<:.template=.d) $<

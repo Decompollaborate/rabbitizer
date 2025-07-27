@@ -160,6 +160,7 @@ pub trait Register: PartialEq + PartialOrd + Default {
     /// The accepted names will change dependending on the given [`Abi`].
     #[must_use]
     #[cfg(feature = "encoder")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "encoder")))]
     fn from_name(name: &str, abi: Abi, allow_dollarless: bool) -> Option<Self> {
         let allow_dollarless = allow_dollarless && !name.starts_with('$');
 

@@ -1812,6 +1812,7 @@ impl InstrField<'_> {
 
 /// Unchecked opcode fields
 #[cfg(feature = "unchecked_instr_fields")]
+#[cfg_attr(docsrs, doc(cfg(feature = "unchecked_instr_fields")))]
 impl InstrField<'_> {
     /// Returns the [`Gpr`] register embedded on the `rs` field of the word of
     /// this instruction.
@@ -2207,7 +2208,8 @@ impl InstrField<'_> {
 }
 
 /// Unchecked RSP opcode fields
-#[cfg(all(feature = "RSP", feature = "unchecked_instr_fields",))]
+#[cfg(all(feature = "RSP", feature = "unchecked_instr_fields"))]
+#[cfg_attr(docsrs, doc(cfg(all(feature = "RSP", feature = "unchecked_instr_fields"))))]
 impl InstrField<'_> {
     /// Returns the [`RspCop0`] register embedded on the `rsp_cop0d` field of the word
     /// of this instruction.
@@ -2483,7 +2485,8 @@ impl InstrField<'_> {
 }
 
 /// Unchecked R3000GTE opcode fields
-#[cfg(all(feature = "R3000GTE", feature = "unchecked_instr_fields",))]
+#[cfg(all(feature = "R3000GTE", feature = "unchecked_instr_fields"))]
+#[cfg_attr(docsrs, doc(cfg(all(feature = "R3000GTE", feature = "unchecked_instr_fields"))))]
 impl InstrField<'_> {
     /// Returns the `r3000gte_sf` value embedded on the `r3000gte_sf` field of
     /// the word of this instruction.
@@ -2582,7 +2585,8 @@ impl InstrField<'_> {
 }
 
 /// Unchecked R4000ALLEGREX opcode fields
-#[cfg(all(feature = "R4000ALLEGREX", feature = "unchecked_instr_fields",))]
+#[cfg(all(feature = "R4000ALLEGREX", feature = "unchecked_instr_fields"))]
+#[cfg_attr(docsrs, doc(cfg(all(feature = "R4000ALLEGREX", feature = "unchecked_instr_fields"))))]
 impl InstrField<'_> {
     /// Returns the [`R4000AllegrexS`] register embedded on the `r4000allegrex_vs`
     /// field of the word of this instruction.
@@ -3616,7 +3620,8 @@ impl InstrField<'_> {
 }
 
 /// Unchecked R5900EE opcode fields
-#[cfg(all(feature = "R5900EE", feature = "unchecked_instr_fields",))]
+#[cfg(all(feature = "R5900EE", feature = "unchecked_instr_fields"))]
+#[cfg_attr(docsrs, doc(cfg(all(feature = "R5900EE", feature = "unchecked_instr_fields"))))]
 impl InstrField<'_> {
     /// Returns the `r5900ee_imm5` value embedded on the `r5900ee_imm5` field of
     /// the word of this instruction.
