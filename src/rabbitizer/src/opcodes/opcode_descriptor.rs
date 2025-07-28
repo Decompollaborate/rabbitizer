@@ -266,16 +266,16 @@ impl OpcodeDescriptor {
         }
 
         assert!(
-            utils::truth_a_implies_b(self.is_branch_likely, self.is_branch),
+            utils::truth::a_implies_b(self.is_branch_likely, self.is_branch),
             "An 'is_branch_likely' opcode must be `is_branch` too"
         );
 
         assert!(
-            utils::truth_a_implies_b(self.is_jump_with_address, self.is_jump),
+            utils::truth::a_implies_b(self.is_jump_with_address, self.is_jump),
             "An 'is_jump_with_address' opcode must be `is_jump` too"
         );
         assert!(
-            utils::truth_a_implies_b(self.jumps_to_register, self.is_jump),
+            utils::truth::a_implies_b(self.jumps_to_register, self.is_jump),
             "An 'jumps_to_register' opcode must be `is_jump` too"
         );
 
@@ -295,11 +295,11 @@ impl OpcodeDescriptor {
 
         // Exceptions
         assert!(
-            utils::truth_a_implies_b(self.causes_unconditional_exception, self.causes_exception),
+            utils::truth::a_implies_b(self.causes_unconditional_exception, self.causes_exception),
             "An 'causes_unconditional_exception' opcode must be `causes_exception` too"
         );
         assert!(
-            utils::truth_a_implies_b(self.causes_conditional_exception, self.causes_exception),
+            utils::truth::a_implies_b(self.causes_conditional_exception, self.causes_exception),
             "An 'causes_conditional_exception' opcode must be `causes_exception` too"
         );
         assert!(
@@ -307,17 +307,17 @@ impl OpcodeDescriptor {
             "An opcode must either cause an unconditional exception or a conditional one, not both"
         );
         assert!(
-            utils::truth_a_implies_b(self.causes_returnable_exception, self.causes_exception),
+            utils::truth::a_implies_b(self.causes_returnable_exception, self.causes_exception),
             "An 'causes_returnable_exception' opcode must be `causes_exception` too"
         );
 
         assert!(
-            utils::truth_a_implies_b(self.is_trap, self.causes_exception),
+            utils::truth::a_implies_b(self.is_trap, self.causes_exception),
             "An trap instructions cause exceptions"
         );
 
         assert!(
-            utils::truth_a_implies_b(self.is_double, self.is_float),
+            utils::truth::a_implies_b(self.is_double, self.is_float),
             "An 'is_double' opcode must be `is_float` too"
         );
 
@@ -335,21 +335,21 @@ impl OpcodeDescriptor {
             "An opcode must either modify or read the `rd` gpr register, not both"
         );
         assert!(
-            utils::truth_both_or_neither(
+            utils::truth::both_or_neither(
                 self.modifies_rs || self.reads_rs,
                 self.has_operand_alias(Operand::core_rs)
             ),
             "An opcode that touches an `rs` gpr register must have an `rs` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_neither(
+            utils::truth::both_or_neither(
                 self.modifies_rt || self.reads_rt,
                 self.has_operand_alias(Operand::core_rt)
             ),
             "An opcode that touches an `rt` gpr register must have an `rt` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_neither(
+            utils::truth::both_or_neither(
                 self.modifies_rd || self.reads_rd,
                 self.has_operand_alias(Operand::core_rd)
             ),
@@ -370,21 +370,21 @@ impl OpcodeDescriptor {
             "An opcode must either modify or read the `fd` gpr register, not both"
         );
         assert!(
-            utils::truth_both_or_neither(
+            utils::truth::both_or_neither(
                 self.modifies_fs || self.reads_fs,
                 self.has_operand_alias(Operand::core_fs)
             ),
             "An opcode that touches an `fs` gpr register must have an `fs` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_neither(
+            utils::truth::both_or_neither(
                 self.modifies_ft || self.reads_ft,
                 self.has_operand_alias(Operand::core_ft)
             ),
             "An opcode that touches an `ft` gpr register must have an `ft` operand and viceversa"
         );
         assert!(
-            utils::truth_both_or_neither(
+            utils::truth::both_or_neither(
                 self.modifies_fd || self.reads_fd,
                 self.has_operand_alias(Operand::core_fd)
             ),
@@ -405,21 +405,21 @@ impl OpcodeDescriptor {
         );
 
         assert!(
-            utils::truth_a_implies_b(self.does_link, self.is_branch || self.is_jump),
+            utils::truth::a_implies_b(self.does_link, self.is_branch || self.is_jump),
             "A 'does_link' opcode must be either `is_branch` or `is_jump`"
         );
 
         // dereference stuff
         assert!(
-            utils::truth_a_implies_b(self.does_dereference, self.does_load || self.does_store),
+            utils::truth::a_implies_b(self.does_dereference, self.does_load || self.does_store),
             "Dereference must imply either reading from RAM or storing to it"
         );
         assert!(
-            utils::truth_a_implies_b(self.does_load, self.does_dereference),
+            utils::truth::a_implies_b(self.does_load, self.does_dereference),
             "Reading from RAM must imply a dereference"
         );
         assert!(
-            utils::truth_a_implies_b(self.does_store, self.does_dereference),
+            utils::truth::a_implies_b(self.does_store, self.does_dereference),
             "Storing to RAM must imply a dereference"
         );
         assert!(
@@ -427,16 +427,16 @@ impl OpcodeDescriptor {
             "Either load or store, not both"
         );
         assert!(
-            utils::truth_both_or_neither(self.does_dereference, self.access_type.is_some()),
+            utils::truth::both_or_neither(self.does_dereference, self.access_type.is_some()),
             "An opcode that does dereference memory should have a non NONE AccessType"
         );
         assert!(
-            utils::truth_a_implies_b(self.does_unsigned_memory_access, self.does_dereference),
+            utils::truth::a_implies_b(self.does_unsigned_memory_access, self.does_dereference),
             "Unsigned memory accesses require dereferences"
         );
 
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.adds_registers,
                 self.has_operand_alias(Operand::core_rd)
                     && self.has_operand_alias(Operand::core_rs)
@@ -445,7 +445,7 @@ impl OpcodeDescriptor {
             "A `adds_registers` must use three gpr register operands"
         );
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.subs_registers,
                 self.has_operand_alias(Operand::core_rd)
                     && self.has_operand_alias(Operand::core_rs)
@@ -454,7 +454,7 @@ impl OpcodeDescriptor {
             "A `adds_registers` must use three gpr register operands"
         );
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.ors_registers,
                 self.has_operand_alias(Operand::core_rd)
                     && self.has_operand_alias(Operand::core_rs)
@@ -463,7 +463,7 @@ impl OpcodeDescriptor {
             "A `adds_registers` must use three gpr register operands"
         );
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.ands_registers,
                 self.has_operand_alias(Operand::core_rd)
                     && self.has_operand_alias(Operand::core_rs)
@@ -473,28 +473,28 @@ impl OpcodeDescriptor {
         );
 
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.adds_registers,
                 !self.subs_registers && !self.ors_registers && !self.ands_registers
             ),
             "These properties are mutually exclusive"
         );
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.subs_registers,
                 !self.adds_registers && !self.ors_registers && !self.ands_registers
             ),
             "These properties are mutually exclusive"
         );
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.ors_registers,
                 !self.subs_registers && !self.adds_registers && !self.ands_registers
             ),
             "These properties are mutually exclusive"
         );
         assert!(
-            utils::truth_a_implies_b(
+            utils::truth::a_implies_b(
                 self.ands_registers,
                 !self.subs_registers && !self.ors_registers && !self.adds_registers
             ),

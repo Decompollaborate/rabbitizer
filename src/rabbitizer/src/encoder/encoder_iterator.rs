@@ -8,7 +8,7 @@ use crate::encoder::EncodingError;
 use crate::instr::{Instruction, InstructionFlags};
 use crate::opcodes::{Opcode, OpcodeDecoder, OPCODES};
 use crate::operands::Operand;
-use crate::utils::DoubleOptIterator;
+use crate::utils::iter::DoubleOptIterator;
 use crate::vram::{Vram, VramOffset};
 
 #[derive(Debug, Clone)]

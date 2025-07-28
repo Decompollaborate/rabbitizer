@@ -43,6 +43,12 @@ R5900EE = ["MIPS_IV"]
 
 RspViceMsp = ["RSP"]
 
+all_isas = [
+    "MIPS_II",
+    "MIPS_III",
+    "MIPS_IV",
+]
+
 all_extensions = [
     "RSP",
     "R3000GTE",
@@ -57,10 +63,10 @@ all_gated_extensions = [
 
 serde = ["dep:serde"]
 bindings_c = []
-pyo3 = ["std", "dep:pyo3", "all_extensions", "all_gated_extensions"]
+pyo3 = ["std", "dep:pyo3", "all_isas", "all_extensions", "all_gated_extensions"]
 
 # Documentation should be generated with every user-facing feature
-doc = ["MIPS_IV", "all_extensions", "all_gated_extensions", "encoder"]
+doc = ["all_isas", "all_extensions", "all_gated_extensions", "encoder"]
 
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }

@@ -279,25 +279,25 @@ impl ValuedOperand {
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_s_args_impl();
+                let (cond, vs, vt) = instr.field().r4000allegrex_vcmp_s_args_impl();
 
                 Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt(cond, vs, vt)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_p_args_impl();
+                let (cond, vs, vt) = instr.field().r4000allegrex_vcmp_p_args_impl();
 
                 Self::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt(cond, vs, vt)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_t_args_impl();
+                let (cond, vs, vt) = instr.field().r4000allegrex_vcmp_t_args_impl();
 
                 Self::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt(cond, vs, vt)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
-                let (cond, vs, vt) = instr.get_r4000allegrex_vcmp_q_args_impl();
+                let (cond, vs, vt) = instr.field().r4000allegrex_vcmp_q_args_impl();
 
                 Self::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt(cond, vs, vt)
             }

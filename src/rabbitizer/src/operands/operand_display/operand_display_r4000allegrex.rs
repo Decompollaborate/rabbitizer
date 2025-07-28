@@ -524,7 +524,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_s_args_impl();
+        let (_, vs, vt) = instr.field().r4000allegrex_vcmp_s_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
@@ -544,7 +544,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_p_args_impl();
+        let (_, vs, vt) = instr.field().r4000allegrex_vcmp_p_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
@@ -564,7 +564,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_t_args_impl();
+        let (_, vs, vt) = instr.field().r4000allegrex_vcmp_t_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 
@@ -584,7 +584,7 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let instr = myself.instr;
-        let (_, vs, vt) = instr.get_r4000allegrex_vcmp_q_args_impl();
+        let (_, vs, vt) = instr.field().r4000allegrex_vcmp_q_args_impl();
 
         Self::display_r4000allegrex_vcmp_cond(myself, f)?;
 

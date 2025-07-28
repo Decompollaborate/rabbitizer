@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `all_isas` cargo feature. Enables all base ISAs.
+
+### Changed
+
+- Move `r4000allegrex_vcmp*` functions from `Instruction` to `InstrField`.
+
 ## [2.0.0-alpha.4] - 2025-07-26
 
 ### Added

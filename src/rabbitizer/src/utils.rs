@@ -44,180 +44,199 @@ pub(crate) const fn from_2s_complement<const WIDTH: u32>(number: u32) -> i32 {
     }
 }
 
-#[must_use]
 #[cfg(feature = "R4000ALLEGREX")]
-pub(crate) const fn floatrepr_32_from_16(mut arg: u16) -> u32 {
-    // IEEE754 16-bit floats are encoded in 16 bits as follows:
-    // Sign bit: 1 bit (bit 15)
-    // Encoded exponent: 5 bits (bits 10 ~ 14)
-    // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
+pub mod f16 {
+    use super::*;
 
-    let mut ret: u32 = 0;
-    let sign: i32 = (arg as i32) >> 15;
+    #[must_use]
+    pub(crate) const fn repr_32_from_16(mut arg: u16) -> u32 {
+        // IEEE754 16-bit floats are encoded in 16 bits as follows:
+        // Sign bit: 1 bit (bit 15)
+        // Encoded exponent: 5 bits (bits 10 ~ 14)
+        // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
 
-    // If parameter is zero, then return zero
-    if (arg & !(1 << 15)) == 0 {
-        // Preserve the sign
-        ret |= (sign as u32) << 31;
-        return ret;
-    }
+        let mut ret: u32 = 0;
+        let sign: i32 = (arg as i32) >> 15;
 
-    // Clear up the sign
-    arg &= !(1 << 15);
-
-    let encoded_exponent: i32 = arg as i32 >> 10;
-    // Clear up the encoded exponent
-    arg &= !bitmask(10, 5) as u16;
-
-    // Exponent bias: 0xF
-    let real_exponent: i32 = encoded_exponent - 0xF;
-
-    let mantissa_is_zero: bool = arg == 0;
-
-    if encoded_exponent == 0 {
-        // subnormals
-
-        ret |= (sign as u32) << 31;
-        // no need to set the exponent part since it was already zero'd
-
-        // Set the mantissa
-        ret |= (arg as u32) >> (23 - 10);
-
-        return ret;
-    }
-
-    if encoded_exponent == 0x1F {
-        // Infinity and NaN
-
-        ret |= (sign as u32) << 31;
-        ret |= bitmask(23, 8);
-
-        if !mantissa_is_zero {
-            // NaN
-
-            // Set the mantissa to any non-zero value
-            ret |= (arg as u32) << (23 - 10);
+        // If parameter is zero, then return zero
+        if (arg & !(1 << 15)) == 0 {
+            // Preserve the sign
+            ret |= (sign as u32) << 31;
+            return ret;
         }
 
-        return ret;
-    }
+        // Clear up the sign
+        arg &= !(1 << 15);
 
-    ret |= (sign as u32) << 31;
+        let encoded_exponent: i32 = arg as i32 >> 10;
+        // Clear up the encoded exponent
+        arg &= !bitmask(10, 5) as u16;
 
-    // re-encode the exponent
-    ret |= ((real_exponent + 0x7F) as u32) << 23;
+        // Exponent bias: 0xF
+        let real_exponent: i32 = encoded_exponent - 0xF;
 
-    // Set the mantissa
-    ret |= (arg as u32) << (23 - 10);
+        let mantissa_is_zero: bool = arg == 0;
 
-    ret
-}
-
-#[must_use]
-#[cfg(feature = "R4000ALLEGREX")]
-#[cfg(feature = "encoder")]
-pub(crate) const fn floatrepr_16_from_32(mut arg: u32) -> u16 {
-    // IEEE754 16-bit floats are encoded in 16 bits as follows:
-    // Sign bit: 1 bit (bit 15)
-    // Encoded exponent: 5 bits (bits 10 ~ 14)
-    // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
-
-    let mut ret = 0;
-    let sign = (arg >> 31) as u16;
-
-    // Clear up the sign
-    arg &= !(1 << 31);
-
-    // If parameter is zero, then return zero
-    if arg == 0 {
-        // Preserve the sign
-        ret |= sign << 15;
-        return ret;
-    }
-
-    let encoded_exponent = (arg >> 23) as i32;
-    // Clear up the encoded exponent
-    arg &= !bitmask(23, 8);
-
-    // Exponent bias: 0xF
-    let real_exponent = encoded_exponent - 0x7F;
-
-    let mantissa_is_zero = arg == 0;
-
-    match encoded_exponent {
-        0x00 => {
+        if encoded_exponent == 0 {
             // subnormals
 
-            ret |= sign << 15;
+            ret |= (sign as u32) << 31;
             // no need to set the exponent part since it was already zero'd
 
             // Set the mantissa
-            ret |= (arg >> (23 - 10)) as u16;
+            ret |= (arg as u32) >> (23 - 10);
 
-            ret
+            return ret;
         }
-        0xFF => {
+
+        if encoded_exponent == 0x1F {
             // Infinity and NaN
 
-            ret |= sign << 15;
-            ret |= bitmask(10, 5) as u16;
+            ret |= (sign as u32) << 31;
+            ret |= bitmask(23, 8);
 
             if !mantissa_is_zero {
                 // NaN
 
                 // Set the mantissa to any non-zero value
-                ret |= (arg >> (23 - 10)) as u16;
+                ret |= (arg as u32) << (23 - 10);
             }
 
-            ret
+            return ret;
         }
-        _ => {
+
+        ret |= (sign as u32) << 31;
+
+        // re-encode the exponent
+        ret |= ((real_exponent + 0x7F) as u32) << 23;
+
+        // Set the mantissa
+        ret |= (arg as u32) << (23 - 10);
+
+        ret
+    }
+
+    #[must_use]
+    #[cfg(feature = "encoder")]
+    pub(crate) const fn repr_16_from_32(mut arg: u32) -> u16 {
+        // IEEE754 16-bit floats are encoded in 16 bits as follows:
+        // Sign bit: 1 bit (bit 15)
+        // Encoded exponent: 5 bits (bits 10 ~ 14)
+        // Fraction/Mantissa: 10 bits (bits 0 ~ 9)
+
+        let mut ret = 0;
+        let sign = (arg >> 31) as u16;
+
+        // Clear up the sign
+        arg &= !(1 << 31);
+
+        // If parameter is zero, then return zero
+        if arg == 0 {
+            // Preserve the sign
             ret |= sign << 15;
+            return ret;
+        }
 
-            // re-encode the exponent
-            ret |= (mask((real_exponent + 0xF) as u32, 5) as u16) << 10;
+        let encoded_exponent = (arg >> 23) as i32;
+        // Clear up the encoded exponent
+        arg &= !bitmask(23, 8);
 
-            // Set the mantissa
-            ret |= (arg >> (23 - 10)) as u16;
+        // Exponent bias: 0xF
+        let real_exponent = encoded_exponent - 0x7F;
 
-            ret
+        let mantissa_is_zero = arg == 0;
+
+        match encoded_exponent {
+            0x00 => {
+                // subnormals
+
+                ret |= sign << 15;
+                // no need to set the exponent part since it was already zero'd
+
+                // Set the mantissa
+                ret |= (arg >> (23 - 10)) as u16;
+
+                ret
+            }
+            0xFF => {
+                // Infinity and NaN
+
+                ret |= sign << 15;
+                ret |= bitmask(10, 5) as u16;
+
+                if !mantissa_is_zero {
+                    // NaN
+
+                    // Set the mantissa to any non-zero value
+                    ret |= (arg >> (23 - 10)) as u16;
+                }
+
+                ret
+            }
+            _ => {
+                ret |= sign << 15;
+
+                // re-encode the exponent
+                ret |= (mask((real_exponent + 0xF) as u32, 5) as u16) << 10;
+
+                // Set the mantissa
+                ret |= (arg >> (23 - 10)) as u16;
+
+                ret
+            }
+        }
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn test_repr_32_from_16_1_5() {
+            // 1.5 in f16
+            let hex_16 = 0x3E00;
+            let hex_32 = repr_32_from_16(hex_16);
+
+            assert_eq!(hex_32, 0x3FC00000);
+            assert_eq!(f32::from_bits(hex_32), 1.5);
         }
     }
 }
 
-/// If `a` is `true` then `b` must be `true` too. If `a` is `false` then we
-/// don't care about `b` and return `true`.
-///
-/// The above statement is expressed as the following truth table:
-///
-/// | a | b | OUT |
-/// |---|---|-----|
-/// | 1 | 1 |  1  |
-/// | 1 | 0 |  0  |
-/// | 0 | 1 |  1  |
-/// | 0 | 0 |  1  |
 #[cfg(test)]
-#[inline(always)]
-#[must_use]
-pub(crate) const fn truth_a_implies_b(a: bool, b: bool) -> bool {
-    !a || b
-}
+pub mod truth {
+    /// If `a` is `true` then `b` must be `true` too. If `a` is `false` then we
+    /// don't care about `b` and return `true`.
+    ///
+    /// The above statement is expressed as the following truth table:
+    ///
+    /// | a | b | OUT |
+    /// |---|---|-----|
+    /// | 1 | 1 |  1  |
+    /// | 1 | 0 |  0  |
+    /// | 0 | 1 |  1  |
+    /// | 0 | 0 |  1  |
+    #[inline(always)]
+    #[must_use]
+    pub(crate) const fn a_implies_b(a: bool, b: bool) -> bool {
+        !a || b
+    }
 
-/// Returns `true` if both `a` and `b` are `true` or if both are `false`.
-///
-/// The above statement is expressed as the following truth table:
-///
-/// | a | b | OUT |
-/// |---|---|-----|
-/// | 1 | 1 |  1  |
-/// | 1 | 0 |  0  |
-/// | 0 | 1 |  0  |
-/// | 0 | 0 |  1  |
-#[cfg(test)]
-#[inline(always)]
-#[must_use]
-pub(crate) const fn truth_both_or_neither(a: bool, b: bool) -> bool {
-    !(a ^ b)
+    /// Returns `true` if both `a` and `b` are `true` or if both are `false`.
+    ///
+    /// The above statement is expressed as the following truth table:
+    ///
+    /// | a | b | OUT |
+    /// |---|---|-----|
+    /// | 1 | 1 |  1  |
+    /// | 1 | 0 |  0  |
+    /// | 0 | 1 |  0  |
+    /// | 0 | 0 |  1  |
+    #[inline(always)]
+    #[must_use]
+    pub(crate) const fn both_or_neither(a: bool, b: bool) -> bool {
+        !(a ^ b)
+    }
 }
 
 pub(crate) fn array_len_non_default<T, const N: usize>(array: &[T; N]) -> usize
@@ -239,148 +258,128 @@ where
 }
 
 #[cfg(feature = "encoder")]
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-pub struct DoubleOptIterator<I>
-where
-    I: Iterator,
-{
-    iter: I,
-    front: Option<I::Item>,
-}
-
-#[cfg(feature = "encoder")]
-impl<I> DoubleOptIterator<I>
-where
-    I: Iterator,
-{
-    pub const fn new(iter: I) -> Self {
-        Self { iter, front: None }
+pub mod iter {
+    #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+    pub struct DoubleOptIterator<I>
+    where
+        I: Iterator,
+    {
+        iter: I,
+        front: Option<I::Item>,
     }
 
-    pub fn push_front(&mut self, item: I::Item) {
-        self.front = Some(item);
+    impl<I> DoubleOptIterator<I>
+    where
+        I: Iterator,
+    {
+        pub const fn new(iter: I) -> Self {
+            Self { iter, front: None }
+        }
+
+        pub fn push_front(&mut self, item: I::Item) {
+            self.front = Some(item);
+        }
+
+        pub fn next_inner(&mut self) -> Option<I::Item> {
+            self.iter.next()
+        }
     }
 
-    pub fn next_inner(&mut self) -> Option<I::Item> {
-        self.iter.next()
-    }
-}
+    impl<I> Iterator for DoubleOptIterator<I>
+    where
+        I: Iterator,
+    {
+        type Item = (I::Item, Option<I::Item>);
 
-#[cfg(feature = "encoder")]
-impl<I> Iterator for DoubleOptIterator<I>
-where
-    I: Iterator,
-{
-    type Item = (I::Item, Option<I::Item>);
-
-    fn next(&mut self) -> Option<Self::Item> {
-        match self.front.take().or_else(|| self.iter.next()) {
-            None => None,
-            Some(x) => Some((x, self.iter.next())),
+        fn next(&mut self) -> Option<Self::Item> {
+            match self.front.take().or_else(|| self.iter.next()) {
+                None => None,
+                Some(x) => Some((x, self.iter.next())),
+            }
         }
     }
 }
 
 #[cfg(feature = "encoder")]
-pub fn i32_hex_from_str(s: &str) -> Result<i32, core::num::ParseIntError> {
-    if matches!(s, "-0x80000000" | "-0X80000000" | "-2147483648") {
-        return Ok(-0x80000000);
+pub mod hex_num {
+    pub fn i32_from_str(s: &str) -> Result<i32, core::num::ParseIntError> {
+        if matches!(s, "-0x80000000" | "-0X80000000" | "-2147483648") {
+            return Ok(-0x80000000);
+        }
+
+        let is_negative = s.starts_with('-');
+        let s = s.trim_start_matches('-');
+
+        let value = if s.starts_with("0x") || s.starts_with("0X") {
+            i32::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+        } else {
+            s.parse()?
+        };
+
+        Ok(if is_negative { -value } else { value })
     }
 
-    let is_negative = s.starts_with('-');
-    let s = s.trim_start_matches('-');
+    pub fn u32_from_str(s: &str) -> Result<u32, core::num::ParseIntError> {
+        let value = if s.starts_with("0x") || s.starts_with("0X") {
+            u32::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+        } else {
+            s.parse()?
+        };
 
-    let value = if s.starts_with("0x") || s.starts_with("0X") {
-        i32::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
-    } else {
-        s.parse()?
-    };
-
-    Ok(if is_negative { -value } else { value })
-}
-
-#[cfg(feature = "encoder")]
-pub fn u32_hex_from_str(s: &str) -> Result<u32, core::num::ParseIntError> {
-    let value = if s.starts_with("0x") || s.starts_with("0X") {
-        u32::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
-    } else {
-        s.parse()?
-    };
-
-    Ok(value)
-}
-
-#[cfg(feature = "encoder")]
-pub fn i16_hex_from_str(s: &str) -> Result<i16, core::num::ParseIntError> {
-    if matches!(s, "-0x8000" | "-0X8000" | "-32768") {
-        return Ok(-0x8000);
+        Ok(value)
     }
 
-    let is_negative = s.starts_with('-');
-    let s = s.trim_start_matches('-');
+    pub fn i16_from_str(s: &str) -> Result<i16, core::num::ParseIntError> {
+        if matches!(s, "-0x8000" | "-0X8000" | "-32768") {
+            return Ok(-0x8000);
+        }
 
-    let value = if s.starts_with("0x") || s.starts_with("0X") {
-        i16::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
-    } else {
-        s.parse()?
-    };
+        let is_negative = s.starts_with('-');
+        let s = s.trim_start_matches('-');
 
-    Ok(if is_negative { -value } else { value })
-}
+        let value = if s.starts_with("0x") || s.starts_with("0X") {
+            i16::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+        } else {
+            s.parse()?
+        };
 
-#[cfg(feature = "encoder")]
-pub fn u16_hex_from_str(s: &str) -> Result<u16, core::num::ParseIntError> {
-    let value = if s.starts_with("0x") || s.starts_with("0X") {
-        u16::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
-    } else {
-        s.parse()?
-    };
-
-    Ok(value)
-}
-
-#[cfg(feature = "encoder")]
-pub fn i8_hex_from_str(s: &str) -> Result<i8, core::num::ParseIntError> {
-    if matches!(s, "-0x80" | "-0X80" | "-128") {
-        return Ok(-0x80);
+        Ok(if is_negative { -value } else { value })
     }
 
-    let is_negative = s.starts_with('-');
-    let s = s.trim_start_matches('-');
+    pub fn u16_from_str(s: &str) -> Result<u16, core::num::ParseIntError> {
+        let value = if s.starts_with("0x") || s.starts_with("0X") {
+            u16::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+        } else {
+            s.parse()?
+        };
 
-    let value = if s.starts_with("0x") || s.starts_with("0X") {
-        i8::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
-    } else {
-        s.parse()?
-    };
+        Ok(value)
+    }
 
-    Ok(if is_negative { -value } else { value })
-}
+    pub fn i8_from_str(s: &str) -> Result<i8, core::num::ParseIntError> {
+        if matches!(s, "-0x80" | "-0X80" | "-128") {
+            return Ok(-0x80);
+        }
 
-#[cfg(feature = "encoder")]
-pub fn u8_hex_from_str(s: &str) -> Result<u8, core::num::ParseIntError> {
-    let value = if s.starts_with("0x") || s.starts_with("0X") {
-        u8::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
-    } else {
-        s.parse()?
-    };
+        let is_negative = s.starts_with('-');
+        let s = s.trim_start_matches('-');
 
-    Ok(value)
-}
+        let value = if s.starts_with("0x") || s.starts_with("0X") {
+            i8::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+        } else {
+            s.parse()?
+        };
 
-#[cfg(test)]
-mod tests {
-    #[allow(unused_imports)]
-    use super::*;
+        Ok(if is_negative { -value } else { value })
+    }
 
-    #[test]
-    #[cfg(feature = "R4000ALLEGREX")]
-    fn test_floatrepr_32_from_16_1_5() {
-        // 1.5 in f16
-        let hex_16 = 0x3E00;
-        let hex_32 = floatrepr_32_from_16(hex_16);
+    pub fn u8_from_str(s: &str) -> Result<u8, core::num::ParseIntError> {
+        let value = if s.starts_with("0x") || s.starts_with("0X") {
+            u8::from_str_radix(s.trim_start_matches("0x").trim_start_matches("0X"), 16)?
+        } else {
+            s.parse()?
+        };
 
-        assert_eq!(hex_32, 0x3FC00000);
-        assert_eq!(f32::from_bits(hex_32), 1.5);
+        Ok(value)
     }
 }

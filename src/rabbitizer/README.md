@@ -146,6 +146,8 @@ default.
     extension for the RSP instruction set.
     - Enables the `RSP` feature.
 - Blanket featues:
+  - `all_isas`: Enables every base ISAs. Currently enables `MIPS_II`,
+    `MIPS_III` and `MIPS_IV`.
   - `all_extensions`: Enables all common extensions. Currently enables `RSP`,
     `R3000GTE`, `R4000ALLEGREX` and `R5900EE` features.
   - `all_gated_extensions`: Enables gated extensions. Currently enables

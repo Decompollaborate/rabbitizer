@@ -11,7 +11,7 @@ use crate::registers::*;
 #[cfg(feature = "R4000ALLEGREX")]
 use crate::registers_meta::R4000AllegrexVectorRegister;
 use crate::registers_meta::Register;
-use crate::utils::{self, DoubleOptIterator};
+use crate::utils::{self, iter::DoubleOptIterator};
 
 impl Operand {
     #[allow(clippy::cognitive_complexity)]
@@ -34,7 +34,7 @@ impl Operand {
             }
             Self::core_sa => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
             Self::core_zero => None /*Self::core_zero()*/,
             Self::core_cop0d => {
@@ -64,16 +64,16 @@ impl Operand {
 
             Self::core_op => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
             Self::core_hint => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
 
             Self::core_code => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                let parsed = match utils::u16_hex_from_str(text).ok() {
+                let parsed = match utils::hex_num::u16_from_str(text).ok() {
                     None => None,
                     Some(code_upper) => {
                         if next_token == Some(Token::Comma) {
@@ -83,7 +83,7 @@ impl Operand {
                                 opcode,
                                 self,
                             )?;
-                            utils::u16_hex_from_str(code_lower_text).ok().map(|code_lower| {
+                            utils::hex_num::u16_from_str(code_lower_text).ok().map(|code_lower| {
                                 (code_upper, code_lower)
                             })
                         } else {
@@ -97,7 +97,7 @@ impl Operand {
 
             Self::core_code_lower => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u16_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u16_from_str(text).ok().map(Into::into)
             }
 
             Self::core_copraw => None /*Self::core_copraw(instr.word() & utils::bitmask(0, 25))*/,
@@ -113,7 +113,7 @@ impl Operand {
                         self,
                     )?;
 
-                    let Some(num) = utils::i32_hex_from_str(num_text).ok() else {
+                    let Some(num) = utils::hex_num::i32_from_str(num_text).ok() else {
                         return Err(EncodingError::UnrecognizedOperand(opcode, num_text, None, self));
                     };
 
@@ -122,11 +122,11 @@ impl Operand {
                             None => num,
                             Some(("+", expr)) => {
                                 let num2 = if let Some((num2_text, num3_text)) = expr.split_once("<<") {
-                                    let num2 = utils::i32_hex_from_str(num2_text.trim()).map_err(|_| EncodingError::UnrecognizedOperand(opcode, num2_text.trim(), None, self))?;
-                                    let num3 = utils::u32_hex_from_str(num3_text.trim()).map_err(|_| EncodingError::UnrecognizedOperand(opcode, num3_text.trim(), None, self))?;
+                                    let num2 = utils::hex_num::i32_from_str(num2_text.trim()).map_err(|_| EncodingError::UnrecognizedOperand(opcode, num2_text.trim(), None, self))?;
+                                    let num3 = utils::hex_num::u32_from_str(num3_text.trim()).map_err(|_| EncodingError::UnrecognizedOperand(opcode, num3_text.trim(), None, self))?;
                                     num2.wrapping_shl(num3)
                                 } else {
-                                    utils::i32_hex_from_str(expr.trim()).map_err(|_| EncodingError::UnrecognizedOperand(opcode, expr.trim(), None, self))?
+                                    utils::hex_num::i32_from_str(expr.trim()).map_err(|_| EncodingError::UnrecognizedOperand(opcode, expr.trim(), None, self))?
                                 };
                                 next_token = Some(Token::Comma);
                                 num + num2
@@ -141,22 +141,22 @@ impl Operand {
                 } else if text.starts_with("func_") && text.len() >= 5+8 {
                     u32::from_str_radix(&text[5..5+8], 16).ok().map(|x| x >> 2)
                 } else {
-                    utils::u32_hex_from_str(text).ok().map(|x| (x - 4) >> 2)
+                    utils::hex_num::u32_from_str(text).ok().map(|x| (x - 4) >> 2)
                 }
             },
 
             Self::core_imm_i16 => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::i16_hex_from_str(text).ok().map(|x| (x as u16).into())
+                utils::hex_num::i16_from_str(text).ok().map(|x| (x as u16).into())
             }
             Self::core_imm_u16 => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u16_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u16_from_str(text).ok().map(Into::into)
             }
 
             Self::core_imm_rs => {
                 let (imm_text, reg_text) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
-                utils::i16_hex_from_str(imm_text).ok().and_then(|imm| {
+                utils::hex_num::i16_from_str(imm_text).ok().and_then(|imm| {
                     regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
                         reshift_pair((EncodedFieldMask::rs, rs), (EncodedFieldMask::immediate, (imm as u16).into()))
                     })
@@ -251,7 +251,7 @@ impl Operand {
                 let vt = regval::<RspVector>(left, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
                     opcode, left, Some((right, BracketType::Brackets)), self,
                 ))?;
-                let element = utils::u8_hex_from_str(right).map_err(|_| EncodingError::UnrecognizedOperand(
+                let element = utils::hex_num::u8_from_str(right).map_err(|_| EncodingError::UnrecognizedOperand(
                     opcode, right, Some((right, BracketType::Brackets)), self,
                 ))?;
 
@@ -284,7 +284,7 @@ impl Operand {
                 let vs = regval::<RspVector>(left, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
                     opcode, left, Some((right, BracketType::Brackets)), self,
                 ))?;
-                let index = utils::u8_hex_from_str(right).map_err(|_| EncodingError::UnrecognizedOperand(
+                let index = utils::hex_num::u8_from_str(right).map_err(|_| EncodingError::UnrecognizedOperand(
                     opcode, right, Some((right, BracketType::Brackets)), self,
                 ))?;
 
@@ -294,7 +294,7 @@ impl Operand {
             #[cfg(feature = "RSP")]
             Self::rsp_offset7_rs => {
                 let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
-                let offset = utils::u8_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                let offset = utils::hex_num::u8_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
                     opcode, left, Some((right, BracketType::Parenthesis)), self,
                 ))?;
                 let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
@@ -306,7 +306,7 @@ impl Operand {
             #[cfg(feature = "RSP")]
             Self::rsp_offset8_rs => {
                 let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
-                let offset = utils::u8_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                let offset = utils::hex_num::u8_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
                     opcode, left, Some((right, BracketType::Parenthesis)), self,
                 ))? >> 1;
                 let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
@@ -318,7 +318,7 @@ impl Operand {
             #[cfg(feature = "RSP")]
             Self::rsp_offset9_rs => {
                 let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
-                let offset = utils::u16_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                let offset = utils::hex_num::u16_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
                     opcode, left, Some((right, BracketType::Parenthesis)), self,
                 ))? >> 2;
                 let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
@@ -330,7 +330,7 @@ impl Operand {
             #[cfg(feature = "RSP")]
             Self::rsp_offset10_rs => {
                 let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
-                let offset = utils::u16_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                let offset = utils::hex_num::u16_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
                     opcode, left, Some((right, BracketType::Parenthesis)), self,
                 ))? >> 3;
                 let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
@@ -342,7 +342,7 @@ impl Operand {
             #[cfg(feature = "RSP")]
             Self::rsp_offset11_rs => {
                 let (left, right) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
-                let offset = utils::u16_hex_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
+                let offset = utils::hex_num::u16_from_str(left).map_err(|_| EncodingError::UnrecognizedOperand(
                     opcode, left, Some((right, BracketType::Parenthesis)), self,
                 ))? >> 4;
                 let rs = regval::<Gpr>(right, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
@@ -355,7 +355,7 @@ impl Operand {
             #[cfg(feature = "R3000GTE")]
             Self::r3000gte_sf | Self::r3000gte_mx | Self::r3000gte_v | Self::r3000gte_cv | Self::r3000gte_lm => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
 
             #[cfg(feature = "R4000ALLEGREX")]
@@ -445,27 +445,27 @@ impl Operand {
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_pos => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_size => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(|x| (x - 1).into())
+                utils::hex_num::u8_from_str(text).ok().map(|x| (x - 1).into())
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_size_plus_pos => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::i8_hex_from_str(text).ok().map(|x| (x as u8).into())
+                utils::hex_num::i8_from_str(text).ok().map(|x| (x as u8).into())
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_imm3 => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_offset14_rs => {
                 let (offset14, reg_text) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
-                utils::u16_hex_from_str(offset14).ok().and_then(|imm| {
+                utils::hex_num::u16_from_str(offset14).ok().and_then(|imm| {
                     regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
                         reshift_pair((EncodedFieldMask::r4000allegrex_offset14, (imm >> 2).into()), (EncodedFieldMask::rs, rs))
                     })
@@ -486,7 +486,7 @@ impl Operand {
                     0
                 };
 
-                utils::u16_hex_from_str(offset14).ok().and_then(|imm| {
+                utils::hex_num::u16_from_str(offset14).ok().and_then(|imm| {
                     regval::<Gpr>(reg_text, abi, allow_dollarless).map(|rs| {
                         let repaired = reshift_pair((EncodedFieldMask::r4000allegrex_offset14, (imm >> 2).into()), (EncodedFieldMask::rs, rs));
 
@@ -574,29 +574,29 @@ impl Operand {
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_power_of_two => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vfpu_cc_bit => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_bn => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u8_hex_from_str(text).ok().map(Into::into)
+                utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_int16 => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::i16_hex_from_str(text).ok().map(|x| (x as u16).into())
+                utils::hex_num::i16_from_str(text).ok().map(|x| (x as u16).into())
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_float16 => {
                 let text = operand_text_from_token(token, opcode, self)?;
                 let float = text.parse::<f32>();
                 float.ok().filter(|x| (-65504.0..=65504.0).contains(x) || x.is_nan() || x.is_infinite()).map(|x| {
-                    utils::floatrepr_16_from_32(x.to_bits()).into()
+                    utils::f16::repr_16_from_32(x.to_bits()).into()
                 })
             }
             #[cfg(feature = "R4000ALLEGREX")]
@@ -834,12 +834,12 @@ impl Operand {
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_imm5 => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::i8_hex_from_str(text).ok().map(|x| (x as u8).into())
+                utils::hex_num::i8_from_str(text).ok().map(|x| (x as u8).into())
             }
             #[cfg(feature = "R5900EE")]
             Self::r5900ee_imm15 => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                utils::u32_hex_from_str(text).ok().map(|x| x >> 3)
+                utils::hex_num::u32_from_str(text).ok().map(|x| x >> 3)
             }
 
             #[cfg(feature = "R5900EE")]
@@ -1163,7 +1163,7 @@ fn parse_rsp_element_hq<'s>(
         (text, true)
     };
 
-    utils::u8_hex_from_str(element)
+    utils::hex_num::u8_from_str(element)
         .map_err(|_| EncodingError::UnrecognizedOperand(opcode, text, None, operand))
         .map(|x| {
             if w || suffix_less {

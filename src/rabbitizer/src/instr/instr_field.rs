@@ -6,6 +6,9 @@ use crate::instr::Instruction;
 use crate::operands::Operand;
 use crate::registers::*;
 
+#[cfg(feature = "R4000ALLEGREX")]
+use crate::registers_meta::R4000AllegrexVectorRegister;
+
 #[cfg(any(feature = "R4000ALLEGREX", feature = "R5900EE",))]
 use crate::utils;
 
@@ -1560,6 +1563,82 @@ impl InstrField<'_> {
             None
         }
     }
+
+    #[must_use]
+    pub fn r4000allegrex_vcmp_s_args(
+        &self,
+    ) -> Option<(
+        R4000AllegrexVCond,
+        Option<R4000AllegrexS>,
+        Option<R4000AllegrexS>,
+    )> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt)
+        {
+            Some(self.r4000allegrex_vcmp_s_args_impl())
+        } else {
+            None
+        }
+    }
+
+    #[must_use]
+    pub fn r4000allegrex_vcmp_p_args(
+        &self,
+    ) -> Option<(
+        R4000AllegrexVCond,
+        Option<R4000AllegrexV2D>,
+        Option<R4000AllegrexV2D>,
+    )> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt)
+        {
+            Some(self.r4000allegrex_vcmp_p_args_impl())
+        } else {
+            None
+        }
+    }
+
+    #[must_use]
+    pub fn r4000allegrex_vcmp_t_args(
+        &self,
+    ) -> Option<(
+        R4000AllegrexVCond,
+        Option<R4000AllegrexV3D>,
+        Option<R4000AllegrexV3D>,
+    )> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt)
+        {
+            Some(self.r4000allegrex_vcmp_t_args_impl())
+        } else {
+            None
+        }
+    }
+
+    #[must_use]
+    pub fn r4000allegrex_vcmp_q_args(
+        &self,
+    ) -> Option<(
+        R4000AllegrexVCond,
+        Option<R4000AllegrexV4D>,
+        Option<R4000AllegrexV4D>,
+    )> {
+        if self
+            .instr
+            .opcode()
+            .has_operand_alias(Operand::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt)
+        {
+            Some(self.r4000allegrex_vcmp_q_args_impl())
+        } else {
+            None
+        }
+    }
 }
 
 /// R5900EE opcode fields
@@ -2209,7 +2288,10 @@ impl InstrField<'_> {
 
 /// Unchecked RSP opcode fields
 #[cfg(all(feature = "RSP", feature = "unchecked_instr_fields"))]
-#[cfg_attr(docsrs, doc(cfg(all(feature = "RSP", feature = "unchecked_instr_fields"))))]
+#[cfg_attr(
+    docsrs,
+    doc(cfg(all(feature = "RSP", feature = "unchecked_instr_fields")))
+)]
 impl InstrField<'_> {
     /// Returns the [`RspCop0`] register embedded on the `rsp_cop0d` field of the word
     /// of this instruction.
@@ -2486,7 +2568,10 @@ impl InstrField<'_> {
 
 /// Unchecked R3000GTE opcode fields
 #[cfg(all(feature = "R3000GTE", feature = "unchecked_instr_fields"))]
-#[cfg_attr(docsrs, doc(cfg(all(feature = "R3000GTE", feature = "unchecked_instr_fields"))))]
+#[cfg_attr(
+    docsrs,
+    doc(cfg(all(feature = "R3000GTE", feature = "unchecked_instr_fields")))
+)]
 impl InstrField<'_> {
     /// Returns the `r3000gte_sf` value embedded on the `r3000gte_sf` field of
     /// the word of this instruction.
@@ -2586,7 +2671,10 @@ impl InstrField<'_> {
 
 /// Unchecked R4000ALLEGREX opcode fields
 #[cfg(all(feature = "R4000ALLEGREX", feature = "unchecked_instr_fields"))]
-#[cfg_attr(docsrs, doc(cfg(all(feature = "R4000ALLEGREX", feature = "unchecked_instr_fields"))))]
+#[cfg_attr(
+    docsrs,
+    doc(cfg(all(feature = "R4000ALLEGREX", feature = "unchecked_instr_fields")))
+)]
 impl InstrField<'_> {
     /// Returns the [`R4000AllegrexS`] register embedded on the `r4000allegrex_vs`
     /// field of the word of this instruction.
@@ -3621,7 +3709,10 @@ impl InstrField<'_> {
 
 /// Unchecked R5900EE opcode fields
 #[cfg(all(feature = "R5900EE", feature = "unchecked_instr_fields"))]
-#[cfg_attr(docsrs, doc(cfg(all(feature = "R5900EE", feature = "unchecked_instr_fields"))))]
+#[cfg_attr(
+    docsrs,
+    doc(cfg(all(feature = "R5900EE", feature = "unchecked_instr_fields")))
+)]
 impl InstrField<'_> {
     /// Returns the `r5900ee_imm5` value embedded on the `r5900ee_imm5` field of
     /// the word of this instruction.
@@ -5427,7 +5518,7 @@ impl InstrField<'_> {
     pub(crate) fn r4000allegrex_float16_impl(&self) -> f32 {
         // Ideally this function would return a f16, but that type is not stable yet.
 
-        let hex = utils::floatrepr_32_from_16(self.r4000allegrex_intfloat16_impl());
+        let hex = utils::f16::repr_32_from_16(self.r4000allegrex_intfloat16_impl());
 
         f32::from_bits(hex)
     }
@@ -5600,6 +5691,108 @@ impl InstrField<'_> {
         let d = (self.instr.word() & utils::bitmask(6, 2)) >> 6;
 
         ((a << 4) | (b << 3) | (c << 2) | d).try_into().unwrap()
+    }
+
+    #[must_use]
+    fn process_r4000allegrex_vcmp_operands<T>(
+        cond: R4000AllegrexVCond,
+        vs: T,
+        vt: T,
+    ) -> (R4000AllegrexVCond, Option<T>, Option<T>)
+    where
+        T: R4000AllegrexVectorRegister,
+    {
+        match cond {
+            R4000AllegrexVCond::fl | R4000AllegrexVCond::tr => {
+                // We can omit those two registers if they both are zero
+                if vs == T::default() && vt == T::default() {
+                    (cond, None, None)
+                } else {
+                    (cond, Some(vs), Some(vt))
+                }
+            }
+            R4000AllegrexVCond::eq
+            | R4000AllegrexVCond::lt
+            | R4000AllegrexVCond::le
+            | R4000AllegrexVCond::ne
+            | R4000AllegrexVCond::ge
+            | R4000AllegrexVCond::gt => (cond, Some(vs), Some(vt)),
+            R4000AllegrexVCond::ez
+            | R4000AllegrexVCond::en
+            | R4000AllegrexVCond::ei
+            | R4000AllegrexVCond::es
+            | R4000AllegrexVCond::nz
+            | R4000AllegrexVCond::nn
+            | R4000AllegrexVCond::ni
+            | R4000AllegrexVCond::ns => {
+                // We can omit the vt register if it is zero.
+                if vt == T::default() {
+                    (cond, Some(vs), None)
+                } else {
+                    (cond, Some(vs), Some(vt))
+                }
+            }
+        }
+    }
+
+    #[must_use]
+    pub(crate) fn r4000allegrex_vcmp_s_args_impl(
+        &self,
+    ) -> (
+        R4000AllegrexVCond,
+        Option<R4000AllegrexS>,
+        Option<R4000AllegrexS>,
+    ) {
+        let cond = self.r4000allegrex_vcmp_cond_impl();
+        let vs = self.r4000allegrex_s_vs_impl();
+        let vt = self.r4000allegrex_s_vs_impl();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
+    }
+
+    #[must_use]
+    pub(crate) fn r4000allegrex_vcmp_p_args_impl(
+        &self,
+    ) -> (
+        R4000AllegrexVCond,
+        Option<R4000AllegrexV2D>,
+        Option<R4000AllegrexV2D>,
+    ) {
+        let cond = self.r4000allegrex_vcmp_cond_impl();
+        let vs = self.r4000allegrex_p_vs_impl();
+        let vt = self.r4000allegrex_p_vs_impl();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
+    }
+
+    #[must_use]
+    pub(crate) fn r4000allegrex_vcmp_t_args_impl(
+        &self,
+    ) -> (
+        R4000AllegrexVCond,
+        Option<R4000AllegrexV3D>,
+        Option<R4000AllegrexV3D>,
+    ) {
+        let cond = self.r4000allegrex_vcmp_cond_impl();
+        let vs = self.r4000allegrex_t_vs_impl();
+        let vt = self.r4000allegrex_t_vs_impl();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
+    }
+
+    #[must_use]
+    pub(crate) fn r4000allegrex_vcmp_q_args_impl(
+        &self,
+    ) -> (
+        R4000AllegrexVCond,
+        Option<R4000AllegrexV4D>,
+        Option<R4000AllegrexV4D>,
+    ) {
+        let cond = self.r4000allegrex_vcmp_cond_impl();
+        let vs = self.r4000allegrex_q_vs_impl();
+        let vt = self.r4000allegrex_q_vs_impl();
+
+        Self::process_r4000allegrex_vcmp_operands(cond, vs, vt)
     }
 }
 
