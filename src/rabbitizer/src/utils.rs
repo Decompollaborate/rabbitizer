@@ -203,42 +203,6 @@ pub mod f16 {
     }
 }
 
-#[cfg(test)]
-pub mod truth {
-    /// If `a` is `true` then `b` must be `true` too. If `a` is `false` then we
-    /// don't care about `b` and return `true`.
-    ///
-    /// The above statement is expressed as the following truth table:
-    ///
-    /// | a | b | OUT |
-    /// |---|---|-----|
-    /// | 1 | 1 |  1  |
-    /// | 1 | 0 |  0  |
-    /// | 0 | 1 |  1  |
-    /// | 0 | 0 |  1  |
-    #[inline(always)]
-    #[must_use]
-    pub(crate) const fn a_implies_b(a: bool, b: bool) -> bool {
-        !a || b
-    }
-
-    /// Returns `true` if both `a` and `b` are `true` or if both are `false`.
-    ///
-    /// The above statement is expressed as the following truth table:
-    ///
-    /// | a | b | OUT |
-    /// |---|---|-----|
-    /// | 1 | 1 |  1  |
-    /// | 1 | 0 |  0  |
-    /// | 0 | 1 |  0  |
-    /// | 0 | 0 |  1  |
-    #[inline(always)]
-    #[must_use]
-    pub(crate) const fn both_or_neither(a: bool, b: bool) -> bool {
-        !(a ^ b)
-    }
-}
-
 pub(crate) fn array_len_non_default<T, const N: usize>(array: &[T; N]) -> usize
 where
     T: Default + PartialEq,
@@ -381,5 +345,41 @@ pub mod hex_num {
         };
 
         Ok(value)
+    }
+}
+
+#[cfg(test)]
+pub mod truth {
+    /// If `a` is `true` then `b` must be `true` too. If `a` is `false` then we
+    /// don't care about `b` and return `true`.
+    ///
+    /// The above statement is expressed as the following truth table:
+    ///
+    /// | a | b | OUT |
+    /// |---|---|-----|
+    /// | 1 | 1 |  1  |
+    /// | 1 | 0 |  0  |
+    /// | 0 | 1 |  1  |
+    /// | 0 | 0 |  1  |
+    #[inline(always)]
+    #[must_use]
+    pub(crate) const fn a_implies_b(a: bool, b: bool) -> bool {
+        !a || b
+    }
+
+    /// Returns `true` if both `a` and `b` are `true` or if both are `false`.
+    ///
+    /// The above statement is expressed as the following truth table:
+    ///
+    /// | a | b | OUT |
+    /// |---|---|-----|
+    /// | 1 | 1 |  1  |
+    /// | 1 | 0 |  0  |
+    /// | 0 | 1 |  0  |
+    /// | 0 | 0 |  1  |
+    #[inline(always)]
+    #[must_use]
+    pub(crate) const fn both_or_neither(a: bool, b: bool) -> bool {
+        !(a ^ b)
     }
 }

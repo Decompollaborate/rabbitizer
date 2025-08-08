@@ -84,7 +84,6 @@
 #![warn(clippy::alloc_instead_of_core)]
 #![warn(clippy::ref_option)]
 #![warn(clippy::manual_let_else)]
-#![allow(clippy::uninlined_format_args)]
 #![allow(clippy::manual_non_exhaustive)]
 //
 #![cfg_attr(not(feature = "std"), no_std)]

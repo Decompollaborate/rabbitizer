@@ -1,9 +1,9 @@
 # rabbitizer
 
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/rabbitizer)](https://pypi.org/project/rabbitizer/)
+<!--[![PyPI - Downloads](https://img.shields.io/pypi/dm/rabbitizer)](https://pypi.org/project/rabbitizer/)-->
 ![GitHub](https://img.shields.io/github/license/Decompollaborate/rabbitizer)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Decompollaborate/rabbitizer)
-![PyPI](https://img.shields.io/pypi/v/rabbitizer)
+<!--![PyPI](https://img.shields.io/pypi/v/rabbitizer)-->
 ![crate.io](https://img.shields.io/crates/dv/rabbitizer)
 ![GitHub contributors](https://img.shields.io/github/contributors/Decompollaborate/rabbitizer?logo=purple)
 

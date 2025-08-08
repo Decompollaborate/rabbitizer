@@ -475,7 +475,7 @@ impl Instruction {
     ///
     /// [`ValuedOperand`]: crate::operands::ValuedOperand
     #[must_use]
-    pub fn valued_operands_iter(&self) -> ValuedOperandIterator {
+    pub fn valued_operands_iter(&self) -> ValuedOperandIterator<'_> {
         ValuedOperandIterator::new(self)
     }
 
@@ -486,7 +486,7 @@ impl Instruction {
     /// [`Operand`]: crate::operands::Operand
     /// [`valued_operands_iter`]: Instruction::valued_operands_iter
     #[must_use]
-    pub fn operands_iter(&self) -> OperandIterator {
+    pub fn operands_iter(&self) -> OperandIterator<'_> {
         self.opcode().operands_iter()
     }
 
