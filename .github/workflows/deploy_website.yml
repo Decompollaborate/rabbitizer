@@ -81,7 +81,7 @@ jobs:
           targets: wasm32-unknown-unknown
 
       - name: Setup trunk
-        uses: jetli/trunk-action@v0.5.0
+        uses: jetli/trunk-action@main
         with:
           version: 'latest'
 
