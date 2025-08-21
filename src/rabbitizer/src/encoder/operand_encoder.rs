@@ -141,17 +141,28 @@ impl Operand {
                 } else if text.starts_with("func_") && text.len() >= 5+8 {
                     u32::from_str_radix(&text[5..5+8], 16).ok().map(|x| x >> 2)
                 } else {
-                    utils::hex_num::u32_from_str(text).ok().map(|x| (x - 4) >> 2)
+                    // If the text can't be interpreted as a number then do zero instead of erroring.
+                    Some(utils::hex_num::u32_from_str(text).map_or(0, |x| x.saturating_sub(4) >> 2))
                 }
             },
 
             Self::core_imm_i16 => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                utils::hex_num::i16_from_str(text).ok().map(|x| (x as u16).into())
+                if let Ok((reloc_operator, _sym)) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis) {
+                    // If there's a reloc operator then use zero as the imm value instead of rejecting the whole instruction.
+                    reloc_operator.starts_with('%').then_some(0)
+                } else {
+                    let text = operand_text_from_token(token, opcode, self)?;
+                    utils::hex_num::i16_from_str(text).ok().map(|x| (x as u16).into())
+                }
             }
             Self::core_imm_u16 => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                utils::hex_num::u16_from_str(text).ok().map(Into::into)
+                if let Ok((reloc_operator, _sym)) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis) {
+                    // If there's a reloc operator then use zero as the imm value instead of rejecting the whole instruction.
+                    reloc_operator.starts_with('%').then_some(0)
+                } else {
+                    let text = operand_text_from_token(token, opcode, self)?;
+                    utils::hex_num::u16_from_str(text).ok().map(Into::into)
+                }
             }
 
             Self::core_imm_rs => {
