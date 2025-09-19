@@ -6,11 +6,11 @@ on: [push, pull_request]
 jobs:
   buildstuff:
     name: Build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Install dependencies
         run: sudo apt update && sudo apt install -y python3-venv

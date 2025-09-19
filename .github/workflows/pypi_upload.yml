@@ -17,14 +17,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, macos-latest, windows-latest]
+        os: [ubuntu-22.04, macos-latest, windows-latest]
 
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@main
         with:
           python-version: '3.9 - 3.13'
 
@@ -36,36 +36,36 @@ jobs:
           CIBW_ARCHS_MACOS: "all"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@main
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
 
   build_sdist:
     name: Build source distribution
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Build sdist
         run: pipx run build --sdist
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@main
         with:
           name: cibw-sdist
           path: dist/*.tar.gz
 
   upload_pypi:
     needs: [build_wheels, build_sdist]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     environment: pypi
     permissions:
       id-token: write
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@main
         with:
           # unpacks all CIBW artifacts into dist/
           pattern: cibw-*

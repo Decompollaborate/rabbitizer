@@ -6,11 +6,11 @@ on: [push, pull_request]
 jobs:
   check_fmt:
     name: Check format
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Setup Rust toolchain
         uses: actions-rs/toolchain@v1
@@ -23,11 +23,11 @@ jobs:
 
   check_clippy:
     name: Check clippy lints
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Setup Rust toolchain
         uses: actions-rs/toolchain@v1
@@ -45,11 +45,11 @@ jobs:
 
   run_tests:
     name: Run Rust tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Setup Rust toolchain
         uses: actions-rs/toolchain@v1
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Setup MSRV checker
         uses: taiki-e/install-action@cargo-hack
@@ -75,12 +75,12 @@ jobs:
 
   publish_crate:
     name: Publish the crate!
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: [check_fmt, check_clippy, run_tests, msrv]
 
     steps:
       - name: Checkout reposistory
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
 
       - name: Setup Rust toolchain
         uses: actions-rs/toolchain@v1
