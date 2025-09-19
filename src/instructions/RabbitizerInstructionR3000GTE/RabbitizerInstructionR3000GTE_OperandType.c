@@ -10,7 +10,7 @@
 #include "common/Utils.h"
 
 size_t RabbitizerOperandType_process_r3000gte_gbg(const struct RabbitizerInstruction *self, char *dst,
-                                                 UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
+                                                  UNUSED const char *immOverride, UNUSED size_t immOverrideLength) {
     size_t totalSize = 0;
 
     RABUTILS_BUFFER_SPRINTF(dst, totalSize, "0x%X", RAB_INSTR_R3000GTE_GET_gbg(self));
