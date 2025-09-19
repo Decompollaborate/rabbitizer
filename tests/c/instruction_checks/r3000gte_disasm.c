@@ -16,8 +16,6 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x4A280030, NULL, "rtpt"),
     TEST_ENTRY_C(0x4A680029, NULL, "dpcl"),
     TEST_ENTRY_C(0x4A780010, NULL, "dpcs"),
-    TEST_ENTRY_C(0x4AF8002A, NULL, "dpct        0xF"),
-    TEST_ENTRY_C(0x4A88002A, NULL, "dpct        0x8"),
     TEST_ENTRY_C(0x4A980011, NULL, "intpl"),
     TEST_ENTRY_C(0x4AC8041E, NULL, "ncs"),
     TEST_ENTRY_C(0x4AD80420, NULL, "nct"),
@@ -30,6 +28,9 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0x4B400006, NULL, "nclip"),
     TEST_ENTRY_C(0x4B58002D, NULL, "avsz3"),
     TEST_ENTRY_C(0x4B68002E, NULL, "avsz4"),
+
+    TEST_ENTRY_C(0x4AF8002A, NULL, "dpct        0xF"),
+    TEST_ENTRY_C(0x4A88002A, NULL, "dpct        0x8"),
 
     TEST_ENTRY_C(0x4A400012, NULL, "mvmva       0, 0, 0, 0, 0"),
     TEST_ENTRY_C(0x4AA00428, NULL, "sqr         0"),

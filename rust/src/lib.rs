@@ -122,16 +122,6 @@ mod tests {
                 expected_str: "dpcs".to_string(),
             },
             TestEntry {
-                word: 0x4AF8002A,
-                imm_override: None,
-                expected_str: "dpct        0xF".to_string(),
-            },
-            TestEntry {
-                word: 0x4A88002A,
-                imm_override: None,
-                expected_str: "dpct        0x8".to_string(),
-            },
-            TestEntry {
                 word: 0x4A980011,
                 imm_override: None,
                 expected_str: "intpl".to_string(),
@@ -190,6 +180,16 @@ mod tests {
                 word: 0x4B68002E,
                 imm_override: None,
                 expected_str: "avsz4".to_string(),
+            },
+            TestEntry {
+                word: 0x4AF8002A,
+                imm_override: None,
+                expected_str: "dpct        0xF".to_string(),
+            },
+            TestEntry {
+                word: 0x4A88002A,
+                imm_override: None,
+                expected_str: "dpct        0x8".to_string(),
             },
             TestEntry {
                 word: 0x4A400012,

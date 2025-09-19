@@ -48,19 +48,6 @@
         ".word 0x4A780010" \
     )
 
-/*  DPCT    17      0x4A88002A  Depth cue color RGB0,RGB1,RGB2 */
-#define gte_nDPCT(gbg) __asm__ ( \
-        "nop;" \
-        "nop;" \
-        ".word %0" \
-        : : "g"(0x4A88002A | ((gbg) & 0x5) << 20) \
-    )
-
-#define gte_DPCT(gbg) __asm__ ( \
-        ".word %0" \
-        : : "g"(0x4A88002A | ((gbg) & 0x5) << 20) \
-    )
-
 /*  INTPL   8       0x4A980011  Interpolation of vector and far color */
 #define gte_nINTPL() __asm__ ( \
         "nop;" \
@@ -196,12 +183,26 @@
 /**
  * Instructions which take an argument
  *
+ * gbg: arg is 5 bit wide
  * sf : arg is 1 bit wide
  * mx : arg is 2 bit wide
  * v  : arg is 2 bit wide
  * cv : arg is 2 bit wide
  * lm : arg is 1 bit wide
  */
+
+/*  DPCT    17      0x4A88002A  Depth cue color RGB0,RGB1,RGB2 */
+#define gte_nDPCT(gbg) __asm__ ( \
+        "nop;" \
+        "nop;" \
+        ".word %0" \
+        : : "g"(0x4A88002A | ((gbg) & 0x5) << 20) \
+    )
+
+#define gte_DPCT(gbg) __asm__ ( \
+        ".word %0" \
+        : : "g"(0x4A88002A | ((gbg) & 0x5) << 20) \
+    )
 
 /*  MVMVA   8       0x4A400012  Multiply vector by matrix and vector addition. */
 #define gte_nMVMVA(sf, mx, v, cv, lm) __asm__ ( \

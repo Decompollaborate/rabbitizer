@@ -28,11 +28,6 @@
     cop2op 0x07, 0x10
 .endm
 
-/*  DPCT    17      0x4A88002A  Depth cue color RGB0,RGB1,RGB2 */
-.macro dpct gbg
-    cop2op 0x0F, 0x2A, gbg = \gbg
-.endm
-
 /*  INTPL   8       0x4A980011  Interpolation of vector and far color */
 .macro intpl
     cop2op 0x09, 0x11
@@ -95,11 +90,17 @@
 
 
 ## Instructions which take an argument
+# gbg: arg is 5 bit wide
 # sf : arg is 1 bit wide
 # mx : arg is 2 bit wide
 # v  : arg is 2 bit wide
 # cv : arg is 2 bit wide
 # lm : arg is 1 bit wide
+
+/*  DPCT    17      0x4A88002A  Depth cue color RGB0,RGB1,RGB2 */
+.macro dpct gbg
+    cop2op 0x0F, 0x2A, gbg = \gbg
+.endm
 
 /*  mvmva   8       0x4A4nnn12  Multiply vector by matrix and vector addition. */
 .macro mvmva sf, mx, v, cv, lm
