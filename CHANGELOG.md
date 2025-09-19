@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The R3000GTE instruction `dpct` now has an argument to reflect the garbage
   bits that are sometimes encoded in this instruction.
   - The files on `docs/r3000gte` have been updated to account for this issue.
+- R3000GTE instructions now use lowercase instead of uppercase, like every other
+  instruction.
 
 ## [1.13.0] - 2025-04-04
 

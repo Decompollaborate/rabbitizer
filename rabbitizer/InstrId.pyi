@@ -379,28 +379,28 @@ class InstrId:
     rsp_mtc0: Enum
     rsp_MAX: Enum
     r3000gte_INVALID: Enum
-    r3000gte_RTPS: Enum
-    r3000gte_RTPT: Enum
-    r3000gte_DPCL: Enum
-    r3000gte_DPCS: Enum
-    r3000gte_DPCT: Enum
-    r3000gte_INTPL: Enum
-    r3000gte_NCS: Enum
-    r3000gte_NCT: Enum
-    r3000gte_NCDS: Enum
-    r3000gte_NCDT: Enum
-    r3000gte_NCCS: Enum
-    r3000gte_NCCT: Enum
-    r3000gte_CDP: Enum
-    r3000gte_CC: Enum
-    r3000gte_NCLIP: Enum
-    r3000gte_AVSZ3: Enum
-    r3000gte_AVSZ4: Enum
-    r3000gte_MVMVA: Enum
-    r3000gte_SQR: Enum
-    r3000gte_OP: Enum
-    r3000gte_GPF: Enum
-    r3000gte_GPL: Enum
+    r3000gte_rtps: Enum
+    r3000gte_rtpt: Enum
+    r3000gte_dpcl: Enum
+    r3000gte_dpcs: Enum
+    r3000gte_dpct: Enum
+    r3000gte_intpl: Enum
+    r3000gte_ncs: Enum
+    r3000gte_nct: Enum
+    r3000gte_ncds: Enum
+    r3000gte_ncdt: Enum
+    r3000gte_nccs: Enum
+    r3000gte_ncct: Enum
+    r3000gte_cdp: Enum
+    r3000gte_cc: Enum
+    r3000gte_nclip: Enum
+    r3000gte_avsz3: Enum
+    r3000gte_avsz4: Enum
+    r3000gte_mvmva: Enum
+    r3000gte_sqr: Enum
+    r3000gte_op: Enum
+    r3000gte_gpf: Enum
+    r3000gte_gpl: Enum
     r3000gte_MAX: Enum
     r4000allegrex_INVALID: Enum
     r4000allegrex_lv_s: Enum
