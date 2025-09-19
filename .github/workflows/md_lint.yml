@@ -5,11 +5,11 @@ on: [push, pull_request]
 
 jobs:
   checks:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     name: Lint md files
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@main
 
     - name: Lint markdown files
       uses: articulate/actions-markdownlint@v1.1.0

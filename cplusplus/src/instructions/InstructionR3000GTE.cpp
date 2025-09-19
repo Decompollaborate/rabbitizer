@@ -16,8 +16,8 @@ InstructionR3000GTE::~InstructionR3000GTE() {
     RabbitizerInstructionR3000GTE_destroy(&this->instr);
 }
 
-uint8_t InstructionR3000GTE::GetR3000GTE_fakeOpcode() const {
-    return RAB_INSTR_R3000GTE_GET_FAKE_OPCODE(&this->instr);
+uint8_t InstructionR3000GTE::GetR3000GTE_gbg() const {
+    return RAB_INSTR_R3000GTE_GET_gbg(&this->instr);
 }
 
 uint8_t InstructionR3000GTE::GetR3000GTE_sf() const {

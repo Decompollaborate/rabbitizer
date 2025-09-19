@@ -6,11 +6,11 @@ on: [push, pull_request]
 jobs:
   check_tables:
     name: Check tables
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout reposistory
-      uses: actions/checkout@v4
+      uses: actions/checkout@main
 
     - name: Setup Rust toolchain
       uses: actions-rs/toolchain@v1

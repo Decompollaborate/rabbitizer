@@ -47,6 +47,7 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_rsp_offset_rs,
     RAB_OPERAND_rsp_immediate_base,
     RAB_OPERAND_rsp_maybe_rd_rs,
+    RAB_OPERAND_r3000gte_gbg,
     RAB_OPERAND_r3000gte_sf,
     RAB_OPERAND_r3000gte_mx,
     RAB_OPERAND_r3000gte_v,

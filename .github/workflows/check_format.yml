@@ -6,11 +6,11 @@ on: [push, pull_request]
 jobs:
   check_format:
     name: Check format
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout reposistory
-      uses: actions/checkout@v4
+      uses: actions/checkout@main
 
     - name: Install dependencies
       run: sudo apt install clang-format-11
@@ -31,11 +31,11 @@ jobs:
 
   check_tidy:
     name: Check tidy
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout reposistory
-      uses: actions/checkout@v4
+      uses: actions/checkout@main
 
     - name: Install dependencies
       run: sudo apt install clang-tidy-11

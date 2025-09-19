@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.14.0] - 2025-09-18
+
+### Changed
+
+- Updated definitions on `gte_macros.s` to a less hardcoded approach.
+- The R3000GTE instruction `dpct` now has an argument to reflect the garbage
+  bits that are sometimes encoded in this instruction.
+  - The files on `docs/r3000gte` have been updated to account for this issue.
+- R3000GTE instructions now use lowercase instead of uppercase, like every other
+  instruction.
+
 ## [1.13.0] - 2025-04-04
 
 ### Added
@@ -728,6 +739,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/master...develop
+[1.14.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.13.0...1.14.0
 [1.13.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.6...1.13.0
 [1.12.6]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.5...1.12.6
 [1.12.5]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.4...1.12.5

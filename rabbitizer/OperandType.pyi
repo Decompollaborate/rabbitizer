@@ -48,6 +48,7 @@ class OperandType:
     rsp_offset_rs: Enum
     rsp_immediate_base: Enum
     rsp_maybe_rd_rs: Enum
+    r3000gte_gbg: Enum
     r3000gte_sf: Enum
     r3000gte_mx: Enum
     r3000gte_v: Enum

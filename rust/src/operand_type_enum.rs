@@ -47,6 +47,7 @@ pub enum OperandType {
     rsp_offset_rs,
     rsp_immediate_base,
     rsp_maybe_rd_rs,
+    r3000gte_gbg,
     r3000gte_sf,
     r3000gte_mx,
     r3000gte_v,
