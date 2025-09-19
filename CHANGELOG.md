@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated definitions on `gte_macros.s` to a less hardcoded approach.
+- The R3000GTE instruction `dpct` now has an argument to reflect the garbage
+  bits that are sometimes encoded in this instruction.
+  - The files on `docs/r3000gte` have been updated to account for this issue.
+
 ## [1.13.0] - 2025-04-04
 
 ### Added

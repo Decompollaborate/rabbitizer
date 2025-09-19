@@ -25,7 +25,7 @@
 
     RABBITIZER_DEF_INSTR_ID(
         r3000gte, 0x2A, DPCT,
-        .operands={0}
+        .operands={RAB_OPERAND_r3000gte_gbg}
     )
 
     RABBITIZER_DEF_INSTR_ID(

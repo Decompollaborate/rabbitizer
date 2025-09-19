@@ -335,6 +335,10 @@ void RabbitizerInstruction_blankOut(RabbitizerInstruction *self) {
             /* rsp */
 
             /* r3000gte */
+            case RAB_OPERAND_r3000gte_gbg:
+                self->word = RAB_INSTR_R3000GTE_PACK_gbg(self->word, 0);
+
+                break;
             case RAB_OPERAND_r3000gte_sf:
                 self->word = RAB_INSTR_R3000GTE_PACK_sf(self->word, 0);
                 break;

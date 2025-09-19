@@ -407,6 +407,10 @@ uint32_t RabbitizerInstruction_getValidBits(const RabbitizerInstruction *self) {
             /* rsp */
 
             /* r3000gte */
+            case RAB_OPERAND_r3000gte_gbg:
+                validbits = RAB_INSTR_R3000GTE_PACK_gbg(validbits, ~0);
+                break;
+
             case RAB_OPERAND_r3000gte_sf:
                 validbits = RAB_INSTR_R3000GTE_PACK_sf(validbits, ~0);
                 break;

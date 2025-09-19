@@ -422,7 +422,7 @@ const RabbitizerInstrDescriptor RabbitizerInstrDescriptor_Descriptors[] = {
     [RABBITIZER_INSTR_ID_r3000gte_RTPT] = { .operands={0} },
     [RABBITIZER_INSTR_ID_r3000gte_DPCL] = { .operands={0} },
     [RABBITIZER_INSTR_ID_r3000gte_DPCS] = { .operands={0} },
-    [RABBITIZER_INSTR_ID_r3000gte_DPCT] = { .operands={0} },
+    [RABBITIZER_INSTR_ID_r3000gte_DPCT] = { .operands={RAB_OPERAND_r3000gte_gbg} },
     [RABBITIZER_INSTR_ID_r3000gte_INTPL] = { .operands={0} },
     [RABBITIZER_INSTR_ID_r3000gte_NCS] = { .operands={0} },
     [RABBITIZER_INSTR_ID_r3000gte_NCT] = { .operands={0} },

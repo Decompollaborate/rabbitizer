@@ -124,7 +124,12 @@ mod tests {
             TestEntry {
                 word: 0x4AF8002A,
                 imm_override: None,
-                expected_str: "DPCT".to_string(),
+                expected_str: "DPCT        0xF".to_string(),
+            },
+            TestEntry {
+                word: 0x4A88002A,
+                imm_override: None,
+                expected_str: "DPCT        0x8".to_string(),
             },
             TestEntry {
                 word: 0x4A980011,

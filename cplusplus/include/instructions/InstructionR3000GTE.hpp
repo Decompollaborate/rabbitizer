@@ -14,7 +14,7 @@ namespace rabbitizer {
         InstructionR3000GTE(uint32_t word, uint32_t vram);
         virtual ~InstructionR3000GTE();
 
-        uint8_t GetR3000GTE_fakeOpcode() const;
+        uint8_t GetR3000GTE_gbg() const;
 
         uint8_t GetR3000GTE_sf() const;
         uint8_t GetR3000GTE_mx() const;

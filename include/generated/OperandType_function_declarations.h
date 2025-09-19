@@ -45,6 +45,7 @@
     size_t RabbitizerOperandType_process_rsp_offset_rs (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_rsp_immediate_base (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_rsp_maybe_rd_rs (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
+    size_t RabbitizerOperandType_process_r3000gte_gbg (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r3000gte_sf (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r3000gte_mx (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);
     size_t RabbitizerOperandType_process_r3000gte_v (const struct RabbitizerInstruction *self, char *dst, const char *immOverride, size_t immOverrideLength);

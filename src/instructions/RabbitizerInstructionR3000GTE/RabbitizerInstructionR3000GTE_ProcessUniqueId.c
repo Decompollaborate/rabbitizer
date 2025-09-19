@@ -50,7 +50,7 @@ void RabbitizerInstructionR3000GTE_processUniqueId_Coprocessor2_gte(RabbitizerIn
 
     // GTE instructions are weird
     self->_mandatorybits =
-        RAB_INSTR_R3000GTE_PACK_FAKE_OPCODE(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_FAKE_OPCODE(self));
+        RAB_INSTR_R3000GTE_PACK_gbg(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_gbg(self));
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_sf(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_sf(self));
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_mx(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_mx(self));
     self->_mandatorybits = RAB_INSTR_R3000GTE_PACK_v(self->_mandatorybits, RAB_INSTR_R3000GTE_GET_v(self));

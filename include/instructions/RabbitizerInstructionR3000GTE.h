@@ -12,9 +12,8 @@ extern "C" {
 #endif
 
 
-
-#define RAB_INSTR_R3000GTE_GET_FAKE_OPCODE(self)            (SHIFTR((self)->word, 20,  5))
-
+// Short for garbage
+#define RAB_INSTR_R3000GTE_GET_gbg(self)                    (SHIFTR((self)->word, 20,  5))
 #define RAB_INSTR_R3000GTE_GET_sf(self)                     (SHIFTR((self)->word, 19,  1))
 #define RAB_INSTR_R3000GTE_GET_mx(self)                     (SHIFTR((self)->word, 17,  2))
 #define RAB_INSTR_R3000GTE_GET_v(self)                      (SHIFTR((self)->word, 15,  2))
@@ -22,8 +21,7 @@ extern "C" {
 #define RAB_INSTR_R3000GTE_GET_lm(self)                     (SHIFTR((self)->word, 10,  1))
 
 
-#define RAB_INSTR_R3000GTE_PACK_FAKE_OPCODE(word, value)    (BITREPACK((word), (value), 20,  5))
-
+#define RAB_INSTR_R3000GTE_PACK_gbg(word, value)            (BITREPACK((word), (value), 20,  5))
 #define RAB_INSTR_R3000GTE_PACK_sf(word, value)             (BITREPACK((word), (value), 19,  1))
 #define RAB_INSTR_R3000GTE_PACK_mx(word, value)             (BITREPACK((word), (value), 17,  2))
 #define RAB_INSTR_R3000GTE_PACK_v(word, value)              (BITREPACK((word), (value), 15,  2))
