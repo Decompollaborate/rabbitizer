@@ -31,7 +31,7 @@ pub(crate) const OPERAND_COUNT: usize = {
         count += 13;
     }
     if cfg!(feature = "R3000GTE") {
-        count += 5;
+        count += 6;
     }
     if cfg!(feature = "R4000ALLEGREX") {
         count += 56;

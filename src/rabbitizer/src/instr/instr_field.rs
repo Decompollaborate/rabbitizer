@@ -562,6 +562,20 @@ impl InstrField<'_> {
 /// R3000GTE opcode fields
 #[cfg(feature = "R3000GTE")]
 impl InstrField<'_> {
+    /// Returns either the `r3000gte_gbg` value embedded on the `r3000gte_gbg`
+    /// field of the word of this instruction, or [`None`] if this instruction
+    /// does not this field.
+    ///
+    /// [`None`]: Option::None
+    #[must_use]
+    pub fn r3000gte_gbg(&self) -> Option<u8> {
+        if self.instr.opcode().has_operand_alias(Operand::r3000gte_gbg) {
+            Some(self.r3000gte_gbg_impl())
+        } else {
+            None
+        }
+    }
+
     /// Returns either the `r3000gte_sf` value embedded on the `r3000gte_sf`
     /// field of the word of this instruction, or [`None`] if this instruction
     /// does not this field.
@@ -2573,6 +2587,25 @@ impl InstrField<'_> {
     doc(cfg(all(feature = "R3000GTE", feature = "unchecked_instr_fields")))
 )]
 impl InstrField<'_> {
+    /// Returns the `r3000gte_gbg` value embedded on the `r3000gte_gbg` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`r3000gte_gbg`]
+    /// function instead.
+    ///
+    /// # Safety
+    ///
+    /// - The instruction must contain the [`Operand::r3000gte_gbg`] operand.
+    ///
+    /// [`r3000gte_gbg`]: InstrField::r3000gte_gbg
+    #[must_use]
+    pub unsafe fn r3000gte_gbg_unchecked(&self) -> u8 {
+        self.r3000gte_gbg_impl()
+    }
+
     /// Returns the `r3000gte_sf` value embedded on the `r3000gte_sf` field of
     /// the word of this instruction.
     ///
@@ -4625,6 +4658,24 @@ impl InstrField<'_> {
 /// Impls R3000GTE opcode fields
 #[cfg(feature = "R3000GTE")]
 impl InstrField<'_> {
+    /// Returns the `r3000gte_gbg` value embedded on the `r3000gte_gbg` field of
+    /// the word of this instruction.
+    ///
+    /// Note this function **does not check** if the opcode of this instruction
+    /// actually has this field, meaning that calling this function on an
+    /// instruction that does not have this field will interpret garbage data
+    /// as the return value. It is recommended to use the [`r3000gte_gbg`]
+    /// function instead.
+    ///
+    /// [`r3000gte_gbg`]: InstrField::r3000gte_gbg
+    #[must_use]
+    pub(crate) fn r3000gte_gbg_impl(&self) -> u8 {
+        EncodedFieldMask::r3000gte_gbg
+            .get_shifted(self.instr.word())
+            .try_into()
+            .unwrap()
+    }
+
     /// Returns the `r3000gte_sf` value embedded on the `r3000gte_sf` field of
     /// the word of this instruction.
     ///

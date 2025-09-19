@@ -210,8 +210,7 @@ impl OpcodeDecoder {
         let mask = EncodedFieldMask::function;
         let opcode_category = OpcodeCategory::R3000GTE_COP2_GTE;
         mandatory_bits = mandatory_bits.union(mask.mask_value(word));
-        mandatory_bits =
-            mandatory_bits.union(EncodedFieldMask::r3000gte_fake_opcode.mask_value(word));
+        mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_gbg.mask_value(word));
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_sf.mask_value(word));
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_mx.mask_value(word));
         mandatory_bits = mandatory_bits.union(EncodedFieldMask::r3000gte_v.mask_value(word));

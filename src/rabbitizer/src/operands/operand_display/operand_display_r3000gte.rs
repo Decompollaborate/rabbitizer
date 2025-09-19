@@ -9,6 +9,15 @@ impl<T> OperandDisplay<'_, '_, T>
 where
     T: fmt::Display,
 {
+    pub(crate) fn display_r3000gte_gbg(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        let instr = myself.instr;
+        let s = instr.field().r3000gte_gbg_impl();
+
+        write!(f, "0x{:X}", s)
+    }
     pub(crate) fn display_r3000gte_sf(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,

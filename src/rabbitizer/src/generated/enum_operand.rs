@@ -68,6 +68,8 @@ pub enum Operand {
     #[cfg(feature = "RSP")]
     rsp_offset11_rs,
     #[cfg(feature = "R3000GTE")]
+    r3000gte_gbg,
+    #[cfg(feature = "R3000GTE")]
     r3000gte_sf,
     #[cfg(feature = "R3000GTE")]
     r3000gte_mx,
@@ -439,6 +441,13 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
         table[Operand::rsp_offset11_rs as usize] = OperandDescriptor::new(
             concat!("rsp", "_", "offset11_rs"),
             EncodedFieldMask::rsp_offset.union(EncodedFieldMask::rs),
+        );
+    }
+    #[cfg(feature = "R3000GTE")]
+    {
+        table[Operand::r3000gte_gbg as usize] = OperandDescriptor::new(
+            concat!("r3000gte", "_", "gbg"),
+            EncodedFieldMask::r3000gte_gbg,
         );
     }
     #[cfg(feature = "R3000GTE")]
@@ -1107,6 +1116,8 @@ where
             #[cfg(feature = "RSP")]
             Operand::rsp_offset11_rs => OperandDisplay::display_rsp_offset11_rs(self, f),
             #[cfg(feature = "R3000GTE")]
+            Operand::r3000gte_gbg => OperandDisplay::display_r3000gte_gbg(self, f),
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_sf => OperandDisplay::display_r3000gte_sf(self, f),
             #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_mx => OperandDisplay::display_r3000gte_mx(self, f),
@@ -1378,6 +1389,8 @@ pub enum ValuedOperand {
     #[cfg(feature = "RSP")]
     rsp_offset11_rs(u16, Gpr),
     #[cfg(feature = "R3000GTE")]
+    r3000gte_gbg(u8),
+    #[cfg(feature = "R3000GTE")]
     r3000gte_sf(u8),
     #[cfg(feature = "R3000GTE")]
     r3000gte_mx(u8),
@@ -1621,6 +1634,8 @@ impl Operand {
             ValuedOperand::rsp_offset10_rs(..) => Self::rsp_offset10_rs,
             #[cfg(feature = "RSP")]
             ValuedOperand::rsp_offset11_rs(..) => Self::rsp_offset11_rs,
+            #[cfg(feature = "R3000GTE")]
+            ValuedOperand::r3000gte_gbg(..) => Self::r3000gte_gbg,
             #[cfg(feature = "R3000GTE")]
             ValuedOperand::r3000gte_sf(..) => Self::r3000gte_sf,
             #[cfg(feature = "R3000GTE")]

@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Move `r4000allegrex_vcmp*` functions from `Instruction` to `InstrField`.
+- Updated definitions on `gte_macros.s` to a less hardcoded approach.
+- The R3000GTE instruction `dpct` now has an argument to reflect the garbage
+  bits that are sometimes encoded in this instruction.
+  - The files on `docs/r3000gte` have been updated to account for this issue.
 
 ## [2.0.0-alpha.4] - 2025-07-26
 

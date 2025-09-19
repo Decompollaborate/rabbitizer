@@ -78,7 +78,7 @@ bitflags! {
         /* r3000gte */
 
         #[cfg(feature = "R3000GTE")]
-        const r3000gte_fake_opcode = utils::bitmask( 20,  5);
+        const r3000gte_gbg = utils::bitmask( 20,  5);
         #[cfg(feature = "R3000GTE")]
         const r3000gte_sf = utils::bitmask( 19,  1);
         #[cfg(feature = "R3000GTE")]

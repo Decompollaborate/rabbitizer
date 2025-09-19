@@ -5877,7 +5877,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     #[cfg(feature = "R3000GTE")]
     {
         table[Opcode::r3000gte_dpct as usize] = OpcodeDescriptor {
-            operands: Operand::arr0(),
+            operands: Operand::arr1(Operand::r3000gte_gbg),
             ..OpcodeDescriptor::new(
                 Opcode::r3000gte_dpct,
                 OpcodeCategory::R3000GTE_COP2_GTE,

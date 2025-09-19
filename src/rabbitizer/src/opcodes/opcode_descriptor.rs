@@ -920,6 +920,8 @@ impl OpcodeDescriptor {
 
             /* r3000gte */
             #[cfg(feature = "R3000GTE")]
+            Operand::r3000gte_gbg => {}
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_sf => {}
             #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_mx => {}

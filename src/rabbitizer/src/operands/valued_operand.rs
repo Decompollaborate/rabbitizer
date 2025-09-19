@@ -125,6 +125,8 @@ impl ValuedOperand {
                 Self::rsp_offset11_rs(field.rsp_offset11_impl(), field.rs_impl())
             }
             #[cfg(feature = "R3000GTE")]
+            Operand::r3000gte_gbg => Self::r3000gte_gbg(field.r3000gte_gbg_impl()),
+            #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_sf => Self::r3000gte_sf(field.r3000gte_sf_impl()),
             #[cfg(feature = "R3000GTE")]
             Operand::r3000gte_mx => Self::r3000gte_mx(field.r3000gte_mx_impl()),
