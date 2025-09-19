@@ -78,7 +78,7 @@ The recommended way for installing `rab-disasmdis` is by using Rust's `Cargo`.
 Since `rabbitizer` is still on alpha, you'll need to specify a version.
 
 ```bash
-cargo install rab-disasmdis@2.0.0-alpha.4
+cargo install rab-disasmdis@2.0.0-alpha.6
 ```
 
 ### Prebuilt binaries

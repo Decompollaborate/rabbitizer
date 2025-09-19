@@ -1281,7 +1281,7 @@ dependencies = [
 
 [[package]]
 name = "rab-disasmdis"
-version = "2.0.0-alpha.5"
+version = "2.0.0-alpha.6"
 dependencies = [
  "clap",
  "rabbitizer",
@@ -1289,7 +1289,7 @@ dependencies = [
 
 [[package]]
 name = "rab-disasmdis-web"
-version = "2.0.0-alpha.5"
+version = "2.0.0-alpha.6"
 dependencies = [
  "built",
  "gloo 0.11.0",
@@ -1304,7 +1304,7 @@ dependencies = [
 
 [[package]]
 name = "rabbitizer"
-version = "2.0.0-alpha.5"
+version = "2.0.0-alpha.6"
 dependencies = [
  "bitflags",
  "ordered-float",

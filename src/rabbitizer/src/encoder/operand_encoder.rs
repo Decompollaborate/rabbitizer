@@ -364,7 +364,7 @@ impl Operand {
             }
 
             #[cfg(feature = "R3000GTE")]
-            Self::r3000gte_sf | Self::r3000gte_mx | Self::r3000gte_v | Self::r3000gte_cv | Self::r3000gte_lm => {
+            Self::r3000gte_gbg | Self::r3000gte_sf | Self::r3000gte_mx | Self::r3000gte_v | Self::r3000gte_cv | Self::r3000gte_lm => {
                 let text = operand_text_from_token(token, opcode, self)?;
                 utils::hex_num::u8_from_str(text).ok().map(Into::into)
             }
