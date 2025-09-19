@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-alpha.5] - 2025-09-18
+
 ### Added
 
 - Add `all_isas` cargo feature. Enables all base ISAs.
@@ -767,6 +769,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.4...🦀
+[2.0.0-alpha.5]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.4...2.0.0-alpha.5
 [2.0.0-alpha.4]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.3...2.0.0-alpha.4
 [2.0.0-alpha.3]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.2...2.0.0-alpha.3
 [2.0.0-alpha.2]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.1...2.0.0-alpha.2
