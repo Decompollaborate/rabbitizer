@@ -17,7 +17,7 @@ MIPS instruction decoder API.
   doesn't allocate in anything in the heap by itself.
 - Other language bindings supported in this repo:
   - Python bindings
-    - The minimal Python version is 3.7, older versions are not guaranteed to
+    - The minimal Python version is 3.9, older versions are not guaranteed to
       work.
   - C++ bindings
   - Rust bindings
@@ -69,14 +69,14 @@ If you use a `requirements.txt` file in your repository, then you can add this
 library with the following line:
 
 ```txt
-rabbitizer>=1.14.0,<2.0.0
+rabbitizer>=1.14.1,<2.0.0
 ```
 
 ### Development version
 
-The unstable development version is located at the
-[develop](https://github.com/Decompollaborate/rabbitizer/tree/develop)
-branch. PRs should be made into that branch instead of the main one.
+The development version is located at the
+[1.x](https://github.com/Decompollaborate/rabbitizer/tree/1.x)
+branch.
 
 Note that building the Python bindings from source require the Python
 development package. Under Ubuntu/Debian based distros it can be installed with:
@@ -86,11 +86,11 @@ apt install python3-dev
 ```
 
 In case you want to mess with the latest development version without wanting to
-clone the repository, then you could use the following command:
+clone the repository, you could use the following command:
 
 ```bash
 python3 -m pip uninstall rabbitizer
-python3 -m pip install git+https://github.com/Decompollaborate/rabbitizer.git@develop
+python3 -m pip install git+https://github.com/Decompollaborate/rabbitizer.git@1.x
 ```
 
 NOTE: Installing the development version is not recommended. Proceed at your own
@@ -109,7 +109,7 @@ cargo add rabbitizer
 Or you can add it manually to your `Cargo.toml`:
 
 ```toml
-rabbitizer = "1.14.0"
+rabbitizer = "1.14.1"
 ```
 
 See this crate at <https://crates.io/crates/rabbitizer>.
