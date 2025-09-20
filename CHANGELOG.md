@@ -7,13 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.0-alpha.6] - 2025-09-18
+## [2.0.0-alpha.7] - 2025-09-20
+
+### Fix
+
+- Remove the extra "garbage" argument from the R3000GTE `dpct` instruction.
+
+## [2.0.0-alpha.6] - 2025-09-18 [YANKED]
 
 ### Fix
 
 - Fix issue with previous release.
 
-## [2.0.0-alpha.5] - 2025-09-18
+## [2.0.0-alpha.5] - 2025-09-18 [YANKED]
 
 ### Added
 
@@ -774,7 +780,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.4...🦀
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.7...🦀
+[2.0.0-alpha.7]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.6...2.0.0-alpha.7
+[2.0.0-alpha.6]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.5...2.0.0-alpha.6
 [2.0.0-alpha.5]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.4...2.0.0-alpha.5
 [2.0.0-alpha.4]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.3...2.0.0-alpha.4
 [2.0.0-alpha.3]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.2...2.0.0-alpha.3

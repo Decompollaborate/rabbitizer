@@ -120,7 +120,7 @@ can be included in your Cargo enabled project like this:
 
 ```toml
 [dependencies]
-rabbitizer = "2.0.0-alpha.6"
+rabbitizer = "2.0.0-alpha.7"
 ```
 
 ### Crate features
