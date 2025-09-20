@@ -63,21 +63,10 @@ fn check_r3000gte_instructions() {
             ..TestEntry::new(
                 0x4AF8002A,
                 InstructionFlags::new_extension(IsaExtension::R3000GTE),
-                "dpct        0xF",
+                "dpct",
                 Opcode::r3000gte_dpct,
                 "dpct",
-                [Some("0xF"), None, None, None, None],
-            )
-        },
-        TestEntry {
-            test_encoder: false,
-            ..TestEntry::new(
-                0x4A88002A,
-                InstructionFlags::new_extension(IsaExtension::R3000GTE),
-                "dpct        0x8",
-                Opcode::r3000gte_dpct,
-                "dpct",
-                [Some("0x8"), None, None, None, None],
+                [Some(""), None, None, None, None],
             )
         },
         TestEntry {

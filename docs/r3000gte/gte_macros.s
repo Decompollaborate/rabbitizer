@@ -4,8 +4,8 @@
 ## GTE instruction macros
 ## These are meant for use with GAS and replace DMPSX
 
-.macro cop2op pseudo, op, gbg = 0, sf = 1, mx = 0, v = 0, cv = 0, lm = 0
-    cop2 \pseudo << 20 | \gbg << 20 | \sf << 19 | \mx << 17 | \v << 15 | \cv << 13 | \lm << 10 | \op
+.macro cop2op fake_op, op, gbg = 0, sf = 1, mx = 0, v = 0, cv = 0, lm = 0
+    cop2 \fake_op << 20 | \gbg << 20 | \sf << 19 | \mx << 17 | \v << 15 | \cv << 13 | \lm << 10 | \op
 .endm
 
 /*  RTPS    15      0x4A180001  Perspective transform */
@@ -26,6 +26,11 @@
 /*  DPCS    8       0x4A780010  Depth Cueing */
 .macro dpcs
     cop2op 0x07, 0x10
+.endm
+
+/*  DPCT    17      0x4AF8002A  Depth cue color RGB0,RGB1,RGB2 */
+.macro dpct
+    cop2op 0x0F, 0x2A
 .endm
 
 /*  INTPL   8       0x4A980011  Interpolation of vector and far color */
@@ -96,11 +101,6 @@
 # v  : arg is 2 bit wide
 # cv : arg is 2 bit wide
 # lm : arg is 1 bit wide
-
-/*  DPCT    17      0x4A88002A  Depth cue color RGB0,RGB1,RGB2 */
-.macro dpct gbg
-    cop2op 0x0F, 0x2A, gbg = \gbg
-.endm
 
 /*  mvmva   8       0x4A4nnn12  Multiply vector by matrix and vector addition. */
 .macro mvmva sf, mx, v, cv, lm

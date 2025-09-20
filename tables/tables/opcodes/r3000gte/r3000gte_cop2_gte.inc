@@ -25,7 +25,7 @@
 
     RAB_DEF_OPCODE_EXT(
         r3000gte, R3000GTE_COP2_GTE, 0x2A, dpct, R3000GTE,
-        operands: Operand::arr1(Operand::r3000gte_gbg)
+        operands: Operand::arr0()
     )
 
     RAB_DEF_OPCODE_EXT(
