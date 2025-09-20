@@ -48,6 +48,17 @@
         ".word 0x4A780010" \
     )
 
+/*  DPCT    17      0x4AF8002A  Depth cue color RGB0,RGB1,RGB2 */
+#define gte_nDPCT() __asm__ ( \
+        "nop;" \
+        "nop;" \
+        ".word 0x4AF8002A" \
+    )
+
+#define gte_DPCT() __asm__ ( \
+        ".word 0x4AF8002A" \
+    )
+
 /*  INTPL   8       0x4A980011  Interpolation of vector and far color */
 #define gte_nINTPL() __asm__ ( \
         "nop;" \
