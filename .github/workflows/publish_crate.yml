@@ -13,10 +13,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Check format
         run: cargo fmt --check
@@ -30,10 +27,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Setup clippy
         run: rustup component add clippy
@@ -52,10 +46,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Build Rust tests
         run: cargo test --workspace
@@ -83,10 +74,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Setup Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Build Rust package
         run: cargo build --release --workspace

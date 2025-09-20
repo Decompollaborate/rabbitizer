@@ -6,17 +6,11 @@ on: [push, pull_request]
 jobs:
   check_tables:
     name: Check tables
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout reposistory
       uses: actions/checkout@main
-
-    - name: Setup Rust toolchain
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
 
     - name: clean tables
       run: make -C tables -j $(nproc) distclean
