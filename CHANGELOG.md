@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.14.2] - 2025-10-12
+
+### Added
+
+- Prebuilt binaries for Python 3.14.
+
 ## [1.14.1] - 2025-09-20
 
 ### Fixed
@@ -744,7 +750,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.1...1.x
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.2...1.x
+[1.14.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.1...1.14.2
 [1.14.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.0...1.14.1
 [1.14.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.13.0...1.14.0
 [1.13.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.12.6...1.13.0
