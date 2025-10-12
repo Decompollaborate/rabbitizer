@@ -29,4 +29,7 @@ packages = ["rabbitizer"]
 rabbitizer = ["py.typed", "*.pyi", "**/*.pyi"]
 
 [tool.cibuildwheel]
-skip = ["cp36-*"]
+enable = [
+    # Include all PyPy versions
+    "pypy", "pypy-eol",
+]
