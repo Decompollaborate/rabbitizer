@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.14.3] - 2025-10-12
+
+### Fixed
+
+- New release due to the previous one not properly completing while uploading to
+  PyPI.
+
 ## [1.14.2] - 2025-10-12
 
 ### Added
@@ -750,7 +757,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.2...1.x
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.3...1.x
+[1.14.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.2...1.14.3
 [1.14.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.1...1.14.2
 [1.14.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.0...1.14.1
 [1.14.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.13.0...1.14.0
