@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - This allows us to build a single wheel that can work in multiple Python
     versions, instead of needing to build a wheel for each Python version.
   - The minimum Python version for `abi3` compatibility is 3.4 now.
+- Install the built wheels in CI to make sure they work corrently in multiple
+  versions.
 
 ## [1.14.3] - 2025-10-12
 
