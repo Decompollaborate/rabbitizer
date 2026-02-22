@@ -2,8 +2,11 @@
 # SPDX-License-Identifier: MIT
 
 from setuptools import setup, Extension
+import sysconfig
 from pathlib import Path
 import platform
+
+Py_GIL_DISABLED = sysconfig.get_config_var("Py_GIL_DISABLED")
 
 bindingsPath = Path("rabbitizer")
 srcPath = Path("src")
@@ -20,16 +23,28 @@ if platform.system() == "Linux":
     extraCompileArgs += ["-Werror"]
     extraCompileArgs += ["-Wno-nonnull-compare"]
 
+# Only enable abi3 build if we are not building a free threaded wheel.
+define_macros = []
+py_limited_api = False
+options = {}
+if not Py_GIL_DISABLED:
+    define_macros = [
+        ("Py_LIMITED_API", "0x03040000"),
+    ]
+    py_limited_api = True
+    options={"bdist_wheel": {"py_limited_api": "cp34"}}
+
 setup(
     ext_modules=[
         Extension(
             name="rabbitizer",
             sources=sourcesList,
             include_dirs=["include", "rabbitizer", "tables"],
+            define_macros=define_macros,
             extra_compile_args = extraCompileArgs,
             depends=headersList,
-            py_limited_api=True,
+            py_limited_api=py_limited_api,
         ),
     ],
-    options={"bdist_wheel": {"py_limited_api": "cp34"}},
+    options=options,
 )

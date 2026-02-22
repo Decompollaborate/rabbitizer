@@ -1,5 +1,5 @@
 # Based on https://github.com/pypa/cibuildwheel/blob/main/examples/github-deploy.yml
-# Permalink: https://github.com/pypa/cibuildwheel/blob/9c00cb4f6b517705a3794b22395aedc36257242c/examples/github-deploy.yml
+# Permalink: https://github.com/pypa/cibuildwheel/blob/bb153041f0defc85849ef2d519c39c9218d889d0/examples/github-deploy.yml
 
 name: Build and upload to PyPI
 
@@ -16,6 +16,7 @@ jobs:
     name: Build wheels for ${{ matrix.os }}
     runs-on: ${{ matrix.runs-on }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: linux-intel
@@ -33,24 +34,29 @@ jobs:
             # macos-14+ (including latest) are ARM64 runners
             runs-on: macos-latest
           - os: android-intel
-            runs-on: ubuntu-latest
+            runs-on: ubuntu-22.04
             platform: android
           - os: android-arm
             # GitHub Actions doesn’t currently support the Android emulator on any ARM
             # runner. So we build on a non-ARM runner, which will skip the tests.
-            runs-on: ubuntu-latest
+            runs-on: ubuntu-22.04
             platform: android
             archs: arm64_v8a
           - os: ios
             runs-on: macos-latest
             platform: ios
+          - os: pyodide
+            runs-on: ubuntu-22.04
+            platform: pyodide
 
     steps:
       - name: Checkout reposistory
         uses: actions/checkout@main
+        with:
+          persist-credentials: false
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v3.2.1
+        uses: pypa/cibuildwheel@v3.3.1
         env:
           CIBW_PLATFORM: ${{ matrix.platform || 'auto' }}
           CIBW_ARCHS: ${{ matrix.archs || 'auto' }}
@@ -67,6 +73,8 @@ jobs:
     steps:
       - name: Checkout reposistory
         uses: actions/checkout@main
+        with:
+          persist-credentials: false
 
       - name: Build sdist
         run: pipx run build --sdist

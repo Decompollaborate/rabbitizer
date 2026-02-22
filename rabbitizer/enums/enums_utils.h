@@ -7,7 +7,6 @@
 
 
 #define PY_SSIZE_T_CLEAN
-#define Py_LIMITED_API 0x03040000
 #include <Python.h>
 #include "structmember.h"
 
