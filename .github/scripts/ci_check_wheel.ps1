@@ -28,6 +28,7 @@ if ($EXTRA) {
     uv venv --no-config .venv -p $PYTHON_VERSION
 }
 
+.\.venv\Scripts\Activate.ps1
 uv run --no-config --no-build --no-sync python --version
-uv pip install $(Get-ChildItem -Path .\wheelhouse\ -Recurse -Filter "crunch64-*-abi3-*")
+uv pip install $(Get-ChildItem -Path .\wheelhouse\ -Recurse -Filter "rabbitizer-*-$KEY*")
 uv run --no-config --no-build --no-sync python -c "import rabbitizer; print(rabbitizer.Instruction(0).disassemble())"

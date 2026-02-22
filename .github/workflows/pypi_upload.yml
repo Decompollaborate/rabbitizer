@@ -26,13 +26,15 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3-manylinux
+            t-extra-key: -manylinux
           - os: linux-arm
             runs-on: ubuntu-24.04-arm
             check-wheel: true
             wheel-check-script: .github/scripts/ci_check_wheel.sh
-            python_version_min: '3.7'
+            python_version_min: '3.8'
             python_version_max: '3.14'
             abi3-key: abi3-manylinux
+            t-extra-key: -manylinux
           - os: windows-intel
             runs-on: windows-latest
             check-wheel: true
@@ -40,13 +42,15 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3-win_amd64
+            t-extra-key: ''
           - os: windows-arm
             runs-on: windows-11-arm
             check-wheel: true
             wheel-check-script: .github/scripts/ci_check_wheel.ps1
-            python_version_min: '3.7'
+            python_version_min: '3.11'
             python_version_max: '3.14'
             abi3-key: abi3-win_arm64
+            t-extra-key: ''
           - os: macos-intel
             # macos-15-intel is the last x86_64 runner
             runs-on: macos-15-intel
@@ -55,14 +59,16 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3
+            t-extra-key: ''
           - os: macos-arm
             # macos-14+ (including latest) are ARM64 runners
             runs-on: macos-latest
             check-wheel: true
             wheel-check-script: .github/scripts/ci_check_wheel.sh
-            python_version_min: '3.7'
+            python_version_min: '3.8'
             python_version_max: '3.14'
             abi3-key: abi3
+            t-extra-key: ''
           - os: android-intel
             runs-on: ubuntu-22.04
             platform: android
@@ -71,6 +77,7 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3
+            t-extra-key: ''
           - os: android-arm
             # GitHub Actions doesn’t currently support the Android emulator on any ARM
             # runner. So we build on a non-ARM runner, which will skip the tests.
@@ -82,6 +89,7 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3
+            t-extra-key: ''
           - os: ios
             runs-on: macos-latest
             platform: ios
@@ -90,6 +98,7 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3
+            t-extra-key: ''
           - os: pyodide
             runs-on: ubuntu-22.04
             platform: pyodide
@@ -98,6 +107,7 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3
+            t-extra-key: ''
 
     steps:
       - name: Checkout reposistory
@@ -151,7 +161,7 @@ jobs:
       - name: Test free threaded wheels
         if: ${{ matrix.check-wheel }}
         run: |
-          ${{ matrix.wheel-check-script }} 3.14t cp314t --managed-python
+          ${{ matrix.wheel-check-script }} 3.14t cp314t${{ matrix.t-extra-key }} --managed-python
 
       - name: Test pypy wheels
         if: ${{ matrix.check-wheel }}
