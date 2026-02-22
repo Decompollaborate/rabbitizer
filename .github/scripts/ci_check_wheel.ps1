@@ -15,15 +15,6 @@ param (
 # Equivalent to `set -e`
 $ErrorActionPreference = "Stop"
 
-# We need to set UV_PYTHON manually on arm runners, otherwise uv installs x86 binaries for some reason.
-# https://github.com/astral-sh/uv/issues/12906
-$osArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture
-switch ($osArch) {
-    arm64 { $env:UV_PYTHON = arm64 }
-    x86 { }
-    x64 { }
-}
-
 if (Test-Path ".venv") {
     Remove-Item -Recurse -Force ".venv"
 }

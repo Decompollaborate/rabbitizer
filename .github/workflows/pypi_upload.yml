@@ -48,7 +48,10 @@ jobs:
             check-pypy-wheel: true
           - os: windows-arm
             runs-on: windows-11-arm
-            check-wheel: true
+            # uv installs x86 binaries on arm windows, so we can't test
+            # the wheels actually work for arm.
+            # https://github.com/astral-sh/uv/issues/12906
+            check-wheel: false
             wheel-check-script: .github/scripts/ci_check_wheel.ps1
             python_version_min: '3.11'
             python_version_max: '3.14'
