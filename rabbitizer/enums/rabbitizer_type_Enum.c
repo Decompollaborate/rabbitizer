@@ -9,11 +9,17 @@
 static void rabbitizer_type_Enum_dealloc(PyRabbitizerEnum *self) {
     Py_XDECREF(self->enumType);
     Py_XDECREF(self->name);
-    Py_TYPE(self)->tp_free((PyObject *) self);
+
+    freefunc tp_free = PyType_GetSlot(Py_TYPE(self), Py_tp_free);
+    tp_free((PyObject *) self);
 }
 
 static PyObject *rabbitizer_type_Enum_new(PyTypeObject *type, UNUSED PyObject *args, UNUSED PyObject *kwds) {
-    PyRabbitizerEnum *self = (PyRabbitizerEnum *) type->tp_alloc(type, 0);
+    allocfunc tp_alloc = PyType_GetSlot(type, Py_tp_alloc);
+    if (tp_alloc == NULL) {
+        return NULL;
+    }
+    PyRabbitizerEnum *self = (void *) tp_alloc(type, 0);
 
     if (self == NULL) {
         return NULL;
@@ -110,7 +116,7 @@ Py_hash_t rabbitizer_type_Enum_hash(PyRabbitizerEnum *self) {
 
 // Checks for the 6 basic comparisons (==, !=, <, <=, >, >=)
 PyObject *rabbitizer_type_Enum_richcompare(PyRabbitizerEnum *self, PyObject *other, int op) {
-    int isInstance = PyObject_IsInstance(other, (PyObject*)&rabbitizer_type_Enum_TypeObject);
+    int isInstance = PyObject_IsInstance(other, rabbitizer_type_Enum_TypeObject);
     int enumTypeCmp;
     int otherValue;
 
@@ -173,7 +179,7 @@ static PyObject *rabbitizer_type_Enum___reduce__(PyRabbitizerEnum *self, UNUSED 
 
     args = PyTuple_Pack(3, enumType, name, value);
 
-    return PyTuple_Pack(2, (PyObject*)&rabbitizer_type_Enum_TypeObject, args);
+    return PyTuple_Pack(2, rabbitizer_type_Enum_TypeObject, args);
 }
 
 
@@ -197,21 +203,27 @@ static PyObject *rabbitizer_type_Enum_str(PyRabbitizerEnum *self) {
 
 // TODO: implement hash and int
 
-PyTypeObject rabbitizer_type_Enum_TypeObject = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "rabbitizer.Enum",
-    .tp_doc = PyDoc_STR("Enum"),
-    .tp_basicsize = sizeof(PyRabbitizerEnum),
-    .tp_itemsize = 0,
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
-    .tp_new = rabbitizer_type_Enum_new,
-    .tp_init = (initproc) rabbitizer_type_Enum_init,
-    .tp_dealloc = (destructor) rabbitizer_type_Enum_dealloc,
-    .tp_hash = (hashfunc) rabbitizer_type_Enum_hash,
-    .tp_richcompare = (richcmpfunc) rabbitizer_type_Enum_richcompare,
-    .tp_repr = (reprfunc) rabbitizer_type_Enum_repr,
-    .tp_str = (reprfunc) rabbitizer_type_Enum_str,
-    //.tp_members = rabbitizer_type_Enum_members,
-    .tp_methods = rabbitizer_type_Enum_methods,
-    .tp_getset = rabbitizer_type_Enum_getsetters,
+PyObject *rabbitizer_type_Enum_TypeObject = NULL;
+
+static PyType_Slot rabbitizer_type_Enum_Slots[] = {
+    {Py_tp_doc, PyDoc_STR("Enum")},
+    {Py_tp_new, rabbitizer_type_Enum_new},
+    {Py_tp_init, rabbitizer_type_Enum_init},
+    {Py_tp_dealloc, rabbitizer_type_Enum_dealloc},
+    {Py_tp_hash, rabbitizer_type_Enum_hash},
+    {Py_tp_richcompare, rabbitizer_type_Enum_richcompare},
+    {Py_tp_repr, rabbitizer_type_Enum_repr},
+    {Py_tp_str, rabbitizer_type_Enum_str},
+    // {Py_tp_members, rabbitizer_type_Enum_members},
+    {Py_tp_methods, rabbitizer_type_Enum_methods},
+    {Py_tp_getset, rabbitizer_type_Enum_getsetters},
+    {0, NULL}
+};
+
+PyType_Spec rabbitizer_type_Enum_Spec = {
+    .name = "rabbitizer.Enum",
+    .basicsize = sizeof(PyRabbitizerEnum),
+    .itemsize = 0,
+    .flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
+    .slots = rabbitizer_type_Enum_Slots,
 };

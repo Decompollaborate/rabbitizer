@@ -18,20 +18,21 @@ typedef enum ModuleAttributeCategory {
 
 typedef struct ModuleAttribute {
     union {
-        PyTypeObject *type;
+        PyObject **type;
         PyObject *(*init)(void);
-        PyTypeObject *global;
+        PyObject **global;
     };
     ModuleAttributeCategory cat;
+    PyType_Spec *spec;
     const char *name;
     bool isInstanced;
     PyObject *instance;
 } ModuleAttributes;
 
-#define MODULE_ATTRIBUTE_TYPE(name)   { {.type   = &rabbitizer_type_##name##_TypeObject},   MODULE_ATTRIBUTE_CAT_TYPE,   #name, false, NULL }
-#define MODULE_ATTRIBUTE_INIT(name)   { {.init   = rabbitizer_submodule_##name##_Init},     MODULE_ATTRIBUTE_CAT_INIT,   #name, false, NULL }
-#define MODULE_ATTRIBUTE_ENUM(name)   { {.init   = rabbitizer_enum_##name##_Init},          MODULE_ATTRIBUTE_CAT_INIT,   #name, false, NULL }
-#define MODULE_ATTRIBUTE_GLOBAL(name) { {.global = &rabbitizer_global_##name##_TypeObject}, MODULE_ATTRIBUTE_CAT_GLOBAL, #name, false, NULL }
+#define MODULE_ATTRIBUTE_TYPE(name)   { {.type   = &rabbitizer_type_##name##_TypeObject},   MODULE_ATTRIBUTE_CAT_TYPE,   &rabbitizer_type_##name##_Spec,   #name, false, NULL }
+#define MODULE_ATTRIBUTE_INIT(name)   { {.init   = rabbitizer_submodule_##name##_Init},     MODULE_ATTRIBUTE_CAT_INIT,   NULL,                             #name, false, NULL }
+#define MODULE_ATTRIBUTE_ENUM(name)   { {.init   = rabbitizer_enum_##name##_Init},          MODULE_ATTRIBUTE_CAT_INIT,   NULL,                             #name, false, NULL }
+#define MODULE_ATTRIBUTE_GLOBAL(name) { {.global = &rabbitizer_global_##name##_TypeObject}, MODULE_ATTRIBUTE_CAT_GLOBAL, &rabbitizer_global_##name##_Spec, #name, false, NULL }
 
 static ModuleAttributes rabbitizer_module_attributes[] = {
     MODULE_ATTRIBUTE_INIT(Utils),
@@ -62,6 +63,14 @@ static ModuleAttributes rabbitizer_module_attributes[] = {
 };
 
 static int rabbitizer_module_attributes_Ready(void) {
+    rabbitizer_type_Enum_TypeObject = PyType_FromSpec(&rabbitizer_type_Enum_Spec);
+    if (rabbitizer_type_Enum_TypeObject == NULL) {
+        return -1;
+    }
+    if (PyType_Ready((PyTypeObject*)rabbitizer_type_Enum_TypeObject) < 0) {
+        return -1;
+    }
+
     // Sanity checks and PyType_Ready
     for (size_t i = 0; i < ARRAY_COUNT(rabbitizer_module_attributes); i++) {
         if (rabbitizer_module_attributes[i].global == NULL || rabbitizer_module_attributes[i].name == NULL) {
@@ -70,7 +79,11 @@ static int rabbitizer_module_attributes_Ready(void) {
         switch (rabbitizer_module_attributes[i].cat) {
             case MODULE_ATTRIBUTE_CAT_TYPE:
             case MODULE_ATTRIBUTE_CAT_GLOBAL:
-                if (PyType_Ready(rabbitizer_module_attributes[i].type) < 0) {
+                *rabbitizer_module_attributes[i].type = PyType_FromSpec(rabbitizer_module_attributes[i].spec);
+                if (*rabbitizer_module_attributes[i].type == NULL) {
+                    return -1;
+                }
+                if (PyType_Ready((PyTypeObject*)*rabbitizer_module_attributes[i].type) < 0) {
                     return -1;
                 }
                 break;
@@ -90,7 +103,7 @@ static int rabbitizer_module_attributes_Initialize(PyObject *module) {
     for (size_t i = 0; i < ARRAY_COUNT(rabbitizer_module_attributes); i++) {
         switch (rabbitizer_module_attributes[i].cat) {
             case MODULE_ATTRIBUTE_CAT_TYPE:
-                rabbitizer_module_attributes[i].instance = (PyObject*) rabbitizer_module_attributes[i].type;
+                rabbitizer_module_attributes[i].instance = *rabbitizer_module_attributes[i].type;
                 Py_INCREF(rabbitizer_module_attributes[i].instance);
                 break;
 
@@ -102,7 +115,7 @@ static int rabbitizer_module_attributes_Initialize(PyObject *module) {
                 break;
 
             case MODULE_ATTRIBUTE_CAT_GLOBAL:
-                rabbitizer_module_attributes[i].instance = PyObject_CallObject((PyObject*)rabbitizer_module_attributes[i].global, NULL);
+                rabbitizer_module_attributes[i].instance = PyObject_CallObject(*rabbitizer_module_attributes[i].global, NULL);
                 if (rabbitizer_module_attributes[i].instance == NULL) {
                     goto error;
                 }

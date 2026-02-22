@@ -12,7 +12,9 @@
 
 static void rabbitizer_type_Instruction_dealloc(PyRabbitizerInstruction *self) {
     RabbitizerInstruction_destroy(&self->instr);
-    Py_TYPE(self)->tp_free((PyObject *) self);
+
+    freefunc tp_free = PyType_GetSlot(Py_TYPE(self), Py_tp_free);
+    tp_free((PyObject *) self);
 }
 
 static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObject *args, PyObject *kwds) {
@@ -23,7 +25,7 @@ static int rabbitizer_type_Instruction_init(PyRabbitizerInstruction *self, PyObj
     int enumCheck;
     RabbitizerInstrCategory instrCategory = RABBITIZER_INSTRCAT_CPU;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I|IO!", kwlist, &word, &vram, &rabbitizer_type_Enum_TypeObject, &category)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "I|IO!", kwlist, &word, &vram, rabbitizer_type_Enum_TypeObject, &category)) {
         return -1;
     }
 
@@ -409,7 +411,7 @@ static PyObject *rabbitizer_type_Instruction_sameOpcode(PyRabbitizerInstruction 
     static char *kwlist[] = { "other", NULL };
     PyRabbitizerInstruction *other;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &other)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, rabbitizer_type_Instruction_TypeObject, &other)) {
         return NULL;
     }
 
@@ -423,7 +425,7 @@ static PyObject *rabbitizer_type_Instruction_sameOpcodeButDifferentArguments(PyR
     static char *kwlist[] = { "other", NULL };
     PyRabbitizerInstruction *other;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Instruction_TypeObject, &other)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, rabbitizer_type_Instruction_TypeObject, &other)) {
         return NULL;
     }
 
@@ -439,7 +441,7 @@ static PyObject *rabbitizer_type_Instruction_hasOperand(PyRabbitizerInstruction 
     int enumCheck;
     RabbitizerOperandType operandType = RAB_OPERAND_ALL_INVALID;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Enum_TypeObject, &pyOperand)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, rabbitizer_type_Enum_TypeObject, &pyOperand)) {
         return NULL;
     }
 
@@ -471,7 +473,7 @@ static PyObject *rabbitizer_type_Instruction_hasOperandAlias(PyRabbitizerInstruc
     int enumCheck;
     RabbitizerOperandType operandType = RAB_OPERAND_ALL_INVALID;
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, &rabbitizer_type_Enum_TypeObject, &pyOperand)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!", kwlist, rabbitizer_type_Enum_TypeObject, &pyOperand)) {
         return NULL;
     }
 
@@ -624,7 +626,7 @@ static PyObject *rabbitizer_type_Instruction___reduce__(PyRabbitizerInstruction 
 
     args = PyTuple_Pack(3, word, vram, category);
 
-    return PyTuple_Pack(2, (PyObject*)&rabbitizer_type_Instruction_TypeObject, args);
+    return PyTuple_Pack(2, rabbitizer_type_Instruction_TypeObject, args);
 }
 
 
@@ -779,20 +781,25 @@ static PyObject *rabbitizer_type_Instruction_str(PyRabbitizerInstruction *self) 
 DEF_RAB_TYPE(Instruction)
 
 
-PyTypeObject rabbitizer_type_Instruction_TypeObject = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "rabbitizer.Instruction",
-    .tp_doc = PyDoc_STR("Instruction"),
-    .tp_basicsize = sizeof(PyRabbitizerInstruction),
-    .tp_itemsize = 0,
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
-    .tp_new = PyType_GenericNew,
-    .tp_init = (initproc) rabbitizer_type_Instruction_init,
-    .tp_dealloc = (destructor) rabbitizer_type_Instruction_dealloc,
-    .tp_repr = (reprfunc) rabbitizer_type_Instruction_repr,
-    .tp_str = (reprfunc) rabbitizer_type_Instruction_str,
-    .tp_members = rabbitizer_type_Instruction_members,
-    .tp_methods = rabbitizer_type_Instruction_methods,
-    .tp_getset = rabbitizer_type_Instruction_getsetters,
+PyObject *rabbitizer_type_Instruction_TypeObject = NULL;
+
+static PyType_Slot rabbitizer_type_Instruction_Slots[] = {
+    {Py_tp_doc, PyDoc_STR("Instruction")},
+    {Py_tp_new, PyType_GenericNew},
+    {Py_tp_init, rabbitizer_type_Instruction_init},
+    {Py_tp_dealloc, rabbitizer_type_Instruction_dealloc},
+    {Py_tp_repr, rabbitizer_type_Instruction_repr},
+    {Py_tp_str, rabbitizer_type_Instruction_str},
+    {Py_tp_members, rabbitizer_type_Instruction_members},
+    {Py_tp_methods, rabbitizer_type_Instruction_methods},
+    {Py_tp_getset, rabbitizer_type_Instruction_getsetters},
+    {0, NULL},
 };
 
+PyType_Spec rabbitizer_type_Instruction_Spec = {
+    .name = "rabbitizer.Instruction",
+    .basicsize = sizeof(PyRabbitizerInstruction),
+    .itemsize = 0,
+    .flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
+    .slots = rabbitizer_type_Instruction_Slots,
+};

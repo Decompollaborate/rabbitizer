@@ -25,9 +25,10 @@ extern PyModuleDef rabbitizer_module;
 
 PyObject *rabbitizer_submodule_Utils_Init(void);
 
-extern PyTypeObject rabbitizer_global_config_TypeObject;
+extern PyObject *rabbitizer_global_config_TypeObject;
+extern PyType_Spec rabbitizer_global_config_Spec;
 
-extern PyTypeObject rabbitizer_type_Enum_TypeObject;
+extern PyObject *rabbitizer_type_Enum_TypeObject;
 
 DECL_RAB_TYPE(Instruction, instr)
 DECL_RAB_TYPE(LoPairingInfo, pairingInfo)

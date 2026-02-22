@@ -6,7 +6,9 @@
 
 static void rabbitizer_type_TrackedRegisterState_dealloc(PyRabbitizerTrackedRegisterState *self) {
     RabbitizerTrackedRegisterState_destroy(&self->registerState);
-    Py_TYPE(self)->tp_free((PyObject *) self);
+
+    freefunc tp_free = PyType_GetSlot(Py_TYPE(self), Py_tp_free);
+    tp_free((PyObject *) self);
 }
 
 static int rabbitizer_type_TrackedRegisterState_init(PyRabbitizerTrackedRegisterState *self, PyObject *args, PyObject *kwds) {
@@ -94,18 +96,24 @@ static PyGetSetDef rabbitizer_type_TrackedRegisterState_getsetters[] = {
 DEF_RAB_TYPE(TrackedRegisterState)
 
 
-PyTypeObject rabbitizer_type_TrackedRegisterState_TypeObject = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "rabbitizer.TrackedRegisterState",
-    .tp_doc = PyDoc_STR("TrackedRegisterState"),
-    .tp_basicsize = sizeof(PyRabbitizerTrackedRegisterState),
-    .tp_itemsize = 0,
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
-    .tp_new = PyType_GenericNew,
-    .tp_init = (initproc) rabbitizer_type_TrackedRegisterState_init,
-    .tp_dealloc = (destructor) rabbitizer_type_TrackedRegisterState_dealloc,
-    // .tp_repr = (reprfunc) rabbitizer_type_TrackedRegisterState_repr,
-    // .tp_str = (reprfunc) rabbitizer_type_TrackedRegisterState_str,
-    // .tp_methods = rabbitizer_type_TrackedRegisterState_methods,
-    .tp_getset = rabbitizer_type_TrackedRegisterState_getsetters,
+PyObject *rabbitizer_type_TrackedRegisterState_TypeObject = NULL;
+
+static PyType_Slot rabbitizer_type_TrackedRegisterState_Slots[] = {
+    {Py_tp_doc, PyDoc_STR("TrackedRegisterState")},
+    {Py_tp_new, PyType_GenericNew},
+    {Py_tp_init, rabbitizer_type_TrackedRegisterState_init},
+    {Py_tp_dealloc, rabbitizer_type_TrackedRegisterState_dealloc},
+    // {Py_tp_repr, rabbitizer_type_TrackedRegisterState_repr},
+    // {Py_tp_str, rabbitizer_type_TrackedRegisterState_str},
+    // {Py_tp_methods, rabbitizer_type_TrackedRegisterState_methods},
+    {Py_tp_getset, rabbitizer_type_TrackedRegisterState_getsetters},
+    {0, NULL},
+};
+
+PyType_Spec rabbitizer_type_TrackedRegisterState_Spec = {
+    .name = "rabbitizer.TrackedRegisterState",
+    .basicsize = sizeof(PyRabbitizerTrackedRegisterState),
+    .itemsize = 0,
+    .flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
+    .slots = rabbitizer_type_TrackedRegisterState_Slots,
 };
