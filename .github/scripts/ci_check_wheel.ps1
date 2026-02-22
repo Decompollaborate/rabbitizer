@@ -19,7 +19,7 @@ $ErrorActionPreference = "Stop"
 # https://github.com/astral-sh/uv/issues/12906
 $osArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture
 switch ($osArch) {
-    arm64 { $Env:UV_PYTHON=arm64 }
+    arm64 { $env:UV_PYTHON = arm64 }
     x86 { }
     x64 { }
 }
