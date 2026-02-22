@@ -29,5 +29,5 @@ if ($EXTRA) {
 }
 
 uv run --no-config --no-build --no-sync python --version
-uv pip install $(Get-ChildItem -Path .\dist\ -Recurse -Filter "crunch64-*-abi3-*")
+uv pip install $(Get-ChildItem -Path .\wheelhouse\ -Recurse -Filter "crunch64-*-abi3-*")
 uv run --no-config --no-build --no-sync python -c "import rabbitizer; print(rabbitizer.Instruction(0).disassemble())"

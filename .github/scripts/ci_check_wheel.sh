@@ -28,6 +28,6 @@ uv run --no-config --no-build --no-sync python --version
 # We install the wheel by looking it up in the dist folder.
 # We need to do a `find` command here because we don't know the exact name of
 # the wheel (it can be affected by package version, arch, python version, etc.).
-uv pip install $(find ./dist/ -name "rabbitizer-*-$KEY*")
+uv pip install $(find ./wheelhouse/ -name "rabbitizer-*-$KEY*")
 # Check something basic to make sure it was installed correctly.
 uv run --no-config --no-build --no-sync python -c "import rabbitizer; print(rabbitizer.Instruction(0).disassemble())"
