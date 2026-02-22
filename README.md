@@ -42,7 +42,8 @@ MIPS instruction decoder API.
   - `SN64`:
     - `div`/`divu` fix: tweaks a bit the produced `div`, `divu` and `break` instructions.
 - Multiple MIPS architectures are supported:
-  - Main focus on MIPS I, II and III architectures. Partial support for MIPS IV too.
+  - Main focus on MIPS I, II and III architectures. Partial support for MIPS IV
+    too.
   - N64 RSP instruction decoding support.
     - RSP decoding has been tested to build back to matching assemblies with [armips](https://github.com/Kingcom/armips/).
   - R3000 GTE (PSX's CPU) decoding support.

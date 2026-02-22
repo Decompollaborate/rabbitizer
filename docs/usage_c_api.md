@@ -48,8 +48,8 @@ Let's break up the example and explain each part:
 
 1. The stack
 
-    The `RabbitizerInstruction` type is the type `rabbitizer` uses to represent an
-    instruction. It is a simple struct which doesn't need dynamic memory
+    The `RabbitizerInstruction` type is the type `rabbitizer` uses to represent
+    an instruction. It is a simple struct which doesn't need dynamic memory
     allocation of any kind, so it can be declared as an automatic variable and live
     in the stack, without worrying about pointers and such.
 
