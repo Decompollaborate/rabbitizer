@@ -13,7 +13,7 @@ int rabbitizer_EnumMetadata_Initialize(PyObject *submodule, RabbitizerEnumMetada
             goto error;
         }
 
-        enumValues[i].instance = PyObject_CallObject((PyObject*)&rabbitizer_type_Enum_TypeObject, args);
+        enumValues[i].instance = PyObject_CallObject(rabbitizer_type_Enum_TypeObject, args);
         Py_DECREF(args);
         if (enumValues[i].instance == NULL) {
             goto error;

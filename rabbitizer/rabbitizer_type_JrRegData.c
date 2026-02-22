@@ -5,7 +5,9 @@
 
 
 static void rabbitizer_type_JrRegData_dealloc(PyRabbitizerJrRegData *self) {
-    Py_TYPE(self)->tp_free((PyObject *) self);
+
+    freefunc tp_free = PyType_GetSlot(Py_TYPE(self), Py_tp_free);
+    tp_free((PyObject *) self);
 }
 
 static int rabbitizer_type_JrRegData_init(PyRabbitizerJrRegData *self, UNUSED PyObject *args, UNUSED PyObject *kwds) {
@@ -60,19 +62,25 @@ static PyMethodDef rabbitizer_type_JrRegData_methods[] = {
 DEF_RAB_TYPE(JrRegData)
 
 
-PyTypeObject rabbitizer_type_JrRegData_TypeObject = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "rabbitizer.JrRegData",
-    .tp_doc = PyDoc_STR("JrRegData"),
-    .tp_basicsize = sizeof(PyRabbitizerJrRegData),
-    .tp_itemsize = 0,
-    .tp_flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
-    .tp_new = PyType_GenericNew,
-    .tp_init = (initproc) rabbitizer_type_JrRegData_init,
-    .tp_dealloc = (destructor) rabbitizer_type_JrRegData_dealloc,
-    // .tp_repr = (reprfunc) rabbitizer_type_JrRegData_repr,
-    // .tp_as_sequence = &rabbitizer_type_JrRegData_classSeqMethods,
-    // .tp_str = (reprfunc) rabbitizer_type_JrRegData_str,
-    .tp_methods = rabbitizer_type_JrRegData_methods,
-    // .tp_getset = rabbitizer_type_JrRegData_getsetters,
+PyObject *rabbitizer_type_JrRegData_TypeObject = NULL;
+
+static PyType_Slot rabbitizer_type_JrRegData_Slots[] = {
+    {Py_tp_doc, PyDoc_STR("JrRegData")},
+    {Py_tp_new, PyType_GenericNew},
+    {Py_tp_init, rabbitizer_type_JrRegData_init},
+    {Py_tp_dealloc, rabbitizer_type_JrRegData_dealloc},
+    // {Py_tp_repr, rabbitizer_type_JrRegData_repr},
+    // {Py_tp_as_sequence, &rabbitizer_type_JrRegData_classSeqMethods},
+    // {Py_tp_str, rabbitizer_type_JrRegData_str},
+    {Py_tp_methods, rabbitizer_type_JrRegData_methods},
+    // {Py_tp_getset, rabbitizer_type_JrRegData_getsetters},
+    {0, NULL},
+};
+
+PyType_Spec rabbitizer_type_JrRegData_Spec = {
+    .name = "rabbitizer.JrRegData",
+    .basicsize = sizeof(PyRabbitizerJrRegData),
+    .itemsize = 0,
+    .flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,
+    .slots = rabbitizer_type_JrRegData_Slots,
 };

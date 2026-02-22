@@ -161,13 +161,19 @@ static PyGetSetDef rabbitizer_global_config_GetSets[] = {
     { 0 },
 };
 
-PyTypeObject rabbitizer_global_config_TypeObject = {
-    PyVarObject_HEAD_INIT(NULL, 0)
-    .tp_name = "rabbitizer.config",
-    .tp_doc = PyDoc_STR(""),
-    .tp_basicsize = sizeof(PyObject),
-    .tp_itemsize = 0,
-    .tp_flags = Py_TPFLAGS_DEFAULT,
-    .tp_new = PyType_GenericNew,
-    .tp_getset = rabbitizer_global_config_GetSets,
+PyObject *rabbitizer_global_config_TypeObject = NULL;
+
+static PyType_Slot rabbitizer_global_config_Slots[] = {
+    {Py_tp_doc, PyDoc_STR("")},
+    {Py_tp_new, PyType_GenericNew},
+    {Py_tp_getset, rabbitizer_global_config_GetSets},
+    {0, NULL},
+};
+
+PyType_Spec rabbitizer_global_config_Spec = {
+    .name = "rabbitizer.config",
+    .basicsize = sizeof(PyObject),
+    .itemsize = 0,
+    .flags = Py_TPFLAGS_DEFAULT,
+    .slots = rabbitizer_global_config_Slots,
 };

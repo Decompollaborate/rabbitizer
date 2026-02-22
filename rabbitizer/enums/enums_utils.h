@@ -7,13 +7,15 @@
 
 
 #define PY_SSIZE_T_CLEAN
+#define Py_LIMITED_API 0x03040000
 #include <Python.h>
 #include "structmember.h"
 
 #include <stdbool.h>
 
 
-extern PyTypeObject rabbitizer_type_Enum_TypeObject;
+extern PyType_Spec rabbitizer_type_Enum_Spec;
+extern PyObject *rabbitizer_type_Enum_TypeObject;
 
 
 typedef struct PyRabbitizerEnum {
@@ -51,7 +53,7 @@ int rabbitizer_EnumMetadata_Initialize(PyObject *submodule, RabbitizerEnumMetada
     }; \
     PyObject *rabbitizer_enum_##enumName##_Init(void) { \
         PyObject *submodule; \
-        if (PyType_Ready(&rabbitizer_type_Enum_TypeObject) < 0) { \
+        if (PyType_Ready((PyTypeObject *)rabbitizer_type_Enum_TypeObject) < 0) { \
             return NULL; \
         } \
         submodule = PyModule_Create(&rabbitizer_enum_##enumName##_module); \
@@ -66,7 +68,7 @@ int rabbitizer_EnumMetadata_Initialize(PyObject *submodule, RabbitizerEnumMetada
     } \
     /* Return true if o is of this enum type */ \
     int rabbitizer_enum_##enumName##_Check(PyObject *o) { \
-        int isInstance = PyObject_IsInstance(o, (PyObject*)&rabbitizer_type_Enum_TypeObject); \
+        int isInstance = PyObject_IsInstance(o, rabbitizer_type_Enum_TypeObject); \
         int enumTypeCmp; \
         if (isInstance < 0) { \
             /* An error happened */ \

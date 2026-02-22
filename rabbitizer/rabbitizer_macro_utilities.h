@@ -6,8 +6,9 @@
 #pragma once
 
 #define PY_SSIZE_T_CLEAN
+#define Py_LIMITED_API 0x03040000
 #include <Python.h>
-#include "structmember.h"
+#include <structmember.h>
 
 
 #define RAB_STRCMP_LITERAL(var, literal) strncmp(var, literal, sizeof(literal) - 1)
@@ -19,7 +20,8 @@
         Rabbitizer##typeName memberName; \
     } PyRabbitizer##typeName; \
     \
-    extern PyTypeObject rabbitizer_type_##typeName##_TypeObject; \
+    extern PyObject *rabbitizer_type_##typeName##_TypeObject; \
+    extern PyType_Spec rabbitizer_type_##typeName##_Spec; \
     \
     int rabbitizer_type_##typeName##_TypeObject_Check(PyObject *object); \
     int rabbitizer_type_##typeName##_Converter_Optional(PyObject *object, PyRabbitizer##typeName **address);
@@ -27,7 +29,7 @@
 #define DEF_RAB_TYPE(typeName) \
     /* Returns positive if the argument is an instance, 0 if it isn't or negative on error */ \
     int rabbitizer_type_##typeName##_TypeObject_Check(PyObject *object) { \
-        int isInstance = PyObject_IsInstance(object, (PyObject*)&rabbitizer_type_##typeName##_TypeObject); \
+        int isInstance = PyObject_IsInstance(object, rabbitizer_type_##typeName##_TypeObject); \
         \
         if (isInstance < 0) { \
             /* An error happened */ \
@@ -65,9 +67,27 @@
             return 1; /* successful */ \
         } \
         \
-        PyErr_Format(PyExc_TypeError, "argument must be %s or None, not %s", rabbitizer_type_##typeName##_TypeObject.tp_name, object->ob_type->tp_name); \
+        PyErr_Format(PyExc_TypeError, "argument must be %s or None, not %s", get_tp_name(rabbitizer_type_##typeName##_TypeObject), get_tp_name(object)); \
         return 0; /* fail */ \
     }
 
+static inline const char *get_tp_name(PyObject *object) {
+    PyObject *type = (PyObject *)Py_TYPE(object);
+
+    PyObject *name = PyObject_GetAttrString(type, "__name__");
+    if (name == NULL) {
+        return NULL;
+    }
+
+    PyObject *bytes = PyUnicode_AsEncodedString(name, "utf-8", "strict");
+    Py_DECREF(name);
+    if (bytes == NULL) {
+        return NULL;
+    }
+
+    const char *result = PyBytes_AsString(bytes);
+    Py_DECREF(bytes);
+    return result;
+}
 
 #endif

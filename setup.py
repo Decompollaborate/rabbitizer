@@ -28,6 +28,8 @@ setup(
             include_dirs=["include", "rabbitizer", "tables"],
             extra_compile_args = extraCompileArgs,
             depends=headersList,
+            py_limited_api=True,
         ),
     ],
+    options={"bdist_wheel": {"py_limited_api": "cp34"}},
 )
