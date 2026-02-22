@@ -27,6 +27,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3-manylinux
             t-extra-key: -manylinux
+            check-pypy-wheel: true
           - os: linux-arm
             runs-on: ubuntu-24.04-arm
             check-wheel: true
@@ -35,6 +36,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3-manylinux
             t-extra-key: -manylinux
+            check-pypy-wheel: true
           - os: windows-intel
             runs-on: windows-latest
             check-wheel: true
@@ -42,7 +44,8 @@ jobs:
             python_version_min: '3.7'
             python_version_max: '3.14'
             abi3-key: abi3-win_amd64
-            t-extra-key: ''
+            t-extra-key: '-win_amd64'
+            check-pypy-wheel: true
           - os: windows-arm
             runs-on: windows-11-arm
             check-wheel: true
@@ -51,6 +54,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3-win_arm64
             t-extra-key: ''
+            check-pypy-wheel: false
           - os: macos-intel
             # macos-15-intel is the last x86_64 runner
             runs-on: macos-15-intel
@@ -60,6 +64,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3
             t-extra-key: ''
+            check-pypy-wheel: true
           - os: macos-arm
             # macos-14+ (including latest) are ARM64 runners
             runs-on: macos-latest
@@ -69,6 +74,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3
             t-extra-key: ''
+            check-pypy-wheel: true
           - os: android-intel
             runs-on: ubuntu-22.04
             platform: android
@@ -78,6 +84,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3
             t-extra-key: ''
+            check-pypy-wheel: true
           - os: android-arm
             # GitHub Actions doesn’t currently support the Android emulator on any ARM
             # runner. So we build on a non-ARM runner, which will skip the tests.
@@ -90,6 +97,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3
             t-extra-key: ''
+            check-pypy-wheel: true
           - os: ios
             runs-on: macos-latest
             platform: ios
@@ -99,6 +107,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3
             t-extra-key: ''
+            check-pypy-wheel: true
           - os: pyodide
             runs-on: ubuntu-22.04
             platform: pyodide
@@ -108,6 +117,7 @@ jobs:
             python_version_max: '3.14'
             abi3-key: abi3
             t-extra-key: ''
+            check-pypy-wheel: true
 
     steps:
       - name: Checkout reposistory
@@ -137,13 +147,18 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v7
         if: ${{ matrix.check-wheel }}
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v6
         if: ${{ matrix.check-wheel }}
         with:
           python-version: |
             ${{ matrix.python_version_min }}
             3.14t
+      - name: Setup PyPy
+        uses: actions/setup-python@v6
+        if: ${{ matrix.check-wheel && matrix.check-pypy-wheel }}
+        with:
+          python-version: |
             pypy3.9
             pypy3.10
             pypy3.11
@@ -164,7 +179,7 @@ jobs:
           ${{ matrix.wheel-check-script }} 3.14t cp314t${{ matrix.t-extra-key }} --managed-python
 
       - name: Test pypy wheels
-        if: ${{ matrix.check-wheel }}
+        if: ${{ matrix.check-wheel && matrix.check-pypy-wheel }}
         run: |
           ${{ matrix.wheel-check-script }} pypy3.9 pypy39 --managed-python
           ${{ matrix.wheel-check-script }} pypy3.10 pypy310 --managed-python
