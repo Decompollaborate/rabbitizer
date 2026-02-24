@@ -227,3 +227,5 @@ cython_debug/
 /target
 
 .make_options
+
+uv.lock

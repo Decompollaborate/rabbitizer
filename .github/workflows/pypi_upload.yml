@@ -21,33 +21,106 @@ jobs:
         include:
           - os: linux-intel
             runs-on: ubuntu-22.04
+            check-wheel: true
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.7'
+            python_version_max: '3.14'
+            abi3-key: abi3-manylinux
+            t-extra-key: -manylinux
+            check-pypy-wheel: true
           - os: linux-arm
             runs-on: ubuntu-24.04-arm
+            check-wheel: true
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.8'
+            python_version_max: '3.14'
+            abi3-key: abi3-manylinux
+            t-extra-key: -manylinux
+            check-pypy-wheel: true
           - os: windows-intel
             runs-on: windows-latest
+            check-wheel: true
+            wheel-check-script: .github/scripts/ci_check_wheel.ps1
+            python_version_min: '3.7'
+            python_version_max: '3.14'
+            abi3-key: abi3-win_amd64
+            t-extra-key: '-win_amd64'
+            check-pypy-wheel: true
           - os: windows-arm
             runs-on: windows-11-arm
+            # uv installs x86 binaries on arm windows, so we can't test
+            # the wheels actually work for arm.
+            # https://github.com/astral-sh/uv/issues/12906
+            check-wheel: false
+            wheel-check-script: .github/scripts/ci_check_wheel.ps1
+            python_version_min: '3.11'
+            python_version_max: '3.14'
+            abi3-key: abi3-win_arm64
+            t-extra-key: ''
+            check-pypy-wheel: false
           - os: macos-intel
             # macos-15-intel is the last x86_64 runner
             runs-on: macos-15-intel
+            check-wheel: true
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.7'
+            python_version_max: '3.14'
+            abi3-key: abi3
+            t-extra-key: ''
+            check-pypy-wheel: true
           - os: macos-arm
             # macos-14+ (including latest) are ARM64 runners
             runs-on: macos-latest
+            check-wheel: true
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.8'
+            python_version_max: '3.14'
+            abi3-key: abi3
+            t-extra-key: ''
+            check-pypy-wheel: true
           - os: android-intel
             runs-on: ubuntu-22.04
             platform: android
+            check-wheel: false
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.7'
+            python_version_max: '3.14'
+            abi3-key: abi3
+            t-extra-key: ''
+            check-pypy-wheel: true
           - os: android-arm
             # GitHub Actions doesn’t currently support the Android emulator on any ARM
             # runner. So we build on a non-ARM runner, which will skip the tests.
             runs-on: ubuntu-22.04
             platform: android
             archs: arm64_v8a
+            check-wheel: false
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.7'
+            python_version_max: '3.14'
+            abi3-key: abi3
+            t-extra-key: ''
+            check-pypy-wheel: true
           - os: ios
             runs-on: macos-latest
             platform: ios
+            check-wheel: false
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.7'
+            python_version_max: '3.14'
+            abi3-key: abi3
+            t-extra-key: ''
+            check-pypy-wheel: true
           - os: pyodide
             runs-on: ubuntu-22.04
             platform: pyodide
+            check-wheel: false
+            wheel-check-script: .github/scripts/ci_check_wheel.sh
+            python_version_min: '3.7'
+            python_version_max: '3.14'
+            abi3-key: abi3
+            t-extra-key: ''
+            check-pypy-wheel: true
 
     steps:
       - name: Checkout reposistory
@@ -66,6 +139,54 @@ jobs:
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: ./wheelhouse/*.whl
+
+      # Test the built wheels are installable in the min and max Python
+      # versions we are about.
+      # We do this by installing the Python version in a venv using uv,
+      # installing the built wheel into the venv and running some simple
+      # command.
+      # We can only test the wheels that matches the architecture of the runner
+      # so we hope the other built wheels will just work, hopefully.
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        if: ${{ matrix.check-wheel }}
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        if: ${{ matrix.check-wheel }}
+        with:
+          python-version: |
+            ${{ matrix.python_version_min }}
+            3.14t
+      - name: Setup PyPy
+        uses: actions/setup-python@v6
+        if: ${{ matrix.check-wheel && matrix.check-pypy-wheel }}
+        with:
+          python-version: |
+            pypy3.9
+            pypy3.10
+            pypy3.11
+      - name: Test wheels with min version (${{ matrix.python_version_min }})
+        if: ${{ matrix.check-wheel }}
+        # Check the built wheel is installable on the oldest Python supported
+        run: |
+          ${{ matrix.wheel-check-script }} ${{ matrix.python_version_min }} ${{ matrix.abi3-key }}
+      - name: Test wheels with max version (${{ matrix.python_version_max }})
+        if: ${{ matrix.check-wheel }}
+        # Check the built wheel is installable on the newest Python we know of
+        run: |
+          ${{ matrix.wheel-check-script }} ${{ matrix.python_version_max }} ${{ matrix.abi3-key }} --managed-python
+
+      - name: Test free threaded wheels
+        if: ${{ matrix.check-wheel }}
+        run: |
+          ${{ matrix.wheel-check-script }} 3.14t cp314t${{ matrix.t-extra-key }} --managed-python
+
+      - name: Test pypy wheels
+        if: ${{ matrix.check-wheel && matrix.check-pypy-wheel }}
+        run: |
+          ${{ matrix.wheel-check-script }} pypy3.9 pypy39 --managed-python
+          ${{ matrix.wheel-check-script }} pypy3.10 pypy310 --managed-python
+          ${{ matrix.wheel-check-script }} pypy3.11 pypy311 --managed-python
 
   build_sdist:
     name: Build source distribution
