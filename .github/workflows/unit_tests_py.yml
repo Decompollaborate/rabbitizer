@@ -16,21 +16,25 @@ jobs:
             name: linux,
             runner: ubuntu-22.04,
             python_venv_activate: source .venv/bin/activate,
+            find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
           },
           {
-            name: macos,
+            name: macos-arm,
             runner: macos-latest,
             python_venv_activate: source .venv/bin/activate,
+            find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
           },
           {
             name: macos-intel,
             runner: macos-15-intel,
             python_venv_activate: source .venv/bin/activate,
+            find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
           },
           {
             name: windows,
             runner: windows-latest,
             python_venv_activate: .venv/Scripts/Activate.ps1,
+            find_wheel_cmd: Get-ChildItem -Path .\wheelhouse\ -Recurse -Filter "rabbitizer-*.whl"
           },
         ]
         py_version:
@@ -78,8 +82,8 @@ jobs:
       - name: Install wheel
         run: |
           ${{ matrix.os.python_venv_activate }}
-          find ./dist/ -name "rabbitizer-*.whl"
-          uv pip install --force-reinstall $(find ./dist/ -name "rabbitizer-*.whl")
+          ${{ matrix.os.find_wheel_cmd }}
+          uv pip install --force-reinstall $(${{ matrix.os.find_wheel_cmd }})
 
       - name: Run the test
         run: |
