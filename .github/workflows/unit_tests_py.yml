@@ -34,7 +34,7 @@ jobs:
             name: windows,
             runner: windows-latest,
             python_venv_activate: .venv/Scripts/Activate.ps1,
-            find_wheel_cmd: Get-ChildItem -Path .\wheelhouse\ -Recurse -Filter "rabbitizer-*.whl"
+            find_wheel_cmd: Get-ChildItem -Path .\dist\ -Recurse -Filter "rabbitizer-*.whl"
           },
         ]
         py_version:
