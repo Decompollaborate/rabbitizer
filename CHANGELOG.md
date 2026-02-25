@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Install the built wheels in CI to make sure they work corrently in multiple
   versions.
 
+### Changed
+
+- The minimum Python version has been lowered from 3.9 to 3.4.
+- CI: Python unit tests are now tested in multiple Python versions in CI.
+
 ## [1.14.3] - 2025-10-12
 
 ### Fixed
