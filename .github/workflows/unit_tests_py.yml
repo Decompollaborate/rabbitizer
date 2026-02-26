@@ -15,25 +15,21 @@ jobs:
           {
             name: linux,
             runner: ubuntu-22.04,
-            python_venv_activate: source .venv/bin/activate,
             find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
           },
           {
             name: macos-arm,
             runner: macos-latest,
-            python_venv_activate: source .venv/bin/activate,
             find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
           },
           {
             name: macos-intel,
             runner: macos-15-intel,
-            python_venv_activate: source .venv/bin/activate,
             find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
           },
           {
             name: windows,
             runner: windows-latest,
-            python_venv_activate: .venv\Scripts\Activate.ps1,
             find_wheel_cmd: Get-ChildItem -Path .\dist\ -Recurse -Filter "rabbitizer-*.whl"
           },
         ]
@@ -71,23 +67,17 @@ jobs:
         run: |
           python3 --version
           uv venv .venv --no-config -p ${{ matrix.py_version }}
-          ${{ matrix.os.python_venv_activate }}
-          python3 --version
+          uv run --no-config --no-build --no-sync python --version
 
       - name: Build wheel
         run: |
-          ${{ matrix.os.python_venv_activate }}
           uv build --wheel
 
       - name: Install wheel
         run: |
-          ${{ matrix.os.python_venv_activate }}
           ${{ matrix.os.find_wheel_cmd }}
           uv pip install --force-reinstall $(${{ matrix.os.find_wheel_cmd }})
 
       - name: Run the test
         run: |
-          ${{ matrix.os.python_venv_activate }}
-          where python3
-          python3 -c "import sys; print(sys.executable)"
-          python3 tests/python/disasm_test.py
+          uv run --no-config --no-build --no-sync python  tests/python/disasm_test.py
