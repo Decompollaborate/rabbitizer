@@ -5,8 +5,8 @@ on:
   pull_request:
 
 jobs:
-  unit_tests:
-    name: Python ${{ matrix.py_version }} unit tests on '${{ matrix.os.name }}'
+  unit_tests_modern:
+    name: Python ${{ matrix.py_version }} unit tests on '${{ matrix.os.name }}' (modern)
     runs-on: ${{ matrix.os.runner }}
     strategy:
       fail-fast: false
@@ -14,7 +14,7 @@ jobs:
         os: [
           {
             name: linux,
-            runner: ubuntu-22.04,
+            runner: ubuntu-latest,
             find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
           },
           {
@@ -34,10 +34,6 @@ jobs:
           },
         ]
         py_version:
-          - '3.4'
-          - '3.5'
-          - '3.6'
-          - '3.7'
           - '3.8'
           - '3.9'
           - '3.10'
@@ -80,4 +76,76 @@ jobs:
 
       - name: Run the test
         run: |
-          uv run --no-config --no-build --no-sync python  tests/python/disasm_test.py
+          uv run --no-config --no-build --no-sync python tests/python/disasm_test.py
+
+  unit_tests_old:
+    name: Python ${{ matrix.py_version }} unit tests on '${{ matrix.os.name }}' (old)
+    runs-on: ${{ matrix.os.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [
+          {
+            name: linux,
+            runner: ubuntu-latest,
+          },
+          {
+            name: macos-arm,
+            runner: macos-latest,
+          },
+          {
+            name: macos-intel,
+            runner: macos-15-intel,
+          },
+          {
+            name: windows,
+            runner: windows-latest,
+          },
+        ]
+        py_version:
+          - '3.4'
+          - '3.5'
+          - '3.6'
+          - '3.7'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Print Python version
+        run: |
+          python3 --version
+
+      - name: Set up Python ${{ matrix.py_version }} (windows)
+        uses: actions/setup-python@v6
+        if: ${{ matrix.os.name == 'windows' }}
+        with:
+          python-version: ${{ matrix.py_version }}
+
+      - name: Set up Python ${{ matrix.py_version }} (unix)
+        if: ${{ matrix.os.name != 'windows' }}
+        run: |
+          curl -fsSL https://pyenv.run | bash
+          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+          echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+          echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+          echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+          echo 'eval "$(pyenv init - bash)"' >> ~/.profile
+          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+          echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+          echo 'eval "$(pyenv init - bash)"' >> ~/.bash_profile
+          exec "$SHELL"
+          pyenv install ${{ matrix.py_version }}
+
+      - name: Print Python version
+        run: |
+          python3 --version
+
+      - name: Build and install wheel
+        run: |
+          pip install .
+
+      - name: Run the test
+        run: |
+          python3 tests/python/disasm_test.py
