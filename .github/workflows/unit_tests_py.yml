@@ -33,7 +33,7 @@ jobs:
           {
             name: windows,
             runner: windows-latest,
-            python_venv_activate: .venv/Scripts/Activate.ps1,
+            python_venv_activate: .venv\Scripts\Activate.ps1,
             find_wheel_cmd: Get-ChildItem -Path .\dist\ -Recurse -Filter "rabbitizer-*.whl"
           },
         ]
@@ -88,4 +88,6 @@ jobs:
       - name: Run the test
         run: |
           ${{ matrix.os.python_venv_activate }}
+          where python3
+          python3 -c "import sys; print(sys.executable)"
           python3 tests/python/disasm_test.py
