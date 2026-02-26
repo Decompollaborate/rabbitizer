@@ -18,7 +18,7 @@ authors = [
 "Bug Tracker" = "https://github.com/Decompollaborate/rabbitizer/issues"
 
 [build-system]
-requires = ["setuptools>=65.0", "wheel"]
+requires = ["setuptools>=43.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
