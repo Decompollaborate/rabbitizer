@@ -118,22 +118,10 @@ jobs:
         with:
           python-version: ${{ matrix.py_version }}
 
-      - name: Set up Python ${{ matrix.py_version }} (unix)
-        if: ${{ matrix.os.name != 'windows' }}
-        run: |
-          curl -fsSL https://pyenv.run | bash
-          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-          echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-          echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
-          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
-          echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
-          echo 'eval "$(pyenv init - bash)"' >> ~/.profile
-          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
-          echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
-          echo 'eval "$(pyenv init - bash)"' >> ~/.bash_profile
-          exec "$SHELL"
-          pyenv install ${{ matrix.py_version }}
-          pyenv global ${{ matrix.py_version }}
+      - name: Install python version
+        uses: gabrielfalcao/pyenv-action@v18
+        with:
+          default: "${{ matrix.py_version }}"
 
       - name: Print Python version
         run: |
@@ -141,7 +129,7 @@ jobs:
 
       - name: Build and install wheel
         run: |
-          python3 -m pip install .
+          python3 -m pip install . --break-system-packages
 
       - name: Run the test
         run: |
