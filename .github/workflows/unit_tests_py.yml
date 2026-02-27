@@ -135,6 +135,7 @@ jobs:
 
           pyenv install -s ${{ matrix.py_version }}
           pyenv global ${{ matrix.py_version }}
+          pyenv local ${{ matrix.py_version }}
 
           python --version
           python -m ensurepip || true
@@ -144,15 +145,10 @@ jobs:
         run: |
           python --version
 
-      - name: Update pip
-        shell: bash
-        run: |
-          python -m pip install -U pip
-
       - name: Build and install wheel
         shell: bash
         run: |
-          python -m pip install . --break-system-packages
+          python -m pip install .
 
       - name: Run the test
         shell: bash

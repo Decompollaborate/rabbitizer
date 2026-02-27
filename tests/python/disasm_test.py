@@ -5,6 +5,7 @@
 
 import dataclasses
 import rabbitizer
+import sys
 from typing import List, Optional, Tuple
 
 @dataclasses.dataclass
@@ -270,6 +271,7 @@ ALL_TEST_ENTRIES: List[Tuple[str, List[TestEntry]]] = [
 
 # uv run --no-config --no-build --no-sync tests/python/disasm_test.py
 def test_func() -> None:
+    print(f"Running Python {sys.version}")
     total_errors = 0
     for test_name, entries in ALL_TEST_ENTRIES:
         print()
