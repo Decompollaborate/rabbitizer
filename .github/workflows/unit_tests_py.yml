@@ -99,7 +99,6 @@ jobs:
           },
         ]
         py_version:
-          - '3.4'
           - '3.5'
           - '3.6'
           - '3.7'
@@ -138,17 +137,26 @@ jobs:
 
           eval "$(pyenv init -)"
 
+          export PYTHON_CONFIGURE_OPTS="--without-ensurepip"
+          export TMPDIR=/tmp
+
           pyenv install -s ${{ matrix.py_version }}
           pyenv global ${{ matrix.py_version }}
           pyenv local ${{ matrix.py_version }}
 
           python --version
-          python -m ensurepip || true
 
       - name: Print Python version
         shell: bash
         run: |
           python --version
+
+      # We can't use ensure pip because it breaks macos + python 3.7
+      - name: Install pip manually
+        shell: bash
+        run: |
+          curl -sS https://bootstrap.pypa.io/pip/${{ matrix.py_version }}/get-pip.py -o get-pip.py
+          python get-pip.py "pip<24" "setuptools<68" "wheel"
 
       - name: Build and install wheel
         shell: bash
