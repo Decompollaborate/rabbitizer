@@ -3,21 +3,31 @@
 # SPDX-FileCopyrightText: © 2026 Decompollaborate
 # SPDX-License-Identifier: MIT
 
-import dataclasses
+"""
+This file should remain compatible with the version listed in the
+"requires-python" version from the pyproject.toml file.
+At the time of writing: Python 3.4
+"""
+
 import rabbitizer
 import sys
-from typing import List, Optional, Tuple
 
-@dataclasses.dataclass
 class TestEntry:
-    word: int
-    immOverride: Optional[str]
-    expectedStr: str
-    category: rabbitizer.Enum
-    gnuMode: bool = True
+    # word: int
+    # immOverride: Optional[str]
+    # expectedStr: str
+    # category: rabbitizer.Enum
+    # gnuMode: bool = True
+
+    def __init__(self, word, immOverride, expectedStr, category, gnuMode = True):
+        self.word = word
+        self.immOverride = immOverride
+        self.expectedStr = expectedStr
+        self.category = category
+        self.gnuMode = gnuMode
 
 
-TEST_ENTRIES_PLAIN: List[TestEntry] = [
+TEST_ENTRIES_PLAIN = [
     TestEntry(0x3C088001, None,                  "lui         $t0, 0x8001", rabbitizer.InstrCategory.CPU),
     TestEntry(0x25080E60, None,                  "addiu       $t0, $t0, 0xE60", rabbitizer.InstrCategory.CPU),
     TestEntry(0x3C090002, None,                  "lui         $t1, 0x2", rabbitizer.InstrCategory.CPU),
@@ -65,7 +75,7 @@ TEST_ENTRIES_PLAIN: List[TestEntry] = [
 ]
 
 
-TEST_ENTRIES_R3000GTE: List[TestEntry] = [
+TEST_ENTRIES_R3000GTE = [
     TestEntry(0x4A180001, None, "rtps", rabbitizer.InstrCategory.R3000GTE),
     TestEntry(0x4A280030, None, "rtpt", rabbitizer.InstrCategory.R3000GTE),
     TestEntry(0x4A680029, None, "dpcl", rabbitizer.InstrCategory.R3000GTE),
@@ -135,7 +145,7 @@ TEST_ENTRIES_R3000GTE: List[TestEntry] = [
     TestEntry(0x4BA8003E, None, "gpl         1", rabbitizer.InstrCategory.R3000GTE),
 ]
 
-TEST_ENTRIES_R4000ALLEGREX: List[TestEntry] = [
+TEST_ENTRIES_R4000ALLEGREX = [
     TestEntry(0x00801017, None, "clo         $v0, $a0", rabbitizer.InstrCategory.R4000ALLEGREX),
     TestEntry(0x00801016, None, "clz         $v0, $a0", rabbitizer.InstrCategory.R4000ALLEGREX),
     TestEntry(0x00C7001C, None, "madd        $a2, $a3", rabbitizer.InstrCategory.R4000ALLEGREX),
@@ -218,7 +228,7 @@ TEST_ENTRIES_R4000ALLEGREX: List[TestEntry] = [
     TestEntry(0x46100030, None, "c.f.s       $f0, $f16", rabbitizer.InstrCategory.R4000ALLEGREX),
 ]
 
-TEST_ENTRIES_R5900: List[TestEntry] = [
+TEST_ENTRIES_R5900 = [
     TestEntry(0x4A000038, None, "vcallms     0x0", rabbitizer.InstrCategory.R5900),
     TestEntry(0x4A004038, None, "vcallms     0x800", rabbitizer.InstrCategory.R5900),
     TestEntry(0x4A008038, None, "vcallms     0x1000", rabbitizer.InstrCategory.R5900),
@@ -253,7 +263,7 @@ TEST_ENTRIES_R5900: List[TestEntry] = [
     TestEntry(0x48500801, None, "cfc2.i      $s0, $vi1", rabbitizer.InstrCategory.R5900),
 ]
 
-TEST_ENTRIES_R5900_TRUNC_CVT: List[TestEntry] = [
+TEST_ENTRIES_R5900_TRUNC_CVT = [
     TestEntry(0x4600600D,  None, ".word       0x4600600D                   # trunc.w.s   $f0, $f12 # 00000000 <InstrIdType: CPU_COP1_FPUS>", rabbitizer.InstrCategory.R5900, gnuMode=True),
     TestEntry(0x46006024,  None, ".word       0x46006024                   # cvt.w.s     $f0, $f12 # 00000000 <InstrIdType: CPU_COP1_FPUS>", rabbitizer.InstrCategory.R5900, gnuMode=True),
     TestEntry(0x4600600D, None, "trunc.w.s   $f0, $f12", rabbitizer.InstrCategory.R5900, gnuMode=False),
@@ -261,7 +271,7 @@ TEST_ENTRIES_R5900_TRUNC_CVT: List[TestEntry] = [
 ]
 
 
-ALL_TEST_ENTRIES: List[Tuple[str, List[TestEntry]]] = [
+ALL_TEST_ENTRIES = [
     ("plain", TEST_ENTRIES_PLAIN),
     ("r3000gte", TEST_ENTRIES_R3000GTE),
     ("r4000allegrex", TEST_ENTRIES_R4000ALLEGREX),
@@ -270,30 +280,31 @@ ALL_TEST_ENTRIES: List[Tuple[str, List[TestEntry]]] = [
 ]
 
 # uv run --no-config --no-build --no-sync tests/python/disasm_test.py
-def test_func() -> None:
-    print(f"Running Python {sys.version}")
+def test_func():
+    print("Running Python", sys.version)
     total_errors = 0
     for test_name, entries in ALL_TEST_ENTRIES:
         print()
-        print(f"Testing '{test_name}'")
+        print("Testing", test_name)
         errorCount = 0
         for entry in entries:
             rabbitizer.config.toolchainTweaks_gnuMode = entry.gnuMode
             instr = rabbitizer.Instruction(entry.word, category=entry.category)
             disassembly = instr.disassemble(entry.immOverride)
             if disassembly != entry.expectedStr:
-                print(f"Error on word 0x{entry.word:08X}. Expected '{entry.expectedStr}', got '{disassembly}'")
+                word = "0x" + hex(entry.word)[2:].upper()
+                print("Error on word", word, ". Expected", entry.expectedStr, "got", disassembly)
                 errorCount += 1
                 total_errors += 1
         print()
-        print(f"Finish testing '{test_name}'")
+        print("Finish testing", test_name)
 
         test_entries_len = len(entries)
-        print(f"{errorCount} errors out of {test_entries_len} entries. {((test_entries_len - errorCount) / test_entries_len * 100.0)}% correct.")
+        print(errorCount, "errors out of", test_entries_len, "entries.", ((test_entries_len - errorCount) / test_entries_len * 100.0), "% correct.")
 
         print()
 
-    print(f"Total errors: {total_errors}")
+    print("Total errors:", total_errors)
     exit(total_errors != 0)
 
 
