@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.15.0] - 2026-02-28
+
 ### Added
 
 - Add support for Python's limited API (a.k.a. `abi3`).
@@ -774,7 +776,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.3...1.x
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.15.0...1.x
+[1.15.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.3...1.15.0
 [1.14.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.2...1.14.3
 [1.14.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.1...1.14.2
 [1.14.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.0...1.14.1
