@@ -65,6 +65,13 @@ jobs:
           uv venv .venv --no-config -p ${{ matrix.py_version }}
           uv run --no-config --no-build --no-sync python --version
 
+      - name: Check Python version
+        shell: bash
+        run: |
+          uv run --no-config --no-build --no-sync python --version
+          # Ensure the installed version is the version we are expecting
+          uv run --no-config --no-build --no-sync python -c "import sys; exit(not (str(sys.version_info[0])+'.'+str(sys.version_info[1]) == '${{ matrix.py_version }}'))"
+
       - name: Build wheel
         run: |
           uv build --wheel
@@ -137,8 +144,22 @@ jobs:
 
           eval "$(pyenv init -)"
 
+          # macos legacy fixes
           export PYTHON_CONFIGURE_OPTS="--without-ensurepip"
           export TMPDIR=/tmp
+
+          if [[ "$RUNNER_OS" == "macOS" ]]; then
+            brew install openssl@1.1 || true
+
+            OPENSSL_PREFIX="$(brew --prefix openssl@1.1)"
+
+            export LDFLAGS="-L$OPENSSL_PREFIX/lib"
+            export CPPFLAGS="-I$OPENSSL_PREFIX/include"
+            export PKG_CONFIG_PATH="$OPENSSL_PREFIX/lib/pkgconfig"
+
+            export PYTHON_CONFIGURE_OPTS="$PYTHON_CONFIGURE_OPTS --with-openssl=$OPENSSL_PREFIX"
+          fi
+          # macos legacy fixes
 
           pyenv install -s ${{ matrix.py_version }}
           pyenv global ${{ matrix.py_version }}
@@ -146,10 +167,12 @@ jobs:
 
           python --version
 
-      - name: Print Python version
+      - name: Check Python version
         shell: bash
         run: |
           python --version
+          # Ensure the installed version is the version we are expecting
+          python -c "import sys; exit(not (str(sys.version_info[0])+'.'+str(sys.version_info[1]) == '${{ matrix.py_version }}'))"
 
       # We can't use ensure pip because it breaks macos + python 3.7
       - name: Install pip manually
