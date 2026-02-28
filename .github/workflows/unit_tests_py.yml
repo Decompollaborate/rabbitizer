@@ -1,0 +1,193 @@
+name: Python unit tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  unit_tests_modern:
+    name: Python ${{ matrix.py_version }} unit tests on '${{ matrix.os.name }}' (modern)
+    runs-on: ${{ matrix.os.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [
+          {
+            name: linux,
+            runner: ubuntu-latest,
+            find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
+          },
+          {
+            name: macos-arm,
+            runner: macos-latest,
+            find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
+          },
+          {
+            name: macos-intel,
+            runner: macos-15-intel,
+            find_wheel_cmd: find ./dist/ -name "rabbitizer-*.whl"
+          },
+          {
+            name: windows,
+            runner: windows-latest,
+            find_wheel_cmd: Get-ChildItem -Path .\dist\ -Recurse -Filter "rabbitizer-*.whl"
+          },
+        ]
+        py_version:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
+          - '3.12'
+          - '3.13'
+          - '3.14'
+          - '3.14t'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Print Python version
+        run: |
+          python3 --version
+
+      - name: Set up Python ${{ matrix.py_version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.py_version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Setup Python venv
+        run: |
+          python3 --version
+          uv venv .venv --no-config -p ${{ matrix.py_version }}
+          uv run --no-config --no-build --no-sync python --version
+
+      - name: Check Python version
+        shell: bash
+        run: |
+          uv run --no-config --no-build --no-sync python --version
+          # Ensure the installed version is the version we are expecting
+          # The version check needs to be `in` to account for free threaded python
+          uv run --no-config --no-build --no-sync python -c "import sys; exit(not (str(sys.version_info[0])+'.'+str(sys.version_info[1]) in '${{ matrix.py_version }}'))"
+
+      - name: Build wheel
+        run: |
+          uv build --wheel
+
+      - name: Install wheel
+        run: |
+          ${{ matrix.os.find_wheel_cmd }}
+          uv pip install --force-reinstall $(${{ matrix.os.find_wheel_cmd }})
+
+      - name: Run the test
+        run: |
+          uv run --no-config --no-build --no-sync python tests/python/disasm_test.py
+
+  unit_tests_old:
+    name: Python ${{ matrix.py_version }} unit tests on '${{ matrix.os.name }}' (old)
+    runs-on: ${{ matrix.os.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [
+          {
+            name: linux,
+            runner: ubuntu-latest,
+          },
+          {
+            name: macos-intel,
+            runner: macos-15-intel,
+          },
+          {
+            name: windows,
+            runner: windows-latest,
+          },
+        ]
+        py_version:
+          - '3.5'
+          - '3.6'
+          - '3.7'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Print Python version
+        run: |
+          python3 --version
+
+      - name: Set up Python ${{ matrix.py_version }} (windows)
+        uses: actions/setup-python@v6
+        if: ${{ matrix.os.name == 'windows' }}
+        with:
+          python-version: ${{ matrix.py_version }}
+
+      - name: Set up pyenv (unix)
+        if: ${{ matrix.os.name != 'windows' }}
+        run: |
+          curl -fsSL https://pyenv.run | bash
+          echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $GITHUB_ENV
+          echo 'export PATH="$HOME/.pyenv/bin:$PATH"' >> $GITHUB_ENV
+
+      - name: Set up Python ${{ matrix.py_version }} (unix)
+        shell: bash
+        if: ${{ matrix.os.name != 'windows' }}
+        run: |
+          echo "PYENV_ROOT=$HOME/.pyenv" >> $GITHUB_ENV
+          echo "$HOME/.pyenv/bin" >> $GITHUB_PATH
+          echo "$HOME/.pyenv/shims" >> $GITHUB_PATH
+
+          export PYENV_ROOT="$HOME/.pyenv"
+          export PATH="$PYENV_ROOT/bin:$PATH"
+
+          eval "$(pyenv init -)"
+
+          # macos legacy fixes
+          export PYTHON_CONFIGURE_OPTS="--without-ensurepip"
+          export TMPDIR=/tmp
+
+          if [[ "$RUNNER_OS" == "macOS" ]]; then
+            brew install openssl@1.1 || true
+
+            OPENSSL_PREFIX="$(brew --prefix openssl@1.1)"
+
+            export LDFLAGS="-L$OPENSSL_PREFIX/lib"
+            export CPPFLAGS="-I$OPENSSL_PREFIX/include"
+            export PKG_CONFIG_PATH="$OPENSSL_PREFIX/lib/pkgconfig"
+
+            export PYTHON_CONFIGURE_OPTS="$PYTHON_CONFIGURE_OPTS --with-openssl=$OPENSSL_PREFIX"
+          fi
+          # macos legacy fixes
+
+          pyenv install -s ${{ matrix.py_version }}
+          pyenv global ${{ matrix.py_version }}
+          pyenv local ${{ matrix.py_version }}
+
+          python --version
+
+      - name: Check Python version
+        shell: bash
+        run: |
+          python --version
+          # Ensure the installed version is the version we are expecting
+          python -c "import sys; exit(not (str(sys.version_info[0])+'.'+str(sys.version_info[1]) == '${{ matrix.py_version }}'))"
+
+      # We can't use ensure pip because it breaks macos + python 3.7
+      - name: Install pip manually
+        shell: bash
+        run: |
+          curl -sS https://bootstrap.pypa.io/pip/${{ matrix.py_version }}/get-pip.py -o get-pip.py
+          python get-pip.py "pip<24" "setuptools<68" "wheel"
+
+      - name: Build and install wheel
+        shell: bash
+        run: |
+          python -m pip install .
+
+      - name: Run the test
+        shell: bash
+        run: |
+          python tests/python/disasm_test.py
