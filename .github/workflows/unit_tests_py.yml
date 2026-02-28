@@ -70,7 +70,8 @@ jobs:
         run: |
           uv run --no-config --no-build --no-sync python --version
           # Ensure the installed version is the version we are expecting
-          uv run --no-config --no-build --no-sync python -c "import sys; exit(not (str(sys.version_info[0])+'.'+str(sys.version_info[1]) == '${{ matrix.py_version }}'))"
+          # The version check needs to be `in` to account for free threaded python
+          uv run --no-config --no-build --no-sync python -c "import sys; exit(not (str(sys.version_info[0])+'.'+str(sys.version_info[1]) in '${{ matrix.py_version }}'))"
 
       - name: Build wheel
         run: |
