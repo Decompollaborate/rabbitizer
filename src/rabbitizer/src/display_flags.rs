@@ -6,8 +6,8 @@ use pyo3::prelude::*;
 
 pub use crate::operands::DefaultLabelDisplay;
 
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer"))]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer", from_py_object))]
 pub struct InstructionDisplayFlags {
     /// Enables using named registers. This option takes precedence over the other named register options
     named_registers: bool,

@@ -23,8 +23,8 @@ use crate::vram::VramOffset;
 /// [`add_offset`]: Vram::add_offset
 /// [`sub_vram`]: Vram::sub_vram
 /// [`inner`]: Vram::inner
-#[derive(Clone, Copy, Hash, PartialEq, Eq, PartialOrd, Ord)]
-#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer"))]
+#[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer", eq, from_py_object))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Vram {
     inner: u32,

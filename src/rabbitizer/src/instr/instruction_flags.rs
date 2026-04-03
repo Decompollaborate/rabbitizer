@@ -8,8 +8,8 @@ use crate::abi::Abi;
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::DecodingFlags;
 
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
-#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer"))]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "pyo3", pyclass(module = "rabbitizer", from_py_object))]
 pub struct InstructionFlags {
     isa_version: IsaVersion,
     isa_extension: Option<IsaExtension>,

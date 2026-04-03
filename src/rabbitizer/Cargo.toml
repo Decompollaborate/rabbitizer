@@ -63,7 +63,13 @@ all_gated_extensions = [
 
 serde = ["dep:serde"]
 bindings_c = []
-pyo3 = ["std", "dep:pyo3", "all_isas", "all_extensions", "all_gated_extensions"]
+pyo3 = [
+    "std",
+    "dep:pyo3",
+    "all_isas",
+    "all_extensions",
+    "all_gated_extensions",
+]
 
 # Documentation should be generated with every user-facing feature
 doc = ["all_isas", "all_extensions", "all_gated_extensions", "encoder"]
@@ -71,7 +77,7 @@ doc = ["all_isas", "all_extensions", "all_gated_extensions", "encoder"]
 [dependencies]
 bitflags = { version = "2.6.0", default-features = false }
 ordered-float = { version = "5.0.0", default-features = false, optional = true }
-pyo3 = { version = "0.23.2", optional = true }
+pyo3 = { version = "0.28", optional = true }
 serde = { version = "1", features = ["derive"], default-features = false, optional = true }
 
 [package.metadata.docs.rs]
