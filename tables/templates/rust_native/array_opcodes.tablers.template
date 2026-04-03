@@ -58,7 +58,7 @@
 
 use crate::access_type::AccessType;
 SPECIAL_RS_TAG(cfg(feature = "R5900EE"))
-use crate::instr_suffix::InstrSuffix;
+use crate::instr_suffixes::InstrSuffix;
 use crate::instr::InstrType;
 SPECIAL_RS_TAG(cfg(any(
     feature = "RSP",

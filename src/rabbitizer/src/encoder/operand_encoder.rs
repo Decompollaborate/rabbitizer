@@ -28,7 +28,7 @@ impl Operand {
 
         // Hacky way to workaround unused_mut warning that gets triggered under
         // some feature flags combinations.
-        #[expect(dead_code)]
+        #[allow(dead_code)]
         #[expect(clippy::self_assignment)]
         {
             token = token;

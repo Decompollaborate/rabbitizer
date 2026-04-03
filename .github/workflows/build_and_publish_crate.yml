@@ -238,7 +238,7 @@ jobs:
         uses: taiki-e/install-action@cargo-hack
 
       - name: Run MSRV checker
-        run: cargo hack check --rust-version --workspace --all-targets --ignore-private
+        run: cargo hack check --rust-version --workspace --all-targets --ignore-private --skip pyo3
 
   msrv_all_features:
     name: Check MSRV is correct for all features
@@ -251,7 +251,33 @@ jobs:
         uses: taiki-e/install-action@cargo-hack
 
       - name: Run MSRV checker
-        run: cargo hack check --rust-version --workspace --all-targets --ignore-private --all-features
+        run: cargo hack check --rust-version --workspace --all-targets --ignore-private --all-features --skip pyo3
+
+  msrv_each_feature:
+    name: Check MSRV is correct for each feature
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup MSRV checker
+        uses: taiki-e/install-action@cargo-hack
+
+      - name: Run MSRV checker
+        run: cargo hack check --rust-version --workspace --all-targets --ignore-private --each-feature --no-dev-deps --skip pyo3
+
+  msrv_feature_powerset:
+    name: Check MSRV is correct for feature powerset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reposistory
+        uses: actions/checkout@v4
+
+      - name: Setup MSRV checker
+        uses: taiki-e/install-action@cargo-hack
+
+      - name: Run MSRV checker
+        run: cargo hack check --rust-version --workspace --all-targets --feature-powerset --no-dev-deps --skip pyo3
 
   publish_rabbitizer:
     name: Publish crate

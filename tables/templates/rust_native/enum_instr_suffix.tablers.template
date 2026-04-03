@@ -7,7 +7,7 @@
 
 use core::fmt;
 
-use crate::instr_suffix::{INSTR_SUFFIX_COUNT, InstrSuffixDescriptor, InstrSuffixDisplay};
+use crate::instr_suffixes::{INSTR_SUFFIX_COUNT, InstrSuffixDescriptor, InstrSuffixDisplay};
 
 #define RAB_DEF_INSTRSUFFIX(prefix, name, isa_exten, ...) \
     SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \

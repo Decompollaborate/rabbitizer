@@ -14,6 +14,7 @@ readme = "README.md"
 # keywords = ["MIPS", "decoder", "cli"]
 # categories = ["command-line-utilities"]
 build = "build.rs"
+publish = false
 
 [[bin]]
 name = "rab-disasmdis-web"
