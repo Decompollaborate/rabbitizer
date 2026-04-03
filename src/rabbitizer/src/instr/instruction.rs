@@ -6,7 +6,7 @@ use core::fmt;
 use crate::abi::Abi;
 use crate::display_flags::InstructionDisplayFlags;
 use crate::encoded_field_mask::EncodedFieldMask;
-use crate::instr::{InstrField, InstructionDisplay, InstructionFlags};
+use crate::instr::{InstrField, InstructionDisplay, InstructionFlags, MnemonicDisplay};
 #[cfg(any(
     feature = "RSP",
     feature = "R3000GTE",
@@ -229,7 +229,15 @@ impl Instruction {
         self.flags.isa_extension()
     }
 
-    /// The Opcode for this instruction.
+    /// The [`Opcode`] for this instruction.
+    ///
+    /// Note [`Opcode`] does not support [`Display`]ing as-is.
+    /// You should use [`mnemonic_display`] for that purpose since that handles
+    /// additional information like dynamic instruction suffixes.
+    ///
+    /// [`Opcode`]: crate::opcodes::Opcode
+    /// [`Display`]: core::fmt::Display
+    /// [`mnemonic_display`]: crate::instr::Instruction::mnemonic_display
     #[must_use]
     pub const fn opcode(&self) -> Opcode {
         self.opcode_decoder.opcode()
@@ -241,7 +249,7 @@ impl Instruction {
     /// to help debugging the decoding process. This information is usually not useful for
     /// consumers of this crate.
     ///
-    /// [`Opcode`]: crate::opcodes::Opcode.
+    /// [`Opcode`]: crate::opcodes::Opcode
     #[must_use]
     pub const fn opcode_category(&self) -> OpcodeCategory {
         self.opcode_decoder.opcode_category()
@@ -317,6 +325,62 @@ impl Instruction {
         T: fmt::Display,
     {
         InstructionDisplay::new(self, display_flags, imm_override, extra_ljust)
+    }
+
+    /// An object that can [`Display`] the opcode of the instruction, including
+    /// any aditional information like dynamic instruction suffixes.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+    /// use rabbitizer::isa::IsaVersion;
+    ///
+    /// let vram = Vram::new(0x80000000);
+    /// let flags = InstructionFlags::new(IsaVersion::MIPS_I);
+    /// let instr = Instruction::new(0x3C088001, vram, flags);
+    /// let display_flags = InstructionDisplayFlags::new();
+    ///
+    /// assert_eq!(
+    ///     &instr.mnemonic_display(&display_flags).to_string(),
+    ///     "lui",
+    /// );
+    /// ```
+    ///
+    /// ```
+    /// # #[cfg(feature="R5900EE")]
+    /// # fn test_func() {
+    ///
+    /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+    /// use rabbitizer::isa::IsaExtension;
+    ///
+    /// let vram = Vram::new(0x80000000);
+    /// let flags = InstructionFlags::new_extension(IsaExtension::R5900EE);
+    /// let instr = Instruction::new(0x4BC03ABC, vram, flags);
+    /// let display_flags = InstructionDisplayFlags::new();
+    ///
+    /// assert_eq!(
+    ///     &instr.mnemonic_display(&display_flags).to_string(),
+    ///     "vadda.xyz",
+    /// );
+    /// // Note how the plain opcode doesn't know about the current suffix of the instruction.
+    /// assert_eq!(
+    ///     instr.opcode().name(),
+    ///     "vadda",
+    /// );
+    /// # }
+    /// # #[cfg(feature="R5900EE")]
+    /// # test_func();
+    /// ```
+    ///
+    /// [`Display`]: core::fmt::Display
+    #[must_use]
+    #[doc(alias = "opcode_display")]
+    pub const fn mnemonic_display<'ins, 'flg>(
+        &'ins self,
+        display_flags: &'flg InstructionDisplayFlags,
+    ) -> MnemonicDisplay<'ins, 'flg> {
+        MnemonicDisplay::new(self, display_flags)
     }
 }
 

@@ -6,7 +6,8 @@ use core::ops::Index;
 use crate::access_type::AccessType;
 use crate::encoded_field_mask::EncodedFieldMask;
 #[allow(deprecated)]
-use crate::instr::{InstrSuffix, InstrType};
+use crate::instr::InstrType;
+use crate::instr_suffixes::InstrSuffix;
 use crate::isa::{IsaExtension, IsaVersion};
 use crate::opcodes::{Opcode, OpcodeCategory};
 use crate::operands::{Operand, OperandIterator, OPERAND_COUNT_MAX};
@@ -545,10 +546,10 @@ impl OpcodeDescriptor {
     pub const fn instr_type(&self) -> InstrType {
         self.instr_type
     }
-    // #[must_use]
-    // pub const fn instr_suffix(&self) -> InstrSuffix {
-    //     self.instr_suffix
-    // }
+    #[must_use]
+    pub const fn instr_suffix(&self) -> Option<InstrSuffix> {
+        self.instr_suffix
+    }
     #[must_use]
     pub const fn is_branch(&self) -> bool {
         self.is_branch

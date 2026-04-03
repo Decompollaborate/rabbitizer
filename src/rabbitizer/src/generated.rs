@@ -83,6 +83,7 @@ pub use array_opcodes::OPCODES;
 pub use enum_abi::Abi;
 pub use enum_access_type::{AccessType, ACCESS_TYPES};
 pub use enum_instr_suffix::InstrSuffix;
+pub use enum_instr_suffix::INSTR_SUFFIXES;
 pub use enum_isa_extension::IsaExtension;
 pub use enum_isa_version::IsaVersion;
 pub use enum_opcode::Opcode;

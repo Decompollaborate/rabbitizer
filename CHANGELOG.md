@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add missing support for dynamic suffixed instructions (R5900EE) for both
+  decoding and encoding.
+- Add `Instruction::mnemonic_display`.
+  - The recommended way to display the `mnemonic`/`opcode` of an instruction.
+  - Use this function instead of `Instruction.opcode().name()`, since this
+    function can display additional data like the dynamic suffix.
+- Add `Opcode::instr_suffix()` and `OpcodeDescriptor::instr_suffix()`.
+
+### Changed
+
+- Renamed `InstrSuffix::R5900EE_xyzw` to `InstrSuffix::r5900ee_xyzw`.
+
+### Fix
+
+- Fix R5900EE instructions not emitting their corresponding dynamic suffix.
+  - Previously the instruction dynamic suffix implementation was completely
+    missing, so instructions like `vadda.xyz` would get disassembled as `vadda`.
+
 ## [2.0.0-alpha.7] - 2025-09-20
 
 ### Fix

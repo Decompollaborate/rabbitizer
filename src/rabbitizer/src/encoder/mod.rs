@@ -3,6 +3,7 @@
 
 mod encoder_iterator;
 mod encoding_error;
+pub(crate) mod instr_suffix_encoder;
 pub(crate) mod operand_encoder;
 pub(crate) mod token;
 

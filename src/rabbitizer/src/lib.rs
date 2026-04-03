@@ -85,6 +85,7 @@
 #![warn(clippy::ref_option)]
 #![warn(clippy::manual_let_else)]
 #![allow(clippy::manual_non_exhaustive)]
+#![allow(clippy::pattern_type_mismatch)]
 //
 #![cfg_attr(not(feature = "std"), no_std)]
 //
@@ -101,6 +102,7 @@ pub mod access_type_descriptor;
 pub mod display_flags;
 mod encoded_field_mask;
 pub mod instr;
+pub mod instr_suffixes;
 pub mod isa;
 pub mod opcodes;
 pub mod operands;

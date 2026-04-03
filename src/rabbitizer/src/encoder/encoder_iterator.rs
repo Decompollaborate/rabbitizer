@@ -2,14 +2,15 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::encoded_field_mask::EncodedFieldMask;
-use crate::encoder::operand_encoder::EncodedOperandBits;
-use crate::encoder::token::{Token, Tokenize};
-use crate::encoder::EncodingError;
 use crate::instr::{Instruction, InstructionFlags};
 use crate::opcodes::{Opcode, OpcodeDecoder, OPCODES};
 use crate::operands::Operand;
 use crate::utils::iter::DoubleOptIterator;
 use crate::vram::{Vram, VramOffset};
+
+use super::operand_encoder::EncodedOperandBits;
+use super::token::{Token, TokenDottedText, Tokenize};
+use super::EncodingError;
 
 #[derive(Debug, Clone)]
 #[must_use = "iterators are lazy and do nothing unless consumed"]
@@ -62,7 +63,7 @@ impl<'s> EncoderIterator<'s> {
         let mut reamining_operands = operands_iter.len();
 
         if reamining_operands == 0 {
-            return Ok(0);
+            return Ok(word);
         }
 
         let mut tokenizer_iter = DoubleOptIterator::new(self.tokenizer.by_ref());
@@ -130,14 +131,14 @@ impl<'s> Iterator for EncoderIterator<'s> {
     type Item = Result<Instruction, EncodingError<'s>>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let opcode = loop {
+        let (opcode, suffix_bits) = loop {
             match self.tokenizer.next() {
                 None => return None,
                 Some(Token::End) => continue,
                 Some(Token::Comma) => return Some(Err(EncodingError::CommaInsteadOfOpcode)),
                 Some(Token::Text(text)) => {
                     if let Some(opcode) = self.find_opcode(text) {
-                        break opcode;
+                        break (opcode, 0);
                     } else {
                         return Some(Err(EncodingError::UnrecognizedOpcode(text)));
                     }
@@ -155,6 +156,32 @@ impl<'s> Iterator for EncoderIterator<'s> {
                         bracket_type,
                     )))
                 }
+                Some(Token::DottedText(TokenDottedText {
+                    full,
+                    left: text,
+                    dotted,
+                })) => {
+                    if let Some(opcode) = self.find_opcode(full) {
+                        // There are lot of instructions that have a non dynamic suffix,
+                        // just yield them
+                        // i.e. add.s
+                        break (opcode, 0);
+                    } else if let Some(opcode) = self.find_opcode(text) {
+                        if let Some(instr_suffix) = opcode.instr_suffix() {
+                            // Instruction has a dynamic suffix
+                            // i.e. vadda.xyz
+                            let suffix_bits = match instr_suffix.encode_to_bits(dotted, opcode) {
+                                Ok(v) => v,
+                                Err(e) => return Some(Err(e)),
+                            };
+                            break (opcode, suffix_bits);
+                        } else {
+                            return Some(Err(EncodingError::UnrecognizedOpcode(full)));
+                        }
+                    } else {
+                        return Some(Err(EncodingError::UnrecognizedOpcode(full)));
+                    }
+                }
             }
         };
 
@@ -168,7 +195,7 @@ impl<'s> Iterator for EncoderIterator<'s> {
             }
         };
 
-        word |= operand_bits;
+        word |= suffix_bits | operand_bits;
 
         let vram = self.vram;
         self.vram += VramOffset::new(4);

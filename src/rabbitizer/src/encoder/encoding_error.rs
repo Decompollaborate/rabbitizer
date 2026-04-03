@@ -9,10 +9,12 @@ use core::error;
 use std::error;
 
 use crate::encoder::BracketType;
+use crate::instr_suffixes::InstrSuffix;
 use crate::opcodes::Opcode;
 use crate::operands::Operand;
 
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[non_exhaustive]
 pub enum EncodingError<'s> {
     CommaInsteadOfOpcode,
     UnrecognizedOpcode(&'s str),
@@ -40,21 +42,24 @@ pub enum EncodingError<'s> {
     BracketedInsteadOfCommaEnd(Opcode, Operand, &'s str, &'s str, BracketType),
     BracketSoloInsteadOfCommaEnd(Opcode, Operand, &'s str, BracketType),
     MissingCommaInComposedOperand(Opcode, Operand),
+    MalformedInstrSuffix(Opcode, &'s str),
+    UnrecognizedInstrSuffix(Opcode, InstrSuffix, &'s str, char),
+    InvalidDuplicatedSuffix(Opcode, InstrSuffix, &'s str, char),
 }
 
 impl fmt::Display for EncodingError<'_> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match *self {
+        match self {
             Self::CommaInsteadOfOpcode => write!(f, "Found a comma instead of an opcode"),
             Self::UnrecognizedOpcode(text) => write!(f, "The token '{}' did not match any known opcode", text),
             Self::BracketedInsteadOfOpcode(left, right, bracket_type) => {
                 write!(f, "The token '")?;
-                write_bracketed(f, bracket_type, left, right)?;
+                write_bracketed(f, *bracket_type, left, right)?;
                 write!(f, "' is not a valid opcode")
             }
             Self::BracketSoloInsteadOfOpcode(text, bracket_type) => {
                 write!(f, "The token '")?;
-                write_bracketed(f, bracket_type, "", text)?;
+                write_bracketed(f, *bracket_type, "", text)?;
                 write!(f, "' is not a valid opcode")
             }
             Self::RanOutOfTokens(opcode, operand) => write!(f, "Unable to encode opcode '{:?}': Ran out of tokens before being able to encode operand '{:?}'", opcode, operand),
@@ -62,37 +67,37 @@ impl fmt::Display for EncodingError<'_> {
             Self::CommaInsteadOfOperand(opcode, operand) => write!(f, "Unable to encode opcode '{:?}': Comma found instead of operand for '{:?}'", opcode, operand),
             Self::BracketedInsteadOfSingleOperand(opcode, operand, left, right, bracket_type) => {
                 write!(f, "Unable to encode opcode '{:?}': Token '", opcode)?;
-                write_bracketed(f, bracket_type, left, right)?;
+                write_bracketed(f, *bracket_type, left, right)?;
                 write!(f, "' is not valid for operand for '{:?}'", operand)
             }
             Self::BracketSoloInsteadOfSingleOperand(opcode, operand, text, bracket_type) => {
                 write!(f, "Unable to encode opcode '{:?}': Token '", opcode)?;
-                write_bracketed(f, bracket_type, "", text)?;
+                write_bracketed(f, *bracket_type, "", text)?;
                 write!(f, "' is not valid for operand for '{:?}'", operand)
             }
             Self::TextInsteadOfBracketedOperand(opcode, operand, text, bracket_type) => write!(f, "Unable to encode opcode '{:?}': Found token '{}' instead of bracketed expression '{}{}' when trying to encode operand '{:?}'", opcode, text, bracket_type.left(), bracket_type.right(), operand),
             Self::BracketSoloInsteadOfBracketedOperand(opcode, operand, text, bracket_type, _required_bracket_type) => {
                 write!(f, "Unable to encode opcode '{:?}': Token '", opcode)?;
-                write_bracketed(f, bracket_type, "", text)?;
+                write_bracketed(f, *bracket_type, "", text)?;
                 write!(f, "' is not valid for operand for '{:?}'", operand)
             }
             Self::BracketedInsteadOfBracketSoloOperand(opcode, operand, left, right, bracket_type, _required_bracket_type) => {
                 write!(f, "Unable to encode opcode '{:?}': Token '", opcode)?;
-                write_bracketed(f, bracket_type, left, right)?;
+                write_bracketed(f, *bracket_type, left, right)?;
                 write!(f, "' is not valid for operand for '{:?}'", operand)
             }
             Self::WrongBracketedOperand(opcode, operand, left, right, bracket_type, required_bracket_type) => {
                 write!(f, "Unable to encode opcode '{:?}': Found wrong kind of bracketed expression when trying to encode operand '{:?}'. ", opcode, operand)?;
                 write!(f, "Expected expression '")?;
-                write_bracketed(f, required_bracket_type, left, right)?;
+                write_bracketed(f, *required_bracket_type, left, right)?;
                 write!(f, "', but found '")?;
-                write_bracketed(f, bracket_type, left, right)?;
+                write_bracketed(f, *bracket_type, left, right)?;
                 write!(f, "'")
             }
             Self::UnrecognizedOperand(opcode, text, right, operand) => {
                 write!(f, "Unable to encode opcode '{:?}': The token '", opcode)?;
                 if let Some((right, bracket_type)) = right {
-                    write_bracketed(f, bracket_type, text, right)?;
+                    write_bracketed(f, *bracket_type, text, right)?;
                 } else {
                     write!(f, "{}", text)?;
                 }
@@ -102,15 +107,26 @@ impl fmt::Display for EncodingError<'_> {
             Self::TokenInsteadOfCommaEnd(opcode, operand, text) => write!(f, "Unable to encode opcode '{:?}': Found unrecognized token '{}' instead of comma or end while processing operand '{:?}'", opcode, text, operand),
             Self::BracketedInsteadOfCommaEnd(opcode, operand, left, right, bracket_type) => {
                 write!(f, "Unable to encode opcode '{:?}': Found unrecognized token '", opcode)?;
-                write_bracketed(f, bracket_type, left, right)?;
+                write_bracketed(f, *bracket_type, left, right)?;
                 write!(f, "' instead of comma or end while processing operand '{:?}'", operand)
             }
             Self::BracketSoloInsteadOfCommaEnd(opcode, operand, text, bracket_type) => {
                 write!(f, "Unable to encode opcode '{:?}': Found unrecognized token '", opcode)?;
-                write_bracketed(f, bracket_type, "", text)?;
+                write_bracketed(f, *bracket_type, "", text)?;
                 write!(f, "' instead of comma or end while processing operand '{:?}'", operand)
             }
-            Self::MissingCommaInComposedOperand(opcode, operand) => write!(f, "Unable to encode opcode '{:?}': Missing comma in composed operand '{:?}'", opcode, operand),
+            Self::MissingCommaInComposedOperand(opcode, operand) => {
+                write!(f, "Unable to encode opcode '{:?}': Missing comma in composed operand '{:?}'", opcode, operand)
+            }
+            Self::MalformedInstrSuffix(opcode, suffix_str) => {
+                write!(f, "Instruction suffix '{}' for opcode '{:?}' is malformed", suffix_str, opcode)
+            }
+            Self::UnrecognizedInstrSuffix(opcode, expected_instr_suffix, suffix_str, invalid_char) => {
+                write!(f, "Unable to encode '{:?}' ('{}{}'): The character '{}' is not valid for the instruction suffix '{:?}'", opcode, opcode.name(), suffix_str, invalid_char, expected_instr_suffix)
+            }
+            Self::InvalidDuplicatedSuffix(opcode, _expected_instr_suffix, suffix_str, invalid_char) => {
+                write!(f, "Unable to encode '{:?}' ('{}{}'): The suffix character '{}' is duplicated", opcode, opcode.name(), suffix_str, invalid_char)
+            }
         }
     }
 }

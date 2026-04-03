@@ -240,10 +240,12 @@ pub mod iter {
             Self { iter, front: None }
         }
 
+        #[cfg(feature = "R4000ALLEGREX")]
         pub fn push_front(&mut self, item: I::Item) {
             self.front = Some(item);
         }
 
+        #[cfg(feature = "R4000ALLEGREX")]
         pub fn next_inner(&mut self) -> Option<I::Item> {
             self.iter.next()
         }
@@ -320,6 +322,7 @@ pub mod hex_num {
         Ok(value)
     }
 
+    #[cfg(any(feature = "R4000ALLEGREX", feature = "R5900EE"))]
     pub fn i8_from_str(s: &str) -> Result<i8, core::num::ParseIntError> {
         if matches!(s, "-0x80" | "-0X80" | "-128") {
             return Ok(-0x80);
@@ -381,5 +384,75 @@ pub mod truth {
     #[must_use]
     pub(crate) const fn both_or_neither(a: bool, b: bool) -> bool {
         !(a ^ b)
+    }
+}
+
+pub mod fmt {
+    use core::fmt;
+
+    /// Count how many characters are written instead of actually writting them.
+    #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    pub(crate) struct Counter {
+        count: usize,
+    }
+
+    impl Counter {
+        pub const fn new() -> Self {
+            Self { count: 0 }
+        }
+
+        pub const fn count(&self) -> usize {
+            self.count
+        }
+    }
+
+    impl fmt::Write for Counter {
+        #[inline]
+        fn write_str(&mut self, s: &str) -> fmt::Result {
+            self.count += s.len();
+            Ok(())
+        }
+    }
+
+    /*
+    struct Buffer<'data> {
+        data: &'data mut [u8],
+        pos: usize,
+    }
+    impl fmt::Write for Buffer<'_> {
+        fn write_str(&mut self, s: &str) -> fmt::Result {
+            // TODO: test this implementation actually works.
+
+            if self.pos + s.len() > self.data.len() {
+                return Err(fmt::Error);
+            }
+
+            self.data[self.pos..].copy_from_slice(s.as_bytes());
+            self.pos += s.len();
+
+            Ok(())
+        }
+    }
+
+    fn test<T: fmt::Display>(a: &super::OperandDisplay<T>, buf: &mut Buffer) -> fmt::Result {
+        write!(buf, "{}", a)
+    }
+    */
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        use core::fmt::Write;
+
+        #[test]
+        fn test_fmt_counter() {
+            let mut counter = Counter::new();
+            let stuff = "stuff";
+
+            write!(&mut counter, "{}", stuff).unwrap();
+
+            assert_eq!(stuff.len(), counter.count(),);
+        }
     }
 }

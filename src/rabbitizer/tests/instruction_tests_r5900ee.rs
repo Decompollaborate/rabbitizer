@@ -565,6 +565,22 @@ fn check_r5900ee_instructions() {
             "sq",
             [Some("$a2"), Some("0x1234($v1)"), None, None, None],
         ),
+        TestEntry::new(
+            0x4A003ABC,
+            InstructionFlags::new_extension(IsaExtension::R5900EE).with_abi(Abi::EABI64),
+            "vadda       ACC, $vf0, $vf7",
+            Opcode::r5900ee_vadda,
+            "vadda",
+            [Some("ACC"), Some("$vf0"), Some("$vf7"), None, None],
+        ),
+        TestEntry::new(
+            0x4BC03ABC,
+            InstructionFlags::new_extension(IsaExtension::R5900EE).with_abi(Abi::EABI64),
+            "vadda.xyz   ACC, $vf0, $vf7",
+            Opcode::r5900ee_vadda,
+            "vadda.xyz",
+            [Some("ACC"), Some("$vf0"), Some("$vf7"), None, None],
+        ),
     ];
 
     assert_eq!(check_test_entries(ENTRIES), (0, 0));

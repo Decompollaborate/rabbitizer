@@ -2,10 +2,12 @@
 /* SPDX-License-Identifier: MIT */
 
 use core::fmt;
+use core::fmt::Write;
 
 use crate::display_flags::InstructionDisplayFlags;
 use crate::instr::Instruction;
 use crate::opcodes::Opcode;
+use crate::utils;
 
 #[cfg(feature = "R5900EE")]
 use crate::isa::IsaExtension;
@@ -128,16 +130,23 @@ where
         f: &mut fmt::Formatter<'_>,
     ) -> fmt::Result {
         let opcode = self.instr.opcode();
-        let opcode_name = opcode.name();
+        let opcode_descriptor = opcode.get_descriptor();
+        let opcode_name = opcode_descriptor.name();
         let mut written_chars = 0;
 
         write!(f, "{}", opcode_name)?;
         written_chars += opcode_name.len();
 
-        // TODO: instruction suffix
-        // written_chars += suffix.len();
+        if let Some(suffix) = opcode_descriptor.instr_suffix() {
+            let suffix_display = suffix.display(self.instr, self.display_flags);
+            write!(f, "{}", suffix_display)?;
 
-        if !opcode.has_any_operands() {
+            let mut counter = utils::fmt::Counter::new();
+            write!(&mut counter, "{}", suffix_display)?;
+            written_chars += counter.count();
+        }
+
+        if !opcode_descriptor.has_any_operands() {
             // We do an early return to avoid generating empty space after the
             // opcode name and before the non-existing operands
             return Ok(());

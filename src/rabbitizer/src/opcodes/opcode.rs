@@ -4,6 +4,7 @@
 use crate::access_type::AccessType;
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::InstrType;
+use crate::instr_suffixes::InstrSuffix;
 #[cfg(any(
     feature = "RSP",
     feature = "R3000GTE",
@@ -103,10 +104,10 @@ impl Opcode {
     pub fn instr_type(&self) -> InstrType {
         self.get_descriptor().instr_type()
     }
-    // #[must_use]
-    // pub fn instr_suffix(&self) -> InstrSuffix {
-    //     self.get_descriptor().instr_suffix()
-    // }
+    #[must_use]
+    pub fn instr_suffix(&self) -> Option<InstrSuffix> {
+        self.get_descriptor().instr_suffix()
+    }
     #[must_use]
     pub fn is_branch(&self) -> bool {
         self.get_descriptor().is_branch()

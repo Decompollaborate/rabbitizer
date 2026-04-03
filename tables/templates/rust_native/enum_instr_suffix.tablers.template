@@ -5,7 +5,12 @@
 #define HASH_EXPANSION(x) x
 #define SPECIAL_RS_TAG(...) HASH_EXPANSION(HASH)[__VA_ARGS__]
 
-#define RAB_DEF_INSTRSUFFIX(prefix, name) \
+use core::fmt;
+
+use crate::instr_suffix::{INSTR_SUFFIX_COUNT, InstrSuffixDescriptor, InstrSuffixDisplay};
+
+#define RAB_DEF_INSTRSUFFIX(prefix, name, isa_exten, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
     prefix##_##name,
 
 SPECIAL_RS_TAG(derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord))
@@ -15,3 +20,60 @@ pub enum InstrSuffix {
 }
 
 #undef RAB_DEF_INSTRSUFFIX
+
+
+#define RAB_DEF_INSTRSUFFIX(prefix, name, isa_exten, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
+    { \
+        table[ InstrSuffix::prefix##_##name as usize] = InstrSuffixDescriptor { \
+            __VA_ARGS__ \
+            ..InstrSuffixDescriptor::new( #name ) \
+        }; \
+    }
+
+pub static INSTR_SUFFIXES: [InstrSuffixDescriptor; INSTR_SUFFIX_COUNT] = {
+    SPECIAL_RS_TAG(allow(unused_mut))
+    let mut table = [InstrSuffixDescriptor::default(); INSTR_SUFFIX_COUNT];
+
+    #include "InstrSuffix.inc"
+
+    table
+};
+
+#undef RAB_DEF_INSTRSUFFIX
+
+
+#define RAB_DEF_INSTRSUFFIX(prefix, name, isa_exten, ...) \
+    SPECIAL_RS_TAG(cfg(feature = #isa_exten )) \
+    InstrSuffix::prefix##_##name => \
+        InstrSuffixDisplay::display_ ## prefix ## _ ## name (self, _f), \
+
+// The "// '" is a hack to prevent cpp from warning about unterminated literals
+impl InstrSuffixDisplay<'_, '_>
+{
+    SPECIAL_RS_TAG(cfg_attr(not(any(feature = "R5900EE",)), expect(unreachable_code)))
+    pub(crate) fn display_this_suffix(
+        &self,
+        _f: &mut fmt::Formatter<'_>, // '
+    ) -> fmt::Result {
+        match self.instr_suffix() {
+            #include "InstrSuffix.inc"
+        }
+    }
+}
+
+#undef RAB_DEF_INSTRSUFFIX
+
+
+
+SPECIAL_RS_TAG(cfg(test))
+mod tests {
+    use super::*;
+
+    SPECIAL_RS_TAG(test)
+    fn check_descriptor_valid() {
+        for x in INSTR_SUFFIXES {
+            x.check_valid_entry();
+        }
+    }
+}

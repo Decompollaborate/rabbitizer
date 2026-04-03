@@ -3,7 +3,24 @@
 
 use core::str::CharIndices;
 
-#[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
+pub(crate) struct TokenDottedText<'s> {
+    pub(crate) full: &'s str,
+    pub(crate) left: &'s str,
+    pub(crate) dotted: &'s str,
+}
+
+impl<'s> TokenDottedText<'s> {
+    pub(crate) const fn new(full: &'s str, text: &'s str, dotted: &'s str) -> Self {
+        Self {
+            full,
+            left: text,
+            dotted,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub(crate) enum Token<'s> {
     End,
     Comma,
@@ -12,6 +29,13 @@ pub(crate) enum Token<'s> {
     Bracketed(&'s str, &'s str, BracketType),
     /// [b], (b)
     BracketSolo(&'s str, BracketType),
+    /// a.b
+    /// `a` and `b` are be non-empty (doesn't support `.b`, `a.`).
+    /// Those cases return `Text`.
+    ///
+    /// `a` has 0 dots.
+    /// `b` has at least 1 dot, maybe more.
+    DottedText(TokenDottedText<'s>),
 }
 
 #[derive(Debug, Clone)]
@@ -32,6 +56,62 @@ impl<'s> Tokenize<'s> {
             trailing_token: None,
         }
     }
+
+    fn decide_text_to_return(
+        &mut self,
+        current_start: Option<usize>,
+        dot_index: Option<usize>,
+        index: usize,
+        trailing_token: Option<Token<'s>>,
+    ) -> Option<Token<'s>> {
+        match (current_start, dot_index) {
+            (None, _) => trailing_token,
+            (Some(i), Some(dot)) if index > dot + 1 => {
+                // `if index > dot + 1` checks we don't have a trailing dot.
+                self.trailing_token = trailing_token;
+                Some(Token::DottedText(TokenDottedText::new(
+                    &self.text[i..index],
+                    &self.text[i..dot],
+                    &self.text[dot..index],
+                )))
+            }
+            (Some(i), _) => {
+                self.trailing_token = trailing_token;
+                Some(Token::Text(&self.text[i..index]))
+            }
+        }
+    }
+
+    fn decide_bracket_to_return(
+        text: &'s str,
+        iterator: &mut impl Iterator<Item = (usize, char)>,
+        current_start: Option<usize>,
+        (bracket_index, bracket_start): (usize, char),
+    ) -> Option<Token<'s>> {
+        let bracket_type = if bracket_start == '(' {
+            BracketType::Parenthesis
+        } else if bracket_start == '[' {
+            BracketType::Brackets
+        } else {
+            return None;
+        };
+        let bracket_end = bracket_type.right();
+
+        // Consume the iterator until we find the first closing bracket
+        let (end_pos, _) = iterator.find(|&(_other_i, other_c)| other_c == bracket_end)?;
+
+        let bracketed_part = &text[bracket_index + 1..end_pos];
+        let token = match current_start {
+            None => Token::BracketSolo(bracketed_part, bracket_type),
+            Some(i) => {
+                let left = &text[i..bracket_index];
+
+                Token::Bracketed(left.trim(), bracketed_part.trim(), bracket_type)
+            }
+        };
+
+        Some(token)
+    }
 }
 
 impl<'s> Iterator for Tokenize<'s> {
@@ -44,6 +124,7 @@ impl<'s> Iterator for Tokenize<'s> {
 
         let mut current_start: Option<usize> = None;
         let mut bracket_start_info: Option<(usize, char)> = None;
+        let mut dot_index: Option<usize> = None;
 
         let mut iterator = self
             .trailing_char
@@ -69,50 +150,37 @@ impl<'s> Iterator for Tokenize<'s> {
             }
 
             if matches!(c, '\n' | ';') {
-                return match current_start {
-                    None => Some(Token::End),
-                    Some(i) => {
-                        self.trailing_token = Some(Token::End);
-                        Some(Token::Text(&self.text[i..index]))
-                    }
-                };
+                return self.decide_text_to_return(
+                    current_start,
+                    dot_index,
+                    index,
+                    Some(Token::End),
+                );
             }
 
             if matches!(c, ',') {
-                return match current_start {
-                    None => Some(Token::Comma),
-                    Some(i) => {
-                        self.trailing_token = Some(Token::Comma);
-                        Some(Token::Text(&self.text[i..index]))
-                    }
-                };
+                return self.decide_text_to_return(
+                    current_start,
+                    dot_index,
+                    index,
+                    Some(Token::Comma),
+                );
             }
 
             if matches!(c, '(' | '[') || bracket_start_info.is_some() {
-                let (bracket_index, bracket_start) = bracket_start_info.unwrap_or((index, c));
+                return Self::decide_bracket_to_return(
+                    self.text,
+                    &mut iterator,
+                    current_start,
+                    bracket_start_info.unwrap_or((index, c)),
+                );
+            }
 
-                let bracket_type = if bracket_start == '(' {
-                    BracketType::Parenthesis
-                } else if bracket_start == '[' {
-                    BracketType::Brackets
-                } else {
-                    unreachable!()
-                };
-                let bracket_end = bracket_type.right();
-
-                // Consume the iterator until we find the first closing bracket
-                let (end_pos, _) = iterator.find(|&(_other_i, other_c)| other_c == bracket_end)?;
-
-                let bracketed_part = &self.text[bracket_index + 1..end_pos];
-                let token = match current_start {
-                    None => Token::BracketSolo(bracketed_part, bracket_type),
-                    Some(i) => {
-                        let left = &self.text[i..bracket_index];
-
-                        Token::Bracketed(left.trim(), bracketed_part.trim(), bracket_type)
-                    }
-                };
-                return Some(token);
+            if matches!(c, '.') && dot_index.is_none() && current_start.is_some() {
+                // Track the first dot we see.
+                // Only track it if we have seen something that isn't a dot before.
+                dot_index = Some(index);
+                continue;
             }
 
             if c.is_whitespace() {
@@ -137,7 +205,7 @@ impl<'s> Iterator for Tokenize<'s> {
                             }
 
                             if yield_value {
-                                return Some(Token::Text(&self.text[i..index]));
+                                return self.decide_text_to_return(Some(i), dot_index, index, None);
                             }
                         }
                     }
@@ -148,10 +216,7 @@ impl<'s> Iterator for Tokenize<'s> {
             }
         }
 
-        match current_start {
-            None => None,
-            Some(i) => Some(Token::Text(&self.text[i..])),
-        }
+        self.decide_text_to_return(current_start, dot_index, self.text.len(), None)
     }
 }
 
@@ -193,7 +258,7 @@ mod tests {
         assert_eq!(tokenizer.next(), Some(Token::Text("$sp")));
         assert_eq!(tokenizer.next(), Some(Token::Comma));
         assert_eq!(tokenizer.next(), Some(Token::Text("-0x740")));
-        assert_eq!(tokenizer.next(), None)
+        assert_eq!(tokenizer.next(), None);
     }
 
     #[test]
@@ -219,7 +284,7 @@ mod tests {
                 tokenizer.next(),
                 Some(Token::Bracketed("-0x1E70", "$at", BracketType::Parenthesis))
             );
-            assert_eq!(tokenizer.next(), None)
+            assert_eq!(tokenizer.next(), None);
         }
     }
 
@@ -240,7 +305,7 @@ mod tests {
         assert_eq!(tokenizer.next(), Some(Token::Comma));
         assert_eq!(tokenizer.next(), Some(Token::Text("0x1234")));
 
-        assert_eq!(tokenizer.next(), None)
+        assert_eq!(tokenizer.next(), None);
     }
 
     #[test]
@@ -248,7 +313,12 @@ mod tests {
         let s = "vrot.q      C002, S400, [C,S,S,S]";
         let mut tokenizer = Tokenize::new(s);
 
-        assert_eq!(tokenizer.next(), Some(Token::Text("vrot.q")));
+        assert_eq!(
+            tokenizer.next(),
+            Some(Token::DottedText(TokenDottedText::new(
+                "vrot.q", "vrot", ".q"
+            )))
+        );
         assert_eq!(tokenizer.next(), Some(Token::Text("C002")));
         assert_eq!(tokenizer.next(), Some(Token::Comma));
         assert_eq!(tokenizer.next(), Some(Token::Text("S400")));
@@ -257,6 +327,55 @@ mod tests {
             tokenizer.next(),
             Some(Token::BracketSolo("C,S,S,S", BracketType::Brackets))
         );
-        assert_eq!(tokenizer.next(), None)
+        assert_eq!(tokenizer.next(), None);
+    }
+
+    #[test]
+    fn test_tokenizer_dotted_text() {
+        let s = "vadda.xyz   ACC, $vf0, $vf7";
+        let mut tokenizer = Tokenize::new(s);
+
+        assert_eq!(
+            tokenizer.next(),
+            Some(Token::DottedText(TokenDottedText::new(
+                "vadda.xyz",
+                "vadda",
+                ".xyz"
+            )))
+        );
+        assert_eq!(tokenizer.next(), Some(Token::Text("ACC")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(tokenizer.next(), Some(Token::Text("$vf0")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(tokenizer.next(), Some(Token::Text("$vf7")));
+        assert_eq!(tokenizer.next(), None);
+    }
+
+    #[test]
+    fn test_tokenizer_double_dotted_text() {
+        let s = "round.l.s   $f0, $f2";
+        let mut tokenizer = Tokenize::new(s);
+
+        assert_eq!(
+            tokenizer.next(),
+            Some(Token::DottedText(TokenDottedText::new(
+                "round.l.s",
+                "round",
+                ".l.s"
+            )))
+        );
+        assert_eq!(tokenizer.next(), Some(Token::Text("$f0")));
+        assert_eq!(tokenizer.next(), Some(Token::Comma));
+        assert_eq!(tokenizer.next(), Some(Token::Text("$f2")));
+        assert_eq!(tokenizer.next(), None);
+    }
+
+    #[test]
+    fn test_tokenizer_trailing_dot() {
+        let s = "asdf.";
+        let mut tokenizer = Tokenize::new(s);
+
+        assert_eq!(tokenizer.next(), Some(Token::Text("asdf.")));
+        assert_eq!(tokenizer.next(), None);
     }
 }

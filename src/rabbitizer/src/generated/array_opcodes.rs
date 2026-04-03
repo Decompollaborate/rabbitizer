@@ -4,9 +4,9 @@
 /* Automatically generated. DO NOT MODIFY */
 
 use crate::access_type::AccessType;
-#[cfg(feature = "R5900EE")]
-use crate::instr::InstrSuffix;
 use crate::instr::InstrType;
+#[cfg(feature = "R5900EE")]
+use crate::instr_suffixes::InstrSuffix;
 #[cfg(any(
     feature = "RSP",
     feature = "R3000GTE",
@@ -13396,7 +13396,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddx,
@@ -13416,7 +13416,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddy,
@@ -13436,7 +13436,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddz,
@@ -13456,7 +13456,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddw,
@@ -13476,7 +13476,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubx,
@@ -13496,7 +13496,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsuby,
@@ -13516,7 +13516,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubz,
@@ -13536,7 +13536,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubw,
@@ -13556,7 +13556,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddx,
@@ -13576,7 +13576,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddy,
@@ -13596,7 +13596,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddz,
@@ -13616,7 +13616,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddw,
@@ -13636,7 +13636,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubx,
@@ -13656,7 +13656,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsuby,
@@ -13676,7 +13676,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubz,
@@ -13696,7 +13696,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubw,
@@ -13716,7 +13716,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaxx,
@@ -13736,7 +13736,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaxy,
@@ -13756,7 +13756,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaxz,
@@ -13776,7 +13776,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaxw,
@@ -13796,7 +13796,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vminix,
@@ -13816,7 +13816,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vminiy,
@@ -13836,7 +13836,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vminiz,
@@ -13856,7 +13856,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vminiw,
@@ -13876,7 +13876,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulx,
@@ -13896,7 +13896,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmuly,
@@ -13916,7 +13916,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulz,
@@ -13936,7 +13936,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulw,
@@ -13956,7 +13956,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulq,
@@ -13976,7 +13976,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaxi,
@@ -13996,7 +13996,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmuli,
@@ -14016,7 +14016,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vminii,
@@ -14036,7 +14036,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddq,
@@ -14056,7 +14056,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddq,
@@ -14076,7 +14076,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddi,
@@ -14096,7 +14096,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddi,
@@ -14116,7 +14116,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubq,
@@ -14136,7 +14136,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubq,
@@ -14156,7 +14156,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubi,
@@ -14176,7 +14176,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubi,
@@ -14196,7 +14196,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vadd,
@@ -14216,7 +14216,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmadd,
@@ -14236,7 +14236,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmul,
@@ -14256,7 +14256,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmax,
@@ -14276,7 +14276,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsub,
@@ -14296,7 +14296,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsub,
@@ -14316,7 +14316,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vopmsub,
@@ -14336,7 +14336,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmini,
@@ -14475,7 +14475,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddax,
@@ -14495,7 +14495,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vadday,
@@ -14515,7 +14515,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddaz,
@@ -14535,7 +14535,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddaw,
@@ -14555,7 +14555,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubax,
@@ -14575,7 +14575,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubay,
@@ -14595,7 +14595,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubaz,
@@ -14615,7 +14615,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubaw,
@@ -14635,7 +14635,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddax,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14654,7 +14654,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmadday,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14673,7 +14673,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddaz,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14692,7 +14692,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddaw,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14711,7 +14711,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubax,
@@ -14731,7 +14731,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubay,
@@ -14751,7 +14751,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubaz,
@@ -14771,7 +14771,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubaw,
@@ -14787,7 +14787,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vitof0 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vitof0,
@@ -14803,7 +14803,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vitof4 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vitof4,
@@ -14819,7 +14819,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vitof12 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vitof12,
@@ -14835,7 +14835,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vitof15 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vitof15,
@@ -14851,7 +14851,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vftoi0 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vftoi0,
@@ -14867,7 +14867,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vftoi4 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vftoi4,
@@ -14883,7 +14883,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vftoi12 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vftoi12,
@@ -14899,7 +14899,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vftoi15 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vftoi15,
@@ -14919,7 +14919,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulax,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14938,7 +14938,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulay,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14957,7 +14957,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulaz,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14976,7 +14976,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftn,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulaw,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -14995,7 +14995,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulaq,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -15010,7 +15010,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vabs as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vabs,
@@ -15030,7 +15030,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmulai,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -15045,7 +15045,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vclipw as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vfsxyzw, Operand::r5900ee_vftn),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vclipw,
@@ -15065,7 +15065,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddaq,
@@ -15085,7 +15085,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddaq,
@@ -15105,7 +15105,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vaddai,
@@ -15125,7 +15125,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmaddai,
@@ -15145,7 +15145,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubaq,
@@ -15165,7 +15165,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_Q,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubaq,
@@ -15185,7 +15185,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsubai,
@@ -15205,7 +15205,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_I,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsubai,
@@ -15225,7 +15225,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vftxyzw,
                 Operand::r5900ee_vfsxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vadda,
@@ -15245,7 +15245,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmadda,
@@ -15265,7 +15265,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmula,
                 OpcodeCategory::R5900EE_COP2_SPECIAL2,
@@ -15284,7 +15284,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsuba,
@@ -15304,7 +15304,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vftxyzw,
                 Operand::r5900ee_vfsxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmsuba,
@@ -15324,7 +15324,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
                 Operand::r5900ee_vfsxyzw,
                 Operand::r5900ee_vftxyzw,
             ),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vopmula,
@@ -15354,7 +15354,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vmove as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmove,
@@ -15370,7 +15370,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vmr32 as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmr32,
@@ -15386,7 +15386,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vlqi as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vis_postincr),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vlqi,
@@ -15402,7 +15402,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vsqi as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vfsxyzw, Operand::r5900ee_vit_postincr),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsqi,
@@ -15418,7 +15418,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vlqd as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vis_predecr),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vlqd,
@@ -15434,7 +15434,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vsqd as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vfsxyzw, Operand::r5900ee_vit_predecr),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vsqd,
@@ -15528,7 +15528,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vmfir as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_vis),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vmfir,
@@ -15544,7 +15544,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vrnext as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_R),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vrnext,
@@ -15560,7 +15560,7 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     {
         table[Opcode::r5900ee_vrget as usize] = OpcodeDescriptor {
             operands: Operand::arr2(Operand::r5900ee_vftxyzw, Operand::r5900ee_R),
-            instr_suffix: Some(InstrSuffix::R5900EE_xyzw),
+            instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
             ..OpcodeDescriptor::new(
                 Opcode::r5900ee_vrget,

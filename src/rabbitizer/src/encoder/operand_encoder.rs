@@ -3,7 +3,7 @@
 
 use crate::abi::Abi;
 use crate::encoded_field_mask::EncodedFieldMask;
-use crate::encoder::token::{BracketType, Token, Tokenize};
+use crate::encoder::token::{BracketType, Token, TokenDottedText, Tokenize};
 use crate::encoder::EncodingError;
 use crate::opcodes::Opcode;
 use crate::operands::Operand;
@@ -14,7 +14,7 @@ use crate::registers_meta::Register;
 use crate::utils::{self, iter::DoubleOptIterator};
 
 impl Operand {
-    #[allow(clippy::cognitive_complexity)]
+    #[expect(clippy::cognitive_complexity)]
     pub(crate) fn encode_to_bits<'s>(
         self,
         token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
@@ -25,6 +25,14 @@ impl Operand {
         let Some((mut token, mut next_token)) = token_stream.next() else {
             return Err(EncodingError::RanOutOfTokens(opcode, self));
         };
+
+        // Hacky way to workaround unused_mut warning that gets triggered under
+        // some feature flags combinations.
+        #[expect(dead_code)]
+        #[expect(clippy::self_assignment)]
+        {
+            token = token;
+        }
 
         let val = match self {
             Self::ALL_EMPTY => None,
@@ -962,7 +970,9 @@ impl Operand {
             let err = match token {
                 Token::End => EncodingError::EndTokenInsteadOfOperand(opcode, self),
                 Token::Comma => EncodingError::CommaInsteadOfOperand(opcode, self),
-                Token::Text(text) => EncodingError::UnrecognizedOperand(opcode, text, None, self),
+                Token::Text(text) | Token::DottedText(TokenDottedText { full: text, .. }) => {
+                    EncodingError::UnrecognizedOperand(opcode, text, None, self)
+                }
                 Token::Bracketed(left, right, bracket_type) => EncodingError::UnrecognizedOperand(
                     opcode,
                     left,
@@ -994,7 +1004,7 @@ const fn operand_text_from_token<'s>(
     operand: Operand,
 ) -> Result<&'s str, EncodingError<'s>> {
     match token {
-        Token::Text(text) => Ok(text),
+        Token::Text(text) | Token::DottedText(TokenDottedText { full: text, .. }) => Ok(text),
 
         Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
         Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
@@ -1037,12 +1047,14 @@ fn bracketed_text_from_token<'s>(
 
         Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
         Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
-        Token::Text(text) => Err(EncodingError::TextInsteadOfBracketedOperand(
-            opcode,
-            operand,
-            text,
-            required_bracket_type,
-        )),
+        Token::Text(text) | Token::DottedText(TokenDottedText { full: text, .. }) => {
+            Err(EncodingError::TextInsteadOfBracketedOperand(
+                opcode,
+                operand,
+                text,
+                required_bracket_type,
+            ))
+        }
         Token::BracketSolo(text, bracket_type) => {
             Err(EncodingError::BracketSoloInsteadOfBracketedOperand(
                 opcode,
@@ -1055,6 +1067,7 @@ fn bracketed_text_from_token<'s>(
     }
 }
 
+#[cfg(any(feature = "R4000ALLEGREX", feature = "R5900EE"))]
 fn bracket_solo_from_token<'s>(
     token: Token<'s>,
     opcode: Opcode,
@@ -1079,12 +1092,14 @@ fn bracket_solo_from_token<'s>(
 
         Token::End => Err(EncodingError::EndTokenInsteadOfOperand(opcode, operand)),
         Token::Comma => Err(EncodingError::CommaInsteadOfOperand(opcode, operand)),
-        Token::Text(text) => Err(EncodingError::TextInsteadOfBracketedOperand(
-            opcode,
-            operand,
-            text,
-            required_bracket_type,
-        )),
+        Token::Text(text) | Token::DottedText(TokenDottedText { full: text, .. }) => {
+            Err(EncodingError::TextInsteadOfBracketedOperand(
+                opcode,
+                operand,
+                text,
+                required_bracket_type,
+            ))
+        }
         Token::Bracketed(left, right, bracket_type) => {
             Err(EncodingError::BracketedInsteadOfBracketSoloOperand(
                 opcode,
@@ -1348,7 +1363,9 @@ impl EncodedOperandBits {
             None | Some(Token::End) => Ok(Self::EndBits(bits)),
             Some(Token::Comma) => Ok(Self::ContinueBits(bits)),
 
-            Some(Token::Text(t)) => Err(EncodingError::TokenInsteadOfCommaEnd(opcode, operand, t)),
+            Some(Token::Text(t) | Token::DottedText(TokenDottedText { full: t, .. })) => {
+                Err(EncodingError::TokenInsteadOfCommaEnd(opcode, operand, t))
+            }
             Some(Token::Bracketed(left, right, bracket_type)) => {
                 Err(EncodingError::BracketedInsteadOfCommaEnd(
                     opcode,

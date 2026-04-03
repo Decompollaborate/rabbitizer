@@ -209,13 +209,14 @@ impl TestEntry {
             );
             errors += 1;
         }
-        if self.instr.opcode().name() != self.opcode_str {
+        let generated_mnemonic = self.instr.mnemonic_display(&self.display_flags).to_string();
+        if generated_mnemonic != self.opcode_str {
             println!(
-                "'{}' ({:08X}) has incorrect opcode name. Expected '{}', got '{}'",
+                "'{}' ({:08X}) has incorrect mnemonic. Expected '{}', got '{}'",
                 self.opcode_str,
                 self.instr.word(),
                 self.opcode_str,
-                self.instr.opcode().name()
+                generated_mnemonic,
             );
             errors += 1;
         }
@@ -348,7 +349,6 @@ impl TestEntry {
     }
 
     #[cfg(feature = "encoder")]
-    #[allow(dead_code)]
     pub fn check_encoding(&self) -> u32 {
         use rabbitizer::encoder::EncoderIterator;
 
