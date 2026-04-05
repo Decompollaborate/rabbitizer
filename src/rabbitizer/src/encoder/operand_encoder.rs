@@ -1,8 +1,6 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
-use core::ops;
-
 use crate::abi::Abi;
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::encoder::token::{BracketType, Token, TokenDottedText, Tokenize};
@@ -1164,7 +1162,7 @@ fn encode_rsp_offset_rs<'s, T, F, E>(
     shift_value: T,
 ) -> Result<Option<u32>, EncodingError<'s>>
 where
-    T: ops::Shr<Output = T> + Into<u32>,
+    T: core::ops::Shr<Output = T> + Into<u32>,
     F: FnOnce(&str) -> Result<T, E>,
 {
     let bracket_type = BracketType::Parenthesis;
