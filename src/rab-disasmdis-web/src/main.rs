@@ -168,9 +168,14 @@ impl App {
 
     fn view_footer(&self, _ctx: &Context<Self>) -> Html {
         let git_info = if let Some(info) = built_info::GIT_COMMIT_HASH_SHORT {
-            format!("Git hash: {info}")
+            let commit_link = format!("{}/commit/{}", built_info::PKG_REPOSITORY, info);
+            html! {
+                <> { "Git hash: " } <a target="_blank" href={ commit_link }>{ info }</a> </>
+            }
         } else {
-            String::new()
+            html! {
+                <></>
+            }
         };
 
         html! {
@@ -287,11 +292,11 @@ impl App {
                       </tr>
                     });
                 }
-                Ok(instr) => {
+                Ok((instr, raw)) => {
                     let bytes = self.state.endian.bytes_from_word(instr.word());
                     let formatted = format!(
-                        "{:02X}{:02X}{:02X}{:02X}",
-                        bytes[0], bytes[1], bytes[2], bytes[3]
+                        "{:02X}{:02X}{:02X}{:02X} /* {} */",
+                        bytes[0], bytes[1], bytes[2], bytes[3], raw,
                     );
 
                     result.push(html! {

@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Use this function instead of `Instruction.opcode().name()`, since this
     function can display additional data like the dynamic suffix.
 - Add `Opcode::instr_suffix()` and `OpcodeDescriptor::instr_suffix()`.
+- The encoder now returns the str of each encoded instruction.
 
 ### Changed
 

@@ -56,17 +56,18 @@ impl<'s> EncoderIterator<'s> {
         &mut self,
         opcode: Opcode,
         allow_dollarless: bool,
-    ) -> Result<u32, EncodingError<'s>> {
+    ) -> Result<(u32, Option<usize>), EncodingError<'s>> {
         let mut word = 0;
 
         let operands_iter = opcode.operands_iter();
         let mut reamining_operands = operands_iter.len();
 
         if reamining_operands == 0 {
-            return Ok(word);
+            return Ok((word, None));
         }
 
         let mut tokenizer_iter = DoubleOptIterator::new(self.tokenizer.by_ref());
+        let mut new_ending_index = None;
         for operand in opcode.operands_iter() {
             assert!(
                 reamining_operands > 0,
@@ -80,9 +81,10 @@ impl<'s> EncoderIterator<'s> {
                 allow_dollarless,
                 opcode,
             )? {
-                EncodedOperandBits::EndBits(bits) => {
+                EncodedOperandBits::EndBits(bits, _, ending_index) => {
                     if reamining_operands == 0 {
                         word = handle_bits(word, bits, operand);
+                        new_ending_index = Some(ending_index);
                         break;
                     } else {
                         return Err(EncodingError::EndButMissingOperands(
@@ -91,8 +93,9 @@ impl<'s> EncoderIterator<'s> {
                         ));
                     }
                 }
-                EncodedOperandBits::ContinueBits(bits) => {
+                EncodedOperandBits::ContinueBits(bits, _, ending_index) => {
                     word = handle_bits(word, bits, operand);
+                    new_ending_index = Some(ending_index);
                 }
             }
         }
@@ -103,7 +106,7 @@ impl<'s> EncoderIterator<'s> {
                 reamining_operands,
             ))
         } else {
-            Ok(word)
+            Ok((word, new_ending_index))
         }
     }
 }
@@ -128,44 +131,50 @@ const fn handle_bits(mut word: u32, bits: u32, operand: Operand) -> u32 {
 }
 
 impl<'s> Iterator for EncoderIterator<'s> {
-    type Item = Result<Instruction, EncodingError<'s>>;
+    type Item = Result<(Instruction, &'s str), EncodingError<'s>>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let (opcode, suffix_bits) = loop {
+        let (opcode, suffix_bits, starting_index, ending_index) = loop {
             match self.tokenizer.next() {
                 None => return None,
-                Some(Token::End) => continue,
-                Some(Token::Comma) => return Some(Err(EncodingError::CommaInsteadOfOpcode)),
-                Some(Token::Text(text)) => {
+                Some((Token::End, _, _)) => continue,
+                Some((Token::Comma, _, _)) => {
+                    return Some(Err(EncodingError::CommaInsteadOfOpcode));
+                }
+                Some((Token::Text(text), starting_index, ending_index)) => {
                     if let Some(opcode) = self.find_opcode(text) {
-                        break (opcode, 0);
+                        break (opcode, 0, starting_index, ending_index);
                     } else {
                         return Some(Err(EncodingError::UnrecognizedOpcode(text)));
                     }
                 }
-                Some(Token::Bracketed(left, right, bracket_type)) => {
+                Some((Token::Bracketed(left, right, bracket_type), _, _)) => {
                     return Some(Err(EncodingError::BracketedInsteadOfOpcode(
                         left,
                         right,
                         bracket_type,
                     )))
                 }
-                Some(Token::BracketSolo(text, bracket_type)) => {
+                Some((Token::BracketSolo(text, bracket_type), _, _)) => {
                     return Some(Err(EncodingError::BracketSoloInsteadOfOpcode(
                         text,
                         bracket_type,
                     )))
                 }
-                Some(Token::DottedText(TokenDottedText {
-                    full,
-                    left: text,
-                    dotted,
-                })) => {
+                Some((
+                    Token::DottedText(TokenDottedText {
+                        full,
+                        left: text,
+                        dotted,
+                    }),
+                    starting_index,
+                    ending_index,
+                )) => {
                     if let Some(opcode) = self.find_opcode(full) {
                         // There are lot of instructions that have a non dynamic suffix,
                         // just yield them
                         // i.e. add.s
-                        break (opcode, 0);
+                        break (opcode, 0, starting_index, ending_index);
                     } else if let Some(opcode) = self.find_opcode(text) {
                         if let Some(instr_suffix) = opcode.instr_suffix() {
                             // Instruction has a dynamic suffix
@@ -174,7 +183,7 @@ impl<'s> Iterator for EncoderIterator<'s> {
                                 Ok(v) => v,
                                 Err(e) => return Some(Err(e)),
                             };
-                            break (opcode, suffix_bits);
+                            break (opcode, suffix_bits, starting_index, ending_index);
                         } else {
                             return Some(Err(EncodingError::UnrecognizedOpcode(full)));
                         }
@@ -188,11 +197,17 @@ impl<'s> Iterator for EncoderIterator<'s> {
         let allow_dollarless = true;
         let mut word = opcode.opcode_bits();
 
-        let operand_bits = match self.encode_operands(opcode, allow_dollarless) {
-            Ok(w) => w,
+        let (operand_bits, new_ending_index) = match self.encode_operands(opcode, allow_dollarless)
+        {
+            Ok((w, i)) => (w, i),
             Err(e) => {
                 return Some(Err(e));
             }
+        };
+
+        let ending_index = match new_ending_index {
+            Some(x) => x,
+            None => ending_index,
         };
 
         word |= suffix_bits | operand_bits;
@@ -211,13 +226,17 @@ impl<'s> Iterator for EncoderIterator<'s> {
 
         let instr = Instruction::from_raw_parts(word, vram, opcode_decoder, self.flags);
 
-        Some(Ok(instr))
+        let text = self.tokenizer.get_text_range(starting_index, ending_index);
+
+        Some(Ok((instr, text)))
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    use pretty_assertions::assert_eq;
 
     #[test]
     fn test_encoder_addiu() {
@@ -227,9 +246,11 @@ mod tests {
         let flags = InstructionFlags::default();
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
-        let instr = encoder.next().unwrap().unwrap();
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
         assert!(instr.is_valid());
         assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
 
         assert_eq!(encoder.next(), None);
     }
@@ -243,9 +264,11 @@ mod tests {
         let flags = InstructionFlags::default();
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
-        let instr = encoder.next().unwrap().unwrap();
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
         assert!(instr.is_valid());
         assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
 
         assert_eq!(encoder.next(), None);
     }
@@ -395,9 +418,11 @@ mod tests {
         for (word, text) in DATA {
             let mut encoder = EncoderIterator::new(text, vram, flags);
 
-            let instr = encoder.next().unwrap().unwrap();
+            let (instr, found_s) = encoder.next().unwrap().unwrap();
             assert!(instr.is_valid());
             assert_eq!(instr.word(), word);
+
+            assert_eq!(found_s, text);
 
             assert_eq!(encoder.next(), None);
         }
@@ -409,8 +434,8 @@ mod tests {
         use crate::IsaExtension;
 
         static DATA: [(u32, &str); 2] = [
-            (0xDE000001, "vpfxd       0, , , "),
-            (0xDE000400, "vpfxd       , , M, "),
+            (0xDE000001, "vpfxd       0, , ,"),
+            (0xDE000400, "vpfxd       , , M,"),
         ];
         let vram = Vram::new(0x80000000);
         let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
@@ -418,11 +443,346 @@ mod tests {
         for (word, text) in DATA {
             let mut encoder = EncoderIterator::new(text, vram, flags);
 
-            let instr = encoder.next().unwrap().unwrap();
+            let (instr, found_s) = encoder.next().unwrap().unwrap();
             assert!(instr.is_valid());
             assert_eq!(instr.word(), word);
 
+            assert_eq!(found_s, text);
+
             assert_eq!(encoder.next(), None);
         }
+    }
+
+    #[test]
+    fn test_encoder_branch_absolute() {
+        let word = 0x10000004;
+        let s = "b       0x80000014";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_branch_computed() {
+        let word = 0x10000002;
+        let s = "b       . + 0xC";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_branch_full_expression() {
+        let word = 0x10000002;
+        let s = "b       . + 4 + (0x2 << 2)";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_break_single() {
+        let word = 0x0001000D;
+        let s = "break  1";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_break_double() {
+        let word = 0x000101CD;
+        let s = "break  1, 7";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_sv_q_wb() {
+        use crate::IsaExtension;
+
+        let word = 0xF8800042;
+        let s = "sv.q        C000, 0x40($a0), wb";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_vcmp_fl_1() {
+        use crate::IsaExtension;
+
+        let word = 0x6C000000;
+        let s = "vcmp.s      fl";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_vcmp_fl_2() {
+        use crate::IsaExtension;
+
+        let word = 0x6C000000;
+        let s = "vcmp.s      fl, S000";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_vcmp_fl_3() {
+        use crate::IsaExtension;
+
+        let word = 0x6C000000;
+        let s = "vcmp.s      fl, S000, S000";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_vcmp_ez_1() {
+        use crate::IsaExtension;
+
+        let word = 0x6C000008;
+        let s = "vcmp.s      ez, S000";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_vcmp_ez_2() {
+        use crate::IsaExtension;
+
+        let word = 0x6C000008;
+        let s = "vcmp.s      ez, S000, S000";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_vcmp_eq() {
+        use crate::IsaExtension;
+
+        let word = 0x6C000001;
+        let s = "vcmp.s      eq, S000, S000";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_jalr_plain() {
+        let word = 0x0080F809;
+        let s = "jalr        $a0";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_jalr_extra() {
+        let word = 0x02002009;
+        let s = "jalr        $a0, $s0";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_div_plain() {
+        let word = 0x0085001A;
+        let s = "div $a0, $a1";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[test]
+    fn test_encoder_div_extra() {
+        let word = 0x0085001A;
+        let s = "div $zero, $a0, $a1";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::default();
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_r4000allegrex_vpfxd_empty() {
+        use crate::IsaExtension;
+
+        let word = 0xDE000000;
+        let s = "vpfxd       , , ,";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
+    }
+
+    #[cfg(feature = "R4000ALLEGREX")]
+    #[test]
+    fn test_encoder_r4000allegrex_vpfxd_empty_zero() {
+        use crate::IsaExtension;
+
+        let word = 0xDE000010;
+        let s = "vpfxd       , , 0,";
+        let vram = Vram::new(0x80000000);
+        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let mut encoder = EncoderIterator::new(s, vram, flags);
+
+        let (instr, found_s) = encoder.next().unwrap().unwrap();
+        assert!(instr.is_valid());
+        assert_eq!(instr.word(), word);
+
+        assert_eq!(found_s, s);
+
+        assert_eq!(encoder.next(), None);
     }
 }

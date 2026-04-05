@@ -381,7 +381,7 @@ impl TestEntry {
                 );
                 errors += 1;
             }
-            Some(Ok(instr)) => {
+            Some(Ok((instr, raw))) => {
                 let disasm = instr
                     .display(&display_flags, self.imm_override, 0)
                     .to_string();
@@ -400,6 +400,10 @@ impl TestEntry {
                         self.expected
                     );
                     println!("    Got:      '0x{:08X}' '{}'", instr.word(), disasm);
+                    errors += 1;
+                }
+                if raw.trim() != self.expected.trim() {
+                    println!("The returned raw range of the instruction '{}' does not match the expected text '{}'", raw, self.expected);
                     errors += 1;
                 }
             }

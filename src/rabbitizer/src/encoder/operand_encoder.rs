@@ -22,7 +22,9 @@ impl Operand {
         allow_dollarless: bool,
         opcode: Opcode,
     ) -> Result<EncodedOperandBits, EncodingError<'s>> {
-        let Some((mut token, mut next_token)) = token_stream.next() else {
+        let Some(((mut token, starting_index, mut ending_index), mut next_token)) =
+            token_stream.next()
+        else {
             return Err(EncodingError::RanOutOfTokens(opcode, self));
         };
 
@@ -84,13 +86,14 @@ impl Operand {
                 let parsed = match utils::hex_num::u16_from_str(text).ok() {
                     None => None,
                     Some(code_upper) => {
-                        if next_token == Some(Token::Comma) {
-                            let code_lower_text = request_next_text(
+                        if matches!(next_token, Some((Token::Comma, _, _))) {
+                            let (code_lower_text, _, new_end) = request_next_text(
                                 token_stream,
                                 &mut next_token,
                                 opcode,
                                 self,
                             )?;
+                            ending_index = new_end;
                             utils::hex_num::u16_from_str(code_lower_text).ok().map(|code_lower| {
                                 (code_upper, code_lower)
                             })
@@ -112,20 +115,24 @@ impl Operand {
 
             Self::core_label | Self::core_branch_target_label => {
                 let text = operand_text_from_token(token, opcode, self)?;
-                if text == "." && next_token == Some(Token::Text("+")) {
-                    next_token = Some(Token::Comma);
-                    let num_text = request_next_text(
+                if text == "." && matches!(next_token, Some((Token::Text("+"), _, _))) {
+                    next_token = Some((Token::Comma, ending_index+1, ending_index+2));
+                    let (num_text, _, new_end) = request_next_text(
                         token_stream,
                         &mut next_token,
                         opcode,
                         self,
                     )?;
 
+                    ending_index = new_end;
+
                     let Some(num) = utils::hex_num::i32_from_str(num_text).ok() else {
                         return Err(EncodingError::UnrecognizedOperand(opcode, num_text, None, self));
                     };
 
-                    let sum = if let Some(tok) = next_token {
+                    let sum = if let Some((tok, _, new_end)) = next_token {
+                        ending_index = new_end;
+
                         match bracketed_text_from_token(tok, opcode, self, BracketType::Parenthesis).ok() {
                             None => num,
                             Some(("+", expr)) => {
@@ -136,7 +143,7 @@ impl Operand {
                                 } else {
                                     utils::hex_num::i32_from_str(expr.trim()).map_err(|_| EncodingError::UnrecognizedOperand(opcode, expr.trim(), None, self))?
                                 };
-                                next_token = Some(Token::Comma);
+                                next_token = Some((Token::Comma, new_end, new_end+1));
                                 num + num2
                             }
                             Some(_) => num,
@@ -187,10 +194,10 @@ impl Operand {
                 match regval::<Gpr>(text, abi, allow_dollarless) {
                     None => None,
                     Some(maybe_rd) => {
-                        let (rd, rs) = if next_token != Some(Token::Comma) {
+                        let (rd, rs) = if !matches!(next_token, Some((Token::Comma, _, _))) {
                             (Gpr::ra.as_index() as u32, maybe_rd)
                         } else {
-                            let rs = encode_next_reg::<Gpr>(
+                            let (rs, _, new_end) = encode_next_reg::<Gpr>(
                                 token_stream,
                                 &mut next_token,
                                 opcode,
@@ -198,6 +205,7 @@ impl Operand {
                                 abi,
                                 allow_dollarless
                             )?;
+                            ending_index = new_end;
 
                             (maybe_rd, rs)
                         };
@@ -215,14 +223,17 @@ impl Operand {
                         Some(if maybe_zero != 0 {
                             maybe_zero
                         } else {
-                            encode_next_reg::<Gpr>(
+                            let (rs, _, new_end) = encode_next_reg::<Gpr>(
                                 token_stream,
                                 &mut next_token,
                                 opcode,
                                 self,
                                 abi,
                                 allow_dollarless
-                            )?
+                            )?;
+                            ending_index = new_end;
+
+                            rs
                         })
                     }
                 }
@@ -494,8 +505,9 @@ impl Operand {
             Self::r4000allegrex_offset14_rs_maybe_wb => {
                 let (offset14, reg_text) = bracketed_text_from_token(token, opcode, self, BracketType::Parenthesis)?;
 
-                let wb = if next_token == Some(Token::Comma) {
-                    let wb_text = request_next_text(token_stream, &mut next_token, opcode, self)?;
+                let wb = if matches!(next_token, Some((Token::Comma, _, _))) {
+                    let (wb_text, _, new_end) = request_next_text(token_stream, &mut next_token, opcode, self)?;
+                    ending_index = new_end;
                     if wb_text == "wb" {
                         1
                     } else {
@@ -515,75 +527,55 @@ impl Operand {
             }
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vcmp_cond_s_maybe_vs_maybe_vt => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
-                    None => None,
-                    Some(cond) => {
-                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexS>(
-                            token_stream,
-                            &mut next_token,
-                            opcode,
-                            self,
-                            abi,
-                            allow_dollarless,
-                            cond,
-                        )?)
-                    }
-                }
+                encode_r4000allegrex_vcmp_generic::<R4000AllegrexS>(
+                    token,
+                    token_stream,
+                    &mut next_token,
+                    opcode,
+                    self,
+                    abi,
+                    allow_dollarless,
+                    &mut ending_index,
+                )?
             },
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vcmp_cond_p_maybe_vs_maybe_vt => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
-                    None => None,
-                    Some(cond) => {
-                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV2D>(
-                            token_stream,
-                            &mut next_token,
-                            opcode,
-                            self,
-                            abi,
-                            allow_dollarless,
-                            cond,
-                        )?)
-                    }
-                }
+                encode_r4000allegrex_vcmp_generic::<R4000AllegrexV2D>(
+                    token,
+                    token_stream,
+                    &mut next_token,
+                    opcode,
+                    self,
+                    abi,
+                    allow_dollarless,
+                    &mut ending_index,
+                )?
             },
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vcmp_cond_t_maybe_vs_maybe_vt => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
-                    None => None,
-                    Some(cond) => {
-                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV3D>(
-                            token_stream,
-                            &mut next_token,
-                            opcode,
-                            self,
-                            abi,
-                            allow_dollarless,
-                            cond,
-                        )?)
-                    }
-                }
+                encode_r4000allegrex_vcmp_generic::<R4000AllegrexV3D>(
+                    token,
+                    token_stream,
+                    &mut next_token,
+                    opcode,
+                    self,
+                    abi,
+                    allow_dollarless,
+                    &mut ending_index,
+                )?
             },
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vcmp_cond_q_maybe_vs_maybe_vt => {
-                let text = operand_text_from_token(token, opcode, self)?;
-                match R4000AllegrexVCond::from_name(text, abi, allow_dollarless) {
-                    None => None,
-                    Some(cond) => {
-                        Some(encode_r4000allegrex_vcmp_registers::<R4000AllegrexV4D>(
-                            token_stream,
-                            &mut next_token,
-                            opcode,
-                            self,
-                            abi,
-                            allow_dollarless,
-                            cond,
-                        )?)
-                    }
-                }
+                encode_r4000allegrex_vcmp_generic::<R4000AllegrexV4D>(
+                    token,
+                    token_stream,
+                    &mut next_token,
+                    opcode,
+                    self,
+                    abi,
+                    allow_dollarless,
+                    &mut ending_index,
+                )?
             },
             #[cfg(feature = "R4000ALLEGREX")]
             Self::r4000allegrex_vconstant => {
@@ -747,9 +739,9 @@ impl Operand {
                     if let Some(n) = next_token {
                         token_stream.push_front(n);
                     } else if self == Self::r4000allegrex_wpz {
-                        token_stream.push_front(Token::Text(""));
+                        token_stream.push_front((Token::Text(""), ending_index, ending_index));
                     }
-                    (Token::Text(""), Some(Token::Comma))
+                    (Token::Text(""), Some((Token::Comma, ending_index, ending_index+1)))
                 } else {
                     // Hack to avoid erroring when wpz is not an empty string, but wpw is.
                     if self == Self::r4000allegrex_wpz {
@@ -758,7 +750,8 @@ impl Operand {
                             token_stream.push_front(n);
                         } else {
                             // There's nothing, so push an empty string to make wpw happy.
-                            token_stream.push_front(Token::Text(""));
+                            let index = next_token.as_ref().map_or(ending_index, |(_, _, end)| *end);
+                            token_stream.push_front((Token::Text(""), index, index));
                         }
                     }
                     (token, next_token)
@@ -987,7 +980,14 @@ impl Operand {
             return Err(err);
         };
 
-        EncodedOperandBits::new(encoded, next_token, opcode, self)
+        EncodedOperandBits::new(
+            encoded,
+            next_token.map(|x| x.0),
+            opcode,
+            self,
+            starting_index,
+            ending_index,
+        )
     }
 }
 
@@ -1115,62 +1115,64 @@ fn bracket_solo_from_token<'s>(
 
 fn request_next_text<'s>(
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
-    next_token: &mut Option<Token<'s>>,
+    next_token: &mut Option<(Token<'s>, usize, usize)>,
     opcode: Opcode,
     operand: Operand,
-) -> Result<&'s str, EncodingError<'s>> {
-    if next_token != &Some(Token::Comma) {
+) -> Result<(&'s str, usize, usize), EncodingError<'s>> {
+    if !matches!(next_token, Some((Token::Comma, _, _))) {
         return Err(EncodingError::MissingCommaInComposedOperand(
             opcode, operand,
         ));
     }
 
-    let Some((token_aux, next_token_aux)) = token_stream.next() else {
+    let Some(((token_aux, start, end), next_token_aux)) = token_stream.next() else {
         return Err(EncodingError::RanOutOfTokens(opcode, operand));
     };
     *next_token = next_token_aux;
 
-    operand_text_from_token(token_aux, opcode, operand)
+    operand_text_from_token(token_aux, opcode, operand).map(|x| (x, start, end))
 }
 
 fn request_next_reg<'s, R>(
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
-    next_token: &mut Option<Token<'s>>,
+    next_token: &mut Option<(Token<'s>, usize, usize)>,
     opcode: Opcode,
     operand: Operand,
     abi: Abi,
     allow_dollarless: bool,
-) -> Result<R, EncodingError<'s>>
+) -> Result<(R, usize, usize), EncodingError<'s>>
 where
     R: Register,
 {
-    let text = request_next_text(token_stream, next_token, opcode, operand)?;
+    let (text, start, end) = request_next_text(token_stream, next_token, opcode, operand)?;
 
-    R::from_name(text, abi, allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
-        opcode, text, None, operand,
-    ))
+    R::from_name(text, abi, allow_dollarless)
+        .ok_or(EncodingError::UnrecognizedOperand(
+            opcode, text, None, operand,
+        ))
+        .map(|x| (x, start, end))
 }
 
 fn encode_next_reg<'s, R>(
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
-    next_token: &mut Option<Token<'s>>,
+    next_token: &mut Option<(Token<'s>, usize, usize)>,
     opcode: Opcode,
     operand: Operand,
     abi: Abi,
     allow_dollarless: bool,
-) -> Result<u32, EncodingError<'s>>
+) -> Result<(u32, usize, usize), EncodingError<'s>>
 where
     R: Register,
 {
-    request_next_reg(
+    let (reg, start, end): (R, _, _) = request_next_reg(
         token_stream,
         next_token,
         opcode,
         operand,
         abi,
         allow_dollarless,
-    )
-    .map(|reg: R| reg.as_index() as u32)
+    )?;
+    Ok((reg.as_index() as u32, start, end))
 }
 
 #[cfg(feature = "RSP")]
@@ -1207,23 +1209,24 @@ fn parse_rsp_element_hq<'s>(
 #[cfg(feature = "R4000ALLEGREX")]
 fn identify_r4000allegrex_vcmp_registers<'s, R>(
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
-    next_token: &mut Option<Token<'s>>,
+    next_token: &mut Option<(Token<'s>, usize, usize)>,
     opcode: Opcode,
     operand: Operand,
     abi: Abi,
     allow_dollarless: bool,
     cond: R4000AllegrexVCond,
-) -> Result<(R, R), EncodingError<'s>>
+) -> Result<(R, R, Option<usize>, Option<usize>), EncodingError<'s>>
 where
     R: R4000AllegrexVectorRegister,
 {
-    let (vs, vt) = match cond {
+    let (vs, vt, start, end) = match cond {
         R4000AllegrexVCond::fl | R4000AllegrexVCond::tr => {
             // The two arguments may be omitted if they are zero.
-            if next_token != &Some(Token::Comma) {
-                (R::default(), R::default())
+            /*
+            if !matches!(next_token, Some((Token::Comma, _, _))) {
+                (R::default(), R::default(), None, None)
             } else {
-                let vs = request_next_reg(
+                let (vs, start, _) = request_next_reg(
                     token_stream,
                     next_token,
                     opcode,
@@ -1231,7 +1234,7 @@ where
                     abi,
                     allow_dollarless,
                 )?;
-                let vt = request_next_reg(
+                let (vt, _, end) = request_next_reg(
                     token_stream,
                     next_token,
                     opcode,
@@ -1240,7 +1243,35 @@ where
                     allow_dollarless,
                 )?;
 
-                (vs, vt)
+                (vs, vt, Some(start), Some(end))
+            }
+            */
+            if !matches!(next_token, Some((Token::Comma, _, _))) {
+                (R::default(), R::default(), None, None)
+            } else {
+                let (vs, start, end) = request_next_reg(
+                    token_stream,
+                    next_token,
+                    opcode,
+                    operand,
+                    abi,
+                    allow_dollarless,
+                )?;
+
+                if !matches!(next_token, Some((Token::Comma, _, _))) {
+                    (vs, R::default(), Some(start), Some(end))
+                } else {
+                    let (vt, _, end2) = request_next_reg(
+                        token_stream,
+                        next_token,
+                        opcode,
+                        operand,
+                        abi,
+                        allow_dollarless,
+                    )?;
+
+                    (vs, vt, Some(start), Some(end2))
+                }
             }
         }
         R4000AllegrexVCond::eq
@@ -1249,7 +1280,7 @@ where
         | R4000AllegrexVCond::ne
         | R4000AllegrexVCond::ge
         | R4000AllegrexVCond::gt => {
-            let vs = request_next_reg(
+            let (vs, start, _) = request_next_reg(
                 token_stream,
                 next_token,
                 opcode,
@@ -1257,7 +1288,7 @@ where
                 abi,
                 allow_dollarless,
             )?;
-            let vt = request_next_reg(
+            let (vt, _, end) = request_next_reg(
                 token_stream,
                 next_token,
                 opcode,
@@ -1266,7 +1297,7 @@ where
                 allow_dollarless,
             )?;
 
-            (vs, vt)
+            (vs, vt, Some(start), Some(end))
         }
         R4000AllegrexVCond::ez
         | R4000AllegrexVCond::en
@@ -1276,7 +1307,7 @@ where
         | R4000AllegrexVCond::nn
         | R4000AllegrexVCond::ni
         | R4000AllegrexVCond::ns => {
-            let vs = request_next_reg(
+            let (vs, start, first_end) = request_next_reg(
                 token_stream,
                 next_token,
                 opcode,
@@ -1286,40 +1317,41 @@ where
             )?;
 
             /* The last register may be omitted if it is zero */
-            let vt = if next_token != &Some(Token::Comma) {
-                R::default()
+            let (vt, end) = if !matches!(next_token, Some((Token::Comma, _, _))) {
+                (R::default(), first_end)
             } else {
-                request_next_reg(
+                let (x, _, end) = request_next_reg(
                     token_stream,
                     next_token,
                     opcode,
                     operand,
                     abi,
                     allow_dollarless,
-                )?
+                )?;
+                (x, end)
             };
 
-            (vs, vt)
+            (vs, vt, Some(start), Some(end))
         }
     };
 
-    Ok((vs, vt))
+    Ok((vs, vt, start, end))
 }
 
 #[cfg(feature = "R4000ALLEGREX")]
 fn encode_r4000allegrex_vcmp_registers<'s, R>(
     token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
-    next_token: &mut Option<Token<'s>>,
+    next_token: &mut Option<(Token<'s>, usize, usize)>,
     opcode: Opcode,
     operand: Operand,
     abi: Abi,
     allow_dollarless: bool,
     cond: R4000AllegrexVCond,
-) -> Result<u32, EncodingError<'s>>
+) -> Result<(u32, Option<usize>, Option<usize>), EncodingError<'s>>
 where
     R: R4000AllegrexVectorRegister,
 {
-    let (vs, vt) = identify_r4000allegrex_vcmp_registers::<R>(
+    let (vs, vt, start, end) = identify_r4000allegrex_vcmp_registers::<R>(
         token_stream,
         next_token,
         opcode,
@@ -1332,7 +1364,44 @@ where
     let cond_bits = EncodedFieldMask::r4000allegrex_vcmp_cond.unshift(cond.as_index() as u32);
     let vs_bits = EncodedFieldMask::r4000allegrex_vs.unshift(vs.as_index() as u32);
     let vt_bits = EncodedFieldMask::r4000allegrex_vt.unshift(vt.as_index() as u32);
-    Ok(cond_bits | vs_bits | vt_bits)
+    Ok((cond_bits | vs_bits | vt_bits, start, end))
+}
+
+#[cfg(feature = "R4000ALLEGREX")]
+#[expect(clippy::too_many_arguments)]
+fn encode_r4000allegrex_vcmp_generic<'s, R>(
+    token: Token<'s>,
+    token_stream: &mut DoubleOptIterator<&mut Tokenize<'s>>,
+    next_token: &mut Option<(Token<'s>, usize, usize)>,
+    opcode: Opcode,
+    operand: Operand,
+    abi: Abi,
+    allow_dollarless: bool,
+    ending_index: &mut usize,
+) -> Result<Option<u32>, EncodingError<'s>>
+where
+    R: R4000AllegrexVectorRegister,
+{
+    let text = operand_text_from_token(token, opcode, operand)?;
+    let cond = R4000AllegrexVCond::from_name(text, abi, allow_dollarless);
+
+    let ret = cond.map(|cond| {
+        let (bits, _, new_end) = encode_r4000allegrex_vcmp_registers::<R>(
+            token_stream,
+            next_token,
+            opcode,
+            operand,
+            abi,
+            allow_dollarless,
+            cond,
+        )?;
+        if let Some(new_end) = new_end {
+            *ending_index = new_end;
+        }
+        Ok(bits)
+    });
+
+    ret.transpose()
 }
 
 const fn reshift_pair(
@@ -1348,8 +1417,8 @@ const fn reshift_pair(
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 #[must_use]
 pub(crate) enum EncodedOperandBits {
-    EndBits(u32),
-    ContinueBits(u32),
+    EndBits(u32, usize, usize),
+    ContinueBits(u32, usize, usize),
 }
 
 impl EncodedOperandBits {
@@ -1358,10 +1427,12 @@ impl EncodedOperandBits {
         next_token: Option<Token<'s>>,
         opcode: Opcode,
         operand: Operand,
+        starting_index: usize,
+        ending_index: usize,
     ) -> Result<Self, EncodingError<'s>> {
         match next_token {
-            None | Some(Token::End) => Ok(Self::EndBits(bits)),
-            Some(Token::Comma) => Ok(Self::ContinueBits(bits)),
+            None | Some(Token::End) => Ok(Self::EndBits(bits, starting_index, ending_index)),
+            Some(Token::Comma) => Ok(Self::ContinueBits(bits, starting_index, ending_index)),
 
             Some(Token::Text(t) | Token::DottedText(TokenDottedText { full: t, .. })) => {
                 Err(EncodingError::TokenInsteadOfCommaEnd(opcode, operand, t))
