@@ -8,7 +8,7 @@ use crate::operands::Operand;
 use crate::utils::iter::DoubleOptIterator;
 use crate::vram::{Vram, VramOffset};
 
-use super::operand_encoder::EncodedOperandBits;
+use super::operand_encoder::{EncodedOperandBits, OperandEncoderFlags};
 use super::token::{Token, TokenDottedText, Tokenize};
 use super::EncodingError;
 
@@ -66,6 +66,9 @@ impl<'s> EncoderIterator<'s> {
             return Ok((word, None));
         }
 
+        let operand_encoder_flags =
+            OperandEncoderFlags::new(self.flags.abi(), allow_dollarless, opcode);
+
         let mut tokenizer_iter = DoubleOptIterator::new(self.tokenizer.by_ref());
         let mut new_ending_index = None;
         for operand in opcode.operands_iter() {
@@ -75,12 +78,9 @@ impl<'s> EncoderIterator<'s> {
             );
             reamining_operands -= 1;
 
-            match operand.encode_to_bits(
-                tokenizer_iter.by_ref(),
-                self.flags.abi(),
-                allow_dollarless,
-                opcode,
-            )? {
+            let tokenizer_iter_ref = tokenizer_iter.by_ref();
+
+            match operand.encode_to_bits(tokenizer_iter_ref, &operand_encoder_flags)? {
                 EncodedOperandBits::EndBits(bits, _, ending_index) => {
                     if reamining_operands == 0 {
                         word = handle_bits(word, bits, operand);
