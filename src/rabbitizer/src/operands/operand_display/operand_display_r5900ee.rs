@@ -262,6 +262,64 @@ where
 
         Ok(())
     }
+
+    pub(crate) fn display_r5900ee_vfsxyzw_inv_vft(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        if myself.display_flags.r5900ee_prodg_sn_as_inverted_regs() {
+            Self::display_r5900ee_vft(myself, f)?;
+        } else {
+            Self::display_r5900ee_vfs(myself, f)?;
+        }
+
+        /*
+        let instr = myself.instr;
+        if instr.field().r5900ee_xyzw_x_impl() {
+            write!(f, "x")?;
+        }
+        if instr.field().r5900ee_xyzw_y_impl() {
+            write!(f, "y")?;
+        }
+        if instr.field().r5900ee_xyzw_z_impl() {
+            write!(f, "z")?;
+        }
+        if instr.field().r5900ee_xyzw_w_impl() {
+            write!(f, "w")?;
+        }
+        */
+
+        Ok(())
+    }
+    pub(crate) fn display_r5900ee_vftxyzw_inv_vfs(
+        myself: &OperandDisplay<T>,
+        f: &mut fmt::Formatter<'_>,
+    ) -> fmt::Result {
+        if myself.display_flags.r5900ee_prodg_sn_as_inverted_regs() {
+            Self::display_r5900ee_vfs(myself, f)?;
+        } else {
+            Self::display_r5900ee_vft(myself, f)?;
+        }
+
+        /*
+        let instr = myself.instr;
+        if instr.field().r5900ee_xyzw_x_impl() {
+            write!(f, "x")?;
+        }
+        if instr.field().r5900ee_xyzw_y_impl() {
+            write!(f, "y")?;
+        }
+        if instr.field().r5900ee_xyzw_z_impl() {
+            write!(f, "z")?;
+        }
+        if instr.field().r5900ee_xyzw_w_impl() {
+            write!(f, "w")?;
+        }
+        */
+
+        Ok(())
+    }
+
     pub(crate) fn display_r5900ee_vftn(
         myself: &OperandDisplay<T>,
         f: &mut fmt::Formatter<'_>,

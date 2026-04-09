@@ -268,7 +268,7 @@
     ) // Multiply and Subtract accumulator I
     RAB_DEF_OPCODE_EXT(
         r5900ee, R5900EE_COP2_SPECIAL2, 0x280, vadda, R5900EE,
-        operands: Operand::arr3(Operand::r5900ee_ACCxyzw, Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        operands: Operand::arr3(Operand::r5900ee_ACCxyzw, Operand::r5900ee_vftxyzw_inv_vfs, Operand::r5900ee_vfsxyzw_inv_vft),
         instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
         is_float: true
     ) // Add accumulator
@@ -294,7 +294,7 @@
     )
     RAB_DEF_OPCODE_EXT(
         r5900ee, R5900EE_COP2_SPECIAL2, 0x2C1, vmsuba, R5900EE,
-        operands: Operand::arr3(Operand::r5900ee_ACCxyzw, Operand::r5900ee_vftxyzw, Operand::r5900ee_vfsxyzw),
+        operands: Operand::arr3(Operand::r5900ee_ACCxyzw, Operand::r5900ee_vftxyzw_inv_vfs, Operand::r5900ee_vfsxyzw_inv_vft),
         instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
         is_float: true
     ) // Multiply and substract accumulator

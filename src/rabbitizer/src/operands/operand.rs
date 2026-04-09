@@ -37,7 +37,7 @@ pub(crate) const OPERAND_COUNT: usize = {
         count += 56;
     }
     if cfg!(feature = "R5900EE") {
-        count += 24;
+        count += 26;
     }
 
     if cfg!(feature = "RspViceMsp") {

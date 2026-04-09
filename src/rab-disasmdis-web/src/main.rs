@@ -2,8 +2,9 @@
 /* SPDX-License-Identifier: MIT */
 
 use rabbitizer::{
-    encoder::EncoderIterator, vram::VramOffset, Instruction, InstructionDisplayFlags,
-    InstructionFlags, Vram,
+    encoder::{EncoderFlags, EncoderIterator},
+    vram::VramOffset,
+    Instruction, InstructionDisplayFlags, InstructionFlags, Vram,
 };
 use wasm_bindgen::prelude::*;
 use web_sys::HtmlInputElement;
@@ -282,8 +283,9 @@ impl App {
         let mut result = Vec::new();
 
         let flags = InstructionFlags::new_isa(self.state.isa_version, self.state.isa_extension);
+        let encoder_flags = EncoderFlags::new(flags).with_allow_dollarless(true);
 
-        for x in EncoderIterator::new(&self.instr_input, self.state.vram, flags) {
+        for x in EncoderIterator::new(&self.instr_input, self.state.vram, encoder_flags) {
             match x {
                 Err(e) => {
                     result.push(html! {

@@ -22,6 +22,11 @@
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vfsxyzw, EncodedFieldMask::r5900ee_vfs.union(EncodedFieldMask::r5900ee_xyzw_xyzw), (R5900EEVF, bool, bool, bool, bool))
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vftxyzw, EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_xyzw_xyzw), (R5900EEVF, bool, bool, bool, bool))
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vfdxyzw, EncodedFieldMask::r5900ee_vfd.union(EncodedFieldMask::r5900ee_xyzw_xyzw), (R5900EEVF, bool, bool, bool, bool))
+
+    // Handle ProDG SN AS inverted registers in a few specific instructions (r5900ee_prodg_sn_as_inverted_regs)
+    RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vfsxyzw_inv_vft, EncodedFieldMask::r5900ee_vfs.union(EncodedFieldMask::r5900ee_xyzw_xyzw).union(EncodedFieldMask::r5900ee_vft), (R5900EEVF, R5900EEVF, bool, bool, bool, bool))
+    RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vftxyzw_inv_vfs, EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_xyzw_xyzw).union(EncodedFieldMask::r5900ee_vfs), (R5900EEVF, R5900EEVF, bool, bool, bool, bool))
+
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vftn, EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_n), (R5900EEVF, u8))
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vfsl, EncodedFieldMask::r5900ee_vfs.union(EncodedFieldMask::r5900ee_l), (R5900EEVF, u8))
     RAB_DEF_OPERAND_EXT(R5900EE, r5900ee, vftm, EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_m), (R5900EEVF, u8))

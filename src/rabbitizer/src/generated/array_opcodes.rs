@@ -15222,8 +15222,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r5900ee_vadda as usize] = OpcodeDescriptor {
             operands: Operand::arr3(
                 Operand::r5900ee_ACCxyzw,
-                Operand::r5900ee_vftxyzw,
-                Operand::r5900ee_vfsxyzw,
+                Operand::r5900ee_vftxyzw_inv_vfs,
+                Operand::r5900ee_vfsxyzw_inv_vft,
             ),
             instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,
@@ -15301,8 +15301,8 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
         table[Opcode::r5900ee_vmsuba as usize] = OpcodeDescriptor {
             operands: Operand::arr3(
                 Operand::r5900ee_ACCxyzw,
-                Operand::r5900ee_vftxyzw,
-                Operand::r5900ee_vfsxyzw,
+                Operand::r5900ee_vftxyzw_inv_vfs,
+                Operand::r5900ee_vfsxyzw_inv_vft,
             ),
             instr_suffix: Some(InstrSuffix::r5900ee_xyzw),
             is_float: true,

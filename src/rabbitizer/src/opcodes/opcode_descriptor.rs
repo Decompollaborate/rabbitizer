@@ -1195,6 +1195,25 @@ impl OpcodeDescriptor {
             }
 
             #[cfg(feature = "R5900EE")]
+            Operand::r5900ee_vfsxyzw_inv_vft | Operand::r5900ee_vftxyzw_inv_vfs => {
+                if self.has_specific_operand(Operand::r5900ee_vfsxyzw) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900ee_vftxyzw) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900ee_vfs) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900ee_vft) {
+                    return true;
+                }
+                if self.has_specific_operand(Operand::r5900ee_vftn) {
+                    return true;
+                }
+            }
+
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vftn => {
                 if self.has_specific_operand(Operand::r5900ee_vft) {
                     return true;

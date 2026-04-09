@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 use crate::encoded_field_mask::EncodedFieldMask;
-use crate::instr::{Instruction, InstructionFlags};
+use crate::instr::Instruction;
 use crate::opcodes::{Opcode, OpcodeDecoder, OPCODES};
 use crate::operands::Operand;
 use crate::utils::iter::DoubleOptIterator;
@@ -10,6 +10,7 @@ use crate::vram::{Vram, VramOffset};
 
 use super::operand_encoder::{EncodedOperandBits, OperandEncoderFlags};
 use super::token::{Token, TokenDottedText, Tokenize};
+use super::EncoderFlags;
 use super::EncodingError;
 
 #[derive(Debug, Clone)]
@@ -17,11 +18,11 @@ use super::EncodingError;
 pub struct EncoderIterator<'s> {
     tokenizer: Tokenize<'s>,
     vram: Vram,
-    flags: InstructionFlags,
+    flags: EncoderFlags,
 }
 
 impl<'s> EncoderIterator<'s> {
-    pub fn new(text: &'s str, vram: Vram, flags: InstructionFlags) -> Self {
+    pub fn new(text: &'s str, vram: Vram, flags: EncoderFlags) -> Self {
         Self {
             tokenizer: Tokenize::new(text),
             vram,
@@ -32,7 +33,7 @@ impl<'s> EncoderIterator<'s> {
     fn find_opcode(&self, name: &str) -> Option<Opcode> {
         // TODO: implement more checks like checking pseudos.
 
-        if let Some(isa_extension) = self.flags.isa_extension() {
+        if let Some(isa_extension) = self.flags.instruction_flags().isa_extension() {
             for opc in &OPCODES {
                 if opc.isa_extension() == Some(isa_extension) && opc.name() == name {
                     return Some(opc.opcode());
@@ -42,7 +43,7 @@ impl<'s> EncoderIterator<'s> {
 
         for opc in &OPCODES {
             if opc.isa_extension().is_none()
-                && opc.isa_version() <= self.flags.isa_version()
+                && opc.isa_version() <= self.flags.instruction_flags().isa_version()
                 && opc.name() == name
             {
                 return Some(opc.opcode());
@@ -55,7 +56,6 @@ impl<'s> EncoderIterator<'s> {
     fn encode_operands(
         &mut self,
         opcode: Opcode,
-        allow_dollarless: bool,
     ) -> Result<(u32, Option<usize>), EncodingError<'s>> {
         let mut word = 0;
 
@@ -66,8 +66,7 @@ impl<'s> EncoderIterator<'s> {
             return Ok((word, None));
         }
 
-        let operand_encoder_flags =
-            OperandEncoderFlags::new(self.flags.abi(), allow_dollarless, opcode);
+        let operand_encoder_flags = OperandEncoderFlags::new(&self.flags, opcode);
 
         let mut tokenizer_iter = DoubleOptIterator::new(self.tokenizer.by_ref());
         let mut new_ending_index = None;
@@ -194,11 +193,9 @@ impl<'s> Iterator for EncoderIterator<'s> {
             }
         };
 
-        let allow_dollarless = true;
         let mut word = opcode.opcode_bits();
 
-        let (operand_bits, new_ending_index) = match self.encode_operands(opcode, allow_dollarless)
-        {
+        let (operand_bits, new_ending_index) = match self.encode_operands(opcode) {
             Ok((w, i)) => (w, i),
             Err(e) => {
                 return Some(Err(e));
@@ -224,7 +221,12 @@ impl<'s> Iterator for EncoderIterator<'s> {
             gated_behind,
         );
 
-        let instr = Instruction::from_raw_parts(word, vram, opcode_decoder, self.flags);
+        let instr = Instruction::from_raw_parts(
+            word,
+            vram,
+            opcode_decoder,
+            *self.flags.instruction_flags(),
+        );
 
         let text = self.tokenizer.get_text_range(starting_index, ending_index);
 
@@ -238,12 +240,14 @@ mod tests {
 
     use pretty_assertions::assert_eq;
 
+    use crate::instr::InstructionFlags;
+
     #[test]
     fn test_encoder_addiu() {
         let word = 0x27BDF8C0;
         let s = "addiu       $sp, $sp, -0x740";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -261,7 +265,7 @@ mod tests {
         let word = 0x04A80010;
         let s = "tgei        $a1, 0x10";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -413,7 +417,7 @@ mod tests {
             (0x6C00808F, "vcmp.q      ns, C000"),
         ];
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
 
         for (word, text) in DATA {
             let mut encoder = EncoderIterator::new(text, vram, flags);
@@ -438,7 +442,7 @@ mod tests {
             (0xDE000400, "vpfxd       , , M,"),
         ];
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
 
         for (word, text) in DATA {
             let mut encoder = EncoderIterator::new(text, vram, flags);
@@ -458,7 +462,7 @@ mod tests {
         let word = 0x10000004;
         let s = "b       0x80000014";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -475,7 +479,7 @@ mod tests {
         let word = 0x10000002;
         let s = "b       . + 0xC";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -492,7 +496,7 @@ mod tests {
         let word = 0x10000002;
         let s = "b       . + 4 + (0x2 << 2)";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -509,7 +513,7 @@ mod tests {
         let word = 0x0001000D;
         let s = "break  1";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -526,7 +530,7 @@ mod tests {
         let word = 0x000101CD;
         let s = "break  1, 7";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -546,7 +550,7 @@ mod tests {
         let word = 0xF8800042;
         let s = "sv.q        C000, 0x40($a0), wb";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -566,7 +570,7 @@ mod tests {
         let word = 0x6C000000;
         let s = "vcmp.s      fl";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -586,7 +590,7 @@ mod tests {
         let word = 0x6C000000;
         let s = "vcmp.s      fl, S000";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -606,7 +610,7 @@ mod tests {
         let word = 0x6C000000;
         let s = "vcmp.s      fl, S000, S000";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -626,7 +630,7 @@ mod tests {
         let word = 0x6C000008;
         let s = "vcmp.s      ez, S000";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -646,7 +650,7 @@ mod tests {
         let word = 0x6C000008;
         let s = "vcmp.s      ez, S000, S000";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -666,7 +670,7 @@ mod tests {
         let word = 0x6C000001;
         let s = "vcmp.s      eq, S000, S000";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -683,7 +687,7 @@ mod tests {
         let word = 0x0080F809;
         let s = "jalr        $a0";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -700,7 +704,7 @@ mod tests {
         let word = 0x02002009;
         let s = "jalr        $a0, $s0";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -717,7 +721,7 @@ mod tests {
         let word = 0x0085001A;
         let s = "div $a0, $a1";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -734,7 +738,7 @@ mod tests {
         let word = 0x0085001A;
         let s = "div $zero, $a0, $a1";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::default();
+        let flags = EncoderFlags::new(InstructionFlags::default());
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -754,7 +758,7 @@ mod tests {
         let word = 0xDE000000;
         let s = "vpfxd       , , ,";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();
@@ -774,7 +778,7 @@ mod tests {
         let word = 0xDE000010;
         let s = "vpfxd       , , 0,";
         let vram = Vram::new(0x80000000);
-        let flags = InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX);
+        let flags = EncoderFlags::new(InstructionFlags::new_extension(IsaExtension::R4000ALLEGREX));
         let mut encoder = EncoderIterator::new(s, vram, flags);
 
         let (instr, found_s) = encoder.next().unwrap().unwrap();

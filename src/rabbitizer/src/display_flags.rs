@@ -46,6 +46,8 @@ pub struct InstructionDisplayFlags {
     r5900ee_modern_gas_instrs_workarounds: bool,
     #[cfg(feature = "R5900EE")]
     r5900ee_use_dollar: bool,
+    #[cfg(feature = "R5900EE")]
+    r5900ee_prodg_sn_as_inverted_regs: bool,
 
     // Debug specific settings, keep them at the bottom
     debug_word_comment_info: bool,
@@ -83,6 +85,8 @@ impl InstructionDisplayFlags {
             r5900ee_modern_gas_instrs_workarounds: false,
             #[cfg(feature = "R5900EE")]
             r5900ee_use_dollar: false,
+            #[cfg(feature = "R5900EE")]
+            r5900ee_prodg_sn_as_inverted_regs: false,
 
             debug_word_comment_info: false,
         }
@@ -408,6 +412,27 @@ impl InstructionDisplayFlags {
     }
 
     #[must_use]
+    #[cfg(feature = "R5900EE")]
+    pub const fn r5900ee_prodg_sn_as_inverted_regs(&self) -> bool {
+        self.r5900ee_prodg_sn_as_inverted_regs
+    }
+    #[cfg(feature = "R5900EE")]
+    pub fn r5900ee_prodg_sn_as_inverted_regs_mut(&mut self) -> &mut bool {
+        &mut self.r5900ee_prodg_sn_as_inverted_regs
+    }
+    #[must_use]
+    #[cfg(feature = "R5900EE")]
+    pub const fn with_r5900ee_prodg_sn_as_inverted_regs(
+        self,
+        r5900ee_prodg_sn_as_inverted_regs: bool,
+    ) -> Self {
+        Self {
+            r5900ee_prodg_sn_as_inverted_regs,
+            ..self
+        }
+    }
+
+    #[must_use]
     pub const fn debug_word_comment_info(&self) -> bool {
         self.debug_word_comment_info
     }
@@ -489,6 +514,13 @@ pub(crate) mod python_bindings {
         #[pyo3(name = "set_r5900ee_use_dollar")]
         pub fn py_set_r5900ee_use_dollar(&mut self, r5900ee_use_dollar: bool) {
             self.r5900ee_use_dollar = r5900ee_use_dollar;
+        }
+        #[pyo3(name = "set_r5900ee_prodg_sn_as_inverted_regs")]
+        pub fn py_set_r5900ee_prodg_sn_as_inverted_regs(
+            &mut self,
+            r5900ee_prodg_sn_as_inverted_regs: bool,
+        ) {
+            self.r5900ee_prodg_sn_as_inverted_regs = r5900ee_prodg_sn_as_inverted_regs;
         }
     }
 }

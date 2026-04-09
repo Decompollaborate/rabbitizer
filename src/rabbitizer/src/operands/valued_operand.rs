@@ -401,6 +401,24 @@ impl ValuedOperand {
                 field.r5900ee_xyzw_w_impl(),
             ),
             #[cfg(feature = "R5900EE")]
+            Operand::r5900ee_vfsxyzw_inv_vft => Self::r5900ee_vfsxyzw_inv_vft(
+                field.r5900ee_vfs_impl(),
+                field.r5900ee_vft_impl(),
+                field.r5900ee_xyzw_x_impl(),
+                field.r5900ee_xyzw_y_impl(),
+                field.r5900ee_xyzw_z_impl(),
+                field.r5900ee_xyzw_w_impl(),
+            ),
+            #[cfg(feature = "R5900EE")]
+            Operand::r5900ee_vftxyzw_inv_vfs => Self::r5900ee_vftxyzw_inv_vfs(
+                field.r5900ee_vft_impl(),
+                field.r5900ee_vfs_impl(),
+                field.r5900ee_xyzw_x_impl(),
+                field.r5900ee_xyzw_y_impl(),
+                field.r5900ee_xyzw_z_impl(),
+                field.r5900ee_xyzw_w_impl(),
+            ),
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfdxyzw => Self::r5900ee_vfdxyzw(
                 field.r5900ee_vfd_impl(),
                 field.r5900ee_xyzw_x_impl(),

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-alpha.8] - 2026-04-09
+
 ### Added
 
 - Add missing support for dynamic suffixed instructions (R5900EE) for both
@@ -17,6 +19,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     function can display additional data like the dynamic suffix.
 - Add `Opcode::instr_suffix()` and `OpcodeDescriptor::instr_suffix()`.
 - The encoder now returns the str of each encoded instruction.
+- Add support for the inverted register order used by the ProDG SN AS (`-snas`
+  flag) for some specific R5900EE VU instructions (`vadda` and `vmsuba`).
+  - This is disabled by default.
+  - Can be enabled by changing the `r5900ee_prodg_sn_as_inverted_regs` setting
+    from `InstructionDisplayFlags`.
 
 ### Changed
 
@@ -801,7 +808,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.7...🦀
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.8...🦀
+[2.0.0-alpha.8]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.7...2.0.0-alpha.8
 [2.0.0-alpha.7]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.6...2.0.0-alpha.7
 [2.0.0-alpha.6]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.5...2.0.0-alpha.6
 [2.0.0-alpha.5]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.4...2.0.0-alpha.5

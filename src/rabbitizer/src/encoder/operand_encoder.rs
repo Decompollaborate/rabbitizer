@@ -3,8 +3,6 @@
 
 use crate::abi::Abi;
 use crate::encoded_field_mask::EncodedFieldMask;
-use crate::encoder::token::{BracketType, Token, TokenDottedText, Tokenize};
-use crate::encoder::EncodingError;
 use crate::opcodes::Opcode;
 use crate::operands::Operand;
 use crate::registers::*;
@@ -13,19 +11,38 @@ use crate::registers_meta::R4000AllegrexVectorRegister;
 use crate::registers_meta::Register;
 use crate::utils::{self, iter::DoubleOptIterator};
 
-pub(crate) struct OperandEncoderFlags {
-    abi: Abi,
-    allow_dollarless: bool,
+use super::token::{BracketType, Token, TokenDottedText, Tokenize};
+use super::EncoderFlags;
+use super::EncodingError;
+
+pub(crate) struct OperandEncoderFlags<'flgs> {
+    encoder_flags: &'flgs EncoderFlags,
     opcode: Opcode,
 }
 
-impl OperandEncoderFlags {
-    pub const fn new(abi: Abi, allow_dollarless: bool, opcode: Opcode) -> Self {
+impl<'flgs> OperandEncoderFlags<'flgs> {
+    #[must_use]
+    pub const fn new(encoder_flags: &'flgs EncoderFlags, opcode: Opcode) -> Self {
         Self {
-            abi,
-            allow_dollarless,
+            encoder_flags,
             opcode,
         }
+    }
+
+    #[must_use]
+    pub const fn abi(&self) -> Abi {
+        self.encoder_flags.instruction_flags().abi()
+    }
+
+    #[must_use]
+    pub const fn allow_dollarless(&self) -> bool {
+        self.encoder_flags.allow_dollarless()
+    }
+
+    #[must_use]
+    #[cfg(feature = "R5900EE")]
+    pub const fn r5900ee_prodg_sn_as_inverted_regs(&self) -> bool {
+        self.encoder_flags.r5900ee_prodg_sn_as_inverted_regs()
     }
 }
 
@@ -41,6 +58,7 @@ impl Operand {
         else {
             return Err(EncodingError::RanOutOfTokens(flags.opcode, self));
         };
+        let mut mask = self.mask();
 
         // Hacky way to workaround unused_mut warning that gets triggered under
         // some feature flags combinations.
@@ -48,6 +66,7 @@ impl Operand {
         #[expect(clippy::self_assignment)]
         {
             token = token;
+            mask = mask;
         }
 
         let val = match self {
@@ -810,6 +829,21 @@ impl Operand {
                 */
             }
             #[cfg(feature = "R5900EE")]
+            Self::r5900ee_vfsxyzw_inv_vft => {
+                // r5900ee_vfsxyzw_inv_vft has a generic mask that has both bitpatterns,
+                // so we need to decide the specific mask to use here.
+                mask = if flags.r5900ee_prodg_sn_as_inverted_regs() { EncodedFieldMask::r5900ee_vft} else { EncodedFieldMask::r5900ee_vfs};
+                regval_from_text_token::<R5900EEVF>(token, flags, self)?
+            }
+            #[cfg(feature = "R5900EE")]
+            Self::r5900ee_vftxyzw_inv_vfs => {
+                // r5900ee_vftxyzw_inv_vfs has a generic mask that has both bitpatterns,
+                // so we need to decide the specific mask to use here.
+                mask = if flags.r5900ee_prodg_sn_as_inverted_regs() { EncodedFieldMask::r5900ee_vfs} else { EncodedFieldMask::r5900ee_vft};
+                regval_from_text_token::<R5900EEVF>(token, flags, self)?
+            }
+
+            #[cfg(feature = "R5900EE")]
             Self::r5900ee_vftn => {
                 let text = operand_text_from_token(token, flags, self)?;
                 if text.ends_with('x') || text.ends_with('y') || text.ends_with('z') || text.ends_with('w') {
@@ -881,7 +915,7 @@ impl Operand {
         };
 
         let encoded = if let Some(val) = val {
-            self.mask().unshift(val)
+            mask.unshift(val)
         } else {
             let err = match token {
                 Token::End => EncodingError::EndTokenInsteadOfOperand(flags.opcode, self),
@@ -921,7 +955,7 @@ fn regval<R>(name: &str, flags: &OperandEncoderFlags) -> Option<u32>
 where
     R: Register,
 {
-    R::from_name(name, flags.abi, flags.allow_dollarless).map(|x| x.as_index() as u32)
+    R::from_name(name, flags.abi(), flags.allow_dollarless()).map(|x| x.as_index() as u32)
 }
 
 const fn operand_text_from_token<'s>(
@@ -1100,12 +1134,9 @@ where
 {
     let text = request_next_text(token_stream, next_token, flags, operand, ending_index)?;
 
-    R::from_name(text, flags.abi, flags.allow_dollarless).ok_or(EncodingError::UnrecognizedOperand(
-        flags.opcode,
-        text,
-        None,
-        operand,
-    ))
+    R::from_name(text, flags.abi(), flags.allow_dollarless()).ok_or(
+        EncodingError::UnrecognizedOperand(flags.opcode, text, None, operand),
+    )
 }
 
 fn encode_next_reg<'s, R>(
@@ -1287,7 +1318,7 @@ where
     R: R4000AllegrexVectorRegister,
 {
     let text = operand_text_from_token(token, flags, operand)?;
-    let cond = R4000AllegrexVCond::from_name(text, flags.abi, flags.allow_dollarless);
+    let cond = R4000AllegrexVCond::from_name(text, flags.abi(), flags.allow_dollarless());
 
     let ret = cond.map(|cond| {
         let bits = encode_r4000allegrex_vcmp_registers::<R>(

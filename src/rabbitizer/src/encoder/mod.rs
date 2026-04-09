@@ -1,12 +1,14 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+mod encoder_flags;
 mod encoder_iterator;
 mod encoding_error;
 pub(crate) mod instr_suffix_encoder;
 pub(crate) mod operand_encoder;
 pub(crate) mod token;
 
+pub use encoder_flags::EncoderFlags;
 pub use encoder_iterator::EncoderIterator;
 pub use encoding_error::EncodingError;
 pub use token::BracketType;

@@ -178,6 +178,14 @@ impl TestEntry {
         }
     }
 
+    #[allow(dead_code)]
+    pub const fn with_display_flags(self, display_flags: InstructionDisplayFlags) -> Self {
+        Self {
+            display_flags,
+            ..self
+        }
+    }
+
     pub fn compare_source_info(&self, other: &Self) -> bool {
         self.instr.word() == other.instr.word()
             && self.instr.flags() == other.instr.flags()
@@ -350,7 +358,7 @@ impl TestEntry {
 
     #[cfg(feature = "encoder")]
     pub fn check_encoding(&self) -> u32 {
-        use rabbitizer::encoder::EncoderIterator;
+        use rabbitizer::encoder::{EncoderFlags, EncoderIterator};
 
         if !self.valid {
             return 0;
@@ -363,9 +371,18 @@ impl TestEntry {
             return 0;
         }
 
+        let mut encoder_flags = EncoderFlags::new(*self.instr.flags());
+        if !self.display_flags.use_dollar() {
+            *encoder_flags.allow_dollarless_mut() = true;
+        }
+        #[cfg(feature = "R5900EE")]
+        {
+            *encoder_flags.r5900ee_prodg_sn_as_inverted_regs_mut() =
+                self.display_flags.r5900ee_prodg_sn_as_inverted_regs();
+        }
+
         let mut errors = 0;
-        let mut encoder =
-            EncoderIterator::new(self.expected, self.instr.vram(), *self.instr.flags());
+        let mut encoder = EncoderIterator::new(self.expected, self.instr.vram(), encoder_flags);
         let display_flags = self.display_flags.with_debug_word_comment_info(true);
 
         match encoder.next() {

@@ -224,6 +224,10 @@ pub enum Operand {
     #[cfg(feature = "R5900EE")]
     r5900ee_vfdxyzw,
     #[cfg(feature = "R5900EE")]
+    r5900ee_vfsxyzw_inv_vft,
+    #[cfg(feature = "R5900EE")]
+    r5900ee_vftxyzw_inv_vfs,
+    #[cfg(feature = "R5900EE")]
     r5900ee_vftn,
     #[cfg(feature = "R5900EE")]
     r5900ee_vfsl,
@@ -995,6 +999,24 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     }
     #[cfg(feature = "R5900EE")]
     {
+        table[Operand::r5900ee_vfsxyzw_inv_vft as usize] = OperandDescriptor::new(
+            concat!("r5900ee", "_", "vfsxyzw_inv_vft"),
+            EncodedFieldMask::r5900ee_vfs
+                .union(EncodedFieldMask::r5900ee_xyzw_xyzw)
+                .union(EncodedFieldMask::r5900ee_vft),
+        );
+    }
+    #[cfg(feature = "R5900EE")]
+    {
+        table[Operand::r5900ee_vftxyzw_inv_vfs as usize] = OperandDescriptor::new(
+            concat!("r5900ee", "_", "vftxyzw_inv_vfs"),
+            EncodedFieldMask::r5900ee_vft
+                .union(EncodedFieldMask::r5900ee_xyzw_xyzw)
+                .union(EncodedFieldMask::r5900ee_vfs),
+        );
+    }
+    #[cfg(feature = "R5900EE")]
+    {
         table[Operand::r5900ee_vftn as usize] = OperandDescriptor::new(
             concat!("r5900ee", "_", "vftn"),
             EncodedFieldMask::r5900ee_vft.union(EncodedFieldMask::r5900ee_n),
@@ -1312,6 +1334,14 @@ where
             #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfdxyzw => OperandDisplay::display_r5900ee_vfdxyzw(self, f),
             #[cfg(feature = "R5900EE")]
+            Operand::r5900ee_vfsxyzw_inv_vft => {
+                OperandDisplay::display_r5900ee_vfsxyzw_inv_vft(self, f)
+            }
+            #[cfg(feature = "R5900EE")]
+            Operand::r5900ee_vftxyzw_inv_vfs => {
+                OperandDisplay::display_r5900ee_vftxyzw_inv_vfs(self, f)
+            }
+            #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vftn => OperandDisplay::display_r5900ee_vftn(self, f),
             #[cfg(feature = "R5900EE")]
             Operand::r5900ee_vfsl => OperandDisplay::display_r5900ee_vfsl(self, f),
@@ -1561,6 +1591,10 @@ pub enum ValuedOperand {
     #[cfg(feature = "R5900EE")]
     r5900ee_vfdxyzw(R5900EEVF, bool, bool, bool, bool),
     #[cfg(feature = "R5900EE")]
+    r5900ee_vfsxyzw_inv_vft(R5900EEVF, R5900EEVF, bool, bool, bool, bool),
+    #[cfg(feature = "R5900EE")]
+    r5900ee_vftxyzw_inv_vfs(R5900EEVF, R5900EEVF, bool, bool, bool, bool),
+    #[cfg(feature = "R5900EE")]
     r5900ee_vftn(R5900EEVF, u8),
     #[cfg(feature = "R5900EE")]
     r5900ee_vfsl(R5900EEVF, u8),
@@ -1800,6 +1834,10 @@ impl Operand {
             ValuedOperand::r5900ee_vftxyzw(..) => Self::r5900ee_vftxyzw,
             #[cfg(feature = "R5900EE")]
             ValuedOperand::r5900ee_vfdxyzw(..) => Self::r5900ee_vfdxyzw,
+            #[cfg(feature = "R5900EE")]
+            ValuedOperand::r5900ee_vfsxyzw_inv_vft(..) => Self::r5900ee_vfsxyzw_inv_vft,
+            #[cfg(feature = "R5900EE")]
+            ValuedOperand::r5900ee_vftxyzw_inv_vfs(..) => Self::r5900ee_vftxyzw_inv_vfs,
             #[cfg(feature = "R5900EE")]
             ValuedOperand::r5900ee_vftn(..) => Self::r5900ee_vftn,
             #[cfg(feature = "R5900EE")]
