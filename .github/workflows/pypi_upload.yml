@@ -111,16 +111,18 @@ jobs:
             abi3-key: abi3
             t-extra-key: ''
             check-pypy-wheel: true
-          - os: pyodide
-            runs-on: ubuntu-22.04
-            platform: pyodide
-            check-wheel: false
-            wheel-check-script: .github/scripts/ci_check_wheel.sh
-            python_version_min: '3.7'
-            python_version_max: '3.14'
-            abi3-key: abi3
-            t-extra-key: ''
-            check-pypy-wheel: true
+          # PyPI doesn't support pyodide yet
+          # https://github.com/pypi/warehouse/issues/10416
+          # - os: pyodide
+          #   runs-on: ubuntu-22.04
+          #   platform: pyodide
+          #   check-wheel: false
+          #   wheel-check-script: .github/scripts/ci_check_wheel.sh
+          #   python_version_min: '3.7'
+          #   python_version_max: '3.14'
+          #   abi3-key: abi3
+          #   t-extra-key: ''
+          #   check-pypy-wheel: true
 
     steps:
       - name: Checkout reposistory
