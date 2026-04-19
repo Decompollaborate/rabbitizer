@@ -12,3 +12,4 @@ set -e
 ./build/tests/c/instruction_checks/r4000allegrex_vfpu_disasm.elf
 ./build/tests/c/instruction_checks/r5900_disasm.elf
 ./build/tests/c/instruction_checks/r5900_trunc_cvt.elf
+./build/tests/c/instruction_checks/r5900_prodg_sn_as.elf

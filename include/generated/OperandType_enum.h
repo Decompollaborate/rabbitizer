@@ -121,6 +121,8 @@ typedef enum RabbitizerOperandType {
     RAB_OPERAND_r5900_vfsxyzw,
     RAB_OPERAND_r5900_vftxyzw,
     RAB_OPERAND_r5900_vfdxyzw,
+    RAB_OPERAND_r5900_vfsxyzw_inv_vft,
+    RAB_OPERAND_r5900_vftxyzw_inv_vfs,
     RAB_OPERAND_r5900_vfsn,
     RAB_OPERAND_r5900_vftn,
     RAB_OPERAND_r5900_vfdn,

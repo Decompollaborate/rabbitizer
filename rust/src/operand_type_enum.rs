@@ -121,6 +121,8 @@ pub enum OperandType {
     r5900_vfsxyzw,
     r5900_vftxyzw,
     r5900_vfdxyzw,
+    r5900_vfsxyzw_inv_vft,
+    r5900_vftxyzw_inv_vfs,
     r5900_vfsn,
     r5900_vftn,
     r5900_vfdn,

@@ -43,6 +43,7 @@ RabbitizerConfig RabbitizerConfig_Cfg = {
         .treatJAsUnconditionalBranch = true,
         .sn64DivFix = false,
         .gnuMode = true,
+        .r5900ProdgSnAsInvertedRegs = false,
     },
     .misc = {
         .opcodeLJust = 7+4,

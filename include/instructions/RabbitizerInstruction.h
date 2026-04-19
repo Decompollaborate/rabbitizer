@@ -48,7 +48,11 @@ typedef struct RabbitizerInstruction {
      *     - `RAB_TRINARY_VAL_FALSE` forces disassembling to not use of dollar signs ($) on R5900's VU instructions
      *     - `RAB_TRINARY_VAL_NONE` leaves this decision to the global settings.
      *     - Defaults to `RAB_TRINARY_VAL_NONE`
-     * - Bit 4 ~ 5: Reserved for future use.
+     * - Bit 4 ~ 5: `r5900ProdgSnAsInvertedRegs`. Value of the `RabTrinaryValue` enum.
+     *     - `RAB_TRINARY_VAL_TRUE` forces the register order used by ProDG SN AS for `vadda` and `vmsuba`.
+     *     - `RAB_TRINARY_VAL_FALSE` forces the standard register order for those instructions.
+     *     - `RAB_TRINARY_VAL_NONE` leaves this decision to the global settings.
+     *     - Defaults to `RAB_TRINARY_VAL_NONE`
      * - Bit 6 ~ 7: Reserved for future use.
      * - Bit 8 ~ 9: Reserved for future use.
      * - Bit 10 ~ 11: Reserved for future use.
@@ -152,6 +156,9 @@ typedef struct RabbitizerInstruction {
 
 #define RAB_INSTR_FLAGS_GET_r5900UseDollar(self)                          (RabTrinaryValue)(SHIFTR((self)->flags,  2,  2))
 #define RAB_INSTR_FLAGS_SET_r5900UseDollar(self, value)        ((self)->flags = BITREPACK((self)->flags, (value),  2,  2))
+
+#define RAB_INSTR_FLAGS_GET_r5900ProdgSnAsInvertedRegs(self)                   (RabTrinaryValue)(SHIFTR((self)->flags,  4,  2))
+#define RAB_INSTR_FLAGS_SET_r5900ProdgSnAsInvertedRegs(self, value) ((self)->flags = BITREPACK((self)->flags, (value),  4,  2))
 
 
 NON_NULL(1)

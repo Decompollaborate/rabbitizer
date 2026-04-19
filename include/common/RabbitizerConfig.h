@@ -56,6 +56,11 @@ typedef struct RabbitizerConfig_ToolchainTweaks {
      * break original compiler behavior and what's specified in the manuals.
      */
     bool gnuMode;
+    /**
+     * Eanbles the use of the inverted register order for R5900's `vadda` and
+     * `vmsuba`, used by ProDG SN AS (`-snas`).
+     */
+    bool r5900ProdgSnAsInvertedRegs;
 } RabbitizerConfig_ToolchainTweaks;
 
 typedef struct RabbitizerConfig_Misc {

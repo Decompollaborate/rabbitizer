@@ -30,6 +30,7 @@ class _RabbitizerConfig:
     toolchainTweaks_treatJAsUnconditionalBranch: bool = True
     toolchainTweaks_sn64DivFix: bool = False
     toolchainTweaks_gnuMode: bool = True
+    toolchainTweaks_r5900ProdgSnAsInvertedRegs: bool = False
 
     misc_opcodeLJust: int = 11
     misc_unknownInstrComment: bool = True

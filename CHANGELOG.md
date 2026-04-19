@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.16.0] - 2026-04-19
+
+- Add support for the inverted register order used by the ProDG SN AS (`-snas`
+  flag) for some specific R5900EE VU instructions (`vadda` and `vmsuba`).
+  - This is disabled by default.
+  - It can be enabled globally be turning on
+    `RabbitizerConfig_Cfg.toolchainTweaks.r5900ProdgSnAsInvertedRegs` or per
+    `Instruction` instance by using the
+    `RAB_INSTR_FLAGS_SET_r5900ProdgSnAsInvertedRegs` macro.
+  - On Python refer to `Instruction.flag_r5900ProdgSnAsInvertedRegs` and
+    `config.toolchainTweaks_r5900ProdgSnAsInvertedRegs`.
+  - On Rust refer to `Instruction::flags_set_r5900_prodg_sn_as_inverted_regs`
+    and `RabbitizerConfig_Cfg.toolchain_tweaks.r5900_prodg_sn_as_inverted_regs`
+
 ## [1.15.0] - 2026-02-28
 
 ### Added
@@ -776,7 +790,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.15.0...1.x
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.16.0...1.x
+[1.16.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.15.0...1.16.0
 [1.15.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.3...1.15.0
 [1.14.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.2...1.14.3
 [1.14.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.1...1.14.2

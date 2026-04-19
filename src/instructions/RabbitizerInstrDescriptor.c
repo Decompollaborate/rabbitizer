@@ -504,6 +504,25 @@ bool RabbitizerInstrDescriptor_hasOperandAlias(const RabbitizerInstrDescriptor *
             }
             break;
 
+        case RAB_OPERAND_r5900_vfsxyzw_inv_vft:
+        case RAB_OPERAND_r5900_vftxyzw_inv_vfs:
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vfsxyzw)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vftxyzw)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vfs)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vft)) {
+                return true;
+            }
+            if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vfsn)) {
+                return true;
+            }
+            break;
+
         case RAB_OPERAND_r5900_vfsn:
             if (RabbitizerInstrDescriptor_hasSpecificOperand(self, RAB_OPERAND_r5900_vfs)) {
                 return true;

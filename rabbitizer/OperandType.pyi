@@ -122,6 +122,8 @@ class OperandType:
     r5900_vfsxyzw: Enum
     r5900_vftxyzw: Enum
     r5900_vfdxyzw: Enum
+    r5900_vfsxyzw_inv_vft: Enum
+    r5900_vftxyzw_inv_vfs: Enum
     r5900_vfsn: Enum
     r5900_vftn: Enum
     r5900_vfdn: Enum

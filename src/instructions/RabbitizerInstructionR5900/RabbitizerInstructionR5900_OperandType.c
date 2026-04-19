@@ -238,6 +238,75 @@ size_t RabbitizerOperandType_process_r5900_vfdxyzw(const RabbitizerInstruction *
     return totalSize;
 }
 
+size_t RabbitizerOperandType_process_r5900_vfsxyzw_inv_vft(const RabbitizerInstruction *self, char *dst,
+                                                           const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+    bool invert = false;
+
+    switch (RAB_INSTR_FLAGS_GET_r5900ProdgSnAsInvertedRegs(self)) {
+        case RAB_TRINARY_VAL_NONE:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.r5900ProdgSnAsInvertedRegs) {
+                invert = true;
+            } else {
+                invert = false;
+            }
+            break;
+
+        case RAB_TRINARY_VAL_FALSE:
+            invert = false;
+            break;
+
+        case RAB_TRINARY_VAL_TRUE:
+            invert = true;
+            break;
+    }
+
+    if (invert) {
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize,
+                                RabbitizerOperandType_process_r5900_vft(self, dst, immOverride, immOverrideLength));
+    } else {
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize,
+                                RabbitizerOperandType_process_r5900_vfs(self, dst, immOverride, immOverrideLength));
+    }
+
+    return totalSize;
+}
+
+size_t RabbitizerOperandType_process_r5900_vftxyzw_inv_vfs(const RabbitizerInstruction *self, char *dst,
+                                                           const char *immOverride, size_t immOverrideLength) {
+    size_t totalSize = 0;
+
+    bool invert = false;
+
+    switch (RAB_INSTR_FLAGS_GET_r5900ProdgSnAsInvertedRegs(self)) {
+        case RAB_TRINARY_VAL_NONE:
+            if (RabbitizerConfig_Cfg.toolchainTweaks.r5900ProdgSnAsInvertedRegs) {
+                invert = true;
+            } else {
+                invert = false;
+            }
+            break;
+
+        case RAB_TRINARY_VAL_FALSE:
+            invert = false;
+            break;
+
+        case RAB_TRINARY_VAL_TRUE:
+            invert = true;
+            break;
+    }
+
+    if (invert) {
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize,
+                                RabbitizerOperandType_process_r5900_vfs(self, dst, immOverride, immOverrideLength));
+    } else {
+        RABUTILS_BUFFER_ADVANCE(dst, totalSize,
+                                RabbitizerOperandType_process_r5900_vft(self, dst, immOverride, immOverrideLength));
+    }
+
+    return totalSize;
+}
+
 size_t RabbitizerOperandType_process_r5900_vfsn(const RabbitizerInstruction *self, char *dst, const char *immOverride,
                                                 size_t immOverrideLength) {
     size_t totalSize = 0;

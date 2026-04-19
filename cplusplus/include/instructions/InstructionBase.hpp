@@ -155,6 +155,9 @@ namespace rabbitizer {
         TrinaryValue FlagGet_r5900UseDollar() const;
         void FlagSet_r5900UseDollar(TrinaryValue value);
 
+        TrinaryValue FlagGet_r5900ProdgSnAsInvertedRegs() const;
+        void FlagSet_r5900ProdgSnAsInvertedRegs(TrinaryValue value);
+
         /* flags */
 
 

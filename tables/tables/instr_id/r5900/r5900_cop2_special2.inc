@@ -268,7 +268,7 @@
     ) // Multiply and Subtract accumulator I
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x28, vadda,
-        .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw},
+        .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vftxyzw_inv_vfs, RAB_OPERAND_r5900_vfsxyzw_inv_vft},
         .instrSuffix=RABINSTRSUFFIX_R5900_xyzw,
         .isFloat=true
     ) // Add accumulator
@@ -294,7 +294,7 @@
     )
     RABBITIZER_DEF_INSTR_ID(
         r5900, 0x2D, vmsuba,
-        .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vftxyzw, RAB_OPERAND_r5900_vfsxyzw},
+        .operands={RAB_OPERAND_r5900_ACCxyzw, RAB_OPERAND_r5900_vftxyzw_inv_vfs, RAB_OPERAND_r5900_vfsxyzw_inv_vft},
         .instrSuffix=RABINSTRSUFFIX_R5900_xyzw,
         .isFloat=true
     ) // Multiply and substract accumulator

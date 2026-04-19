@@ -662,6 +662,13 @@ void InstructionBase::FlagSet_r5900UseDollar(TrinaryValue value) {
     RAB_INSTR_FLAGS_SET_r5900UseDollar(&this->instr, static_cast<RabTrinaryValue>(value));
 }
 
+TrinaryValue InstructionBase::FlagGet_r5900ProdgSnAsInvertedRegs() const {
+    return static_cast<TrinaryValue>(RAB_INSTR_FLAGS_GET_r5900ProdgSnAsInvertedRegs(&this->instr));
+}
+void InstructionBase::FlagSet_r5900ProdgSnAsInvertedRegs(TrinaryValue value) {
+    RAB_INSTR_FLAGS_SET_r5900ProdgSnAsInvertedRegs(&this->instr, static_cast<RabTrinaryValue>(value));
+}
+
 /* flags */
 
 /* more getters */

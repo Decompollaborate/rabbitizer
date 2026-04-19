@@ -9,9 +9,15 @@
     RAB_DEF_OPERAND(r5900, vfs)
     RAB_DEF_OPERAND(r5900, vft)
     RAB_DEF_OPERAND(r5900, vfd)
+
     RAB_DEF_OPERAND(r5900, vfsxyzw)
     RAB_DEF_OPERAND(r5900, vftxyzw)
     RAB_DEF_OPERAND(r5900, vfdxyzw)
+
+    // Handle ProDG SN AS inverted registers in a few specific instructions (r5900_prodg_sn_as_inverted_regs)
+    RAB_DEF_OPERAND(r5900, vfsxyzw_inv_vft)
+    RAB_DEF_OPERAND(r5900, vftxyzw_inv_vfs)
+
     RAB_DEF_OPERAND(r5900, vfsn)
     RAB_DEF_OPERAND(r5900, vftn)
     RAB_DEF_OPERAND(r5900, vfdn)

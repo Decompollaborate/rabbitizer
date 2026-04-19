@@ -72,10 +72,17 @@ class Instruction:
     - `TrinaryValue.NONE` leaves this decision to the global settings.
     """
     flag_r5900UseDollar: Enum = TrinaryValue.NONE
-    """Flag to override the disasmAsData global configuration.
+    """Flag to override the gnuMode global configuration for specific R5900 VU instructions.
 
     - `TrinaryValue.TRUE` forces the use of dollar signs ($) on R5900's VU instructions.
     - `TrinaryValue.FALSE` forces disassembling to not use of dollar signs ($) on R5900's VU instructions.
+    - `TrinaryValue.NONE` leaves this decision to the global settings.
+    """
+    flag_r5900ProdgSnAsInvertedRegs: Enum = TrinaryValue.NONE
+    """Flag to override the  global configuration.
+
+    - `TrinaryValue.TRUE` forces the register order used by ProDG SN AS for `vadda` and `vmsuba`.
+    - `TrinaryValue.FALSE` forces the standard register order for those instructions.
     - `TrinaryValue.NONE` leaves this decision to the global settings.
     """
 
