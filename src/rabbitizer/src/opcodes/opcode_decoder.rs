@@ -132,46 +132,43 @@ impl OpcodeDecoder {
         _isa_version: IsaVersion,
     ) -> Opcode {
         match opcode {
-            Opcode::core_beq => {
-                if EncodedFieldMask::rt.get_shifted(word) == 0 {
-                    if EncodedFieldMask::rs.get_shifted(word) == 0 {
-                        if flags
-                            .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_b))
-                        {
-                            opcode = Opcode::core_b;
-                        }
-                    } else if flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqz))
+            Opcode::core_beq if EncodedFieldMask::rt.get_shifted(word) == 0 => {
+                if EncodedFieldMask::rs.get_shifted(word) == 0 {
+                    if flags.contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_b))
                     {
-                        opcode = Opcode::core_beqz;
+                        opcode = Opcode::core_b;
                     }
+                } else if flags
+                    .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqz))
+                {
+                    opcode = Opcode::core_beqz;
                 }
             }
-            Opcode::core_bne => {
+            Opcode::core_bne
                 if EncodedFieldMask::rt.get_shifted(word) == 0
-                    && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnez))
-                {
-                    opcode = Opcode::core_bnez;
-                }
-            }
-            #[cfg(feature = "MIPS_II")]
-            Opcode::core_beql => {
-                if EncodedFieldMask::rt.get_shifted(word) == 0
-                    && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqzl))
-                {
-                    opcode = Opcode::core_beqzl;
-                }
+                    && flags.contains(
+                        DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnez),
+                    ) =>
+            {
+                opcode = Opcode::core_bnez;
             }
             #[cfg(feature = "MIPS_II")]
-            Opcode::core_bnel => {
+            Opcode::core_beql
                 if EncodedFieldMask::rt.get_shifted(word) == 0
-                    && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnezl))
-                {
-                    opcode = Opcode::core_bnezl;
-                }
+                    && flags.contains(
+                        DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_beqzl),
+                    ) =>
+            {
+                opcode = Opcode::core_beqzl;
+            }
+            #[cfg(feature = "MIPS_II")]
+            Opcode::core_bnel
+                if EncodedFieldMask::rt.get_shifted(word) == 0
+                    && flags.contains(
+                        DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_bnezl),
+                    ) =>
+            {
+                opcode = Opcode::core_bnezl;
             }
             _ => {}
         }
@@ -192,29 +189,29 @@ impl OpcodeDecoder {
         }
 
         match opcode {
-            Opcode::core_nor => {
+            Opcode::core_nor
                 if EncodedFieldMask::rt.get_shifted(word) == 0
-                    && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_not))
-                {
-                    opcode = Opcode::core_not;
-                }
+                    && flags.contains(
+                        DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_not),
+                    ) =>
+            {
+                opcode = Opcode::core_not;
             }
-            Opcode::core_sub => {
+            Opcode::core_sub
                 if EncodedFieldMask::rs.get_shifted(word) == 0
-                    && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_neg))
-                {
-                    opcode = Opcode::core_neg;
-                }
+                    && flags.contains(
+                        DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_neg),
+                    ) =>
+            {
+                opcode = Opcode::core_neg;
             }
-            Opcode::core_subu => {
+            Opcode::core_subu
                 if EncodedFieldMask::rs.get_shifted(word) == 0
-                    && flags
-                        .contains(DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_negu))
-                {
-                    opcode = Opcode::core_negu;
-                }
+                    && flags.contains(
+                        DecodingFlags::enable_pseudos.union(DecodingFlags::pseudo_negu),
+                    ) =>
+            {
+                opcode = Opcode::core_negu;
             }
             _ => {}
         }
