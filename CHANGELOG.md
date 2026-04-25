@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix a panic when trying to decode an invalid RSP `mfc0` instruction.
+  - Specifically `4019ACC2`.
+
 ## [2.0.0-alpha.8] - 2026-04-09
 
 ### Added
@@ -809,6 +814,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.8...🦀
+
 [2.0.0-alpha.8]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.7...2.0.0-alpha.8
 [2.0.0-alpha.7]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.6...2.0.0-alpha.7
 [2.0.0-alpha.6]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.5...2.0.0-alpha.6

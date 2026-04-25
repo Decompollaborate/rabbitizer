@@ -4402,7 +4402,7 @@ impl InstrField<'_> {
     /// [`rsp_cop0d`]: InstrField::rsp_cop0d
     #[must_use]
     pub(crate) fn rsp_cop0d_impl(&self) -> RspCop0 {
-        EncodedFieldMask::cop0d
+        EncodedFieldMask::rsp_cop0d
             .get_shifted(self.instr.word())
             .try_into()
             .unwrap()

@@ -60,6 +60,9 @@ bitflags! {
         const rsp_vd = utils::bitmask(  6,  5);
 
         #[cfg(feature = "RSP")]
+        const rsp_cop0d = utils::bitmask(11,  4);
+
+        #[cfg(feature = "RSP")]
         const rsp_elementhigh = utils::bitmask( 21,  4);
         #[cfg(feature = "RSP")]
         const rsp_elementlow = utils::bitmask(  7,  4);

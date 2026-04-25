@@ -367,7 +367,7 @@ pub static OPERANDS: [OperandDescriptor; OPERAND_COUNT] = {
     #[cfg(feature = "RSP")]
     {
         table[Operand::rsp_cop0d as usize] =
-            OperandDescriptor::new(concat!("rsp", "_", "cop0d"), EncodedFieldMask::cop0d);
+            OperandDescriptor::new(concat!("rsp", "_", "cop0d"), EncodedFieldMask::rsp_cop0d);
     }
     #[cfg(feature = "RSP")]
     {

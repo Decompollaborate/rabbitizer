@@ -2677,6 +2677,17 @@ fn check_rsp_instructions_vu() {
             "vnor",
             [Some("$v7"), Some("$v0"), Some("$v30[1]"), None, None],
         ),
+        TestEntry {
+            valid: false,
+            ..TestEntry::new_rsp(
+                0x4019ACC2,
+                InstructionFlags::new_extension(IsaExtension::RSP),
+                ".word       0x4019ACC2                   /* mfc0        $t9, $5 / 000084C2 <OpcodeCategory: RSP_COP0> */",
+                Opcode::rsp_mfc0,
+                "mfc0",
+                [Some("$t9"), Some("$5"), None, None, None],
+            )
+        },
     ];
 
     assert_eq!(check_test_entries(ENTRIES), (0, 0));
