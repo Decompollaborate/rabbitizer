@@ -86,6 +86,7 @@
 #![warn(clippy::manual_let_else)]
 #![allow(clippy::manual_non_exhaustive)]
 #![allow(clippy::pattern_type_mismatch)]
+#![allow(clippy::collapsible_match)] // Automatic fixing can break code. Also it doesn't look better either
 //
 #![cfg_attr(not(feature = "std"), no_std)]
 //
