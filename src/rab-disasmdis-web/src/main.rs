@@ -1,10 +1,10 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use address_space::{Vram, VramOffset};
 use rabbitizer::{
     encoder::{EncoderFlags, EncoderIterator},
-    vram::VramOffset,
-    Instruction, InstructionDisplayFlags, InstructionFlags, Vram,
+    Instruction, InstructionDisplayFlags, InstructionFlags,
 };
 use wasm_bindgen::prelude::*;
 use web_sys::HtmlInputElement;

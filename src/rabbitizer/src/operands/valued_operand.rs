@@ -557,11 +557,12 @@ impl FusedIterator for ValuedOperandIterator<'_> {}
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
+    use address_space::Vram;
+
     use crate::instr::InstructionFlags;
     use crate::registers::Gpr;
-    use crate::vram::Vram;
-
-    use super::*;
 
     #[test]
     fn test_valued_operand_iter_addiu() {

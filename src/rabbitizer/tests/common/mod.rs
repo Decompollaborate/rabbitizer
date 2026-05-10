@@ -3,13 +3,14 @@
 
 #![allow(clippy::uninlined_format_args)]
 
+use address_space::Vram;
+
 use rabbitizer::display_flags::InstructionDisplayFlags;
 use rabbitizer::instr::{Instruction, InstructionFlags};
 #[cfg(any(feature = "RSP", feature = "R4000ALLEGREX"))]
 use rabbitizer::isa::IsaExtension;
 use rabbitizer::opcodes::Opcode;
 use rabbitizer::operands::OPERAND_COUNT_MAX;
-use rabbitizer::vram::Vram;
 
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TestEntry {

@@ -127,7 +127,7 @@ fn main() {
     let flags = rabbitizer::instr::InstructionFlags::new(args.isa_version.into())
         .with_isa_extension(args.isa_extension.map(|x| x.into()))
         .with_all_pseudos(args.pseudos);
-    let vram = rabbitizer::vram::Vram::new(0x8000_0000);
+    let vram = rabbitizer::address_space::Vram::new(0x8000_0000);
     let display_flags = rabbitizer::display_flags::InstructionDisplayFlags::new_gnu_as();
 
     if args.inputs.is_empty() {

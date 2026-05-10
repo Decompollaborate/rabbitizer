@@ -8,9 +8,10 @@
 use core::fmt;
 use core::num::NonZeroU16;
 
+use address_space::{Vram, VramOffset};
+
 use crate::operands::{OperandDescriptor, OPERAND_COUNT, OperandDisplay};
 use crate::registers::*;
-use crate::vram::{Vram, VramOffset};
 use crate::encoded_field_mask::EncodedFieldMask;
 
 SPECIAL_RS_TAG(cfg(feature = "R4000ALLEGREX"))

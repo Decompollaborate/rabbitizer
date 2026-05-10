@@ -92,8 +92,8 @@
 //
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
-#[cfg(feature = "pyo3")]
-use pyo3::prelude::*;
+// Re-export those to make consumer code simpler.
+pub use address_space::{self, Vram, VramOffset};
 
 mod generated;
 
@@ -110,7 +110,6 @@ pub mod operands;
 pub mod register_descriptors;
 pub mod registers;
 pub mod registers_meta;
-pub mod vram;
 
 #[cfg(feature = "encoder")]
 #[cfg_attr(docsrs, doc(cfg(feature = "encoder")))]
@@ -121,19 +120,3 @@ mod utils;
 pub use display_flags::InstructionDisplayFlags;
 pub use instr::{Instruction, InstructionFlags};
 pub use isa::{IsaExtension, IsaVersion};
-pub use vram::Vram;
-
-#[cfg(feature = "pyo3")]
-#[pymodule]
-fn rabbitizer(m: &Bound<'_, PyModule>) -> PyResult<()> {
-    m.add_class::<display_flags::InstructionDisplayFlags>()?;
-
-    m.add_class::<instr::InstructionFlags>()?;
-
-    m.add_class::<isa::IsaVersion>()?;
-    m.add_class::<isa::IsaExtension>()?;
-
-    m.add_class::<vram::Vram>()?;
-
-    Ok(())
-}

@@ -1,12 +1,13 @@
 /* SPDX-FileCopyrightText: © 2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use address_space::{Vram, VramOffset};
+
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::instr::Instruction;
 use crate::opcodes::{Opcode, OpcodeDecoder, OPCODES};
 use crate::operands::Operand;
 use crate::utils::iter::DoubleOptIterator;
-use crate::vram::{Vram, VramOffset};
 
 use super::operand_encoder::{EncodedOperandBits, OperandEncoderFlags};
 use super::token::{Token, TokenDottedText, Tokenize};

@@ -6,7 +6,7 @@ use yew::events::Event;
 use yew::html::Scope;
 use yew::{html, Component, Html, TargetCast};
 
-pub use rabbitizer::Vram;
+pub use address_space::Vram;
 
 use crate::settings::{InputStruct, LabelPosition, Storagable};
 

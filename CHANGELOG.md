@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Re-export the `address_space` crate.
+
+### Changed
+
+- Use the `address_space` crate to handle `Vram` addresses instead of using our
+  own type.
+  - The `address_space::Vram` and `address_space::VramOffset` types are
+    reexported for simplicity.
+
+### Removed
+
+- Delete `Vram` and `VramOffset` types.
+  - They have been replaced with the types from the `address_space` crate.
+
 ### Fixed
 
 - Fix a panic when trying to decode an invalid RSP `mfc0` instruction.

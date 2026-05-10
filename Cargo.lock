@@ -12,6 +12,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "address_space"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b28186571130c36035f84248de83af50bf2ecddd41f236718833f3b416f9d9ea"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "adler2"
 version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1287,6 +1296,7 @@ dependencies = [
 name = "rab-disasmdis-web"
 version = "2.0.0-alpha.9"
 dependencies = [
+ "address_space",
  "built",
  "gloo 0.11.0",
  "log",
@@ -1302,6 +1312,7 @@ dependencies = [
 name = "rabbitizer"
 version = "2.0.0-alpha.9"
 dependencies = [
+ "address_space",
  "bitflags",
  "ordered-float",
  "pretty_assertions",

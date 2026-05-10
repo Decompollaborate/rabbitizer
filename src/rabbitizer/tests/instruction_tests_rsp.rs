@@ -8,12 +8,14 @@ mod common;
 use common::{check_test_entries, TestEntry};
 
 #[cfg(feature = "RSP")]
+use address_space::Vram;
+
+#[cfg(feature = "RSP")]
 use rabbitizer::{
     display_flags::InstructionDisplayFlags,
     instr::{Instruction, InstructionFlags},
     isa::IsaExtension,
     opcodes::Opcode,
-    vram::Vram,
 };
 
 #[cfg(feature = "RSP")]

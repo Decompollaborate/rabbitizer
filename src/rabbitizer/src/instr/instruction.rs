@@ -3,6 +3,8 @@
 
 use core::fmt;
 
+use address_space::{Vram, VramOffset};
+
 use crate::abi::Abi;
 use crate::display_flags::InstructionDisplayFlags;
 use crate::encoded_field_mask::EncodedFieldMask;
@@ -19,7 +21,6 @@ use crate::opcodes::{Opcode, OpcodeCategory, OpcodeDecoder};
 use crate::operands::{Operand, OperandIterator, ValuedOperandIterator};
 use crate::registers::*;
 use crate::registers_meta::Register;
-use crate::vram::{Vram, VramOffset};
 
 /// A MIPS instruction.
 ///
@@ -62,7 +63,8 @@ use crate::vram::{Vram, VramOffset};
 /// ### Managing pseudo instructions
 ///
 /// ```
-/// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+/// use address_space::Vram;
+/// use rabbitizer::{Instruction, InstructionFlags, InstructionDisplayFlags};
 /// use rabbitizer::isa::IsaVersion;
 /// use rabbitizer::opcodes::Opcode;
 ///
@@ -285,7 +287,8 @@ impl Instruction {
     /// # Examples
     ///
     /// ```
-    /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+    /// use address_space::Vram;
+    /// use rabbitizer::{Instruction, InstructionFlags, InstructionDisplayFlags};
     /// use rabbitizer::isa::IsaVersion;
     ///
     /// let vram = Vram::new(0x80000000);
@@ -333,7 +336,8 @@ impl Instruction {
     /// # Examples
     ///
     /// ```
-    /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+    /// use address_space::Vram;
+    /// use rabbitizer::{Instruction, InstructionFlags, InstructionDisplayFlags};
     /// use rabbitizer::isa::IsaVersion;
     ///
     /// let vram = Vram::new(0x80000000);
@@ -350,8 +354,8 @@ impl Instruction {
     /// ```
     /// # #[cfg(feature="R5900EE")]
     /// # fn test_func() {
-    ///
-    /// use rabbitizer::{Instruction, Vram, InstructionFlags, InstructionDisplayFlags};
+    /// use address_space::Vram;
+    /// use rabbitizer::{Instruction, InstructionFlags, InstructionDisplayFlags};
     /// use rabbitizer::isa::IsaExtension;
     ///
     /// let vram = Vram::new(0x80000000);
@@ -591,7 +595,7 @@ impl Instruction {
     /// Get the target [`Vram`] address this instruction jumps to.
     /// This function is intended only for direct jump instructions.
     ///
-    /// [`Vram`]: crate::vram::Vram
+    /// [`Vram`]: address_space::Vram
     #[must_use]
     pub fn get_instr_index_as_vram(&self) -> Option<Vram> {
         self.field()
@@ -609,7 +613,7 @@ impl Instruction {
     /// [`get_instr_index_as_vram`] function instead.
     ///
     /// [`get_instr_index_as_vram`]: Instruction::get_instr_index_as_vram
-    /// [`Vram`]: crate::vram::Vram
+    /// [`Vram`]: address_space::Vram
     #[must_use]
     pub(crate) const fn get_instr_index_as_vram_impl(&self) -> Vram {
         self.vram_from_instr_index(self.field().instr_index_impl())
@@ -626,7 +630,7 @@ impl Instruction {
     /// use [`get_branch_offset_generic`] instead.
     ///
     /// [`get_branch_offset_generic`]: Instruction::get_branch_offset_generic
-    /// [`VramOffset`]: crate::vram::VramOffset
+    /// [`VramOffset`]: address_space::VramOffset
     #[must_use]
     pub fn get_branch_offset(&self) -> Option<VramOffset> {
         if self
@@ -657,7 +661,7 @@ impl Instruction {
     ///
     /// [`get_branch_offset_generic`]: Instruction::get_branch_offset_generic
     /// [`get_branch_offset`]: Instruction::get_branch_offset
-    /// [`VramOffset`]: crate::vram::VramOffset
+    /// [`VramOffset`]: address_space::VramOffset
     #[must_use]
     pub(crate) fn get_branch_offset_impl(&self) -> VramOffset {
         let imm: i32 = self.field().imm_i16_impl().into();
@@ -671,7 +675,7 @@ impl Instruction {
     ///
     /// The returned value can be either positive or negative.
     ///
-    /// [`VramOffset`]: crate::vram::VramOffset
+    /// [`VramOffset`]: address_space::VramOffset
     #[must_use]
     pub fn get_branch_offset_generic(&self) -> Option<VramOffset> {
         if let Some(offset) = self.get_branch_offset() {
@@ -687,7 +691,7 @@ impl Instruction {
     /// This method is intended only for branch or direct jump with address
     /// instructions.
     ///
-    /// [`Vram`]: crate::vram::Vram
+    /// [`Vram`]: address_space::Vram
     #[must_use]
     pub fn get_branch_vram_generic(&self) -> Option<Vram> {
         if let Some(offset) = self.get_branch_offset() {

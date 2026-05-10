@@ -6,7 +6,7 @@
 use crate::encoded_field_mask::EncodedFieldMask;
 use crate::operands::{OperandDescriptor, OperandDisplay, OPERAND_COUNT};
 use crate::registers::*;
-use crate::vram::{Vram, VramOffset};
+use address_space::{Vram, VramOffset};
 use core::fmt;
 use core::num::NonZeroU16;
 #[cfg(feature = "R4000ALLEGREX")]

@@ -8,13 +8,15 @@ mod common;
 use common::{check_test_entries, TestEntry};
 
 #[cfg(feature = "R5900EE")]
+use address_space::Vram;
+
+#[cfg(feature = "R5900EE")]
 use rabbitizer::{
     abi::Abi,
     display_flags::InstructionDisplayFlags,
     instr::{Instruction, InstructionFlags},
     isa::IsaExtension,
     opcodes::Opcode,
-    vram::Vram,
 };
 
 #[cfg(feature = "R5900EE")]

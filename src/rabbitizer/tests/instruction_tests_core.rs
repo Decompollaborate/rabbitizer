@@ -1,6 +1,8 @@
 /* SPDX-FileCopyrightText: © 2024-2025 Decompollaborate */
 /* SPDX-License-Identifier: MIT */
 
+use address_space::Vram;
+
 mod common;
 
 use common::{check_test_entries, TestEntry};
@@ -10,7 +12,6 @@ use rabbitizer::{
     instr::{Instruction, InstructionFlags},
     isa::IsaVersion,
     opcodes::Opcode,
-    vram::Vram,
 };
 
 // TODO: test cases for MIPS_I and MIPS_II
