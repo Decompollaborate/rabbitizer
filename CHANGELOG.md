@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.16.1] - 2026-05-19
+
 ### Added
 
 - Support for ALLEGREX `lvl.q` and `lvr.q` instructions.
@@ -801,6 +803,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - First version
 
 [unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.16.0...1.x
+
+[1.16.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.16.0...1.16.1
 [1.16.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.15.0...1.16.0
 [1.15.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.3...1.15.0
 [1.14.3]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.2...1.14.3
