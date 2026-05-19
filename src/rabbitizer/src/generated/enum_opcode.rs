@@ -1092,6 +1092,10 @@ pub enum Opcode {
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_vcmovf_q,
     #[cfg(feature = "R4000ALLEGREX")]
+    r4000allegrex_lvl_q,
+    #[cfg(feature = "R4000ALLEGREX")]
+    r4000allegrex_lvr_q,
+    #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_vpfxs,
     #[cfg(feature = "R4000ALLEGREX")]
     r4000allegrex_vpfxt,

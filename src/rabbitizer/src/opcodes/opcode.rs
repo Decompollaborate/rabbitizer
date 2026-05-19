@@ -40,7 +40,7 @@ pub(crate) const OPCODE_COUNT: usize = {
         count += 22;
     }
     if cfg!(feature = "R4000ALLEGREX") {
-        count += 294;
+        count += 296;
     }
     if cfg!(feature = "R5900EE") {
         count += 266;

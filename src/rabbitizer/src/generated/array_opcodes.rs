@@ -10394,6 +10394,44 @@ pub static OPCODES: [OpcodeDescriptor; OPCODE_COUNT] = {
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {
+        table[Opcode::r4000allegrex_lvl_q as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(
+                Operand::r4000allegrex_q_vt_imm,
+                Operand::r4000allegrex_offset14_rs,
+            ),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            ..OpcodeDescriptor::new(
+                Opcode::r4000allegrex_lvl_q,
+                OpcodeCategory::R4000ALLEGREX_LVL,
+                0x0,
+                "lvl.q",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R4000ALLEGREX),
+            )
+        };
+    }
+    #[cfg(feature = "R4000ALLEGREX")]
+    {
+        table[Opcode::r4000allegrex_lvr_q as usize] = OpcodeDescriptor {
+            operands: Operand::arr2(
+                Operand::r4000allegrex_q_vt_imm,
+                Operand::r4000allegrex_offset14_rs,
+            ),
+            instr_type: InstrType::I,
+            reads_rs: true,
+            ..OpcodeDescriptor::new(
+                Opcode::r4000allegrex_lvr_q,
+                OpcodeCategory::R4000ALLEGREX_LVL,
+                0x1,
+                "lvr.q",
+                IsaVersion::EXTENSION,
+                Some(IsaExtension::R4000ALLEGREX),
+            )
+        };
+    }
+    #[cfg(feature = "R4000ALLEGREX")]
+    {
         table[Opcode::r4000allegrex_vpfxs as usize] = OpcodeDescriptor {
             operands: Operand::arr4(
                 Operand::r4000allegrex_rpx,

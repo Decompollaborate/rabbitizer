@@ -132,6 +132,8 @@ pub enum OpcodeCategory {
     #[cfg(feature = "R4000ALLEGREX")]
     R4000ALLEGREX_VFPU4_FMT2_CNDMOVE,
     #[cfg(feature = "R4000ALLEGREX")]
+    R4000ALLEGREX_LVL,
+    #[cfg(feature = "R4000ALLEGREX")]
     R4000ALLEGREX_VFPU5,
     #[cfg(feature = "R4000ALLEGREX")]
     R4000ALLEGREX_VFPU6,
@@ -839,6 +841,16 @@ pub static OPCODE_CATEGORIES: [OpcodeCategoryDescriptor; OPCODE_CATEGORY_COUNT] 
                     0xD2A00000,
                 )
             };
+    }
+    #[cfg(feature = "R4000ALLEGREX")]
+    {
+        table[OpcodeCategory::R4000ALLEGREX_LVL as usize] = OpcodeCategoryDescriptor {
+            ..OpcodeCategoryDescriptor::new(
+                concat!("R4000ALLEGREX", "_", "LVL"),
+                EncodedFieldMask::r4000allegrex_wb,
+                0xD4000000,
+            )
+        };
     }
     #[cfg(feature = "R4000ALLEGREX")]
     {

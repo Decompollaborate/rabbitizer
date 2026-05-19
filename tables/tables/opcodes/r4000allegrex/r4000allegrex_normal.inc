@@ -12,8 +12,8 @@
 011 | *6    | *7    | ---   | *8    | *9    | ---   | ---   | *10   |
 100 | LB    | LH    | LWL   | LW    | LBU   | LHU   | LWR   | ---   |
 101 | SB    | SH    | SWL   | SW    | ---   | ---   | SWR   | CACHE |
-110 | LL    | LWC1  | LV.S  | ---   | *11   | ---   | LV.Q  | *12   |
-111 | SC    | SWC1  | SV.S  | ---   | *13   | *14   | SV.Q  | *15   |
+110 | LL    | LWC1  | LV.S  | ---   | *11   | *12   | LV.Q  | *13   |
+111 | SC    | SWC1  | SV.S  | ---   | *14   | *15   | SV.Q  | *16   |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
      *1 = SPECIAL, see SPECIAL list
      *2 = REGIMM, see REGIMM list
@@ -26,10 +26,11 @@
      *9 = SPECIAL2
      *10 = SPECIAL3
      *11 = VFPU4
-     *12 = VFPU5
-     *13 = VFPU6 (Matrix operations)
-     *14 = QUADLR
-     *15 = VFPU7
+     *12 = LVL
+     *13 = VFPU5
+     *14 = VFPU6 (Matrix operations)
+     *15 = QUADLR
+     *16 = VFPU7
 */
 
     // The other instructions are implemented using the main CORE table
@@ -80,6 +81,9 @@
     RAB_DEF_OPCODE_REDIRECT(0x19, r4000allegrex, vfpu1)
     RAB_DEF_OPCODE_REDIRECT(0x1B, r4000allegrex, vfpu3)
     RAB_DEF_OPCODE_REDIRECT(0x34, r4000allegrex, vfpu4)
+
+    RAB_DEF_OPCODE_REDIRECT(0x35, r4000allegrex, lvl)
+
     RAB_DEF_OPCODE_REDIRECT(0x37, r4000allegrex, vfpu5)
     RAB_DEF_OPCODE_REDIRECT(0x3C, r4000allegrex, vfpu6)
 

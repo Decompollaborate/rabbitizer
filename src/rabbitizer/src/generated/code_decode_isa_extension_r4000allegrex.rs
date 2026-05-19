@@ -110,6 +110,14 @@ impl OpcodeDecoder {
                     isa_version,
                 )
             }
+            0x35 => {
+                return Self::decode_isa_extension_r4000allegrex_lvl(
+                    word,
+                    mandatory_bits,
+                    flags,
+                    isa_version,
+                )
+            }
             0x37 => {
                 return Self::decode_isa_extension_r4000allegrex_vfpu5(
                     word,
@@ -1525,6 +1533,28 @@ impl OpcodeDecoder {
             0x01001 => Opcode::r4000allegrex_vcmovf_p,
             0x01100 => Opcode::r4000allegrex_vcmovf_t,
             0x01101 => Opcode::r4000allegrex_vcmovf_q,
+            _ => Opcode::ALL_INVALID,
+        };
+        Self {
+            opcode,
+            opcode_category,
+            mandatory_bits,
+            gated_behind: None,
+        }
+    }
+    #[must_use]
+    pub(crate) const fn decode_isa_extension_r4000allegrex_lvl(
+        word: u32,
+        mut mandatory_bits: EncodedFieldMask,
+        _flags: &DecodingFlags,
+        _isa_version: IsaVersion,
+    ) -> Self {
+        let mask = EncodedFieldMask::r4000allegrex_wb;
+        let opcode_category = OpcodeCategory::R4000ALLEGREX_LVL;
+        mandatory_bits = mandatory_bits.union(mask.mask_value(word));
+        let opcode = match mask.get_shifted(word) {
+            0x0 => Opcode::r4000allegrex_lvl_q,
+            0x1 => Opcode::r4000allegrex_lvr_q,
             _ => Opcode::ALL_INVALID,
         };
         Self {

@@ -24,7 +24,7 @@ pub const OPCODE_CATEGORY_COUNT: usize = {
         count += 7;
     }
     if cfg!(feature = "R4000ALLEGREX") {
-        count += 45;
+        count += 46;
     }
     if cfg!(feature = "R5900EE") {
         count += 21;

@@ -13,9 +13,9 @@ dependencies = [
 
 [[package]]
 name = "address_space"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b28186571130c36035f84248de83af50bf2ecddd41f236718833f3b416f9d9ea"
+checksum = "a636fa14876e21c4162d323c7545c3ef2d9a78a253098bebee720c024d6c027a"
 dependencies = [
  "serde",
 ]

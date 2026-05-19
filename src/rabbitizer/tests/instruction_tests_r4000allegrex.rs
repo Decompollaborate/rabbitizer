@@ -17939,6 +17939,31 @@ fn check_r4000allegrex_vfpu_instructions_VFPU4_FMT3() {
 #[allow(non_snake_case)]
 #[cfg(feature = "R4000ALLEGREX")]
 #[test]
+fn check_r4000allegrex_vfpu_instructions_LVL() {
+    const ENTRIES: &[TestEntry] = &[
+        /* VFPU5 */
+        TestEntry::new_r4000allegrex(
+            0xD60F003C,
+            ".word       0xD60F003C                   /* lvl.q       C330, 0x3C($s0) / 00000000 <OpcodeCategory: R4000ALLEGREX_LVL> */",
+            Opcode::r4000allegrex_lvl_q,
+            "lvl.q",
+            [Some("C330"), Some("0x3C($s0)"), None, None, None],
+        ),
+        TestEntry::new_r4000allegrex(
+            0xD60F0032,
+            ".word       0xD60F0032                   /* lvr.q       C330, 0x30($s0) / 00000000 <OpcodeCategory: R4000ALLEGREX_LVL> */",
+            Opcode::r4000allegrex_lvr_q,
+            "lvr.q",
+            [Some("C330"), Some("0x30($s0)"), None, None, None],
+        ),
+    ];
+
+    assert_eq!(check_test_entries(ENTRIES), (0, 0));
+}
+
+#[allow(non_snake_case)]
+#[cfg(feature = "R4000ALLEGREX")]
+#[test]
 fn check_r4000allegrex_vfpu_instructions_VFPU5() {
     const ENTRIES: &[TestEntry] = &[
         /* VFPU5 */
