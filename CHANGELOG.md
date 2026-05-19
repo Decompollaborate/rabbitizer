@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Re-export the `address_space` crate.
+- Support for ALLEGREX `lvl.q` and `lvr.q` instructions.
+  - Due to poor compiler support (the instructions were removed in an early
+    errata), this instruction is disassembled as `.word`s data instead of
+    the proper instructions by default.
+  - For discussion see <https://github.com/Decompollaborate/rabbitizer/issues/85>
 
 ### Changed
 
