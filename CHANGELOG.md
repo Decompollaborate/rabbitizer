@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Support for ALLEGREX `lvl.q` and `lvr.q` instructions.
+  - Due to poor compiler support (the instructions were removed in an early
+    errata), this instruction is disassembled as `.word`s data instead of
+    the proper instructions by default.
+  - For discussion see <https://github.com/Decompollaborate/rabbitizer/issues/85>
+
 ## [1.16.0] - 2026-04-19
+
+### Added
 
 - Add support for the inverted register order used by the ProDG SN AS (`-snas`
   flag) for some specific R5900EE VU instructions (`vadda` and `vmsuba`).

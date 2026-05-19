@@ -222,6 +222,9 @@ NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu4_Fmt2_CndMove(RabbitizerInstruction *self);
 
 NON_NULL(1)
+void RabbitizerInstructionR4000Allegrex_processUniqueId_Lvl(RabbitizerInstruction *self);
+
+NON_NULL(1)
 void RabbitizerInstructionR4000Allegrex_processUniqueId_Vfpu5(RabbitizerInstruction *self);
 
 NON_NULL(1)

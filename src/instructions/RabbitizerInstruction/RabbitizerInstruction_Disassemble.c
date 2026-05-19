@@ -138,6 +138,41 @@ bool RabbitizerInstruction_mustDisasmAsData(const RabbitizerInstruction *self) {
             }
             break;
 
+        case RABBITIZER_INSTR_ID_r4000allegrex_lvl_q:
+        case RABBITIZER_INSTR_ID_r4000allegrex_lvr_q:
+            if (true) {
+                /*
+                 * These two instructions were removed from the specification
+                 * because they do not work properly due to a hardware bug.
+                 * This is mentioned in the VFPU Users manual, section 2.4, page 16.
+                 * https://github.com/Decompollaborate/rabbitizer/files/11356333/VFPU-Users_Manual-English.pdf
+                 * and the Technical Notes 200503-10 on the PSP Developer Network.
+                 *
+                 * Because of this early errata, compiler/assembler support
+                 * is a bit wonky.
+                 * Different compilers/versions either added or removed support
+                 * at different points in time, which is kinda problematic for
+                 * us since we can't have a one single way to express this
+                 * instruction in generated assembly.
+                 *
+                 * This forces us to emit this instruction as a `.word`
+                 * directive to avoid users not being able to assemble code
+                 * using this instruction.
+                 *
+                 * Currently there's no way to change this behavior.
+                 * This may change in the future if there's enough interest.
+                 *
+                 * Btw, the hardware bug happens because this instruction
+                 * shares representation with `ldc1`, so executing these
+                 * bits performs the effect of both `lvl.q`/`lvr.q` and `ldc1`.
+                 *
+                 * For more discussion see
+                 * https://github.com/Decompollaborate/rabbitizer/issues/85
+                 */
+                return true;
+            }
+            break;
+
         case RABBITIZER_INSTR_ID_r5900_vclipw:
             switch (RAB_INSTR_FLAGS_GET_r5900DisasmAsData(self)) {
                 case RAB_TRINARY_VAL_TRUE:

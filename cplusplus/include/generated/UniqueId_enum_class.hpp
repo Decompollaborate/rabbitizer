@@ -715,6 +715,8 @@ enum class UniqueId {
     r4000allegrex_vcmovf_p,
     r4000allegrex_vcmovf_t,
     r4000allegrex_vcmovf_q,
+    r4000allegrex_lvl_q,
+    r4000allegrex_lvr_q,
     r4000allegrex_vpfxs,
     r4000allegrex_vpfxt,
     r4000allegrex_vpfxd,

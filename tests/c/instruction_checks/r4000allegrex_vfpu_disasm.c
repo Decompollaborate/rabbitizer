@@ -5804,6 +5804,10 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xDE000040, NULL, "vpfxd       , , , 0"),
     TEST_ENTRY_C(0xDE0000C0, NULL, "vpfxd       , , , 1"),
     TEST_ENTRY_C(0xDE000800, NULL, "vpfxd       , , , M"),
+
+    /* lvl */
+    TEST_ENTRY_C(0xD60F003C, NULL, ".word       0xD60F003C                   # lvl.q       C330, 0x3C($s0) # 00000000 <InstrIdType: R4000ALLEGREX_LVL>"),
+    TEST_ENTRY_C(0xD60F0032, NULL, ".word       0xD60F0032                   # lvr.q       C330, 0x30($s0) # 00000000 <InstrIdType: R4000ALLEGREX_LVL>"),
 };
 
 size_t test_entries_len = ARRAY_COUNT(test_entries);
