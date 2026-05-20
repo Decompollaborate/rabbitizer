@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0-alpha.9] - 2026-05-19
+
 ### Added
 
 - Re-export the `address_space` crate.
@@ -834,8 +836,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.8...🦀
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.9...🦀
 
+[2.0.0-alpha.9]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.8...2.0.0-alpha.9
 [2.0.0-alpha.8]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.7...2.0.0-alpha.8
 [2.0.0-alpha.7]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.6...2.0.0-alpha.7
 [2.0.0-alpha.6]: https://github.com/Decompollaborate/rabbitizer/compare/2.0.0-alpha.5...2.0.0-alpha.6
