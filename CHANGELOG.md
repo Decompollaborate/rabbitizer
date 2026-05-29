@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.16.2] - 2026-05-29
+
+### Fixed
+
+- Register tracker: Avoid pairing a %hi/%lo pair if the %hi part was used in a
+  branch check.
+  - Symbols usually are not conditionally constructed like this. This is more
+    common for a division pattern or similar.
+  - Reported on <https://github.com/matt-kempster/m2c/pull/312>
+
 ## [1.16.1] - 2026-05-19
 
 ### Added
@@ -802,8 +812,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First version
 
-[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.16.0...1.x
+[unreleased]: https://github.com/Decompollaborate/rabbitizer/compare/1.16.2...1.x
 
+[1.16.2]: https://github.com/Decompollaborate/rabbitizer/compare/1.16.1...1.16.2
 [1.16.1]: https://github.com/Decompollaborate/rabbitizer/compare/1.16.0...1.16.1
 [1.16.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.15.0...1.16.0
 [1.15.0]: https://github.com/Decompollaborate/rabbitizer/compare/1.14.3...1.15.0

@@ -70,7 +70,7 @@ void RabbitizerTrackedRegisterState_clearLo(RabbitizerTrackedRegisterState *self
 }
 
 void RabbitizerTrackedRegisterState_clearBranch(RabbitizerTrackedRegisterState *self) {
-    self->checkedForBranching = 0;
+    self->checkedForBranching = false;
     self->lastBranchOffset = 0;
 }
 

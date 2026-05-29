@@ -296,6 +296,23 @@ RabbitizerLoPairingInfo RabbitizerRegistersTracker_preprocessLoAndGetInfo(Rabbit
 
     RabbitizerLoPairingInfo_Init(&pairingInfo);
 
+    if (state->checkedForBranching) {
+        // A compiler wouldn't do a branching check when
+        // constructing a hi/lo pair
+        //
+        // Example:
+        // ```
+        //  lui    $at, 0xFFC0
+        //  addu   $t0, $s0, $at
+        //  bgez   $t0, .L80000700
+        //   nop
+        //  addiu  $at $t0, 0x1F
+        // .L80000700:
+        // ```
+        pairingInfo.shouldProcess = false;
+        return pairingInfo;
+    }
+
     if (state->hasLuiValue && !state->luiSetOnBranchLikely) {
         pairingInfo.instrOffset = state->luiOffset;
         pairingInfo.value = state->value;
@@ -341,6 +358,7 @@ void RabbitizerRegistersTracker_processLo(RabbitizerRegistersTracker *self, cons
     }
 
     stateDst = &self->registers[RAB_INSTR_GET_rt(instr)];
+
     RabbitizerTrackedRegisterState_setLo(stateDst, value, offset);
     if (RabbitizerInstrDescriptor_doesDereference(instr->descriptor)) {
         RabbitizerTrackedRegisterState_deref(stateDst, offset);

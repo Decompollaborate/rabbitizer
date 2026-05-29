@@ -70,7 +70,7 @@ If you use a `requirements.txt` file in your repository, then you can add this
 library with the following line:
 
 ```txt
-rabbitizer>=1.16.0,<2.0.0
+rabbitizer>=1.16.2,<2.0.0
 ```
 
 ### Development version
