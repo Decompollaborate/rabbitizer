@@ -3557,8 +3557,8 @@ vpfxt       X, X, X, X
 vpfxt       X, X, X, X
 vpfxt       X, X, X, X
 vpfxd       , , ,
-vpfxd       0, , ,
-vpfxd       , ,0 ,
+vpfxd       [0:1], , ,
+vpfxd       , ,[0:1] ,
 vpfxd       M, , ,
 vpfxd       , , ,
 vpfxd       , , ,
@@ -4342,20 +4342,20 @@ vpfxt       X, X, X, -1/3
 vpfxt       X, X, X, -1/4
 vpfxt       X, X, X, -1/6
 vpfxd       , , , 
-vpfxd       0, , , 
-vpfxd       1, , , 
+vpfxd       [0:1], , , 
+vpfxd       [-1:1], , , 
 vpfxd       M, , , 
 vpfxd       , , , 
-vpfxd       , 0, , 
-vpfxd       , 1, , 
+vpfxd       , [0:1], , 
+vpfxd       , [-1:1], , 
 vpfxd       , M, , 
 vpfxd       , , , 
-vpfxd       , , 0, 
-vpfxd       , , 1, 
+vpfxd       , , [0:1], 
+vpfxd       , , [-1:1], 
 vpfxd       , , M, 
 vpfxd       , , , 
-vpfxd       , , , 0
-vpfxd       , , , 1
+vpfxd       , , , [0:1]
+vpfxd       , , , [-1:1]
 vpfxd       , , , M
 
     jr $ra

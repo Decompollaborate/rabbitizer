@@ -10,6 +10,7 @@
 #include "expected_disasm_utils.h"
 
 #define TEST_ENTRY_C(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_R4000ALLEGREX, word, imm, expected, )
+#define TEST_ENTRY_C_SN(word, imm, expected) TEST_ENTRY(RABBITIZER_INSTRCAT_R4000ALLEGREX, word, imm, expected, .gnuMode = false, )
 
 const TestEntry test_entries[] = {
     /* vector_zero */
@@ -5792,18 +5793,27 @@ const TestEntry test_entries[] = {
     TEST_ENTRY_C(0xDD0888C0, NULL, "vpfxt       X, X, X, -1/6"),
 
     /* vpfxd */
-    TEST_ENTRY_C(0xDE000001, NULL, "vpfxd       0, , , "),
-    TEST_ENTRY_C(0xDE000003, NULL, "vpfxd       1, , , "),
+    TEST_ENTRY_C(0xDE000001, NULL, "vpfxd       [0:1], , , "),
+    TEST_ENTRY_C(0xDE000003, NULL, "vpfxd       [-1:1], , , "),
     TEST_ENTRY_C(0xDE000100, NULL, "vpfxd       M, , , "),
-    TEST_ENTRY_C(0xDE000004, NULL, "vpfxd       , 0, , "),
-    TEST_ENTRY_C(0xDE00000C, NULL, "vpfxd       , 1, , "),
+    TEST_ENTRY_C(0xDE000004, NULL, "vpfxd       , [0:1], , "),
+    TEST_ENTRY_C(0xDE00000C, NULL, "vpfxd       , [-1:1], , "),
     TEST_ENTRY_C(0xDE000200, NULL, "vpfxd       , M, , "),
-    TEST_ENTRY_C(0xDE000010, NULL, "vpfxd       , , 0, "),
-    TEST_ENTRY_C(0xDE000030, NULL, "vpfxd       , , 1, "),
+    TEST_ENTRY_C(0xDE000010, NULL, "vpfxd       , , [0:1], "),
+    TEST_ENTRY_C(0xDE000030, NULL, "vpfxd       , , [-1:1], "),
     TEST_ENTRY_C(0xDE000400, NULL, "vpfxd       , , M, "),
-    TEST_ENTRY_C(0xDE000040, NULL, "vpfxd       , , , 0"),
-    TEST_ENTRY_C(0xDE0000C0, NULL, "vpfxd       , , , 1"),
+    TEST_ENTRY_C(0xDE000040, NULL, "vpfxd       , , , [0:1]"),
+    TEST_ENTRY_C(0xDE0000C0, NULL, "vpfxd       , , , [-1:1]"),
     TEST_ENTRY_C(0xDE000800, NULL, "vpfxd       , , , M"),
+
+    TEST_ENTRY_C_SN(0xDE000001, NULL, "vpfxd       0, , , "),
+    TEST_ENTRY_C_SN(0xDE000003, NULL, "vpfxd       1, , , "),
+    TEST_ENTRY_C_SN(0xDE000004, NULL, "vpfxd       , 0, , "),
+    TEST_ENTRY_C_SN(0xDE00000C, NULL, "vpfxd       , 1, , "),
+    TEST_ENTRY_C_SN(0xDE000010, NULL, "vpfxd       , , 0, "),
+    TEST_ENTRY_C_SN(0xDE000030, NULL, "vpfxd       , , 1, "),
+    TEST_ENTRY_C_SN(0xDE000040, NULL, "vpfxd       , , , 0"),
+    TEST_ENTRY_C_SN(0xDE0000C0, NULL, "vpfxd       , , , 1"),
 
     /* lvl */
     TEST_ENTRY_C(0xD60F003C, NULL, ".word       0xD60F003C                   # lvl.q       C330, 0x3C($s0) # 00000000 <InstrIdType: R4000ALLEGREX_LVL>"),

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- ALLEGREX VFPU: Fix the disassembly text for the saturate modes of the
+  destination prefix (`vpfxd`)'s components.
+  - The saturate-to-`[0:1]` and saturate-to-`[-1:1]` modes were always being
+    printed as `0`/`1`, but GNU `as` requires the bracketed `[0:1]`/`[-1:1]` syntax.
+  - This is toggled by `toolchainTweaks.gnuMode`, same as other syntax
+    differences: `[0:1]`/`[-1:1]` when `gnuMode` is enabled (the default),
+    `0`/`1` when disabled (since SN's `pspas` rejects the bracketed syntax).
+
 ## [1.16.2] - 2026-05-29
 
 ### Fixed
