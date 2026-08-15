@@ -1083,16 +1083,34 @@ size_t RabbitizerOperandType_process_r4000allegrex_rpw(const RabbitizerInstructi
     return totalSize;
 }
 
-static const char *const destination_prefix_instruction_formats[8] = {
+static const char *const destination_prefix_instruction_formats_gnu[8] = {
     [0] = "",          //
-    [1] = "0",         //
+    [1] = "[0:1]",     // saturate to [0:1]
     [2] = "INVALID_2", //
-    [3] = "1",         //
-    [4] = "M",         //
+    [3] = "[-1:1]",    // saturate to [-1:1]
+    [4] = "M",         // masked (write disabled)
     [5] = "INVALID_5", //
     [6] = "INVALID_6", //
     [7] = "INVALID_7", //
 };
+
+static const char *const destination_prefix_instruction_formats_sn[8] = {
+    [0] = "",          //
+    [1] = "0",         // saturate to [0:1]
+    [2] = "INVALID_2", //
+    [3] = "1",         // saturate to [-1:1]
+    [4] = "M",         // masked (write disabled)
+    [5] = "INVALID_5", //
+    [6] = "INVALID_6", //
+    [7] = "INVALID_7", //
+};
+
+static const char *destinationPrefixFormat(uint32_t value) {
+    if (RabbitizerConfig_Cfg.toolchainTweaks.gnuMode) {
+        return destination_prefix_instruction_formats_gnu[value];
+    }
+    return destination_prefix_instruction_formats_sn[value];
+}
 
 size_t RabbitizerOperandType_process_r4000allegrex_wpx(const RabbitizerInstruction *self, char *dst,
                                                        UNUSED const char *immOverride,
@@ -1100,7 +1118,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpx(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpx(self);
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
+    RABUTILS_BUFFER_CPY(dst, totalSize, destinationPrefixFormat(temp));
 
     return totalSize;
 }
@@ -1111,7 +1129,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpy(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpy(self);
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
+    RABUTILS_BUFFER_CPY(dst, totalSize, destinationPrefixFormat(temp));
 
     return totalSize;
 }
@@ -1122,7 +1140,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpz(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpz(self);
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
+    RABUTILS_BUFFER_CPY(dst, totalSize, destinationPrefixFormat(temp));
 
     return totalSize;
 }
@@ -1133,7 +1151,7 @@ size_t RabbitizerOperandType_process_r4000allegrex_wpw(const RabbitizerInstructi
     size_t totalSize = 0;
     uint32_t temp = RAB_INSTR_R4000ALLEGREX_GET_wpw(self);
 
-    RABUTILS_BUFFER_CPY(dst, totalSize, destination_prefix_instruction_formats[temp]);
+    RABUTILS_BUFFER_CPY(dst, totalSize, destinationPrefixFormat(temp));
 
     return totalSize;
 }
